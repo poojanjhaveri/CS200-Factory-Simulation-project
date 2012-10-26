@@ -1,19 +1,8 @@
-Class: PartsManager
-David Zhang
-General description
-
-extends JFrame
-implements ActionListener
-Data
-various JPanels and similar components to create a nice layout
-
-Methods
-main method to individually run this class
-
 
 /**
 <img src="../img/image_002.jpg"/>
 @brief JFrame that represents the parts manager
+@author David Zhang
 */
 class PartsManager extends JFrame implements Manager{
 //TODO please add individual data documentation

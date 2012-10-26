@@ -1,6 +1,8 @@
 
 /**
 digital representation of a part
+@brief digital representation of a part
+@author David Zhang
 */
 
 public class Part implements Serializable{
