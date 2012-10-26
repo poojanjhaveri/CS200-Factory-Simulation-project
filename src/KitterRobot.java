@@ -4,8 +4,8 @@ The KitterRobot obtains parts from the nest and places it into the working kit. 
 It has pickup functionality to transport parts along its arm to the working kit
 It moves along a rail and only stops at one of eight preset positions facing a lane
 the robot arm rotates along the rail to face the lane at the optimal angle
-<img src="../img/image_09.jpg" alt="KitterRobot waiting for nest to fill"/>
-<img src="../img/image_08.jpg" alt=KitterRobot picking from the lane"/>
+<img src="../img/image_09.png" alt="KitterRobot waiting for nest to fill"/>
+<img src="../img/image_08.png" alt=KitterRobot picking from the lane"/>
 @brief Robot that creates kits using parts from the lane nests
 @author YiWei Roy Zheng
 */

@@ -8,8 +8,8 @@ In relation to the simulation GUI, the gantry robot has
 <li>bin dropping functionality</li>
 <li>bin opening (dumping) functionality.</li>
 </ul>
-<img src=../img/image_03.jpg" alt="unused Gantry robot with arms retracted"/>
-<img src=../img/image_07.jpg" alt="Gantry robot in use and carring a bin"/>
+<img src=../img/image_03.png" alt="unused Gantry robot with arms retracted"/>
+<img src=../img/image_07.png" alt="Gantry robot in use and carring a bin"/>
 @brief shared Robot that manipulates part bins
 @author YiWei Roy Zheng
 */

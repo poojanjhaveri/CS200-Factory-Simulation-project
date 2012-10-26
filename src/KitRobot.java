@@ -5,8 +5,8 @@ The KitRobot handles the moving of kits in the kit assembly area. It takes order
 The KitRobot must also communicate with the KitDelivery manager to obtain and deliver kits
 It has pickup functionality to move entire kits
 The robot is capable of rotating along the base and extending the arm, but is incapable of moving from its base.
-<img src="../img/image_04.jpg" alt="idle KitRobot"/>
-<img src="../img/image_10.jpg" alt="KitRobot with active kit"/>
+<img src="../img/image_04.png" alt="idle KitRobot"/>
+<img src="../img/image_10.png" alt="KitRobot with active kit"/>
 @brief Robot that moves kits in the KitWorkingArea
 @author YiWei Roy Zheng
 */
