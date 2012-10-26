@@ -4,7 +4,7 @@ The Manager plays a pivotal role in server interaction by standardizing the meth
 @brief used to standardize methods for all three managers
 */
 
-interface Manager {
+public interface Manager {
 
 Manager()
 {
