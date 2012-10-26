@@ -12,6 +12,7 @@ main method to individually run this class
 
 
 /**
+<img src="../img/image_002.jpg"/>
 @brief JFrame that represents the parts manager
 */
 class PartsManager extends JFrame implements Manager{
