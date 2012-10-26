@@ -6,7 +6,7 @@ It moves along a rail and only stops at one of eight preset positions facing a l
 the robot arm rotates along the rail to face the lane at the optimal angle
 <img src="../img/image_09.jpg" alt="KitterRobot waiting for nest to fill"/>
 <img src="../img/image_08.jpg" alt=KitterRobot picking from the lane"/>
-@brief 
+@brief Robot that creates kits using parts from the lane nests
 @author YiWei Roy Zheng
 */
 public class KitterRobot{

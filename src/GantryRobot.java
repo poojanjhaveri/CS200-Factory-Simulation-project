@@ -10,7 +10,7 @@ In relation to the simulation GUI, the gantry robot has
 </ul>
 <img src=../img/image_03.jpg" alt="unused Gantry robot with arms retracted"/>
 <img src=../img/image_07.jpg" alt="Gantry robot in use and carring a bin"/>
-@brief
+@brief shared Robot that manipulates part bins
 @author YiWei Roy Zheng
 */
 
