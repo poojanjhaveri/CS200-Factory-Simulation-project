@@ -15,15 +15,11 @@ In relation to the simulation GUI, the gantry robot has
 */
 
 public class GantryRobot {
-static final Integer velocityX;///<pixels/s speed X direction of gantry robot
-static final Integer velocityY;///<pixels/s speed Y direction of gantry robot
 Bin bin;///<null if no bin, otherwise contains the information on the bin
 Boolean extended;///<whether or not the robot has arms extended
 Boolean hasbin///<whether or not the robot is carrying a bin
 Integer movetoX;///<X-coordinate destination of the gantry robot
 Integer movetoY;///<Y-coordinate destination of gantry robot
-Integer posX;///<current X-coordinate of the gantry robot
-Integer posY;///<current Y-coordinate of the gantry robot
 
 GantryRobot()
 {

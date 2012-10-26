@@ -10,14 +10,10 @@ the robot arm rotates along the rail to face the lane at the optimal angle
 @author YiWei Roy Zheng
 */
 public class KitterRobot{
-static final Integer velocityX;///<pixels/s speed X direction of KitterRobot
-static final Integer velocityY;///<pixels/s speed Y direction of KitterRobot
 
 Inventory parts;///<current parts on the KitterRobot, en route to the Kit
 Boolean busy;///<whether or not the KitterRobot has orders
 Integer moveto;///<which lane the KitterRobot is heading to
-Integer posX;///<current X-coordinate of the KitterRobot
-Integer poxY;///<current Y-coordinate of the KitterRobot
 
 
 public void moveTo(Integer x,Integer y);///<sets a new destination coordinate for the KitterRobot
