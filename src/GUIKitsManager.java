@@ -1,5 +1,13 @@
 
 /**
+<ul>
+<li>
+To create a kit : User enters the kitname in the create_kit_name in the create panel, then he/she selects item he wants to include from the combobox and depending on that, he can click on the item button to confirm that product and the button will setIcon for that image. Then when the user is finally done, he clicks on Create kit button.</li>
+<li>To Update Kit : Users selects the kit he wants to edit from the combobox which has list of all kits till now.Then he selects if he wants to change any item from the kit, for that he first selects the item from item combobox and then clicks on button.</li>
+<li>To Delete Kit : User selects the kit he wants to delete from the combobox which has list of existing kits and then clicks on delete_kit button which will delete the entire kit.</li>
+<li>To View Kit Scheduling : Just go to the view scheduling tab and that will show the current kit scheduling which is obtained from the server.</li>
+</ul>
+
 Creates, Edits and Deletes a kit.
 <img src="../img/image_00.jpg" alt="create kit"/>
 <img src="../img/image_05.jpg" alt="update kit"/>
