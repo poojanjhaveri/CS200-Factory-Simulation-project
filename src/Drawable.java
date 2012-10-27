@@ -6,5 +6,6 @@ public class Drawable{
 
 Integer posX;///<current X-coordinate of the drawable
 Integer poxY;///<current Y-coordinate of the drawable
+Double rotation;///<clockwise rotation from due east in degrees
 
 }
