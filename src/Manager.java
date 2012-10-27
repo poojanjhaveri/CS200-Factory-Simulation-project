@@ -7,17 +7,9 @@ The Manager plays a pivotal role in server interaction by standardizing the meth
 
 public interface Manager {
 
-Manager()
-{
-
-}
-
 /**
 @brief passes all relevant state information to the main Factory Production Manager for painting
 */
-public void giveState()
-{
-
-}
+public void giveState();
 
 }
