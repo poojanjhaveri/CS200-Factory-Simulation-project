@@ -14,13 +14,13 @@ package factory.agentGUI;
  */
 public class GuiKitRobot {
 
-    Kit kit;///<null if not carrying a kit, otherwise contains a reference the kit its carrying
+    GuiKit kit;///<null if not carrying a kit, otherwise contains a reference the kit its carrying
     KitWorkingArea kits;///information about all work benches and their kits
     Double rotation;///information on degrees of rotation. 0 degrees is due right
     Boolean busy;///whether or not the KitterRobot has orders
     Double turnto;///angle the GuiKitRobot is turning to
 
-    public void turnTo(Double a);///sets a new rotation angle for the KitterRobot
-    public void moveToLane(Integer l);///sets a new lane destination coordinate for KitterRobot, the passed Integer specifies which lane to head to
-    public void updateKit();///updates the location of the kit it��s carrying
+    public void turnTo(Double a){}///sets a new rotation angle for the KitterRobot
+    public void moveToLane(Integer l){}///sets a new lane destination coordinate for KitterRobot, the passed Integer specifies which lane to head to
+    public void updateKit(){}///updates the location of the kit it��s carrying
 }

@@ -1,5 +1,10 @@
-Class: KitDeliveryStation
-Deepa Borkar
+package factory.agentGUI;
+
+//Class: KitDeliveryStation
+
+import javax.swing.ImageIcon;
+
+//Deepa Borkar
 
        /**
 keeps track of what is on the kit delivery station
@@ -18,13 +23,14 @@ needs to know when an empty kit is needed on the kit stand
 checks if an empty kit is available at the station
      */
     public Boolean isEmptyKitAvailable(){
-
+        return null;
     }
     /**
 checks if a finished kit is at the station
     */
 public Boolean isFinishedKit()
     {
+        return null;
     }
     /**
 sends finished kit away if it is at the station

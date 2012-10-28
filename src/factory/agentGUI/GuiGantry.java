@@ -14,9 +14,9 @@ package factory.agentGUI;
  */
 public class GuiGantry {
 
-    Bin bin;///<null if no bin, otherwise contains the information on the bin
+    GuiBin bin;///<null if no bin, otherwise contains the information on the bin
     Boolean extended;///<whether or not the robot has arms extended
-    Boolean hasbin///<whether or not the robot is carrying a bin
+    Boolean hasbin;///<whether or not the robot is carrying a bin
 
     Integer movetoX;///<X-coordinate destination of the gantry robot
     Integer movetoY;///<Y-coordinate destination of gantry robot
@@ -24,9 +24,9 @@ public class GuiGantry {
     GuiGantry() {
     }
 
-    public void moveTo(Integer, Integer);///<sets a new destination coordinate for the gantry robot
-    public void moveToFeeder(Integer);///<sets a new feeder destination coordinate for gantry robot, the passed Integer specifies which feeder to head to
-    public void moveToDump();///<sets the new destination to the bin dump site
-    public void extend();///<extends the arm
-    public void retract();///<retracts the arm
+    public void moveTo(Integer i, Integer j){}///<sets a new destination coordinate for the gantry robot
+    public void moveToFeeder(Integer i){}///<sets a new feeder destination coordinate for gantry robot, the passed Integer specifies which feeder to head to
+    public void moveToDump(){}///<sets the new destination to the bin dump site
+    public void extend(){}///<extends the arm
+    public void retract(){}///<retracts the arm
 }
