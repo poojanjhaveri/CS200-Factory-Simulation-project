@@ -24,9 +24,10 @@ import javax.swing.JTextField;
  * Just go to the view scheduling tab and that will show the current kit
  * scheduling which is obtained from the server.</li> </ul>
  *
- * Creates, Edits and Deletes a kit. <img src="../img/image_00.jpg" alt="create
- * kit"/> <img src="../img/image05.jpg" alt="update kit"/> <img
- * src="../img/image06.jpg" alt="delete kit"/>
+ * Creates, Edits and Deletes a kit. <img src="../img/image00.jpg" alt="create
+ * kit"/> <br />
+<img src="../img/image05.jpg" alt="update kit"/> <br />
+<img src="../img/image06.jpg" alt="delete kit"/> <br />
  *
  * @author Poojan Jhaveri
  * @brief creates, edits, deletes kits
