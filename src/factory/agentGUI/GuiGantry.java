@@ -5,8 +5,8 @@ package factory.agentGUI;
  * relation to the simulation GUI, the gantry robot has <ul> <li>arm extension
  * functionality (purely aesthetic)</li> <li>bin picking functionality</li>
  * <li>bin dropping functionality</li> <li>bin opening (dumping)
- * functionality.</li> </ul> <img src=../img/image_03.png" alt="unused Gantry
- * robot with arms retracted"/> <img src=../img/image_07.png" alt="Gantry robot
+ * functionality.</li> </ul> <img src="../img/image_03.png" alt="unused Gantry
+ * robot with arms retracted"/> <img src="../img/image_07.png" alt="Gantry robot
  * in use and carring a bin"/>
  *
  * @brief shared Robot that manipulates part bins
