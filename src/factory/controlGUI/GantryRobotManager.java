@@ -58,8 +58,7 @@ GraphicGantryPanel ggp;
 boolean changed;
 
 
-public GraphicGantryPanel(){
-//set up a Timer	
+public GraphicGantryPanel(){//set up a Timer	
 }
 
 public boolean checkServerMessage(){}// check if Server send any message or data back
@@ -67,17 +66,15 @@ public resetComponent(){};//get all coordinates from GantryState class
 public paint(Graphics g){};//paint all components: bins, purge station, feeders and the gantry robot
 public actionPerformed(){
 changed = checkServerMessage();
-if (changed){
-	resetComponents();//get information of recently changedd
+if (changed){	resetComponents();//get information of recently changedd
 }
 repaint();
 }
-
 }
 
 public class GantryState{
 Feeder feeder;
-Bins bins;
+Bin bins;
 
 public void updateFeeder(){}// update Feeder coordinate or status
 public void updateBins(){} // update Bins coordinates or status;
@@ -90,7 +87,6 @@ int corx;//coordinate x
 int cory;//coordinate y
 image binImage;
 public moveBin(int newx, int newy){}//moveBin to the new coordinate
-
 }
 
 public class Feeder{
@@ -105,5 +101,4 @@ public dropPartsOn(int number){}// drop parts from bins to the selected number f
 }
 
 <img src="../img/image01.png" />
-
 <img src="../img/image12.png" />
