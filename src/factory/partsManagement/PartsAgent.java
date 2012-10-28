@@ -1,10 +1,15 @@
+package factory.partsManagement;
 
+import agent.Agent;
+import factory.ConfigFile;
+import factory.Kit;
+import factory.Part;
+import factory.kitManagement.KitRobotAgent;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import agent.Agent;
 
 /**
  * Factory PartsAgent gets kit information from server and obtains necessary
@@ -16,13 +21,13 @@ import agent.Agent;
  */
 public class PartsAgent extends Agent {
 
-    KitAgent kitagent;
+    KitRobotAgent kitagent;
     Kit kit;
     NestAgent nest;
 //nest array needed
-    private List<configFile> configInfo =
-            Collections.synchronizedList(new ArrayList<configFile>());
-    private Map<Part, Integer> inventory = new HashMap<Part, Integer>();
+    private List<ConfigFile> configInfo =
+            Collections.synchronizedList(new ArrayList<ConfigFile>());
+    private Map<Part, Integer> inventory = new HashMap<>();
     Part grips[];
 
     public class Grip {
@@ -31,21 +36,35 @@ public class PartsAgent extends Agent {
     }
 
 //Messages
-    public void msgHereIsConfig(configFile) {
-        configInfo.add(configFile);
+    public void msgHereIsConfig(ConfigFile file) {
+        configInfo.add(file);
         stateChanged();
     }
 
     public void msgHereAreParts(Part p, int quantity) {
-        inventory.put(Part, quantity);
+        inventory.put(p, quantity);
         stateChanged();
     }
 
     public void msgEmptyKitReady(int num) {
-        kit.kittingStandNumber = num;
+        switch (num) {
+            case 1:
+                kit.kittingStandNumber = Kit.KittingStandNumber.one;
+                break;
+            case 2:
+                kit.kittingStandNumber = Kit.KittingStandNumber.two;
+                break;
+            case 3:
+                kit.kittingStandNumber = Kit.KittingStandNumber.three;
+                break;
+            default:
+                kit.kittingStandNumber = Kit.KittingStandNumber.none;
+        }
         stateChanged();
     }
 //Scheduler
+
+    @Override
     protected boolean pickAndExecuteAnAction() {
         if (!configInfo.isEmpty()) {
             setConfiguration();
@@ -81,10 +100,12 @@ public class PartsAgent extends Agent {
         return false;
     }
 //Actions
+
     private void setConfiguration() {
-        if (configInfo.hasNewKit()) {
+        if (true //                configInfo.hasNewKit()
+                ) {
             {
-                kit = configInfo.getKit();
+//                kit = configInfo.remove(0);
                 kitagent.msgNeedEmptyKit();
             }
             for (int i = 0; i < kit.parts.length; i++) {
@@ -100,7 +121,7 @@ public class PartsAgent extends Agent {
 
     private void pickUpPart(Part p, int g) {
         grips[g] = p;
-        doPickUpPart(p);
+//        DoPickUpPart(p);
         kit.kitNeedsParts--;
         if (kit.kitNeedsParts == 0) {
             kit.status = Kit.Status.full;
@@ -110,7 +131,7 @@ public class PartsAgent extends Agent {
 
     private void putPartsInKit(int n) {
         for (int i = 0; i < n; i++) {
-            doPutPartInKit(grips[i]);
+//            DoPutPartInKit(grips[i]);
             kit.kitNeedsParts--;
         }
     }

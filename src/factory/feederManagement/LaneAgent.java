@@ -20,6 +20,10 @@ public class LaneAgent extends Agent implements Lane {
     private List<myParts> parts = Collections.synchronizedList(new ArrayList<myParts>());
     private Nest nest;
 
+    public void msgRejectParts(int i) {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
     private class myParts {
 
         Part part_type;

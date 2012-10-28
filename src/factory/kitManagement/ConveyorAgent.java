@@ -1,4 +1,3 @@
-
 package factory.kitManagement;
 
 import agent.Agent;

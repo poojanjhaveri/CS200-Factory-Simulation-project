@@ -1,9 +1,11 @@
+package factory.partsManagement;
 
+import factory.Part;
+import factory.feederManagement.LaneAgent;
+import factory.kitManagement.CameraAgent;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Nest object has a threshold
@@ -70,5 +72,5 @@ public class NestAgent {
     public void setPartsAgent(PartsAgent parts) {
         this.partsagent = parts;
     }
-    getPart
+//    getPart
 }

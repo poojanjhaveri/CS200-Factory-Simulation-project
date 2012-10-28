@@ -22,4 +22,8 @@ public class CameraAgent extends Agent implements Camera {
     }
     // ********** ACTIONS **********
     // ************ MISC ***********
+
+    public void msgNestIsFull(int nestNumber) {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
 }
