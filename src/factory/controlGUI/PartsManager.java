@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
 /**
- * <img src="../img/image002.jpg"/> @brief JFrame that represents the parts
+ * <img src="../img/image02.png"/> @brief JFrame that represents the parts
  * manager
  * @author David Zhang
  */
