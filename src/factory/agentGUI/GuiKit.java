@@ -1,8 +1,7 @@
+
 import factory.agentGUI.GuiPart;
 import java.io.Serializable;
 import java.util.ArrayList;
-
-
 
 /*
  * 
@@ -13,25 +12,16 @@ import java.util.ArrayList;
  * 
  * 
  */
-
-
-
 public class GUIKit implements Serializable {
 
-	/**
-	 * @param args
-	 */
-	String name; //name of the Kit
-	ArrayList<GuiPart>partslist;  // collection of parts in the kit
-	
-	
-	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+    /**
+     * @param args
+     */
+    String name; //name of the Kit
+    ArrayList<GuiPart> partslist;  // collection of parts in the kit
 
-	}
-	
-	//getters and setters as needed 
-	
-
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+    }
+    //getters and setters as needed 
 }

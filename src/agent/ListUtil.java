@@ -29,8 +29,8 @@ package agent;
 import java.util.*;
 
 /**
-@brief Create a list of Object from a call list.
- * Create a list of Object from a call list.
+ * @brief Create a list of Object from a call list. Create a list of Object from
+ * a call list.
  */
 public class ListUtil {
 
