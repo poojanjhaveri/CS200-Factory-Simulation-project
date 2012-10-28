@@ -4,6 +4,7 @@ import java.util.concurrent.*;
 
 /**
  * Base class for simple agents
+@brief Base class for simple agents
  */
 public abstract class Agent {
 
