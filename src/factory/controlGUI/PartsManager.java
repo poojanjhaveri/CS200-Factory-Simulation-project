@@ -8,12 +8,13 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
 /**
- * <img src="../img/image_002.jpg"/> @brief JFrame that represents the parts
+ * <img src="../img/image002.jpg"/> @brief JFrame that represents the parts
  * manager
  * @author David Zhang
  */
 class PartsManager extends JFrame implements Manager {
 //TODO please add individual data documentation
+
     private JPanel contentPane;
     private JLabel lblPartsManager;
     private JTabbedPane tabbedPane;

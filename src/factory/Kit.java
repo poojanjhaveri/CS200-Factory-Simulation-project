@@ -9,10 +9,4 @@ package factory;
  * @author Alex
  */
 public class Kit {
-
-    private Location loc;
-    public Location getLocation() {
-        return loc;
-    }
-    
 }

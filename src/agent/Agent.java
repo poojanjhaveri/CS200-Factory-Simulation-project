@@ -4,6 +4,7 @@ import java.util.concurrent.*;
 
 /**
  * Base class for simple agents
+@brief Base class for simple agents
  */
 public abstract class Agent {
 
@@ -92,6 +93,7 @@ public abstract class Agent {
     }
 
     /**
+@brief Agent scheduler thread
      * Agent scheduler thread, calls respondToStateChange() whenever a state
      * change has been signalled.
      */
