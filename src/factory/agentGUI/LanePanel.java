@@ -1,3 +1,4 @@
+package factory.agentGUI;
 import javax.swing.JPanel;
 /**
 	@brief contains 2 GUILanePanels since there are 8 tabs in total

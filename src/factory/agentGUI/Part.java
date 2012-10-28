@@ -1,3 +1,4 @@
+package factory.agentGUI;
 /**
 	@brief contains each part¡¯s coordinate information
 	@author Dongyoung Jung

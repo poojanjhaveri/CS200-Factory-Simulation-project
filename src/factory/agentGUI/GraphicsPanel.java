@@ -1,3 +1,4 @@
+package factory.agentGUI;
 import javax.swing.JPanel;
 /**
 	@brief shows graphical section(actual cell)

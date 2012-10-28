@@ -1,3 +1,5 @@
+package factory.agentGUI;
+
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 /**

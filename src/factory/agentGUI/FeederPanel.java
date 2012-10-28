@@ -1,3 +1,4 @@
+package factory.agentGUI;
 import javax.swing.JPanel;
 /**
 	@brief contains GUIFeederPanel

@@ -1,3 +1,4 @@
+package factory.agentGUI;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;

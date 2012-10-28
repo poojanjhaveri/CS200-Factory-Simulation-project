@@ -1,3 +1,5 @@
+package factory.agentGUI;
+
 import java.util.concurrent.Executor;
 import javax.swing.JLayeredPane;
 /**
