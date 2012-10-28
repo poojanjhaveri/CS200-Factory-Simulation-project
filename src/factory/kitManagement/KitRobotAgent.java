@@ -6,6 +6,7 @@ import factory.Part;
 import factory.interfaces.KitRobot;
 
 /**
+@brief agent for the Kit Robot which gets empty kits from the conveyor and puts it on a palette
  * This class is the agent for the Kit Robot which gets empty kits from the
  * conveyor and puts it on a palette. It also moves unverified kits onto the
  * verification palette and once verified, moves the complete kit onto the

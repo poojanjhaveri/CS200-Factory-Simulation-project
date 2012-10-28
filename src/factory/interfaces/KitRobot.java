@@ -1,6 +1,7 @@
 package factory.interfaces;
 
 /**
+@brief contains all of the messages for the KitRobotAgent
  * This interface contains all of the messages for the KitRobotAgent. Both the
  * KitRobotAgent and a MockKitRobot can implement this interface (useful for
  * unit testing).
