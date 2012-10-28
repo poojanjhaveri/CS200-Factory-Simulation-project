@@ -93,6 +93,7 @@ public abstract class Agent {
     }
 
     /**
+@brief Agent scheduler thread
      * Agent scheduler thread, calls respondToStateChange() whenever a state
      * change has been signalled.
      */

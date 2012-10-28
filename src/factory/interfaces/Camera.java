@@ -2,6 +2,7 @@
 package factory.interfaces;
 
 /**
+@brief contains messages for CameraAgent
  * This interface contains all of the messages for 
  * the CameraAgent. Both the CameraAgent and a
  * MockCamera can implement this interface (useful
