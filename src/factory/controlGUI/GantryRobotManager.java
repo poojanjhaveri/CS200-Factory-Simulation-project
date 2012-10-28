@@ -1,4 +1,4 @@
-package factory.controlGui;
+package factory.controlGUI;
 /**
 Gantry Robot Manager takes care of movement of gantry robot, bins, purge station, feeders.
 Inner classes are GantryRobot, GUIGantryManager,GraphicGantryPanel, GantryState, Feeder and Bins
