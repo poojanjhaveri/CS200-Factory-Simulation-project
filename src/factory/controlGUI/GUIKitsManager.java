@@ -86,15 +86,12 @@ public class GUIKitsManager extends JFrame implements ActionListener, Manager {
     /**
      * - to get details of the kit scheduling from the server
      */
-    
-    
+    void getScheduling() {
+    }
 
-    void getScheduling(){
-
-} 
-/**
-sends message to Server to receive the existing collection of Items.
-*/
-void getItemList() {
+    /**
+     * sends message to Server to receive the existing collection of Items.
+     */
+    void getItemList() {
     }
 }

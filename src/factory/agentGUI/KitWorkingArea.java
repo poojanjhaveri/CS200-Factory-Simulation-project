@@ -9,5 +9,4 @@ package factory.agentGUI;
  * @author Alex
  */
 public class KitWorkingArea {
-    
 }

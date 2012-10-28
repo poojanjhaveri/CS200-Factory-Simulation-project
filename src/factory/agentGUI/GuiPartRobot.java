@@ -18,7 +18,12 @@ public class GuiPartRobot {
     Boolean busy;///<whether or not the GuiPartRobot has orders
     Integer moveto;///<which lane the GuiPartRobot is heading to
 
-    public void moveTo(Integer x, Integer y){}///<sets a new destination coordinate for the GuiPartRobot
-    public void moveToLane(Integer l){}///<sets a new lane destination coordinate for GuiPartRobot, the passed Integer specifies which lane to head to
-    public void updateParts(){}///<updates the location of all parts in the inventory
+    public void moveTo(Integer x, Integer y) {
+    }///<sets a new destination coordinate for the GuiPartRobot
+
+    public void moveToLane(Integer l) {
+    }///<sets a new lane destination coordinate for GuiPartRobot, the passed Integer specifies which lane to head to
+
+    public void updateParts() {
+    }///<updates the location of all parts in the inventory
 }

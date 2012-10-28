@@ -7,11 +7,13 @@ import java.util.*;
 
 public class FeederAgent extends Agent implements Feeder {
 //private Inventory inventory = new Inventory();
+
     private List<myParts> parts = Collections.synchronizedList(new ArrayList<myParts>());
     private Lane leftLane;
     private Lane rightLane;
     private Gantry gantry;
 //public enum PartState {noState,canSend,needPart,sentRequest};
+
     public enum SendTo {
 
         leftLane, rightLane, none
