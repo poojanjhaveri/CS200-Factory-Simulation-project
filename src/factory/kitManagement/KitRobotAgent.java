@@ -36,4 +36,12 @@ public class KitRobotAgent extends Agent implements KitRobot {
     }
     // ********** ACTIONS **********
     // ************ MISC ***********
+
+    public void msgNeedEmptyKit() {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    public void msgKitIsComplete() {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
 }

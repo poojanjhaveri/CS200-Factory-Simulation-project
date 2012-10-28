@@ -6,15 +6,13 @@ import factory.interfaces.*;
 import java.util.*;
 
 /**
- * @brief agent for the Feeder
- * This class is the agent for the Feeder which does
- * the following: 1) Get messages from the lanes when they need parts
- * 2) Send parts to the lanes 3) Request for parts from the gantry
+ * @brief agent for the Feeder This class is the agent for the Feeder which does
+ * the following: 1) Get messages from the lanes when they need parts 2) Send
+ * parts to the lanes 3) Request for parts from the gantry
  *
  * @author Kevin Macwan
  * @version 0
  */
-
 public class FeederAgent extends Agent implements Feeder {
 
     private List<myParts> parts = Collections.synchronizedList(new ArrayList<myParts>());
@@ -78,7 +76,7 @@ public class FeederAgent extends Agent implements Feeder {
             }
         }
 
-        
+
 
         stateChanged();
 

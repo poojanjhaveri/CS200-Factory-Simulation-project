@@ -8,18 +8,21 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * @brief agent for the Lane
- * This class is the agent for the Lane agent, which receives messages from nest to supply parts.
- * It asks the feeder for parts if it has less parts available.
- * It sends the parts to the nest when it has enough parts available.
+ * @brief agent for the Lane This class is the agent for the Lane agent, which
+ * receives messages from nest to supply parts. It asks the feeder for parts if
+ * it has less parts available. It sends the parts to the nest when it has
+ * enough parts available.
  * @author Kevin Macwan
  * @version 0
  */
-
 public class LaneAgent extends Agent implements Lane {
 
     private List<myParts> parts = Collections.synchronizedList(new ArrayList<myParts>());
     private Nest nest;
+
+    public void msgRejectParts(int i) {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
 
     private class myParts {
 
