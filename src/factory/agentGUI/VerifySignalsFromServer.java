@@ -1,3 +1,4 @@
+package factory.agentGUI;
 /**
    @brief interprets signals from server and take an action 
 		Signals from server

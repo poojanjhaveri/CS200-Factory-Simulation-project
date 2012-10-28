@@ -1,3 +1,4 @@
+package factory.agentGUI;
 /**
 	@brief waits to receive signals from server
 	@author Dongyoung Jung

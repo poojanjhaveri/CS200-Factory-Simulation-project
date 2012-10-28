@@ -1,6 +1,6 @@
 package factory.agentGUI;
-/**
-	@brief contains each part¡¯s coordinate information
+n/**
+	@brief contains each part's coordinate information
 	@author Dongyoung Jung
 */
 class Part{

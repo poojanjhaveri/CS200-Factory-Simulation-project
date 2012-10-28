@@ -1,3 +1,4 @@
+package factory.agentGUI;
 /**	
     @brief Sends signals to server
 		   Signals to server

@@ -1,3 +1,4 @@
+package factory.controlGUI;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;

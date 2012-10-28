@@ -1,3 +1,4 @@
+package factory.controlGUI;
 import javax.swing.JPanel;
 /**
 	@brief shows hardware status of lane
