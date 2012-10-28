@@ -3,6 +3,7 @@ package factory.interfaces;
 import factory.Kit;
 
 /**
+@brief contains messages for ConveyerAgent
  * This interface contains all of the messages for the ConveyorAgent. Both the
  * ConveyorAgent and a MockConveyor can implement this interface (useful for
  * unit testing).
