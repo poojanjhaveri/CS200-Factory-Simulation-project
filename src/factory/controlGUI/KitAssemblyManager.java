@@ -1,4 +1,4 @@
-
+package factory.controlGUI;
 /**
  * This class keeps track of everything that will be visible to the Kit Assembly
  * Manager. This includes the graphics panel and the GUI panel. The graphics
