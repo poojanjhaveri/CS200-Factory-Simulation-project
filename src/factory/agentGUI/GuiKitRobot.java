@@ -6,8 +6,8 @@ package factory.agentGUI;
  * with the KitDelivery manager to obtain and deliver kits It has pickup
  * functionality to move entire kits The robot is capable of rotating along the
  * base and extending the arm, but is incapable of moving from its base. <img
- * src="../img/image_04.png" alt="idle GuiKitRobot"/> <img
- * src="../img/image_10.png" alt="GuiKitRobot with active kit"/>
+ * src="../img/image04.png" alt="idle GuiKitRobot"/> <img
+ * src="../img/image10.png" alt="GuiKitRobot with active kit"/>
  *
  * @brief Robot that moves kits in the KitWorkingArea
  * @author YiWei Roy Zheng
