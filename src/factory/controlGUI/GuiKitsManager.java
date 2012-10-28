@@ -5,8 +5,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 
 /**
@@ -31,22 +33,22 @@ import javax.swing.JTextField;
  * @author Poojan Jhaveri
  * @brief creates, edits, deletes kits
  */
-public class GUIKitsManager extends JFrame implements ActionListener, Manager {
+public class GuiKitsManager extends JFrame implements ActionListener, Manager {
 
-    JTabbedPanel tabpane;///<tabbed panel for 4 different views for the kitmanager ie create kit, update kit, delete kit and kit production schedule.
+    JTabbedPane tabpane;///<tabbed panel for 4 different views for the kitmanager ie create kit, update kit, delete kit and kit production schedule.
     JPanel createpanel;///<kit creation panel
     JPanel deletepanel;///<kit deletion panel
     JPanel updatepanel;///<kit modification panel
     JPanel viewschedulepanel;///<view schedule panel
     JTextField create_kit_name, update_kit_name, delete_kit_name;
-    JCombobox create_item;///< This will have the list of items obtained from the server
-    JCombobox update_kit;///< list of names of kits
-    JCombobox update_item;///< list of existing maintained items
+    JComboBox create_item;///< This will have the list of items obtained from the server
+    JComboBox update_kit;///< list of names of kits
+    JComboBox update_item;///< list of existing maintained items
     ArrayList<JButton> buttons;///<holds the buttons used in the menu
-    JButton create_kit, update_kit, delete_kit;
+    JButton create_kit, _update_kit, delete_kit;
     Kit newkit;///< Object of Kit class to hold the values of current kit
 
-    public void actionPerformed(ActionEvent ae);///<trigger when button is clicked
+    public void actionPerformed(ActionEvent ae){}///<trigger when button is clicked
 
     /**
      * Creates the Kit ( triggered from actionperformed when create_kit button
@@ -63,7 +65,7 @@ public class GUIKitsManager extends JFrame implements ActionListener, Manager {
     }
 
     /**
-     * ( triggered from actionperformed when update_kit is clicked ) and sends
+     * ( triggered from actionperformed when _update_kit is clicked ) and sends
      * it to the Server. Deletes the kit selected by the user and sends the
      * updated list of kits to the server.( triggered from actionperformed when
      * delete_kit is clicked )
@@ -93,5 +95,10 @@ public class GUIKitsManager extends JFrame implements ActionListener, Manager {
      * sends message to Server to receive the existing collection of Items.
      */
     void getItemList() {
+    }
+
+    @Override
+    public void giveState() {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }
