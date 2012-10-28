@@ -78,8 +78,8 @@ public class ConveyorAgent extends Agent implements Conveyor {
      */
     private void giveEmptyKit() {
 //        DoGiveEmptyKit();
-        Location loc = kits.get(0).getLocation();
-        kitRobotAgent.msgHereIsKit(loc);
+//        Location loc = kits.get(0).getLocation();
+//        kitRobotAgent.msgHereIsKit(loc);
         stateChanged();
     }
 
