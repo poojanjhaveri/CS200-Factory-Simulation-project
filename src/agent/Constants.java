@@ -29,6 +29,7 @@ package agent;
 //import java.util.*;
 
 /**
+@brief constants of general use
  * Constants of general use
  */
 public interface Constants {
