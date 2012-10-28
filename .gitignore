@@ -1,6 +1,9 @@
 *.class
+*.xml
+*.mf
 
 # Package Files #
 *.jar
 *.war
 *.ear
+/nbproject/private/
