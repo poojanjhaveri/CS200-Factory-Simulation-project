@@ -6,7 +6,8 @@
  * parts robot, the kit robot, and the completed/empty kits. The GUI panel will
  * allow the Kit Assembly Manager to break any of the components that are
  * contained in this window. <img url="addthis.jpg" /> <img url="addthis.jpg" />
- *
+ *<img src="../img/image11.png" />
+ <img src="../img/image16.png" />
  * @brief keeps track of everything that will be visible to the Kit Assembly
  * Manager
  * @author Deepa Borkar
