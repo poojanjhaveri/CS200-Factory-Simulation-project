@@ -7,7 +7,7 @@ package factory.agentGUI;
  * along a rail and only stops at one of eight preset positions facing a lane
  * the robot arm rotates along the rail to face the lane at the optimal angle
  * <img src="../img/image09.png" alt="GuiPartRobot waiting for nest to fill"/>
- * <img src="../img/image08.png" alt=GuiPartRobot picking from the lane"/>
+ * <img src="../img/image08.png" alt="GuiPartRobot picking from the lane"/>
  *
  * @brief Robot that creates kits using parts from the lane nests
  * @author YiWei Roy Zheng
