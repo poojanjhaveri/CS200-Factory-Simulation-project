@@ -5,7 +5,9 @@ Inner classes are GantryRobot, GUIGantryManager,GraphicGantryPanel, GantryState,
 GUIGantryManager extends a JPanel with JButtons, JMenu and JLabels
 GraphicGantryPanel extends a JPanel which shows animation of every process before feeders
 GantryState stores data needed to do animation for bins, feeders,robot GantryRobot handles the movement of gantry robot
-@brief Gantry Robot Manager takes care of movement of gantry robot, bins, purge station, feeders.
+<img src="../img/image01.png" />
+<img src="../img/image12.png" />
+@brief takes care of movement of gantry robot, bins, purge station, feeders.
 @author Yuting Liu
 */
 
@@ -21,6 +23,7 @@ public void receiveFromServer();///<pull data from server
 
 /**
 Inner class GUIGantryManager
+@brief Inner class GUIGantryManager
 */
 public class GUIGantryManager extends JPanel implements ActionListener(){
 
@@ -36,6 +39,7 @@ public void breakGantryRobot(){};///<break the gantry robot under non-normative
 
 /**
 if actions are performed this handles it
+@brief if actions are performed this handles it
 */
 public void actionPerformed(ActionEvent ae){
 if (ae==breakPurgeStation){
@@ -60,12 +64,21 @@ boolean changed;
 
 public GraphicGantryPanel(){//set up a Timer	
 }
-
-public boolean checkServerMessage(){}// check if Server send any message or data back
-public resetComponent(){};//get all coordinates from GantryState class
-public paint(Graphics g){};//paint all components: bins, purge station, feeders and the gantry robot
+/**
+check if Server send any message or data back
+*/
+public boolean checkServerMessage(){}// 
+/**
+get all coordinates from GantryState class
+*/
+public resetComponent(){};//
+/**
+paint all components: bins, purge station, feeders and the gantry robot
+*/
+public paint(Graphics g){};
 public actionPerformed(){
 changed = checkServerMessage();
+
 if (changed){	resetComponents();//get information of recently changedd
 }
 repaint();
@@ -75,16 +88,27 @@ repaint();
 public class GantryState{
 Feeder feeder;
 Bin bins;
-
-public void updateFeeder(){}// update Feeder coordinate or status
-public void updateBins(){} // update Bins coordinates or status;
-public void updateGantryRobot(){}//update gantryRobot infomation
-public void updatePurgeStation(){}// update purgestation. move empty bin to (purgeStationx, purgeStationy)
+/**
+update Feeder coordinate or status
+*/
+public void updateFeeder(){}
+/**
+update Bins coordinates or status;
+*/
+public void updateBins(){} 
+/**
+update gantryRobot infomation
+*/
+public void updateGantryRobot(){}
+/**
+update purgestation. move empty bin to (purgeStationx, purgeStationy)
+*/
+public void updatePurgeStation(){}
 }
 
 public class Bin{
-int corx;//coordinate x
-int cory;//coordinate y
+int corx;///<coordinate x
+int cory;///<coordinate y
 image binImage;
 public moveBin(int newx, int newy){}//moveBin to the new coordinate
 }
@@ -95,10 +119,11 @@ int x;//coordinate x
 int y;//coordinate y
 image feederImage;
 
-public dropPartsOn(int number){}// drop parts from bins to the selected number feeder
+/**
+drop parts from bins to the selected number feeder
+*/
+public dropPartsOn(int number){}
 }
 
 }
 
-<img src="../img/image01.png" />
-<img src="../img/image12.png" />
