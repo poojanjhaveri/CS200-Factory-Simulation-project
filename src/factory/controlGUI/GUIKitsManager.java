@@ -89,7 +89,7 @@ public class GUIKitsManager extends JFrame implements ActionListener, Manager {
     
     
 
-    void getScheduling{
+    void getScheduling(){
 
 } 
 /**

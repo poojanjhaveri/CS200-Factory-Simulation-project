@@ -5,6 +5,7 @@
 *.classpath
 *.project
 nbproject/
+bin/
 
 # Package Files #
 *.jar
