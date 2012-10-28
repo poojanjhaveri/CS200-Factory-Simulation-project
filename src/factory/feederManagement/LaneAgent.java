@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * @brief agent for the Lane
  * This class is the agent for the Lane agent, which receives messages from nest to supply parts.
- * It asks the gantry for parts if it has less parts available.
+ * It asks the feeder for parts if it has less parts available.
  * It sends the parts to the nest when it has enough parts available.
  * @author Kevin Macwan
  * @version 0
