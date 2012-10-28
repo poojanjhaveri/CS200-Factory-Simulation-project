@@ -1,9 +1,12 @@
 *.class
 *.xml
 *.mf
+*.DS_Store
+*.classpath
+*.project
+nbproject/
 
 # Package Files #
 *.jar
 *.war
 *.ear
-/nbproject/private/
