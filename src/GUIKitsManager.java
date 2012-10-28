@@ -70,7 +70,7 @@ void getKitsList()
 /**
 - to get details of the kit scheduling from the server
 */
-void getScheduling{
+void getScheduling(){
 
 } 
 /**
