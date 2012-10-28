@@ -1,6 +1,6 @@
 
 /**
-<img src="../factory.interfaces.png" />
+<img src="../img/factory.interfaces.png" />
 @brief various interfaces
 */
 package factory.interfaces;
