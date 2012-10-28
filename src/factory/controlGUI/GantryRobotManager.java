@@ -6,6 +6,8 @@ Inner classes are GantryRobot and GantryState,
 GantryState has everything needed to have animation: Bins, Feeders, GantryRobot movement info
 The capability to purge a bin when it is without any parts, to drop parts from bin to feeder
 <img src="../img/image01.png" />
+<img src="../img/image12.png" />
+
 
 @brief Gantry Robot Manager takes care of movement of gantry robot, bins, purge station, feeders.
 @author Yuting Liu
