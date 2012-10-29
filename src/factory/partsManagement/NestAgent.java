@@ -1,9 +1,12 @@
+package factory.partsManagement;
 
+import factory.Nest;
+import factory.Part;
+import factory.feederManagement.LaneAgent;
+import factory.kitManagement.CameraAgent;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Nest object has a threshold
@@ -23,6 +26,7 @@ public class NestAgent {
     private Part part;
     private int howMany = 0;
     private int nestNumber;
+    private List<Nest> nests = Collections.synchronizedList(new ArrayList<Nest>());
 
     //public enum NestNumber { one, two, three, four, five, six, seven, eight};
     NestAgent(int nestNum, LaneAgent lane) {
@@ -51,12 +55,12 @@ public class NestAgent {
         if (howMany > threshold) {
             this.lane.msgRejectParts(howMany - threshold);
             howMany = threshold;
-            camera.msgNestIsFull(nestNumber);
+            camera.msgNestIsFull(new Nest(), nestNumber);
         }
 
     }
 
-    public void msgNestVerified(boolean result) {
+    public void msgNestInspected(boolean result) {
         partsagent.msgHereAreParts(part, howMany);
     }
     //scheduler
@@ -70,5 +74,5 @@ public class NestAgent {
     public void setPartsAgent(PartsAgent parts) {
         this.partsagent = parts;
     }
-    getPart
+//    getPart
 }

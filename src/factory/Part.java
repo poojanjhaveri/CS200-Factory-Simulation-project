@@ -1,9 +1,11 @@
-
 package factory;
 
 public class Part {
 
-    public enum Type {p1, p2, p3, p4, p5, p6, p7, p8};
+    public enum Type {
+
+        p1, p2, p3, p4, p5, p6, p7, p8
+    };
     public Type type;
     public boolean inKit;
     public int size;

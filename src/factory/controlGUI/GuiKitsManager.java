@@ -48,7 +48,8 @@ public class GuiKitsManager extends JFrame implements ActionListener, Manager {
     JButton create_kit, _update_kit, delete_kit;
     Kit newkit;///< Object of Kit class to hold the values of current kit
 
-    public void actionPerformed(ActionEvent ae){}///<trigger when button is clicked
+    public void actionPerformed(ActionEvent ae) {
+    }///<trigger when button is clicked
 
     /**
      * Creates the Kit ( triggered from actionperformed when create_kit button

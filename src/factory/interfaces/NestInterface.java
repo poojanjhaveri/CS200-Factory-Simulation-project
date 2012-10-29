@@ -1,6 +1,6 @@
 package factory.interfaces;
 
-public interface Nest extends FactoryBase {
+public interface NestInterface extends FactoryBase {
 
     int capacity = 20;
 }

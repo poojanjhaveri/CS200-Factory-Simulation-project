@@ -15,7 +15,6 @@ public class GuiKit implements Serializable {
      */
     String name; //name of the Kit
     ArrayList<GuiPart> partslist;  // collection of parts in the kit
-
 //    public static void main(String[] args) {
 //        // TODO Auto-generated method stub
 //    }

@@ -5,6 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import agent.Agent;
+import factory.Kit;
+import factory.Part;
+import factory.kitManagement.KitRobotAgent;
 
 /**
  * Factory PartsAgent gets kit information from server and obtains necessary
@@ -16,7 +19,7 @@ import agent.Agent;
  */
 public class PartsAgent extends Agent {
 
-    KitAgent kitagent;
+    KitRobotAgent kitagent;
     Kit kit;
     NestAgent nest;
 //nest array needed
@@ -37,7 +40,7 @@ public class PartsAgent extends Agent {
     }
 
     public void msgHereAreParts(Part p, int quantity) {
-        inventory.put(Part, quantity);
+        inventory.put(p, quantity);
         stateChanged();
     }
 
@@ -46,6 +49,7 @@ public class PartsAgent extends Agent {
         stateChanged();
     }
 //Scheduler
+
     protected boolean pickAndExecuteAnAction() {
         if (!configInfo.isEmpty()) {
             setConfiguration();
@@ -81,6 +85,7 @@ public class PartsAgent extends Agent {
         return false;
     }
 //Actions
+
     private void setConfiguration() {
         if (configInfo.hasNewKit()) {
             {
