@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  * Nest object has a threshold
- *
+ *@brief Nest object has a threshold
  * @author James Dalton
  *
  */

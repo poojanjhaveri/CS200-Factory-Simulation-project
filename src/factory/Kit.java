@@ -2,7 +2,7 @@ package factory;
 
 /**
  * Kit Object
- *
+ *@brief Kit Object
  * @author James Dalton
  *
  */
