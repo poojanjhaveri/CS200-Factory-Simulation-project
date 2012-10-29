@@ -22,10 +22,11 @@ import factory.feederManagement.LaneAgent;
  */
 // Status: Just finished matching my serverclientpractice's Server
 public class Server {
-
     /**
      * Instance fields
      */
+//	public static final PORT_NUMBER = 31415; 
+	
     private Printer p = new Printer();
     private int numClients;
     private FeederAgent feederAgent;
