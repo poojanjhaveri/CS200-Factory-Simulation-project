@@ -1,4 +1,6 @@
 
+package factory.agentGUI;
+
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 

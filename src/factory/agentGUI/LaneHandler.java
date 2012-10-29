@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+package factory.agentGUI;
+>>>>>>> e55bea809a4f01ab018a7b8b99f6378440c1052c
 
 /**
  * @brief changes hardware status on Lane GUI and Graphics Panel

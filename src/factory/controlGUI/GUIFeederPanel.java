@@ -1,4 +1,6 @@
 
+package factory.controlGUI;
+
 import java.awt.Color;
 import java.awt.FlowLayout;
 

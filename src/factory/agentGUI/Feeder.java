@@ -1,4 +1,6 @@
 
+package factory.agentGUI;
+
 import java.awt.Color;
 
 import javax.swing.ImageIcon;
