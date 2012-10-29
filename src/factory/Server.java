@@ -7,7 +7,9 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Scanner;
 
-import factory.Message;
+import factory.feederManagement.FeederAgent;
+import factory.feederManagement.GantryAgent;
+import factory.feederManagement.LaneAgent;
 
 /**
  * @brief This class is critical to the integration of GUI classes, agents, etc.  
@@ -23,6 +25,9 @@ public class Server {
 	/** Instance fields */
 	private Printer p = new Printer();
 	private int numClients;
+	private FeederAgent feederAgent;
+	private GantryAgent gantryAgent;
+	private LaneAgent laneAgent;
 	
 	// Agents
 //	private FeederAgent feederAgent; 

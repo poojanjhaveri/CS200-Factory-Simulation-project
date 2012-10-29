@@ -6,6 +6,8 @@ package factory;
  * @author David Zhang
  */
 public class Message {
+	public static final String CREATE_KIT = "CREATE_KIT"; // manager: sendToServer(Message.CREATE_KIT+":"+asdf)
+	
 	public static final String CLIENT_EXITED = "CLIENT_EXITED";
 	
 	public static final String TEST_SERVER = "TEST_SERVER";
