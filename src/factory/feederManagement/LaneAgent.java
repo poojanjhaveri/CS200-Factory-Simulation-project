@@ -18,7 +18,7 @@ import java.util.List;
 public class LaneAgent extends Agent implements Lane {
 
     private List<myParts> parts = Collections.synchronizedList(new ArrayList<myParts>());
-    private Nest nest;
+    private NestInterface nest;
 
     public void msgRejectParts(int i) {
         throw new UnsupportedOperationException("Not yet implemented");

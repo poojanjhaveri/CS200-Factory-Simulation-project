@@ -1,5 +1,6 @@
 package factory.partsManagement;
 
+import factory.Nest;
 import factory.Part;
 import factory.feederManagement.LaneAgent;
 import factory.kitManagement.CameraAgent;
@@ -25,6 +26,7 @@ public class NestAgent {
     private Part part;
     private int howMany = 0;
     private int nestNumber;
+    private List<Nest> nests = Collections.synchronizedList(new ArrayList<Nest>());
 
     //public enum NestNumber { one, two, three, four, five, six, seven, eight};
     NestAgent(int nestNum, LaneAgent lane) {
@@ -53,12 +55,12 @@ public class NestAgent {
         if (howMany > threshold) {
             this.lane.msgRejectParts(howMany - threshold);
             howMany = threshold;
-            camera.msgNestIsFull(nestNumber);
+            camera.msgNestIsFull(new Nest(), nestNumber);
         }
 
     }
 
-    public void msgNestVerified(boolean result) {
+    public void msgNestInspected(boolean result) {
         partsagent.msgHereAreParts(part, howMany);
     }
     //scheduler

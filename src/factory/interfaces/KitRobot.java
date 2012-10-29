@@ -1,5 +1,7 @@
 package factory.interfaces;
 
+import factory.Kit;
+
 /**
 @brief contains all of the messages for the KitRobotAgent
  * This interface contains all of the messages for the KitRobotAgent. Both the
@@ -9,5 +11,9 @@ package factory.interfaces;
  * @author Alex Young
  * @version 0
  */
-public interface KitRobot extends FactoryBase {
+public interface KitRobot {
+    public void msgHereIsEmptyKit(Kit kit, int loc);
+    public void msgKitInspected(Kit kit, boolean result);
+    public void msgKitIsComplete(Kit kit);
+    public void msgNeedEmptyKit();
 }

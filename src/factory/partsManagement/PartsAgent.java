@@ -27,7 +27,7 @@ public class PartsAgent extends Agent {
 //nest array needed
     private List<ConfigFile> configInfo =
             Collections.synchronizedList(new ArrayList<ConfigFile>());
-    private Map<Part, Integer> inventory = new HashMap<>();
+    private Map<Part, Integer> inventory = new HashMap<Part, Integer>();
     Part grips[];
 
     public class Grip {

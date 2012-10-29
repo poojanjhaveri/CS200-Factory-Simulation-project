@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
+/**
+	@brief contains GUIFeederPanel
+	   		   uses JTabbedPane
+	@author Dongyoung Jung
+*/
 public class GUIFeeder extends JPanel{
 
 	private GUIFeederPanel feederPanel;
