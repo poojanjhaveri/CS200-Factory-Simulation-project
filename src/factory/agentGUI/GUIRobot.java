@@ -22,7 +22,7 @@ public class GUIRobot extends Drawable {
      */
     public GUIRobot(Integer x, Integer y, String i)
     {
-        super(x,y,String i);
+        super(x,y,i);
         this.moveToX = x;
         this.moveToY=y;
 	this.flag = false;
@@ -62,7 +62,7 @@ test code for the robot
      */
     public static void main(String args[])
     {
-	GUIRobot robo = new GUIRobot(20,20);
+	GUIRobot robo = new GUIRobot(20,20,"lol.png");
 	robo.setConstants(2,2,1);
 
 	for(int i =0 ; i != 10; i++)
