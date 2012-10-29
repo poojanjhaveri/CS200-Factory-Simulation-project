@@ -14,7 +14,9 @@ import java.util.Map;
 /**
  * Factory PartsAgent gets kit information from server and obtains necessary
  * parts to complete a kit has 4 grips to pick up parts to build the kit
- *@brief gets kit information from server and obtains necessary parts to complete a kit
+ *
+ * @brief gets kit information from server and obtains necessary parts to
+ * complete a kit
  * @author James Dalton
  *
  *

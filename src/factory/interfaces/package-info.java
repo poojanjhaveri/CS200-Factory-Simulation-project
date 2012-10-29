@@ -1,7 +1,4 @@
-
 /**
-<img src="../img/factory.interfaces.png" />
-@brief various interfaces
-*/
+ * <img src="../img/factory.interfaces.png" /> @brief various interfaces
+ */
 package factory.interfaces;
-

@@ -1,4 +1,3 @@
-
 package factory.interfaces;
 
 import factory.Kit;
