@@ -17,14 +17,14 @@ import java.awt.event.ActionListener;
  * Manager
  * @author Deepa Borkar
  */
-public class KitAssemblyManager implements ActionListener {
+public class KitAssemblyManager extends Manager implements ActionListener {
 
-    KitterRobot kitter;///<declares an object that keeps track of the parts robot
-    KitRobot kitbot;///<declares an object that keeps track of the kit robot
-    KitStand kitstand;///<declares an object that keeps track of what is happening with the kit stand
-    KitDeliveryStation delivery;///<declares an object that keeps track of the delivery station
-    KitAssemblyManagerDeliveryStation kamdelivery;///<keeps track of all of the objects listed above and paints the objects according to a timer
-    KitAssemblyManagerGUIPanel gui;///<keeps track of the GUI components and allows the manager to pick which components will be broken
+    private KitterRobot kitter;///<declares an object that keeps track of the parts robot
+    private KitRobot kitbot;///<declares an object that keeps track of the kit robot
+    private KitStand kitstand;///<declares an object that keeps track of what is happening with the kit stand
+    private KitDeliveryStation delivery;///<declares an object that keeps track of the delivery station
+    private KitAssemblyManagerDeliveryStation kamdelivery;///<keeps track of all of the objects listed above and paints the objects according to a timer
+    private KitAssemblyManagerGUIPanel gui;///<keeps track of the GUI components and allows the manager to pick which components will be broken
 
     /**
      * changes the panel based on what the user clicks
