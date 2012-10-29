@@ -8,9 +8,10 @@ public class Drawable {
 
     Integer posX;///<current X-coordinate of the drawable
     Integer poxY;///<current Y-coordinate of the drawable
-    Double rotation;///<clockwise rotation from due east in degrees
+    Double rotation;///<information on degrees of rotation. 0 degrees is due right
 
-    ImageIcon img;
+    ImageIcon img;///<image of the drawable
+
     public Drawable(Integer x, Integer y, ImageIcon i)
     {
 	this.posX = x;
