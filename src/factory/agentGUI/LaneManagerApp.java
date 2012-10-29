@@ -1,3 +1,5 @@
+package factory.agentGUI;
+
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.net.Socket;

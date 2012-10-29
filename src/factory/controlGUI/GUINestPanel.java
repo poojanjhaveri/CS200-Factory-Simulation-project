@@ -1,3 +1,5 @@
+package factory.controlGUI;
+
 import java.awt.FlowLayout;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
@@ -8,7 +10,7 @@ import javax.swing.border.TitledBorder;
 			   uses TitledBorder, JRadioButton, JPanel
 	@author Dongyoung Jung
 */
-public class GUINestPanel extends JPanel{
+public class GuiNestPanel extends JPanel{
 	
 	// Up/Down Switch
 	private TitledBorder upDownSwitchTitle = new TitledBorder("Up/Down Switch");
@@ -16,7 +18,7 @@ public class GUINestPanel extends JPanel{
 	private JRadioButton downSwitch = new JRadioButton("DOWN");
 	private ContentPanel upDownSwitchPanel = new ContentPanel(downSwitch, upSwitch, upDownSwitchTitle);
 	
-	public GUINestPanel(){
+	public GuiNestPanel(){
 		// Layout Setting
 		setLayout(new FlowLayout(FlowLayout.CENTER,0,15));
 		

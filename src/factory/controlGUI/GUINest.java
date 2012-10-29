@@ -1,3 +1,5 @@
+package factory.controlGUI;
+
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.ArrayList;
@@ -9,7 +11,7 @@ import javax.swing.JTabbedPane;
 	   		   uses JTabbedPane
 	@author Dongyoung Jung
 */
-public class GUINest extends JPanel{
+public class GuiNest extends JPanel{
 	
 	private GUINestPanel nestPanel;
 	private ArrayList<GUINestPanel> nestPanels = new ArrayList<GUINestPanel>();
