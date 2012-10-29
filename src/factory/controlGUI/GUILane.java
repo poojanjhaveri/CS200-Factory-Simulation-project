@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
+/**
+	@brief contains 2 GUILanePanels since there are 8 tabs in total
+	   		   uses JTabbedPane
+	@author Dongyoung Jung
+*/
 public class GUILane extends JPanel{
 	
 	private GUILanePanel lanePanel;
