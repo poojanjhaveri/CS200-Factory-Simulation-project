@@ -6,6 +6,7 @@ import factory.Location;
 import factory.interfaces.KitRobot;
 import java.util.ArrayList;
 import java.util.List;
+import factory.partsManagement.PartsAgent;
 
 /**
  * @brief This class is the agent for the Kit Robot which gets empty kits from the
@@ -35,8 +36,10 @@ public class KitRobotAgent extends Agent implements KitRobot {
         }
         
     }
-    boolean needEmptyKit = false;
-    
+    private boolean needEmptyKit = false;
+    private ConveyorAgent conveyor;
+    private CameraAgent camera;
+    private PartsAgent partsAgent;
     
     // ********** MESSAGES *********
 
@@ -108,19 +111,19 @@ public class KitRobotAgent extends Agent implements KitRobot {
         if(!kits.isEmpty()) {
             for(myKit k : kits) {
                 if(k.status == KitStatus.verified) {
-                    //
+                    removeVerifiedKit(k);
                     return true;
                 }
             }
             for(myKit k : kits) {
                 if(k.status == KitStatus.complete) {
-                    //
+                    moveFullKitToInspection(k);
                     return true;
                 }
             }
             for(myKit k : kits) {
                 if(k.status == KitStatus.empty) {
-                    //
+                    giveEmptyKit(k);
                     return true;
                 }
             }
@@ -135,5 +138,20 @@ public class KitRobotAgent extends Agent implements KitRobot {
     
     
     // ********** ACTIONS **********
+    private void removeVerifiedKit(myKit k) {
+//        DoRemoveVerifiedKit();
+        conveyor.msgHereIsVerifiedKit(k.kit);
+        stateChanged();
+    }
+    private void moveFullKitToInspection(myKit k) {
+//        DoMoveFullKitToInspection();
+        camera.msgKitIsFull(k.kit, k.kittingStandNum);
+        stateChanged();
+    }
+    private void giveEmptyKit(myKit k) {
+//        DoGiveEmptyKit();
+        partsAgent.msgEmptyKitReady(k.kittingStandNum);
+        stateChanged();
+    }
     // ************ MISC ***********
 }
