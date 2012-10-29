@@ -116,7 +116,7 @@ public class PartsAgent extends Agent {
     }
 
     private void giveKitToKitAgent() {
-        kitagent.msgKitIsComplete();
+        kitagent.msgKitIsComplete(new Kit());
     }
 
     private void pickUpPart(Part p, int g) {

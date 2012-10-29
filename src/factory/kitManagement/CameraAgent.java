@@ -117,8 +117,5 @@ public class CameraAgent extends Agent implements Camera {
      */
     public void setKitRobotAgent(KitRobotAgent agent) {
         kitRobotAgent = agent;
-
-    public void msgNestIsFull(int nestNumber) {
-        throw new UnsupportedOperationException("Not yet implemented");
     }
 }
