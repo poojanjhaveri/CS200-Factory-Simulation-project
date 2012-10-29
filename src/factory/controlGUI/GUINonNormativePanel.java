@@ -1,3 +1,5 @@
+package factory.controlGUI;
+
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -12,13 +14,13 @@ import javax.swing.border.TitledBorder;
 	@brief Non-normative scenario
 	@author Dongyoung Jung
 */
-public class GUINonNormativePanel extends JPanel implements ActionListener{
+public class GuiNonNormativePanel extends JPanel implements ActionListener{
 
 	JButton button;
 	TitledBorder buttonTitle;
 	ArrayList<JButton> buttons = new ArrayList<JButton>();
 	
-	public GUINonNormativePanel(){
+	public GuiNonNormativePanel(){
 		// JPanel setting
 		setPreferredSize(new Dimension(300,640));
 		setLayout(new FlowLayout(FlowLayout.CENTER, 10, 31));
