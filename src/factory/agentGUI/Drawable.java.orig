@@ -14,21 +14,21 @@ public class Drawable {
 
     public Drawable(Integer x, Integer y, ImageIcon i)
     {
-        this.posX = x;
-        this.posY = y;
-        this.rotation = 0;
-        this.img = i;
+	this.posX = x;
+	this.posY = y;
+	this.rotation = 0;
+	this.img = i;
     }
     public Drawable(Integer x, Integer y, String s)
     {
-        this.posX = x;
-        this.posY = y;
-        this.rotation = 0;
-        this.img = new ImageIcon(s);
+	this.posX = x;
+	this.posY = y;
+	this.rotation = 0;
+	this.img = new ImageIcon(s);
     }
     public ImageIcon getImage()
     {
-        return this.img;
+	return this.img;
     }
 
 }
