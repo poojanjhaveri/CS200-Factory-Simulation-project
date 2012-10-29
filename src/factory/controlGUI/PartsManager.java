@@ -54,9 +54,4 @@ public class PartsManager extends Manager {
 	public static void main(String args[]) {
 		//TODO run the class here
 	}
-
-	@Override
-	public void giveState() {
-		throw new UnsupportedOperationException("Not supported yet.");
-	}
 }

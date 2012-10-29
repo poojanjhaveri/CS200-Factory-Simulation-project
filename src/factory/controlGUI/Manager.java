@@ -16,7 +16,7 @@ import factory.Printer;
  * The Manager plays a pivotal role in server interaction by standardizing the
  * methods used to send up data to the Server (and eventually FactoryProductionManager simulation GUI).
  * @brief used to standardize methods for all managers
- * @author YiWei Roy Zheng, David Zhang
+ * @author David Zhang
  */
 public class Manager extends JFrame {
     /** Instance fields */
@@ -28,7 +28,7 @@ public class Manager extends JFrame {
     private Socket socket;
     
     // Other fields
-    private Printer p;
+    public static Printer p = new Printer();
 	
     /**
      * @brief attempts to connect to the server 
