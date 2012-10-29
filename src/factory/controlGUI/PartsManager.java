@@ -8,8 +8,8 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
 /**
- * <img src="../img/image02.png"/> @brief JFrame that represents the parts
- * manager
+ * <img src="../img/image02.png"/> 
+ * @brief JFrame that represents the parts manager
  * @author David Zhang
  */
 public class PartsManager extends Manager {

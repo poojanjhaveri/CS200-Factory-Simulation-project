@@ -14,7 +14,9 @@ import java.util.Map;
 /**
  * Factory PartsAgent gets kit information from server and obtains necessary
  * parts to complete a kit has 4 grips to pick up parts to build the kit
- *@brief gets kit information from server and obtains necessary parts to complete a kit
+ *
+ * @brief gets kit information from server and obtains necessary parts to
+ * complete a kit
  * @author James Dalton
  *
  *
@@ -116,7 +118,7 @@ public class PartsAgent extends Agent {
     }
 
     private void giveKitToKitAgent() {
-        kitagent.msgKitIsComplete();
+        kitagent.msgKitIsComplete(new Kit());
     }
 
     private void pickUpPart(Part p, int g) {

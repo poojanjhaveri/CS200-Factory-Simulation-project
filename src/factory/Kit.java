@@ -2,7 +2,8 @@ package factory;
 
 /**
  * Kit Object
- *@brief Kit Object
+ *
+ * @brief Kit Object
  * @author James Dalton
  *
  */
@@ -28,5 +29,8 @@ public class Kit {
         this.status = Status.empty;
         this.kitNeedsParts = p.length;
         System.arraycopy(p, 0, parts, 0, p.length);
+    }
+
+    public Kit() {
     }
 }

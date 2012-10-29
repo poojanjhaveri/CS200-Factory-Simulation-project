@@ -14,31 +14,36 @@ import factory.Printer;
 
 /**
  * The Manager plays a pivotal role in server interaction by standardizing the
- * methods used to send up data to the Server (and eventually FactoryProductionManager simulation GUI).
+ * methods used to send up data to the Server (and eventually
+ * FactoryProductionManager simulation GUI).
+ *
  * @brief used to standardize methods for all managers
  * @author David Zhang
  */
 public class Manager extends JFrame {
-    /** Instance fields */
-	// Connection fields
+
+    /**
+     * Instance fields
+     */
+    // Connection fields
     private String hostName;
     private int portNum;
     private PrintWriter out;
     private BufferedReader in;
     private Socket socket;
-    
+
     // Other fields
     public static Printer p = new Printer();
-	
+
     /**
-     * @brief attempts to connect to the server 
+     * @brief attempts to connect to the server
      */
-	public void connect() {
-    	p.println("host name: "+hostName);
-    	p.println("port num: "+portNum);
-    	
-		System.out.println("Connecting...");
-		socket = null;
+    public void connect() {
+        p.println("host name: " + hostName);
+        p.println("port num: " + portNum);
+
+        System.out.println("Connecting...");
+        socket = null;
         out = null;
         in = null;
 
@@ -55,43 +60,45 @@ public class Manager extends JFrame {
         }
 
         System.out.println("Done connecting");
-	}
-    
-	/**
-	 * @brief send a message to the server
-	 * @param msg - the message to send. Append ":"+whateverInfoYouWant to send specific parameters.
-	 */
-	public void sendToServer(String msg) {
-		try {
-			out.println(msg);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+    }
 
-	/**
-	 * @brief listen for a message from the server
-	 */
-	public void listenToServer() {
-		p.println("Listening to the server");
-		try {
-			String msg = in.readLine();
-			processMessage(msg);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}		
-	}
+    /**
+     * @brief send a message to the server
+     * @param msg - the message to send. Append ":"+whateverInfoYouWant to send
+     * specific parameters.
+     */
+    public void sendToServer(String msg) {
+        try {
+            out.println(msg);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
-	/**
-	 * @brief processes a message
-	 * @param msg - the message to process. Use an if-statement to go through the possibilities.
-	 */
-	public void processMessage(String msg) {
-		// Decide action based on message from server
-		if (msg.contains(Message.TEST_CLIENT)) {
-			System.out.println("Client test passed.");
-		}
-		// Example:
+    /**
+     * @brief listen for a message from the server
+     */
+    public void listenToServer() {
+        p.println("Listening to the server");
+        try {
+            String msg = in.readLine();
+            processMessage(msg);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * @brief processes a message
+     * @param msg - the message to process. Use an if-statement to go through
+     * the possibilities.
+     */
+    public void processMessage(String msg) {
+        // Decide action based on message from server
+        if (msg.contains(Message.TEST_CLIENT)) {
+            System.out.println("Client test passed.");
+        }
+        // Example:
 //		else if (msg.contains(Message.SELECTED_PLAYER_OK)) {
 //			String answer = grabParameter(msg); 
 //			p.println("Answer from server: "+answer);
@@ -105,16 +112,15 @@ public class Manager extends JFrame {
 //	            JOptionPane.showMessageDialog(this, "Player currently in use by other user", "Notification", JOptionPane.PLAIN_MESSAGE);
 //			}
 //		}
-	}
-	
-	/**
-	 * @brief standard way to grab parameter data via protocol
-	 * Use this method in an if-statement in processMessage. 
-	 * @param msg - the message to grab a parameter from.
-	 * @return the parameter from the received message
-	 */
-	public String grabParameter(String msg) {
-		return msg.substring(msg.indexOf(":")+1);
-	}
-    
+    }
+
+    /**
+     * @brief standard way to grab parameter data via protocol Use this method
+     * in an if-statement in processMessage.
+     * @param msg - the message to grab a parameter from.
+     * @return the parameter from the received message
+     */
+    public String grabParameter(String msg) {
+        return msg.substring(msg.indexOf(":") + 1);
+    }
 }
