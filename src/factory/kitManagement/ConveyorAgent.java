@@ -2,12 +2,12 @@ package factory.kitManagement;
 
 import agent.Agent;
 import factory.Kit;
-import factory.Location;
 import factory.interfaces.Conveyor;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
+@brief agent for the {@link Conveyor} which brings empty {@link Kit}s into the kitting cell and takes complete kits out of the kitting
  * This class is the agent for the {@link Conveyor} which brings empty
  * {@link Kit}s into the kitting cell and takes complete kits out of the kitting
  * cell.

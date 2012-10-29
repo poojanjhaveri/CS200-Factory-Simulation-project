@@ -14,6 +14,7 @@ import javax.swing.JTabbedPane;
  */
 class PartsManager extends JFrame implements Manager {
 //TODO please add individual data documentation
+
     private JPanel contentPane;
     private JLabel lblPartsManager;
     private JTabbedPane tabbedPane;

@@ -1,21 +1,20 @@
-/**
-@brief Creates feeder image on graphic panel
-Creates feeder image on graphic panel
-@author Yuting Liu
-*/
-public class Feeder extends JPanel{
-ImageIcon offFeederImage;///<when feeder turns off
-ImageIcon divertRightImage;///<when feeder diverts parts to right
-ImageIcon diverLeftImage;///<when feeder diverts parts to left
-ImageIcon lowerRearGateImage;///<when rear gate is lowered
-ImageIcon raiseRearGateImage;///<when rear gate is raised
-ArrayList<Part> parts;///<part images
+package factory.agentGUI;
 
+import javax.swing.ImageIcon;
+import javax.swing.JPanel;
 /**
- put part image on lane
+	@brief creates feeder image on graphic panel
+	@author Dongyoung Jung
 */
-public void putPartToLane(int partNum)
-{
+class Feeder extends JPanel{
+        
+		ImageIcon offFeederImage;///<image when feeder turns off
+		ImageIcon onFeederImage;///<image when feeder turns on
+		Boolean divertLeftRight;///<enables feeder to feed an available lane
+		
+        void setSwitchOff(){}///<function to set image
+        void setSwitchOn(){}///<function to set image
+        void setPartBoxInFeeder(){}///<function to set image
+        void feedPartOntoLaneLeft(){}///<feeds part to left lane
+        void feedPartOntoLaneRight(){}///<feeds part to right lane
 }
-
-

@@ -1,5 +1,7 @@
 package factory.agentGUI;
 
+import java.io.Serializable;
+
 /**
  * digital representation of a part
  *
@@ -22,14 +24,16 @@ public class GuiPart implements Serializable {
 //TODO need to implement system to generate unique part numbers (we could cheat and do it the dumb way, grab time())
     }
 
-    public void getName() {
+    public String getName() {
         return this.name;
     }
 
-    public void getDescription() {
+    public String getDescription() {
         return this.description;
     }
 }
+
+/*
 Class
 
 : PartsManager
@@ -64,3 +68,4 @@ void deletePart(int partNumber)
 void sendToServer()
 
 - pass part data to FCS / server
+*/
