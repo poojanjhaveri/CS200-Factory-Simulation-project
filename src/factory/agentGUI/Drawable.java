@@ -1,5 +1,7 @@
 package factory.agentGUI;
 
+import javax.swing.ImageIcon;
+
 /**
  * @brief anything drawable onto the FactoryProductionManager Frame.
  * @author YiWei Roy Zheng
@@ -7,7 +9,7 @@ package factory.agentGUI;
 public class Drawable {
 
     Integer posX;///<current X-coordinate of the drawable
-    Integer poxY;///<current Y-coordinate of the drawable
+    Integer posY;///<current Y-coordinate of the drawable
     Double rotation;///<information on degrees of rotation. 0 degrees is due right
 
     ImageIcon img;///<image of the drawable
@@ -16,7 +18,7 @@ public class Drawable {
     {
         this.posX = x;
         this.posY = y;
-        this.rotation = 0;
+        this.rotation = 0.0;
         this.img = i;
     }
     public Drawable(Integer x, Integer y, String s)
