@@ -3,8 +3,11 @@ package factory.kitManagement;
 import agent.Agent;
 import factory.Kit;
 import factory.interfaces.Conveyor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.Timer;
 
 /**
  * @brief This class is the agent for the {@link Conveyor} which brings empty
@@ -24,7 +27,13 @@ public class ConveyorAgent extends Agent implements Conveyor {
     private List<Kit> kits = new ArrayList<Kit>();
     private Kit tempKit;
     private KitRobotAgent kitRobotAgent;
-
+    private Timer removeKits = new Timer(1000, new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            kits.remove(0);
+        }
+    });
+    
     // ********** MESSAGES *********
     /**
      * This message is called by the {@link KitRobotAgent} when an empty
@@ -49,6 +58,7 @@ public class ConveyorAgent extends Agent implements Conveyor {
         stateChanged();
     }
 
+    
     // ********* SCHEDULER *********
     /**
      * Scheduler
@@ -70,6 +80,7 @@ public class ConveyorAgent extends Agent implements Conveyor {
         return false;
     }
 
+    
     // ********** ACTIONS **********
     /**
      * Tells the {@link KitRobotAgent} the location of the next available empty
@@ -92,6 +103,7 @@ public class ConveyorAgent extends Agent implements Conveyor {
         stateChanged();
     }
 
+    
     // ************ MISC ***********
     /**
      * Sets the KitRobotAgent

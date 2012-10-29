@@ -2,11 +2,10 @@ package factory.kitManagement;
 
 import agent.Agent;
 import factory.Kit;
-import factory.Location;
 import factory.interfaces.KitRobot;
+import factory.partsManagement.PartsAgent;
 import java.util.ArrayList;
 import java.util.List;
-import factory.partsManagement.PartsAgent;
 
 /**
  * @brief This class is the agent for the Kit Robot which gets empty kits from
@@ -111,6 +110,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
         stateChanged();
     }
 
+    
     // ********* SCHEDULER *********
     @Override
     protected boolean pickAndExecuteAnAction() {
@@ -142,7 +142,9 @@ public class KitRobotAgent extends Agent implements KitRobot {
 
     }
 
+    
     // ********** ACTIONS **********
+    
     private void removeVerifiedKit(myKit k) {
 //        DoRemoveVerifiedKit();
         conveyor.msgHereIsVerifiedKit(k.kit);
@@ -166,5 +168,19 @@ public class KitRobotAgent extends Agent implements KitRobot {
         conveyor.msgNeedEmptyKit();
         stateChanged();
     }
+    
+    
     // ************ MISC ***********
+    
+    public void setConveyor(ConveyorAgent agent) {
+        conveyor = agent;
+    }
+    
+    public void setCamera(CameraAgent agent) {
+        camera = agent;
+    }
+    
+    public void setPartsAgent(PartsAgent agent) {
+        partsAgent = agent;
+    }
 }
