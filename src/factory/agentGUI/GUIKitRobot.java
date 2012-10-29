@@ -27,7 +27,7 @@ public class GUIKitRobot extends Robot {
 
     public GUIKitRobot() {
         super(KitAssemblyManager.ROBOT_START_X,KitAssemblyManager.ROBOT_START_Y,GUIKitRobot.IMAGE_PATH);
-        this.setVelocity(this.
+        this.setConstants(this.VELOCITY_x,this.VELOCITY_Y,this.ROTATION_SPEED);
     }
                      /**
                      sets a new rotation angle for the KitterRobot
@@ -39,18 +39,22 @@ public class GUIKitRobot extends Robot {
     sets a new lane destination coordinate for KitterRobot, the passed Integer specifies which lane to head to
     */
     public void moveToLane(Integer l) {
+	switch(l)
+	    {
+	    case 0:this.
+	    case 1:
+	    case 2:
+	    case 3:
+	    case 4:
+	    case 5:
+	    case 6:
+	    case 7:
+	    }
     }
     /**
     updates the location of the kit it��s carrying
     */
     public void updateKit() {
     }
-    /**
-    updates the position/rotation of the robot
-     */
-    @Override
-    public void update()
-    {
-
-    }
+    
 }
