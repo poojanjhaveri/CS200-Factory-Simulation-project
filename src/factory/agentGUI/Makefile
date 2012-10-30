@@ -1,4 +1,3 @@
 robot:
-	javac Drawable.java
-	javac GUIRobot.java
-	java GUIRobot
+	javac -d . Drawable.java MovingDrawable.java GUIRobot.java
+	java factory.agentGUI.MovingDrawable
