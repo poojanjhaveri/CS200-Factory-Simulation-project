@@ -1,3 +1,3 @@
 robot:
-	javac -d . Drawable.java MovingDrawable.java GUIRobot.java
-	java factory.agentGUI.MovingDrawable
+	javac -d . Drawable.java MovingDrawable.java GUIRobot.java Coordinate.java
+	java factory.agentGUI.MovingDrawable > robo.txt
