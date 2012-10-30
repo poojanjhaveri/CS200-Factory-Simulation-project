@@ -7,7 +7,7 @@ package factory.agentGUI;
  */
 public class GUIRobot extends MovingDrawable {
 
-    
+
     Boolean busy;///<whether or not the KitterRobot has orders
     Boolean flag;///<if this is ever set to true something is wrong
 
@@ -20,12 +20,12 @@ public class GUIRobot extends MovingDrawable {
         super(x,y,0.0,i);
         this.flag = false;
     }
-    
-        /**
-@brief if something went wrong
-     */
+
+    /**
+    @brief if something went wrong
+    */
     public Boolean bad()
     {
-	return this.flag;
+        return this.flag;
     }
 }

@@ -15,7 +15,7 @@ public class Drawable {
 
     public Drawable(Integer x, Integer y, Double r, ImageIcon i)
     {
-	this.cords = new Coordinate(x,y);
+        this.cords = new Coordinate(x,y);
         this.rotation = r;
         this.img = i;
     }
@@ -27,11 +27,11 @@ public class Drawable {
     }
     public Coordinate getCoordinate()
     {
-	return this.cords;
+        return this.cords;
     }
     public Double getRotation()
     {
-	return this.rotation;
+        return this.rotation;
     }
     public ImageIcon getImage()
     {
