@@ -16,7 +16,7 @@ public class Drawable {
     public Drawable(Integer x, Integer y, Double r, ImageIcon i)
     {
         this.cords = new Coordinate(x,y);
-        this.rotation = r;
+        this.setRotation(r);
         this.img = i;
     }
     public Drawable(Integer x, Integer y, Double r,String s)
@@ -24,6 +24,11 @@ public class Drawable {
         this.cords = new Coordinate(x,y);
         this.rotation = r;
         this.img = new ImageIcon(s);
+    }
+    public void setRotation(Double in)
+    {
+	while(in >= 360)in -= 360;
+	this.rotation = in;
     }
     public Coordinate getCoordinate()
     {

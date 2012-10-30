@@ -41,12 +41,13 @@ public class MovingDrawable extends Drawable {
      */
     public void rotateTo(Double in)
     {
+	while(in >= 360)in-=360;
         this.rotateto = in;
     }
     public void turnTo(Double in)
     {
+	while(in >= 360)in-=360;
         this.rotateto = in;
-
     }
     /**
     @brief updates the position and rotation of the robot
@@ -69,11 +70,13 @@ public class MovingDrawable extends Drawable {
                 this.cords.setY(((this.moveToY > this.cords.getY()) ? this.velocityY+this.cords.getY() : this.cords.getY()-this.velocityY));
             }
         }
-
-        if(this.rotateto-this.rotation < this.rotationSpeed) {
+	
+        if(Math.abs(this.rotateto-this.rotation) < this.rotationSpeed) {
             this.rotation=this.rotateto;
         } else
         {
+	    this.setRotation((this.rotation > this.rotateto )?this.rotation-this.rotationSpeed:this.rotation+this.rotationSpeed);
+	    /*
             if(this.rotation > 180)
             {
                 this.rotation = (this.rotateto > 270)?this.rotation-this.rotationSpeed:this.rotation+this.rotationSpeed;
@@ -81,7 +84,7 @@ public class MovingDrawable extends Drawable {
                 this.rotation = (this.rotateto > 90)?this.rotation-this.rotationSpeed:this.rotation+this.rotationSpeed;
             } else {
                 this.rotation = (this.rotateto > 180)?this.rotation+this.rotationSpeed:this.rotation-this.rotationSpeed;
-            }
+		}*/
         }
     }
     /**
@@ -118,23 +121,23 @@ public class MovingDrawable extends Drawable {
         robo.setConstants(0,0,10.0);
         robo.turnTo(180.0);
         System.out.println("Turning to 180");
-        for(int i =0 ; i != 19; i++)
+        for(int i =0 ; i != 20; i++)
         {
             robo.update();
             System.out.println(robo);
         }
         System.out.println("------->"+((robo.getRotation() == 180)?"Pass":"FAILED"));
-        System.out.println("Turning to 360");
-        robo.turnTo(360.0);
-        for(int i =0 ; i != 19; i++)
+        System.out.println("Turning to 359");
+        robo.turnTo(359.0);
+        for(int i =0 ; i != 20; i++)
         {
             robo.update();
             System.out.println(robo);
         }
-        System.out.println("------->"+((robo.getRotation() == 360)?"Pass":"FAILED"));
+        System.out.println("------->"+((robo.getRotation() == 359)?"Pass":"FAILED"));
         System.out.println("Turning to 90");
         robo.turnTo(90.0);
-        for(int i =0 ; i != 30; i++)
+        for(int i =0 ; i != 10; i++)
         {
             robo.update();
             System.out.println(robo);
@@ -142,20 +145,67 @@ public class MovingDrawable extends Drawable {
         System.out.println("------->"+((robo.getRotation() == 90)?"Pass":"FAILED"));
         System.out.println("Turning to 270");
         robo.turnTo(270.0);
-        for(int i =0 ; i != 30; i++)
+        for(int i =0 ; i != 20; i++)
+        {
+            robo.update();
+            System.out.println(robo);
+        }
+        System.out.println("------->"+((robo.getRotation() == 270)?"Pass":"FAILED"));System.out.println("Turning to 77");
+        robo.turnTo(77.0);
+        for(int i =0 ; i != 18; i++)
+        {
+            robo.update();
+            System.out.println(robo);
+        }
+        System.out.println("------->"+((robo.getRotation() == 77)?"Pass":"FAILED"));
+        System.out.println("Turning to 270");
+        robo.turnTo(270.0);
+        for(int i =0 ; i != 18; i++)
         {
             robo.update();
             System.out.println(robo);
         }
         System.out.println("------->"+((robo.getRotation() == 270)?"Pass":"FAILED"));
-        System.out.println("Turning to 0");
-        robo.turnTo(0.0);
-        for(int i =0 ; i != 39; i++)
+System.out.println("Turning to 111");
+        robo.turnTo(111.0);
+        for(int i =0 ; i != 17; i++)
         {
             robo.update();
             System.out.println(robo);
         }
-        System.out.println("------->"+((robo.getRotation() == 360)?"Pass":"FAILED"));
+        System.out.println("------->"+((robo.getRotation() == 111)?"Pass":"FAILED"));
+        System.out.println("Turning to 270");
+        robo.turnTo(270.0);
+        for(int i =0 ; i != 17; i++)
+        {
+            robo.update();
+            System.out.println(robo);
+        }
+        System.out.println("------->"+((robo.getRotation() == 270)?"Pass":"FAILED"));
+        System.out.println("Turning to 180");
+        robo.turnTo(180.0);
+        for(int i =0 ; i != 20; i++)
+        {
+            robo.update();
+            System.out.println(robo);
+        }
+        System.out.println("------->"+((robo.getRotation() == 180)?"Pass":"FAILED"));
+        System.out.println("Turning to 0");
+        robo.turnTo(0.0);
+        for(int i =0 ; i != 20; i++)
+        {
+            robo.update();
+            System.out.println(robo);
+        }
+        System.out.println("------->"+((robo.getRotation() == 0)?"Pass":"FAILED"));
+        System.out.println("Turning to 360");
+        robo.turnTo(360.0);
+        for(int i =0 ; i != 5; i++)
+        {
+            robo.update();
+            System.out.println(robo);
+        }
+        System.out.println("------->"+((robo.getRotation() == 0)?"Pass":"FAILED"));
 
     }
 
