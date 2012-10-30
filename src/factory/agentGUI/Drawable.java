@@ -14,18 +14,18 @@ public class Drawable {
 
     ImageIcon img;///<image of the drawable
 
-    public Drawable(Integer x, Integer y, ImageIcon i)
+    public Drawable(Integer x, Integer y, Double r, ImageIcon i)
     {
         this.posX = x;
         this.posY = y;
-        this.rotation = 0.0;
+        this.rotation = r;
         this.img = i;
     }
-    public Drawable(Integer x, Integer y, String s)
+    public Drawable(Integer x, Integer y, Double r,String s)
     {
         this.posX = x;
         this.posY = y;
-        this.rotation = 0;
+        this.rotation = r;
         this.img = new ImageIcon(s);
     }
     public ImageIcon getImage()
