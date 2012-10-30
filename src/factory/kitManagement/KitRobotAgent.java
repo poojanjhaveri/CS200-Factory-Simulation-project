@@ -25,7 +25,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
 
         empty, complete, verified, error
     };
-
+//test comment
     private class myKit {
 
         Kit kit;
