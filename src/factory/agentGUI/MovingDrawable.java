@@ -110,6 +110,7 @@ for(int i =0 ;i != 19; i++)
 	robo.update();
 	System.out.println(robo);
     }
+System.out.println(robo.getRotation == 180)?"Pass":"FAILED");
 System.out.println("Turning to 360");
 robo.turnTo(360.0);
 for(int i =0 ;i != 19; i++)
@@ -117,27 +118,31 @@ for(int i =0 ;i != 19; i++)
 	robo.update();
 	System.out.println(robo);
     }
+System.out.println(robo.getRotation == 360)?"Pass":"FAILED");
 System.out.println("Turning to 90");
 robo.turnTo(90.0);
-for(int i =0 ;i != 19; i++)
+for(int i =0 ;i != 30; i++)
     {
 	robo.update();
 	System.out.println(robo);
     }
+System.out.println(robo.getRotation == 90)?"Pass":"FAILED");
 System.out.println("Turning to 270");
 robo.turnTo(270.0);
-for(int i =0 ;i != 19; i++)
+for(int i =0 ;i != 30; i++)
     {
 	robo.update();
 	System.out.println(robo);
     }
+System.out.println(robo.getRotation == 270)?"Pass":"FAILED");
 System.out.println("Turning to 0");
 robo.turnTo(0.0);
-for(int i =0 ;i != 19; i++)
+for(int i =0 ;i != 39; i++)
     {
 	robo.update();
 	System.out.println(robo);
     }
+System.out.println(robo.getRotation == 360)?"Pass":"FAILED");
 
     }
 

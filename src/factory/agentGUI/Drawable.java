@@ -28,6 +28,7 @@ public class Drawable {
         this.rotation = r;
         this.img = new ImageIcon(s);
     }
+
     public ImageIcon getImage()
     {
         return this.img;
