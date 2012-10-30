@@ -1,33 +1,46 @@
 package factory.agentGUI;
 
+import javax.swing.ImageIcon;
+
 /**
  * @brief anything drawable onto the FactoryProductionManager Frame.
  * @author YiWei Roy Zheng
  */
 public class Drawable {
 
-    Integer posX;///<current X-coordinate of the drawable
-    Integer poxY;///<current Y-coordinate of the drawable
-    Double rotation;///<clockwise rotation from due east in degrees
+    Coordinate cords;
+    Double rotation;///<information on degrees of rotation. 0 degrees is due right
 
-    ImageIcon img;
-    public Drawable(Integer x, Integer y, ImageIcon i)
+    ImageIcon img;///<image of the drawable
+
+    public Drawable(Integer x, Integer y, Double r, ImageIcon i)
     {
-	this.posX = x;
-	this.posY = y;
-	this.rotation = 0;
-	this.img = i;
+        this.cords = new Coordinate(x,y);
+        this.setRotation(r);
+        this.img = i;
     }
-    public Drawable(Integer x, Integer y, String s)
+    public Drawable(Integer x, Integer y, Double r,String s)
     {
-	this.posX = x;
-	this.posY = y;
-	this.rotation = 0;
-	this.img = new ImageIcon(s);
+        this.cords = new Coordinate(x,y);
+        this.rotation = r;
+        this.img = new ImageIcon(s);
+    }
+    public void setRotation(Double in)
+    {
+	while(in >= 360)in -= 360;
+	this.rotation = in;
+    }
+    public Coordinate getCoordinate()
+    {
+        return this.cords;
+    }
+    public Double getRotation()
+    {
+        return this.rotation;
     }
     public ImageIcon getImage()
     {
-	return this.img;
+        return this.img;
     }
 
 }

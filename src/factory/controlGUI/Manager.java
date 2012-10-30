@@ -18,7 +18,7 @@ import factory.Printer;
  * FactoryProductionManager simulation GUI).
  *
  * @brief used to standardize methods for all managers
- * @author YiWei Roy Zheng, David Zhang
+ * @author David Zhang
  */
 public class Manager extends JFrame {
 
@@ -31,8 +31,9 @@ public class Manager extends JFrame {
     private PrintWriter out;
     private BufferedReader in;
     private Socket socket;
+
     // Other fields
-    private Printer p;
+    public static Printer p = new Printer();
 
     /**
      * @brief attempts to connect to the server

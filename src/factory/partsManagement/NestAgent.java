@@ -16,7 +16,7 @@ import java.util.List;
  *
  */
 public class NestAgent {
-    //private List<Part, Integer> inventory = new HashMap<Part, Integer>();
+  
 
     private List<Part> parts =
             Collections.synchronizedList(new ArrayList<Part>());

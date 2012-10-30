@@ -8,11 +8,12 @@ package factory;
  *
  * @author Alex
  */
-public class Location {
+public class Coordinate {
 
     public int x;
-    public int y;
+    public int x;
 
     public Location(int x, int y) {
+
     }
 }
