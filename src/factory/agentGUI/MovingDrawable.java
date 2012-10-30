@@ -53,10 +53,22 @@ public void moveTo(Integer x, Integer y)
      */
     public void update()
     {
-	if(this.posX != this.moveToX)
-        this.posX = (Math.abs(this.moveToX - this.posX) > this.velocityX) ? ((this.moveToX > this.posX) ? this.velocityX+posX : posX-this.velocityX) : this.moveToX;
-	if(this.posY != this.moveToY)
-this.posY = (Math.abs(this.moveToY - this.posY) > this.velocityY) ? ((this.moveToY > this.posY) ? this.velocityY+posY : posY-this.velocityY) : this.moveToY;
+	if(this.cords.getX() != this.moveToX){
+	    if(Math.abs(this.moveToX - this.cords.getX()) < this.velocityX)
+		this.cords.setX(this.moveToX);
+	    else{
+		this.cords.setX((this.moveToX > this.cords.getX()) ? (this.velocityX+this.cords.getX()) : (cords.getX()-this.velocityX));
+	    }
+	}
+	    
+	if(this.cords.getY() != this.moveToY){
+	    if(Math.abs(this.moveToY - this.cords.getY()) < this.velocityY)
+		this.cords.setY(this.moveToY);
+	    else
+		{
+		    this.cords.setY(((this.moveToY > this.cords.getY()) ? this.velocityY+this.cords.getY() : this.cords.getY()-this.velocityY));
+		}
+	}
 
 	if(this.rotateto-this.rotation < this.rotationSpeed){
 	    this.rotation=this.rotateto;
@@ -77,7 +89,7 @@ tostring
      */
     public String toString()
     {
-	return "Position: ("+this.posX+","+this.posY+")\tVelocity: ("+this.velocityX+","+this.velocityY+") "+this.rotationSpeed+" angles/sec" + "\tFacing " + rotation + " degrees";
+	return "Position: ("+this.cords.getX()+","+this.cords.getY()+")\tVelocity: ("+this.velocityX+","+this.velocityY+") "+this.rotationSpeed+" angles/sec" + "\tFacing " + rotation + " degrees";
     }
 
     /**
@@ -99,6 +111,7 @@ System.out.println(robo+"\n=======================================");
 		System.out.println("Movement " + (i+1));
 		System.out.println(robo);
 	    }
+	System.out.println("------->"+((robo.getCoordinate().getX() == 40 && robo.getCoordinate().getY() == 40 && robo.getRotation() == 10)?"Pass":"FAILED"));
 
 System.out.println("          --==[|Extended Rotation Test|]==--");
 robo = new GUIRobot(0,0,"lol.png");
@@ -110,7 +123,7 @@ for(int i =0 ;i != 19; i++)
 	robo.update();
 	System.out.println(robo);
     }
-System.out.println(robo.getRotation == 180)?"Pass":"FAILED");
+System.out.println("------->"+((robo.getRotation() == 180)?"Pass":"FAILED"));
 System.out.println("Turning to 360");
 robo.turnTo(360.0);
 for(int i =0 ;i != 19; i++)
@@ -118,7 +131,7 @@ for(int i =0 ;i != 19; i++)
 	robo.update();
 	System.out.println(robo);
     }
-System.out.println(robo.getRotation == 360)?"Pass":"FAILED");
+System.out.println("------->"+((robo.getRotation() == 360)?"Pass":"FAILED"));
 System.out.println("Turning to 90");
 robo.turnTo(90.0);
 for(int i =0 ;i != 30; i++)
@@ -126,7 +139,7 @@ for(int i =0 ;i != 30; i++)
 	robo.update();
 	System.out.println(robo);
     }
-System.out.println(robo.getRotation == 90)?"Pass":"FAILED");
+System.out.println("------->"+((robo.getRotation() == 90)?"Pass":"FAILED"));
 System.out.println("Turning to 270");
 robo.turnTo(270.0);
 for(int i =0 ;i != 30; i++)
@@ -134,7 +147,7 @@ for(int i =0 ;i != 30; i++)
 	robo.update();
 	System.out.println(robo);
     }
-System.out.println(robo.getRotation == 270)?"Pass":"FAILED");
+		   System.out.println("------->"+((robo.getRotation() == 270)?"Pass":"FAILED"));
 System.out.println("Turning to 0");
 robo.turnTo(0.0);
 for(int i =0 ;i != 39; i++)
@@ -142,7 +155,7 @@ for(int i =0 ;i != 39; i++)
 	robo.update();
 	System.out.println(robo);
     }
-System.out.println(robo.getRotation == 360)?"Pass":"FAILED");
+System.out.println("------->"+((robo.getRotation() == 360)?"Pass":"FAILED"));
 
     }
 
