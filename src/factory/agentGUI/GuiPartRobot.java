@@ -20,6 +20,15 @@ public class GuiPartRobot {
     Boolean busy;///<whether or not the GuiPartRobot has orders
     Integer moveto;///<which lane the GuiPartRobot is heading to
 
+    public GuiPartRobot()
+    {
+	super(GuiKitAssemblyManager.PARTSROBOTINITIALX,GuiKitAssemblyManager.PARTSROBOTINITIALY,0,0,"partsrobot.png");
+	this.busy = false;
+	this.parts = new GuiInventory();
+	this.moveto = 0;
+this.moveTo(GuiKitAssemblyManager.RAILX,GuiKitAssemblyManager.LANE0Y);
+    }
+
     /**
 sets a new lane destination coordinate for GuiPartRobot, the passed Integer specifies which lane to head to
     */
