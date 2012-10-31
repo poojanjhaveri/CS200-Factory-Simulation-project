@@ -103,13 +103,13 @@ public class MovingDrawable extends Drawable {
      */
     public static void main(String args[])
     {
-        GUIRobot robo = new GUIRobot(20,60,"lol.png");
+        MovingDrawable robo = new MovingDrawable(20,60,0.0,"lol.png");
         robo.setConstants(2,2,1.0);
 
-        System.out.println("          --==[|Basic Test|]==--");
+        System.out.println("              --==[|Basic Test|]==--");
         robo.moveTo(40,40);
         robo.turnTo(10.0);
-        System.out.println("Moving robot to 40,40 facing 10 degrees");
+        System.out.println("Moving drawable to 40,40 facing 10 degrees");
         System.out.println(robo+"\n=======================================");
         for(int i =0 ; i != 11; i++)
         {
@@ -119,7 +119,7 @@ public class MovingDrawable extends Drawable {
         }
         System.out.println("------->"+((robo.getCoordinate().getX() == 40 && robo.getCoordinate().getY() == 40 && robo.getRotation() == 10)?"Pass":"FAILED"));
 
-        System.out.println("          --==[|Extended Rotation Test|]==--");
+        System.out.println("              --==[|Extended Rotation Test|]==--");
         robo = new GUIRobot(0,0,"lol.png");
         robo.setConstants(0,0,10.0);
         robo.turnTo(180.0);

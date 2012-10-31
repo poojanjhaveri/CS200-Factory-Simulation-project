@@ -1,5 +1,5 @@
-          --==[|Basic Test|]==--
-Moving robot to 40,40 facing 10 degrees
+              --==[|Basic Test|]==--
+Moving drawable to 40,40 facing 10 degrees
 Position: (20,60)	Velocity: (2,2) 1.0 angles/sec	Facing 0.0 degrees
 =======================================
 Movement 1
@@ -25,7 +25,7 @@ Position: (40,40)	Velocity: (2,2) 1.0 angles/sec	Facing 10.0 degrees
 Movement 11
 Position: (40,40)	Velocity: (2,2) 1.0 angles/sec	Facing 10.0 degrees
 ------->Pass
-          --==[|Extended Rotation Test|]==--
+              --==[|Extended Rotation Test|]==--
 Turning to 180
 Position: (0,0)	Velocity: (0,0) 10.0 angles/sec	Facing 10.0 degrees
 Position: (0,0)	Velocity: (0,0) 10.0 angles/sec	Facing 20.0 degrees
