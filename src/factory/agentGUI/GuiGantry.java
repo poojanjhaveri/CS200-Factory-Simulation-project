@@ -7,7 +7,7 @@ package factory.agentGUI;
  * functionality (purely aesthetic)</li> <li>bin picking functionality</li>
  * <li>bin dropping functionality</li> <li>bin opening (dumping)
  * functionality.</li> </ul> <img src="../img/image03.png" alt="unused Gantry
- * robot with arms retracted"/> 
+ * robot with arms retracted"/>
 <img src="../img/image07.png" alt="Gantry robot in use and carring a bin"/>
  *
  * @brief shared Robot that manipulates part bins
@@ -24,38 +24,38 @@ public class GuiGantry {
     GuiGantry() {
     }
     /**
-@brief sets a new feeder destination for the gantry robot
-sets a new feeder destination coordinate for gantry robot, the passed Integer specifies which feeder to head to
-@param i feeder number
+    @brief sets a new feeder destination for the gantry robot
+    sets a new feeder destination coordinate for gantry robot, the passed Integer specifies which feeder to head to
+    @param i feeder number
     */
     public void moveToFeeder(Integer i) {
     }
     /**
-@brief sets the new destination to the bin dump site
-sets the new destination to the bin dump site
+    @brief sets the new destination to the bin dump site
+    sets the new destination to the bin dump site
     */
     public void moveToDump() {
     }
     /**
-brief extends the arm
-extends the arm
+    brief extends the arm
+    extends the arm
     */
     public void extend() {
-	this.extended = true;
+        this.extended = true;
     }
     /**
-@brief retracts the arm
-retracts the arm
+    @brief retracts the arm
+    retracts the arm
     */
     public void retract() {
-	this.extended = false;
+        this.extended = false;
     }
     /**
-@brief switches arm state
-retracts if extended, extends if retracted
-     */    
-public void toggleArm()
+    @brief switches arm state
+    retracts if extended, extends if retracted
+     */
+    public void toggleArm()
     {
-	this.extended = !this.extended;
+        this.extended = !this.extended;
     }
 }

@@ -41,12 +41,12 @@ public class MovingDrawable extends Drawable {
      */
     public void rotateTo(Double in)
     {
-	while(in >= 360)in-=360;
+        while(in >= 360)in-=360;
         this.rotateto = in;
     }
     public void turnTo(Double in)
     {
-	while(in >= 360)in-=360;
+        while(in >= 360)in-=360;
         this.rotateto = in;
     }
     /**
@@ -70,24 +70,24 @@ public class MovingDrawable extends Drawable {
                 this.cords.setY(((this.moveToY > this.cords.getY()) ? this.velocityY+this.cords.getY() : this.cords.getY()-this.velocityY));
             }
         }
-	
+
         if(Math.abs(this.rotateto-this.rotation) < this.rotationSpeed) {
             this.rotation=this.rotateto;
         } else
         {
-	    this.setRotation((this.rotation > this.rotateto && Math.abs(this.rotation - this.rotateto) < 180)?this.rotation-this.rotationSpeed:this.rotation+this.rotationSpeed);
-	    /*
-            if(this.rotation > 180)
-            {
-                this.rotation = (this.rotateto > 270)?this.rotation-this.rotationSpeed:this.rotation+this.rotationSpeed;
-            } else if(this.rotation < 180) {
-                this.rotation = (this.rotateto > 90)?this.rotation-this.rotationSpeed:this.rotation+this.rotationSpeed;
-            } else {
-                this.rotation = (this.rotateto > 180)?this.rotation+this.rotationSpeed:this.rotation-this.rotationSpeed;
-		}*/
-	    while(this.rotation >= 360){
-		this.rotation -= 360;
-	    }
+            this.setRotation((this.rotation > this.rotateto && Math.abs(this.rotation - this.rotateto) < 180)?this.rotation-this.rotationSpeed:this.rotation+this.rotationSpeed);
+            /*
+                if(this.rotation > 180)
+                {
+                    this.rotation = (this.rotateto > 270)?this.rotation-this.rotationSpeed:this.rotation+this.rotationSpeed;
+                } else if(this.rotation < 180) {
+                    this.rotation = (this.rotateto > 90)?this.rotation-this.rotationSpeed:this.rotation+this.rotationSpeed;
+                } else {
+                    this.rotation = (this.rotateto > 180)?this.rotation+this.rotationSpeed:this.rotation-this.rotationSpeed;
+            }*/
+            while(this.rotation >= 360) {
+                this.rotation -= 360;
+            }
         }
     }
     /**
@@ -153,7 +153,8 @@ public class MovingDrawable extends Drawable {
             robo.update();
             System.out.println(robo);
         }
-        System.out.println("------->"+((robo.getRotation() == 270)?"Pass":"FAILED"));System.out.println("Turning to 77");
+        System.out.println("------->"+((robo.getRotation() == 270)?"Pass":"FAILED"));
+        System.out.println("Turning to 77");
         robo.turnTo(77.0);
         for(int i =0 ; i != 18; i++)
         {
@@ -169,7 +170,7 @@ public class MovingDrawable extends Drawable {
             System.out.println(robo);
         }
         System.out.println("------->"+((robo.getRotation() == 270)?"Pass":"FAILED"));
-System.out.println("Turning to 111");
+        System.out.println("Turning to 111");
         robo.turnTo(111.0);
         for(int i =0 ; i != 17; i++)
         {
