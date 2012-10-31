@@ -1,3 +1,4 @@
+//PLEASE DO NOT FORMAT MY CODE IN ANYTHING OTHER THAN ASTYLE
 package factory.agentGUI;
 
 /**
@@ -6,8 +7,8 @@ package factory.agentGUI;
  * functionality (purely aesthetic)</li> <li>bin picking functionality</li>
  * <li>bin dropping functionality</li> <li>bin opening (dumping)
  * functionality.</li> </ul> <img src="../img/image03.png" alt="unused Gantry
- * robot with arms retracted"/> <img src="../img/image07.png" alt="Gantry robot
- * in use and carring a bin"/>
+ * robot with arms retracted"/> 
+<img src="../img/image07.png" alt="Gantry robot in use and carring a bin"/>
  *
  * @brief shared Robot that manipulates part bins
  * @author YiWei Roy Zheng
@@ -22,19 +23,39 @@ public class GuiGantry {
 
     GuiGantry() {
     }
-
-    public void moveTo(Integer i, Integer j) {
-    }///<sets a new destination coordinate for the gantry robot
-
+    /**
+@brief sets a new feeder destination for the gantry robot
+sets a new feeder destination coordinate for gantry robot, the passed Integer specifies which feeder to head to
+@param i feeder number
+    */
     public void moveToFeeder(Integer i) {
-    }///<sets a new feeder destination coordinate for gantry robot, the passed Integer specifies which feeder to head to
-
+    }
+    /**
+@brief sets the new destination to the bin dump site
+sets the new destination to the bin dump site
+    */
     public void moveToDump() {
-    }///<sets the new destination to the bin dump site
-
+    }
+    /**
+brief extends the arm
+extends the arm
+    */
     public void extend() {
-    }///<extends the arm
-
+	this.extended = true;
+    }
+    /**
+@brief retracts the arm
+retracts the arm
+    */
     public void retract() {
-    }///<retracts the arm
+	this.extended = false;
+    }
+    /**
+@brief switches arm state
+retracts if extended, extends if retracted
+     */    
+public void toggleArm()
+    {
+	this.extended = !this.extended;
+    }
 }

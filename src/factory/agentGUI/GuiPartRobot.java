@@ -1,3 +1,4 @@
+//DO NOT FORMAT MY CODE IN ANYTHING OTHER THAN ASTYLE. THANKS.
 package factory.agentGUI;
 
 /**
@@ -18,11 +19,22 @@ public class GuiPartRobot {
     Boolean busy;///<whether or not the GuiPartRobot has orders
     Integer moveto;///<which lane the GuiPartRobot is heading to
 
-    public void moveTo(Integer x, Integer y) {
-    }///<sets a new destination coordinate for the GuiPartRobot
-
+    /**
+sets a new lane destination coordinate for GuiPartRobot, the passed Integer specifies which lane to head to
+    */
     public void moveToLane(Integer l) {
-    }///<sets a new lane destination coordinate for GuiPartRobot, the passed Integer specifies which lane to head to
+	switch(l)
+	    {
+	    case 0:
+	    case 1:
+	    case 2:
+	    case 3:
+	    case 4:
+	    case 5:
+	    case 6:
+	    case 7:
+	    }
+}
 
     public void updateParts() {
     }///<updates the location of all parts in the inventory

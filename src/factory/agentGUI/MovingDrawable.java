@@ -75,7 +75,7 @@ public class MovingDrawable extends Drawable {
             this.rotation=this.rotateto;
         } else
         {
-	    this.setRotation((this.rotation > this.rotateto )?this.rotation-this.rotationSpeed:this.rotation+this.rotationSpeed);
+	    this.setRotation((this.rotation > this.rotateto && Math.abs(this.rotation - this.rotateto) < 180)?this.rotation-this.rotationSpeed:this.rotation+this.rotationSpeed);
 	    /*
             if(this.rotation > 180)
             {
@@ -85,6 +85,9 @@ public class MovingDrawable extends Drawable {
             } else {
                 this.rotation = (this.rotateto > 180)?this.rotation+this.rotationSpeed:this.rotation-this.rotationSpeed;
 		}*/
+	    while(this.rotation >= 360){
+		this.rotation -= 360;
+	    }
         }
     }
     /**
