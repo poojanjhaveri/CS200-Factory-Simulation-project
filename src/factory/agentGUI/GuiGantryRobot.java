@@ -18,9 +18,13 @@ public class GuiGantry {
     GuiBin bin;///<null if no bin, otherwise contains the information on the bin
     Boolean extended;///<whether or not the robot has arms extended
     Boolean hasbin;///<whether or not the robot is carrying a bin
-    Integer moveto;///<lane the gantry robot is heading towards
+    Integer moveto;///<where the gantry robot is heading towards
 
     GuiGantry() {
+	super(GantryRobotManager.ROBOT_INITIAL_X,GantryRobotManager.ROBOT_INITIAL_Y,0.0,"gantryrobot.png");
+	this.extended = false;
+	this.hasbin = false;
+	this.bin = new GuiBin();
     }
     /**
     @brief sets a new feeder destination for the gantry robot

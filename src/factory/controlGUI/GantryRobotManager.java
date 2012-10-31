@@ -34,6 +34,9 @@ public class GantryRobotManager extends Manager {
     public static final Integer DUMPX = 0;///<x-coordinate of dump 
     public static final Integer DUMPY = 0;///<y-coordinate of dump 
 
+    public static final ROBOT_INITIAL_X = 0;///<spawn x coordinate of gantrybot
+    public static final ROBOT_INITIAL_Y = 0;///<spawn y coordinate of gantrybot
+
     GantryState gs;
     GraphicGantryPanel graphicPanel;///<shows the animations of the gantry robot. has bins, gantry robot, and feeders.
     GUIGantryManager gui;///<break the nonormative situations
