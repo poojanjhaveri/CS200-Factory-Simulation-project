@@ -22,6 +22,17 @@ import javax.swing.JPanel;
  * @author Yuting Liu
  */
 public class GantryRobotManager extends Manager {
+    //TODO figure out what the cords are for the following constants
+    public static final Integer FEED0X = 0;///<x-coordinate of feeder 0
+    public static final Integer FEED0Y = 0;///<y-coordinate of feeder 0
+    public static final Integer FEED1X = 0;///<x-coordinate of feeder 1
+    public static final Integer FEED1Y = 0;///<y-coordinate of feeder 1
+    public static final Integer FEED2X = 0;///<x-coordinate of feeder 2
+    public static final Integer FEED2Y = 0;///<y-coordinate of feeder 2
+    public static final Integer FEED3X = 0;///<x-coordinate of feeder 3
+    public static final Integer FEED3Y = 0;///<y-coordinate of feeder 3
+    public static final Integer DUMPX = 0;///<x-coordinate of dump 
+    public static final Integer DUMPY = 0;///<y-coordinate of dump 
 
     GantryState gs;
     GraphicGantryPanel graphicPanel;///<shows the animations of the gantry robot. has bins, gantry robot, and feeders.

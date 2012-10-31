@@ -18,8 +18,7 @@ public class GuiGantry {
     GuiBin bin;///<null if no bin, otherwise contains the information on the bin
     Boolean extended;///<whether or not the robot has arms extended
     Boolean hasbin;///<whether or not the robot is carrying a bin
-    Integer movetoX;///<X-coordinate destination of the gantry robot
-    Integer movetoY;///<Y-coordinate destination of gantry robot
+    Integer moveto;///<lane the gantry robot is heading towards
 
     GuiGantry() {
     }
@@ -32,15 +31,19 @@ public class GuiGantry {
         switch(i)
         {
         case 0:
-            this.moveTo(GantryRobotManager.FEED0X,GantryRobotManager FEED0Y);
+	    this.moveto = 0;
+            this.moveTo(GantryRobotManager.FEED0X,GantryRobotManager.FEED0Y);
             break;
         case 1:
-            this.moveTo(GantryRobotManager.FEED1X,GantryRobotManager FEED1Y);
+	    this.moveto = 1;
+            this.moveTo(GantryRobotManager.FEED1X,GantryRobotManager.FEED1Y);
             break;
         case 2:
-            this.moveTo(GantryRobotManager.FEED2X,GantryRobotManager FEED2Y);
+	    this.moveto = 2;
+            this.moveTo(GantryRobotManager.FEED2X,GantryRobotManager.FEED2Y);
             break;
         case 3;
+	    this.moveto = 3;
             this.moveTo(GantryRobotManager.FEED3X,GantryRobotManager.FEED3Y);
             break;
         default:
