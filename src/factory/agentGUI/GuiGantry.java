@@ -29,25 +29,30 @@ public class GuiGantry {
     @param i feeder number
     */
     public void moveToFeeder(Integer i) {
-	switch(i)
-	    {
-	    case 0:this.moveTo(GantryRobotManager.FEED0X,GantryRobotManager FEED0Y);
-		break;
-	    case 1:this.moveTo(GantryRobotManager.FEED1X,GantryRobotManager FEED1Y);
-		break;
-	    case 2:this.moveTo(GantryRobotManager.FEED2X,GantryRobotManager FEED2Y);
-		break;
-	    case 3;this.moveTo(GantryRobotManager.FEED3X,GantryRobotManager.FEED3Y);
-		break;
-	    default: System.out.println("ERROR: Attempting to move GuiGantryRobot to nonexistent feeder " + i);
-	    }
+        switch(i)
+        {
+        case 0:
+            this.moveTo(GantryRobotManager.FEED0X,GantryRobotManager FEED0Y);
+            break;
+        case 1:
+            this.moveTo(GantryRobotManager.FEED1X,GantryRobotManager FEED1Y);
+            break;
+        case 2:
+            this.moveTo(GantryRobotManager.FEED2X,GantryRobotManager FEED2Y);
+            break;
+        case 3;
+            this.moveTo(GantryRobotManager.FEED3X,GantryRobotManager.FEED3Y);
+            break;
+        default:
+            System.out.println("ERROR: Attempting to move GuiGantryRobot to nonexistent feeder " + i);
+        }
     }
     /**
     @brief sets the new destination to the bin dump site
     sets the new destination to the bin dump site
     */
     public void moveToDump() {
-	this.moveTo(GantryRobotManager.DUMPX,GantryRobotManager.DUMPY);
+        this.moveTo(GantryRobotManager.DUMPX,GantryRobotManager.DUMPY);
     }
     /**
     brief extends the arm
@@ -73,6 +78,6 @@ public class GuiGantry {
     }
     public void armExtended()
     {
-	return this.extended;
+        return this.extended;
     }
 }
