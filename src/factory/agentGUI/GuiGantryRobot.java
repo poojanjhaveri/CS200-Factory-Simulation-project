@@ -14,6 +14,7 @@ package factory.agentGUI;
  * @author YiWei Roy Zheng
  */
 public class GuiGantry {
+    public static final String IMAGE_PAGE = "res/gantryrobot.png";
 
     GuiBin bin;///<null if no bin, otherwise contains the information on the bin
     Boolean extended;///<whether or not the robot has arms extended
@@ -21,7 +22,7 @@ public class GuiGantry {
     Integer moveto;///<where the gantry robot is heading towards
 
     GuiGantry() {
-	super(GantryRobotManager.ROBOT_INITIAL_X,GantryRobotManager.ROBOT_INITIAL_Y,0.0,"gantryrobot.png");
+	super(GantryRobotManager.ROBOT_INITIAL_X,GantryRobotManager.ROBOT_INITIAL_Y,0.0,GuiGantryRobot.IMAGE_PATH);
 	this.extended = false;
 	this.hasbin = false;
 	this.bin = new GuiBin();
@@ -53,6 +54,14 @@ public class GuiGantry {
         default:
             System.out.println("ERROR: Attempting to move GuiGantryRobot to nonexistent feeder " + i);
         }
+    }
+    public void moveToBin(Integer i)
+    {
+
+    }
+    public void moveBinToFeeder(Integer b, Integer f)
+    {
+
     }
     /**
     @brief sets the new destination to the bin dump site

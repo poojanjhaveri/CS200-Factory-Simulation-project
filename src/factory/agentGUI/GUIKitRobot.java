@@ -36,7 +36,7 @@ public class GUIKitRobot extends Robot {
         this.rotation = a;
     }
     /**
-    sets a new lane destination coordinate for KitterRobot, the passed Integer specifies which lane to head to
+    sets a new kit station coordinate for the GUIKitRobot
     */
     public void moveToLane(Integer l) {
 	switch(l)
@@ -51,6 +51,13 @@ public class GUIKitRobot extends Robot {
 	    case 7:
 	    }
     }
+    /**
+@brief sets the destination to the agv/conveyer
+     */
+    public void moveToAGV()
+    {
+    }
+
     /**
     updates the location of the kit it��s carrying
     */
