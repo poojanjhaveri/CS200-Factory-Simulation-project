@@ -15,6 +15,7 @@ package factory.agentGUI;
  */
 public class GuiPartRobot {
 
+
     GuiInventory parts;///<current parts on the GuiPartRobot, en route to the Kit
     Boolean busy;///<whether or not the GuiPartRobot has orders
     Integer moveto;///<which lane the GuiPartRobot is heading to
@@ -25,14 +26,30 @@ sets a new lane destination coordinate for GuiPartRobot, the passed Integer spec
     public void moveToLane(Integer l) {
 	switch(l)
 	    {
-	    case 0:
-	    case 1:
-	    case 2:
-	    case 3:
-	    case 4:
-	    case 5:
-	    case 6:
-	    case 7:
+	    case 0:this.moveTo(GuiKitAssemblyManager.RAILX,GuiKitAssemblyManager.LANE0Y);
+		this.moveto = 0;
+		break;
+	    case 1:this.moveTo(GuiKitAssemblyManager.RAILX,GuiKitAssemblyManager.LANE1Y);
+		this.moveto = 1;
+		break;
+	    case 2:this.moveTo(GuiKitAssemblyManager.RAILX,GuiKitAssemblyManager.LANE2Y);
+		this.moveto = 2;
+		break;
+	    case 3:this.moveTo(GuiKitAssemblyManager.RAILX,GuiKitAssemblyManager.LANE3Y);
+		this.moveto = 3;
+		break;
+	    case 4:this.moveTo(GuiKitAssemblyManager.RAILX,GuiKitAssemblyManager.LANE4Y);
+		this.moveto = 4;
+		break;
+	    case 5:this.moveTo(GuiKitAssemblyManager.RAILX,GuiKitAssemblyManager.LANE5Y);
+		this.moveto = 5;
+		break;
+	    case 6:this.moveTo(GuiKitAssemblyManager.RAILX,GuiKitAssemblyManager.LANE6Y);
+		this.moveto = 6;
+		break;
+	    case 7:this.moveTo(GuiKitAssemblyManager.RAILX,GuiKitAssemblyManager.LANE7Y);
+		this.moveto = 7;
+		break;
 	    }
 }
 
