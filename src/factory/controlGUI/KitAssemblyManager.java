@@ -2,7 +2,7 @@ package factory.controlGUI;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import factory.agentGUI.*;
 /**
  * This class keeps track of everything that will be visible to the Kit Assembly
  * Manager. This includes the graphics panel and the GUI panel. The graphics
@@ -30,11 +30,11 @@ public class KitAssemblyManager extends Manager implements ActionListener {
     public static final Integer PARTSROBOTINITIALX = 0;///<x coordinate for parts robot to spawn in
     public static final Integer PARTSROBOTINITIALY = 0;///<y coordinate for parts robot to spawn in
     private GuiPartRobot kitter;///<declares an object that keeps track of the parts robot animation and graphics
-    private GuiKitRobot kitbot;///<declares an object that keeps track of the kit robot animation and graphics
+    //private GuiKitRobot kitbot;///<declares an object that keeps track of the kit robot animation and graphics
     private KitStand kitstand;///<declares an object that keeps track of what is happening with the kit stand
     private KitDeliveryStation delivery;///<declares an object that keeps track of the delivery station
-    private KitAssemblyManagerDeliveryStation kamdelivery;///<keeps track of all of the objects listed above and paints the objects according to a timer
-    private KitAssemblyManagerGUIPanel gui;///<keeps track of the GUI components and allows the manager to pick which components will be broken
+    //private KitAssemblyManagerDeliveryStation kamdelivery;///<keeps track of all of the objects listed above and paints the objects according to a timer
+    //private KitAssemblyManagerGUIPanel gui;///<keeps track of the GUI components and allows the manager to pick which components will be broken
 
     /**
      * changes the panel based on what the user clicks
