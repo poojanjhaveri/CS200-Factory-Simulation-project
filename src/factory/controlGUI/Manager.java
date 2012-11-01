@@ -19,7 +19,7 @@ import factory.Printer;
  *
  * @brief used to standardize methods for all managers
  * @author David Zhang, YiWei Roy Zheng
-@version 0.1
+ * @version 0.1
  */
 public class Manager extends JFrame {
 
@@ -36,14 +36,13 @@ public class Manager extends JFrame {
     public static Printer p = new Printer();
 
 
-public Manager()
-    {
-	this.mcon = new ManagerConnection(Server.HOST_NAME,Server.PORT_NUMBER);
-	this.mcon.connect();
-	Thread.start(this.mcon);
+    public Manager() {
+       this.mcon = new ManagerConnection(Server.HOST_NAME,Server.PORT_NUMBER);
+       this.mcon.connect();
+       Thread.start(this.mcon);
     }
 
-    
+
     /**
      * @brief send a message to the server
      * @param msg - the message to send. Append ":"+whateverInfoYouWant to send
