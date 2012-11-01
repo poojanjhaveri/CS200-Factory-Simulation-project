@@ -1,11 +1,14 @@
 
-
+/**
+A standard issue to all classes that extend Manager. All server interactions are done by this class. Runs on its own thread so nonblocking.
+@brief connection to server from manager
+ */
 public class ManagerConnection implements Runnable{
 
-    private Manager mgr;
-    private PrintWriter out;
-    private BufferedReader in;
-    private Socket socket;
+    private Manager mgr;///<reference to parent
+    private PrintWriter out;///<data out
+    private BufferedReader in;///<data in
+    private Socket socket;///<socket connection
 
     public ManagerConnection(Manager ref)
     {
@@ -45,7 +48,7 @@ public class ManagerConnection implements Runnable{
 
     public void run()
     {
-	throw new UnimplementedException("Don't call this, extend this class and override run for custom functionality");
+	this.listenToServer();
     }
   /**
      * @brief send a message to the server
@@ -60,10 +63,10 @@ public class ManagerConnection implements Runnable{
      * @brief listen for a message from the server
      */
     public void listenToServer() {
-        p.println("Listening to the server");
+        p.println("Listening to the server for a push...");
         try {
             String msg = in.readLine();
-            processMessage(msg);
+            this.mgr.processMessage(msg);
         } catch (Exception e) {
             e.printStackTrace();
         }
