@@ -1,4 +1,3 @@
-import factory.agentGUI.GuiPart;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -22,7 +21,7 @@ public class GUIKit implements Serializable {
 	 * @param args
 	 */
 	String name; //name of the Kit
-	ArrayList<GuiPart>partslist;  // collection of parts in the kit
+	ArrayList<part>partslist;  // collection of parts in the kit
 	
 	
 	
