@@ -1,0 +1,18 @@
+*.class
+*.xml
+*.mf
+*.DS_Store
+*.classpath
+*.project
+*.metadeta
+*.settings
+*~
+*.orig
+
+nbproject/
+bin/
+
+# Package Files #
+*.jar
+*.war
+*.ear
