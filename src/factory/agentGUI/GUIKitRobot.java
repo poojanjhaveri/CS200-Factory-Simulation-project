@@ -12,20 +12,39 @@ package factory.agentGUI;
  * @brief Robot that moves kits in the KitWorkingArea
  * @author YiWei Roy Zheng
  */
-public class GuiKitRobot {
+public class GuiKitRobot extends GUIRobot{
 
     GuiKit kit;///<null if not carrying a kit, otherwise contains a reference the kit its carrying
     KitWorkingArea kits;///information about all work benches and their kits
-    Double rotation;///information on degrees of rotation. 0 degrees is due right
+    
     Boolean busy;///whether or not the KitterRobot has orders
     Double turnto;///angle the GuiKitRobot is turning to
 
-    public void turnTo(Double a) {
-    }///sets a new rotation angle for the KitterRobot
-
-    public void moveToLane(Integer l) {
-    }///sets a new lane destination coordinate for KitterRobot, the passed Integer specifies which lane to head to
-
+    /**
+sets a new lane destination coordinate for KitterRobot, the passed Integer specifies which lane to head to
+    */
+    public void moveToKit(Integer l) {
+	switch(l)
+	    {
+	    case 0:moveTo(KitAssemblyManager.KITX,KitAssemblyManager.KIT0Y);
+		break;
+	    case 1:moveTo(KitAssemblyManager.KITX,KitAssemblyManager.KIT1Y);
+		break;
+	    case 2:moveTo(KitAssemblyManager.KITX,KitAssemblyManager.KIT2Y);
+		break;
+	    default:
+	    }
+    }
+    /**
+moves to the conveyer
+     */
+    public void moveToConveyer()
+    {
+	this.moveTo(KitAssemblyManager.CONVEYERX,KitAssemblyManager.CONVEYERY);
+    }
+    /**
+updates the location of the kit items carrying
+    */
     public void updateKit() {
-    }///updates the location of the kit it��s carrying
+    }
 }
