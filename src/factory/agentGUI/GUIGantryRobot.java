@@ -47,7 +47,7 @@ public class GUIGantryRobot {
 	    this.moveto = 2;
             this.moveTo(GantryRobotManager.FEED2X,GantryRobotManager.FEED2Y);
             break;
-        case 3;
+        case 3:
 	    this.moveto = 3;
             this.moveTo(GantryRobotManager.FEED3X,GantryRobotManager.FEED3Y);
             break;
