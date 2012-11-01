@@ -1,5 +1,13 @@
 package factory.controlGUI;
 
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.awt.event.*;
+import java.io.*;
+import java.net.*;
+import factory.agentGUI.*;
+
 /**
  * Factory Production Manager selects active kit production routines, how many
  * of each kit to produce, and also will control non-normative scenario
@@ -16,17 +24,28 @@ package factory.controlGUI;
  * produce, and also will control non-normative scenario simulation
  *
  */
-public class FactoryProductionManager extends JFrame {
+public class FactoryProductionManager extends Manager {
 
     FPMGUI fpmgui;///<
     JPanel nonNormative;///<non-normative scenarios
     FPMGraphics fpmg;///<graphics panel
     Socket s;///<socket with server
 
+	public static void main(String[] args)
+	{
+
+	}
+
+	public FactoryProductionManager()
+	{
+		
+	}
+	
     /**
      * start the factory production queue with the current kit selection
      */
     void start() {
+		
     }
 
     /**
@@ -45,13 +64,6 @@ public class FactoryProductionManager extends JFrame {
     /**
      * once user clicks this menu item, set the NonNormative and FPMGraphics
      * panels invisible and the FPMGUI panel visible
-     */
-    void displayFPMGUI() {
-    }
-
-    /**
-     * once user clicks this menu item, set the FPMGUI and FPMGraphics panels
-     * invisible and the NonNormative panel visible
      */
     void displayFPMGUI() {
     }
@@ -80,13 +92,13 @@ public class FactoryProductionManager extends JFrame {
         /**
          * send signal to start the sim
          */
-        bool start() {
+        boolean start() {
         }
 
         /**
          * send signal to stop the sim
          */
-        bool stop() {
+        boolean stop() {
         }
 
         /**
