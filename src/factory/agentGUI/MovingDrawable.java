@@ -120,9 +120,19 @@ public class MovingDrawable extends Drawable {
 		}
         }
     }
+    /**
+@brief halts the drawable on the spot
+     */
     public void halt(){
-
-
+	this.moveToX = this.cords.getX();
+	this.moveToY = this.cords.getY();
+    }
+    /**
+@brief whether or not the moving drawable is currently moving
+     */
+    public Boolean moving()
+    {
+	return (this.moveToX == this.cords.getX() && this.moveToY == this.cords.getY());   
     }
     /**
     tostring

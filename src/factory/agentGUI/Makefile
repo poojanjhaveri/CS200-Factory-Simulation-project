@@ -1,9 +1,11 @@
 BASE=Drawable.java MovingDrawable.java Coordinate.java
 PARAM=-d .
+PACKAGE=factory.agentGUI
 
 movingdrawable:
 	javac $(PARAM) $(BASE) 
-	java factory.agentGUI.MovingDrawable > _movingdrawable.txt
+	java $(PACKAGE).MovingDrawable > _movingdrawable.txt
 kitrobot:
-	javac $(PARAM) $(BASE) GUIRobot.java 
+	javac $(PARAM) $(BASE) GUIRobot.java GUIKitRobot.java
+	java $(PACKAGE).GUIKitRobot > _guikitrobot.txt
 
