@@ -31,11 +31,22 @@ public class GantryRobotManager extends Manager {
     public static final Integer FEED2Y = 0;///<y-coordinate of feeder 2
     public static final Integer FEED3X = 0;///<x-coordinate of feeder 3
     public static final Integer FEED3Y = 0;///<y-coordinate of feeder 3
+
     public static final Integer DUMPX = 0;///<x-coordinate of dump 
     public static final Integer DUMPY = 0;///<y-coordinate of dump 
 
-    public static final ROBOT_INITIAL_X = 0;///<spawn x coordinate of gantrybot
-    public static final ROBOT_INITIAL_Y = 0;///<spawn y coordinate of gantrybot
+    public static final Integer BIN_X = 0;///<x coordinate of all bin locations
+    public static final Integer BIN0Y = 0;///<y coordinate of bin0
+public static final Integer BIN1Y = 0;///<y coordinate of bin1
+public static final Integer BIN2Y = 0;///<y coordinate of bin2
+public static final Integer BIN3Y = 0;///<y coordinate of bin3
+public static final Integer BIN4Y = 0;///<y coordinate of bin4
+public static final Integer BIN5Y = 0;///<y coordinate of bin5
+public static final Integer BIN6Y = 0;///<y coordinate of bin6
+public static final Integer BIN7Y = 0;///<y coordinate of bin7
+
+    public static final Integer ROBOT_INITIAL_X = 0;///<spawn x coordinate of gantrybot
+    public static final Integer ROBOT_INITIAL_Y = 0;///<spawn y coordinate of gantrybot
 
     GantryState gs;
     GraphicGantryPanel graphicPanel;///<shows the animations of the gantry robot. has bins, gantry robot, and feeders.
