@@ -1,3 +1,5 @@
+package factory.controlGUI;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -6,7 +8,6 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 import factory.Server;
-
 
 /**
 A standard issue to all classes that extend Manager. All server interactions are done by this class. Runs on its own thread so nonblocking.
