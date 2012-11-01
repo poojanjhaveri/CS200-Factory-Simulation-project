@@ -1,4 +1,4 @@
-package factory;
+
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -6,10 +6,6 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Scanner;
-
-import factory.feederManagement.FeederAgent;
-import factory.feederManagement.GantryAgent;
-import factory.feederManagement.LaneAgent;
 
 /**
  * @brief This class is critical to the integration of GUI classes, agents, etc.
@@ -29,9 +25,9 @@ public class Server {
 	
     private Printer p = new Printer();
     private int numClients;
-    private FeederAgent feederAgent;
-    private GantryAgent gantryAgent;
-    private LaneAgent laneAgent;
+//    private FeederAgent feederAgent;
+//    private GantryAgent gantryAgent;
+//    private LaneAgent laneAgent;
     // Agents
 //	private FeederAgent feederAgent; 
     // Connection fields
