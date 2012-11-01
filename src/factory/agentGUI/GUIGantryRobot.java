@@ -13,7 +13,7 @@ package factory.agentGUI;
  * @brief shared Robot that manipulates part bins
  * @author YiWei Roy Zheng
  */
-public class GuiGantry {
+public class GUIGantryRobot {
     public static final String IMAGE_PAGE = "res/gantryrobot.png";
 
     GuiBin bin;///<null if no bin, otherwise contains the information on the bin
@@ -21,7 +21,7 @@ public class GuiGantry {
     Boolean hasbin;///<whether or not the robot is carrying a bin
     Integer moveto;///<where the gantry robot is heading towards
 
-    GuiGantry() {
+    GUIGantryRobot() {
 	super(GantryRobotManager.ROBOT_INITIAL_X,GantryRobotManager.ROBOT_INITIAL_Y,0.0,GuiGantryRobot.IMAGE_PATH);
 	this.extended = false;
 	this.hasbin = false;

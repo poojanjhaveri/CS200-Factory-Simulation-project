@@ -1,3 +1,5 @@
+package factory.agentGUI;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -15,7 +17,7 @@ import java.util.ArrayList;
 
 
 
-public class GUIKit implements Serializable {
+public class GuiKit implements Serializable {
 
 	/**
 	 * @param args
