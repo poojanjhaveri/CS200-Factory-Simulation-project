@@ -1,6 +1,8 @@
 package factory.agentGUI;
 /**
 @brief any drawable that is capable of movement
+@author YiWei Roy Zheng
+@version 0.1
  */
 public class MovingDrawable extends Drawable {
 
@@ -117,6 +119,10 @@ public class MovingDrawable extends Drawable {
 		    this.rotation += 360;
 		}
         }
+    }
+    public void halt(){
+
+
     }
     /**
     tostring
