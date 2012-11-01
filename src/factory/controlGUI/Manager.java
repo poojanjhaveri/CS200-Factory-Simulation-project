@@ -18,7 +18,7 @@ import factory.Printer;
  * FactoryProductionManager simulation GUI).
  *
  * @brief used to standardize methods for all managers
- * @author David Zhang
+ * @author David Zhang, YiWei Roy Zheng
  */
 public class Manager extends JFrame {
 
@@ -26,42 +26,23 @@ public class Manager extends JFrame {
      * Instance fields
      */
     // Connection fields
-    private String hostName;
-    private int portNum;
-    private PrintWriter out;
-    private BufferedReader in;
-    private Socket socket;
+//    private String hostName;
+    // private int portNum;
+    private ManagerConnection mcon;
 
+    
     // Other fields
     public static Printer p = new Printer();
 
-    /**
-     * @brief attempts to connect to the server
-     */
-    public void connect() {
-        p.println("host name: " + hostName);
-        p.println("port num: " + portNum);
 
-        System.out.println("Connecting...");
-        socket = null;
-        out = null;
-        in = null;
-
-        try {
-            socket = new Socket(hostName, portNum);
-            out = new PrintWriter(socket.getOutputStream(), true);
-            in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-        } catch (UnknownHostException e) {
-            System.err.println("Don't know about host");
-            System.exit(1);
-        } catch (IOException e) {
-            System.err.println("Couldn't get I/O for the connection.");
-            System.exit(1);
-        }
-
-        System.out.println("Done connecting");
+public Manager()
+    {
+	this.mcon = new ManagerConnection(Server.HOST_NAME,Server.PORT_NUMBER);
+	this.mcon.connect();
+	Thread.start(this.mcon);
     }
 
+    
     /**
      * @brief send a message to the server
      * @param msg - the message to send. Append ":"+whateverInfoYouWant to send
@@ -69,20 +50,7 @@ public class Manager extends JFrame {
      */
     public void sendToServer(String msg) {
         try {
-            out.println(msg);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * @brief listen for a message from the server
-     */
-    public void listenToServer() {
-        p.println("Listening to the server");
-        try {
-            String msg = in.readLine();
-            processMessage(msg);
+            this.mcon.out(msg);
         } catch (Exception e) {
             e.printStackTrace();
         }
