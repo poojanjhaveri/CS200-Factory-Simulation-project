@@ -57,7 +57,25 @@ public class GuiGantry {
     }
     public void moveToBin(Integer i)
     {
-
+	switch(i)
+	    {
+	    case 0:this.moveTo(GantryRobotManager.BIN_X,GantryRobotManager.BIN0Y);
+            break;
+	    case 1:this.moveTo(GantryRobotManager.BIN_X,GantryRobotManager.BIN1Y);
+            break;
+	    case 2:this.moveTo(GantryRobotManager.BIN_X,GantryRobotManager.BIN2Y);
+            break;
+	    case 3:this.moveTo(GantryRobotManager.BIN_X,GantryRobotManager.BIN3Y);
+            break;
+	    case 4:this.moveTo(GantryRobotManager.BIN_X,GantryRobotManager.BIN4Y);
+            break;
+	    case 5:this.moveTo(GantryRobotManager.BIN_X,GantryRobotManager.BIN5Y);
+            break;
+	    case 6:this.moveTo(GantryRobotManager.BIN_X,GantryRobotManager.BIN6Y);
+            break;
+	    case 7:this.moveTo(GantryRobotManager.BIN_X,GantryRobotManager.BIN7Y);
+            break;
+	    }
     }
     public void moveBinToFeeder(Integer b, Integer f)
     {
