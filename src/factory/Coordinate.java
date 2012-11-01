@@ -11,9 +11,9 @@ package factory;
 public class Coordinate {
 
     public int x;
-    public int x;
+    public int y;
 
-    public Location(int x, int y) {
+    public Coordinate(int x, int y) {
 
     }
 }
