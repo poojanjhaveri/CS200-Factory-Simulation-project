@@ -9,6 +9,7 @@ import java.net.UnknownHostException;
 
 import factory.Server;
 
+
 /**
 A standard issue to all classes that extend Manager. All server interactions are done by this class. Runs on its own thread so nonblocking.
 @brief connection to server from manager
@@ -22,6 +23,8 @@ public class ManagerConnection implements Runnable{
     private BufferedReader in;///<data in
     private Socket socket;///<socket connection
 
+    private static final Printer p = new Printer();
+    
     public ManagerConnection(Manager ref)
     {
         socket = null;
