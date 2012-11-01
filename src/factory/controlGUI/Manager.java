@@ -19,6 +19,7 @@ import factory.Printer;
  *
  * @brief used to standardize methods for all managers
  * @author David Zhang, YiWei Roy Zheng
+@version 0.1
  */
 public class Manager extends JFrame {
 

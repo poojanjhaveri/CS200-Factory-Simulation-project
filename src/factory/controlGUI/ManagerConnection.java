@@ -2,6 +2,8 @@
 /**
 A standard issue to all classes that extend Manager. All server interactions are done by this class. Runs on its own thread so nonblocking.
 @brief connection to server from manager
+@author YiWei Roy Zheng, David Zhang
+@version 0.1
  */
 public class ManagerConnection implements Runnable{
 
