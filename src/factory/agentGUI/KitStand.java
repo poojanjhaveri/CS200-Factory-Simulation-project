@@ -1,7 +1,7 @@
 package factory.agentGUI;
 
 import factory.interfaces.KitRobot;
-import factory.agentGUI.GUIPartRobot;
+import factory.agentGUI.*;
 import javax.swing.ImageIcon;
 
 /**
