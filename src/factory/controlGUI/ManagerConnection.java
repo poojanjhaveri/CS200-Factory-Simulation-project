@@ -1,3 +1,5 @@
+package factory.controlGUI;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -21,6 +23,8 @@ public class ManagerConnection implements Runnable{
     private BufferedReader in;///<data in
     private Socket socket;///<socket connection
 
+    private static final Printer p = new Printer();
+    
     public ManagerConnection(Manager ref)
     {
         socket = null;
