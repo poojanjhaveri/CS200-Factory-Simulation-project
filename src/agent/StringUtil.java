@@ -32,8 +32,8 @@ import java.io.*;
 import java.lang.reflect.*;
 
 /**
-@brief This is a class to contain generic string utilities
- * This is a class to contain generic string utilities
+ * @brief This is a class to contain generic string utilities This is a class to
+ * contain generic string utilities
  *
  * @author Thomas S. Robertson
  * @version 0.0

@@ -4,7 +4,11 @@
 *.DS_Store
 *.classpath
 *.project
+*.metadeta
 *.settings
+*~
+*.orig
+
 nbproject/
 bin/
 

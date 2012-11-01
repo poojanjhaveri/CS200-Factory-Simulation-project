@@ -7,6 +7,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * @brief agent for the Gantry This class is the agent for the Gantry. The
+ * Gantry receives message from feeder to supply parts. It supplies the parts
+ * whenever it has enough parts available.
+ * @author Kevin Macwan
+ * @version 0
+ */
 public class GantryAgent extends Agent implements Gantry {
 
     private List<myParts> parts = Collections.synchronizedList(new ArrayList<myParts>());
