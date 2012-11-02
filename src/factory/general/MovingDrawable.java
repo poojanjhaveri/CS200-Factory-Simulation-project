@@ -14,7 +14,7 @@ public class MovingDrawable extends Drawable {
     private Integer moveToX;///<where Drawable is heading in x-coordinate
     private Integer moveToY;///<where Drawable is heading in y-coordinate
 
-    private moving;///<whether or not the drawable is currently moving @deprecated
+    private Boolean moving;///<whether or not the drawable is currently moving @deprecated
 
     /**
 Instantiate a MovingDrawable with position, rotation, and image

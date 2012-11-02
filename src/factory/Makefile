@@ -1,14 +1,14 @@
-BASE=agentGUI/Drawable.java agentGUI/MovingDrawable.java agentGUI/Coordinate.java agentGUI/GUIRobot.java
-BASECTR=controlGUI/Manager.java controlGUI/ManagerConnection.java Message.java Printer.java
+G=Drawable.java MovingDrawable.java Coordinate.java Manager.java ManagerConnection.java Message.java Printer.java GUIRobot.java Server.java
+GENERAL=$(addprefix general/, $(G))
+ 
 PARAM=-d .
-PACKAGE=factory.agentGUI
-PACKAGECTR=factory.controlGUI
+PKGENERAL=factory.general
 
 all:
-	javac $(PARAM) *.java controlGUI/*.java agentGUI/*.java
+	javac $(PARAM) *.java factory200/*.java general/*.java
 movingdrawable:
-	javac $(PARAM) $(BASE) 
-	java $(PACKAGE).MovingDrawable > _movingdrawable.txt
+	javac $(PARAM) $(GENERAL) 
+	java $(PKGENERAL).MovingDrawable > _movingdrawable.txt
 manager:
 	javac $(PARAM) $(BASECTR) Message.java Printer.java Server.java
 	java $(PACKAGECTR).Manager
@@ -16,3 +16,6 @@ kitrobot:
 	javac $(PARAM) $(BASE) $(BASECTR) agentGUI/GUIKitRobot.java controlGUI/KitAssemblyManager.java Server.java
 	java $(PACKAGECTR).KitAssemblyManager
 
+
+debug:
+	echo $(GENERAL)
