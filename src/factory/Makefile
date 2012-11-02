@@ -4,7 +4,8 @@ PARAM=-d .
 PACKAGE=factory.agentGUI
 PACKAGECTR=factory.controlGUI
 
-
+all:
+	javac $(PARAM) *.java controlGUI/*.java agentGUI/*.java
 movingdrawable:
 	javac $(PARAM) $(BASE) 
 	java $(PACKAGE).MovingDrawable > _movingdrawable.txt
