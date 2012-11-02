@@ -1,9 +1,9 @@
 package factory.factory201.kitManagement;
 
 import agent.Agent;
-import factory.general.Kit;
 import factory.factory201.interfaces.KitRobot;
 import factory.factory201.partsManagement.PartsAgent;
+import factory.general.Kit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +25,6 @@ public class KitRobotAgent extends Agent implements KitRobot {
 
         empty, complete, verified, error
     };
-    
     private boolean needEmptyKit = false;
     private ConveyorAgent conveyor;
     private CameraAgent camera;
@@ -96,7 +95,6 @@ public class KitRobotAgent extends Agent implements KitRobot {
         stateChanged();
     }
 
-    
     // ********* SCHEDULER *********
     @Override
     protected boolean pickAndExecuteAnAction() {
@@ -128,9 +126,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
 
     }
 
-    
     // ********** ACTIONS **********
-    
     private void removeVerifiedKit(Kit k) {
 //        DoRemoveVerifiedKit(k);
         conveyor.msgHereIsVerifiedKit(k);
@@ -146,24 +142,22 @@ public class KitRobotAgent extends Agent implements KitRobot {
         partsAgent.msgEmptyKitReady(k.kittingStandNum);
         stateChanged();
     }
-    
+
     private void getEmptyKit() {
 //        DoGetEmptyKit();
         conveyor.msgNeedEmptyKit();
         stateChanged();
     }
-    
-    
+
     // ************ MISC ***********
-    
     public void setConveyor(ConveyorAgent agent) {
         conveyor = agent;
     }
-    
+
     public void setCamera(CameraAgent agent) {
         camera = agent;
     }
-    
+
     public void setPartsAgent(PartsAgent agent) {
         partsAgent = agent;
     }

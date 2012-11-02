@@ -1,10 +1,10 @@
 package factory.factory201.kitManagement;
 
 import agent.Agent;
-import factory.general.Kit;
-import factory.general.Nest;
 import factory.factory201.interfaces.Camera;
 import factory.factory201.partsManagement.NestAgent;
+import factory.general.Kit;
+import factory.general.Nest;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -37,7 +37,7 @@ public class CameraAgent extends Agent implements Camera {
      * @brief Message called by NestAgent to inspect nest.
      */
     @Override
-    public void msgNestIsFull(Nest nest, int nestNum) {
+    public void msgNestIsFull(Nest nest, Kit.KittingStandNumber nestNum) {
         nests.put(nest, nestNum);
         stateChanged();
     }
@@ -50,7 +50,7 @@ public class CameraAgent extends Agent implements Camera {
      * @brief Message called by KitRobotAgent to inspect kit.
      */
     @Override
-    public void msgKitIsFull(Kit kit, int kitNum) {
+    public void msgKitIsFull(Kit kit, Kit.KittingStandNumber kitNum) {
         kits.put(kit, kitNum);
         stateChanged();
     }
@@ -77,7 +77,7 @@ public class CameraAgent extends Agent implements Camera {
      * @param kitNum Specifies location of kit for animation purposes
      * @brief Inspects nests and returns result to kitRobot agent.
      */
-    private void inspectKit(Kit kit, int kitNum) {
+    private void inspectKit(Kit kit, Kit.KittingStandNumber kitNum) {
 //        DoInspectKit(kitNum);
         //check if all the correct parts
         kitRobotAgent.msgKitInspected(kit, true);
@@ -91,7 +91,7 @@ public class CameraAgent extends Agent implements Camera {
      * @param nestNum Specifies location of nest for animation purposes
      * @brief Inspects nests and returns result to nest agent.
      */
-    private void inspectNest(Nest nest, int nestNum) {
+    private void inspectNest(Nest nest, Kit.KittingStandNumber nestNum) {
 //        DoInspectNest(nestNum);
         //check if all the correct parts
         nestAgent.msgNestInspected(true);

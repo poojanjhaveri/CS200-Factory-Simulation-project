@@ -1,9 +1,8 @@
 package factory.factory201.kitManagement;
 
 import agent.Agent;
-import factory.general.Kit;
 import factory.factory201.interfaces.Conveyor;
-import factory.factory201.kitManagement.KitRobotAgent;
+import factory.general.Kit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -31,15 +30,15 @@ public class ConveyorAgent extends Agent implements Conveyor {
     private Timer removeKits = new Timer(1000, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent ae) {
-            for(int i = 0; i < kits.size(); i++) {
-                if(kits.get(i).status == Kit.Status.verified) {
+            for (int i = 0; i < kits.size(); i++) {
+                if (kits.get(i).status == Kit.Status.verified) {
                     kits.remove(i);
                     break;
                 }
             }
         }
     });
-    
+
     // ********** MESSAGES *********
     /**
      * This message is called by the {@link KitRobotAgent} when an empty
@@ -64,7 +63,6 @@ public class ConveyorAgent extends Agent implements Conveyor {
         stateChanged();
     }
 
-    
     // ********* SCHEDULER *********
     /**
      * Scheduler
@@ -86,7 +84,6 @@ public class ConveyorAgent extends Agent implements Conveyor {
         return false;
     }
 
-    
     // ********** ACTIONS **********
     /**
      * Tells the {@link KitRobotAgent} the location of the next available empty
@@ -107,7 +104,6 @@ public class ConveyorAgent extends Agent implements Conveyor {
         stateChanged();
     }
 
-    
     // ************ MISC ***********
     /**
      * Sets the KitRobotAgent
