@@ -24,7 +24,8 @@ public class GUIKitRobot extends GUIRobot{
     
     public GUIKitRobot()
     {
-	super(KitAssemblyManager.ROBOT_INITIAL_X,KitAssemblyManager.ROBOT_INITIAL_Y,0.0,GUIKitRobot.IMAGE_PATH);
+        //this is actually set in the KAMGraphicsPanel
+	super(KAMGraphicPanel.ROBOT_INITIAL_X,KAMGraphicPanel.ROBOT_INITIAL_Y,GUIKitRobot.IMAGE_PAGE);
 	this.kit = null;
 
     }
@@ -35,11 +36,11 @@ sets a new lane destination coordinate for KitterRobot, the passed Integer speci
     public void moveToKit(Integer l) {
 	switch(l)
 	    {
-	    case 0:moveTo(KitAssemblyManager.KITX,KitAssemblyManager.KIT0Y);
+	    case 0:moveTo(KAMGraphicPanel.KITX,KAMGraphicPanel.KIT0Y);
 		break;
-	    case 1:moveTo(KitAssemblyManager.KITX,KitAssemblyManager.KIT1Y);
+	    case 1:moveTo(KAMGraphicPanel.KITX,KAMGraphicPanel.KIT1Y);
 		break;
-	    case 2:moveTo(KitAssemblyManager.KITX,KitAssemblyManager.KIT2Y);
+	    case 2:moveTo(KAMGraphicPanel.KITX,KAMGraphicPanel.KIT2Y);
 		break;
 	    default:
 	    }
@@ -49,7 +50,7 @@ moves to the conveyer
      */
     public void moveToConveyer()
     {
-	this.moveTo(KitAssemblyManager.CONVEYERX,KitAssemblyManager.CONVEYERY);
+	this.moveTo(KAMGraphicPanel.CONVEYERX,KAMGraphicPanel.CONVEYERY);
     }
     /**
 updates the location of the kit items carrying

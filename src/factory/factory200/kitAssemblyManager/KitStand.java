@@ -2,7 +2,6 @@ package factory.factory200.kitAssemblyManager;
 
 import factory.general.Coordinate;
 import factory.factory201.interfaces.KitRobot;
-import factory.agentGUI.*;
 import javax.swing.ImageIcon;
 
 /**
@@ -50,7 +49,7 @@ public class KitStand {
     }
 
     /**
-     * checks where the kitter robot is located
+     * checks where the kitter/part robot is located
      */
     public Coordinate posKitterRobot() {
         return null;

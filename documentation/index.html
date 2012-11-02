@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Team01 : " />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Factory Project</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/usc-csci200-fall2012/team01">View on GitHub</a>
+
+          <h1 id="project_title">Joint CS200/CS201 Factory Project<br /><div style="font-style:italic;font-size:.75em;">Team 1</div></h1>
+          <h2 id="project_tagline"></h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/usc-csci200-fall2012/team01/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/usc-csci200-fall2012/team01/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h3>Purpose/Overview</h3>
+
+<p>Work in large teams to create software that simulates a factory using Swing components, animation, and a self-created API to facilitate interaction between CSCI 201 and CSCI 200 code.	</p>
+
+<h3>Requirements</h3>
+
+<p>See <a href="http://www-scf.usc.edu/~csci201/factory/TheKittingCell.htm">http://www-scf.usc.edu/~csci201/factory/TheKittingCell.htm</a></p>
+
+<h3>Global Data/Functions</h3>
+
+<p>
+Global data is limited as much as possible. Generally only static final data is made globally available.
+<ul>
+<li>Manager JPanel x,y size</li>
+<li>Robot velocity X, Y</li>
+<li>Server messages (String)</li>
+</ul>
+</p>
+
+<h3>Classes</h3>
+<p>For information on specific classes, please view our Doxygen <a href="docs/annotated.html">here</a>.</p>
+<p style="font-style:bold;font-size:1.1em;">CS201: source code for individual classes can be found <a href="docs/files.html">here</a></p>
+<h3>High-Level Architecture</h3>
+<p>
+<img src="img/cs201hla.png" />
+CS201 Documentation is available in pdf format <a href="cs201.pdf">here</a>.
+</p>
+<p>
+CSCI 200 (Roy Zheng)
+Paint Order 
+<ol
+<li>Background</li>
+<li>Core machinery (conveyers, robot bases, etc)</li>
+<li>Feeder, lane, kits</li>
+<li>KitRobot, KitterRobot</li>
+<li>Parts</li>
+<li>GantryRobot</li>
+</ol>
+One-time Thread (Dongyoung Jung)
+This is used for Camera Pictures Display on Nest
+<pre>
+  Executor executor = Executors.newSingleThreadExecutor();
+  executor.execute(new Runnable(){
+      public void run(){ 
+          camera.setVisible(true);
+          try{ Thread.sleep(500); } // sleeps 0.5 second
+          catch( Exception e ){}
+          camera.setVisible(false);
+      }
+  });
+</pre>
+
+One-time thread is easy since it runs once and terminates itself
+Brings memory efficiency<br />
+<br />
+Protocol (David Zhang)<br />
+Server messages are simple final Strings from class Message.
+The Server class will obtain messages from the various Manager clients. The Server then runs through a series of if-statements that check the messages and then execute the appropriate methods of Agents. Instances of each agent are stored in the Server class. See class Message for more. Each Manager client is a class that extends class Manager, and therefore has methods sendToServeR(String msg), listenToServer(), and a few others that are standard for communication.
+</p>
+
+<h3>User Interface</h3>
+<p>User interface is described in detail on the specific class page. Generally, all UI JPanels and such are in the <a href="http://usc-csci200-fall2012.github.com/team01/docs/namespacefactory_1_1control_g_u_i.html">factory.controlGUI package</a>.</p>
+<p>
+Graphics for the robots and such are also available for select classes such as GuiGantry, GuiPartsRobot, etc. They reside in the <a href="http://usc-csci200-fall2012.github.com/team01/docs/namespacefactory_1_1agent_g_u_i.html">factory.agentGUI</a> package.
+</p>
+<h3>Test Cases</h3>
+<p>
+David Zhang<br />
+Broad: Each GUI class has a Main class that runs its own frame
+We can test each class independently
+PartsManager and KitAssemblyManager interaction:
+PartsManager creates a new part; sends data to Server; Kit Assembly Manager should be able to view new part
+Server has TEST messages that can determine that clients are connected properly
+
+</p>
+<hr />
+<p>
+Roy Zheng<br />
+GuiKitterRobot<br />
+<ul>
+<li>Proper movement along the rail</li>
+<li>Proper stopping flush with the ordered lane</li>
+<li>Proper rotation along the rail</li>
+<li>Parts go down the robot properly into the active kit</li>
+</ul>
+GuiGantryRobot
+<ul>
+<li>Proper movement to each of the feeders</li>
+<li>Proper movement to disposal bin</li>
+<li>Proper display of extended/retracted arms</li>
+<li>Proper display of associated bin if any</li>
+<li>Bin should not be displayed if dropped</li>
+</ul>
+GuiKitRobot
+<ul>
+<li>Proper movement between the various kit stands</li>
+<li>Proper movement to the conveyer belt</li>
+<li>Proper display of associated kit if any</li>
+<li>Kit should not be displayed if dropped</li>
+</ul>
+</p>
+<hr />
+<p>
+Poojan Jhaveri<br />
+Kit Manager<br />
+<ul>
+<li>Being able to create a kit by adding a kit name,selecting parts from part list and then choosing parts needed in the current kit</li>
+<li>Being able to update existing kit by selecting kit name adn then making changes to the parts</li>
+<li>Being able to delete a kit by selecting kit name from the combobox and then clicking on deleting a kit.</li>
+</ul>
+</p>
+<hr />
+<p>
+Dongyoung Jung<br />
+Feeder
+<ul>
+<li>Part box dumped by gantry robot and display on graphical panel</li>
+<li>Part box insertion to a proper lane</li>
+<li>Feeder status change by agent and display on manager’s GUI panel
+on/off switch, part low sensor, feed parts switch, part fed counter, lower/raise rear gate switch, purge bin switch, diverter left/right switch</li>
+</ul>
+Lane
+<ul>
+<li>Part movement on lane</li>
+<li>Correct synchronized part movements between on lane manager’s monitor and on factory production manager’s monitor. This is achieved by setting up ‘Timer’ in server.</li>
+<li>Parts lineup when nest is full of parts</li>
+<li>Lane stops before a nest dump</li>
+<li>Lane status change by agent and display on manager’s GUI panel</li>
+<li>On/off switch, vibration amplitude setting</li>
+</ul>
+Nest
+<ul>
+<li>Part transfer to gantry robot</li>
+<li>Part display when lane passes parts</li>
+<li>Nest up/down</li>
+<li>Nest status change by agent and display on manager’s GUI panel</li>
+<li>Up/down switch</li>
+</ul>
+Non-normative scenario
+<ul><li>Capability of system recover after non-normative scenario</li></ul>
+</p>
+<hr />
+<p>
+GantryRobotManager Test Cases<br />
+Yuting Liu<br />
+Non-Nomative condition
+<ul>
+<li>handling situations when kit robot breaks</li>
+<li>handling situations when feeders are dumped</li>
+<li>handling situations when purge station</li>
+<li>handling situations when bins are broken</li>
+</ul>
+Normative condition
+<ul>
+<li>Gantry Robot goes to bin and pick bins up and move to feeder</li>
+<li>Gantry Robot dump empty bins to purge station</li>
+</ul>
+</p>
+<hr />
+<p>
+KitAssemblyManager Test Cases<br />
+<i>Deepa Borkar<i><br />
+<ul>
+<li>handling a situation if the parts robot breaks </li>
+<li>handling a situation if the kit robot breaks</li>
+<li>handling empty and finished kits correctly</li>
+</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Team01 maintained by <a href="https://github.com/usc-csci200-fall2012">usc-csci200-fall2012</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>

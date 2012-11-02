@@ -3,7 +3,7 @@ package factory.general;
 /**
 @brief any drawable that is capable of movement
 @author YiWei Roy Zheng
-@version 0.1
+@version 0.2
  */
 public class MovingDrawable extends Drawable {
 
@@ -14,12 +14,20 @@ public class MovingDrawable extends Drawable {
     private Integer moveToX;///<where Drawable is heading in x-coordinate
     private Integer moveToY;///<where Drawable is heading in y-coordinate
 
+    private Boolean moving;///<whether or not the drawable is currently moving @deprecated
+
+    /**
+Instantiate a MovingDrawable with position, rotation, and image
+@param x starting x-coordinate
+@param y starting y-coordinate
+@param a starting rotation
+@param i image file name
+     */
     public MovingDrawable(Integer x, Integer y, Double a, String i)
     {
         super(x,y,a,i);
         this.moveToX = x;
         this.moveToY=y;
-
     }
 
     /**
@@ -38,6 +46,7 @@ public class MovingDrawable extends Drawable {
     {
         this.moveToX = x;
         this.moveToY = y;
+	this.moving = true;
     }
     /**
     @brief sets the next angle to rotate to for the drawable
