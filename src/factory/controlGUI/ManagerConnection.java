@@ -8,7 +8,7 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 import factory.Server;
-
+import factory.Printer;
 
 /**
 A standard issue to all classes that extend Manager. All server interactions are done by this class. Runs on its own thread so nonblocking.
@@ -47,7 +47,7 @@ public class ManagerConnection implements Runnable{
         in = null;
 
         try {
-            socket = new Socket(hostName, portNum);
+            socket = new Socket(Server.HOST_NAME, Server.PORT_NUMBER);
             out = new PrintWriter(socket.getOutputStream(), true);
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         } catch (UnknownHostException e) {

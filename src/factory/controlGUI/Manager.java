@@ -39,7 +39,7 @@ public class Manager extends JFrame {
     public Manager() {
        this.mcon = new ManagerConnection(Server.HOST_NAME,Server.PORT_NUMBER);
        this.mcon.connect();
-       Thread.start(this.mcon);
+       (new Thread(this.mcon)).start();//create new thread
     }
 
 
