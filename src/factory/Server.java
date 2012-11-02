@@ -23,9 +23,9 @@ public class Server {
     /**
      * Instance fields
      */
-	public static final Integer PORT_NUMBER = 31415; 
+    public static final Integer PORT_NUMBER = 31415; 
     public static final String HOST_NAME = "localhost";
-	
+    
     private Printer p = new Printer();
     private int numClients;
 //    private FeederAgent feederAgent;
@@ -38,18 +38,18 @@ public class Server {
     private Socket s = null;
 
     public static void main(String[] args) {
-        int portNum = 31415;
-        Scanner in = new Scanner(System.in);
-        System.out.print("Enter port number (default: 31415): ");
-        try {
-            String nextLine = in.nextLine();
-            portNum = Integer.parseInt(nextLine);
-        } catch (Exception e) {
-            System.out.println("Using default port number");
-            portNum = 31415;
-        }
+//        int portNum = 31415;
+//        Scanner in = new Scanner(System.in);
+//        System.out.print("Enter port number (default: 31415): ");
+//        try {
+//            String nextLine = in.nextLine();
+//            portNum = Integer.parseInt(nextLine);
+//        } catch (Exception e) {
+//            System.out.println("Using default port number");
+//            portNum = 31415;
+//        }
 
-        Server server = new Server(portNum);
+        Server server = new Server(PORT_NUMBER);
     }
 
     /**
@@ -159,7 +159,7 @@ public class Server {
         private String grabParameter(String msg) {
             return msg.substring(msg.indexOf(":") + 1);
         }
-
+        
         /**
          * @brief Stops the loop of the server, letting the server turn off.
          * This stops the entire program.
