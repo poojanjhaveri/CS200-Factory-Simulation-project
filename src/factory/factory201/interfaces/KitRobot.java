@@ -1,6 +1,6 @@
 package factory.factory201.interfaces;
 
-import factory.Kit;
+import factory.general.Kit;
 
 /**
  * @brief contains all of the messages for the KitRobotAgent This interface

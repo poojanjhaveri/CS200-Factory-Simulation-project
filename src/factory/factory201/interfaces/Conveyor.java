@@ -1,6 +1,6 @@
 package factory.factory201.interfaces;
 
-import factory.Kit;
+import factory.general.Kit;
 
 /**
  * @brief contains messages for ConveyerAgent This interface contains all of the

@@ -1,7 +1,7 @@
 package factory.factory201.kitManagement;
 
 import agent.Agent;
-import factory.Kit;
+import factory.general.Kit;
 import factory.factory201.interfaces.KitRobot;
 import factory.factory201.partsManagement.PartsAgent;
 import java.util.ArrayList;

@@ -1,6 +1,6 @@
 package factory.factory201.interfaces;
 
-import factory.Part;
+import factory.general.Part;
 
 public interface FactoryBase {
 //public enum Part {};

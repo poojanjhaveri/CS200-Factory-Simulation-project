@@ -3,7 +3,7 @@ package factory.factory201.feederManagement;
 import factory.factory201.interfaces.NestInterface;
 import factory.factory201.interfaces.Lane;
 import agent.Agent;
-import factory.Part;
+import factory.general.Part;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;

@@ -1,7 +1,7 @@
 package factory.factory201.interfaces;
 
-import factory.Kit;
-import factory.Nest;
+import factory.general.Kit;
+import factory.general.Nest;
 
 /**
  * @brief contains messages for CameraAgent This interface contains all of the

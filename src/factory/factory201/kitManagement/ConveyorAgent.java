@@ -1,7 +1,7 @@
 package factory.factory201.kitManagement;
 
 import agent.Agent;
-import factory.Kit;
+import factory.general.Kit;
 import factory.factory201.interfaces.Conveyor;
 import factory.factory201.kitManagement.KitRobotAgent;
 import java.awt.event.ActionEvent;

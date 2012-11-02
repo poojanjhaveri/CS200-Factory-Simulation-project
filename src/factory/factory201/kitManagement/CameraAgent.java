@@ -1,8 +1,8 @@
 package factory.factory201.kitManagement;
 
 import agent.Agent;
-import factory.Kit;
-import factory.Nest;
+import factory.general.Kit;
+import factory.general.Nest;
 import factory.factory201.interfaces.Camera;
 import factory.factory201.partsManagement.NestAgent;
 import java.util.HashMap;
