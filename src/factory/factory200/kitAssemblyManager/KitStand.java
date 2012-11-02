@@ -49,7 +49,7 @@ public class KitStand {
     }
 
     /**
-     * checks where the kitter robot is located
+     * checks where the kitter/part robot is located
      */
     public Coordinate posKitterRobot() {
         return null;

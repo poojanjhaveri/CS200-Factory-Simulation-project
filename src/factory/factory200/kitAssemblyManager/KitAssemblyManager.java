@@ -38,8 +38,6 @@ public class KitAssemblyManager extends Manager implements ActionListener {
     private KitDeliveryStation delivery;///<declares an object that keeps track of the delivery station
     //private KitAssemblyManagerDeliveryStation kamdelivery;///<keeps track of all of the objects listed above and paints the objects according to a timer
     //private KitAssemblyManagerGUIPanel gui;///<keeps track of the GUI components and allows the manager to pick which components will be broken
-    public static final int ROBOT_INITIAL_X=0;
-    public static final int ROBOT_INITIAL_Y=0;
     /**
      * changes the panel based on what the user clicks
      */
