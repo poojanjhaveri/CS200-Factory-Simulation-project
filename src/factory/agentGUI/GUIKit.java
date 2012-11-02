@@ -17,13 +17,13 @@ import java.util.ArrayList;
 
 
 
-public class GuiKit implements Serializable {
+public class GUIKit implements Serializable {
 
 	/**
 	 * @param args
 	 */
 	String name; //name of the Kit
-	ArrayList<part>partslist;  // collection of parts in the kit
+	//ArrayList<part>partslist;  // collection of parts in the kit
 	
 	
 	

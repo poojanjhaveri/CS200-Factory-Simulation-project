@@ -9,6 +9,7 @@ import java.net.UnknownHostException;
 
 import javax.swing.JFrame;
 
+import factory.Server;
 import factory.Message;
 import factory.Printer;
 
@@ -37,7 +38,7 @@ public class Manager extends JFrame {
 
 
     public Manager() {
-       this.mcon = new ManagerConnection(Server.HOST_NAME,Server.PORT_NUMBER);
+       this.mcon = new ManagerConnection(this);
        this.mcon.connect();
        (new Thread(this.mcon)).start();//create new thread
     }
