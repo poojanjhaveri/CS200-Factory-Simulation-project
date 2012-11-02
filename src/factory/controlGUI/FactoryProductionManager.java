@@ -6,7 +6,7 @@ import java.awt.event.*;
 import java.awt.event.*;
 import java.io.*;
 import java.net.*;
-import factory.agentGUI.*;
+//import factory.agentGUI.*;
 
 /**
  * Factory Production Manager selects active kit production routines, how many
@@ -24,7 +24,7 @@ import factory.agentGUI.*;
  * produce, and also will control non-normative scenario simulation
  *
  */
-public class FactoryProductionManager extends Manager {
+public class FactoryProductionManager extends JFrame {
 
     FPMGUI fpmgui;///<
     JPanel nonNormative;///<non-normative scenarios
@@ -93,12 +93,14 @@ public class FactoryProductionManager extends Manager {
          * send signal to start the sim
          */
         boolean start() {
+			return true;
         }
 
         /**
          * send signal to stop the sim
          */
         boolean stop() {
+			return true;
         }
 
         /**
@@ -121,6 +123,7 @@ public class FactoryProductionManager extends Manager {
      */
     class FPMGraphics extends JPanel implements ActionListener {
 
+		/*
         KitRobot kr;
         PartsRobot pr;
         GantryRobot gr;
@@ -128,6 +131,7 @@ public class FactoryProductionManager extends Manager {
         Lane l;
         Bin b;
         CameraHandler ch;
+		*/
 
         public void actionPerformed(ActionEvent ae) {
         }
