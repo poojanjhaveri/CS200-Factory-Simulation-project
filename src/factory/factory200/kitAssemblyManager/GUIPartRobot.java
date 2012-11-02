@@ -24,6 +24,7 @@ public class GUIPartRobot {
 
     public GUIPartRobot()
     {
+        // variables will be set in the KAMGraphicsPanel
 	super(GuiKitAssemblyManager.PARTSROBOTINITIALX,GuiKitAssemblyManager.PARTSROBOTINITIALY,0,0,"partsrobot.png");
 	this.busy = false;
 	this.parts = new GuiInventory();
