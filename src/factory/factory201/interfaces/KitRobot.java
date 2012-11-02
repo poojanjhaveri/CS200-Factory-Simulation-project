@@ -1,4 +1,4 @@
-package factory.interfaces;
+package factory.factory201.interfaces;
 
 import factory.Kit;
 
@@ -16,7 +16,7 @@ public interface KitRobot {
 
     public void msgKitInspected(Kit kit, boolean result);
 
-    public void msgKitIsComplete(Kit kit);
+    public void msgKitIsFull(Kit kit);
 
     public void msgNeedEmptyKit();
 }

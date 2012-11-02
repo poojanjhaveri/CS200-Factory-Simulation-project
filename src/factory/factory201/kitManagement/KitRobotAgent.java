@@ -1,9 +1,9 @@
-package factory.kitManagement;
+package factory.factory201.kitManagement;
 
 import agent.Agent;
 import factory.Kit;
-import factory.interfaces.KitRobot;
-import factory.partsManagement.PartsAgent;
+import factory.factory201.interfaces.KitRobot;
+import factory.factory201.partsManagement.PartsAgent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,27 +19,13 @@ import java.util.List;
  */
 public class KitRobotAgent extends Agent implements KitRobot {
 
-    List<myKit> kits = new ArrayList<myKit>();
+    List<Kit> kits = new ArrayList<Kit>();
 
     enum KitStatus {
 
         empty, complete, verified, error
     };
-//test comment
-    private class myKit {
-
-        Kit kit;
-        KitStatus status;
-        int conveyorLoc;
-        int kittingStandNum;
-
-        public myKit(Kit kit, int conveyorLoc) {
-            this.kit = kit;
-            this.status = KitStatus.empty;
-            this.conveyorLoc = conveyorLoc;
-            this.kittingStandNum = -1;
-        }
-    }
+    
     private boolean needEmptyKit = false;
     private ConveyorAgent conveyor;
     private CameraAgent camera;
@@ -66,7 +52,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
      */
     @Override
     public void msgHereIsEmptyKit(Kit kit, int loc) {
-        kits.add(new myKit(kit, loc));
+        kits.add(new Kit(loc));
         stateChanged();
     }
 
@@ -77,10 +63,10 @@ public class KitRobotAgent extends Agent implements KitRobot {
      * @brief Message called by PartsAgent when kit is complete.
      */
     @Override
-    public void msgKitIsComplete(Kit kit) {
-        for (myKit k : kits) {
-            if (kit == k.kit) {
-                k.status = KitStatus.complete;
+    public void msgKitIsFull(Kit kit) {
+        for (Kit k : kits) {
+            if (kit == k) {
+                k.status = Kit.Status.full;
                 break;
             }
         }
@@ -96,13 +82,13 @@ public class KitRobotAgent extends Agent implements KitRobot {
      */
     @Override
     public void msgKitInspected(Kit kit, boolean result) {
-        for (myKit k : kits) {
-            if (kit == k.kit) {
+        for (Kit k : kits) {
+            if (kit == k) {
                 if (result) {
-                    k.status = KitStatus.verified;
+                    k.status = Kit.Status.verified;
                     break;
                 } else {
-                    k.status = KitStatus.error;
+                    k.status = Kit.Status.error;
                     break;
                 }
             }
@@ -115,20 +101,20 @@ public class KitRobotAgent extends Agent implements KitRobot {
     @Override
     protected boolean pickAndExecuteAnAction() {
         if (!kits.isEmpty()) {
-            for (myKit k : kits) {
-                if (k.status == KitStatus.verified) {
+            for (Kit k : kits) {
+                if (k.status == Kit.Status.verified) {
                     removeVerifiedKit(k);
                     return true;
                 }
             }
-            for (myKit k : kits) {
-                if (k.status == KitStatus.complete) {
+            for (Kit k : kits) {
+                if (k.status == Kit.Status.full) {
                     moveFullKitToInspection(k);
                     return true;
                 }
             }
-            for (myKit k : kits) {
-                if (k.status == KitStatus.empty) {
+            for (Kit k : kits) {
+                if (k.status == Kit.Status.empty) {
                     giveEmptyKit(k);
                     return true;
                 }
@@ -145,20 +131,18 @@ public class KitRobotAgent extends Agent implements KitRobot {
     
     // ********** ACTIONS **********
     
-    private void removeVerifiedKit(myKit k) {
-//        DoRemoveVerifiedKit();
-        conveyor.msgHereIsVerifiedKit(k.kit);
+    private void removeVerifiedKit(Kit k) {
+//        DoRemoveVerifiedKit(k);
+        conveyor.msgHereIsVerifiedKit(k);
         stateChanged();
     }
 
-    private void moveFullKitToInspection(myKit k) {
-//        DoMoveFullKitToInspection();
-        camera.msgKitIsFull(k.kit, k.kittingStandNum);
+    private void moveFullKitToInspection(Kit k) {
+        camera.msgKitIsFull(k, k.kittingStandNum);
         stateChanged();
     }
 
-    private void giveEmptyKit(myKit k) {
-//        DoGiveEmptyKit();
+    private void giveEmptyKit(Kit k) {
         partsAgent.msgEmptyKitReady(k.kittingStandNum);
         stateChanged();
     }

@@ -1,4 +1,4 @@
-package factory.interfaces;
+package factory.factory201.interfaces;
 
 public interface NestInterface extends FactoryBase {
 
