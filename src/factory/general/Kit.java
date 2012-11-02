@@ -1,7 +1,5 @@
 package factory.general;
 
-import factory.general.Part;
-
 /**
  * Kit Object
  *
@@ -11,19 +9,18 @@ import factory.general.Part;
  */
 public class Kit {
 
-    public Part parts[];
-
     public enum Status {
 
         empty, full, verified, error
     };
-    public Status status;
-    public int kitNeedsParts;
-
     public static enum KittingStandNumber {
 
         none, one, two, three
     };
+    
+    public Status status;
+    public int kitNeedsParts;
+    public Part parts[];
     public KittingStandNumber kittingStandNumber;
     public int conveyorLocation;
 

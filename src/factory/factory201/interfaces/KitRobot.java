@@ -12,7 +12,7 @@ import factory.general.Kit;
  */
 public interface KitRobot {
 
-    public void msgHereIsEmptyKit(Kit kit, int loc);
+    public void msgHereIsEmptyKit(Kit kit);
 
     public void msgKitInspected(Kit kit, boolean result);
 

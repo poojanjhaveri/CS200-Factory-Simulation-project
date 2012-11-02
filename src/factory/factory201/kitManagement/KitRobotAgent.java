@@ -19,13 +19,9 @@ import java.util.List;
  */
 public class KitRobotAgent extends Agent implements KitRobot {
 
-    List<Kit> kits = new ArrayList<Kit>();
+    KitStand kitStand = new KitStand();
 
-    enum KitStatus {
-
-        empty, complete, verified, error
-    };
-    private boolean needEmptyKit = false;
+    private boolean partsAgentNeedsEmptyKit = false;
     private ConveyorAgent conveyor;
     private CameraAgent camera;
     private PartsAgent partsAgent;
@@ -38,7 +34,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
      */
     @Override
     public void msgNeedEmptyKit() {
-        needEmptyKit = true;
+        partsAgentNeedsEmptyKit = true;
         stateChanged();
     }
 
@@ -50,8 +46,8 @@ public class KitRobotAgent extends Agent implements KitRobot {
      * @brief Message called by ConveyorAgent to give kit.
      */
     @Override
-    public void msgHereIsEmptyKit(Kit kit, int loc) {
-        kits.add(new Kit(loc));
+    public void msgHereIsEmptyKit(Kit kit) {
+        kits.add(kit);
         stateChanged();
     }
 
@@ -98,48 +94,67 @@ public class KitRobotAgent extends Agent implements KitRobot {
     // ********* SCHEDULER *********
     @Override
     protected boolean pickAndExecuteAnAction() {
-        if (!kits.isEmpty()) {
-            for (Kit k : kits) {
-                if (k.status == Kit.Status.verified) {
-                    removeVerifiedKit(k);
-                    return true;
-                }
+        if(!kitStand.isEmpty()) {
+            /*
+             * if kit ready to leave cell
+             * else if kit ready for inspection
+             * else if parts agent needs empty kit
+             * else if tempstand is empty
+             */
+            if(kitStand.get(2).status == Kit.Status.verified) {
+                removeVerifiedKit();
+                return true;
+            } else if(kitStand.get(1).status == Kit.Status.full) {
+                return true;
+            } else if(partsAgentNeedsEmptyKit) {
+                return true;
+            } else if(kitStand.availability() > 0) {
+                return true;
             }
-            for (Kit k : kits) {
-                if (k.status == Kit.Status.full) {
-                    moveFullKitToInspection(k);
-                    return true;
-                }
-            }
-            for (Kit k : kits) {
-                if (k.status == Kit.Status.empty) {
-                    giveEmptyKit(k);
-                    return true;
-                }
-            }
-        } else if (needEmptyKit) {
-            getEmptyKit();
-            return true;
-        }
+        }        
+//        if (!kits.isEmpty()) {
+//            for (Kit k : kits) {
+//                if (k.status == Kit.Status.verified) {
+//                    removeVerifiedKit(k);
+//                    return true;
+//                }
+//            }
+//            for (Kit k : kits) {
+//                if (k.status == Kit.Status.full) {
+//                    moveFullKitToInspection(k);
+//                    return true;
+//                }
+//            }
+//            for (Kit k : kits) {
+//                if (k.status == Kit.Status.empty) {
+//                    giveEmptyKit(k);
+//                    return true;
+//                }
+//            }
+//        } else if (partsAgentNeedsEmptyKit) {
+//            getEmptyKit();
+//            return true;
+//        }
 
         return false;
 
     }
 
     // ********** ACTIONS **********
-    private void removeVerifiedKit(Kit k) {
+    private void removeVerifiedKit() {
+        Kit k = kitStand.remove(2);
 //        DoRemoveVerifiedKit(k);
         conveyor.msgHereIsVerifiedKit(k);
         stateChanged();
     }
 
     private void moveFullKitToInspection(Kit k) {
-        camera.msgKitIsFull(k, k.kittingStandNum);
+//        camera.msgKitIsFull(k, k.kittingStandNum);
         stateChanged();
     }
 
     private void giveEmptyKit(Kit k) {
-        partsAgent.msgEmptyKitReady(k.kittingStandNum);
+//        partsAgent.msgEmptyKitReady(k.kittingStandNumber);
         stateChanged();
     }
 
