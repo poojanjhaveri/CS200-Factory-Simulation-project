@@ -10,4 +10,5 @@ package factory.factory200.kitAssemblyManager;
  */
 public class KAMGraphicPanel {
     
+    
 }

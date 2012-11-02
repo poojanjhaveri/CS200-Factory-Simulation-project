@@ -2,7 +2,6 @@ package factory.factory200.kitAssemblyManager;
 
 import factory.general.Coordinate;
 import factory.factory201.interfaces.KitRobot;
-import factory.agentGUI.*;
 import javax.swing.ImageIcon;
 
 /**
