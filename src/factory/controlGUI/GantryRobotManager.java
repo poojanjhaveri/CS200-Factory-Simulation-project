@@ -49,109 +49,109 @@ public static final Integer BIN7Y = 0;///<y coordinate of bin7
     public static final Integer ROBOT_INITIAL_Y = 0;///<spawn y coordinate of gantrybot
 
     GantryState gs;
-    GraphicGantryPanel graphicPanel;///<shows the animations of the gantry robot. has bins, gantry robot, and feeders.
-    GUIGantryManager gui;///<break the nonormative situations
+//    GraphicGantryPanel graphicPanel;///<shows the animations of the gantry robot. has bins, gantry robot, and feeders.
+//    GUIGantryManager gui;///<break the nonormative situations
     Socket s;///<connection to the server
-    GantryRobot gbot;///<class which includes Gantry Robot Manager Methods
+//    GantryRobot gbot;///<class which includes Gantry Robot Manager Methods
     int purgeStationx;//x coordinate of purgeStation
     int purgeStationy;//y coordinate of purgeStation
 
-    public void receiveFromServer();///<pull data from server
+//    public void receiveFromServer();///<pull data from server
 
     /**
      * @brief Inner class GUIGantryManager
      */
-    public class GUIGantryManager extends JPanel implements ActionListener 
-
-        (){
-
-		JButton breakPurgeStation;
-        JButton breakFeeder;
-        JButton breakBins;
-        JButton breakGantryRobot;
-
-        public void breakPurgeStation() {
-        }
-
-        ;///<break the purge station 
-		public void breakFeeder(int index) {
-        }
-
-        ;///<break a selected feeder
-		public void breakBins() {
-        }
-
-        ;///<break a selected bin
-		public void breakGantryRobot() {
-        }
-
-        ;///<break the gantry robot under non-normative
-
-		/**
-if actions are performed this handles it
-@brief if actions are performed this handles it
-		 */
-		public void actionPerformed(ActionEvent ae) {
-            if (ae == breakPurgeStation) {
-                breakPurgeStation();
-            }
-            if (ae == breakFeeder) {
-                breakFeeder(int 
-                i
-            
-            );
-			}
-			if (ae == breakBins() {
-                breakBins();
-            }
-            if (ae == breakGantryRobot() {
-                breakGantryRobot();
-            }
-        }
-    }
-
-    public class GraphicGantryPanel extends JPanel {
-
-        GraphicGantryPanel ggp;
-        boolean changed;
-
-        public GraphicGantryPanel() {//set up a Timer	
-        }
-
-        /**
-         * check if Server send any message or data back
-         */
-        public boolean checkServerMessage() {
-        }// 
-
-        /**
-         * get all coordinates from GantryState class
-         */
-        public resetComponent() {
-        }
-
-        ;//
-		/**
-paint all components: bins, purge station, feeders and the gantry robot
-		 */
-		public paint(Graphics g) {
-        }
-
-        ;
-		public actionPerformed() {
-            changed = checkServerMessage();
-
-            if (changed) {
-                resetComponents();//get information of recently changedd
-            }
-            repaint();
-        }
-    }
+//    public class GUIGantryManager extends JPanel implements ActionListener 
+//
+//        (){
+//
+//		JButton breakPurgeStation;
+//        JButton breakFeeder;
+//        JButton breakBins;
+//        JButton breakGantryRobot;
+//
+//        public void breakPurgeStation() {
+//        }
+//
+//        ;///<break the purge station 
+//		public void breakFeeder(int index) {
+//        }
+//
+//        ;///<break a selected feeder
+//		public void breakBins() {
+//        }
+//
+//        ;///<break a selected bin
+//		public void breakGantryRobot() {
+//        }
+//
+//        ;///<break the gantry robot under non-normative
+//
+//		/**
+//if actions are performed this handles it
+//@brief if actions are performed this handles it
+//		 */
+//		public void actionPerformed(ActionEvent ae) {
+//            if (ae == breakPurgeStation) {
+//                breakPurgeStation();
+//            }
+//            if (ae == breakFeeder) {
+//                breakFeeder(int 
+//                i
+//            
+//            );
+//			}
+//			if (ae == breakBins() {
+//                breakBins();
+//            }
+//            if (ae == breakGantryRobot() {
+//                breakGantryRobot();
+//            }
+//        }
+//    }
+//
+//    public class GraphicGantryPanel extends JPanel {
+//
+//        GraphicGantryPanel ggp;
+//        boolean changed;
+//
+//        public GraphicGantryPanel() {//set up a Timer	
+//        }
+//
+//        /**
+//         * check if Server send any message or data back
+//         */
+//        public boolean checkServerMessage() {
+//        }// 
+//
+//        /**
+//         * get all coordinates from GantryState class
+//         */
+//        public resetComponent() {
+//        }
+//
+//        ;//
+//		/**
+//paint all components: bins, purge station, feeders and the gantry robot
+//		 */
+//		public paint(Graphics g) {
+//        }
+//
+//        ;
+//		public actionPerformed() {
+//            changed = checkServerMessage();
+//
+//            if (changed) {
+//                resetComponents();//get information of recently changedd
+//            }
+//            repaint();
+//        }
+//    }
 
     public class GantryState {
 
-        Feeder feeder;
-        Bin bins;
+//        Feeder feeder;
+//        Bin bins;
 
         /**
          * update Feeder coordinate or status
@@ -178,27 +178,27 @@ paint all components: bins, purge station, feeders and the gantry robot
         }
     }
 
-    public class Bin {
+//    public class Bin {
+//
+//        int corx;///<coordinate x
+//        int cory;///<coordinate y
+//        image binImage;
+//
+//        public moveBin(int newx, int newy) {
+//        }//moveBin to the new coordinate
+//    }
 
-        int corx;///<coordinate x
-        int cory;///<coordinate y
-        image binImage;
-
-        public moveBin(int newx, int newy) {
-        }//moveBin to the new coordinate
-    }
-
-    public class Feeder {
-
-        int number;//feeder number
-        int x;//coordinate x
-        int y;//coordinate y
-        image feederImage;
-
-        /**
-         * drop parts from bins to the selected number feeder
-         */
-        public dropPartsOn(int number) {
-        }
-    }
+//    public class Feeder {
+//
+//        int number;//feeder number
+//        int x;//coordinate x
+//        int y;//coordinate y
+//        image feederImage;
+//
+//        /**
+//         * drop parts from bins to the selected number feeder
+//         */
+//        public dropPartsOn(int number) {
+//        }
+//    }
 }
