@@ -1,5 +1,7 @@
 package factory.agentGUI;
 
+import factory.controlGUI.KitAssemblyManager;
+
 /**
  * The GuiKitRobot handles the moving of kits in the kit assembly area. It takes
  * orders from the Kit Assembly Manager. The GuiKitRobot must also communicate
@@ -12,13 +14,20 @@ package factory.agentGUI;
  * @brief Robot that moves kits in the KitWorkingArea
  * @author YiWei Roy Zheng
  */
-public class GuiKitRobot extends GUIRobot{
+public class GUIKitRobot extends GUIRobot{
+    public static final String IMAGE_PAGE = "res/kitrobot.png";
 
-    GuiKit kit;///<null if not carrying a kit, otherwise contains a reference the kit its carrying
-    KitWorkingArea kits;///information about all work benches and their kits
+    //GUIKit kit;///<null if not carrying a kit, otherwise contains a reference the kit its carrying
+    //KitWorkingArea kits;///information about all work benches and their kits
     
     Boolean busy;///whether or not the KitterRobot has orders
-    Double turnto;///angle the GuiKitRobot is turning to
+    
+    public GUIKitRobot()
+    {
+	super(KitAssemblyManager.ROBOT_INITIAL_X,KitAssemblyManager.ROBOT_INITIAL_Y,0.0,GUIKitRobot.IMAGE_PATH);
+	this.kit = null;
+
+    }
 
     /**
 sets a new lane destination coordinate for KitterRobot, the passed Integer specifies which lane to head to

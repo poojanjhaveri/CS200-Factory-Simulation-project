@@ -18,10 +18,13 @@ import java.util.Scanner;
  */
 // Status: Just finished matching my serverclientpractice's Server
 public class Server {
+
+
     /**
      * Instance fields
      */
-//	public static final PORT_NUMBER = 31415; 
+	public static final Integer PORT_NUMBER = 31415; 
+    public static final String HOST_NAME = "localhost";
 	
     private Printer p = new Printer();
     private int numClients;

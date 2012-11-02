@@ -164,7 +164,7 @@ public class MovingDrawable extends Drawable {
         System.out.println("------->"+((robo.getCoordinate().getX() == 40 && robo.getCoordinate().getY() == 40 && robo.getRotation() == 10)?"Pass":"FAILED"));
 
         System.out.println("              --==[|Extended Rotation Test|]==--");
-        robo = new GUIRobot(0,0,"lol.png");
+        robo = new MovingDrawable(0,0,0.0,"lol.png");
         robo.setConstants(0,0,10.0);
         robo.turnTo(180.0);
         System.out.println("Turning to 180");

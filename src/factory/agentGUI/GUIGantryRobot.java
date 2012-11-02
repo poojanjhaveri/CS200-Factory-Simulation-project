@@ -16,16 +16,16 @@ package factory.agentGUI;
 public class GUIGantryRobot {
     public static final String IMAGE_PAGE = "res/gantryrobot.png";
 
-    GuiBin bin;///<null if no bin, otherwise contains the information on the bin
+    GUIBin bin;///<null if no bin, otherwise contains the information on the bin
     Boolean extended;///<whether or not the robot has arms extended
     Boolean hasbin;///<whether or not the robot is carrying a bin
     Integer moveto;///<where the gantry robot is heading towards
 
     GUIGantryRobot() {
-	super(GantryRobotManager.ROBOT_INITIAL_X,GantryRobotManager.ROBOT_INITIAL_Y,0.0,GuiGantryRobot.IMAGE_PATH);
+	super(GantryRobotManager.ROBOT_INITIAL_X,GantryRobotManager.ROBOT_INITIAL_Y,0.0,GUIGantryRobot.IMAGE_PATH);
 	this.extended = false;
 	this.hasbin = false;
-	this.bin = new GuiBin();
+	this.bin = new GUIBin();
     }
     /**
     @brief sets a new feeder destination for the gantry robot
@@ -47,7 +47,7 @@ public class GUIGantryRobot {
 	    this.moveto = 2;
             this.moveTo(GantryRobotManager.FEED2X,GantryRobotManager.FEED2Y);
             break;
-        case 3;
+        case 3:
 	    this.moveto = 3;
             this.moveTo(GantryRobotManager.FEED3X,GantryRobotManager.FEED3Y);
             break;
