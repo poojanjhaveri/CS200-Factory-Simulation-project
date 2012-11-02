@@ -1,7 +1,7 @@
 //DO NOT FORMAT MY CODE IN ANYTHING OTHER THAN ASTYLE. THANKS.
 package factory.factory200.kitAssemblyManager;
 
-import factory.agentGUI.GuiInventory;
+import factory.general.GUIRobot;
 
 /**
  * The GUIPartRobot obtains parts from the nest and places it into the working
@@ -15,21 +15,21 @@ import factory.agentGUI.GuiInventory;
  * @brief Robot that creates kits using parts from the lane nests
  * @author YiWei Roy Zheng
  */
-public class GUIPartRobot {
+public class GUIPartRobot extends GUIRobot{
 
 
-    GuiInventory parts;///<current parts on the GUIPartRobot, en route to the Kit
+    GUIInventory parts;///<current parts on the GUIPartRobot, en route to the Kit
     Boolean busy;///<whether or not the GUIPartRobot has orders
     Integer moveto;///<which lane the GUIPartRobot is heading to
 
     public GUIPartRobot()
     {
         // variables will be set in the KAMGraphicsPanel
-	super(GuiKitAssemblyManager.PARTSROBOTINITIALX,GuiKitAssemblyManager.PARTSROBOTINITIALY,0,0,"partsrobot.png");
+	super(KitAssemblyManager.PARTSROBOTINITIALX,KitAssemblyManager.PARTSROBOTINITIALY,0,0,"partsrobot.png");
 	this.busy = false;
-	this.parts = new GuiInventory();
+	this.parts = new GUIInventory();
 	this.moveto = 0;
-this.moveTo(GuiKitAssemblyManager.RAILX,GuiKitAssemblyManager.LANE0Y);
+this.moveTo(KitAssemblyManager.RAILX,KitAssemblyManager.LANE0Y);
     }
 
     /**
@@ -38,28 +38,28 @@ sets a new lane destination coordinate for GUIPartRobot, the passed Integer spec
     public void moveToLane(Integer l) {
 	switch(l)
 	    {
-	    case 0:this.moveTo(GuiKitAssemblyManager.RAILX,GuiKitAssemblyManager.LANE0Y);
+	    case 0:this.moveTo(KitAssemblyManager.RAILX,KitAssemblyManager.LANE0Y);
 		this.moveto = 0;
 		break;
-	    case 1:this.moveTo(GuiKitAssemblyManager.RAILX,GuiKitAssemblyManager.LANE1Y);
+	    case 1:this.moveTo(KitAssemblyManager.RAILX,KitAssemblyManager.LANE1Y);
 		this.moveto = 1;
 		break;
-	    case 2:this.moveTo(GuiKitAssemblyManager.RAILX,GuiKitAssemblyManager.LANE2Y);
+	    case 2:this.moveTo(KitAssemblyManager.RAILX,KitAssemblyManager.LANE2Y);
 		this.moveto = 2;
 		break;
-	    case 3:this.moveTo(GuiKitAssemblyManager.RAILX,GuiKitAssemblyManager.LANE3Y);
+	    case 3:this.moveTo(KitAssemblyManager.RAILX,KitAssemblyManager.LANE3Y);
 		this.moveto = 3;
 		break;
-	    case 4:this.moveTo(GuiKitAssemblyManager.RAILX,GuiKitAssemblyManager.LANE4Y);
+	    case 4:this.moveTo(KitAssemblyManager.RAILX,KitAssemblyManager.LANE4Y);
 		this.moveto = 4;
 		break;
-	    case 5:this.moveTo(GuiKitAssemblyManager.RAILX,GuiKitAssemblyManager.LANE5Y);
+	    case 5:this.moveTo(KitAssemblyManager.RAILX,KitAssemblyManager.LANE5Y);
 		this.moveto = 5;
 		break;
-	    case 6:this.moveTo(GuiKitAssemblyManager.RAILX,GuiKitAssemblyManager.LANE6Y);
+	    case 6:this.moveTo(KitAssemblyManager.RAILX,KitAssemblyManager.LANE6Y);
 		this.moveto = 6;
 		break;
-	    case 7:this.moveTo(GuiKitAssemblyManager.RAILX,GuiKitAssemblyManager.LANE7Y);
+	    case 7:this.moveTo(KitAssemblyManager.RAILX,KitAssemblyManager.LANE7Y);
 		this.moveto = 7;
 		break;
 	    }
