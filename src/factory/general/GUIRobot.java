@@ -10,7 +10,7 @@ import factory.general.MovingDrawable;
 public class GUIRobot extends MovingDrawable {
 
 
-    Boolean busy;///<whether or not the KitterRobot has orders
+    Boolean busy;///<whether or not the Robot has orders
     Boolean flag;///<if this is ever set to true something is wrong
 
     /**
