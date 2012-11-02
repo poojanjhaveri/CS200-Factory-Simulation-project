@@ -25,11 +25,11 @@ public class GUIPartRobot extends GUIRobot{
     public GUIPartRobot()
     {
         // variables will be set in the KAMGraphicsPanel
-	super(KitAssemblyManager.PARTSROBOTINITIALX,KitAssemblyManager.PARTSROBOTINITIALY,0,0,"partsrobot.png");
+	super(KAMGraphicPanel.PARTSROBOTINITIALX,KAMGraphicPanel.PARTSROBOTINITIALY,"partsrobot.png");
 	this.busy = false;
 	this.parts = new GUIInventory();
 	this.moveto = 0;
-this.moveTo(KitAssemblyManager.RAILX,KitAssemblyManager.LANE0Y);
+this.moveTo(KAMGraphicPanel.RAILX,KAMGraphicPanel.LANE0Y);
     }
 
     /**
@@ -38,28 +38,28 @@ sets a new lane destination coordinate for GUIPartRobot, the passed Integer spec
     public void moveToLane(Integer l) {
 	switch(l)
 	    {
-	    case 0:this.moveTo(KitAssemblyManager.RAILX,KitAssemblyManager.LANE0Y);
+	    case 0:this.moveTo(KAMGraphicPanel.RAILX,KAMGraphicPanel.LANE0Y);
 		this.moveto = 0;
 		break;
-	    case 1:this.moveTo(KitAssemblyManager.RAILX,KitAssemblyManager.LANE1Y);
+	    case 1:this.moveTo(KAMGraphicPanel.RAILX,KAMGraphicPanel.LANE1Y);
 		this.moveto = 1;
 		break;
-	    case 2:this.moveTo(KitAssemblyManager.RAILX,KitAssemblyManager.LANE2Y);
+	    case 2:this.moveTo(KAMGraphicPanel.RAILX,KAMGraphicPanel.LANE2Y);
 		this.moveto = 2;
 		break;
-	    case 3:this.moveTo(KitAssemblyManager.RAILX,KitAssemblyManager.LANE3Y);
+	    case 3:this.moveTo(KAMGraphicPanel.RAILX,KAMGraphicPanel.LANE3Y);
 		this.moveto = 3;
 		break;
-	    case 4:this.moveTo(KitAssemblyManager.RAILX,KitAssemblyManager.LANE4Y);
+	    case 4:this.moveTo(KAMGraphicPanel.RAILX,KAMGraphicPanel.LANE4Y);
 		this.moveto = 4;
 		break;
-	    case 5:this.moveTo(KitAssemblyManager.RAILX,KitAssemblyManager.LANE5Y);
+	    case 5:this.moveTo(KAMGraphicPanel.RAILX,KAMGraphicPanel.LANE5Y);
 		this.moveto = 5;
 		break;
-	    case 6:this.moveTo(KitAssemblyManager.RAILX,KitAssemblyManager.LANE6Y);
+	    case 6:this.moveTo(KAMGraphicPanel.RAILX,KAMGraphicPanel.LANE6Y);
 		this.moveto = 6;
 		break;
-	    case 7:this.moveTo(KitAssemblyManager.RAILX,KitAssemblyManager.LANE7Y);
+	    case 7:this.moveTo(KAMGraphicPanel.RAILX,KAMGraphicPanel.LANE7Y);
 		this.moveto = 7;
 		break;
 	    }
