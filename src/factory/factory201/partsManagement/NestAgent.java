@@ -1,7 +1,7 @@
 package factory.factory201.partsManagement;
 
-import factory.Nest;
-import factory.Part;
+import factory.general.Nest;
+import factory.general.Part;
 import factory.factory201.feederManagement.LaneAgent;
 import factory.factory201.kitManagement.CameraAgent;
 import java.util.ArrayList;

@@ -2,8 +2,8 @@ package factory.factory201.partsManagement;
 
 import agent.Agent;
 import factory.ConfigFile;
-import factory.Kit;
-import factory.Part;
+import factory.general.Kit;
+import factory.general.Part;
 import factory.factory201.kitManagement.KitRobotAgent;
 import java.util.ArrayList;
 import java.util.Collections;

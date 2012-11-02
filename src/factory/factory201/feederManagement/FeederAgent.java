@@ -4,7 +4,7 @@ import factory.factory201.interfaces.Feeder;
 import factory.factory201.interfaces.Lane;
 import factory.factory201.interfaces.Gantry;
 import agent.Agent;
-import factory.Part;
+import factory.general.Part;
 import java.util.*;
 
 /**
