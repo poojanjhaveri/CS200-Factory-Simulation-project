@@ -1,10 +1,10 @@
-package factory.partsManagement;
+package factory.factory201.partsManagement;
 
 import agent.Agent;
 import factory.ConfigFile;
 import factory.Kit;
 import factory.Part;
-import factory.kitManagement.KitRobotAgent;
+import factory.factory201.kitManagement.KitRobotAgent;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -118,7 +118,7 @@ public class PartsAgent extends Agent {
     }
 
     private void giveKitToKitAgent() {
-        kitagent.msgKitIsComplete(new Kit());
+        kitagent.msgKitIsFull(new Kit());
     }
 
     private void pickUpPart(Part p, int g) {

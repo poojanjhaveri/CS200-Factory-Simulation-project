@@ -1,8 +1,9 @@
-package factory.kitManagement;
+package factory.factory201.kitManagement;
 
 import agent.Agent;
 import factory.Kit;
-import factory.interfaces.Conveyor;
+import factory.factory201.interfaces.Conveyor;
+import factory.factory201.kitManagement.KitRobotAgent;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -30,7 +31,12 @@ public class ConveyorAgent extends Agent implements Conveyor {
     private Timer removeKits = new Timer(1000, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent ae) {
-            kits.remove(0);
+            for(int i = 0; i < kits.size(); i++) {
+                if(kits.get(i).status == Kit.Status.verified) {
+                    kits.remove(i);
+                    break;
+                }
+            }
         }
     });
     
@@ -87,7 +93,6 @@ public class ConveyorAgent extends Agent implements Conveyor {
      * kit.
      */
     private void giveEmptyKit() {
-//        DoGiveEmptyKit();
 //        Location loc = kits.get(0).getLocation();
 //        kitRobotAgent.msgHereIsKit(loc);
         stateChanged();
@@ -98,7 +103,6 @@ public class ConveyorAgent extends Agent implements Conveyor {
      * eventually be taken out of the kitting cell).
      */
     private void acceptVerifiedKit() {
-//        DoAcceptVerifiedKit();
         kits.add(tempKit);
         stateChanged();
     }

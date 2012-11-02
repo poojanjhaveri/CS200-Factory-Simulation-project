@@ -1,8 +1,10 @@
-package factory.feederManagement;
+package factory.factory201.feederManagement;
 
+import factory.factory201.interfaces.Feeder;
+import factory.factory201.interfaces.Lane;
+import factory.factory201.interfaces.Gantry;
 import agent.Agent;
 import factory.Part;
-import factory.interfaces.*;
 import java.util.*;
 
 /**
