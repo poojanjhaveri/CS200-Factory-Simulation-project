@@ -26,7 +26,7 @@ public class GUIKitRobot extends GUIRobot{
     {
         //this is actually set in the KAMGraphicsPanel
 	super(KAMGraphicPanel.ROBOT_INITIAL_X,KAMGraphicPanel.ROBOT_INITIAL_Y,GUIKitRobot.IMAGE_PAGE);
-	this.kit = null;
+	//this.kit = null;
 
     }
 
