@@ -1,3 +1,4 @@
+package factory.factory200.laneManager;
 import java.awt.BorderLayout;
 import javax.swing.JFrame;
 

@@ -1,3 +1,4 @@
+package factory.factory200.laneManager;
 import java.util.ArrayList;
 /**
  * This class contains all data for nests. Lane agent and lane manager use these data to process.

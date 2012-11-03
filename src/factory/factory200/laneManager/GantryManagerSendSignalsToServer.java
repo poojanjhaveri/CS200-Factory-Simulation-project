@@ -1,3 +1,4 @@
+package factory.factory200.laneManager;
 public class GantryManagerSendSignalsToServer {
 
 	private GantryManagerApp app;

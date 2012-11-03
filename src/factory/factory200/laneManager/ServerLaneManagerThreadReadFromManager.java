@@ -1,3 +1,4 @@
+package factory.factory200.laneManager;
 /**
  * Signal from server : nest number + '%Part To Nest%' + part number
  * When a part reaches to a nest when the nest is not full, this class put the new part into 'parts' ArrayList in 'ServerLaneManagerThreadNest' class. 
