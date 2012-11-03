@@ -5,14 +5,17 @@ DoInspectNest(int nestNum) {
 	- the camera should move to on top of the nest and "take a picture"
 }
 
+//need a DoXXX command for taking a picture of the finished kit on kit stand
+
 KIT ROBOT AGENT:
 
 DoRemoveVerifiedKit(kit k) {
 	- the kit k should be verified and ready to be put on the conveyor
 	- the kit robot agent should pick up the kit and put it on the conveyor
-}
+} //need a separate DoXXX command to move the kit in the spot where the picture can be taken
 
 DoGetEmptyKit() {
 	- the kit robot agent should get the empty kit from the conveyor
 }
+
 
