@@ -28,8 +28,8 @@ public class Drawable {
     }
     public void setRotation(Double in)
     {
-	while(in >= 360)in -= 360;
-	this.rotation = in;
+        while(in >= 360)in -= 360;
+        this.rotation = in;
     }
     public Coordinate getCoordinate()
     {

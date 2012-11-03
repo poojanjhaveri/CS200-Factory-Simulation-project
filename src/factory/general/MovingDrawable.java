@@ -17,11 +17,11 @@ public class MovingDrawable extends Drawable {
     private Boolean moving;///<whether or not the drawable is currently moving @deprecated
 
     /**
-Instantiate a MovingDrawable with position, rotation, and image
-@param x starting x-coordinate
-@param y starting y-coordinate
-@param a starting rotation
-@param i image file name
+    Instantiate a MovingDrawable with position, rotation, and image
+    @param x starting x-coordinate
+    @param y starting y-coordinate
+    @param a starting rotation
+    @param i image file name
      */
     public MovingDrawable(Integer x, Integer y, Double a, String i)
     {
@@ -46,7 +46,7 @@ Instantiate a MovingDrawable with position, rotation, and image
     {
         this.moveToX = x;
         this.moveToY = y;
-	this.moving = true;
+        this.moving = true;
     }
     /**
     @brief sets the next angle to rotate to for the drawable
@@ -87,30 +87,30 @@ Instantiate a MovingDrawable with position, rotation, and image
             this.rotation=this.rotateto;
         } else
         {
-	    Double i = (this.rotateto-this.rotation);
-	    if( i < 0){
-		if(360-Math.abs(i) >= 180)
-		    {
-			this.setRotation(this.rotation-this.rotationSpeed);
-		    }
-		else {
-		    this.setRotation(this.rotation+this.rotationSpeed);
-		}
-	    }else{
-	if(360-Math.abs(i) >= 180)
-		    {
-			this.setRotation(this.rotation+this.rotationSpeed);
-		    }
-		else {
-		    this.setRotation(this.rotation-this.rotationSpeed);
-		}
-	
-	    }
+            Double i = (this.rotateto-this.rotation);
+            if( i < 0) {
+                if(360-Math.abs(i) >= 180)
+                {
+                    this.setRotation(this.rotation-this.rotationSpeed);
+                }
+                else {
+                    this.setRotation(this.rotation+this.rotationSpeed);
+                }
+            } else {
+                if(360-Math.abs(i) >= 180)
+                {
+                    this.setRotation(this.rotation+this.rotationSpeed);
+                }
+                else {
+                    this.setRotation(this.rotation-this.rotationSpeed);
+                }
 
-	    //	    this.setRotation( ((Math.abs(360-(this.rotateto-this.rotation))) >= 180 ? )this.rotation-this.rotationSpeed:this.rotation+this.rotationSpeed);
+            }
+
+            //	    this.setRotation( ((Math.abs(360-(this.rotateto-this.rotation))) >= 180 ? )this.rotation-this.rotationSpeed:this.rotation+this.rotationSpeed);
 
 
-		//this.setRotation((this.rotateto-this.rotation > this.rotation + Math.abs(this.rotateto-360))?this.rotation-this.rotationSpeed:this.rotation+this.rotationSpeed);
+            //this.setRotation((this.rotateto-this.rotation > this.rotation + Math.abs(this.rotateto-360))?this.rotation-this.rotationSpeed:this.rotation+this.rotationSpeed);
             //this.setRotation((this.rotation > this.rotateto && Math.abs(this.rotation - this.rotateto) < 180)?this.rotation-this.rotationSpeed:this.rotation+this.rotationSpeed);
             /*
                 if(this.rotation > 180)
@@ -124,25 +124,25 @@ Instantiate a MovingDrawable with position, rotation, and image
             while(this.rotation >= 360) {
                 this.rotation -= 360;
             }
-	    if(this.rotation < 0)
-		{
-		    this.rotation += 360;
-		}
+            if(this.rotation < 0)
+            {
+                this.rotation += 360;
+            }
         }
     }
     /**
-@brief halts the drawable on the spot
+    @brief halts the drawable on the spot
      */
-    public void halt(){
-	this.moveToX = this.cords.getX();
-	this.moveToY = this.cords.getY();
+    public void halt() {
+        this.moveToX = this.cords.getX();
+        this.moveToY = this.cords.getY();
     }
     /**
-@brief whether or not the moving drawable is currently moving
+    @brief whether or not the moving drawable is currently moving
      */
     public Boolean moving()
     {
-	return (this.moveToX == this.cords.getX() && this.moveToY == this.cords.getY());   
+        return (this.moveToX == this.cords.getX() && this.moveToY == this.cords.getY());
     }
     /**
     tostring
@@ -200,7 +200,7 @@ Instantiate a MovingDrawable with position, rotation, and image
             System.out.println(robo);
         }
         System.out.println("------->"+((robo.getRotation() == 270)?"Pass":"FAILED"));
-  System.out.println("Turning to 359");
+        System.out.println("Turning to 359");
         robo.turnTo(359.0);
         for(int i =0 ; i != 20; i++)
         {
