@@ -1,3 +1,4 @@
+package factory.factory200.laneManager;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;

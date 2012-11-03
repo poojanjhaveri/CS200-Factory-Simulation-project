@@ -1,8 +1,11 @@
+package factory.factory200.laneManager;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.Timer;
+
 
 /**
  * For V0, there is no server requirement, but this platform will be converted into server for a later version assignment.
