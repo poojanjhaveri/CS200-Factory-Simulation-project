@@ -33,10 +33,10 @@ public class KAMGraphicPanel extends JPanel {
     public static final Integer RAILX = 0;///<fixed x-coordinate of the rail the parts robot traverses
     public static final Integer PARTSROBOTINITIALX = 0;///<x coordinate for parts robot to spawn in
     public static final Integer PARTSROBOTINITIALY = 0;///<y coordinate for parts robot to spawn in
-    private GUIPartRobot kitter;///<declares an object that keeps track of the parts robot animation and graphics
-    //private GuiKitRobot kitbot;///<declares an object that keeps track of the kit robot animation and graphics
-    private KitStand kitstand;///<declares an object that keeps track of what is happening with the kit stand
-    private KitDeliveryStation delivery;///<declares an object that keeps track of the delivery station
+    public GUIPartRobot kitter;///<declares an object that keeps track of the parts robot animation and graphics
+    public GUIKitRobot kitbot;///<declares an object that keeps track of the kit robot animation and graphics
+    public KitStand kitstand;///<declares an object that keeps track of what is happening with the kit stand
+    public KitDeliveryStation delivery;///<declares an object that keeps track of the delivery station
     
     public KAMGraphicPanel(){
         
