@@ -68,6 +68,8 @@ public class ServerGantryManagerThreadGantry {
 		currentLocationY += incrementalY;
 	}
 	
+	
+
 	public void checkDestination(){
 		if( Math.abs(destinationX - currentLocationX) < 3 && Math.abs(destinationY - currentLocationY) < 3 ){
 			arrived = true;

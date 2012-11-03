@@ -7,6 +7,8 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 import factory.general.Server;
@@ -28,21 +30,38 @@ public class Manager extends JFrame {
      * Instance fields
      */
     // Connection fields
-//    private String hostName;
-    // private int portNum;
     private ManagerConnection mcon;
-
     
     // Other fields
     public static Printer p = new Printer();
 
+    public static void main(String[] args) {
+        // EXAMPLE INTERACTION
 
-    public Manager() {
-       this.mcon = new ManagerConnection(this);
-       this.mcon.connect();
-       (new Thread(this.mcon)).start();//create new thread
+        Manager manager = new Manager();
+        
+        // Test a server interaction
+        manager.sendToServer(Message.TEST_SERVER);
+        System.out.println("I'm here and about to exit");
+        for (int i = 0; i != 100; i++) {
+            System.out.println("I'm doing some random stuff");
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Manager.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+        // When a manager is about to exit, tell the server!
+        manager.sendToServer(Message.CLIENT_EXITED);
     }
 
+    public Manager() {
+        // On instantiation of a major, connect to the server
+        this.mcon = new ManagerConnection(this);
+        this.mcon.connect();
+        (new Thread(this.mcon)).start(); // create new thread with this connection
+    }
 
     /**
      * @brief send a message to the server

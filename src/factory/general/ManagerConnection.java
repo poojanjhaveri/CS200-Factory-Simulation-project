@@ -11,12 +11,12 @@ import factory.general.Server;
 import factory.general.Printer;
 
 /**
-A standard issue to all classes that extend Manager. All server interactions are done by this class. Runs on its own thread so nonblocking.
-@brief connection to server from manager
-@author YiWei Roy Zheng, David Zhang
-@version 0.1
+ * A standard issue to all classes that extend Manager. All server interactions are done by this class. Runs on its own thread so nonblocking.
+ * @brief connection to server from manager
+ * @author YiWei Roy Zheng, David Zhang
+ * @version 0.1
  */
-public class ManagerConnection implements Runnable{
+public class ManagerConnection implements Runnable {
 
     private Manager mgr;///<reference to parent
     private PrintWriter out;///<data out
@@ -25,16 +25,17 @@ public class ManagerConnection implements Runnable{
 
     private static final Printer p = new Printer();
     
-    public ManagerConnection(Manager ref)
-    {
+    public ManagerConnection(Manager ref) {
+        p.println("ManagerConnection created");
         socket = null;
         out = null;
         in = null;
-	this.mgr = ref;
-	if(ref == null)
-	    System.out.println("ManagerConnection initialized with a null Manager object. This is bad. Fix it!");
+        this.mgr = ref;
+        if (ref == null)
+           System.out.println("ManagerConnection initialized with a null Manager object. This is bad. Fix it!");
     }
-/**
+    
+    /**
      * @brief attempts to connect to the server
      */
     public void connect() {
@@ -61,19 +62,26 @@ public class ManagerConnection implements Runnable{
         System.out.println("Done connecting");
     }
 
-    public void run()
-    {
-	this.listenToServer();
+    /**
+     * @brief continually listens to the server
+     * @param msg - the message to send. Append ":"+whateverInfoYouWant to send
+     * specific parameters.
+     */
+    public void run() {
+        while (true) {
+            this.listenToServer();
+        }
     }
-  /**
+    
+    /**
      * @brief send a message to the server
      * @param msg - the message to send. Append ":"+whateverInfoYouWant to send
      * specific parameters.
      */
-    public void out(String o)
-    {
-	this.out.println(o);
+    public void out(String o) {
+       this.out.println(o);
     }
+
     /**
      * @brief listen for a message from the server
      */
