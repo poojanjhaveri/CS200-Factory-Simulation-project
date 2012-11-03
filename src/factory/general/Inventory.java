@@ -1,26 +1,17 @@
 package factory.general;
 
-import java.util.HashMap;
-import java.util.Map;
+//import java.util.HashMap;
+//import java.util.Map;
 
 /**
-Universal class for holding parts. There is no cap to the number of parts allowed
+Universal interface for holding parts.
 @brief holds a set of parts
 @author YiWei Roy Zheng
  */
-public class Inventory {
+public interface Inventory {
 
-    private Map<String, Integer> partInventory = new HashMap<String, Integer>();
-    int threshold;
-
-    public Inventory()
-    {
-
-    }
-
-    public void addPart(Part p)
-    {
-
-    }
+    public void addPart(Part p){}
+    public void clear();
+    public Integer size();
 
 }

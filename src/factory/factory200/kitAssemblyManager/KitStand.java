@@ -15,7 +15,7 @@ import javax.swing.ImageIcon;
  */
 public class KitStand {
 
-    KitRobot kitbot;///<declares a kit robot
+    GUIKitRobot kitbot;///<declares a kit robot
     GUIPartRobot kitterbot;///<declares a parts robot
     ImageIcon kitStand;///<keeps an object for the kit stand
     ImageIcon camera;///<keeps an object for the camera

@@ -1,3 +1,4 @@
+package factory.factory200.laneManager;
 /**
  * This class contains all data for lanes. Lane agent and lane manager use these data to process.
  * 

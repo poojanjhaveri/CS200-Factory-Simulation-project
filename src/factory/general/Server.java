@@ -5,7 +5,8 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * @brief This class is critical to the integration of GUI classes, agents, etc.
@@ -13,13 +14,9 @@ import java.util.Scanner;
  * of agents and calls their methods appropriately based on received messages
  * from clients. So, this class runs a loop that constantly checks for new
  * clients and creates a new thread for each.
- * @author David Zhang
- *
+ * @author David Zhang, YiWei Roy Zheng
  */
-// Status: Just finished matching my serverclientpractice's Server
 public class Server {
-
-
     /**
      * Instance fields
      */
@@ -31,11 +28,11 @@ public class Server {
 //    private FeederAgent feederAgent;
 //    private GantryAgent gantryAgent;
 //    private LaneAgent laneAgent;
-    // Agents
-//	private FeederAgent feederAgent; 
+
     // Connection fields
     private ServerSocket ss = null;
     private Socket s = null;
+    private HandleAManager hac;
 
     public static void main(String[] args) {
 //        int portNum = 31415;
@@ -50,6 +47,15 @@ public class Server {
 //        }
 
         Server server = new Server(PORT_NUMBER);
+        try {
+            for(int i = 0; i!= 100; i++){
+            Thread.sleep(3000);
+            server.debug();
+        }
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 
     /**
@@ -59,9 +65,10 @@ public class Server {
      */
     public Server(int portNumber) {
         numClients = 0; // initial num clients is 0
-        p.println("Port number: " + portNumber);
+        System.out.println("Port number: " + portNumber);
         try {
             ss = new ServerSocket(portNumber);
+            System.out.println("Server started; waiting for clients");
         } catch (Exception e) {
             e.printStackTrace();
             System.exit(0);
@@ -70,16 +77,21 @@ public class Server {
         while (true) {
             // Continuously check for a new client for which to create a thread
             try {
+                // ***TODO: move this to a separate thread for each client***
                 s = ss.accept(); // Wait for a client (program halts here until connection occurs)
                 numClients++;
                 p.println("num clients: " + numClients);
-                HandleAManager hac = new HandleAManager(s);
+                this.hac = new HandleAManager(s);
                 new Thread(hac).start(); // Create the thread
             } catch (Exception e) {
                 System.out.println("got an exception" + e.getMessage());
             }
             System.out.println("A client has connected");
         }
+    }
+
+    public void debug() {
+        hac.debugMessage();
     }
 
     /**
@@ -98,6 +110,11 @@ public class Server {
             mySocket = s;
         }
 
+        public void debugMessage() {
+            System.out.println("Sending debug message...");
+            pw.println(Message.TEST_CLIENT);
+        }
+
         // Key method of Runnable; when this method ends, the thread stops
         public void run() {
             try {
@@ -111,14 +128,18 @@ public class Server {
 
             // This thread loops forever to receive a client message and echo it back
             while (running) {
+                String message = null;
                 try {
                     // Listen for interaction via protocol
-                    String message = br.readLine();
+                    message = br.readLine();
+                    if (message == null)
+                        throw new Exception("A manager class must do manager.sendToServer(Message.CLIENT_EXITED);");
+
                     processMessage(message);
                     p.println("Processed message in client thread");
                 } catch (Exception e) {
-                    p.print("Caught: ");
-                    e.printStackTrace();
+                    p.print("Caught: "+message);
+                    // e.printStackTrace();
                 }
             }
         }
@@ -132,6 +153,7 @@ public class Server {
             // Decide action based on message from client
             if (msg.contains(Message.TEST_SERVER)) {
                 System.out.println("Server test passed. Testing client...");
+
                 pw.println(Message.TEST_CLIENT);
             } else if (msg.contains(Message.CLIENT_EXITED)) {
                 stopThread();
