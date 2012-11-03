@@ -20,7 +20,7 @@ import javax.swing.border.EmptyBorder;
  * @author David Zhang, Jorge
  */
 public class PartsManager extends Manager {
-        // TODO: NEED GUIPart.java class in partsManager package
+	// TODO: NEED GUIPart.java class in partsManager package
 	private JPanel contentPane;
 	private JLabel lblPartsManager;
 	private JTabbedPane tabbedPane;
