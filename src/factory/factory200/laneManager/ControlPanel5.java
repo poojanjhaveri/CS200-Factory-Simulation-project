@@ -1,4 +1,5 @@
 package factory.factory200.laneManager;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -11,6 +12,10 @@ import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
+/**
+ * @brief Control Panel For Gantry Robot
+ * @author Dongyoung Jung
+ */
 public class ControlPanel5 extends JPanel implements ActionListener{
 	
 	private ServerForAgentGantry agentGantry;
@@ -62,6 +67,9 @@ public class ControlPanel5 extends JPanel implements ActionListener{
 		add(b5);
 	}
 	
+	/**
+	 * @brief Signal To Server( In V0, it is platform )
+	 */
 	public void actionPerformed(ActionEvent ae){
 		if( ae.getSource() == b1 ){
 			chosenFeeder = feederList[ feederNum.getSelectedIndex() ] - 1;

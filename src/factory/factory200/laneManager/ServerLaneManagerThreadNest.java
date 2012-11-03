@@ -1,4 +1,5 @@
 package factory.factory200.laneManager;
+
 import java.util.ArrayList;
 /**
  * This class contains all data for nests. Lane agent and lane manager use these data to process.
@@ -12,7 +13,7 @@ public class ServerLaneManagerThreadNest {
 	private String signalToLM = "";	///< Signal to Lane Manager
 	private int nestNum;	///< Nest number
 	private ArrayList<ServerLaneManagerPart> parts = new ArrayList<ServerLaneManagerPart>();	///< Parts on nest
-	
+	private ServerMain serverMain;
 	/**
 	 * Since there are 8 nests, there are 8 instances of this class in class 'ServerForAgentNest'
 	 * 
@@ -20,9 +21,10 @@ public class ServerLaneManagerThreadNest {
 	 * @param nestNum : Nest number
 	 * @param app : Instance of class 'LaneManagerApp'
 	 */
-	public ServerLaneManagerThreadNest( int nestNum, LaneManagerApp app ){
+	public ServerLaneManagerThreadNest( int nestNum, LaneManagerApp app, ServerMain serverMain ){
 		this.nestNum = nestNum;
 		this.app = app;
+		this.serverMain = serverMain;
 	}
 	
 	/**
@@ -61,15 +63,18 @@ public class ServerLaneManagerThreadNest {
 	 * @brief Getter 
 	 * @return the size of ArrayList 'parts' 
 	 */
-	public int getPartQuantityInNest(){
-		return parts.size();
+	public ArrayList<ServerLaneManagerPart> getPartsArrayList(){
+		return parts;
 	}
 	
 	/**
+	 * This removes one part from ArrayList 'parts' on lane.
+	 * 
 	 * @brief A new part addition into ArrayList 'parts'
 	 * @param partNum : number of new part
 	 */
 	public void addPartInNest( int partNum ){
 		parts.add( new ServerLaneManagerPart( partNum ) );
+		serverMain.getForAgentLane().getServerLaneArrayList().get( nestNum ).removePartFromArrayList();
 	}
 }

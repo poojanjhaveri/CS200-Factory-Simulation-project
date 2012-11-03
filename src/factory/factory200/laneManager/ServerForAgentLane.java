@@ -1,4 +1,5 @@
 package factory.factory200.laneManager;
+
 import java.util.ArrayList;
 
 /**
@@ -27,6 +28,7 @@ public class ServerForAgentLane {
 		}
 	}
 	
+	// For Agent ------------------------------------------------------------------------------------------
 	/**
 	 * Agent runs this function to display images on graphics panel.
 	 * 
@@ -36,7 +38,9 @@ public class ServerForAgentLane {
 	public void setSwitchOn( int laneNum ){
 		lanes.get( laneNum ).switchOn();
 	}
+	// ---------------------------------------------------------------------------------------------------------
 	
+	// For Agent ------------------------------------------------------------------------------------------
 	/**
 	 * Agent runs this function to display images on graphics panel.
 	 * 
@@ -46,7 +50,9 @@ public class ServerForAgentLane {
 	public void setSwitchOff( int laneNum ){
 		lanes.get( laneNum ).switchOff();
 	}
+	// ---------------------------------------------------------------------------------------------------------
 	
+	// For Agent ------------------------------------------------------------------------------------------
 	/**
 	 * Agent runs this function to display images on graphics panel.
 	 * 
@@ -56,7 +62,9 @@ public class ServerForAgentLane {
 	public void setVibrationAmplitudeStrong( int laneNum ){
 		lanes.get( laneNum ).setVibrationAmplitudeStrong();
 	}
+	// ---------------------------------------------------------------------------------------------------------
 	
+	// For Agent ------------------------------------------------------------------------------------------
 	/**
 	 * Agent runs this function to display images on graphics panel.
 	 * 
@@ -66,7 +74,9 @@ public class ServerForAgentLane {
 	public void setVibrationAmplitudeNormal( int laneNum ){
 		lanes.get( laneNum ).setVibrationAmplitudeNormal();
 	}
-
+	// ---------------------------------------------------------------------------------------------------------
+	
+	// For Agent ------------------------------------------------------------------------------------------
 	/**
 	 * Agent runs this function to display images on graphics panel.
 	 * 
@@ -76,6 +86,17 @@ public class ServerForAgentLane {
 	public void setVibrationAmplitudeWeak( int laneNum ){
 		lanes.get( laneNum ).setVibrationAmplitudeWeak();
 	}
+	// ---------------------------------------------------------------------------------------------------------
+	
+	// For Agent ------------------------------------------------------------------------------------------
+	/**
+	 * @brief Getter( Integration with agent )
+	 * @return ArrayList 'lanes'
+	 */
+	public ArrayList<ServerLaneManagerThreadLane> getServerLaneArrayList(){
+		return lanes;
+	}
+	// ---------------------------------------------------------------------------------------------------------
 	
 	/**
 	 * This controls the signals from server. 

@@ -1,4 +1,5 @@
 package factory.factory200.laneManager;
+
 import java.util.ArrayList;
 
 /**
@@ -27,6 +28,7 @@ public class ServerForAgentNestCamera {
 		}
 	}
 	
+	// For Agent ------------------------------------------------------------------------------------------
 	/**
 	 * Agent runs this function to display images on graphics panel.
 	 * 
@@ -36,4 +38,5 @@ public class ServerForAgentNestCamera {
 	public void cameraShoot( int nestCameraNum ){
 		nestCameras.get( nestCameraNum ).cameraShoot();
 	}
+	// ---------------------------------------------------------------------------------------------------------
 }

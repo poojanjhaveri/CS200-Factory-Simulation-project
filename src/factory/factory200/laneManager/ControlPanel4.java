@@ -1,4 +1,5 @@
 package factory.factory200.laneManager;
+
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,6 +9,10 @@ import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 
+/**
+ * @brief Control Panel For Camera
+ * @author Dongyoung Jung
+ */
 public class ControlPanel4 extends JPanel implements ActionListener{
 	
 	private ServerForAgentNestCamera agentNestCamera;
@@ -27,6 +32,9 @@ public class ControlPanel4 extends JPanel implements ActionListener{
 		add(button);
 	}
 	
+	/**
+	 * @brief Signal To Server( In V0, it is platform )
+	 */
 	public void actionPerformed(ActionEvent ae){
 		chosenCamera = cameraList[ cameraNum.getSelectedIndex() ] - 1;
 		

@@ -1,8 +1,9 @@
 package factory.factory200.laneManager;
+
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-//Bins class
+
 public class GantryManagerBinWithParts extends JLabel{
 
 	private int binNum;
@@ -15,7 +16,6 @@ public class GantryManagerBinWithParts extends JLabel{
 	private static ImageIcon binBoxImage6 = new ImageIcon(".//pics//binBox7.jpg");
 	private static ImageIcon binBoxImage7 = new ImageIcon(".//pics//binBox8.jpg");
 	
-	//GantryManagerBinWithParts constructor with coordinates parameters and binNumber
 	public GantryManagerBinWithParts( int xCoor, int yCoor, int binNum ){
 		this.binNum = binNum;
 		

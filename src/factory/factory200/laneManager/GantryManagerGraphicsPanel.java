@@ -1,4 +1,5 @@
 package factory.factory200.laneManager;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.util.ArrayList;
@@ -18,8 +19,7 @@ public class GantryManagerGraphicsPanel extends JPanel {
 	
 	// Robot
 	private GantryManagerRobot robot;
-	
-	//constructor, passes in GantryManagerApp
+		
 	public GantryManagerGraphicsPanel(GantryManagerApp app){
 		this.app = app;
 		setBorder( new LineBorder( Color.red ));
@@ -37,7 +37,6 @@ public class GantryManagerGraphicsPanel extends JPanel {
 		add(robot);
 	}
 	
-	//getter of gantry robot
 	public GantryManagerRobot getRobot(){
 		return robot;
 	}

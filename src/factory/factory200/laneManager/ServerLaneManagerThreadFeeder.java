@@ -1,4 +1,5 @@
 package factory.factory200.laneManager;
+
 import java.util.ArrayList;
 /**
  * This class contains all data for feeders. Lane agent and lane manager use these data to process.
@@ -15,7 +16,8 @@ public class ServerLaneManagerThreadFeeder {
 	private Boolean feedPartsSwitchOnOff = false;	///< Feeder Switch
 	private Boolean divertToLeftRight = false;	///< Diversion from feeder to lane. True : Divert to right, False : Diver to left
 	private int insertPartFrequency;	///< Frequency of part Insertion to lane
-
+	private ServerMain serverMain;
+	
 	/**
 	 * Since there are 4 feeders, there are 8 instances of this class in class 'ServerForAgentFeeder'
 	 * 
@@ -23,9 +25,10 @@ public class ServerLaneManagerThreadFeeder {
 	 * @param feederNum : feeder number
 	 * @param app : Instance of class 'LaneManagerApp'
 	 */
-	public ServerLaneManagerThreadFeeder( int feederNum, LaneManagerApp app ){		
+	public ServerLaneManagerThreadFeeder( int feederNum, LaneManagerApp app, ServerMain serverMain ){		
 		this.feederNum = feederNum;
 		this.app = app;
+		this.serverMain = serverMain;
 	}
 
 	/**
@@ -201,26 +204,32 @@ public class ServerLaneManagerThreadFeeder {
 	
 	/**
 	 * Note : This is made for testing by controller.
-	 * This function makes the feeder feed onto the left lane just one time.  
+	 * This function makes the feeder feed onto the left lane just one time. 
+	 * This function adds the new part to ArrayList 'parts' on lane. 
 	 * This function sends a signal to Lane Manager.
 	 * Signal : feeder number + "&Feeder&" + "Feed To Left" + part number
 	 * 
 	 * @brief Feed To Left
 	 */
 	public void feedToLeftLane( int partNum ){
+		serverMain.getForAgentLane().getServerLaneArrayList().get( 2*feederNum+1 ).addPartToArrayList(  partNum );
+		
 		signalToLM = feederNum + "&Feeder&" + "Feed To Left" + partNum;
 		app.getNetwork().getVerify().verify(signalToLM);
 	}
 	
 	/**
 	 * Note : This is made for testing by controller.
-	 * This function makes the feeder feed onto the right lane just one time.  
+	 * This function makes the feeder feed onto the right lane just one time. 
+	 * This function adds the new part to ArrayList 'parts' on lane.
 	 * This function sends a signal to Lane Manager.
 	 * Signal : feeder number + "&Feeder&" + "Feed To Right" + part number
 	 * 
 	 * @brief Feed To Right
 	 */
 	public void feedToRightLane( int partNum ){
+		serverMain.getForAgentLane().getServerLaneArrayList().get( 2*feederNum ).addPartToArrayList(  partNum );
+		
 		signalToLM = feederNum + "&Feeder&" + "Feed To Right" + partNum;
 		app.getNetwork().getVerify().verify(signalToLM);
 	}
@@ -257,6 +266,14 @@ public class ServerLaneManagerThreadFeeder {
 	 */	
 	public Boolean getFeedPartsSwitchOnOff(){
 		return feedPartsSwitchOnOff;
+	}
+	
+	/**
+	 * @brief Getter
+	 * @return ArrayList 'parts'
+	 */
+	public ArrayList<ServerLaneManagerPart> getPartsArrayList(){
+		return parts;
 	}
 	
 	/**

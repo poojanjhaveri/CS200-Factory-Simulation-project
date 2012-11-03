@@ -1,4 +1,5 @@
 package factory.factory200.laneManager;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -12,7 +13,10 @@ import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
-// Feeder
+/**
+ * @brief Control Panel For Feeder
+ * @author Dongyoung Jung
+ */
 public class ControlPanel1 extends JPanel implements ActionListener{
 
 	private ServerForAgentFeeder agentFeeder;
@@ -20,7 +24,6 @@ public class ControlPanel1 extends JPanel implements ActionListener{
 	private Integer[] partList = { 1, 2, 3, 4, 5, 6, 7, 8 };
 	private JComboBox feederNum = new JComboBox(feederList);
 	private JComboBox partNum = new JComboBox(partList);
-	private JComboBox partNum2 = new JComboBox(partList);
 	private JTextField partQuantityInput = new JTextField(5);
 	
 	private TitledBorder border = new TitledBorder("Feeder");
@@ -28,7 +31,6 @@ public class ControlPanel1 extends JPanel implements ActionListener{
 	private String message = "";
 	private int chosenFeeder;
 	private int chosenPart;
-	private int chosenPart2;
 	
 	private JPanel tempPanel = new JPanel(new GridLayout(1,3));
 	private JPanel tempPanel2 = new JPanel(new GridLayout(1,3));
@@ -48,13 +50,12 @@ public class ControlPanel1 extends JPanel implements ActionListener{
 	private JButton b12 = new JButton("Divert To Right");
 	private JButton b13 = new JButton("Feed To Left");
 	private JButton b14 = new JButton("Feed To Right");
-	private JButton b15 = new JButton("Dump Bin Box Into Feeder");
-	private JButton b16 = new JButton("Fill in feeder");
+	private JButton b15 = new JButton("Fill in feeder");
 	
 	public ControlPanel1(ServerForAgentFeeder agentFeeder){
 		this.agentFeeder = agentFeeder;
 		setBorder(border);
-		setPreferredSize(new Dimension(480,270));
+		setPreferredSize(new Dimension(480,235));
 		
 		b0.addActionListener(this);
 		b1.addActionListener(this);
@@ -72,29 +73,29 @@ public class ControlPanel1 extends JPanel implements ActionListener{
 		b13.addActionListener(this);
 		b14.addActionListener(this);
 		b15.addActionListener(this);
-		b16.addActionListener(this);
 		
 		tempPanel.add(partNum);
 		tempPanel.add(b13);
 		tempPanel.add(b14);
 		tempPanel.setBorder( new LineBorder( Color.red ));
 		
-		tempPanel2.add(partNum2);
 		tempPanel2.add(partQuantityInput);
-		tempPanel2.add(b16);
+		tempPanel2.add(b15);
 		tempPanel2.setBorder( new LineBorder( Color.red ));
 		
 		add(feederNum);
-		add(b0);add(b1);add(b2);add(b3);add(b4);add(b5);add(b6);add(b7);add(b8);add(b9);add(b10);add(b11);add(b12);add(tempPanel);add(b15);
-		add(tempPanel2);
+		add(b0);add(b1);add(b2);add(b3);add(b4);add(b5);add(b6);add(b7);add(b8);add(b9);add(b10);add(b11);add(b12);
+		add(tempPanel2);add(tempPanel);
 		
 		updateUI();
 	}
 	
+	/**
+	 * @brief Signal To Server( In V0, it is platform )
+	 */
 	public void actionPerformed(ActionEvent ae){
 		chosenFeeder = feederList[ feederNum.getSelectedIndex() ] - 1;
 		chosenPart = partList[ partNum.getSelectedIndex() ] - 1;
-		chosenPart2 = partList[ partNum2.getSelectedIndex() ] - 1;
 		
 		if(ae.getSource() == b0){
 			agentFeeder.setSwitchOn( chosenFeeder );
@@ -157,11 +158,7 @@ public class ControlPanel1 extends JPanel implements ActionListener{
 		}
 		
 		else if(ae.getSource() == b15){
-			agentFeeder.dumpBinBoxIntoFeeder( chosenFeeder );
-		}
-		
-		else if(ae.getSource() == b16){
-			agentFeeder.fillInFeeder( chosenFeeder, chosenPart2, Integer.parseInt( partQuantityInput.getText()) );
+			agentFeeder.fillInFeeder( chosenFeeder, chosenPart, Integer.parseInt( partQuantityInput.getText()) );
 		}
 	}
 }

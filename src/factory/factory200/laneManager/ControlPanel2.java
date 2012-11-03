@@ -1,4 +1,5 @@
 package factory.factory200.laneManager;
+
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,7 +8,10 @@ import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 
-// Lane
+/**
+ * @brief Control Panel For Lane
+ * @author Dongyoung Jung
+ */
 public class ControlPanel2 extends JPanel implements ActionListener{
 
 	private ServerForAgentLane agentLane;
@@ -40,6 +44,9 @@ public class ControlPanel2 extends JPanel implements ActionListener{
 		updateUI();
 	}
 	
+	/**
+	 * @brief Signal To Server( In V0, it is platform )
+	 */
 	public void actionPerformed(ActionEvent ae){
 		chosenLane = laneList[ laneNum.getSelectedIndex() ] - 1;
 		

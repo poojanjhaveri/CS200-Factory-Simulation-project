@@ -1,4 +1,5 @@
 package factory.factory200.laneManager;
+
 /**
  * The signal from server should be checked in class 'LaneManagerVerifySignalsFromServer'
  * Here, the signals get checked again and take an action to Graphics Panel or GUI Panel.

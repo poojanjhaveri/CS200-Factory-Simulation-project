@@ -1,25 +1,29 @@
 package factory.factory200.laneManager;
+
 import java.awt.FlowLayout;
 import javax.swing.JFrame;
 
-public class LaneManagerApp extends JFrame {
+/**
+ * @brief JFrame Setting
+ * @author Dongyoung Jung
+ */
+public class LaneManagerApp extends JFrame{
 	
-	//Network setting
-	private LaneManagerSetNetwork network = new LaneManagerSetNetwork(this);
-	private ServerMain server;
+	private LaneManagerSetNetwork network = new LaneManagerSetNetwork(this);	///< Instance of class 'LaneManagerSetNetwork'
+	private ServerMain server;	///< Instance of class 'ServerMain'
 	
-	// Feeder, Lane, Nest
-	private final int feederCount = 4;
-	private final int laneCount = 8;
-	private final int nestCount = 8;
-	private final int cameraCount = 4;
+	private final int feederCount = 4;	///< Fixed quantity of feeder
+	private final int laneCount = 8;	///< Fixed quantity of lane
+	private final int nestCount = 8;	///< Fixed quantity of net
+	private final int cameraCount = 4;	///< Fixed quantity of camera
 	
-	// GUI panel
-	private LaneManagerGUIPanel panelGUI = new LaneManagerGUIPanel(feederCount, laneCount, nestCount, this);
+	private LaneManagerGUIPanel panelGUI = new LaneManagerGUIPanel(feederCount, laneCount, nestCount, this);	///< Instance of class 'LaneManagerGUIPanel'
+	private LaneManagerGraphicsPanel panelGraphics = new LaneManagerGraphicsPanel(feederCount, laneCount, nestCount, cameraCount, this);	///< Instance of class 'LaneManagerGraphicsPanel'	
 	
-	// Graphics panel
-	private LaneManagerGraphicsPanel panelGraphics = new LaneManagerGraphicsPanel(feederCount, laneCount, nestCount, cameraCount, this);
-	
+	/**
+	 * @brief Constructor
+	 * @param server : Instance of ServerMain
+	 */
 	public LaneManagerApp(ServerMain server){
 		this.server = server;
 		setTitle("Lane Manager");
@@ -37,18 +41,34 @@ public class LaneManagerApp extends JFrame {
 		panelGraphics.updateUI();
 	}
 	
+	/**
+	 * @brief Getter
+	 * @return Instance of class 'LaneManagerGraphicsPanel'
+	 */
 	public LaneManagerGraphicsPanel getGraphicsPanel(){
 		return panelGraphics;
 	}
 	
+	/**
+	 * @brief Getter
+	 * @return Instance of class 'LaneManagerGUIPanel'
+	 */
 	public LaneManagerGUIPanel getGUIPanel(){
 		return panelGUI;
 	}
 	
+	/**
+	 * @brief Getter
+	 * @return Instance of class 'LaneManagerSetNetwork'
+	 */
 	public LaneManagerSetNetwork getNetwork(){
 		return network;
 	}
 	
+	/**
+	 * @brief Getter
+	 * @return Instance of class 'ServerMain'
+	 */
 	public ServerMain getServer(){
 		return server;
 	}

@@ -1,4 +1,5 @@
 package factory.factory200.laneManager;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.util.ArrayList;
@@ -7,30 +8,41 @@ import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.border.LineBorder;
 
+/**
+ * On this JPanel, lanes, nests and feeders are drawn.
+ * 
+ * @brief Graphics Panel
+ * @author Dongyoung Jung
+ */
 public class LaneManagerGraphicsPanel extends JLayeredPane{
 	
-	private LaneManagerApp app;
+	private LaneManagerApp app;	///< Instance of class 'LaneManagerApp'
 	
-	// Lane
-	private LaneManagerLane newLane;
-	private ArrayList<LaneManagerLane> lanes = new ArrayList<LaneManagerLane>();
+	private LaneManagerLane newLane;	///< Instance of class 'LaneManagerLane'
+	private ArrayList<LaneManagerLane> lanes = new ArrayList<LaneManagerLane>();	///< ArrayList of 'LaneManagerLane'
 	
-	// Nest
-	private LaneManagerNest newNest;
-	private ArrayList<LaneManagerNest> nests = new ArrayList<LaneManagerNest>();
+	private LaneManagerNest newNest;	///< Instance of class 'LaneManagerNest'
+	private ArrayList<LaneManagerNest> nests = new ArrayList<LaneManagerNest>();	///< ArrayList of 'LaneManagerNest'
 	
-	// Feeder
-	private LaneManagerFeeder newFeeder;
-	private ArrayList<LaneManagerFeeder> feeders = new ArrayList<LaneManagerFeeder>();
+	private LaneManagerFeeder newFeeder;	///< Instance of class 'LaneManagerFeeder'
+	private ArrayList<LaneManagerFeeder> feeders = new ArrayList<LaneManagerFeeder>();	///< Instance of class 'LaneManagerFeeder'
 	
-	// Camera
-	private JLabel camera;
-	private ArrayList<JLabel> cameras = new ArrayList<JLabel>();
+	private JLabel camera;	///< JLabel instance
+	private ArrayList<JLabel> cameras = new ArrayList<JLabel>();	///< ArrayList of JLabels
 	
-	// Lane, Nest, Feeder, Camera coordinates
-	private final int xCoordinateLane = 50, xCoordinateNest = 15, xCoordinateFeeder = 460, xCoordinateCamera = 0;
-	private int yCoordinateLane = 25, yCoordinateNest = 5, yCoordinateFeeder = 20, yCoordinateCamera = 45;
+	private final int xCoordinateLane = 50, xCoordinateNest = 15, xCoordinateFeeder = 460, xCoordinateCamera = 0;	///< X Coordinate of lane, nest, feeder, and camera
+	private int yCoordinateLane = 25, yCoordinateNest = 5, yCoordinateFeeder = 20, yCoordinateCamera = 45;	///< Y Coordinate of lane, nest, feeder, and camera
 			
+	/**
+	 * This Constructor generates feeders, lanes, nests and cameras and put them into each ArrayList.
+	 * 
+	 * @brief Constructor
+	 * @param feederCount : Quantity of feeder
+	 * @param laneCount : Quantity of lane
+	 * @param nestCount : Quantity of nest
+	 * @param cameraCount : Quantity of camera
+	 * @param app : Instance of class 'LaneManagerApp' 
+	 */
 	public LaneManagerGraphicsPanel(final int feederCount, final int laneCount, final int nestCount, final int cameraCount, LaneManagerApp app){
 		this.app = app;
 		setLayout(null);
@@ -74,18 +86,38 @@ public class LaneManagerGraphicsPanel extends JLayeredPane{
 		}
 	}
 	
+	/**
+	 * @brief Getter
+	 * @param feederNum : feeder number
+	 * @return Size of ArrayList 'feeders'
+	 */
 	public LaneManagerFeeder getFeederArray(int feederNum){
 		return feeders.get(feederNum);
 	}
 	
+	/**
+	 * @brief Getter
+	 * @param laneNum : lane number
+	 * @return Size of ArrayList 'lanes'
+	 */
 	public LaneManagerLane getLaneArray(int laneNum){
 		return lanes.get(laneNum);
 	}
 	
+	/**
+	 * @brief Getter
+	 * @param nestNum : nest number
+	 * @return Size of ArrayList 'nests'
+	 */
 	public LaneManagerNest getNestArray(int nestNum){
 		return nests.get(nestNum);
 	}
 	
+	/**
+	 * @brief Getter
+	 * @param cameraNum : camera number
+	 * @return One camera instance of ArrayList 'cameras'
+	 */
 	public JLabel getCameraArray(int cameraNum){
 		return cameras.get(cameraNum);
 	}

@@ -1,4 +1,5 @@
 package factory.factory200.laneManager;
+
 import java.util.ArrayList;
 
 /**
@@ -13,20 +14,23 @@ public class ServerForAgentFeeder {
 	private final int feederQuantity = 4;	///< Fixed quantity of feeders
 	private ServerLaneManagerThreadFeeder newFeeder;	///< Instance of 'ServerLaneManagerThreadFeeder'
 	private ArrayList<ServerLaneManagerThreadFeeder> feeders = new ArrayList<ServerLaneManagerThreadFeeder>();	///< ArrayList of feeders
+	private ServerMain serverMain;
 	
 	/**
 	 * @brief Feeder generations
 	 * @param app : Instance of 'LaneManagerApp'
 	 */
-	public ServerForAgentFeeder(LaneManagerApp app){
+	public ServerForAgentFeeder(LaneManagerApp app, ServerMain serverMain){
 		this.app = app;
+		this.serverMain = serverMain;
 	
 		for(int newFeederNum=0 ; newFeederNum<feederQuantity ; newFeederNum++){
-			newFeeder = new ServerLaneManagerThreadFeeder( newFeederNum, app );
+			newFeeder = new ServerLaneManagerThreadFeeder( newFeederNum, app, serverMain );
 			feeders.add(newFeeder);
 		}
 	}
 	
+	// For Agent ------------------------------------------------------------------------------------------
 	/**
 	 * Agent runs this function to display images on graphics panel.
 	 * 
@@ -36,7 +40,9 @@ public class ServerForAgentFeeder {
 	public void setSwitchOn( int feederNum ){
 		feeders.get( feederNum ).setSwitchOn();
 	}
+	// ---------------------------------------------------------------------------------------------------------
 	
+	// For Agent ------------------------------------------------------------------------------------------
 	/**
 	 * Agent runs this function to display images on graphics panel.
 	 * 
@@ -46,7 +52,9 @@ public class ServerForAgentFeeder {
 	public void setSwitchOff( int feederNum ){
 		feeders.get( feederNum ).setSwitchOff();
 	}
+	// ---------------------------------------------------------------------------------------------------------
 	
+	// For Agent ------------------------------------------------------------------------------------------
 	/**
 	 * Agent runs this function to display images on graphics panel.
 	 * 
@@ -56,7 +64,9 @@ public class ServerForAgentFeeder {
 	public void setPartLowSensorOn( int feederNum ){
 		feeders.get( feederNum ).setPartLowSensorOn();
 	}
+	// ---------------------------------------------------------------------------------------------------------
 	
+	// For Agent ------------------------------------------------------------------------------------------
 	/**
 	 * Agent runs this function to display images on graphics panel.
 	 * 
@@ -66,7 +76,9 @@ public class ServerForAgentFeeder {
 	public void setPartLowSensorOff( int feederNum ){
 		feeders.get( feederNum ).setPartLowSensorOff();
 	}
+	// ---------------------------------------------------------------------------------------------------------
 	
+	// For Agent ------------------------------------------------------------------------------------------
 	/**
 	 * Agent runs this function to display images on graphics panel.
 	 * 
@@ -76,7 +88,9 @@ public class ServerForAgentFeeder {
 	public void setFeedPartsSwitchOn( int feederNum ){
 		feeders.get( feederNum ).setFeedPartsSwitchOn();
 	}
+	// ---------------------------------------------------------------------------------------------------------
 	
+	// For Agent ------------------------------------------------------------------------------------------
 	/**
 	 * Agent runs this function to display images on graphics panel.
 	 * 
@@ -86,7 +100,9 @@ public class ServerForAgentFeeder {
 	public void setFeedPartsSwitchOff( int feederNum ){
 		feeders.get( feederNum ).setFeedPartsSwitchOff();
 	}
+	// ---------------------------------------------------------------------------------------------------------
 	
+	// For Agent ------------------------------------------------------------------------------------------
 	/**
 	 * Agent runs this function to display images on graphics panel.
 	 * 
@@ -96,7 +112,9 @@ public class ServerForAgentFeeder {
 	public void setPartFedCounterIncrease( int feederNum ){
 		feeders.get( feederNum ).setPartFedCounterIncrease();
 	}
+	// ---------------------------------------------------------------------------------------------------------
 	
+	// For Agent ------------------------------------------------------------------------------------------
 	/**
 	 * Agent runs this function to display images on graphics panel.
 	 * 
@@ -106,7 +124,9 @@ public class ServerForAgentFeeder {
 	public void setRearGateSwitchLower( int feederNum ){
 		feeders.get( feederNum ).setRearGateSwitchLower();
 	}
+	// ---------------------------------------------------------------------------------------------------------
 	
+	// For Agent ------------------------------------------------------------------------------------------
 	/**
 	 * Agent runs this function to display images on graphics panel.
 	 * 
@@ -116,7 +136,9 @@ public class ServerForAgentFeeder {
 	public void setRearGateSwitchRaise( int feederNum ){
 		feeders.get( feederNum ).setRearGateSwitchRaise();
 	}
+	// ---------------------------------------------------------------------------------------------------------
 	
+	// For Agent ------------------------------------------------------------------------------------------
 	/**
 	 * Agent runs this function to display images on graphics panel.
 	 * 
@@ -126,7 +148,9 @@ public class ServerForAgentFeeder {
 	public void setPurgeBinSwitchOn( int feederNum ){
 		feeders.get( feederNum ).setPurgeBinSwitchOn();
 	}
+	// ---------------------------------------------------------------------------------------------------------
 	
+	// For Agent ------------------------------------------------------------------------------------------
 	/**
 	 * Agent runs this function to display images on graphics panel.
 	 * 
@@ -136,7 +160,9 @@ public class ServerForAgentFeeder {
 	public void setPurgeBinSwitchOff( int feederNum ){
 		feeders.get( feederNum ).setPurgeBinSwitchOff();
 	}
+	// ---------------------------------------------------------------------------------------------------------
 	
+	// For Agent ------------------------------------------------------------------------------------------
 	/**
 	 * Agent runs this function to display images on graphics panel.
 	 * 
@@ -146,7 +172,9 @@ public class ServerForAgentFeeder {
 	public void setDiverterSwitchLeft( int feederNum ){
 		feeders.get( feederNum ).setDiverterSwitchLeft();
 	}
+	// ---------------------------------------------------------------------------------------------------------
 	
+	// For Agent ------------------------------------------------------------------------------------------
 	/**
 	 * Agent runs this function to display images on graphics panel.
 	 * 
@@ -156,6 +184,45 @@ public class ServerForAgentFeeder {
 	public void setDiverterSwitchRight( int feederNum ){
 		feeders.get( feederNum ).setDiverterSwitchRight();
 	}
+	// ---------------------------------------------------------------------------------------------------------
+	
+	// For Agent ------------------------------------------------------------------------------------------
+	/**
+	 * Note : Agent runs this function to display images on graphics panel.
+	 * 
+	 * @brief Dump To Feeder( Integration with Agent )
+	 * @param feederNum : feeder number
+	 */
+	public void dumpBinBoxIntoFeeder( int feederNum ){
+		feeders.get( feederNum ).dumpBinBoxIntoFeeder();
+	}
+	// ---------------------------------------------------------------------------------------------------------
+	
+	// For Agent ------------------------------------------------------------------------------------------
+	/**
+	 * Note : Agent runs this function to display images on graphics panel.
+	 * 
+	 * @brief Fill-in feeder( Integration with Agent )
+	 * @param feederNum : feeder number
+	 * @param chosenPart : desired kind of part
+	 * @param partQuantity : desired quantity of part
+	 */
+	public void fillInFeeder( int feederNum, int chosenPart, int partQuantity ){
+		feeders.get( feederNum ).fillInFeeder( chosenPart, partQuantity );
+	}
+	// ---------------------------------------------------------------------------------------------------------
+	
+	// For Agent ------------------------------------------------------------------------------------------
+	/**
+	 * Agent runs this function to get the ArrayList 'parts' in feeder 
+	 * 
+	 * @brief Getter( Integration with agent )
+	 * @param nestNum : nest number
+	 */
+	public ArrayList<ServerLaneManagerPart> getPartsArrayList( int feederNum ){
+		return feeders.get( feederNum ).getPartsArrayList();
+	}
+	// ---------------------------------------------------------------------------------------------------------
 	
 	/**
 	 * Note : This is for testing by controller
@@ -175,28 +242,6 @@ public class ServerForAgentFeeder {
 	 */
 	public void feedToRightLane( int feederNum, int partNum ){
 		feeders.get( feederNum ).feedToRightLane( partNum );
-	}
-	
-	/**
-	 * Note : Agent runs this function to display images on graphics panel.
-	 * 
-	 * @brief Dump To Feeder( Integration with Agent )
-	 * @param feederNum : feeder number
-	 */
-	public void dumpBinBoxIntoFeeder( int feederNum ){
-		feeders.get( feederNum ).dumpBinBoxIntoFeeder();
-	}
-	
-	/**
-	 * Note : Agent runs this function to display images on graphics panel.
-	 * 
-	 * @brief Fill-in feeder( Integration with Agent )
-	 * @param feederNum : feeder number
-	 * @param chosenPart : desired kind of part
-	 * @param partQuantity : desired quantity of part
-	 */
-	public void fillInFeeder( int feederNum, int chosenPart, int partQuantity ){
-		feeders.get( feederNum ).fillInFeeder( chosenPart, partQuantity );
 	}
 	
 	/**

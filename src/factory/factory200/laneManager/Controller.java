@@ -1,7 +1,12 @@
 package factory.factory200.laneManager;
+
 import java.awt.FlowLayout;
 import javax.swing.JFrame;
 
+/**
+ * @brief Control Frame
+ * @author Dongyoung Jung
+ */
 public class Controller extends JFrame {
 	
 	private ServerForAgentFeeder agentFeeder;
@@ -24,7 +29,7 @@ public class Controller extends JFrame {
 		this.agentNestCamera = agentNestCamera;
 		this.agentGantry = agentGantry;
 		
-		setSize(500,770);
+		setSize(500,700);
 		setVisible(true);
 		setLayout(new FlowLayout());
 		setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );	

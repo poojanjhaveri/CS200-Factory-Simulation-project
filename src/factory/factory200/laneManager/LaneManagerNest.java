@@ -1,4 +1,5 @@
 package factory.factory200.laneManager;
+
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
@@ -16,7 +17,7 @@ public class LaneManagerNest extends JLabel{
 	private ArrayList<JLabel> nestCells = new ArrayList<JLabel>();	///< ArrayList of nestcells( Total 8 cells )
 	private ArrayList<ImageIcon> partImages = new ArrayList<ImageIcon>();	///< ArrayList of ImageIcons( To be saved in each cell )
 	private JLabel newNestCell;	///< Instance of JLabel to be saved in ArrayList 'nestCells'
-	private static ImageIcon nestImage = new ImageIcon(".//pics/nest.png");	///< Image of nest
+	private static ImageIcon nestImage = new ImageIcon("nest.png");	///< Image of nest
 	
 	/**
 	 * This function generates 8 cells for one nest.

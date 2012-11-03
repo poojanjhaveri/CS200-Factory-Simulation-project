@@ -1,4 +1,5 @@
 package factory.factory200.laneManager;
+
 import java.util.ArrayList;
 
 public class ServerGantryManagerThreadGantry {
@@ -68,8 +69,6 @@ public class ServerGantryManagerThreadGantry {
 		currentLocationY += incrementalY;
 	}
 	
-	
-
 	public void checkDestination(){
 		if( Math.abs(destinationX - currentLocationX) < 3 && Math.abs(destinationY - currentLocationY) < 3 ){
 			arrived = true;

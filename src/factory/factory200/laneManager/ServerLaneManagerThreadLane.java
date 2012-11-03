@@ -1,4 +1,7 @@
 package factory.factory200.laneManager;
+
+import java.util.ArrayList;
+
 /**
  * This class contains all data for lanes. Lane agent and lane manager use these data to process.
  * 
@@ -11,6 +14,7 @@ public class ServerLaneManagerThreadLane {
 	private String signalToLM = "";	///< Signal to Lane Manager
 	private int laneNum;	///< Lane number
 	private Boolean laneMove = false;	///< Feeder switched on : true, Feeder switched off : false
+	private ArrayList<ServerLaneManagerPart> parts = new ArrayList<ServerLaneManagerPart>();
 	
 	/**
 	 * Since there are 8 lanes, there are 8 instances of this class in class 'ServerForAgentLane'
@@ -96,6 +100,26 @@ public class ServerLaneManagerThreadLane {
 	public void moveLane(){
 		signalToLM = laneNum + "&Lane&" + "MOVE";
 		app.getNetwork().getVerify().verify(signalToLM);
+	}
+	
+	/**
+	 * As feeder feeds a lane, the part is added to ArrayList 'parts' on lane.
+	 * 
+	 * @brief Addition To Lane
+	 * @param newPartNum : new part number
+	 */
+	public void addPartToArrayList( int newPartNum ){
+		parts.add( new ServerLaneManagerPart( newPartNum ) );
+	}
+	
+	/**
+	 * As part moves to nest, the part is removed from ArrayList 'parts' on lane.
+	 * 
+	 * @brief Transfer To Nest
+	 * @param newPartNum : new part number
+	 */
+	public void removePartFromArrayList(){
+		parts.remove(0);
 	}
 	
 	/**

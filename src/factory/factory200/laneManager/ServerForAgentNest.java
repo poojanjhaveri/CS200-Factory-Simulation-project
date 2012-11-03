@@ -1,4 +1,5 @@
 package factory.factory200.laneManager;
+
 import java.util.ArrayList;
 
 /**
@@ -13,20 +14,23 @@ public class ServerForAgentNest {
 	private final int nestQuantity = 8;	///< Fixed quantity of nests
 	private ServerLaneManagerThreadNest newNest;	///< Instance of class 'ServerLaneManagerThreadNest
 	private ArrayList<ServerLaneManagerThreadNest> nests = new ArrayList<ServerLaneManagerThreadNest>();	///< ArrayList of nests
+	private ServerMain serverMain;
 	
 	/**
 	 * @brief Nest generations
 	 * @param app : Instance of 'LaneManagerApp'
 	 */
-	public ServerForAgentNest(LaneManagerApp app){
+	public ServerForAgentNest(LaneManagerApp app, ServerMain serverMain){
 		this.app = app;
+		this.serverMain = serverMain;
 		
 		for(int newNestNum=0 ; newNestNum<nestQuantity ; newNestNum++){
-			newNest = new ServerLaneManagerThreadNest( newNestNum, app );
+			newNest = new ServerLaneManagerThreadNest( newNestNum, app, serverMain );
 			nests.add(newNest);
 		}
 	}
 	
+	// For Agent ------------------------------------------------------------------------------------------
 	/**
 	 * Agent runs this function to display images on graphics panel.
 	 * 
@@ -36,7 +40,9 @@ public class ServerForAgentNest {
 	public void setSwitchUp( int nestNum ){
 		nests.get( nestNum ).setSwitchUp();
 	}
+	// ---------------------------------------------------------------------------------------------------------
 	
+	// For Agent ------------------------------------------------------------------------------------------
 	/**
 	 * Agent runs this function to display images on graphics panel.
 	 * 
@@ -46,16 +52,19 @@ public class ServerForAgentNest {
 	public void setSwitchDown( int nestNum ){
 		nests.get( nestNum ).setSwitchDown();
 	}
+	// ---------------------------------------------------------------------------------------------------------
 	
+	// For Agent ------------------------------------------------------------------------------------------
 	/**
-	 * Agent runs this function to get the quantity of parts in nest 
+	 * Agent runs this function to get the ArrayList 'parts' in nest 
 	 * 
 	 * @brief Getter( Integration with agent )
 	 * @param nestNum : nest number
 	 */
-	public int getPartQuantityNest( int nestNum ){
-		return nests.get( nestNum ).getPartQuantityInNest();
+	public ArrayList<ServerLaneManagerPart> getPartsArrayList( int nestNum ){
+		return nests.get( nestNum ).getPartsArrayList();
 	}
+	// ---------------------------------------------------------------------------------------------------------
 	
 	/**
 	 * @brief Getter

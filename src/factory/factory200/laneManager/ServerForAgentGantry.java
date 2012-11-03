@@ -1,4 +1,5 @@
 package factory.factory200.laneManager;
+
 import java.util.ArrayList;
 
 public class ServerForAgentGantry {
@@ -16,6 +17,7 @@ public class ServerForAgentGantry {
 		gantry.goToFeeder(feederNum);
 	}
 	
+	
 	// For Agent
 	public void goToBin( int binNum ){
 		gantry.goToBin(binNum);
@@ -24,6 +26,11 @@ public class ServerForAgentGantry {
 	// For Agent
 	public void pickUpBin( int binNum ){
 		gantry.pickUpBin(binNum);
+	}
+	
+	// For Agent
+	public Boolean returnArrived(){
+		return gantry.getArrived();
 	}
 	
 	public void putOffBin(){

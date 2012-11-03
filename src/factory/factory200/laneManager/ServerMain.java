@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.Timer;
 
-
 /**
  * For V0, there is no server requirement, but this platform will be converted into server for a later version assignment.
  * 
@@ -32,6 +31,10 @@ class ServerMain extends JFrame{
 	private ThreadTimer threadTimer;	///<Instance of class 'Thread_Timer'
 	private Controller controller;	///<Instance of class 'Controller'
 	
+	// Agent Thread
+	private AgentMain agentMain = new AgentMain(this);	///< Runnable Class for Agent
+	private Thread agentThread = new Thread(agentMain);	///< Thread  for Agent
+		
 	/**
 	 * This class creates a bunch of class instances.
 	 * To run the timer constantly, this class put 'thread_Timer' instance in 'Thread' and start it.
@@ -44,9 +47,9 @@ class ServerMain extends JFrame{
 		gantryApp = new GantryManagerApp(this);
 		
 		// Agent(Lane Manager)
-		agentFeeder = new ServerForAgentFeeder(laneApp); 
+		agentFeeder = new ServerForAgentFeeder(laneApp, this); 
 		agentLane = new ServerForAgentLane(laneApp);
-		agentNest = new ServerForAgentNest(laneApp);
+		agentNest = new ServerForAgentNest(laneApp, this);
 		agentNestCamera = new ServerForAgentNestCamera(laneApp);
 		readFromLaneManager = new ServerLaneManagerThreadReadFromManager(this);
 		
@@ -60,6 +63,9 @@ class ServerMain extends JFrame{
 		
 		// Controller (For Test)
 		controller = new Controller(agentFeeder, agentLane, agentNest, agentNestCamera, agentGantry);
+		
+		// Agent Thread start
+		agentThread.start();
 	}
 	
 	/**
@@ -99,18 +105,63 @@ class ServerMain extends JFrame{
 		}
 	}
 	
-	///< Getter
+	/**
+	 * @brief Getter
+	 * @return Instance of class 'ServerLaneManagerThreadReadFromManager'
+	 */
 	public ServerLaneManagerThreadReadFromManager getReadFromLaneManager(){
 		return readFromLaneManager;
 	}
 	
-	///< Getter
+	/**
+	 * @brief Getter
+	 * @return Instance of class 'ServerGantryManagerThreadReadFromManager'
+	 */
 	public ServerGantryManagerThreadReadFromManager getReadFromGantryManager(){
 		return readFromGantryManager;
 	}
 	
-	///< Getter
-	public ServerForAgentNest getNestAgent(){
+	
+	/**
+	 * @brief Getter
+	 * @return Instance of class 'ServerForAgentLane'
+	 */
+	public ServerForAgentLane getForAgentLane(){
+		return agentLane;
+	}
+	
+	
+	/**
+	 * @brief Getter
+	 * @return Instance of class 'ServerForAgentFeeder'
+	 */
+	public ServerForAgentFeeder getForAgentFeeder(){
+		return agentFeeder;
+	}
+	
+	
+	/**
+	 * @brief Getter
+	 * @return Instance of class 'ServerForAgentNestCamera'
+	 */
+	public ServerForAgentNestCamera getForAgentNestCamera(){
+		return agentNestCamera;
+	}
+	
+	/**
+	 * @brief Getter
+	 * @return Instance of class 'ServerForAgentNest'
+	 */
+	public ServerForAgentNest getForAgentNest(){
 		return agentNest;
+	}
+	
+	
+	/**
+	 * @brief Getter
+	 * @return Instance of class 'ServerForAgentGantry'
+	 */
+	public ServerForAgentGantry getForAgentGantry(){
+		return agentGantry;
 	}
 }

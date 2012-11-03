@@ -1,4 +1,5 @@
 package factory.factory200.laneManager;
+
 /**
  * This class sends a signal to Lane Manager to show that the picture is actually taken.
  * Signal : nest number + "&Camera&" + "Shoot"

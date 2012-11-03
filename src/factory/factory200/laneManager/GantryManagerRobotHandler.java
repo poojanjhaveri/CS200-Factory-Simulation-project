@@ -9,7 +9,6 @@ public class GantryManagerRobotHandler {
 	private int star;
 	private int temp2;
 	
-	//constructor, passes in GantryManagerApp 
 	public GantryManagerRobotHandler(GantryManagerApp app){
 		this.app = app;
 	}

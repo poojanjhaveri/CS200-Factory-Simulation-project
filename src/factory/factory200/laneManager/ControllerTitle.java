@@ -1,4 +1,5 @@
 package factory.factory200.laneManager;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -8,6 +9,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
+/**
+ * @brief Title Panel
+ * @author Dongyoung
+ */
 public class ControllerTitle extends JPanel{
 
 	private JLabel title = new JLabel("Lane&Nest&Feeder Agent Controller", JLabel.CENTER);
