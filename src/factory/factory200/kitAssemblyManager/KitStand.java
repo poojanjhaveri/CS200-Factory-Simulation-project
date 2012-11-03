@@ -1,67 +1,69 @@
 package factory.factory200.kitAssemblyManager;
 
-import factory.general.Coordinate;
-import factory.factory201.interfaces.KitRobot;
-import javax.swing.ImageIcon;
+import java.util.*;
+import javax.swing.*;
+
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
 
 /**
- * The KitStand keeps track of what is on the kit stand Objects that are placed
- * on the kit stand are empty kits, partially full kits, and finished kits the
- * kit stand communicates with the parts robot, kit robot and the camera to see
- * if a kit is full and should be sent off
  *
- * @brief keeps track of what is on the kit stand
- * @author Deepa Broker
+ * @author Deepa
  */
 public class KitStand {
-
-    GUIKitRobot kitbot;///<declares a kit robot
-    GUIPartRobot kitterbot;///<declares a parts robot
-    ImageIcon kitStand;///<keeps an object for the kit stand
-    ImageIcon camera;///<keeps an object for the camera
-
-    /**
-     * checks if a kit is empty
-     */
-    public Boolean isEmpty() {
-        return null;
+    private ImageIcon kitStand;
+    private int x;
+    private int y;
+    ArrayList<KAMKit> kitPositions;
+    
+    
+    public KitStand(){
+        kitStand=new ImageIcon("KAMkitStand.png");
+        kitPositions=new ArrayList<KAMKit>();
+        
     }
 
     /**
-     * when the camera takes a picture, checks if the kit is full of the correct
-     * parts
+     * @return the kitStand
      */
-    public Boolean isCorrect() {
-        return null;
+    public ImageIcon getKitStand() {
+        return kitStand;
     }
 
     /**
-     * positions kit
+     * @param kitStand the kitStand to set
      */
-    public void setKitPos(Coordinate in) {
+    public void setKitStand(ImageIcon kitStand) {
+        this.kitStand = kitStand;
     }
 
     /**
-     * checks where the kit robot is located
+     * @return the x
      */
-    public Coordinate posKitRobot() {
-        return null;
+    public int getX() {
+        return x;
     }
 
     /**
-     * checks where the kitter/part robot is located
+     * @param x the x to set
      */
-    public Coordinate posKitterRobot() {
-        return null;
-    }
-//moves kit to position in front of camera
-
-    public void moveKitCamera(Coordinate in) {
+    public void setX(int x) {
+        this.x = x;
     }
 
     /**
-     * moves finished kit out of the factory
+     * @return the y
      */
-    public void moveKitOut() {
+    public int getY() {
+        return y;
+    }
+
+    /**
+     * @param y the y to set
+     */
+    public void setY(int y) {
+        this.y = y;
     }
 }
