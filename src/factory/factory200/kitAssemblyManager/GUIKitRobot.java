@@ -1,7 +1,7 @@
 package factory.factory200.kitAssemblyManager;
 
 import factory.general.GUIRobot;
-
+import java.util.LinkedList;
 /**
  * The GuiKitRobot handles the moving of kits in the kit assembly area. It takes
  * orders from the Kit Assembly Manager. The GuiKitRobot must also communicate
@@ -10,13 +10,28 @@ import factory.general.GUIRobot;
  * base and extending the arm, but is incapable of moving from its base. <img
  * src="../img/image04.png" alt="idle GuiKitRobot"/> <img
  * src="../img/image10.png" alt="GuiKitRobot with active kit"/>
+
+A queue of orders
+0 - pick up kit from conveyer
+1 - 
+2 - 
+3 - 
+4 - 
+5 - 
+...
+10 - move to conveyer
+11 - move to kit1
+12 - move to kit2
+13 - move to kit3
+
  *
  * @brief Robot that moves kits in the KitWorkingArea
  * @author YiWei Roy Zheng
  */
 public class GUIKitRobot extends GUIRobot {
     public static final String IMAGE_PAGE = "pics/kitrobot.png";
-
+    /**
+     */
     KAMKit kit;///<null if not carrying a kit, otherwise contains a reference the kit its carrying
     /**
 @brief creates the GUIKitRobot from the constants specified in KAMGraphicPanel
@@ -78,5 +93,9 @@ this.setConstants(KAMGraphicPanel.KITROBOT_VELOCITYX, KAMGraphicPanel.KITROBOT_V
     public void dropKit()
     {
         this.kit = null;
+    }
+    public Integer popOrder()
+    {
+	return ((this.isEmpty())?null:this.orders.poll());
     }
 }
