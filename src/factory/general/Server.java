@@ -23,6 +23,7 @@ public class Server {
      */
     public static final Integer PORT_NUMBER = 31415;    
     public static final String HOST_NAME = "localhost";
+    private static boolean SHOULD_DEBUG = false;
     private Printer p = new Printer();
     private int numClients;
 //    private FeederAgent feederAgent;
@@ -34,26 +35,9 @@ public class Server {
     private HandleAManager hac;
     
     public static void main(String[] args) {
-//        int portNum = 31415;
-//        Scanner in = new Scanner(System.in);
-//        System.out.print("Enter port number (default: 31415): ");
-//        try {
-//            String nextLine = in.nextLine();
-//            portNum = Integer.parseInt(nextLine);
-//        } catch (Exception e) {
-//            System.out.println("Using default port number");
-//            portNum = 31415;
-//        }
-
         Server server = new Server(PORT_NUMBER);
-        
-        try {
-            for (int i = 0; i != 100; i++) {
-                Thread.sleep(3000);
-                server.debug();
-            }
-        } catch (InterruptedException ex) {
-            Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
+        if (SHOULD_DEBUG) {
+            server.debug();
         }
         
     }
@@ -74,7 +58,7 @@ public class Server {
             System.exit(0);
         }
         
-        while (true) { // TODO: move ss.accept into run of each HandleAManager; create 6 HandleAManager classes right off the bat
+        do {
             // Continuously check for a new client for which to create a thread
             try {
                 s = ss.accept(); // Wait for a client (program halts here until connection occurs)
@@ -86,11 +70,21 @@ public class Server {
                 System.out.println("got an exception" + e.getMessage());
             }
             System.out.println("A client has connected");
-        }
+        } while (numClients != 0);
     }
     
+    /**
+     * @brief method to help debug
+     */
     public void debug() {
-        hac.debugMessage();
+        try {
+            for (int i = 0; i != 100; i++) {
+                Thread.sleep(3000);
+                hac.debugMessage();
+            }
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -140,8 +134,6 @@ public class Server {
                 } catch (Exception e) {
                     p.print("Client exited prematurely; shutting down");
                     System.exit(0);
-//                    p.print("Caught: "+message);
-                    // e.printStackTrace();
                 }
             }
         }

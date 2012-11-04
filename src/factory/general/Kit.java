@@ -9,8 +9,8 @@ package factory.general;
  */
 public class Kit {
 
+    /** CS 201 stuff */
     public enum Status {
-
         empty, full, verified, error
     };
     public static enum KittingStandNumber {
@@ -37,4 +37,6 @@ public class Kit {
     public Kit(int loc) {
         
     }
+    
+    /** End CS 201 stuff*/
 }
