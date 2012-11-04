@@ -15,7 +15,7 @@ import factory.general.GUIRobot;
  * @brief Robot that creates kits using parts from the lane nests
  * @author YiWei Roy Zheng
  */
-public class GUIPartRobot extends GUIRobot{
+public class GUIPartRobot extends GUIRobot {
 
 
     PartsRobotInventory parts;///<current parts on the GUIPartRobot, en route to the Kit
@@ -25,45 +25,53 @@ public class GUIPartRobot extends GUIRobot{
     public GUIPartRobot()
     {
         // variables will be set in the KAMGraphicsPanel
-	super(KAMGraphicPanel.PARTSROBOTINITIALX,KAMGraphicPanel.PARTSROBOTINITIALY,"partsrobot.png");
-	this.busy = false;
-	this.parts = new PartsRobotInventory();
-	this.moveto = 0;
-this.moveTo(KAMGraphicPanel.RAILX,KAMGraphicPanel.LANE0Y);
+        super(KAMGraphicPanel.PARTSROBOTINITIALX,KAMGraphicPanel.PARTSROBOTINITIALY,"partsrobot.png");
+        this.busy = false;
+        this.parts = new PartsRobotInventory();
+        this.moveto = 0;
+        this.moveTo(KAMGraphicPanel.RAILX,KAMGraphicPanel.LANE0Y);
     }
 
     /**
-sets a new lane destination coordinate for GUIPartRobot, the passed Integer specifies which lane to head to
+    sets a new lane destination coordinate for GUIPartRobot, the passed Integer specifies which lane to head to
     */
     public void moveToLane(Integer l) {
-	switch(l)
-	    {
-	    case 0:this.moveTo(KAMGraphicPanel.RAILX,KAMGraphicPanel.LANE0Y);
-		this.moveto = 0;
-		break;
-	    case 1:this.moveTo(KAMGraphicPanel.RAILX,KAMGraphicPanel.LANE1Y);
-		this.moveto = 1;
-		break;
-	    case 2:this.moveTo(KAMGraphicPanel.RAILX,KAMGraphicPanel.LANE2Y);
-		this.moveto = 2;
-		break;
-	    case 3:this.moveTo(KAMGraphicPanel.RAILX,KAMGraphicPanel.LANE3Y);
-		this.moveto = 3;
-		break;
-	    case 4:this.moveTo(KAMGraphicPanel.RAILX,KAMGraphicPanel.LANE4Y);
-		this.moveto = 4;
-		break;
-	    case 5:this.moveTo(KAMGraphicPanel.RAILX,KAMGraphicPanel.LANE5Y);
-		this.moveto = 5;
-		break;
-	    case 6:this.moveTo(KAMGraphicPanel.RAILX,KAMGraphicPanel.LANE6Y);
-		this.moveto = 6;
-		break;
-	    case 7:this.moveTo(KAMGraphicPanel.RAILX,KAMGraphicPanel.LANE7Y);
-		this.moveto = 7;
-		break;
-	    }
-}
+        switch(l)
+        {
+        case 0:
+            this.moveTo(KAMGraphicPanel.RAILX,KAMGraphicPanel.LANE0Y);
+            this.moveto = 0;
+            break;
+        case 1:
+            this.moveTo(KAMGraphicPanel.RAILX,KAMGraphicPanel.LANE1Y);
+            this.moveto = 1;
+            break;
+        case 2:
+            this.moveTo(KAMGraphicPanel.RAILX,KAMGraphicPanel.LANE2Y);
+            this.moveto = 2;
+            break;
+        case 3:
+            this.moveTo(KAMGraphicPanel.RAILX,KAMGraphicPanel.LANE3Y);
+            this.moveto = 3;
+            break;
+        case 4:
+            this.moveTo(KAMGraphicPanel.RAILX,KAMGraphicPanel.LANE4Y);
+            this.moveto = 4;
+            break;
+        case 5:
+            this.moveTo(KAMGraphicPanel.RAILX,KAMGraphicPanel.LANE5Y);
+            this.moveto = 5;
+            break;
+        case 6:
+            this.moveTo(KAMGraphicPanel.RAILX,KAMGraphicPanel.LANE6Y);
+            this.moveto = 6;
+            break;
+        case 7:
+            this.moveTo(KAMGraphicPanel.RAILX,KAMGraphicPanel.LANE7Y);
+            this.moveto = 7;
+            break;
+        }
+    }
 
     public void updateParts() {
     }///<updates the location of all parts in the inventory
