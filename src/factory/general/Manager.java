@@ -59,6 +59,11 @@ public class Manager extends JFrame {
         manager.sendToServer(Message.CLIENT_EXITED);
     }
 
+    /**
+     * @brief important constructor that each manager calls
+     * Java automatically makes subclasses the super class's default constructor,
+     * so this is run at the beginning of the constructor for each manager.
+     */
     public Manager() {
         // On instantiation of a major, connect to the server
         this.mcon = new ManagerConnection(this);

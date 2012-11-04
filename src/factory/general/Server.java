@@ -17,23 +17,22 @@ import java.util.logging.Logger;
  * @author David Zhang, YiWei Roy Zheng
  */
 public class Server {
+
     /**
      * Instance fields
      */
-    public static final Integer PORT_NUMBER = 31415; 
+    public static final Integer PORT_NUMBER = 31415;    
     public static final String HOST_NAME = "localhost";
-    
     private Printer p = new Printer();
     private int numClients;
 //    private FeederAgent feederAgent;
 //    private GantryAgent gantryAgent;
 //    private LaneAgent laneAgent;
-
     // Connection fields
     private ServerSocket ss = null;
     private Socket s = null;
     private HandleAManager hac;
-
+    
     public static void main(String[] args) {
 //        int portNum = 31415;
 //        Scanner in = new Scanner(System.in);
@@ -49,14 +48,14 @@ public class Server {
         Server server = new Server(PORT_NUMBER);
         
         try {
-            for(int i = 0; i!= 100; i++){
-            Thread.sleep(3000);
-            server.debug();
-        }
+            for (int i = 0; i != 100; i++) {
+                Thread.sleep(3000);
+                server.debug();
+            }
         } catch (InterruptedException ex) {
             Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
     }
 
     /**
@@ -74,11 +73,10 @@ public class Server {
             e.printStackTrace();
             System.exit(0);
         }
-
-        while (true) {
+        
+        while (true) { // TODO: move ss.accept into run of each HandleAManager; create 6 HandleAManager classes right off the bat
             // Continuously check for a new client for which to create a thread
             try {
-                // ***TODO: move this to a separate thread for each client***
                 s = ss.accept(); // Wait for a client (program halts here until connection occurs)
                 numClients++;
                 p.println("num clients: " + numClients);
@@ -90,7 +88,7 @@ public class Server {
             System.out.println("A client has connected");
         }
     }
-
+    
     public void debug() {
         hac.debugMessage();
     }
@@ -100,7 +98,7 @@ public class Server {
      * Socket, PrintWriter, etc.
      */
     class HandleAManager implements Runnable {
-
+        
         private volatile boolean running = true; // volatile = var modified by different threads
         // Prepare connection and communication variables
         Socket mySocket;
@@ -110,7 +108,7 @@ public class Server {
         public HandleAManager(Socket s) {
             mySocket = s;
         }
-
+        
         public void debugMessage() {
             System.out.println("Sending test message to client...");
             pw.println(Message.TEST_CLIENT);
@@ -133,9 +131,10 @@ public class Server {
                 try {
                     // Listen for interaction via protocol
                     message = br.readLine();
-                    if (message == null)
+                    if (message == null) {
                         throw new Exception("A manager class must do manager.sendToServer(Message.CLIENT_EXITED);");
-
+                    }
+                    
                     processMessage(message);
                     p.println("Processed message in client thread");
                 } catch (Exception e) {
@@ -156,7 +155,7 @@ public class Server {
             // Decide action based on message from client
             if (msg.contains(Message.TEST_SERVER)) {
                 System.out.println("Server test passed. Testing client...");
-
+                
                 pw.println(Message.TEST_CLIENT);
             } else if (msg.contains(Message.CLIENT_EXITED)) {
                 stopThread();
@@ -184,7 +183,7 @@ public class Server {
         private String grabParameter(String msg) {
             return msg.substring(msg.indexOf(":") + 1);
         }
-        
+
         /**
          * @brief Stops the loop of the server, letting the server turn off.
          * This stops the entire program.

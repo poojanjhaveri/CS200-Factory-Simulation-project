@@ -22,19 +22,19 @@ public class ManagerConnection implements Runnable {
     private PrintWriter out;///<data out
     private BufferedReader in;///<data in
     private Socket socket;///<socket connection
-
     private static final Printer p = new Printer();
-    
+
     public ManagerConnection(Manager ref) {
         p.println("ManagerConnection created");
         socket = null;
         out = null;
         in = null;
         this.mgr = ref;
-        if (ref == null)
-           System.out.println("ManagerConnection initialized with a null Manager object. This is bad. Fix it!");
+        if (ref == null) {
+            System.out.println("ManagerConnection initialized with a null Manager object. This is bad. Fix it!");
+        }
     }
-    
+
     /**
      * @brief attempts to connect to the server
      */
@@ -72,14 +72,14 @@ public class ManagerConnection implements Runnable {
             this.listenToServer();
         }
     }
-    
+
     /**
      * @brief send a message to the server
      * @param msg - the message to send. Append ":"+whateverInfoYouWant to send
      * specific parameters.
      */
     public void out(String o) {
-       this.out.println(o);
+        this.out.println(o);
     }
 
     /**
@@ -94,5 +94,4 @@ public class ManagerConnection implements Runnable {
             e.printStackTrace();
         }
     }
-
 }
