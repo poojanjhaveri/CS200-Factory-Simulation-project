@@ -1,6 +1,7 @@
 package factory.general;
 
 import java.io.Serializable;
+import javax.swing.ImageIcon;
 
 /**
  * @brief digital representation of a part

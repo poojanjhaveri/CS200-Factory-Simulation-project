@@ -9,25 +9,26 @@ import factory.general.MovingDrawable;
  */
 public class GUIRobot extends MovingDrawable {
 
-
     Boolean busy;///<whether or not the Robot has orders
     Boolean flag;///<if this is ever set to true something is wrong
 
     /**
-    @param x x-coordinate of default robot position
-    @param y y-coordinate of default robot position
+     * @param x x-coordinate of default robot position
+     * @param y y-coordinate of default robot position
      */
-    public GUIRobot(Integer x, Integer y, String i)
-    {
-        super(x,y,0.0,i);
+    public GUIRobot(Integer x, Integer y, String i) {
+        super(x, y, 0.0, i);
         this.flag = false;
     }
+public void update()
+{
+    super.update();
+}
 
     /**
-    @brief if something went wrong
-    */
-    public Boolean bad()
-    {
+     * @brief if something went wrong
+     */
+    public Boolean bad() {
         return this.flag;
     }
 }

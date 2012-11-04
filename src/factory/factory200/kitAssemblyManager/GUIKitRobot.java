@@ -26,7 +26,7 @@ public class GUIKitRobot extends GUIRobot {
     {
         //this is actually set in the KAMGraphicsPanel
         super(KAMGraphicPanel.KITROBOT_INITIAL_X,KAMGraphicPanel.KITROBOT_INITIAL_Y,GUIKitRobot.IMAGE_PAGE);
-
+this.setConstants(KAMGraphicPanel.KITROBOT_VELOCITYX, KAMGraphicPanel.KITROBOT_VELOCITYY, KAMGraphicPanel.KITROBOT_ROTATION_SPEED);
     }
 
     /**
@@ -66,8 +66,9 @@ public class GUIKitRobot extends GUIRobot {
     }
     public void update()
     {
-        super();
+        super.update();
         this.updateKit();
+        //System.out.println(this);
     }
     /**
     @brief hands the GUIKitRobot a kit to manage
