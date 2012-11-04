@@ -1,15 +1,12 @@
-package factory.partsManagement;
+package factory.factory201.partsManagement;
 
 import agent.Agent;
-import factory.ConfigFile;
-import factory.Kit;
-import factory.Part;
-import factory.kitManagement.KitRobotAgent;
+import factory.factory201.kitManagement.KitRobotAgent;
+import factory.general.Kit;
+import factory.general.Part;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Factory PartsAgent gets kit information from server and obtains necessary
@@ -47,6 +44,10 @@ public class PartsAgent extends Agent {
         stateChanged();
     }
 
+    public void msgEmptyKitReady(Kit kit) {
+        
+    }
+    
     public void msgEmptyKitReady(int num) {
         switch (num) {
             case 1:

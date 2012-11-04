@@ -1,7 +1,20 @@
- public class NestAgent {
+package factory.factory201.partsManagement;
+
+import agent.Agent;
+import factory.factory201.feederManagement.LaneAgent;
+import factory.factory201.interfaces.Lane;
+import factory.factory201.kitManagement.CameraAgent;
+import factory.general.Part;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class NestAgent extends Agent {
 
 	private List<Nest> myNests = Collections.synchronizedList(new ArrayList<Nest>());
-	private Map <Nest, LaneAgent> lanes = Collections.synchronizedList(new HashMap<Nest, LaneAgent>);
+	private Map <Nest, LaneAgent> lanes = new HashMap<Nest, LaneAgent>();
     private List<Part> needParts =
             Collections.synchronizedList(new ArrayList<Part>());
     PartsAgent partsagent;
@@ -12,7 +25,7 @@
     private List<Nest> nests = Collections.synchronizedList(new ArrayList<Nest>());
     enum Status {none, needPart, gettingPart, full, gettingInspected, readyForKit, purge};
     
-    NestAgent()) {
+    NestAgent() {
         this.nestNumber = nestNum;
         this.lane = lane;
     }
@@ -69,19 +82,22 @@
     }
     //scheduler
 
+    @Override
     protected boolean pickAndExecuteAnAction() {
     	
     	if (!myNests.isEmpty()){
     		
     		for (Nest n: myNests){
-    			if (n.status == Status.needPart)
-    				requestPart(n);
+    			if (n.status == Status.needPart) {
+                        requestPart(n);
+                    }
     				return true;
     		}
     		
     		for (Nest n: myNests){
-    			if (n.status == Status.full)
-    				requestInspection(n);
+    			if (n.status == Status.full) {
+                        requestInspection(n);
+                    }
     			return true;
     		}
     	}
