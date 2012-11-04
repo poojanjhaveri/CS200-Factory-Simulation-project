@@ -4,6 +4,11 @@
  */
 package factory.factory200.kitAssemblyManager;
 
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 /**
  *
  * @author Deepa
@@ -45,6 +50,7 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
     
     public KitStand kitstand;///<declares an object that keeps track of what is happening with the kit stand
     public KitDeliveryStation delivery;///<declares an object that keeps track of the delivery station
+    public KAMCamera camera;
     
     ArrayList<KAMNest> nest;
     
@@ -53,6 +59,8 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
     
     public KAMGraphicPanel(){
        kitstand=new KitStand(275,150);
+       
+       camera=new KAMCamera();
        
        //THIS NUMBER IS HARDCODED! should be from server => number of kits that should be made
        emptyKits=5;
@@ -70,7 +78,7 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
         nest.get(i).setY(yNum+i*75);
         }
         counter=0;
-        Timer timer=new Timer(10,new DeliveryTimer(this));
+        Timer timer=new Timer(20,new DeliveryTimer(this));
         timer.start();
         
    
@@ -87,7 +95,7 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
         if(delivery.getPlaceholder().get(delivery.getNumEmptyKits()-1).getY()>-150){
         for(int i=0;i<delivery.getNumEmptyKits();i++){
             int yPlace=delivery.getPlaceholder().get(i).getY();
-            int number=i*550;
+            int number=i*650;
             if(counter>number){
                 delivery.getPlaceholder().get(i).setY(yPlace-1);
             }
