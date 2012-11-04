@@ -1,6 +1,6 @@
 package factory.factory200.laneManager;
-
 import java.util.ArrayList;
+
 /**
  * This class contains all data for feeders. Lane agent and lane manager use these data to process.
  * 
@@ -273,6 +273,15 @@ public class ServerLaneManagerThreadFeeder {
 	 */
 	public ArrayList<ServerLaneManagerPart> getPartsArrayList(){
 		return parts;
+	}
+	
+	/**
+	 * @brief Empty Feeder Making
+	 * @param feederNum : Feeder number
+	 */
+	public void getFeederWithoutBox(){
+		signalToLM = feederNum + "&Feeder&" + "Feeder Without Box";
+		app.getNetwork().getVerify().verify(signalToLM);
 	}
 	
 	/**

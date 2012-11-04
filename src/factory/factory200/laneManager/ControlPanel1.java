@@ -51,7 +51,8 @@ public class ControlPanel1 extends JPanel implements ActionListener{
 	private JButton b12 = new JButton("Divert To Right");
 	private JButton b13 = new JButton("Feed To Left");
 	private JButton b14 = new JButton("Feed To Right");
-	private JButton b15 = new JButton("Fill in feeder");
+	private JButton b15 = new JButton("Fill In Feeder");
+	private JButton b16 = new JButton("Feeder Without Box");
 	
 	public ControlPanel1(ServerForAgentFeeder agentFeeder){
 		// For v0
@@ -85,6 +86,7 @@ public class ControlPanel1 extends JPanel implements ActionListener{
 		b13.addActionListener(this);
 		b14.addActionListener(this);
 		b15.addActionListener(this);
+		b16.addActionListener(this);
 		
 		tempPanel.add(partNum);
 		tempPanel.add(b13);
@@ -98,9 +100,9 @@ public class ControlPanel1 extends JPanel implements ActionListener{
 		
 		add(feederNum);
 		// For v0
-		add(b0);add(b1);add(b2);add(b3);add(b4);add(b5);add(b6);add(b7);add(b8);add(b9);add(b10);add(b11);add(b12);
+		add(b0);add(b1);add(b2);add(b3);add(b4);add(b5);add(b6);add(b7);add(b8);add(b9);add(b10);add(b11);add(b12);add(b16);
 		
-		// Unnessarry
+		// For later version
 		add(tempPanel2);add(tempPanel);
 		
 		updateUI();
@@ -176,6 +178,10 @@ public class ControlPanel1 extends JPanel implements ActionListener{
 		
 		else if(ae.getSource() == b15){
 			agentFeeder.fillInFeeder( chosenFeeder, chosenPart2, Integer.parseInt( partQuantityInput.getText()) );
+		}
+		
+		else if(ae.getSource() == b16){
+			agentFeeder.getFeederWithoutBox( chosenFeeder );
 		}
 	}
 }

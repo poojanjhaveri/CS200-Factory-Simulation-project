@@ -32,8 +32,8 @@ public class ServerMain extends JFrame{
 	private Controller controller;	///<Instance of class 'Controller'
 	
 	// Agent Thread
-	//private AgentMain agentMain = new AgentMain(this);	///< Runnable Class for Agent
-	//private Thread agentThread = new Thread(agentMain);	///< Thread  for Agent
+	private AgentMain agentMain = new AgentMain(this);	///< Runnable Class for Agent
+	private Thread agentThread = new Thread(agentMain);	///< Thread  for Agent
 		
 	/**
 	 * This class creates a bunch of class instances.
@@ -65,7 +65,7 @@ public class ServerMain extends JFrame{
 		controller = new Controller(agentFeeder, agentLane, agentNest, agentNestCamera, agentGantry);
 		
 		// Agent Thread start
-		//agentThread.start();
+		agentThread.start();
 	}
 	
 	/**

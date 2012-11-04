@@ -1,31 +1,44 @@
 package factory.factory200.laneManager;
 
-import java.awt.Color;
 import java.util.ArrayList;
 
+/**
+ * This class contains all data for Gantry. Lane agent and lane manager use these data to process.
+ * 
+ * @brief Feeder data
+ *	@author Dongyoung Jung
+ */
 public class ServerGantryManagerThreadGantry {
 	
-	private GantryManagerApp app;
-	private Boolean arrived = true;
+	private GantryManagerApp app;	///< Instance of class 'GantryManagerApp'
+	private Boolean arrived = true;	///< Boolean 'arrived' telling if the robot should keep moving or arrived
 	
-	private int currentLocationX;
-	private int currentLocationY;
-	private int destinationX;
-	private int destinationY;
-	private double incrementalX;
-	private double incrementalY;
-	private double gapXSquared;
-	private double gapYSquared;
-	private double divisor;
+	private int currentLocationX;	///< Current Location X Coordinate 
+	private int currentLocationY;	///< Current Location Y Coordinate
+	private int destinationX;	///< Destination X Coordinate
+	private int destinationY;	///< Destination Y Coordinate
+	private double incrementalX;	///< Incremental to Current Location X Coordinate
+	private double incrementalY;	///< Incremental to Current Location Y Coordinate
+	private double gapXSquared;	///< (currentLocationX - destinationX)^2
+	private double gapYSquared;	///< (currentLocationY - destinationY)^2
+	private double divisor;	///<	Distance between Destination and Current Position
 	
-	private final int xCoorFeeders = 0;
-	private final int xCoorBins = 225;
-	private ArrayList<Integer> yCoorFeeders = new ArrayList<Integer>();
-	private ArrayList<Integer> yCoorBins = new ArrayList<Integer>();
+	private final int xCoorFeeders = 0;	///< X Coordinate of Feeders
+	private final int xCoorBins = 225;	///< X Coordinate of Bins
+	private ArrayList<Integer> yCoorFeeders = new ArrayList<Integer>();	///< ArrayList of Y Coordinate of Feeders
+	private ArrayList<Integer> yCoorBins = new ArrayList<Integer>();	///< ArrayList of Y Coordinate of Bins
 	
-	private String signalToGRM = "";
-	private int colorNum;
+	private String signalToGRM = "";	/// Signal to Gantry Robot Manager
+	private int colorNum;	///< Color number
 	
+	/**
+	 * This constructors generates Feeder Labels and locates them.
+	 * 
+	 * @brief Constructor
+	 * @param app : Instance of class 'GantryManagerApp'
+	 * @param currentLocationX : Current Location X Coordinate
+	 * @param currentLocationY : Current Location Y Coordinate
+	 */
 	public ServerGantryManagerThreadGantry( GantryManagerApp app, int currentLocationX, int currentLocationY ){
 		this.app = app;
 		this.currentLocationX = currentLocationX;
@@ -46,6 +59,12 @@ public class ServerGantryManagerThreadGantry {
 		yCoorBins.add(595);		
 	}
 	
+	/**
+	 * This function sets up the destination and generate informations to close to it.
+	 * 
+	 * @brief Go To Feeder
+	 * @param feederNum : Feeder number
+	 */
 	public void goToFeeder( int feederNum ){
 		destinationX = xCoorFeeders;
 		destinationY = yCoorFeeders.get( feederNum );
@@ -53,6 +72,12 @@ public class ServerGantryManagerThreadGantry {
 		arrived = false;
 	}
 	
+	/**
+	 * This function sets up the destination and generate informations to close to it.
+	 * 
+	 * @brief Go To Bin
+	 * @param binNum : Bin number
+	 */
 	public void goToBin( int binNum ){
 		destinationX = xCoorBins;
 		destinationY = yCoorBins.get( binNum );
@@ -60,6 +85,9 @@ public class ServerGantryManagerThreadGantry {
 		arrived = false;
 	}
 	
+	/**
+	 * @brief Direction & Vector Setup
+	 */
 	public void calculate(){
 		gapXSquared = Math.pow(destinationX - currentLocationX,2);
 		gapYSquared = Math.pow(destinationY - currentLocationY,2);
@@ -71,6 +99,13 @@ public class ServerGantryManagerThreadGantry {
 		currentLocationY += incrementalY;
 	}
 	
+	/**
+	 * This function sends signal to Gantry Robot Manager.
+	 * Signal : "&Robot&Color Change&" + color number;
+	 * Color number is what the gantry robot changes in after reaching a certain destination.
+	 * 
+	 * @brief Destination Check & Color Change
+	 */
 	public void checkDestination(){
 		if( Math.abs(destinationX - currentLocationX) < 3 && Math.abs(destinationY - currentLocationY) < 3 ){
 			
@@ -97,6 +132,12 @@ public class ServerGantryManagerThreadGantry {
 		}
 	}
 	
+	/**
+	 * This function sends a signal to Gantry Robot Manager.
+	 * Signal : "&Robot&Move" + currentLocationX + "**" + currentLocationY
+	 * 
+	 * @brief Robot Movement Signal 
+	 */
 	public void moveRobot(){				
 		// Signal to Gantry Robot Manager
 		signalToGRM = "&Robot&Move" + currentLocationX + "**" + currentLocationY;
@@ -108,6 +149,13 @@ public class ServerGantryManagerThreadGantry {
 		calculate();
 	}
 	
+	/**
+	 * This function sends a signal to Gantry Robot Manager
+	 * Signal :  "&Robot&PickBin"
+	 * 
+	 * @brief Bin Pickup
+	 * @param binNum : Bin number
+	 */
 	public void pickUpBin( int binNum ){
 		// Signal to Gantry Robot Manager
 		signalToGRM = "&Robot&PickBin";
@@ -116,6 +164,11 @@ public class ServerGantryManagerThreadGantry {
 		app.getNetwork().getVerify().verify(signalToGRM);
 	}
 	
+	/**
+	 * This function sends a signal to Gantry Robot Manager
+	 * Signal : "&Robot&PutOffBin"
+	 * @brief Bin Putoff
+	 */
 	public void putOffBin(){
 		// Signal to Gantry Robot Manager
 		signalToGRM = "&Robot&PutOffBin";
@@ -124,6 +177,11 @@ public class ServerGantryManagerThreadGantry {
 		app.getNetwork().getVerify().verify(signalToGRM);
 	}
 	
+	/**
+	 * This is needed for agent since the agent does not have Timer.
+	 * 
+	 * @return Boolean arrived
+	 */
 	public Boolean getArrived(){
 		return arrived;
 	}
