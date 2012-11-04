@@ -20,7 +20,6 @@ import javax.swing.*;
 public class KitDeliveryStation {
     //THIS NUMBER WILL BE GIVEN BY THE SERVER=NUMBER OF KITS THAT SHOULD BE MADE IN FACTORY
     private int numEmptyKits;
-    private ArrayList<KAMKit> emptyKits;
     private ArrayList<PlaceHolder> placeholder;
     
     public class PlaceHolder{
@@ -29,11 +28,21 @@ public class KitDeliveryStation {
         private int y;
         private boolean show;
         private int number;
+        private KAMKit kit;
         
         public PlaceHolder(){
             placeholder=new ImageIcon("pics/KAMplaceholder.png");
             show=true;
+            kit=new KAMKit();
         }
+        
+        public KAMKit giveKit(){
+            KAMKit temp=this.getKit();
+            this.setKit(null);
+            return temp;
+        }
+        
+        
 
         /**
          * @return the placeholder
@@ -81,7 +90,7 @@ public class KitDeliveryStation {
          * @return the show
          */
         public boolean isShow() {
-            return show;
+            return kit==null?false:true;
         }
 
         /**
@@ -104,15 +113,27 @@ public class KitDeliveryStation {
         public void setNumber(int number) {
             this.number = number;
         }
+
+        /**
+         * @return the kit
+         */
+        public KAMKit getKit() {
+            return kit;
+        }
+
+        /**
+         * @param kit the kit to set
+         */
+        public void setKit(KAMKit kit) {
+            this.kit = kit;
+        }
     }
     
     
     public KitDeliveryStation(int kits){
         numEmptyKits=kits;
-        emptyKits=new ArrayList<KAMKit>();
         placeholder=new ArrayList<PlaceHolder>();
         for(int i=0;i<numEmptyKits;i++){
-            emptyKits.add(new KAMKit(i+1));
             PlaceHolder temp = new PlaceHolder();
             temp.setNumber(i+1);
             placeholder.add(temp);
@@ -124,6 +145,14 @@ public class KitDeliveryStation {
         placeholder.get(i).setX(xStart);
         placeholder.get(i).setY(yStart);
         }
+    }
+    
+    public Boolean inPosition(){
+        return (this.placeholder.get(0).getX()==KAMGraphicPanel.CONVEYERX && this.placeholder.get(0).getY()==KAMGraphicPanel.CONVEYERY);   
+    }
+    
+    public KAMKit giveKit(){
+        return this.placeholder.get(0).giveKit();
     }
 
     /**
@@ -143,16 +172,11 @@ public class KitDeliveryStation {
     /**
      * @return the emptyKits
      */
-    public ArrayList<KAMKit> getEmptyKits() {
-        return emptyKits;
-    }
+    
 
     /**
      * @param emptyKits the emptyKits to set
      */
-    public void setEmptyKits(ArrayList<KAMKit> emptyKits) {
-        this.emptyKits = emptyKits;
-    }
 
     /**
      * @return the placeholder

@@ -7,7 +7,7 @@ import javax.swing.ImageIcon;
  * @brief digital representation of a part
  * @author Alex Young, David Zhang, YiWei Roy Zheng
  */
-public class Part extends Drawable implements Serializable {
+public class Part implements Serializable {
     /** CS201 stuff */
     public enum Type {
         p1, p2, p3, p4, p5, p6, p7, p8

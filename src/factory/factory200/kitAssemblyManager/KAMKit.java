@@ -23,13 +23,13 @@ import javax.swing.*;
 
 public class KAMKit {
     private ImageIcon kit;
-    private int kitNumber;
+    //private int kitNumber;
     private int x;
     private int y;
             
-    public KAMKit(int i){
+    public KAMKit(){
         kit=new ImageIcon("pics/KAMkit.png");
-        kitNumber=i;
+        //kitNumber=i;
     }
 
     /**
@@ -49,16 +49,12 @@ public class KAMKit {
     /**
      * @return the kitNumber
      */
-    public int getKitNumber() {
-        return kitNumber;
-    }
+  
 
     /**
      * @param kitNumber the kitNumber to set
      */
-    public void setKitNumber(int kitNumber) {
-        this.kitNumber = kitNumber;
-    }
+    
 
     /**
      * @return the x

@@ -11,8 +11,8 @@ public class MovingDrawable extends Drawable {
     private Integer velocityY;///<pixels/s speed Y direction of Drawable
     private Double rotationSpeed;///<degrees/second rotation of Drawable
     private Double rotateto;///<angle the Drawable is turning to
-    private Integer moveToX;///<where Drawable is heading in x-coordinate
-    private Integer moveToY;///<where Drawable is heading in y-coordinate
+    protected Integer moveToX;///<where Drawable is heading in x-coordinate
+    protected Integer moveToY;///<where Drawable is heading in y-coordinate
 
     private Boolean moving;///<whether or not the drawable is currently moving @deprecated
 
@@ -144,7 +144,10 @@ public class MovingDrawable extends Drawable {
      */
     public Boolean moving()
     {
-        return (this.moveToX == this.cords.getX() && this.moveToY == this.cords.getY());
+        //System.out.println(this.cords.getX() + "" + this.moveToX + ""+ this.cords.getY()+""+this.moveToY);
+        //System.out.println(!(this.moveToX == this.cords.getX() && this.moveToY == this.cords.getY()));
+        
+        return !(this.moveToX.equals(this.cords.getX()) && this.moveToY.equals(this.cords.getY()));
     }
     /**
     tostring
