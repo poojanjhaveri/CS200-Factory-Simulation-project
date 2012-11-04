@@ -6,6 +6,7 @@ package factory.factory200.kitAssemblyManager;
 
 
 
+
 import javax.swing.*;
 
 /*
@@ -27,7 +28,7 @@ public class KAMKit {
     private int y;
             
     public KAMKit(int i){
-        kit=new ImageIcon("KAMkit.png");
+        kit=new ImageIcon("pics/KAMkit.png");
         kitNumber=i;
     }
 

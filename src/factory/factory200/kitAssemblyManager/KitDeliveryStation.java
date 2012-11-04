@@ -3,6 +3,7 @@ package factory.factory200.kitAssemblyManager;
 //Class: KitDeliveryStation
 
 
+
 import java.awt.*;
 import java.util.*;
 import javax.swing.*;
@@ -30,7 +31,7 @@ public class KitDeliveryStation {
         private int number;
         
         public PlaceHolder(){
-            placeholder=new ImageIcon("KAMplaceholder.png");
+            placeholder=new ImageIcon("pics/KAMplaceholder.png");
             show=true;
         }
 
