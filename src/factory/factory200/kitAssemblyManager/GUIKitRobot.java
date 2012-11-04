@@ -18,17 +18,15 @@ public class GUIKitRobot extends GUIRobot {
     public static final String IMAGE_PAGE = "pics/kitrobot.png";
 
     KAMKit kit;///<null if not carrying a kit, otherwise contains a reference the kit its carrying
-    //KitWorkingArea kits;///information about all work benches and their kits
-
-    Boolean busy;///whether or not the KitterRobot has orders
-
+    /**
+@brief creates the GUIKitRobot from the constants specified in KAMGraphicPanel
+     */
     public GUIKitRobot()
     {
         //this is actually set in the KAMGraphicsPanel
         super(KAMGraphicPanel.KITROBOT_INITIAL_X,KAMGraphicPanel.KITROBOT_INITIAL_Y,GUIKitRobot.IMAGE_PAGE);
 this.setConstants(KAMGraphicPanel.KITROBOT_VELOCITYX, KAMGraphicPanel.KITROBOT_VELOCITYY, KAMGraphicPanel.KITROBOT_ROTATION_SPEED);
     }
-
     /**
     sets a new lane destination coordinate for KitterRobot, the passed Integer specifies which lane to head to
     */

@@ -5,7 +5,7 @@ import javax.swing.ImageIcon;
 
 /**
  * @brief digital representation of a part
- * @author Alex Young, David Zhang
+ * @author Alex Young, David Zhang, YiWei Roy Zheng
  */
 public class Part implements Serializable {
     /** CS201 stuff */
@@ -15,12 +15,6 @@ public class Part implements Serializable {
     public Type type;
     private boolean inKit;
     private int size;
-
-    /**
-     * Creates a part and gives it a unique ID.
-     * @author YiWei Roy Zheng
-     * @brief instantiates a part into the correct state
-     */
 
     public Part(Type t, boolean inkit, int size) {
         this.type = t;
@@ -60,6 +54,7 @@ public class Part implements Serializable {
         this.name = n;
         this.description = d;
         this.img = new ImageIcon(fn);
+	//this.number=time();
     }
     public String getName() {
         return this.name;
