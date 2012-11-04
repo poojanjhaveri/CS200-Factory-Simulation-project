@@ -22,6 +22,27 @@ public class Part implements Serializable {
      *
      * @brief instantiates a part into the correct state
      */
+    
+    /* I am adding this constructor to test my agent codes (kevin) */
+    public Part(int num){
+    	if(num==1)
+    	this.type=Type.p1;
+    	if(num==2)
+        	this.type=Type.p2;
+    	if(num==3)
+        	this.type=Type.p3;
+    	if(num==4)
+        	this.type=Type.p4;
+    	if(num==5)
+        	this.type=Type.p5;
+    	if(num==6)
+        	this.type=Type.p6;
+    	if(num==7)
+        	this.type=Type.p7;
+    	if(num==8)
+        	this.type=Type.p8;
+    }
+    
     public Part(String n, String d, String fn) {
         //TODO need to implement system to generate unique part numbers (we could cheat and do it the dumb way, grab time())
     }

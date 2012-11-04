@@ -69,6 +69,8 @@ public class GantryAgent extends Agent implements Gantry {
     	bins.add(new myBin(p8,numOfBins,8));
     	System.out.println("bins added");
     }
+
+    
     /* to hold the info about its list of parts*/
     /*
     private class myParts {
@@ -132,7 +134,6 @@ public class GantryAgent extends Agent implements Gantry {
         }
     }
 
-    @Override
     public void msgNeedPart(Part part,Feeder feeder) {
     	
     	System.out.println("part need message from feeder received");

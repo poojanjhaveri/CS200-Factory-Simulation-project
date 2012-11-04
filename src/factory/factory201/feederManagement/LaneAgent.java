@@ -1,6 +1,7 @@
 package factory.factory201.feederManagement;
 
 //import factory.factory200.laneManager.ServerForAgentLane;
+//import factory.factory201.feederManagement.FeederAgent.myParts;
 import factory.factory201.interfaces.Feeder;
 import factory.factory201.interfaces.NestInterface;
 import factory.factory201.interfaces.Lane;
@@ -26,9 +27,29 @@ public class LaneAgent extends Agent implements Lane {
    // private ServerForAgentLane animation;
     int laneNum;
     
-    public void LaneAgent(int num){
+    public LaneAgent(int num){
     	this.laneNum=num;
+    	Part p1=new Part(1);
+    	Part p2=new Part(2);
+    	Part p3=new Part(3);
+    	Part p4=new Part(4);
+    	Part p5=new Part(5);
+    	Part p6=new Part(6);
+    	Part p7=new Part(7);
+    	Part p8=new Part(8);
+    	System.out.println("All parts created");
     	
+    	//part type, quantity, index (quantity started with is 0
+    	parts.add(new myParts(p1,0,1));
+     	parts.add(new myParts(p2,0,2));
+     	parts.add(new myParts(p3,0,3));
+     	parts.add(new myParts(p4,0,4));
+     	parts.add(new myParts(p5,0,5));
+     	parts.add(new myParts(p6,0,6));
+     	parts.add(new myParts(p7,0,7));
+     	parts.add(new myParts(p8,0,8));
+     	System.out.println("parts added to the list");
+    
     }
     public void msgRejectParts(int i) {
         throw new UnsupportedOperationException("Not yet implemented");
@@ -43,7 +64,7 @@ public class LaneAgent extends Agent implements Lane {
         boolean send = false;
 
         public myParts(Part part, int quantity, int index) {
-            this.part.type = part.type;
+            this.part = part;
             this.quantity = quantity;
             this.partNum=index;
 
@@ -70,8 +91,12 @@ public class LaneAgent extends Agent implements Lane {
     public void msgHereAreParts(Part part, int quantity) {
     	int partIndex=0;
         for (myParts p : parts) {
+        	
+        	System.out.println("checking for part " + p.part.type + "with " + part.type);
             if (p.part.type == part.type) {
+            	System.out.println("quantity is " + p.quantity);
                 p.quantity = p.quantity + quantity;
+                System.out.println("updated quantity is " + p.quantity);
                 stateChanged();
                 return;
             }
@@ -97,29 +122,45 @@ public class LaneAgent extends Agent implements Lane {
         //create a new type if the current list does not contain parts of this type.	
         parts.add(new myParts(part, quantity,partIndex));
         stateChanged();
-        stateChanged();
+        //stateChanged();
     }
 
    
-    protected boolean pickAndExecuteAnAction() {
+    public boolean pickAndExecuteAnAction() {
      
         for (myParts p : parts) {
             if (p.send == true) {
-            	if(p.quantity>8)
-                supplyPart(p);      //supply part if it has correct quantity
-            	else
-            	askForPart(p.part); //ask for parts if it is running low
+            	System.out.println("there is an item to be sent");
+            	System.out.println("The quantity is  " + p.quantity);
+            	if(p.quantity>8){
+                System.out.println("testing scheduler");
+            		supplyPart(p);  
+            		return true;
+            	}    //supply part if it has correct quantity
+            	else{
+            	askForPart(p.part);
+            	return true;
+            	} //ask for parts if it is running low
             }
-            return true;
+            
         }
-
+        
+        for(myParts p: parts){
+        	if(p.quantity<8){
+        		askForPart(p.part);}
+        	return true;
+        	
+        }
         //return false if no scheduler rule is fired
         return false;
     }
 
     //ask for parts if it is low
     private void askForPart(Part p){
-    	feeder.msgNeedPart(p);
+    	
+    	//feeder must know which lane the message is from
+    	System.out.println("testing need part message sending");
+    	feeder.msgNeedPart(p,this);
     	
     }
     private void supplyPart(myParts part) {
@@ -136,5 +177,15 @@ public class LaneAgent extends Agent implements Lane {
         //update the myParts object
         part.quantity = part.quantity - part.supplyAmount;
 
+    }
+
+    public void setFeeder(Feeder feeder){
+    	
+    	this.feeder=feeder;
+    }
+    
+    public void setNest(NestInterface nest){
+    	
+    	this.nest=nest;
     }
 }
