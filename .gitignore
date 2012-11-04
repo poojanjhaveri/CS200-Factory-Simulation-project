@@ -7,6 +7,7 @@
 *.metadeta
 *.settings
 *~
+*.orig
 
 nbproject/
 bin/
@@ -15,3 +16,4 @@ bin/
 *.jar
 *.war
 *.ear
+/build/
