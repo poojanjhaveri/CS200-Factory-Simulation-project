@@ -26,7 +26,7 @@ public class GUIKitRobot extends GUIRobot {
     {
         //this is actually set in the KAMGraphicsPanel
         super(KAMGraphicPanel.KITROBOT_INITIAL_X,KAMGraphicPanel.KITROBOT_INITIAL_Y,GUIKitRobot.IMAGE_PAGE);
-    
+
     }
 
     /**
@@ -58,26 +58,26 @@ public class GUIKitRobot extends GUIRobot {
     updates the location of the kit items carrying
     */
     public void updateKit() {
-	if(this.kit != null)
-	    {
-		this.kit.setX(this.cords.getX());
-		this.kit.setY(this.cords.getY());
-	    }
+        if(this.kit != null)
+        {
+            this.kit.setX(this.cords.getX());
+            this.kit.setY(this.cords.getY());
+        }
     }
     public void update()
     {
-	super();
-	this.updateKit();
+        super();
+        this.updateKit();
     }
     /**
-@brief hands the GUIKitRobot a kit to manage
+    @brief hands the GUIKitRobot a kit to manage
      */
     public void giveKit(KAMKit in)
     {
-	this.kit = in;
+        this.kit = in;
     }
     public void dropKit()
     {
-	this.kit = null;
+        this.kit = null;
     }
 }
