@@ -27,7 +27,7 @@ public class ControlPanel2 extends JPanel implements ActionListener{
 	private JButton b3 = new JButton("Amplitude Normal");
 	private JButton b4 = new JButton("Amplitude Weak");
 
-	public ControlPanel2(ServerForAgentLane agentLane){
+	public ControlPanel2(ServerForAgentLane agentLane){		
 		this.agentLane = agentLane;
 		setBorder(border);
 		setPreferredSize(new Dimension(480,100));

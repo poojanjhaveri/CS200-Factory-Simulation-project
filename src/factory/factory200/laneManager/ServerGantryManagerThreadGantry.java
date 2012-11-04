@@ -1,5 +1,6 @@
 package factory.factory200.laneManager;
 
+import java.awt.Color;
 import java.util.ArrayList;
 
 public class ServerGantryManagerThreadGantry {
@@ -23,6 +24,7 @@ public class ServerGantryManagerThreadGantry {
 	private ArrayList<Integer> yCoorBins = new ArrayList<Integer>();
 	
 	private String signalToGRM = "";
+	private int colorNum;
 	
 	public ServerGantryManagerThreadGantry( GantryManagerApp app, int currentLocationX, int currentLocationY ){
 		this.app = app;
@@ -71,6 +73,26 @@ public class ServerGantryManagerThreadGantry {
 	
 	public void checkDestination(){
 		if( Math.abs(destinationX - currentLocationX) < 3 && Math.abs(destinationY - currentLocationY) < 3 ){
+			
+			// Robot Color Change
+			// At Feeder
+			colorNum = 0;
+			
+			// At Bin
+			if( destinationX == 225 && destinationY == 25 ){ colorNum = 1; }
+			else if( destinationX == 225 && destinationY == 105 ){ colorNum = 2; }
+			else if( destinationX == 225 && destinationY == 185 ){ colorNum = 3; }
+			else if( destinationX == 225 && destinationY == 265 ){ colorNum = 4; }
+			else if( destinationX == 225 && destinationY == 350 ){ colorNum = 5; }
+			else if( destinationX == 225 && destinationY == 430 ){ colorNum = 6; }
+			else if( destinationX == 225 && destinationY == 510 ){ colorNum = 7; }
+			else if( destinationX == 225 && destinationY == 595 ){ colorNum = 8; }
+		
+			// Signal to Gantry Robot Manager
+			signalToGRM = "&Robot&Color Change&" + colorNum;
+			
+			// Send signal to Gantry Robot Manager
+			app.getNetwork().getVerify().verify(signalToGRM);
 			arrived = true;
 		}
 	}

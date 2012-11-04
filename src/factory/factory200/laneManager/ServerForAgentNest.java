@@ -66,6 +66,18 @@ public class ServerForAgentNest {
 	}
 	// ---------------------------------------------------------------------------------------------------------
 	
+	// For Agent ------------------------------------------------------------------------------------------
+	/**
+	 * Agent runs this function to display images on graphics panel.
+	 * 
+	 * @brief Nest Up( Integration with agent )
+	 * @param nestNum : nest number
+	 */
+	public void robotTakesOnePart( int nestNum ){
+		nests.get( nestNum ).robotTakePart();
+	}
+	// ---------------------------------------------------------------------------------------------------------
+	
 	/**
 	 * @brief Getter
 	 * @param nestNum : nest number

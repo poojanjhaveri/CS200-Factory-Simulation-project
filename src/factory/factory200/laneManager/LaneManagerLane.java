@@ -1,7 +1,9 @@
 package factory.factory200.laneManager;
 
 import java.awt.Color;
+
 import java.util.ArrayList;
+
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
@@ -58,9 +60,19 @@ public class LaneManagerLane extends JLayeredPane{
 		this.xCoor = xCoor;
 		this.yCoor = yCoor;
 		
+		//-------------------------------------
+		// Image version
+		/*
 		for(int i=0 ; i<400 ; i++){
 			moveLane();
 		}
+		*/
+		
+		// No image version
+		for(int i=0 ; i<250 ; i++){
+			moveLane();
+		}
+		//-------------------------------------
 	}
 	
 	/**
@@ -73,14 +85,28 @@ public class LaneManagerLane extends JLayeredPane{
 		for(int i=0 ; i<laneTracks.size() ; i++){
 			laneTracks.get(i).trackMove();
 		}
-			
+		
+		//--------------------------------------------------------
+		// Image version
 		// Insert New Track
+		/*
 		if(++insertNewLabelTerm == 190){
 			newLaneTrack = new LaneTrack();
 			add(newLaneTrack, new Integer(0));
 			laneTracks.add(newLaneTrack);
 			insertNewLabelTerm = 0;
 		}
+		*/
+		
+		// No image version
+		// Insert New Track
+		if(++insertNewLabelTerm == 10){
+			newLaneTrack = new LaneTrack();
+			add(newLaneTrack, new Integer(0));
+			laneTracks.add(newLaneTrack);
+			insertNewLabelTerm = 0;
+		}
+		//--------------------------------------------------------
 		
 		//Part move && Move part onto nest
 		for(int i=parts.size()-1 ; i>=0 ; i--){
@@ -266,8 +292,18 @@ public class LaneManagerLane extends JLayeredPane{
 		 * @brief Track Default Setting
 		 */
 		public LaneTrack(){
+			//--------------------------------
+			// Image version
+			/*
 			setSize(390,40);
 			setIcon(trackImage);
+			setLocation(xCoor,0);
+			*/
+			
+			// No image version
+			setSize(5,40);
+			setOpaque(true);
+			setBackground(Color.black);
 			setLocation(xCoor,0);
 		}
 		
@@ -278,7 +314,7 @@ public class LaneManagerLane extends JLayeredPane{
 		 */
 		public void trackMove(){
 			xCoor -= 2;
-			setLocation(xCoor,0);
+			setLocation(xCoor+20,0);
 			
 			// Remove track outside lane
 			if( xCoor <= -400 ){

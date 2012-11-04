@@ -193,8 +193,8 @@ public class ServerForAgentFeeder {
 	 * @brief Dump To Feeder( Integration with Agent )
 	 * @param feederNum : feeder number
 	 */
-	public void dumpBinBoxIntoFeeder( int feederNum ){
-		feeders.get( feederNum ).dumpBinBoxIntoFeeder();
+	public void dumpBinBoxIntoFeeder( int feederNum, int binNum ){
+		feeders.get( feederNum ).dumpBinBoxIntoFeeder(binNum);
 	}
 	// ---------------------------------------------------------------------------------------------------------
 	

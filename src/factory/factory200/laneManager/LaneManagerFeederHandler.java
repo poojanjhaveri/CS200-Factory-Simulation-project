@@ -12,6 +12,7 @@ public class LaneManagerFeederHandler {
 	private LaneManagerApp laneManagerApp;	///< Instance of class 'LaneManagerApp'
 	private int feederNum;	///< Feeder number
 	private int partNum;	///< Part number
+	private int colorNum; ///< Color number for feeder
 	
 	/**
 	 * @brief Constructor
@@ -141,7 +142,7 @@ public class LaneManagerFeederHandler {
 			// GUIPanel change
 			laneManagerApp.getGUIPanel().getGUIFeeder().getGUIFeederArray(feederNum).setDivertToLeft();
 			// GraphicsPanel change
-			
+			laneManagerApp.getGraphicsPanel().getFeederArray(feederNum).setDivertToLeft();
 		}
 		
 		// Message : Divert To Right
@@ -149,14 +150,15 @@ public class LaneManagerFeederHandler {
 			// GUIPanel change
 			laneManagerApp.getGUIPanel().getGUIFeeder().getGUIFeederArray(feederNum).setDivertToRight();
 			// GraphicsPanel change
-			
+			laneManagerApp.getGraphicsPanel().getFeederArray(feederNum).setDivertToRight();
 		}
 		// ----------------------------------------------------------------------------------------------------------------------------------------------------
 		
 		// Action ----------------------------------------------------------------------------------------------------------------------------------------
 		// Message : Robot Dump Part Box
 		else if( message.indexOf("Dumped") != -1 ){
-			laneManagerApp.getGraphicsPanel().getFeederArray(feederNum).setDumpedIntoFeeder();
+			colorNum = message.charAt( message.length() - 1 ) - 48;
+			laneManagerApp.getGraphicsPanel().getFeederArray(feederNum).setDumpedIntoFeeder(colorNum);
 		}
 		
 		// Message : Robot Dump Part Box ( LEFT LANE, Made For Testing )
