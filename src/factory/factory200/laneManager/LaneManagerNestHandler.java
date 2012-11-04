@@ -47,7 +47,7 @@ public class LaneManagerNestHandler {
 		
 		// Action ----------------------------------------------------------------------------------------------------------------------------------------
 		// Message : Robot Takes One
-		else if( message.indexOf("Robot Takes One") != -1 ){																		
+		else if( message.indexOf("Robot Take Part") != -1 ){																		
 			app.getGraphicsPanel().getNestArray(nestNum).robotTakePart();
 		}
 		// ----------------------------------------------------------------------------------------------------------------------------------------------------

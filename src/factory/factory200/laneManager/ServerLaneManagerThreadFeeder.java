@@ -8,15 +8,14 @@ import java.util.ArrayList;
  *	@author Dongyoung Jung
  */
 public class ServerLaneManagerThreadFeeder {
-	
 	private LaneManagerApp app;	///< Instance of class 'LaneManagerApp'
+	private ServerMain serverMain;
 	private ArrayList<ServerLaneManagerPart> parts = new ArrayList<ServerLaneManagerPart>();	///< Parts inside feeder
 	private String signalToLM = "";	///< Signal to Lane Manager
-	private int feederNum;	///< Feeder number
 	private Boolean feedPartsSwitchOnOff = false;	///< Feeder Switch
 	private Boolean divertToLeftRight = false;	///< Diversion from feeder to lane. True : Divert to right, False : Diver to left
 	private int insertPartFrequency;	///< Frequency of part Insertion to lane
-	private ServerMain serverMain;
+	private int feederNum;	///< Feeder number
 	
 	/**
 	 * Since there are 4 feeders, there are 8 instances of this class in class 'ServerForAgentFeeder'
@@ -241,8 +240,8 @@ public class ServerLaneManagerThreadFeeder {
 	 * 
 	 * @brief Dumped
 	 */
-	public void dumpBinBoxIntoFeeder(){
-		signalToLM = feederNum + "&Feeder&" + "Dumped";
+	public void dumpBinBoxIntoFeeder(int colorNum){
+		signalToLM = feederNum + "&Feeder&" + "Dumped" + colorNum;
 		app.getNetwork().getVerify().verify(signalToLM);
 	}
 	

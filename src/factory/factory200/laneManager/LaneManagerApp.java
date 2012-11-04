@@ -28,7 +28,7 @@ public class LaneManagerApp extends JFrame{
 		this.server = server;
 		setTitle("Lane Manager");
 		setSize(870,700);
-		setLocation(0,0);
+		setLocation(490,0);
 		setVisible(true);
 		setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 		setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));

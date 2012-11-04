@@ -4,7 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
@@ -15,7 +14,7 @@ import javax.swing.border.LineBorder;
  */
 public class ControllerTitle extends JPanel{
 
-	private JLabel title = new JLabel("Lane&Nest&Feeder Agent Controller", JLabel.CENTER);
+	private JLabel title = new JLabel("Lane&Nest&Feeder Agent Controller(For V0)", JLabel.CENTER);
 	
 	public ControllerTitle(){
 		setBorder(new LineBorder( Color.black ));

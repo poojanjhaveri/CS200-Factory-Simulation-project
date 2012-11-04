@@ -52,7 +52,17 @@ public class LaneManagerGraphicsPanel extends JLayeredPane{
 		
 		// Add camera to 'cameras' ArrayList
 		for(int i=0 ; i<cameraCount ; i++){
-			camera = new JLabel(new ImageIcon(".//pics//camera.png"));
+			
+			//------------------------------------------------------------------------------------------------------
+			// Image version
+			//camera = new JLabel(new ImageIcon(".//pics//camera.png"));
+			
+			// No image version
+			camera = new JLabel("CAMERA", JLabel.CENTER);
+			camera.setOpaque(true);
+			camera.setBackground(Color.blue);
+			//------------------------------------------------------------------------------------------------------
+			
 			camera.setBounds(xCoordinateCamera, yCoordinateCamera, 80, 80);
 			camera.setVisible(false);
 			cameras.add(camera);
@@ -64,7 +74,7 @@ public class LaneManagerGraphicsPanel extends JLayeredPane{
 		for( int i=0 ; i<nestCount ; i++ ){
 			newNest = new LaneManagerNest(xCoordinateNest, yCoordinateNest, i);
 			nests.add(newNest);
-			add(newNest);
+			add(newNest, JLabel.CENTER);
 			yCoordinateNest += 78;
 		}
 		
