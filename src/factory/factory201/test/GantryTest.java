@@ -1,4 +1,4 @@
-package factory.factory201.Test;
+package factory.factory201.test;
 
 //import junit.framework.TestCase;
 import factory.factory201.feederManagement.*;

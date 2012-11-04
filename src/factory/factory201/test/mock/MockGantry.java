@@ -1,5 +1,7 @@
-package factory.factory201.Test;
+package factory.factory201.test.mock;
 
+import factory.factory201.test.mock.LoggedEvent;
+import factory.factory201.test.mock.EventLog;
 import factory.factory201.interfaces.Feeder;
 import factory.factory201.interfaces.Gantry;
 import factory.general.Part;

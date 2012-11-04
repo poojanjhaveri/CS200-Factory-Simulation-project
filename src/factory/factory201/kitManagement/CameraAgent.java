@@ -2,6 +2,7 @@ package factory.factory201.kitManagement;
 
 import agent.Agent;
 import factory.factory201.interfaces.Camera;
+import factory.factory201.interfaces.KitRobot;
 import factory.factory201.partsManagement.NestAgent;
 import factory.general.Kit;
 import factory.general.Nest;
@@ -23,7 +24,7 @@ import java.util.List;
  */
 public class CameraAgent extends Agent implements Camera {
 
-    private KitRobotAgent kitRobotAgent;
+    private KitRobot kitRobotAgent;
     private NestAgent nestAgent;
     private List<Nest> nests = new ArrayList<Nest>();
     private List<Kit> kits = new ArrayList<Kit>();

@@ -1,4 +1,4 @@
-package factory.factory201.Test;
+package factory.factory201.test.mock;
 
 public class MockAgent {
 	private String name;

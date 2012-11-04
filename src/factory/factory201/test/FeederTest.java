@@ -1,5 +1,7 @@
-package factory.factory201.Test;
+package factory.factory201.test;
 
+import factory.factory201.test.mock.MockLane;
+import factory.factory201.test.mock.MockGantry;
 import factory.factory201.feederManagement.*;
 import factory.general.*;
 //import junit.framework.TestCase;
