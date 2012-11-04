@@ -1,7 +1,7 @@
 package factory.general;
 
 /**
-@brief any drawable that is capable of movement
+@brief any drawable that is capable of self-movement
 @author YiWei Roy Zheng
 @version 0.2
  */
