@@ -56,6 +56,8 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
     ArrayList<KAMNest> nest;
     int emptyKits;
     int counter;
+    int cameraCounter;
+    
     boolean deliveryStation;
     
     Timer timer;
@@ -87,6 +89,7 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
             nest.get(i).setY(yNum + i * 75);
         }
         counter = 0;
+        cameraCounter=0;
         timer = new Timer(20, new DeliveryTimer(this));
         timer.start();
 
@@ -148,7 +151,7 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
         {
             case 0: if(delivery.inPosition()) {
                 kitbot.giveKit(delivery.giveKit());
-                System.out.println("Picking up kit");
+                //System.out.println("Picking up kit");
             }
             else{
                 kitbot.returnOrder(0);
@@ -156,12 +159,12 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
             
                 break;
             case 10: kitbot.moveToConveyer();
-            System.out.println("Moving to conveyer");
+            //System.out.println("Moving to conveyer");
                 break;
             case 11: kitbot.moveToKit(0);
                 break;
             case 12: kitbot.moveToKit(1);
-            System.out.println("Moving to kit1");
+            //System.out.println("Moving to kit1");
                 break;
             case 13: kitbot.moveToKit(2);
                 break;
@@ -170,7 +173,7 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
         }
         }
         kitbot.update();
-        System.out.println(kitbot);
+        //System.out.println(kitbot);
         kitbot.getImage().paintIcon(this, g2, kitbot.getCoordinate().getX(), kitbot.getCoordinate().getY());
         if(kitbot.hasKit())
         {

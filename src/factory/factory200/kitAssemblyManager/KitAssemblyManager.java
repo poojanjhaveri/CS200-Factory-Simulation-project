@@ -38,45 +38,56 @@ public class KitAssemblyManager extends Manager implements ActionListener {
           if (ae.getSource() == cameraNest) {
             String choice = JOptionPane.showInputDialog("Please enter the nest number: ");
             Integer nest = Integer.parseInt(choice);
-            this.graphics.camera.setVisible(true);
+            System.out.println(nest);
             if(nest==1){
                 this.graphics.camera.setX(this.graphics.nest.get(0).getX());
+                System.out.println(this.graphics.nest.get(0).getX());
                 this.graphics.camera.setX(this.graphics.nest.get(0).getY());
+                System.out.println(this.graphics.nest.get(0).getY());
+                this.graphics.camera.setVisible(true);
                 this.graphics.repaint();
+                
             }
             else if(nest==2){
                 this.graphics.camera.setX(this.graphics.nest.get(1).getX());
                 this.graphics.camera.setX(this.graphics.nest.get(1).getY());
+                this.graphics.camera.setVisible(true);
                 this.graphics.repaint();
             }
             else if(nest==3){
                 this.graphics.camera.setX(this.graphics.nest.get(2).getX());
                 this.graphics.camera.setX(this.graphics.nest.get(2).getY());
+                this.graphics.camera.setVisible(true);
                 this.graphics.repaint();
             }
             else if(nest==4){
                 this.graphics.camera.setX(this.graphics.nest.get(3).getX());
                 this.graphics.camera.setX(this.graphics.nest.get(3).getY());
+                this.graphics.camera.setVisible(true);
                 this.graphics.repaint();
             }
             else if(nest==5){
                 this.graphics.camera.setX(this.graphics.nest.get(4).getX());
                 this.graphics.camera.setX(this.graphics.nest.get(4).getY());
+                this.graphics.camera.setVisible(true);
                 this.graphics.repaint();
             }
             else if(nest==6){
                 this.graphics.camera.setX(this.graphics.nest.get(5).getX());
                 this.graphics.camera.setX(this.graphics.nest.get(5).getY());
+                this.graphics.camera.setVisible(true);
                 this.graphics.repaint();
             }
             else if(nest==7){
                 this.graphics.camera.setX(this.graphics.nest.get(6).getX());
                 this.graphics.camera.setX(this.graphics.nest.get(6).getY());
+                this.graphics.camera.setVisible(true);
                 this.graphics.repaint();
             }
             else if(nest==8){
                 this.graphics.camera.setX(this.graphics.nest.get(7).getX());
                 this.graphics.camera.setX(this.graphics.nest.get(7).getY());
+                this.graphics.camera.setVisible(true);
                 this.graphics.repaint();
             }
         }
