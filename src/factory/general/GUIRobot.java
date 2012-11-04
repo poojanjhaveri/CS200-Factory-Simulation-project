@@ -12,6 +12,7 @@ public class GUIRobot extends MovingDrawable {
     Boolean busy;///<whether or not the Robot has orders
     Boolean flag;///<if this is ever set to true something is wrong
 
+    LinkedList<Integer> orders;///<a queue of orders for the robot
     /**
      * @param x x-coordinate of default robot position
      * @param y y-coordinate of default robot position
@@ -19,6 +20,7 @@ public class GUIRobot extends MovingDrawable {
     public GUIRobot(Integer x, Integer y, String i) {
         super(x, y, 0.0, i);
         this.flag = false;
+	this.orders = new LinkedList<Integer>();
     }
 public void update()
 {
