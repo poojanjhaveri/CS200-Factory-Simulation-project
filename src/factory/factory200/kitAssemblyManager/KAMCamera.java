@@ -5,6 +5,7 @@
 package factory.factory200.kitAssemblyManager;
 
 
+
 import javax.swing.*;
 
 /*
@@ -23,7 +24,7 @@ public class KAMCamera {
     private int y;
     
     public KAMCamera(){
-        camera=new ImageIcon("KAMCamera.png");
+        camera=new ImageIcon("pics/KAMCamera.png");
         visible=false;
     }
 

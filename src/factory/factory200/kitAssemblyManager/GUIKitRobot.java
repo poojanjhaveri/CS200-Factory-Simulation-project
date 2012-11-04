@@ -14,47 +14,70 @@ import factory.general.GUIRobot;
  * @brief Robot that moves kits in the KitWorkingArea
  * @author YiWei Roy Zheng
  */
-public class GUIKitRobot extends GUIRobot{
-    public static final String IMAGE_PAGE = "res/kitrobot.png";
+public class GUIKitRobot extends GUIRobot {
+    public static final String IMAGE_PAGE = "pics/kitrobot.png";
 
-    //GUIKit kit;///<null if not carrying a kit, otherwise contains a reference the kit its carrying
+    KAMKit kit;///<null if not carrying a kit, otherwise contains a reference the kit its carrying
     //KitWorkingArea kits;///information about all work benches and their kits
-    
+
     Boolean busy;///whether or not the KitterRobot has orders
-    
+
     public GUIKitRobot()
     {
         //this is actually set in the KAMGraphicsPanel
-	super(KAMGraphicPanel.ROBOT_INITIAL_X,KAMGraphicPanel.ROBOT_INITIAL_Y,GUIKitRobot.IMAGE_PAGE);
-	//this.kit = null;
+        super(KAMGraphicPanel.KITROBOT_INITIAL_X,KAMGraphicPanel.KITROBOT_INITIAL_Y,GUIKitRobot.IMAGE_PAGE);
 
     }
 
     /**
-sets a new lane destination coordinate for KitterRobot, the passed Integer specifies which lane to head to
+    sets a new lane destination coordinate for KitterRobot, the passed Integer specifies which lane to head to
     */
     public void moveToKit(Integer l) {
-	switch(l)
-	    {
-	    case 0:moveTo(KAMGraphicPanel.KITX,KAMGraphicPanel.KIT0Y);
-		break;
-	    case 1:moveTo(KAMGraphicPanel.KITX,KAMGraphicPanel.KIT1Y);
-		break;
-	    case 2:moveTo(KAMGraphicPanel.KITX,KAMGraphicPanel.KIT2Y);
-		break;
-	    default:
-	    }
+        switch(l)
+        {
+        case 0:
+            moveTo(KAMGraphicPanel.KITX,KAMGraphicPanel.KIT0Y);
+            break;
+        case 1:
+            moveTo(KAMGraphicPanel.KITX,KAMGraphicPanel.KIT1Y);
+            break;
+        case 2:
+            moveTo(KAMGraphicPanel.KITX,KAMGraphicPanel.KIT2Y);
+            break;
+        default:
+        }
     }
     /**
-moves to the conveyer
+    moves to the conveyer
      */
     public void moveToConveyer()
     {
-	this.moveTo(KAMGraphicPanel.CONVEYERX,KAMGraphicPanel.CONVEYERY);
+        this.moveTo(KAMGraphicPanel.CONVEYERX,KAMGraphicPanel.CONVEYERY);
     }
     /**
-updates the location of the kit items carrying
+    updates the location of the kit items carrying
     */
     public void updateKit() {
+        if(this.kit != null)
+        {
+            this.kit.setX(this.cords.getX());
+            this.kit.setY(this.cords.getY());
+        }
+    }
+    public void update()
+    {
+        super();
+        this.updateKit();
+    }
+    /**
+    @brief hands the GUIKitRobot a kit to manage
+     */
+    public void giveKit(KAMKit in)
+    {
+        this.kit = in;
+    }
+    public void dropKit()
+    {
+        this.kit = null;
     }
 }

@@ -1,13 +1,12 @@
 package factory.factory201.Test;
 
-import factory.factory201.interfaces.Lane;
+import factory.factory201.interfaces.NestInterface;
 import factory.general.Part;
 
-public class MockLane extends MockAgent implements Lane{
-
+public class MockNest extends MockAgent implements NestInterface {
 	public EventLog log = new EventLog();
-	
-	public MockLane(String name) {
+
+	public MockNest(String name) {
 		super(name);
 		// TODO Auto-generated constructor stub
 	}
@@ -21,12 +20,9 @@ public class MockLane extends MockAgent implements Lane{
 	@Override
 	public void msgHereAreParts(Part part, int quantity) {
 		// TODO Auto-generated method stub
-	
-		System.out.println("Quantity received " + quantity);
 		log.add(new LoggedEvent(
 				"Received parts event encountered"
-						));		
-	
+						));	
 	}
 
 }

@@ -6,6 +6,7 @@ package factory.factory200.kitAssemblyManager;
 
 
 
+
 import javax.swing.*;
 
 /*
@@ -26,7 +27,7 @@ public class KAMNest {
     private int y;
     
     public KAMNest(int i){
-        nest=new ImageIcon("KAMnest.png");
+        nest=new ImageIcon("pics/KAMnest.png");
         nestNumber=i;
     }
 

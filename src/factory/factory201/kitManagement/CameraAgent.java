@@ -50,7 +50,7 @@ public class CameraAgent extends Agent implements Camera {
      * @brief Message called by KitRobotAgent to inspect kit.
      */
     @Override
-    public void msgKitIsFull(Kit kit, Kit.KittingStandNumber kitNum) {
+    public void msgKitIsFull() {
         kits.put(kit, kitNum);
         stateChanged();
     }
