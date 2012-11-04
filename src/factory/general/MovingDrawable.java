@@ -1,7 +1,7 @@
 package factory.general;
 
 /**
-@brief any drawable that is capable of self-movement
+@brief any drawable that is capable of movement
 @author YiWei Roy Zheng
 @version 0.2
  */
@@ -28,6 +28,7 @@ public class MovingDrawable extends Drawable {
         super(x,y,a,i);
         this.moveToX = x;
         this.moveToY=y;
+        this.rotateto = 0.0;
     }
 
     /**
@@ -66,6 +67,7 @@ public class MovingDrawable extends Drawable {
      */
     public void update()
     {
+        //System.out.println("UPDATING");
         if(this.cords.getX() != this.moveToX) {
             if(Math.abs(this.moveToX - this.cords.getX()) < this.velocityX)
                 this.cords.setX(this.moveToX);
