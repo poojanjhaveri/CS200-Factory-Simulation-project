@@ -9,8 +9,8 @@ import javax.swing.ImageIcon;
  */
 public class Drawable {
 
-    Coordinate cords;
-    Double rotation;///<information on degrees of rotation. 0 degrees is due right
+    protected Coordinate cords;
+    protected Double rotation;///<information on degrees of rotation. 0 degrees is due right
 
     ImageIcon img;///<image of the drawable
 

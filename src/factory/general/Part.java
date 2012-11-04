@@ -46,9 +46,7 @@ public class Part implements Serializable {
         	this.type=Type.p8;
     }
     
-    public Part(String n, String d, String fn) {
-        //TODO need to implement system to generate unique part numbers (we could cheat and do it the dumb way, grab time())
-    }
+    
     /** End CS 201 stuff */
 
     /** CS 200 stuff */
@@ -72,5 +70,4 @@ public class Part implements Serializable {
     {
         return this.img;
     }
-
 }
