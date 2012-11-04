@@ -81,7 +81,7 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
         Timer timer=new Timer(20,new DeliveryTimer(this));
         timer.start();
         
-   
+        //cameraNest.addActionListener(this);
     }
     public class DeliveryTimer implements ActionListener{
         JPanel myPanel;
@@ -173,6 +173,11 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
     Button cameraKitStand;
     
     public void actionPerformed(ActionEvent ae) {
+        if(ae.getSource()==cameraNest){
+            String choice=JOptionPane.showInputDialog("Please enter the nest number: ");
+            Integer nest=Integer.parseInt(choice);
+            
+        }
         
     }
     

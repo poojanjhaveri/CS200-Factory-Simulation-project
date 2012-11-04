@@ -1,6 +1,7 @@
 package factory.factory200.kitAssemblyManager;
 
 
+
 import java.awt.Graphics2D;
 import java.util.*;
 import javax.swing.*;
@@ -107,7 +108,7 @@ public class KitStand {
         
     }
     public KitStand(int x, int y){
-        kitStand=new ImageIcon("KAMkitStand.png");
+        kitStand=new ImageIcon("pics/KAMkitStand.png");
         kitPositions=new ArrayList<KitPosition>();
         
         this.x=x;
