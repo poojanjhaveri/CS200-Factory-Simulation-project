@@ -18,7 +18,6 @@ import factory.general.Kit;
 public class KitRobotAgent extends Agent implements KitRobot {
 
     KitStand kitStand = new KitStand();
-
     private boolean partsAgentNeedsEmptyKit = false;
     private boolean requestedEmptyKit = false;
     private ConveyorAgent conveyor;
@@ -79,27 +78,27 @@ public class KitRobotAgent extends Agent implements KitRobot {
     // ********* SCHEDULER *********
     @Override
     protected boolean pickAndExecuteAnAction() {
-        if(!kitStand.isEmpty()) {
-            if(kitStand.get(2).status == Kit.Status.verified) { 
+        if (!kitStand.isEmpty()) {
+            if (kitStand.get(2).status == Kit.Status.verified) {
                 //if kit is ready to leave cell
                 sendVerifiedKitToConveyor();
                 return true;
-            } else if(kitStand.get(1).status == Kit.Status.full) { 
+            } else if (kitStand.get(1).status == Kit.Status.full) {
                 // if kit is ready for inspection
                 moveFullKitToInspection();
                 return true;
             }
         } else {
-            if(partsAgentNeedsEmptyKit && !requestedEmptyKit) { 
+            if (partsAgentNeedsEmptyKit && !requestedEmptyKit) {
                 // if parts agent needs empty kit
                 giveEmptyKitToPartsAgent();
                 return true;
-            } else if(kitStand.availability() > 0) { 
+            } else if (kitStand.availability() > 0) {
                 // if tempstand is empty
                 getEmptyKitFromConveyor();
                 return true;
-            } 
-        }       
+            }
+        }
         return false;
 
     }
@@ -113,7 +112,8 @@ public class KitRobotAgent extends Agent implements KitRobot {
     }
 
     private void moveFullKitToInspection() {
-        while (!kitStand.inspectionStandIsEmpty()) {}
+        while (!kitStand.inspectionStandIsEmpty()) {
+        }
 //        DoMoveFullKitToInspection();
         kitStand.moveFullKitToInspection();
         camera.msgKitIsFull(kitStand.get(2));
@@ -121,7 +121,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
     }
 
     private void giveEmptyKitToPartsAgent() {
-        if(!kitStand.isEmpty()) {
+        if (!kitStand.isEmpty()) {
             partsAgent.msgEmptyKitReady(kitStand.get(1));
             partsAgentNeedsEmptyKit = false;
         } else {

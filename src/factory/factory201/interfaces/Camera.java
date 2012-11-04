@@ -13,7 +13,7 @@ import factory.general.Nest;
  */
 public interface Camera {
 
-//    public void msgNestIsFull(Nest nest, Kit.StandNum nestNum);
-//
-//    public void msgKitIsFull(Kit kit, Kit.StandNum kitNum);
+    public void msgNestIsFull(Nest nest);
+
+    public void msgKitIsFull(Kit kit);
 }

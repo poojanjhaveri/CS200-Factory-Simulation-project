@@ -30,8 +30,8 @@ public class ConveyorAgent extends Agent implements Conveyor {
     private Timer removeKits = new Timer(1000, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent ae) {
-            for(Kit k : kits) {
-                if(k.status == Kit.Status.verified) {
+            for (Kit k : kits) {
+                if (k.status == Kit.Status.verified) {
                     kits.remove(k);
                     break;
                 }
@@ -43,7 +43,7 @@ public class ConveyorAgent extends Agent implements Conveyor {
         removeKits.start();
         removeKits.stop();
     }
-    
+
     // ********** MESSAGES *********
     /**
      * This message is called by the {@link KitRobotAgent} when an empty
@@ -82,7 +82,7 @@ public class ConveyorAgent extends Agent implements Conveyor {
                 return true;
             }
         }
-        for(Event e : eventQueue) {
+        for (Event e : eventQueue) {
             if (e == Event.verifiedKit) {
                 acceptVerifiedKit();
                 return true;
@@ -98,8 +98,8 @@ public class ConveyorAgent extends Agent implements Conveyor {
      * kit.
      */
     private void giveEmptyKit() {
-        for(Kit k : kits) {
-            if(k.status == Kit.Status.empty) {
+        for (Kit k : kits) {
+            if (k.status == Kit.Status.empty) {
                 kitRobotAgent.msgHereIsEmptyKit(k);
                 kits.remove(k);
                 break;
@@ -126,39 +126,39 @@ public class ConveyorAgent extends Agent implements Conveyor {
     public void setKitRobotAgent(KitRobotAgent agent) {
         kitRobotAgent = agent;
     }
-    
+
     public void generateKit(int num) {
         num--;
-        for(int i = 0; i < num; i++) {
+        for (int i = 0; i < num; i++) {
             Kit k = new Kit("Kit " + i);
             kits.add(k);
         }
     }
-    
+
     public void generateKit(String name) {
         Kit k = new Kit("Kit " + name);
         kits.add(k);
     }
-    
+
     public void removeKit(String name) {
-        for(Kit k : kits) {
-            if(k.name.equals(name)) {
+        for (Kit k : kits) {
+            if (k.name.equals(name)) {
                 kits.remove(k);
                 break;
             }
         }
     }
-    
+
     public void removeAllVerifiedKits() {
-        for(Kit k : kits) {
-            if(k.status == Kit.Status.verified) {
+        for (Kit k : kits) {
+            if (k.status == Kit.Status.verified) {
                 kits.remove(k);
             }
         }
     }
-    
+
     public void toggleAutoRemove() {
-        if(removeKits.isRunning()) {
+        if (removeKits.isRunning()) {
             removeKits.stop();
         } else {
             removeKits.restart();

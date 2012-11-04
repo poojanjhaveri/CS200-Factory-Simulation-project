@@ -23,59 +23,56 @@ import java.util.List;
  * @brief agent for the Camera
  */
 public class CameraAgent extends Agent implements Camera {
-    
+
     private KitRobotAgent kitRobotAgent;
     private NestAgent nestAgent;
-    
     private List<Nest> nests = new ArrayList<Nest>();
     private List<Kit> kits = new ArrayList<Kit>();
-    
+
     // ********** MESSAGES *********
-    
     /**
      * Message called by NestAgent to inspect nest.
      *
      * @param nest Nest to be inspected
      * @brief Message called by NestAgent to inspect nest.
      */
+    @Override
     public void msgNestIsFull(Nest nest) {
         nests.add(nest);
         stateChanged();
     }
-    
+
     /**
      * Message called by KitRobotAgent to inspect kit.
      *
      * @param kit Kit to be inspected
      * @brief Message called by KitRobotAgent to inspect kit.
      */
+    @Override
     public void msgKitIsFull(Kit kit) {
         kits.add(kit);
         stateChanged();
     }
-    
-    
+
     // ********* SCHEDULER *********
     @Override
     protected boolean pickAndExecuteAnAction() {
-        for(Kit k : kits) {
-            if(k.status == Kit.Status.full) {
+        for (Kit k : kits) {
+            if (k.status == Kit.Status.full) {
                 inspectKit(k);
                 return true;
             }
         }
-        for(Nest n : nests) {
-            if(n.status == Nest.Status.full) {
+        for (Nest n : nests) {
+            if (n.status == Nest.Status.full) {
                 inspectNest(n);
                 return true;
             }
         }
         return false;
     }
-    
-    
-    // ********** ACTIONS **********
 
+    // ********** ACTIONS **********
     /**
      * Inspects nests and returns result to kitRobot agent.
      *
@@ -94,7 +91,7 @@ public class CameraAgent extends Agent implements Camera {
         kitRobotAgent.msgKitInspected(true);
         stateChanged();
     }
-    
+
     /**
      * Inspects nests and returns result to nest agent.
      *
@@ -113,14 +110,12 @@ public class CameraAgent extends Agent implements Camera {
         kitRobotAgent.msgKitInspected(true);
         stateChanged();
     }
-    
-    
+
     // ************ MISC ***********
-    
     public void setKitRobotAgent(KitRobotAgent agent) {
         kitRobotAgent = agent;
     }
-    
+
     public void setNestAgent(NestAgent agent) {
         nestAgent = agent;
     }
