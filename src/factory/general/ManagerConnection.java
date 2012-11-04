@@ -86,7 +86,7 @@ public class ManagerConnection implements Runnable {
      * @brief listen for a message from the server
      */
     public void listenToServer() {
-        p.println("Listening to the server for a push...");
+        p.println("Listening to the server (ManagerConnection)...");
         try {
             String msg = in.readLine();
             this.mgr.processMessage(msg);
