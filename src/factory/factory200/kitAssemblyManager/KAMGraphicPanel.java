@@ -4,7 +4,6 @@
  */
 package factory.factory200.kitAssemblyManager;
 
-
 /**
  *
  * @author Deepa
@@ -14,6 +13,7 @@ import java.awt.event.*;
 import java.awt.geom.*;
 import java.util.*;
 import javax.swing.*;
+import javax.swing.Timer;
 
 /**
  *
@@ -47,24 +47,16 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
     public KitDeliveryStation delivery;///<declares an object that keeps track of the delivery station
     
     ArrayList<KAMNest> nest;
-    ArrayList<KAMKit> kit;
     
     int emptyKits;
+    int counter;
     
     public KAMGraphicPanel(){
-       kitstand=new KitStand();
-       kitstand.setX(275);
-       kitstand.setY(150);
+       kitstand=new KitStand(275,150);
        
        //THIS NUMBER IS HARDCODED! should be from server => number of kits that should be made
        emptyKits=5;
        delivery=new KitDeliveryStation(emptyKits);
-        
-        kit = new ArrayList<KAMKit>();
-        
-        for(int i=1;i<=3;i++){
-            kit.add(new KAMKit(i));
-        }
         
         nest=new ArrayList<KAMNest>();
         
@@ -77,6 +69,40 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
         for(int i=0;i<8;i++){
         nest.get(i).setY(yNum+i*75);
         }
+        counter=0;
+        Timer timer=new Timer(10,new DeliveryTimer(this));
+        timer.start();
+        
+   
+    }
+    public class DeliveryTimer implements ActionListener{
+        JPanel myPanel;
+        public DeliveryTimer(JPanel jp){
+            myPanel = jp;
+        }
+        
+        //KAMGraphicPanel graph=new KAMGraphicPanel();
+    public void actionPerformed(ActionEvent ae){
+        
+        if(delivery.getPlaceholder().get(delivery.getNumEmptyKits()-1).getY()>-150){
+        for(int i=0;i<delivery.getNumEmptyKits();i++){
+            int yPlace=delivery.getPlaceholder().get(i).getY();
+            int number=i*550;
+            if(counter>number){
+                delivery.getPlaceholder().get(i).setY(yPlace-1);
+            }
+            }
+                counter++;
+        }
+        else{
+            for(int i=0;i<delivery.getNumEmptyKits();i++){
+                delivery.getPlaceholder().get(i).setY(680);
+                counter=0;
+            }
+        }
+        myPanel.repaint();
+        
+    }
     }
     
     public void paint(Graphics g){
@@ -86,7 +112,16 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
 	g2.fill( backgroundRectangle );
         paintNests(this,g2);
         kitstand.getKitStand().paintIcon(this, g2, kitstand.getX(), kitstand.getY());
-        
+        for(int i=0;i<3;i++){
+            if(kitstand.getKitPositions().get(i).isFilled())
+                kitstand.getKitPositions().get(i).getKit().getImage().paintIcon(this, g2, kitstand.getKitPositions().get(i).getX(),kitstand.getKitPositions().get(i).getY());
+        }
+        for(int i=0;i<delivery.getNumEmptyKits();i++){
+        delivery.getPlaceholder().get(i).getPlaceholder().paintIcon(this, g2, delivery.getPlaceholder().get(i).getX(), delivery.getPlaceholder().get(i).getY());
+        if(delivery.getPlaceholder().get(i).isShow()){
+        delivery.getEmptyKits().get(i).getImage().paintIcon(this, g2, delivery.getPlaceholder().get(i).getX()+10, delivery.getPlaceholder().get(i).getY()+20);
+        }
+        }
     }
     
     public void paintNests(JPanel j, Graphics2D g){
@@ -104,6 +139,9 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
         JPanel tester=graphicPanel.TestPanel();
         
         TEST.add(graphicPanel);
+        
+        
+        
         TEST.add(tester);
         
         int x=700;
