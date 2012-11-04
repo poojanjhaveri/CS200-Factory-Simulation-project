@@ -7,8 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.border.LineBorder;
 
 /**
- * 
- * 
+ * @brief Robot class
  * @author Dongyoung Jung
  */
 public class GantryManagerRobot extends JLabel{
