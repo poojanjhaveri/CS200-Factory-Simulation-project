@@ -26,9 +26,11 @@ public class KitStand {
     public boolean addKit(Kit kit) {
         if(kits[1] == null) {
             kits[1] = kit;
+            kits[1].standNum = Kit.StandNum.one;
             return true;
         } else if(kits[0] == null) {
             kits[0] = kit;
+            kits[0].standNum = Kit.StandNum.zero;
             return true;
         } else {
             return false;
@@ -54,6 +56,7 @@ public class KitStand {
     public Kit remove(int i) {
         Kit k = kits[i];
         kits[i] = null;
+        k.standNum = Kit.StandNum.none;
         return k;
     }
     
@@ -86,8 +89,11 @@ public class KitStand {
      */
     public void moveFullKitToInspection() {
         kits[2] = kits[1];
+        kits[2].standNum = Kit.StandNum.two;
         if(kits[0] != null) {
             kits[1] = kits[0];
+            kits[1].standNum = Kit.StandNum.one;
+//            DoMoveKitMoveKitFrom0to1();
             kits[0] = null;
         } else {
             kits[1] = null;

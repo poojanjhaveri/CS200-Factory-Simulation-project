@@ -5,8 +5,9 @@ import factory.factory201.interfaces.Camera;
 import factory.factory201.partsManagement.NestAgent;
 import factory.general.Kit;
 import factory.general.Nest;
-import java.util.HashMap;
-import java.util.Map;
+import factory.general.Part;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Agent for the camera.
@@ -22,100 +23,105 @@ import java.util.Map;
  * @brief agent for the Camera
  */
 public class CameraAgent extends Agent implements Camera {
-
-    private Map<Nest, Integer> nests = new HashMap<Nest, Integer>();
-    private Map<Kit, Integer> kits = new HashMap<Kit, Integer>();
-    private NestAgent nestAgent;
+    
     private KitRobotAgent kitRobotAgent;
-
+    private NestAgent nestAgent;
+    
+    private List<Nest> nests = new ArrayList<Nest>();
+    private List<Kit> kits = new ArrayList<Kit>();
+    
     // ********** MESSAGES *********
+    
     /**
      * Message called by NestAgent to inspect nest.
      *
      * @param nest Nest to be inspected
-     * @param nestNum Specifies location of nest for animation purposes
      * @brief Message called by NestAgent to inspect nest.
      */
-    @Override
-    public void msgNestIsFull(Nest nest, Kit.KittingStandNumber nestNum) {
-        nests.put(nest, nestNum);
+    public void msgNestIsFull(Nest nest) {
+        nests.add(nest);
         stateChanged();
     }
-
+    
     /**
      * Message called by KitRobotAgent to inspect kit.
      *
      * @param kit Kit to be inspected
-     * @param kitNum Specifies location of kit for animation purposes
      * @brief Message called by KitRobotAgent to inspect kit.
      */
-    @Override
-    public void msgKitIsFull() {
-        kits.put(kit, kitNum);
+    public void msgKitIsFull(Kit kit) {
+        kits.add(kit);
         stateChanged();
     }
-
+    
+    
     // ********* SCHEDULER *********
     @Override
     protected boolean pickAndExecuteAnAction() {
-        for (Map.Entry<Kit, Integer> entry : kits.entrySet()) {
-            inspectKit(entry.getKey(), entry.getValue());
-            return true;
+        for(Kit k : kits) {
+            if(k.status == Kit.Status.full) {
+                inspectKit(k);
+                return true;
+            }
         }
-        for (Map.Entry<Nest, Integer> entry : nests.entrySet()) {
-            inspectNest(entry.getKey(), entry.getValue());
+        for(Nest n : nests) {
+            if(n.status == Nest.Status.full) {
+                inspectNest(n);
+                return true;
+            }
         }
-
         return false;
     }
-
+    
+    
     // ********** ACTIONS **********
+
     /**
      * Inspects nests and returns result to kitRobot agent.
      *
      * @param kit Kit being inspected by camera
-     * @param kitNum Specifies location of kit for animation purposes
      * @brief Inspects nests and returns result to kitRobot agent.
      */
-    private void inspectKit(Kit kit, Kit.KittingStandNumber kitNum) {
-//        DoInspectKit(kitNum);
-        //check if all the correct parts
-        kitRobotAgent.msgKitInspected(kit, true);
+    public void inspectKit(Kit kit) {
+//        Kit k = new Kit("1");
+////        k = server.getKit();
+//        if(k.equals(kit)) {
+//            
+//        } else {
+//            
+//        }
+//        DoInspectKit(kit);
+        kitRobotAgent.msgKitInspected(true);
         stateChanged();
     }
-
+    
     /**
      * Inspects nests and returns result to nest agent.
      *
      * @param nest Nest being inspected by camera
-     * @param nestNum Specifies location of nest for animation purposes
      * @brief Inspects nests and returns result to nest agent.
      */
-    private void inspectNest(Nest nest, Kit.KittingStandNumber nestNum) {
-//        DoInspectNest(nestNum);
-        //check if all the correct parts
-        nestAgent.msgNestInspected(true);
+    public void inspectNest(Nest nest) {
+//        Nest n = new Nest();
+//        boolean flag = false;
+//        for(Part p : n.parts) {
+//            if(p.type != n.partType) {
+//                flag = true;
+//            }
+//        }
+//        DoInspectNest(nest.nestNum);
+        kitRobotAgent.msgKitInspected(true);
         stateChanged();
     }
-
+    
+    
     // ************ MISC ***********
-    /**
-     * Setter for NestAgent.
-     *
-     * @param agent NestAgent
-     * @brief Setter for NestAgent.
-     */
-    public void setNestAgent(NestAgent agent) {
-        nestAgent = agent;
-    }
-
-    /**
-     * Setter for KitRobotAgent.
-     *
-     * @param agent KitRobotAgent
-     * @brief Setter for KitRobotAgent.
-     */
+    
     public void setKitRobotAgent(KitRobotAgent agent) {
         kitRobotAgent = agent;
+    }
+    
+    public void setNestAgent(NestAgent agent) {
+        nestAgent = agent;
     }
 }
