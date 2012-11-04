@@ -29,6 +29,7 @@ A queue of orders
  * @author YiWei Roy Zheng
  */
 public class GUIKitRobot extends GUIRobot {
+
     public static final String IMAGE_PAGE = "pics/kitrobot.png";
     /**
      */
@@ -66,6 +67,18 @@ public class GUIKitRobot extends GUIRobot {
     public void moveToConveyer()
     {
         this.moveTo(KAMGraphicPanel.CONVEYERX,KAMGraphicPanel.CONVEYERY);
+    }
+    /**
+@param i 0 is kit0, 1 is kit1, 2 is kit2
+     */
+    public void pickUpEmptyKit(Integer i)
+    {
+	this.orders.add(10);
+	this.orders.add(0);
+	if(i < 0 || i > 2){
+	    System.out.println("CRITICAL ERROR: attempting to use GUIKitRobot::pickUpEmptyKit(Integer " + i + ") when range is 0,1,2");
+	}
+	this.orders.add(i+11);
     }
     /**
     updates the location of the kit items carrying
