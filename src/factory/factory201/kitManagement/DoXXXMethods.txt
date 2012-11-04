@@ -1,21 +1,36 @@
 CAMERA AGENT:
 
 DoInspectNest(int nestNum) {
-	- nestNum indicates which nest to inspect, which has set coordinates.
-	- the camera should move to on top of the nest and "take a picture"
+    - nestNum indicates which nest to inspect, which has set coordinates.
+    - the camera should move to on top of the nest and "take a picture"
 }
 
-//need a DoXXX command for taking a picture of the finished kit on kit stand
+DoInspectKit(Kit kit) {
+    - out of the three kitting stands, there is only one on which
+        kits will be inspected, it should be a hard coded location
+    - go to this spot and "take a picture"
+}
 
 KIT ROBOT AGENT:
 
 DoRemoveVerifiedKit(kit k) {
-	- the kit k should be verified and ready to be put on the conveyor
-	- the kit robot agent should pick up the kit and put it on the conveyor
+    - the kit k should be verified and ready to be put on the conveyor
+    - the kit robot agent should pick up the kit and put it on the conveyor
 } //need a separate DoXXX command to move the kit in the spot where the picture can be taken
 
-DoGetEmptyKit() {
-	- the kit robot agent should get the empty kit from the conveyor
+DoMoveFullKitToInspection() {
+    - the kit robot moves the full kit on the building stand 
+        to the inspection stand
+        - there are three kitting stands: 
+            an inspection stand, 
+            a stand where a kit is being built,
+            and a stand to hold an empty kit
 }
 
+DoGetEmptyKit() {
+    - the kit robot agent should get the empty kit from the conveyor
+}
 
+DoMoveEmptyKitFrom0to1() {
+    - moves empty kit from kit stand 0 to kit stand 1
+}

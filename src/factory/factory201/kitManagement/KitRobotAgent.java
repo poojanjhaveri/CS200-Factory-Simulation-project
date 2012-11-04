@@ -18,8 +18,8 @@ import factory.general.Kit;
 public class KitRobotAgent extends Agent implements KitRobot {
 
     KitStand kitStand = new KitStand();
-
     private boolean partsAgentNeedsEmptyKit = false;
+    private boolean requestedEmptyKit = false;
     private ConveyorAgent conveyor;
     private CameraAgent camera;
     private PartsAgent partsAgent;
@@ -33,6 +33,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
     @Override
     public void msgNeedEmptyKit() {
         partsAgentNeedsEmptyKit = true;
+        requestedEmptyKit = false;
         stateChanged();
     }
 
@@ -56,7 +57,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
      * @brief Message called by PartsAgent when kit is complete.
      */
     @Override
-    public void msgKitIsFull(Kit kit) {
+    public void msgKitIsFull() {
         kitStand.get(1).status = Kit.Status.full;
         stateChanged();
     }
@@ -69,35 +70,35 @@ public class KitRobotAgent extends Agent implements KitRobot {
      * @param result Result of inspection
      */
     @Override
-    public void msgKitInspected(Kit kit, boolean result) {
-        kitStand.get(2).status = Kit.Status.verified;
+    public void msgKitInspected(boolean result) {
+        kitStand.get(2).status = result ? Kit.Status.verified : Kit.Status.error;
         stateChanged();
     }
 
     // ********* SCHEDULER *********
     @Override
     protected boolean pickAndExecuteAnAction() {
-        if(!kitStand.isEmpty()) {
-            if(kitStand.get(2).status == Kit.Status.verified) { 
+        if (!kitStand.isEmpty()) {
+            if (kitStand.get(2).status == Kit.Status.verified) {
                 //if kit is ready to leave cell
                 sendVerifiedKitToConveyor();
                 return true;
-            } else if(kitStand.get(1).status == Kit.Status.full) { 
+            } else if (kitStand.get(1).status == Kit.Status.full) {
                 // if kit is ready for inspection
                 moveFullKitToInspection();
                 return true;
             }
         } else {
-            if(partsAgentNeedsEmptyKit) { 
+            if (partsAgentNeedsEmptyKit && !requestedEmptyKit) {
                 // if parts agent needs empty kit
                 giveEmptyKitToPartsAgent();
                 return true;
-            } else if(kitStand.availability() > 0) { 
+            } else if (kitStand.availability() > 0) {
                 // if tempstand is empty
                 getEmptyKitFromConveyor();
                 return true;
-            } 
-        }       
+            }
+        }
         return false;
 
     }
@@ -111,13 +112,22 @@ public class KitRobotAgent extends Agent implements KitRobot {
     }
 
     private void moveFullKitToInspection() {
+        while (!kitStand.inspectionStandIsEmpty()) {
+        }
+//        DoMoveFullKitToInspection();
         kitStand.moveFullKitToInspection();
-        camera.msgKitIsFull();
+        camera.msgKitIsFull(kitStand.get(2));
         stateChanged();
     }
 
     private void giveEmptyKitToPartsAgent() {
-//        partsAgent.msgEmptyKitReady(k.kittingStandNumber);
+        if (!kitStand.isEmpty()) {
+            partsAgent.msgEmptyKitReady(kitStand.get(1));
+            partsAgentNeedsEmptyKit = false;
+        } else {
+            getEmptyKitFromConveyor();
+            requestedEmptyKit = true;
+        }
         stateChanged();
     }
 
