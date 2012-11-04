@@ -11,18 +11,21 @@ public class Part implements Serializable {
     public enum Type {
         p1, p2, p3, p4, p5, p6, p7, p8
     };
-    
-    public Type type;
-    public boolean inKit;
-    public int size;
-//    public boolean good;
+    private Type type;
+    private boolean inKit;
+    private int size;
 
     /**
      * Creates a part and gives it a unique ID.
-     *
+     * @author YiWei Roy Zheng
      * @brief instantiates a part into the correct state
      */
-    
+
+    public Part(Type t, boolean inkit, int size) {
+        this.type = t;
+        this.inKit = false;
+        this.size = size;
+    }
     /* I am adding this constructor to test my agent codes (kevin) */
     public Part(int num){
     	if(num==1)
@@ -46,28 +49,28 @@ public class Part implements Serializable {
     public Part(String n, String d, String fn) {
         //TODO need to implement system to generate unique part numbers (we could cheat and do it the dumb way, grab time())
     }
-    
     /** End CS 201 stuff */
-    
+
     /** CS 200 stuff */
     private String name;
     private String description;
-    private String imageFileName;
-//    Integer number;///< the part number, like an ID; useful for comparing
+    private ImageIcon img;
+    Integer number;///< the part number, like an ID; useful for comparing
 
-    
-
+    public Part(String n, String d, String fn) {
+        this.name = n;
+        this.description = d;
+        this.img = new ImageIcon(fn);
+    }
     public String getName() {
         return this.name;
     }
-
     public String getDescription() {
         return this.description;
     }
-    
-    public Part(Type t, boolean inkit, int size) {
-        this.type = t;
-        this.inKit = false;
-        this.size = size;
+    public ImageIcon getImage()
+    {
+        return this.img;
     }
+
 }

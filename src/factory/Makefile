@@ -14,7 +14,7 @@ manager:
 	java $(PKGENERAL).Manager
 kitassembly:
 	javac $(PARAM) $(GENERAL) factory200/kitAssemblyManager/*.java factory201/interfaces/KitRobot.java
-	java factory.factory200.kitAssemblyManager.KitAssemblyManager
+	java factory.factory200.kitAssemblyManager.KAMGraphicPanel
 lane:
 	javac $(PARAM) factory200/laneManager/*.java
 	java factory.factory200.laneManager.V0LaneBinGantry
