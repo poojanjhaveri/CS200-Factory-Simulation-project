@@ -11,7 +11,7 @@ public class Part implements Serializable {
     public enum Type {
         p1, p2, p3, p4, p5, p6, p7, p8
     };
-    private Type type;
+    public Type type;
     private boolean inKit;
     private int size;
 

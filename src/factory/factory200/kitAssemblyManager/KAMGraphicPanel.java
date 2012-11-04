@@ -25,12 +25,13 @@ import javax.swing.Timer;
  * @author Deepa
  */
 public class KAMGraphicPanel extends JPanel implements ActionListener {
-    public static final int ROBOT_INITIAL_X=0;
-    public static final int ROBOT_INITIAL_Y=0;
-    public static final int KITX=0;
-    public static final int KIT0Y=0;
-    public static final int KIT1Y=0;
-    public static final int KIT2Y=0;
+    public static final int KITROBOT_INITIAL_X=200;
+    public static final int KITROBOT_INITIAL_Y=150;
+    public static final int KITX=275+25;
+    public static final int KIT0Y=150+10;
+    public static final int KIT1Y=150+10+125;
+    public static final int KIT2Y=150+10+250;
+    //took into consideration kit stand positioning
     public static final int CONVEYERX=0;
     public static final int CONVEYERY=0;
     
@@ -58,6 +59,9 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
     int counter;
     
     public KAMGraphicPanel(){
+        
+        
+        
        kitstand=new KitStand(275,150);
        
        camera=new KAMCamera();
