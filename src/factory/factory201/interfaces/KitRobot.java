@@ -14,9 +14,9 @@ public interface KitRobot {
 
     public void msgHereIsEmptyKit(Kit kit);
 
-    public void msgKitInspected(Kit kit, boolean result);
+    public void msgKitInspected(boolean result);
 
-    public void msgKitIsFull(Kit kit);
+    public void msgKitIsFull();
 
     public void msgNeedEmptyKit();
 }
