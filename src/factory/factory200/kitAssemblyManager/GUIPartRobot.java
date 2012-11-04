@@ -18,7 +18,7 @@ import factory.general.GUIRobot;
 public class GUIPartRobot extends GUIRobot{
 
 
-    PartRobotInventory parts;///<current parts on the GUIPartRobot, en route to the Kit
+    PartsRobotInventory parts;///<current parts on the GUIPartRobot, en route to the Kit
     Boolean busy;///<whether or not the GUIPartRobot has orders
     Integer moveto;///<which lane the GUIPartRobot is heading to
 
@@ -27,7 +27,7 @@ public class GUIPartRobot extends GUIRobot{
         // variables will be set in the KAMGraphicsPanel
 	super(KAMGraphicPanel.PARTSROBOTINITIALX,KAMGraphicPanel.PARTSROBOTINITIALY,"partsrobot.png");
 	this.busy = false;
-	this.parts = new Inventory();
+	this.parts = new PartsRobotInventory();
 	this.moveto = 0;
 this.moveTo(KAMGraphicPanel.RAILX,KAMGraphicPanel.LANE0Y);
     }

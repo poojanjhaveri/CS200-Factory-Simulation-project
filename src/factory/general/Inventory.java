@@ -10,7 +10,7 @@ Universal interface for holding parts.
  */
 public interface Inventory {
 
-    public void addPart(Part p){}
+    public void addPart(Part p);
     public void clear();
     public Integer size();
 
