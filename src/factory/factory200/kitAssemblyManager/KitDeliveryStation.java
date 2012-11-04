@@ -34,6 +34,7 @@ public class KitDeliveryStation {
             placeholder=new ImageIcon("pics/KAMplaceholder.png");
             show=true;
             kit=new KAMKit();
+            
         }
         
         public KAMKit giveKit(){

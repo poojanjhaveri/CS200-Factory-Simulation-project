@@ -68,13 +68,13 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
         kitbot = new GUIKitRobot();
         
         camera=new KAMCamera();
+        
 
         kitstand = new KitStand(275, 150);
 
-        camera = new KAMCamera();
 
         //THIS NUMBER IS HARDCODED! should be from server => number of kits that should be made
-        emptyKits = 5;
+        emptyKits = 1;
         delivery = new KitDeliveryStation(emptyKits);
 
         nest = new ArrayList<KAMNest>();
@@ -101,6 +101,9 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
             myPanel = jp;
         }
         public void actionPerformed(ActionEvent ae) {
+            if(camera.isVisible()){
+                cameraCounter++;
+            }
             if (delivery.getPlaceholder().get(delivery.getNumEmptyKits() - 1).getY() > -150) {
                 for (int i = 0; i < delivery.getNumEmptyKits(); i++) {
                     int yPlace = delivery.getPlaceholder().get(i).getY();
@@ -181,7 +184,11 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
         }
         if(camera.isVisible()){
             camera.getCamera().paintIcon(this, g2, camera.getX(), camera.getY());
+            
+        }
+        if(camera.isVisible() && cameraCounter==20){
             camera.setVisible(false);
+            cameraCounter=0;
         }
     }
 
