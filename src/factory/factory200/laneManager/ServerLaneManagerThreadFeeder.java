@@ -303,6 +303,10 @@ public class ServerLaneManagerThreadFeeder {
 					insertPartFrequency = 0;
 				}
 			}
+			if( parts.size() == 0 ){
+				getFeederWithoutBox();
+			}
+			
 			insertPartFrequency++;
 		}
 	}

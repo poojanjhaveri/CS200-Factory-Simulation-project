@@ -13,20 +13,20 @@ public class ServerGantryManagerThreadGantry {
 	private GantryManagerApp app;	///< Instance of class 'GantryManagerApp'
 	private Boolean arrived = true;	///< Boolean 'arrived' telling if the robot should keep moving or arrived
 	
-	private int currentLocationX;	///< Current Location X Coordinate 
-	private int currentLocationY;	///< Current Location Y Coordinate
-	private int destinationX;	///< Destination X Coordinate
-	private int destinationY;	///< Destination Y Coordinate
+	private double currentLocationX;	///< Current Location X Coordinate 
+	private double currentLocationY;	///< Current Location Y Coordinate
+	private double destinationX;	///< Destination X Coordinate
+	private double destinationY;	///< Destination Y Coordinate
 	private double incrementalX;	///< Incremental to Current Location X Coordinate
 	private double incrementalY;	///< Incremental to Current Location Y Coordinate
 	private double gapXSquared;	///< (currentLocationX - destinationX)^2
 	private double gapYSquared;	///< (currentLocationY - destinationY)^2
 	private double divisor;	///<	Distance between Destination and Current Position
 	
-	private final int xCoorFeeders = 0;	///< X Coordinate of Feeders
-	private final int xCoorBins = 225;	///< X Coordinate of Bins
-	private ArrayList<Integer> yCoorFeeders = new ArrayList<Integer>();	///< ArrayList of Y Coordinate of Feeders
-	private ArrayList<Integer> yCoorBins = new ArrayList<Integer>();	///< ArrayList of Y Coordinate of Bins
+	private final double xCoorFeeders = 0;	///< X Coordinate of Feeders
+	private final double xCoorBins = 225;	///< X Coordinate of Bins
+	private ArrayList<Double> yCoorFeeders = new ArrayList<Double>();	///< ArrayList of Y Coordinate of Feeders
+	private ArrayList<Double> yCoorBins = new ArrayList<Double>();	///< ArrayList of Y Coordinate of Bins
 	
 	private String signalToGRM = "";	/// Signal to Gantry Robot Manager
 	private int colorNum;	///< Color number
@@ -44,19 +44,19 @@ public class ServerGantryManagerThreadGantry {
 		this.currentLocationX = currentLocationX;
 		this.currentLocationY = currentLocationY;
 		
-		yCoorFeeders.add(75);
-		yCoorFeeders.add(220);
-		yCoorFeeders.add(380);
-		yCoorFeeders.add(540);
+		yCoorFeeders.add(75.0);
+		yCoorFeeders.add(220.0);
+		yCoorFeeders.add(380.0);
+		yCoorFeeders.add(540.0);
 
-		yCoorBins.add(25);
-		yCoorBins.add(105);
-		yCoorBins.add(185);
-		yCoorBins.add(265);
-		yCoorBins.add(350);
-		yCoorBins.add(430);
-		yCoorBins.add(510);
-		yCoorBins.add(595);		
+		yCoorBins.add(25.0);
+		yCoorBins.add(105.0);
+		yCoorBins.add(185.0);
+		yCoorBins.add(265.0);
+		yCoorBins.add(350.0);
+		yCoorBins.add(430.0);
+		yCoorBins.add(510.0);
+		yCoorBins.add(595.0);		
 	}
 	
 	/**
@@ -91,7 +91,7 @@ public class ServerGantryManagerThreadGantry {
 	public void calculate(){
 		gapXSquared = Math.pow(destinationX - currentLocationX,2);
 		gapYSquared = Math.pow(destinationY - currentLocationY,2);
-		divisor = Math.pow( gapXSquared + gapYSquared, 0.5) / 2;
+		divisor = Math.pow( gapXSquared + gapYSquared, 0.5) / 5;
 		incrementalX = ( destinationX - currentLocationX ) / divisor;
 		incrementalY = ( destinationY - currentLocationY ) / divisor;
 		
@@ -138,10 +138,9 @@ public class ServerGantryManagerThreadGantry {
 	 * 
 	 * @brief Robot Movement Signal 
 	 */
-	public void moveRobot(){				
+	public void moveRobot(){
 		// Signal to Gantry Robot Manager
-		signalToGRM = "&Robot&Move" + currentLocationX + "**" + currentLocationY;
-		
+		signalToGRM = "&Robot&Move" + (int)currentLocationX + "**" + (int)currentLocationY;
 		// Send signal to Gantry Robot Manager
 		app.getNetwork().getVerify().verify(signalToGRM);
 		

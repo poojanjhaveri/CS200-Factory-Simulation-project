@@ -26,7 +26,7 @@ public class GantryManagerApp extends JFrame {
 		this.server = server;
 		setTitle("Gantry Robot Manager");
 		setSize(300,700);
-		setLocation(1050,0);
+		setLocation(900,0);
 		setVisible(true);
 		setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 		setLayout(new BorderLayout());
