@@ -35,6 +35,9 @@ public class Manager extends JFrame {
     // Other fields
     public static Printer p = new Printer();
 
+    /**
+     * @brief main method to test Manager interaction with Server
+     */
     public static void main(String[] args) {
         // EXAMPLE INTERACTION
 

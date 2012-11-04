@@ -47,6 +47,7 @@ public class Server {
 //        }
 
         Server server = new Server(PORT_NUMBER);
+        
         try {
             for(int i = 0; i!= 100; i++){
             Thread.sleep(3000);
@@ -111,7 +112,7 @@ public class Server {
         }
 
         public void debugMessage() {
-            System.out.println("Sending debug message...");
+            System.out.println("Sending test message to client...");
             pw.println(Message.TEST_CLIENT);
         }
 
@@ -138,7 +139,9 @@ public class Server {
                     processMessage(message);
                     p.println("Processed message in client thread");
                 } catch (Exception e) {
-                    p.print("Caught: "+message);
+                    p.print("Client exited prematurely; shutting down");
+                    System.exit(0);
+//                    p.print("Caught: "+message);
                     // e.printStackTrace();
                 }
             }
