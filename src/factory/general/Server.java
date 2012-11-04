@@ -58,7 +58,7 @@ public class Server {
             System.exit(0);
         }
         
-        do {
+        while (true) {
             // Continuously check for a new client for which to create a thread
             try {
                 s = ss.accept(); // Wait for a client (program halts here until connection occurs)
@@ -70,7 +70,7 @@ public class Server {
                 System.out.println("got an exception" + e.getMessage());
             }
             System.out.println("A client has connected");
-        } while (numClients != 0);
+        }
     }
     
     /**
@@ -153,7 +153,8 @@ public class Server {
                 stopThread();
                 numClients--;
                 if (numClients == 0) {
-                    System.out.println("Number of clients is 0");
+                    System.out.println("Number of clients is 0; exiting Server");
+                    System.exit(0);
                 }
             }
 //			else if (msg.contains(Message.CHECK_SELECTED_PLAYER)) {
