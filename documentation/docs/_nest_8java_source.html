@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>Factory Project: src/factory/Nest.java Source File</title>
+<title>Factory Project: src/factory/general/Nest.java Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Factory Project
-   &#160;<span id="projectnumber">0.0.0</span>
+   &#160;<span id="projectnumber">0.0.1</span>
    </div>
    <div id="projectbrief">team 1 joint cs200/cs201</div>
   </td>
@@ -81,7 +81,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_339115f1b781ea71218b7406990eb67d.html">factory</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_339115f1b781ea71218b7406990eb67d.html">factory</a></li><li class="navelem"><a class="el" href="dir_247a0a6ec2c66846e1a570c88dd3b8bc.html">general</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -93,14 +93,31 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * To change this template, choose Tools | Templates</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * and open the template in the editor.</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">package </span>factory;</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">package </span>factory.general;</div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
-<div class="line"><a name="l00011"></a><span class="lineno"><a class="code" href="classfactory_1_1_nest.html">   11</a></span>&#160;<span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classfactory_1_1_nest.html">Nest</a> {</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;}</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">import</span> java.util.ArrayList;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">import</span> java.util.List;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_nest.html">   14</a></span>&#160;<span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classfactory_1_1general_1_1_nest.html">Nest</a> {</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    </div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="code" href="enumfactory_1_1general_1_1_nest_1_1_status.html">   16</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">enum</span> <a class="code" href="enumfactory_1_1general_1_1_nest_1_1_status.html">Status</a> {</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="code" href="enumfactory_1_1general_1_1_nest_1_1_status.html#a19942f29129271ec99c31679650517c1">   17</a></span>&#160;        empty, full, <a class="code" href="enumfactory_1_1general_1_1_nest_1_1_status.html#a19942f29129271ec99c31679650517c1">verified</a>, error</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_nest.html#a47e242c130e74665258ab9a72cc12c56">   18</a></span>&#160;    };</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keyword">public</span> String <a class="code" href="classfactory_1_1general_1_1_nest.html#a47e242c130e74665258ab9a72cc12c56">name</a>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_nest.html#acf83fef3f757618eae26f301c700e34c">   21</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">int</span> <a class="code" href="classfactory_1_1general_1_1_nest.html#acf83fef3f757618eae26f301c700e34c">nestNum</a>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_nest.html#a1c3c93d11e892d04b3ad40e65334ed5e">   22</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classfactory_1_1general_1_1_part.html" title="digital representation of a part">Part</a>.Type <a class="code" href="classfactory_1_1general_1_1_nest.html#a1c3c93d11e892d04b3ad40e65334ed5e">partType</a>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_nest.html#afb92ece130dd4d209ea222c1f004044c">   23</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="enumfactory_1_1general_1_1_nest_1_1_status.html">Status</a> <a class="code" href="classfactory_1_1general_1_1_nest.html#afb92ece130dd4d209ea222c1f004044c">status</a> = <a class="code" href="enumfactory_1_1general_1_1_nest_1_1_status.html">Status</a>.<a class="code" href="enumfactory_1_1general_1_1_nest_1_1_status.html#acf7adb1f435b74240c86b34d4c27556c">empty</a>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_nest.html#a1bb82e650856a23ef5920855efba1e2d">   24</a></span>&#160;    <span class="keyword">public</span> List&lt;Part&gt; <a class="code" href="classfactory_1_1general_1_1_nest.html#a1bb82e650856a23ef5920855efba1e2d">parts</a> = <span class="keyword">new</span> ArrayList&lt;Part&gt;();</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    </div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_nest.html#af43279ba939aabb23fe6b94c08b42444">   26</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classfactory_1_1general_1_1_nest.html#af43279ba939aabb23fe6b94c08b42444">Nest</a>() {</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    }</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Oct 28 2012 21:37:53 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Nov 4 2012 12:20:01 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

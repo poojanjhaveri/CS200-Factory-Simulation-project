@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>Factory Project: src/factory/partsManagement/PartsAgent.java Source File</title>
+<title>Factory Project: src/factory/factory201/partsManagement/PartsAgent.java Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Factory Project
-   &#160;<span id="projectnumber">0.0.0</span>
+   &#160;<span id="projectnumber">0.0.1</span>
    </div>
    <div id="projectbrief">team 1 joint cs200/cs201</div>
   </td>
@@ -81,7 +81,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_339115f1b781ea71218b7406990eb67d.html">factory</a></li><li class="navelem"><a class="el" href="dir_b5b26210fabd6667d5292506dcc32f0a.html">partsManagement</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_339115f1b781ea71218b7406990eb67d.html">factory</a></li><li class="navelem"><a class="el" href="dir_83378976ba2ece7b6d274bfe9b80a044.html">factory201</a></li><li class="navelem"><a class="el" href="dir_5d96333d880ab81fc36c5341ed260b83.html">partsManagement</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -89,7 +89,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">PartsAgent.java</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="_parts_agent_8java.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">package </span>factory.partsManagement;</div>
+<a href="_parts_agent_8java.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno"><a class="code" href="namespacefactory_1_1parts_management.html">    1</a></span>&#160;<span class="keyword">package </span>factory.partsManagement;</div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">import</span> agent.Agent;</div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">import</span> factory.ConfigFile;</div>
@@ -104,125 +104,119 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
 <div class="line"><a name="l00024"></a><span class="lineno"><a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html">   24</a></span>&#160;<span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html" title="gets kit information from server and obtains necessary parts to complete a kit">PartsAgent</a> <span class="keyword">extends</span> <a class="code" href="classagent_1_1_agent.html" title="Base class for simple agents.">Agent</a> {</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno"><a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#a5688075e1da218b17c6cd58f740c8e3b">   26</a></span>&#160;    <a class="code" href="classfactory_1_1kit_management_1_1_kit_robot_agent.html" title="This class is the agent for the Kit Robot which gets empty kits from the conveyor and puts it on a pa...">KitRobotAgent</a> <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#a5688075e1da218b17c6cd58f740c8e3b">kitagent</a>;</div>
-<div class="line"><a name="l00027"></a><span class="lineno"><a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#af8082910b018c65ee927f80940ee13a0">   27</a></span>&#160;    <a class="code" href="classfactory_1_1_kit.html" title="Kit Object.">Kit</a> <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#af8082910b018c65ee927f80940ee13a0">kit</a>;</div>
-<div class="line"><a name="l00028"></a><span class="lineno"><a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#aafdd34deb45682ef71d7ea7673e2ef64">   28</a></span>&#160;    <a class="code" href="classfactory_1_1parts_management_1_1_nest_agent.html" title="Nest object has a threshold.">NestAgent</a> <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#aafdd34deb45682ef71d7ea7673e2ef64">nest</a>;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">//nest array needed</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno"><a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#af4b4696659cf881ccdb9ddca3eb2330e">   30</a></span>&#160;    <span class="keyword">private</span> List&lt;ConfigFile&gt; <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#af4b4696659cf881ccdb9ddca3eb2330e">configInfo</a> =</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            Collections.synchronizedList(<span class="keyword">new</span> ArrayList&lt;ConfigFile&gt;());</div>
-<div class="line"><a name="l00032"></a><span class="lineno"><a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#aaac0a22a9006e406290342bac03232cb">   32</a></span>&#160;    <span class="keyword">private</span> Map&lt;Part, Integer&gt; <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#aaac0a22a9006e406290342bac03232cb">inventory</a> = <span class="keyword">new</span> HashMap&lt;Part, Integer&gt;();</div>
-<div class="line"><a name="l00033"></a><span class="lineno"><a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#a27ec3538585355186baaa6486d026982">   33</a></span>&#160;    <a class="code" href="classfactory_1_1_part.html">Part</a> <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#a27ec3538585355186baaa6486d026982">grips</a>[];</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
-<div class="line"><a name="l00035"></a><span class="lineno"><a class="code" href="classfactory_1_1parts_management_1_1_parts_agent_1_1_grip.html">   35</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classfactory_1_1parts_management_1_1_parts_agent_1_1_grip.html">Grip</a> {</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
-<div class="line"><a name="l00037"></a><span class="lineno"><a class="code" href="classfactory_1_1parts_management_1_1_parts_agent_1_1_grip.html#a57804db5dc640c6689adeb783d1ed0f4">   37</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">boolean</span> <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent_1_1_grip.html#a57804db5dc640c6689adeb783d1ed0f4">occupied</a>;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    }</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">//Messages</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno"><a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#afb648bcf60eb81c9ffa3473d922ce14b">   41</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#afb648bcf60eb81c9ffa3473d922ce14b">msgHereIsConfig</a>(<a class="code" href="classfactory_1_1_config_file.html">ConfigFile</a> file) {</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#af4b4696659cf881ccdb9ddca3eb2330e">configInfo</a>.add(file);</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <a class="code" href="classagent_1_1_agent.html#a44f653501d47022141315a1835e9927a">stateChanged</a>();</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    }</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
-<div class="line"><a name="l00046"></a><span class="lineno"><a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#af88dcf99b0efa5dfb307acb0b21ae5b7">   46</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#af88dcf99b0efa5dfb307acb0b21ae5b7">msgHereAreParts</a>(<a class="code" href="classfactory_1_1_part.html">Part</a> p, <span class="keywordtype">int</span> quantity) {</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#aaac0a22a9006e406290342bac03232cb">inventory</a>.put(p, quantity);</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <a class="code" href="classagent_1_1_agent.html#a44f653501d47022141315a1835e9927a">stateChanged</a>();</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    }</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
-<div class="line"><a name="l00051"></a><span class="lineno"><a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#a2d31c94529ed2e37f9e3601647cbb05c">   51</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#a2d31c94529ed2e37f9e3601647cbb05c">msgEmptyKitReady</a>(<span class="keywordtype">int</span> num) {</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keywordflow">switch</span> (num) {</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            <span class="keywordflow">case</span> 1:</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#af8082910b018c65ee927f80940ee13a0">kit</a>.<a class="code" href="classfactory_1_1_kit.html#a3890b6a8c2777414530952d1ef25ab8a">kittingStandNumber</a> = <a class="code" href="classfactory_1_1_kit.html" title="Kit Object.">Kit</a>.KittingStandNumber.one;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            <span class="keywordflow">case</span> 2:</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#af8082910b018c65ee927f80940ee13a0">kit</a>.<a class="code" href="classfactory_1_1_kit.html#a3890b6a8c2777414530952d1ef25ab8a">kittingStandNumber</a> = <a class="code" href="classfactory_1_1_kit.html" title="Kit Object.">Kit</a>.KittingStandNumber.two;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <span class="keywordflow">case</span> 3:</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#af8082910b018c65ee927f80940ee13a0">kit</a>.<a class="code" href="classfactory_1_1_kit.html#a3890b6a8c2777414530952d1ef25ab8a">kittingStandNumber</a> = <a class="code" href="classfactory_1_1_kit.html" title="Kit Object.">Kit</a>.KittingStandNumber.three;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            <span class="keywordflow">default</span>:</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#af8082910b018c65ee927f80940ee13a0">kit</a>.<a class="code" href="classfactory_1_1_kit.html#a3890b6a8c2777414530952d1ef25ab8a">kittingStandNumber</a> = <a class="code" href="classfactory_1_1_kit.html" title="Kit Object.">Kit</a>.KittingStandNumber.none;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        }</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <a class="code" href="classagent_1_1_agent.html#a44f653501d47022141315a1835e9927a">stateChanged</a>();</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    }</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">//Scheduler</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    @Override</div>
-<div class="line"><a name="l00070"></a><span class="lineno"><a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#a49e7eb72acbf24725653a4bde6f06e4e">   70</a></span>&#160;    <span class="keyword">protected</span> <span class="keywordtype">boolean</span> <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#a49e7eb72acbf24725653a4bde6f06e4e">pickAndExecuteAnAction</a>() {</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keywordflow">if</span> (!<a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#af4b4696659cf881ccdb9ddca3eb2330e">configInfo</a>.isEmpty()) {</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#af42d727c45040b3dcb1ee963cbed1477">setConfiguration</a>();</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        }</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keywordflow">if</span> (!<a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#aaac0a22a9006e406290342bac03232cb">inventory</a>.isEmpty() &amp;&amp; <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#af8082910b018c65ee927f80940ee13a0">kit</a>.<a class="code" href="classfactory_1_1_kit.html#a74ffc45f37e241a298facda2810bb361">status</a> == <a class="code" href="classfactory_1_1_kit.html" title="Kit Object.">Kit</a>.Status.empty) {</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            <span class="keywordtype">int</span> n = 4;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            <span class="keywordtype">int</span> grip = 0;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#af8082910b018c65ee927f80940ee13a0">kit</a>.<a class="code" href="classfactory_1_1_kit.html#a147da3116f5d390c97a03c295e08ae06">kitNeedsParts</a> &lt; 4) {</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                n = <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#af8082910b018c65ee927f80940ee13a0">kit</a>.<a class="code" href="classfactory_1_1_kit.html#a147da3116f5d390c97a03c295e08ae06">kitNeedsParts</a>;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            }</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#af8082910b018c65ee927f80940ee13a0">kit</a>.<a class="code" href="classfactory_1_1_kit.html#a39c55eb3e36cef8fa27c72cc27bde36d">parts</a>.length; i++) {</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                <span class="keywordflow">if</span> (!<a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#af8082910b018c65ee927f80940ee13a0">kit</a>.<a class="code" href="classfactory_1_1_kit.html#a39c55eb3e36cef8fa27c72cc27bde36d">parts</a>[i].<a class="code" href="classfactory_1_1_part.html#af8b37df83228d9d5d097e54c2c7f7034">inKit</a>) {</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                    <span class="keywordflow">if</span> (<a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#aaac0a22a9006e406290342bac03232cb">inventory</a>.containsKey(<a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#af8082910b018c65ee927f80940ee13a0">kit</a>.<a class="code" href="classfactory_1_1_kit.html#a39c55eb3e36cef8fa27c72cc27bde36d">parts</a>[i])) {</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                        <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#a93934a5d3dde7e7e5d9081aceb65e487">pickUpPart</a>(<a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#af8082910b018c65ee927f80940ee13a0">kit</a>.<a class="code" href="classfactory_1_1_kit.html#a39c55eb3e36cef8fa27c72cc27bde36d">parts</a>[i], grip);</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                        <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#af8082910b018c65ee927f80940ee13a0">kit</a>.<a class="code" href="classfactory_1_1_kit.html#a39c55eb3e36cef8fa27c72cc27bde36d">parts</a>[i].<a class="code" href="classfactory_1_1_part.html#af8b37df83228d9d5d097e54c2c7f7034">inKit</a> = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                        grip++;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                        <span class="keywordflow">if</span> (grip == n) {</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                            <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#af3958d5333f1563fa7538c6d24c5e627">putPartsInKit</a>(n);</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                        }</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                    }</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                }</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            }</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        }</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#af8082910b018c65ee927f80940ee13a0">kit</a>.<a class="code" href="classfactory_1_1_kit.html#a74ffc45f37e241a298facda2810bb361">status</a> == <a class="code" href="classfactory_1_1_kit.html" title="Kit Object.">Kit</a>.Status.full) {</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#a2fee1ca55e1b540d94e79507e4d65d20">giveKitToKitAgent</a>();</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        }</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#a5688075e1da218b17c6cd58f740c8e3b">   26</a></span>&#160;    KitRobotAgent <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#a5688075e1da218b17c6cd58f740c8e3b">kitagent</a>;</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#af8082910b018c65ee927f80940ee13a0">   27</a></span>&#160;    Kit <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#af8082910b018c65ee927f80940ee13a0">kit</a>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#aafdd34deb45682ef71d7ea7673e2ef64">   28</a></span>&#160;    NestAgent <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#aafdd34deb45682ef71d7ea7673e2ef64">nest</a>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#abfe6eb0b7762e424697b75c2c055263d">   29</a></span>&#160;    <span class="keyword">private</span> List&lt;Part&gt; <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#abfe6eb0b7762e424697b75c2c055263d">inventory</a> =</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            Collections.synchronizedList(<span class="keyword">new</span> ArrayList&lt;Part&gt;());</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#a95a2c5f7d72657dfea9efb8131e5e2a8">   31</a></span>&#160;    <span class="keyword">private</span> List&lt;Part&gt; <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#a95a2c5f7d72657dfea9efb8131e5e2a8">grips</a> =</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            Collections.synchronizedList(<span class="keyword">new</span> ArrayList&lt;Part&gt;());</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#aad360e28ba7542d1be65b0570a25aed3">   33</a></span>&#160;    <span class="keyword">private</span> List&lt;Part&gt; <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#aad360e28ba7542d1be65b0570a25aed3">kitNeedsParts</a> =</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            Collections.synchronizedList(<span class="keyword">new</span> ArrayList&lt;Part&gt;());</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#a4b74797e6f1fd879c8fc0668bb0fdb16">   35</a></span>&#160;    <span class="keyword">private</span> List&lt;Kit&gt; <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#a4b74797e6f1fd879c8fc0668bb0fdb16">newKit</a> =</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            Collections.synchronizedList(<span class="keyword">new</span> ArrayList&lt;Kit&gt;());</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">//Messages </span></div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#aff13ccb8c24ce596267f1fad3893c9b4">   39</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#aff13ccb8c24ce596267f1fad3893c9b4">msgHereIsKit</a>(Kit k){</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#a4b74797e6f1fd879c8fc0668bb0fdb16">newKit</a>.add(<a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#af8082910b018c65ee927f80940ee13a0">kit</a>);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <a class="code" href="classagent_1_1_agent.html#a44f653501d47022141315a1835e9927a">stateChanged</a>();</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    }</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;      </div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#adb6676873329d28612d7829b5c1d32da">   45</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#adb6676873329d28612d7829b5c1d32da">msgHereIsPart</a>(Part p) {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#abfe6eb0b7762e424697b75c2c055263d">inventory</a>.add(p);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <a class="code" href="classagent_1_1_agent.html#a44f653501d47022141315a1835e9927a">stateChanged</a>();</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    }</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#a2d31c94529ed2e37f9e3601647cbb05c">   50</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#a2d31c94529ed2e37f9e3601647cbb05c">msgEmptyKitReady</a>(<span class="keywordtype">int</span> num) {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordflow">switch</span> (num) {</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            <span class="keywordflow">case</span> 1:</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#af8082910b018c65ee927f80940ee13a0">kit</a>.kittingStandNumber = Kit.KittingStandNumber.one;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            <span class="keywordflow">case</span> 2:</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#af8082910b018c65ee927f80940ee13a0">kit</a>.kittingStandNumber = Kit.KittingStandNumber.two;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            <span class="keywordflow">case</span> 3:</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#af8082910b018c65ee927f80940ee13a0">kit</a>.kittingStandNumber = Kit.KittingStandNumber.three;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#af8082910b018c65ee927f80940ee13a0">kit</a>.kittingStandNumber = Kit.KittingStandNumber.none;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        }</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <a class="code" href="classagent_1_1_agent.html#a44f653501d47022141315a1835e9927a">stateChanged</a>();</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    }</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment">//Scheduler</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    @Override</div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#a49e7eb72acbf24725653a4bde6f06e4e">   69</a></span>&#160;    <span class="keyword">protected</span> <span class="keywordtype">boolean</span> <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#a49e7eb72acbf24725653a4bde6f06e4e">pickAndExecuteAnAction</a>() {</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keywordflow">if</span> (!configInfo.isEmpty()) {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            setConfiguration();</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        }</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordflow">if</span> (!<a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#abfe6eb0b7762e424697b75c2c055263d">inventory</a>.isEmpty() &amp;&amp; <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#af8082910b018c65ee927f80940ee13a0">kit</a>.kittingStandNumber!=Kit.KittingStandNumber.none){</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#aaf1a395eee31ec0bc8e873b9fe6f3a68">pickUpPart</a>(<a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#abfe6eb0b7762e424697b75c2c055263d">inventory</a>.remove(0));</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        }</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#af8082910b018c65ee927f80940ee13a0">kit</a>.status == Kit.Status.full) {</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#a2fee1ca55e1b540d94e79507e4d65d20">giveKitToKitAgent</a>();</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        }</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#aad360e28ba7542d1be65b0570a25aed3">kitNeedsParts</a>.isEmpty()){</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#a2fee1ca55e1b540d94e79507e4d65d20">giveKitToKitAgent</a>();</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        }</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="keywordflow">if</span> (!<a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#a4b74797e6f1fd879c8fc0668bb0fdb16">newKit</a>.isEmpty()){</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#a0e3ba8b1f680c884824173529851d167">startNewKit</a>(<a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#a4b74797e6f1fd879c8fc0668bb0fdb16">newKit</a>.get(<a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#a4b74797e6f1fd879c8fc0668bb0fdb16">newKit</a>.size()));</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#a4b74797e6f1fd879c8fc0668bb0fdb16">newKit</a>.removeAll();</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        }</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#a0e3ba8b1f680c884824173529851d167">startNewKit</a>(<a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#af8082910b018c65ee927f80940ee13a0">kit</a>);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    }</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="comment">//Actions</span></div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    }</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="comment">//Actions</span></div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
-<div class="line"><a name="l00106"></a><span class="lineno"><a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#af42d727c45040b3dcb1ee963cbed1477">  106</a></span>&#160;    <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#af42d727c45040b3dcb1ee963cbed1477">setConfiguration</a>() {</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        <span class="keywordflow">if</span> (<span class="keyword">true</span> <span class="comment">//                configInfo.hasNewKit()</span></div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                ) {</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            {</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="comment">//                kit = configInfo.remove(0);</span></div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#a5688075e1da218b17c6cd58f740c8e3b">kitagent</a>.<a class="code" href="classfactory_1_1kit_management_1_1_kit_robot_agent.html#a26f94fc40edf2bd4e757f24ad0f23488">msgNeedEmptyKit</a>();</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            }</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#af8082910b018c65ee927f80940ee13a0">kit</a>.<a class="code" href="classfactory_1_1_kit.html#a39c55eb3e36cef8fa27c72cc27bde36d">parts</a>.length; i++) {</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#aafdd34deb45682ef71d7ea7673e2ef64">nest</a>.<a class="code" href="classfactory_1_1parts_management_1_1_nest_agent.html#aaa70a05956f7dfca2423393e1a0c793c">msgNeedPart</a>(<a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#af8082910b018c65ee927f80940ee13a0">kit</a>.<a class="code" href="classfactory_1_1_kit.html#a39c55eb3e36cef8fa27c72cc27bde36d">parts</a>[i]);</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            }</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        }</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    }</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
-<div class="line"><a name="l00120"></a><span class="lineno"><a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#a2fee1ca55e1b540d94e79507e4d65d20">  120</a></span>&#160;    <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#a2fee1ca55e1b540d94e79507e4d65d20">giveKitToKitAgent</a>() {</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#a5688075e1da218b17c6cd58f740c8e3b">kitagent</a>.<a class="code" href="classfactory_1_1kit_management_1_1_kit_robot_agent.html#add7e6518a71af6d34868415d56bd4e1a" title="Message called by PartsAgent when kit is complete.">msgKitIsComplete</a>(<span class="keyword">new</span> <a class="code" href="classfactory_1_1_kit.html" title="Kit Object.">Kit</a>());</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    }</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div>
-<div class="line"><a name="l00124"></a><span class="lineno"><a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#a93934a5d3dde7e7e5d9081aceb65e487">  124</a></span>&#160;    <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#a93934a5d3dde7e7e5d9081aceb65e487">pickUpPart</a>(<a class="code" href="classfactory_1_1_part.html">Part</a> p, <span class="keywordtype">int</span> g) {</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#a27ec3538585355186baaa6486d026982">grips</a>[g] = p;</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="comment">//        DoPickUpPart(p);</span></div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#af8082910b018c65ee927f80940ee13a0">kit</a>.<a class="code" href="classfactory_1_1_kit.html#a147da3116f5d390c97a03c295e08ae06">kitNeedsParts</a>--;</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#af8082910b018c65ee927f80940ee13a0">kit</a>.<a class="code" href="classfactory_1_1_kit.html#a147da3116f5d390c97a03c295e08ae06">kitNeedsParts</a> == 0) {</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#af8082910b018c65ee927f80940ee13a0">kit</a>.<a class="code" href="classfactory_1_1_kit.html#a74ffc45f37e241a298facda2810bb361">status</a> = <a class="code" href="classfactory_1_1_kit.html" title="Kit Object.">Kit</a>.Status.full;</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        }</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#aaac0a22a9006e406290342bac03232cb">inventory</a>.put(p, <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#aaac0a22a9006e406290342bac03232cb">inventory</a>.get(p) - 1);</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    }</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
-<div class="line"><a name="l00134"></a><span class="lineno"><a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#af3958d5333f1563fa7538c6d24c5e627">  134</a></span>&#160;    <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#af3958d5333f1563fa7538c6d24c5e627">putPartsInKit</a>(<span class="keywordtype">int</span> n) {</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; n; i++) {</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="comment">//            DoPutPartInKit(grips[i]);</span></div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#af8082910b018c65ee927f80940ee13a0">kit</a>.<a class="code" href="classfactory_1_1_kit.html#a147da3116f5d390c97a03c295e08ae06">kitNeedsParts</a>--;</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        }</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    }</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;}</div>
+<div class="line"><a name="l00102"></a><span class="lineno"><a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#a2fee1ca55e1b540d94e79507e4d65d20">  102</a></span>&#160;    <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#a2fee1ca55e1b540d94e79507e4d65d20">giveKitToKitAgent</a>() {</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#a5688075e1da218b17c6cd58f740c8e3b">kitagent</a>.msgKitIsComplete(<a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#af8082910b018c65ee927f80940ee13a0">kit</a>);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    }</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    </div>
+<div class="line"><a name="l00106"></a><span class="lineno"><a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#a0e3ba8b1f680c884824173529851d167">  106</a></span>&#160;    <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#a0e3ba8b1f680c884824173529851d167">startNewKit</a>(Kit k){</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#aad360e28ba7542d1be65b0570a25aed3">kitNeedsParts</a>.removeAll();</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        this.<a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#af8082910b018c65ee927f80940ee13a0">kit</a> = k;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0; i&lt;k.length; i++){</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#aad360e28ba7542d1be65b0570a25aed3">kitNeedsParts</a>.add(k.parts[i]);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        }</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#a5688075e1da218b17c6cd58f740c8e3b">kitagent</a>.msgNeedEmptyKit();</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#af8082910b018c65ee927f80940ee13a0">kit</a>.parts.length; i++) {</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#aafdd34deb45682ef71d7ea7673e2ef64">nest</a>.msgNeedPart(<a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#af8082910b018c65ee927f80940ee13a0">kit</a>.parts[i]);</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        }</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        <a class="code" href="classagent_1_1_agent.html#a44f653501d47022141315a1835e9927a">stateChanged</a>();</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    }</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;</div>
+<div class="line"><a name="l00119"></a><span class="lineno"><a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#aaf1a395eee31ec0bc8e873b9fe6f3a68">  119</a></span>&#160;    <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#aaf1a395eee31ec0bc8e873b9fe6f3a68">pickUpPart</a>(Part p) {</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#a95a2c5f7d72657dfea9efb8131e5e2a8">grips</a>.add(p);</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        DoPickUpPart(p);</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#aad360e28ba7542d1be65b0570a25aed3">kitNeedsParts</a>.remove(p);</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#a95a2c5f7d72657dfea9efb8131e5e2a8">grips</a>.size() == 4 || <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#aad360e28ba7542d1be65b0570a25aed3">kitNeedsParts</a>.isEmpty())</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#a48dd986340ad2913a7073b56a10cbb89">putPartsInKit</a>();</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        <a class="code" href="classagent_1_1_agent.html#a44f653501d47022141315a1835e9927a">stateChanged</a>();</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    }</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;</div>
+<div class="line"><a name="l00128"></a><span class="lineno"><a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#a48dd986340ad2913a7073b56a10cbb89">  128</a></span>&#160;    <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#a48dd986340ad2913a7073b56a10cbb89">putPartsInKit</a>() {</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        <span class="keywordflow">for</span> (Part p: <a class="code" href="classfactory_1_1parts_management_1_1_parts_agent.html#a95a2c5f7d72657dfea9efb8131e5e2a8">grips</a>) {</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            DoPutPartInKit(grips.remove(p));</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        }</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        </div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    }</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Oct 28 2012 21:37:53 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Nov 4 2012 12:20:00 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>
