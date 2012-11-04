@@ -15,9 +15,9 @@ import factory.general.GUIRobot;
  * @author YiWei Roy Zheng
  */
 public class GUIKitRobot extends GUIRobot {
-    public static final String IMAGE_PAGE = "res/kitrobot.png";
+    public static final String IMAGE_PAGE = "pics/kitrobot.png";
 
-    //GUIKit kit;///<null if not carrying a kit, otherwise contains a reference the kit its carrying
+    KAMKit kit;///<null if not carrying a kit, otherwise contains a reference the kit its carrying
     //KitWorkingArea kits;///information about all work benches and their kits
 
     Boolean busy;///whether or not the KitterRobot has orders
@@ -25,8 +25,7 @@ public class GUIKitRobot extends GUIRobot {
     public GUIKitRobot()
     {
         //this is actually set in the KAMGraphicsPanel
-        super(KAMGraphicPanel.ROBOT_INITIAL_X,KAMGraphicPanel.ROBOT_INITIAL_Y,GUIKitRobot.IMAGE_PAGE);
-        //this.kit = null;
+        super(KAMGraphicPanel.KITROBOT_INITIAL_X,KAMGraphicPanel.KITROBOT_INITIAL_Y,GUIKitRobot.IMAGE_PAGE);
 
     }
 
@@ -59,5 +58,26 @@ public class GUIKitRobot extends GUIRobot {
     updates the location of the kit items carrying
     */
     public void updateKit() {
+        if(this.kit != null)
+        {
+            this.kit.setX(this.cords.getX());
+            this.kit.setY(this.cords.getY());
+        }
+    }
+    public void update()
+    {
+        super();
+        this.updateKit();
+    }
+    /**
+    @brief hands the GUIKitRobot a kit to manage
+     */
+    public void giveKit(KAMKit in)
+    {
+        this.kit = in;
+    }
+    public void dropKit()
+    {
+        this.kit = null;
     }
 }
