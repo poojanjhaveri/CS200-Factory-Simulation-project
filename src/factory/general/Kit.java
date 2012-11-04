@@ -12,6 +12,7 @@ import java.util.List;
  */
 public class Kit {
 
+    /** CS 201 stuff */
     public enum Status {
         empty, full, verified, error
     };
@@ -35,4 +36,6 @@ public class Kit {
     public void addPart(Part p) {
         parts.add(p);
     }
+    
+    /** End CS 201 stuff*/
 }

@@ -13,7 +13,7 @@ class GenericInventory implements Inventory{
 
     public GenericInventory()
     {
-	this.parts = new ArrayList<Parts>();
+	this.parts = new ArrayList<Part>();
     }
     public void addPart(Part p){
 	this.parts.add(p);
