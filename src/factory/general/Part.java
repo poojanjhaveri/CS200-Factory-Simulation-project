@@ -1,25 +1,20 @@
 package factory.general;
 
 import java.io.Serializable;
+import javax.swing.ImageIcon;
 
 /**
  * @brief digital representation of a part
- * @author Alex Young, David Zhang
+ * @author Alex Young, David Zhang, YiWei Roy Zheng
  */
-public class Part implements Serializable {
+public class Part extends Drawable implements Serializable {
     /** CS201 stuff */
     public enum Type {
         p1, p2, p3, p4, p5, p6, p7, p8
     };
-    private Type type;
+    public Type type;
     private boolean inKit;
     private int size;
-
-    /**
-     * Creates a part and gives it a unique ID.
-     * @author YiWei Roy Zheng
-     * @brief instantiates a part into the correct state
-     */
 
     public Part(Type t, boolean inkit, int size) {
         this.type = t;
@@ -46,9 +41,7 @@ public class Part implements Serializable {
         	this.type=Type.p8;
     }
     
-    public Part(String n, String d, String fn) {
-        //TODO need to implement system to generate unique part numbers (we could cheat and do it the dumb way, grab time())
-    }
+    
     /** End CS 201 stuff */
 
     /** CS 200 stuff */
@@ -61,6 +54,7 @@ public class Part implements Serializable {
         this.name = n;
         this.description = d;
         this.img = new ImageIcon(fn);
+	//this.number=time();
     }
     public String getName() {
         return this.name;
@@ -72,5 +66,4 @@ public class Part implements Serializable {
     {
         return this.img;
     }
-
 }

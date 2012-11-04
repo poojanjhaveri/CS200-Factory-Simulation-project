@@ -65,6 +65,16 @@ public class Manager extends JFrame {
      * so this is run at the beginning of the constructor for each manager.
      */
     public Manager() {
+        /** Set actions on exiting the entire application */
+        
+        // Force clients to tell the server that the client is exiting when the window closes
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                sendToServer(Message.CLIENT_EXITED);
+            }
+        });
+        
         // On instantiation of a major, connect to the server
         this.mcon = new ManagerConnection(this);
         this.mcon.connect();

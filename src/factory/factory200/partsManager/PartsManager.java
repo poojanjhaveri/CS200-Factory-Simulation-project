@@ -1,10 +1,13 @@
 package factory.factory200.partsManager;
 
 import factory.general.Manager;
+import factory.general.Message;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.FlowLayout;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -17,9 +20,9 @@ import javax.swing.border.EmptyBorder;
 /**
  * <img src="../img/image02.png"/> 
  * @brief JFrame that represents the parts manager
- * @author David Zhang, Jorge
+ * @author David Zhang
  */
-public class PartsManager extends Manager {
+public class PartsManager extends Manager implements ActionListener {
     // TODO: NEED GUIPart.java class in partsManager package
 
     private JPanel contentPane;
@@ -73,9 +76,11 @@ public class PartsManager extends Manager {
 
         viewButton = new JButton("View");
         managePartsButtonPanel.add(viewButton);
-
+        viewButton.addActionListener(this);
+        
         deleteButton = new JButton("Delete");
         managePartsButtonPanel.add(deleteButton);
+        deleteButton.addActionListener(this);
 
         selectedPartPanel = new JPanel();
         tabbedPane.addTab("Selected Part", null, selectedPartPanel, null);
@@ -112,6 +117,14 @@ public class PartsManager extends Manager {
         tabbedPane.addTab("New Part", null, newPartPanel, null);
     }
 
+
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == deleteButton) {
+            p.println("delete button hit!");
+            sendToServer(Message.TEST_SERVER);
+        }
+    }
+    
     /**
      * Launch the application.
      */
@@ -158,3 +171,5 @@ public class PartsManager extends Manager {
     public void deletePart(int partNumber) {
     }
 }
+
+//This is just a test to try out git

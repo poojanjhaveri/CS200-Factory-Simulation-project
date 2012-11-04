@@ -22,7 +22,6 @@ import java.util.Map;
  *
  */
 public class PartsAgent extends Agent {
-
     KitRobotAgent kitagent;
     Kit kit;
     NestAgent nest;
@@ -48,19 +47,20 @@ public class PartsAgent extends Agent {
         stateChanged();
     }
 
-    public void msgEmptyKitReady(int num) {
+    public void msgEmptyKitReady(Kit kit) {
+        int num = 1;
         switch (num) {
             case 1:
-                kit.kittingStandNumber = Kit.KittingStandNumber.one;
+                kit.standNum = Kit.StandNum.one;
                 break;
             case 2:
-                kit.kittingStandNumber = Kit.KittingStandNumber.two;
+                kit.standNum = Kit.StandNum.two;
                 break;
             case 3:
-                kit.kittingStandNumber = Kit.KittingStandNumber.three;
+                kit.standNum = Kit.StandNum.three;
                 break;
             default:
-                kit.kittingStandNumber = Kit.KittingStandNumber.none;
+                kit.standNum = Kit.StandNum.none;
         }
         stateChanged();
     }

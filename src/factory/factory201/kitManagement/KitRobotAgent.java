@@ -4,8 +4,6 @@ import agent.Agent;
 import factory.factory201.interfaces.KitRobot;
 import factory.factory201.partsManagement.PartsAgent;
 import factory.general.Kit;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @brief This class is the agent for the Kit Robot which gets empty kits from
@@ -20,8 +18,8 @@ import java.util.List;
 public class KitRobotAgent extends Agent implements KitRobot {
 
     KitStand kitStand = new KitStand();
-
     private boolean partsAgentNeedsEmptyKit = false;
+    private boolean requestedEmptyKit = false;
     private ConveyorAgent conveyor;
     private CameraAgent camera;
     private PartsAgent partsAgent;
@@ -35,6 +33,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
     @Override
     public void msgNeedEmptyKit() {
         partsAgentNeedsEmptyKit = true;
+        requestedEmptyKit = false;
         stateChanged();
     }
 
@@ -47,7 +46,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
      */
     @Override
     public void msgHereIsEmptyKit(Kit kit) {
-        kits.add(kit);
+        kitStand.addKit(kit);
         stateChanged();
     }
 
@@ -58,13 +57,8 @@ public class KitRobotAgent extends Agent implements KitRobot {
      * @brief Message called by PartsAgent when kit is complete.
      */
     @Override
-    public void msgKitIsFull(Kit kit) {
-        for (Kit k : kits) {
-            if (kit == k) {
-                k.status = Kit.Status.full;
-                break;
-            }
-        }
+    public void msgKitIsFull() {
+        kitStand.get(1).status = Kit.Status.full;
         stateChanged();
     }
 
@@ -76,89 +70,68 @@ public class KitRobotAgent extends Agent implements KitRobot {
      * @param result Result of inspection
      */
     @Override
-    public void msgKitInspected(Kit kit, boolean result) {
-        for (Kit k : kits) {
-            if (kit == k) {
-                if (result) {
-                    k.status = Kit.Status.verified;
-                    break;
-                } else {
-                    k.status = Kit.Status.error;
-                    break;
-                }
-            }
-        }
+    public void msgKitInspected(boolean result) {
+        kitStand.get(2).status = result ? Kit.Status.verified : Kit.Status.error;
         stateChanged();
     }
 
     // ********* SCHEDULER *********
     @Override
     protected boolean pickAndExecuteAnAction() {
-        if(!kitStand.isEmpty()) {
-            /*
-             * if kit ready to leave cell
-             * else if kit ready for inspection
-             * else if parts agent needs empty kit
-             * else if tempstand is empty
-             */
-            if(kitStand.get(2).status == Kit.Status.verified) {
-                removeVerifiedKit();
+        if (!kitStand.isEmpty()) {
+            if (kitStand.get(2).status == Kit.Status.verified) {
+                //if kit is ready to leave cell
+                sendVerifiedKitToConveyor();
                 return true;
-            } else if(kitStand.get(1).status == Kit.Status.full) {
-                return true;
-            } else if(partsAgentNeedsEmptyKit) {
-                return true;
-            } else if(kitStand.availability() > 0) {
+            } else if (kitStand.get(1).status == Kit.Status.full) {
+                // if kit is ready for inspection
+                moveFullKitToInspection();
                 return true;
             }
-        }        
-//        if (!kits.isEmpty()) {
-//            for (Kit k : kits) {
-//                if (k.status == Kit.Status.verified) {
-//                    removeVerifiedKit(k);
-//                    return true;
-//                }
-//            }
-//            for (Kit k : kits) {
-//                if (k.status == Kit.Status.full) {
-//                    moveFullKitToInspection(k);
-//                    return true;
-//                }
-//            }
-//            for (Kit k : kits) {
-//                if (k.status == Kit.Status.empty) {
-//                    giveEmptyKit(k);
-//                    return true;
-//                }
-//            }
-//        } else if (partsAgentNeedsEmptyKit) {
-//            getEmptyKit();
-//            return true;
-//        }
-
+        } else {
+            if (partsAgentNeedsEmptyKit && !requestedEmptyKit) {
+                // if parts agent needs empty kit
+                giveEmptyKitToPartsAgent();
+                return true;
+            } else if (kitStand.availability() > 0) {
+                // if tempstand is empty
+                getEmptyKitFromConveyor();
+                return true;
+            }
+        }
         return false;
 
     }
 
     // ********** ACTIONS **********
-    private void removeVerifiedKit() {
+    private void sendVerifiedKitToConveyor() {
         Kit k = kitStand.remove(2);
 //        DoRemoveVerifiedKit(k);
         conveyor.msgHereIsVerifiedKit(k);
         stateChanged();
     }
 
-    private void moveFullKitToInspection(Kit k) {
-//        camera.msgKitIsFull(k, k.kittingStandNum);
+    private void moveFullKitToInspection() {
+        while (!kitStand.inspectionStandIsEmpty()) {
+        }
+//        DoMoveFullKitToInspection();
+        kitStand.moveFullKitToInspection();
+        camera.msgKitIsFull(kitStand.get(2));
         stateChanged();
     }
 
-    private void giveEmptyKit(Kit k) {
-//        partsAgent.msgEmptyKitReady(k.kittingStandNumber);
+    private void giveEmptyKitToPartsAgent() {
+        if (!kitStand.isEmpty()) {
+            partsAgent.msgEmptyKitReady(kitStand.get(1));
+            partsAgentNeedsEmptyKit = false;
+        } else {
+            getEmptyKitFromConveyor();
+            requestedEmptyKit = true;
+        }
         stateChanged();
     }
 
-    private void getEmptyKit() {
+    private void getEmptyKitFromConveyor() {
 //        DoGetEmptyKit();
         conveyor.msgNeedEmptyKit();
         stateChanged();
