@@ -18,7 +18,7 @@ import factory.general.GUIRobot;
 public class GUIPartRobot extends GUIRobot{
 
 
-    Inventory parts;///<current parts on the GUIPartRobot, en route to the Kit
+    PartRobotInventory parts;///<current parts on the GUIPartRobot, en route to the Kit
     Boolean busy;///<whether or not the GUIPartRobot has orders
     Integer moveto;///<which lane the GUIPartRobot is heading to
 
