@@ -117,7 +117,7 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
             if(deliveryStation==false){
                 for(int i=0;i<delivery.getNumEmptyKits();i++){
                     if(delivery.getPlaceholder().get(i).getY()==300){
-                        timer.stop();
+                        delivery.getPlaceholder().get(i).setY(300);
                         myPanel.repaint();
                     }
                 }
@@ -139,11 +139,43 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
         for (int i = 0; i < delivery.getNumEmptyKits(); i++) {
             delivery.getPlaceholder().get(i).getPlaceholder().paintIcon(this, g2, delivery.getPlaceholder().get(i).getX(), delivery.getPlaceholder().get(i).getY());
             if (delivery.getPlaceholder().get(i).isShow()) {
-                delivery.getEmptyKits().get(i).getImage().paintIcon(this, g2, delivery.getPlaceholder().get(i).getX() + 10, delivery.getPlaceholder().get(i).getY() + 20);
+                delivery.getPlaceholder().get(i).getKit().getImage().paintIcon(this, g2, delivery.getPlaceholder().get(i).getX() + 10, delivery.getPlaceholder().get(i).getY() + 20);
             }
         }
+        if(!kitbot.moving()){
+            Integer order = kitbot.popOrder();
+        switch(order)
+        {
+            case 0: if(delivery.inPosition()) {
+                kitbot.giveKit(delivery.giveKit());
+                System.out.println("Picking up kit");
+            }
+            else{
+                kitbot.returnOrder(0);
+            }
+            
+                break;
+            case 10: kitbot.moveToConveyer();
+            System.out.println("Moving to conveyer");
+                break;
+            case 11: kitbot.moveToKit(0);
+                break;
+            case 12: kitbot.moveToKit(1);
+            System.out.println("Moving to kit1");
+                break;
+            case 13: kitbot.moveToKit(2);
+                break;
+                
+             
+        }
+        }
         kitbot.update();
+        System.out.println(kitbot);
         kitbot.getImage().paintIcon(this, g2, kitbot.getCoordinate().getX(), kitbot.getCoordinate().getY());
+        if(kitbot.hasKit())
+        {
+            kitbot.getKit().getImage().paintIcon(this,g2,kitbot.getCoordinate().getX(),kitbot.getCoordinate().getY());
+        }
         if(camera.isVisible()){
             camera.getCamera().paintIcon(this, g2, camera.getX(), camera.getY());
             camera.setVisible(false);

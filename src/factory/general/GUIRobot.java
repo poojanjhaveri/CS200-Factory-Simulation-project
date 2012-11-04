@@ -1,6 +1,7 @@
 package factory.general;
 
 import factory.general.MovingDrawable;
+import java.util.LinkedList;
 
 /**
  * @brief a Robotic device that manipulates its surroundings
@@ -12,7 +13,7 @@ public class GUIRobot extends MovingDrawable {
     Boolean busy;///<whether or not the Robot has orders
     Boolean flag;///<if this is ever set to true something is wrong
 
-    LinkedList<Integer> orders;///<a queue of orders for the robot
+    protected LinkedList<Integer> orders;///<a queue of orders for the robot
     /**
      * @param x x-coordinate of default robot position
      * @param y y-coordinate of default robot position

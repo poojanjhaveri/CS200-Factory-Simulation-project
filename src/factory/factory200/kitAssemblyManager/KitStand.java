@@ -41,8 +41,8 @@ public class KitStand {
         private int x;
         private int y;
         
-        public KitPosition(int i){
-            kit=new KAMKit(i);
+        public KitPosition(){
+            kit=new KAMKit();
             filled=false;
         }
 
@@ -115,7 +115,7 @@ public class KitStand {
         this.y=y;
         
         for(int i=1;i<=3;i++){
-            kitPositions.add(new KitPosition(i));
+            kitPositions.add(new KitPosition());
         }
         int startingX=x+25;
         int startingY=y+10;
