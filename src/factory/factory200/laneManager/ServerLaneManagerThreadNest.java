@@ -60,6 +60,24 @@ public class ServerLaneManagerThreadNest {
 	}
 	
 	/**
+	 * For V0, there is no robot that takes parts from nest. 
+	 * This is made for test.
+	 * Signal to lane manager : nest number + "&Nest&" + "Robot Takes Part"
+	 * 
+	 * @brief Robot Takes One Part From Nest
+	 */
+	public void robotTakePart(){
+		// Thread change
+		parts.remove(0);
+		
+		// Signal to Lane Manager
+		signalToLM = nestNum + "&Nest&" + "Robot Take Part";
+		
+		// Send signal to Lane Manager
+		app.getNetwork().getVerify().verify(signalToLM);
+	}
+	
+	/**
 	 * @brief Getter 
 	 * @return the size of ArrayList 'parts' 
 	 */

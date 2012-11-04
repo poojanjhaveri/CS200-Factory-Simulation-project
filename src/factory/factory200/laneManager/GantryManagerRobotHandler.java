@@ -8,6 +8,7 @@ public class GantryManagerRobotHandler {
 	private int moveY;
 	private int star;
 	private int temp2;
+	private int colorNum;
 	
 	public GantryManagerRobotHandler(GantryManagerApp app){
 		this.app = app;
@@ -30,6 +31,11 @@ public class GantryManagerRobotHandler {
 		
 		else if( message.indexOf("PutOffBin") != -1){
 			app.getGraphicsPanel().getRobot().putOffBin();
+		}
+		
+		else if( message.indexOf("Color Change") != -1){
+			colorNum = message.charAt(message.length()-1) - 48;
+			app.getGraphicsPanel().getRobot().colorChange( colorNum );
 		}
 		// ----------------------------------------------------------------------------------------------------------------------------------------------------
 	}

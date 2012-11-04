@@ -2,6 +2,7 @@ package factory.factory200.kitAssemblyManager;
 
 //Class: KitDeliveryStation
 
+
 import java.awt.*;
 import java.util.*;
 import javax.swing.*;
@@ -26,6 +27,7 @@ public class KitDeliveryStation {
         private int x;
         private int y;
         private boolean show;
+        private int number;
         
         public PlaceHolder(){
             placeholder=new ImageIcon("KAMplaceholder.png");
@@ -87,6 +89,20 @@ public class KitDeliveryStation {
         public void setShow(boolean show) {
             this.show = show;
         }
+
+        /**
+         * @return the number
+         */
+        public int getNumber() {
+            return number;
+        }
+
+        /**
+         * @param number the number to set
+         */
+        public void setNumber(int number) {
+            this.number = number;
+        }
     }
     
     
@@ -96,8 +112,17 @@ public class KitDeliveryStation {
         placeholder=new ArrayList<PlaceHolder>();
         for(int i=0;i<numEmptyKits;i++){
             emptyKits.add(new KAMKit(i+1));
-            placeholder.add(new PlaceHolder());
+            PlaceHolder temp = new PlaceHolder();
+            temp.setNumber(i+1);
+            placeholder.add(temp);
+            
         }  
+        int xStart=25;
+        int yStart=680;
+        for(int i=0;i<numEmptyKits;i++){
+        placeholder.get(i).setX(xStart);
+        placeholder.get(i).setY(yStart);
+        }
     }
 
     /**

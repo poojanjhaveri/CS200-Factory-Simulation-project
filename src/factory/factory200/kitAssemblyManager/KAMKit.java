@@ -5,6 +5,7 @@
 package factory.factory200.kitAssemblyManager;
 
 
+
 import javax.swing.*;
 
 /*
@@ -33,14 +34,14 @@ public class KAMKit {
     /**
      * @return the kit
      */
-    public ImageIcon getKit() {
+    public ImageIcon getImage() {
         return kit;
     }
 
     /**
      * @param kit the kit to set
      */
-    public void setKit(ImageIcon kit) {
+    public void setImage(ImageIcon kit) {
         this.kit = kit;
     }
 

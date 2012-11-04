@@ -29,7 +29,7 @@ public class Controller extends JFrame {
 		this.agentNestCamera = agentNestCamera;
 		this.agentGantry = agentGantry;
 		
-		setSize(500,700);
+		setSize(500,750);
 		setVisible(true);
 		setLayout(new FlowLayout());
 		setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );	
@@ -51,4 +51,3 @@ public class Controller extends JFrame {
 		revalidate();
 	}
 }
-

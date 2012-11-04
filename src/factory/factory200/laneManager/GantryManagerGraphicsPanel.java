@@ -4,10 +4,10 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.util.ArrayList;
 
-import javax.swing.JPanel;
+import javax.swing.JLayeredPane;
 import javax.swing.border.LineBorder;
 
-public class GantryManagerGraphicsPanel extends JPanel {
+public class GantryManagerGraphicsPanel extends JLayeredPane {
 	
 	private GantryManagerApp app;
 	
@@ -34,7 +34,7 @@ public class GantryManagerGraphicsPanel extends JPanel {
 		}
 		
 		robot = new GantryManagerRobot(100, 300);
-		add(robot);
+		add(robot, new Integer(2));
 	}
 	
 	public GantryManagerRobot getRobot(){

@@ -1,8 +1,8 @@
 package factory.factory200.laneManager;
 
+import factory.factory201.feederManagement.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JFrame;
 import javax.swing.Timer;
 
@@ -12,7 +12,7 @@ import javax.swing.Timer;
  * @brief Platform among Gantry Robot Manager, Lane Manager and Agent
  * @author Dongyoung Jung
  */
-class ServerMain extends JFrame{
+public class ServerMain extends JFrame{
 	
 	// Lane Manager
 	private LaneManagerApp laneApp;	///<Instance of class 'LaneManagerLaneManagerApp'
@@ -32,8 +32,8 @@ class ServerMain extends JFrame{
 	private Controller controller;	///<Instance of class 'Controller'
 	
 	// Agent Thread
-	private AgentMain agentMain = new AgentMain(this);	///< Runnable Class for Agent
-	private Thread agentThread = new Thread(agentMain);	///< Thread  for Agent
+	//private AgentMain agentMain = new AgentMain(this);	///< Runnable Class for Agent
+	//private Thread agentThread = new Thread(agentMain);	///< Thread  for Agent
 		
 	/**
 	 * This class creates a bunch of class instances.
@@ -65,7 +65,7 @@ class ServerMain extends JFrame{
 		controller = new Controller(agentFeeder, agentLane, agentNest, agentNestCamera, agentGantry);
 		
 		// Agent Thread start
-		agentThread.start();
+		//agentThread.start();
 	}
 	
 	/**
@@ -86,7 +86,7 @@ class ServerMain extends JFrame{
 		 * @brief Generation of instance 'timer' from class 'Timer'
 		 */
 		public ThreadTimer(){
-			timer = new Timer(10, new ServerTimer());
+			timer = new Timer(30, new ServerTimer());
 			timer.start();
 		}
 		

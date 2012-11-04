@@ -5,7 +5,6 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
@@ -24,6 +23,7 @@ public class ControlPanel1 extends JPanel implements ActionListener{
 	private Integer[] partList = { 1, 2, 3, 4, 5, 6, 7, 8 };
 	private JComboBox feederNum = new JComboBox(feederList);
 	private JComboBox partNum = new JComboBox(partList);
+	private JComboBox partNum2 = new JComboBox(partList);
 	private JTextField partQuantityInput = new JTextField(5);
 	
 	private TitledBorder border = new TitledBorder("Feeder");
@@ -31,6 +31,7 @@ public class ControlPanel1 extends JPanel implements ActionListener{
 	private String message = "";
 	private int chosenFeeder;
 	private int chosenPart;
+	private int chosenPart2;
 	
 	private JPanel tempPanel = new JPanel(new GridLayout(1,3));
 	private JPanel tempPanel2 = new JPanel(new GridLayout(1,3));
@@ -53,6 +54,17 @@ public class ControlPanel1 extends JPanel implements ActionListener{
 	private JButton b15 = new JButton("Fill in feeder");
 	
 	public ControlPanel1(ServerForAgentFeeder agentFeeder){
+		// For v0
+		b2.setEnabled(false);
+		b3.setEnabled(false);
+		b6.setEnabled(false);
+		b7.setEnabled(false);
+		b8.setEnabled(false);
+		b9.setEnabled(false);
+		b10.setEnabled(false);
+		b13.setEnabled(false);
+		b14.setEnabled(false);
+		
 		this.agentFeeder = agentFeeder;
 		setBorder(border);
 		setPreferredSize(new Dimension(480,235));
@@ -79,12 +91,16 @@ public class ControlPanel1 extends JPanel implements ActionListener{
 		tempPanel.add(b14);
 		tempPanel.setBorder( new LineBorder( Color.red ));
 		
+		tempPanel2.add(partNum2);
 		tempPanel2.add(partQuantityInput);
 		tempPanel2.add(b15);
 		tempPanel2.setBorder( new LineBorder( Color.red ));
 		
 		add(feederNum);
+		// For v0
 		add(b0);add(b1);add(b2);add(b3);add(b4);add(b5);add(b6);add(b7);add(b8);add(b9);add(b10);add(b11);add(b12);
+		
+		// Unnessarry
 		add(tempPanel2);add(tempPanel);
 		
 		updateUI();
@@ -96,6 +112,7 @@ public class ControlPanel1 extends JPanel implements ActionListener{
 	public void actionPerformed(ActionEvent ae){
 		chosenFeeder = feederList[ feederNum.getSelectedIndex() ] - 1;
 		chosenPart = partList[ partNum.getSelectedIndex() ] - 1;
+		chosenPart2 = partList[ partNum2.getSelectedIndex() ] - 1;
 		
 		if(ae.getSource() == b0){
 			agentFeeder.setSwitchOn( chosenFeeder );
@@ -158,7 +175,7 @@ public class ControlPanel1 extends JPanel implements ActionListener{
 		}
 		
 		else if(ae.getSource() == b15){
-			agentFeeder.fillInFeeder( chosenFeeder, chosenPart, Integer.parseInt( partQuantityInput.getText()) );
+			agentFeeder.fillInFeeder( chosenFeeder, chosenPart2, Integer.parseInt( partQuantityInput.getText()) );
 		}
 	}
 }

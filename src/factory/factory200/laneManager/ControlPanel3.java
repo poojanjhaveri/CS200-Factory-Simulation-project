@@ -3,7 +3,6 @@ package factory.factory200.laneManager;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
@@ -23,6 +22,7 @@ public class ControlPanel3 extends JPanel implements ActionListener{
 	
 	private JButton b0 = new JButton("Switch Up");
 	private JButton b1 = new JButton("Switch Down");
+	private JButton b2 = new JButton("Robot Takes One");
 	
 	public ControlPanel3(ServerForAgentNest agentNest){
 		this.agentNest = agentNest;
@@ -31,10 +31,12 @@ public class ControlPanel3 extends JPanel implements ActionListener{
 		
 		b0.addActionListener(this);
 		b1.addActionListener(this);
+		b2.addActionListener(this);
 		
 		add(nestNum);
 		add(b0);
 		add(b1);
+		add(b2);
 		
 		updateUI();
 	}
@@ -51,6 +53,10 @@ public class ControlPanel3 extends JPanel implements ActionListener{
 		
 		else if(ae.getSource() == b1){
 			agentNest.setSwitchDown( chosenNest );
+		}
+		
+		else if(ae.getSource() == b2){
+			agentNest.robotTakesOnePart( chosenNest );
 		}
 	}
 }
