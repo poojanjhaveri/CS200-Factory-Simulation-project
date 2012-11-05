@@ -25,6 +25,8 @@ public class KitPosition {
         public KAMKit getKit() {
             return kit;
         }
+        
+        
 
         /**
          * @param kit the kit to set

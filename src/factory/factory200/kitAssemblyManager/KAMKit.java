@@ -7,6 +7,9 @@ package factory.factory200.kitAssemblyManager;
 
 
 
+import factory.general.Part;
+import java.util.ArrayList;
+import java.util.LinkedList;
 import javax.swing.*;
 
 /*
@@ -26,6 +29,7 @@ public class KAMKit {
     //private int kitNumber;
     private int x;
     private int y;
+    private ArrayList<Part> parts;
             
     public KAMKit(){
         kit=new ImageIcon("pics/KAMkit.png");
@@ -36,14 +40,14 @@ public class KAMKit {
      * @return the kit
      */
     public ImageIcon getImage() {
-        return kit;
+        return getKit();
     }
 
     /**
      * @param kit the kit to set
      */
     public void setImage(ImageIcon kit) {
-        this.kit = kit;
+        this.setKit(kit);
     }
 
     /**
@@ -51,9 +55,7 @@ public class KAMKit {
      */
   
 
-    /**
-     * @param kitNumber the kitNumber to set
-     */
+   
     
 
     /**
@@ -62,6 +64,13 @@ public class KAMKit {
     public int getX() {
         return x;
     }
+    
+    public void addPart(LinkedList<Part> in){
+        for(int i=0;i<in.size();i++){
+           parts.get(i).setGUIPart(in.get(i).getGUIPart()); 
+        }
+    }
+    
 
     /**
      * @param x the x to set
@@ -82,5 +91,33 @@ public class KAMKit {
      */
     public void setY(int y) {
         this.y = y;
+    }
+
+    /**
+     * @return the kit
+     */
+    public ImageIcon getKit() {
+        return kit;
+    }
+
+    /**
+     * @param kit the kit to set
+     */
+    public void setKit(ImageIcon kit) {
+        this.kit = kit;
+    }
+
+    /**
+     * @return the parts
+     */
+    public ArrayList<Part> getParts() {
+        return parts;
+    }
+
+    /**
+     * @param parts the parts to set
+     */
+    public void setParts(ArrayList<Part> parts) {
+        this.parts = parts;
     }
 }

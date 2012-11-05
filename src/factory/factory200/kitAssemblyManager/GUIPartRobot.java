@@ -5,6 +5,7 @@ import factory.general.GUIRobot;
 import factory.general.Part;
 
 import java.util.Collection;
+import java.util.LinkedList;
 /**
  * The GUIPartRobot obtains parts from the nest and places it into the working
  * kit. It takes orders from the Kit Assembly Manager. It has pickup
@@ -38,7 +39,8 @@ public class GUIPartRobot extends GUIRobot {
         this.busy = false;
         this.parts = new PartsRobotInventory();
         this.moveto = 0;
-        this.moveTo(KAMGraphicPanel.RAILX,KAMGraphicPanel.LANE0Y);
+        this.setConstants(KAMGraphicPanel.PARTSROBOT_VELOCITYX, KAMGraphicPanel.PARTSROBOT_VELOCITYY, KAMGraphicPanel.KITROBOT_ROTATION_SPEED);
+    
     }
 
     /**
@@ -97,15 +99,38 @@ public class GUIPartRobot extends GUIRobot {
     {
 	this.parts.addPart(in);
     }
-    public Collection<Part> removePart()
+    public LinkedList<Part> removePart()
     {
-	return this.parts.getAll();
+	return this.parts.giveAll();
     }
+    public LinkedList<Part> getPart()
+    {
+        return this.parts.getAll();
+    }
+        public void pickPartCommand(Integer i)
+    {
+     this.orders.add(i);   
+    }
+        public void dropPartCommand()
+        {
+            this.orders.add(8);
+        }
+        public void cheat()
+        {
+            this.orders.add(10);
+            pickPartCommand(0);
+            pickPartCommand(0);
+            pickPartCommand(0);
+            pickPartCommand(0);
+            this.orders.add(18);
+            dropPartCommand();
+        }
     /**
 @brief pops the order and performs it
      */
     public Boolean performOrder()
     {
+        System.out.println("PERFORMING ORDER");
 	Integer i = this.popOrder();
 	switch(i)
 	    {

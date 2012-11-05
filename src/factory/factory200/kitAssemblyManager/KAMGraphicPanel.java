@@ -12,6 +12,7 @@ package factory.factory200.kitAssemblyManager;
  *
  * @author Deepa
  */
+import factory.general.Part;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.geom.*;
@@ -38,25 +39,28 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
     public static final int EMPTY_CONVEYERX = 25;
     public static final int EMPTY_CONVEYERY = 300;
     public static final int FULL_CONVEYERX=25;
-    public static final int FULL_CONVEYERY=500;
+    public static final int FULL_CONVEYERY=300;
             
-    public static final Integer LANE0Y = 0;///<y-coordinate of lane 0's nest
-    public static final Integer LANE1Y = 0;///<y-coordinate of lane 1's nest
-    public static final Integer LANE2Y = 0;///<y-coordinate of lane 2's nest
-    public static final Integer LANE3Y = 0;///<y-coordinate of lane 3's nest
-    public static final Integer LANE4Y = 0;///<y-coordinate of lane 4's nest
-    public static final Integer LANE5Y = 0;///<y-coordinate of lane 5's nest
-    public static final Integer LANE6Y = 0;///<y-coordinate of lane 6's nest
-    public static final Integer LANE7Y = 0;///<y-coordinate of lane 7's nest
-    public static final Integer RAILX = 0;///<fixed x-coordinate of the rail the parts robot traverses
+    public static final Integer LANE0Y = 75/2 + 0 * 75;///<y-coordinate of lane 0's nest
+    public static final Integer LANE1Y = 75/2 + 1 * 75;///<y-coordinate of lane 1's nest
+    public static final Integer LANE2Y = 75/2 + 2 * 75;///<y-coordinate of lane 2's nest
+    public static final Integer LANE3Y = 75/2 + 3 * 75;///<y-coordinate of lane 3's nest
+    public static final Integer LANE4Y = 75/2 + 4 * 75;///<y-coordinate of lane 4's nest
+    public static final Integer LANE5Y = 75/2 + 5 * 75;///<y-coordinate of lane 5's nest
+    public static final Integer LANE6Y = 75/2 + 6 * 75;///<y-coordinate of lane 6's nest
+    public static final Integer LANE7Y = 75/2 + 7 * 75;///<y-coordinate of lane 7's nest
+    public static final Integer RAILX = 75/2 + 8 * 75;///<fixed x-coordinate of the rail the parts robot traverses
     public static final Integer PARTS_ROBOT_KITX=KAMGraphicPanel.KITX+20;
     public static final Integer PARTS_ROBOT_KITY=KAMGraphicPanel.KIT2Y+20;
+    public static final Integer PARTSROBOT_VELOCITYX=2;
+    public static final Integer PARTSROBOT_VELOCITYY= 2;     
     public static final Integer PARTSROBOTINITIALX = 400;///<x coordinate for parts robot to spawn in
     public static final Integer PARTSROBOTINITIALY = 350;///<y coordinate for parts robot to spawn in
     public GUIPartRobot kitter;///<declares an object that keeps track of the parts robot animation and graphics
     public GUIKitRobot kitbot;///<declares an object that keeps track of the kit robot animation and graphics
     public KitStand kitstand;///<declares an object that keeps track of what is happening with the kit stand
     public KitDeliveryStation delivery;///<declares an object that keeps track of the delivery station
+    
     public KAMCamera camera;
     ArrayList<KAMNest> nest;
     int emptyKits;
@@ -133,6 +137,14 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
                     counter = 0;
                 }
             }
+            if (deliveryStation == false) {
+                for (int i = 0; i < delivery.getNumEmptyKits(); i++) {
+                    if (delivery.getPlaceholder().get(i).getY() == 300) {
+                        delivery.getPlaceholder().get(i).setY(300);
+                        myPanel.repaint();
+                    }
+                }
+            }
             if (!kitbot.moving()) {
                 Integer order = kitbot.getOrder();
                 switch (order) {
@@ -164,9 +176,9 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
 		    break;
                 }
             }
-	    if(!partsbot.moving())
+	    if(!kitter.moving())
 		{
-                Integer order = partsbot.getOrder();
+                Integer order = kitter.getOrder();
                 switch (order) {
 		    //0-7 - pick up part nest 0-7
 		    //8 - drop parts onto kit
@@ -178,22 +190,18 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
 		case 5:
 		case 6:
 		case 7:
-		    this.partsrobot.addPart(this.nest.get(order).getPart());
-		case 8:this.kits.get(2).givePart(this.partsrobot.getCollectioN());		
-default:partsbot.performOrder();
+		    kitter.addPart(nest.get(order).getPart());
+                    break;
+		case 8:kitstand.getKitPositions().get(2).getKit().addPart(kitter.removePart());	
+                    break;
+                default:kitter.performOrder();
 		}
 
 		}
             kitbot.update();
+            kitter.update();
             myPanel.repaint();
-            if (deliveryStation == false) {
-                for (int i = 0; i < delivery.getNumEmptyKits(); i++) {
-                    if (delivery.getPlaceholder().get(i).getY() == 300) {
-                        delivery.getPlaceholder().get(i).setY(300);
-                        myPanel.repaint();
-                    }
-                }
-            }
+            
         }
     }
 
@@ -205,6 +213,7 @@ default:partsbot.performOrder();
         paintNests(this, g2);
         kitstand.getKitStand().paintIcon(this, g2, kitstand.getX(), kitstand.getY());
         for (int i = 0; i < 3; i++) {
+            //System.out.println(kitstand.getKitPositions().get(i).isFilled());
             if (kitstand.getKitPositions().get(i).isFilled()) {
                 kitstand.getKitPositions().get(i).getKit().getImage().paintIcon(this, g2, kitstand.getKitPositions().get(i).getX(), kitstand.getKitPositions().get(i).getY());
             }
@@ -231,10 +240,10 @@ default:partsbot.performOrder();
             cameraCounter = 0;
         }
         kitter.getImage().paintIcon(this, g2, kitter.getCoordinate().getX(), kitter.getCoordinate().getY());
-	LinkedList<Part> kitterparts= kitter.getAll();
+	LinkedList<Part> kitterparts= kitter.getPart();
 	for(int i = 0; i != kitterparts.size(); i++)
 	    {
-		kitterparts.get(i).getGUIPart().getImageIcon().paintIcon(this, g2, kitterparts.get(i).getGUIPart().getCoordinate().getX(), kitterparts.get(i).getGUIPart().getCoordinate().getY())
+		kitterparts.get(i).getGUIPart().getImage().paintIcon(this, g2, kitterparts.get(i).getGUIPart().getX(), kitterparts.get(i).getGUIPart().getY());
 	    }
     }
 

@@ -47,6 +47,7 @@ public class GUIKitRobot extends GUIRobot {
         super(KAMGraphicPanel.KITROBOT_INITIAL_X,KAMGraphicPanel.KITROBOT_INITIAL_Y,GUIKitRobot.IMAGE_PAGE);
         this.setConstants(KAMGraphicPanel.KITROBOT_VELOCITYX, KAMGraphicPanel.KITROBOT_VELOCITYY, KAMGraphicPanel.KITROBOT_ROTATION_SPEED);
     }
+
     /**
     sets a new lane destination coordinate for KitterRobot, the passed Integer specifies which lane to head to
     */

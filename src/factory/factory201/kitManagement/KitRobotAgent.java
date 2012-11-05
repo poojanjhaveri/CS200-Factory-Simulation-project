@@ -2,6 +2,7 @@ package factory.factory201.kitManagement;
 
 import agent.Agent;
 import factory.factory200.kitAssemblyManager.GUIKitRobot;
+import factory.factory200.kitAssemblyManager.KitAssemblyManager;
 import factory.factory200.kitAssemblyManager.KitDeliveryStation;
 import factory.factory201.interfaces.Camera;
 import factory.factory201.interfaces.Conveyor;
@@ -22,7 +23,7 @@ import factory.general.Kit;
 public class KitRobotAgent extends Agent implements KitRobot {
 
     private KitStand kitStand = new KitStand();
-    private GUIKitRobot guiKitRobot = new GUIKitRobot();
+    public KitAssemblyManager KAM;
     private boolean partsAgentNeedsEmptyKit = false;
     private boolean requestedEmptyKit = false;
     private Conveyor conveyor;
@@ -143,27 +144,40 @@ public class KitRobotAgent extends Agent implements KitRobot {
     }
 
     // ************ MISC ***********
-    public void setConveyor(ConveyorAgent agent) {
+    public void setConveyor(Conveyor agent) {
         conveyor = agent;
     }
 
-    public void setCamera(CameraAgent agent) {
+    public void setCamera(Camera agent) {
         camera = agent;
     }
 
     public void setPartsAgent(PartsInterface agent) {
         partsAgent = agent;
     }
+    
+    public void setKitAssemblyManager(KitAssemblyManager KAM) {
+        this.KAM = KAM;
+    }
 
     private void DoRemoveVerifiedKit(Kit k) {
-        KitDeliveryStation guiConveyor = ((ConveyorAgent) conveyor).guiConveyor;
+        KAM.getKitRobot().dropOffFullKit();
+//        try {
+//            Thread.sleep(0);
+//        } catch (Exception e) {}
     }
 
     private void DoMoveFullKitToInspection() {
-        
+        KAM.getKitRobot().moveActiveKitToInspection();
+//        try {
+//            Thread.sleep(0);
+//        } catch (Exception e) {}
     }
 
     private void DoGetEmptyKit() {
-        KitDeliveryStation guiConveyor = ((ConveyorAgent) conveyor).guiConveyor;
+        KAM.getKitRobot().pickUpEmptyKit();
+//        try {
+//            Thread.sleep(0);
+//        } catch (Exception e) {}
     }
 }

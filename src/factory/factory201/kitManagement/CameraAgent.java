@@ -1,6 +1,7 @@
 package factory.factory201.kitManagement;
 
 import agent.Agent;
+import factory.factory200.kitAssemblyManager.KitAssemblyManager;
 import factory.factory201.interfaces.Camera;
 import factory.factory201.interfaces.KitRobot;
 import factory.factory201.interfaces.NestInterface;
@@ -26,6 +27,7 @@ public class CameraAgent extends Agent implements Camera {
 
     private KitRobot kitRobotAgent;
     private NestInterface nestAgent;
+    private KitAssemblyManager KAM;
     private List<Nest> nests = new ArrayList<Nest>();
     private List<Kit> kits = new ArrayList<Kit>();
 
@@ -107,30 +109,29 @@ public class CameraAgent extends Agent implements Camera {
 //            }
 //        }
         DoInspectNest(nest);
-        kitRobotAgent.msgKitInspected(true);
+        nestAgent.msgNestInspected(nest, true);
         stateChanged();
     }
 
     // ************ MISC ***********
-    public void setKitRobotAgent(KitRobotAgent agent) {
+    public void setKitRobotAgent(KitRobot agent) {
         kitRobotAgent = agent;
     }
 
     public void setNestAgent(NestInterface agent) {
         nestAgent = agent;
     }
+    
+    public void setKitAssemblyManager(KitAssemblyManager KAM) {
+        this.KAM = KAM;
+    }
+    
 
     private void DoInspectKit(Kit kit) {
-        int standNum;
-        switch(kit.standNum) {
-            case zero: standNum = 0; break;
-            case one: standNum = 1; break;
-            case two: standNum = 2; break;
-            default: standNum = -1; break;
-        }
+        KAM.flashKitCamera();
     }
 
     private void DoInspectNest(Nest nest) {
-        
+        KAM.flashNestCamera(nest.nestNum);
     }
 }
