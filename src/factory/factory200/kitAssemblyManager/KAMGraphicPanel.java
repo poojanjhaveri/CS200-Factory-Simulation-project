@@ -224,7 +224,7 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
 		    kitter.addPart(nest.get(order).getPart());
                     kitter.popOrder();
                     break;
-		case 8:kitstand.getKitPositions().get(2).getKit().addPart(kitter.removePart());
+		case 8:kitstand.getKitPositions().get(1).getKit().addPart(kitter.removePart());
                 kitter.popOrder();
                     break;
                 default:kitter.performOrder();
@@ -248,10 +248,12 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
         for (int i = 0; i < 3; i++) {
             //System.out.println(kitstand.getKitPositions().get(i).isFilled());
             if (kitstand.getKitPositions().get(i).isFilled()) {
+                //System.out.println("PRINTING PARTS");
                 kitstand.getKitPositions().get(i).getKit().getImage().paintIcon(this, g2, kitstand.getKitPositions().get(i).getX(), kitstand.getKitPositions().get(i).getY());
-                if(!(kitstand.getKitPositions().get(i).getKit().getParts().isEmpty())){
+                if(kitstand.getKitPositions().get(i).getKit().getParts().size()>0){
+                    //System.out.println("PRINTING PARTS");
                     for(int j=0;j<kitstand.getKitPositions().get(i).getKit().getParts().size();i++){
-                       System.out.println("PRINTING PARTS");
+                       System.out.println(j);
                        kitstand.getKitPositions().get(i).getKit().getParts().get(j).getGUIPart().getImage().paintIcon(this, g2, kitstand.getKitPositions().get(i).getKit().getParts().get(j).getGUIPart().getX(), kitstand.getKitPositions().get(i).getKit().getParts().get(j).getGUIPart().getX()); 
                     }
                 }
