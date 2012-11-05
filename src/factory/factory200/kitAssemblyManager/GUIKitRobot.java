@@ -108,6 +108,23 @@ public class GUIKitRobot extends GUIRobot {
     }
     public Integer popOrder()
     {
-        return ((this.isEmpty())?null:this.orders.poll());
+        return ((this.orders.isEmpty())?-1:this.orders.poll());
+    }
+    public Boolean hasKit()
+    {
+        return this.kit == null?false:true;
+    }
+    public KAMKit getKit()
+    {
+        return this.kit;
+    }
+    public void returnOrder(Integer i)
+    {
+        this.orders.addFirst(i);
+    }
+    public String toString()
+    {
+        super.toString();
+        return("Heading to " +this.moveToX+","+this.moveToY+")");
     }
 }

@@ -20,6 +20,7 @@ public class ServerForAgentFeeder {
 	 * @brief Feeder generations
 	 * @param app : Instance of 'LaneManagerApp'
 	 */
+	public ServerForAgentFeeder(){}
 	public ServerForAgentFeeder(LaneManagerApp app, ServerMain serverMain){
 		this.app = app;
 		this.serverMain = serverMain;
@@ -221,6 +222,18 @@ public class ServerForAgentFeeder {
 	 */
 	public ArrayList<ServerLaneManagerPart> getPartsArrayList( int feederNum ){
 		return feeders.get( feederNum ).getPartsArrayList();
+	}
+	// ---------------------------------------------------------------------------------------------------------
+	
+	// For Agent ------------------------------------------------------------------------------------------
+	/**
+	 * Agent runs this function to get the feeder without box after dumping all parts onto lane 
+	 * 
+	 * @brief Feeder Empty
+	 * @param nestNum : nest number
+	 */
+	public void getFeederWithoutBox( int feederNum ){
+		feeders.get( feederNum ).getFeederWithoutBox();
 	}
 	// ---------------------------------------------------------------------------------------------------------
 	

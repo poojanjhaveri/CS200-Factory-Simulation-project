@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>Factory Project: src/factory/kitManagement/CameraAgent.java Source File</title>
+<title>Factory Project: src/factory/factory201/kitManagement/CameraAgent.java Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Factory Project
-   &#160;<span id="projectnumber">0.0.0</span>
+   &#160;<span id="projectnumber">0.0.1</span>
    </div>
    <div id="projectbrief">team 1 joint cs200/cs201</div>
   </td>
@@ -81,7 +81,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_339115f1b781ea71218b7406990eb67d.html">factory</a></li><li class="navelem"><a class="el" href="dir_b673323fae1da3c6d5e3b0edb96bc63f.html">kitManagement</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_339115f1b781ea71218b7406990eb67d.html">factory</a></li><li class="navelem"><a class="el" href="dir_83378976ba2ece7b6d274bfe9b80a044.html">factory201</a></li><li class="navelem"><a class="el" href="dir_0ec40a093b9862fdd2fe3403b6519924.html">kitManagement</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -89,78 +89,94 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">CameraAgent.java</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="_camera_agent_8java.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno"><a class="code" href="namespacefactory_1_1kit_management.html">    1</a></span>&#160;<span class="keyword">package </span>factory.kitManagement;</div>
+<a href="_camera_agent_8java.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno"><a class="code" href="namespacefactory_1_1factory201_1_1kit_management.html">    1</a></span>&#160;<span class="keyword">package </span>factory.factory201.kitManagement;</div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">import</span> agent.Agent;</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">import</span> factory.Kit;</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">import</span> factory.Nest;</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">import</span> factory.interfaces.Camera;</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">import</span> factory.partsManagement.NestAgent;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">import</span> java.util.HashMap;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">import</span> java.util.Map;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
-<div class="line"><a name="l00024"></a><span class="lineno"><a class="code" href="classfactory_1_1kit_management_1_1_camera_agent.html">   24</a></span>&#160;<span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classfactory_1_1kit_management_1_1_camera_agent.html" title="agent for the Camera">CameraAgent</a> <span class="keyword">extends</span> <a class="code" href="classagent_1_1_agent.html" title="Base class for simple agents.">Agent</a> implements <a class="code" href="interfacefactory_1_1interfaces_1_1_camera.html" title="contains messages for CameraAgent This interface contains all of the messages for the CameraAgent...">Camera</a> {</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno"><a class="code" href="classfactory_1_1kit_management_1_1_camera_agent.html#ac9b52db12d9d7ba0d7a81e198b885351">   26</a></span>&#160;    <span class="keyword">private</span> Map&lt;Nest, Integer&gt; <a class="code" href="classfactory_1_1kit_management_1_1_camera_agent.html#ac9b52db12d9d7ba0d7a81e198b885351">nests</a> = <span class="keyword">new</span> HashMap&lt;Nest, Integer&gt;();</div>
-<div class="line"><a name="l00027"></a><span class="lineno"><a class="code" href="classfactory_1_1kit_management_1_1_camera_agent.html#a345e6ab7aa539c2ca00269dce36f794f">   27</a></span>&#160;    <span class="keyword">private</span> Map&lt;Kit, Integer&gt; <a class="code" href="classfactory_1_1kit_management_1_1_camera_agent.html#a345e6ab7aa539c2ca00269dce36f794f">kits</a> = <span class="keyword">new</span> HashMap&lt;Kit, Integer&gt;();</div>
-<div class="line"><a name="l00028"></a><span class="lineno"><a class="code" href="classfactory_1_1kit_management_1_1_camera_agent.html#a58112a472e6ddf97131f4521ea2d4fb7">   28</a></span>&#160;    <span class="keyword">private</span> <a class="code" href="classfactory_1_1parts_management_1_1_nest_agent.html" title="Nest object has a threshold.">NestAgent</a> <a class="code" href="classfactory_1_1kit_management_1_1_camera_agent.html#a58112a472e6ddf97131f4521ea2d4fb7">nestAgent</a>;</div>
-<div class="line"><a name="l00029"></a><span class="lineno"><a class="code" href="classfactory_1_1kit_management_1_1_camera_agent.html#adbda40b28f9cef9442fe082a9da70cbe">   29</a></span>&#160;    <span class="keyword">private</span> <a class="code" href="classfactory_1_1kit_management_1_1_kit_robot_agent.html" title="This class is the agent for the Kit Robot which gets empty kits from the conveyor and puts it on a pa...">KitRobotAgent</a> <a class="code" href="classfactory_1_1kit_management_1_1_camera_agent.html#adbda40b28f9cef9442fe082a9da70cbe">kitRobotAgent</a>;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="comment">// ********** MESSAGES *********</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">import</span> factory.factory201.interfaces.Camera;</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">import</span> factory.factory201.partsManagement.NestAgent;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">import</span> factory.general.Kit;</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">import</span> factory.general.Nest;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">import</span> factory.general.Part;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">import</span> java.util.ArrayList;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">import</span> java.util.List;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_camera_agent.html">   25</a></span>&#160;<span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_camera_agent.html" title="agent for the Camera">CameraAgent</a> <span class="keyword">extends</span> <a class="code" href="classagent_1_1_agent.html" title="Base class for simple agents.">Agent</a> implements <a class="code" href="interfacefactory_1_1factory201_1_1interfaces_1_1_camera.html" title="contains messages for CameraAgent This interface contains all of the messages for the CameraAgent...">Camera</a> {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_camera_agent.html#a10421a5cef203b2c53a7f4f8e333ef23">   27</a></span>&#160;    <span class="keyword">private</span> <a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_kit_robot_agent.html" title="This class is the agent for the Kit Robot which gets empty kits from the conveyor and puts it on a pa...">KitRobotAgent</a> <a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_camera_agent.html#a10421a5cef203b2c53a7f4f8e333ef23">kitRobotAgent</a>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_camera_agent.html#a02ecd5bd41279f5fa087047ad0306fc1">   28</a></span>&#160;    <span class="keyword">private</span> NestAgent <a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_camera_agent.html#a02ecd5bd41279f5fa087047ad0306fc1">nestAgent</a>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_camera_agent.html#a74f7dc13f4a910355206eeee0a7aeacf">   29</a></span>&#160;    <span class="keyword">private</span> List&lt;Nest&gt; <a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_camera_agent.html#a74f7dc13f4a910355206eeee0a7aeacf">nests</a> = <span class="keyword">new</span> ArrayList&lt;Nest&gt;();</div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_camera_agent.html#a289f3b9cbd597f96d3553eaf232aff66">   30</a></span>&#160;    <span class="keyword">private</span> List&lt;Kit&gt; <a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_camera_agent.html#a289f3b9cbd597f96d3553eaf232aff66">kits</a> = <span class="keyword">new</span> ArrayList&lt;Kit&gt;();</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="comment">// ********** MESSAGES *********</span></div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment"></span>    @Override</div>
-<div class="line"><a name="l00040"></a><span class="lineno"><a class="code" href="classfactory_1_1kit_management_1_1_camera_agent.html#af298bfe4c110b66add368b58804f38bc">   40</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1kit_management_1_1_camera_agent.html#af298bfe4c110b66add368b58804f38bc" title="Message called by NestAgent to inspect nest.">msgNestIsFull</a>(<a class="code" href="classfactory_1_1_nest.html">Nest</a> nest, <span class="keywordtype">int</span> nestNum) {</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <a class="code" href="classfactory_1_1kit_management_1_1_camera_agent.html#ac9b52db12d9d7ba0d7a81e198b885351">nests</a>.put(nest, nestNum);</div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_camera_agent.html#af87e4718521c1099da252b9af02c3555">   40</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_camera_agent.html#af87e4718521c1099da252b9af02c3555" title="Message called by NestAgent to inspect nest.">msgNestIsFull</a>(<a class="code" href="classfactory_1_1general_1_1_nest.html">Nest</a> nest) {</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_camera_agent.html#a74f7dc13f4a910355206eeee0a7aeacf">nests</a>.add(nest);</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <a class="code" href="classagent_1_1_agent.html#a44f653501d47022141315a1835e9927a">stateChanged</a>();</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    }</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    @Override</div>
-<div class="line"><a name="l00053"></a><span class="lineno"><a class="code" href="classfactory_1_1kit_management_1_1_camera_agent.html#ae5f50d37d73b7412f953070c15b74d67">   53</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1kit_management_1_1_camera_agent.html#ae5f50d37d73b7412f953070c15b74d67" title="Message called by KitRobotAgent to inspect kit.">msgKitIsFull</a>(<a class="code" href="classfactory_1_1_kit.html" title="Kit Object.">Kit</a> kit, <span class="keywordtype">int</span> kitNum) {</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <a class="code" href="classfactory_1_1kit_management_1_1_camera_agent.html#a345e6ab7aa539c2ca00269dce36f794f">kits</a>.put(kit, kitNum);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <a class="code" href="classagent_1_1_agent.html#a44f653501d47022141315a1835e9927a">stateChanged</a>();</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    }</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="comment">// ********* SCHEDULER *********</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    @Override</div>
-<div class="line"><a name="l00060"></a><span class="lineno"><a class="code" href="classfactory_1_1kit_management_1_1_camera_agent.html#a5b0dbaf30d298b4f51058688dda25a59">   60</a></span>&#160;    <span class="keyword">protected</span> <span class="keywordtype">boolean</span> <a class="code" href="classfactory_1_1kit_management_1_1_camera_agent.html#a5b0dbaf30d298b4f51058688dda25a59">pickAndExecuteAnAction</a>() {</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordflow">for</span> (Map.Entry&lt;<a class="code" href="classfactory_1_1_kit.html" title="Kit Object.">Kit</a>, Integer&gt; entry : <a class="code" href="classfactory_1_1kit_management_1_1_camera_agent.html#a345e6ab7aa539c2ca00269dce36f794f">kits</a>.entrySet()) {</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            <a class="code" href="classfactory_1_1kit_management_1_1_camera_agent.html#a635a0834b14707f1c579755e1176d4ac" title="Inspects nests and returns result to kitRobot agent.">inspectKit</a>(entry.getKey(), entry.getValue());</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        }</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keywordflow">for</span> (Map.Entry&lt;<a class="code" href="classfactory_1_1_nest.html">Nest</a>, Integer&gt; entry : <a class="code" href="classfactory_1_1kit_management_1_1_camera_agent.html#ac9b52db12d9d7ba0d7a81e198b885351">nests</a>.entrySet()) {</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            <a class="code" href="classfactory_1_1kit_management_1_1_camera_agent.html#adfa129e7081d5dc1cf66b04e4211da6e" title="Inspects nests and returns result to nest agent.">inspectNest</a>(entry.getKey(), entry.getValue());</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        }</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    }</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="comment">// ********** ACTIONS **********</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno"><a class="code" href="classfactory_1_1kit_management_1_1_camera_agent.html#a635a0834b14707f1c579755e1176d4ac">   80</a></span>&#160;<span class="comment"></span>    <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1kit_management_1_1_camera_agent.html#a635a0834b14707f1c579755e1176d4ac" title="Inspects nests and returns result to kitRobot agent.">inspectKit</a>(<a class="code" href="classfactory_1_1_kit.html" title="Kit Object.">Kit</a> kit, <span class="keywordtype">int</span> kitNum) {</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment">//        DoInspectKit(kitNum);</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="comment">//check if all the correct parts</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <a class="code" href="classfactory_1_1kit_management_1_1_camera_agent.html#adbda40b28f9cef9442fe082a9da70cbe">kitRobotAgent</a>.<a class="code" href="classfactory_1_1kit_management_1_1_kit_robot_agent.html#ad0f330faa8bb931b2f12cf6290401cee" title="Message called by camera agent after kit inspection.">msgKitInspected</a>(kit, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <a class="code" href="classagent_1_1_agent.html#a44f653501d47022141315a1835e9927a">stateChanged</a>();</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    }</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
-<div class="line"><a name="l00094"></a><span class="lineno"><a class="code" href="classfactory_1_1kit_management_1_1_camera_agent.html#adfa129e7081d5dc1cf66b04e4211da6e">   94</a></span>&#160;    <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1kit_management_1_1_camera_agent.html#adfa129e7081d5dc1cf66b04e4211da6e" title="Inspects nests and returns result to nest agent.">inspectNest</a>(<a class="code" href="classfactory_1_1_nest.html">Nest</a> nest, <span class="keywordtype">int</span> nestNum) {</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="comment">//        DoInspectNest(nestNum);</span></div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <span class="comment">//check if all the correct parts</span></div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <a class="code" href="classfactory_1_1kit_management_1_1_camera_agent.html#a58112a472e6ddf97131f4521ea2d4fb7">nestAgent</a>.<a class="code" href="classfactory_1_1parts_management_1_1_nest_agent.html#ac974d10c257820074b858603f357015f">msgNestInspected</a>(<span class="keyword">true</span>);</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <a class="code" href="classagent_1_1_agent.html#a44f653501d47022141315a1835e9927a">stateChanged</a>();</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    }</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="comment">// ************ MISC ***********</span></div>
-<div class="line"><a name="l00108"></a><span class="lineno"><a class="code" href="classfactory_1_1kit_management_1_1_camera_agent.html#ac6367d971769566ec0e388a815189a2c">  108</a></span>&#160;<span class="comment"></span>    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1kit_management_1_1_camera_agent.html#ac6367d971769566ec0e388a815189a2c" title="Setter for NestAgent.">setNestAgent</a>(<a class="code" href="classfactory_1_1parts_management_1_1_nest_agent.html" title="Nest object has a threshold.">NestAgent</a> agent) {</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <a class="code" href="classfactory_1_1kit_management_1_1_camera_agent.html#a58112a472e6ddf97131f4521ea2d4fb7">nestAgent</a> = agent;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    }</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
-<div class="line"><a name="l00118"></a><span class="lineno"><a class="code" href="classfactory_1_1kit_management_1_1_camera_agent.html#af487f76ebe4e95f5a011214ef8c1a2ab">  118</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1kit_management_1_1_camera_agent.html#af487f76ebe4e95f5a011214ef8c1a2ab" title="Setter for KitRobotAgent.">setKitRobotAgent</a>(<a class="code" href="classfactory_1_1kit_management_1_1_kit_robot_agent.html" title="This class is the agent for the Kit Robot which gets empty kits from the conveyor and puts it on a pa...">KitRobotAgent</a> agent) {</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <a class="code" href="classfactory_1_1kit_management_1_1_camera_agent.html#adbda40b28f9cef9442fe082a9da70cbe">kitRobotAgent</a> = agent;</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    }</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;}</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    @Override</div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_camera_agent.html#a05d90943b1c1f3e551f4b7852a00efd6">   52</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_camera_agent.html#a05d90943b1c1f3e551f4b7852a00efd6" title="Message called by KitRobotAgent to inspect kit.">msgKitIsFull</a>(<a class="code" href="classfactory_1_1general_1_1_kit.html" title="Kit Object.">Kit</a> kit) {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_camera_agent.html#a289f3b9cbd597f96d3553eaf232aff66">kits</a>.add(kit);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <a class="code" href="classagent_1_1_agent.html#a44f653501d47022141315a1835e9927a">stateChanged</a>();</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    }</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="comment">// ********* SCHEDULER *********</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    @Override</div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_camera_agent.html#a047d8fb30671269e8d2ed37635f97855">   59</a></span>&#160;    <span class="keyword">protected</span> <span class="keywordtype">boolean</span> <a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_camera_agent.html#a047d8fb30671269e8d2ed37635f97855">pickAndExecuteAnAction</a>() {</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordflow">for</span> (<a class="code" href="classfactory_1_1general_1_1_kit.html" title="Kit Object.">Kit</a> k : <a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_camera_agent.html#a289f3b9cbd597f96d3553eaf232aff66">kits</a>) {</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            <span class="keywordflow">if</span> (k.status == <a class="code" href="classfactory_1_1general_1_1_kit.html" title="Kit Object.">Kit</a>.Status.full) {</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                <a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_camera_agent.html#a51858de1eaee48cb58bb64a5c5a605e0" title="Inspects nests and returns result to kitRobot agent.">inspectKit</a>(k);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            }</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        }</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordflow">for</span> (<a class="code" href="classfactory_1_1general_1_1_nest.html">Nest</a> n : <a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_camera_agent.html#a74f7dc13f4a910355206eeee0a7aeacf">nests</a>) {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            <span class="keywordflow">if</span> (n.status == <a class="code" href="classfactory_1_1general_1_1_nest.html">Nest</a>.Status.full) {</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                <a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_camera_agent.html#aafe816e0489728e265624777412fafc8" title="Inspects nests and returns result to nest agent.">inspectNest</a>(n);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            }</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        }</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    }</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="comment">// ********** ACTIONS **********</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_camera_agent.html#a51858de1eaee48cb58bb64a5c5a605e0">   82</a></span>&#160;<span class="comment"></span>    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_camera_agent.html#a51858de1eaee48cb58bb64a5c5a605e0" title="Inspects nests and returns result to kitRobot agent.">inspectKit</a>(<a class="code" href="classfactory_1_1general_1_1_kit.html" title="Kit Object.">Kit</a> kit) {</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment">//        Kit k = new Kit(&quot;1&quot;);</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment"></span><span class="comment">//        if(k.equals(kit)) {</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment">//            </span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment">//        } else {</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment">//            </span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="comment">//        }</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment">//        DoInspectKit(kit);</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_camera_agent.html#a10421a5cef203b2c53a7f4f8e333ef23">kitRobotAgent</a>.<a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_kit_robot_agent.html#a815e5854f70fa2589ea6afc9bf8af7b6" title="Message called by camera agent after kit inspection.">msgKitInspected</a>(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <a class="code" href="classagent_1_1_agent.html#a44f653501d47022141315a1835e9927a">stateChanged</a>();</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    }</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_camera_agent.html#aafe816e0489728e265624777412fafc8">  101</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_camera_agent.html#aafe816e0489728e265624777412fafc8" title="Inspects nests and returns result to nest agent.">inspectNest</a>(<a class="code" href="classfactory_1_1general_1_1_nest.html">Nest</a> nest) {</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="comment">//        Nest n = new Nest();</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="comment">//        boolean flag = false;</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="comment">//        for(Part p : n.parts) {</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="comment">//            if(p.type != n.partType) {</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="comment">//                flag = true;</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="comment">//            }</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="comment">//        }</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="comment">//        DoInspectNest(nest.nestNum);</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_camera_agent.html#a10421a5cef203b2c53a7f4f8e333ef23">kitRobotAgent</a>.<a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_kit_robot_agent.html#a815e5854f70fa2589ea6afc9bf8af7b6" title="Message called by camera agent after kit inspection.">msgKitInspected</a>(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        <a class="code" href="classagent_1_1_agent.html#a44f653501d47022141315a1835e9927a">stateChanged</a>();</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    }</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="comment">// ************ MISC ***********</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_camera_agent.html#a21fbb8ed60fa5f52d0ad0373d228afac">  115</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_camera_agent.html#a21fbb8ed60fa5f52d0ad0373d228afac">setKitRobotAgent</a>(<a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_kit_robot_agent.html" title="This class is the agent for the Kit Robot which gets empty kits from the conveyor and puts it on a pa...">KitRobotAgent</a> agent) {</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        <a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_camera_agent.html#a10421a5cef203b2c53a7f4f8e333ef23">kitRobotAgent</a> = agent;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    }</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;</div>
+<div class="line"><a name="l00119"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_camera_agent.html#aa3323d9e24ab531b034f42539fd61f85">  119</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_camera_agent.html#aa3323d9e24ab531b034f42539fd61f85">setNestAgent</a>(NestAgent agent) {</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        <a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_camera_agent.html#a02ecd5bd41279f5fa087047ad0306fc1">nestAgent</a> = agent;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    }</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Oct 28 2012 21:37:53 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Nov 4 2012 12:20:00 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

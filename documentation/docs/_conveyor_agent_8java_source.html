@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>Factory Project: src/factory/kitManagement/ConveyorAgent.java Source File</title>
+<title>Factory Project: src/factory/factory201/kitManagement/ConveyorAgent.java Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Factory Project
-   &#160;<span id="projectnumber">0.0.0</span>
+   &#160;<span id="projectnumber">0.0.1</span>
    </div>
    <div id="projectbrief">team 1 joint cs200/cs201</div>
   </td>
@@ -81,7 +81,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_339115f1b781ea71218b7406990eb67d.html">factory</a></li><li class="navelem"><a class="el" href="dir_b673323fae1da3c6d5e3b0edb96bc63f.html">kitManagement</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_339115f1b781ea71218b7406990eb67d.html">factory</a></li><li class="navelem"><a class="el" href="dir_83378976ba2ece7b6d274bfe9b80a044.html">factory201</a></li><li class="navelem"><a class="el" href="dir_0ec40a093b9862fdd2fe3403b6519924.html">kitManagement</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -89,78 +89,141 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">ConveyorAgent.java</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="_conveyor_agent_8java.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">package </span>factory.kitManagement;</div>
+<a href="_conveyor_agent_8java.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">package </span>factory.factory201.kitManagement;</div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">import</span> agent.Agent;</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">import</span> factory.Kit;</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">import</span> factory.interfaces.Conveyor;</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">import</span> java.util.ArrayList;</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">import</span> java.util.List;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
-<div class="line"><a name="l00017"></a><span class="lineno"><a class="code" href="classfactory_1_1kit_management_1_1_conveyor_agent.html">   17</a></span>&#160;<span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classfactory_1_1kit_management_1_1_conveyor_agent.html" title="This class is the agent for the Conveyor which brings empty Kits into the kitting cell and takes comp...">ConveyorAgent</a> <span class="keyword">extends</span> <a class="code" href="classagent_1_1_agent.html" title="Base class for simple agents.">Agent</a> implements <a class="code" href="interfacefactory_1_1interfaces_1_1_conveyor.html" title="contains messages for ConveyerAgent This interface contains all of the messages for the ConveyorAgent...">Conveyor</a> {</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="code" href="enumfactory_1_1kit_management_1_1_conveyor_agent_1_1_event.html">   19</a></span>&#160;    <span class="keyword">private</span> <span class="keyword">enum</span> <a class="code" href="enumfactory_1_1kit_management_1_1_conveyor_agent_1_1_event.html">Event</a> {</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
-<div class="line"><a name="l00021"></a><span class="lineno"><a class="code" href="enumfactory_1_1kit_management_1_1_conveyor_agent_1_1_event.html#a1e62acc3694227f31c5bc72e32014f90">   21</a></span>&#160;        emptyKit, verifiedKit</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    };</div>
-<div class="line"><a name="l00023"></a><span class="lineno"><a class="code" href="classfactory_1_1kit_management_1_1_conveyor_agent.html#a39d108e61becc54535f4c941377b9dbb">   23</a></span>&#160;    <span class="keyword">private</span> List&lt;Event&gt; <a class="code" href="classfactory_1_1kit_management_1_1_conveyor_agent.html#a39d108e61becc54535f4c941377b9dbb">eventQueue</a> = <span class="keyword">new</span> ArrayList&lt;Event&gt;();</div>
-<div class="line"><a name="l00024"></a><span class="lineno"><a class="code" href="classfactory_1_1kit_management_1_1_conveyor_agent.html#a27e5e82c17dd90a664a638f99d179e22">   24</a></span>&#160;    <span class="keyword">private</span> List&lt;Kit&gt; <a class="code" href="classfactory_1_1kit_management_1_1_conveyor_agent.html#a27e5e82c17dd90a664a638f99d179e22">kits</a> = <span class="keyword">new</span> ArrayList&lt;Kit&gt;();</div>
-<div class="line"><a name="l00025"></a><span class="lineno"><a class="code" href="classfactory_1_1kit_management_1_1_conveyor_agent.html#a03f9eaa4fc03ac1972df1f9a33f10b75">   25</a></span>&#160;    <span class="keyword">private</span> <a class="code" href="classfactory_1_1_kit.html" title="Kit Object.">Kit</a> <a class="code" href="classfactory_1_1kit_management_1_1_conveyor_agent.html#a03f9eaa4fc03ac1972df1f9a33f10b75">tempKit</a>;</div>
-<div class="line"><a name="l00026"></a><span class="lineno"><a class="code" href="classfactory_1_1kit_management_1_1_conveyor_agent.html#ab74510a8282b1e22765283c852e571ae">   26</a></span>&#160;    <span class="keyword">private</span> <a class="code" href="classfactory_1_1kit_management_1_1_kit_robot_agent.html" title="This class is the agent for the Kit Robot which gets empty kits from the conveyor and puts it on a pa...">KitRobotAgent</a> <a class="code" href="classfactory_1_1kit_management_1_1_conveyor_agent.html#ab74510a8282b1e22765283c852e571ae">kitRobotAgent</a>;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="comment">// ********** MESSAGES *********</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment"></span>    @Override</div>
-<div class="line"><a name="l00034"></a><span class="lineno"><a class="code" href="classfactory_1_1kit_management_1_1_conveyor_agent.html#abcc92eedd6488f385cec115a35d86000">   34</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1kit_management_1_1_conveyor_agent.html#abcc92eedd6488f385cec115a35d86000">msgNeedEmptyKit</a>() {</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <a class="code" href="classfactory_1_1kit_management_1_1_conveyor_agent.html#a39d108e61becc54535f4c941377b9dbb">eventQueue</a>.add(<a class="code" href="enumfactory_1_1kit_management_1_1_conveyor_agent_1_1_event.html">Event</a>.<a class="code" href="enumfactory_1_1kit_management_1_1_conveyor_agent_1_1_event.html#ad2068ef3ce37efb84ca3b6db43d981ff">emptyKit</a>);</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <a class="code" href="classagent_1_1_agent.html#a44f653501d47022141315a1835e9927a">stateChanged</a>();</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    }</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    @Override</div>
-<div class="line"><a name="l00046"></a><span class="lineno"><a class="code" href="classfactory_1_1kit_management_1_1_conveyor_agent.html#a657ad7dc711b3d05ab9916225572b24c">   46</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1kit_management_1_1_conveyor_agent.html#a657ad7dc711b3d05ab9916225572b24c">msgHereIsVerifiedKit</a>(<a class="code" href="classfactory_1_1_kit.html" title="Kit Object.">Kit</a> kit) {</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <a class="code" href="classfactory_1_1kit_management_1_1_conveyor_agent.html#a39d108e61becc54535f4c941377b9dbb">eventQueue</a>.add(<a class="code" href="enumfactory_1_1kit_management_1_1_conveyor_agent_1_1_event.html">Event</a>.<a class="code" href="enumfactory_1_1kit_management_1_1_conveyor_agent_1_1_event.html#a1e62acc3694227f31c5bc72e32014f90">verifiedKit</a>);</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <a class="code" href="classfactory_1_1kit_management_1_1_conveyor_agent.html#a03f9eaa4fc03ac1972df1f9a33f10b75">tempKit</a> = kit;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <a class="code" href="classagent_1_1_agent.html#a44f653501d47022141315a1835e9927a">stateChanged</a>();</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    }</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="comment">// ********* SCHEDULER *********</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment"></span>    @Override</div>
-<div class="line"><a name="l00059"></a><span class="lineno"><a class="code" href="classfactory_1_1kit_management_1_1_conveyor_agent.html#a06c97eb7e9214da1880d43641a580321">   59</a></span>&#160;    <span class="keyword">protected</span> <span class="keywordtype">boolean</span> <a class="code" href="classfactory_1_1kit_management_1_1_conveyor_agent.html#a06c97eb7e9214da1880d43641a580321">pickAndExecuteAnAction</a>() {</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordflow">for</span> (<a class="code" href="enumfactory_1_1kit_management_1_1_conveyor_agent_1_1_event.html">Event</a> e : <a class="code" href="classfactory_1_1kit_management_1_1_conveyor_agent.html#a39d108e61becc54535f4c941377b9dbb">eventQueue</a>) {</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            <span class="keywordflow">if</span> (e == <a class="code" href="enumfactory_1_1kit_management_1_1_conveyor_agent_1_1_event.html">Event</a>.<a class="code" href="enumfactory_1_1kit_management_1_1_conveyor_agent_1_1_event.html#ad2068ef3ce37efb84ca3b6db43d981ff">emptyKit</a>) {</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                <a class="code" href="classfactory_1_1kit_management_1_1_conveyor_agent.html#a828e76e7a0fcb60d09bd1f8286484e80">giveEmptyKit</a>();</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (e == <a class="code" href="enumfactory_1_1kit_management_1_1_conveyor_agent_1_1_event.html">Event</a>.<a class="code" href="enumfactory_1_1kit_management_1_1_conveyor_agent_1_1_event.html#a1e62acc3694227f31c5bc72e32014f90">verifiedKit</a>) {</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                <a class="code" href="classfactory_1_1kit_management_1_1_conveyor_agent.html#a202733387fe9c7c95835e0a992146d94">acceptVerifiedKit</a>();</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            }</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        }</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    }</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="comment">// ********** ACTIONS **********</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno"><a class="code" href="classfactory_1_1kit_management_1_1_conveyor_agent.html#a828e76e7a0fcb60d09bd1f8286484e80">   78</a></span>&#160;<span class="comment"></span>    <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1kit_management_1_1_conveyor_agent.html#a828e76e7a0fcb60d09bd1f8286484e80">giveEmptyKit</a>() {</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment">//        DoGiveEmptyKit();</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">//        Location loc = kits.get(0).getLocation();</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment">//        kitRobotAgent.msgHereIsKit(loc);</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <a class="code" href="classagent_1_1_agent.html#a44f653501d47022141315a1835e9927a">stateChanged</a>();</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    }</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
-<div class="line"><a name="l00089"></a><span class="lineno"><a class="code" href="classfactory_1_1kit_management_1_1_conveyor_agent.html#a202733387fe9c7c95835e0a992146d94">   89</a></span>&#160;    <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1kit_management_1_1_conveyor_agent.html#a202733387fe9c7c95835e0a992146d94">acceptVerifiedKit</a>() {</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment">//        DoAcceptVerifiedKit();</span></div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <a class="code" href="classfactory_1_1kit_management_1_1_conveyor_agent.html#a27e5e82c17dd90a664a638f99d179e22">kits</a>.add(<a class="code" href="classfactory_1_1kit_management_1_1_conveyor_agent.html#a03f9eaa4fc03ac1972df1f9a33f10b75">tempKit</a>);</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <a class="code" href="classagent_1_1_agent.html#a44f653501d47022141315a1835e9927a">stateChanged</a>();</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">import</span> factory.factory201.interfaces.Conveyor;</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">import</span> factory.general.Kit;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">import</span> java.awt.event.ActionEvent;</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">import</span> java.awt.event.ActionListener;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">import</span> java.util.ArrayList;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">import</span> java.util.List;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">import</span> javax.swing.Timer;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html">   20</a></span>&#160;<span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html" title="This class is the agent for the Conveyor which brings empty Kits into the kitting cell and takes comp...">ConveyorAgent</a> <span class="keyword">extends</span> <a class="code" href="classagent_1_1_agent.html" title="Base class for simple agents.">Agent</a> implements <a class="code" href="interfacefactory_1_1factory201_1_1interfaces_1_1_conveyor.html" title="contains messages for ConveyerAgent This interface contains all of the messages for the ConveyorAgent...">Conveyor</a> {</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="code" href="enumfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent_1_1_event.html">   22</a></span>&#160;    <span class="keyword">private</span> <span class="keyword">enum</span> <a class="code" href="enumfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent_1_1_event.html">Event</a> {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="code" href="enumfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent_1_1_event.html#a1220fcae254150410695f41b66823ec2">   24</a></span>&#160;        emptyKit, verifiedKit</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    };</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html#aa624bd287ae4526e56b8e0f62276c9ee">   26</a></span>&#160;    <span class="keyword">private</span> List&lt;Event&gt; <a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html#aa624bd287ae4526e56b8e0f62276c9ee">eventQueue</a> = <span class="keyword">new</span> ArrayList&lt;Event&gt;();</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html#ae7f872ed64d66231d8c57cf743d2a5fe">   27</a></span>&#160;    <span class="keyword">private</span> List&lt;Kit&gt; <a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html#ae7f872ed64d66231d8c57cf743d2a5fe">kits</a> = <span class="keyword">new</span> ArrayList&lt;Kit&gt;();</div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html#a0af6493957a0b9c7ad26360c64c52c08">   28</a></span>&#160;    <span class="keyword">private</span> <a class="code" href="classfactory_1_1general_1_1_kit.html" title="Kit Object.">Kit</a> <a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html#a0af6493957a0b9c7ad26360c64c52c08">tempKit</a>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html#a9d0331f2524b8c2a4385b87e2cb6a527">   29</a></span>&#160;    <span class="keyword">private</span> <a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_kit_robot_agent.html" title="This class is the agent for the Kit Robot which gets empty kits from the conveyor and puts it on a pa...">KitRobotAgent</a> <a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html#a9d0331f2524b8c2a4385b87e2cb6a527">kitRobotAgent</a>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html#a5de8484fa109ac1eb275beaaf95b4afe">   30</a></span>&#160;    <span class="keyword">private</span> Timer <a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html#a5de8484fa109ac1eb275beaaf95b4afe">removeKits</a> = <span class="keyword">new</span> Timer(1000, <span class="keyword">new</span> ActionListener() {</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        @Override</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> actionPerformed(ActionEvent ae) {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            <span class="keywordflow">for</span> (<a class="code" href="classfactory_1_1general_1_1_kit.html" title="Kit Object.">Kit</a> k : <a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html#ae7f872ed64d66231d8c57cf743d2a5fe">kits</a>) {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                <span class="keywordflow">if</span> (k.status == <a class="code" href="classfactory_1_1general_1_1_kit.html" title="Kit Object.">Kit</a>.Status.verified) {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                    kits.remove(k);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                }</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            }</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        }</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    });</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html#a7e9d1bdac0f28961dc4d13b923527746">   42</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html#a7e9d1bdac0f28961dc4d13b923527746">ConveyorAgent</a>() {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html#a5de8484fa109ac1eb275beaaf95b4afe">removeKits</a>.start();</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html#a5de8484fa109ac1eb275beaaf95b4afe">removeKits</a>.stop();</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    }</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="comment">// ********** MESSAGES *********</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment"></span>    @Override</div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html#afe20f9e54a30d9455fc3e1a4b4589846">   53</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html#afe20f9e54a30d9455fc3e1a4b4589846">msgNeedEmptyKit</a>() {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html#aa624bd287ae4526e56b8e0f62276c9ee">eventQueue</a>.add(<a class="code" href="enumfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent_1_1_event.html">Event</a>.<a class="code" href="enumfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent_1_1_event.html#a1be3a22fecdaa5727d129be59eee9ffc">emptyKit</a>);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <a class="code" href="classagent_1_1_agent.html#a44f653501d47022141315a1835e9927a">stateChanged</a>();</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    }</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    @Override</div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html#a5b3fe43fbed15db196522a10019b42c8">   65</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html#a5b3fe43fbed15db196522a10019b42c8">msgHereIsVerifiedKit</a>(<a class="code" href="classfactory_1_1general_1_1_kit.html" title="Kit Object.">Kit</a> kit) {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html#aa624bd287ae4526e56b8e0f62276c9ee">eventQueue</a>.add(<a class="code" href="enumfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent_1_1_event.html">Event</a>.<a class="code" href="enumfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent_1_1_event.html#a1220fcae254150410695f41b66823ec2">verifiedKit</a>);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html#a0af6493957a0b9c7ad26360c64c52c08">tempKit</a> = kit;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <a class="code" href="classagent_1_1_agent.html#a44f653501d47022141315a1835e9927a">stateChanged</a>();</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    }</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="comment">// ********* SCHEDULER *********</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment"></span>    @Override</div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html#ae34d95e0805ef6af0f538eb36b1a4d5b">   78</a></span>&#160;    <span class="keyword">protected</span> <span class="keywordtype">boolean</span> <a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html#ae34d95e0805ef6af0f538eb36b1a4d5b">pickAndExecuteAnAction</a>() {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keywordflow">for</span> (<a class="code" href="enumfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent_1_1_event.html">Event</a> e : <a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html#aa624bd287ae4526e56b8e0f62276c9ee">eventQueue</a>) {</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            <span class="keywordflow">if</span> (e == <a class="code" href="enumfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent_1_1_event.html">Event</a>.<a class="code" href="enumfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent_1_1_event.html#a1be3a22fecdaa5727d129be59eee9ffc">emptyKit</a>) {</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                <a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html#a80c03c6d6f102f00e52cc6e86c67e6fe">giveEmptyKit</a>();</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            }</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        }</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="keywordflow">for</span> (<a class="code" href="enumfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent_1_1_event.html">Event</a> e : eventQueue) {</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            <span class="keywordflow">if</span> (e == <a class="code" href="enumfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent_1_1_event.html">Event</a>.<a class="code" href="enumfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent_1_1_event.html#a1220fcae254150410695f41b66823ec2">verifiedKit</a>) {</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                <a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html#a8d0a0cc45346cfd720f6151171a41523">acceptVerifiedKit</a>();</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            }</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        }</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    }</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="comment">// ************ MISC ***********</span></div>
-<div class="line"><a name="l00101"></a><span class="lineno"><a class="code" href="classfactory_1_1kit_management_1_1_conveyor_agent.html#a6f32666e6844c38026774aa49f7dffbf">  101</a></span>&#160;<span class="comment"></span>    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1kit_management_1_1_conveyor_agent.html#a6f32666e6844c38026774aa49f7dffbf">setKitRobotAgent</a>(<a class="code" href="classfactory_1_1kit_management_1_1_kit_robot_agent.html" title="This class is the agent for the Kit Robot which gets empty kits from the conveyor and puts it on a pa...">KitRobotAgent</a> agent) {</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <a class="code" href="classfactory_1_1kit_management_1_1_conveyor_agent.html#ab74510a8282b1e22765283c852e571ae">kitRobotAgent</a> = agent;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    }</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;}</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="comment">// ********** ACTIONS **********</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html#a80c03c6d6f102f00e52cc6e86c67e6fe">  100</a></span>&#160;<span class="comment"></span>    <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html#a80c03c6d6f102f00e52cc6e86c67e6fe">giveEmptyKit</a>() {</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="keywordflow">for</span> (<a class="code" href="classfactory_1_1general_1_1_kit.html" title="Kit Object.">Kit</a> k : <a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html#ae7f872ed64d66231d8c57cf743d2a5fe">kits</a>) {</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            <span class="keywordflow">if</span> (k.status == <a class="code" href="classfactory_1_1general_1_1_kit.html" title="Kit Object.">Kit</a>.Status.empty) {</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                <a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html#a9d0331f2524b8c2a4385b87e2cb6a527">kitRobotAgent</a>.<a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_kit_robot_agent.html#a7b87dd7d4180cbd954581ec543c8b16d" title="Message called by ConveyorAgent to give kit.">msgHereIsEmptyKit</a>(k);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                kits.remove(k);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            }</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        }</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        <a class="code" href="classagent_1_1_agent.html#a44f653501d47022141315a1835e9927a">stateChanged</a>();</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    }</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;</div>
+<div class="line"><a name="l00115"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html#a8d0a0cc45346cfd720f6151171a41523">  115</a></span>&#160;    <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html#a8d0a0cc45346cfd720f6151171a41523">acceptVerifiedKit</a>() {</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        <a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html#ae7f872ed64d66231d8c57cf743d2a5fe">kits</a>.add(<a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html#a0af6493957a0b9c7ad26360c64c52c08">tempKit</a>);</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        <a class="code" href="classagent_1_1_agent.html#a44f653501d47022141315a1835e9927a">stateChanged</a>();</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    }</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="comment">// ************ MISC ***********</span></div>
+<div class="line"><a name="l00126"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html#a92bace307aa615b5693a7880c936a01e">  126</a></span>&#160;<span class="comment"></span>    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html#a92bace307aa615b5693a7880c936a01e">setKitRobotAgent</a>(<a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_kit_robot_agent.html" title="This class is the agent for the Kit Robot which gets empty kits from the conveyor and puts it on a pa...">KitRobotAgent</a> agent) {</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        <a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html#a9d0331f2524b8c2a4385b87e2cb6a527">kitRobotAgent</a> = agent;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    }</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;</div>
+<div class="line"><a name="l00130"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html#a1de54ef04ab709ee131064d8fcb0b334">  130</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html#a1de54ef04ab709ee131064d8fcb0b334">generateKit</a>(<span class="keywordtype">int</span> num) {</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        num--;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; num; i++) {</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;            <a class="code" href="classfactory_1_1general_1_1_kit.html" title="Kit Object.">Kit</a> k = <span class="keyword">new</span> <a class="code" href="classfactory_1_1general_1_1_kit.html" title="Kit Object.">Kit</a>(<span class="stringliteral">&quot;Kit &quot;</span> + i);</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;            <a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html#ae7f872ed64d66231d8c57cf743d2a5fe">kits</a>.add(k);</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        }</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    }</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;</div>
+<div class="line"><a name="l00138"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html#ac047bd3e8b623889467c63c995b6e941">  138</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html#ac047bd3e8b623889467c63c995b6e941">generateKit</a>(String name) {</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        <a class="code" href="classfactory_1_1general_1_1_kit.html" title="Kit Object.">Kit</a> k = <span class="keyword">new</span> <a class="code" href="classfactory_1_1general_1_1_kit.html" title="Kit Object.">Kit</a>(<span class="stringliteral">&quot;Kit &quot;</span> + name);</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        <a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html#ae7f872ed64d66231d8c57cf743d2a5fe">kits</a>.add(k);</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    }</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;</div>
+<div class="line"><a name="l00143"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html#a379b6f6cb290039438f9a3ad5009e044">  143</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html#a379b6f6cb290039438f9a3ad5009e044">removeKit</a>(String name) {</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        <span class="keywordflow">for</span> (<a class="code" href="classfactory_1_1general_1_1_kit.html" title="Kit Object.">Kit</a> k : <a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html#ae7f872ed64d66231d8c57cf743d2a5fe">kits</a>) {</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;            <span class="keywordflow">if</span> (k.name.equals(name)) {</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                kits.remove(k);</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;            }</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        }</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    }</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;</div>
+<div class="line"><a name="l00152"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html#a4a932187ea7265b147bc1dfcc27ad163">  152</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html#a4a932187ea7265b147bc1dfcc27ad163">removeAllVerifiedKits</a>() {</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        <span class="keywordflow">for</span> (<a class="code" href="classfactory_1_1general_1_1_kit.html" title="Kit Object.">Kit</a> k : <a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html#ae7f872ed64d66231d8c57cf743d2a5fe">kits</a>) {</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;            <span class="keywordflow">if</span> (k.status == <a class="code" href="classfactory_1_1general_1_1_kit.html" title="Kit Object.">Kit</a>.Status.verified) {</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                kits.remove(k);</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;            }</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        }</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    }</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;</div>
+<div class="line"><a name="l00160"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html#a9a2918f8fd34976b83acbc585f826686">  160</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html#a9a2918f8fd34976b83acbc585f826686">toggleAutoRemove</a>() {</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html#a5de8484fa109ac1eb275beaaf95b4afe">removeKits</a>.isRunning()) {</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;            <a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html#a5de8484fa109ac1eb275beaaf95b4afe">removeKits</a>.stop();</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;            <a class="code" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html#a5de8484fa109ac1eb275beaaf95b4afe">removeKits</a>.restart();</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        }</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    }</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Oct 28 2012 21:37:53 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Nov 4 2012 12:20:00 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

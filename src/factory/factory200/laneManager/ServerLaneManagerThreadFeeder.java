@@ -1,6 +1,6 @@
 package factory.factory200.laneManager;
-
 import java.util.ArrayList;
+
 /**
  * This class contains all data for feeders. Lane agent and lane manager use these data to process.
  * 
@@ -276,6 +276,15 @@ public class ServerLaneManagerThreadFeeder {
 	}
 	
 	/**
+	 * @brief Empty Feeder Making
+	 * @param feederNum : Feeder number
+	 */
+	public void getFeederWithoutBox(){
+		signalToLM = feederNum + "&Feeder&" + "Feeder Without Box";
+		app.getNetwork().getVerify().verify(signalToLM);
+	}
+	
+	/**
 	 * If the Boolean variable 'feedPartsSwitchOnOff' is on, the variable 'insertPartFrequency' keeps increasing.
 	 * If it is 30, it orders the feeder to feed onto lane.
 	 * Also, this helps the feeder divert to a specific lane.
@@ -294,6 +303,10 @@ public class ServerLaneManagerThreadFeeder {
 					insertPartFrequency = 0;
 				}
 			}
+			if( parts.size() == 0 ){
+				getFeederWithoutBox();
+			}
+			
 			insertPartFrequency++;
 		}
 	}

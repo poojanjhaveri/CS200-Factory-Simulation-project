@@ -35,14 +35,83 @@ public class KitAssemblyManager extends Manager implements ActionListener {
      * changes the panel based on what the user clicks
      */
     public void actionPerformed(ActionEvent ae) {
+        if(ae.getSource()==cameraKitStand){
+                this.graphics.camera.setX(this.graphics.kitstand.getKitPositions().get(2).getX());
+                //System.out.println(this.graphics.nest.get(0).getX());
+                //System.out.println(this.graphics.camera.getX());
+                this.graphics.camera.setY(this.graphics.kitstand.getKitPositions().get(2).getY());
+                //System.out.println(this.graphics.nest.get(0).getY());
+                //System.out.println(this.graphics.camera.getY());
+                this.graphics.camera.setVisible(true);
+                this.graphics.repaint();
+        }
+        
           if (ae.getSource() == cameraNest) {
             String choice = JOptionPane.showInputDialog("Please enter the nest number: ");
             Integer nest = Integer.parseInt(choice);
-
+            //System.out.println(nest);
+            if(nest==1){
+                this.graphics.camera.setX(this.graphics.nest.get(0).getX());
+                //System.out.println(this.graphics.nest.get(0).getX());
+                //System.out.println(this.graphics.camera.getX());
+                this.graphics.camera.setY(this.graphics.nest.get(0).getY());
+                //System.out.println(this.graphics.nest.get(0).getY());
+                //System.out.println(this.graphics.camera.getY());
+                this.graphics.camera.setVisible(true);
+                this.graphics.repaint();
+            }
+            else if(nest==2){
+                this.graphics.camera.setX(this.graphics.nest.get(1).getX());
+                this.graphics.camera.setY(this.graphics.nest.get(1).getY());
+                this.graphics.camera.setVisible(true);
+                this.graphics.repaint();
+            }
+            else if(nest==3){
+                this.graphics.camera.setX(this.graphics.nest.get(2).getX());
+                this.graphics.camera.setY(this.graphics.nest.get(2).getY());
+                this.graphics.camera.setVisible(true);
+                this.graphics.repaint();
+            }
+            else if(nest==4){
+                this.graphics.camera.setX(this.graphics.nest.get(3).getX());
+                this.graphics.camera.setY(this.graphics.nest.get(3).getY());
+                this.graphics.camera.setVisible(true);
+                this.graphics.repaint();
+            }
+            else if(nest==5){
+                this.graphics.camera.setX(this.graphics.nest.get(4).getX());
+                this.graphics.camera.setY(this.graphics.nest.get(4).getY());
+                this.graphics.camera.setVisible(true);
+                this.graphics.repaint();
+            }
+            else if(nest==6){
+                this.graphics.camera.setX(this.graphics.nest.get(5).getX());
+                this.graphics.camera.setY(this.graphics.nest.get(5).getY());
+                this.graphics.camera.setVisible(true);
+                this.graphics.repaint();
+            }
+            else if(nest==7){
+                this.graphics.camera.setX(this.graphics.nest.get(6).getX());
+                this.graphics.camera.setY(this.graphics.nest.get(6).getY());
+                this.graphics.camera.setVisible(true);
+                this.graphics.repaint();
+            }
+            else if(nest==8){
+                this.graphics.camera.setX(this.graphics.nest.get(7).getX());
+                this.graphics.camera.setY(this.graphics.nest.get(7).getY());
+                this.graphics.camera.setVisible(true);
+                this.graphics.repaint();
+            }
         }
+          
         if (ae.getSource() == kitRobotEmpty) {
-            System.out.println("GOGOGO");
-            this.graphics.kitbot.moveToConveyer();
+            //System.out.println("GOGOGO");
+            this.graphics.deliveryStation=false;
+            this.graphics.kitbot.pickUpEmptyKit(1);
+            
+            //after robot goes back to kit stand
+            
+            //this.graphics.timer.start();
         }
     }
 

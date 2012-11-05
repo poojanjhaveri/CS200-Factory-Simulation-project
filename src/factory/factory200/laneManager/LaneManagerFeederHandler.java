@@ -174,6 +174,12 @@ public class LaneManagerFeederHandler {
 			partNum =  message.charAt( message.length() - 1 ) - 48;
 			laneManagerApp.getGraphicsPanel().getFeederArray(feederNum).feedPartOntoLaneRight( partNum );
 		}
+		
+		// Message : Feeder Without Box
+		else if( message.indexOf("Feeder Without Box") != -1 ){
+			// Part Number Assignment
+			laneManagerApp.getGraphicsPanel().getFeederArray(feederNum).setFeederWithoutBox();
+		}
 		// ----------------------------------------------------------------------------------------------------------------------------------------------------
 	}
 }

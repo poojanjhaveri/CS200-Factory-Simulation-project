@@ -1,6 +1,8 @@
 package factory.factory201.kitManagement;
 
 import agent.Agent;
+import factory.factory201.interfaces.Camera;
+import factory.factory201.interfaces.Conveyor;
 import factory.factory201.interfaces.KitRobot;
 import factory.factory201.partsManagement.PartsAgent;
 import factory.general.Kit;
@@ -20,8 +22,8 @@ public class KitRobotAgent extends Agent implements KitRobot {
     KitStand kitStand = new KitStand();
     private boolean partsAgentNeedsEmptyKit = false;
     private boolean requestedEmptyKit = false;
-    private ConveyorAgent conveyor;
-    private CameraAgent camera;
+    private Conveyor conveyor;
+    private Camera camera;
     private PartsAgent partsAgent;
 
     // ********** MESSAGES *********
