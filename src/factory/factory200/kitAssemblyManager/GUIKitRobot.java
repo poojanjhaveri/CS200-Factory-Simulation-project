@@ -10,23 +10,27 @@ import java.util.LinkedList;
  * base and extending the arm, but is incapable of moving from its base. <img
  * src="../img/image04.png" alt="idle GuiKitRobot"/> <img
  * src="../img/image10.png" alt="GuiKitRobot with active kit"/>
-
 A queue of orders
 0 - pick up kit from conveyer
-1 -
-2 -
-3 -
-4 -
-5 -
+1 - pick up kit from kit1
+2 - pick up kit from kit2
+3 - pick up kit from kit3
+4 - drop kit onto kit1
+5 - drop kit onto kit2
+6 - drop kit onto kit3
+7 - drop kit onto conveyer
 ...
-10 - move to conveyer
+9  - move to dropoff conveyer
+10 - move to pickup conveyer
 11 - move to kit1
 12 - move to kit2
 13 - move to kit3
-
+...
+20 - move to default position
  *
  * @brief Robot that moves kits in the KitWorkingArea
  * @author YiWei Roy Zheng
+ * @version 1.0
  */
 public class GUIKitRobot extends GUIRobot {
 
@@ -46,7 +50,7 @@ public class GUIKitRobot extends GUIRobot {
     /**
     sets a new lane destination coordinate for KitterRobot, the passed Integer specifies which lane to head to
     */
-    public void moveToKit(Integer l) {
+    private void moveToKit(Integer l) {
         switch(l)
         {
         case 0:
@@ -59,26 +63,69 @@ public class GUIKitRobot extends GUIRobot {
             moveTo(KAMGraphicPanel.KITX,KAMGraphicPanel.KIT2Y);
             break;
         default:
+            return;
         }
+        
+    }
+    private void moveToDefault()
+    {
+	this.moveTo(KAMGraphicPanel.KITROBOT_INITIAL_X,KAMGraphicPanel.KITROBOT_INITIAL_Y);
     }
     /**
-    moves to the conveyer
+@brief moves to the position to drop off full kits
      */
-    public void moveToConveyer()
+    private void moveToFullConveyer()
     {
-        this.moveTo(KAMGraphicPanel.CONVEYERX,KAMGraphicPanel.CONVEYERY);
+	this.moveTo(KAMGraphicPanel.FULL_CONVEYERX,KAMGraphicPanel.FULL_CONVEYERY);
+        
     }
     /**
-@param i 0 is kit0, 1 is kit1, 2 is kit2
+@brief    moves to the position on the  conveyer for empty kits
      */
-    public void pickUpEmptyKit(Integer i)
+    private void moveToEmptyConveyer()
     {
-	this.orders.add(10);
-	this.orders.add(0);
-	if(i < 0 || i > 2){
-	    System.out.println("CRITICAL ERROR: attempting to use GUIKitRobot::pickUpEmptyKit(Integer " + i + ") when range is 0,1,2");
-	}
-	this.orders.add(i+11);
+        this.moveTo(KAMGraphicPanel.EMPTY_CONVEYERX,KAMGraphicPanel.EMPTY_CONVEYERY);
+       
+    }
+    /**
+@brief moves an empty kit onto the kitstand
+     */
+    public void pickUpEmptyKit()
+    {
+	this.orders.add(10);//move to conveyer
+	this.orders.add(0);//pick up empty kit from conveyer
+	this.orders.add(11);//move to kit stand
+	this.orders.add(4);//drop kit onto stand
+    }
+    /**
+@brief moves an empty kit to the active position
+     */
+    public void moveEmptyKitToActive()
+    {
+	this.orders.add(11);//move to empty kit stand position
+	this.orders.add(1);//pick up the kit
+	this.orders.add(12);//move to the active stand position
+	this.orders.add(5);//drop the kit onto stand
+    }
+    /**
+@brief moves the active kit to the camera inspection stand
+    */
+    public void moveActiveKitToInspection()
+    {
+	this.orders.add(12);//move to active kit stand position
+	this.orders.add(2);//pick up the kit
+	this.orders.add(13);//move to the inspection stand position
+	this.orders.add(6);//drop the kit onto stand
+    }
+    /**
+@brief moves a full stand off of the kit stand onto the conveyer
+     */
+    public void dropOffFullKit()
+    {
+	this.orders.add(13);//move to kit stand
+	this.orders.add(3);//pick up kit
+	this.orders.add(9);//move to dropoff conveyer
+	this.orders.add(7);//drop off kit
     }
     /**
     updates the location of the kit items carrying
@@ -102,13 +149,25 @@ public class GUIKitRobot extends GUIRobot {
     public void giveKit(KAMKit in)
     {
         this.kit = in;
+        this.popOrder();
     }
-    public void dropKit()
+    public KAMKit dropKit()
     {
+ this.popOrder();
+	KAMKit k = this.kit;
         this.kit = null;
+	return k;
+    }
+    public Integer getOrder()
+    {
+return ((this.orders.isEmpty())?-1:this.orders.get(0));
     }
     public Integer popOrder()
     {
+	if(this.orders.size() == 1)
+	    {
+		this.orders.add(20);
+	    }
         return ((this.orders.isEmpty())?-1:this.orders.poll());
     }
     public Boolean hasKit()
@@ -125,7 +184,31 @@ public class GUIKitRobot extends GUIRobot {
     }
     public String toString()
     {
-        super.toString();
-        return("Heading to " +this.moveToX+","+this.moveToY+")");
+        return super.toString()+("Heading to " +this.moveToX+","+this.moveToY+")");
+    }
+    /**
+@brief pops the order and performs it
+     */
+    public Boolean performOrder()
+    {
+	Integer i = this.popOrder();
+	switch(i)
+	    {
+	    case 9:this.moveToFullConveyer();
+                break;
+	    case 10:this.moveToEmptyConveyer();
+                break;
+	    case 11:this.moveToKit(0);
+                break;
+	    case 12:this.moveToKit(1);
+                break;
+	    case 13:this.moveToKit(2);
+                break;
+	    case 20:
+		this.moveToDefault();
+		break;
+	    default:return false;
+	    }
+	return true;
     }
 }

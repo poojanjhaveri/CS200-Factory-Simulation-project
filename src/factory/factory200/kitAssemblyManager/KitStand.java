@@ -65,7 +65,42 @@ public class KitStand {
     public ImageIcon getKitStand() {
         return kitStand;
     }
-
+    
+    public void takeKit(KAMKit kit){
+        KAMKit temp=kit;
+        if(kit==null){
+            System.out.println("GIVING KIT STAND A NULL KIT");
+        }
+        if(temp.getX()==kitPositions.get(0).getX() && temp.getY()==kitPositions.get(0).getY()){
+            kitPositions.get(0).setKit(temp);
+            kitPositions.get(0).setFilled(true);
+        }
+        else if(temp.getX()==kitPositions.get(1).getX() && temp.getY()==kitPositions.get(1).getY()){
+            kitPositions.get(1).setKit(temp);
+            kitPositions.get(1).setFilled(true);
+        }
+        else if(temp.getX()==kitPositions.get(1).getX() && temp.getY()==kitPositions.get(1).getY()){
+            kitPositions.get(2).setKit(temp);
+            kitPositions.get(2).setFilled(true);
+        }
+    }
+    
+    public KAMKit giveKit(int y){
+        KAMKit returnKit=null;
+        if(y==0){
+            returnKit=kitPositions.get(0).getKit();
+            kitPositions.get(0).setFilled(false);
+        }
+        else if(y==1){
+            returnKit=kitPositions.get(1).getKit();
+            kitPositions.get(1).setFilled(false);
+        }
+        else if(y==2){
+            returnKit=kitPositions.get(2).getKit();
+            kitPositions.get(2).setFilled(false);
+        }
+        return returnKit;
+    }
     /**
      * @param kitStand the kitStand to set
      */

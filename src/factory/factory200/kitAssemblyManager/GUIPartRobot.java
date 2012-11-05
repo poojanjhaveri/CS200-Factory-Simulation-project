@@ -2,7 +2,9 @@
 package factory.factory200.kitAssemblyManager;
 
 import factory.general.GUIRobot;
+import factory.general.Part;
 
+import java.util.Collection;
 /**
  * The GUIPartRobot obtains parts from the nest and places it into the working
  * kit. It takes orders from the Kit Assembly Manager. It has pickup
@@ -14,6 +16,7 @@ import factory.general.GUIRobot;
  *
  * @brief Robot that creates kits using parts from the lane nests
  * @author YiWei Roy Zheng
+ * @version 0.1
  */
 public class GUIPartRobot extends GUIRobot {
 
@@ -25,7 +28,7 @@ public class GUIPartRobot extends GUIRobot {
     public GUIPartRobot()
     {
         // variables will be set in the KAMGraphicsPanel
-        super(KAMGraphicPanel.PARTSROBOTINITIALX,KAMGraphicPanel.PARTSROBOTINITIALY,"partsrobot.png");
+        super(KAMGraphicPanel.PARTSROBOTINITIALX,KAMGraphicPanel.PARTSROBOTINITIALY,"pics/partsrobot.png");
         this.busy = false;
         this.parts = new PartsRobotInventory();
         this.moveto = 0;
@@ -72,7 +75,24 @@ public class GUIPartRobot extends GUIRobot {
             break;
         }
     }
-
-    public void updateParts() {
-    }///<updates the location of all parts in the inventory
+    /**
+@brief moves the parts robot to the dropoff site for parts
+     */
+    public void moveToKit()
+    {
+	this.moveTo(KAMGraphicPanel.PARTS_ROBOT_KITX,KAMGraphicPanel.PARTS_ROBOT_KITY);
+    }
+    public void update()
+    {
+	super.update();
+	this.parts.update(this.cords);
+    }
+    public void addPart(Part in)
+    {
+	this.parts.addPart(in);
+    }
+    public Collection<Part> removePart()
+    {
+	return this.parts.getCollection();
+    }
 }

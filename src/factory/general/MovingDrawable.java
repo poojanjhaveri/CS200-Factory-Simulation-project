@@ -27,7 +27,7 @@ public class MovingDrawable extends Drawable {
     {
         super(x,y,a,i);
         this.moveToX = x;
-        this.moveToY=y;
+        this.moveToY= y;
         this.rotateto = 0.0;
     }
 

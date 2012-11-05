@@ -59,7 +59,6 @@ public class KitAssemblyManager extends Manager implements ActionListener {
                 //System.out.println(this.graphics.camera.getY());
                 this.graphics.camera.setVisible(true);
                 this.graphics.repaint();
-                
             }
             else if(nest==2){
                 this.graphics.camera.setX(this.graphics.nest.get(1).getX());
@@ -108,7 +107,7 @@ public class KitAssemblyManager extends Manager implements ActionListener {
         if (ae.getSource() == kitRobotEmpty) {
             //System.out.println("GOGOGO");
             this.graphics.deliveryStation=false;
-            this.graphics.kitbot.pickUpEmptyKit(1);
+            this.graphics.kitbot.pickUpEmptyKit();
             
             //after robot goes back to kit stand
             
