@@ -61,7 +61,9 @@ public class GUIKitRobot extends GUIRobot {
             moveTo(KAMGraphicPanel.KITX,KAMGraphicPanel.KIT2Y);
             break;
         default:
+            return;
         }
+        
     }
     /**
 @brief moves to the position to drop off full kits
@@ -69,6 +71,7 @@ public class GUIKitRobot extends GUIRobot {
     private void moveToFullConveyer()
     {
 	this.moveTo(KAMGraphicPanel.FULL_CONVEYERX,KAMGraphicPanel.FULL_CONVEYERY);
+        
     }
     /**
 @brief    moves to the position on the  conveyer for empty kits
@@ -76,6 +79,7 @@ public class GUIKitRobot extends GUIRobot {
     private void moveToEmptyConveyer()
     {
         this.moveTo(KAMGraphicPanel.EMPTY_CONVEYERX,KAMGraphicPanel.EMPTY_CONVEYERY);
+       
     }
     /**
 @brief moves an empty kit onto the kitstand
@@ -139,9 +143,11 @@ public class GUIKitRobot extends GUIRobot {
     public void giveKit(KAMKit in)
     {
         this.kit = in;
+        this.popOrder();
     }
     public KAMKit dropKit()
     {
+ this.popOrder();
 	KAMKit k = this.kit;
         this.kit = null;
 	return k;
@@ -179,10 +185,15 @@ return ((this.orders.isEmpty())?-1:this.orders.get(0));
 	switch(i)
 	    {
 	    case 9:this.moveToFullConveyer();
+                break;
 	    case 10:this.moveToEmptyConveyer();
+                break;
 	    case 11:this.moveToKit(0);
+                break;
 	    case 12:this.moveToKit(1);
+                break;
 	    case 13:this.moveToKit(2);
+                break;
 	    default:return false;
 	    }
 	return true;

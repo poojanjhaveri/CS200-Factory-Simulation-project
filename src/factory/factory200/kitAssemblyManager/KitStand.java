@@ -67,8 +67,10 @@ public class KitStand {
     }
     
     public void takeKit(KAMKit kit){
-        KAMKit temp=new KAMKit();
-        temp=kit;
+        KAMKit temp=kit;
+        if(kit==null){
+            System.out.println("What the hell are you doing?");
+        }
         if(temp.getX()==kitPositions.get(0).getX() && temp.getY()==kitPositions.get(0).getY()){
             kitPositions.get(0).setKit(temp);
             kitPositions.get(0).setFilled(true);
@@ -84,16 +86,16 @@ public class KitStand {
     }
     
     public KAMKit giveKit(int y){
-        KAMKit returnKit=new KAMKit();
-        if(kitPositions.get(0).getY()==y){
+        KAMKit returnKit=null;
+        if(y==0){
             returnKit=kitPositions.get(0).getKit();
             kitPositions.get(0).setFilled(false);
         }
-        else if(kitPositions.get(1).getY()==y){
+        else if(y==1){
             returnKit=kitPositions.get(1).getKit();
             kitPositions.get(1).setFilled(false);
         }
-        else if(kitPositions.get(2).getY()==y){
+        else if(y==2){
             returnKit=kitPositions.get(2).getKit();
             kitPositions.get(2).setFilled(false);
         }

@@ -40,7 +40,7 @@ public class KitDeliveryStation {
     }
     
     public Boolean inPosition(){
-        return (this.placeholder.get(0).getX()==KAMGraphicPanel.CONVEYERX && this.placeholder.get(0).getY()==KAMGraphicPanel.CONVEYERY);   
+        return (this.placeholder.get(0).getX()==KAMGraphicPanel.EMPTY_CONVEYERX && this.placeholder.get(0).getY()==KAMGraphicPanel.EMPTY_CONVEYERY);   
     }
     
     public KAMKit giveKit(){
