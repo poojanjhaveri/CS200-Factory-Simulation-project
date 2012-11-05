@@ -180,6 +180,10 @@ public class NestAgent extends Agent implements NestInterface{
     public void setCameraAgent(Camera c){
         this.camera = c;
     }
+    /*
+    public void setLane(Lane l){
+        this
+    }*/
     
     public void setPartsAgent(PartsInterface parts) {
         this.partsagent = parts;

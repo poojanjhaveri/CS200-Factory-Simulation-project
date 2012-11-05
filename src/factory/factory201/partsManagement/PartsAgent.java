@@ -2,6 +2,7 @@ package factory.factory201.partsManagement;
 
 import agent.Agent;
 import factory.factory200.kitAssemblyManager.KitAssemblyManager;
+import factory.factory201.Test.mock.MockKitRobot;
 import factory.factory201.interfaces.KitRobot;
 import factory.factory201.interfaces.NestInterface;
 import factory.factory201.interfaces.PartsInterface;
@@ -25,7 +26,7 @@ import java.util.List;
  */
 public class PartsAgent extends Agent implements PartsInterface{
     KitAssemblyManager kam;
-    KitRobot kitrobot;
+    MockKitRobot kitrobot;
     Kit kit;
     NestInterface nest;
     private List<Part> inventory =
@@ -38,7 +39,7 @@ public class PartsAgent extends Agent implements PartsInterface{
             Collections.synchronizedList(new ArrayList<Kit>());
 
     public void PartsAgent(){
-        
+        kitrobot.msgNeedEmptyKit();
     }
 //Messages 
     public void msgHereIsKit(Kit k){
@@ -81,12 +82,18 @@ public class PartsAgent extends Agent implements PartsInterface{
     @Override
     protected boolean pickAndExecuteAnAction() {
        
+        if (!newKit.isEmpty()){
+            startNewKit(newKit.remove(0));
+        	//startNewKit(newKit.get(newKit.size()-1));
+        	//newKit.clear();
+        	return true;
+        }
         
         if (!inventory.isEmpty() && kit.standNum!=Kit.StandNum.none){
         	pickUpPart(inventory.remove(0));
         	return true;
         }
-
+        if(kit!=null){
         if (kit.status == Kit.Status.full) {
             giveKitToKitAgent();
             return true;
@@ -97,13 +104,8 @@ public class PartsAgent extends Agent implements PartsInterface{
         }
         	
         
-        if (!newKit.isEmpty()){
-        	startNewKit(newKit.get(newKit.size()));
-        	newKit.clear();
-        	return true;
         }
-        else
-        	startNewKit(kit);
+        
 
         return false;
     }
@@ -115,13 +117,14 @@ public class PartsAgent extends Agent implements PartsInterface{
     }
     
     private void startNewKit(Kit k){
+       // kitrobot.msgNeedEmptyKit();
         print("New kit being started");
     	kitNeedsParts.clear();
     	this.kit = k;
     	for(int i=0; i<kit.getSize(); i++){
-    		kitNeedsParts.add(k.getPart(i));
+    		kitNeedsParts.add(kit.getPart(i));
     	}
-    	kitrobot.msgNeedEmptyKit();
+    	
     	for (int i = 0; i < kit.getSize(); i++) {
             nest.msgNeedPart(kit.getPart(i));
     	}
@@ -138,22 +141,20 @@ public class PartsAgent extends Agent implements PartsInterface{
             kam.getPartsRobot().moveToNestCommand(p.getNestNum());
             try{Thread.sleep(2);}
             catch(InterruptedException ex){}
-            kam.pickPartCommand();}
+            kam.getPartsRobot().pickPartCommand(p.getNestNum());
+        }
         stateChanged();
     }
 
     private void putPartsInKit() {
         for (Part p: grips) {
             print("putting part " + p +" in kit");
-            
-                
-                
         }
-        kam.dropOffParts();
+        kam.getPartsRobot().dropOffParts();
         
     }
     
-    public void setKitRobot(KitRobot k){
+    public void setKitRobot(MockKitRobot k){
         this.kitrobot=k;
     }
     
