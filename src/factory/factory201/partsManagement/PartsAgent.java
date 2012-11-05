@@ -1,6 +1,8 @@
 package factory.factory201.partsManagement;
 
 import agent.Agent;
+import factory.factory201.interfaces.NestInterface;
+import factory.factory201.interfaces.PartsInterface;
 import factory.factory201.kitManagement.KitRobotAgent;
 import factory.general.Kit;
 import factory.general.Part;
@@ -19,11 +21,11 @@ import java.util.List;
  *
  *
  */
-public class PartsAgent extends Agent {
+public class PartsAgent extends Agent implements PartsInterface{
 
     KitRobotAgent kitagent;
     Kit kit;
-    NestAgent nest;
+    NestInterface nest;
     private List<Part> inventory =
             Collections.synchronizedList(new ArrayList<Part>());
     private List<Part> grips =
@@ -33,6 +35,9 @@ public class PartsAgent extends Agent {
     private List<Kit> newKit =
             Collections.synchronizedList(new ArrayList<Kit>());
 
+    public void PartsAgent(){
+        
+    }
 //Messages 
     public void msgHereIsKit(Kit k){
         print("PartsAgent got message for new kit");
@@ -40,6 +45,7 @@ public class PartsAgent extends Agent {
     	stateChanged();
     	
     }
+    
       
     public void msgHereIsPart(Part p) {
         print("got part " + p + "from nest");
@@ -47,9 +53,7 @@ public class PartsAgent extends Agent {
         stateChanged();
     }
 
-    public void msgEmptyKitReady(Kit kit) {
-        
-    }
+    
     
     public void msgEmptyKitReady(int num) {
         switch (num) {
@@ -135,5 +139,15 @@ public class PartsAgent extends Agent {
            // DoPutPartInKit(grips.remove(p));
         }
         
+    }
+
+    @Override
+    public void msgNeedPart(Part part) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public void msgHereAreParts(Part part, int quantity) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }
