@@ -27,8 +27,7 @@ public class Part implements Serializable {
         this.size = size;
     }
     
-<<<<<<< HEAD
-=======
+
     public int getNestNum(){
         return this.nestNum;
     }
@@ -36,7 +35,7 @@ public class Part implements Serializable {
     public void setNestNum(int n){
         this.nestNum = n;
     }
->>>>>>> tmp
+
     
     public int getSize(){
         return this.size;
