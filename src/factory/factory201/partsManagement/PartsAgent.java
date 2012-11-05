@@ -1,15 +1,14 @@
-package factory.partsManagement;
+package factory.factory201.partsManagement;
 
 import agent.Agent;
-import factory.ConfigFile;
-import factory.Kit;
-import factory.Part;
-import factory.kitManagement.KitRobotAgent;
+import factory.factory201.kitManagement.KitRobotAgent;
+import factory.general.Kit;
+import factory.general.Part;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
+
 
 /**
  * Factory PartsAgent gets kit information from server and obtains necessary
@@ -37,12 +36,14 @@ public class PartsAgent extends Agent {
 
 //Messages 
     public void msgHereIsKit(Kit k){
+        print("PartsAgent got message for new kit");
     	newKit.add(kit);
     	stateChanged();
     	
     }
       
     public void msgHereIsPart(Part p) {
+        print("got part " + p + "from nest");
         inventory.add(p);
         stateChanged();
     }
@@ -50,29 +51,27 @@ public class PartsAgent extends Agent {
     public void msgEmptyKitReady(int num) {
         switch (num) {
             case 1:
-                kit.kittingStandNumber = Kit.KittingStandNumber.one;
+                kit.standNum = Kit.StandNum.zero;
                 break;
             case 2:
-                kit.kittingStandNumber = Kit.KittingStandNumber.two;
+                kit.standNum = Kit.StandNum.one;
                 break;
             case 3:
-                kit.kittingStandNumber = Kit.KittingStandNumber.three;
+                kit.standNum = Kit.StandNum.two;
                 break;
             default:
-                kit.kittingStandNumber = Kit.KittingStandNumber.none;
+                kit.standNum = Kit.StandNum.none;
         }
+        print("got an empty kit for stand #" + num);
         stateChanged();
     }
 //Scheduler
 
     @Override
     protected boolean pickAndExecuteAnAction() {
-        if (!configInfo.isEmpty()) {
-            setConfiguration();
-            return true;
-        }
+       
 
-        if (!inventory.isEmpty() && kit.kittingStandNumber!=Kit.KittingStandNumber.none){
+        if (!inventory.isEmpty() && kit.standNum!=Kit.StandNum.none){
         	pickUpPart(inventory.remove(0));
         	return true;
         }
@@ -89,7 +88,7 @@ public class PartsAgent extends Agent {
         
         if (!newKit.isEmpty()){
         	startNewKit(newKit.get(newKit.size()));
-        	newKit.removeAll();
+        	newKit.clear();
         	return true;
         }
         else
@@ -100,26 +99,28 @@ public class PartsAgent extends Agent {
 //Actions
 
     private void giveKitToKitAgent() {
-        kitagent.msgKitIsComplete(kit);
+        print("giving kitagent complete kit");
+        kitagent.msgKitIsFull();
     }
     
     private void startNewKit(Kit k){
-    	kitNeedsParts.removeAll();
+    	kitNeedsParts.clear();
     	this.kit = k;
-    	for(int i=0; i<k.length; i++){
-    		kitNeedsParts.add(k.parts[i]);
+    	for(int i=0; i<kit.getSize(); i++){
+    		kitNeedsParts.add(k.getPart(i));
     	}
     	kitagent.msgNeedEmptyKit();
-    	for (int i = 0; i < kit.parts.length; i++) {
-            nest.msgNeedPart(kit.parts[i]);
+    	for (int i = 0; i < kit.getSize(); i++) {
+            nest.msgNeedPart(kit.getPart(i));
     	}
     	stateChanged();
     }
 
     private void pickUpPart(Part p) {
         grips.add(p);
-        DoPickUpPart(p);
+        //DoPickUpPart(p);
         kitNeedsParts.remove(p);
+        print("picking up part "+ p);
         if (grips.size() == 4 || kitNeedsParts.isEmpty())
         	putPartsInKit();
         stateChanged();
@@ -127,7 +128,8 @@ public class PartsAgent extends Agent {
 
     private void putPartsInKit() {
         for (Part p: grips) {
-            DoPutPartInKit(grips.remove(p));
+            print("putting part " + p +" in kit");
+           // DoPutPartInKit(grips.remove(p));
         }
         
     }

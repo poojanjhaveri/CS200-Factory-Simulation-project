@@ -36,6 +36,13 @@ public class Kit {
     public void addPart(Part p) {
         parts.add(p);
     }
+    public int getSize(){
+        return parts.size();
+    }
+    
+    public Part getPart(int i){
+        return parts.get(i);
+    }
     
     /** End CS 201 stuff*/
 }

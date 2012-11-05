@@ -1,7 +1,21 @@
- public class NestAgent {
+package factory.factory201.partsManagement;
+
+
+import agent.Agent;
+import factory.factory201.feederManagement.LaneAgent;
+import factory.factory201.interfaces.Lane;
+import factory.factory201.kitManagement.CameraAgent;
+import factory.general.Part;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+ public class NestAgent extends Agent {
 
 	private List<Nest> myNests = Collections.synchronizedList(new ArrayList<Nest>());
-	private Map <Nest, LaneAgent> lanes = Collections.synchronizedList(new HashMap<Nest, LaneAgent>);
+	private Map <Nest, LaneAgent> lanes = Collections.synchronizedMap(new HashMap<Nest, LaneAgent>());
     private List<Part> needParts =
             Collections.synchronizedList(new ArrayList<Part>());
     PartsAgent partsagent;
@@ -12,9 +26,11 @@
     private List<Nest> nests = Collections.synchronizedList(new ArrayList<Nest>());
     enum Status {none, needPart, gettingPart, full, gettingInspected, readyForKit, purge};
     
-    NestAgent()) {
-        this.nestNumber = nestNum;
-        this.lane = lane;
+    NestAgent() {
+        
+    
+        
+        
     }
     class Nest{
     	private int threshold;
@@ -22,20 +38,30 @@
         private int howMany = 0;
         Lane lane;
         Status status;
+        int nestNumber;
         
         Nest (Part p){
         	this.part = p;
-        	this.threshold = 10/p.size;
+        	this.threshold = 10/p.getSize();
         	this.status = Status.needPart;
+                this.nestNumber = myNests.size();
         }
         
+        public void setNestNum(int nestNum){
+            this.nestNumber = nestNum;
+        }
         public void setPart(Part p){
         	this.part = p;
-        	this.threshold = 10/p.size;
+        	this.threshold = 10/p.getSize();
         }
         
         public void setLane(Lane lane){
         	this.lane = lane;
+        }
+        
+        
+        public int getNestNumber(){
+            return nestNumber;
         }
         
     }
@@ -47,24 +73,32 @@
      * @param p This is a part
      */
     public void msgNeedPart(Part p) {
-    	if (!hasPart())
-    	myNests.add(new Nest(p));
+    	if (!hasPart(p)){
+            print("Part " + p + " is not taken by a nest, a new nest is being created");
+            myNests.add(new Nest(p));
+        }
+    	
         stateChanged();
     }
 
     public void msgHereAreParts(Part p, int quantity) {
         part = p;
         howMany += quantity;
-        myNests.getNest(p).status = Status.full;
+        print("adding " + quantity + " " + p + " to the nest " + getNest(p));
+        for (Nest n: myNests){
+    		if(n.part.equals(p)){
+        n.status = Status.full;}}
         stateChanged();
     }
 
     public void msgNestInspected(Nest n, boolean result) {
     	if (result){
     		n.status = Status.readyForKit;
+                print("Nest inspected and verified");
     	}
-    	else
+        else{
     		n.status = Status.purge;
+        print("Nest is not verified");}
     	stateChanged();
     }
     //scheduler
@@ -102,48 +136,54 @@
         return false;
     }
     
-    public Nest getNest(Part p){
-    	for (Nest n: MyNests){
+   /* private Nest getNest(Part p){
+    	for (Nest n: myNests){
     		if(n.part.equals(p))
     			return n;
     	}
-    }
+        
+    }*/
     
     
     private void requestPart(Nest n){
+       
+    print("requesting " + n.part);
     	n.lane.msgNeedPart(n.part);
     	n.status = Status.gettingPart;
     	stateChanged();
     }
     
     private void requestInspection(Nest n){
-    	camera.msgNestIsFull(this);
+    	camera.msgNestIsFull(n);
+        print("requesting inspecting for nest "+ n.getNestNumber());
     	n.status = Status.gettingInspected;
     	stateChanged();
     }
     
     private void giveToKit(Nest n){
-    	partsagent.msgHereIsPart(Part p);
+    	partsagent.msgHereIsPart(n.part);
     	n.howMany--;
-    	if (howMany==0)
+        print("giving part " + n.part + " to kit now nest has " + n.howMany);
+    	if (n.howMany==0)
     		n.status = Status.needPart;
     	stateChanged();	
     }
     
     private void purge(Nest n){
     n.howMany = 0;
-    DoPurge();
+    //DoPurge();
     n.status = Status.needPart;
     stateChanged();
     }
     
     public boolean hasPart(Part p){
-    	for (Nest n: myNest){
+    	for (Nest n: myNests){
     	if (n.part.equals(p))
     		return true;	}
     	return false;
     }
     
-    public void setPartsAgent(Parts parts) {
+    public void setPartsAgent(PartsAgent parts) {
         this.partsagent = parts;
     }
+ }

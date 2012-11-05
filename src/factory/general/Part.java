@@ -21,6 +21,10 @@ public class Part implements Serializable {
         this.inKit = false;
         this.size = size;
     }
+    
+    public int getSize(){
+        return size;
+    }
     /* I am adding this constructor to test my agent codes (kevin) */
     public Part(int num){
     	if(num==1)
