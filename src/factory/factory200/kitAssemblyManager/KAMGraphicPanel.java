@@ -39,7 +39,7 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
     public static final int EMPTY_CONVEYERX = 25;
     public static final int EMPTY_CONVEYERY = 300;
     public static final int FULL_CONVEYERX=25;
-    public static final int FULL_CONVEYERY=500;
+    public static final int FULL_CONVEYERY=300;
             
     public static final Integer LANE0Y = 0;///<y-coordinate of lane 0's nest
     public static final Integer LANE1Y = 0;///<y-coordinate of lane 1's nest
@@ -206,6 +206,7 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
         paintNests(this, g2);
         kitstand.getKitStand().paintIcon(this, g2, kitstand.getX(), kitstand.getY());
         for (int i = 0; i < 3; i++) {
+            //System.out.println(kitstand.getKitPositions().get(i).isFilled());
             if (kitstand.getKitPositions().get(i).isFilled()) {
                 kitstand.getKitPositions().get(i).getKit().getImage().paintIcon(this, g2, kitstand.getKitPositions().get(i).getX(), kitstand.getKitPositions().get(i).getY());
             }

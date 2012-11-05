@@ -87,13 +87,14 @@ public class KitAssemblyManager extends Manager implements ActionListener {
         
         if(ae.getSource()==kitRobotFull){
             this.graphics.kitbot.dropOffFullKit();
+            this.graphics.deliveryStation=false;
         }
           
         if (ae.getSource() == kitRobotEmpty) {
             //System.out.println("GOGOGO");
             this.graphics.deliveryStation=false;
             this.graphics.kitbot.pickUpEmptyKit();
-            
+            //this.graphics.kitstand.getKitPositions().get(0).setFilled(true);
             //after robot goes back to kit stand
             
             //this.graphics.timer.start();
