@@ -27,11 +27,18 @@ public void update()
 {
     super.update();
 }
-
     /**
      * @brief if something went wrong
      */
     public Boolean bad() {
         return this.flag;
+    }
+    public Integer getOrder()
+    {
+return ((this.orders.isEmpty())?-1:this.orders.get(0));
+    }
+    public Integer popOrder()
+    {
+        return ((this.orders.isEmpty())?-1:this.orders.poll());
     }
 }

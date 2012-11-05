@@ -1,10 +1,13 @@
 package factory.factory201.kitManagement;
 
 import agent.Agent;
+import factory.factory200.kitAssemblyManager.GUIKitRobot;
+import factory.factory200.kitAssemblyManager.KitAssemblyManager;
+import factory.factory200.kitAssemblyManager.KitDeliveryStation;
 import factory.factory201.interfaces.Camera;
 import factory.factory201.interfaces.Conveyor;
 import factory.factory201.interfaces.KitRobot;
-import factory.factory201.partsManagement.PartsInterface;
+import factory.factory201.interfaces.PartsInterface;
 import factory.general.Kit;
 
 /**
@@ -19,7 +22,8 @@ import factory.general.Kit;
  */
 public class KitRobotAgent extends Agent implements KitRobot {
 
-    KitStand kitStand = new KitStand();
+    private KitStand kitStand = new KitStand();
+    public KitAssemblyManager KAM;
     private boolean partsAgentNeedsEmptyKit = false;
     private boolean requestedEmptyKit = false;
     private Conveyor conveyor;
@@ -108,7 +112,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
     // ********** ACTIONS **********
     private void sendVerifiedKitToConveyor() {
         Kit k = kitStand.remove(2);
-//        DoRemoveVerifiedKit(k);
+        DoRemoveVerifiedKit(k);
         conveyor.msgHereIsVerifiedKit(k);
         stateChanged();
     }
@@ -116,7 +120,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
     private void moveFullKitToInspection() {
         while (!kitStand.inspectionStandIsEmpty()) {
         }
-//        DoMoveFullKitToInspection();
+        DoMoveFullKitToInspection();
         kitStand.moveFullKitToInspection();
         camera.msgKitIsFull(kitStand.get(2));
         stateChanged();
@@ -134,7 +138,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
     }
 
     private void getEmptyKitFromConveyor() {
-//        DoGetEmptyKit();
+        DoGetEmptyKit();
         conveyor.msgNeedEmptyKit();
         stateChanged();
     }
@@ -150,5 +154,30 @@ public class KitRobotAgent extends Agent implements KitRobot {
 
     public void setPartsAgent(PartsInterface agent) {
         partsAgent = agent;
+    }
+    
+    public void setKitAssemblyManager(KitAssemblyManager KAM) {
+        this.KAM = KAM;
+    }
+
+    private void DoRemoveVerifiedKit(Kit k) {
+        KAM.getKitRobot().dropOffFullKit();
+//        try {
+//            Thread.sleep(0);
+//        } catch (Exception e) {}
+    }
+
+    private void DoMoveFullKitToInspection() {
+        KAM.getKitRobot().moveActiveKitToInspection();
+//        try {
+//            Thread.sleep(0);
+//        } catch (Exception e) {}
+    }
+
+    private void DoGetEmptyKit() {
+        KAM.getKitRobot().pickUpEmptyKit();
+//        try {
+//            Thread.sleep(0);
+//        } catch (Exception e) {}
     }
 }

@@ -12,6 +12,7 @@ package factory.factory200.kitAssemblyManager;
  *
  * @author Deepa
  */
+import factory.general.Part;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.geom.*;
@@ -38,7 +39,7 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
     public static final int EMPTY_CONVEYERX = 25;
     public static final int EMPTY_CONVEYERY = 300;
     public static final int FULL_CONVEYERX=25;
-    public static final int FULL_CONVEYERY=500;
+    public static final int FULL_CONVEYERY=300;
             
     public static final Integer LANE0Y = 0;///<y-coordinate of lane 0's nest
     public static final Integer LANE1Y = 0;///<y-coordinate of lane 1's nest
@@ -115,16 +116,10 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
             if (camera.isVisible()) {
                 cameraCounter++;
             }
-            //for(int i = 0; i < delivery.getNumEmptyKits(); i++){
-            //if(delivery.getPlaceholder().get(i).getY()==300 && delivery.getPlaceholder().get(i).isShow()){
-            //            deliveryStation=false;
-            //}
-            //}
+            
                         
             if (delivery.getPlaceholder().get(delivery.getNumEmptyKits() - 1).getY() > -150) {
                 for (int i = 0; i < delivery.getNumEmptyKits(); i++) {
-                    
-                    
                     int yPlace = delivery.getPlaceholder().get(i).getY();
                     int number = i * 200;
                     if (counter > number) {
@@ -170,6 +165,26 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
 		    break;
                 }
             }
+	    if(!kitter.moving())
+		{
+                Integer order = kitter.getOrder();
+                switch (order) {
+		    //0-7 - pick up part nest 0-7
+		    //8 - drop parts onto kit
+		case 0:
+		case 1:
+		case 2:
+		case 3:
+		case 4:
+		case 5:
+		case 6:
+		case 7:
+		    kitter.addPart(nest.get(order).getPart());
+		case 8:kitstand.getKitPositions().get(2).getKit().addPart(kitter.removePart());		
+                default:kitter.performOrder();
+		}
+
+		}
             kitbot.update();
             myPanel.repaint();
             if (deliveryStation == false) {
@@ -191,6 +206,7 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
         paintNests(this, g2);
         kitstand.getKitStand().paintIcon(this, g2, kitstand.getX(), kitstand.getY());
         for (int i = 0; i < 3; i++) {
+            //System.out.println(kitstand.getKitPositions().get(i).isFilled());
             if (kitstand.getKitPositions().get(i).isFilled()) {
                 kitstand.getKitPositions().get(i).getKit().getImage().paintIcon(this, g2, kitstand.getKitPositions().get(i).getX(), kitstand.getKitPositions().get(i).getY());
             }
@@ -217,6 +233,11 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
             cameraCounter = 0;
         }
         kitter.getImage().paintIcon(this, g2, kitter.getCoordinate().getX(), kitter.getCoordinate().getY());
+	LinkedList<Part> kitterparts= kitter.getPart();
+	for(int i = 0; i != kitterparts.size(); i++)
+	    {
+		kitterparts.get(i).getGUIPart().getImage().paintIcon(this, g2, kitterparts.get(i).getGUIPart().getX(), kitterparts.get(i).getGUIPart().getY());
+	    }
     }
 
     public void paintNests(JPanel j, Graphics2D g) {

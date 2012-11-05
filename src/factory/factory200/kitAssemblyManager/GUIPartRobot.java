@@ -5,6 +5,7 @@ import factory.general.GUIRobot;
 import factory.general.Part;
 
 import java.util.Collection;
+import java.util.LinkedList;
 /**
  * The GUIPartRobot obtains parts from the nest and places it into the working
  * kit. It takes orders from the Kit Assembly Manager. It has pickup
@@ -14,9 +15,15 @@ import java.util.Collection;
  * <img src="../img/image09.png" alt="GUIPartRobot waiting for nest to fill"/>
  * <img src="../img/image08.png" alt="GUIPartRobot picking from the lane"/>
  *
+Orders
+0-7 - pick up part nest 0-7
+8 - drop parts onto kit
+...
+10-17 - move to nest 0-7
+18 - move to kit
  * @brief Robot that creates kits using parts from the lane nests
  * @author YiWei Roy Zheng
- * @version 0.1
+ * @version 0.5
  */
 public class GUIPartRobot extends GUIRobot {
 
@@ -38,7 +45,7 @@ public class GUIPartRobot extends GUIRobot {
     /**
     sets a new lane destination coordinate for GUIPartRobot, the passed Integer specifies which lane to head to
     */
-    public void moveToLane(Integer l) {
+    public void moveToNest(Integer l) {
         switch(l)
         {
         case 0:
@@ -91,8 +98,43 @@ public class GUIPartRobot extends GUIRobot {
     {
 	this.parts.addPart(in);
     }
-    public Collection<Part> removePart()
+    public LinkedList<Part> removePart()
     {
-	return this.parts.getCollection();
+	return this.parts.giveAll();
+    }
+    public LinkedList<Part> getPart()
+    {
+        return this.parts.getAll();
+    }
+        public void pickPartCommand(Integer i)
+    {
+     this.orders.add(i);   
+    }
+        public void dropPartCommand()
+        {
+            this.orders.add(8);
+        }
+    /**
+@brief pops the order and performs it
+     */
+    public Boolean performOrder()
+    {
+	Integer i = this.popOrder();
+	switch(i)
+	    {
+	    case 10:
+	    case 11:
+	    case 12:
+	    case 13:
+	    case 14:
+	    case 15:
+	    case 16:
+	    case 17:this.moveToNest(i-10);
+		    break;
+	    case 18:this.moveToKit();
+		break;
+	    default:return false;
+	    }
+	return true;
     }
 }

@@ -34,8 +34,13 @@ public class KitAssemblyManager extends Manager implements ActionListener {
     /**
      * changes the panel based on what the user clicks
      */
-    public void actionPerformed(ActionEvent ae) {
-        if(ae.getSource()==cameraKitStand){
+
+    public GUIKitRobot getKitRobot(){
+	return graphics.kitbot;
+    }
+
+    public void flashKitCamera()
+    {
                 this.graphics.camera.setX(this.graphics.kitstand.getKitPositions().get(2).getX());
                 //System.out.println(this.graphics.nest.get(0).getX());
                 //System.out.println(this.graphics.camera.getX());
@@ -44,71 +49,52 @@ public class KitAssemblyManager extends Manager implements ActionListener {
                 //System.out.println(this.graphics.camera.getY());
                 this.graphics.camera.setVisible(true);
                 this.graphics.repaint();
+
+    }
+    public void flashNestCamera(Integer i)
+    {
+                this.graphics.camera.setX(this.graphics.nest.get(i).getX());
+                this.graphics.camera.setY(this.graphics.nest.get(i).getY());
+                this.graphics.camera.setVisible(true);
+                this.graphics.repaint();     
+    }
+    public void actionPerformed(ActionEvent ae) {
+        if(ae.getSource()==cameraKitStand){
+	    this.flashKitCamera();
         }
         
           if (ae.getSource() == cameraNest) {
             String choice = JOptionPane.showInputDialog("Please enter the nest number: ");
             Integer nest = Integer.parseInt(choice);
+	    this.flashNestCamera(nest);
             //System.out.println(nest);
-            if(nest==1){
-                this.graphics.camera.setX(this.graphics.nest.get(0).getX());
-                //System.out.println(this.graphics.nest.get(0).getX());
-                //System.out.println(this.graphics.camera.getX());
-                this.graphics.camera.setY(this.graphics.nest.get(0).getY());
-                //System.out.println(this.graphics.nest.get(0).getY());
-                //System.out.println(this.graphics.camera.getY());
-                this.graphics.camera.setVisible(true);
-                this.graphics.repaint();
-            }
-            else if(nest==2){
-                this.graphics.camera.setX(this.graphics.nest.get(1).getX());
-                this.graphics.camera.setY(this.graphics.nest.get(1).getY());
-                this.graphics.camera.setVisible(true);
-                this.graphics.repaint();
-            }
-            else if(nest==3){
-                this.graphics.camera.setX(this.graphics.nest.get(2).getX());
-                this.graphics.camera.setY(this.graphics.nest.get(2).getY());
-                this.graphics.camera.setVisible(true);
-                this.graphics.repaint();
-            }
-            else if(nest==4){
-                this.graphics.camera.setX(this.graphics.nest.get(3).getX());
-                this.graphics.camera.setY(this.graphics.nest.get(3).getY());
-                this.graphics.camera.setVisible(true);
-                this.graphics.repaint();
-            }
-            else if(nest==5){
-                this.graphics.camera.setX(this.graphics.nest.get(4).getX());
-                this.graphics.camera.setY(this.graphics.nest.get(4).getY());
-                this.graphics.camera.setVisible(true);
-                this.graphics.repaint();
-            }
-            else if(nest==6){
-                this.graphics.camera.setX(this.graphics.nest.get(5).getX());
-                this.graphics.camera.setY(this.graphics.nest.get(5).getY());
-                this.graphics.camera.setVisible(true);
-                this.graphics.repaint();
-            }
-            else if(nest==7){
-                this.graphics.camera.setX(this.graphics.nest.get(6).getX());
-                this.graphics.camera.setY(this.graphics.nest.get(6).getY());
-                this.graphics.camera.setVisible(true);
-                this.graphics.repaint();
-            }
-            else if(nest==8){
-                this.graphics.camera.setX(this.graphics.nest.get(7).getX());
-                this.graphics.camera.setY(this.graphics.nest.get(7).getY());
-                this.graphics.camera.setVisible(true);
-                this.graphics.repaint();
-            }
+        }
+        if(ae.getSource()==moveKit){
+            this.graphics.kitbot.moveEmptyKitToActive();
+        }  
+        if(ae.getSource()==partRobot){
+            this.graphics.kitter.moveToNest(0);
+            this.graphics.kitter.pickPartCommand(0);
+            this.graphics.kitter.pickPartCommand(0);
+            this.graphics.kitter.pickPartCommand(0);
+            this.graphics.kitter.pickPartCommand(0);
+            this.graphics.kitter.moveToKit();
+            this.graphics.kitter.dropPartCommand();
+        }
+        if(ae.getSource()==kitRobotKitStand){
+            this.graphics.kitbot.moveActiveKitToInspection();
+        }
+        
+        if(ae.getSource()==kitRobotFull){
+            this.graphics.kitbot.dropOffFullKit();
+            this.graphics.deliveryStation=false;
         }
           
         if (ae.getSource() == kitRobotEmpty) {
             //System.out.println("GOGOGO");
             this.graphics.deliveryStation=false;
             this.graphics.kitbot.pickUpEmptyKit();
-            
+            //this.graphics.kitstand.getKitPositions().get(0).setFilled(true);
             //after robot goes back to kit stand
             
             //this.graphics.timer.start();
@@ -146,12 +132,16 @@ public class KitAssemblyManager extends Manager implements ActionListener {
     JButton kitRobotFull;
     JButton cameraNest;
     JButton cameraKitStand;
+    JButton moveKit;
       public JPanel TestPanel() {
         JPanel tester = new JPanel();
         tester.setLayout(new BoxLayout(tester, BoxLayout.Y_AXIS));
         partRobot = new JButton("Move Part Robot (Nest -> Kit Stand)");
         partRobot.addActionListener(this);
         tester.add(partRobot);
+        moveKit = new JButton("Move Kit (Position 0->1)");
+        moveKit.addActionListener(this);
+        tester.add(moveKit);
         kitRobotKitStand = new JButton("Move Kit Robot (Full Kit -> Camera Inspected)");
         kitRobotKitStand.addActionListener(this);
         tester.add(kitRobotKitStand);

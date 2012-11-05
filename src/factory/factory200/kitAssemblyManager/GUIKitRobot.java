@@ -47,6 +47,7 @@ public class GUIKitRobot extends GUIRobot {
         super(KAMGraphicPanel.KITROBOT_INITIAL_X,KAMGraphicPanel.KITROBOT_INITIAL_Y,GUIKitRobot.IMAGE_PAGE);
         this.setConstants(KAMGraphicPanel.KITROBOT_VELOCITYX, KAMGraphicPanel.KITROBOT_VELOCITYY, KAMGraphicPanel.KITROBOT_ROTATION_SPEED);
     }
+
     /**
     sets a new lane destination coordinate for KitterRobot, the passed Integer specifies which lane to head to
     */
@@ -158,17 +159,13 @@ public class GUIKitRobot extends GUIRobot {
         this.kit = null;
 	return k;
     }
-    public Integer getOrder()
-    {
-return ((this.orders.isEmpty())?-1:this.orders.get(0));
-    }
     public Integer popOrder()
     {
 	if(this.orders.size() == 1)
 	    {
 		this.orders.add(20);
 	    }
-        return ((this.orders.isEmpty())?-1:this.orders.poll());
+	return super.popOrder();
     }
     public Boolean hasKit()
     {

@@ -1,8 +1,9 @@
 package factory.factory201.test;
 
-import factory.factory201.test.mock.MockLane;
-import factory.factory201.test.mock.MockGantry;
+import factory.factory200.laneManager.ServerMain;
 import factory.factory201.feederManagement.*;
+import factory.factory201.test.mock.MockGantry;
+import factory.factory201.test.mock.MockLane;
 import factory.general.*;
 //import junit.framework.TestCase;
 
@@ -14,7 +15,7 @@ public class FeederTest{
 	public void testneedParts(){
 		
 		//1 is the index of the feeder (feederNum)
-		feeder=new FeederAgent(1);
+		feeder=new FeederAgent(1, new ServerMain());
 		MockGantry gantry=new MockGantry("Gantry");
 		Part p=new Part(1);
 		MockLane leftLane=new MockLane("Left Lane");

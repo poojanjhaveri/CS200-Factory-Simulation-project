@@ -43,5 +43,22 @@ public class Drawable {
     {
         return this.img;
     }
+    public void setX(Integer x)
+    {
+        this.cords.setX(x);
+    }
+    public void setY(Integer y)
+    {
+        this.cords.setY(y);
+    }
+    public Integer getX()
+    {
+        return this.cords.getX();
+    }
+    public Integer getY()
+    {
+        return this.cords.getY();
+    }
+ 
 
 }

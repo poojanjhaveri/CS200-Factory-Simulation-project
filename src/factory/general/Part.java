@@ -65,14 +65,15 @@ public class Part implements Serializable {
      */
     private String name;
     private String description;
-    private ImageIcon img;
     Integer number;///< the part number, like an ID; useful for comparing
+    GUIPart guipart;///<gui representation of this part
 
     public Part(String n, String d, String fn) {
         this.name = n;
         this.description = d;
-        this.img = new ImageIcon(fn);
-        //this.number=time();
+//        this.img = new ImageIcon(fn);
+        //this.number=time()\;
+	this.guipart = null;
     }
 
     public String getName() {
@@ -82,8 +83,13 @@ public class Part implements Serializable {
     public String getDescription() {
         return this.description;
     }
-
-    public ImageIcon getImage() {
-        return this.img;
+    public GUIPart getGUIPart()
+    {
+	return this.guipart;
     }
+    public void setGUIPart(GUIPart in)
+    {
+	this.guipart = in;
+    }
+
 }

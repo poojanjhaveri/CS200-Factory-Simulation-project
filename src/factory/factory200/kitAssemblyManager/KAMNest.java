@@ -42,6 +42,12 @@ public class KAMNest {
     public ImageIcon getNest() {
         return nest;
     }
+    
+    public Part getPart(){
+        Part temp=parts.get(0);
+        parts.remove(0);
+        return temp;
+    }
 
     /**
      * @param nest the nest to set
