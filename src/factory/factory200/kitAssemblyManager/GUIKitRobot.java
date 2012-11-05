@@ -25,7 +25,8 @@ A queue of orders
 11 - move to kit1
 12 - move to kit2
 13 - move to kit3
-
+...
+20 - move to default position
  *
  * @brief Robot that moves kits in the KitWorkingArea
  * @author YiWei Roy Zheng
@@ -64,6 +65,10 @@ public class GUIKitRobot extends GUIRobot {
             return;
         }
         
+    }
+    private void moveToDefault()
+    {
+	this.moveTo(KAMGraphicPanel.KITROBOT_INITIAL_X,KAMGraphicPanel.KITROBOT_INITIAL_Y);
     }
     /**
 @brief moves to the position to drop off full kits
@@ -158,6 +163,10 @@ return ((this.orders.isEmpty())?-1:this.orders.get(0));
     }
     public Integer popOrder()
     {
+	if(this.orders.size() == 1)
+	    {
+		this.orders.add(20);
+	    }
         return ((this.orders.isEmpty())?-1:this.orders.poll());
     }
     public Boolean hasKit()
@@ -194,6 +203,9 @@ return ((this.orders.isEmpty())?-1:this.orders.get(0));
                 break;
 	    case 13:this.moveToKit(2);
                 break;
+	    case 20:
+		this.moveToDefault();
+		break;
 	    default:return false;
 	    }
 	return true;
