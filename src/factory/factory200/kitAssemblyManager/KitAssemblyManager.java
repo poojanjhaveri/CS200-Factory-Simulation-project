@@ -34,6 +34,11 @@ public class KitAssemblyManager extends Manager implements ActionListener {
     /**
      * changes the panel based on what the user clicks
      */
+
+    public GUIKitRobot getKitRobot(){
+	return this.kitbot;
+    }
+
     public void actionPerformed(ActionEvent ae) {
         if(ae.getSource()==cameraKitStand){
                 this.graphics.camera.setX(this.graphics.kitstand.getKitPositions().get(2).getX());
