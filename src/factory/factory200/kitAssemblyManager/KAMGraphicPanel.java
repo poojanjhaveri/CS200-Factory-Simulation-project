@@ -142,7 +142,7 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
 		    break;
 		case 6:this.kitstand.takeKit(this.kitbot.dropKit());
 		    break;
-		case 7:this.kitstand.takeKit(this.kitbot.dropKit());
+		case 7://how to drop kit onto placeholder?
 		    break;
 		default:kitbot.performOrder();
 		    break;
