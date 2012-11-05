@@ -57,7 +57,33 @@ public class PartsAgentMain{
     * "" "" .pickPartCommand();//picks up a part at its current nest
     */
     public static void main(String[] args) {
-        PartsAgentMain p = new PartsAgentMain();
+       MockLane lane;
+        KitAssemblyManager kam; 
+        PartsAgent parts;
+        MockKitRobot kitrobot;
+        CameraAgent camera;
+        NestAgent nest;
+        kam = new KitAssemblyManager();
+        lane = new MockLane("LANE");
+        parts = new PartsAgent();
+        kitrobot = new MockKitRobot("KITROBOT");
+        nest = new NestAgent();
+        camera = new CameraAgent();
+        
+        lane.setNestAgent(nest);
+        parts.setKitRobot(kitrobot);
+        parts.setNestInterface(nest);
+        nest.setCameraAgent(camera);
+        nest.setPartsAgent(parts);
+      
+        parts.setKitAssemblyManager(kam);
+        kitrobot.setPartsAgent(parts);
+        camera.setNestAgent(nest);
+        
+        parts.startThread();
+        nest.startThread();
+        
+        camera.startThread();
         
     }
     

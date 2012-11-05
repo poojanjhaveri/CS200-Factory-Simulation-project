@@ -34,7 +34,10 @@ public class KitAssemblyManager extends Manager implements ActionListener {
     /**
      * changes the panel based on what the user clicks
      */
-
+public GUIPartRobot getPartsRobot()
+{
+    return graphics.kitter;
+}
     public GUIKitRobot getKitRobot(){
 	return graphics.kitbot;
     }

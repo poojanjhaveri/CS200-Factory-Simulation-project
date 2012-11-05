@@ -9,5 +9,7 @@ quantity of p1 to be over the threshold (8) , and so, the lane will not ask for 
 The kit robot picking kits from the agv/conveyor, putting them on the stand, and the reverse. - includes vision (camera):
 	Run src/factory/general/Server.java
 	Run src/factory/factory201/kitManagement/V0KitRobotCameraConveyor.java
-
+        
 The parts robot picking up parts from the nests and putting them in the kit:
+    Run src/factory/general/Server.java
+    Run src/factory/factory201/partsManagement/PartsAgentMain.java

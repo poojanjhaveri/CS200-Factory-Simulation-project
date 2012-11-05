@@ -43,6 +43,7 @@ public class MockKitRobot extends MockAgent implements KitRobot {
     public void msgNeedEmptyKit() {
         log.add(new LoggedEvent("Received msgNeedEmptyKit from parts agent "
                 + "that it needs an empty kit to put parts in."));
+        kit = new Kit("Kit 1");
         kit.addPart(new Part(Part.Type.p1, false, 1));
         kit.addPart(new Part(Part.Type.p2, false, 1));
         
