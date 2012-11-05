@@ -237,6 +237,11 @@ default:partsbot.performOrder();
             cameraCounter = 0;
         }
         kitter.getImage().paintIcon(this, g2, kitter.getCoordinate().getX(), kitter.getCoordinate().getY());
+	LinkedList<Part> kitterparts= kitter.getAll();
+	for(int i = 0; i != kitterparts.size(); i++)
+	    {
+		kitterparts.get(i).getGUIPart().getImageIcon().paintIcon(this, g2, kitterparts.get(i).getGUIPart().getCoordinate().getX(), kitterparts.get(i).getGUIPart().getCoordinate().getY())
+	    }
     }
 
     public void paintNests(JPanel j, Graphics2D g) {
