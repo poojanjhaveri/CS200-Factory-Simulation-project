@@ -54,8 +54,8 @@ public class PartsRobotInventory implements Inventory {
 	Integer y = in.getY()+3;
 	for(int i = 0; i != this.parts.size(); i++)
 	    {
-		this.parts.getGUIPart().get(i).setY(y);
-		this.parts.getGUIPart().get(i).setX(x);
+		this.parts.get(i).getGUIPart().setY(y);
+		this.parts.get(i).getGUIPart().setX(x);
 		y+= 23;
 	    }
     }
