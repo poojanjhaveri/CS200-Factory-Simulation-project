@@ -4,7 +4,7 @@ import agent.Agent;
 import factory.factory201.interfaces.Camera;
 import factory.factory201.interfaces.Conveyor;
 import factory.factory201.interfaces.KitRobot;
-import factory.factory201.partsManagement.PartsAgent;
+import factory.factory201.interfaces.PartsInterface;
 import factory.general.Kit;
 
 /**
@@ -24,7 +24,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
     private boolean requestedEmptyKit = false;
     private Conveyor conveyor;
     private Camera camera;
-    private PartsAgent partsAgent;
+    private PartsInterface partsAgent;
 
     // ********** MESSAGES *********
     /**
@@ -148,7 +148,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
         camera = agent;
     }
 
-    public void setPartsAgent(PartsAgent agent) {
+    public void setPartsAgent(PartsInterface agent) {
         partsAgent = agent;
     }
 }

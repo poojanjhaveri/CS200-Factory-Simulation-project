@@ -7,6 +7,8 @@ package factory.factory200.kitAssemblyManager;
 
 
 
+import factory.general.Part;
+import java.util.ArrayList;
 import javax.swing.*;
 
 /*
@@ -25,10 +27,13 @@ public class KAMNest {
     private int nestNumber;
     private int x;
     private int y;
+    private ArrayList<Part> parts;
+    
     
     public KAMNest(int i){
         nest=new ImageIcon("pics/KAMnest.png");
         nestNumber=i;
+        parts = new ArrayList<Part>();
     }
 
     /**
@@ -85,5 +90,19 @@ public class KAMNest {
      */
     public void setY(int y) {
         this.y = y;
+    }
+
+    /**
+     * @return the parts
+     */
+    public ArrayList<Part> getParts() {
+        return parts;
+    }
+
+    /**
+     * @param parts the parts to set
+     */
+    public void setParts(ArrayList<Part> parts) {
+        this.parts = parts;
     }
 }
