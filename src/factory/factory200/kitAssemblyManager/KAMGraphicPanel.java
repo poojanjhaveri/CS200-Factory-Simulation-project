@@ -49,8 +49,10 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
     public static final Integer LANE6Y = 0;///<y-coordinate of lane 6's nest
     public static final Integer LANE7Y = 0;///<y-coordinate of lane 7's nest
     public static final Integer RAILX = 0;///<fixed x-coordinate of the rail the parts robot traverses
-    public static final Integer PARTSROBOTINITIALX = 300;///<x coordinate for parts robot to spawn in
-    public static final Integer PARTSROBOTINITIALY = 250;///<y coordinate for parts robot to spawn in
+    public static final Integer PARTS_ROBOT_KITX=KAMGraphicPanel.KITX+20;
+    public static final Integer PARTS_ROBOT_KITY=KAMGraphicPanel.KIT2Y+20;
+    public static final Integer PARTSROBOTINITIALX = 400;///<x coordinate for parts robot to spawn in
+    public static final Integer PARTSROBOTINITIALY = 350;///<y coordinate for parts robot to spawn in
     public GUIPartRobot kitter;///<declares an object that keeps track of the parts robot animation and graphics
     public GUIKitRobot kitbot;///<declares an object that keeps track of the kit robot animation and graphics
     public KitStand kitstand;///<declares an object that keeps track of what is happening with the kit stand
@@ -113,19 +115,22 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
             if (camera.isVisible()) {
                 cameraCounter++;
             }
+            //for(int i = 0; i < delivery.getNumEmptyKits(); i++){
+            //if(delivery.getPlaceholder().get(i).getY()==300 && delivery.getPlaceholder().get(i).isShow()){
+            //            deliveryStation=false;
+            //}
+            //}
+                        
             if (delivery.getPlaceholder().get(delivery.getNumEmptyKits() - 1).getY() > -150) {
                 for (int i = 0; i < delivery.getNumEmptyKits(); i++) {
-                    if(delivery.getPlaceholder().get(i).getY()==300 && delivery.getPlaceholder().get(i).isShow()){
-                        delivery.getPlaceholder().get(i).setY(300);
-                        stationRun=false;
-                    }
-                    else if(stationRun=true){
+                    
+                    
                     int yPlace = delivery.getPlaceholder().get(i).getY();
                     int number = i * 200;
                     if (counter > number) {
                         delivery.getPlaceholder().get(i).setY(yPlace - 1);
                     }
-                    }
+                    
                 }
                 counter++;
             } else {
