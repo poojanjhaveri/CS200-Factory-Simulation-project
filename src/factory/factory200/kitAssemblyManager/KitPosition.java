@@ -15,7 +15,7 @@ public class KitPosition {
         private int y;
         
         public KitPosition(){
-            kit=null;
+            kit=new KAMKit();
             filled=false;
         }
 

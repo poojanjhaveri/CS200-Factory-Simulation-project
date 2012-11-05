@@ -45,7 +45,7 @@ public class KitStand {
         for(int i=1;i<=3;i++){
             kitPositions.add(new KitPosition());
         }
-        /*int startingX=x+25;
+        int startingX=x+25;
         int startingY=y+10;
         
         kitPositions.get(0).setX(startingX);
@@ -54,7 +54,7 @@ public class KitStand {
         kitPositions.get(1).setX(startingX);
         kitPositions.get(1).setY(startingY+125);
         kitPositions.get(2).setX(startingX);
-        kitPositions.get(2).setY(startingY+250);*/
+        kitPositions.get(2).setY(startingY+250);
         
         
     }
@@ -74,14 +74,17 @@ public class KitStand {
         if(temp.getX()==kitPositions.get(0).getX() && temp.getY()==kitPositions.get(0).getY()){
             kitPositions.get(0).setKit(temp);
             kitPositions.get(0).setFilled(true);
+            System.out.println(kitPositions.get(0).isFilled());
         }
         else if(temp.getX()==kitPositions.get(1).getX() && temp.getY()==kitPositions.get(1).getY()){
             kitPositions.get(1).setKit(temp);
             kitPositions.get(1).setFilled(true);
+            System.out.println(kitPositions.get(1).isFilled());
         }
-        else if(temp.getX()==kitPositions.get(1).getX() && temp.getY()==kitPositions.get(1).getY()){
+        else if(temp.getX()==kitPositions.get(2).getX() && temp.getY()==kitPositions.get(2).getY()){
             kitPositions.get(2).setKit(temp);
             kitPositions.get(2).setFilled(true);
+            System.out.println(kitPositions.get(2).isFilled());
         }
     }
     
