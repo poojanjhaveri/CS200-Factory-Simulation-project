@@ -74,13 +74,13 @@ public class KAMKit {
             parts.get(0).getGUIPart().setY(this.getY());
             
             parts.get(1).getGUIPart().setX(this.getX());
-            parts.get(1).getGUIPart().setY(this.getY()+10);
+            parts.get(1).getGUIPart().setY(this.getY()+20);
             
             parts.get(2).getGUIPart().setX(this.getX());
-            parts.get(2).getGUIPart().setY(this.getY()+20);
+            parts.get(2).getGUIPart().setY(this.getY()+30);
             
             parts.get(3).getGUIPart().setX(this.getX());
-            parts.get(3).getGUIPart().setY(this.getY()+30);
+            parts.get(3).getGUIPart().setY(this.getY()+40);
         
     }
     
