@@ -157,13 +157,23 @@ public class KitRobotAgent extends Agent implements KitRobot {
 
     private void DoRemoveVerifiedKit(Kit k) {
         KitDeliveryStation guiConveyor = ((ConveyorAgent) conveyor).guiConveyor;
+
+        try {
+            Thread.sleep(0);
+        } catch (Exception e) {}
     }
 
     private void DoMoveFullKitToInspection() {
-        
+        try {
+            Thread.sleep(0);
+        } catch (Exception e) {}
     }
 
     private void DoGetEmptyKit() {
         KitDeliveryStation guiConveyor = ((ConveyorAgent) conveyor).guiConveyor;
+        
+        try {
+            Thread.sleep(0);
+        } catch (Exception e) {}
     }
 }

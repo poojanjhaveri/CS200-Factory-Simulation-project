@@ -107,7 +107,7 @@ public class CameraAgent extends Agent implements Camera {
 //            }
 //        }
         DoInspectNest(nest);
-        kitRobotAgent.msgKitInspected(true);
+        nestAgent.msgNestInspected(nest, true);
         stateChanged();
     }
 
