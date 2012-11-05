@@ -73,6 +73,17 @@ public class GUIPartRobot extends GUIRobot {
         }
     }
 
-    public void updateParts() {
-    }///<updates the location of all parts in the inventory
+    public void update()
+    {
+	super.update();
+	this.parts.update(this.cords);
+    }
+    public void addPart(Part in)
+    {
+	this.parts.addPart(in);
+    }
+    public Part removePart()
+    {
+	return this.parts.get();
+    }
 }

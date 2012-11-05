@@ -3,6 +3,7 @@ package factory.factory200.kitAssemblyManager;
 import java.util.LinkedList;
 import factory.general.Inventory;
 import factory.general.Part;
+import factory.general.Coordinate;
 /**
 Inventory built specifically for the parts robot. Uses a queue to hold up to a maximum of 4 items;
 @brief custom inventory for parts robot
@@ -35,5 +36,16 @@ public class PartsRobotInventory implements Inventory {
     public Part get()
     {
         return this.parts.poll();
+    }
+    public void update(Coordinate in)
+    {
+	Integer x = in.getX()+3;
+	Integer y = in.getY()+5;
+	for(int i = 0; i != this.parts.size(); i++)
+	    {
+		this.parts.get(i).setY(y);
+		this.parts.get(i).setX(x);
+		x+= 23;
+	    }
     }
 }
