@@ -10,6 +10,7 @@ import factory.factory201.feederManagement.LaneAgent;
 import factory.factory201.interfaces.KitRobot;
 import factory.factory201.kitManagement.CameraAgent;
 import factory.factory201.kitManagement.KitRobotAgent;
+import factory.factory201.test.mock.MockCamera;
 import factory.factory201.test.mock.MockLane;
 
 /**
@@ -37,7 +38,7 @@ public class PartsAgentMain{
         lane.setNestAgent(nest);
         parts.setKitRobot(kitrobot);
         parts.setNestInterface(nest);
-        nest.setCameraAgent(camera);
+        //nest.setCameraAgent(camera);
         nest.setPartsAgent(parts);
         parts.setKitAssemblyManager(kam);
         
@@ -61,21 +62,21 @@ public class PartsAgentMain{
         KitAssemblyManager kam; 
         PartsAgent parts;
         MockKitRobot kitrobot;
-        CameraAgent camera;
+        MockCamera camera;
         NestAgent nest;
         kam = new KitAssemblyManager();
         lane = new MockLane("LANE");
         parts = new PartsAgent();
         kitrobot = new MockKitRobot("KITROBOT");
         nest = new NestAgent();
-        camera = new CameraAgent();
+        camera = new MockCamera("CAMERA");
         
         lane.setNestAgent(nest);
         parts.setKitRobot(kitrobot);
         parts.setNestInterface(nest);
         nest.setCameraAgent(camera);
         nest.setPartsAgent(parts);
-      
+        nest.setLane(lane);
         parts.setKitAssemblyManager(kam);
         kitrobot.setPartsAgent(parts);
         camera.setNestAgent(nest);
@@ -83,7 +84,8 @@ public class PartsAgentMain{
         parts.startThread();
         nest.startThread();
         
-        camera.startThread();
+        
+        kitrobot.msgNeedEmptyKit();
         
     }
     

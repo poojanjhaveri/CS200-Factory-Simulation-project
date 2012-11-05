@@ -37,6 +37,10 @@ public class MockKitRobot extends MockAgent implements KitRobot {
     public void msgKitIsFull() {
         log.add(new LoggedEvent("Received msgKitIsFull from parts agent "
                 + "that the kit is full."));
+        try {
+			Thread.sleep(10000);
+		} catch (InterruptedException e) {System.out.print("stopped sleeping for 10 seconds");}
+        partsagent.msgEmptyKitReady(kit);
     }
 
     @Override

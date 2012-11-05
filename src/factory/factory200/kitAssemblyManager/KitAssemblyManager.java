@@ -41,6 +41,10 @@ public GUIPartRobot getPartsRobot()
     public GUIKitRobot getKitRobot(){
 	return graphics.kitbot;
     }
+    
+    public KitStand getKitStand(){
+        return graphics.kitstand;
+    }
 
     public void flashKitCamera()
     {

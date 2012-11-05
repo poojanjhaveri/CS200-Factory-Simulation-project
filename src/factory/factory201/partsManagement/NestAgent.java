@@ -12,6 +12,8 @@ import factory.factory201.interfaces.Lane;
 import factory.factory201.interfaces.NestInterface;
 import factory.factory201.interfaces.PartsInterface;
 import factory.factory201.kitManagement.CameraAgent;
+import factory.factory201.test.mock.MockCamera;
+import factory.factory201.test.mock.MockLane;
 import factory.general.Nest;
 import factory.general.Part;
 import java.util.ArrayList;
@@ -26,6 +28,7 @@ public class NestAgent extends Agent implements NestInterface{
     Lane lane2;
     Lane lane3;
     Lane lane4;
+    MockLane lane;
 	private List<Nest> myNests = Collections.synchronizedList(new ArrayList<Nest>());
 	private Map <Nest, LaneAgent> lanes = new HashMap<Nest, LaneAgent>();
 
@@ -33,7 +36,7 @@ public class NestAgent extends Agent implements NestInterface{
             Collections.synchronizedList(new ArrayList<Part>());
     PartsInterface partsagent;
     
-    Camera camera;
+    MockCamera camera;
     
     private int nestNumber;
     private List<Nest> nests = Collections.synchronizedList(new ArrayList<Nest>());
@@ -53,8 +56,9 @@ public class NestAgent extends Agent implements NestInterface{
     public void msgNeedPart(Part p) {
     	if (!hasPart(p)){
             print("Part " + p + " is not taken by a nest, a new nest is being created");
+            
             myNests.add(new Nest(p, myNests.size()));
-            for (Nest n: myNests){
+          /*  for (Nest n: myNests){
     		if(n.part.equals(p)){
             switch(n.nestNum){
                 case 0:  n.setLane(lane1);
@@ -71,8 +75,12 @@ public class NestAgent extends Agent implements NestInterface{
                 break;
             }
             }
-            }
+            }*/
         }
+        else{
+            for (Nest n: myNests){
+    		if(n.part.equals(p)){
+            giveToKit(n);}}}
     	
         stateChanged();
     }
@@ -108,15 +116,17 @@ public class NestAgent extends Agent implements NestInterface{
     		for (Nest n: myNests){
     			if (n.status == Nest.Status.needPart) {
                         requestPart(n);
+                        return true;
                     }
-    				return true;
+    				
     		}
     		
     		for (Nest n: myNests){
     			if (n.status == Nest.Status.full) {
                         requestInspection(n);
+                        return true;
                     }
-    			return true;
+    			
     		}
     	}
     	
@@ -140,23 +150,27 @@ public class NestAgent extends Agent implements NestInterface{
     private void requestPart(Nest n){
        
     print("requesting " + n.part);
-    	n.lane.msgNeedPart(n.part);
+    	
     	n.status = Nest.Status.gettingPart;
+        lane.msgNeedPart(n.part);
     	stateChanged();
     }
     
     private void requestInspection(Nest n){
-    	camera.msgNestIsFull(n);
+    	
         print("requesting inspecting for nest "+ n.getNestNum());
     	n.status = Nest.Status.gettingInspected;
+        camera.msgNestIsFull(n);
     	stateChanged();
     }
     
     private void giveToKit(Nest n){
+        
         n.part.setNestNum(n.getNestNum());
     	partsagent.msgHereIsPart(n.part);
     	n.howMany--;
         print("giving part " + n.part + " to kit now nest has " + n.howMany);
+        n.status = Nest.Status.none;
     	if (n.howMany==0)
     		n.status = Nest.Status.needPart;
     	stateChanged();	
@@ -177,13 +191,13 @@ public class NestAgent extends Agent implements NestInterface{
     	return false;
     }
     
-    public void setCameraAgent(Camera c){
+    public void setCameraAgent(MockCamera c){
         this.camera = c;
     }
-    /*
-    public void setLane(Lane l){
-        this
-    }*/
+   
+    public void setLane(MockLane l){
+        this.lane = l;
+    }
     
     public void setPartsAgent(PartsInterface parts) {
         this.partsagent = parts;
