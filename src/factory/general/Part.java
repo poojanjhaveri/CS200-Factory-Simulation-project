@@ -34,6 +34,7 @@ public class Part implements Serializable {
     public void setNestNum(int n){
         this.nestNum = n;
     }
+    
     public int getSize(){
         return this.size;
     }
@@ -76,13 +77,14 @@ public class Part implements Serializable {
     Integer number;///< the part number, like an ID; useful for comparing
     GUIPart guipart;///<gui representation of this part
 
-    public Part(String n, String d, String fn) {
+    public Part(String n, String d) {
         this.name = n;
         this.description = d;
 //        this.img = new ImageIcon(fn);
         //this.number=time()\;
 	this.guipart = null;
     }
+  
 
     public String getName() {
         return this.name;

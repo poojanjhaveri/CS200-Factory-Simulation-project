@@ -23,7 +23,10 @@ public class PartsRobotInventory implements Inventory {
         if(this.parts.size() > 4)
         {
             System.out.println("CRITICAL ERROR: ATTEMPTING TO GIVE PARTSROBOTINVENTORY MORE THAN 4 PARTS! LAST PART GIVEN WAS IGNORED.");
-        } else
+        } else if(in == null)
+        {
+            System.out.println("GIVING PARTSROBOTINVENTORY A NULL PART WTF");
+        }else
             this.parts.add(in);
     }
     public Integer size()
