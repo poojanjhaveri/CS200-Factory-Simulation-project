@@ -52,7 +52,7 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
     public static final Integer LANE7Y = 75/2 + 7 * 75;///<y-coordinate of lane 7's nest
     public static final Integer RAILX = 75/2 + 8 * 75;///<fixed x-coordinate of the rail the parts robot traverses
     public static final Integer PARTS_ROBOT_KITX=KAMGraphicPanel.KITX+20;
-    public static final Integer PARTS_ROBOT_KITY=KAMGraphicPanel.KIT2Y+20;
+    public static final Integer PARTS_ROBOT_KITY=KAMGraphicPanel.KIT1Y+20;
     public static final Integer PARTSROBOT_VELOCITYX=2;
     public static final Integer PARTSROBOT_VELOCITYY= 2;     
     public static final Integer PARTSROBOTINITIALX = 400;///<x coordinate for parts robot to spawn in
@@ -222,8 +222,10 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
 		case 6:
 		case 7:
 		    kitter.addPart(nest.get(order).getPart());
+                    kitter.popOrder();
                     break;
-		case 8:kitstand.getKitPositions().get(2).getKit().addPart(kitter.removePart());	
+		case 8:kitstand.getKitPositions().get(2).getKit().addPart(kitter.removePart());
+                kitter.popOrder();
                     break;
                 default:kitter.performOrder();
 		}

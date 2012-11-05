@@ -33,6 +33,7 @@ public class KAMKit {
             
     public KAMKit(){
         kit=new ImageIcon("pics/KAMkit.png");
+        parts=new ArrayList<Part>();
         //kitNumber=i;
     }
 
@@ -67,7 +68,7 @@ public class KAMKit {
     
     public void addPart(LinkedList<Part> in){
         for(int i=0;i<in.size();i++){
-           parts.get(i).setGUIPart(in.get(i).getGUIPart()); 
+           parts.add(in.get(i)); 
         }
     }
     
