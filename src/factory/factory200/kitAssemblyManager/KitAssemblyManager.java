@@ -36,7 +36,7 @@ public class KitAssemblyManager extends Manager implements ActionListener {
      */
 
     public GUIKitRobot getKitRobot(){
-	return this.kitbot;
+	return graphics.kitbot;
     }
 
     public void flashKitCamera()
@@ -60,7 +60,7 @@ public class KitAssemblyManager extends Manager implements ActionListener {
     }
     public void actionPerformed(ActionEvent ae) {
         if(ae.getSource()==cameraKitStand){
-	    this.flasKitCamera();
+	    this.flashKitCamera();
         }
         
           if (ae.getSource() == cameraNest) {

@@ -1,5 +1,6 @@
 package factory.factory201.kitManagement;
 
+import factory.factory200.kitAssemblyManager.KitAssemblyManager;
 import factory.general.*;
 
 /**
@@ -8,6 +9,7 @@ import factory.general.*;
  */
 public class KitStand {
 
+    private KitAssemblyManager KAM;
     /**
      * The kit stand has three stands 1. Temporary stand to hold an empty kit 2.
      * Kitting stand which will hold the kit into which parts are being put 3.
@@ -105,6 +107,10 @@ public class KitStand {
     }
 
     private void DoMoveKitMoveKitFrom0to1() {
-        throw new UnsupportedOperationException("Not yet implemented");
+        KAM.getKitRobot().moveEmptyKitToActive();
+    }
+    
+    public void setKitAssemblyManager(KitAssemblyManager KAM) {
+        this.KAM = KAM;
     }
 }
