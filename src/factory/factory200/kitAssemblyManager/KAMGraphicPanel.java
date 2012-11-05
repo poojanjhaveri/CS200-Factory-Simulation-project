@@ -249,6 +249,12 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
             //System.out.println(kitstand.getKitPositions().get(i).isFilled());
             if (kitstand.getKitPositions().get(i).isFilled()) {
                 kitstand.getKitPositions().get(i).getKit().getImage().paintIcon(this, g2, kitstand.getKitPositions().get(i).getX(), kitstand.getKitPositions().get(i).getY());
+                if(!(kitstand.getKitPositions().get(i).getKit().getParts().isEmpty())){
+                    for(int j=0;j<kitstand.getKitPositions().get(i).getKit().getParts().size();i++){
+                       System.out.println("PRINTING PARTS");
+                       kitstand.getKitPositions().get(i).getKit().getParts().get(j).getGUIPart().getImage().paintIcon(this, g2, kitstand.getKitPositions().get(i).getKit().getParts().get(j).getGUIPart().getX(), kitstand.getKitPositions().get(i).getKit().getParts().get(j).getGUIPart().getX()); 
+                    }
+                }
             }
         }
         for (int i = 0; i < delivery.getNumEmptyKits(); i++) {
@@ -280,7 +286,7 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
 	    }
         
         for(int i=0;i<this.nest.get(0).getParts().size();i++){
-            System.out.println(this.nest.get(0).getParts().get(i).getGUIPart());
+            //System.out.println(this.nest.get(0).getParts().get(i).getGUIPart());
             this.nest.get(0).getParts().get(i).getGUIPart().getImage().paintIcon(this, g2, nest.get(0).getParts().get(i).getGUIPart().getX(), nest.get(0).getParts().get(i).getGUIPart().getY());
         }
         

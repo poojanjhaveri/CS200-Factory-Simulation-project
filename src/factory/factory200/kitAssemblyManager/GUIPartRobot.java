@@ -139,7 +139,7 @@ public class GUIPartRobot extends GUIRobot {
      */
     public Boolean performOrder()
     {
-        System.out.println("PERFORMING ORDER");
+        //System.out.println("PERFORMING ORDER");
 	Integer i = this.popOrder();
 	switch(i)
 	    {

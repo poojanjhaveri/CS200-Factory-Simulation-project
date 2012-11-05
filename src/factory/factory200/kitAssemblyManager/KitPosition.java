@@ -4,6 +4,9 @@
  */
 package factory.factory200.kitAssemblyManager;
 
+import factory.general.Part;
+import java.util.ArrayList;
+
 /**
  *
  * @author Deepa
@@ -14,9 +17,11 @@ public class KitPosition {
         private int x;
         private int y;
         
+        
         public KitPosition(){
             kit=new KAMKit();
             filled=false;
+            
         }
 
         /**
