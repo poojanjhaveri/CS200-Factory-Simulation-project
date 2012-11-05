@@ -39,8 +39,8 @@ public class KitAssemblyManager extends Manager implements ActionListener {
 	return this.kitbot;
     }
 
-    public void actionPerformed(ActionEvent ae) {
-        if(ae.getSource()==cameraKitStand){
+    public void flashKitCamera()
+    {
                 this.graphics.camera.setX(this.graphics.kitstand.getKitPositions().get(2).getX());
                 //System.out.println(this.graphics.nest.get(0).getX());
                 //System.out.println(this.graphics.camera.getX());
@@ -49,6 +49,11 @@ public class KitAssemblyManager extends Manager implements ActionListener {
                 //System.out.println(this.graphics.camera.getY());
                 this.graphics.camera.setVisible(true);
                 this.graphics.repaint();
+
+    }
+    public void actionPerformed(ActionEvent ae) {
+        if(ae.getSource()==cameraKitStand){
+	    this.flasKitCamer();
         }
         
           if (ae.getSource() == cameraNest) {
