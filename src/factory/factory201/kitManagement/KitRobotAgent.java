@@ -145,40 +145,61 @@ public class KitRobotAgent extends Agent implements KitRobot {
     }
 
     // ************ MISC ***********
+    
+    /**
+    * Sets the conveyor agent
+    * @param agent Conveyor Agent to be set
+    * @brief Sets the conveyor agent
+    */	 
     public void setConveyor(Conveyor agent) {
         conveyor = agent;
     }
 
+    /**
+    * Sets the camera agent
+    * @param agent Camera agent to be set
+    * @brief Sets the camera agent 
+    */
     public void setCamera(Camera agent) {
         camera = agent;
     }
 
+    /**
+    * Sets the parts agent
+    * @param agent Parts agent to be set
+    * @brief Sets the parts agent
+    */
     public void setPartsAgent(PartsInterface agent) {
         partsAgent = agent;
     }
-    
+
+    /**
+    * Sets the kit assembly manager
+    * @param KAM Kit assembly manager
+    * @brief Sets the kit assembly manager
+    */    
     public void setKitAssemblyManager(KitAssemblyManager KAM) {
         this.KAM = KAM;
     }
 
+    /**
+    * Animation call for agent action
+    */    
     private void DoRemoveVerifiedKit(Kit k) {
         KAM.getKitRobot().dropOffFullKit();
-//        try {
-//            Thread.sleep(0);
-//        } catch (Exception e) {}
     }
 
+    /**
+    * Animation call for agent action
+    */    
     private void DoMoveFullKitToInspection() {
-        KAM.getKitRobot().moveActiveKitToInspection();
-//        try {
-//            Thread.sleep(0);
-//        } catch (Exception e) {}
+        KAM.getKitRobot().moveActiveKitToInspection();}
     }
 
+    /**
+    * Animation call for agent action
+    */    
     private void DoGetEmptyKit() {
-        KAM.getKitRobot().pickUpEmptyKit();
-//        try {
-//            Thread.sleep(0);
-//        } catch (Exception e) {}
+        KAM.getKitRobot().pickUpEmptyKit();}
     }
 }
