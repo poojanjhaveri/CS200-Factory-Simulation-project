@@ -35,8 +35,11 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
     public static final int KIT1Y = 150 + 10 + 125;
     public static final int KIT2Y = 150 + 10 + 250;
     //took into consideration kit stand positioning
-    public static final int CONVEYERX = 25;
-    public static final int CONVEYERY = 300;
+    public static final int EMPTY_CONVEYERX = 25;
+    public static final int EMPTY_CONVEYERY = 300;
+    public static final int FULL_CONVEYERX=25;
+    public static final int FULL_CONVEYERY=500;
+            
     public static final Integer LANE0Y = 0;///<y-coordinate of lane 0's nest
     public static final Integer LANE1Y = 0;///<y-coordinate of lane 1's nest
     public static final Integer LANE2Y = 0;///<y-coordinate of lane 2's nest
@@ -131,23 +134,26 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
                     case 0:
                         if (delivery.inPosition()) {
                             kitbot.giveKit(delivery.giveKit());
-			    kitbot.popOrder();
+			    
                             //System.out.println("Picking up kit");
 			}
                         break;
-		case 1:this.kitbot.giveKit(this.kitstand.giveKit(0));
+		case 1:kitbot.giveKit(kitstand.giveKit(0));
 		    break;
-		case 2:this.kitbot.giveKit(this.kitstand.giveKit(1));
+		case 2:kitbot.giveKit(kitstand.giveKit(1));
 		    break;
-		case 3:this.kitbot.giveKit(this.kitstand.giveKit(2));
+		case 3:kitbot.giveKit(kitstand.giveKit(2));
 		    break;
-		case 4:this.kitstand.takeKit(this.kitbot.dropKit());
+		case 4:
+                    //KAMKit k = kitbot.dropKit();
+                    //System.out.println(k);
+                    kitstand.takeKit(kitbot.dropKit());
 		    break;
-		case 5:this.kitstand.takeKit(this.kitbot.dropKit());
+		case 5:kitstand.takeKit(kitbot.dropKit());
 		    break;
-		case 6:this.kitstand.takeKit(this.kitbot.dropKit());
+		case 6:kitstand.takeKit(kitbot.dropKit());
 		    break;
-		case 7:this.kitstand.takeKit(this.kitbot.dropKit());
+		case 7:kitstand.takeKit(kitbot.dropKit());
 		    break;
 		default:kitbot.performOrder();
 		    break;

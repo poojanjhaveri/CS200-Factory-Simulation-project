@@ -67,8 +67,10 @@ public class KitStand {
     }
     
     public void takeKit(KAMKit kit){
-        KAMKit temp=new KAMKit();
-        temp=kit;
+        KAMKit temp=kit;
+        if(kit==null){
+            System.out.println("What the hell are you doing?");
+        }
         if(temp.getX()==kitPositions.get(0).getX() && temp.getY()==kitPositions.get(0).getY()){
             kitPositions.get(0).setKit(temp);
             kitPositions.get(0).setFilled(true);
