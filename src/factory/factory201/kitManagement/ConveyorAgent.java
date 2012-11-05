@@ -2,6 +2,7 @@ package factory.factory201.kitManagement;
 
 import agent.Agent;
 import factory.factory201.interfaces.Conveyor;
+import factory.factory201.interfaces.KitRobot;
 import factory.general.Kit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -26,7 +27,7 @@ public class ConveyorAgent extends Agent implements Conveyor {
     private List<Event> eventQueue = new ArrayList<Event>();
     private List<Kit> kits = new ArrayList<Kit>();
     private Kit tempKit;
-    private KitRobotAgent kitRobotAgent;
+    private KitRobot kitRobotAgent;
     private Timer removeKits = new Timer(1000, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent ae) {

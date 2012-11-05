@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>Factory Project: src/factory/Kit.java Source File</title>
+<title>Factory Project: src/factory/general/Kit.java Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Factory Project
-   &#160;<span id="projectnumber">0.0.0</span>
+   &#160;<span id="projectnumber">0.0.1</span>
    </div>
    <div id="projectbrief">team 1 joint cs200/cs201</div>
   </td>
@@ -81,7 +81,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_339115f1b781ea71218b7406990eb67d.html">factory</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_339115f1b781ea71218b7406990eb67d.html">factory</a></li><li class="navelem"><a class="el" href="dir_247a0a6ec2c66846e1a570c88dd3b8bc.html">general</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -89,39 +89,42 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">Kit.java</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="_kit_8java.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">package </span>factory;</div>
+<a href="_kit_8java.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">package </span>factory.general;</div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div>
-<div class="line"><a name="l00010"></a><span class="lineno"><a class="code" href="classfactory_1_1_kit.html">   10</a></span>&#160;<span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classfactory_1_1_kit.html" title="Kit Object.">Kit</a> {</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
-<div class="line"><a name="l00012"></a><span class="lineno"><a class="code" href="classfactory_1_1_kit.html#a39c55eb3e36cef8fa27c72cc27bde36d">   12</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classfactory_1_1_part.html">Part</a> <a class="code" href="classfactory_1_1_kit.html#a39c55eb3e36cef8fa27c72cc27bde36d">parts</a>[];</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
-<div class="line"><a name="l00014"></a><span class="lineno"><a class="code" href="enumfactory_1_1_kit_1_1_status.html">   14</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">enum</span> <a class="code" href="enumfactory_1_1_kit_1_1_status.html">Status</a> {</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
-<div class="line"><a name="l00016"></a><span class="lineno"><a class="code" href="enumfactory_1_1_kit_1_1_status.html#a25b45a84b33d0092c1d62d7b99b84134">   16</a></span>&#160;        empty, full, inspected</div>
-<div class="line"><a name="l00017"></a><span class="lineno"><a class="code" href="classfactory_1_1_kit.html#a74ffc45f37e241a298facda2810bb361">   17</a></span>&#160;    };</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keyword">public</span> Status <a class="code" href="classfactory_1_1_kit.html#a74ffc45f37e241a298facda2810bb361">status</a>;</div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="code" href="classfactory_1_1_kit.html#a147da3116f5d390c97a03c295e08ae06">   19</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">int</span> <a class="code" href="classfactory_1_1_kit.html#a147da3116f5d390c97a03c295e08ae06">kitNeedsParts</a>;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
-<div class="line"><a name="l00021"></a><span class="lineno"><a class="code" href="enumfactory_1_1_kit_1_1_kitting_stand_number.html">   21</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">enum</span> <a class="code" href="enumfactory_1_1_kit_1_1_kitting_stand_number.html">KittingStandNumber</a> {</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
-<div class="line"><a name="l00023"></a><span class="lineno"><a class="code" href="enumfactory_1_1_kit_1_1_kitting_stand_number.html#a3cf5af29bd485e1edd466cffd5723990">   23</a></span>&#160;        none, one, <a class="code" href="enumfactory_1_1_kit_1_1_kitting_stand_number.html#a3cf5af29bd485e1edd466cffd5723990">two</a>, three</div>
-<div class="line"><a name="l00024"></a><span class="lineno"><a class="code" href="classfactory_1_1_kit.html#a3890b6a8c2777414530952d1ef25ab8a">   24</a></span>&#160;    };</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keyword">public</span> KittingStandNumber <a class="code" href="classfactory_1_1_kit.html#a3890b6a8c2777414530952d1ef25ab8a">kittingStandNumber</a>;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
-<div class="line"><a name="l00027"></a><span class="lineno"><a class="code" href="classfactory_1_1_kit.html#ab9519df951fc8ac0953be63563370814">   27</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classfactory_1_1_kit.html#ab9519df951fc8ac0953be63563370814">Kit</a>(<a class="code" href="classfactory_1_1_part.html">Part</a> p[]) {</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        this.<a class="code" href="classfactory_1_1_kit.html#a3890b6a8c2777414530952d1ef25ab8a">kittingStandNumber</a> = <a class="code" href="enumfactory_1_1_kit_1_1_kitting_stand_number.html">KittingStandNumber</a>.<a class="code" href="enumfactory_1_1_kit_1_1_kitting_stand_number.html#ac765a4b27680704175c03b4ed9c81c00">none</a>;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        this.<a class="code" href="classfactory_1_1_kit.html#a74ffc45f37e241a298facda2810bb361">status</a> = <a class="code" href="enumfactory_1_1_kit_1_1_status.html">Status</a>.<a class="code" href="enumfactory_1_1_kit_1_1_status.html#a81b920aaad7a8348fd8b2cc784336320">empty</a>;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        this.<a class="code" href="classfactory_1_1_kit.html#a147da3116f5d390c97a03c295e08ae06">kitNeedsParts</a> = p.length;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        System.arraycopy(p, 0, <a class="code" href="classfactory_1_1_kit.html#a39c55eb3e36cef8fa27c72cc27bde36d">parts</a>, 0, p.length);</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    }</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
-<div class="line"><a name="l00034"></a><span class="lineno"><a class="code" href="classfactory_1_1_kit.html#a41bb5c24f9f1f04f474548dcae6d14c5">   34</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classfactory_1_1_kit.html#a41bb5c24f9f1f04f474548dcae6d14c5">Kit</a>() {</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    }</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;}</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">import</span> java.util.ArrayList;</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">import</span> java.util.List;</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_kit.html">   13</a></span>&#160;<span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classfactory_1_1general_1_1_kit.html" title="Kit Object.">Kit</a> {</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="code" href="enumfactory_1_1general_1_1_kit_1_1_status.html">   16</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">enum</span> <a class="code" href="enumfactory_1_1general_1_1_kit_1_1_status.html">Status</a> {</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="code" href="enumfactory_1_1general_1_1_kit_1_1_status.html#ad4c7f1267d6c661be7954d561984666a">   17</a></span>&#160;        empty, full, <a class="code" href="enumfactory_1_1general_1_1_kit_1_1_status.html#ad4c7f1267d6c661be7954d561984666a">verified</a>, error</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    };</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="code" href="enumfactory_1_1general_1_1_kit_1_1_stand_num.html">   19</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">enum</span> <a class="code" href="enumfactory_1_1general_1_1_kit_1_1_stand_num.html">StandNum</a> {</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="code" href="enumfactory_1_1general_1_1_kit_1_1_stand_num.html#a0ed9080b9a6186016c924a96e159622a">   20</a></span>&#160;        none, <a class="code" href="enumfactory_1_1general_1_1_kit_1_1_stand_num.html#a0ed9080b9a6186016c924a96e159622a">zero</a>, one, two</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_kit.html#a1dab9573de79f42227b62b58caa15060">   21</a></span>&#160;    };</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keyword">public</span> String <a class="code" href="classfactory_1_1general_1_1_kit.html#a1dab9573de79f42227b62b58caa15060">name</a>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_kit.html#a13f5c4dea7723b14054b8ecf436440db">   24</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="enumfactory_1_1general_1_1_kit_1_1_status.html">Status</a> <a class="code" href="classfactory_1_1general_1_1_kit.html#a13f5c4dea7723b14054b8ecf436440db">status</a>;</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_kit.html#a7cb024f44558275c3d73dfed6c995617">   25</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="enumfactory_1_1general_1_1_kit_1_1_stand_num.html">StandNum</a> <a class="code" href="classfactory_1_1general_1_1_kit.html#a7cb024f44558275c3d73dfed6c995617">standNum</a>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_kit.html#a866f879950f7c6a18ee4d15fa7ff4645">   26</a></span>&#160;    <span class="keyword">private</span> List&lt;Part&gt; <a class="code" href="classfactory_1_1general_1_1_kit.html#a866f879950f7c6a18ee4d15fa7ff4645">parts</a> = <span class="keyword">new</span> ArrayList&lt;Part&gt;();</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_kit.html#a892758c2a76b921336f1e23e3e37e5cf">   27</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">int</span> <a class="code" href="classfactory_1_1general_1_1_kit.html#a892758c2a76b921336f1e23e3e37e5cf">kitNeedsParts</a>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_kit.html#a2fed6884133aeaf244aeb9d7ea2a2b3a">   29</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classfactory_1_1general_1_1_kit.html#a2fed6884133aeaf244aeb9d7ea2a2b3a">Kit</a>(String <a class="code" href="classfactory_1_1general_1_1_kit.html#a1dab9573de79f42227b62b58caa15060">name</a>) {</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        this.name = <a class="code" href="classfactory_1_1general_1_1_kit.html#a1dab9573de79f42227b62b58caa15060">name</a>;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        this.<a class="code" href="classfactory_1_1general_1_1_kit.html#a13f5c4dea7723b14054b8ecf436440db">status</a> = <a class="code" href="enumfactory_1_1general_1_1_kit_1_1_status.html">Status</a>.<a class="code" href="enumfactory_1_1general_1_1_kit_1_1_status.html#a514a8d1335a9a7c67e5307afad7f3f22">empty</a>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        this.<a class="code" href="classfactory_1_1general_1_1_kit.html#a7cb024f44558275c3d73dfed6c995617">standNum</a> = <a class="code" href="enumfactory_1_1general_1_1_kit_1_1_stand_num.html">StandNum</a>.<a class="code" href="enumfactory_1_1general_1_1_kit_1_1_stand_num.html#a9b7d70bed986e870c9ba36f177837ba0">none</a>;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">//        this.kitNeedsParts = p.length;</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    }</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    </div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_kit.html#add783a79bd08d49a4a347da57d140a98">   36</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1general_1_1_kit.html#add783a79bd08d49a4a347da57d140a98">addPart</a>(<a class="code" href="classfactory_1_1general_1_1_part.html" title="digital representation of a part">Part</a> p) {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <a class="code" href="classfactory_1_1general_1_1_kit.html#a866f879950f7c6a18ee4d15fa7ff4645">parts</a>.add(p);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    }</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Oct 28 2012 21:37:53 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Nov 4 2012 12:20:00 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

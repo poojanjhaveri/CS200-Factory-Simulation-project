@@ -9,7 +9,6 @@ import java.util.Collections;
 import java.util.List;
 
 
-
 /**
  * Factory PartsAgent gets kit information from server and obtains necessary
  * parts to complete a kit has 4 grips to pick up parts to build the kit
@@ -48,6 +47,10 @@ public class PartsAgent extends Agent {
         stateChanged();
     }
 
+    public void msgEmptyKitReady(Kit kit) {
+        
+    }
+    
     public void msgEmptyKitReady(int num) {
         switch (num) {
             case 1:

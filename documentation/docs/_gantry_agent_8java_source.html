@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>Factory Project: src/factory/feederManagement/GantryAgent.java Source File</title>
+<title>Factory Project: src/factory/factory201/feederManagement/GantryAgent.java Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Factory Project
-   &#160;<span id="projectnumber">0.0.0</span>
+   &#160;<span id="projectnumber">0.0.1</span>
    </div>
    <div id="projectbrief">team 1 joint cs200/cs201</div>
   </td>
@@ -81,7 +81,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_339115f1b781ea71218b7406990eb67d.html">factory</a></li><li class="navelem"><a class="el" href="dir_2cffdb8a05e1a8236d59da0fdc1d58b4.html">feederManagement</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_339115f1b781ea71218b7406990eb67d.html">factory</a></li><li class="navelem"><a class="el" href="dir_83378976ba2ece7b6d274bfe9b80a044.html">factory201</a></li><li class="navelem"><a class="el" href="dir_4f5f86db7a9cc81e72df8078f4b906f4.html">feederManagement</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -89,89 +89,256 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">GantryAgent.java</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="_gantry_agent_8java.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">package </span>factory.feederManagement;</div>
+<a href="_gantry_agent_8java.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">package </span>factory.factory201.feederManagement;</div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">import</span> agent.Agent;</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">import</span> factory.Part;</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">import</span> factory.interfaces.*;</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">import</span> java.util.ArrayList;</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">import</span> java.util.Collections;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">import</span> java.util.List;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
-<div class="line"><a name="l00017"></a><span class="lineno"><a class="code" href="classfactory_1_1feeder_management_1_1_gantry_agent.html">   17</a></span>&#160;<span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classfactory_1_1feeder_management_1_1_gantry_agent.html" title="agent for the Gantry This class is the agent for the Gantry. The Gantry receives message from feeder ...">GantryAgent</a> <span class="keyword">extends</span> <a class="code" href="classagent_1_1_agent.html" title="Base class for simple agents.">Agent</a> implements Gantry {</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="code" href="classfactory_1_1feeder_management_1_1_gantry_agent.html#a9bc2cba1ac49af688146e0fd23916efd">   19</a></span>&#160;    <span class="keyword">private</span> List&lt;myParts&gt; <a class="code" href="classfactory_1_1feeder_management_1_1_gantry_agent.html#a9bc2cba1ac49af688146e0fd23916efd">parts</a> = Collections.synchronizedList(<span class="keyword">new</span> ArrayList&lt;myParts&gt;());</div>
-<div class="line"><a name="l00020"></a><span class="lineno"><a class="code" href="classfactory_1_1feeder_management_1_1_gantry_agent.html#a8afba3fd387c04ba5067c93839f0504f">   20</a></span>&#160;    <span class="keyword">private</span> Feeder <a class="code" href="classfactory_1_1feeder_management_1_1_gantry_agent.html#a8afba3fd387c04ba5067c93839f0504f">feeder</a>;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="comment">/* to hold the info about its list of parts*/</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno"><a class="code" href="classfactory_1_1feeder_management_1_1_gantry_agent_1_1my_parts.html">   23</a></span>&#160;    <span class="keyword">private</span> <span class="keyword">class </span><a class="code" href="classfactory_1_1feeder_management_1_1_gantry_agent_1_1my_parts.html">myParts</a> {</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
-<div class="line"><a name="l00025"></a><span class="lineno"><a class="code" href="classfactory_1_1feeder_management_1_1_gantry_agent_1_1my_parts.html#a6683e600b05ab9286e6759aaef3bca7b">   25</a></span>&#160;        <a class="code" href="classfactory_1_1_part.html">Part</a> <a class="code" href="classfactory_1_1feeder_management_1_1_gantry_agent_1_1my_parts.html#a6683e600b05ab9286e6759aaef3bca7b">part_type</a>;</div>
-<div class="line"><a name="l00026"></a><span class="lineno"><a class="code" href="classfactory_1_1feeder_management_1_1_gantry_agent_1_1my_parts.html#a78b1f838cbb07d7d1de75c9bb1f3558e">   26</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="classfactory_1_1feeder_management_1_1_gantry_agent_1_1my_parts.html#a78b1f838cbb07d7d1de75c9bb1f3558e">quantity</a>;</div>
-<div class="line"><a name="l00027"></a><span class="lineno"><a class="code" href="classfactory_1_1feeder_management_1_1_gantry_agent_1_1my_parts.html#a2dde57b47afba225e3e5dec5abfd3cf7">   27</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="classfactory_1_1feeder_management_1_1_gantry_agent_1_1my_parts.html#a2dde57b47afba225e3e5dec5abfd3cf7">supplyAmount</a>;</div>
-<div class="line"><a name="l00028"></a><span class="lineno"><a class="code" href="classfactory_1_1feeder_management_1_1_gantry_agent_1_1my_parts.html#af4f193fa6db8d7ad3e5367e24f8a792e">   28</a></span>&#160;        <span class="keywordtype">boolean</span> <a class="code" href="classfactory_1_1feeder_management_1_1_gantry_agent_1_1my_parts.html#af4f193fa6db8d7ad3e5367e24f8a792e">send</a> = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="comment">//PartState state=PartState.noState;</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
-<div class="line"><a name="l00031"></a><span class="lineno"><a class="code" href="classfactory_1_1feeder_management_1_1_gantry_agent_1_1my_parts.html#a1d2f8dbb9aed8e6853134041c0bd23c8">   31</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="classfactory_1_1feeder_management_1_1_gantry_agent_1_1my_parts.html#a1d2f8dbb9aed8e6853134041c0bd23c8">myParts</a>(<a class="code" href="classfactory_1_1_part.html">Part</a> part, <span class="keywordtype">int</span> <a class="code" href="classfactory_1_1feeder_management_1_1_gantry_agent_1_1my_parts.html#a78b1f838cbb07d7d1de75c9bb1f3558e">quantity</a>) {</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            this.<a class="code" href="classfactory_1_1feeder_management_1_1_gantry_agent_1_1my_parts.html#a6683e600b05ab9286e6759aaef3bca7b">part_type</a>.<a class="code" href="classfactory_1_1_part.html#abbcbee4532f2e0ab5756a075427651ba">type</a> = part.<a class="code" href="classfactory_1_1_part.html#abbcbee4532f2e0ab5756a075427651ba">type</a>;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            this.quantity = <a class="code" href="classfactory_1_1feeder_management_1_1_gantry_agent_1_1my_parts.html#a78b1f838cbb07d7d1de75c9bb1f3558e">quantity</a>;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        }</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    }</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    @Override</div>
-<div class="line"><a name="l00039"></a><span class="lineno"><a class="code" href="classfactory_1_1feeder_management_1_1_gantry_agent.html#a5187e5d5442484c1646f7733a6f8c4b4">   39</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1feeder_management_1_1_gantry_agent.html#a5187e5d5442484c1646f7733a6f8c4b4">msgNeedPart</a>(<a class="code" href="classfactory_1_1_part.html">Part</a> part) {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keywordflow">for</span> (<a class="code" href="classfactory_1_1feeder_management_1_1_gantry_agent_1_1my_parts.html">myParts</a> p : <a class="code" href="classfactory_1_1feeder_management_1_1_gantry_agent.html#a9bc2cba1ac49af688146e0fd23916efd">parts</a>) {</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            <span class="keywordflow">if</span> (p.part_type.type == part.<a class="code" href="classfactory_1_1_part.html#abbcbee4532f2e0ab5756a075427651ba">type</a>) {</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                p.send = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                p.supplyAmount = <a class="code" href="classfactory_1_1feeder_management_1_1_gantry_agent.html#a8afba3fd387c04ba5067c93839f0504f">feeder</a>.capacity;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                <span class="comment">//p.state=PartState.canSend;</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                <a class="code" href="classagent_1_1_agent.html#a44f653501d47022141315a1835e9927a">stateChanged</a>();</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            }</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            <a class="code" href="classagent_1_1_agent.html#a44f653501d47022141315a1835e9927a">stateChanged</a>();</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        }</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//import factory.factory200.laneManager.ServerForAgentGantry;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">import</span> factory.factory201.interfaces.Feeder;</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">import</span> factory.factory201.interfaces.Gantry;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">import</span> agent.Agent;</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">import</span> factory.general.Part;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">import</span> java.util.ArrayList;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">import</span> java.util.Collections;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">import</span> java.util.List;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent.html">   19</a></span>&#160;<span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent.html" title="agent for the Gantry This class is the agent for the Gantry. The Gantry receives message from feeder ...">GantryAgent</a> <span class="keyword">extends</span> <a class="code" href="classagent_1_1_agent.html" title="Base class for simple agents.">Agent</a> implements <a class="code" href="interfacefactory_1_1factory201_1_1interfaces_1_1_gantry.html">Gantry</a> {</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="comment">//private List&lt;myParts&gt; parts = Collections.synchronizedList(new ArrayList&lt;myParts&gt;());</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent.html#a2ff5b62c33917ca38ca2229c78a69b00">   22</a></span>&#160;    <span class="keyword">private</span> <a class="code" href="interfacefactory_1_1factory201_1_1interfaces_1_1_feeder.html">Feeder</a> <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent.html#a2ff5b62c33917ca38ca2229c78a69b00">feeder</a>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="comment">//holds info about all the feeders that are assigned to the gantry</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent.html#a4d5ddf943c38a1d7b344571b4e41e807">   25</a></span>&#160;    <span class="keyword">private</span> List&lt;myFeeder&gt; <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent.html#a4d5ddf943c38a1d7b344571b4e41e807">myFeeders</a> = Collections.synchronizedList(<span class="keyword">new</span> ArrayList&lt;myFeeder&gt;());</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent.html#af707ddd4ad7133bfce6f3893495a66af">   26</a></span>&#160;    <span class="keyword">private</span> List&lt;myBin&gt; <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent.html#af707ddd4ad7133bfce6f3893495a66af">bins</a> = Collections.synchronizedList(<span class="keyword">new</span> ArrayList&lt;myBin&gt;());</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;   <span class="comment">// private ServerForAgentGantry animation;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent.html#a39c96faa4a4fc7fe5c169082c84305a3">   28</a></span>&#160;    String <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent.html#a39c96faa4a4fc7fe5c169082c84305a3">name</a>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="comment">//numOfBins is the number of bins that gantry is initialized to, will be the same for v0, each bin has 8 parts.</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent.html#a21aec904dbe0d26c82ecde8574bb68c5">   31</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent.html#a21aec904dbe0d26c82ecde8574bb68c5">GantryAgent</a>(<span class="keywordtype">int</span> numOfBins,String <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent.html#a39c96faa4a4fc7fe5c169082c84305a3">name</a>){</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        this.name=<a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent.html#a39c96faa4a4fc7fe5c169082c84305a3">name</a>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="comment">//this.feeder=feeder;</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        System.out.println(<span class="stringliteral">&quot;name and feeder assigned&quot;</span>);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <a class="code" href="classfactory_1_1general_1_1_part.html" title="digital representation of a part">Part</a> p1=<span class="keyword">new</span> <a class="code" href="classfactory_1_1general_1_1_part.html" title="digital representation of a part">Part</a>(1);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <a class="code" href="classfactory_1_1general_1_1_part.html" title="digital representation of a part">Part</a> p2=<span class="keyword">new</span> <a class="code" href="classfactory_1_1general_1_1_part.html" title="digital representation of a part">Part</a>(2);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <a class="code" href="classfactory_1_1general_1_1_part.html" title="digital representation of a part">Part</a> p3=<span class="keyword">new</span> <a class="code" href="classfactory_1_1general_1_1_part.html" title="digital representation of a part">Part</a>(3);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <a class="code" href="classfactory_1_1general_1_1_part.html" title="digital representation of a part">Part</a> p4=<span class="keyword">new</span> <a class="code" href="classfactory_1_1general_1_1_part.html" title="digital representation of a part">Part</a>(4);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <a class="code" href="classfactory_1_1general_1_1_part.html" title="digital representation of a part">Part</a> p5=<span class="keyword">new</span> <a class="code" href="classfactory_1_1general_1_1_part.html" title="digital representation of a part">Part</a>(5);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <a class="code" href="classfactory_1_1general_1_1_part.html" title="digital representation of a part">Part</a> p6=<span class="keyword">new</span> <a class="code" href="classfactory_1_1general_1_1_part.html" title="digital representation of a part">Part</a>(6);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <a class="code" href="classfactory_1_1general_1_1_part.html" title="digital representation of a part">Part</a> p7=<span class="keyword">new</span> <a class="code" href="classfactory_1_1general_1_1_part.html" title="digital representation of a part">Part</a>(7);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <a class="code" href="classfactory_1_1general_1_1_part.html" title="digital representation of a part">Part</a> p8=<span class="keyword">new</span> <a class="code" href="classfactory_1_1general_1_1_part.html" title="digital representation of a part">Part</a>(8);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        System.out.println(<span class="stringliteral">&quot;parts added&quot;</span>);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="comment">//part 1 is in bin 1 </span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent.html#af707ddd4ad7133bfce6f3893495a66af">bins</a>.add(<span class="keyword">new</span> <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent_1_1my_bin.html">myBin</a>(p1,numOfBins,1));</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="comment">//part 2 is in bin 2 </span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent.html#af707ddd4ad7133bfce6f3893495a66af">bins</a>.add(<span class="keyword">new</span> <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent_1_1my_bin.html">myBin</a>(p2,numOfBins,2));</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    }</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    @Override</div>
-<div class="line"><a name="l00056"></a><span class="lineno"><a class="code" href="classfactory_1_1feeder_management_1_1_gantry_agent.html#ae38d57c0c3ece5a61b0b18074c2323e0">   56</a></span>&#160;    <span class="keyword">protected</span> <span class="keywordtype">boolean</span> <a class="code" href="classfactory_1_1feeder_management_1_1_gantry_agent.html#ae38d57c0c3ece5a61b0b18074c2323e0">pickAndExecuteAnAction</a>() {</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keywordflow">for</span> (<a class="code" href="classfactory_1_1feeder_management_1_1_gantry_agent_1_1my_parts.html">myParts</a> p : <a class="code" href="classfactory_1_1feeder_management_1_1_gantry_agent.html#a9bc2cba1ac49af688146e0fd23916efd">parts</a>) {</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <span class="keywordflow">if</span> (p.send == <span class="keyword">true</span>) {</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                <a class="code" href="classfactory_1_1feeder_management_1_1_gantry_agent.html#a7ff0ad5961f04b6eb9bc94955bc98306">supplyPart</a>(p);</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            }</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        }</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    }</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
-<div class="line"><a name="l00068"></a><span class="lineno"><a class="code" href="classfactory_1_1feeder_management_1_1_gantry_agent.html#a7ff0ad5961f04b6eb9bc94955bc98306">   68</a></span>&#160;    <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1feeder_management_1_1_gantry_agent.html#a7ff0ad5961f04b6eb9bc94955bc98306">supplyPart</a>(<a class="code" href="classfactory_1_1feeder_management_1_1_gantry_agent_1_1my_parts.html">myParts</a> p) {</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <a class="code" href="classfactory_1_1feeder_management_1_1_gantry_agent.html#a8afba3fd387c04ba5067c93839f0504f">feeder</a>.msgHereAreParts(p.<a class="code" href="classfactory_1_1feeder_management_1_1_gantry_agent_1_1my_parts.html#a6683e600b05ab9286e6759aaef3bca7b">part_type</a>, p.<a class="code" href="classfactory_1_1feeder_management_1_1_gantry_agent_1_1my_parts.html#a2dde57b47afba225e3e5dec5abfd3cf7">supplyAmount</a>);</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        p.<a class="code" href="classfactory_1_1feeder_management_1_1_gantry_agent_1_1my_parts.html#af4f193fa6db8d7ad3e5367e24f8a792e">send</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="comment">//part 3 is in bin 3 </span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent.html#af707ddd4ad7133bfce6f3893495a66af">bins</a>.add(<span class="keyword">new</span> <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent_1_1my_bin.html">myBin</a>(p3,numOfBins,3));</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="comment">//part 4 is in bin 4 </span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent.html#af707ddd4ad7133bfce6f3893495a66af">bins</a>.add(<span class="keyword">new</span> <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent_1_1my_bin.html">myBin</a>(p4,numOfBins,4));</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="comment">//part 5 is in bin 5 </span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent.html#af707ddd4ad7133bfce6f3893495a66af">bins</a>.add(<span class="keyword">new</span> <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent_1_1my_bin.html">myBin</a>(p5,numOfBins,5));</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="comment">//part 6 is in bin 6 </span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent.html#af707ddd4ad7133bfce6f3893495a66af">bins</a>.add(<span class="keyword">new</span> <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent_1_1my_bin.html">myBin</a>(p6,numOfBins,6));</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="comment">//part 7 is in bin 7 </span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent.html#af707ddd4ad7133bfce6f3893495a66af">bins</a>.add(<span class="keyword">new</span> <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent_1_1my_bin.html">myBin</a>(p7,numOfBins,7));</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="comment">//part 8 is in bin 8 </span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent.html#af707ddd4ad7133bfce6f3893495a66af">bins</a>.add(<span class="keyword">new</span> <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent_1_1my_bin.html">myBin</a>(p8,numOfBins,8));</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        System.out.println(<span class="stringliteral">&quot;bins added&quot;</span>);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    }</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="comment">//update the myParts object</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        p.<a class="code" href="classfactory_1_1feeder_management_1_1_gantry_agent_1_1my_parts.html#a78b1f838cbb07d7d1de75c9bb1f3558e">quantity</a> = p.<a class="code" href="classfactory_1_1feeder_management_1_1_gantry_agent_1_1my_parts.html#a78b1f838cbb07d7d1de75c9bb1f3558e">quantity</a> - p.<a class="code" href="classfactory_1_1feeder_management_1_1_gantry_agent_1_1my_parts.html#a2dde57b47afba225e3e5dec5abfd3cf7">supplyAmount</a>;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    }</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
-<div class="line"><a name="l00078"></a><span class="lineno"><a class="code" href="classfactory_1_1feeder_management_1_1_gantry_agent.html#a930fafb4b1e918594dfb12862db1aa1c">   78</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1feeder_management_1_1_gantry_agent.html#a930fafb4b1e918594dfb12862db1aa1c">setFeeder</a>(Feeder <a class="code" href="classfactory_1_1feeder_management_1_1_gantry_agent.html#a8afba3fd387c04ba5067c93839f0504f">feeder</a>) {</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        this.feeder = <a class="code" href="classfactory_1_1feeder_management_1_1_gantry_agent.html#a8afba3fd387c04ba5067c93839f0504f">feeder</a>;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    }</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    @Override <span class="comment">//Unimplemented</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno"><a class="code" href="classfactory_1_1feeder_management_1_1_gantry_agent.html#acd3367b3055e1eb6db308f3eb595518b">   83</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1feeder_management_1_1_gantry_agent.html#acd3367b3055e1eb6db308f3eb595518b">msgHereAreParts</a>(<a class="code" href="classfactory_1_1_part.html">Part</a> part, <span class="keywordtype">int</span> quantity) {</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="comment">// TODO Auto-generated method stub</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    }</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;}</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="comment">/* to hold the info about its list of parts*/</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="comment">/*</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment">    private class myParts {</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment">        Part part;</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment">        int quantity;</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">        int supplyAmount;</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment">        boolean send = false;</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment">        //PartState state=PartState.noState;</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">        public myParts(Part part, int quantity) {</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">            this.part.type = part.type;</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment">            this.quantity = quantity;</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment">        }</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="comment">    }</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment">    */</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent_1_1my_feeder.html">   91</a></span>&#160;    <span class="keyword">private</span> <span class="keyword">class </span><a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent_1_1my_feeder.html">myFeeder</a>{</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="comment">//which feeder agent it is</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent_1_1my_feeder.html#afc94f54d672a54b57ac6bfc7722ee44b">   94</a></span>&#160;        <a class="code" href="interfacefactory_1_1factory201_1_1interfaces_1_1_feeder.html">Feeder</a> <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent_1_1my_feeder.html#afc94f54d672a54b57ac6bfc7722ee44b">feeder</a>;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <span class="comment">//which part it requests for</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent_1_1my_feeder.html#ab711ccb6eadcf395bb32c36d067fbb2b">   97</a></span>&#160;        <a class="code" href="classfactory_1_1general_1_1_part.html" title="digital representation of a part">Part</a> <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent_1_1my_feeder.html#ab711ccb6eadcf395bb32c36d067fbb2b">requested_part</a>;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="comment">//how many parts are supposed to be sent, might be unecessary</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent_1_1my_feeder.html#a0cb94b6fabbcce2599c4db772b708877">  100</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent_1_1my_feeder.html#a0cb94b6fabbcce2599c4db772b708877">requested_qty</a>;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="comment">//set the requestState true when a message comes in &quot;I need parts&quot;</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent_1_1my_feeder.html#a2d122abacb62c817411be1765a868333">  103</a></span>&#160;        <span class="keywordtype">boolean</span> <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent_1_1my_feeder.html#a2d122abacb62c817411be1765a868333">requestState</a>=<span class="keyword">false</span>;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        <span class="comment">//this is the index of the feeder</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent_1_1my_feeder.html#a5c8668b8fa0fcd84e88ff8615ee54254">  106</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent_1_1my_feeder.html#a5c8668b8fa0fcd84e88ff8615ee54254">index</a>; </div>
+<div class="line"><a name="l00107"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent_1_1my_feeder.html#aa31efa6e97c0208c90c80b766638b125">  107</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent_1_1my_feeder.html#aa31efa6e97c0208c90c80b766638b125">myFeeder</a>(<a class="code" href="interfacefactory_1_1factory201_1_1interfaces_1_1_feeder.html">Feeder</a> <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent_1_1my_feeder.html#afc94f54d672a54b57ac6bfc7722ee44b">feeder</a>, <span class="keywordtype">int</span> <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent_1_1my_feeder.html#a5c8668b8fa0fcd84e88ff8615ee54254">index</a>){</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            <span class="comment">//constructor, to assign feeder</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            this.feeder=<a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent_1_1my_feeder.html#afc94f54d672a54b57ac6bfc7722ee44b">feeder</a>;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            this.index=<a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent_1_1my_feeder.html#a5c8668b8fa0fcd84e88ff8615ee54254">index</a>;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        }</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    }</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="comment">//holds info about the bin</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent_1_1my_bin.html">  115</a></span>&#160;    <span class="keyword">private</span> <span class="keyword">class </span><a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent_1_1my_bin.html">myBin</a>{</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        <span class="comment">//which part the bin has, will be 8 number of parts</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent_1_1my_bin.html#afffac204f0857e06dec38bebe39cd238">  118</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="classfactory_1_1general_1_1_part.html" title="digital representation of a part">Part</a> <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent_1_1my_bin.html#afffac204f0857e06dec38bebe39cd238">part</a>;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        <span class="comment">//represent how many quantity of the bin are with the gantry</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent_1_1my_bin.html#a4d17cf53abb0419196156c23af8eec3c">  121</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">int</span> <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent_1_1my_bin.html#a4d17cf53abb0419196156c23af8eec3c">quantity</a>;</div>
+<div class="line"><a name="l00122"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent_1_1my_bin.html#aa1633a95f898c7696b1a0afa948ef59f">  122</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent_1_1my_bin.html#aa1633a95f898c7696b1a0afa948ef59f">index</a>;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        <span class="comment">//int supplyAmount;</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        <span class="comment">//boolean send = false;</span></div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        <span class="comment">//PartState state=PartState.noState;</span></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;</div>
+<div class="line"><a name="l00127"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent_1_1my_bin.html#aafa52016b0997b8be8cbcc7ceecef2c0">  127</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent_1_1my_bin.html#aafa52016b0997b8be8cbcc7ceecef2c0">myBin</a>(<a class="code" href="classfactory_1_1general_1_1_part.html" title="digital representation of a part">Part</a> <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent_1_1my_bin.html#afffac204f0857e06dec38bebe39cd238">part</a>, <span class="keywordtype">int</span> <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent_1_1my_bin.html#a4d17cf53abb0419196156c23af8eec3c">quantity</a>,<span class="keywordtype">int</span> <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent_1_1my_bin.html#aa1633a95f898c7696b1a0afa948ef59f">index</a>) {</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;           </div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            this.quantity = <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent_1_1my_bin.html#a4d17cf53abb0419196156c23af8eec3c">quantity</a>;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            this.index=<a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent_1_1my_bin.html#aa1633a95f898c7696b1a0afa948ef59f">index</a>;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;            System.out.println(<span class="stringliteral">&quot;testing null pointer&quot;</span>);</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            this.part = <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent_1_1my_bin.html#afffac204f0857e06dec38bebe39cd238">part</a>;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;            System.out.println(<span class="stringliteral">&quot;testing null pointer 1 &quot;</span>);</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        }</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    }</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;</div>
+<div class="line"><a name="l00137"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent.html#a8805b4bf740d914d0a7153fce11db249">  137</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent.html#a8805b4bf740d914d0a7153fce11db249">msgNeedPart</a>(<a class="code" href="classfactory_1_1general_1_1_part.html" title="digital representation of a part">Part</a> part,<a class="code" href="interfacefactory_1_1factory201_1_1interfaces_1_1_feeder.html">Feeder</a> <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent.html#a2ff5b62c33917ca38ca2229c78a69b00">feeder</a>) {</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        </div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        System.out.println(<span class="stringliteral">&quot;part need message from feeder received&quot;</span>);</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        <span class="keywordflow">for</span>(<a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent_1_1my_feeder.html">myFeeder</a> f: <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent.html#a4d5ddf943c38a1d7b344571b4e41e807">myFeeders</a>)</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        {</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;            <span class="keywordflow">if</span>(f.feeder==feeder){</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;                </div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                System.out.println(<span class="stringliteral">&quot;setting requestState for the feeder&quot;</span>);</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                System.out.println(<span class="stringliteral">&quot;Part type is &quot;</span> + part.<a class="code" href="classfactory_1_1general_1_1_part.html#ae6ca4e50a810529fc635ec76f029ab6b">type</a>);</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                </div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                f.requested_part=part;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                </div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                System.out.println(<span class="stringliteral">&quot;requested type is &quot;</span> + f.requested_part.type);</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                f.requestState=<span class="keyword">true</span>;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                }</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;            </div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        }</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        <span class="comment">/*</span></div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;<span class="comment">        for (myParts p : parts) {</span></div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="comment">            if (p.part.type == part.type) {</span></div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;<span class="comment">                p.send = true;</span></div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="comment">                p.supplyAmount = feeder.capacity;</span></div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="comment">                //p.state=PartState.canSend;</span></div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="comment">                stateChanged();</span></div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="comment">                return;</span></div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="comment">            }</span></div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="comment">            stateChanged();</span></div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="comment">        }</span></div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="comment">        </span></div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="comment">        */</span></div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        <a class="code" href="classagent_1_1_agent.html#a44f653501d47022141315a1835e9927a">stateChanged</a>();</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    }</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    @Override</div>
+<div class="line"><a name="l00172"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent.html#ad1ea6b515fe50294c608589af214a90f">  172</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">boolean</span> <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent.html#ad1ea6b515fe50294c608589af214a90f">pickAndExecuteAnAction</a>() {</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        </div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        </div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        <span class="keywordflow">for</span>(<a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent_1_1my_feeder.html">myFeeder</a> f: <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent.html#a4d5ddf943c38a1d7b344571b4e41e807">myFeeders</a>){</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;            <span class="keywordflow">if</span>(f.requestState==<span class="keyword">true</span>){</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                <span class="keywordflow">for</span>(<a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent_1_1my_bin.html">myBin</a> b: <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent.html#af707ddd4ad7133bfce6f3893495a66af">bins</a>){</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                    </div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                    System.out.println(<span class="stringliteral">&quot;checking within bins to supply part since request state is true&quot;</span>);</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                    <span class="keywordflow">if</span>(b.part.type==f.requested_part.type){</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;                        System.out.println(<span class="stringliteral">&quot;b.part==f.requested_part&quot;</span>);</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                        <span class="keywordflow">if</span>(b.quantity&gt;1){</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                        System.out.println(<span class="stringliteral">&quot;I am supplying parts to feeder&quot;</span>);</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                        <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent.html#aee248dbf5966ea703f0dcaa3b322d0d2">supplyPart</a>(b,f);</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;                        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;                        }</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                        <span class="comment">// NOT NEEDED IN V0, IF THE BIN QUANTITY IS LESS THAN 1.</span></div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;                            ;</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;                    }</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;                }</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;            }</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        }</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    </div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    <span class="comment">/*</span></div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;<span class="comment">                if(bin)</span></div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;<span class="comment">                send</span></div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;<span class="comment">            }</span></div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;<span class="comment">            </span></div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;<span class="comment">        }*/</span></div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;  <span class="comment">/*</span></div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;<span class="comment">        for (myParts p : parts) {</span></div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;<span class="comment">            if (p.send == true) {</span></div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;<span class="comment">                supplyPart(p);</span></div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;<span class="comment">            }</span></div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;<span class="comment">            return true;</span></div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;<span class="comment">        }</span></div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    }</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;</div>
+<div class="line"><a name="l00212"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent.html#aee248dbf5966ea703f0dcaa3b322d0d2">  212</a></span>&#160;    <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent.html#aee248dbf5966ea703f0dcaa3b322d0d2">supplyPart</a>(<a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent_1_1my_bin.html">myBin</a> b,<a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent_1_1my_feeder.html">myFeeder</a> f) {</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;        <span class="keywordtype">int</span> binNum;</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;        <span class="keywordtype">int</span> feederNum;</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;        binNum=b.<a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent_1_1my_bin.html#aa1633a95f898c7696b1a0afa948ef59f">index</a>;</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;        feederNum=f.<a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent_1_1my_feeder.html#a5c8668b8fa0fcd84e88ff8615ee54254">index</a>;</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;        <span class="comment">//animation commands.</span></div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;        <span class="comment">/*</span></div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;<span class="comment">         * THE BINNUM IS OBTAINED BY b.index, each bin has 8 parts of one type(Part part)</span></div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;<span class="comment">         * TO DETERMINE WHICH FEEDER IT GOES TO, USE f.index (that&#39;s initialized through constructor)</span></div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;<span class="comment">         * YOU COULD USE WHILE LOOP AFTER EVERY ANIMATION FUNCTION SO THAT IT WAITS UNTIL THE ANIMATION IS FINISHED TO START THE NEXT ANIMATION</span></div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;<span class="comment">         * */</span></div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;        <span class="comment">//animation.goToBin(binNum);</span></div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        <span class="comment">//animation.pickUpBin(binNum);</span></div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;        <span class="comment">//animation.goToFeeder(feederNum);</span></div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;        <span class="comment">//animation.putOffBin();</span></div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;        </div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;        f.<a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent_1_1my_feeder.html#afc94f54d672a54b57ac6bfc7722ee44b">feeder</a>.<a class="code" href="interfacefactory_1_1factory201_1_1interfaces_1_1_factory_base.html#ae77b216d2f4acc4d7446e334528b955a">msgHereAreParts</a>(b.<a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent_1_1my_bin.html#afffac204f0857e06dec38bebe39cd238">part</a>, f.<a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent_1_1my_feeder.html#a0cb94b6fabbcce2599c4db772b708877">requested_qty</a>);</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;        f.<a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent_1_1my_feeder.html#a2d122abacb62c817411be1765a868333">requestState</a>=<span class="keyword">false</span>;</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;        </div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;        <span class="comment">//update the quantity of bins</span></div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;        b.<a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent_1_1my_bin.html#a4d17cf53abb0419196156c23af8eec3c">quantity</a>=b.<a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent_1_1my_bin.html#a4d17cf53abb0419196156c23af8eec3c">quantity</a>-1;</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;       </div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;        <a class="code" href="classagent_1_1_agent.html#a44f653501d47022141315a1835e9927a">stateChanged</a>();</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    }</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;</div>
+<div class="line"><a name="l00238"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent.html#ad484b12bb602035a3ef7d8cb784c3c2e">  238</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent.html#ad484b12bb602035a3ef7d8cb784c3c2e">setFeeder</a>(<a class="code" href="interfacefactory_1_1factory201_1_1interfaces_1_1_feeder.html">Feeder</a> <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent.html#a2ff5b62c33917ca38ca2229c78a69b00">feeder</a>,<span class="keywordtype">int</span> index) {</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    <span class="comment">//add feeders to the list</span></div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent.html#a4d5ddf943c38a1d7b344571b4e41e807">myFeeders</a>.add(<span class="keyword">new</span> <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent_1_1my_feeder.html">myFeeder</a>(feeder,index));</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    }</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    @Override <span class="comment">//Unimplemented</span></div>
+<div class="line"><a name="l00244"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent.html#a238f376f0b726d62d90055a94ea53f34">  244</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent.html#a238f376f0b726d62d90055a94ea53f34">msgHereAreParts</a>(<a class="code" href="classfactory_1_1general_1_1_part.html" title="digital representation of a part">Part</a> part, <span class="keywordtype">int</span> quantity) {</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;        <span class="comment">// TODO Auto-generated method stub</span></div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    }</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    @Override <span class="comment">//Unimplemented</span></div>
+<div class="line"><a name="l00249"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent.html#a29ed83e6844be0a4fe52bdc45c0b4803">  249</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent.html#a29ed83e6844be0a4fe52bdc45c0b4803">msgNeedPart</a>(<a class="code" href="classfactory_1_1general_1_1_part.html" title="digital representation of a part">Part</a> part) {</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;        <span class="comment">// TODO Auto-generated method stub</span></div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;        </div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    }</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Oct 28 2012 21:37:53 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Nov 4 2012 12:20:00 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>
