@@ -99,7 +99,7 @@ public class GUIPartRobot extends GUIRobot {
     }
     public Collection<Part> removePart()
     {
-	return this.parts.getCollection();
+	return this.parts.getAll();
     }
     /**
 @brief pops the order and performs it
