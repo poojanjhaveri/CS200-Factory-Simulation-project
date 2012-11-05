@@ -87,7 +87,7 @@ public class CameraAgent extends Agent implements Camera {
 //        } else {
 //            
 //        }
-//        DoInspectKit(kit);
+        DoInspectKit(kit);
         kitRobotAgent.msgKitInspected(true);
         stateChanged();
     }
@@ -106,7 +106,7 @@ public class CameraAgent extends Agent implements Camera {
 //                flag = true;
 //            }
 //        }
-//        DoInspectNest(nest.nestNum);
+        DoInspectNest(nest);
         kitRobotAgent.msgKitInspected(true);
         stateChanged();
     }
@@ -118,5 +118,19 @@ public class CameraAgent extends Agent implements Camera {
 
     public void setNestAgent(NestInterface agent) {
         nestAgent = agent;
+    }
+
+    private void DoInspectKit(Kit kit) {
+        int standNum;
+        switch(kit.standNum) {
+            case zero: standNum = 0; break;
+            case one: standNum = 1; break;
+            case two: standNum = 2; break;
+            default: standNum = -1; break;
+        }
+    }
+
+    private void DoInspectNest(Nest nest) {
+        
     }
 }
