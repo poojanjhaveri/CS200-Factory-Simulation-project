@@ -103,6 +103,25 @@ public class KitAssemblyManager extends Manager implements ActionListener {
                 this.graphics.repaint();
             }
         }
+        if(ae.getSource()==moveKit){
+            this.graphics.kitbot.moveEmptyKitToActive();
+        }  
+        if(ae.getSource()==partRobot){
+            this.graphics.kitter.moveToNest(0);
+            this.graphics.kitter.pickPartCommand(0);
+            this.graphics.kitter.pickPartCommand(0);
+            this.graphics.kitter.pickPartCommand(0);
+            this.graphics.kitter.pickPartCommand(0);
+            this.graphics.kitter.moveToKit();
+            this.graphics.kitter.dropPartCommand();
+        }
+        if(ae.getSource()==kitRobotKitStand){
+            this.graphics.kitbot.moveActiveKitToInspection();
+        }
+        
+        if(ae.getSource()==kitRobotFull){
+            this.graphics.kitbot.dropOffFullKit();
+        }
           
         if (ae.getSource() == kitRobotEmpty) {
             //System.out.println("GOGOGO");
@@ -146,12 +165,16 @@ public class KitAssemblyManager extends Manager implements ActionListener {
     JButton kitRobotFull;
     JButton cameraNest;
     JButton cameraKitStand;
+    JButton moveKit;
       public JPanel TestPanel() {
         JPanel tester = new JPanel();
         tester.setLayout(new BoxLayout(tester, BoxLayout.Y_AXIS));
         partRobot = new JButton("Move Part Robot (Nest -> Kit Stand)");
         partRobot.addActionListener(this);
         tester.add(partRobot);
+        moveKit = new JButton("Move Kit (Position 0->1)");
+        moveKit.addActionListener(this);
+        tester.add(moveKit);
         kitRobotKitStand = new JButton("Move Kit Robot (Full Kit -> Camera Inspected)");
         kitRobotKitStand.addActionListener(this);
         tester.add(kitRobotKitStand);

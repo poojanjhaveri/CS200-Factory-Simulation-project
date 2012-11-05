@@ -12,6 +12,7 @@ package factory.factory200.kitAssemblyManager;
  *
  * @author Deepa
  */
+import factory.general.Part;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.geom.*;
@@ -164,9 +165,9 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
 		    break;
                 }
             }
-	    if(!partsbot.moving())
+	    if(!kitter.moving())
 		{
-                Integer order = partsbot.getOrder();
+                Integer order = kitter.getOrder();
                 switch (order) {
 		    //0-7 - pick up part nest 0-7
 		    //8 - drop parts onto kit
@@ -178,9 +179,9 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
 		case 5:
 		case 6:
 		case 7:
-		    this.partsrobot.addPart(this.nest.get(order).getPart());
-		case 8:this.kits.get(2).givePart(this.partsrobot.getCollectioN());		
-default:partsbot.performOrder();
+		    kitter.addPart(nest.get(order).getPart());
+		case 8:kitstand.getKitPositions().get(2).getKit().addPart(kitter.removePart());		
+                default:kitter.performOrder();
 		}
 
 		}
@@ -231,10 +232,10 @@ default:partsbot.performOrder();
             cameraCounter = 0;
         }
         kitter.getImage().paintIcon(this, g2, kitter.getCoordinate().getX(), kitter.getCoordinate().getY());
-	LinkedList<Part> kitterparts= kitter.getAll();
+	LinkedList<Part> kitterparts= kitter.getPart();
 	for(int i = 0; i != kitterparts.size(); i++)
 	    {
-		kitterparts.get(i).getGUIPart().getImageIcon().paintIcon(this, g2, kitterparts.get(i).getGUIPart().getCoordinate().getX(), kitterparts.get(i).getGUIPart().getCoordinate().getY())
+		kitterparts.get(i).getGUIPart().getImage().paintIcon(this, g2, kitterparts.get(i).getGUIPart().getX(), kitterparts.get(i).getGUIPart().getY());
 	    }
     }
 

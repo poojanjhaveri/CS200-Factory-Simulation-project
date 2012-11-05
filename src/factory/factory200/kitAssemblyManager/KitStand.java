@@ -45,7 +45,7 @@ public class KitStand {
         for(int i=1;i<=3;i++){
             kitPositions.add(new KitPosition());
         }
-        int startingX=x+25;
+        /*int startingX=x+25;
         int startingY=y+10;
         
         kitPositions.get(0).setX(startingX);
@@ -54,7 +54,7 @@ public class KitStand {
         kitPositions.get(1).setX(startingX);
         kitPositions.get(1).setY(startingY+125);
         kitPositions.get(2).setX(startingX);
-        kitPositions.get(2).setY(startingY+250);
+        kitPositions.get(2).setY(startingY+250);*/
         
         
     }
@@ -89,7 +89,7 @@ public class KitStand {
         KAMKit returnKit=null;
         if(y==0){
             returnKit=kitPositions.get(0).getKit();
-            kitPositions.get(0).setFilled(false);
+           kitPositions.get(0).setFilled(false);
         }
         else if(y==1){
             returnKit=kitPositions.get(1).getKit();

@@ -15,7 +15,7 @@ public class KitPosition {
         private int y;
         
         public KitPosition(){
-            kit=new KAMKit();
+            kit=null;
             filled=false;
         }
 
@@ -25,6 +25,8 @@ public class KitPosition {
         public KAMKit getKit() {
             return kit;
         }
+        
+        
 
         /**
          * @param kit the kit to set
