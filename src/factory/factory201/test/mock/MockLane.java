@@ -3,12 +3,13 @@ package factory.factory201.test.mock;
 import factory.factory201.test.mock.LoggedEvent;
 import factory.factory201.test.mock.EventLog;
 import factory.factory201.interfaces.Lane;
+import factory.factory201.partsManagement.NestAgent;
 import factory.general.Part;
 
 public class MockLane extends MockAgent implements Lane{
 
 	public EventLog log = new EventLog();
-	
+	NestAgent nest;
 	public MockLane(String name) {
 		super(name);
 		// TODO Auto-generated constructor stub
@@ -17,7 +18,7 @@ public class MockLane extends MockAgent implements Lane{
 	@Override
 	public void msgNeedPart(Part part) {
 		// TODO Auto-generated method stub
-		
+		nest.msgHereAreParts(part, 8);
 	}
 
 	@Override
@@ -30,5 +31,8 @@ public class MockLane extends MockAgent implements Lane{
 						));		
 	
 	}
+        public void setNestAgent(NestAgent n){
+            this.nest=n;
+        }
 
 }
