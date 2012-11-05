@@ -20,14 +20,14 @@ public class Nest {
     public Status status;
     public List<Part> parts = new ArrayList<Part>();
     public enum Status {none, needPart, gettingPart, full, gettingInspected, readyForKit, purge};
-    public int threshold;
+    public int threshold = 9;
     public Part part;
     public int howMany = 0;
     public LaneAgent lane;
         
         public Nest (Part p, int nestNumber){
         	this.part = p;
-        	this.threshold = 10/p.getSize();
+        	//this.threshold = 10/p.getSize();
         	this.status = Status.needPart;
                 this.nestNum = nestNumber;
         }
@@ -37,7 +37,7 @@ public class Nest {
         }
         public void setPart(Part p){
         	this.part = p;
-        	this.threshold = 10/p.getSize();
+        	//this.threshold = 10/p.getSize();
         }
         
         public void setLane(LaneAgent lane){

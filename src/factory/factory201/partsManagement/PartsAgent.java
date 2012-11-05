@@ -55,8 +55,8 @@ public class PartsAgent extends Agent implements PartsInterface{
 
     
     
-    public void msgEmptyKitReady(int num) {
-        switch (num) {
+    public void msgEmptyKitReady(Kit kit) {
+       /* switch (kit.num) {
             case 1:
                 kit.standNum = Kit.StandNum.zero;
                 break;
@@ -68,8 +68,8 @@ public class PartsAgent extends Agent implements PartsInterface{
                 break;
             default:
                 kit.standNum = Kit.StandNum.none;
-        }
-        print("got an empty kit for stand #" + num);
+        }*/
+        print("got an empty kit for stand #" + kit.standNum);
         stateChanged();
     }
 //Scheduler
@@ -111,6 +111,7 @@ public class PartsAgent extends Agent implements PartsInterface{
     }
     
     private void startNewKit(Kit k){
+        print("New kit being started");
     	kitNeedsParts.clear();
     	this.kit = k;
     	for(int i=0; i<kit.getSize(); i++){
@@ -151,8 +152,5 @@ public class PartsAgent extends Agent implements PartsInterface{
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    @Override
-    public void msgEmptyKitReady(Kit kit) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+
 }

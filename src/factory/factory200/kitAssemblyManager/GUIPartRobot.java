@@ -22,7 +22,7 @@ Orders
 18 - move to kit
  * @brief Robot that creates kits using parts from the lane nests
  * @author YiWei Roy Zheng
- * @version 0.1
+ * @version 0.5
  */
 public class GUIPartRobot extends GUIRobot {
 

@@ -16,5 +16,6 @@ public interface PartsInterface extends FactoryBase{
     public void msgHereIsPart(Part part);
     
     public void msgEmptyKitReady(Kit kit);
+    public void msgHereIsKit(Kit kit);
     
 }
