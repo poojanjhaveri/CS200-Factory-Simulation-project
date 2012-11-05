@@ -121,33 +121,31 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
                 }
             }
             if (!kitbot.moving()) {
-                Integer order = kitbot.popOrder();
+                Integer order = kitbot.getOrder();
                 switch (order) {
                     case 0:
                         if (delivery.inPosition()) {
                             kitbot.giveKit(delivery.giveKit());
+			    kitbot.popOrder();
                             //System.out.println("Picking up kit");
-                        } else {
-                            kitbot.returnOrder(0);
-                        }
-
+			}
                         break;
-                    case 10:
-                        kitbot.moveToConveyer();
-                        //System.out.println("Moving to conveyer");
-                        break;
-                    case 11:
-                        kitbot.moveToKit(0);
-                        break;
-                    case 12:
-                        kitbot.moveToKit(1);
-                        //System.out.println("Moving to kit1");
-                        break;
-                    case 13:
-                        kitbot.moveToKit(2);
-                        break;
-
-
+		case 1:this.kitbot.giveKit(this.kitstand.giveKit(0));
+		    break;
+		case 2:this.kitbot.giveKit(this.kitstand.giveKit(1));
+		    break;
+		case 3:this.kitbot.giveKit(this.kitstand.giveKit(2));
+		    break;
+		case 4:this.kitstand.takeKit(this.kitbot.dropKit());
+		    break;
+		case 5:this.kitstand.takeKit(this.kitbot.dropKit());
+		    break;
+		case 6:this.kitstand.takeKit(this.kitbot.dropKit());
+		    break;
+		case 7:this.kitstand.takeKit(this.kitbot.dropKit());
+		    break;
+		default:kitbot.performOrder();
+		    break;
                 }
             }
             kitbot.update();

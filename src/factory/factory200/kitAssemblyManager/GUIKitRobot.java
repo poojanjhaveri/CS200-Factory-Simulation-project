@@ -48,7 +48,7 @@ public class GUIKitRobot extends GUIRobot {
     /**
     sets a new lane destination coordinate for KitterRobot, the passed Integer specifies which lane to head to
     */
-    public void moveToKit(Integer l) {
+    private void moveToKit(Integer l) {
         switch(l)
         {
         case 0:
@@ -64,11 +64,18 @@ public class GUIKitRobot extends GUIRobot {
         }
     }
     /**
-    moves to the conveyer
+@brief moves to the position to drop off full kits
      */
-    public void moveToConveyer()
+    private void moveToFullConveyer()
     {
-        this.moveTo(KAMGraphicPanel.CONVEYERX,KAMGraphicPanel.CONVEYERY);
+	this.moveTo(KAMGraphicPanel.FULL_CONVEYERX,KAMGraphicPanel.FULL_CONVEYERY);
+    }
+    /**
+@brief    moves to the position on the  conveyer for empty kits
+     */
+    private void moveToEmptyConveyer()
+    {
+        this.moveTo(KAMGraphicPanel.EMPTY_CONVEYERX,KAMGraphicPanel.EMPTY_CONVEYERY);
     }
     /**
 @brief moves an empty kit onto the kitstand
@@ -133,9 +140,15 @@ public class GUIKitRobot extends GUIRobot {
     {
         this.kit = in;
     }
-    public void dropKit()
+    public KAMKit dropKit()
     {
+	KAMKit k = this.kit;
         this.kit = null;
+	return k;
+    }
+    public Integer getOrder()
+    {
+return ((this.orders.isEmpty())?-1:this.orders.get(0));
     }
     public Integer popOrder()
     {
@@ -156,5 +169,22 @@ public class GUIKitRobot extends GUIRobot {
     public String toString()
     {
         return super.toString()+("Heading to " +this.moveToX+","+this.moveToY+")");
+    }
+    /**
+@brief pops the order and performs it
+     */
+    public Boolean performOrder()
+    {
+	Integer i = this.popOrder();
+	switch(i)
+	    {
+	    case 9:this.moveToFullConveyer();
+	    case 10:this.moveToEmptyConveyer();
+	    case 11:this.moveToKit(0);
+	    case 12:this.moveToKit(1);
+	    case 13:this.moveToKit(2);
+	    default:return false;
+	    }
+	return true;
     }
 }
