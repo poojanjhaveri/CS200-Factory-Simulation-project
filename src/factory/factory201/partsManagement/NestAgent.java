@@ -1,9 +1,6 @@
 package factory.factory201.partsManagement;
 
-<<<<<<< HEAD
 
-=======
->>>>>>> f94b363f54db50564d74358acf2a093e595e7c9d
 import agent.Agent;
 import factory.factory201.feederManagement.LaneAgent;
 import factory.factory201.interfaces.Lane;
