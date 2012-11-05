@@ -12,6 +12,7 @@ package factory.factory200.kitAssemblyManager;
  *
  * @author Deepa
  */
+import factory.general.GUIPart;
 import factory.general.Part;
 import java.awt.*;
 import java.awt.event.*;
@@ -92,7 +93,7 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
         nest = new ArrayList<KAMNest>();
 
         for (int i = 1; i <= 8; i++) {
-            nest.add(new KAMNest(i));
+            nest.add(new KAMNest());
             nest.get(i - 1).setX(650);
         }
 
@@ -100,6 +101,36 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
         for (int i = 0; i < 8; i++) {
             nest.get(i).setY(yNum + i * 75);
         }
+        
+        //only for version 0
+        ArrayList<Part> parts1 = new ArrayList<Part>();
+        
+        Part part1 = new Part(null, null);
+        GUIPart guipart1=new GUIPart(nest.get(0).getX(),nest.get(0).getY(),0.0,new ImageIcon("pics/part_pic0.png"));
+        part1.setGUIPart(guipart1);
+        parts1.add(part1);
+        
+        Part part2 = new Part(null, null);
+        GUIPart guipart2=new GUIPart(nest.get(0).getX()+5,nest.get(0).getY(),0.0,new ImageIcon("pics/part_pic0.png"));
+        part2.setGUIPart(guipart2);
+        parts1.add(part2);
+        
+        Part part3 = new Part(null, null);
+        GUIPart guipart3=new GUIPart(nest.get(0).getX(),nest.get(0).getY()+5,0.0,new ImageIcon("pics/part_pic0.png"));
+        part3.setGUIPart(guipart3);
+        parts1.add(part3);
+        
+        Part part4 = new Part(null, null);
+        GUIPart guipart4=new GUIPart(nest.get(0).getX()+5,nest.get(0).getY()+5,0.0,new ImageIcon("pics/part_pic0.png"));
+        part4.setGUIPart(guipart4);
+        parts1.add(part4);
+        
+        for(int i=0;i<parts1.size();i++){
+            nest.get(0).setParts(parts1);
+        }
+        
+        
+        
         counter = 0;
         cameraCounter = 0;
         timer = new Timer(20, new DeliveryTimer(this));
@@ -245,6 +276,12 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
 	    {
 		kitterparts.get(i).getGUIPart().getImage().paintIcon(this, g2, kitterparts.get(i).getGUIPart().getX(), kitterparts.get(i).getGUIPart().getY());
 	    }
+        
+        for(int i=0;i<this.nest.get(0).getParts().size();i++){
+            System.out.println(this.nest.get(0).getParts().get(i).getGUIPart());
+            this.nest.get(0).getParts().get(i).getGUIPart().getImage().paintIcon(this, g2, nest.get(0).getParts().get(i).getGUIPart().getX(), nest.get(0).getParts().get(i).getGUIPart().getY());
+        }
+        
     }
 
     public void paintNests(JPanel j, Graphics2D g) {

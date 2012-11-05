@@ -11,9 +11,5 @@ public class GUIPart extends Drawable{
 	super(x,y,r,i);
     }
 
-    public ImageIcon getImage() {
-        return this.img;
-    }
-
 
 }
