@@ -93,7 +93,7 @@ public class KitStand {
         if (kits[0] != null) {
             kits[1] = kits[0];
             kits[1].standNum = Kit.StandNum.one;
-//            DoMoveKitMoveKitFrom0to1();
+            DoMoveKitMoveKitFrom0to1();
             kits[0] = null;
         } else {
             kits[1] = null;
@@ -102,5 +102,9 @@ public class KitStand {
 
     public boolean isEmpty() {
         return (kits[0] == null && kits[1] == null && kits[2] == null);
+    }
+
+    private void DoMoveKitMoveKitFrom0to1() {
+        throw new UnsupportedOperationException("Not yet implemented");
     }
 }

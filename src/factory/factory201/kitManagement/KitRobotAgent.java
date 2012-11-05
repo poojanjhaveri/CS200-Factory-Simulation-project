@@ -1,6 +1,8 @@
 package factory.factory201.kitManagement;
 
 import agent.Agent;
+import factory.factory200.kitAssemblyManager.GUIKitRobot;
+import factory.factory200.kitAssemblyManager.KitDeliveryStation;
 import factory.factory201.interfaces.Camera;
 import factory.factory201.interfaces.Conveyor;
 import factory.factory201.interfaces.KitRobot;
@@ -19,7 +21,8 @@ import factory.general.Kit;
  */
 public class KitRobotAgent extends Agent implements KitRobot {
 
-    KitStand kitStand = new KitStand();
+    private KitStand kitStand = new KitStand();
+    private GUIKitRobot guiKitRobot = new GUIKitRobot();
     private boolean partsAgentNeedsEmptyKit = false;
     private boolean requestedEmptyKit = false;
     private Conveyor conveyor;
@@ -108,7 +111,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
     // ********** ACTIONS **********
     private void sendVerifiedKitToConveyor() {
         Kit k = kitStand.remove(2);
-//        DoRemoveVerifiedKit(k);
+        DoRemoveVerifiedKit(k);
         conveyor.msgHereIsVerifiedKit(k);
         stateChanged();
     }
@@ -116,7 +119,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
     private void moveFullKitToInspection() {
         while (!kitStand.inspectionStandIsEmpty()) {
         }
-//        DoMoveFullKitToInspection();
+        DoMoveFullKitToInspection();
         kitStand.moveFullKitToInspection();
         camera.msgKitIsFull(kitStand.get(2));
         stateChanged();
@@ -134,7 +137,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
     }
 
     private void getEmptyKitFromConveyor() {
-//        DoGetEmptyKit();
+        DoGetEmptyKit();
         conveyor.msgNeedEmptyKit();
         stateChanged();
     }
@@ -150,5 +153,17 @@ public class KitRobotAgent extends Agent implements KitRobot {
 
     public void setPartsAgent(PartsInterface agent) {
         partsAgent = agent;
+    }
+
+    private void DoRemoveVerifiedKit(Kit k) {
+        KitDeliveryStation guiConveyor = ((ConveyorAgent) conveyor).guiConveyor;
+    }
+
+    private void DoMoveFullKitToInspection() {
+        
+    }
+
+    private void DoGetEmptyKit() {
+        KitDeliveryStation guiConveyor = ((ConveyorAgent) conveyor).guiConveyor;
     }
 }
