@@ -4,6 +4,7 @@ package factory.factory200.kitAssemblyManager;
 import factory.general.GUIRobot;
 import factory.general.Part;
 
+import java.util.Collection;
 /**
  * The GUIPartRobot obtains parts from the nest and places it into the working
  * kit. It takes orders from the Kit Assembly Manager. It has pickup
@@ -90,8 +91,8 @@ public class GUIPartRobot extends GUIRobot {
     {
 	this.parts.addPart(in);
     }
-    public Part removePart()
+    public Collection<Part> removePart()
     {
-	return this.parts.get();
+	return this.parts.getCollection();
     }
 }

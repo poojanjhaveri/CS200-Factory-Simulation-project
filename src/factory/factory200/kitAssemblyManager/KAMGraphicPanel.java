@@ -26,7 +26,7 @@ import javax.swing.Timer;
 public class KAMGraphicPanel extends JPanel implements ActionListener {
 
     public static final int KITROBOT_INITIAL_X = 175;///<kit robot default position (x)
-    public static final int KITROBOT_INITIAL_Y = 350;///<kit robot default position (y)
+    public static final int KITROBOT_INITIAL_Y = 325;///<kit robot default position (y)
     public static final int KITROBOT_VELOCITYX = 2;
     public static final int KITROBOT_VELOCITYY = 2;
     public static final Double KITROBOT_ROTATION_SPEED = 20.0;

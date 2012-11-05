@@ -1,6 +1,7 @@
 package factory.factory200.kitAssemblyManager;
 
 import java.util.LinkedList;
+import java.util.Collection;
 import factory.general.Inventory;
 import factory.general.Part;
 import factory.general.Coordinate;
@@ -36,6 +37,10 @@ public class PartsRobotInventory implements Inventory {
     public Part get()
     {
         return this.parts.poll();
+    }
+    public Collection getCollection()
+    {
+	return (Collection)this.parts;
     }
     public void update(Coordinate in)
     {
