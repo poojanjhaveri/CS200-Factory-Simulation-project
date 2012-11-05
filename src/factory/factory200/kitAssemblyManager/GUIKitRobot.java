@@ -10,7 +10,6 @@ import java.util.LinkedList;
  * base and extending the arm, but is incapable of moving from its base. <img
  * src="../img/image04.png" alt="idle GuiKitRobot"/> <img
  * src="../img/image10.png" alt="GuiKitRobot with active kit"/>
-
 A queue of orders
 0 - pick up kit from conveyer
 1 -
