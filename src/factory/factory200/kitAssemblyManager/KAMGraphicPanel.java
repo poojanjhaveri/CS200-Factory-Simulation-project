@@ -253,7 +253,7 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
                 if(kitstand.getKitPositions().get(i).getKit().getParts().size()>0){
                     //System.out.println("PRINTING PARTS");
                     for(int j=0;j<kitstand.getKitPositions().get(i).getKit().getParts().size();i++){
-                       System.out.println(j);
+                       //System.out.println(j);
                        kitstand.getKitPositions().get(i).getKit().getParts().get(j).getGUIPart().getImage().paintIcon(this, g2, kitstand.getKitPositions().get(i).getKit().getParts().get(j).getGUIPart().getX(), kitstand.getKitPositions().get(i).getKit().getParts().get(j).getGUIPart().getX()); 
                     }
                 }
