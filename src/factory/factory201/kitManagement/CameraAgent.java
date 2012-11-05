@@ -114,7 +114,7 @@ public class CameraAgent extends Agent implements Camera {
     }
 
     // ************ MISC ***********
-    public void setKitRobotAgent(KitRobotAgent agent) {
+    public void setKitRobotAgent(KitRobot agent) {
         kitRobotAgent = agent;
     }
 

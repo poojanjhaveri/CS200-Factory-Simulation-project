@@ -144,11 +144,11 @@ public class KitRobotAgent extends Agent implements KitRobot {
     }
 
     // ************ MISC ***********
-    public void setConveyor(ConveyorAgent agent) {
+    public void setConveyor(Conveyor agent) {
         conveyor = agent;
     }
 
-    public void setCamera(CameraAgent agent) {
+    public void setCamera(Camera agent) {
         camera = agent;
     }
 
