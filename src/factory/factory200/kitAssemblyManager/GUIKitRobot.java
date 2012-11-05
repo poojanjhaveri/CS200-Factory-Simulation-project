@@ -30,6 +30,7 @@ A queue of orders
  *
  * @brief Robot that moves kits in the KitWorkingArea
  * @author YiWei Roy Zheng
+ * @version 1.0
  */
 public class GUIKitRobot extends GUIRobot {
 
