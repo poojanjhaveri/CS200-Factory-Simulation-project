@@ -158,17 +158,13 @@ public class GUIKitRobot extends GUIRobot {
         this.kit = null;
 	return k;
     }
-    public Integer getOrder()
-    {
-return ((this.orders.isEmpty())?-1:this.orders.get(0));
-    }
     public Integer popOrder()
     {
 	if(this.orders.size() == 1)
 	    {
 		this.orders.add(20);
 	    }
-        return ((this.orders.isEmpty())?-1:this.orders.poll());
+	return super.popOrder();
     }
     public Boolean hasKit()
     {
