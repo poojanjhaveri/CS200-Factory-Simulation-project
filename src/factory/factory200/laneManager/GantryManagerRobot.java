@@ -6,14 +6,20 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.border.LineBorder;
 
-
+/**
+ * @brief Robot class
+ * @author Dongyoung Jung
+ */
 public class GantryManagerRobot extends JLabel{
 	
-	private int xCoor;
-	private int yCoor;
-	private static ImageIcon robotWithBinImage = new ImageIcon(".//pics//robotWithBin.png");
-	private static ImageIcon robotWithoutBinImage = new ImageIcon(".//pics//robotWithoutBin.png");
+	private int xCoor;	///< X Coordinate of Robot
+	private int yCoor;	///< Y Coordinate of Robot
 	
+	/**
+	 * @brief Constructor
+	 * @param xCoor : X Coordinate of Robot
+	 * @param yCoor : Y Coordinate of Robot
+	 */
 	public GantryManagerRobot( int xCoor, int yCoor ){
 		this.xCoor = xCoor;
 		this.yCoor = yCoor;
@@ -32,18 +38,24 @@ public class GantryManagerRobot extends JLabel{
 		//-----------------------------------------
 	}
 	
+	/**
+	 * Server keeps sending new location repeatedly.
+	 * As signal comes in, robot sets its location to the new location.
+	 * 
+	 * @brief Relocation
+	 * @param destX : X Coordinate of new location
+	 * @param destY : Y Coordinate of new location
+	 */
 	public void moveTo( int destX, int destY ){
 		setLocation(destX, destY);
 	}
 	
-	public void pickUpBin(){
-		setIcon(robotWithBinImage);
-	}
-	
-	public void putOffBin(){
-		setIcon(robotWithoutBinImage);
-	}
-	
+	/**
+	 * As the robot reaches any location, the robot color changes.
+	 * 
+	 * @brief Color change
+	 * @param colorNum : color number
+	 */
 	public void colorChange(int colorNum){
 		// At Feeders
 		if( colorNum == 0 ){ setBackground(Color.lightGray); }

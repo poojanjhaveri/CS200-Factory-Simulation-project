@@ -21,22 +21,25 @@ import javax.swing.Timer;
 
 /**
  *
- * @author Deepa
+ * @author Deepa, YiWei Roy Zheng
  */
 public class KAMGraphicPanel extends JPanel implements ActionListener {
 
-    public static final int KITROBOT_INITIAL_X = 175;
-    public static final int KITROBOT_INITIAL_Y = 150;
+    public static final int KITROBOT_INITIAL_X = 175;///<kit robot default position (x)
+    public static final int KITROBOT_INITIAL_Y = 325;///<kit robot default position (y)
     public static final int KITROBOT_VELOCITYX = 2;
     public static final int KITROBOT_VELOCITYY = 2;
-    public static final Double KITROBOT_ROTATION_SPEED=20.0;
+    public static final Double KITROBOT_ROTATION_SPEED = 20.0;
     public static final int KITX = 275 + 25;
     public static final int KIT0Y = 150 + 10;
     public static final int KIT1Y = 150 + 10 + 125;
     public static final int KIT2Y = 150 + 10 + 250;
     //took into consideration kit stand positioning
-    public static final int CONVEYERX = 0;
-    public static final int CONVEYERY = 0;
+    public static final int EMPTY_CONVEYERX = 25;
+    public static final int EMPTY_CONVEYERY = 300;
+    public static final int FULL_CONVEYERX=25;
+    public static final int FULL_CONVEYERY=500;
+            
     public static final Integer LANE0Y = 0;///<y-coordinate of lane 0's nest
     public static final Integer LANE1Y = 0;///<y-coordinate of lane 1's nest
     public static final Integer LANE2Y = 0;///<y-coordinate of lane 2's nest
@@ -46,9 +49,11 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
     public static final Integer LANE6Y = 0;///<y-coordinate of lane 6's nest
     public static final Integer LANE7Y = 0;///<y-coordinate of lane 7's nest
     public static final Integer RAILX = 0;///<fixed x-coordinate of the rail the parts robot traverses
-    public static final Integer PARTSROBOTINITIALX = 0;///<x coordinate for parts robot to spawn in
-    public static final Integer PARTSROBOTINITIALY = 0;///<y coordinate for parts robot to spawn in
-    //public GUIPartRobot kitter;///<declares an object that keeps track of the parts robot animation and graphics
+    public static final Integer PARTS_ROBOT_KITX=KAMGraphicPanel.KITX+20;
+    public static final Integer PARTS_ROBOT_KITY=KAMGraphicPanel.KIT2Y+20;
+    public static final Integer PARTSROBOTINITIALX = 400;///<x coordinate for parts robot to spawn in
+    public static final Integer PARTSROBOTINITIALY = 350;///<y coordinate for parts robot to spawn in
+    public GUIPartRobot kitter;///<declares an object that keeps track of the parts robot animation and graphics
     public GUIKitRobot kitbot;///<declares an object that keeps track of the kit robot animation and graphics
     public KitStand kitstand;///<declares an object that keeps track of what is happening with the kit stand
     public KitDeliveryStation delivery;///<declares an object that keeps track of the delivery station
@@ -56,17 +61,28 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
     ArrayList<KAMNest> nest;
     int emptyKits;
     int counter;
+    int cameraCounter;
+    boolean deliveryStation;
+    Timer timer;
+    boolean stationRun;
 
     public KAMGraphicPanel() {
+        deliveryStation = true;
+        
+        stationRun=true;
+
         kitbot = new GUIKitRobot();
+        
+        kitter=new GUIPartRobot();
+
+        camera = new KAMCamera();
 
 
         kitstand = new KitStand(275, 150);
 
-        camera = new KAMCamera();
 
         //THIS NUMBER IS HARDCODED! should be from server => number of kits that should be made
-        emptyKits = 5;
+        emptyKits = 1;
         delivery = new KitDeliveryStation(emptyKits);
 
         nest = new ArrayList<KAMNest>();
@@ -81,7 +97,8 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
             nest.get(i).setY(yNum + i * 75);
         }
         counter = 0;
-        Timer timer = new Timer(20, new DeliveryTimer(this));
+        cameraCounter = 0;
+        timer = new Timer(20, new DeliveryTimer(this));
         timer.start();
 
     }
@@ -94,16 +111,26 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
             myPanel = jp;
         }
 
-        //KAMGraphicPanel graph=new KAMGraphicPanel();
         public void actionPerformed(ActionEvent ae) {
-
+            if (camera.isVisible()) {
+                cameraCounter++;
+            }
+            //for(int i = 0; i < delivery.getNumEmptyKits(); i++){
+            //if(delivery.getPlaceholder().get(i).getY()==300 && delivery.getPlaceholder().get(i).isShow()){
+            //            deliveryStation=false;
+            //}
+            //}
+                        
             if (delivery.getPlaceholder().get(delivery.getNumEmptyKits() - 1).getY() > -150) {
                 for (int i = 0; i < delivery.getNumEmptyKits(); i++) {
+                    
+                    
                     int yPlace = delivery.getPlaceholder().get(i).getY();
-                    int number = i * 650;
+                    int number = i * 200;
                     if (counter > number) {
                         delivery.getPlaceholder().get(i).setY(yPlace - 1);
                     }
+                    
                 }
                 counter++;
             } else {
@@ -112,8 +139,47 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
                     counter = 0;
                 }
             }
+            if (!kitbot.moving()) {
+                Integer order = kitbot.getOrder();
+                switch (order) {
+                    case 0:
+                        if (delivery.inPosition()) {
+                            kitbot.giveKit(delivery.giveKit());
+			    
+                            //System.out.println("Picking up kit");
+			}
+                        break;
+		case 1:kitbot.giveKit(kitstand.giveKit(0));
+		    break;
+		case 2:kitbot.giveKit(kitstand.giveKit(1));
+		    break;
+		case 3:kitbot.giveKit(kitstand.giveKit(2));
+		    break;
+		case 4:
+                    //KAMKit k = kitbot.dropKit();
+                    //System.out.println(k);
+                    kitstand.takeKit(kitbot.dropKit());
+		    break;
+		case 5:kitstand.takeKit(kitbot.dropKit());
+		    break;
+		case 6:kitstand.takeKit(kitbot.dropKit());
+		    break;
+		case 7://how to drop kit onto placeholder?
+		    break;
+		default:kitbot.performOrder();
+		    break;
+                }
+            }
+            kitbot.update();
             myPanel.repaint();
-
+            if (deliveryStation == false) {
+                for (int i = 0; i < delivery.getNumEmptyKits(); i++) {
+                    if (delivery.getPlaceholder().get(i).getY() == 300) {
+                        delivery.getPlaceholder().get(i).setY(300);
+                        myPanel.repaint();
+                    }
+                }
+            }
         }
     }
 
@@ -132,12 +198,25 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
         for (int i = 0; i < delivery.getNumEmptyKits(); i++) {
             delivery.getPlaceholder().get(i).getPlaceholder().paintIcon(this, g2, delivery.getPlaceholder().get(i).getX(), delivery.getPlaceholder().get(i).getY());
             if (delivery.getPlaceholder().get(i).isShow()) {
-                delivery.getEmptyKits().get(i).getImage().paintIcon(this, g2, delivery.getPlaceholder().get(i).getX() + 10, delivery.getPlaceholder().get(i).getY() + 20);
+                delivery.getPlaceholder().get(i).getKit().getImage().paintIcon(this, g2, delivery.getPlaceholder().get(i).getX() + 10, delivery.getPlaceholder().get(i).getY() + 20);
             }
         }
-        kitbot.update();
-        kitbot.getImage().paintIcon(this, g2, kitbot.getCoordinate().getX(), kitbot.getCoordinate().getY());
 
+        //System.out.println(kitbot);
+        if (kitbot.hasKit()) {
+            kitbot.getKit().getImage().paintIcon(this, g2, kitbot.getCoordinate().getX(), kitbot.getCoordinate().getY());
+        }
+        kitbot.getImage().paintIcon(this, g2, kitbot.getCoordinate().getX(), kitbot.getCoordinate().getY());
+        
+        if (camera.isVisible()) {
+            camera.getCamera().paintIcon(this, g2, camera.getX(), camera.getY());
+
+        }
+        if (camera.isVisible() && cameraCounter == 20) {
+            camera.setVisible(false);
+            cameraCounter = 0;
+        }
+        kitter.getImage().paintIcon(this, g2, kitter.getCoordinate().getX(), kitter.getCoordinate().getY());
     }
 
     public void paintNests(JPanel j, Graphics2D g) {
@@ -146,16 +225,6 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
         }
     }
 
-    public static void main(String[] args) {
-        
-        
-    }
-
-
     public void actionPerformed(ActionEvent ae) {
-      
-
     }
-
- 
 }

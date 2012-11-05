@@ -33,7 +33,7 @@ public class NestAgentTest extends TestCase {
     public void testMsgNeedPart() {
         System.out.println("msgNeedPart");
         Part p = null;
-        NestAgent instance = null;
+        NestInterface instance = null;
         instance.msgNeedPart(p);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -46,7 +46,7 @@ public class NestAgentTest extends TestCase {
         System.out.println("msgHereAreParts");
         Part p = null;
         int quantity = 0;
-        NestAgent instance = null;
+        NestInterface instance = null;
         instance.msgHereAreParts(p, quantity);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -58,7 +58,7 @@ public class NestAgentTest extends TestCase {
     public void testMsgNestInspected() {
         System.out.println("msgNestInspected");
         boolean result_2 = false;
-        NestAgent instance = null;
+        NestInterface instance = null;
         instance.msgNestInspected(result_2);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -69,7 +69,7 @@ public class NestAgentTest extends TestCase {
      */
     public void testPickAndExecuteAnAction() {
         System.out.println("pickAndExecuteAnAction");
-        NestAgent instance = null;
+        NestInterface instance = null;
         boolean expResult = false;
         boolean result = instance.pickAndExecuteAnAction();
         assertEquals(expResult, result);
@@ -82,8 +82,8 @@ public class NestAgentTest extends TestCase {
      */
     public void testSetPartsAgent() {
         System.out.println("setPartsAgent");
-        PartsAgent parts = null;
-        NestAgent instance = null;
+        PartsInterface parts = null;
+        NestInterface instance = null;
         instance.setPartsAgent(parts);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");

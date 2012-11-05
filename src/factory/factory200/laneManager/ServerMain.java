@@ -3,6 +3,8 @@ package factory.factory200.laneManager;
 import factory.factory201.feederManagement.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.concurrent.Semaphore;
+
 import javax.swing.JFrame;
 import javax.swing.Timer;
 
@@ -27,13 +29,15 @@ public class ServerMain extends JFrame{
 	private ServerForAgentGantry agentGantry;	///<Instance of class 'ServerForAgentGantry'
 	private ServerGantryManagerThreadReadFromManager readFromGantryManager;	///<Instance of class 'ServerGantryManagerThreadReadFromManager'
 	
+	public Semaphore anim = new Semaphore(1,true);//binary semaphore, fair
 	// Timer
 	private ThreadTimer threadTimer;	///<Instance of class 'Thread_Timer'
-	private Controller controller;	///<Instance of class 'Controller'
+	//private Controller controller;	///<Instance of class 'Controller'
 	
 	// Agent Thread
-	//private AgentMain agentMain = new AgentMain(this);	///< Runnable Class for Agent
-	//private Thread agentThread = new Thread(agentMain);	///< Thread  for Agent
+	
+	private AgentMain agentMain = new AgentMain(this);	///< Runnable Class for Agent
+	private Thread agentThread = new Thread(agentMain);	///< Thread  for Agent
 		
 	/**
 	 * This class creates a bunch of class instances.
@@ -62,10 +66,10 @@ public class ServerMain extends JFrame{
 		new Thread(threadTimer).start();
 		
 		// Controller (For Test)
-		controller = new Controller(agentFeeder, agentLane, agentNest, agentNestCamera, agentGantry);
+		//controller = new Controller(agentFeeder, agentLane, agentNest, agentNestCamera, agentGantry);
 		
 		// Agent Thread start
-		//agentThread.start();
+		agentThread.start();
 	}
 	
 	/**

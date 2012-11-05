@@ -35,78 +35,6 @@ public class KitStand {
         this.kitPositions = kitPositions;
     }
     
-    public class KitPosition{
-        private KAMKit kit;
-        private boolean filled;
-        private int x;
-        private int y;
-        
-        public KitPosition(int i){
-            kit=new KAMKit(i);
-            filled=false;
-        }
-
-        /**
-         * @return the kit
-         */
-        public KAMKit getKit() {
-            return kit;
-        }
-
-        /**
-         * @param kit the kit to set
-         */
-        public void setKit(KAMKit kit) {
-            this.kit = kit;
-        }
-
-        /**
-         * @return the filled
-         */
-        public boolean isFilled() {
-            return filled;
-        }
-
-        /**
-         * @param filled the filled to set
-         */
-        public void setFilled(boolean filled) {
-            this.filled = filled;
-        }
-
-        /**
-         * @return the x
-         */
-        public int getX() {
-            return x;
-        }
-
-        /**
-         * @param x the x to set
-         */
-        public void setX(int x) {
-            kit.setX(x);
-            this.x = x;
-        }
-
-        /**
-         * @return the y
-         */
-        public int getY() {
-            return y;
-        }
-
-        /**
-         * @param y the y to set
-         */
-        public void setY(int y) {
-            kit.setY(y);
-            this.y = y;
-        }
-        
-        
-        
-    }
     public KitStand(int x, int y){
         kitStand=new ImageIcon("pics/KAMkitStand.png");
         kitPositions=new ArrayList<KitPosition>();
@@ -115,7 +43,7 @@ public class KitStand {
         this.y=y;
         
         for(int i=1;i<=3;i++){
-            kitPositions.add(new KitPosition(i));
+            kitPositions.add(new KitPosition());
         }
         int startingX=x+25;
         int startingY=y+10;
@@ -137,7 +65,42 @@ public class KitStand {
     public ImageIcon getKitStand() {
         return kitStand;
     }
-
+    
+    public void takeKit(KAMKit kit){
+        KAMKit temp=kit;
+        if(kit==null){
+            System.out.println("GIVING KIT STAND A NULL KIT");
+        }
+        if(temp.getX()==kitPositions.get(0).getX() && temp.getY()==kitPositions.get(0).getY()){
+            kitPositions.get(0).setKit(temp);
+            kitPositions.get(0).setFilled(true);
+        }
+        else if(temp.getX()==kitPositions.get(1).getX() && temp.getY()==kitPositions.get(1).getY()){
+            kitPositions.get(1).setKit(temp);
+            kitPositions.get(1).setFilled(true);
+        }
+        else if(temp.getX()==kitPositions.get(1).getX() && temp.getY()==kitPositions.get(1).getY()){
+            kitPositions.get(2).setKit(temp);
+            kitPositions.get(2).setFilled(true);
+        }
+    }
+    
+    public KAMKit giveKit(int y){
+        KAMKit returnKit=null;
+        if(y==0){
+            returnKit=kitPositions.get(0).getKit();
+            kitPositions.get(0).setFilled(false);
+        }
+        else if(y==1){
+            returnKit=kitPositions.get(1).getKit();
+            kitPositions.get(1).setFilled(false);
+        }
+        else if(y==2){
+            returnKit=kitPositions.get(2).getKit();
+            kitPositions.get(2).setFilled(false);
+        }
+        return returnKit;
+    }
     /**
      * @param kitStand the kitStand to set
      */

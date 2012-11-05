@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>Factory Project: src/factory/agentGUI/LaneManagerApp.java Source File</title>
+<title>Factory Project: src/factory/factory200/laneManager/LaneManagerApp.java Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Factory Project
-   &#160;<span id="projectnumber">0.0.0</span>
+   &#160;<span id="projectnumber">0.0.1</span>
    </div>
    <div id="projectbrief">team 1 joint cs200/cs201</div>
   </td>
@@ -81,7 +81,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_339115f1b781ea71218b7406990eb67d.html">factory</a></li><li class="navelem"><a class="el" href="dir_0fbcb044c564e53c6a8070b9db59e579.html">agentGUI</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_339115f1b781ea71218b7406990eb67d.html">factory</a></li><li class="navelem"><a class="el" href="dir_b662cc5d36c2aaaa59f52d3ae73e0f1f.html">factory200</a></li><li class="navelem"><a class="el" href="dir_2854e693a71e6596712ae6abc9d94d87.html">laneManager</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -89,63 +89,61 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">LaneManagerApp.java</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="_lane_manager_app_8java.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;=======</div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">package </span>factory.agentGUI;</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;&gt;&gt;&gt;&gt;&gt;&gt;&gt; e55bea809a4f01ab018a7b8b99f6378440c1052c</div>
+<a href="_lane_manager_app_8java.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">package </span>factory.factory200.laneManager;</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">import</span> java.awt.FlowLayout;</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">import</span> javax.swing.JFrame;</div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">import</span> java.awt.BorderLayout;</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">import</span> java.awt.FlowLayout;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">import</span> java.net.Socket;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">import</span> javax.swing.JFrame;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
-<div class="line"><a name="l00015"></a><span class="lineno"><a class="code" href="class_lane_manager_app.html">   15</a></span>&#160;<span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="class_lane_manager_app.html" title="shows the lane manager section with graphical Panel and GUI panel">LaneManagerApp</a> <span class="keyword">extends</span> JFrame {</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="comment">// Network setting</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno"><a class="code" href="class_lane_manager_app.html#a3187258a161480174ba4aee46e8518d1">   18</a></span>&#160;    <span class="keyword">private</span> <a class="code" href="class_set_network.html" title="waits to receive signals from server">SetNetwork</a> setNetwork = <span class="keyword">new</span> <a class="code" href="class_set_network.html" title="waits to receive signals from server">SetNetwork</a>(<span class="keyword">this</span>);</div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="code" href="class_lane_manager_app.html#a5430b2d0913c829d75d769b92087f44e">   19</a></span>&#160;    <a class="code" href="class_verify_signals_from_server.html" title="interprets signals from server and take an action Signals from server Lane manager application bootup...">VerifySignalsFromServer</a> verify = <span class="keyword">new</span> <a class="code" href="class_verify_signals_from_server.html" title="interprets signals from server and take an action Signals from server Lane manager application bootup...">VerifySignalsFromServer</a>(<span class="keyword">this</span>);</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="comment">// Feeder, Lane, Nest</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno"><a class="code" href="class_lane_manager_app.html#a2a83ff88629befdbc4b1d4ee73eb6f6a">   21</a></span>&#160;    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keywordtype">int</span> feederCount = 4;</div>
-<div class="line"><a name="l00022"></a><span class="lineno"><a class="code" href="class_lane_manager_app.html#a78610fd46de6cd52d7098f57a6f12d47">   22</a></span>&#160;    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keywordtype">int</span> laneCount = 8;</div>
-<div class="line"><a name="l00023"></a><span class="lineno"><a class="code" href="class_lane_manager_app.html#ab4e636e5c71a05b52ebced89184cc08e">   23</a></span>&#160;    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keywordtype">int</span> nestCount = 8;</div>
-<div class="line"><a name="l00024"></a><span class="lineno"><a class="code" href="class_lane_manager_app.html#a9d8107b23f7d8e18dc9ceadb912c5177">   24</a></span>&#160;    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keywordtype">int</span> cameraCount = 4;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="comment">// GUI panel</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno"><a class="code" href="class_lane_manager_app.html#a04d8a93f323fbf8342b48fcbe17b9d41">   26</a></span>&#160;    <span class="keyword">private</span> GUIPanel panelGUI = <span class="keyword">new</span> GUIPanel(feederCount, laneCount, nestCount, <span class="keyword">this</span>);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="comment">// Graphics panel</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno"><a class="code" href="class_lane_manager_app.html#a92d071033b0d270fbe1360f8b50dae03">   28</a></span>&#160;    <span class="keyword">private</span> GraphicsPanel panelGraphics = <span class="keyword">new</span> GraphicsPanel(feederCount, laneCount, nestCount, cameraCount, <span class="keyword">this</span>);</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
-<div class="line"><a name="l00030"></a><span class="lineno"><a class="code" href="class_lane_manager_app.html#a10fbea64e54939e384ce00590e3d10e7">   30</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="class_lane_manager_app.html#a10fbea64e54939e384ce00590e3d10e7">LaneManagerApp</a>() {</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        setSize(880, 700);</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="comment">//setLocationRelativeTo(null);</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        setLocation(450, 50);</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        setVisible(<span class="keyword">true</span>);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        setLayout(<span class="keyword">new</span> FlowLayout(FlowLayout.CENTER, 10, 10));</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        setResizable(<span class="keyword">false</span>);</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        add(panelGraphics, BorderLayout.CENTER);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        add(panelGUI, BorderLayout.EAST);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        panelGUI.updateUI();</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        panelGraphics.updateUI();</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    }</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
-<div class="line"><a name="l00046"></a><span class="lineno"><a class="code" href="class_lane_manager_app.html#a4b3bd0305f6cc777b168ebe24a380ec4">   46</a></span>&#160;    <span class="keyword">public</span> GraphicsPanel <a class="code" href="class_lane_manager_app.html#a4b3bd0305f6cc777b168ebe24a380ec4">getGraphicsPanel</a>() {</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keywordflow">return</span> panelGraphics;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    }</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
-<div class="line"><a name="l00050"></a><span class="lineno"><a class="code" href="class_lane_manager_app.html#af735d1a24bce74ac2a0737a5eac7eb3f">   50</a></span>&#160;    <span class="keyword">public</span> GUIPanel <a class="code" href="class_lane_manager_app.html#af735d1a24bce74ac2a0737a5eac7eb3f">getGUIPanel</a>() {</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordflow">return</span> panelGUI;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    }</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
-<div class="line"><a name="l00054"></a><span class="lineno"><a class="code" href="class_lane_manager_app.html#a37da119eb8f1b8d3c220cdcf20de835e">   54</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_lane_manager_app.html#a37da119eb8f1b8d3c220cdcf20de835e">main</a>(String[] args) {</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keyword">new</span> <a class="code" href="class_lane_manager_app.html" title="shows the lane manager section with graphical Panel and GUI panel">LaneManagerApp</a>();</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    }</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;}</div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_lane_manager_app.html">   10</a></span>&#160;<span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_lane_manager_app.html" title="JFrame Setting.">LaneManagerApp</a> <span class="keyword">extends</span> JFrame{</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    </div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_lane_manager_app.html#aec1392725133a026b8c7239e1f4c002c">   12</a></span>&#160;    <span class="keyword">private</span> <a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_lane_manager_set_network.html" title="Server Setups ( In V0, it is a platform )">LaneManagerSetNetwork</a> <a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_lane_manager_app.html#aec1392725133a026b8c7239e1f4c002c" title="Instance of class &#39;LaneManagerSetNetwork&#39;.">network</a> = <span class="keyword">new</span> <a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_lane_manager_set_network.html" title="Server Setups ( In V0, it is a platform )">LaneManagerSetNetwork</a>(<span class="keyword">this</span>);    </div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_lane_manager_app.html#ae5fcca9fd3d3b7ad171d702ea8ff3cb9">   13</a></span>&#160;    <span class="keyword">private</span> <a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_server_main.html" title="Platform among Gantry Robot Manager, Lane Manager and Agent.">ServerMain</a> <a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_lane_manager_app.html#ae5fcca9fd3d3b7ad171d702ea8ff3cb9" title="Instance of class &#39;ServerMain&#39;.">server</a>;  </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    </div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_lane_manager_app.html#a73e206afdc20877e4fc2d6e3142fdd21">   15</a></span>&#160;    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keywordtype">int</span> <a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_lane_manager_app.html#a73e206afdc20877e4fc2d6e3142fdd21" title="Fixed quantity of feeder.">feederCount</a> = 4;  </div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_lane_manager_app.html#ad794804070b9e959d6fdace96f15a685">   16</a></span>&#160;    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keywordtype">int</span> <a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_lane_manager_app.html#ad794804070b9e959d6fdace96f15a685" title="Fixed quantity of lane.">laneCount</a> = 8;    </div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_lane_manager_app.html#ad944f73e30d2e092bf9bb01e90414871">   17</a></span>&#160;    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keywordtype">int</span> <a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_lane_manager_app.html#ad944f73e30d2e092bf9bb01e90414871" title="Fixed quantity of net.">nestCount</a> = 8;    </div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_lane_manager_app.html#a3d90da47f9fb9d7bbaa320b5f0cef9bd">   18</a></span>&#160;    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keywordtype">int</span> <a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_lane_manager_app.html#a3d90da47f9fb9d7bbaa320b5f0cef9bd" title="Fixed quantity of camera.">cameraCount</a> = 4;  </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    </div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_lane_manager_app.html#a57f9954904e1d054131093b0d3ac2cdb">   20</a></span>&#160;    <span class="keyword">private</span> <a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_lane_manager_g_u_i_panel.html" title="Control GUI Panel.">LaneManagerGUIPanel</a> <a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_lane_manager_app.html#a57f9954904e1d054131093b0d3ac2cdb" title="Instance of class &#39;LaneManagerGUIPanel&#39;.">panelGUI</a> = <span class="keyword">new</span> <a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_lane_manager_g_u_i_panel.html" title="Control GUI Panel.">LaneManagerGUIPanel</a>(<a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_lane_manager_app.html#a73e206afdc20877e4fc2d6e3142fdd21" title="Fixed quantity of feeder.">feederCount</a>, <a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_lane_manager_app.html#ad794804070b9e959d6fdace96f15a685" title="Fixed quantity of lane.">laneCount</a>, <a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_lane_manager_app.html#ad944f73e30d2e092bf9bb01e90414871" title="Fixed quantity of net.">nestCount</a>, <span class="keyword">this</span>);    </div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_lane_manager_app.html#ad8fb4820a6474627f01560bf249f2d6d">   21</a></span>&#160;    <span class="keyword">private</span> <a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_lane_manager_graphics_panel.html" title="Graphics Panel.">LaneManagerGraphicsPanel</a> <a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_lane_manager_app.html#ad8fb4820a6474627f01560bf249f2d6d" title="Instance of class &#39;LaneManagerGraphicsPanel&#39;.">panelGraphics</a> = <span class="keyword">new</span> <a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_lane_manager_graphics_panel.html" title="Graphics Panel.">LaneManagerGraphicsPanel</a>(<a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_lane_manager_app.html#a73e206afdc20877e4fc2d6e3142fdd21" title="Fixed quantity of feeder.">feederCount</a>, <a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_lane_manager_app.html#ad794804070b9e959d6fdace96f15a685" title="Fixed quantity of lane.">laneCount</a>, <a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_lane_manager_app.html#ad944f73e30d2e092bf9bb01e90414871" title="Fixed quantity of net.">nestCount</a>, <a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_lane_manager_app.html#a3d90da47f9fb9d7bbaa320b5f0cef9bd" title="Fixed quantity of camera.">cameraCount</a>, <span class="keyword">this</span>);    </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    </div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_lane_manager_app.html#a35f51ba6b2a47663b134ab5176fe20ff">   27</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_lane_manager_app.html#a35f51ba6b2a47663b134ab5176fe20ff" title="Constructor.">LaneManagerApp</a>(<a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_server_main.html" title="Platform among Gantry Robot Manager, Lane Manager and Agent.">ServerMain</a> <a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_lane_manager_app.html#ae5fcca9fd3d3b7ad171d702ea8ff3cb9" title="Instance of class &#39;ServerMain&#39;.">server</a>){</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        this.server = <a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_lane_manager_app.html#ae5fcca9fd3d3b7ad171d702ea8ff3cb9" title="Instance of class &#39;ServerMain&#39;.">server</a>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        setTitle(<span class="stringliteral">&quot;Lane Manager&quot;</span>);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        setSize(870,700);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        setLocation(490,0);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        setVisible(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        setLayout(<span class="keyword">new</span> FlowLayout(FlowLayout.CENTER, 10, 10));</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        setResizable(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        add( <a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_lane_manager_app.html#ad8fb4820a6474627f01560bf249f2d6d" title="Instance of class &#39;LaneManagerGraphicsPanel&#39;.">panelGraphics</a> );</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        add( <a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_lane_manager_app.html#a57f9954904e1d054131093b0d3ac2cdb" title="Instance of class &#39;LaneManagerGUIPanel&#39;.">panelGUI</a> );</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_lane_manager_app.html#a57f9954904e1d054131093b0d3ac2cdb" title="Instance of class &#39;LaneManagerGUIPanel&#39;.">panelGUI</a>.updateUI();</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_lane_manager_app.html#ad8fb4820a6474627f01560bf249f2d6d" title="Instance of class &#39;LaneManagerGraphicsPanel&#39;.">panelGraphics</a>.updateUI();</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    }</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    </div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_lane_manager_app.html#aea1a593f709a2cf7ac384f89455ba8b1">   48</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_lane_manager_graphics_panel.html" title="Graphics Panel.">LaneManagerGraphicsPanel</a> <a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_lane_manager_app.html#aea1a593f709a2cf7ac384f89455ba8b1" title="Getter.">getGraphicsPanel</a>(){</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_lane_manager_app.html#ad8fb4820a6474627f01560bf249f2d6d" title="Instance of class &#39;LaneManagerGraphicsPanel&#39;.">panelGraphics</a>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    }</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    </div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_lane_manager_app.html#ae06d0d41d19ad2dd817152e18a7c4794">   56</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_lane_manager_g_u_i_panel.html" title="Control GUI Panel.">LaneManagerGUIPanel</a> <a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_lane_manager_app.html#ae06d0d41d19ad2dd817152e18a7c4794" title="Getter.">getGUIPanel</a>(){</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_lane_manager_app.html#a57f9954904e1d054131093b0d3ac2cdb" title="Instance of class &#39;LaneManagerGUIPanel&#39;.">panelGUI</a>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    }</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    </div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_lane_manager_app.html#ab9c9720200dc15bc2a26c029d820d094">   64</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_lane_manager_set_network.html" title="Server Setups ( In V0, it is a platform )">LaneManagerSetNetwork</a> <a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_lane_manager_app.html#ab9c9720200dc15bc2a26c029d820d094" title="Getter.">getNetwork</a>(){</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_lane_manager_app.html#aec1392725133a026b8c7239e1f4c002c" title="Instance of class &#39;LaneManagerSetNetwork&#39;.">network</a>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    }</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    </div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_lane_manager_app.html#ac1876f0cb87280425893eaedbcb72d75">   72</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_server_main.html" title="Platform among Gantry Robot Manager, Lane Manager and Agent.">ServerMain</a> <a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_lane_manager_app.html#ac1876f0cb87280425893eaedbcb72d75" title="Getter.">getServer</a>(){</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_lane_manager_app.html#ae5fcca9fd3d3b7ad171d702ea8ff3cb9" title="Instance of class &#39;ServerMain&#39;.">server</a>;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    }</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Oct 28 2012 21:37:53 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Nov 4 2012 12:20:00 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

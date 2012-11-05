@@ -6,10 +6,15 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.border.LineBorder;
 
-
+/**
+ * This class contains information of bins.
+ * 
+ * @brief Bin
+ * @author Dongyoung Jung
+ */
 public class GantryManagerBinWithParts extends JLabel{
 
-	private int binNum;
+	private int binNum;	///< Bin number
 	
 	//-----------------------------------------------------------------------------------------------------------------------
 	// Image version
@@ -35,6 +40,14 @@ public class GantryManagerBinWithParts extends JLabel{
 	private static String binBoxString7 = new String("BIN8");
 	//-----------------------------------------------------------------------------------------------------------------------
 	
+	/**
+	 * This function helps graphically which box has which part.
+	 * 
+	 * @brief Bin Recognition
+	 * @param xCoor : X Coordinate
+	 * @param yCoor : Y Coordinate
+	 * @param binNum : Bin number
+	 */
 	public GantryManagerBinWithParts( int xCoor, int yCoor, int binNum ){
 		this.binNum = binNum;
 		setSize(40,70);
@@ -65,6 +78,5 @@ public class GantryManagerBinWithParts extends JLabel{
 		else if( binNum == 6 ){ setText(binBoxString6); setBackground(Color.yellow); }
 		else if( binNum == 7 ){ setText(binBoxString7); setBackground(Color.darkGray);}
 		//-----------------------------------------------------------------------
-		
 	}	
 }

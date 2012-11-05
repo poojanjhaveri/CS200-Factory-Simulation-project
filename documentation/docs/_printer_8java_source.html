@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>Factory Project: src/factory/Printer.java Source File</title>
+<title>Factory Project: src/factory/general/Printer.java Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Factory Project
-   &#160;<span id="projectnumber">0.0.0</span>
+   &#160;<span id="projectnumber">0.0.1</span>
    </div>
    <div id="projectbrief">team 1 joint cs200/cs201</div>
   </td>
@@ -81,7 +81,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_339115f1b781ea71218b7406990eb67d.html">factory</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_339115f1b781ea71218b7406990eb67d.html">factory</a></li><li class="navelem"><a class="el" href="dir_247a0a6ec2c66846e1a570c88dd3b8bc.html">general</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -89,48 +89,48 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">Printer.java</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="_printer_8java.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">package </span>factory;</div>
+<a href="_printer_8java.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">package </span>factory.general;</div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div>
-<div class="line"><a name="l00009"></a><span class="lineno"><a class="code" href="classfactory_1_1_printer.html">    9</a></span>&#160;<span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classfactory_1_1_printer.html" title="A class just to make printing and quick debugging easier. This allows turning off print and println s...">Printer</a> {</div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_printer.html">    9</a></span>&#160;<span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classfactory_1_1general_1_1_printer.html" title="A class just to make printing and quick debugging easier. This allows turning off print and println s...">Printer</a> {</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
-<div class="line"><a name="l00011"></a><span class="lineno"><a class="code" href="classfactory_1_1_printer.html#a65691d850db3e5be83b41c805ac66ae8">   11</a></span>&#160;    <span class="keyword">private</span> <span class="keywordtype">boolean</span> <a class="code" href="classfactory_1_1_printer.html#a65691d850db3e5be83b41c805ac66ae8">on</a>;</div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_printer.html#ad20631ca78bc9e9130ffa10120555c2e">   11</a></span>&#160;    <span class="keyword">private</span> <span class="keywordtype">boolean</span> <a class="code" href="classfactory_1_1general_1_1_printer.html#ad20631ca78bc9e9130ffa10120555c2e">on</a>;</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
-<div class="line"><a name="l00013"></a><span class="lineno"><a class="code" href="classfactory_1_1_printer.html#a496fb6c48eec9b3abdae5635646c2f11">   13</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classfactory_1_1_printer.html#a496fb6c48eec9b3abdae5635646c2f11">Printer</a>() {</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_printer.html#a45c499ef75beb84e5706fba0a7a6dce1">   13</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classfactory_1_1general_1_1_printer.html#a45c499ef75beb84e5706fba0a7a6dce1">Printer</a>() {</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="comment">// Adjust as appropriate when coding</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">//      turnOn();</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <a class="code" href="classfactory_1_1_printer.html#a70aef7284bb1a839a0e8aa4b6da6fb0a">turnOff</a>();</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <a class="code" href="classfactory_1_1general_1_1_printer.html#aa331f9a69d74bee3350cb71de0f4a96b">turnOn</a>();</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="comment">// turnOff();</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    }</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="code" href="classfactory_1_1_printer.html#a35102218d17ff201b694ef48a642cc41">   19</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1_printer.html#a35102218d17ff201b694ef48a642cc41">print</a>(Object obj) {</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classfactory_1_1_printer.html#a65691d850db3e5be83b41c805ac66ae8">on</a>) {</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_printer.html#a398f7f00752c8576fa8e9c9486522744">   19</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1general_1_1_printer.html#a398f7f00752c8576fa8e9c9486522744">print</a>(Object obj) {</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classfactory_1_1general_1_1_printer.html#ad20631ca78bc9e9130ffa10120555c2e">on</a>) {</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            System.out.print(obj);</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        }</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    }</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
-<div class="line"><a name="l00025"></a><span class="lineno"><a class="code" href="classfactory_1_1_printer.html#a5e5e573da34caea0decdb1abd7c573bb">   25</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1_printer.html#a5e5e573da34caea0decdb1abd7c573bb">println</a>() {</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classfactory_1_1_printer.html#a65691d850db3e5be83b41c805ac66ae8">on</a>) {</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_printer.html#a6dd4426e6a3bb2444dfc39d4dbd7fc99">   25</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1general_1_1_printer.html#a6dd4426e6a3bb2444dfc39d4dbd7fc99">println</a>() {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classfactory_1_1general_1_1_printer.html#ad20631ca78bc9e9130ffa10120555c2e">on</a>) {</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            System.out.println();</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        }</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    }</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
-<div class="line"><a name="l00031"></a><span class="lineno"><a class="code" href="classfactory_1_1_printer.html#a108ae077f6e467861c00e7eec63e9546">   31</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1_printer.html#a108ae077f6e467861c00e7eec63e9546">println</a>(Object obj) {</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classfactory_1_1_printer.html#a65691d850db3e5be83b41c805ac66ae8">on</a>) {</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_printer.html#a4fb42afb49aa7d3c055251819a85d526">   31</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1general_1_1_printer.html#a4fb42afb49aa7d3c055251819a85d526">println</a>(Object obj) {</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classfactory_1_1general_1_1_printer.html#ad20631ca78bc9e9130ffa10120555c2e">on</a>) {</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            System.out.println(obj);</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        }</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    }</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
-<div class="line"><a name="l00037"></a><span class="lineno"><a class="code" href="classfactory_1_1_printer.html#a70aef7284bb1a839a0e8aa4b6da6fb0a">   37</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1_printer.html#a70aef7284bb1a839a0e8aa4b6da6fb0a">turnOff</a>() {</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <a class="code" href="classfactory_1_1_printer.html#a65691d850db3e5be83b41c805ac66ae8">on</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_printer.html#a297e5e5734d2f44b038804f7c78622c8">   37</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1general_1_1_printer.html#a297e5e5734d2f44b038804f7c78622c8">turnOff</a>() {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <a class="code" href="classfactory_1_1general_1_1_printer.html#ad20631ca78bc9e9130ffa10120555c2e">on</a> = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    }</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
-<div class="line"><a name="l00041"></a><span class="lineno"><a class="code" href="classfactory_1_1_printer.html#ad5c0aaa2427bfd82d641a3cb66044396">   41</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1_printer.html#ad5c0aaa2427bfd82d641a3cb66044396">turnOn</a>() {</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <a class="code" href="classfactory_1_1_printer.html#a65691d850db3e5be83b41c805ac66ae8">on</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_printer.html#aa331f9a69d74bee3350cb71de0f4a96b">   41</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1general_1_1_printer.html#aa331f9a69d74bee3350cb71de0f4a96b">turnOn</a>() {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <a class="code" href="classfactory_1_1general_1_1_printer.html#ad20631ca78bc9e9130ffa10120555c2e">on</a> = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    }</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Oct 28 2012 21:37:53 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Nov 4 2012 12:20:01 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

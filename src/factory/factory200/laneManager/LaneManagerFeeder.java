@@ -1,5 +1,4 @@
 package factory.factory200.laneManager;
-
 import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -27,8 +26,9 @@ public class LaneManagerFeeder extends JLabel{
 	
 	// No image version
 	private static String feederOffString = new String("OFF");
-	private static String feederOnLeftString = new String("LEFT");
-	private static String feederOnRightString = new String("RIGHT");
+	private static String feederOnLeftString = new String("ON&LEFT");
+	private static String feederOnRightString = new String("ON&RIGHT");
+	private static String feederWithBoxString = new String("BOX DUMPED");
 	//--------------------------------------------------------------------------------------------------------------------------------------
 	/**
 	 * This constructor sets up the default features of lane.
@@ -51,7 +51,7 @@ public class LaneManagerFeeder extends JLabel{
 		// No image version
 		setOpaque(true);
 		setSize(55,130);
-		setBackground(Color.lightGray);
+		setBackground( new Color(255,222,191) );
 		//----------------------------------------------------
 		setLocation(xCoor, yCoor);
 		setBorder( new LineBorder( Color. black ));
@@ -69,6 +69,7 @@ public class LaneManagerFeeder extends JLabel{
 
 	// No image version
 	public void setSwitchOff(){
+		setBackground( new Color(255,222,191) );
 		setText(feederOffString);
 	}
 	//------------------------------------------------------
@@ -84,6 +85,7 @@ public class LaneManagerFeeder extends JLabel{
 	
 	// No image version
 	public void setSwitchOn(){
+		setBackground( new Color(255,160,45) );
 		setText(feederOnLeftString);
 	}
 	//------------------------------------------------------
@@ -141,6 +143,21 @@ public class LaneManagerFeeder extends JLabel{
 	// No image version
 	public void setDivertToRight(){
 		setText(feederOnRightString);
+	}
+	//------------------------------------------------------
+	
+	//------------------------------------------------------
+	// Image version
+	/**
+	 * @brief Makes Feeder Without Box
+	 */
+	public void setFeederWithoutBoxImage(){ // setFeederWithoutBox();
+		//setIcon();
+	}
+	
+	// No image version
+	public void setFeederWithoutBox(){
+		setBackground( new Color(255,160,45) );
 	}
 	//------------------------------------------------------
 	
