@@ -5,6 +5,7 @@
 package factory.general;
 
 import factory.factory201.feederManagement.LaneAgent;
+import factory.factory201.interfaces.Lane;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +24,7 @@ public class Nest {
     public int threshold = 9;
     public Part part;
     public int howMany = 0;
-    public LaneAgent lane;
+    public Lane lane;
         
         public Nest (Part p, int nestNumber){
         	this.part = p;
@@ -40,11 +41,11 @@ public class Nest {
         	//this.threshold = 10/p.getSize();
         }
         
-        public void setLane(LaneAgent lane){
-        	this.lane = lane;
+        public void setLane(Lane l){
+        	this.lane = l;
         }
         
-        public LaneAgent getLane(){
+        public Lane getLane(){
             return this.lane;
         }
         

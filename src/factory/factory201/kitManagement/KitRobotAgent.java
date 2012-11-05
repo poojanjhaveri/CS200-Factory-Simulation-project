@@ -1,9 +1,7 @@
 package factory.factory201.kitManagement;
 
 import agent.Agent;
-import factory.factory200.kitAssemblyManager.GUIKitRobot;
 import factory.factory200.kitAssemblyManager.KitAssemblyManager;
-import factory.factory200.kitAssemblyManager.KitDeliveryStation;
 import factory.factory201.interfaces.Camera;
 import factory.factory201.interfaces.Conveyor;
 import factory.factory201.interfaces.KitRobot;
@@ -85,11 +83,14 @@ public class KitRobotAgent extends Agent implements KitRobot {
     @Override
     protected boolean pickAndExecuteAnAction() {
         if (!kitStand.isEmpty()) {
-            if (kitStand.get(2).status == Kit.Status.verified) {
-                //if kit is ready to leave cell
-                sendVerifiedKitToConveyor();
-                return true;
-            } else if (kitStand.get(1).status == Kit.Status.full) {
+            if (!kitStand.inspectionStandIsEmpty()) {
+                if (kitStand.get(2).status == Kit.Status.verified) {
+                    //if kit is ready to leave cell
+                    sendVerifiedKitToConveyor();
+                    return true;
+                }
+            }
+            if (kitStand.get(1).status == Kit.Status.full) {
                 // if kit is ready for inspection
                 moveFullKitToInspection();
                 return true;

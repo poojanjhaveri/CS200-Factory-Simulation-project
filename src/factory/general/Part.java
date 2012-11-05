@@ -19,6 +19,7 @@ public class Part implements Serializable {
     public Type type;
     private boolean inKit;
     public int size;
+    public int nestNum;
 
     public Part(Type t, boolean inkit, int size) {
         this.type = t;
@@ -26,8 +27,15 @@ public class Part implements Serializable {
         this.size = size;
     }
     
+    public int getNestNum(){
+        return this.nestNum;
+    }
+    
+    public void setNestNum(int n){
+        this.nestNum = n;
+    }
     public int getSize(){
-        return size;
+        return this.size;
     }
     /* I am adding this constructor to test my agent codes (kevin) */
 

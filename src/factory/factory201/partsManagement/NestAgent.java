@@ -7,6 +7,8 @@ package factory.factory201.partsManagement;
 
 import agent.Agent;
 import factory.factory201.feederManagement.LaneAgent;
+import factory.factory201.interfaces.Camera;
+import factory.factory201.interfaces.Lane;
 import factory.factory201.interfaces.NestInterface;
 import factory.factory201.interfaces.PartsInterface;
 import factory.factory201.kitManagement.CameraAgent;
@@ -20,10 +22,10 @@ import java.util.Map;
 
 
 public class NestAgent extends Agent implements NestInterface{
-    LaneAgent lane1;
-    LaneAgent lane2;
-    LaneAgent lane3;
-    LaneAgent lane4;
+    Lane lane1;
+    Lane lane2;
+    Lane lane3;
+    Lane lane4;
 	private List<Nest> myNests = Collections.synchronizedList(new ArrayList<Nest>());
 	private Map <Nest, LaneAgent> lanes = new HashMap<Nest, LaneAgent>();
 
@@ -31,7 +33,7 @@ public class NestAgent extends Agent implements NestInterface{
             Collections.synchronizedList(new ArrayList<Part>());
     PartsInterface partsagent;
     
-    CameraAgent camera;
+    Camera camera;
     
     private int nestNumber;
     private List<Nest> nests = Collections.synchronizedList(new ArrayList<Nest>());
@@ -55,17 +57,17 @@ public class NestAgent extends Agent implements NestInterface{
             for (Nest n: myNests){
     		if(n.part.equals(p)){
             switch(n.nestNum){
+                case 0:  n.setLane(lane1);
                 case 1:  n.setLane(lane1);
-                case 2:  n.setLane(lane1);
                 break;
+                case 2:  n.setLane(lane2);
                 case 3:  n.setLane(lane2);
-                case 4:  n.setLane(lane2);
                 break;
+                case 4: n.setLane(lane3);
                 case 5: n.setLane(lane3);
-                case 6: n.setLane(lane3);
                 break;
+                case 6:  n.setLane(lane4);
                 case 7:  n.setLane(lane4);
-                case 8:  n.setLane(lane4);
                 break;
             }
             }
@@ -151,6 +153,7 @@ public class NestAgent extends Agent implements NestInterface{
     }
     
     private void giveToKit(Nest n){
+        n.part.setNestNum(n.getNestNum());
     	partsagent.msgHereIsPart(n.part);
     	n.howMany--;
         print("giving part " + n.part + " to kit now nest has " + n.howMany);
@@ -172,6 +175,10 @@ public class NestAgent extends Agent implements NestInterface{
     	if (n.part.equals(p))
     		return true;	}
     	return false;
+    }
+    
+    public void setCameraAgent(Camera c){
+        this.camera = c;
     }
     
     public void setPartsAgent(PartsInterface parts) {
