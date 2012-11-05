@@ -115,16 +115,10 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
             if (camera.isVisible()) {
                 cameraCounter++;
             }
-            //for(int i = 0; i < delivery.getNumEmptyKits(); i++){
-            //if(delivery.getPlaceholder().get(i).getY()==300 && delivery.getPlaceholder().get(i).isShow()){
-            //            deliveryStation=false;
-            //}
-            //}
+            
                         
             if (delivery.getPlaceholder().get(delivery.getNumEmptyKits() - 1).getY() > -150) {
                 for (int i = 0; i < delivery.getNumEmptyKits(); i++) {
-                    
-                    
                     int yPlace = delivery.getPlaceholder().get(i).getY();
                     int number = i * 200;
                     if (counter > number) {
