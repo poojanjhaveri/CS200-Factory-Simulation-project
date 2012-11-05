@@ -59,7 +59,6 @@ public class KitAssemblyManager extends Manager implements ActionListener {
                 //System.out.println(this.graphics.camera.getY());
                 this.graphics.camera.setVisible(true);
                 this.graphics.repaint();
-                
             }
             else if(nest==2){
                 this.graphics.camera.setX(this.graphics.nest.get(1).getX());
