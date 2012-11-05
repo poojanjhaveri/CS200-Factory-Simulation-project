@@ -117,14 +117,23 @@ public class GUIPartRobot extends GUIRobot {
         }
         public void cheat()
         {
-            this.orders.add(10);
+	    moveToNestCommand(0);    
+        pickPartCommand(0);
             pickPartCommand(0);
             pickPartCommand(0);
             pickPartCommand(0);
-            pickPartCommand(0);
-            this.orders.add(18);
-            dropPartCommand();
+            dropOffParts();
+    
         }
+    public void moveToNestCommand(Integer i)
+    {
+	this.orders.add(i+10);
+    }
+    public void dropOffParts()
+    {
+       this.orders.add(18);
+            dropPartCommand();     
+    }
     /**
 @brief pops the order and performs it
      */
