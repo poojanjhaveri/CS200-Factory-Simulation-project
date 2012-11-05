@@ -134,14 +134,6 @@ public class NestAgent extends Agent implements NestInterface{
         return false;
     }
     
-   /* private Nest getNest(Part p){
-    	for (Nest n: myNests){
-    		if(n.part.equals(p))
-    			return n;
-    	}
-        
-    }*/
-    
     
     private void requestPart(Nest n){
        
@@ -170,6 +162,7 @@ public class NestAgent extends Agent implements NestInterface{
     private void purge(Nest n){
     n.howMany = 0;
     //DoPurge();
+    
     n.status = Nest.Status.needPart;
     stateChanged();
     }
