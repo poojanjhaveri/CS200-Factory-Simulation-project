@@ -34,3 +34,9 @@ DoGetEmptyKit() {
 DoMoveEmptyKitFrom0to1() {
     - moves empty kit from kit stand 0 to kit stand 1
 }
+
+CONVEYOR AGENT:
+
+DoAddKit(Kit k) {
+    - adds new empty kit to the conveyor
+}

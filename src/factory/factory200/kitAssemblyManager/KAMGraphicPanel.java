@@ -115,16 +115,10 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
             if (camera.isVisible()) {
                 cameraCounter++;
             }
-            //for(int i = 0; i < delivery.getNumEmptyKits(); i++){
-            //if(delivery.getPlaceholder().get(i).getY()==300 && delivery.getPlaceholder().get(i).isShow()){
-            //            deliveryStation=false;
-            //}
-            //}
+            
                         
             if (delivery.getPlaceholder().get(delivery.getNumEmptyKits() - 1).getY() > -150) {
                 for (int i = 0; i < delivery.getNumEmptyKits(); i++) {
-                    
-                    
                     int yPlace = delivery.getPlaceholder().get(i).getY();
                     int number = i * 200;
                     if (counter > number) {
@@ -170,6 +164,26 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
 		    break;
                 }
             }
+	    if(!partsbot.moving())
+		{
+                Integer order = partsbot.getOrder();
+                switch (order) {
+		    //0-7 - pick up part nest 0-7
+		    //8 - drop parts onto kit
+		case 0:
+		case 1:
+		case 2:
+		case 3:
+		case 4:
+		case 5:
+		case 6:
+		case 7:
+		    this.partsrobot.addPart(this.nest.get(order).getPart());
+		case 8:this.kits.get(2).givePart(this.partsrobot.getCollectioN());		
+default:partsbot.performOrder();
+		}
+
+		}
             kitbot.update();
             myPanel.repaint();
             if (deliveryStation == false) {
@@ -217,6 +231,11 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
             cameraCounter = 0;
         }
         kitter.getImage().paintIcon(this, g2, kitter.getCoordinate().getX(), kitter.getCoordinate().getY());
+	LinkedList<Part> kitterparts= kitter.getAll();
+	for(int i = 0; i != kitterparts.size(); i++)
+	    {
+		kitterparts.get(i).getGUIPart().getImageIcon().paintIcon(this, g2, kitterparts.get(i).getGUIPart().getCoordinate().getX(), kitterparts.get(i).getGUIPart().getCoordinate().getY())
+	    }
     }
 
     public void paintNests(JPanel j, Graphics2D g) {

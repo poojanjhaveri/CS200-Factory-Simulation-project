@@ -1,6 +1,7 @@
 package factory.factory201.kitManagement;
 
 import agent.Agent;
+import factory.factory200.kitAssemblyManager.KitDeliveryStation;
 import factory.factory201.interfaces.Conveyor;
 import factory.factory201.interfaces.KitRobot;
 import factory.general.Kit;
@@ -39,6 +40,7 @@ public class ConveyorAgent extends Agent implements Conveyor {
             }
         }
     });
+    public KitDeliveryStation guiConveyor = new KitDeliveryStation(0);
 
     public ConveyorAgent() {
         removeKits.start();
@@ -133,6 +135,7 @@ public class ConveyorAgent extends Agent implements Conveyor {
         for (int i = 0; i < num; i++) {
             Kit k = new Kit("Kit " + i);
             kits.add(k);
+            DoAddKit(k);
         }
     }
 
@@ -164,5 +167,9 @@ public class ConveyorAgent extends Agent implements Conveyor {
         } else {
             removeKits.restart();
         }
+    }
+    
+    private void DoAddKit(Kit k) {
+        
     }
 }
