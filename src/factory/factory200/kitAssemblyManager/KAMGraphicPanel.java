@@ -49,9 +49,9 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
     public static final Integer LANE6Y = 0;///<y-coordinate of lane 6's nest
     public static final Integer LANE7Y = 0;///<y-coordinate of lane 7's nest
     public static final Integer RAILX = 0;///<fixed x-coordinate of the rail the parts robot traverses
-    public static final Integer PARTSROBOTINITIALX = 0;///<x coordinate for parts robot to spawn in
-    public static final Integer PARTSROBOTINITIALY = 0;///<y coordinate for parts robot to spawn in
-    //public GUIPartRobot kitter;///<declares an object that keeps track of the parts robot animation and graphics
+    public static final Integer PARTSROBOTINITIALX = 300;///<x coordinate for parts robot to spawn in
+    public static final Integer PARTSROBOTINITIALY = 250;///<y coordinate for parts robot to spawn in
+    public GUIPartRobot kitter;///<declares an object that keeps track of the parts robot animation and graphics
     public GUIKitRobot kitbot;///<declares an object that keeps track of the kit robot animation and graphics
     public KitStand kitstand;///<declares an object that keeps track of what is happening with the kit stand
     public KitDeliveryStation delivery;///<declares an object that keeps track of the delivery station
@@ -70,6 +70,8 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
         stationRun=true;
 
         kitbot = new GUIKitRobot();
+        
+        kitter=new GUIPartRobot();
 
         camera = new KAMCamera();
 
@@ -209,6 +211,7 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
             camera.setVisible(false);
             cameraCounter = 0;
         }
+        kitter.getImage().paintIcon(this, g2, kitter.getCoordinate().getX(), kitter.getCoordinate().getY());
     }
 
     public void paintNests(JPanel j, Graphics2D g) {
