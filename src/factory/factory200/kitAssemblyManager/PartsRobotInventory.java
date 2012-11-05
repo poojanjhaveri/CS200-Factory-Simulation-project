@@ -38,19 +38,25 @@ public class PartsRobotInventory implements Inventory {
     {
         return this.parts.poll();
     }
-    public Collection getCollection()
+    public LinkedList<Part> getAll()
     {
-	return (Collection)this.parts;
+	return this.parts;
+    }
+    public LinkedList<Part> giveAll()
+    {
+	LinkedList<Part> col = this.parts;
+	this.parts = new LinkedList<Part>();
+	return col;
     }
     public void update(Coordinate in)
     {
 	Integer x = in.getX()+3;
-	Integer y = in.getY()+5;
+	Integer y = in.getY()+3;
 	for(int i = 0; i != this.parts.size(); i++)
 	    {
-		//this.parts.get(i).setY(y);
-		//this.parts.get(i).setX(x);
-		x+= 23;
+		this.parts.getGUIPart().get(i).setY(y);
+		this.parts.getGUIPart().get(i).setX(x);
+		y+= 23;
 	    }
     }
 }

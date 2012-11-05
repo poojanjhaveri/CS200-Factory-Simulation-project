@@ -170,6 +170,26 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
 		    break;
                 }
             }
+	    if(!partsbot.moving())
+		{
+                Integer order = partsbot.getOrder();
+                switch (order) {
+		    //0-7 - pick up part nest 0-7
+		    //8 - drop parts onto kit
+		case 0:
+		case 1:
+		case 2:
+		case 3:
+		case 4:
+		case 5:
+		case 6:
+		case 7:
+		    this.partsrobot.addPart(this.nest.get(order).getPart());
+		case 8:this.kits.get(2).givePart(this.partsrobot.getCollectioN());		
+default:partsbot.performOrder();
+		}
+
+		}
             kitbot.update();
             myPanel.repaint();
             if (deliveryStation == false) {
