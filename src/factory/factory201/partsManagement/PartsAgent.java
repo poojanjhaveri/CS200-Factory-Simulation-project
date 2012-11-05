@@ -150,4 +150,9 @@ public class PartsAgent extends Agent implements PartsInterface{
     public void msgHereAreParts(Part part, int quantity) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
+
+    @Override
+    public void msgEmptyKitReady(Kit kit) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 }

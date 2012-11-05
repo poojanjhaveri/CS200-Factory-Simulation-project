@@ -40,7 +40,7 @@ public class Part implements Serializable {
         }
         if (num == 3) {
             this.type = Type.p3;
-[B        }
+        }
         if (num == 4) {
             this.type = Type.p4;
         }
@@ -66,12 +66,12 @@ public class Part implements Serializable {
     private String name;
     private String description;
     Integer number;///< the part number, like an ID; useful for comparing
-    GUIPart gui;///<gui representation of this part
+    GUIPart guipart;///<gui representation of this part
 
     public Part(String n, String d, String fn) {
         this.name = n;
         this.description = d;
-        this.img = new ImageIcon(fn);
+//        this.img = new ImageIcon(fn);
         //this.number=time()\;
 	this.guipart = null;
     }

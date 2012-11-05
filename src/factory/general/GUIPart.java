@@ -1,4 +1,6 @@
+package factory.general;
 
+import javax.swing.ImageIcon;
 
 public class GUIPart extends Drawable{
 
