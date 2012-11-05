@@ -1,4 +1,4 @@
-package factory.factory201.test;
+package factory.factory201.Test;
 
 import static org.junit.Assert.*;
 import factory.general.Kit;

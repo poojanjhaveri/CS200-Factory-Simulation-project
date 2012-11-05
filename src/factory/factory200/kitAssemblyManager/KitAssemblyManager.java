@@ -41,10 +41,10 @@ public class KitAssemblyManager extends Manager implements ActionListener {
 
     public void flashKitCamera()
     {
-                this.graphics.camera.setX(this.graphics.kitstand.getKitPositions().get(2).getX());
+                this.graphics.camera.setX(KAMGraphicPanel.KITX);
                 //System.out.println(this.graphics.nest.get(0).getX());
                 //System.out.println(this.graphics.camera.getX());
-                this.graphics.camera.setY(this.graphics.kitstand.getKitPositions().get(2).getY());
+                this.graphics.camera.setY(KAMGraphicPanel.KIT2Y);
                 //System.out.println(this.graphics.nest.get(0).getY());
                 //System.out.println(this.graphics.camera.getY());
                 this.graphics.camera.setVisible(true);
@@ -73,13 +73,7 @@ public class KitAssemblyManager extends Manager implements ActionListener {
             this.graphics.kitbot.moveEmptyKitToActive();
         }  
         if(ae.getSource()==partRobot){
-            this.graphics.kitter.moveToNest(0);
-            this.graphics.kitter.pickPartCommand(0);
-            this.graphics.kitter.pickPartCommand(0);
-            this.graphics.kitter.pickPartCommand(0);
-            this.graphics.kitter.pickPartCommand(0);
-            this.graphics.kitter.moveToKit();
-            this.graphics.kitter.dropPartCommand();
+            this.graphics.kitter.cheat();
         }
         if(ae.getSource()==kitRobotKitStand){
             this.graphics.kitbot.moveActiveKitToInspection();

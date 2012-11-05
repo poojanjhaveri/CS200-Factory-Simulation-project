@@ -39,7 +39,8 @@ public class GUIPartRobot extends GUIRobot {
         this.busy = false;
         this.parts = new PartsRobotInventory();
         this.moveto = 0;
-        this.moveTo(KAMGraphicPanel.RAILX,KAMGraphicPanel.LANE0Y);
+        this.setConstants(KAMGraphicPanel.PARTSROBOT_VELOCITYX, KAMGraphicPanel.PARTSROBOT_VELOCITYY, KAMGraphicPanel.KITROBOT_ROTATION_SPEED);
+    
     }
 
     /**
@@ -114,11 +115,22 @@ public class GUIPartRobot extends GUIRobot {
         {
             this.orders.add(8);
         }
+        public void cheat()
+        {
+            this.orders.add(10);
+            pickPartCommand(0);
+            pickPartCommand(0);
+            pickPartCommand(0);
+            pickPartCommand(0);
+            this.orders.add(18);
+            dropPartCommand();
+        }
     /**
 @brief pops the order and performs it
      */
     public Boolean performOrder()
     {
+        System.out.println("PERFORMING ORDER");
 	Integer i = this.popOrder();
 	switch(i)
 	    {
