@@ -4,7 +4,7 @@ import agent.Agent;
 import factory.factory201.interfaces.Camera;
 import factory.factory201.interfaces.Conveyor;
 import factory.factory201.interfaces.KitRobot;
-import factory.factory201.partsManagement.PartsInterface;
+import factory.factory201.interfaces.PartsInterface;
 import factory.general.Kit;
 
 /**

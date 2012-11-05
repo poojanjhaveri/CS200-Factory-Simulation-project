@@ -4,6 +4,7 @@
  */
 package factory.factory201.interfaces;
 
+import factory.general.Kit;
 import factory.general.Part;
 
 /**
@@ -13,5 +14,7 @@ import factory.general.Part;
 public interface PartsInterface extends FactoryBase{
 
     public void msgHereIsPart(Part part);
+    
+    public void msgEmptyKitReady(Kit kit);
     
 }

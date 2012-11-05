@@ -3,7 +3,7 @@ package factory.factory201.kitManagement;
 import agent.Agent;
 import factory.factory201.interfaces.Camera;
 import factory.factory201.interfaces.KitRobot;
-import factory.factory201.partsManagement.NestInterface;
+import factory.factory201.interfaces.NestInterface;
 import factory.general.Kit;
 import factory.general.Nest;
 import java.util.ArrayList;
