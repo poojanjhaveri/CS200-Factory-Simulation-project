@@ -24,15 +24,15 @@ import javax.swing.*;
 //temporary nest class until an actual nest class is made...
 public class KAMNest {
     private ImageIcon nest;
-    private int nestNumber;
+    //private int nestNumber;
     private int x;
     private int y;
     private ArrayList<Part> parts;
     
     
-    public KAMNest(int i){
+    public KAMNest(){
         nest=new ImageIcon("pics/KAMnest.png");
-        nestNumber=i;
+        
         parts = new ArrayList<Part>();
     }
 
@@ -44,6 +44,10 @@ public class KAMNest {
     }
     
     public Part getPart(){
+        
+        if(parts.isEmpty())
+            return null;
+        
         Part temp=parts.get(0);
         parts.remove(0);
         return temp;
@@ -54,20 +58,6 @@ public class KAMNest {
      */
     public void setNest(ImageIcon nest) {
         this.nest = nest;
-    }
-
-    /**
-     * @return the nestNumber
-     */
-    public int getNestNumber() {
-        return nestNumber;
-    }
-
-    /**
-     * @param nestNumber the nestNumber to set
-     */
-    public void setNestNumber(int nestNumber) {
-        this.nestNumber = nestNumber;
     }
 
     /**
