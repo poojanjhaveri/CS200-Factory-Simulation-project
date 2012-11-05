@@ -62,9 +62,12 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
     int cameraCounter;
     boolean deliveryStation;
     Timer timer;
+    boolean stationRun;
 
     public KAMGraphicPanel() {
         deliveryStation = true;
+        
+        stationRun=true;
 
         kitbot = new GUIKitRobot();
 
@@ -112,8 +115,9 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
                 for (int i = 0; i < delivery.getNumEmptyKits(); i++) {
                     if(delivery.getPlaceholder().get(i).getY()==300 && delivery.getPlaceholder().get(i).isShow()){
                         delivery.getPlaceholder().get(i).setY(300);
+                        stationRun=false;
                     }
-                    else{
+                    else if(stationRun=true){
                     int yPlace = delivery.getPlaceholder().get(i).getY();
                     int number = i * 200;
                     if (counter > number) {
@@ -192,10 +196,11 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
         }
 
         //System.out.println(kitbot);
-        kitbot.getImage().paintIcon(this, g2, kitbot.getCoordinate().getX(), kitbot.getCoordinate().getY());
         if (kitbot.hasKit()) {
             kitbot.getKit().getImage().paintIcon(this, g2, kitbot.getCoordinate().getX(), kitbot.getCoordinate().getY());
         }
+        kitbot.getImage().paintIcon(this, g2, kitbot.getCoordinate().getX(), kitbot.getCoordinate().getY());
+        
         if (camera.isVisible()) {
             camera.getCamera().paintIcon(this, g2, camera.getX(), camera.getY());
 
