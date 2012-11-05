@@ -1,6 +1,5 @@
 package factory.factory201.feederManagement;
-
-//import factory.factory200.laneManager.ServerForAgentGantry;
+import factory.factory200.laneManager.*;
 import factory.factory201.interfaces.Feeder;
 import factory.factory201.interfaces.Gantry;
 import agent.Agent;
@@ -8,6 +7,8 @@ import factory.general.Part;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * @brief agent for the Gantry This class is the agent for the Gantry. The
@@ -20,20 +21,31 @@ public class GantryAgent extends Agent implements Gantry {
 
     //private List<myParts> parts = Collections.synchronizedList(new ArrayList<myParts>());
     private Feeder feeder;
-    
     //holds info about all the feeders that are assigned to the gantry
     private List<myFeeder> myFeeders = Collections.synchronizedList(new ArrayList<myFeeder>());
     private List<myBin> bins = Collections.synchronizedList(new ArrayList<myBin>());
-   // private ServerForAgentGantry animation;
+     
     String name;
+    Timer timer=new Timer();
+    //---------------------------------------------------------------------------
+    private ServerMain serverMain;
+    private ServerForAgentGantry animation;
+    private ServerForAgentFeeder animation1;
+  //---------------------------------------------------------------------------
     
     //numOfBins is the number of bins that gantry is initialized to, will be the same for v0, each bin has 8 parts.
-    public GantryAgent(int numOfBins,String name){
+    public GantryAgent(int numOfBins, String name, ServerMain serverMain){
+    	
+    	//---------------------------------------------------------------------------
+    	this.serverMain = serverMain;
+    	this.animation = serverMain.getForAgentGantry();
+    	this.animation1 = serverMain.getForAgentFeeder();
+    	//---------------------------------------------------------------------------
     	
     	this.name=name;
     	//this.feeder=feeder;
     	
-    	System.out.println("name and feeder assigned");
+    	//System.out.println("name and feeder assigned");
     	Part p1=new Part(1);
     	Part p2=new Part(2);
     	Part p3=new Part(3);
@@ -128,9 +140,9 @@ public class GantryAgent extends Agent implements Gantry {
            
             this.quantity = quantity;
             this.index=index;
-            System.out.println("testing null pointer");
+            //System.out.println("testing null pointer");
             this.part = part;
-            System.out.println("testing null pointer 1 ");
+            //System.out.println("testing null pointer 1 ");
         }
     }
 
@@ -141,47 +153,36 @@ public class GantryAgent extends Agent implements Gantry {
     	{
     		if(f.feeder==feeder){
     			
-    			System.out.println("setting requestState for the feeder");
-    			System.out.println("Part type is " + part.type);
+    			//System.out.println("setting requestState for the feeder index  " + f.index);
+    			//System.out.println("Part type is " + part.type);
     			
     			f.requested_part=part;
     			
-    			System.out.println("requested type is " + f.requested_part.type);
+    			//System.out.println("requested type is " + f.requested_part.type);
     			f.requestState=true;
     			}
     		
     	}
-        /*
-    	for (myParts p : parts) {
-            if (p.part.type == part.type) {
-                p.send = true;
-                p.supplyAmount = feeder.capacity;
-                //p.state=PartState.canSend;
-                stateChanged();
-                return;
-            }
-            stateChanged();
 
-        }
-        
-        */
     	stateChanged();
     }
 
     @Override
     public boolean pickAndExecuteAnAction() {
-    	
-    	
+    	//print("checking scheduler execution");
+    synchronized(myFeeders){	
     	for(myFeeder f: myFeeders){
     		if(f.requestState==true){
     			for(myBin b: bins){
     				
-    				System.out.println("checking within bins to supply part since request state is true");
+    				//System.out.println("checking within bins to supply part since request state is true");
     				if(b.part.type==f.requested_part.type){
-    					System.out.println("b.part==f.requested_part");
+    					//System.out.println("b.part==f.requested_part for index " + f.index);
     					if(b.quantity>1){
-    					System.out.println("I am supplying parts to feeder");
+    					print("I am supplying parts to feeder at index " + f.index );
+    					f.requestState=false;
     					supplyPart(b,f);
+    				    b.quantity=b.quantity-1;
     					return true;
     					}
     					else
@@ -191,6 +192,7 @@ public class GantryAgent extends Agent implements Gantry {
     			}
     		}
     	}
+    }
     
     /*
     			if(bin)
@@ -214,27 +216,58 @@ public class GantryAgent extends Agent implements Gantry {
     	int feederNum;
     	binNum=b.index;
     	feederNum=f.index;
+    	
     	//animation commands.
     	/*
     	 * THE BINNUM IS OBTAINED BY b.index, each bin has 8 parts of one type(Part part)
     	 * TO DETERMINE WHICH FEEDER IT GOES TO, USE f.index (that's initialized through constructor)
     	 * YOU COULD USE WHILE LOOP AFTER EVERY ANIMATION FUNCTION SO THAT IT WAITS UNTIL THE ANIMATION IS FINISHED TO START THE NEXT ANIMATION
     	 * */
+    	f.feeder.msgHereAreParts(b.part, 8);
+        
+    	//System.out.println("before animation");
+    	doSupplyPart(b,f);
     	//animation.goToBin(binNum);
     	//animation.pickUpBin(binNum);
     	//animation.goToFeeder(feederNum);
     	//animation.putOffBin();
-    	
-        f.feeder.msgHereAreParts(b.part, f.requested_qty);
-        f.requestState=false;
+    	print("sending message here are parts to" + f.index);
         
+        
+        //print("request state has been set to false for " + f.index);
         //update the quantity of bins
-        b.quantity=b.quantity-1;
-       
         stateChanged();
         return;
     }
-
+    private void doSupplyPart(myBin b,myFeeder f){
+    	print("go to bin command");
+    	animation.goToBin(b.index-1);
+    	//while(animation.returnArrived()==false){;}
+    	print("about to pick up bin");
+    	animation.pickUpBin(b.index-1);
+    	//while(animation.p)
+    	System.out.println("sending index " + f.index);
+    	
+    	try {
+			Thread.sleep(10000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	animation.goToFeeder(f.index-1);
+    	
+    	try {
+			Thread.sleep(10000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
+    	//while(animation.returnArrived()==false){;}
+    	animation1.fillInFeeder(f.index-1,b.index-1,8);
+    	animation1.dumpBinBoxIntoFeeder(f.index-1, b.index-1);
+    	
+    }
     public void setFeeder(Feeder feeder,int index) {
     //add feeders to the list
     myFeeders.add(new myFeeder(feeder,index));
