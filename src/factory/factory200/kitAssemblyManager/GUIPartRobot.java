@@ -2,6 +2,7 @@
 package factory.factory200.kitAssemblyManager;
 
 import factory.general.GUIRobot;
+import factory.general.Part;
 
 /**
  * The GUIPartRobot obtains parts from the nest and places it into the working
