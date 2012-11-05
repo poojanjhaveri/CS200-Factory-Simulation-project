@@ -1,13 +1,13 @@
 package factory.factory201.kitManagement;
 
 import factory.factory200.kitAssemblyManager.KitAssemblyManager;
-import factory.factory201.Test.mock.MockNest;
-import factory.factory201.Test.mock.MockParts;
+import factory.factory201.test.mock.MockNest;
+import factory.factory201.test.mock.MockParts;
 
 /**
  * @author Alex Young
  */
-public class KitRobotMain {
+public class V0KitRobotCameraConveyor {
 
     public static void main(String[] args) {
         
@@ -27,9 +27,11 @@ public class KitRobotMain {
         camera.setKitAssemblyManager(KAM);
         conveyor.setKitRobotAgent(kitRobot);
         conveyor.setKitAssemblyManager(KAM);
+        conveyor.generateKit(10);
         
         kitRobot.startThread();
         camera.startThread();
         conveyor.startThread();
+//        kitRobot.msgNeedEmptyKit();
     }
 }
