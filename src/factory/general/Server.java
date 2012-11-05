@@ -16,7 +16,7 @@ import java.util.logging.Logger;
  * clients and creates a new thread for each.
  * @author David Zhang, YiWei Roy Zheng
  */
-public class Server {
+public class Server { // KitAssemblyAgent
 
     /**
      * Instance fields

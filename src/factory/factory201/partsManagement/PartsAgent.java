@@ -1,6 +1,8 @@
 package factory.factory201.partsManagement;
 
 import agent.Agent;
+import factory.factory200.kitAssemblyManager.KitAssemblyManager;
+import factory.factory201.interfaces.KitRobot;
 import factory.factory201.interfaces.NestInterface;
 import factory.factory201.interfaces.PartsInterface;
 import factory.factory201.kitManagement.KitRobotAgent;
@@ -22,8 +24,8 @@ import java.util.List;
  *
  */
 public class PartsAgent extends Agent implements PartsInterface{
-
-    KitRobotAgent kitagent;
+    KitAssemblyManager kam;
+    KitRobot kitrobot;
     Kit kit;
     NestInterface nest;
     private List<Part> inventory =
@@ -69,6 +71,8 @@ public class PartsAgent extends Agent implements PartsInterface{
             default:
                 kit.standNum = Kit.StandNum.none;
         }*/
+        print("PartsAgent got message for new kit");
+    	newKit.add(kit);
         print("got an empty kit for stand #" + kit.standNum);
         stateChanged();
     }
@@ -77,7 +81,7 @@ public class PartsAgent extends Agent implements PartsInterface{
     @Override
     protected boolean pickAndExecuteAnAction() {
        
-
+        
         if (!inventory.isEmpty() && kit.standNum!=Kit.StandNum.none){
         	pickUpPart(inventory.remove(0));
         	return true;
@@ -106,8 +110,8 @@ public class PartsAgent extends Agent implements PartsInterface{
 //Actions
 
     private void giveKitToKitAgent() {
-        print("giving kitagent complete kit");
-        kitagent.msgKitIsFull();
+        print("giving kitrobot complete kit");
+        kitrobot.msgKitIsFull();
     }
     
     private void startNewKit(Kit k){
@@ -117,7 +121,7 @@ public class PartsAgent extends Agent implements PartsInterface{
     	for(int i=0; i<kit.getSize(); i++){
     		kitNeedsParts.add(k.getPart(i));
     	}
-    	kitagent.msgNeedEmptyKit();
+    	kitrobot.msgNeedEmptyKit();
     	for (int i = 0; i < kit.getSize(); i++) {
             nest.msgNeedPart(kit.getPart(i));
     	}
@@ -126,20 +130,39 @@ public class PartsAgent extends Agent implements PartsInterface{
 
     private void pickUpPart(Part p) {
         grips.add(p);
-        //DoPickUpPart(p);
+        
+        
         kitNeedsParts.remove(p);
         print("picking up part "+ p);
-        if (grips.size() == 4 || kitNeedsParts.isEmpty())
-        	putPartsInKit();
+        if (grips.size() == 4 || kitNeedsParts.isEmpty()){
+            kam.getPartsRobot().moveToNestCommand(p.getNestNum());
+            try{Thread.sleep(2);}
+            catch(InterruptedException ex){}
+            kam.pickPartCommand();}
         stateChanged();
     }
 
     private void putPartsInKit() {
         for (Part p: grips) {
             print("putting part " + p +" in kit");
-           // DoPutPartInKit(grips.remove(p));
+            
+                
+                
         }
+        kam.dropOffParts();
         
+    }
+    
+    public void setKitRobot(KitRobot k){
+        this.kitrobot=k;
+    }
+    
+    public void setNestInterface(NestInterface n){
+        this.nest=n;
+    }
+    
+    public void setKitAssemblyManager(KitAssemblyManager k){
+        this.kam = k;
     }
 
     @Override
