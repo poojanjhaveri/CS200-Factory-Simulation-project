@@ -26,24 +26,30 @@ public class ConveyorAgent extends Agent implements Conveyor {
 
         emptyKit, verifiedKit
     };
-    private List<Event> eventQueue = Collections.synchronizedList(new ArrayList<Event>());
-    private List<Kit> kits = new ArrayList<Kit>();
+    private List<Event> eventQueue;
+    private List<Kit> kits;
     private Kit tempKit;
     private KitRobot kitRobotAgent;
-    private Timer removeKits = new Timer(1000, new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent ae) {
-            for (Kit k : kits) {
-                if (k.status == Kit.Status.verified) {
-                    kits.remove(k);
-                    break;
-                }
-            }
-        }
-    });
+    private Timer removeKits;
     private KitAssemblyManager KAM;
     
-    public ConveyorAgent() {
+    public ConveyorAgent(String name) {
+        super(name);
+        
+        eventQueue = Collections.synchronizedList(new ArrayList<Event>());
+        kits = new ArrayList<Kit>();
+        removeKits = new Timer(1000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                for (Kit k : kits) {
+                    if (k.status == Kit.Status.verified) {
+                        kits.remove(k);
+                        break;
+                    }
+                }
+            }
+        });
+        
         removeKits.start();
         removeKits.stop();
     }
@@ -88,12 +94,14 @@ public class ConveyorAgent extends Agent implements Conveyor {
             for (Event e : eventQueue) {
                 if (e == Event.emptyKit) {
                     giveEmptyKit();
+                    eventQueue.remove(e);
                     return true;
                 }
             }
             for (Event e : eventQueue) {
                 if (e == Event.verifiedKit) {
                     acceptVerifiedKit();
+                    eventQueue.remove(e);
                     return true;
                 }
             }
@@ -110,6 +118,7 @@ public class ConveyorAgent extends Agent implements Conveyor {
     private void giveEmptyKit() {
         for (Kit k : kits) {
             if (k.status == Kit.Status.empty) {
+                print("Notifying the kit robot that an empty kit: [" + k.name + "] is ready.");
                 kitRobotAgent.msgHereIsEmptyKit(k);
                 kits.remove(k);
                 break;
@@ -123,6 +132,7 @@ public class ConveyorAgent extends Agent implements Conveyor {
      * eventually be taken out of the kitting cell).
      */
     private void acceptVerifiedKit() {
+        print("Accepting a verified kit: [" + tempKit.name + "] from the kits robot");
         kits.add(tempKit);
         stateChanged();
     }

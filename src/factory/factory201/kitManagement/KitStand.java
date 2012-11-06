@@ -10,6 +10,7 @@ import factory.general.*;
 public class KitStand {
 
     private KitAssemblyManager KAM;
+    
     /**
      * The kit stand has three stands 1. Temporary stand to hold an empty kit 2.
      * Kitting stand which will hold the kit into which parts are being put 3.
@@ -17,6 +18,11 @@ public class KitStand {
      */
     Kit[] kits = new Kit[3];
 
+    public KitStand() {
+        Kit k = new Kit("Test");
+        k.status = Kit.Status.full;
+        kits[1] = k;
+    }
     /**
      * When adding a kit to the kit stand, the kitting stand has first priority,
      * then the temporary stand.
@@ -66,8 +72,8 @@ public class KitStand {
      *
      * @return Self-explanatory
      */
-    public boolean inspectionStandIsEmpty() {
-        return (kits[2] == null);
+    public boolean isEmpty(int i) {
+        return (kits[i] == null);
     }
 
     /**
@@ -107,7 +113,7 @@ public class KitStand {
     }
 
     private void DoMoveKitMoveKitFrom0to1() {
-        KAM.getKitRobot().moveEmptyKitToActive();
+//        KAM.getKitRobot().moveEmptyKitToActive();
     }
     
     public void setKitAssemblyManager(KitAssemblyManager KAM) {

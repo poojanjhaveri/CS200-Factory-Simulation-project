@@ -8,6 +8,7 @@ import factory.factory201.interfaces.NestInterface;
 import factory.general.Kit;
 import factory.general.Nest;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -28,9 +29,15 @@ public class CameraAgent extends Agent implements Camera {
     private KitRobot kitRobotAgent;
     private NestInterface nestAgent;
     private KitAssemblyManager KAM;
-    private List<Nest> nests = new ArrayList<Nest>();
-    private List<Kit> kits = new ArrayList<Kit>();
-
+    private List<Nest> nests;
+    private List<Kit> kits;
+    
+    public CameraAgent(String name) {
+        super(name);
+        nests = Collections.synchronizedList(new ArrayList<Nest>());
+        kits = Collections.synchronizedList(new ArrayList<Kit>());
+    }
+    
     // ********** MESSAGES *********
     /**
      * Message called by NestAgent to inspect nest.
@@ -40,7 +47,9 @@ public class CameraAgent extends Agent implements Camera {
      */
     @Override
     public void msgNestIsFull(Nest nest) {
-        nests.add(nest);
+        synchronized(nests) {
+            nests.add(nest);
+        }
         stateChanged();
     }
 
@@ -52,23 +61,29 @@ public class CameraAgent extends Agent implements Camera {
      */
     @Override
     public void msgKitIsFull(Kit kit) {
-        kits.add(kit);
+        synchronized(kits) {
+            kits.add(kit);
+        }
         stateChanged();
     }
 
     // ********* SCHEDULER *********
     @Override
     protected boolean pickAndExecuteAnAction() {
-        for (Kit k : kits) {
-            if (k.status == Kit.Status.full) {
-                inspectKit(k);
-                return true;
+        synchronized(kits) {
+            for (Kit k : kits) {
+                if (k.status == Kit.Status.full) {
+                    inspectKit(k);
+                    return true;
+                }
             }
         }
-        for (Nest n : nests) {
-            if (n.status == Nest.Status.full) {
-                inspectNest(n);
-                return true;
+        synchronized(kits) {
+            for (Nest n : nests) {
+                if (n.status == Nest.Status.full) {
+                    inspectNest(n);
+                    return true;
+                }
             }
         }
         return false;
@@ -82,6 +97,7 @@ public class CameraAgent extends Agent implements Camera {
      * @brief Inspects nests and returns result to kitRobot agent.
      */
     public void inspectKit(Kit kit) {
+        print("Inspecting kit: [" + kit.name + "].");
 //        Kit k = new Kit("1");
 ////        k = server.getKit();
 //        if(k.equals(kit)) {
@@ -91,6 +107,7 @@ public class CameraAgent extends Agent implements Camera {
 //        }
         DoInspectKit(kit);
         kitRobotAgent.msgKitInspected(true);
+        kits.remove(kit);
         stateChanged();
     }
 
@@ -101,6 +118,7 @@ public class CameraAgent extends Agent implements Camera {
      * @brief Inspects nests and returns result to nest agent.
      */
     public void inspectNest(Nest nest) {
+        print("Inspecting nest: [" + nest.name + "].");
 //        Nest n = new Nest();
 //        boolean flag = false;
 //        for(Part p : n.parts) {
@@ -110,6 +128,7 @@ public class CameraAgent extends Agent implements Camera {
 //        }
         DoInspectNest(nest);
         nestAgent.msgNestInspected(nest, true);
+        nests.remove(nest);
         stateChanged();
     }
 
