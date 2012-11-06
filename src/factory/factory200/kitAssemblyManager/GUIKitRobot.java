@@ -2,6 +2,9 @@ package factory.factory200.kitAssemblyManager;
 
 import factory.general.GUIRobot;
 import java.util.LinkedList;
+import javax.swing.*;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 /**
  * The GuiKitRobot handles the moving of kits in the kit assembly area. It takes
  * orders from the Kit Assembly Manager. The GuiKitRobot must also communicate
@@ -207,5 +210,14 @@ public class GUIKitRobot extends GUIRobot {
 	    default:return false;
 	    }
 	return true;
+    }
+    public void paintMe(JPanel panel, Graphics2D g)
+    {
+	Graphics2D g2d = (Graphics2D)g.create();
+	if (this.hasKit()) {
+            this.getKit().getImage().paintIcon(panel, g2d, this.getCoordinate().getX(), this.getCoordinate().getY());
+        }
+        this.getImage().paintIcon(panel, g2d, this.getCoordinate().getX(), this.getCoordinate().getY());        
+	g2d.dispose();
     }
 }
