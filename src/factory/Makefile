@@ -12,6 +12,10 @@ movingdrawable:
 manager:
 	javac $(PARAM) $(GENERAL)
 	java $(PKGENERAL).Manager
+partsmanager:
+	javac $(PARAM) $(GENERAL) factory200/partsManager/*.java
+	rm ../../factory -R
+	mv factory ../..
 kitassembly:
 	javac $(PARAM) $(GENERAL) factory200/kitAssemblyManager/*.java factory201/interfaces/KitRobot.java
 	java factory.factory200.kitAssemblyManager.KAMGraphicPanel
