@@ -170,6 +170,25 @@ public class PartsManager extends Manager implements ActionListener {
      */
     public void deletePart(int partNumber) {
     }
+    /**
+@brief sends an update request which should result in the parts list being updated
+     */
+        public void update()
+    {
+	this.sendToServer(Message.PULL_PARTS_LIST);
+    }
+    private void parseUpdate(String msg)
+    {
+	//code to parse the serialized parts list
+    }
+    public void processMessage(String msg)
+    {
+	//super.processMessage(msg);
+	//if(msg == Message.PUSH_PARTS_LIST)
+	//   {
+
+	// }
+	    }
 }
 
 //This is just a test to try out git
