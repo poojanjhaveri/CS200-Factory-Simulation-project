@@ -6,6 +6,9 @@ import factory.general.Part;
 
 import java.util.Collection;
 import java.util.LinkedList;
+import javax.swing.*;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 /**
  * The GUIPartRobot obtains parts from the nest and places it into the working
  * kit. It takes orders from the Kit Assembly Manager. It has pickup
@@ -157,5 +160,17 @@ public class GUIPartRobot extends GUIRobot {
 	    default:return false;
 	    }
 	return true;
+    }
+
+    public void paintMe(JPanel panel, Graphics2D g)
+    {
+	Graphics2D g2d = (Graphics2D)g.create();
+this.getImage().paintIcon(panel, g2d, this.getCoordinate().getX(), this.getCoordinate().getY());
+	LinkedList<Part> kitterparts= this.getPart();
+	for(int i = 0; i != kitterparts.size(); i++)
+	    {
+		kitterparts.get(i).getGUIPart().getImage().paintIcon(panel, g2d, kitterparts.get(i).getGUIPart().getX(), kitterparts.get(i).getGUIPart().getY());
+	    }
+        g2d.dispose();
     }
 }

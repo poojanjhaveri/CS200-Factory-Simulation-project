@@ -95,7 +95,7 @@ public class Manager extends JFrame {
     }
 
     /**
-     * @brief processes a message
+     * @brief processes a message. override this for specific functionality. always call super.processMessage() before
      * @param msg - the message to process. Use an if-statement to go through
      * the possibilities.
      */

@@ -1,4 +1,4 @@
-G=Drawable.java MovingDrawable.java Coordinate.java Manager.java ManagerConnection.java Message.java Printer.java GUIRobot.java Server.java Kit.java Part.java Inventory.java
+G=Drawable.java MovingDrawable.java Coordinate.java Manager.java ManagerConnection.java Message.java Printer.java GUIRobot.java Server.java Kit.java Part.java Inventory.java GUIPart.java
 GENERAL=$(addprefix general/, $(G))
 
 PARAM=-d .
@@ -12,6 +12,10 @@ movingdrawable:
 manager:
 	javac $(PARAM) $(GENERAL)
 	java $(PKGENERAL).Manager
+partsmanager:
+	javac $(PARAM) $(GENERAL) factory200/partsManager/*.java
+	rm ../../factory -R
+	mv factory ../..
 kitassembly:
 	javac $(PARAM) $(GENERAL) factory200/kitAssemblyManager/*.java factory201/interfaces/KitRobot.java
 	java factory.factory200.kitAssemblyManager.KAMGraphicPanel
