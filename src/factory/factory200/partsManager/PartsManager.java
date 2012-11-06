@@ -18,9 +18,9 @@ import javax.swing.JTabbedPane;
 import javax.swing.border.EmptyBorder;
 
 /**
- * <img src="../img/image02.png"/> 
+ * <img src="../img/image02.png"/>
  * @brief JFrame that represents the parts manager
- * @author David Zhang
+ * @author David Zhang, YiWei Roy Zheng
  */
 public class PartsManager extends Manager implements ActionListener {
     // TODO: NEED GUIPart.java class in partsManager package
@@ -77,7 +77,7 @@ public class PartsManager extends Manager implements ActionListener {
         viewButton = new JButton("View");
         managePartsButtonPanel.add(viewButton);
         viewButton.addActionListener(this);
-        
+
         deleteButton = new JButton("Delete");
         managePartsButtonPanel.add(deleteButton);
         deleteButton.addActionListener(this);
@@ -124,7 +124,7 @@ public class PartsManager extends Manager implements ActionListener {
             sendToServer(Message.TEST_SERVER);
         }
     }
-    
+
     /**
      * Launch the application.
      */
@@ -171,24 +171,24 @@ public class PartsManager extends Manager implements ActionListener {
     public void deletePart(int partNumber) {
     }
     /**
-@brief sends an update request which should result in the parts list being updated
+    @brief sends an update request which should result in the parts list being updated
      */
-        public void update()
+    public void update()
     {
-	this.sendToServer(Message.PULL_PARTS_LIST);
+        this.sendToServer(Message.PULL_PARTS_LIST);
     }
     private void parseUpdate(String msg)
     {
-	//code to parse the serialized parts list
+        //code to parse the serialized parts list
     }
     public void processMessage(String msg)
     {
-	//super.processMessage(msg);
-	//if(msg == Message.PUSH_PARTS_LIST)
-	//   {
+        //super.processMessage(msg);
+        //if(msg == Message.PUSH_PARTS_LIST)
+        //   {
 
-	// }
-	    }
+        // }
+    }
 }
 
 //This is just a test to try out git
