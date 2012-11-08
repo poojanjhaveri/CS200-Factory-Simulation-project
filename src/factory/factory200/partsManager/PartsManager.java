@@ -23,7 +23,7 @@ import javax.swing.JTextField;
  * @brief JFrame that represents the parts manager
  * @author David Zhang, YiWei Roy Zheng
  */
-public class PartsManager extends JPanel {// Manager implements ActionListener {
+public class PartsManager extends Manager implements ActionListener {
     // TODO: NEED GUIPart.java class in partsManager package
 
     private JPanel contentPane;
