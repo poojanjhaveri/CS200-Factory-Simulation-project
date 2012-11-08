@@ -16,6 +16,11 @@ import javax.swing.border.LineBorder;
  */
 public class LaneManagerGraphicsPanel extends JLayeredPane{
 	
+	private final int feederCount = 4;	///< Fixed quantity of feeder
+	private final int laneCount = 8;	///< Fixed quantity of lane
+	private final int nestCount = 8;	///< Fixed quantity of nest
+	private final int cameraCount = 4;	///< Fixed quantity of camera
+	
 	private LaneManagerApp app;	///< Instance of class 'LaneManagerApp'
 	
 	private LaneManagerLane newLane;	///< Instance of class 'LaneManagerLane'
@@ -25,14 +30,15 @@ public class LaneManagerGraphicsPanel extends JLayeredPane{
 	private ArrayList<LaneManagerNest> nests = new ArrayList<LaneManagerNest>();	///< ArrayList of 'LaneManagerNest'
 	
 	private LaneManagerFeeder newFeeder;	///< Instance of class 'LaneManagerFeeder'
-	private ArrayList<LaneManagerFeeder> feeders = new ArrayList<LaneManagerFeeder>();	///< Instance of class 'LaneManagerFeeder'
+	private ArrayList<LaneManagerFeeder> feeders = new ArrayList<LaneManagerFeeder>();	///< ArrayList of 'LaneManagerFeeder'
 	
-	private JLabel camera;	///< JLabel instance
-	private ArrayList<JLabel> cameras = new ArrayList<JLabel>();	///< ArrayList of JLabels
-	
-	private final int xCoordinateLane = 50, xCoordinateNest = 15, xCoordinateFeeder = 460, xCoordinateCamera = 0;	///< X Coordinate of lane, nest, feeder, and camera
-	private int yCoordinateLane = 25, yCoordinateNest = 5, yCoordinateFeeder = 20, yCoordinateCamera = 45;	///< Y Coordinate of lane, nest, feeder, and camera
-			
+	private JLabel camera;	///< JLabel instance(Camera)
+	private ImageIcon cameraImage = new ImageIcon( LaneManagerGraphicsPanel.class.getResource("./pics/camera.png") );	///< Camera image
+	private ArrayList<JLabel> cameras = new ArrayList<JLabel>();	///< ArrayList of Camera JLabels
+
+	private final int xCoorLane = 50, xCoorNest = 15, xCoorFeeder = 460, xCoorCamera = 0;	///< X Coordinate of lane, nest, feeder, and camera
+	private int yCoorLane = 25, yCoorNest = 5, yCoorFeeder = 20, yCoorCamera = 45;	///< Y Coordinate of lane, nest, feeder, and camera
+		
 	/**
 	 * This Constructor generates feeders, lanes, nests and cameras and put them into each ArrayList.
 	 * 
@@ -43,57 +49,47 @@ public class LaneManagerGraphicsPanel extends JLayeredPane{
 	 * @param cameraCount : Quantity of camera
 	 * @param app : Instance of class 'LaneManagerApp' 
 	 */
-	public LaneManagerGraphicsPanel(final int feederCount, final int laneCount, final int nestCount, final int cameraCount, LaneManagerApp app){
+	public LaneManagerGraphicsPanel(LaneManagerApp app){
 		this.app = app;
 		setLayout(null);
-		setPreferredSize(new Dimension(530,640));
+		setPreferredSize(new Dimension(700,640));
 		setBorder(new LineBorder( Color.black ));
 		setBackground( Color.white );
 		
 		// Add camera to 'cameras' ArrayList
 		for(int i=0 ; i<cameraCount ; i++){
-			
-			//------------------------------------------------------------------------------------------------------
-			// Image version
-			//camera = new JLabel(new ImageIcon(".//pics//camera.png"));
-			
-			// No image version
-			camera = new JLabel("CAMERA", JLabel.CENTER);
-			camera.setOpaque(true);
-			camera.setBackground(Color.blue);
-			//------------------------------------------------------------------------------------------------------
-			
-			camera.setBounds(xCoordinateCamera, yCoordinateCamera, 80, 80);
+			camera = new JLabel( cameraImage );
+			camera.setBounds(xCoorCamera, yCoorCamera, 80, 80);
 			camera.setVisible(false);
 			cameras.add(camera);
 			add(camera, new Integer(2));
-			yCoordinateCamera += 156;
+			yCoorCamera += 156;
 		}
 		
 		// Add nest to 'nests' ArrayList
 		for( int i=0 ; i<nestCount ; i++ ){
-			newNest = new LaneManagerNest(xCoordinateNest, yCoordinateNest, i);
+			newNest = new LaneManagerNest(xCoorNest, yCoorNest, i);
 			nests.add(newNest);
 			add(newNest, JLabel.CENTER);
-			yCoordinateNest += 78;
+			yCoorNest += 78;
 		}
 		
 		// Add lane to 'lanes' ArrayList
 		for( int i=0 ; i<laneCount ; i++ ){
-			newLane = new LaneManagerLane(xCoordinateLane, yCoordinateLane, nests.get(i), i, app);
+			newLane = new LaneManagerLane(xCoorLane, yCoorLane, nests.get(i), i, app);
 			lanes.add(newLane);
 			add(newLane);
-			yCoordinateLane += 78;
+			yCoorLane += 78;
 		}
-		
+
 		// Add feeder to 'feeders' ArrayList
 		for( int i=0 ; i<feederCount ; i++ ){
-			// REFERENCE : lanes.get(2*i), lanes.get(2*i+1) - assign two lanes in one feeder
-			newFeeder = new LaneManagerFeeder(xCoordinateFeeder, yCoordinateFeeder, lanes.get(2*i), lanes.get(2*i+1), i);
+			newFeeder = new LaneManagerFeeder(xCoorFeeder, yCoorFeeder, lanes.get(2*i), lanes.get(2*i+1), i);
 			feeders.add(newFeeder);
-			add(newFeeder, new Integer(2));
-			yCoordinateFeeder += 156;
+			add(newFeeder, new Integer(3));
+			yCoorFeeder += 156;
 		}
+
 	}
 	
 	/**

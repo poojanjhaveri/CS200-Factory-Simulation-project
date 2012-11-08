@@ -25,8 +25,8 @@ class LaneManagerGUIContentPanel extends JPanel{
 	private ButtonGroup buttonGroup = new ButtonGroup();
 	private JLabel counterLabel;
 	private JLabel sensorLabel;
-	private static ImageIcon redSensorImage = new ImageIcon(".//pics//sensor_red.png");
-	private static ImageIcon whiteSensorImage = new ImageIcon(".//pics//sensor_white.png");
+	private static ImageIcon redSensorImage = new ImageIcon( LaneManagerGUIContentPanel.class.getResource(".//pics//sensor_red.png") );
+	private static ImageIcon whiteSensorImage = new ImageIcon( LaneManagerGUIContentPanel.class.getResource(".//pics//sensor_white.png") );
 	int partsFedCounter = 0;
 	
 	/**
@@ -40,7 +40,7 @@ class LaneManagerGUIContentPanel extends JPanel{
 		setBorder(border);
 		
 		sensorLabel = new JLabel("", JLabel.CENTER);
-		sensorLabel.setIcon(whiteSensorImage);
+		sensorLabel.setIcon(redSensorImage);
 		add(sensorLabel);
 	}
 	

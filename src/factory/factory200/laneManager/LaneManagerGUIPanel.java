@@ -18,7 +18,11 @@ import javax.swing.JTabbedPane;
  */
 public class LaneManagerGUIPanel extends JPanel{
 	
-	private LaneManagerApp laneManagerApp;
+	private final int feederCount = 4;	///< Fixed quantity of feeder
+	private final int laneCount = 8;	///< Fixed quantity of lane
+	private final int nestCount = 8;	///< Fixed quantity of nest
+	
+	private LaneManagerApp app;
 	private JTabbedPane tab  = new JTabbedPane();
 	private LaneManagerGUILane laneGUI;
 	private LaneManagerGUINest nestGUI;
@@ -30,10 +34,10 @@ public class LaneManagerGUIPanel extends JPanel{
 	 * @param feederCount : Quantity of feeder ( Here, it is 4 )
 	 * @param laneCount : Quantity of lane ( Here, it is 8 )
 	 * @param nestCount : Quantity of nest ( Here, it is 8 )
-	 * @param laneManagerApp : Instance of class 'LaneManagerApp'
+	 * @param app : Instance of class 'LaneManagerApp'
 	 */
-	public LaneManagerGUIPanel(final int feederCount, final int laneCount, final int nestCount, LaneManagerApp laneManagerApp){
-		this.laneManagerApp = laneManagerApp;
+	public LaneManagerGUIPanel(LaneManagerApp app){
+		this.app = app;
 		feederGUI = new LaneManagerGUIFeeder(feederCount);
 		laneGUI = new LaneManagerGUILane(laneCount);
 		nestGUI = new LaneManagerGUINest(nestCount);

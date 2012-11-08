@@ -12,7 +12,7 @@ public abstract class Agent {
     Semaphore stateChange = new Semaphore(1, true);//binary semaphore, fair
     private AgentThread agentThread;
     private String name;
-
+    
     protected Agent(String name) {
         this.name = name;
     }
