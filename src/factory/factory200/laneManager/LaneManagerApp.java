@@ -12,13 +12,8 @@ public class LaneManagerApp extends JFrame{
 	private LaneManagerSetNetwork network = new LaneManagerSetNetwork(this);	///< Instance of class 'LaneManagerSetNetwork'
 	private ServerMain server;	///< Instance of class 'ServerMain'
 	
-	private final int feederCount = 4;	///< Fixed quantity of feeder
-	private final int laneCount = 8;	///< Fixed quantity of lane
-	private final int nestCount = 8;	///< Fixed quantity of net
-	private final int cameraCount = 4;	///< Fixed quantity of camera
-	
-	private LaneManagerGUIPanel panelGUI = new LaneManagerGUIPanel(feederCount, laneCount, nestCount, this);	///< Instance of class 'LaneManagerGUIPanel'
-	private LaneManagerGraphicsPanel panelGraphics = new LaneManagerGraphicsPanel(feederCount, laneCount, nestCount, cameraCount, this);	///< Instance of class 'LaneManagerGraphicsPanel'	
+	private LaneManagerGUIPanel panelGUI = new LaneManagerGUIPanel(this);	///< Instance of class 'LaneManagerGUIPanel'
+	private LaneManagerGraphicsPanel panelGraphics = new LaneManagerGraphicsPanel(this);	///< Instance of class 'LaneManagerGraphicsPanel'	
 	
 	/**
 	 * @brief Constructor

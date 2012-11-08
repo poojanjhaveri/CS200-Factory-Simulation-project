@@ -53,7 +53,7 @@ public class LaneManagerFeederHandler {
 			// GUIPanel change
 			laneManagerApp.getGUIPanel().getGUIFeeder().getGUIFeederArray(feederNum).setFeederSwitchOn();
 			// GraphicsPanel change
-			laneManagerApp.getGraphicsPanel().getFeederArray(feederNum).setSwitchOn();
+			laneManagerApp.getGraphicsPanel().getFeederArray(feederNum).setFeederSwitch(true);
 		}
 		
 		// Message : Feeder Off
@@ -61,7 +61,7 @@ public class LaneManagerFeederHandler {
 			// GUIPanel change
 			laneManagerApp.getGUIPanel().getGUIFeeder().getGUIFeederArray(feederNum).setFeederSwitchOff();
 			// GraphicsPanel change
-			laneManagerApp.getGraphicsPanel().getFeederArray(feederNum).setSwitchOff();
+			laneManagerApp.getGraphicsPanel().getFeederArray(feederNum).setFeederSwitch(false);
 		}
 		
 		// Message : Part Low Sensor On
@@ -69,7 +69,7 @@ public class LaneManagerFeederHandler {
 			// GUIPanel change
 			laneManagerApp.getGUIPanel().getGUIFeeder().getGUIFeederArray(feederNum).setFeederPartLowSensor();
 			// GraphicsPanel change
-			
+			laneManagerApp.getGraphicsPanel().getFeederArray(feederNum).setPartLowSensor(true);
 		}
 		
 		// Message : Part Low Sensor Off
@@ -77,7 +77,7 @@ public class LaneManagerFeederHandler {
 			// GUIPanel change
 			laneManagerApp.getGUIPanel().getGUIFeeder().getGUIFeederArray(feederNum).setFeederPartHighSensor();
 			// GraphicsPanel change
-			
+			laneManagerApp.getGraphicsPanel().getFeederArray(feederNum).setPartLowSensor(false);
 		}
 		
 		// Message : Feed Parts Switch On
@@ -85,7 +85,7 @@ public class LaneManagerFeederHandler {
 			// GUIPanel change
 			laneManagerApp.getGUIPanel().getGUIFeeder().getGUIFeederArray(feederNum).setFeederFeedPartsSwitchOn();
 			// GraphicsPanel change
-			
+			laneManagerApp.getGraphicsPanel().getFeederArray(feederNum).setFeedingSwitch(true);
 		}
 		
 		// Message : Feed Parts Switch Off
@@ -93,16 +93,13 @@ public class LaneManagerFeederHandler {
 			// GUIPanel change
 			laneManagerApp.getGUIPanel().getGUIFeeder().getGUIFeederArray(feederNum).setFeederFeedPartsSwitchOff();
 			// GraphicsPanel change
-			
+			laneManagerApp.getGraphicsPanel().getFeederArray(feederNum).setFeedingSwitch(false);
 		}
 		
-		// FIX!!!
 		// Message : Part Fed Counter Setup
 		else if( message.indexOf("Part Fed Counter") != -1 ){
 			// GUIPanel change
 			laneManagerApp.getGUIPanel().getGUIFeeder().getGUIFeederArray(feederNum).setPartFedCounterIncrease();
-			// GraphicsPanel change
-			
 		}
 		
 		// Message : Lowers Rear Gate
@@ -110,7 +107,7 @@ public class LaneManagerFeederHandler {
 			// GUIPanel change
 			laneManagerApp.getGUIPanel().getGUIFeeder().getGUIFeederArray(feederNum).setLowerRaiseRearGateSwitchOff();
 			// GraphicsPanel change
-			
+			laneManagerApp.getGraphicsPanel().getFeederArray(feederNum).setRearGateSwitch(true);
 		}
 		
 		// Message : Raises Rear Gate
@@ -118,7 +115,7 @@ public class LaneManagerFeederHandler {
 			// GUIPanel change
 			laneManagerApp.getGUIPanel().getGUIFeeder().getGUIFeederArray(feederNum).setLowerRaiseRearGateSwitchOn();
 			// GraphicsPanel change
-			
+			laneManagerApp.getGraphicsPanel().getFeederArray(feederNum).setRearGateSwitch(false);
 		}
 		
 		// Message : Purge Bin Switch On
@@ -126,7 +123,7 @@ public class LaneManagerFeederHandler {
 			// GUIPanel change
 			laneManagerApp.getGUIPanel().getGUIFeeder().getGUIFeederArray(feederNum).setPurgeBinSwitchOn();	
 			// GraphicsPanel change
-			
+			laneManagerApp.getGraphicsPanel().getFeederArray(feederNum).setPurgingSwitch(true);
 		}
 		
 		// Message : Purge Bin Switch Off
@@ -134,7 +131,7 @@ public class LaneManagerFeederHandler {
 			// GUIPanel change
 			laneManagerApp.getGUIPanel().getGUIFeeder().getGUIFeederArray(feederNum).setPurgeBinSwitchOff();
 			// GraphicsPanel change
-			
+			laneManagerApp.getGraphicsPanel().getFeederArray(feederNum).setPurgingSwitch(false);
 		}
 		
 		// Message : Divert To Left

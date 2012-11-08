@@ -1,10 +1,8 @@
 package factory.factory200.laneManager;
 
-import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import javax.swing.border.LineBorder;
 
 /**
  * This class has information of parts on lane and nest.
@@ -20,31 +18,15 @@ public class LaneManagerPart extends JLabel{
 	private final int yCoor = 10;	///< Current Y location of part
 	private int partNum;	///< part number
 	
-	//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	// Image version
-	/*
-	private static ImageIcon partImage0 = new ImageIcon(".//pics//part_pic0.png");	///< Part Image of part number 1
-	private static ImageIcon partImage1 = new ImageIcon(".//pics//part_pic1.png");	///< Part Image of part number 2
-	private static ImageIcon partImage2 = new ImageIcon(".//pics//part_pic2.png");	///< Part Image of part number 3
-	private static ImageIcon partImage3 = new ImageIcon(".//pics//part_pic3.png");	///< Part Image of part number 4
-	private static ImageIcon partImage4 = new ImageIcon(".//pics//part_pic4.png");	///< Part Image of part number 5
-	private static ImageIcon partImage5 = new ImageIcon(".//pics//part_pic5.png");	///< Part Image of part number 6
-	private static ImageIcon partImage6 = new ImageIcon(".//pics//part_pic6.png");	///< Part Image of part number 7
-	private static ImageIcon partImage7 = new ImageIcon(".//pics//part_pic7.png");	///< Part Image of part number 8
+	private static ImageIcon partImage0 = new ImageIcon( LaneManagerPart.class.getResource(".//pics//part_pic0.png") );	///< Part Image of part number 1
+	private static ImageIcon partImage1 = new ImageIcon( LaneManagerPart.class.getResource(".//pics//part_pic1.png") );	///< Part Image of part number 2
+	private static ImageIcon partImage2 = new ImageIcon( LaneManagerPart.class.getResource(".//pics//part_pic2.png") );	///< Part Image of part number 3
+	private static ImageIcon partImage3 = new ImageIcon( LaneManagerPart.class.getResource(".//pics//part_pic3.png") );	///< Part Image of part number 4
+	private static ImageIcon partImage4 = new ImageIcon( LaneManagerPart.class.getResource(".//pics//part_pic4.png") );	///< Part Image of part number 5
+	private static ImageIcon partImage5 = new ImageIcon( LaneManagerPart.class.getResource(".//pics//part_pic5.png") );	///< Part Image of part number 6
+	private static ImageIcon partImage6 = new ImageIcon( LaneManagerPart.class.getResource(".//pics//part_pic6.png") );	///< Part Image of part number 7
+	private static ImageIcon partImage7 = new ImageIcon( LaneManagerPart.class.getResource(".//pics//part_pic7.png") );	///< Part Image of part number 8
 	private ArrayList<ImageIcon> partImages = new ArrayList<ImageIcon>();	///< ArrayList of part images
-	*/
-	
-	// No image version
-	private static String partString0 = new String("P1");	///< Part Image of part number 1
-	private static String partString1 = new String("P2");	///< Part Image of part number 2
-	private static String partString2 = new String("P3");	///< Part Image of part number 3
-	private static String partString3 = new String("P4");	///< Part Image of part number 4
-	private static String partString4 = new String("P5");	///< Part Image of part number 5
-	private static String partString5 = new String("P6");	///< Part Image of part number 6
-	private static String partString6 = new String("P7"); 	///< Part Image of part number 7
-	private static String partString7 = new String("P8");	///< Part Image of part number 8
-	private ArrayList<String> partStrings = new ArrayList<String>();	///< ArrayList of part strings
-	//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	
 	/**
 	 * This sets up the image and the default location.
@@ -54,9 +36,7 @@ public class LaneManagerPart extends JLabel{
 	 */
 	public LaneManagerPart( int partNum ){
 		this.partNum = partNum;
-		//--------------------------------------------------------------------
-		// Image version
-		/*
+
 		if( partNum == 0 ){ setIcon(partImage0); }
 		else if( partNum == 1 ){ setIcon(partImage1); }
 		else if( partNum == 2 ){ setIcon(partImage2); }
@@ -65,22 +45,6 @@ public class LaneManagerPart extends JLabel{
 		else if( partNum == 5 ){ setIcon(partImage5); }
 		else if( partNum == 6 ){ setIcon(partImage6); }
 		else if( partNum == 7 ){ setIcon(partImage7); }
-		*/
-		
-		// No image version
-		setOpaque(true);
-		setBackground( new Color(250,255,117));
-		setBorder(new LineBorder(Color.black));
-		
-		if( partNum == 0 ){ setText(partString0); }
-		else if( partNum == 1 ){ setText(partString1); }
-		else if( partNum == 2 ){ setText(partString2); }
-		else if( partNum == 3 ){ setText(partString3); }
-		else if( partNum == 4 ){ setText(partString4); }
-		else if( partNum == 5 ){ setText(partString5); }
-		else if( partNum == 6 ){ setText(partString6); }
-		else if( partNum == 7 ){ setText(partString7); }
-		//--------------------------------------------------------------------
 		
 		setSize(20,20);
 		setLocation(xCoor ,yCoor);
@@ -114,9 +78,6 @@ public class LaneManagerPart extends JLabel{
 	 * @brief Getter
 	 * @return Instance of 'ImageIcon' of the part
 	 */
-	//--------------------------------------------------------------------
-	// Image version
-	/*
 	public ImageIcon getImageIconOfPart(){
 		if( partNum == 0 ){ return partImage0; }
 		else if( partNum == 1 ){ return partImage1; }
@@ -128,21 +89,6 @@ public class LaneManagerPart extends JLabel{
 		else if( partNum == 7 ){ return partImage7; }
 		return null;
 	}
-	*/
-	
-	// No image version
-	public String getStringOfPart(){
-		if( partNum == 0 ){ return partString0; }
-		else if( partNum == 1 ){ return partString1; }
-		else if( partNum == 2 ){ return partString2; }
-		else if( partNum == 3 ){ return partString3; }
-		else if( partNum == 4 ){ return partString4; }
-		else if( partNum == 5 ){ return partString5; }
-		else if( partNum == 6 ){ return partString6; }
-		else if( partNum == 7 ){ return partString7; }
-		return null;
-	}
-	//--------------------------------------------------------------------
 	
 	/**
 	 * If the part reaches the end of lane, it disappears.
@@ -150,13 +96,7 @@ public class LaneManagerPart extends JLabel{
 	 * @brief Part Image Disabler
 	 */
 	public void setDisappear(){
-		//--------------------------------------------------------------------
-		// Image version
-		//setIcon(null);
-		
-		// No image version
-		setVisible(false);
-		//--------------------------------------------------------------------
+		setIcon(null);
 	}
 	
 	/**

@@ -55,7 +55,7 @@ public class ControlPanel1 extends JPanel implements ActionListener{
 	private JButton b16 = new JButton("Feeder Without Box");
 	
 	public ControlPanel1(ServerForAgentFeeder agentFeeder){
-		// For v0
+		/*
 		b2.setEnabled(false);
 		b3.setEnabled(false);
 		b6.setEnabled(false);
@@ -65,6 +65,7 @@ public class ControlPanel1 extends JPanel implements ActionListener{
 		b10.setEnabled(false);
 		b13.setEnabled(false);
 		b14.setEnabled(false);
+		*/
 		
 		this.agentFeeder = agentFeeder;
 		setBorder(border);
