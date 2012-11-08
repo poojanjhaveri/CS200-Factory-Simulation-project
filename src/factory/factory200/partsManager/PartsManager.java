@@ -16,34 +16,41 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JTextField;
 
 /**
  * <img src="../img/image02.png"/>
  * @brief JFrame that represents the parts manager
  * @author David Zhang, YiWei Roy Zheng
  */
-public class PartsManager extends Manager implements ActionListener {
+public class PartsManager extends JPanel {// Manager implements ActionListener {
     // TODO: NEED GUIPart.java class in partsManager package
 
     private JPanel contentPane;
     private JLabel lblPartsManager;
     private JTabbedPane tabbedPane;
-    private JPanel managePartsPanel, comboBoxPanel;
+    private JPanel pnlManageParts, comboBoxPanel;
     private JComboBox partComboBox;
     private JPanel managePartsImagePanel;
     private JPanel managePartsButtonPanel;
-    private JButton viewButton;
-    private JButton deleteButton;
-    private JPanel selectedPartPanel;
-    private JPanel formPanel;
-    private JPanel partNamePanel;
-    private JPanel imageFileNamePanel;
-    private JPanel descriptionPanel;
-    private JPanel nonformPanel;
-    private JPanel imagePanel;
-    private JPanel buttonPanel;
-    private JButton submitButton;
-    private JPanel newPartPanel;
+    private JButton btnView;
+    private JButton btnDelete;
+    private JPanel pnlSelectedPart;
+    private JPanel pnlForm;
+    private JPanel pnlPartName;
+    private JPanel pnlImageFileName;
+    private JPanel pnlDescription;
+    private JPanel pnlNonform;
+    private JPanel pnlImage;
+    private JPanel pnlButton;
+    private JButton btnUpdate;
+    private JPanel pnlNewPart;
+    private JLabel lblPartName;
+    private JLabel lblImageFileName;
+    private JLabel lblDescription;
+    private JTextField tfPartName;
+    private JTextField tfImageFileName;
+    private JTextField tfDescription;
 
     private void prepareContentPane() {
         contentPane = new JPanel();
@@ -57,71 +64,96 @@ public class PartsManager extends Manager implements ActionListener {
         tabbedPane = new JTabbedPane(JTabbedPane.TOP);
         contentPane.add(tabbedPane, BorderLayout.CENTER);
 
-        managePartsPanel = new JPanel();
-        tabbedPane.addTab("Manage Parts", null, managePartsPanel, null);
-        managePartsPanel.setLayout(new BoxLayout(managePartsPanel, BoxLayout.Y_AXIS));
-
-        comboBoxPanel = new JPanel();
-        managePartsPanel.add(comboBoxPanel);
-        comboBoxPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-
-        partComboBox = new JComboBox();
-        comboBoxPanel.add(partComboBox);
+        pnlManageParts = new JPanel();
+        tabbedPane.addTab("Manage Parts", null, pnlManageParts, null);
+        pnlManageParts.setLayout(new BoxLayout(pnlManageParts, BoxLayout.Y_AXIS));
+        
+                comboBoxPanel = new JPanel();
+                pnlManageParts.add(comboBoxPanel);
+                comboBoxPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+                
+                        partComboBox = new JComboBox();
+                        comboBoxPanel.add(partComboBox);
 
         managePartsImagePanel = new JPanel();
-        managePartsPanel.add(managePartsImagePanel);
+        pnlManageParts.add(managePartsImagePanel);
 
         managePartsButtonPanel = new JPanel();
-        managePartsPanel.add(managePartsButtonPanel);
+        pnlManageParts.add(managePartsButtonPanel);
 
-        viewButton = new JButton("View");
-        managePartsButtonPanel.add(viewButton);
-        viewButton.addActionListener(this);
+        btnView = new JButton("View");
+        managePartsButtonPanel.add(btnView);
+        btnView.addActionListener(this);
 
-        deleteButton = new JButton("Delete");
-        managePartsButtonPanel.add(deleteButton);
-        deleteButton.addActionListener(this);
+        btnDelete = new JButton("Delete");
+        managePartsButtonPanel.add(btnDelete);
+        btnDelete.addActionListener(this);
 
-        selectedPartPanel = new JPanel();
-        tabbedPane.addTab("Selected Part", null, selectedPartPanel, null);
-        selectedPartPanel.setLayout(new BoxLayout(selectedPartPanel, BoxLayout.X_AXIS));
+        pnlSelectedPart = new JPanel();
+        tabbedPane.addTab("Selected Part", null, pnlSelectedPart, null);
+        pnlSelectedPart.setLayout(new BoxLayout(pnlSelectedPart, BoxLayout.X_AXIS));
 
-        formPanel = new JPanel();
-        selectedPartPanel.add(formPanel);
-        formPanel.setLayout(new BoxLayout(formPanel, BoxLayout.Y_AXIS));
+        pnlForm = new JPanel();
+        pnlSelectedPart.add(pnlForm);
+        pnlForm.setLayout(new BoxLayout(pnlForm, BoxLayout.Y_AXIS));
 
-        partNamePanel = new JPanel();
-        formPanel.add(partNamePanel);
+        pnlPartName = new JPanel();
+        pnlForm.add(pnlPartName);
+        
+        lblPartName = new JLabel("Part name");
+        pnlPartName.add(lblPartName);
+        
+        tfPartName = new JTextField();
+        pnlPartName.add(tfPartName);
+        tfPartName.setColumns(10);
 
-        imageFileNamePanel = new JPanel();
-        formPanel.add(imageFileNamePanel);
+        pnlImageFileName = new JPanel();
+        pnlForm.add(pnlImageFileName);
+        
+        lblImageFileName = new JLabel("Image file name");
+        pnlImageFileName.add(lblImageFileName);
+        
+        tfImageFileName = new JTextField();
+        pnlImageFileName.add(tfImageFileName);
+        tfImageFileName.setColumns(10);
 
-        descriptionPanel = new JPanel();
-        formPanel.add(descriptionPanel);
+        pnlDescription = new JPanel();
+        pnlForm.add(pnlDescription);
+        
+        lblDescription = new JLabel("Description");
+        pnlDescription.add(lblDescription);
+        
+        tfDescription = new JTextField();
+        pnlDescription.add(tfDescription);
+        tfDescription.setColumns(10);
 
-        nonformPanel = new JPanel();
-        selectedPartPanel.add(nonformPanel);
-        nonformPanel.setLayout(new BoxLayout(nonformPanel, BoxLayout.Y_AXIS));
+        pnlNonform = new JPanel();
+        pnlSelectedPart.add(pnlNonform);
+        pnlNonform.setLayout(new BoxLayout(pnlNonform, BoxLayout.Y_AXIS));
 
-        imagePanel = new JPanel();
-        nonformPanel.add(imagePanel);
+        pnlImage = new JPanel();
+        pnlNonform.add(pnlImage);
 
-        buttonPanel = new JPanel();
-        nonformPanel.add(buttonPanel);
-        buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.X_AXIS));
+        pnlButton = new JPanel();
+        pnlNonform.add(pnlButton);
+        pnlButton.setLayout(new BoxLayout(pnlButton, BoxLayout.X_AXIS));
 
-        submitButton = new JButton("Update");
-        buttonPanel.add(submitButton);
+        btnUpdate = new JButton("Update");
+        pnlButton.add(btnUpdate);
 
-        newPartPanel = new JPanel();
-        tabbedPane.addTab("New Part", null, newPartPanel, null);
+        pnlNewPart = new JPanel();
+        tabbedPane.addTab("New Part", null, pnlNewPart, null);
     }
 
 
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == deleteButton) {
+        if (e.getSource() == btnDelete) {
             p.println("delete button hit!");
             sendToServer(Message.TEST_SERVER);
+        } else if (e.getSource() == btnView) {
+        	
+        } else if (e.getSource() == btnView) {
+        	
         }
     }
 
