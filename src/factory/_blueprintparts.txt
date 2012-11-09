@@ -1,0 +1,12 @@
+Adding parts...ADDED
+SERIALIZED BLUEPRINT
+38(part1,is a part,1352489534,part1.png)42(part2,is not a part,1352489534,part2.png)34(alfalfa,heyo,1352489534,gogo.png)
+DESERIALIZED BLUEPRINT
+line 0:(part1,is a part,1352489534,part1.png)
+line 0:(part2,is not a part,1352489534,part2.png)
+line 0:(alfalfa,heyo,1352489534,gogo.png)
+SERIALIZED DESERIALIZED SERIALIZED BLUEPRINT
+38(part1,is a part,1352489534,part1.png)42(part2,is not a part,1352489534,part2.png)34(alfalfa,heyo,1352489534,gogo.png)
+SERIALIZED BLUEPRINT
+38(part1,is a part,1352489534,part1.png)42(part2,is not a part,1352489534,part2.png)34(alfalfa,heyo,1352489534,gogo.png)
+Test passed

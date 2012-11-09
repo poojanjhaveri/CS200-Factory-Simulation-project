@@ -1,3 +1,5 @@
+package factory.general;
+
 import java.util.ArrayList;
 
 /**

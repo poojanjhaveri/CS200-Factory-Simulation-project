@@ -2,6 +2,7 @@ package factory.general;
 
 import java.io.Serializable;
 import javax.swing.ImageIcon;
+import java.util.ArrayList;
 
 /**
  * @brief digital representation of a part
@@ -88,6 +89,13 @@ public class Part implements Serializable {
 	this.guipart = null;
 	this.number = (int)(System.currentTimeMillis()/(long)1000);
     }
+    public Part(String n, String d, Integer num)
+    {
+	this.name = n;
+	this.description = d;
+	this.number = num;
+	this.guipart = null;
+    }
     public void setFilename(String in)
     {
 	this.filename = in;
@@ -119,6 +127,14 @@ public class Part implements Serializable {
 		System.out.println("PART CANNOT BE DESERIALIZED " + des);
 return null;
 	    }
-
+	String s = "";
+	for(int i = 1; i < des.length()-1;i++)
+	    s = s+des.charAt(i);
+	ArrayList<String> arr = Util.stringExplode(",",s);
+	if(arr.size() != 4)
+	    System.out.println("BAD PART DESERIALIZATION. ARRAY IS "+arr+"; SERIALIZED STRING IS "+des);
+	Part toreturn = new Part(arr.get(0),arr.get(1),Integer.parseInt(arr.get(2)));
+	toreturn.setFilename(arr.get(3));
+	return toreturn;
     }
 }
