@@ -85,6 +85,7 @@ public class Part implements Serializable {
 //        this.img = new ImageIcon(fn);
         //this.number=time()\;
 	this.guipart = null;
+	this.number = System.currentTimeMillis()/1000;
     }
   
 
