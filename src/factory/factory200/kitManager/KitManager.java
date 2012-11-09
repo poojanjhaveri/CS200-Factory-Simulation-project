@@ -18,12 +18,14 @@ import factory.general.Message;
 
 
 public class GUIKit extends Manager {
+public class KitManager extends Manager {
 
 	/**
 	 * @param args
 	 */
 	
          public GUIKit()
+         public KitManager()
          {
              
              
@@ -35,6 +37,8 @@ public class GUIKit extends Manager {
 		// TODO Auto-generated method stub
 
             
+            KitManager frame = new KitManager();
+            frame.setVisible(true);
             
 	}
 	
