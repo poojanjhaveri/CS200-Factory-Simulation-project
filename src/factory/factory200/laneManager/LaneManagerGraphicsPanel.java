@@ -37,7 +37,7 @@ public class LaneManagerGraphicsPanel extends JLayeredPane{
 	private ArrayList<JLabel> cameras = new ArrayList<JLabel>();	///< ArrayList of Camera JLabels
 
 	private final int xCoorLane = 50, xCoorNest = 15, xCoorFeeder = 460, xCoorCamera = 0;	///< X Coordinate of lane, nest, feeder, and camera
-	private int yCoorLane = 25, yCoorNest = 5, yCoorFeeder = 20, yCoorCamera = 45;	///< Y Coordinate of lane, nest, feeder, and camera
+	private int yCoorLane = 25, yCoorNest = 5, yCoorFeeder = 18, yCoorCamera = 45;	///< Y Coordinate of lane, nest, feeder, and camera
 		
 	/**
 	 * This Constructor generates feeders, lanes, nests and cameras and put them into each ArrayList.
@@ -52,7 +52,7 @@ public class LaneManagerGraphicsPanel extends JLayeredPane{
 	public LaneManagerGraphicsPanel(LaneManagerApp app){
 		this.app = app;
 		setLayout(null);
-		setPreferredSize(new Dimension(700,640));
+		setPreferredSize(new Dimension(670,640));
 		setBorder(new LineBorder( Color.black ));
 		setBackground( Color.white );
 		

@@ -19,27 +19,34 @@ public class LaneManagerFeeder extends JLayeredPane{
 	private LaneManagerLane leftLane;	///< Instance of class 'LaneManagerLane' : Left Lane
 	private LaneManagerApp laneManagerApp;	///< Instance of class 'LaneManagerApp'
 	
-	// Diversion Bulb Setups
-	private JLabel divertToRightBulbLabel = new JLabel();
-	private JLabel divertToLeftBulbLabel = new JLabel();
-	
 	// Feeder Switch Setup
-	private JLabel feederSwitchLabel = new JLabel();
+	private JLabel feederSwitchLabel = new JLabel(feederOffImage);
+	
+	// Bin Holder Setup
+	private JLabel binHolderLabel = new JLabel(binHolderImage);
+	
+	// Diversion Bulb Setups
+	private JLabel divertToRightBulbLabel = new JLabel(bulbOffImage);
+	private JLabel divertToLeftBulbLabel = new JLabel(bulbOffImage);
 	
 	// Feeding Bulb Setup
-	private JLabel feedingBulbLabel = new JLabel();
+	private JLabel feedingSymbolLabel = new JLabel();
+	private JLabel feedingBulbLabel = new JLabel(bulbOffImage);
 	
 	// Purging Bulb Setup
-	private JLabel purgingBulbLabel = new JLabel();
+	private JLabel purgingSymbolLabel = new JLabel();
+	private JLabel purgingBulbLabel = new JLabel(bulbOffImage);
 	
 	// Rear Gate Bulb Setup
-	private JLabel rearGateBulbLabel = new JLabel();
+	private JLabel rearGateSymbolLabel = new JLabel();
+	private JLabel rearGateBulbLabel = new JLabel(bulbOffImage);
 	
 	// Part Low Sensor Setups
-	private JLabel partLowSensorLabel = new JLabel();
+	private JLabel partLowSymbolLabel = new JLabel();
+	private JLabel partLowSensorLabel = new JLabel(bulbOffImage);
 	
-	// Feeder Setup
-	private JLabel backgroundLabel = new JLabel(backgroundImage);
+	// Feeder Background Setup
+	private JLabel backgroundLabel = new JLabel(feederOffImage);
 	
 	// Images
 	private static ImageIcon feederOnImage = new ImageIcon( LaneManagerNest.class.getResource("./pics/feederOn.png") );	///< Image of feeder(on)
@@ -48,7 +55,7 @@ public class LaneManagerFeeder extends JLayeredPane{
 	private static ImageIcon bulbOffImage = new ImageIcon( LaneManagerNest.class.getResource("./pics/bulbOff.png") );	///< Image of bulb(off)
 	private static ImageIcon loweredRearGateImage = new ImageIcon( LaneManagerNest.class.getResource("./pics/feederOn.png") );	///< Image of lowered rear gate
 	private static ImageIcon raisedRearGateImage = new ImageIcon( LaneManagerNest.class.getResource("./pics/feederOff.png") );	///< Image of raised rear gate
-	private static ImageIcon backgroundImage = new ImageIcon( LaneManagerFeeder.class.getResource("./pics/feeder.png") );
+	private static ImageIcon binHolderImage = new ImageIcon( LaneManagerFeeder.class.getResource("./pics/binHolder.png") );
 	
 	/**
 	 * This constructor sets up the default features of lane.
@@ -66,16 +73,15 @@ public class LaneManagerFeeder extends JLayeredPane{
 		this.leftLane = leftLane;
 		this.feederNum = feederNum;
 		
-		// Feeder Setup
-		setSize(200,130);
+		// Feeder Background Setup
+		setSize(185,130);
 		setLocation(xCoor, yCoor);
 		backgroundLabel.setBounds(0,0,200,130);
 		add(backgroundLabel, new Integer(0));
 		
-		// Feeder Switch Setup
-		feederSwitchLabel.setBounds(100, 30, 40, 70);
-		feederSwitchLabel.setBorder(new LineBorder( Color.cyan ));
-		add(feederSwitchLabel, new Integer(1));
+		// Bin Holder Setup
+		binHolderLabel.setBounds(115, 15, 60, 100);
+		add(binHolderLabel, new Integer(1));
 		
 		// Diversion Bulb Setup
 		divertToRightBulbLabel.setBounds(5,15,22,20);
@@ -84,27 +90,36 @@ public class LaneManagerFeeder extends JLayeredPane{
 		add(divertToLeftBulbLabel, new Integer(1));
 		
 		// Feeding Bulb Setup
-		feedingBulbLabel.setBounds(150, 10, 22, 20);
-		feedingBulbLabel.setBorder(new LineBorder( Color.black ));
+		feedingSymbolLabel.setBounds(55, 7, 25, 25);
+		feedingSymbolLabel.setBorder(new LineBorder( Color.black ));
+		add(feedingSymbolLabel, new Integer(1));
+		feedingBulbLabel.setBounds(85, 10, 22, 20);
+		//feedingBulbLabel.setBorder(new LineBorder( Color.black ));
 		add(feedingBulbLabel, new Integer(1));
 		
 		// Purging Bulb Setup
-		purgingBulbLabel.setBounds(150, 35, 22, 20);
-		purgingBulbLabel.setBorder(new LineBorder( Color.red ));
+		purgingSymbolLabel.setBounds(55, 38, 25, 25);
+		purgingSymbolLabel.setBorder(new LineBorder( Color.red ));
+		add(purgingSymbolLabel, new Integer(1));
+		purgingBulbLabel.setBounds(85, 40, 22, 20);
+		//purgingBulbLabel.setBorder(new LineBorder( Color.red ));
 		add(purgingBulbLabel, new Integer(1));
 		
 		// Rear Gate Bulb Setup
-		rearGateBulbLabel.setBounds(150, 60, 22, 20);
-		rearGateBulbLabel.setBorder(new LineBorder( Color.blue ));
+		rearGateSymbolLabel.setBounds(55, 69, 25, 25);
+		rearGateSymbolLabel.setBorder(new LineBorder( Color.blue ));
+		add(rearGateSymbolLabel, new Integer(1));
+		rearGateBulbLabel.setBounds(85, 72, 22, 20);
+		//rearGateBulbLabel.setBorder(new LineBorder( Color.blue ));
 		add(rearGateBulbLabel, new Integer(1));
 		
 		// Part Low Sensor Setups
-		partLowSensorLabel.setBounds(150, 85, 22, 20);
-		partLowSensorLabel.setBorder(new LineBorder( Color.pink ));
+		partLowSymbolLabel.setBounds(55, 100, 25, 25);
+		partLowSymbolLabel.setBorder(new LineBorder( Color.pink ));
+		add(partLowSymbolLabel, new Integer(1));
+		partLowSensorLabel.setBounds(85, 102, 22, 20);
+		//partLowSensorLabel.setBorder(new LineBorder( Color.pink ));
 		add(partLowSensorLabel, new Integer(1));
-		
-		// Test
-		setDivertToLeft();
 	}
 	
 	/**

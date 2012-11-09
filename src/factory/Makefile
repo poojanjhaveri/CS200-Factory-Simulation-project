@@ -1,4 +1,4 @@
-G=Drawable.java MovingDrawable.java Coordinate.java Manager.java ManagerConnection.java Message.java Printer.java GUIRobot.java Server.java Kit.java Part.java Inventory.java GUIPart.java
+G=Drawable.java MovingDrawable.java Coordinate.java Manager.java ManagerConnection.java Message.java Printer.java GUIRobot.java Server.java Kit.java Part.java Inventory.java GUIPart.java Blueprint.java BlueprintKits.java BlueprintParts.java
 GENERAL=$(addprefix general/, $(G))
 
 PARAM=-d .
