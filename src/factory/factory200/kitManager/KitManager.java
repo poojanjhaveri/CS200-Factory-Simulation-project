@@ -1,7 +1,7 @@
 package factory.factory200.kitManager;
 
-import java.io.Serializable;
-import java.util.ArrayList;
+import factory.general.Manager;
+import factory.general.Message;
 
 
 
@@ -17,19 +17,26 @@ import java.util.ArrayList;
 
 
 
-public class GUIKit implements Serializable {
+public class KitManager extends Manager {
 
 	/**
 	 * @param args
 	 */
-	String name; //name of the Kit
-	//ArrayList<part>partslist;  // collection of parts in the kit
 	
+         public KitManager()
+         {
+             
+             
+             
+         }
 	
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
+            KitManager frame = new KitManager();
+            frame.setVisible(true);
+            
 	}
 	
 	//getters and setters as needed 

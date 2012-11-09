@@ -22,7 +22,7 @@ public class LaneManagerApp extends JFrame{
 	public LaneManagerApp(ServerMain server){
 		this.server = server;
 		setTitle("Lane Manager");
-		setSize(870,700);
+		setSize(1000,700);
 		setLocation(0,0);
 		setVisible(true);
 		setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
