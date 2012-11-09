@@ -11,8 +11,10 @@ public abstract class Agent {
 
     Semaphore stateChange = new Semaphore(1, true);//binary semaphore, fair
     private AgentThread agentThread;
-
-    protected Agent() {
+    private String name;
+    
+    protected Agent(String name) {
+        this.name = name;
     }
 
     /**
@@ -37,7 +39,9 @@ public abstract class Agent {
      * Return agent name for messages. Default is to return java instance name.
      */
     protected String getName() {
-        return StringUtil.shortName(this);
+//        return StringUtil.shortName(this);
+        return this.name;
+
     }
 
     /**

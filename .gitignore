@@ -14,5 +14,7 @@ bin/
 
 # Package Files #
 *.jar
+*.zip
 *.war
 *.ear
+/build/

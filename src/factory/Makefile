@@ -1,17 +1,26 @@
-BASE=agentGUI/Drawable.java agentGUI/MovingDrawable.java agentGUI/Coordinate.java agentGUI/GUIRobot.java
-BASECTR=controlGUI/Manager.java controlGUI/ManagerConnection.java Message.java Printer.java
+G=Drawable.java MovingDrawable.java Coordinate.java Manager.java ManagerConnection.java Message.java Printer.java GUIRobot.java Server.java Kit.java Part.java Inventory.java GUIPart.java
+GENERAL=$(addprefix general/, $(G))
+
 PARAM=-d .
-PACKAGE=factory.agentGUI
-PACKAGECTR=factory.controlGUI
+PKGENERAL=factory.general
 
-
+all:
+	javac $(PARAM) *.java factory200/*.java general/*.java
 movingdrawable:
-	javac $(PARAM) $(BASE) 
-	java $(PACKAGE).MovingDrawable > _movingdrawable.txt
+	javac $(PARAM) $(GENERAL) 
+	java $(PKGENERAL).MovingDrawable > _movingdrawable.txt
 manager:
-	javac $(PARAM) $(BASECTR) Message.java Printer.java Server.java
-	java $(PACKAGECTR).Manager
-kitrobot:
-	javac $(PARAM) $(BASE) $(BASECTR) agentGUI/GUIKitRobot.java controlGUI/KitAssemblyManager.java Server.java
-	java $(PACKAGECTR).KitAssemblyManager
-
+	javac $(PARAM) $(GENERAL)
+	java $(PKGENERAL).Manager
+partsmanager:
+	javac $(PARAM) $(GENERAL) factory200/partsManager/*.java
+	rm ../../factory -R
+	mv factory ../..
+kitassembly:
+	javac $(PARAM) $(GENERAL) factory200/kitAssemblyManager/*.java factory201/interfaces/KitRobot.java
+	java factory.factory200.kitAssemblyManager.KAMGraphicPanel
+lane:
+	javac $(PARAM) factory200/laneManager/*.java
+	java factory.factory200.laneManager.V0LaneBinGantry
+debug:
+	echo $(GENERAL)
