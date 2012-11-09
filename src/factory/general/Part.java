@@ -111,4 +111,14 @@ public class Part implements Serializable {
     {
 	return "("+this.name+","+this.description+","+this.number+","+this.filename+")";
     }
+
+    public static Part deserialize(String des)
+    {
+	if(des.charAt(0) != '(' || des.charAt(des.length()-1) != ')')
+	    {
+		System.out.println("PART CANNOT BE DESERIALIZED " + des);
+return null;
+	    }
+
+    }
 }
