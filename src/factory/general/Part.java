@@ -37,32 +37,6 @@ public class Part implements Serializable {
 		this.nestNum = n;
 	}
 
-<<<<<<< HEAD
-    public Part(String n, String d) {
-        this.name = n;
-        this.description = d;
-//        this.img = new ImageIcon(fn);
-        //this.number=time()\;
-	this.guipart = null;
-	this.number = (int)(System.currentTimeMillis()/(long)1000);
-    }
-    public Part(String n, String d, Integer num)
-    {
-	this.name = n;
-	this.description = d;
-	this.number = num;
-	this.guipart = null;
-    }
-    public void setFilename(String in)
-    {
-	this.filename = in;
-    }
-    public String getName() {
-        return this.name;
-    }
-	public Integer getNumber() {
-		return number;
-	}
 	
 	public int getSize(){
 		return this.size;
@@ -107,22 +81,31 @@ public class Part implements Serializable {
 	GUIPart guipart;///<gui representation of this part
 	private String filename;//lives in guipart
 
-	public Part(String n, String d) {
-		this.name = n;
-		this.description = d;
-		//        this.img = new ImageIcon(fn);
-		//this.number=time()\;
-		this.guipart = null;
-		this.number = (int)(System.currentTimeMillis()/(long)1000);
+    public Part(String n, String d) {
+        this.name = n;
+        this.description = d;
+//        this.img = new ImageIcon(fn);
+        //this.number=time()\;
+	this.guipart = null;
+	this.number = (int)(System.currentTimeMillis()/(long)1000);
+    }
+    public Part(String n, String d, Integer num)
+    {
+	this.name = n;
+	this.description = d;
+	this.number = num;
+	this.guipart = null;
+    }
+    public void setFilename(String in)
+    {
+	this.filename = in;
+    }
+    public String getName() {
+        return this.name;
+    }
+	public Integer getNumber() {
+		return number;
 	}
-	public void setFilename(String in)
-	{
-		this.filename = in;
-	}
-	public String getName() {
-		return this.name;
-	}
-
 	public String getDescription() {
 		return this.description;
 	}
@@ -155,5 +138,4 @@ return null;
 	toreturn.setFilename(arr.get(3));
 	return toreturn;
     }
-
 }
