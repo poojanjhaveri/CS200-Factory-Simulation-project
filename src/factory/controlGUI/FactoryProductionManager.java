@@ -6,7 +6,7 @@ import java.awt.event.*;
 import java.awt.event.*;
 import java.io.*;
 import java.net.*;
-//import factory.agentGUI.*;
+import factory.agentGUI.*;
 
 /**
  * Factory Production Manager selects active kit production routines, how many
@@ -24,20 +24,55 @@ import java.net.*;
  * produce, and also will control non-normative scenario simulation
  *
  */
-public class FactoryProductionManager extends JFrame {
+public class FactoryProductionManager extends JFrame implements ActionListener {
+	public JPanel basePanel, topPanel, botPanel, leftPanel, midPanel, rightPanel, blankPanel;
+	public JLabel selLabel, numLabel, consoleLabel, schedLabel;
+	public JComboBox selKit;
+	public JTextField numE;
+	public JButton start, stop, reset;
+	public JLabel schedField, outField;
 
-    FPMGUI fpmgui;///<
-    JPanel nonNormative;///<non-normative scenarios
-    FPMGraphics fpmg;///<graphics panel
-    Socket s;///<socket with server
+	public int num;
+	public List<Kit> availableKits;
+	
 
 	public static void main(String[] args)
 	{
-
+		
 	}
 
 	public FactoryProductionManager()
 	{
+		GridBagLayout gridbag = new GridBagLayout();
+		GridBagConstraints c = new GridBagConstraints();
+
+		availableKits = new List<Kit>();
+
+		selLabel = new JLabel ("Select Kit");
+		numLabel = new JLabel ("Qty");
+		consoleLabel = new JLabel ("Console Out");
+		schedLabel = new JLabel ("Production Schedule");
+		selKit = new JComboBox();
+		numE = new JTextField(20);
+		start = new JButton("Start");
+		stop = new JButton("Stop");
+		reset = new JButton("Reset");
+
+		basePanel = new JPanel();
+		basePanel.setLayout(new BorderLayout());
+		topPanel = new JPanel();
+		topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.LINE_AXIS));
+		botPanel = new JPanel();
+		botPanel.setLayout(new BoxLayout(topPanel, BoxLayout.LINE_AXIS));
+		leftPanel = new JPanel();
+		midPanel = new JPanel();
+		midPanel.setLayout(gridbag);
+		rightPanel = new JPanel();
+		blankPanel = new JPanel();
+
+		topPanel.add(consoleLabel);
+		topPanel.add(blankPanel);
+		topPanel.add(schedLabel);
 		
 	}
 	
