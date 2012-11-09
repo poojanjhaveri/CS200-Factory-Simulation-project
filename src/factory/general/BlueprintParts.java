@@ -13,7 +13,7 @@ class BlueprintParts implements Blueprint, Serializable {
 
     ArrayList<Part> parts;
     /**
-@brief creates an empty blueprint parts
+    @brief creates an empty blueprint parts
      */
     public BlueprintParts() {
         this.parts=new ArrayList<Part>();
@@ -26,12 +26,12 @@ class BlueprintParts implements Blueprint, Serializable {
         this.recreate(serialized);
     }
     /**
-@brief creates the object using a passed arraylist of parts
+    @brief creates the object using a passed arraylist of parts
      */
     public BlueprintParts(ArrayList<Part> p)
-{
-    this.parts = p;
-}
+    {
+        this.parts = p;
+    }
     public void add(Part in)
     {
         this.parts.add(in);
@@ -42,14 +42,14 @@ class BlueprintParts implements Blueprint, Serializable {
     public ArrayList<Part> deserialize(String serialized)
     {
         ArrayList<String> stringform = new ArrayList<String>();
-            String integer = "";
+        String integer = "";
         for(int i = 0; i != serialized.length(); i++)
         {
             if(serialized.charAt(i) == '(' && integer.length() != 0)
             {
                 Integer chars = Integer.parseInt(integer);
-		//System.out.println("DEBUG:"+chars);                
-integer = "";
+                //System.out.println("DEBUG:"+chars);
+                integer = "";
                 String part = "";
                 for(int ii = 0; ii != chars; ii++)
                 {
@@ -100,7 +100,7 @@ integer = "";
 
     public static void main(String[] args)
     {
-	System.out.print("Adding parts...");
+        System.out.print("Adding parts...");
         Part p = new Part("part1","is a part");
         p.setFilename("part1.png");
         BlueprintParts bp = new BlueprintParts();
@@ -108,25 +108,25 @@ integer = "";
         p = new Part("part2","is not a part");
         p.setFilename("part2.png");
         bp.add(p);
-	p = new Part("alfalfa","heyo");
-	p.setFilename("gogo.png");
-	bp.add(p);
-	System.out.println("ADDED");
-	System.out.println("SERIALIZED BLUEPRINT");
+        p = new Part("alfalfa","heyo");
+        p.setFilename("gogo.png");
+        bp.add(p);
+        System.out.println("ADDED");
+        System.out.println("SERIALIZED BLUEPRINT");
         System.out.println(bp.serialize());
-	ArrayList<Part> des = bp.deserialize(bp.serialize());
-	System.out.println("DESERIALIZED BLUEPRINT");
-	for(int i = 0; i != des.size(); i++)
-	    {
-		System.out.println("line 0:"+des.get(i));
-	    }
-	System.out.println("SERIALIZED DESERIALIZED SERIALIZED BLUEPRINT");
-	BlueprintParts bp2 = new BlueprintParts(des);
-	System.out.println(bp2.serialize());
-	System.out.println("SERIALIZED BLUEPRINT");
-	System.out.println(bp.serialize());
-	if(bp2.serialize().equals(bp.serialize()))
-	    System.out.println("Test passed");
-	else System.out.println("TEST FAILED");
+        ArrayList<Part> des = bp.deserialize(bp.serialize());
+        System.out.println("DESERIALIZED BLUEPRINT");
+        for(int i = 0; i != des.size(); i++)
+        {
+            System.out.println("line 0:"+des.get(i));
+        }
+        System.out.println("SERIALIZED DESERIALIZED SERIALIZED BLUEPRINT");
+        BlueprintParts bp2 = new BlueprintParts(des);
+        System.out.println(bp2.serialize());
+        System.out.println("SERIALIZED BLUEPRINT");
+        System.out.println(bp.serialize());
+        if(bp2.serialize().equals(bp.serialize()))
+            System.out.println("Test passed");
+        else System.out.println("TEST FAILED");
     }
 }
