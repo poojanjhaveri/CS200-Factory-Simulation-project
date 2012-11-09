@@ -1,8 +1,12 @@
+import java.util.ArrayList;
+
 /**
 @brief stores part blueprints
  */
 
-class BlueprintParts implements Blueprint{
+//number name description filename
+
+class BlueprintParts implements Blueprint, Serializable{
 
     ArrayList<Part> parts;
 
@@ -19,9 +23,10 @@ class BlueprintParts implements Blueprint{
     /**
 @brief deserializes the passed string and turns it into a collectible
      */
-    private ArrayList<Object> deserialize(String serialized)
+    private ArrayList<Part> deserialize(String serialized)
     {
-
+ArrayList<String> stringform = new ArrayList<String>();
+return null;
     }
     /**
 @brief deserializes the passed string and adds to the current data 
@@ -35,7 +40,11 @@ class BlueprintParts implements Blueprint{
      */
     private String serialize()
     {
-
+	String toreturn ="";	
+	for(int i = 0; i != this.parts.size(); i++)
+	    {
+		toreturn = toreturn+this.parts.get(i).toString().length()+this.parts.get(i).toString();
+		    }
     }
     /**
 @brief turns the blueprint into a serialized string

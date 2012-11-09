@@ -10,6 +10,7 @@ interface Blueprint{
 @brief deserializes the passed string and turns it into a collectible
      */
     private ArrayList<Object> deserialize(String serialized);
+    private ArrayList<Part> deserialize(String serialized);
     /**
 @brief deserializes the passed string and adds to the current data 
      */

@@ -78,6 +78,7 @@ public class Part implements Serializable {
     private String description;
     Integer number;///< the part number, like an ID; useful for comparing
     GUIPart guipart;///<gui representation of this part
+        private String filename;//lives in guipart
 
     public Part(String n, String d) {
         this.name = n;
@@ -87,8 +88,10 @@ public class Part implements Serializable {
 	this.guipart = null;
 	this.number = System.currentTimeMillis()/1000;
     }
-  
-
+    public void setFilename(String in)
+    {
+	this.filename = in;
+    }
     public String getName() {
         return this.name;
     }
@@ -104,5 +107,8 @@ public class Part implements Serializable {
     {
 	this.guipart = in;
     }
-
+    public String toString()
+    {
+	return "("+this.name+","+this.description+","+this.number+","+this.filename+")";
+    }
 }
