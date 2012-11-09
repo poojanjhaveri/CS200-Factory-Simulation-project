@@ -39,7 +39,7 @@ class BlueprintParts implements Blueprint, Serializable {
     /**
     @brief deserializes the passed string and turns it into an arraylist of parts
      */
-    public ArrayList<Part> deserialize(String serialized)
+    public static ArrayList<Part> deserialize(String serialized)
     {
         ArrayList<String> stringform = Util.deserialize(serialized);
         ArrayList<Part> ret = new ArrayList<Part>();

@@ -123,15 +123,8 @@ public class Part implements Serializable {
     }
     public static Part deserialize(String des)
     {
-        if(des.charAt(0) != '(' || des.charAt(des.length()-1) != ')')
-        {
-            System.out.println("PART CANNOT BE DESERIALIZED " + des);
-            return null;
-        }
-        String s = "";
-        for(int i = 1; i < des.length()-1; i++)
-            s = s+des.charAt(i);
-        ArrayList<String> arr = Util.stringExplode(",",s);
+        
+        ArrayList<String> arr = Util.stringExplode(",",des);
         if(arr.size() != 4)
             System.out.println("BAD PART DESERIALIZATION. ARRAY IS "+arr+"; SERIALIZED STRING IS "+des);
         Part toreturn = new Part(arr.get(0),arr.get(1),Integer.parseInt(arr.get(2)));

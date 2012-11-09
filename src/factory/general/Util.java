@@ -65,7 +65,11 @@ public class Util {
                 {
                     part = part + serialized.charAt(ii+i);
                 }
-                stringform.add(part);
+String s = "";
+        for(int ii = 1; ii < part.length()-1; ii++)
+            s = s+part.charAt(ii);
+        
+                stringform.add(s);
                 i += chars-1;
             }
             else
