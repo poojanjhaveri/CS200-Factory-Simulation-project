@@ -43,7 +43,38 @@ public class Util{
 	    }
 	return toreturn;
     }
-
+    /**
+parses the serialized string in the following format
+##sssssssssssssssssssss##ssssssssssssssssssssssssss#ssss
+where # is a number and s is a character
+# determines how many characters to parse
+     */
+    public static ArrayList<String> deserialize(String serialized)
+    {
+        ArrayList<String> stringform = new ArrayList<String>();
+        String integer = "";
+        for(int i = 0; i != serialized.length(); i++)
+        {
+            if(serialized.charAt(i) == '(' && integer.length() != 0)
+            {
+                Integer chars = Integer.parseInt(integer);
+                //System.out.println("DEBUG:"+chars);
+                integer = "";
+                String part = "";
+                for(int ii = 0; ii != chars; ii++)
+                {
+                    part = part + serialized.charAt(ii+i);
+                }
+                stringform.add(part);
+                i += chars-1;
+            }
+            else
+            {
+                integer = integer + serialized.charAt(i);
+            }
+        }
+	return stringform;
+    }
     public static void main(String[] args)
     {
 	ArrayList<String> explode = Util.stringExplode(" ","hey there bro"); 

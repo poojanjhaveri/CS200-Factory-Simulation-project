@@ -117,7 +117,7 @@ public class Part implements Serializable {
     {
         this.guipart = in;
     }
-    public String toString()
+    public String serialize()
     {
         return "("+this.name+","+this.description+","+this.number+","+this.filename+")";
     }

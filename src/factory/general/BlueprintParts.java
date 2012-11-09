@@ -37,32 +37,11 @@ class BlueprintParts implements Blueprint, Serializable {
         this.parts.add(in);
     }
     /**
-    @brief deserializes the passed string and turns it into a collectible
+    @brief deserializes the passed string and turns it into an arraylist of parts
      */
     public ArrayList<Part> deserialize(String serialized)
     {
-        ArrayList<String> stringform = new ArrayList<String>();
-        String integer = "";
-        for(int i = 0; i != serialized.length(); i++)
-        {
-            if(serialized.charAt(i) == '(' && integer.length() != 0)
-            {
-                Integer chars = Integer.parseInt(integer);
-                //System.out.println("DEBUG:"+chars);
-                integer = "";
-                String part = "";
-                for(int ii = 0; ii != chars; ii++)
-                {
-                    part = part + serialized.charAt(ii+i);
-                }
-                stringform.add(part);
-                i += chars-1;
-            }
-            else
-            {
-                integer = integer + serialized.charAt(i);
-            }
-        }
+	ArrayList<String> stringform = Util.deserialize(serialized);
         ArrayList<Part> ret = new ArrayList<Part>();
         for(int i = 0; i != stringform.size(); i++)
         {
@@ -70,7 +49,6 @@ class BlueprintParts implements Blueprint, Serializable {
         }
         return ret;
     }
-
     /**
     @brief deserializes the passed string and adds to the current data
      */
@@ -86,7 +64,7 @@ class BlueprintParts implements Blueprint, Serializable {
         String toreturn ="";
         for(int i = 0; i != this.parts.size(); i++)
         {
-            toreturn = toreturn+this.parts.get(i).toString().length()+this.parts.get(i).toString();
+            toreturn = toreturn+this.parts.get(i).serialize().length()+this.parts.get(i).serialize();
         }
         return toreturn;
     }
@@ -105,7 +83,7 @@ class BlueprintParts implements Blueprint, Serializable {
         p.setFilename("part1.png");
         BlueprintParts bp = new BlueprintParts();
         bp.add(p);
-        p = new Part("part2","is not a part");
+        p = new Part("part2","is (not) a part");
         p.setFilename("part2.png");
         bp.add(p);
         p = new Part("alfalfa","heyo");
@@ -118,7 +96,7 @@ class BlueprintParts implements Blueprint, Serializable {
         System.out.println("DESERIALIZED BLUEPRINT");
         for(int i = 0; i != des.size(); i++)
         {
-            System.out.println("line 0:"+des.get(i));
+            System.out.println("line 0:"+des.get(i).serialize());
         }
         System.out.println("SERIALIZED DESERIALIZED SERIALIZED BLUEPRINT");
         BlueprintParts bp2 = new BlueprintParts(des);

@@ -7,7 +7,7 @@ import java.util.List;
  * Kit Object
  *
  * @brief Kit Object
- * @author James Dalton
+ * @author James Dalton, YiWei Roy Zheng
  *
  */
 public class Kit {
@@ -45,4 +45,11 @@ public class Kit {
     }
     
     /** End CS 201 stuff*/   
+
+    /*CS200*/
+    public String serialize()
+    {
+
+	return null;
+    }
 }
