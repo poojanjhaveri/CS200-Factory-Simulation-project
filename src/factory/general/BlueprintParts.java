@@ -1,4 +1,7 @@
+package factory.general;
+
 import java.util.ArrayList;
+import java.io.Serializable;
 
 /**
 @brief stores part blueprints
@@ -11,7 +14,7 @@ class BlueprintParts implements Blueprint, Serializable{
     ArrayList<Part> parts;
 
     public BlueprintParts(){
-
+	this.parts=new ArrayList<Part>();
     }
     /**
 @brief creates the object from a serialized string
@@ -20,10 +23,14 @@ class BlueprintParts implements Blueprint, Serializable{
     {
 	this.recreate(serialized);
     }
+    public void add(Part in)
+    {
+	this.parts.add(in);
+    }
     /**
 @brief deserializes the passed string and turns it into a collectible
      */
-    private ArrayList<Part> deserialize(String serialized)
+    public ArrayList<Part> deserialize(String serialized)
     {
 ArrayList<String> stringform = new ArrayList<String>();
 return null;
@@ -31,20 +38,21 @@ return null;
     /**
 @brief deserializes the passed string and adds to the current data 
      */
-    private void updateOne(String serialized)
+    public void updateOne(String serialized)
     {
 
     }
     /**
 @brief serializes the current data into a deserializable string
      */
-    private String serialize()
+    public String serialize()
     {
 	String toreturn ="";	
 	for(int i = 0; i != this.parts.size(); i++)
 	    {
 		toreturn = toreturn+this.parts.get(i).toString().length()+this.parts.get(i).toString();
 		    }
+	return toreturn;
     }
     /**
 @brief turns the blueprint into a serialized string
@@ -52,5 +60,13 @@ return null;
     public void recreate(String serialized)
     {
 
+    }
+
+    public static void main(String[] args)
+    {
+	Part p = new Part("part1","is a part");
+	BlueprintParts bp = new BlueprintParts();
+	bp.add(p);
+	System.out.println(bp.serialize());
     }
 }
