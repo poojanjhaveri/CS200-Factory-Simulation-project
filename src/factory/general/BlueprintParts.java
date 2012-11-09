@@ -41,7 +41,7 @@ class BlueprintParts implements Blueprint, Serializable {
      */
     public ArrayList<Part> deserialize(String serialized)
     {
-	ArrayList<String> stringform = Util.deserialize(serialized);
+        ArrayList<String> stringform = Util.deserialize(serialized);
         ArrayList<Part> ret = new ArrayList<Part>();
         for(int i = 0; i != stringform.size(); i++)
         {

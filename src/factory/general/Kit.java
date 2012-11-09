@@ -19,7 +19,7 @@ public class Kit {
     public static enum StandNum {
         none, zero, one, two
     };
-    
+
     public String name;
     public Status status;
     public StandNum standNum;
@@ -32,24 +32,24 @@ public class Kit {
         this.standNum = StandNum.none;
 //        this.kitNeedsParts = p.length;
     }
-    
+
     public void addPart(Part p) {
         parts.add(p);
     }
-    public int getSize(){
+    public int getSize() {
         return parts.size();
     }
-    
-    public Part getPart(int i){
+
+    public Part getPart(int i) {
         return parts.get(i);
     }
-    
-    /** End CS 201 stuff*/   
+
+    /** End CS 201 stuff*/
 
     /*CS200*/
     public String serialize()
     {
 
-	return null;
+        return null;
     }
 }

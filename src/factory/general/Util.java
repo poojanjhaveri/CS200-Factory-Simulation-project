@@ -7,47 +7,47 @@ import java.util.ArrayList;
 @author YiWei Roy Zheng
  */
 
-public class Util{
+public class Util {
 
     public static ArrayList<String> stringExplode(String needle,String haystack)
     {
-	ArrayList<String> toreturn = new ArrayList<String>();
-	String single = "";
-	for(int i = 0; i != haystack.length(); i++)
-	    {
-		if(needle.charAt(0) == haystack.charAt(i))
-		    {
-			if(!(single.length() == 0))
-			    {
-				toreturn.add(single);
-				single = "";
-			    }
-		    }
-		else single = single + haystack.charAt(i);
-		if(i == haystack.length()-1 && single.length() != 0)
-		    {
-			toreturn.add(single);
-		    }
-	    }
-	return toreturn;
+        ArrayList<String> toreturn = new ArrayList<String>();
+        String single = "";
+        for(int i = 0; i != haystack.length(); i++)
+        {
+            if(needle.charAt(0) == haystack.charAt(i))
+            {
+                if(!(single.length() == 0))
+                {
+                    toreturn.add(single);
+                    single = "";
+                }
+            }
+            else single = single + haystack.charAt(i);
+            if(i == haystack.length()-1 && single.length() != 0)
+            {
+                toreturn.add(single);
+            }
+        }
+        return toreturn;
     }
     public static String stringImplode(String delimiter,ArrayList<String> array)
     {
-	String toreturn = "";
-	for(int i = 0; i != array.size(); i++)
-	    {
-		toreturn = toreturn + array.get(i);
-		if(i != array.size()-1){
-		    toreturn = toreturn + delimiter;
-		}
-	    }
-	return toreturn;
+        String toreturn = "";
+        for(int i = 0; i != array.size(); i++)
+        {
+            toreturn = toreturn + array.get(i);
+            if(i != array.size()-1) {
+                toreturn = toreturn + delimiter;
+            }
+        }
+        return toreturn;
     }
     /**
-parses the serialized string in the following format
-##sssssssssssssssssssss##ssssssssssssssssssssssssss#ssss
-where # is a number and s is a character
-# determines how many characters to parse
+    parses the serialized string in the following format
+    ##sssssssssssssssssssss##ssssssssssssssssssssssssss#ssss
+    where # is a number and s is a character
+    # determines how many characters to parse
      */
     public static ArrayList<String> deserialize(String serialized)
     {
@@ -73,16 +73,16 @@ where # is a number and s is a character
                 integer = integer + serialized.charAt(i);
             }
         }
-	return stringform;
+        return stringform;
     }
     public static void main(String[] args)
     {
-	ArrayList<String> explode = Util.stringExplode(" ","hey there bro"); 
-	System.out.println(explode);
-	String hey = "hey";
-	String h2 = "h2";
-	System.out.println(hey.charAt(0) == h2.charAt(0));
-	System.out.println(Util.stringImplode(",",explode));
+        ArrayList<String> explode = Util.stringExplode(" ","hey there bro");
+        System.out.println(explode);
+        String hey = "hey";
+        String h2 = "h2";
+        System.out.println(hey.charAt(0) == h2.charAt(0));
+        System.out.println(Util.stringImplode(",",explode));
     }
 
 }
