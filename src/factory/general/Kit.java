@@ -44,5 +44,4 @@ public class Kit {
         return parts.get(i);
     }
     
-    /** End CS 201 stuff*/
 }
