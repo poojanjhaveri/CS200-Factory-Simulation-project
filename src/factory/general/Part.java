@@ -36,7 +36,10 @@ public class Part implements Serializable {
 		this.nestNum = n;
 	}
 
-
+	public Integer getNumber() {
+		return number;
+	}
+	
 	public int getSize(){
 		return this.size;
 	}
@@ -76,8 +79,8 @@ public class Part implements Serializable {
 	 */
 	private String name;
 	private String description;
-	private Integer number;///< the part number, like an ID; useful for comparing
-	private GUIPart guipart;///<gui representation of this part
+	Integer number;///< the part number, like an ID; useful for comparing
+	GUIPart guipart;///<gui representation of this part
 	private String filename;//lives in guipart
 
 	public Part(String n, String d) {
@@ -86,40 +89,39 @@ public class Part implements Serializable {
 		//        this.img = new ImageIcon(fn);
 		//this.number=time()\;
 		this.guipart = null;
-
 		this.number = (int)(System.currentTimeMillis()/(long)1000);
-
 	}
-
-	public void setFilename(String in) {
+	public void setFilename(String in)
+	{
 		this.filename = in;
 	}
-
-	public String getFileName() {
-		return filename;
-	}
-
-	public void setFileName(String s) {
-		filename = s;
-	}
-
-	public Integer getNumber() {
-		return number;
-	}
-
 	public String getName() {
 		return this.name;
 	}
+
 	public String getDescription() {
 		return this.description;
 	}
-	public GUIPart getGUIPart() {
+	public GUIPart getGUIPart()
+	{
 		return this.guipart;
 	}
-	public void setGUIPart(GUIPart in) {
+	public void setGUIPart(GUIPart in)
+	{
 		this.guipart = in;
 	}
-	public String toString() {
+	public String toString()
+	{
 		return "("+this.name+","+this.description+","+this.number+","+this.filename+")";
+	}
+
+	public static Part deserialize(String des)
+	{
+		if(des.charAt(0) != '(' || des.charAt(des.length()-1) != ')')
+		{
+			System.out.println("PART CANNOT BE DESERIALIZED " + des);
+			return null;
+		}
+		return null; // avoid compile error temporarily
 	}
 }

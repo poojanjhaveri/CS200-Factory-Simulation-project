@@ -33,8 +33,35 @@ class BlueprintParts implements Blueprint, Serializable{
     public ArrayList<Part> deserialize(String serialized)
     {
 ArrayList<String> stringform = new ArrayList<String>();
-return null;
+
+for(int i = 0; i != serialized.length();i++)
+    {
+	String integer = "";
+	if(serialized.charAt(i) == '(')
+	    {
+		Integer chars = integer.toInteger();
+		integer = "";
+		String part = "";
+		for(int ii = 0; ii != chars; ii++)
+		    {
+			part = part + serialized.charAt(ii+i);
+		    }
+		stringform.add(part);
+		i += chars;
+	    }
+	else
+	    {
+		integer = integer + serialized.charAt(i);
+	    }
     }
+ArrayList<Part> ret = new ArrayList<Part>();
+for(int i = 0; i != stringform.size(); i++)
+    {
+	ret.add(Part.deserialize(stringform.get(i));
+    }
+	    return ret;
+    }
+
     /**
 @brief deserializes the passed string and adds to the current data 
      */
@@ -59,13 +86,17 @@ return null;
      */
     public void recreate(String serialized)
     {
-
+	this.parts = deserialize(serialized);
     }
 
     public static void main(String[] args)
     {
 	Part p = new Part("part1","is a part");
+	p.setFilename("part1.png");
 	BlueprintParts bp = new BlueprintParts();
+	bp.add(p);
+	p = new Part("part2","is not a part");
+	p.setFilename("part2.png");
 	bp.add(p);
 	System.out.println(bp.serialize());
     }
