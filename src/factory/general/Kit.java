@@ -114,9 +114,11 @@ public class Kit {
         p = new Part("alfalfa","heyo");
         p.setFilename("gogo.png");
         bp.addPart(p);
+        System.out.println("SERIALIZED KIT");
         System.out.println(bp.serialize());
 
         Kit des = Kit.deserialize(bp.serialize());
+        System.out.println("DESERIALIZED KIT");
         System.out.println(des.getName() + " " + des.getDescription() + " " + des.getNumber());
     }
 }

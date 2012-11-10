@@ -1,3 +1,5 @@
+package factory.general;
+
 /**
 This is the data model for the Server. It contains the following
 <ul>
@@ -12,6 +14,6 @@ This is the data model for the Server. It contains the following
 class FactoryState{
 
     BlueprintParts partsbp;///<stores all possible parts
-    BluePrintKits kitsbp;///<stores all possible kits
+    BlueprintKits kitsbp;///<stores all possible kits
 
 }
