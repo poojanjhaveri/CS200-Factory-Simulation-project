@@ -17,13 +17,13 @@ import factory.general.Message;
 
 
 
-public class KitManager extends Manager {
+public class KitsManager extends Manager {
 
 	/**
 	 * @param args
 	 */
 	
-         public KitManager()
+         public KitsManager()
          {
              
              
@@ -34,7 +34,7 @@ public class KitManager extends Manager {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-            KitManager frame = new KitManager();
+            KitsManager frame = new KitsManager();
             frame.setVisible(true);
             
 	}
