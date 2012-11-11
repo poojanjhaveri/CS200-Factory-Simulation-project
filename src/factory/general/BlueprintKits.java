@@ -34,6 +34,10 @@ public class BlueprintKits implements Blueprint, Serializable {
         }
         return ret;
     }
+    public ArrayList<Kit> getKits()
+    {
+	return this.kits;
+    }
     /**
     @brief deserializes the passed string and adds to the current data
      */

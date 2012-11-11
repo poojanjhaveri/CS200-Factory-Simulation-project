@@ -49,12 +49,16 @@ public class BlueprintParts implements Blueprint, Serializable {
         }
         return ret;
     }
+    public ArrayList<Part> getParts()
+    {
+	return this.parts;
+    }
     /**
     @brief deserializes the passed string and adds to the current data
      */
     public void updateOne(String serialized)
     {
-
+	this.parts.addAll(this.deserialize(serialized));
     }
     /**
     @brief serializes the current data into a deserializable string

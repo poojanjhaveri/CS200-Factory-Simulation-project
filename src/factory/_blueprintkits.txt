@@ -1,0 +1,14 @@
+Creating BPKits===========
+INITIAL DEBUG===============
+DEBUG BPKITS
+kit1 im the nyan kit 1352603216
+(part1,im a part dawg,1352603216,part.png)
+(part1,im a part dawg,1352603216,part.png)
+SERIALIZED: 135(6(kit1)17(im the nyan kit)12(1352603216)91(42(part1,im a part dawg,1352603216,part.png)43(party2,i party a lot,1352603216,party.png)))
+FINAL DEBUG=============
+DEBUG BPKITS
+kit1 im the nyan kit 1352603216
+(part1,im a part dawg,1352603216,part.png)
+(part1,im a part dawg,1352603216,part.png)
+SERIALIZED: 135(6(kit1)17(im the nyan kit)12(1352603216)91(42(part1,im a part dawg,1352603216,part.png)43(party2,i party a lot,1352603216,party.png)))
+Test passed
