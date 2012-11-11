@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 //number name description filename
 
-class BlueprintParts implements Blueprint, Serializable {
+public class BlueprintParts implements Blueprint, Serializable {
 
     ArrayList<Part> parts;
     /**
