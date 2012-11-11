@@ -2,6 +2,8 @@ package factory.factory200.kitManager;
 
 import factory.general.Manager;
 import factory.general.Message;
+import javax.swing.JFrame;
+import javax.swing.*;
 
 
 
@@ -22,12 +24,16 @@ public class KitsManager extends Manager {
 	/**
 	 * @param args
 	 */
+         private JPanel contentpane;
+    
+    
 	
          public KitsManager()
          {
+            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            setBounds(100, 100, 450, 300);
              
-             
-             
+             preparepanel();
          }
 	
 	
@@ -41,5 +47,16 @@ public class KitsManager extends Manager {
 	
 	//getters and setters as needed 
 	
+        private void preparepanel()
+        {
+            contentpane = new JPanel();
+            contentpane.setLayout(new GridBagLayout());
+            
+            
+            
+            
+            
+        }
+        
 
 }
