@@ -79,7 +79,13 @@ public class BlueprintParts implements Blueprint, Serializable {
     {
         this.parts = deserialize(serialized);
     }
-
+    public void debug()
+    {
+	for(int i = 0; i != this.parts.size(); i++)
+        {
+            System.out.println("line "+i+":"+this.parts.get(i).serialize());
+        }
+    }
     public static void main(String[] args)
     {
         System.out.print("Adding parts...");

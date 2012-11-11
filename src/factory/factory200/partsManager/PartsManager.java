@@ -270,6 +270,7 @@ public class PartsManager extends Manager implements ActionListener {
         setBounds(100, 100, 450, 300);
 
         prepareContentPane();
+	this.mcon.out(Message.PULL_PARTS_LIST);
     }
 
     /**
@@ -306,6 +307,8 @@ public class PartsManager extends Manager implements ActionListener {
         if(msg.contains( Message.PUSH_PARTS_LIST))
            {
 	       this.bp.recreate(this.grabParameter(msg));
+	       System.out.println("GRABBED NEW PARTS LIST FROM SERVER!");
+		   this.bp.debug();
 	   }
     }
 }
