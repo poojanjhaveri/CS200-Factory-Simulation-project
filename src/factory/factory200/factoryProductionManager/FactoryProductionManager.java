@@ -1,4 +1,4 @@
-//package factory.controlGUI;
+package factory.factory200.factoryProductionManager;
 //import factory.agentGUI.*;
 
 import java.util.*;
@@ -8,6 +8,7 @@ import java.awt.event.*;
 import java.io.*;
 import java.net.*;
 
+import factory.general.BlueprintKits;
 
 /**
  * Factory Production Manager selects active kit production routines, how many
@@ -25,7 +26,7 @@ import java.net.*;
  * produce, and also will control non-normative scenario simulation
  *
  */
-public class FactoryProductionManager extends JFrame implements ActionListener {
+public class FactoryProductionManager extends Manager implements ActionListener {
 	public JPanel basePanel, topPanel, botPanel, leftPanel, midPanel, rightPanel, blankPanel;
 	public JLabel selLabel, numLabel, consoleLabel, schedLabel;
 	public JComboBox selKit;
@@ -34,12 +35,14 @@ public class FactoryProductionManager extends JFrame implements ActionListener {
 	public JTextArea schedField, outField;
 	public JScrollPane schedPane, outPane;
 
-	public String kitToAdd;
+	public String nameToAdd;
+	public Kit kitToAdd;
 	public int qtyToAdd;
 	public int num;
 	public ArrayList<String> availableKits;
-	public ArrayList<String> selectedKits;
+	public ArrayList<Kit> selectedKits;
 
+    private BlueprintKits kitsbp;
 	private final static String newline = "\n";
 	
 
@@ -54,6 +57,7 @@ public class FactoryProductionManager extends JFrame implements ActionListener {
 
 	public FactoryProductionManager()
 	{
+	    this.kitsbp = new BlueprintKits();
 		GridBagLayout gridbag = new GridBagLayout();
 		GridBagConstraints c = new GridBagConstraints();
 		/*
@@ -173,8 +177,8 @@ public class FactoryProductionManager extends JFrame implements ActionListener {
 		if(ae.getSource() == selKit)
 		{
 			JComboBox cb = (JComboBox)ae.getSource();
-			kitToAdd = (String)cb.getSelectedItem();
-			System.out.println(kitToAdd);
+			nameToAdd = (String)cb.getSelectedItem();
+			System.out.println(nameToAdd);
 			System.out.println(numE.getText());
 		}
 		if(ae.getSource() == queueue)
@@ -231,7 +235,19 @@ public class FactoryProductionManager extends JFrame implements ActionListener {
      */
     void exit() {
     }
-
+    /**
+@brief processes the serve'rs message
+     */
+    public void processMessage(String msg)
+    {
+	super.processMessage();
+	if(msg == Message.PUSH_KITS_LIST)
+	    {
+		this.kitsbp.recreate(this.grabParameter(msg));
+		System.out.println("GRABBED A NEW BLUEPRINTKITS FROM THE SERVER");
+		this.kitsbp.debug();
+	    }
+    }
     /**
      * @brief Controls Kit selection and Factory ON/OFF Controls Kit selection
      * and Factory ON/OFF <img src="../img/image08.jpg" />

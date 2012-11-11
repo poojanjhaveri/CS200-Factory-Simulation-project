@@ -16,6 +16,8 @@ partsmanager:
 	javac $(PARAM) $(GENERAL) factory200/partsManager/*.java
 	rm ../../factory -R
 	mv factory ../..
+factoryproduction:
+	javac $(PARAM) $(GENERAL) factory200/factoryProductionManager/*.java
 kitassembly:
 	javac $(PARAM) $(GENERAL) factory200/kitAssemblyManager/*.java factory201/interfaces/KitRobot.java
 	java factory.factory200.kitAssemblyManager.KAMGraphicPanel
