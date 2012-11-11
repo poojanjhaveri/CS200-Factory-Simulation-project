@@ -19,12 +19,6 @@ public interface Blueprint {
     @brief serializes the current data into a deserializable string
      */
     String serialize();
-    /**
-    @brief turns the blueprint into a serialized string
-     */
-    public void recreate(String serialized)
-    {
-        this.kits = this.deserialize(serialized);
-    }
+    
 
 }

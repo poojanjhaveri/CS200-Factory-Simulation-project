@@ -24,39 +24,78 @@ public class BlueprintKits implements Blueprint, Serializable {
     /**
     @brief deserializes the passed string and returns an arraylist of kits
          */
-    public ArrayList<Kit> deserialize() {
+    public ArrayList<Kit> deserialize(String serialized) {
 
-
+        ArrayList<String> stringform = Util.deserialize(serialized);
+        ArrayList<Kit> ret = new ArrayList<Kit>();
+        for(int i = 0; i != stringform.size(); i++)
+        {
+            ret.add(Kit.deserialize(stringform.get(i)));
+        }
+        return ret;
     }
     /**
     @brief deserializes the passed string and adds to the current data
      */
-    void updateOne(String serialized)
+    public void updateOne(String serialized)
     {
         this.kits.addAll(this.deserialize(serialized));
     }
     /**
+    @brief recreates the kits list using the passed serialized blueprintkits
+     */
+    public void recreate(String serialized)
+    {
+        this.kits = this.deserialize(serialized);
+    }
+    /**
     @brief serializes the current data into a deserializable string
      */
-    String serialize()
+    public String serialize()
     {
         String toreturn ="";
         for(int i = 0; i != this.kits.size(); i++)
         {
-            toreturn = toreturn+this.kits.get(i).serialize().length()+this.kits.get(i).serialize();
+            toreturn = toreturn+(this.kits.get(i).serialize().length()+2)+"("+this.kits.get(i).serialize()+")";
         }
         return toreturn;
     }
-    /**
-    @brief turns the blueprint into a serialized string
-     */
-    public void recreate(String serialized)
+    public void add(Kit in)
     {
-        this.parts = this.deserialize(serialized);
+	this.kits.add(in);
+    }
+    public void debug()
+    {
+	System.out.println("DEBUG BPKITS");
+	for(int i = 0; i!= this.kits.size(); i++)
+	    {
+		this.kits.get(i).debug();
+	    }
     }
     public static void main(String[] args)
     {
+	System.out.println("Creating BPKits===========");
         BlueprintKits bp = new BlueprintKits();
+	Kit k = new Kit("kit1","im the nyan kit");
+	Part p = new Part("part1","im a part dawg");
+	p.setFilename("part.png");
+	k.addPart(p);
+	p = new Part("party2","i party a lot");
+	p.setFilename("party.png");
+	k.addPart(p);
+        bp.add(k);
+	System.out.println("INITIAL DEBUG===============");
+	bp.debug();
+	String s = bp.serialize();
+	System.out.println("SERIALIZED: "+s);
+	BlueprintKits bp2 = new BlueprintKits(s);
+	System.out.println("FINAL DEBUG=============");
+	bp2.debug();
+	System.out.println("SERIALIZED: "+bp2.serialize());
+	if(bp2.serialize().equals(bp.serialize()))
+	    {
+		System.out.println("Test passed");
+	    }else System.out.println("TEST FAILED");
     }
-
+    
 }

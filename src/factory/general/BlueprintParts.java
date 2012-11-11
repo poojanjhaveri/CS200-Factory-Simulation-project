@@ -69,7 +69,7 @@ class BlueprintParts implements Blueprint, Serializable {
         return toreturn;
     }
     /**
-    @brief turns the blueprint into a serialized string
+    @brief recreates the parts list using the passed serialized blueprintparts
      */
     public void recreate(String serialized)
     {
