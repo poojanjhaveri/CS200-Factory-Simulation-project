@@ -2,6 +2,7 @@ package factory.general;
 
 import java.io.Serializable;
 import javax.swing.ImageIcon;
+import java.util.ArrayList;
 
 /**
  * @brief digital representation of a part
@@ -26,18 +27,18 @@ public class Part implements Serializable {
         this.inKit = false;
         this.size = size;
     }
-    
 
-    public int getNestNum(){
+
+    public int getNestNum() {
         return this.nestNum;
     }
-    
-    public void setNestNum(int n){
+
+    public void setNestNum(int n) {
         this.nestNum = n;
     }
 
-    
-    public int getSize(){
+
+    public int getSize() {
         return this.size;
     }
     /* I am adding this constructor to test my agent codes (kevin) */
@@ -78,30 +79,56 @@ public class Part implements Serializable {
     private String description;
     Integer number;///< the part number, like an ID; useful for comparing
     GUIPart guipart;///<gui representation of this part
+    private String filename;//lives in guipart
 
     public Part(String n, String d) {
         this.name = n;
         this.description = d;
 //        this.img = new ImageIcon(fn);
         //this.number=time()\;
-	this.guipart = null;
+        this.guipart = null;
+        this.number = (int)(System.currentTimeMillis()/(long)1000);
     }
-  
-
+    public Part(String n, String d, Integer num)
+    {
+        this.name = n;
+        this.description = d;
+        this.number = num;
+        this.guipart = null;
+    }
+    public void setFilename(String in)
+    {
+        this.filename = in;
+    }
     public String getName() {
         return this.name;
     }
-
+    public Integer getNumber() {
+        return number;
+    }
     public String getDescription() {
         return this.description;
     }
     public GUIPart getGUIPart()
     {
-	return this.guipart;
+        return this.guipart;
     }
     public void setGUIPart(GUIPart in)
     {
-	this.guipart = in;
+        this.guipart = in;
     }
-
+    public String serialize()
+    {
+        return "("+this.name+","+this.description+","+this.number+","+this.filename+")";
+    }
+    public static Part deserialize(String des)
+    {
+        
+        ArrayList<String> arr = Util.stringExplode(",",des);
+        if(arr.size() != 4)
+            System.out.println("BAD PART DESERIALIZATION. ARRAY IS "+arr+"; SERIALIZED STRING IS "+des);
+        Part toreturn = new Part(arr.get(0),arr.get(1),Integer.parseInt(arr.get(2)));
+        toreturn.setFilename(arr.get(3));
+        return toreturn;
+    }
 }
