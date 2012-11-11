@@ -8,6 +8,7 @@ package factory.factory200.kitAssemblyManager;
 
 
 import factory.general.Part;
+import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import javax.swing.*;
@@ -132,5 +133,14 @@ public class KAMKit {
      */
     public void setParts(ArrayList<Part> parts) {
         this.parts = parts;
+    }
+    
+    public void paintMe(JPanel j, Graphics2D g,int x, int y){
+      this.getImage().paintIcon(j, g, x, y);
+      if(this.parts.size()>0){
+          for(int i=0;i<parts.size();i++){
+              this.getParts().get(i).getGUIPart().getImage().paintIcon(j, g, this.getParts().get(i).getGUIPart().getX(), this.getParts().get(i).getGUIPart().getY());
+          }
+      }
     }
 }

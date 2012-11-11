@@ -321,23 +321,25 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
         paintNests(this, g2);
         kitstand.getKitStand().paintIcon(this, g2, kitstand.getX(), kitstand.getY());
         for (int i = 0; i < 3; i++) {
-            //System.out.println(kitstand.getKitPositions().get(i).isFilled());
+            
             if (kitstand.getKitPositions().get(i).isFilled()) {
-                //System.out.println("PRINTING PARTS");
-                kitstand.getKitPositions().get(i).getKit().getImage().paintIcon(this, g2, kitstand.getKitPositions().get(i).getX(), kitstand.getKitPositions().get(i).getY());
-                if(kitstand.getKitPositions().get(i).getKit().getParts().size()>0){
-                    //System.out.println("PRINTING PARTS");
-                    for(int j=0;j<kitstand.getKitPositions().get(i).getKit().getParts().size();i++){
-                       //System.out.println(j);
-                       kitstand.getKitPositions().get(i).getKit().getParts().get(j).getGUIPart().getImage().paintIcon(this, g2, kitstand.getKitPositions().get(i).getKit().getParts().get(j).getGUIPart().getX(), kitstand.getKitPositions().get(i).getKit().getParts().get(j).getGUIPart().getX()); 
-                    }
-                }
+               
+                //kitstand.getKitPositions().get(i).getKit().getImage().paintIcon(this, g2, kitstand.getKitPositions().get(i).getX(), kitstand.getKitPositions().get(i).getY());
+                kitstand.getKitPositions().get(i).getKit().paintMe(this, g2, kitstand.getKitPositions().get(i).getX(), kitstand.getKitPositions().get(i).getY());
+                //if(kitstand.getKitPositions().get(i).getKit().getParts().size()>0){
+                    
+                //    for(int j=0;j<kitstand.getKitPositions().get(i).getKit().getParts().size();i++){
+                      
+                //       kitstand.getKitPositions().get(i).getKit().getParts().get(j).getGUIPart().getImage().paintIcon(this, g2, kitstand.getKitPositions().get(i).getKit().getParts().get(j).getGUIPart().getX(), kitstand.getKitPositions().get(i).getKit().getParts().get(j).getGUIPart().getX()); 
+                //    }
+                //}
             }
         }
         for (int i = 0; i < delivery.getNumEmptyKits(); i++) {
             delivery.getPlaceholder().get(i).getPlaceholder().paintIcon(this, g2, delivery.getPlaceholder().get(i).getX(), delivery.getPlaceholder().get(i).getY());
             if (delivery.getPlaceholder().get(i).isShow()) {
-                delivery.getPlaceholder().get(i).getKit().getImage().paintIcon(this, g2, delivery.getPlaceholder().get(i).getX() + 10, delivery.getPlaceholder().get(i).getY() + 20);
+                //delivery.getPlaceholder().get(i).getKit().getImage().paintIcon(this, g2, delivery.getPlaceholder().get(i).getX() + 10, delivery.getPlaceholder().get(i).getY() + 20);
+                delivery.getPlaceholder().get(i).getKit().paintMe(this, g2, delivery.getPlaceholder().get(i).getX() + 10, delivery.getPlaceholder().get(i).getY() + 20);
             }
         }
 
