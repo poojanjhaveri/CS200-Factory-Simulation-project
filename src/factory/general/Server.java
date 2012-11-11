@@ -156,7 +156,19 @@ public class Server { // KitAssemblyAgent
                     System.out.println("Number of clients is 0; exiting Server");
                     System.exit(0);
                 }
-            }else if(msg.contains(Message.PULL_PARTS_LIST))
+            }else if(msg.contains(Message.PULL_KITS_LIST))
+		     {//TODO THIS IS AD HOC NEED TO RETRIEVE MASTER BLUEPRINTKITS FROM FACTORY STATE
+        BlueprintKits bp = new BlueprintKits();
+	Kit k = new Kit("kit1","im the nyan kit");
+	Part p = new Part("part1","im a part dawg");
+	p.setFilename("part.png");
+	k.addPart(p);
+	p = new Part("party2","i party a lot");
+	p.setFilename("party.png");
+	k.addPart(p);
+        bp.add(k);
+	pw.println(Message.PUSH_KITS_LIST+":"+bp.serialize());
+		     }else if(msg.contains(Message.PULL_PARTS_LIST))
 		     {
 			 //TODO THIS IS AD HOC, NEED TO RETRIEVE MASTER BLUEPRINTPARTS FROM FACTORY STATE
 			 Part p = new Part("part1","is a part");

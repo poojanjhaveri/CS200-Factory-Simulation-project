@@ -10,6 +10,8 @@ import java.net.*;
 
 import factory.general.BlueprintKits;
 
+import factory.general.Message;
+
 /**
  * Factory Production Manager selects active kit production routines, how many
  * of each kit to produce, and also will control non-normative scenario
@@ -207,7 +209,16 @@ public class FactoryProductionManager extends Manager implements ActionListener 
      * start the factory production queue with the current kit selection
      */
     void start() {
-		
+	/*//add this when you change arraylist to kits
+String msg = Message.PUSH_PRODUCTION_QUEUE+":";
+for(int i = 0; i != this.selectedKits.size(); i++)
+{
+msg = msg+this.selectedKits.get(i);
+if(i != this.selectedKits.size()-1)
+msg=msg+",";
+}
+this.mcon.out(msg);
+	 */
     }
 
     /**
