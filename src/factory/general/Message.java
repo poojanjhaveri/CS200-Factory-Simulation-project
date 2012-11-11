@@ -22,4 +22,8 @@ public class Message {
     public static final String PULL_KITS_LIST = "PULL_KITS_LIST";///<simple request form kits to server asking for kits list
     public static final String PUSH_KITS_LIST = "PUSH_PARTS_LIST";///<send serialized kits list over form server to kitsmanager
     public static final String DEFINE_NEW_KIT = "DEFINE_NEW_KIT";///<send a new type of kit over to the server
+
+    //factoryproductionmanager section
+    //PULL_KITS_LIST is also used by FPM
+    public static final String PUSH_PRODUCTION_QUEUE = "PUSH_PRODUCTION_QUEUE";///<sends the server a list of comma delimited kit IDs 
 }
