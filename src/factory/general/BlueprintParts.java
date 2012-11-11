@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 //number name description filename
 
-class BlueprintParts implements Blueprint, Serializable {
+public class BlueprintParts implements Blueprint, Serializable {
 
     ArrayList<Part> parts;
     /**
@@ -49,12 +49,16 @@ class BlueprintParts implements Blueprint, Serializable {
         }
         return ret;
     }
+    public ArrayList<Part> getParts()
+    {
+	return this.parts;
+    }
     /**
     @brief deserializes the passed string and adds to the current data
      */
     public void updateOne(String serialized)
     {
-
+	this.parts.addAll(this.deserialize(serialized));
     }
     /**
     @brief serializes the current data into a deserializable string
@@ -69,13 +73,19 @@ class BlueprintParts implements Blueprint, Serializable {
         return toreturn;
     }
     /**
-    @brief turns the blueprint into a serialized string
+    @brief recreates the parts list using the passed serialized blueprintparts
      */
     public void recreate(String serialized)
     {
         this.parts = deserialize(serialized);
     }
-
+    public void debug()
+    {
+	for(int i = 0; i != this.parts.size(); i++)
+        {
+            System.out.println("line "+i+":"+this.parts.get(i).serialize());
+        }
+    }
     public static void main(String[] args)
     {
         System.out.print("Adding parts...");

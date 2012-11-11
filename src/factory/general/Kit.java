@@ -56,7 +56,6 @@ public class Kit {
         this.name = n;
         this.description = d;
         this.number = (int)(System.currentTimeMillis()/(long)1000);
-
     }
     public Kit(String n, String d, Integer i) {
         this.name = n;
@@ -102,6 +101,14 @@ public class Kit {
         nk.setParts(p);
         return nk;
     }
+    public void debug()
+    {
+        System.out.println(this.getName() + " " + this.getDescription() + " " + this.getNumber());
+	for(int i = 0; i != this.parts.size(); i++)
+	    {
+		System.out.println(this.parts.get(0).serialize());
+	    }
+    }
     public static void main(String[] args)
     {
         Part p = new Part("part1","is a part");
@@ -114,11 +121,12 @@ public class Kit {
         p = new Part("alfalfa","heyo");
         p.setFilename("gogo.png");
         bp.addPart(p);
+	bp.debug();
         System.out.println("SERIALIZED KIT");
         System.out.println(bp.serialize());
 
         Kit des = Kit.deserialize(bp.serialize());
         System.out.println("DESERIALIZED KIT");
-        System.out.println(des.getName() + " " + des.getDescription() + " " + des.getNumber());
+	des.debug();
     }
 }

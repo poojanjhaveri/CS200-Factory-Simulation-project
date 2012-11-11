@@ -30,7 +30,7 @@ public class Manager extends JFrame {
      * Instance fields
      */
     // Connection fields
-    private ManagerConnection mcon;
+    protected ManagerConnection mcon;
     
     // Other fields
     public static Printer p = new Printer();

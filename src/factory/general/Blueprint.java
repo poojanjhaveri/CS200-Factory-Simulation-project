@@ -10,6 +10,7 @@ A String serializable blueprint for a kit or a part.
 @version 0.1
  */
 public interface Blueprint {
+
     /**
     @brief deserializes the passed string and adds to the current data
      */
@@ -18,8 +19,6 @@ public interface Blueprint {
     @brief serializes the current data into a deserializable string
      */
     String serialize();
-    /**
-    @brief turns the blueprint into a serialized string
-     */
-    public void recreate(String serialized);
+    
+
 }

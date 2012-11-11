@@ -19,6 +19,7 @@ import javax.swing.border.EmptyBorder;
 
 import factory.general.Manager;
 import factory.general.Message;
+import factory.general.BlueprintParts;
 import factory.general.Part;
 
 /**
@@ -27,6 +28,9 @@ import factory.general.Part;
  * @author David Zhang, YiWei Roy Zheng
  */
 public class PartsManager extends Manager implements ActionListener {
+
+    BlueprintParts bp;///<contains list of parts
+
     // TODO: NEED GUIPart.java class in partsManager package
 
     private JPanel contentPane;
@@ -261,10 +265,12 @@ public class PartsManager extends Manager implements ActionListener {
      * Create the frame.
      */
     public PartsManager() {
+	this.bp = new BlueprintParts();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 450, 300);
 
         prepareContentPane();
+	this.mcon.out(Message.PULL_PARTS_LIST);
     }
 
     /**
@@ -297,11 +303,13 @@ public class PartsManager extends Manager implements ActionListener {
         //code to parse the serialized parts list
     }
     public void processMessage(String msg) {
-        //super.processMessage(msg);
-        //if(msg == Message.PUSH_PARTS_LIST)
-        //   {
-
-        // }
+        super.processMessage(msg);
+        if(msg.contains( Message.PUSH_PARTS_LIST))
+           {
+	       this.bp.recreate(this.grabParameter(msg));
+	       System.out.println("GRABBED NEW PARTS LIST FROM SERVER!");
+		   this.bp.debug();
+	   }
     }
 }
 
