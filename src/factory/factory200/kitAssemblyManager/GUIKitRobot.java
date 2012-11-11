@@ -157,7 +157,7 @@ public class GUIKitRobot extends GUIRobot {
     }
     public KAMKit dropKit()
     {
- this.popOrder();
+        this.popOrder();
 	KAMKit k = this.kit;
         this.kit = null;
 	return k;
