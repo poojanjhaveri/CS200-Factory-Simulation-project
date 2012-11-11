@@ -1,13 +1,12 @@
 package factory.factory200.partsManager;
 
-import factory.general.Manager;
-import factory.general.Message;
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.EventQueue;
 import java.awt.FlowLayout;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -15,8 +14,13 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
-import javax.swing.border.EmptyBorder;
 import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
+
+import factory.general.Manager;
+import factory.general.Message;
+import factory.general.BlueprintParts;
+import factory.general.Part;
 
 /**
  * <img src="../img/image02.png"/>
@@ -24,6 +28,9 @@ import javax.swing.JTextField;
  * @author David Zhang, YiWei Roy Zheng
  */
 public class PartsManager extends Manager implements ActionListener {
+
+    BlueprintParts bp;///<contains list of parts
+
     // TODO: NEED GUIPart.java class in partsManager package
 
     private JPanel contentPane;
@@ -51,6 +58,25 @@ public class PartsManager extends Manager implements ActionListener {
     private JTextField tfPartName;
     private JTextField tfImageFileName;
     private JTextField tfDescription;
+    
+    private static final int MANAGE_PARTS_TAB_NUM = 0;
+    private static final int NEW_PART_TAB_NUM = 2;
+    private static final int SELECTED_PART_TAB_NUM = 1;
+    private JLabel lblPartNumber;
+    private JPanel pnlForm2;
+    private JPanel pnlNonform2;
+    private JPanel pnlImage2;
+    private JPanel pnlPartName2;
+    private JPanel pnlImageFileName2;
+    private JPanel pnlDescription2;
+    private JLabel lblPartName2;
+    private JTextField tfPartName2;
+    private JLabel lblImageFileName2;
+    private JTextField tfImageFileName2;
+    private JLabel lblDescription2;
+    private JTextField tfDescription2;
+    private JPanel pnlButton2;
+    private JButton btnCreate;
 
     private void prepareContentPane() {
         contentPane = new JPanel();
@@ -130,6 +156,10 @@ public class PartsManager extends Manager implements ActionListener {
         pnlNonform = new JPanel();
         pnlSelectedPart.add(pnlNonform);
         pnlNonform.setLayout(new BoxLayout(pnlNonform, BoxLayout.Y_AXIS));
+        
+        lblPartNumber = new JLabel("[part num]");
+        lblPartNumber.setAlignmentX(Component.CENTER_ALIGNMENT);
+        pnlNonform.add(lblPartNumber);
 
         pnlImage = new JPanel();
         pnlNonform.add(pnlImage);
@@ -143,20 +173,77 @@ public class PartsManager extends Manager implements ActionListener {
 
         pnlNewPart = new JPanel();
         tabbedPane.addTab("New Part", null, pnlNewPart, null);
+        pnlNewPart.setLayout(new BoxLayout(pnlNewPart, BoxLayout.X_AXIS));
+        
+        pnlForm2 = new JPanel();
+        pnlNewPart.add(pnlForm2);
+        pnlForm2.setLayout(new BoxLayout(pnlForm2, BoxLayout.Y_AXIS));
+        
+        pnlPartName2 = new JPanel();
+        pnlForm2.add(pnlPartName2);
+        
+        lblPartName2 = new JLabel("Part name:");
+        pnlPartName2.add(lblPartName2);
+        
+        tfPartName2 = new JTextField();
+        pnlPartName2.add(tfPartName2);
+        tfPartName2.setColumns(10);
+        
+        pnlImageFileName2 = new JPanel();
+        pnlForm2.add(pnlImageFileName2);
+        
+        lblImageFileName2 = new JLabel("New label");
+        pnlImageFileName2.add(lblImageFileName2);
+        
+        tfImageFileName2 = new JTextField();
+        pnlImageFileName2.add(tfImageFileName2);
+        tfImageFileName2.setColumns(10);
+        
+        pnlDescription2 = new JPanel();
+        pnlForm2.add(pnlDescription2);
+        
+        lblDescription2 = new JLabel("New label");
+        pnlDescription2.add(lblDescription2);
+        
+        tfDescription2 = new JTextField();
+        pnlDescription2.add(tfDescription2);
+        tfDescription2.setColumns(10);
+        
+        pnlNonform2 = new JPanel();
+        pnlNewPart.add(pnlNonform2);
+        pnlNonform2.setLayout(new BoxLayout(pnlNonform2, BoxLayout.Y_AXIS));
+        
+        pnlImage2 = new JPanel();
+        pnlNonform2.add(pnlImage2);
+        
+        pnlButton2 = new JPanel();
+        pnlNonform2.add(pnlButton2);
+        pnlButton2.setLayout(new BoxLayout(pnlButton2, BoxLayout.X_AXIS));
+        
+        btnCreate = new JButton("Create");
+        pnlButton2.add(btnCreate);
     }
-
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == btnDelete) {
-            p.println("delete button hit!");
-            sendToServer(Message.TEST_SERVER);
+            deletePart(getCurrentPart().getNumber());
         } else if (e.getSource() == btnView) {
-        	
-        } else if (e.getSource() == btnView) {
+            tabbedPane.setSelectedIndex(SELECTED_PART_TAB_NUM);
+        } else if (e.getSource() == btnUpdate) {
+            updatePart(); // fill in below
+        } else if (e.getSource() == btnCreate) {
         	
         }
     }
 
+    /**
+     * @brief returns the current part
+     * @return the current part
+     */
+    private Part getCurrentPart() {
+    	return (Part) partComboBox.getSelectedItem();
+    }
+    
     /**
      * Launch the application.
      */
@@ -178,10 +265,12 @@ public class PartsManager extends Manager implements ActionListener {
      * Create the frame.
      */
     public PartsManager() {
+	this.bp = new BlueprintParts();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 450, 300);
 
         prepareContentPane();
+	this.mcon.out(Message.PULL_PARTS_LIST);
     }
 
     /**
@@ -201,25 +290,26 @@ public class PartsManager extends Manager implements ActionListener {
      * the server
      */
     public void deletePart(int partNumber) {
+    	
     }
+    
     /**
-    @brief sends an update request which should result in the parts list being updated
+     * @brief sends an update request which should result in the parts list being updated
      */
-    public void update()
-    {
+    public void update() {
         this.sendToServer(Message.PULL_PARTS_LIST);
     }
-    private void parseUpdate(String msg)
-    {
+    private void parseUpdate(String msg) {
         //code to parse the serialized parts list
     }
-    public void processMessage(String msg)
-    {
-        //super.processMessage(msg);
-        //if(msg == Message.PUSH_PARTS_LIST)
-        //   {
-
-        // }
+    public void processMessage(String msg) {
+        super.processMessage(msg);
+        if(msg.contains( Message.PUSH_PARTS_LIST))
+           {
+	       this.bp.recreate(this.grabParameter(msg));
+	       System.out.println("GRABBED NEW PARTS LIST FROM SERVER!");
+		   this.bp.debug();
+	   }
     }
 }
 
