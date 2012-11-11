@@ -43,7 +43,6 @@ public class GUIPartRobot extends GUIRobot {
         this.parts = new PartsRobotInventory();
         this.moveto = 0;
         this.setConstants(KAMGraphicPanel.PARTSROBOT_VELOCITYX, KAMGraphicPanel.PARTSROBOT_VELOCITYY, KAMGraphicPanel.KITROBOT_ROTATION_SPEED);
-    
     }
 
     /**
