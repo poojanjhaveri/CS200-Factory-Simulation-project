@@ -94,6 +94,8 @@ public class BlueprintParts implements Blueprint, Serializable {
     }
     public void debug()
     {
+	if(this.parts.size() == 0)
+	    System.out.println("BlueprintParts debug size 0.");
 	for(int i = 0; i != this.parts.size(); i++)
         {
             System.out.println("line "+i+":"+this.parts.get(i).serialize());
@@ -129,5 +131,17 @@ public class BlueprintParts implements Blueprint, Serializable {
         if(bp2.serialize().equals(bp.serialize()))
             System.out.println("Test passed");
         else System.out.println("TEST FAILED");
+
+	System.out.println("Testing empty BlueprintParts...");
+	bp = new BlueprintParts();
+	bp.debug();
+	String s = bp.serialize();
+	System.out.println("Serialized: "+s);
+	bp.recreate(s);
+	bp.debug();
+	if(s.equals(bp.serialize()))
+	    {
+		System.out.println("Test passed");
+	    }else System.out.println("TEST FAILED");
     }
 }

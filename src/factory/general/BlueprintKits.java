@@ -83,6 +83,11 @@ public class BlueprintKits implements Blueprint, Serializable {
     }
     public void debug()
     {
+	if(this.kits.size() == 0)
+	    {
+		System.out.println("BlueprintKits debug size 0.");
+		return;
+	    }
 	System.out.println("DEBUG BPKITS");
 	for(int i = 0; i!= this.kits.size(); i++)
 	    {
@@ -110,6 +115,17 @@ public class BlueprintKits implements Blueprint, Serializable {
 	bp2.debug();
 	System.out.println("SERIALIZED: "+bp2.serialize());
 	if(bp2.serialize().equals(bp.serialize()))
+	    {
+		System.out.println("Test passed");
+	    }else System.out.println("TEST FAILED");
+	System.out.println("Testing empty BlueprintKits");
+	bp = new BlueprintKits();
+	bp.debug();
+	s = bp.serialize();
+	System.out.println("Seralized: " + s);
+	bp.recreate(s);
+	bp.debug();
+	if(s.equals(bp.serialize()))
 	    {
 		System.out.println("Test passed");
 	    }else System.out.println("TEST FAILED");
