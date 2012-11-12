@@ -20,7 +20,8 @@ factoryproduction:
 	javac $(PARAM) $(GENERAL) factory200/factoryProductionManager/*.java
 kitassembly:
 	javac $(PARAM) $(GENERAL) factory200/kitAssemblyManager/*.java factory201/interfaces/KitRobot.java
-	java factory.factory200.kitAssemblyManager.KAMGraphicPanel
+	rm ../../factory -R
+	mv factory ../..
 lane:
 	javac $(PARAM) factory200/laneManager/*.java
 	java factory.factory200.laneManager.V0LaneBinGantry
