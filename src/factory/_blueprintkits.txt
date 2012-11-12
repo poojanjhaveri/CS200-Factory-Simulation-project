@@ -1,18 +1,18 @@
 Creating BPKits===========
 INITIAL DEBUG===============
 DEBUG BPKITS
-kit1 im the nyan kit 1352688505
-(part1,im a part dawg,1352688505,part.png)
-(part1,im a part dawg,1352688505,part.png)
-SERIALIZED: 135(6(kit1)17(im the nyan kit)12(1352688505)91(42(part1,im a part dawg,1352688505,part.png)43(party2,i party a lot,1352688505,party.png)))
+kit1 im the nyan kit 1352688691
+(part1,im a part dawg,1352688691,part.png)
+(part1,im a part dawg,1352688691,part.png)
+SERIALIZED: 135(6(kit1)17(im the nyan kit)12(1352688691)91(42(part1,im a part dawg,1352688691,part.png)43(party2,i party a lot,1352688691,party.png)))
 FINAL DEBUG=============
 DEBUG BPKITS
-kit1 im the nyan kit 1352688505
-(part1,im a part dawg,1352688505,part.png)
-(part1,im a part dawg,1352688505,part.png)
-SERIALIZED: 135(6(kit1)17(im the nyan kit)12(1352688505)91(42(part1,im a part dawg,1352688505,part.png)43(party2,i party a lot,1352688505,party.png)))
+kit1 im the nyan kit 1352688691
+(part1,im a part dawg,1352688691,part.png)
+(part1,im a part dawg,1352688691,part.png)
+SERIALIZED: 135(6(kit1)17(im the nyan kit)12(1352688691)91(42(part1,im a part dawg,1352688691,part.png)43(party2,i party a lot,1352688691,party.png)))
 Test passed
-Testing empty BlueprintKits
+Testing empty BlueprintKits===========
 BlueprintKits debug size 0.
 Seralized: 
 BlueprintKits debug size 0.

@@ -118,7 +118,7 @@ public class BlueprintKits implements Blueprint, Serializable {
 	    {
 		System.out.println("Test passed");
 	    }else System.out.println("TEST FAILED");
-	System.out.println("Testing empty BlueprintKits");
+	System.out.println("Testing empty BlueprintKits===========");
 	bp = new BlueprintKits();
 	bp.debug();
 	s = bp.serialize();
