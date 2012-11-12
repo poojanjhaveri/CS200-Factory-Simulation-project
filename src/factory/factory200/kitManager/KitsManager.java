@@ -50,7 +50,7 @@ public class KitsManager extends Manager {
         private void preparepanel()
         {
             contentpane = new JPanel();
-            contentpane.setLayout(new GridBagLayout());
+          
             
             
             

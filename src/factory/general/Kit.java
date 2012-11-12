@@ -7,7 +7,7 @@ import java.util.List;
  * Kit Object
  *
  * @brief Kit Object
- * @author James Dalton, YiWei Roy Zheng
+ * @author James Dalton, YiWei Roy Zheng, Poojan Jhaveri
  *
  */
 public class Kit {
@@ -54,22 +54,24 @@ public class Kit {
     public Kit(String n, String d)
     {
         this.name = n;
-        this.description = d;
+      //  this.description = d;
         this.number = (int)(System.currentTimeMillis()/(long)1000);
     }
     public Kit(String n, String d, Integer i) {
         this.name = n;
-        this.description = d;
+      //  this.description = d;
         this.number = i;
     }
     public String getName()
     {
         return this.name;
     }
+    
+    
     public String getDescription()
     {
         return this.description;
-    }
+    } 
     public Integer getNumber()
     {
         return this.number;
