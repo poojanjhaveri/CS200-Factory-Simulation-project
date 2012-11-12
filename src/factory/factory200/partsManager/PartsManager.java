@@ -26,7 +26,7 @@ import factory.general.Part;
  * @brief JFrame that represents the parts manager
  * @author David Zhang, YiWei Roy Zheng
  */
-public class PartsManager extends Manager implements ActionListener {
+public class PartsManager extends JFrame implements ActionListener {
     // TODO: NEED GUIPart.java class in partsManager package
 
     private JPanel contentPane;
@@ -188,7 +188,7 @@ public class PartsManager extends Manager implements ActionListener {
         pnlImageFileName2 = new JPanel();
         pnlForm2.add(pnlImageFileName2);
         
-        lblImageFileName2 = new JLabel("New label");
+        lblImageFileName2 = new JLabel("Image File Name");
         pnlImageFileName2.add(lblImageFileName2);
         
         tfImageFileName2 = new JTextField();
@@ -198,7 +198,7 @@ public class PartsManager extends Manager implements ActionListener {
         pnlDescription2 = new JPanel();
         pnlForm2.add(pnlDescription2);
         
-        lblDescription2 = new JLabel("New label");
+        lblDescription2 = new JLabel("Description");
         pnlDescription2.add(lblDescription2);
         
         tfDescription2 = new JTextField();
@@ -291,7 +291,7 @@ public class PartsManager extends Manager implements ActionListener {
      * @brief sends an update request which should result in the parts list being updated
      */
     public void update() {
-        this.sendToServer(Message.PULL_PARTS_LIST);
+        //this.sendToServer(Message.PULL_PARTS_LIST);
     }
     private void parseUpdate(String msg) {
         //code to parse the serialized parts list
