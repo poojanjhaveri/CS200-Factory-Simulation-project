@@ -14,7 +14,7 @@ public class LMServerMain extends JFrame{
 	private LMPartRobotForAgent agentPartRobot;
 	private LMPartData partData;
 	
-	private ThreadTimer threadTimer;	///<Instance of class 'Thread_Timer'
+	private LMThreadTimer threadTimer;	///<Instance of class 'Thread_Timer'
 	private LMController controller;
 	
 	public LMServerMain(){
@@ -27,7 +27,7 @@ public class LMServerMain extends JFrame{
 		agentPartRobot = new LMPartRobotForAgent(server, this); 
 		partData = new LMPartData(server, this);
 		
-		threadTimer = new ThreadTimer(server, this);		
+		threadTimer = new LMThreadTimer(server, this);		
 		new Thread(threadTimer).start();
 		
 		controller = new LMController(agentFeeder, agentLane, agentNest, agentNestCamera, agentGantryRobot, agentPartRobot, this);

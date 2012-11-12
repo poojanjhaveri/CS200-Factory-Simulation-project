@@ -2,10 +2,9 @@ package factory.factory200.laneManager.ServerSide;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.Timer;
 
-class ThreadTimer implements Runnable{
+class LMThreadTimer implements Runnable{
 	
 	private LMServerMain serverMain;
 	private LMServer server;
@@ -13,7 +12,7 @@ class ThreadTimer implements Runnable{
 	private Timer timer;
 	private int feedingTiming;
 
-	public ThreadTimer(LMServer server, LMServerMain serverMain){
+	public LMThreadTimer(LMServer server, LMServerMain serverMain){
 		this.server = server;
 		this.serverMain = serverMain;
 		sendPartSignal = new LMSendPartSignal(server, serverMain);
@@ -26,6 +25,7 @@ class ThreadTimer implements Runnable{
 	public class ServerTimer implements ActionListener{
 		public void actionPerformed(ActionEvent ae){
 			server.getClientHandler().sendToClient("&Timer&");
+			serverMain.getPartData().shakePartsFree();
 			if(++feedingTiming == 60){
 				sendPartSignal.orderFeeding();
 				sendPartSignal.feederPartLowSensor();

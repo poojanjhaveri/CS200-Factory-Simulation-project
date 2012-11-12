@@ -25,4 +25,8 @@ public class LMPartDataInLane {
 	public LMPart getPartFromLaneToNest(){
 		return parts.remove(0);
 	}
+	
+	public void removePart(){
+		parts.remove(0);
+	}
 }

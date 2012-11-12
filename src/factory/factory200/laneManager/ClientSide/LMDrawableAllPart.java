@@ -74,4 +74,12 @@ public class LMDrawableAllPart {
 	public void partRobotTakeOne(int nestNum){
 		nestDatas.get(nestNum).removePart();
 	}
+	
+	public void shakePart(int laneNum){
+		laneDatas.get(laneNum).shakePart();
+	}
+	
+	public LMLaneData getLane(int laneNum){
+		return laneDatas.get(laneNum);
+	}
 }

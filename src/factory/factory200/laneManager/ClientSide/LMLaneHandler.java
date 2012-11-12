@@ -46,5 +46,9 @@ public class LMLaneHandler {
 			// GUI Panel change
 			app.getGUIPanel().getGUILane().getGUILaneArray(laneNum).setLaneVibrationAmplitudeStrong();
 		}
+		
+		else if( message.indexOf("Shake Free") != -1 ){
+			
+		}
 	}
 }

@@ -6,6 +6,7 @@ public class LMLaneData {
 	
 	private ArrayList<LMDrawablePart> parts = new ArrayList<LMDrawablePart>();
 	private int laneNum;
+	private int randomlyChosenPart;
 	
 	public LMLaneData(int laneNum){
 		this.laneNum = laneNum;
@@ -19,12 +20,25 @@ public class LMLaneData {
 		return parts.remove(0);
 	}
 	
+	public void removeShakePart(int partNum){
+		parts.remove(partNum);
+	}
+	
 	public int getSize(){
 		return parts.size();
 	}
 	
 	public ArrayList<LMDrawablePart> getLanePartArray(){
 		return parts;
+	}
+	
+	public void shakePart(){
+		randomlyChosenPart = (int)( Math.random() * parts.size() );
+		parts.get(randomlyChosenPart).shake();
+	}
+	
+	public void removeShakenPart(LMDrawablePart shakenPart){
+		parts.remove(shakenPart);
 	}
 	
 	public void checkNestStatus(int nestSize){

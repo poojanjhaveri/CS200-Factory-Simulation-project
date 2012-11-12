@@ -9,8 +9,8 @@ public class LMDrawableDiversionBulb {
 	private int rightX, rightY;
 	private ImageIcon leftBulbImage;
 	private int leftX, leftY;
-	private static ImageIcon bulbOnImage = new ImageIcon( LMDrawableDiversionBulb.class.getResource("./pics/bulbOn.png") );
-	private static ImageIcon bulbOffImage = new ImageIcon( LMDrawableDiversionBulb.class.getResource("./pics/bulbOff.png") );
+	private static ImageIcon bulbOnImage = new ImageIcon( LMDrawableDiversionBulb.class.getResource("./pics/arrowOn.png") );
+	private static ImageIcon bulbOffImage = new ImageIcon( LMDrawableDiversionBulb.class.getResource("./pics/arrowOff.png") );
 	private int diversion;
 	
 	public LMDrawableDiversionBulb(int rightX, int rightY, int leftX, int leftY){

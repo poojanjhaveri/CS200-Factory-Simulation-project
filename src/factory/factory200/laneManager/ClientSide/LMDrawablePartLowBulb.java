@@ -5,10 +5,10 @@ import javax.swing.ImageIcon;
 
 public class LMDrawablePartLowBulb{
 
-	private ImageIcon partLowSymbolImage;
 	private int symbolX, symbolY;
 	private ImageIcon partLowBulbImage;
 	private int bulbX, bulbY;
+	private ImageIcon partLowSymbolImage = new ImageIcon( LMDrawablePartLowBulb.class.getResource("./pics/partmissing.png") );
 	private static ImageIcon bulbOnImage = new ImageIcon( LMDrawablePartLowBulb.class.getResource("./pics/bulbOn.png") );
 	private static ImageIcon bulbOffImage = new ImageIcon( LMDrawablePartLowBulb.class.getResource("./pics/bulbOff.png") );
 	
@@ -33,6 +33,5 @@ public class LMDrawablePartLowBulb{
 		else if(switchBulb == false){
 			partLowBulbImage = bulbOffImage;
 		}
-		partLowSymbolImage = bulbOffImage;
 	}
 }

@@ -5,10 +5,10 @@ import javax.swing.ImageIcon;
 
 public class LMDrawableRearGateBulb{
 
-	private ImageIcon rearGateSymbolImage;
 	private int symbolX, symbolY;
 	private ImageIcon rearGateBulbImage;
 	private int bulbX, bulbY;
+	private ImageIcon rearGateSymbolImage = new ImageIcon( LMDrawableRearGateBulb.class.getResource("./pics/rear.png") );
 	private static ImageIcon bulbOnImage = new ImageIcon( LMDrawableRearGateBulb.class.getResource("./pics/bulbOn.png") );
 	private static ImageIcon bulbOffImage = new ImageIcon( LMDrawableRearGateBulb.class.getResource("./pics/bulbOff.png") );
 	
@@ -33,6 +33,5 @@ public class LMDrawableRearGateBulb{
 		else if(switchBulb == false){
 			rearGateBulbImage = bulbOffImage;
 		}
-		rearGateSymbolImage = bulbOffImage;
 	}
 }

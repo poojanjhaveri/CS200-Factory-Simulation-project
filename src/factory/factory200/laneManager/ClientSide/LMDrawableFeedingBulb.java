@@ -1,15 +1,14 @@
 package factory.factory200.laneManager.ClientSide;
 
 import java.awt.Graphics2D;
-
 import javax.swing.ImageIcon;
 
 public class LMDrawableFeedingBulb{
 
-	private ImageIcon feedingSymbolImage;
 	private int symbolX, symbolY;
 	private ImageIcon feedingBulbImage;
 	private int bulbX, bulbY;
+	private ImageIcon feedingSymbolImage = new ImageIcon( LMDrawableFeedingBulb.class.getResource("./pics/feedin.png") );
 	private static ImageIcon bulbOnImage = new ImageIcon( LMDrawableFeedingBulb.class.getResource("./pics/bulbOn.png") );
 	private static ImageIcon bulbOffImage = new ImageIcon( LMDrawableFeedingBulb.class.getResource("./pics/bulbOff.png") );
 	
@@ -34,6 +33,5 @@ public class LMDrawableFeedingBulb{
 		else if(switchBulb == false){
 			feedingBulbImage = bulbOffImage;
 		}
-		feedingSymbolImage = bulbOffImage;
 	}
 }

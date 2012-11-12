@@ -74,4 +74,8 @@ public class LMLaneData {
 		// Server Data Task
 		vibrationAmplitude = 0;
 	}
+	
+	public int getVibrationAmplitude(){
+		return vibrationAmplitude;
+	}
 }

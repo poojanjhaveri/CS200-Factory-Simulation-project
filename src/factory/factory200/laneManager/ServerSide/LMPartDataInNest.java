@@ -22,7 +22,9 @@ public class LMPartDataInNest {
 	}
 	
 	public void partRobotTakeOne(){
-		parts.remove(0);
+		if(parts.size() != 0){
+			parts.remove(0);
+		}
 	}
 	
 	public void nestDown(){

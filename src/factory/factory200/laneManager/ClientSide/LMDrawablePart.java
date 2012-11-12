@@ -7,7 +7,7 @@ public class LMDrawablePart {
 	
 	private LMApplication app;
 	
-	private LMDrawableAllPart nestInformation; 
+	private LMDrawableAllPart getAllPart; 
 	private static ImageIcon part1 = new ImageIcon( LMDrawablePart.class.getResource("./pics/part1.png") );
 	private static ImageIcon part2 = new ImageIcon( LMDrawablePart.class.getResource("./pics/part2.png") );
 	private static ImageIcon part3 = new ImageIcon( LMDrawablePart.class.getResource("./pics/part3.png") );
@@ -29,10 +29,11 @@ public class LMDrawablePart {
 	private Boolean arrived = false;
 	private Boolean availableToNest = true;
 	private Boolean arrivedToNest = false;
-
-	public LMDrawablePart(LMApplication app, LMDrawableAllPart nestInformation, int laneNestNum, int partNum, int currentLocationX, int currentLocationY, int endOfLaneX, int endOfLaneY){
+	private Boolean shaken = false;
+	
+	public LMDrawablePart(LMApplication app, LMDrawableAllPart getAllPart, int laneNestNum, int partNum, int currentLocationX, int currentLocationY, int endOfLaneX, int endOfLaneY){
 		this.app = app;
-		this.nestInformation = nestInformation;
+		this.getAllPart = getAllPart;
 		this.laneNestNum = laneNestNum;
 		this.currentLocationX = currentLocationX;
 		this.currentLocationY = currentLocationY;
@@ -58,12 +59,11 @@ public class LMDrawablePart {
 		if( currentLocationX < 93 & arrivedToNest == false ){
 			if( availableToNest == true ){
 				arrivedToNest = true;
-				nestInformation.addPartFromLaneToNest(laneNestNum);
+				getAllPart.addPartFromLaneToNest(laneNestNum);
 				message = laneNestNum + "&Nest&AddPart&";
 				app.getClient().getThread().sendToFactory(message);
 			}
 		}
-		
 		calculate();
 		checkDestination();
 	}
@@ -84,13 +84,20 @@ public class LMDrawablePart {
 	}
 	
 	public void checkDestination(){
-		if( Math.abs(destinationX - currentLocationX) < 2 && Math.abs(destinationY - currentLocationY) < 2 ){  arrived = true;  }
+		if( Math.abs(destinationX - currentLocationX) < 2 && Math.abs(destinationY - currentLocationY) < 2 ){  
+			arrived = true;
+			if(shaken == true){
+				getAllPart.getLane(laneNestNum).removeShakenPart(this);
+			}
+		}
 		else{ arrived = false; }
 	}
 	
 	public void setDestination(int destinationX, int destinationY){
-		this.destinationX = destinationX;
-		this.destinationY = destinationY;
+		if( shaken  == false){
+			this.destinationX = destinationX;
+			this.destinationY = destinationY;
+		}
 	}
 	
 	public Boolean getArrived(){
@@ -99,5 +106,10 @@ public class LMDrawablePart {
 	
 	public void setAvailabilityToNest(Boolean availableToNest){
 		this.availableToNest = availableToNest;
+	}
+	
+	public void shake(){
+		setDestination(currentLocationX, currentLocationY + 30);
+		shaken = true;
 	}
 }

@@ -3,8 +3,6 @@ package factory.factory200.laneManager.ClientSide;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
 
-import javax.swing.ImageIcon;
-
 public class LMDrawableAllBin {
 
 	private LMDrawableBin newBin;

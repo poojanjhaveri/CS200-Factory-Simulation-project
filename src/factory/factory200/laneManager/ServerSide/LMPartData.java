@@ -15,6 +15,10 @@ public class LMPartData {
 	private ArrayList<LMPartDataInLane> lanes = new ArrayList<LMPartDataInLane>();
 	private ArrayList<LMPartDataInNest> nests = new ArrayList<LMPartDataInNest>();
 	
+	private double shakePossibility;
+	private int randomChosenPart;
+	private String message = "";
+	
 	public LMPartData(LMServer server, LMServerMain serverMain){
 		this.server = server;
 		this.serverMain = serverMain;
@@ -77,5 +81,43 @@ public class LMPartData {
 	
 	public int getFirstPartNum(int feederNum){
 		return feeders.get(feederNum).getFirstPartNum();
+	}
+	
+	public void shakePartsFree(){
+		for(int i=0 ; i<8 ; i++){
+			shakePossibility = Math.random();
+			if( serverMain.getPartData().getLanePartSize(i) != 0 ){
+				if( serverMain.getForAgentLane().getLane(i).getVibrationAmplitude() == 0 ){
+					if( Math.random() < 0.001 ){
+						// Part Removal In Server Side
+						lanes.get(i).removePart();
+						
+						// Part Removal In Client Side
+						message = i + "&Part&Shake&";
+						server.getClientHandler().sendToClient(message);
+					}
+				}
+				else if( serverMain.getForAgentLane().getLane(i).getVibrationAmplitude() == 1 ){
+					if( Math.random() < 0.005 ){
+						// Part Removal In Server Side
+						lanes.get(i).removePart();
+						
+						// Part Removal In Client Side
+						message = i + "&Part&Shake&";
+						server.getClientHandler().sendToClient(message);
+					}
+				}
+				else if( serverMain.getForAgentLane().getLane(i).getVibrationAmplitude() == 2 ){
+					if( Math.random() < 0.01 ){
+						// Part Removal In Server Side
+						lanes.get(i).removePart();
+						
+						// Part Removal In Client Side
+						message = i + "&Part&Shake&";
+						server.getClientHandler().sendToClient(message);
+					}
+				}
+			}
+		}
 	}
 }

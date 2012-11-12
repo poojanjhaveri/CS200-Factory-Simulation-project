@@ -5,10 +5,10 @@ import javax.swing.ImageIcon;
 
 public class LMDrawablePurgingBulb{
 
-	private ImageIcon purgingSymbolImage;
 	private int symbolX, symbolY;
 	private ImageIcon purgingBulbImage;
 	private int bulbX, bulbY;
+	private ImageIcon purgingSymbolImage = new ImageIcon( LMDrawablePurgingBulb.class.getResource("./pics/purge.png") );
 	private static ImageIcon bulbOnImage = new ImageIcon( LMDrawablePurgingBulb.class.getResource("./pics/bulbOn.png") );
 	private static ImageIcon bulbOffImage = new ImageIcon( LMDrawablePurgingBulb.class.getResource("./pics/bulbOff.png") );
 	
@@ -33,6 +33,5 @@ public class LMDrawablePurgingBulb{
 		else if(switchBulb == false){
 			purgingBulbImage = bulbOffImage;
 		}
-		purgingSymbolImage = bulbOffImage;
 	}
 }

@@ -2,8 +2,6 @@ package factory.factory200.laneManager.ClientSide;
 
 import java.awt.Graphics2D;
 import java.util.ArrayList;
-
-import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 public class LMDrawableAllFeeder extends JPanel{

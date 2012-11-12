@@ -35,7 +35,7 @@ public class LMClient{
 	
 	public void connectToServer(){
 		try{
-			mySocket = new Socket( "192.168.0.10", 30004 );
+			mySocket = new Socket( "192.168.1.112", 36001 );
 			hac = new HandleAClient( mySocket );
 			new Thread(hac).start();
 		}

@@ -15,5 +15,10 @@ public class LMPartHandler {
 			partNum = message.charAt(1) - 48;
 			app.getGraphicsPanel().getAllPart().addPartFromFeederToLane(laneNum, partNum);
 		}
+		
+		else if( message.indexOf("&Shake&") != -1 ){
+			laneNum = message.charAt(0) - 48;
+			app.getGraphicsPanel().getAllPart().shakePart(laneNum);
+		}
 	}
 }

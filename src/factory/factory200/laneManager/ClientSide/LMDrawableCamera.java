@@ -1,7 +1,6 @@
 package factory.factory200.laneManager.ClientSide;
 
 import java.awt.Graphics2D;
-
 import javax.swing.ImageIcon;
 
 public class LMDrawableCamera{
