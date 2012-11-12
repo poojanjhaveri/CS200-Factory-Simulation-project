@@ -145,13 +145,54 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
         part8.setGUIPart(guipart8);
         parts1.add(part8);
         
-        //need above code from server
+        ArrayList<Part> parts2 = new ArrayList<Part>();
+        
+        Part part9 = new Part(null, null);
+        GUIPart guipart9=new GUIPart(nest.get(1).getX(),nest.get(1).getY(),0.0,new ImageIcon("pics/parts/part2.png"));
+        part9.setGUIPart(guipart9);
+        parts2.add(part9);
+        
+        Part part10 = new Part(null, null);
+        GUIPart guipart10=new GUIPart(nest.get(1).getX(),nest.get(1).getY()+20,0.0,new ImageIcon("pics/parts/part2.png"));
+        part10.setGUIPart(guipart10);
+        parts2.add(part10);
+        
+        Part part11 = new Part(null, null);
+        GUIPart guipart11=new GUIPart(nest.get(1).getX(),nest.get(1).getY()+40,0.0,new ImageIcon("pics/parts/part2.png"));
+        part11.setGUIPart(guipart11);
+        parts2.add(part11);
+        
+        Part part12 = new Part(null, null);
+        GUIPart guipart12=new GUIPart(nest.get(1).getX(),nest.get(1).getY()+60,0.0,new ImageIcon("pics/parts/part2.png"));
+        part12.setGUIPart(guipart12);
+        parts2.add(part12);
+        
+        Part part13 = new Part(null, null);
+        GUIPart guipart13=new GUIPart(nest.get(1).getX()+15,nest.get(1).getY(),0.0,new ImageIcon("pics/parts/part2.png"));
+        part13.setGUIPart(guipart13);
+        parts2.add(part13);
+        
+        Part part14 = new Part(null, null);
+        GUIPart guipart14=new GUIPart(nest.get(1).getX()+15,nest.get(1).getY()+20,0.0,new ImageIcon("pics/parts/part2.png"));
+        part14.setGUIPart(guipart14);
+        parts2.add(part14);
+        
+        Part part15 = new Part(null, null);
+        GUIPart guipart15=new GUIPart(nest.get(1).getX()+15,nest.get(1).getY()+40,0.0,new ImageIcon("pics/parts/part2.png"));
+        part15.setGUIPart(guipart15);
+        parts2.add(part15);
+        
+        Part part16 = new Part(null, null);
+        GUIPart guipart16=new GUIPart(nest.get(1).getX()+15,nest.get(1).getY()+60,0.0,new ImageIcon("pics/parts/part2.png"));
+        part16.setGUIPart(guipart16);
+        parts2.add(part16);
         
         //for(int i=0;i<parts1.size();i++){
             nest.get(0).setParts(parts1);
         //}
+            nest.get(1).setParts(parts2);
         
-        
+        //need above code from server
         
         counter = 0;
         cameraCounter = 0;
