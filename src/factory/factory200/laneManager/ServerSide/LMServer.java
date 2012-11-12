@@ -13,7 +13,7 @@ public class LMServer {
     public LMServer(LMServerMain serverMain){
     	this.serverMain = serverMain;
     	
-    	try {  serverSocket = new ServerSocket( 36001 );  }
+    	try {  serverSocket = new ServerSocket( 55555 );  }
     	catch( Exception e ) {
 	    	System.out.println("The port you chose is currently in use. Please use other port number.");
 	    	System.exit(0);

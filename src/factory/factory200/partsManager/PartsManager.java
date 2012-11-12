@@ -35,7 +35,6 @@ public class PartsManager extends Manager implements ActionListener {
 
     BlueprintParts bp;///<contains list of parts
 
-
     // TODO: NEED GUIPart.java class in partsManager package
 
     private JPanel contentPane;

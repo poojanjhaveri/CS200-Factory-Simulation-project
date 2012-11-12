@@ -104,32 +104,158 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
         
         //only for version 0
         ArrayList<Part> parts1 = new ArrayList<Part>();
+        //ArrayList<GUIPart> guiParts3 = new ArrayList<GUIPart>();
         
-        Part part1 = new Part(null, null);
-        GUIPart guipart1=new GUIPart(nest.get(0).getX(),nest.get(0).getY(),0.0,new ImageIcon("pics/part_pic0.png"));
-        part1.setGUIPart(guipart1);
-        parts1.add(part1);
-        
-        Part part2 = new Part(null, null);
-        GUIPart guipart2=new GUIPart(nest.get(0).getX()+5,nest.get(0).getY(),0.0,new ImageIcon("pics/part_pic0.png"));
-        part2.setGUIPart(guipart2);
-        parts1.add(part2);
-        
-        Part part3 = new Part(null, null);
-        GUIPart guipart3=new GUIPart(nest.get(0).getX(),nest.get(0).getY()+5,0.0,new ImageIcon("pics/part_pic0.png"));
-        part3.setGUIPart(guipart3);
-        parts1.add(part3);
-        
-        Part part4 = new Part(null, null);
-        GUIPart guipart4=new GUIPart(nest.get(0).getX()+5,nest.get(0).getY()+5,0.0,new ImageIcon("pics/part_pic0.png"));
-        part4.setGUIPart(guipart4);
-        parts1.add(part4);
-        
-        for(int i=0;i<parts1.size();i++){
-            nest.get(0).setParts(parts1);
+        for(int i=0;i<4;i++){
+        Part temp = new Part(null, null); 
+        GUIPart GUItemp=new GUIPart(nest.get(0).getX(), nest.get(0).getY()+20*i, 0.0, new ImageIcon("pics/parts/part1.png"));
+        temp.setGUIPart(GUItemp);
+        parts1.add(temp);
         }
         
+        for(int i=0;i<4;i++){
+        Part temp = new Part(null, null); 
+        GUIPart GUItemp=new GUIPart(nest.get(0).getX()+15, nest.get(0).getY()+20*i, 0.0, new ImageIcon("pics/parts/part1.png"));
+        temp.setGUIPart(GUItemp);
+        parts1.add(temp);
+        }
         
+        ArrayList<Part> parts2 = new ArrayList<Part>();
+        //ArrayList<GUIPart> guiParts3 = new ArrayList<GUIPart>();
+        
+        for(int i=0;i<4;i++){
+        Part temp = new Part(null, null); 
+        GUIPart GUItemp=new GUIPart(nest.get(1).getX(), nest.get(1).getY()+20*i, 0.0, new ImageIcon("pics/parts/part2.png"));
+        temp.setGUIPart(GUItemp);
+        parts2.add(temp);
+        }
+        
+        for(int i=0;i<4;i++){
+        Part temp = new Part(null, null); 
+        GUIPart GUItemp=new GUIPart(nest.get(1).getX()+15, nest.get(1).getY()+20*i, 0.0, new ImageIcon("pics/parts/part2.png"));
+        temp.setGUIPart(GUItemp);
+        parts2.add(temp);
+        }
+        
+        ArrayList<Part> parts3 = new ArrayList<Part>();
+        //ArrayList<GUIPart> guiParts3 = new ArrayList<GUIPart>();
+        
+        for(int i=0;i<4;i++){
+        Part temp = new Part(null, null); 
+        GUIPart GUItemp=new GUIPart(nest.get(2).getX(), nest.get(2).getY()+20*i, 0.0, new ImageIcon("pics/parts/part3.png"));
+        temp.setGUIPart(GUItemp);
+        parts3.add(temp);
+        }
+        
+        for(int i=0;i<4;i++){
+        Part temp = new Part(null, null); 
+        GUIPart GUItemp=new GUIPart(nest.get(2).getX()+15, nest.get(2).getY()+20*i, 0.0, new ImageIcon("pics/parts/part3.png"));
+        temp.setGUIPart(GUItemp);
+        parts3.add(temp);
+        }
+        
+        ArrayList<Part> parts4 = new ArrayList<Part>();
+        //ArrayList<GUIPart> guiParts4 = new ArrayList<GUIPart>();
+        
+        for(int i=0;i<4;i++){
+        Part temp = new Part(null, null); 
+        GUIPart GUItemp=new GUIPart(nest.get(3).getX(), nest.get(3).getY()+20*i, 0.0, new ImageIcon("pics/parts/part4.png"));
+        temp.setGUIPart(GUItemp);
+        parts4.add(temp);
+        }
+        
+        for(int i=0;i<4;i++){
+        Part temp = new Part(null, null); 
+        GUIPart GUItemp=new GUIPart(nest.get(3).getX()+15, nest.get(3).getY()+20*i, 0.0, new ImageIcon("pics/parts/part4.png"));
+        temp.setGUIPart(GUItemp);
+        parts4.add(temp);
+        }
+        
+        ArrayList<Part> parts5 = new ArrayList<Part>();
+        //ArrayList<GUIPart> guiParts4 = new ArrayList<GUIPart>();
+        
+        for(int i=0;i<4;i++){
+        Part temp = new Part(null, null); 
+        GUIPart GUItemp=new GUIPart(nest.get(4).getX(), nest.get(4).getY()+20*i, 0.0, new ImageIcon("pics/parts/part5.png"));
+        temp.setGUIPart(GUItemp);
+        parts5.add(temp);
+        }
+        
+        for(int i=0;i<4;i++){
+        Part temp = new Part(null, null); 
+        GUIPart GUItemp=new GUIPart(nest.get(4).getX()+15, nest.get(4).getY()+20*i, 0.0, new ImageIcon("pics/parts/part5.png"));
+        temp.setGUIPart(GUItemp);
+        parts5.add(temp);
+        }
+        
+        ArrayList<Part> parts6 = new ArrayList<Part>();
+        //ArrayList<GUIPart> guiParts4 = new ArrayList<GUIPart>();
+        
+        for(int i=0;i<4;i++){
+        Part temp = new Part(null, null); 
+        GUIPart GUItemp=new GUIPart(nest.get(5).getX(), nest.get(5).getY()+20*i, 0.0, new ImageIcon("pics/parts/part6.png"));
+        temp.setGUIPart(GUItemp);
+        parts6.add(temp);
+        }
+        
+        for(int i=0;i<4;i++){
+        Part temp = new Part(null, null); 
+        GUIPart GUItemp=new GUIPart(nest.get(5).getX()+15, nest.get(5).getY()+20*i, 0.0, new ImageIcon("pics/parts/part6.png"));
+        temp.setGUIPart(GUItemp);
+        parts6.add(temp);
+        }
+        
+        ArrayList<Part> parts7 = new ArrayList<Part>();
+        //ArrayList<GUIPart> guiParts4 = new ArrayList<GUIPart>();
+        
+        for(int i=0;i<4;i++){
+        Part temp = new Part(null, null); 
+        GUIPart GUItemp=new GUIPart(nest.get(6).getX(), nest.get(6).getY()+20*i, 0.0, new ImageIcon("pics/parts/part7.png"));
+        temp.setGUIPart(GUItemp);
+        parts7.add(temp);
+        }
+        
+        for(int i=0;i<4;i++){
+        Part temp = new Part(null, null); 
+        GUIPart GUItemp=new GUIPart(nest.get(6).getX()+15, nest.get(6).getY()+20*i, 0.0, new ImageIcon("pics/parts/part7.png"));
+        temp.setGUIPart(GUItemp);
+        parts7.add(temp);
+        }
+        
+        ArrayList<Part> parts8 = new ArrayList<Part>();
+        //ArrayList<GUIPart> guiParts4 = new ArrayList<GUIPart>();
+        
+        for(int i=0;i<4;i++){
+        Part temp = new Part(null, null); 
+        GUIPart GUItemp=new GUIPart(nest.get(7).getX(), nest.get(7).getY()+20*i, 0.0, new ImageIcon("pics/parts/part8.png"));
+        temp.setGUIPart(GUItemp);
+        parts8.add(temp);
+        }
+        
+        for(int i=0;i<4;i++){
+        Part temp = new Part(null, null); 
+        GUIPart GUItemp=new GUIPart(nest.get(7).getX()+15, nest.get(7).getY()+20*i, 0.0, new ImageIcon("pics/parts/part8.png"));
+        temp.setGUIPart(GUItemp);
+        parts8.add(temp);
+        }
+       
+            nest.get(0).setParts(parts1);
+        
+            nest.get(1).setParts(parts2);
+            
+            nest.get(2).setParts(parts3);
+            
+            nest.get(3).setParts(parts4);
+            
+            nest.get(4).setParts(parts5);
+            
+            nest.get(5).setParts(parts6);
+            
+            nest.get(6).setParts(parts7);
+            
+            nest.get(7).setParts(parts8);
+        
+        //need above code from server
         
         counter = 0;
         cameraCounter = 0;
@@ -367,9 +493,11 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
 //	    }
         kitter.paintMe(this, g2);
         
-        for(int i=0;i<this.nest.get(0).getParts().size();i++){
+        for(int j=0;j<this.nest.size();j++){
+        for(int i=0;i<this.nest.get(j).getParts().size();i++){
             //System.out.println(this.nest.get(0).getParts().get(i).getGUIPart());
-            this.nest.get(0).getParts().get(i).getGUIPart().getImage().paintIcon(this, g2, nest.get(0).getParts().get(i).getGUIPart().getX(), nest.get(0).getParts().get(i).getGUIPart().getY());
+            this.nest.get(j).getParts().get(i).getGUIPart().getImage().paintIcon(this, g2, nest.get(j).getParts().get(i).getGUIPart().getX(), nest.get(j).getParts().get(i).getGUIPart().getY());
+        }
         }
         
     }
