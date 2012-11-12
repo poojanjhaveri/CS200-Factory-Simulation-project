@@ -203,8 +203,10 @@ public class GUIKitRobot extends GUIRobot {
         return true;
     }
     public void paintMe(JPanel panel, Graphics2D g) {
-        this.base.paintIcon(panel,g2,KAMGraphicPanel.KITROBOT_INITIAL_X,KAMGraphicPanel.KITROBOT_INITIAL_Y);
+        Graphics2D g2d = (Graphics2D)g.create();
 
+        this.base.paintIcon(panel,g2d,KAMGraphicPanel.KITROBOT_INITIAL_X-11,KAMGraphicPanel.KITROBOT_INITIAL_Y-11);
+	/*//this code sucks, dont use it
         //	System.out.println(this.getY());
         Double a = (double)this.getY()-(double)KAMGraphicPanel.KITROBOT_INITIAL_Y;
         Double b = (double)this.getX()-(double)KAMGraphicPanel.KITROBOT_INITIAL_X;
@@ -212,12 +214,19 @@ public class GUIKitRobot extends GUIRobot {
         System.out.println(angle + " " + a + " " + b);
 
         if(angle != null) {
-            Graphics2D g2 = (Graphics2D)g.create();
-            g2.rotate(angle,KAMGraphicPanel.KITROBOT_INITIAL_X+12,KAMGraphicPanel.KITROBOT_INITIAL_Y+12);
-            this.arm.paintIcon(panel,g2,KAMGraphicPanel.KITROBOT_INITIAL_X-2,KAMGraphicPanel.KITROBOT_INITIAL_Y-2);
+	    Integer topaint =(int)Math.pow((Math.pow(a,2.0)+Math.pow(b,2.0)),0.5);
+	    int x = KAMGraphicPanel.KITROBOT_INITIAL_X-2;
+	    int y = KAMGraphicPanel.KITROBOT_INITIAL_Y-2;
+	    for(int i =1; i != topaint+1; i++){
+    Graphics2D g2 = (Graphics2D)g.create();
+	g2.rotate(angle,KAMGraphicPanel.KITROBOT_INITIAL_X+x,KAMGraphicPanel.KITROBOT_INITIAL_Y+y);
+	    	this.arm.paintIcon(panel,g2,(int)(i*(b/topaint)),(int)(i*(a/topaint)));
+		x += (int)(i*(b/topaint));
+		y += (int)(i*(a/topaint));
+            }
         }
-
-        Graphics2D g2d = (Graphics2D)g.create();
+	*/
+        g2d = (Graphics2D)g.create();
         if (this.hasKit()) {
             this.getKit().getImage().paintIcon(panel, g2d, this.getCoordinate().getX(), this.getCoordinate().getY());
         }
