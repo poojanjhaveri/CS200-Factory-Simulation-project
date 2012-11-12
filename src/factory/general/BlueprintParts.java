@@ -49,6 +49,18 @@ public class BlueprintParts implements Blueprint, Serializable {
     public ArrayList<Part> getParts() {
         return this.parts;
     }
+    public void removePart(Part pt) {
+       parts.remove(pt);
+    }
+    
+    public Part getPartAt(int i) {
+        return this.parts.get(i);
+    }
+    
+    public int getSize(){
+    	return parts.size();
+    	
+    }
     /**
     @brief deserializes the passed string and adds to the current data
      */

@@ -16,6 +16,8 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import factory.general.Manager;
 import factory.general.Message;
@@ -27,14 +29,13 @@ import factory.general.Part;
  * @brief JFrame that represents the parts manager
  * @author David Zhang, YiWei Roy Zheng
  */
-<<<<<<< HEAD
-public class PartsManager extends JFrame implements ActionListener {
-=======
+
 public class PartsManager extends Manager implements ActionListener {
+
 
     BlueprintParts bp;///<contains list of parts
 
->>>>>>> fab30dabd9a57ee8e642e378ca65c8578096a2d4
+
     // TODO: NEED GUIPart.java class in partsManager package
 
     private JPanel contentPane;
@@ -92,6 +93,9 @@ public class PartsManager extends Manager implements ActionListener {
         contentPane.add(lblPartsManager, BorderLayout.NORTH);
 
         tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+ 
+        
+        
         contentPane.add(tabbedPane, BorderLayout.CENTER);
 
         pnlManageParts = new JPanel();
@@ -104,12 +108,20 @@ public class PartsManager extends Manager implements ActionListener {
                 
                         partComboBox = new JComboBox();
                         comboBoxPanel.add(partComboBox);
-
+   
         managePartsImagePanel = new JPanel();
-        pnlManageParts.add(managePartsImagePanel);
+        pnlManageParts.add(managePartsImagePanel);  
 
         managePartsButtonPanel = new JPanel();
         pnlManageParts.add(managePartsButtonPanel);
+        
+        tabbedPane.addChangeListener(new ChangeListener()
+        {
+          public void stateChanged(ChangeEvent e)
+          {
+            processTabChange();
+          }
+        });
 
         btnView = new JButton("View");
         managePartsButtonPanel.add(btnView);
@@ -225,18 +237,19 @@ public class PartsManager extends Manager implements ActionListener {
         pnlButton2.setLayout(new BoxLayout(pnlButton2, BoxLayout.X_AXIS));
         
         btnCreate = new JButton("Create");
+        btnCreate.addActionListener(this);
         pnlButton2.add(btnCreate);
     }
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == btnDelete) {
-            deletePart(getCurrentPart().getNumber());
+            deletePart(getCurrentPart());
         } else if (e.getSource() == btnView) {
             tabbedPane.setSelectedIndex(SELECTED_PART_TAB_NUM);
         } else if (e.getSource() == btnUpdate) {
             updatePart(); // fill in below
         } else if (e.getSource() == btnCreate) {
-        	
+        	createPart();
         }
     }
 
@@ -245,7 +258,15 @@ public class PartsManager extends Manager implements ActionListener {
      * @return the current part
      */
     private Part getCurrentPart() {
-    	return (Part) partComboBox.getSelectedItem();
+    	String s= (String) partComboBox.getSelectedItem();
+    	Part temp= new Part(null,null);
+    	for(int i=0;i<bp.getSize();i++){
+    		if (bp.getPartAt(i).getName().equals(s))
+    			{temp=bp.getPartAt(i);
+    			break;}
+    		
+    	}
+    	return temp;
     }
     
     /**
@@ -278,13 +299,29 @@ public class PartsManager extends Manager implements ActionListener {
     }
 
     /**
-     * @brief creates a part based on form data; sends data to server
+     * @brief creates a part based on form data locally
      */
     public void createPart() {
+    	String name, file, d;
+    	Part temp;
+    	
+    	name=tfPartName2.getText();
+    	file=tfImageFileName2.getText();
+    	d=tfDescription2.getText();
+    	
+    	temp=new Part(name, d, file);
+    	
+    	bp.add(temp);
+    	
+    	tfPartName2.setText("");
+    	tfImageFileName2.setText("");
+    	tfDescription2.setText("");
+    	btnCreate.setSelected(false);
+    	
     }
 
     /**
-     * @brief updates part data and sends data to server
+     * @brief updates part data locally
      */
     public void updatePart() {
     }
@@ -293,8 +330,9 @@ public class PartsManager extends Manager implements ActionListener {
      * @brief deletes the part with the specified part number and sends data to
      * the server
      */
-    public void deletePart(int partNumber) {
-    	
+    public void deletePart(Part pt) {
+    	bp.removePart(pt);
+    	updateComboBox();
     }
     
     /**
@@ -303,18 +341,54 @@ public class PartsManager extends Manager implements ActionListener {
     public void update() {
         //this.sendToServer(Message.PULL_PARTS_LIST);
     }
+    
     private void parseUpdate(String msg) {
         //code to parse the serialized parts list
     }
+    
+    
     public void processMessage(String msg) {
         super.processMessage(msg);
-        if(msg.contains( Message.PUSH_PARTS_LIST))
-           {
+        if(msg.contains( Message.PUSH_PARTS_LIST)) {
+        	
 	       this.bp.recreate(this.grabParameter(msg));
-	       System.out.println("GRABBED NEW PARTS LIST FROM SERVER!");
+	       System.out.println("GRABBED NEW PARTS LIST FROM SERVER!: "+msg);
 		   this.bp.debug();
 	   }
     }
+    
+    private void processTabChange()
+    {
+      Component c = tabbedPane.getSelectedComponent();
+     if (c.equals(pnlManageParts)){
+    	 //update the list of parts 
+    	updateComboBox();   		 
+    	 }
+    	 
+     }
+
+    
+    /**
+     * @brief updates the list of parts every time the Manage parts tab is clicked
+     */
+    
+    private void updateComboBox(){
+    	 partComboBox.removeAllItems();
+    	 for(int i=0;i<bp.getSize();i++){
+    		 partComboBox.addItem(bp.getPartAt(i).getName());     
+    	
+    	 }
+    }
 }
 
-//This is just a test to try out git
+/*
+ * Questions
+ * 
+ * 
+ * 
+ * Bugs
+ * -make Create button unselected after click
+ * -
+ * 
+ * 
+ */

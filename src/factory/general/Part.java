@@ -96,6 +96,13 @@ public class Part implements Serializable {
         this.number = num;
         this.guipart = null;
     }
+    public Part(String n, String d, String file)
+    {
+        this.name = n;
+        this.description = d;
+        this.filename = file;
+        this.guipart = null;
+    }
     public void setFilename(String in)
     {
         this.filename = in;
