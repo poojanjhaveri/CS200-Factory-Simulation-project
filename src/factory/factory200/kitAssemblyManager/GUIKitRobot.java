@@ -47,13 +47,23 @@ public class GUIKitRobot extends GUIRobot {
     @brief creates the GUIKitRobot from the constants specified in KAMGraphicPanel
      */
     public GUIKitRobot() {
-
         //this is actually set in the KAMGraphicsPanel
         super(KAMGraphicPanel.KITROBOT_INITIAL_X,KAMGraphicPanel.KITROBOT_INITIAL_Y,GUIKitRobot.IMAGE_PAGE);
         this.setConstants(KAMGraphicPanel.KITROBOT_VELOCITYX, KAMGraphicPanel.KITROBOT_VELOCITYY, KAMGraphicPanel.KITROBOT_ROTATION_SPEED);
         this.arm = new ImageIcon(GUIKitRobot.IMAGE_ARM);
         this.base = new ImageIcon(GUIKitRobot.IMAGE_BASE);
+    }
 
+    /**
+     * @author David Zhang
+     * @param kitRobotInitX - init kit position x coordinate
+     * @param kitRobotInitY - init kit position y coordinate
+     */
+    public GUIKitRobot(int kitRobotInitX, int kitRobotInitY) {
+        super(kitRobotInitX,kitRobotInitY,GUIKitRobot.IMAGE_PAGE);
+        this.setConstants(KAMGraphicPanel.KITROBOT_VELOCITYX, KAMGraphicPanel.KITROBOT_VELOCITYY, KAMGraphicPanel.KITROBOT_ROTATION_SPEED);
+        this.arm = new ImageIcon(GUIKitRobot.IMAGE_ARM);
+        this.base = new ImageIcon(GUIKitRobot.IMAGE_BASE);
     }
 
     /**

@@ -27,14 +27,9 @@ import factory.general.Part;
  * @brief JFrame that represents the parts manager
  * @author David Zhang, YiWei Roy Zheng
  */
-<<<<<<< HEAD
-public class PartsManager extends JFrame implements ActionListener {
-=======
 public class PartsManager extends Manager implements ActionListener {
 
     BlueprintParts bp;///<contains list of parts
-
->>>>>>> fab30dabd9a57ee8e642e378ca65c8578096a2d4
     // TODO: NEED GUIPart.java class in partsManager package
 
     private JPanel contentPane;
