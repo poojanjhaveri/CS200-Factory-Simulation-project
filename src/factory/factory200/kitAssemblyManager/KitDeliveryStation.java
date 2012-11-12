@@ -21,6 +21,7 @@ public class KitDeliveryStation {
     //THIS NUMBER WILL BE GIVEN BY THE SERVER=NUMBER OF KITS THAT SHOULD BE MADE IN FACTORY
     private int numEmptyKits;
     private ArrayList<PlaceHolder> placeholder;
+    private int num;
     
     public KitDeliveryStation(int kits){
         numEmptyKits=kits;
@@ -40,11 +41,47 @@ public class KitDeliveryStation {
     }
     
     public Boolean inPosition(){
-        return (this.placeholder.get(0).getX()==KAMGraphicPanel.EMPTY_CONVEYERX && this.placeholder.get(0).getY()==KAMGraphicPanel.EMPTY_CONVEYERY);   
+        boolean inPlace=false;
+        for(int i=0;i<this.getPlaceholder().size();i++){
+           num=i;
+           int yPlace=this.getPlaceholder().get(i).getY();
+           if(yPlace==300 && this.getPlaceholder().get(i).isShow()){
+               inPlace=true;
+               break;
+           }
+                        
+        }
+        return inPlace;
+        //return (this.placeholder.get(i).getX()==KAMGraphicPanel.EMPTY_CONVEYERX && this.placeholder.get(i).getY()==KAMGraphicPanel.EMPTY_CONVEYERY);   
+    }
+    public Boolean inEmptyPostion(){
+        boolean inPlace=false;
+        for(int i=0;i<this.getPlaceholder().size();i++){
+           num=i;
+           int yPlace=this.getPlaceholder().get(i).getY();
+           if(yPlace==300 && !(this.getPlaceholder().get(i).isShow())){
+               inPlace=true;
+               break;
+           }
+                        
+        }
+        return inPlace;
     }
     
     public KAMKit giveKit(){
-        return this.placeholder.get(0).giveKit();
+        return this.placeholder.get(num).giveKit();
+    }
+    
+    public void takeKit(KAMKit kit){
+       //PlaceHolder temp=new PlaceHolder();
+       for(int i=0;i<this.getPlaceholder().size();i++){
+           //temp=this.getPlaceholder().get(i);
+           int yPlace=this.getPlaceholder().get(i).getY();
+           if(yPlace==300 && !(this.getPlaceholder().get(i).isShow())){
+               this.getPlaceholder().get(i).setKit(kit);
+               break;
+           }
+       }
     }
 
     /**
