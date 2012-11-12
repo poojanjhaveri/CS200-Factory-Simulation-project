@@ -1,0 +1,13 @@
+kit1 I am a kit lollol 1352747867
+7(part1)11(is a part)12(1352747867)11(part1.png)
+7(part1)11(is a part)12(1352747867)11(part1.png)
+7(part1)11(is a part)12(1352747867)11(part1.png)
+SERIALIZED KIT
+6(kit1)19(I am a kit lollol)12(1352747867)159(50(7(part1)11(is a part)12(1352747867)11(part1.png))56(7(part2)17(is (not) a part)12(1352747867)11(part2.png))45(9(alfalfa)6(heyo)12(1352747867)10(gogo.png)))
+DESERIALIZED KIT
+6(kit1)19(I am a kit lollol)12(1352747867)159(50(7(part1)11(is a part)12(1352747867)11(part1.png))56(7(part2)17(is (not) a part)12(1352747867)11(part2.png))45(9(alfalfa)6(heyo)12(1352747867)10(gogo.png)))
+kit1 I am a kit lollol 1352747867
+7(part1)11(is a part)12(1352747867)11(part1.png)
+7(part1)11(is a part)12(1352747867)11(part1.png)
+7(part1)11(is a part)12(1352747867)11(part1.png)
+Test passed

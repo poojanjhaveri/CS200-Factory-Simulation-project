@@ -294,7 +294,8 @@ public class PartsManager extends Manager implements ActionListener {
         setBounds(100, 100, 450, 300);
 
         prepareContentPane();
-	this.mcon.out(Message.PULL_PARTS_LIST);
+	//	this.mcon.out(Message.PULL_PARTS_LIST);
+	this.update();
     }
 
     /**
@@ -319,7 +320,8 @@ public class PartsManager extends Manager implements ActionListener {
 
 	/*added by Roy 11/12/12*/
 	//this will send the new part to the server
-	this.mcon.out(Message.DEFINE_NEW_PART+":"+temp.serialize());
+		this.mcon.out(Message.DEFINE_NEW_PART+":"+temp.serialize());
+		System.out.println("Sent new part definition: "+temp.serialize());
 	/*end*/
     }
 
@@ -342,7 +344,8 @@ public class PartsManager extends Manager implements ActionListener {
      * @brief sends an update request which should result in the parts list being updated
      */
     public void update() {
-        //this.sendToServer(Message.PULL_PARTS_LIST);
+        this.mcon.out(Message.PULL_PARTS_LIST);
+	System.out.println("Local copy updated with server copy");
     }
     
     private void parseUpdate(String msg) {

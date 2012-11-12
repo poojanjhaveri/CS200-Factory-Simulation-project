@@ -79,6 +79,15 @@ public class Util {
         }
         return stringform;
     }
+    public static String serialize(ArrayList<String> arr)
+    {
+	String toreturn = "";
+	for(int i = 0; i != arr.size(); i++)
+	    {
+		toreturn = toreturn + (arr.get(i).length()+2)+"("+arr.get(i)+")";
+	    }
+	return toreturn;
+    }
     public static void main(String[] args)
     {
         ArrayList<String> explode = Util.stringExplode(" ","hey there bro");

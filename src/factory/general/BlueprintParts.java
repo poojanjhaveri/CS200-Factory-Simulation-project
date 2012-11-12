@@ -34,6 +34,7 @@ public class BlueprintParts implements Blueprint, Serializable {
     }
     public void add(Part in) {
         this.parts.add(in);
+	System.out.println("added size "+this.parts.size() + ": " +in.serialize());
     }
     /**
     @brief deserializes the passed string and turns it into an arraylist of parts
@@ -72,10 +73,12 @@ public class BlueprintParts implements Blueprint, Serializable {
      */
     public String serialize() {
         String toreturn ="";
+	ArrayList<String> arr = new ArrayList<String>();
         for(int i = 0; i != this.parts.size(); i++) {
-            toreturn = toreturn+this.parts.get(i).serialize().length()+this.parts.get(i).serialize();
+            //toreturn = toreturn+this.parts.get(i).serialize().length()+this.parts.get(i).serialize();
+	    arr.add(this.parts.get(i).serialize());
         }
-        return toreturn;
+        return Util.serialize(arr);
     }
     /**
     @brief recreates the parts list using the passed serialized blueprintparts
@@ -88,7 +91,7 @@ public class BlueprintParts implements Blueprint, Serializable {
             FileOutputStream out = new FileOutputStream(FactoryState.PATH_BP_PARTS);
             ObjectOutputStream objOut = new ObjectOutputStream(out);
             objOut.writeObject(this);
-	    System.out.println("BlueprintParts saved");
+	    System.out.println("BlueprintParts saved (size "+this.parts.size()+")");
         } catch (Exception e) {
             System.out.println("ERROR OCCURRED INVOKING BP PARTS SAVE METHOD!" + e.getMessage());
             e.printStackTrace();

@@ -1,0 +1,5 @@
+Serialized part:
+7(part1)15(mydescriptipn)12(1352747779)10(test.png)
+Deserialized serialized part:
+7(part1)15(mydescriptipn)12(1352747779)10(test.png)
+Test passed

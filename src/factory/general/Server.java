@@ -160,7 +160,7 @@ public class Server { // KitAssemblyAgent
                 }
             }else if(msg.contains(Message.PULL_KITS_LIST))
 		     {//TODO THIS IS AD HOC NEED TO RETRIEVE MASTER BLUEPRINTKITS FROM FACTORY STATE
-        BlueprintKits bp = new BlueprintKits();
+			 /*        BlueprintKits bp = new BlueprintKits();
 	Kit k = new Kit("kit1","im the nyan kit");
 	Part p = new Part("part1","im a part dawg");
 	p.setFilename("part.png");
@@ -168,12 +168,12 @@ public class Server { // KitAssemblyAgent
 	p = new Part("party2","i party a lot");
 	p.setFilename("party.png");
 	k.addPart(p);
-        bp.add(k);
-	pw.println(Message.PUSH_KITS_LIST+":"+bp.serialize());
+        bp.add(k);*/
+			 pw.println(Message.PUSH_KITS_LIST+":"+fstate.getBlueprintKits().serialize());
 		     }else if(msg.contains(Message.PULL_PARTS_LIST))
 		     {
 			 //TODO THIS IS AD HOC, NEED TO RETRIEVE MASTER BLUEPRINTPARTS FROM FACTORY STATE
-			 Part p = new Part("part1","is a part");
+			 /*			 Part p = new Part("part1","is a part");
         p.setFilename("part1.png");
         BlueprintParts bp = new BlueprintParts();
         bp.add(p);
@@ -182,16 +182,16 @@ public class Server { // KitAssemblyAgent
         bp.add(p);
         p = new Part("alfalfa","heyo");
         p.setFilename("gogo.png");
-        bp.add(p);
-	pw.println(Message.PUSH_PARTS_LIST+":"+bp.serialize());
+        bp.add(p);*/
+			 pw.println(Message.PUSH_PARTS_LIST+":"+fstate.getBlueprintParts().serialize());
 		     }
 	    else if(msg.contains(Message.DEFINE_NEW_PART))
 		{
 		    Part p = Part.deserialize(this.grabParameter(msg));
-		    fstate.getBlueprintParts().add(p);
+		fstate.getBlueprintParts().add(p);
 		    fstate.getBlueprintParts().save();
-		    System.out.println("Defined new part: "+p.serialize());
-		}else if(msg.contains(Message.DEFINE_NEW_KIT))
+    System.out.println("Defined new part: "+p.serialize());
+		    }else if(msg.contains(Message.DEFINE_NEW_KIT))
 		{
 		    Kit k = Kit.deserialize(this.grabParameter(msg));
 		    fstate.getBlueprintKits().add(k);

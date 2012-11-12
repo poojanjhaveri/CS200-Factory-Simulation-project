@@ -127,6 +127,11 @@ public class Kit {
 
         Kit des = Kit.deserialize(bp.serialize());
         System.out.println("DESERIALIZED KIT");
+	System.out.println(des.serialize());
 	des.debug();
+	if(des.serialize().equals(bp.serialize()))
+	    {
+		System.out.println("Test passed");
+	    }else System.out.println("TEST FAILED");
     }
 }

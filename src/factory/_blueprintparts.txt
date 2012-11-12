@@ -1,14 +1,17 @@
-Adding parts...ADDED
+Adding parts...added size 1: 7(part1)11(is a part)12(1352747897)11(part1.png)
+added size 2: 7(part2)17(is (not) a part)12(1352747897)11(part2.png)
+added size 3: 9(alfalfa)6(heyo)12(1352747897)10(gogo.png)
+ADDED
 SERIALIZED BLUEPRINT
-38(part1,is a part,1352688490,part1.png)44(part2,is (not) a part,1352688490,part2.png)34(alfalfa,heyo,1352688490,gogo.png)
+50(7(part1)11(is a part)12(1352747897)11(part1.png))56(7(part2)17(is (not) a part)12(1352747897)11(part2.png))45(9(alfalfa)6(heyo)12(1352747897)10(gogo.png))
 DESERIALIZED BLUEPRINT
-line 0:(part1,is a part,1352688490,part1.png)
-line 0:(part2,is (not) a part,1352688490,part2.png)
-line 0:(alfalfa,heyo,1352688490,gogo.png)
+line 0:7(part1)11(is a part)12(1352747897)11(part1.png)
+line 0:7(part2)17(is (not) a part)12(1352747897)11(part2.png)
+line 0:9(alfalfa)6(heyo)12(1352747897)10(gogo.png)
 SERIALIZED DESERIALIZED SERIALIZED BLUEPRINT
-38(part1,is a part,1352688490,part1.png)44(part2,is (not) a part,1352688490,part2.png)34(alfalfa,heyo,1352688490,gogo.png)
+50(7(part1)11(is a part)12(1352747897)11(part1.png))56(7(part2)17(is (not) a part)12(1352747897)11(part2.png))45(9(alfalfa)6(heyo)12(1352747897)10(gogo.png))
 SERIALIZED BLUEPRINT
-38(part1,is a part,1352688490,part1.png)44(part2,is (not) a part,1352688490,part2.png)34(alfalfa,heyo,1352688490,gogo.png)
+50(7(part1)11(is a part)12(1352747897)11(part1.png))56(7(part2)17(is (not) a part)12(1352747897)11(part2.png))45(9(alfalfa)6(heyo)12(1352747897)10(gogo.png))
 Test passed
 Testing empty BlueprintParts...
 BlueprintParts debug size 0.
