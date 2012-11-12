@@ -87,13 +87,14 @@ public GUIPartRobot getPartsRobot()
         }
         
         if(ae.getSource()==kitRobotFull){
-            this.graphics.kitbot.dropOffFullKit();
             this.graphics.deliveryStation=false;
+            this.graphics.stationRun=true;
+            this.graphics.kitbot.dropOffFullKit();
         }
           
         if (ae.getSource() == kitRobotEmpty) {
             //System.out.println("GOGOGO");
-            this.graphics.deliveryStation=false;
+            //this.graphics.deliveryStation=false;
             this.graphics.kitbot.pickUpEmptyKit();
             //this.graphics.kitstand.getKitPositions().get(0).setFilled(true);
             //after robot goes back to kit stand

@@ -43,7 +43,6 @@ public class GUIPartRobot extends GUIRobot {
         this.parts = new PartsRobotInventory();
         this.moveto = 0;
         this.setConstants(KAMGraphicPanel.PARTSROBOT_VELOCITYX, KAMGraphicPanel.PARTSROBOT_VELOCITYY, KAMGraphicPanel.KITROBOT_ROTATION_SPEED);
-    
     }
 
     /**
@@ -165,7 +164,7 @@ public class GUIPartRobot extends GUIRobot {
     public void paintMe(JPanel panel, Graphics2D g)
     {
 	Graphics2D g2d = (Graphics2D)g.create();
-this.getImage().paintIcon(panel, g2d, this.getCoordinate().getX(), this.getCoordinate().getY());
+        this.getImage().paintIcon(panel, g2d, this.getCoordinate().getX(), this.getCoordinate().getY());
 	LinkedList<Part> kitterparts= this.getPart();
 	for(int i = 0; i != kitterparts.size(); i++)
 	    {

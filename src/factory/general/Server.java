@@ -30,6 +30,7 @@ public class Server { // KitAssemblyAgent
 //    private GantryAgent gantryAgent;
 //    private LaneAgent laneAgent;
     // Connection fields
+    private FactoryState fstate;
     private ServerSocket ss = null;
     private Socket s = null;
     private HandleAManager hac;
@@ -48,6 +49,7 @@ public class Server { // KitAssemblyAgent
      * @param portNumber - the port number to create the server on.
      */
     public Server(int portNumber) {
+	this.fstate = new FactoryState();
         numClients = 0; // initial num clients is 0
         System.out.println("Port number: " + portNumber);
         try {
@@ -156,7 +158,33 @@ public class Server { // KitAssemblyAgent
                     System.out.println("Number of clients is 0; exiting Server");
                     System.exit(0);
                 }
-            }
+            }else if(msg.contains(Message.PULL_KITS_LIST))
+		     {//TODO THIS IS AD HOC NEED TO RETRIEVE MASTER BLUEPRINTKITS FROM FACTORY STATE
+        BlueprintKits bp = new BlueprintKits();
+	Kit k = new Kit("kit1","im the nyan kit");
+	Part p = new Part("part1","im a part dawg");
+	p.setFilename("part.png");
+	k.addPart(p);
+	p = new Part("party2","i party a lot");
+	p.setFilename("party.png");
+	k.addPart(p);
+        bp.add(k);
+	pw.println(Message.PUSH_KITS_LIST+":"+bp.serialize());
+		     }else if(msg.contains(Message.PULL_PARTS_LIST))
+		     {
+			 //TODO THIS IS AD HOC, NEED TO RETRIEVE MASTER BLUEPRINTPARTS FROM FACTORY STATE
+			 Part p = new Part("part1","is a part");
+        p.setFilename("part1.png");
+        BlueprintParts bp = new BlueprintParts();
+        bp.add(p);
+        p = new Part("part2","is (not) a part");
+        p.setFilename("part2.png");
+        bp.add(p);
+        p = new Part("alfalfa","heyo");
+        p.setFilename("gogo.png");
+        bp.add(p);
+	pw.println(Message.PUSH_PARTS_LIST+":"+bp.serialize());
+		     }
 //			else if (msg.contains(Message.CHECK_SELECTED_PLAYER)) {
 //				String index = grabParameter(msg); // Standard way to grab parameter data via protocol
 //				if (playerIndices.contains(index))

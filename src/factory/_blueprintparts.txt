@@ -1,0 +1,17 @@
+Adding parts...ADDED
+SERIALIZED BLUEPRINT
+38(part1,is a part,1352688490,part1.png)44(part2,is (not) a part,1352688490,part2.png)34(alfalfa,heyo,1352688490,gogo.png)
+DESERIALIZED BLUEPRINT
+line 0:(part1,is a part,1352688490,part1.png)
+line 0:(part2,is (not) a part,1352688490,part2.png)
+line 0:(alfalfa,heyo,1352688490,gogo.png)
+SERIALIZED DESERIALIZED SERIALIZED BLUEPRINT
+38(part1,is a part,1352688490,part1.png)44(part2,is (not) a part,1352688490,part2.png)34(alfalfa,heyo,1352688490,gogo.png)
+SERIALIZED BLUEPRINT
+38(part1,is a part,1352688490,part1.png)44(part2,is (not) a part,1352688490,part2.png)34(alfalfa,heyo,1352688490,gogo.png)
+Test passed
+Testing empty BlueprintParts...
+BlueprintParts debug size 0.
+Serialized: 
+BlueprintParts debug size 0.
+Test passed
