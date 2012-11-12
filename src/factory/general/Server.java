@@ -185,6 +185,19 @@ public class Server { // KitAssemblyAgent
         bp.add(p);
 	pw.println(Message.PUSH_PARTS_LIST+":"+bp.serialize());
 		     }
+	    else if(msg.contains(Message.DEFINE_NEW_PART))
+		{
+		    Part p = Part.deserialize(this.grabParameter(msg));
+		    fstate.getBlueprintParts().add(p);
+		    fstate.getBlueprintParts().save();
+		    System.out.println("Defined new part: "+p.serialize());
+		}else if(msg.contains(Message.DEFINE_NEW_KIT))
+		{
+		    Kit k = Kit.deserialize(this.grabParameter(msg));
+		    fstate.getBlueprintKits().add(k);
+		    fstate.getBlueprintKits().save();
+		    System.out.println("Defined new kit:" + k.serialize());
+		}
 //			else if (msg.contains(Message.CHECK_SELECTED_PLAYER)) {
 //				String index = grabParameter(msg); // Standard way to grab parameter data via protocol
 //				if (playerIndices.contains(index))

@@ -67,6 +67,7 @@ public class BlueprintKits implements Blueprint, Serializable {
             FileOutputStream out = new FileOutputStream(FactoryState.PATH_BP_KITS);
             ObjectOutputStream objOut = new ObjectOutputStream(out);
             objOut.writeObject(this);
+	    System.out.println("BlueprintKits saved.");
         } catch (Exception e) {
             System.out.println("ERROR OCCURRED INVOKING BP KITS SAVE METHOD!" + e.getMessage());
             e.printStackTrace();

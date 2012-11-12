@@ -88,6 +88,7 @@ public class BlueprintParts implements Blueprint, Serializable {
             FileOutputStream out = new FileOutputStream(FactoryState.PATH_BP_PARTS);
             ObjectOutputStream objOut = new ObjectOutputStream(out);
             objOut.writeObject(this);
+	    System.out.println("BlueprintParts saved");
         } catch (Exception e) {
             System.out.println("ERROR OCCURRED INVOKING BP PARTS SAVE METHOD!" + e.getMessage());
             e.printStackTrace();

@@ -33,7 +33,14 @@ public class FactoryState {
         bpparts.save();
         bpkits.save();
     }
-
+    public BlueprintKits getBlueprintKits()
+    {
+	return this.bpkits;
+    }
+    public BlueprintParts getBlueprintParts()
+    {
+	return this.bpparts;
+    }
     public void loadBlueprintKits() {
         File f = new File(FactoryState.PATH_BP_KITS);
         if (f.exists()) {
