@@ -28,6 +28,9 @@ class FactoryState{
     public FactoryState(){
 	this.loadBlueprintKits();
 	this.loadBlueprintParts();
+
+	bpparts.save();
+	bpkits.save();
     }
 
     public void loadBlueprintKits()
