@@ -1,5 +1,9 @@
 //PLEASE DO NOT FORMAT MY CODE IN ANYTHING OTHER THAN ASTYLE
 package factory.factory200.gantryRobotManager;
+import java.awt.Graphics2D;
+
+import javax.swing.JPanel;
+
 import factory.general.MovingDrawable;
 /**
  * The gantry robot has basic bin movement and emptying capabilities. In
@@ -25,7 +29,7 @@ public class GUIGantryRobot extends MovingDrawable{
 	super(GantryRobotManager.ROBOT_INITIAL_X,GantryRobotManager.ROBOT_INITIAL_Y,0.0,GUIGantryRobot.IMAGE_PATH);
 	this.extended = false;
 	this.hasbin = false;
-	//this.bin = new GUIBin();
+	this.bin = new GUIBin();
     }
     /**
     @brief sets a new feeder destination for the gantry robot
@@ -114,4 +118,14 @@ public class GUIGantryRobot extends MovingDrawable{
     {
         return this.extended;
     }
+    
+     public void paintMe(JPanel panel, Graphics2D g){
+    	Graphics2D g2d = (Graphics2D)g.create();
+    	if(this.bin != null){
+    		this.bin.getImage().paintIcon(panel, g2d, this.getCoordinate().getX(), this.getCoordinate().getY());
+        }
+    		this.getImage().paintIcon(panel, g2d, this.getCoordinate().getX(), this.getCoordinate().getY());
+    	        g2d.dispose();
+     }
+
 }

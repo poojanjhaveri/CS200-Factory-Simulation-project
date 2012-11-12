@@ -14,6 +14,9 @@ public class GUIBin{
 
 	 ImageIcon img;///<image of the drawable
 
+	 public GUIBin(){
+		 
+	 }
 		public GUIBin(Integer newx, Integer newy, Double r, String i) {  
 			x=newx;
 			y = newy;
