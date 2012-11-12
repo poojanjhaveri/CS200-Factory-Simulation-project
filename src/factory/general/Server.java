@@ -30,6 +30,7 @@ public class Server { // KitAssemblyAgent
 //    private GantryAgent gantryAgent;
 //    private LaneAgent laneAgent;
     // Connection fields
+    private FactoryState fstate;
     private ServerSocket ss = null;
     private Socket s = null;
     private HandleAManager hac;
@@ -48,6 +49,7 @@ public class Server { // KitAssemblyAgent
      * @param portNumber - the port number to create the server on.
      */
     public Server(int portNumber) {
+	this.fstate = new FactoryState();
         numClients = 0; // initial num clients is 0
         System.out.println("Port number: " + portNumber);
         try {
