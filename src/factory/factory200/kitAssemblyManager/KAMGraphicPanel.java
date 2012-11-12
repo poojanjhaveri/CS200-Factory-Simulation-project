@@ -106,28 +106,50 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
         ArrayList<Part> parts1 = new ArrayList<Part>();
         
         Part part1 = new Part(null, null);
-        GUIPart guipart1=new GUIPart(nest.get(0).getX(),nest.get(0).getY(),0.0,new ImageIcon("pics/part_pic0.png"));
+        GUIPart guipart1=new GUIPart(nest.get(0).getX(),nest.get(0).getY(),0.0,new ImageIcon("pics/parts/part1.png"));
         part1.setGUIPart(guipart1);
         parts1.add(part1);
         
         Part part2 = new Part(null, null);
-        GUIPart guipart2=new GUIPart(nest.get(0).getX()+5,nest.get(0).getY(),0.0,new ImageIcon("pics/part_pic0.png"));
+        GUIPart guipart2=new GUIPart(nest.get(0).getX(),nest.get(0).getY()+20,0.0,new ImageIcon("pics/parts/part1.png"));
         part2.setGUIPart(guipart2);
         parts1.add(part2);
         
         Part part3 = new Part(null, null);
-        GUIPart guipart3=new GUIPart(nest.get(0).getX(),nest.get(0).getY()+5,0.0,new ImageIcon("pics/part_pic0.png"));
+        GUIPart guipart3=new GUIPart(nest.get(0).getX(),nest.get(0).getY()+40,0.0,new ImageIcon("pics/parts/part1.png"));
         part3.setGUIPart(guipart3);
         parts1.add(part3);
         
         Part part4 = new Part(null, null);
-        GUIPart guipart4=new GUIPart(nest.get(0).getX()+5,nest.get(0).getY()+5,0.0,new ImageIcon("pics/part_pic0.png"));
+        GUIPart guipart4=new GUIPart(nest.get(0).getX(),nest.get(0).getY()+60,0.0,new ImageIcon("pics/parts/part1.png"));
         part4.setGUIPart(guipart4);
         parts1.add(part4);
         
-        for(int i=0;i<parts1.size();i++){
+        Part part5 = new Part(null, null);
+        GUIPart guipart5=new GUIPart(nest.get(0).getX()+15,nest.get(0).getY(),0.0,new ImageIcon("pics/parts/part1.png"));
+        part5.setGUIPart(guipart5);
+        parts1.add(part5);
+        
+        Part part6 = new Part(null, null);
+        GUIPart guipart6=new GUIPart(nest.get(0).getX()+15,nest.get(0).getY()+20,0.0,new ImageIcon("pics/parts/part1.png"));
+        part6.setGUIPart(guipart6);
+        parts1.add(part6);
+        
+        Part part7 = new Part(null, null);
+        GUIPart guipart7=new GUIPart(nest.get(0).getX()+15,nest.get(0).getY()+40,0.0,new ImageIcon("pics/parts/part1.png"));
+        part7.setGUIPart(guipart7);
+        parts1.add(part7);
+        
+        Part part8 = new Part(null, null);
+        GUIPart guipart8=new GUIPart(nest.get(0).getX()+15,nest.get(0).getY()+60,0.0,new ImageIcon("pics/parts/part1.png"));
+        part8.setGUIPart(guipart8);
+        parts1.add(part8);
+        
+        //need above code from server
+        
+        //for(int i=0;i<parts1.size();i++){
             nest.get(0).setParts(parts1);
-        }
+        //}
         
         
         
@@ -367,9 +389,11 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
 //	    }
         kitter.paintMe(this, g2);
         
-        for(int i=0;i<this.nest.get(0).getParts().size();i++){
+        for(int j=0;j<this.nest.size();j++){
+        for(int i=0;i<this.nest.get(j).getParts().size();i++){
             //System.out.println(this.nest.get(0).getParts().get(i).getGUIPart());
-            this.nest.get(0).getParts().get(i).getGUIPart().getImage().paintIcon(this, g2, nest.get(0).getParts().get(i).getGUIPart().getX(), nest.get(0).getParts().get(i).getGUIPart().getY());
+            this.nest.get(j).getParts().get(i).getGUIPart().getImage().paintIcon(this, g2, nest.get(j).getParts().get(i).getGUIPart().getX(), nest.get(j).getParts().get(i).getGUIPart().getY());
+        }
         }
         
     }
