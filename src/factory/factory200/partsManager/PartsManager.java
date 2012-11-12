@@ -316,7 +316,11 @@ public class PartsManager extends Manager implements ActionListener {
     	tfImageFileName2.setText("");
     	tfDescription2.setText("");
     	btnCreate.setSelected(false);
-    	
+
+	/*added by Roy 11/12/12*/
+	//this will send the new part to the server
+	this.mcon.out(Message.DEFINE_NEW_PART+":"+temp.serialize());
+	/*end*/
     }
 
     /**
