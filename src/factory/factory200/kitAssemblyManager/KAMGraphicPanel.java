@@ -238,7 +238,6 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
         temp.setGUIPart(GUItemp);
         parts8.add(temp);
         }
-        
        
             nest.get(0).setParts(parts1);
         
