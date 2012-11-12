@@ -20,8 +20,8 @@ public interface Blueprint {
      */
     String serialize();
     /**
-@brief saves the blueprint
+    @brief saves the blueprint
     */
-    void save();    
+    void save();
 
 }

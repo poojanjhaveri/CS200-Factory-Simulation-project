@@ -23,53 +23,44 @@ public class BlueprintParts implements Blueprint, Serializable {
     /**
     @brief creates the object from a serialized string
      */
-    public BlueprintParts(String serialized)
-    {
+    public BlueprintParts(String serialized) {
         this.recreate(serialized);
     }
     /**
     @brief creates the object using a passed arraylist of parts
      */
-    public BlueprintParts(ArrayList<Part> p)
-    {
+    public BlueprintParts(ArrayList<Part> p) {
         this.parts = p;
     }
-    public void add(Part in)
-    {
+    public void add(Part in) {
         this.parts.add(in);
     }
     /**
     @brief deserializes the passed string and turns it into an arraylist of parts
      */
-    public static ArrayList<Part> deserialize(String serialized)
-    {
+    public static ArrayList<Part> deserialize(String serialized) {
         ArrayList<String> stringform = Util.deserialize(serialized);
         ArrayList<Part> ret = new ArrayList<Part>();
-        for(int i = 0; i != stringform.size(); i++)
-        {
+        for(int i = 0; i != stringform.size(); i++) {
             ret.add(Part.deserialize(stringform.get(i)));
         }
         return ret;
     }
-    public ArrayList<Part> getParts()
-    {
-	return this.parts;
+    public ArrayList<Part> getParts() {
+        return this.parts;
     }
     /**
     @brief deserializes the passed string and adds to the current data
      */
-    public void updateOne(String serialized)
-    {
-	this.parts.addAll(this.deserialize(serialized));
+    public void updateOne(String serialized) {
+        this.parts.addAll(this.deserialize(serialized));
     }
     /**
     @brief serializes the current data into a deserializable string
      */
-    public String serialize()
-    {
+    public String serialize() {
         String toreturn ="";
-        for(int i = 0; i != this.parts.size(); i++)
-        {
+        for(int i = 0; i != this.parts.size(); i++) {
             toreturn = toreturn+this.parts.get(i).serialize().length()+this.parts.get(i).serialize();
         }
         return toreturn;
@@ -77,12 +68,10 @@ public class BlueprintParts implements Blueprint, Serializable {
     /**
     @brief recreates the parts list using the passed serialized blueprintparts
      */
-    public void recreate(String serialized)
-    {
+    public void recreate(String serialized) {
         this.parts = deserialize(serialized);
     }
-    public void save()
-    {
+    public void save() {
         try {
             FileOutputStream out = new FileOutputStream(FactoryState.PATH_BP_PARTS);
             ObjectOutputStream objOut = new ObjectOutputStream(out);
@@ -92,17 +81,14 @@ public class BlueprintParts implements Blueprint, Serializable {
             e.printStackTrace();
         }
     }
-    public void debug()
-    {
-	if(this.parts.size() == 0)
-	    System.out.println("BlueprintParts debug size 0.");
-	for(int i = 0; i != this.parts.size(); i++)
-        {
+    public void debug() {
+        if(this.parts.size() == 0)
+            System.out.println("BlueprintParts debug size 0.");
+        for(int i = 0; i != this.parts.size(); i++) {
             System.out.println("line "+i+":"+this.parts.get(i).serialize());
         }
     }
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         System.out.print("Adding parts...");
         Part p = new Part("part1","is a part");
         p.setFilename("part1.png");
@@ -119,8 +105,7 @@ public class BlueprintParts implements Blueprint, Serializable {
         System.out.println(bp.serialize());
         ArrayList<Part> des = bp.deserialize(bp.serialize());
         System.out.println("DESERIALIZED BLUEPRINT");
-        for(int i = 0; i != des.size(); i++)
-        {
+        for(int i = 0; i != des.size(); i++) {
             System.out.println("line 0:"+des.get(i).serialize());
         }
         System.out.println("SERIALIZED DESERIALIZED SERIALIZED BLUEPRINT");
@@ -132,16 +117,15 @@ public class BlueprintParts implements Blueprint, Serializable {
             System.out.println("Test passed");
         else System.out.println("TEST FAILED");
 
-	System.out.println("Testing empty BlueprintParts...");
-	bp = new BlueprintParts();
-	bp.debug();
-	String s = bp.serialize();
-	System.out.println("Serialized: "+s);
-	bp.recreate(s);
-	bp.debug();
-	if(s.equals(bp.serialize()))
-	    {
-		System.out.println("Test passed");
-	    }else System.out.println("TEST FAILED");
+        System.out.println("Testing empty BlueprintParts...");
+        bp = new BlueprintParts();
+        bp.debug();
+        String s = bp.serialize();
+        System.out.println("Serialized: "+s);
+        bp.recreate(s);
+        bp.debug();
+        if(s.equals(bp.serialize())) {
+            System.out.println("Test passed");
+        } else System.out.println("TEST FAILED");
     }
 }
