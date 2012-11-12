@@ -2,6 +2,8 @@ package factory.general;
 
 import java.util.ArrayList;
 import java.io.Serializable;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 
 /**
 @brief stores part blueprints
@@ -78,6 +80,17 @@ public class BlueprintParts implements Blueprint, Serializable {
     public void recreate(String serialized)
     {
         this.parts = deserialize(serialized);
+    }
+    public void save()
+    {
+        try {
+            FileOutputStream out = new FileOutputStream(FactoryState.PATH_BP_PARTS);
+            ObjectOutputStream objOut = new ObjectOutputStream(out);
+            objOut.writeObject(this);
+        } catch (Exception e) {
+            System.out.println("ERROR OCCURRED INVOKING BP PARTS SAVE METHOD!" + e.getMessage());
+            e.printStackTrace();
+        }
     }
     public void debug()
     {

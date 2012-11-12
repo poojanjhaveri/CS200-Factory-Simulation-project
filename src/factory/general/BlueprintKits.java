@@ -2,6 +2,9 @@ package factory.general;
 
 import java.util.ArrayList;
 import java.io.Serializable;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+
 /**
 @brief stores kit blueprints
  */
@@ -67,6 +70,16 @@ public class BlueprintKits implements Blueprint, Serializable {
     public void add(Kit in)
     {
 	this.kits.add(in);
+    }
+    public void save(){
+        try {
+            FileOutputStream out = new FileOutputStream(FactoryState.PATH_BP_KITS);
+            ObjectOutputStream objOut = new ObjectOutputStream(out);
+            objOut.writeObject(this);
+        } catch (Exception e) {
+            System.out.println("ERROR OCCURRED INVOKING BP KITS SAVE METHOD!" + e.getMessage());
+            e.printStackTrace();
+        }
     }
     public void debug()
     {

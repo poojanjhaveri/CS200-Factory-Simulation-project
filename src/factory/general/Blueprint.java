@@ -19,6 +19,9 @@ public interface Blueprint {
     @brief serializes the current data into a deserializable string
      */
     String serialize();
-    
+    /**
+@brief saves the blueprint
+    */
+    void save();    
 
 }
