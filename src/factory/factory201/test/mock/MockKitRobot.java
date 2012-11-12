@@ -1,4 +1,4 @@
-package factory.factory201.Test.mock;
+package factory.factory201.test.mock;
 
 import factory.factory201.interfaces.KitRobot;
 import factory.factory201.partsManagement.PartsAgent;
