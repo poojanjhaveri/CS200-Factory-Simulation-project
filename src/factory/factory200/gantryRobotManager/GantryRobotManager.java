@@ -1,14 +1,4 @@
 package factory.factory200.gantryRobotManager;
-
-import factory.general.Manager;
-import java.awt.Graphics;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.net.Socket;
-
-import javax.swing.JButton;
-import javax.swing.JPanel;
-
 /**
  * Gantry Robot Manager takes care of movement of gantry robot, bins, purge
  * station, feeders. Inner classes are GantryRobot,
@@ -22,8 +12,33 @@ import javax.swing.JPanel;
  * @brief takes care of movement of gantry robot, bins, purge station, feeders.
  * @author Yuting Liu
  */
-public class GantryRobotManager extends Manager {
-    //TODO figure out what the cords are for the following constants
+
+import factory.factory200.gantryRobotManager.GUIBin;
+import factory.factory200.gantryRobotManager.GUIGantryRobot;
+import factory.factory200.gantryRobotManager.GRMGraphicPanel;
+import factory.general.Manager;
+import java.awt.Graphics;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.BoxLayout;
+import javax.swing.JOptionPane;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class GantryRobotManager extends Manager implements ActionListener {
+   
+    GRMGraphicPanel graphics;    
+    GantryState gs;
+    GUIBin bin;
+   // GUIGantryRobot gbot;///<class which includes Gantry Robot Manager Methods
+    int purgeStationx;//x coordinate of purgeStation
+    int purgeStationy;//y coordinate of purgeStation
+
+//    public void receiveFromServer();///<pull data from server
+//   GUIGantryManager gui;///<break the nonormative situations
     public static final Integer FEED0X = 0;///<x-coordinate of feeder 0
     public static final Integer FEED0Y = 0;///<y-coordinate of feeder 0
     public static final Integer FEED1X = 0;///<x-coordinate of feeder 1
@@ -38,116 +53,54 @@ public class GantryRobotManager extends Manager {
 
     public static final Integer BIN_X = 0;///<x coordinate of all bin locations
     public static final Integer BIN0Y = 0;///<y coordinate of bin0
-public static final Integer BIN1Y = 0;///<y coordinate of bin1
-public static final Integer BIN2Y = 0;///<y coordinate of bin2
-public static final Integer BIN3Y = 0;///<y coordinate of bin3
-public static final Integer BIN4Y = 0;///<y coordinate of bin4
-public static final Integer BIN5Y = 0;///<y coordinate of bin5
-public static final Integer BIN6Y = 0;///<y coordinate of bin6
-public static final Integer BIN7Y = 0;///<y coordinate of bin7
+    public static final Integer BIN1Y = 0;///<y coordinate of bin1
+    public static final Integer BIN2Y = 0;///<y coordinate of bin2
+    public static final Integer BIN3Y = 0;///<y coordinate of bin3
+    public static final Integer BIN4Y = 0;///<y coordinate of bin4
+    public static final Integer BIN5Y = 0;///<y coordinate of bin5
+    public static final Integer BIN6Y = 0;///<y coordinate of bin6
+    public static final Integer BIN7Y = 0;///<y coordinate of bin7
 
     public static final Integer ROBOT_INITIAL_X = 0;///<spawn x coordinate of gantrybot
     public static final Integer ROBOT_INITIAL_Y = 0;///<spawn y coordinate of gantrybot
+    
+    public GantryRobotManager() {
+        graphics= new GRMGraphicPanel();        
+        setLayout(new GridLayout(1, 2));       
+        add(graphics);
+        int x = 500;
+        setSize(500 + x, 700);
+        graphics.setVisible(true);
+        add(TestPanel());
+        //change TEST to just graphicPanel (above)
 
-    GantryState gs;
-//    GraphicGantryPanel graphicPanel;///<shows the animations of the gantry robot. has bins, gantry robot, and feeders.
-//    GUIGantryManager gui;///<break the nonormative situations
-    Socket s;///<connection to the server
-//    GantryRobot gbot;///<class which includes Gantry Robot Manager Methods
-    int purgeStationx;//x coordinate of purgeStation
-    int purgeStationy;//y coordinate of purgeStation
+        this.setVisible(true);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+    
+    JButton gantryRobot;
+    JButton gantryRobotFull;
+    JButton purgeStation;
+    //JButton moveKit;
+      public JPanel TestPanel() {
+        JPanel tester = new JPanel();
+        tester.setLayout(new BoxLayout(tester, BoxLayout.Y_AXIS));
+        gantryRobotFull = new JButton("Move Gantry Robot (bin -> feederBin)");
+        gantryRobotFull.addActionListener(this);
+        tester.add(gantryRobotFull);
+        gantryRobot = new JButton("Move Gantry Robot to parts bin");
+        gantryRobot.addActionListener(this);
+        tester.add(gantryRobot);
+        purgeStation = new JButton("Purge this empty bin");
+        purgeStation.addActionListener(this);
+        tester.add(purgeStation);
 
-//    public void receiveFromServer();///<pull data from server
-
+        return tester;
+    }
+    
     /**
      * @brief Inner class GUIGantryManager
      */
-//    public class GUIGantryManager extends JPanel implements ActionListener 
-//
-//        (){
-//
-//		JButton breakPurgeStation;
-//        JButton breakFeeder;
-//        JButton breakBins;
-//        JButton breakGantryRobot;
-//
-//        public void breakPurgeStation() {
-//        }
-//
-//        ;///<break the purge station 
-//		public void breakFeeder(int index) {
-//        }
-//
-//        ;///<break a selected feeder
-//		public void breakBins() {
-//        }
-//
-//        ;///<break a selected bin
-//		public void breakGantryRobot() {
-//        }
-//
-//        ;///<break the gantry robot under non-normative
-//
-//		/**
-//if actions are performed this handles it
-//@brief if actions are performed this handles it
-//		 */
-//		public void actionPerformed(ActionEvent ae) {
-//            if (ae == breakPurgeStation) {
-//                breakPurgeStation();
-//            }
-//            if (ae == breakFeeder) {
-//                breakFeeder(int 
-//                i
-//            
-//            );
-//			}
-//			if (ae == breakBins() {
-//                breakBins();
-//            }
-//            if (ae == breakGantryRobot() {
-//                breakGantryRobot();
-//            }
-//        }
-//    }
-//
-//    public class GraphicGantryPanel extends JPanel {
-//
-//        GraphicGantryPanel ggp;
-//        boolean changed;
-//
-//        public GraphicGantryPanel() {//set up a Timer	
-//        }
-//
-//        /**
-//         * check if Server send any message or data back
-//         */
-//        public boolean checkServerMessage() {
-//        }// 
-//
-//        /**
-//         * get all coordinates from GantryState class
-//         */
-//        public resetComponent() {
-//        }
-//
-//        ;//
-//		/**
-//paint all components: bins, purge station, feeders and the gantry robot
-//		 */
-//		public paint(Graphics g) {
-//        }
-//
-//        ;
-//		public actionPerformed() {
-//            changed = checkServerMessage();
-//
-//            if (changed) {
-//                resetComponents();//get information of recently changedd
-//            }
-//            repaint();
-//        }
-//    }
 
     public class GantryState {
 
@@ -179,27 +132,16 @@ public static final Integer BIN7Y = 0;///<y coordinate of bin7
         }
     }
 
-//    public class Bin {
-//
-//        int corx;///<coordinate x
-//        int cory;///<coordinate y
-//        image binImage;
-//
-//        public moveBin(int newx, int newy) {
-//        }//moveBin to the new coordinate
-//    }
-
-//    public class Feeder {
-//
-//        int number;//feeder number
-//        int x;//coordinate x
-//        int y;//coordinate y
-//        image feederImage;
-//
-//        /**
-//         * drop parts from bins to the selected number feeder
-//         */
-//        public dropPartsOn(int number) {
-//        }
-//    }
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	  public static void main(String[] args){
+	       GantryRobotManager mgr = new GantryRobotManager();   
+	      }
+	  
 }
+
+
