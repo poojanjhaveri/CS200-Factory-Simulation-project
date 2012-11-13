@@ -4,6 +4,7 @@ import factory.factory201.interfaces.Feeder;
 import factory.factory201.interfaces.Lane;
 import factory.factory201.interfaces.Gantry;
 import agent.Agent;
+import com.sun.corba.se.impl.activation.ServerMain;
 import factory.general.Part;
 import factory.general.Part.Type;
 import java.util.*;
@@ -44,8 +45,8 @@ public class FeederAgent extends Agent implements Feeder {
     
     //public enum PartState {noState,canSend,needPart,sentRequest};
     
-    public FeederAgent(int index,ServerMain serverMain){
-   
+    public FeederAgent(String name, int index,ServerMain serverMain){
+        super(name);
      	
     	System.out.println("testing null pointer exception");
     	Part p1=new Part(1);
