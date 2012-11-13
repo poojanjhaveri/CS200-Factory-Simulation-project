@@ -3,10 +3,8 @@ package factory.factory201.partsManagement;
 import agent.Agent;
 import factory.factory200.kitAssemblyManager.KitAssemblyManager;
 import factory.factory201.Test.mock.MockKitRobot;
-import factory.factory201.interfaces.KitRobot;
 import factory.factory201.interfaces.NestInterface;
 import factory.factory201.interfaces.PartsInterface;
-import factory.factory201.kitManagement.KitRobotAgent;
 import factory.general.Kit;
 import factory.general.Part;
 import java.util.ArrayList;
@@ -38,9 +36,10 @@ public class PartsAgent extends Agent implements PartsInterface{
     private List<Kit> newKit =
             Collections.synchronizedList(new ArrayList<Kit>());
 
-    public void PartsAgent(){
-        
+    PartsAgent(String name){
+       super(name);   
     }
+    
 //Messages 
     public void msgHereIsKit(Kit k){
         print("PartsAgent got message for new kit");
@@ -131,14 +130,16 @@ public class PartsAgent extends Agent implements PartsInterface{
         print("New kit being started");
     	kitNeedsParts.clear();
     	this.kit = k;
-        kit.standNum = Kit.StandNum.one;
+       // kit.standNum = Kit.StandNum.one;
     	for(int i=0; i<kit.getSize(); i++){
     		kitNeedsParts.add(kit.getPart(i));
     	}
-    	
+    	nest.msgNewKit(kitNeedsParts);
+        
+        /*
     	for (int i = 0; i < kit.getSize(); i++) {
             nest.msgNeedPart(kit.getPart(i));
-    	}
+    	}*/
     	stateChanged();
     }
 

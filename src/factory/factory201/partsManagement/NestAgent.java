@@ -24,13 +24,20 @@ import java.util.Map;
 
 
 public class NestAgent extends Agent implements NestInterface{
+    Lane lane0;
     Lane lane1;
     Lane lane2;
     Lane lane3;
     Lane lane4;
+    Lane lane5;
+    Lane lane6;
+    Lane lane7;
+    Lane lanes[] = {lane0, lane1, lane2, lane3, lane4, lane5, lane6, lane7};
+    Kit kit;
+    
     MockLane lane;
 	private List<Nest> myNests = Collections.synchronizedList(new ArrayList<Nest>());
-	private Map <Nest, LaneAgent> lanes = new HashMap<Nest, LaneAgent>();
+    private Map <Integer, Part> nestParts = new HashMap<Integer, Part>();
 
     private List<Part> needParts =
             Collections.synchronizedList(new ArrayList<Part>());
@@ -42,9 +49,17 @@ public class NestAgent extends Agent implements NestInterface{
     private List<Nest> nests = Collections.synchronizedList(new ArrayList<Nest>());
     enum Status {none, needPart, gettingPart, full, gettingInspected, readyForKit, purge};
     
-    NestAgent() {
-
-    }
+    NestAgent(String name) {
+    super(name);
+    myNests.add(new Nest(0));
+    myNests.add(new Nest(1));
+    myNests.add(new Nest(2));
+    myNests.add(new Nest(3));
+    myNests.add(new Nest(4));
+    myNests.add(new Nest(5));
+    myNests.add(new Nest(6));
+    myNests.add(new Nest(7));
+ }
     
 //messages
 
@@ -53,33 +68,34 @@ public class NestAgent extends Agent implements NestInterface{
      *
      * @param p This is a part
      */
+    
+    public void msgNewKit(List<Part> kitParts){
+        
+            for (Nest n: myNests){
+                for(Part p: kitParts){
+                if (n.parts.contains(p))
+                    n.status = Nest.Status.hasPart;
+                    kitParts.remove(p);
+            }
+        }
+    }
     public void msgNeedPart(Part p) {
-    	if (!hasPart(p)){
-            print("Part " + p + " is not taken by a nest, a new nest is being created");
-            
-            myNests.add(new Nest(p, myNests.size()));
-          /*  for (Nest n: myNests){
-    		if(n.part.equals(p)){
-            switch(n.nestNum){
-                case 0:  n.setLane(lane1);
-                case 1:  n.setLane(lane1);
-                break;
-                case 2:  n.setLane(lane2);
-                case 3:  n.setLane(lane2);
-                break;
-                case 4: n.setLane(lane3);
-                case 5: n.setLane(lane3);
-                break;
-                case 6:  n.setLane(lane4);
-                case 7:  n.setLane(lane4);
-                break;
+        
+    	if (emptyNest()){
+            for (Nest n: myNests){
+                if (n.status == Nest.Status.empty){
+                    n.setPart(p);
+                    //nestParts.put(n.nestNum, p);
+                    n.status = Nest.Status.needPart;
+                    print("Part " + p + " is not taken by a nest, part is being assigned to the nest "+ n.nestNum);
+                    break;
+                }
             }
-            }
-            }*/
+          
         }
         else{
             for (Nest n: myNests){
-    		if(n.part.equals(p)){
+    		if(n.parts.contains(p)){
             giveToKit(n);}}}
     	
         stateChanged();
@@ -152,7 +168,7 @@ public class NestAgent extends Agent implements NestInterface{
     print("requesting " + n.part);
     	
     	n.status = Nest.Status.gettingPart;
-        lane.msgNeedPart(n.part);
+        lanes[n.nestNum].msgNeedPart(n.part);
     	stateChanged();
     }
     
@@ -166,38 +182,52 @@ public class NestAgent extends Agent implements NestInterface{
     
     private void giveToKit(Nest n){
         
-        n.part.setNestNum(n.getNestNum());
-    	partsagent.msgHereIsPart(n.part);
-    	n.howMany--;
-        print("giving part " + n.part + " to kit now nest has " + n.howMany);
+        //n.part.setNestNum(n.getNestNum());
+    	partsagent.msgHereIsPart(n.parts.remove(0));
+        
+    	//n.howMany--;
+        print("giving part " + n.part + " to kit now nest has " + n.parts.size());
         n.status = Nest.Status.none;
-    	if (n.howMany==0)
+    	if (n.parts.size()<2)
     		n.status = Nest.Status.needPart;
     	stateChanged();	
     }
     
     private void purge(Nest n){
-    n.howMany = 0;
+    n.parts.clear();
     //DoPurge();
     
-    n.status = Nest.Status.needPart;
+    n.status = Nest.Status.none;
     stateChanged();
     }
     
     public boolean hasPart(Part p){
     	for (Nest n: myNests){
-    	if (n.part.equals(p))
+    	if (n.parts.contains(p))
     		return true;	}
     	return false;
+    }
+    
+    public boolean emptyNest(){
+        for (Nest n: myNests){
+            if (n.status == Nest.Status.empty)
+                return true;
+        }
+        return false;
+    }
+    
+    public Nest getNest(int n){
+        return myNests.get(n);
     }
     
     public void setCameraAgent(MockCamera c){
         this.camera = c;
     }
-   
-    public void setLane(MockLane l){
+   /*
+    public void setLane(Lane l){
         this.lane = l;
-    }
+    }*/
+    
     
     public void setPartsAgent(PartsInterface parts) {
         this.partsagent = parts;
