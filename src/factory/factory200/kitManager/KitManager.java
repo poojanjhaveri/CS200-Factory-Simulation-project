@@ -19,7 +19,7 @@ import javax.swing.*;
 
 
 
-public class KitsManager extends Manager {
+public class KitManager extends Manager {
 
 	/**
 	 * @param args
@@ -28,7 +28,7 @@ public class KitsManager extends Manager {
     
     
 	
-         public KitsManager()
+         public KitManager()
          {
             setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             setBounds(100, 100, 450, 300);
@@ -40,7 +40,7 @@ public class KitsManager extends Manager {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-            KitsManager frame = new KitsManager();
+            KitManager frame = new KitManager();
             frame.setVisible(true);
             
 	}
