@@ -17,6 +17,8 @@ import java.util.*;
  * @author Kevin Macwan
  * @version 0
  */
+
+
 public class FeederAgent extends Agent implements Feeder {
 
     private List<myParts> parts = Collections.synchronizedList(new ArrayList<myParts>());
@@ -45,8 +47,8 @@ public class FeederAgent extends Agent implements Feeder {
     
     //public enum PartState {noState,canSend,needPart,sentRequest};
     
-    public FeederAgent(String name, int index,ServerMain serverMain){
-        super(name);
+    public FeederAgent(int index,ServerMain serverMain){
+   
      	
     	System.out.println("testing null pointer exception");
     	Part p1=new Part(1);
@@ -116,9 +118,9 @@ public class FeederAgent extends Agent implements Feeder {
             	//print("setting sendTrue");
             	p.send=true;
             	p.supplyAmount=8;
-            	stateChanged();
-            	return;
-            	/*
+            	//stateChanged();
+            	//return;
+            	
                 //is the message from the left lane?
                 if (lane == this.leftLane) {
                     p.send = true;
@@ -140,7 +142,7 @@ public class FeederAgent extends Agent implements Feeder {
                     return;
 
                 }
-                */
+                
 
             }
         }
@@ -216,7 +218,9 @@ public class FeederAgent extends Agent implements Feeder {
                         }
                     }
                     else {
-                        sendPartToLane(p);
+                    	if (p.sendTo == SendTo.leftLane)
+                        sendPartToLeftLane(p);
+                    	else sendPartToRightLane(p);
                         p.send = false;
                         //p.sendTo = SendTo.none;
                         //update the myParts object
@@ -238,23 +242,25 @@ public class FeederAgent extends Agent implements Feeder {
         stateChanged();
     }
 
-    private void sendPartToLane(myParts p) {
-        /* 
-         * FEEDERNUM IS INITIALIZED THROUGH THE CONSTRUCTOR SO THAT EVERY FEEDER HAS A UNIQUE NUMBER
-         * PART NUM IS ACCESSED THROUGH p.index
-         * PUT IN WHILE LOOP SO THAT ONE ANIMATION FUNCTION EXECUTES TO COMPLETION BEFORE OTHER ONE STARTS
-         * */
-    	
-    	//animation.dumpBinBoxIntoFeeder(feederNum); //revise
-    	//animation.feedToLeftLane(feederNum, p.index);
-    	//animation.fillInFeeder(feederNum,p.index, p.supplyAmount);
-    	lane.msgHereAreParts(p.part,8);
-    	dosendPartToLane(p);
+    private void sendPartToLeftLane(myParts p) {
+        
+    	leftLane.msgHereAreParts(p.part,8);
+    	dosendPartToLeftLane(p);
     	//animation.setDiverterSwitchLeft(feederNum-1);
     
         stateChanged();
     }
-    private void dosendPartToLane(myParts p){
+    
+    private void sendPartToRightLane(myParts p) {
+        
+    	rightLane.msgHereAreParts(p.part,8);
+    	dosendPartToRightLane(p);
+    	//animation.setDiverterSwitchLeft(feederNum-1);
+    
+        stateChanged();
+    }
+    
+    private void dosendPartToLeftLane(myParts p){
     	try {
 			Thread.sleep(15000);
 		} catch (InterruptedException e) {
@@ -263,45 +269,17 @@ public class FeederAgent extends Agent implements Feeder {
 		}
     	
     	animation.setDiverterSwitchLeft(feederNum-1);
-    /*
-     * I WANT THIS TO WORK BUT IT DOES NOT WORK IN THE ANIMATION.
-     */ 
-    	/*
-			try {
-				serverMain.anim.acquire();
-				animation.setDiverterSwitchLeft(feederNum-1);
-		    	
-				leftCount++;
-		    	
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}*/
-			//print("I have received the order and will send it to the cook");
-			//giveOrderToCook(customer);
-			//stateChanged();
-		
-    	//flood the lanes with atmost 8 parts.
-    	if(leftCount<=rightCount && leftCount<1)
-    	{
-    	print("i am sending on the left because leftCount is " + leftCount);
-    	animation.setDiverterSwitchLeft(feederNum-1);
-    	leftCount++;
-    	return;
-    	}
+    }
+    
+    private void dosendPartToRightLane(myParts p){
+    	try {
+			Thread.sleep(15000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     	
-    	else if(rightCount<leftCount && rightCount<1){
-    		print("i am sending on the right because rightCount is " + rightCount);
-    		animation.setDiverterSwitchRight(feederNum-1);
-        	rightCount++;
-        	return;
-    	}
-    /*
-    	if(leftCount>1 && rightCount>1=1)
-    		animation.setSwitchOff(feederNum-1);
-    */
-    	//leftLane.msgHereAreParts(p.part, p.supplyAmount);
-    	
+    	animation.setDiverterSwitchRight(feederNum-1);
     }
 
 

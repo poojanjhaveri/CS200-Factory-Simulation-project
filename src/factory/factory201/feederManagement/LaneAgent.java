@@ -37,8 +37,8 @@ public class LaneAgent extends Agent implements Lane {
     private ServerForAgentLane animation;
     //---------------------------------------------------------------------------
     
-    public LaneAgent(String name, int leftNum,int rightNum,ServerMain serverMain){
-    	super(name);
+    public LaneAgent(int leftNum,int rightNum,ServerMain serverMain){
+    	
     	//---------------------------------------------------------------------------
     	this.serverMain = serverMain;
     	this.animation = serverMain.getForAgentLane();
@@ -65,13 +65,13 @@ public class LaneAgent extends Agent implements Lane {
     	
     	//part type, quantity, index (quantity started with is 0
     	parts.add(new myParts(p1,0,1));
-     	parts.add(new myParts(p2,0,2));
-     	parts.add(new myParts(p3,0,3));
-     	parts.add(new myParts(p4,0,4));
-     	parts.add(new myParts(p5,0,5));
-     	parts.add(new myParts(p6,0,6));
-     	parts.add(new myParts(p7,0,7));
-     	parts.add(new myParts(p8,0,8));
+     	parts.add(new myParts(p2,9,2));
+     	parts.add(new myParts(p3,9,3));
+     	parts.add(new myParts(p4,9,4));
+     	parts.add(new myParts(p5,9,5));
+     	parts.add(new myParts(p6,9,6));
+     	parts.add(new myParts(p7,9,7));
+     	parts.add(new myParts(p8,9,8));
      	System.out.println("parts added to the list");
     
     }
