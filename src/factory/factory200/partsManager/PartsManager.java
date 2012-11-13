@@ -114,10 +114,8 @@ public class PartsManager extends Manager implements ActionListener {
         managePartsButtonPanel = new JPanel();
         pnlManageParts.add(managePartsButtonPanel);
         
-        tabbedPane.addChangeListener(new ChangeListener()
-        {
-          public void stateChanged(ChangeEvent e)
-          {
+        tabbedPane.addChangeListener(new ChangeListener() {
+          public void stateChanged(ChangeEvent e) {
             processTabChange();
           }
         });
@@ -260,10 +258,11 @@ public class PartsManager extends Manager implements ActionListener {
     private Part getCurrentPart() {
     	String s= (String) partComboBox.getSelectedItem();
     	Part temp= new Part(null,null);
-    	for(int i=0;i<bp.getSize();i++){
-    		if (bp.getPartAt(i).getName().equals(s))
-    			{temp=bp.getPartAt(i);
-    			break;}
+    	for (int i=0;i<bp.getSize();i++) {
+    		if (bp.getPartAt(i).getName().equals(s)) {
+    			temp=bp.getPartAt(i);
+    			break;
+    		}
     		
     	}
     	return temp;
@@ -290,13 +289,13 @@ public class PartsManager extends Manager implements ActionListener {
      * Create the frame.
      */
     public PartsManager() {
-	this.bp = new BlueprintParts();
+    	this.bp = new BlueprintParts();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 450, 300);
 
         prepareContentPane();
 	//	this.mcon.out(Message.PULL_PARTS_LIST);
-	this.update();
+        this.update();
     }
 
     /**
@@ -388,8 +387,7 @@ public class PartsManager extends Manager implements ActionListener {
 	   }
     }
     
-    private void processTabChange()
-    {
+    private void processTabChange() {
       Component c = tabbedPane.getSelectedComponent();
      if (c.equals(pnlManageParts)){
     	 //update the list of parts 
