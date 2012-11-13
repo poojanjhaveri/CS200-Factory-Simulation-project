@@ -2,9 +2,11 @@ package factory.factory201.partsManagement;
 
 import agent.Agent;
 import factory.factory200.kitAssemblyManager.KitAssemblyManager;
+
 import factory.factory201.interfaces.NestInterface;
 import factory.factory201.interfaces.PartsInterface;
 import factory.factory201.test.mock.MockKitRobot;
+
 import factory.general.Kit;
 import factory.general.Part;
 import java.util.ArrayList;
@@ -27,6 +29,7 @@ public class PartsAgent extends Agent implements PartsInterface {
     MockKitRobot kitrobot;
     Kit kit;
     NestInterface nest;
+
     private List<Part> inventory, grips, kitNeedsParts;
     private List<Kit> newKit;
 
@@ -36,7 +39,9 @@ public class PartsAgent extends Agent implements PartsInterface {
         this.grips = Collections.synchronizedList(new ArrayList<Part>());
         this.kitNeedsParts = Collections.synchronizedList(new ArrayList<Part>());
         this.newKit = Collections.synchronizedList(new ArrayList<Kit>());
+
     }
+    
 //Messages 
 
     @Override
@@ -128,17 +133,21 @@ public class PartsAgent extends Agent implements PartsInterface {
 
         // kitrobot.msgNeedEmptyKit();
         print("New kit being started");
-        kitNeedsParts.clear();
-        this.kit = k;
-        kit.standNum = Kit.StandNum.one;
-        for (int i = 0; i < kit.getSize(); i++) {
-            kitNeedsParts.add(kit.getPart(i));
-        }
 
-        for (int i = 0; i < kit.getSize(); i++) {
+    	kitNeedsParts.clear();
+    	this.kit = k;
+       // kit.standNum = Kit.StandNum.one;
+    	for(int i=0; i<kit.getSize(); i++){
+    		kitNeedsParts.add(kit.getPart(i));
+    	}
+    	nest.msgNewKit(kitNeedsParts);
+        
+        /*
+    	for (int i = 0; i < kit.getSize(); i++) {
             nest.msgNeedPart(kit.getPart(i));
-        }
-        stateChanged();
+    	}*/
+    	stateChanged();
+
     }
 
     private void pickUpPart(Part p) {

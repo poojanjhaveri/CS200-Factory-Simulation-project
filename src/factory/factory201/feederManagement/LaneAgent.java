@@ -36,9 +36,9 @@ public class LaneAgent extends Agent implements Lane {
     private ServerMain serverMain;
     private ServerForAgentLane animation;
     //---------------------------------------------------------------------------
-    
-    public LaneAgent(int leftNum,int rightNum,ServerMain serverMain){
-    	
+
+    public LaneAgent(String name, int leftNum,int rightNum,ServerMain serverMain){
+    	super(name);
     	//---------------------------------------------------------------------------
     	this.serverMain = serverMain;
     	this.animation = serverMain.getForAgentLane();
