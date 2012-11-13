@@ -114,6 +114,9 @@ public class Part implements Serializable {
     public Integer getNumber() {
         return number;
     }
+    public String getFilename() {
+        return this.filename;
+    }
     public String getDescription() {
         return this.description;
     }

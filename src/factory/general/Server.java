@@ -21,7 +21,7 @@ public class Server { // KitAssemblyAgent
     /**
      * Instance fields
      */
-    public static final Integer PORT_NUMBER = 31415;    
+    public static final Integer PORT_NUMBER = 31416;    
     public static final String HOST_NAME = "localhost";
     private static boolean SHOULD_DEBUG = false;
     private Printer p = new Printer();

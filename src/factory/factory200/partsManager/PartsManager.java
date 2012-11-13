@@ -27,7 +27,7 @@ import factory.general.Part;
 /**
  * <img src="../img/image02.png"/>
  * @brief JFrame that represents the parts manager
- * @author David Zhang, YiWei Roy Zheng
+ * @author David Zhang, YiWei Roy Zheng, Jorge Rybar
  */
 
 public class PartsManager extends Manager implements ActionListener {
@@ -185,6 +185,7 @@ public class PartsManager extends Manager implements ActionListener {
 
         btnUpdate = new JButton("Update");
         pnlButton.add(btnUpdate);
+        btnUpdate.addActionListener(this);
 
         pnlNewPart = new JPanel();
         tabbedPane.addTab("New Part", null, pnlNewPart, null);
@@ -316,7 +317,7 @@ public class PartsManager extends Manager implements ActionListener {
     	tfPartName2.setText("");
     	tfImageFileName2.setText("");
     	tfDescription2.setText("");
-    	btnCreate.setSelected(false);
+    	btnCreate.setSelected(false);//not working
 
 	/*added by Roy 11/12/12*/
 	//this will send the new part to the server
@@ -326,9 +327,33 @@ public class PartsManager extends Manager implements ActionListener {
     }
 
     /**
-     * @brief updates part data locally
+     * @brief updates part data and sends data to server. currently implemented as
+     * just delete part, and then createPart with new data, in order to minimize 
+     * writing more code for the server
+     *
      */
     public void updatePart() {
+    	
+    	deletePart(getCurrentPart()); //delete current part
+    	
+    	//make a new part
+    	String name, file, d;
+    	Part temp;
+    	name=tfPartName.getText();
+    	file=tfImageFileName.getText();
+    	d=tfDescription.getText();
+    	
+    	temp=new Part(name, d, file);
+    	
+    	bp.add(temp);
+    	btnUpdate.setSelected(false);//not working
+    	
+    	//Since we're making a new part 
+		this.mcon.out(Message.DEFINE_NEW_PART+":"+temp.serialize());
+		System.out.println("Sent new part definition: "+temp.serialize());
+    	
+    	
+    	
     }
 
     /**
@@ -370,6 +395,15 @@ public class PartsManager extends Manager implements ActionListener {
     	 //update the list of parts 
     	updateComboBox();   		 
     	 }
+     else if (c.equals(pnlSelectedPart)){
+    	 Part p= getCurrentPart();
+    	 
+    	 tfPartName.setText(p.getName());
+    	 tfImageFileName.setText(p.getFilename());
+    	 tfDescription.setText(p.getDescription());
+    	 
+    	 
+     }
     	 
      }
 
@@ -388,12 +422,19 @@ public class PartsManager extends Manager implements ActionListener {
 }
 
 /*
- * Questions
+ * TODO
+ * 
+ * -add images support
+ * -make it pretty 
+ * 
+ *	-ROY:  Delete part from server
+ *
+ *
+ * QUESTIONS
  * 
  * 
- * 
- * Bugs
- * -make Create button unselected after click
+ * BUGS
+ * -make Create and update button unselected after click
  * -
  * 
  * 
