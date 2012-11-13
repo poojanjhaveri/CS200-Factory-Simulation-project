@@ -1,0 +1,57 @@
+package factory.factory200.laneManager.ClientSide;
+
+import java.util.ArrayList;
+
+public class LMLaneData {
+	
+	private ArrayList<LMDrawablePart> parts = new ArrayList<LMDrawablePart>();
+	private int laneNum;
+	private int randomlyChosenPart;
+	
+	public LMLaneData(int laneNum){
+		this.laneNum = laneNum;
+	}
+	
+	public void addPart(LMDrawablePart newPart){
+		parts.add(newPart);
+	}
+	
+	public LMDrawablePart removePart(){
+		return parts.remove(0);
+	}
+	
+	public void removeShakePart(int partNum){
+		parts.remove(partNum);
+	}
+	
+	public int getSize(){
+		return parts.size();
+	}
+	
+	public ArrayList<LMDrawablePart> getLanePartArray(){
+		return parts;
+	}
+	
+	public void shakePart(){
+		randomlyChosenPart = (int)( Math.random() * parts.size() );
+		parts.get(randomlyChosenPart).shake();
+	}
+	
+	public void removeShakenPart(LMDrawablePart shakenPart){
+		parts.remove(shakenPart);
+	}
+	
+	public void checkNestStatus(int nestSize){
+		for(int i=0 ; i<parts.size() ; i++){
+			if(nestSize != 8){
+				parts.get(i).setDestination(90, 36+78*laneNum);
+				parts.get(i).setAvailabilityToNest(true);
+			}
+			
+			if(nestSize == 8){
+				parts.get(i).setDestination(95 + 20*i, 36+78*laneNum);
+				parts.get(i).setAvailabilityToNest(false);
+			}
+		}
+	}
+}

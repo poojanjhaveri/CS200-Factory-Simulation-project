@@ -1,6 +1,10 @@
 //PLEASE DO NOT FORMAT MY CODE IN ANYTHING OTHER THAN ASTYLE
 package factory.factory200.gantryRobotManager;
+import java.awt.Graphics2D;
 
+import javax.swing.JPanel;
+
+import factory.general.MovingDrawable;
 /**
  * The gantry robot has basic bin movement and emptying capabilities. In
  * relation to the simulation GUI, the gantry robot has <ul> <li>arm extension
@@ -13,8 +17,8 @@ package factory.factory200.gantryRobotManager;
  * @brief shared Robot that manipulates part bins
  * @author YiWei Roy Zheng
  */
-public class GUIGantryRobot {
-    public static final String IMAGE_PAGE = "res/gantryrobot.png";
+public class GUIGantryRobot extends MovingDrawable{
+    public static final String IMAGE_PATH = "res/gantryrobot.png";
 
     GUIBin bin;///<null if no bin, otherwise contains the information on the bin
     Boolean extended;///<whether or not the robot has arms extended
@@ -110,8 +114,18 @@ public class GUIGantryRobot {
     {
         this.extended = !this.extended;
     }
-    public void armExtended()
+    public boolean armExtended()
     {
         return this.extended;
     }
+    
+     public void paintMe(JPanel panel, Graphics2D g){
+    	Graphics2D g2d = (Graphics2D)g.create();
+    	if(this.bin != null){
+    		this.bin.getImage().paintIcon(panel, g2d, this.getCoordinate().getX(), this.getCoordinate().getY());
+        }
+    		this.getImage().paintIcon(panel, g2d, this.getCoordinate().getX(), this.getCoordinate().getY());
+    	        g2d.dispose();
+     }
+
 }

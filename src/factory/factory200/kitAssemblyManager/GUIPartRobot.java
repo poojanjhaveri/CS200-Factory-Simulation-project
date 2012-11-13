@@ -1,4 +1,5 @@
 //DO NOT FORMAT MY CODE IN ANYTHING OTHER THAN ASTYLE. THANKS.
+//                REVISION: JUST DON'T FORMAT MY CODE. TY.
 package factory.factory200.kitAssemblyManager;
 
 import factory.general.GUIRobot;
@@ -35,23 +36,20 @@ public class GUIPartRobot extends GUIRobot {
     Boolean busy;///<whether or not the GUIPartRobot has orders
     Integer moveto;///<which lane the GUIPartRobot is heading to
 
-    public GUIPartRobot()
-    {
+    public GUIPartRobot() {
         // variables will be set in the KAMGraphicsPanel
         super(KAMGraphicPanel.PARTSROBOTINITIALX,KAMGraphicPanel.PARTSROBOTINITIALY,"pics/partsrobot.png");
         this.busy = false;
         this.parts = new PartsRobotInventory();
         this.moveto = 0;
         this.setConstants(KAMGraphicPanel.PARTSROBOT_VELOCITYX, KAMGraphicPanel.PARTSROBOT_VELOCITYY, KAMGraphicPanel.KITROBOT_ROTATION_SPEED);
-    
     }
 
     /**
     sets a new lane destination coordinate for GUIPartRobot, the passed Integer specifies which lane to head to
     */
     public void moveToNest(Integer l) {
-        switch(l)
-        {
+        switch(l) {
         case 0:
             this.moveTo(KAMGraphicPanel.RAILX,KAMGraphicPanel.LANE0Y);
             this.moveto = 0;
@@ -87,90 +85,78 @@ public class GUIPartRobot extends GUIRobot {
         }
     }
     /**
-@brief moves the parts robot to the dropoff site for parts
+    @brief moves the parts robot to the dropoff site for parts
      */
-    public void moveToKit()
-    {
-	this.moveTo(KAMGraphicPanel.PARTS_ROBOT_KITX,KAMGraphicPanel.PARTS_ROBOT_KITY);
+    public void moveToKit() {
+        this.moveTo(KAMGraphicPanel.PARTS_ROBOT_KITX,KAMGraphicPanel.PARTS_ROBOT_KITY);
     }
-    public void update()
-    {
-	super.update();
-	this.parts.update(this.cords);
+    public void update() {
+        super.update();
+        this.parts.update(this.cords);
     }
-    public void addPart(Part in)
-    {
-	this.parts.addPart(in);
+    public void addPart(Part in) {
+        this.parts.addPart(in);
     }
-    public LinkedList<Part> removePart()
-    {
-	return this.parts.giveAll();
+    public LinkedList<Part> removePart() {
+        return this.parts.giveAll();
     }
-    public LinkedList<Part> getPart()
-    {
+    public LinkedList<Part> getPart() {
         return this.parts.getAll();
     }
-        public void pickPartCommand(Integer i)
-    {
-     this.orders.add(i);   
+    public void pickPartCommand(Integer i) {
+        this.orders.add(i);
     }
-        public void dropPartCommand()
-        {
-            this.orders.add(8);
-        }
-        public void cheat()
-        {
-	    moveToNestCommand(0);    
+    public void dropPartCommand() {
+        this.orders.add(8);
+    }
+    public void cheat() {
+        moveToNestCommand(0);
         pickPartCommand(0);
-            pickPartCommand(0);
-            pickPartCommand(0);
-            pickPartCommand(0);
-            dropOffParts();
-    
-        }
-    public void moveToNestCommand(Integer i)
-    {
-	this.orders.add(i+10);
+        pickPartCommand(0);
+        pickPartCommand(0);
+        pickPartCommand(0);
+        dropOffParts();
     }
-    public void dropOffParts()
-    {
-       this.orders.add(18);
-            dropPartCommand();     
+    public void moveToNestCommand(Integer i) {
+        this.orders.add(i+10);
+    }
+    public void dropOffParts() {
+        this.orders.add(18);
+        dropPartCommand();
     }
     /**
-@brief pops the order and performs it
+    @brief pops the order and performs it
      */
-    public Boolean performOrder()
-    {
+    public Boolean performOrder() {
         //System.out.println("PERFORMING ORDER");
-	Integer i = this.popOrder();
-	switch(i)
-	    {
-	    case 10:
-	    case 11:
-	    case 12:
-	    case 13:
-	    case 14:
-	    case 15:
-	    case 16:
-	    case 17:this.moveToNest(i-10);
-		    break;
-	    case 18:this.moveToKit();
-		break;
-	    default:return false;
-	    }
-	return true;
+        Integer i = this.popOrder();
+        switch(i) {
+        case 10:
+        case 11:
+        case 12:
+        case 13:
+        case 14:
+        case 15:
+        case 16:
+        case 17:
+            this.moveToNest(i-10);
+            break;
+        case 18:
+            this.moveToKit();
+            break;
+        default:
+            return false;
+        }
+        return true;
     }
 
-    public void paintMe(JPanel panel, Graphics2D g)
-    {
-	Graphics2D g2d = (Graphics2D)g.create();
-this.getImage().paintIcon(panel, g2d, this.getCoordinate().getX(), this.getCoordinate().getY());
-	LinkedList<Part> kitterparts= this.getPart();
-	for(int i = 0; i != kitterparts.size(); i++)
-	    {
-		kitterparts.get(i).getGUIPart().getImage().paintIcon(panel, g2d, kitterparts.get(i).getGUIPart().getX(), kitterparts.get(i).getGUIPart().getY());
-	    }
+    public void paintMe(JPanel panel, Graphics2D g) {
+        Graphics2D g2d = (Graphics2D)g.create();
+        this.getImage().paintIcon(panel, g2d, this.getCoordinate().getX(), this.getCoordinate().getY());
+        LinkedList<Part> kitterparts= this.getPart();
+        for(int i = 0; i != kitterparts.size(); i++) {
+            kitterparts.get(i).getGUIPart().getImage().paintIcon(panel, g2d, kitterparts.get(i).getGUIPart().getX(), kitterparts.get(i).getGUIPart().getY());
+        }
         g2d.dispose();
     }
 }

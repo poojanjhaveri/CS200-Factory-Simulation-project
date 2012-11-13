@@ -1,0 +1,19 @@
+Creating BPKits===========
+INITIAL DEBUG===============
+DEBUG BPKITS
+kit1 im the nyan kit 1352747903
+7(part1)16(im a part dawg)12(1352747903)10(part.png)
+7(part1)16(im a part dawg)12(1352747903)10(part.png)
+SERIALIZED: 160(6(kit1)17(im the nyan kit)12(1352747903)115(54(7(part1)16(im a part dawg)12(1352747903)10(part.png))55(8(party2)15(i party a lot)12(1352747903)11(party.png))))
+FINAL DEBUG=============
+DEBUG BPKITS
+kit1 im the nyan kit 1352747903
+7(part1)16(im a part dawg)12(1352747903)10(part.png)
+7(part1)16(im a part dawg)12(1352747903)10(part.png)
+SERIALIZED: 160(6(kit1)17(im the nyan kit)12(1352747903)115(54(7(part1)16(im a part dawg)12(1352747903)10(part.png))55(8(party2)15(i party a lot)12(1352747903)11(party.png))))
+Test passed
+Testing empty BlueprintKits===========
+BlueprintKits debug size 0.
+Seralized: 
+BlueprintKits debug size 0.
+Test passed
