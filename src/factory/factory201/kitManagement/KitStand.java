@@ -113,7 +113,7 @@ public class KitStand {
     }
 
     private void DoMoveKitMoveKitFrom0to1() {
-//        KAM.getKitRobot().moveEmptyKitToActive();
+        KAM.getKitRobot().moveEmptyKitToActive();
     }
     
     public void setKitAssemblyManager(KitAssemblyManager KAM) {

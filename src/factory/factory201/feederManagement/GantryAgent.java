@@ -25,7 +25,7 @@ public class GantryAgent extends Agent implements Gantry {
     private List<myFeeder> myFeeders = Collections.synchronizedList(new ArrayList<myFeeder>());
     private List<myBin> bins = Collections.synchronizedList(new ArrayList<myBin>());
      
-    String name;
+
     Timer timer=new Timer();
     //---------------------------------------------------------------------------
     private ServerMain serverMain;
@@ -35,14 +35,13 @@ public class GantryAgent extends Agent implements Gantry {
     
     //numOfBins is the number of bins that gantry is initialized to, will be the same for v0, each bin has 8 parts.
     public GantryAgent(int numOfBins, String name, ServerMain serverMain){
-    	
+    	super(name);
     	//---------------------------------------------------------------------------
     	this.serverMain = serverMain;
     	this.animation = serverMain.getForAgentGantry();
     	this.animation1 = serverMain.getForAgentFeeder();
     	//---------------------------------------------------------------------------
     	
-    	this.name=name;
     	//this.feeder=feeder;
     	
     	//System.out.println("name and feeder assigned");

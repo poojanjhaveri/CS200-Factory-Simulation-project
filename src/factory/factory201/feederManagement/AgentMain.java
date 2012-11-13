@@ -40,19 +40,19 @@ public class AgentMain implements Runnable { // BY DONGYOUNG this class is RUNNA
 	public void run(){
 		gantry=new GantryAgent(8,"Gantry",serverMain);
 		
-		lane1=new LaneAgent(1,2,serverMain);
-		lane2=new LaneAgent(3,4,serverMain);
-		lane3=new LaneAgent(5,6,serverMain);
-		lane4=new LaneAgent(7,8,serverMain);
+		lane1=new LaneAgent("Lane 1",1,2,serverMain);
+		lane2=new LaneAgent("Lane 2",3,4,serverMain);
+		lane3=new LaneAgent("Lane 3",5,6,serverMain);
+		lane4=new LaneAgent("Lane 4",7,8,serverMain);
 		//lane5=new LaneAgent(5,serverMain);
 		//lane6=new LaneAgent(6,serverMain);
 		//lane7=new LaneAgent(7,serverMain);
 		//lane8=new LaneAgent(8,serverMain);
 		
-		feeder1=new FeederAgent(1,serverMain);
-		feeder2=new FeederAgent(2,serverMain);
-		feeder3=new FeederAgent(3,serverMain);
-		feeder4=new FeederAgent(4,serverMain);
+		feeder1=new FeederAgent("Feeder 1",1,serverMain);
+		feeder2=new FeederAgent("Feeder 2",2,serverMain);
+		feeder3=new FeederAgent("Feeder 3",3,serverMain);
+		feeder4=new FeederAgent("Feeder 4",4,serverMain);
 		
 		//nest1=new NestAgent(0,lane1);
 		//nest2=new NestAgent(1,lane2);
