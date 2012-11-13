@@ -9,12 +9,15 @@ import java.util.concurrent.*;
  */
 public abstract class Agent {
 
-    Semaphore stateChange = new Semaphore(1, true);//binary semaphore, fair
+    Semaphore stateChange;
     private AgentThread agentThread;
     private String name;
+    public boolean partsRequested;
     
     protected Agent(String name) {
         this.name = name;
+        this.stateChange = new Semaphore(1, true);
+        this.partsRequested = false;
     }
 
     /**
