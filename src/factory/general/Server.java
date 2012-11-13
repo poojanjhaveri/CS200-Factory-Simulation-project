@@ -146,67 +146,55 @@ public class Server { // KitAssemblyAgent
          * @param msg - the String message from a client
          */
         private void processMessage(String msg) {
-            // Decide action based on message from client
-            if (msg.contains(Message.TEST_SERVER)) {
-                System.out.println("Server test passed. Testing client...");
-                
-                pw.println(Message.TEST_CLIENT);
-            } else if (msg.contains(Message.CLIENT_EXITED)) {
-                stopThread();
-                numClients--;
-                if (numClients == 0) {
-                    System.out.println("Number of clients is 0; exiting Server");
-                    System.exit(0);
-                }
-            }else if(msg.contains(Message.PULL_KITS_LIST))
-		     {//TODO THIS IS AD HOC NEED TO RETRIEVE MASTER BLUEPRINTKITS FROM FACTORY STATE
-			 /*        BlueprintKits bp = new BlueprintKits();
-	Kit k = new Kit("kit1","im the nyan kit");
-	Part p = new Part("part1","im a part dawg");
-	p.setFilename("part.png");
-	k.addPart(p);
-	p = new Part("party2","i party a lot");
-	p.setFilename("party.png");
-	k.addPart(p);
-        bp.add(k);*/
-			 pw.println(Message.PUSH_KITS_LIST+":"+fstate.getBlueprintKits().serialize());
-		     }else if(msg.contains(Message.PULL_PARTS_LIST))
-		     {
-			 //TODO THIS IS AD HOC, NEED TO RETRIEVE MASTER BLUEPRINTPARTS FROM FACTORY STATE
-			 /*			 Part p = new Part("part1","is a part");
-        p.setFilename("part1.png");
-        BlueprintParts bp = new BlueprintParts();
-        bp.add(p);
-        p = new Part("part2","is (not) a part");
-        p.setFilename("part2.png");
-        bp.add(p);
-        p = new Part("alfalfa","heyo");
-        p.setFilename("gogo.png");
-        bp.add(p);*/
-			 pw.println(Message.PUSH_PARTS_LIST+":"+fstate.getBlueprintParts().serialize());
-		     }
-	    else if(msg.contains(Message.DEFINE_NEW_PART))
-		{
-		    Part p = Part.deserialize(this.grabParameter(msg));
-		fstate.getBlueprintParts().add(p);
-		    fstate.getBlueprintParts().save();
-    System.out.println("Defined new part: "+p.serialize());
-		    }else if(msg.contains(Message.DEFINE_NEW_KIT))
-		{
-		    Kit k = Kit.deserialize(this.grabParameter(msg));
-		    fstate.getBlueprintKits().add(k);
-		    fstate.getBlueprintKits().save();
-		    System.out.println("Defined new kit:" + k.serialize());
-		}
-//			else if (msg.contains(Message.CHECK_SELECTED_PLAYER)) {
-//				String index = grabParameter(msg); // Standard way to grab parameter data via protocol
-//				if (playerIndices.contains(index))
-//					pw.println(Message.SELECTED_PLAYER_OK + ":" + "false");
-//				else {
-//					playerIndices.add(index);
-//					pw.println(Message.SELECTED_PLAYER_OK + ":" + "true");
-//				}
-//			}
+        	// Decide action based on message from client
+        	if (msg.contains(Message.TEST_SERVER)) {
+        		System.out.println("Server test passed. Testing client...");
+
+        		pw.println(Message.TEST_CLIENT);
+        	} else if (msg.contains(Message.CLIENT_EXITED)) {
+        		stopThread();
+        		numClients--;
+        		if (numClients == 0) {
+        			System.out.println("Number of clients is 0; exiting Server");
+        			System.exit(0);
+        		}
+        	} else if(msg.contains(Message.PULL_KITS_LIST)) {
+        		//TODO THIS IS AD HOC NEED TO RETRIEVE MASTER BLUEPRINTKITS FROM FACTORY STATE
+//        		BlueprintKits bp = new BlueprintKits();
+//        		Kit k = new Kit("kit1","im the nyan kit");
+//        		Part p = new Part("part1","im a part dawg");
+//        		p.setFilename("part.png");
+//        		k.addPart(p);
+//        		p = new Part("party2","i party a lot");
+//        		p.setFilename("party.png");
+//        		k.addPart(p);
+//        		bp.add(k);
+
+        		pw.println(Message.PUSH_KITS_LIST+":"+fstate.getBlueprintKits().serialize());
+        	} else if(msg.contains(Message.PULL_PARTS_LIST)) {
+        		//TODO THIS IS AD HOC, NEED TO RETRIEVE MASTER BLUEPRINTPARTS FROM FACTORY STATE
+//        		Part p = new Part("part1","is a part");
+//        		p.setFilename("part1.png");
+//        		BlueprintParts bp = new BlueprintParts();
+//        		bp.add(p);
+//        		p = new Part("part2","is (not) a part");
+//        		p.setFilename("part2.png");
+//        		bp.add(p);
+//        		p = new Part("alfalfa","heyo");
+//        		p.setFilename("gogo.png");
+//        		bp.add(p);
+        		pw.println(Message.PUSH_PARTS_LIST+":"+fstate.getBlueprintParts().serialize());
+        	} else if(msg.contains(Message.DEFINE_NEW_PART)) {
+        		Part p = Part.deserialize(this.grabParameter(msg));
+        		fstate.getBlueprintParts().add(p);
+        		fstate.getBlueprintParts().save();
+        		System.out.println("Defined new part: "+p.serialize());
+        	} else if(msg.contains(Message.DEFINE_NEW_KIT)) {
+        		Kit k = Kit.deserialize(this.grabParameter(msg));
+        		fstate.getBlueprintKits().add(k);
+        		fstate.getBlueprintKits().save();
+        		System.out.println("Defined new kit:" + k.serialize());
+        	}
         }
 
         /**
