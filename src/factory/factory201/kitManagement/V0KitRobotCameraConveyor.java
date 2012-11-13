@@ -20,16 +20,8 @@ public class V0KitRobotCameraConveyor {
         MockNest nest = new MockNest("Mock Nest Agent");
         KitAssemblyManager KAM = new KitAssemblyManager();
         
-        kitRobot.setCamera(camera);
-        kitRobot.setConveyor(conveyor);
-        kitRobot.setPartsAgent(parts);
-        kitRobot.setKitAssemblyManager(KAM);
-        camera.setKitRobotAgent(kitRobot);
-        camera.setNestAgent(nest);
-        camera.setKitAssemblyManager(KAM);
-        conveyor.setKitRobotAgent(kitRobot);
-        conveyor.setKitAssemblyManager(KAM);
-        conveyor.generateKit(10);
+        
+        
         
         kitRobot.startThread();
         camera.startThread();
