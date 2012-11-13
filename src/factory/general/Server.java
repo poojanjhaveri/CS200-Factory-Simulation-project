@@ -8,6 +8,15 @@ import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import factory.factory201.feederManagement.FeederAgent;
+import factory.factory201.feederManagement.GantryAgent;
+import factory.factory201.feederManagement.LaneAgent;
+import factory.factory201.kitManagement.CameraAgent;
+import factory.factory201.kitManagement.ConveyorAgent;
+import factory.factory201.kitManagement.KitRobotAgent;
+import factory.factory201.partsManagement.NestAgent;
+import factory.factory201.partsManagement.PartsAgent;
+
 /**
  * @brief This class is critical to the integration of GUI classes, agents, etc.
  * It uses a protocol established with the Message class. It contains instances
@@ -26,9 +35,21 @@ public class Server { // KitAssemblyAgent
     private static boolean SHOULD_DEBUG = false;
     private Printer p = new Printer();
     private int numClients;
-//    private FeederAgent feederAgent;
-//    private GantryAgent gantryAgent;
-//    private LaneAgent laneAgent;
+    
+    // Kevin's
+    private FeederAgent feederAgent;
+    private GantryAgent gantryAgent;
+    private LaneAgent laneAgent;
+    
+    // Alex's
+    private KitRobotAgent kitRobotAgent;
+    private ConveyorAgent conveyorAgent;
+    private CameraAgent cameraAgent;
+    
+    // Patrick's
+    private NestAgent nestAgent;
+    private PartsAgent partsAgent;
+    
     // Connection fields
     private FactoryState fstate;
     private ServerSocket ss = null;
@@ -49,7 +70,22 @@ public class Server { // KitAssemblyAgent
      * @param portNumber - the port number to create the server on.
      */
     public Server(int portNumber) {
-	this.fstate = new FactoryState();
+    	// TODO: Instantiate agents
+//    	feederAgent = new FeederAgent();
+//        gantryAgent = new GantryAgent();
+//        laneAgent = new LaneAgent();
+        
+        // Alex's
+//        kitRobotAgent = new KitRobotAgent();
+//        conveyorAgent = new ConveyorAgent();
+//        cameraAgent = new CameraAgent();
+        
+        // Patrick's
+//        nestAgent = new NestAgent();
+//        partsAgent = new PartsAgent();
+    	
+    	
+    	this.fstate = new FactoryState();
         numClients = 0; // initial num clients is 0
         System.out.println("Port number: " + portNumber);
         try {
