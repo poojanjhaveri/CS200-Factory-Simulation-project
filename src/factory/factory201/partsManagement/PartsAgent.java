@@ -2,15 +2,11 @@ package factory.factory201.partsManagement;
 
 import agent.Agent;
 import factory.factory200.kitAssemblyManager.KitAssemblyManager;
-<<<<<<< HEAD
-import factory.factory201.Test.mock.MockKitRobot;
-import factory.factory201.interfaces.NestInterface;
-import factory.factory201.interfaces.PartsInterface;
-=======
+
 import factory.factory201.interfaces.NestInterface;
 import factory.factory201.interfaces.PartsInterface;
 import factory.factory201.test.mock.MockKitRobot;
->>>>>>> 6c77d956ceb45adf295668eb6ca7622ff9158f71
+
 import factory.general.Kit;
 import factory.general.Part;
 import java.util.ArrayList;
@@ -33,19 +29,7 @@ public class PartsAgent extends Agent implements PartsInterface {
     MockKitRobot kitrobot;
     Kit kit;
     NestInterface nest;
-<<<<<<< HEAD
-    private List<Part> inventory =
-            Collections.synchronizedList(new ArrayList<Part>());
-    private List<Part> grips =
-            Collections.synchronizedList(new ArrayList<Part>());
-    private List<Part> kitNeedsParts =
-            Collections.synchronizedList(new ArrayList<Part>());
-    private List<Kit> newKit =
-            Collections.synchronizedList(new ArrayList<Kit>());
 
-    PartsAgent(String name){
-       super(name);   
-=======
     private List<Part> inventory, grips, kitNeedsParts;
     private List<Kit> newKit;
 
@@ -55,7 +39,7 @@ public class PartsAgent extends Agent implements PartsInterface {
         this.grips = Collections.synchronizedList(new ArrayList<Part>());
         this.kitNeedsParts = Collections.synchronizedList(new ArrayList<Part>());
         this.newKit = Collections.synchronizedList(new ArrayList<Kit>());
->>>>>>> 6c77d956ceb45adf295668eb6ca7622ff9158f71
+
     }
     
 //Messages 
@@ -149,7 +133,7 @@ public class PartsAgent extends Agent implements PartsInterface {
 
         // kitrobot.msgNeedEmptyKit();
         print("New kit being started");
-<<<<<<< HEAD
+
     	kitNeedsParts.clear();
     	this.kit = k;
        // kit.standNum = Kit.StandNum.one;
@@ -163,19 +147,7 @@ public class PartsAgent extends Agent implements PartsInterface {
             nest.msgNeedPart(kit.getPart(i));
     	}*/
     	stateChanged();
-=======
-        kitNeedsParts.clear();
-        this.kit = k;
-        kit.standNum = Kit.StandNum.one;
-        for (int i = 0; i < kit.getSize(); i++) {
-            kitNeedsParts.add(kit.getPart(i));
-        }
 
-        for (int i = 0; i < kit.getSize(); i++) {
-            nest.msgNeedPart(kit.getPart(i));
-        }
-        stateChanged();
->>>>>>> 6c77d956ceb45adf295668eb6ca7622ff9158f71
     }
 
     private void pickUpPart(Part p) {
