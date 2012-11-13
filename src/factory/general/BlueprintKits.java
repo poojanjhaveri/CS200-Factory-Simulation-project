@@ -62,6 +62,13 @@ public class BlueprintKits implements Blueprint, Serializable {
     public void add(Kit in) {
         this.kits.add(in);
     }
+    
+    public void removeKit(Kit in) {
+       kits.remove(in);
+    }
+    
+    
+    
     public void save() {
         try {
             FileOutputStream out = new FileOutputStream(FactoryState.PATH_BP_KITS);

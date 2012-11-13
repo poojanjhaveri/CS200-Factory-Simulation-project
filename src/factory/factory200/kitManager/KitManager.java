@@ -2,9 +2,13 @@ package factory.factory200.kitManager;
 
 import factory.general.BlueprintKits;
 import factory.general.BlueprintParts;
+import factory.general.Kit;
+
 import factory.general.Manager;
 import factory.general.Message;
 import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
@@ -44,6 +48,7 @@ public class KitManager extends Manager {
           JPanel dk_main;
           JTextField kitname;
           JComboBox create_combo;
+          JComboBox delete_combo;
           
           private ArrayList partlist = new ArrayList();
           
@@ -81,7 +86,11 @@ public class KitManager extends Manager {
             mainpanel.setLayout(new BorderLayout(0, 0));
             setContentPane(mainpanel);
 
-            mainpanel.add(new JLabel("Kits Manager"), BorderLayout.NORTH);
+            
+            JLabel kittitle = new JLabel("Kits Manager",JLabel.CENTER);
+            kittitle.setPreferredSize(new Dimension(200,50));
+            kittitle.setFont(new Font("Verdana", Font.BOLD, 18));
+            mainpanel.add(kittitle, BorderLayout.NORTH);
 
             tabbedPane = new JTabbedPane(JTabbedPane.TOP);
             mainpanel.add(tabbedPane,BorderLayout.CENTER);
@@ -89,7 +98,7 @@ public class KitManager extends Manager {
             // CREATE KIT PANEL
             
             createkit = new JPanel();
-            ImageIcon i = new ImageIcon("part1.jpg");
+            ImageIcon i = new ImageIcon("kit/create.jpg");
             tabbedPane.addTab("Create Kit", i, createkit);
             
             ck_main = new JPanel();
@@ -164,17 +173,25 @@ public class KitManager extends Manager {
             
             
             
-             updatekit = new JPanel();
+            updatekit = new JPanel();
             
-            i = new ImageIcon("part2.jpg");
+            i = new ImageIcon("kit/edit.png");
             tabbedPane.addTab("Modify Kit", i, updatekit);
             
             
             
-             deletekit = new JPanel();
+            deletekit = new JPanel();
             
-            i = new ImageIcon("part3.jpg");
+            i = new ImageIcon("kit/delete.jpg");
             tabbedPane.addTab("Delete Kit", i, deletekit);
+            
+            delete_combo = new JComboBox();
+            deletekit.add(delete_combo);
+            
+            JButton deletebutton = new JButton("Delete Kit");
+            deletekit.add(deletebutton);
+            
+            
             
             
             
@@ -197,6 +214,14 @@ public class KitManager extends Manager {
          }
         
         
+         /**
+     * @brief deletes the kit with the specified kit name and sends data to
+     * the server and updates existing kits list
+     */
         
+         public void deletePart(Kit in) {
+            bpkit.removeKit(in);
+        //	updateComboBox();
+    }
 
 }
