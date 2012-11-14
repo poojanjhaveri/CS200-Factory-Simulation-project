@@ -14,8 +14,7 @@ public class Part implements Serializable {
      * CS201 stuff
      */
     public enum Type {
-
-        p1, p2, p3, p4, p5, p6, p7, p8
+    p1, p2, p3, p4, p5, p6, p7, p8
     };
     public Type type;
     private boolean inKit;
@@ -27,7 +26,6 @@ public class Part implements Serializable {
         this.inKit = false;
         this.size = size;
     }
-
 
     public int getNestNum() {
         return this.nestNum;

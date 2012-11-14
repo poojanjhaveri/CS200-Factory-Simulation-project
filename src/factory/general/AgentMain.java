@@ -97,5 +97,12 @@ public class AgentMain {
             }
             feeder[i].startThread();
         }
+        
+        Kit kit = new Kit("Test Kit");
+        for(int i = 1; i < 9; i++) {
+            kit.addPart(new Part(i));
+        }
+        partsAgent.msgEmptyKitReady(kit);
+        
     } // END main
 } // END AgentMain
