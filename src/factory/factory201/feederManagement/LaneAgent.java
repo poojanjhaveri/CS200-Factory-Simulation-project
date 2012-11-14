@@ -100,13 +100,13 @@ public class LaneAgent extends Agent implements Lane {
     public void msgNeedPart(Part part) {
         
         print("Received msgNeedPart from Nest for type " + part.type);
+        //requestedPart=false;
         for (myParts p : parts) {
             if (p.part.type == part.type) {
                 p.send = true;
                 p.supplyAmount = 8; 	//send 8 parts in v0.
                 //p.state=PartState.canSend;
-                stateChanged();
-                return;
+                break;
             }
           
         }
@@ -162,12 +162,10 @@ public class LaneAgent extends Agent implements Lane {
    
     public boolean pickAndExecuteAnAction() {
      
-    	synchronized(parts){
+        //synchronized(parts){
         for (myParts p : parts) {
             if (p.send == true) {
-            	//System.out.println("there is an item to be sent");
-            	//System.out.println("The quantity is  " + p.quantity);
-            	if(p.quantity>=p.supplyAmount){
+                if(p.quantity>=p.supplyAmount){
                 
                     //System.out.println("testing scheduler");
                     supplyPart(p);  
@@ -180,15 +178,16 @@ public class LaneAgent extends Agent implements Lane {
             	}    //supply part if it has correct quantity
             	else{
             		if(requestedPart==false){
-            			askForPart(p.part);
+                                askForPart(p.part);
             			requestedPart=true;
             			return true;
             			}
-                    } //ask for parts if it is running low
-            	}
+                       } //ask for parts if it is running low
+            	
+                    }
             	
         	}	
-    	}
+    	//}
     	
 //        if(requestedPart==false){
 //        synchronized(parts){
