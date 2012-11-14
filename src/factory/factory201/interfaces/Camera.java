@@ -12,7 +12,9 @@ import factory.general.Nest;
  * @version 0
  */
 public interface Camera {
-
+    
+    public void msgHereIsKitInfo(Kit kit);
+    
     public void msgNestIsFull(Nest nest);
 
     public void msgKitIsFull(Kit kit);

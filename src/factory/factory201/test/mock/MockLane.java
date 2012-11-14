@@ -1,10 +1,9 @@
 package factory.factory201.test.mock;
 
-import factory.factory201.test.mock.LoggedEvent;
-import factory.factory201.test.mock.EventLog;
 import factory.factory201.interfaces.Lane;
 import factory.factory201.partsManagement.NestAgent;
 import factory.general.Part;
+import java.util.List;
 
 public class MockLane extends MockAgent implements Lane{
 
@@ -28,7 +27,7 @@ public class MockLane extends MockAgent implements Lane{
 	public void msgHereAreParts(List<Part> parts) {
 		// TODO Auto-generated method stub
 	
-		System.out.println("Quantity received " + quantity);
+		System.out.println("Quantity received " + parts.size());
 		log.add(new LoggedEvent(
 				"Received parts event encountered"
 						));		

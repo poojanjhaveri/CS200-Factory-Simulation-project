@@ -7,6 +7,7 @@ import factory.factory201.interfaces.KitRobot;
 import factory.factory201.interfaces.NestInterface;
 import factory.general.Kit;
 import factory.general.Nest;
+import factory.general.Part;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -31,11 +32,15 @@ public class CameraAgent extends Agent implements Camera {
     private KitAssemblyManager KAM;
     private List<Nest> nests;
     private List<Kit> kits;
+    private Kit tempKit;
+    private List<Part.Type> kitInfo;
     
     public CameraAgent(String name) {
         super(name);
         nests = Collections.synchronizedList(new ArrayList<Nest>());
         kits = Collections.synchronizedList(new ArrayList<Kit>());
+        tempKit = null;
+        kitInfo = new ArrayList<Part.Type>();
     }
     
     // ********** MESSAGES *********
@@ -67,9 +72,19 @@ public class CameraAgent extends Agent implements Camera {
         stateChanged();
     }
 
+    @Override
+    public void msgHereIsKitInfo(Kit kit) {
+        tempKit = kit;
+    }
+    
+    
     // ********* SCHEDULER *********
     @Override
     protected boolean pickAndExecuteAnAction() {
+        if(tempKit != null) {
+            configureKitInfo(tempKit);
+            return true;
+        }
         synchronized(kits) {
             for (Kit k : kits) {
                 if (k.status == Kit.Status.full) {
@@ -132,6 +147,15 @@ public class CameraAgent extends Agent implements Camera {
         stateChanged();
     }
 
+    public void configureKitInfo(Kit info) {
+        kitInfo.clear();
+        for(int i = 0; i < info.getSize(); i++) {
+            kitInfo.add(info.getPart(i).type);
+        }
+        info = null;
+    }
+    
+    
     // ************ MISC ***********
     public void setKitRobotAgent(KitRobot agent) {
         kitRobotAgent = agent;
