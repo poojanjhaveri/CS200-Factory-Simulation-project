@@ -52,6 +52,7 @@ public class CameraAgent extends Agent implements Camera {
      */
     @Override
     public void msgNestIsFull(Nest nest) {
+        print("Received msgNestIsFull that " + nest.nestNum + " is full.");
         synchronized(nests) {
             nests.add(nest);
         }
@@ -66,6 +67,7 @@ public class CameraAgent extends Agent implements Camera {
      */
     @Override
     public void msgKitIsFull(Kit kit) {
+        print("Received msgKitIsFull from Kit Robot Agent");
         synchronized(kits) {
             kits.add(kit);
         }
@@ -81,10 +83,11 @@ public class CameraAgent extends Agent implements Camera {
     // ********* SCHEDULER *********
     @Override
     public boolean pickAndExecuteAnAction() {
-        if(tempKit != null) {
+        if(tempKit != null) {print("test5");
             configureKitInfo(tempKit);
             return true;
         }
+        print("test3");
         synchronized(kits) {
             for (Kit k : kits) {
                 if (k.status == Kit.Status.full) {
@@ -92,13 +95,14 @@ public class CameraAgent extends Agent implements Camera {
                     return true;
                 }
             }
-        }
-        synchronized(kits) {
+        }print("test4");
+        synchronized(nests) {
             for (Nest n : nests) {
-                if (n.status == Nest.Status.full) {
+                if (n.status == Nest.Status.gettingInspected) {
+                    print("test1");
                     inspectNest(n);
                     return true;
-                }
+                }else print("test2");
             }
         }
         return false;
@@ -152,7 +156,7 @@ public class CameraAgent extends Agent implements Camera {
         for(int i = 0; i < info.getSize(); i++) {
             kitInfo.add(info.getPart(i).type);
         }
-        info = null;
+        tempKit = null;
     }
     
     

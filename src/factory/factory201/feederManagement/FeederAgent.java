@@ -72,7 +72,7 @@ public class FeederAgent extends Agent implements Feeder {
      	parts.add(new myParts(p6,0,6));
      	parts.add(new myParts(p7,0,7));
      	parts.add(new myParts(p8,0,8));
-     	System.out.println("parts added to the list");
+//     	System.out.println("parts added to the list");
    
     	//---------------------------------------------------------------------------
     	//this.serverMain = serverMain;
@@ -111,7 +111,7 @@ public class FeederAgent extends Agent implements Feeder {
 
     @Override
     public void msgNeedPart(Part part, Lane lane) {
-    	print("Received msgNeedPart from Lane for type " + part.type);
+    	print("Received msgNeedPart from Lane: "+((LaneAgent) lane).getName()+" for type " + part.type);
         /*
          * Search in the myParts list and see if the request can be fulfilled by checking with the quantity of each part
          */
@@ -207,7 +207,7 @@ public class FeederAgent extends Agent implements Feeder {
                     if (p.quantity < p.supplyAmount) {
                         //System.out.println("left lane needs a part but qty is less than 8" + feederNum);
                     	if(requestState==false){
-                        print("I need part because qty is " + p.quantity);
+                        print("I need part: "+p.part.type+" because qty is " + p.quantity);
                     	//if(leftCount<1 || rightCount<1)
                         needPart(p);
                         requestState=true;
@@ -251,7 +251,7 @@ public class FeederAgent extends Agent implements Feeder {
         
         leftLane.msgHereAreParts(parts);
     	
-        dosendPartToLeftLane(p);
+//        dosendPartToLeftLane(p);
     	//animation.setDiverterSwitchLeft(feederNum-1);
     
         stateChanged();
@@ -266,7 +266,7 @@ public class FeederAgent extends Agent implements Feeder {
             parts.add(new Part(p.index));
         
         rightLane.msgHereAreParts(parts);
-    	dosendPartToRightLane(p);
+//    	dosendPartToRightLane(p);
     	//animation.setDiverterSwitchLeft(feederNum-1);
     
         stateChanged();
