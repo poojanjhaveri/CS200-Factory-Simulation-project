@@ -127,9 +127,9 @@ public class LaneAgent extends Agent implements Lane {
         	
         	//System.out.println("checking for part " + p.part.type + "with " + part.type);
             if (p.part.type == part.get(0).type) {
-            	print("quantity is " + p.quantity);
+            	print("quantity of "+p.part.type+" is " + p.quantity);
                 p.quantity = p.quantity + part.size();
-                print("updated quantity is " + p.quantity);
+                print("updated quantity of "+p.part.type+" is " + p.quantity);
                 stateChanged();
                 return;
             }
@@ -167,7 +167,7 @@ public class LaneAgent extends Agent implements Lane {
             if (p.send == true) {
             	//System.out.println("there is an item to be sent");
             	//System.out.println("The quantity is  " + p.quantity);
-            	if(p.quantity>p.supplyAmount){
+            	if(p.quantity>=p.supplyAmount){
                 
                     //System.out.println("testing scheduler");
                     supplyPart(p);  
@@ -211,7 +211,7 @@ public class LaneAgent extends Agent implements Lane {
 
     //ask for parts if it is low
     private void askForPart(Part p){
-    	print("I am asking for part ");
+    	print("I am asking feeder: "+((FeederAgent)feeder).getName() +" for part: " + p.type);
     	//feeder must know which lane the message is from
     	feeder.msgNeedPart(p,this);
     	stateChanged();
