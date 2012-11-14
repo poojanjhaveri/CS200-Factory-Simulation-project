@@ -196,29 +196,9 @@ public class Server { // KitAssemblyAgent
         		}
         	} else if(msg.contains(Message.PULL_KITS_LIST)) {
         		//TODO THIS IS AD HOC NEED TO RETRIEVE MASTER BLUEPRINTKITS FROM FACTORY STATE
-//        		BlueprintKits bp = new BlueprintKits();
-//        		Kit k = new Kit("kit1","im the nyan kit");
-//        		Part p = new Part("part1","im a part dawg");
-//        		p.setFilename("part.png");
-//        		k.addPart(p);
-//        		p = new Part("party2","i party a lot");
-//        		p.setFilename("party.png");
-//        		k.addPart(p);
-//        		bp.add(k);
-
         		pw.println(Message.PUSH_KITS_LIST+":"+fstate.getBlueprintKits().serialize());
         	} else if(msg.contains(Message.PULL_PARTS_LIST)) {
         		//TODO THIS IS AD HOC, NEED TO RETRIEVE MASTER BLUEPRINTPARTS FROM FACTORY STATE
-//        		Part p = new Part("part1","is a part");
-//        		p.setFilename("part1.png");
-//        		BlueprintParts bp = new BlueprintParts();
-//        		bp.add(p);
-//        		p = new Part("part2","is (not) a part");
-//        		p.setFilename("part2.png");
-//        		bp.add(p);
-//        		p = new Part("alfalfa","heyo");
-//        		p.setFilename("gogo.png");
-//        		bp.add(p);
         		pw.println(Message.PUSH_PARTS_LIST+":"+fstate.getBlueprintParts().serialize());
         	} else if(msg.contains(Message.DEFINE_NEW_PART)) {
         		Part p = Part.deserialize(this.grabParameter(msg));
@@ -230,7 +210,13 @@ public class Server { // KitAssemblyAgent
         		fstate.getBlueprintKits().add(k);
         		fstate.getBlueprintKits().save();
         		System.out.println("Defined new kit:" + k.serialize());
-        	}
+        	}else if(msg.contains(Message.UNDEFINE_PART))
+			 {
+			     fstate.removePartById(Integer.parseInt(this.grabParameter(msg)));
+			 }else if(msg.contains(Message.UNDEFINE_KIT))
+				  {
+				      fstate.removeKitById(Integer.parseInt(this.grabParameter(msg)));
+				  }
         }
 
         /**

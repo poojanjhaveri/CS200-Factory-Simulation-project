@@ -67,6 +67,19 @@ public class BlueprintKits implements Blueprint, Serializable {
        kits.remove(in);
     }
     
+    /**
+@brief removes a kit by its id
+     */
+    public void removeKit(int id)
+    {
+	for(int i = this.kits.size()-1; i != -1; i--)
+	    {
+		if(this.kits.get(i).getNumber() == id)
+		    {
+			this.kits.remove((int)i);
+		    }
+	    }
+    }    
     
     
     public void save() {

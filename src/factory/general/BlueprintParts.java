@@ -53,7 +53,19 @@ public class BlueprintParts implements Blueprint, Serializable {
     public void removePart(Part pt) {
        parts.remove(pt);
     }
-    
+    /**
+@brief removes a part by its id
+     */
+    public void removePart(int id)
+    {
+	for(int i = this.parts.size()-1; i != -1; i--)
+	    {
+		if(this.parts.get(i).getNumber() == id)
+		    {
+			this.parts.remove((int)i);
+		    }
+	    }
+    }    
     public Part getPartAt(int i) {
         return this.parts.get(i);
     }
