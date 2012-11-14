@@ -80,7 +80,7 @@ public class CameraAgent extends Agent implements Camera {
     
     // ********* SCHEDULER *********
     @Override
-    protected boolean pickAndExecuteAnAction() {
+    public boolean pickAndExecuteAnAction() {
         if(tempKit != null) {
             configureKitInfo(tempKit);
             return true;

@@ -89,7 +89,7 @@ public class ConveyorAgent extends Agent implements Conveyor {
      * @return Returns true if action
      */
     @Override
-    protected boolean pickAndExecuteAnAction() {
+    public boolean pickAndExecuteAnAction() {
         synchronized (eventQueue) {
             for (Event e : eventQueue) {
                 if (e == Event.emptyKit) {
