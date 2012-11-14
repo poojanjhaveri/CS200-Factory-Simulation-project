@@ -91,7 +91,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
 
     // ********* SCHEDULER *********
     @Override
-    protected boolean pickAndExecuteAnAction() {
+    public boolean pickAndExecuteAnAction() {
         if (!kitStand.isEmpty()) {
             if (!kitStand.isEmpty(2)) {
                 if (kitStand.get(2).status == Kit.Status.verified) {

@@ -30,22 +30,23 @@ public class MockParts extends MockAgent implements PartsInterface {
 
     @Override
     public void msgNeedPart(Part part) {
-        
+        //Not used
     }
 
     @Override
     public void msgHereIsPart(Part part) {
-        
+        log.add(new LoggedEvent("Received msgHereIsPart from nest agent and "
+                + "received part of type: " + part.type));
     }
 
     @Override
     public void msgEmptyKitReady(Kit kit) {
-        
+        log.add(new LoggedEvent("Received msgEmptyKitReady from kit robot "
+                + "agent that empty kit: " + kit.name + " is ready."));
     }
 
     @Override
     public void msgHereAreParts(Part part, int quantity) {
-        
     }
 
     @Override
