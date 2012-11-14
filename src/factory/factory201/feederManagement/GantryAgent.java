@@ -1,8 +1,10 @@
 package factory.factory201.feederManagement;
-import factory.factory200.laneManager.*;
 import factory.factory201.interfaces.Feeder;
 import factory.factory201.interfaces.Gantry;
 import agent.Agent;
+import factory.factory200.laneManager.ServerSide.LMFeederForAgent;
+import factory.factory200.laneManager.ServerSide.LMGantryRobotForAgent;
+import factory.factory200.laneManager.ServerSide.LMServerMain;
 import factory.general.Part;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -28,13 +30,13 @@ public class GantryAgent extends Agent implements Gantry {
 
     Timer timer=new Timer();
     //---------------------------------------------------------------------------
-    private ServerMain serverMain;
-    private ServerForAgentGantry animation;
-    private ServerForAgentFeeder animation1;
+    private LMServerMain serverMain;
+    private LMGantryRobotForAgent animation;
+    private LMFeederForAgent animation1;
   //---------------------------------------------------------------------------
     
     //numOfBins is the number of bins that gantry is initialized to, will be the same for v0, each bin has 8 parts.
-    public GantryAgent(int numOfBins, String name, ServerMain serverMain){
+    public GantryAgent(int numOfBins, String name, LMServerMain serverMain){
     	super(name);
     	//---------------------------------------------------------------------------
     	this.serverMain = serverMain;

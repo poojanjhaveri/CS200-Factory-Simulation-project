@@ -1,10 +1,11 @@
 package factory.factory201.feederManagement;
-import factory.factory200.laneManager.*;
 import factory.factory201.interfaces.Feeder;
 import factory.factory201.interfaces.Lane;
 import factory.factory201.interfaces.Gantry;
 import agent.Agent;
 import com.sun.corba.se.impl.activation.ServerMain;
+import factory.factory200.laneManager.ServerSide.LMFeederForAgent;
+import factory.factory200.laneManager.ServerSide.LMServerMain;
 import factory.general.Part;
 import factory.general.Part.Type;
 import java.util.*;
@@ -41,14 +42,15 @@ public class FeederAgent extends Agent implements Feeder {
     public int feederNum;
     boolean requestState=false;
     //--------------------------------------------------------------
-    private ServerMain serverMain;
-    private ServerForAgentFeeder animation;
+    private LMServerMain serverMain;
+    private LMFeederForAgent animation;
   //---------------------------------------------------------------
     
     //public enum PartState {noState,canSend,needPart,sentRequest};
     
-    public FeederAgent(int index,ServerMain serverMain){
-   
+ 
+    public FeederAgent(String name,int index,LMServerMain serverMain){
+        super(name);
      	
     	System.out.println("testing null pointer exception");
     	Part p1=new Part(1);

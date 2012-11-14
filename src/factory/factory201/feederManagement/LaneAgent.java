@@ -1,9 +1,10 @@
 package factory.factory201.feederManagement;
-import factory.factory200.laneManager.*;
 import factory.factory201.interfaces.Feeder;
 import factory.factory201.interfaces.NestInterface;
 import factory.factory201.interfaces.Lane;
 import agent.Agent;
+import factory.factory200.laneManager.ServerSide.LMLaneForAgent;
+import factory.factory200.laneManager.ServerSide.LMServerMain;
 import factory.general.Part;
 import factory.general.Part.Type;
 
@@ -33,11 +34,11 @@ public class LaneAgent extends Agent implements Lane {
     int rightIndex; // right index of the lane
     
     //---------------------------------------------------------------------------
-    private ServerMain serverMain;
-    private ServerForAgentLane animation;
+    private LMServerMain serverMain;
+    private LMLaneForAgent animation;
     //---------------------------------------------------------------------------
 
-    public LaneAgent(String name, int leftNum,int rightNum,ServerMain serverMain){
+    public LaneAgent(String name, int leftNum,int rightNum,LMServerMain serverMain){
     	super(name);
     	//---------------------------------------------------------------------------
     	this.serverMain = serverMain;
