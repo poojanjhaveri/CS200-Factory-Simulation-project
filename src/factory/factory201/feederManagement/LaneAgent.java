@@ -38,7 +38,7 @@ public class LaneAgent extends Agent implements Lane {
     private LMLaneForAgent animation;
     //---------------------------------------------------------------------------
 
-    public LaneAgent(String name, int leftNum,int rightNum,LMServerMain serverMain){
+    public LaneAgent(String name,LMServerMain serverMain){
     	super(name);
     	//---------------------------------------------------------------------------
     	this.serverMain = serverMain;
@@ -46,8 +46,8 @@ public class LaneAgent extends Agent implements Lane {
     	
     	// Initialization
     	//this.laneNum=num;
-    	this.leftIndex=leftNum;
-    	this.rightIndex=rightNum;
+    	//this.leftIndex=leftNum;
+    	//this.rightIndex=rightNum;
     	
     	//start the animation for both left and right
     	animation.setSwitchOn(leftIndex-1);
