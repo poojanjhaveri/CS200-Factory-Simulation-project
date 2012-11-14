@@ -204,13 +204,18 @@ public class GantryAgent extends Agent implements Gantry {
     	binNum=b.index;
     	feederNum=f.index;
     	
+        //create a list of parts to supply
+        List<Part> parts = new ArrayList<Part>();
+        
+        for(int i=0;i<8;i++)
+            parts.add(b.part);
     	//animation commands.
     	/*
     	 * THE BINNUM IS OBTAINED BY b.index, each bin has 8 parts of one type(Part part)
     	 * TO DETERMINE WHICH FEEDER IT GOES TO, USE f.index (that's initialized through constructor)
          */
     	print("Sending message to feeder");
-        f.feeder.msgHereAreParts(null);
+        f.feeder.msgHereAreParts(parts);
         
     	doSupplyPart(b,f);
     	//animation.goToBin(binNum);

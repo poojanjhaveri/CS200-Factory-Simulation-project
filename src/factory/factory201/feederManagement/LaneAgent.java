@@ -97,7 +97,7 @@ public class LaneAgent extends Agent implements Lane {
     }
 
  
-    public void msgNeedPart(Part partType) {
+    public void msgNeedPart(Part part) {
         for (myParts p : parts) {
             if (p.part.type == part.type) {
                 p.send = true;
@@ -113,7 +113,7 @@ public class LaneAgent extends Agent implements Lane {
     }
 
    
-    public void msgHereAreParts(List<Part> parts) {
+    public void msgHereAreParts(List<Part> part) {
     	int partIndex=0;
     	requestedPart=false;
     	
@@ -123,35 +123,35 @@ public class LaneAgent extends Agent implements Lane {
         for (myParts p : parts) {
         	
         	//System.out.println("checking for part " + p.part.type + "with " + part.type);
-            if (p.part.type == part.type) {
-            	System.out.println("quantity is " + p.quantity);
-                p.quantity = p.quantity + quantity;
-                System.out.println("updated quantity is " + p.quantity);
+            if (p.part.type == part.get(0).type) {
+            	print("quantity is " + p.quantity);
+                p.quantity = p.quantity + part.size();
+                print("updated quantity is " + p.quantity);
                 stateChanged();
                 return;
             }
         }
         
         //or generate a new part
-        if(part.type==Type.p1)
+        if(part.get(0).type==Type.p1)
         	partIndex=1;
-        if(part.type==Type.p2)
+        if(part.get(0).type==Type.p2)
         	partIndex=2;
-        if(part.type==Type.p3)
+        if(part.get(0).type==Type.p3)
         	partIndex=3;
-        if(part.type==Type.p4)
+        if(part.get(0).type==Type.p4)
         	partIndex=4;
-        if(part.type==Type.p5)
+        if(part.get(0).type==Type.p5)
         	partIndex=5;
-        if(part.type==Type.p6)
+        if(part.get(0).type==Type.p6)
         	partIndex=6;
-        if(part.type==Type.p7)
+        if(part.get(0).type==Type.p7)
         	partIndex=7;
-        if(part.type==Type.p8)
+        if(part.get(0).type==Type.p8)
         	partIndex=8;
 
         //create a new type if the current list does not contain parts of this type.	
-        parts.add(new myParts(part, quantity,partIndex));
+        parts.add(new myParts(part.get(0),part.size(),partIndex));
         stateChanged();
         //stateChanged();
     }
@@ -220,8 +220,14 @@ public class LaneAgent extends Agent implements Lane {
     	 *
     	 */
     	print("I am supplying parts to the nest " );
+        //create a list of parts to supply
+        List<Part> parts = new ArrayList<Part>();
         
-    	nest.msgHereAreParts(null);
+        for(int i=0;i<part.quantity;i++)
+            parts.add(new Part(part.partNum));
+    	
+       
+        nest.msgHereAreParts(parts);
         
         stateChanged();
     }
