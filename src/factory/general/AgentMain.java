@@ -25,7 +25,6 @@ public class AgentMain {
         /*========== Declare all agents and etc. ==========*/
         
         // Misc
-        LMServerMain serverMain = new LMServerMain();
         KitAssemblyManager KAM = new KitAssemblyManager();
 
         // Alex
@@ -39,13 +38,13 @@ public class AgentMain {
 
         // Kevin
         FeederAgent[] feeder = new FeederAgent[FEEDER];
-        GantryAgent gantry = new GantryAgent(8, "Gantry", serverMain);
+        GantryAgent gantry = new GantryAgent(8, "Gantry");
         LaneAgent[] lane = new LaneAgent[LANE];
         for (int i = 0; i < FEEDER; i++) {
             if(i < LANE) { 
-                lane[i] = new LaneAgent("Lane " + i, serverMain); 
+                lane[i] = new LaneAgent("Lane " + i); 
             }
-            feeder[i] = new FeederAgent("Feeder " + i, i, serverMain);
+            feeder[i] = new FeederAgent("Feeder " + i, i);
         }
         
         
