@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package factory.factory201.Test;
+package factory.factory201.test;
 import factory.factory201.Test.mock.MockParts;
 import factory.factory201.partsManagement.NestAgent;
 import factory.factory201.test.mock.MockCamera;

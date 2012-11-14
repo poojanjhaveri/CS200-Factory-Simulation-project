@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package factory.factory201.Test.mock;
+package factory.factory201.test.mock;
 
 import factory.factory201.interfaces.KitRobot;
 import factory.factory201.interfaces.PartsInterface;
