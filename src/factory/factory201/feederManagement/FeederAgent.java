@@ -118,8 +118,8 @@ public class FeederAgent extends Agent implements Feeder {
         for (myParts p : parts) {
             if (p.part.type == part.type) {
             	//print("setting sendTrue");
-            	p.send=true;
-            	p.supplyAmount=8;
+            	//p.send=true;
+            	//p.supplyAmount=8;
             	//stateChanged();
             	//return;
             	
@@ -210,11 +210,11 @@ public class FeederAgent extends Agent implements Feeder {
             if (p.send == true) {
                 //if (p.sendTo == SendTo.leftLane) {
                 	//System.out.println("left lane needs a part " + feederNum);
-                    if (p.quantity < 8) {
+                    if (p.quantity < p.supplyAmount) {
                         //System.out.println("left lane needs a part but qty is less than 8" + feederNum);
                     	if(requestState==false){
                         print("I need part because qty is " + p.quantity);
-                    	if(leftCount<1 || rightCount<1)
+                    	//if(leftCount<1 || rightCount<1)
                         needPart(p);
                         requestState=true;
                         return true;

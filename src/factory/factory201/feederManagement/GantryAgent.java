@@ -171,8 +171,8 @@ public class GantryAgent extends Agent implements Gantry {
 
     @Override
     public boolean pickAndExecuteAnAction() {
-    	//print("checking scheduler execution");
-    synchronized(myFeeders){	
+    
+        synchronized(myFeeders){	
     	for(myFeeder f: myFeeders){
     		if(f.requestState==true){
     			for(myBin b: bins){
@@ -184,32 +184,17 @@ public class GantryAgent extends Agent implements Gantry {
     					print("I am supplying parts to feeder at index " + f.index );
     					f.requestState=false;
     					supplyPart(b,f);
-    				    b.quantity=b.quantity-1;
+                                        b.quantity=b.quantity-1;
     					return true;
     					}
-    					else
-    					// NOT NEEDED IN V0, IF THE BIN QUANTITY IS LESS THAN 1.
-    						;
+    					
     				}
     			}
     		}
     	}
     }
     
-    /*
-    			if(bin)
-    			send
-    		}
-    		
-    	}*/
-  /*
-    	for (myParts p : parts) {
-            if (p.send == true) {
-                supplyPart(p);
-            }
-            return true;
-        }
-*/
+    
         return false;
     }
 
@@ -223,18 +208,16 @@ public class GantryAgent extends Agent implements Gantry {
     	/*
     	 * THE BINNUM IS OBTAINED BY b.index, each bin has 8 parts of one type(Part part)
     	 * TO DETERMINE WHICH FEEDER IT GOES TO, USE f.index (that's initialized through constructor)
-    	 * YOU COULD USE WHILE LOOP AFTER EVERY ANIMATION FUNCTION SO THAT IT WAITS UNTIL THE ANIMATION IS FINISHED TO START THE NEXT ANIMATION
-    	 * */
-    	f.feeder.msgHereAreParts(b.part, 8);
+         */
+    	print("Sending message to feeder");
+        f.feeder.msgHereAreParts(b.part, 8);
         
-    	//System.out.println("before animation");
     	doSupplyPart(b,f);
     	//animation.goToBin(binNum);
     	//animation.pickUpBin(binNum);
     	//animation.goToFeeder(feederNum);
     	//animation.putOffBin();
     	print("sending message here are parts to" + f.index);
-        
         
         //print("request state has been set to false for " + f.index);
         //update the quantity of bins
