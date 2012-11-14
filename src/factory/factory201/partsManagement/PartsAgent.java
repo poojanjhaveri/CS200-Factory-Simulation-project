@@ -53,7 +53,7 @@ public class PartsAgent extends Agent implements PartsInterface {
 
     @Override
     public void msgHereIsPart(Part p) {
-        print("got part " + p + "from nest");
+        print("got part " + p.getString() + "from nest");
         inventory.add(p);
         stateChanged();
     }
@@ -141,7 +141,7 @@ public class PartsAgent extends Agent implements PartsInterface {
         
         
     	for (int i = 0; i < kit.getSize(); i++) {
-            nest.msgNeedPart(null);
+            nest.msgNeedPart(kit.getPart(i));
     	}
     	stateChanged();
 
@@ -152,7 +152,7 @@ public class PartsAgent extends Agent implements PartsInterface {
 
 
         kitNeedsParts.remove(p);
-        print("picking up part " + p);
+        print("picking up part " + p.getString());
         //kam.getKitStand().getKitPositions().get(1).setFilled(true);
         kam.getPartsRobot().moveToNestCommand(p.getNestNum());
         try {
@@ -170,7 +170,7 @@ public class PartsAgent extends Agent implements PartsInterface {
 
     private void putPartsInKit() {
         for (Part p : grips) {
-            print("putting part " + p + " in kit");
+            print("putting part " + p.getString() + " in kit");
         }
         grips.clear();
         kam.getPartsRobot().dropOffParts();

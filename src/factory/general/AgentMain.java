@@ -65,6 +65,8 @@ public class AgentMain {
         partsAgent.setNestInterface(nestAgent);
         nestAgent.setCamera(camera);
         nestAgent.setPartsAgent(partsAgent);
+        for (int i = 0; i<8; i++){
+        nestAgent.getNest(i).setLane(lane[i]);  }
         
         //Kevin
         for (int i = 0, j = 0; i < FEEDER; i++, j++) {

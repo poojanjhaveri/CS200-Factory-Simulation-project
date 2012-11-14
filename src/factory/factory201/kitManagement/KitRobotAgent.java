@@ -112,7 +112,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
                 // if parts agent needs empty kit
                 giveEmptyKitToPartsAgent();
                 return true;
-            } else if (kitStand.availability() > 0) {
+            } else if (kitStand.availability() > 0 && !requestedEmptyKit) {
                 // if tempstand is empty
                 getEmptyKitFromConveyor();
                 return true;
