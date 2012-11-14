@@ -16,13 +16,13 @@ public class MockGantry extends MockAgent implements Gantry{
 	}
 
 	@Override
-	public void msgNeedPart(Part part) {
+	public void msgNeedPart(Part partType) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void msgHereAreParts(Part part, int quantity) {
+	public void msgHereAreParts(List<Part> parts) {
 		// TODO Auto-generated method stub
 		
 	}

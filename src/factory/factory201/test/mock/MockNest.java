@@ -13,12 +13,12 @@ public class MockNest extends MockAgent implements NestInterface {
     }
 
     @Override
-    public void msgNeedPart(Part part) {
+    public void msgNeedPart(Part partType) {
         
     }
 
     @Override
-    public void msgHereAreParts(Part part, int quantity) {
+    public void msgHereAreParts(List<Part> parts) {
         
     }
 

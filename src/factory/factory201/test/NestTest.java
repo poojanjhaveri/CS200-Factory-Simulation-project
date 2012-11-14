@@ -87,7 +87,7 @@ public class NestTest extends TestCase{
 	}
 @Test
 public void firstTest(){
-    nest.msgNeedPart(new Part(1));
+    nest.msgNeedPart(null);
     /*nest.msgNeedPart(new Part(2));
     nest.msgNeedPart(new Part(3));
     nest.msgNeedPart(new Part(4));

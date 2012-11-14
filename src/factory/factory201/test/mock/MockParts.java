@@ -4,11 +4,7 @@
  */
 package factory.factory201.test.mock;
 
-import factory.factory201.interfaces.KitRobot;
 import factory.factory201.interfaces.PartsInterface;
-import factory.factory201.test.mock.EventLog;
-import factory.factory201.test.mock.LoggedEvent;
-import factory.factory201.test.mock.MockAgent;
 import factory.general.Kit;
 import factory.general.Part;
 
@@ -28,7 +24,7 @@ public class MockParts extends MockAgent implements PartsInterface {
     }
 
     @Override
-    public void msgNeedPart(Part part) {
+    public void msgNeedPart(Part partType) {
         //Not used
     }
 
@@ -45,7 +41,7 @@ public class MockParts extends MockAgent implements PartsInterface {
     }
 
     @Override
-    public void msgHereAreParts(Part part, int quantity) {
+    public void msgHereAreParts(List<Part> parts) {
     }
 
     @Override

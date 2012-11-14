@@ -210,7 +210,7 @@ public class GantryAgent extends Agent implements Gantry {
     	 * TO DETERMINE WHICH FEEDER IT GOES TO, USE f.index (that's initialized through constructor)
          */
     	print("Sending message to feeder");
-        f.feeder.msgHereAreParts(b.part, 8);
+        f.feeder.msgHereAreParts(null);
         
     	doSupplyPart(b,f);
     	//animation.goToBin(binNum);
@@ -259,12 +259,12 @@ public class GantryAgent extends Agent implements Gantry {
     }
 
     @Override //Unimplemented
-    public void msgHereAreParts(Part part, int quantity) {
+    public void msgHereAreParts(List<Part> parts) {
         // TODO Auto-generated method stub
     }
 
 	@Override //Unimplemented
-	public void msgNeedPart(Part part) {
+	public void msgNeedPart(Part partType) {
 		// TODO Auto-generated method stub
 		
 	}

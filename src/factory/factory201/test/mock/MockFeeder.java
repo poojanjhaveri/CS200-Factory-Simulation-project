@@ -20,7 +20,7 @@ public class MockFeeder extends MockAgent implements Feeder {
 	}
 
 	
-	public void msgNeedPart(Part part) {
+	public void msgNeedPart(Part partType) {
 		// TODO Auto-generated method stub
 		log.add(new LoggedEvent(
 				"Need parts event encountered"
@@ -28,7 +28,7 @@ public class MockFeeder extends MockAgent implements Feeder {
 	}
 
 	
-	public void msgHereAreParts(Part part, int quantity) {
+	public void msgHereAreParts(List<Part> parts) {
 		System.out.println("message received");
 		log.add(new LoggedEvent(
 				"Received parts event encountered"

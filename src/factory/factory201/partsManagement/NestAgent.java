@@ -88,7 +88,7 @@ public class NestAgent extends Agent implements NestInterface {
                 }
             }
     }*/
-    public void msgNeedPart(Part p) {
+    public void msgNeedPart(Part partType) {
         synchronized(myNests){
     	if (!hasPart(p)){
             for (Nest n: myNests){
@@ -183,7 +183,7 @@ public class NestAgent extends Agent implements NestInterface {
     print("requesting " + n.part);
     	
     	n.status = Nest.Status.gettingPart;
-        lanes[n.nestNum].msgNeedPart(n.part);
+        lanes[n.nestNum].msgNeedPart(null);
     	stateChanged();
 
     }

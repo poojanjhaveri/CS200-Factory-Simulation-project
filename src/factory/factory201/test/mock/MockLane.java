@@ -16,7 +16,7 @@ public class MockLane extends MockAgent implements Lane{
 	}
 
 	@Override
-	public void msgNeedPart(Part part) {
+	public void msgNeedPart(Part partType) {
 		// TODO Auto-generated method stub
 		log.add(new LoggedEvent(
 				"Received msgNeedPart from nest"
@@ -25,7 +25,7 @@ public class MockLane extends MockAgent implements Lane{
 	}
 
 	@Override
-	public void msgHereAreParts(Part part, int quantity) {
+	public void msgHereAreParts(List<Part> parts) {
 		// TODO Auto-generated method stub
 	
 		System.out.println("Quantity received " + quantity);

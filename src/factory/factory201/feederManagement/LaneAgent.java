@@ -97,7 +97,7 @@ public class LaneAgent extends Agent implements Lane {
     }
 
  
-    public void msgNeedPart(Part part) {
+    public void msgNeedPart(Part partType) {
         for (myParts p : parts) {
             if (p.part.type == part.type) {
                 p.send = true;
@@ -113,7 +113,7 @@ public class LaneAgent extends Agent implements Lane {
     }
 
    
-    public void msgHereAreParts(Part part, int quantity) {
+    public void msgHereAreParts(List<Part> parts) {
     	int partIndex=0;
     	requestedPart=false;
     	
@@ -221,7 +221,7 @@ public class LaneAgent extends Agent implements Lane {
     	 */
     	print("I am supplying parts to the nest " );
         
-    	nest.msgHereAreParts(part.part, part.supplyAmount);
+    	nest.msgHereAreParts(null);
         
         stateChanged();
     }

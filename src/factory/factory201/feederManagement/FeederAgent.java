@@ -155,7 +155,7 @@ public class FeederAgent extends Agent implements Feeder {
 
     }
 
-    public void msgHereAreParts(Part part, int quantity) {
+    public void msgHereAreParts(List<Part> parts) {
     	int partIndex=0;
     	requestState=false;
         print("Received msgHereAreParts from Gantry");
@@ -248,7 +248,7 @@ public class FeederAgent extends Agent implements Feeder {
     private void sendPartToLeftLane(myParts p) {
         
         print("I am supplying parts to leftLane");
-        leftLane.msgHereAreParts(p.part,8);
+        leftLane.msgHereAreParts(null);
     	dosendPartToLeftLane(p);
     	//animation.setDiverterSwitchLeft(feederNum-1);
     
@@ -257,7 +257,7 @@ public class FeederAgent extends Agent implements Feeder {
     
     private void sendPartToRightLane(myParts p) {
         print("I am supplying parts to rightLane");
-    	rightLane.msgHereAreParts(p.part,8);
+    	rightLane.msgHereAreParts(null);
     	dosendPartToRightLane(p);
     	//animation.setDiverterSwitchLeft(feederNum-1);
     
@@ -307,7 +307,7 @@ public class FeederAgent extends Agent implements Feeder {
     	
     }
     @Override //Unimplemented Method
-    public void msgNeedPart(Part part) {
+    public void msgNeedPart(Part partType) {
         // TODO Auto-generated method stub
     }
 }

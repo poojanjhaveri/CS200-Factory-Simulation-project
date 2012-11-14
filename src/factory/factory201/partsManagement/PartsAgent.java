@@ -142,7 +142,7 @@ public class PartsAgent extends Agent implements PartsInterface {
         
         
     	for (int i = 0; i < kit.getSize(); i++) {
-            nest.msgNeedPart(kit.getPart(i));
+            nest.msgNeedPart(null);
     	}
     	stateChanged();
 
@@ -195,12 +195,12 @@ public class PartsAgent extends Agent implements PartsInterface {
     }
 
     @Override
-    public void msgNeedPart(Part part) {
+    public void msgNeedPart(Part partType) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
-    public void msgHereAreParts(Part part, int quantity) {
+    public void msgHereAreParts(List<Part> parts) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 }
