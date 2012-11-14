@@ -88,7 +88,7 @@ public class NestAgent extends Agent implements NestInterface {
                 }
             }
     }*/
-    public void msgNeedPart(Part partType) {
+    public void msgNeedPart(Part p) {
         synchronized(myNests){
     	if (!hasPart(p)){
             for (Nest n: myNests){
