@@ -182,7 +182,7 @@ public class NestAgent extends Agent implements NestInterface {
 
     private void requestInspection(Nest n) {
 
-        print("requesting inspecting for nest " + n.getNestNum());
+        print("Requesting inspection for nest " + n.getNestNum());
         n.status = Nest.Status.gettingInspected;
         camera.msgNestIsFull(n);
         stateChanged();
