@@ -62,18 +62,18 @@ public class LaneAgent extends Agent implements Lane {
     	Part p6=new Part(6);
     	Part p7=new Part(7);
     	Part p8=new Part(8);
-    	System.out.println("All parts created");
+    	//System.out.println("All parts created");
     	
     	//part type, quantity, index (quantity started with is 0
     	parts.add(new myParts(p1,0,1));
      	parts.add(new myParts(p2,0,2));
      	parts.add(new myParts(p3,0,3));
-     	parts.add(new myParts(p4,9,4));
-     	parts.add(new myParts(p5,9,5));
-     	parts.add(new myParts(p6,9,6));
-     	parts.add(new myParts(p7,9,7));
-     	parts.add(new myParts(p8,9,8));
-     	System.out.println("parts added to the list");
+     	parts.add(new myParts(p4,0,4));
+     	parts.add(new myParts(p5,0,5));
+     	parts.add(new myParts(p6,0,6));
+     	parts.add(new myParts(p7,0,7));
+     	parts.add(new myParts(p8,0,8));
+     	//System.out.println("parts added to the list");
     
     }
     public void msgRejectParts(int i) {
@@ -98,6 +98,8 @@ public class LaneAgent extends Agent implements Lane {
 
  
     public void msgNeedPart(Part part) {
+        
+        print("Received msgNeedPart from Nest for type " + part.type);
         for (myParts p : parts) {
             if (p.part.type == part.type) {
                 p.send = true;
@@ -114,7 +116,8 @@ public class LaneAgent extends Agent implements Lane {
 
    
     public void msgHereAreParts(List<Part> part) {
-    	int partIndex=0;
+    	print("Received Parts of type (from Feeder) " + part.get(0).type);
+        int partIndex=0;
     	requestedPart=false;
     	
     	askCount=0;

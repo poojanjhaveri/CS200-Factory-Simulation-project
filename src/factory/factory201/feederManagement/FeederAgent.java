@@ -61,7 +61,7 @@ public class FeederAgent extends Agent implements Feeder {
     	Part p6=new Part(6);
     	Part p7=new Part(7);
     	Part p8=new Part(8);
-    	System.out.println("All parts created");
+    	//System.out.println("All parts created");
     	
     	//part type, quantity, index (quantity started with is 0
     	parts.add(new myParts(p1,0,1));
@@ -111,7 +111,7 @@ public class FeederAgent extends Agent implements Feeder {
 
     @Override
     public void msgNeedPart(Part part, Lane lane) {
-    	print("Received msgNeedPart");
+    	print("Received msgNeedPart from Lane for type " + part.type);
         /*
          * Search in the myParts list and see if the request can be fulfilled by checking with the quantity of each part
          */
@@ -152,7 +152,7 @@ public class FeederAgent extends Agent implements Feeder {
     public void msgHereAreParts(List<Part> part) {
     	int partIndex=0;
     	requestState=false;
-        print("Received msgHereAreParts from Gantry");
+        print("Received msgHereAreParts (from Gantry) for type" + part.get(0).type);
     	print("qty received is " + part.size());
         //add to the existing list of parts if the parts already exist
         for (myParts p : parts) {
@@ -274,7 +274,7 @@ public class FeederAgent extends Agent implements Feeder {
     
     private void dosendPartToLeftLane(myParts p){
     	try {
-			Thread.sleep(15000);
+			Thread.sleep(7000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -285,7 +285,7 @@ public class FeederAgent extends Agent implements Feeder {
     
     private void dosendPartToRightLane(myParts p){
     	try {
-			Thread.sleep(15000);
+			Thread.sleep(7000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

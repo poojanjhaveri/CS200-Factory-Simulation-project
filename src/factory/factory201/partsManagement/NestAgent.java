@@ -82,14 +82,14 @@ public class NestAgent extends Agent implements NestInterface {
             }
     }*/
     public void msgNeedPart(Part p) {
+        boolean doPurge = true;
         synchronized(myNests){
     	if (!hasPart(p)){
             for (Nest n: myNests){
-                //if (n.status == Nest.Status.empty){
                 if(n.status == Nest.Status.empty){  
-                n.setPart(p);
-                    //nestParts.put(n.nestNum, p);
+                    n.setPart(p);
                     n.status = Nest.Status.needPart;
+                    doPurge = false;
                     print("Part " + p.getString() + " is not taken by a nest, part is being assigned to the nest "+ n.nestNum);
                     break;
                 }
@@ -98,8 +98,13 @@ public class NestAgent extends Agent implements NestInterface {
         else{
             for (Nest n: myNests){
     		if(n.parts.contains(p)){
-            giveToKit(n);}}}
-    	
+            giveToKit(n);
+                doPurge = false;}}}
+    	if (doPurge){
+            //for (Nest n: myNests){
+             //   if(n.status == Nest.Status.empty || n.status) }
+            
+        }
 
         stateChanged();}
     }
