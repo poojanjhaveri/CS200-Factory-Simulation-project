@@ -85,9 +85,8 @@ public class PartsAgent extends Agent implements PartsInterface {
     protected boolean pickAndExecuteAnAction() {
 
         if (!newKit.isEmpty()) {
-            startNewKit(newKit.remove(0));
-            //startNewKit(newKit.get(newKit.size()-1));
-            //newKit.clear();
+            startNewKit(newKit.remove(newKit.size()-1));
+            //startNewKit(newKit.get(0));
             return true;
         }
 
@@ -121,11 +120,11 @@ public class PartsAgent extends Agent implements PartsInterface {
         kit.status = Kit.Status.empty;
         kit.standNum = Kit.StandNum.zero;
         try {
-            Thread.sleep(10000);
+            Thread.sleep(6000);
         } catch (InterruptedException e) {
             print("stopped sleeping for 10 seconds");
         }
-        // kitrobot.msgNeedEmptyKit();
+        kitrobot.msgNeedEmptyKit();
         stateChanged();
     }
 
@@ -140,12 +139,11 @@ public class PartsAgent extends Agent implements PartsInterface {
     	for(int i=0; i<kit.getSize(); i++){
     		kitNeedsParts.add(kit.getPart(i));
     	}
-    	nest.msgNewKit(kitNeedsParts);
         
-        /*
+        
     	for (int i = 0; i < kit.getSize(); i++) {
             nest.msgNeedPart(kit.getPart(i));
-    	}*/
+    	}
     	stateChanged();
 
     }
