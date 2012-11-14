@@ -155,17 +155,17 @@ public class FeederAgent extends Agent implements Feeder {
 
     }
 
-    public void msgHereAreParts(List<Part> parts) {
+    public void msgHereAreParts(List<Part> part) {
     	int partIndex=0;
     	requestState=false;
         print("Received msgHereAreParts from Gantry");
-    	print("qty received is " + quantity);
+    	print("qty received is " + part.size());
         //add to the existing list of parts if the parts already exist
         for (myParts p : parts) {
-            if (p.part.type == part.type) {
+            if (p.part.type == part.get(0).type) {
             	
             	print("updating quantity from " + p.quantity);
-                p.quantity = p.quantity + quantity;
+                p.quantity = p.quantity + part.size();
 
                 /*
                  //if it received the part, and the quantity is less than the lane capacity, send another request.
@@ -182,23 +182,23 @@ public class FeederAgent extends Agent implements Feeder {
         }
 
 //create a new type if the current list does not contain parts of this type.	
-        if(part.type==Type.p1)
+        if(part.get(0).type==Type.p1)
         	partIndex=1;
-        if(part.type==Type.p2)
+        if(part.get(0).type==Type.p2)
         	partIndex=2;
-        if(part.type==Type.p3)
+        if(part.get(0).type==Type.p3)
         	partIndex=3;
-        if(part.type==Type.p4)
+        if(part.get(0).type==Type.p4)
         	partIndex=4;
-        if(part.type==Type.p5)
+        if(part.get(0).type==Type.p5)
         	partIndex=5;
-        if(part.type==Type.p6)
+        if(part.get(0).type==Type.p6)
         	partIndex=6;
-        if(part.type==Type.p7)
+        if(part.get(0).type==Type.p7)
         	partIndex=7;
-        if(part.type==Type.p8)
+        if(part.get(0).type==Type.p8)
         	partIndex=8;
-        parts.add(new myParts(part,quantity,partIndex));
+        parts.add(new myParts(part.get(0),part.size(),partIndex));
         stateChanged();
     }
 
@@ -248,8 +248,16 @@ public class FeederAgent extends Agent implements Feeder {
     private void sendPartToLeftLane(myParts p) {
         
         print("I am supplying parts to leftLane");
-        leftLane.msgHereAreParts(null);
-    	dosendPartToLeftLane(p);
+        
+        //create a list of parts to supply
+        List<Part> parts = new ArrayList<Part>();
+        
+        for(int i=0;i<p.quantity;i++)
+            parts.add(new Part(p.index));
+        
+        leftLane.msgHereAreParts(parts);
+    	
+        dosendPartToLeftLane(p);
     	//animation.setDiverterSwitchLeft(feederNum-1);
     
         stateChanged();
@@ -257,7 +265,13 @@ public class FeederAgent extends Agent implements Feeder {
     
     private void sendPartToRightLane(myParts p) {
         print("I am supplying parts to rightLane");
-    	rightLane.msgHereAreParts(null);
+    	//create a list of parts to supply
+        List<Part> parts = new ArrayList<Part>();
+        
+        for(int i=0;i<p.quantity;i++)
+            parts.add(new Part(p.index));
+        
+        rightLane.msgHereAreParts(parts);
     	dosendPartToRightLane(p);
     	//animation.setDiverterSwitchLeft(feederNum-1);
     
