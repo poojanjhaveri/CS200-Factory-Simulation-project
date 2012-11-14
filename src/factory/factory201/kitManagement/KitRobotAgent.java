@@ -21,7 +21,7 @@ import factory.general.Kit;
 public class KitRobotAgent extends Agent implements KitRobot {
 
     private KitStand kitStand;
-    public KitAssemblyManager KAM;
+    private KitAssemblyManager KAM;
     private boolean partsAgentNeedsEmptyKit;
     private boolean requestedEmptyKit;
     private Conveyor conveyor;

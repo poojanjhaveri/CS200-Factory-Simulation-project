@@ -5,6 +5,7 @@ import factory.factory201.test.mock.MockCamera;
 import factory.factory201.test.mock.MockConveyor;
 import factory.factory201.test.mock.MockParts;
 import junit.framework.TestCase;
+import org.junit.Test;
 
 /**
  *
@@ -26,14 +27,17 @@ public class ComprehensiveKitRobotAgentTest extends TestCase {
         partsAgent = new MockParts("Parts Agent");
         KAM = new KitAssemblyManager();
 
-        kitRobot.setCamera(camera);
-        kitRobot.setConveyor(conveyor);
-        kitRobot.setPartsAgent(partsAgent);
-        kitRobot.setKitAssemblyManager(KAM);
+        kitRobot.setAll(camera, conveyor, partsAgent, KAM);
     }
 
     @Override
     protected void tearDown() throws Exception {
+        // Not used
+    }
+    
+    @Test
+    public void testNormalScenarioKitRobot() {
+        assertEquals(true, true);
     }
 
     public String getLogs() {

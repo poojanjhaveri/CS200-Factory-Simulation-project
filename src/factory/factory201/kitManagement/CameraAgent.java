@@ -83,11 +83,10 @@ public class CameraAgent extends Agent implements Camera {
     // ********* SCHEDULER *********
     @Override
     public boolean pickAndExecuteAnAction() {
-        if(tempKit != null) {print("test5");
+        if(tempKit != null) {
             configureKitInfo(tempKit);
             return true;
         }
-        print("test3");
         synchronized(kits) {
             for (Kit k : kits) {
                 if (k.status == Kit.Status.full) {
@@ -95,14 +94,13 @@ public class CameraAgent extends Agent implements Camera {
                     return true;
                 }
             }
-        }print("test4");
+        }
         synchronized(nests) {
             for (Nest n : nests) {
                 if (n.status == Nest.Status.gettingInspected) {
-                    print("test1");
                     inspectNest(n);
                     return true;
-                }else print("test2");
+                }
             }
         }
         return false;
@@ -137,7 +135,7 @@ public class CameraAgent extends Agent implements Camera {
      * @brief Inspects nests and returns result to nest agent.
      */
     public void inspectNest(Nest nest) {
-        print("Inspecting nest: [" + nest.name + "].");
+        print("Inspecting nest: [" + nest.nestNum + "].");
 //        Nest n = new Nest();
 //        boolean flag = false;
 //        for(Part p : n.parts) {

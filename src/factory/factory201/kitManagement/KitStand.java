@@ -5,7 +5,7 @@ import factory.general.*;
 
 /**
  *
- * @author Alex
+ * @author Alex Young
  */
 public class KitStand {
 
@@ -16,7 +16,7 @@ public class KitStand {
      * Kitting stand which will hold the kit into which parts are being put 3.
      * Inspection stand where full kits are inspected
      */
-    Kit[] kits = new Kit[3];
+    private Kit[] kits = new Kit[3];
 
     public KitStand() {
         kits[0] = kits[1] = kits[2] = null;
