@@ -6,6 +6,7 @@ import factory.general.Kit;
 
 import factory.general.Manager;
 import factory.general.Message;
+import java.awt.AlphaComposite;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -88,13 +89,14 @@ public class KitManager extends Manager {
             {     
             public void paintComponent(Graphics g) 
             {
-                Image img = new ImageIcon("pics/parts/part1.png").getImage();
+                Image img = new ImageIcon("pics/kitbackground.jpg").getImage();
                 Dimension size = new Dimension(600, 400);
                 setPreferredSize(size);
                 setMinimumSize(size);
                 setMaximumSize(size);
                 setSize(size);
                 setLayout(null);
+                
                 g.drawImage(img, 0, 0, null);
             } 
         };
@@ -117,6 +119,7 @@ public class KitManager extends Manager {
             // CREATE KIT PANEL
             
             createkit = new JPanel();
+            
             ImageIcon i = new ImageIcon("kit/create.jpg");
             tabbedPane.addTab("Create Kit", i, createkit);
             
