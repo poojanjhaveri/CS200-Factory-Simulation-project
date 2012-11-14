@@ -53,13 +53,14 @@ public class Kit {
 
     public Kit(String n, String d)
     {
+        
+        // Kit name 
         this.name = n;
-      //  this.description = d;
+      
         this.number = (int)(System.currentTimeMillis()/(long)1000);
     }
     public Kit(String n, String d, Integer i) {
         this.name = n;
-      //  this.description = d;
         this.number = i;
     }
     public String getName()

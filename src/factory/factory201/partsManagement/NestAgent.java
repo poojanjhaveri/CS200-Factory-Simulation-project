@@ -211,7 +211,6 @@ public class NestAgent extends Agent implements NestInterface {
     private void purge(Nest n){
     n.parts.clear();
     //DoPurge();
-    
     n.status = Nest.Status.empty;
     stateChanged();
     }
@@ -221,6 +220,25 @@ public class NestAgent extends Agent implements NestInterface {
     	if (n.parts.contains(p))
     		return true;	}
     	return false;
+    }
+    
+    public void setNestPurge(List<Part> purgeParts){
+        
+        for (Nest n: myNests){
+            for (Part p: purgeParts){
+         if (n.part == p){
+             purgeParts.remove(p);
+             n.status = Nest.Status.hasPart;
+         }   
+        }
+        }
+        for (Part p: purgeParts){
+            for(Nest n: myNests){
+                if(n.status != Nest.Status.hasPart)
+                    n.status = Nest.Status.purge;
+                    n.setPart(p);
+            }
+        }
     }
     
     public boolean emptyNest(){
