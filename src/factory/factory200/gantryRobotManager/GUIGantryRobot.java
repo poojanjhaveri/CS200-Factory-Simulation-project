@@ -18,7 +18,7 @@ import factory.general.MovingDrawable;
  * @author YiWei Roy Zheng
  */
 public class GUIGantryRobot extends MovingDrawable{
-    public static final String IMAGE_PATH = "res/gantryrobot.png";
+    public static final String IMAGE_PATH = "pics/robots/gantryrobot.png";
 
     GUIBin bin;///<null if no bin, otherwise contains the information on the bin
     Boolean extended;///<whether or not the robot has arms extended
@@ -121,9 +121,9 @@ public class GUIGantryRobot extends MovingDrawable{
     
      public void paintMe(JPanel panel, Graphics2D g){
     	Graphics2D g2d = (Graphics2D)g.create();
-    	if(this.bin != null){
-    		this.bin.getImage().paintIcon(panel, g2d, this.getCoordinate().getX(), this.getCoordinate().getY());
-        }
+    	//if(this.bin != null){
+    	//	this.bin.getImage().paintIcon(panel, g2d, this.getCoordinate().getX(), this.getCoordinate().getY());
+        //}
     		this.getImage().paintIcon(panel, g2d, this.getCoordinate().getX(), this.getCoordinate().getY());
     	        g2d.dispose();
      }

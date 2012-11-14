@@ -40,29 +40,29 @@ public class GantryRobotManager extends Manager implements ActionListener {
 //    public void receiveFromServer();///<pull data from server
 //   GUIGantryManager gui;///<break the nonormative situations
     public static final Integer FEED0X = 0;///<x-coordinate of feeder 0
-    public static final Integer FEED0Y = 0;///<y-coordinate of feeder 0
+    public static final Integer FEED0Y = 50;///<y-coordinate of feeder 0
     public static final Integer FEED1X = 0;///<x-coordinate of feeder 1
-    public static final Integer FEED1Y = 0;///<y-coordinate of feeder 1
+    public static final Integer FEED1Y = 200;///<y-coordinate of feeder 1
     public static final Integer FEED2X = 0;///<x-coordinate of feeder 2
-    public static final Integer FEED2Y = 0;///<y-coordinate of feeder 2
+    public static final Integer FEED2Y = 350;///<y-coordinate of feeder 2
     public static final Integer FEED3X = 0;///<x-coordinate of feeder 3
-    public static final Integer FEED3Y = 0;///<y-coordinate of feeder 3
+    public static final Integer FEED3Y = 500;///<y-coordinate of feeder 3
 
-    public static final Integer DUMPX = 0;///<x-coordinate of dump 
-    public static final Integer DUMPY = 0;///<y-coordinate of dump 
+    public static final Integer DUMPX = 260;///<x-coordinate of dump 
+    public static final Integer DUMPY = 600;///<y-coordinate of dump 
 
-    public static final Integer BIN_X = 0;///<x coordinate of all bin locations
-    public static final Integer BIN0Y = 0;///<y coordinate of bin0
-    public static final Integer BIN1Y = 0;///<y coordinate of bin1
-    public static final Integer BIN2Y = 0;///<y coordinate of bin2
-    public static final Integer BIN3Y = 0;///<y coordinate of bin3
-    public static final Integer BIN4Y = 0;///<y coordinate of bin4
-    public static final Integer BIN5Y = 0;///<y coordinate of bin5
-    public static final Integer BIN6Y = 0;///<y coordinate of bin6
-    public static final Integer BIN7Y = 0;///<y coordinate of bin7
+    public static final Integer BIN_X = 450;///<x coordinate of all bin locations
+    public static final Integer BIN0Y = 30;///<y coordinate of bin0
+    public static final Integer BIN1Y = 110;///<y coordinate of bin1
+    public static final Integer BIN2Y = 190;///<y coordinate of bin2
+    public static final Integer BIN3Y = 270;///<y coordinate of bin3
+    public static final Integer BIN4Y = 350;///<y coordinate of bin4
+    public static final Integer BIN5Y = 430;///<y coordinate of bin5
+    public static final Integer BIN6Y = 510;///<y coordinate of bin6
+    public static final Integer BIN7Y = 590;///<y coordinate of bin7
 
-    public static final Integer ROBOT_INITIAL_X = 0;///<spawn x coordinate of gantrybot
-    public static final Integer ROBOT_INITIAL_Y = 0;///<spawn y coordinate of gantrybot
+    public static final Integer ROBOT_INITIAL_X = 300;///<spawn x coordinate of gantrybot
+    public static final Integer ROBOT_INITIAL_Y = 10;///<spawn y coordinate of gantrybot
     
     public GantryRobotManager() {
         graphics= new GRMGraphicPanel();        
