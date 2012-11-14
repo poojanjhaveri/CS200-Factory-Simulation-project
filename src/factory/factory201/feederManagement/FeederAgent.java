@@ -117,18 +117,12 @@ public class FeederAgent extends Agent implements Feeder {
          */
         for (myParts p : parts) {
             if (p.part.type == part.type) {
-            	//print("setting sendTrue");
-            	//p.send=true;
-            	//p.supplyAmount=8;
-            	//stateChanged();
-            	//return;
-            	
+        
                 //is the message from the left lane?
                 if (lane == this.leftLane) {
                     p.send = true;
                     p.sendTo = SendTo.leftLane;
                     p.supplyAmount = 8; //8 parts are passed over
-                    //p.state=PartState.canSend;
                     stateChanged();
                     return;
 
