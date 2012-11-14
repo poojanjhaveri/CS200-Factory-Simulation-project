@@ -70,7 +70,7 @@ public class GRMGraphicPanel extends JPanel implements ActionListener {
         
         paintBinsWithParts(this, g2);
         paintFeeders(this,g2);
-        //gbot.paintMe(this,g2);
+        gbot.paintMe(this,g2);
 	}
 	
 	public void paintBinsWithParts(JPanel j,Graphics2D g){
