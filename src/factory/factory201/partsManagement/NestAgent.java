@@ -59,11 +59,6 @@ public class NestAgent extends Agent implements NestInterface {
     myNests.add(new Nest(6));
     myNests.add(new Nest(7));
  }
-    
-//messages
-
-
-
 
 //messages
     /**

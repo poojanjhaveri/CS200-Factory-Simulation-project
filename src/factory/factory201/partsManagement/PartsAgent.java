@@ -2,6 +2,7 @@ package factory.factory201.partsManagement;
 
 import agent.Agent;
 import factory.factory200.kitAssemblyManager.KitAssemblyManager;
+import factory.factory201.interfaces.Camera;
 
 import factory.factory201.interfaces.NestInterface;
 import factory.factory201.interfaces.PartsInterface;
@@ -29,7 +30,7 @@ public class PartsAgent extends Agent implements PartsInterface {
     MockKitRobot kitrobot;
     Kit kit;
     NestInterface nest;
-
+    Camera camera;
     private List<Part> inventory, grips, kitNeedsParts;
     private List<Kit> newKit;
 
@@ -132,7 +133,7 @@ public class PartsAgent extends Agent implements PartsInterface {
 
         // kitrobot.msgNeedEmptyKit();
         print("New kit being started");
-
+        camera.msgHereIsKitInfo(k);
     	kitNeedsParts.clear();
     	this.kit = k;
        // kit.standNum = Kit.StandNum.one;
@@ -181,7 +182,10 @@ public class PartsAgent extends Agent implements PartsInterface {
         }
 
     }
-
+    
+    public void setCamera(Camera c){
+        this.camera = c;
+    }
     public void setKitRobot(MockKitRobot k) {
         this.kitrobot = k;
     }
