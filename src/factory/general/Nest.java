@@ -21,7 +21,7 @@ public class Nest {
     public Status status;
     public List<Part> parts = new ArrayList<Part>();
     public enum Status {none, empty, needPart, gettingPart, hasPart, full, gettingInspected, readyForKit, purge};
-    public int threshold = 9;
+    public int threshold = 8;
     public Part part;
     public int howMany = 0;
     public Lane lane;
