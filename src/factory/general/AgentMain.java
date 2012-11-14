@@ -97,5 +97,5 @@ public class AgentMain {
             }
             feeder[i].startThread();
         }
-    }
-}
+    } // END main
+} // END AgentMain

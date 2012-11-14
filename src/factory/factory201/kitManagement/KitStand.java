@@ -19,9 +19,10 @@ public class KitStand {
     Kit[] kits = new Kit[3];
 
     public KitStand() {
-        Kit k = new Kit("Test");
-        k.status = Kit.Status.full;
-        kits[1] = k;
+        kits[0] = kits[1] = kits[2] = null;
+//        Kit k = new Kit("Test");
+//        k.status = Kit.Status.full;
+//        kits[1] = k;
     }
     /**
      * When adding a kit to the kit stand, the kitting stand has first priority,
