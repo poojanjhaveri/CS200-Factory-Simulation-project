@@ -1,4 +1,4 @@
-package factory.factory201.Test;
+package factory.factory201.test;
 
 import static org.junit.Assert.*;
 import factory.general.Kit;
@@ -8,7 +8,6 @@ import org.junit.Test;
  * @author Alex Young
  */
 public class KitRobotTest {
-
     @Test
     public void msgHereIsEmptyKit(Kit kit) {
     }
