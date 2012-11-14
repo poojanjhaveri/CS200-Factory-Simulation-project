@@ -215,7 +215,8 @@ public class GantryAgent extends Agent implements Gantry {
     	 * THE BINNUM IS OBTAINED BY b.index, each bin has 8 parts of one type(Part part)
     	 * TO DETERMINE WHICH FEEDER IT GOES TO, USE f.index (that's initialized through constructor)
          */
-    	print("Sending message to feeder");
+    	//print("Sending message to feeder");
+        print("sending message here are parts to " + f.index);
         f.feeder.msgHereAreParts(parts);
         
     	doSupplyPart(b,f);
@@ -223,7 +224,7 @@ public class GantryAgent extends Agent implements Gantry {
     	//animation.pickUpBin(binNum);
     	//animation.goToFeeder(feederNum);
     	//animation.putOffBin();
-    	print("sending message here are parts to" + f.index);
+    	
         
         //print("request state has been set to false for " + f.index);
         //update the quantity of bins
