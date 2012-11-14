@@ -31,18 +31,18 @@ public class GantryAgent extends Agent implements Gantry {
 
     Timer timer=new Timer();
     //---------------------------------------------------------------------------
-    private LMServerMain serverMain;
-    private LMGantryRobotForAgent animation;
-    private LMFeederForAgent animation1;
+    //private LMServerMain serverMain;
+    //private LMGantryRobotForAgent animation;
+    //private LMFeederForAgent animation1;
   //---------------------------------------------------------------------------
     
     //numOfBins is the number of bins that gantry is initialized to, will be the same for v0, each bin has 8 parts.
-    public GantryAgent(int numOfBins, String name, LMServerMain serverMain){
+    public GantryAgent(int numOfBins, String name){
     	super(name);
     	//---------------------------------------------------------------------------
-    	this.serverMain = serverMain;
-    	this.animation = serverMain.getForAgentGantry();
-    	this.animation1 = serverMain.getForAgentFeeder();
+    	//this.serverMain = serverMain;
+    	//this.animation = serverMain.getForAgentGantry();
+    	//this.animation1 = serverMain.getForAgentFeeder();
     	//---------------------------------------------------------------------------
     	
     	//this.feeder=feeder;

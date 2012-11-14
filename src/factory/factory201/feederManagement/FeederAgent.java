@@ -49,10 +49,10 @@ public class FeederAgent extends Agent implements Feeder {
     //public enum PartState {noState,canSend,needPart,sentRequest};
     
  
-    public FeederAgent(String name,int index,LMServerMain serverMain){
+    public FeederAgent(String name,int index){
         super(name);
      	
-    	System.out.println("testing null pointer exception");
+    	//System.out.println("testing null pointer exception");
     	Part p1=new Part(1);
     	Part p2=new Part(2);
     	Part p3=new Part(3);
@@ -75,15 +75,15 @@ public class FeederAgent extends Agent implements Feeder {
      	System.out.println("parts added to the list");
    
     	//---------------------------------------------------------------------------
-    	this.serverMain = serverMain;
-    	this.animation = serverMain.getForAgentFeeder();
+    	//this.serverMain = serverMain;
+    	//this.animation = serverMain.getForAgentFeeder();
     	
     	// Initialization
     	this.feederNum=index;
     	//animation.setSwitchOn(feederNum-1);
     	//animation.setDiverterSwitchLeft(feederNum-1);
     	//animation.setDiverterSwitchRight(feederNum-1);
-    	animation.setFeedPartsSwitchOn(feederNum-1);
+    	//animation.setFeedPartsSwitchOn(feederNum-1);
     	//---------------------------------------------------------------------------
     }
     public enum SendTo {
@@ -280,7 +280,7 @@ public class FeederAgent extends Agent implements Feeder {
 			e.printStackTrace();
 		}
     	
-    	animation.setDiverterSwitchLeft(feederNum-1);
+  //  	animation.setDiverterSwitchLeft(feederNum-1);
     }
     
     private void dosendPartToRightLane(myParts p){
@@ -291,7 +291,7 @@ public class FeederAgent extends Agent implements Feeder {
 			e.printStackTrace();
 		}
     	
-    	animation.setDiverterSwitchRight(feederNum-1);
+//    	animation.setDiverterSwitchRight(feederNum-1);
     }
 
 

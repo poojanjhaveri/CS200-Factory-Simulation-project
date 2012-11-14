@@ -38,11 +38,11 @@ public class LaneAgent extends Agent implements Lane {
     private LMLaneForAgent animation;
     //---------------------------------------------------------------------------
 
-    public LaneAgent(String name,LMServerMain serverMain){
+    public LaneAgent(String name){
     	super(name);
     	//---------------------------------------------------------------------------
-    	this.serverMain = serverMain;
-    	this.animation = serverMain.getForAgentLane();
+    	//this.serverMain = serverMain;
+    	//this.animation = serverMain.getForAgentLane();
     	
     	// Initialization
     	//this.laneNum=num;
@@ -50,8 +50,8 @@ public class LaneAgent extends Agent implements Lane {
     	//this.rightIndex=rightNum;
     	
     	//start the animation for both left and right
-    	animation.setSwitchOn(leftIndex-1);
-    	animation.setSwitchOn(rightIndex-1);
+    	//animation.setSwitchOn(leftIndex-1);
+    	//animation.setSwitchOn(rightIndex-1);
     	//---------------------------------------------------------------------------
     	
     	Part p1=new Part(1);
@@ -66,8 +66,8 @@ public class LaneAgent extends Agent implements Lane {
     	
     	//part type, quantity, index (quantity started with is 0
     	parts.add(new myParts(p1,0,1));
-     	parts.add(new myParts(p2,9,2));
-     	parts.add(new myParts(p3,9,3));
+     	parts.add(new myParts(p2,0,2));
+     	parts.add(new myParts(p3,0,3));
      	parts.add(new myParts(p4,9,4));
      	parts.add(new myParts(p5,9,5));
      	parts.add(new myParts(p6,9,6));
