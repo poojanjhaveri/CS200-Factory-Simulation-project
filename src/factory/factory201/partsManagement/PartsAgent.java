@@ -71,7 +71,7 @@ public class PartsAgent extends Agent implements PartsInterface {
 //Scheduler
 
     @Override
-    protected boolean pickAndExecuteAnAction() {
+    public boolean pickAndExecuteAnAction() {
 
         if (!newKit.isEmpty()) {
            

@@ -237,7 +237,6 @@ public class GantryAgent extends Agent implements Gantry {
     	print("about to pick up bin");
   //  	animation.pickUpBin(b.index-1);
     	//while(animation.p)
-    	System.out.println("sending index " + f.index);
     	
     	try {
 			Thread.sleep(10000);
