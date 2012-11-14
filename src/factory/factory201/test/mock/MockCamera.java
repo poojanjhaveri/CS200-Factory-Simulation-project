@@ -33,4 +33,9 @@ NestAgent nest1;
     public void setNestAgent(NestAgent n){
         this.nest1 = n;
     }
+
+    @Override
+    public void msgHereIsKitInfo(Kit kit) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 }

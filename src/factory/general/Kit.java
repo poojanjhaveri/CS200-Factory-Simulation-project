@@ -23,7 +23,7 @@ public class Kit {
     public String name;
     public Status status;
     public StandNum standNum;
-    private List<Part> parts = new ArrayList<Part>();
+    public List<Part> parts = new ArrayList<Part>();
     public int kitNeedsParts;
 
     public Kit(String name) {

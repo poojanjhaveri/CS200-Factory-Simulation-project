@@ -6,6 +6,7 @@ package factory.factory201.partsManagement;
 
 import agent.Agent;
 import factory.factory201.feederManagement.LaneAgent;
+import factory.factory201.interfaces.Camera;
 import factory.factory201.interfaces.Lane;
 import factory.factory201.interfaces.NestInterface;
 import factory.factory201.interfaces.PartsInterface;
@@ -39,7 +40,7 @@ public class NestAgent extends Agent implements NestInterface {
     private List<Part> needParts;
     private List<Nest> nests;
     PartsInterface partsagent;
-    MockCamera camera;
+    Camera camera;
     private int nestNumber;
 
     //private List<Nest> nests = Collections.synchronizedList(new ArrayList<Nest>());
@@ -178,7 +179,7 @@ public class NestAgent extends Agent implements NestInterface {
     print("requesting " + n.part);
     	
     	n.status = Nest.Status.gettingPart;
-        lanes[n.nestNum].msgNeedPart(null);
+        lanes[n.nestNum].msgNeedPart(n.part);
     	stateChanged();
 
     }
@@ -232,7 +233,7 @@ public class NestAgent extends Agent implements NestInterface {
         return myNests.get(n);
     }
     
-    public void setCamera(MockCamera c){
+    public void setCamera(Camera c){
         this.camera = c;
     }
 
