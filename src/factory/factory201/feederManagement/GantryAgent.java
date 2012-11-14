@@ -57,7 +57,7 @@ public class GantryAgent extends Agent implements Gantry {
     	Part p7=new Part(7);
     	Part p8=new Part(8);
     	
-    	System.out.println("parts added");
+    //	System.out.println("parts added");
     	//part 1 is in bin 1 
     	bins.add(new myBin(p1,numOfBins,1));
     	
@@ -81,7 +81,7 @@ public class GantryAgent extends Agent implements Gantry {
     	
     	//part 8 is in bin 8 
     	bins.add(new myBin(p8,numOfBins,8));
-    	System.out.println("bins added");
+    //	System.out.println("bins added");
     }
 
     
@@ -150,7 +150,8 @@ public class GantryAgent extends Agent implements Gantry {
 
     public void msgNeedPart(Part part,Feeder feeder) {
     	
-    	System.out.println("part need message from feeder received");
+        print("msgNeedPart from Feeder for type " + part.type);
+    	//System.out.println("part need message from feeder received");
     	for(myFeeder f: myFeeders)
     	{
     		if(f.feeder==feeder){
