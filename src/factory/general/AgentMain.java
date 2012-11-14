@@ -75,6 +75,7 @@ public class AgentMain {
         for (int i = 0; i < LANE; i+=2) {
             lane[i].setFeeder(feeder[i/2]);
             lane[i+1].setFeeder(feeder[i/2]);
+            
             lane[i].setNest(nestAgent);
             lane[i+1].setNest(nestAgent);
         }
@@ -96,11 +97,11 @@ public class AgentMain {
         
         // Kevin
         gantry.startThread();
-        for (int i = 0; i < FEEDER; i++) {
-            if(i < LANE) { 
-                lane[i].startThread(); 
+        for (int i = 0; i < LANE; i++) {
+            if(i < FEEDER) { 
+                feeder[i].startThread(); 
             }
-            feeder[i].startThread();
+            lane[i].startThread();
         }
         
         /*========== Misc. ==========*/
