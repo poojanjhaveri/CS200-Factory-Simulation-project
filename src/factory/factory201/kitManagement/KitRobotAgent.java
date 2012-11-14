@@ -198,6 +198,14 @@ public class KitRobotAgent extends Agent implements KitRobot {
         this.KAM = KAM;
     }
 
+    public void setAll(Camera camera, Conveyor conveyor, 
+            PartsInterface partsAgent, KitAssemblyManager KAM) {
+        this.camera = camera;
+        this.conveyor = conveyor;
+        this.partsAgent = partsAgent;
+        this.KAM = KAM;
+    }
+    
     /**
     * Animation call for agent action
     */    

@@ -169,6 +169,13 @@ public class CameraAgent extends Agent implements Camera {
         this.KAM = KAM;
     }
     
+    public void setAll(KitAssemblyManager KAM, KitRobot kitRobot, 
+            NestInterface nestAgent) {
+        this.KAM = KAM;
+        this.kitRobotAgent = kitRobot;
+        this.nestAgent = nestAgent;
+    }
+    
 
     private void DoInspectKit(Kit kit) {
         KAM.flashKitCamera();

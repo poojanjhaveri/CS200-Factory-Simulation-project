@@ -5,19 +5,16 @@
 package factory.factory201.partsManagement;
 
 import agent.Agent;
-import factory.factory201.feederManagement.LaneAgent;
+import factory.factory201.interfaces.Camera;
 import factory.factory201.interfaces.Lane;
 import factory.factory201.interfaces.NestInterface;
 import factory.factory201.interfaces.PartsInterface;
-import factory.factory201.test.mock.MockCamera;
 import factory.factory201.test.mock.MockLane;
 import factory.general.Nest;
 import factory.general.Part;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class NestAgent extends Agent implements NestInterface {
 
@@ -39,7 +36,7 @@ public class NestAgent extends Agent implements NestInterface {
     private List<Part> needParts;
     private List<Nest> nests;
     PartsInterface partsagent;
-    MockCamera camera;
+    Camera camera;
     private int nestNumber;
 
     //private List<Nest> nests = Collections.synchronizedList(new ArrayList<Nest>());
@@ -232,7 +229,7 @@ public class NestAgent extends Agent implements NestInterface {
         return myNests.get(n);
     }
     
-    public void setCamera(MockCamera c){
+    public void setCamera(Camera c){
         this.camera = c;
     }
 

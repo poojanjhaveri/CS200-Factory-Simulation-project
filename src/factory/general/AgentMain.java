@@ -1,6 +1,7 @@
 package factory.general;
 
 import factory.factory200.kitAssemblyManager.KitAssemblyManager;
+import factory.factory200.laneManager.ServerSide.LMServerMain;
 import factory.factory201.feederManagement.FeederAgent;
 import factory.factory201.feederManagement.GantryAgent;
 import factory.factory201.feederManagement.LaneAgent;
@@ -9,8 +10,6 @@ import factory.factory201.kitManagement.ConveyorAgent;
 import factory.factory201.kitManagement.KitRobotAgent;
 import factory.factory201.partsManagement.NestAgent;
 import factory.factory201.partsManagement.PartsAgent;
-import factory.factory201.test.mock.MockNest;
-import factory.factory201.test.mock.MockParts;
 
 /**
  *
@@ -23,86 +22,80 @@ public class AgentMain {
 
     public static void main(String args) {
 
+        /*========== Declare all agents and etc. ==========*/
         
+        // Misc
+        LMServerMain serverMain = new LMServerMain();
         KitAssemblyManager KAM = new KitAssemblyManager();
 
+        // Alex
         KitRobotAgent kitRobot = new KitRobotAgent("Kit Robot");
         CameraAgent camera = new CameraAgent("Camera");
         ConveyorAgent conveyor = new ConveyorAgent("Conveyor");
+        
+        // Patrick
         PartsAgent partsAgent = new PartsAgent("Parts Agent");
         NestAgent nestAgent = new NestAgent("Nest Agent");
 
+        // Kevin
         FeederAgent[] feeder = new FeederAgent[FEEDER];
+        GantryAgent gantry = new GantryAgent(8, "Gantry", serverMain);
         LaneAgent[] lane = new LaneAgent[LANE];
-        GantryAgent gantry;
-
-        for (int i = 0; i < LANE; i++) {
-            lane[i] = new LaneAgent("Lane " + i, serverMain);
-        }
         for (int i = 0; i < FEEDER; i++) {
-            feeder[i] = new FeederAgent("Feeder " + i, i + 1, serverMain);
+            if(i < LANE) { 
+                lane[i] = new LaneAgent("Lane " + i, serverMain); 
+            }
+            feeder[i] = new FeederAgent("Feeder " + i, i, serverMain);
         }
-        for (int i = 0; i < LANE; i++) {
+        
+        
+        /*========== Pass proper agents to everyone ==========*/
+        
+        // Alex
+        kitRobot.setAll(camera, conveyor, partsAgent, KAM);
+        camera.setAll(KAM, kitRobot, nestAgent);
+        conveyor.setAll(KAM, kitRobot);
+        
+        // Patrick
+        partsAgent.setCamera(camera);
+        partsAgent.setKitAssemblyManager(KAM);
+        partsAgent.setKitRobot(kitRobot);
+        partsAgent.setNestInterface(nestAgent);
+        nestAgent.setCamera(camera);
+        nestAgent.setPartsAgent(partsAgent);
+        
+        // Kevin
+        for (int i = 0, j = 0; i < FEEDER; i++, j++) {
+            feeder[i].setGantry(gantry);
+            feeder[i].setLeftLane(lane[j]);
+            feeder[i].setRightLane(lane[++j]);
+            gantry.setFeeder(feeder[i], i);
             
         }
+        for (int i = 0; i < LANE; i+=2) {
+            lane[i].setFeeder(feeder[i/2]);
+            lane[i+1].setFeeder(feeder[i/2]);
+        }
 
-//      FeederAgent feeder1;
-//	FeederAgent feeder2;
-//	FeederAgent feeder3;
-//	FeederAgent feeder4;
-//      LaneAgent lane1;
-//	LaneAgent lane2;
-//	LaneAgent lane3;
-//	LaneAgent lane4;
-//	LaneAgent lane5;
-//	LaneAgent lane6;
-//	LaneAgent lane7;
-//	LaneAgent lane8;
-//	
-//        
-//        gantry=new GantryAgent(8,"Gantry",serverMain);
-//		
-//		lane1=new LaneAgent("Lane 1",1,2,serverMain);
-//		lane2=new LaneAgent("Lane 2",3,4,serverMain);
-//		lane3=new LaneAgent("Lane 3",5,6,serverMain);
-//		lane4=new LaneAgent("Lane 4",7,8,serverMain);
-//                feeder1=new FeederAgent("Feeder 1",1,serverMain);
-//		feeder2=new FeederAgent("Feeder 2",2,serverMain);
-//		feeder3=new FeederAgent("Feeder 3",3,serverMain);
-//		feeder4=new FeederAgent("Feeder 4",4,serverMain);
-//                lane1.setFeeder(feeder1);
-//		lane2.setFeeder(feeder2);
-//
-//		lane3.setFeeder(feeder3);
-//		lane4.setFeeder(feeder4);
-//                feeder1.setGantry(gantry);
-//		feeder2.setGantry(gantry);
-//		feeder3.setGantry(gantry);
-//		feeder4.setGantry(gantry);
-//                feeder1.setLane(lane1);
-//		feeder2.setLane(lane2);
-//		feeder3.setLane(lane3);
-//		feeder4.setLane(lane4);
-//                gantry.setFeeder(feeder1,1);
-//		gantry.setFeeder(feeder2,2);
-//		gantry.setFeeder(feeder3,3);
-//		gantry.setFeeder(feeder4,4);
-//		
-//		gantry.startThread();
-//		
-//		feeder1.startThread();
-//		feeder2.startThread();
-//		feeder3.startThread();
-//		feeder4.startThread();
-//		
-//		lane1.startThread();
-//		lane2.startThread();
-//		lane3.startThread();
-//		lane4.startThread();
-
-
+        
+        /*========== Start all of the threads ==========*/
+        
+        // Alex
         kitRobot.startThread();
         camera.startThread();
         conveyor.startThread();
+        
+        //Patrick
+        partsAgent.startThread();
+        nestAgent.startThread();
+        
+        // Kevin
+        gantry.startThread();
+        for (int i = 0; i < FEEDER; i++) {
+            if(i < LANE) { 
+                lane[i].startThread(); 
+            }
+            feeder[i].startThread();
+        }
     }
 }

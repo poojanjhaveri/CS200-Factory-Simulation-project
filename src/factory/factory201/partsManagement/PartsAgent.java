@@ -3,11 +3,9 @@ package factory.factory201.partsManagement;
 import agent.Agent;
 import factory.factory200.kitAssemblyManager.KitAssemblyManager;
 import factory.factory201.interfaces.Camera;
-
+import factory.factory201.interfaces.KitRobot;
 import factory.factory201.interfaces.NestInterface;
 import factory.factory201.interfaces.PartsInterface;
-import factory.factory201.test.mock.MockKitRobot;
-
 import factory.general.Kit;
 import factory.general.Part;
 import java.util.ArrayList;
@@ -27,7 +25,7 @@ import java.util.List;
 public class PartsAgent extends Agent implements PartsInterface {
 
     KitAssemblyManager kam;
-    MockKitRobot kitrobot;
+    KitRobot kitrobot;
     Kit kit;
     NestInterface nest;
     Camera camera;
@@ -186,7 +184,7 @@ public class PartsAgent extends Agent implements PartsInterface {
     public void setCamera(Camera c){
         this.camera = c;
     }
-    public void setKitRobot(MockKitRobot k) {
+    public void setKitRobot(KitRobot k) {
         this.kitrobot = k;
     }
 

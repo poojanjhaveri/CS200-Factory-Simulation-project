@@ -190,6 +190,11 @@ public class ConveyorAgent extends Agent implements Conveyor {
         this.KAM = KAM;
     }
     
+    public void setAll(KitAssemblyManager KAM, KitRobot kitRobot) {
+        this.KAM = KAM;
+        this.kitRobotAgent = kitRobot;
+    }
+    
     private void DoAddKit(Kit k) {
         //Needs to be done
     }
