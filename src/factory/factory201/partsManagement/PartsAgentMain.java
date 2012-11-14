@@ -12,7 +12,7 @@ import factory.factory201.test.mock.MockLane;
 
 /**
  *
- * @author polarpatbear
+ * @author James Dalton
  */
 public class PartsAgentMain{
         
@@ -33,17 +33,11 @@ public class PartsAgentMain{
         LaneAgent lane5;
         LaneAgent lane6;
         LaneAgent lane7;
-        
+    }}
+     /*   
         kam = new KitAssemblyManager();
         lane = new MockLane("LANE");
-        lane0 = new LaneAgent("Lane0");
-        lane1 = new LaneAgent("Lane1");
-        lane2 = new LaneAgent("Lane2");
-        lane3 = new LaneAgent("Lane3");
-        lane4 = new LaneAgent("Lane4");
-        lane5 = new LaneAgent("Lane5");
-        lane6 = new LaneAgent("Lane6");
-        lane7 = new LaneAgent("Lane7");
+   
         
         parts = new PartsAgent("PartsAgent");
         kitrobot = new KitRobot("KITROBOT");
@@ -78,7 +72,7 @@ public class PartsAgentMain{
         nest.startThread();
         
         camera.startThread();
-        
+       
         
     }
     /*
@@ -89,6 +83,7 @@ public class PartsAgentMain{
     * "" "".dropOffParts();
     * "" "" .pickPartCommand();//picks up a part at its current nest
     */
+        /*
     public static void main(String[] args) {
        MockLane lane;
         KitAssemblyManager kam; 
@@ -120,8 +115,8 @@ public class PartsAgentMain{
         kitrobot.msgNeedEmptyKit();
         
     }
+    * }   
     
+ */   
     
-    
-    
-}
+

@@ -1,9 +1,10 @@
 package factory.factory201.feederManagement;
-import factory.factory200.laneManager.*;
 import factory.factory201.interfaces.Feeder;
 import factory.factory201.interfaces.NestInterface;
 import factory.factory201.interfaces.Lane;
 import agent.Agent;
+import factory.factory200.laneManager.ServerSide.LMLaneForAgent;
+import factory.factory200.laneManager.ServerSide.LMServerMain;
 import factory.general.Part;
 import factory.general.Part.Type;
 
@@ -33,14 +34,12 @@ public class LaneAgent extends Agent implements Lane {
     int rightIndex; // right index of the lane
     
     //---------------------------------------------------------------------------
-    private ServerMain serverMain;
-    private ServerForAgentLane animation;
+    private LMServerMain serverMain;
+    private LMLaneForAgent animation;
     //---------------------------------------------------------------------------
 
-    
-    public LaneAgent(String name, int leftNum,int rightNum,ServerMain serverMain){
+    public LaneAgent(String name, int leftNum,int rightNum,LMServerMain serverMain){
     	super(name);
-
     	//---------------------------------------------------------------------------
     	this.serverMain = serverMain;
     	this.animation = serverMain.getForAgentLane();
@@ -67,13 +66,13 @@ public class LaneAgent extends Agent implements Lane {
     	
     	//part type, quantity, index (quantity started with is 0
     	parts.add(new myParts(p1,0,1));
-     	parts.add(new myParts(p2,0,2));
-     	parts.add(new myParts(p3,0,3));
-     	parts.add(new myParts(p4,0,4));
-     	parts.add(new myParts(p5,0,5));
-     	parts.add(new myParts(p6,0,6));
-     	parts.add(new myParts(p7,0,7));
-     	parts.add(new myParts(p8,0,8));
+     	parts.add(new myParts(p2,9,2));
+     	parts.add(new myParts(p3,9,3));
+     	parts.add(new myParts(p4,9,4));
+     	parts.add(new myParts(p5,9,5));
+     	parts.add(new myParts(p6,9,6));
+     	parts.add(new myParts(p7,9,7));
+     	parts.add(new myParts(p8,9,8));
      	System.out.println("parts added to the list");
     
     }

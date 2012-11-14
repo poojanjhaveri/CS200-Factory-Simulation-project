@@ -20,7 +20,7 @@ NestAgent nest1;
     public void msgNestIsFull(Nest nest) {
         log.add(new LoggedEvent("Received msgNestIsFull from nest agent that "
                 + "nest: " + nest.name + " is full."));
-        nest1.msgNestInspected(nest, true);
+        
         
         
     }

@@ -30,25 +30,24 @@ public class NestAgent extends Agent implements NestInterface {
     Lane lane6;
     Lane lane7;
     Lane lanes[] = {lane0, lane1, lane2, lane3, lane4, lane5, lane6, lane7};
-    Kit kit;
+    //Kit kit;
     
     MockLane lane;
 
-    private List<Nest> myNests;
-    private Map<Nest, LaneAgent> lanes;
+    public List<Nest> myNests;
+    //private Map<Nest, LaneAgent> lanes = new HashMap<Nest, LaneAgent>();
     private List<Part> needParts;
     private List<Nest> nests;
     PartsInterface partsagent;
     MockCamera camera;
     private int nestNumber;
 
-    private List<Nest> nests = Collections.synchronizedList(new ArrayList<Nest>());
+    //private List<Nest> nests = Collections.synchronizedList(new ArrayList<Nest>());
     enum Status {none, needPart, gettingPart, full, gettingInspected, readyForKit, purge};
     
     NestAgent(String name) {
     super(name);
     this.myNests = Collections.synchronizedList(new ArrayList<Nest>());
-    this.lanes = new HashMap<Nest, LaneAgent>();
     this.needParts = Collections.synchronizedList(new ArrayList<Part>());
     this.nests = Collections.synchronizedList(new ArrayList<Nest>());
     myNests.add(new Nest(0));
@@ -73,7 +72,7 @@ public class NestAgent extends Agent implements NestInterface {
      * @param p This is a part
      */
 
-    
+    /*
     public void msgNewKit(List<Part> kitParts){
         
             for (Nest n: myNests){
@@ -83,21 +82,26 @@ public class NestAgent extends Agent implements NestInterface {
                     kitParts.remove(p);
             }
         }
-    }
+            for (Part p: kitParts){
+                for (Nest n: myNests){
+                    if(n.status != Nest.Status.hasPart)
+                }
+            }
+    }*/
     public void msgNeedPart(Part p) {
         
-    	if (emptyNest()){
+    	if (!hasPart(p)){
             for (Nest n: myNests){
-                if (n.status == Nest.Status.empty){
-                    n.setPart(p);
+                //if (n.status == Nest.Status.empty){
+                if(n.parts.size()==0){  
+                n.setPart(p);
                     //nestParts.put(n.nestNum, p);
                     n.status = Nest.Status.needPart;
                     print("Part " + p + " is not taken by a nest, part is being assigned to the nest "+ n.nestNum);
                     break;
                 }
             }
-          
-        }
+     }
         else{
             for (Nest n: myNests){
     		if(n.parts.contains(p)){
@@ -107,19 +111,18 @@ public class NestAgent extends Agent implements NestInterface {
         stateChanged();
     }
 
-    @Override
-    public void msgHereAreParts(Part p, int quantity) {
+    public void msgHereAreParts(List<Part> kitParts){
+        Part p = kitParts.get(0);
         for (Nest n : myNests) {
             if (n.part.equals(p)) {
-                n.howMany += quantity;
-            }
-        }
-        print("adding " + quantity + " " + p + " to the nest ");
-        for (Nest n : myNests) {
-            if (n.part.equals(p)) {
+                for (int i =0; i<kitParts.size(); i++){
+                    n.parts.add(kitParts.get(i));
+                }
+                if (n.parts.size()==n.threshold)
                 n.status = Nest.Status.full;
             }
         }
+        print("adding " + kitParts.size() + " " + p + " to the nest ");
         stateChanged();
     }
 
@@ -137,9 +140,8 @@ public class NestAgent extends Agent implements NestInterface {
     //scheduler
 
     @Override
-    protected boolean pickAndExecuteAnAction() {
+    public boolean pickAndExecuteAnAction() {
 
-        if (!myNests.isEmpty()) {
 
             for (Nest n : myNests) {
                 if (n.status == Nest.Status.needPart) {
@@ -156,7 +158,7 @@ public class NestAgent extends Agent implements NestInterface {
                 }
 
             }
-        }
+        
 
         for (Nest n : myNests) {
             if (n.status == Nest.Status.readyForKit) {
@@ -235,15 +237,9 @@ public class NestAgent extends Agent implements NestInterface {
         return myNests.get(n);
     }
     
-    public void setCameraAgent(MockCamera c){
+    public void setCamera(MockCamera c){
         this.camera = c;
     }
-   /*
-    public void setLane(Lane l){
-        this.lane = l;
-    }*/
-    
-    
 
     public void setPartsAgent(PartsInterface parts) {
         this.partsagent = parts;

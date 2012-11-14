@@ -1,10 +1,10 @@
 package factory.factory201.feederManagement;
-import factory.factory200.laneManager.*;
+import factory.factory200.laneManager.ServerSide.LMServerMain;
 //import factory.factory201.partsManagement.NestAgent;
 
 public class AgentMain implements Runnable { // BY DONGYOUNG this class is RUNNABLE(THREAD)
 	
-	ServerMain serverMain;
+	LMServerMain serverMain;
 	
 	FeederAgent feeder1;
 	FeederAgent feeder2;
@@ -33,7 +33,7 @@ public class AgentMain implements Runnable { // BY DONGYOUNG this class is RUNNA
 	
 	GantryAgent gantry;
 	
-	public AgentMain( ServerMain serverMain ){
+	public AgentMain( LMServerMain serverMain ){
 		this.serverMain = serverMain;
 	}
 	
