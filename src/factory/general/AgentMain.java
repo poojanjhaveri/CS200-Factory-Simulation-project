@@ -20,7 +20,7 @@ public class AgentMain {
     private static final int FEEDER = 4;
     private static final int LANE = 8;
 
-    public static void main(String args) {
+    public static void main(String[] args) {
 
         /*========== Declare all agents and etc. ==========*/
         
