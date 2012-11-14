@@ -111,7 +111,7 @@ public class FeederAgent extends Agent implements Feeder {
 
     @Override
     public void msgNeedPart(Part part, Lane lane) {
-    	print("Receiving message need part from lane to feeder at " + feederNum);
+    	print("Received msgNeedPart");
         /*
          * Search in the myParts list and see if the request can be fulfilled by checking with the quantity of each part
          */
@@ -158,6 +158,7 @@ public class FeederAgent extends Agent implements Feeder {
     public void msgHereAreParts(Part part, int quantity) {
     	int partIndex=0;
     	requestState=false;
+        print("Received msgHereAreParts from Gantry");
     	print("qty received is " + quantity);
         //add to the existing list of parts if the parts already exist
         for (myParts p : parts) {
@@ -246,7 +247,8 @@ public class FeederAgent extends Agent implements Feeder {
 
     private void sendPartToLeftLane(myParts p) {
         
-    	leftLane.msgHereAreParts(p.part,8);
+        print("I am supplying parts to leftLane");
+        leftLane.msgHereAreParts(p.part,8);
     	dosendPartToLeftLane(p);
     	//animation.setDiverterSwitchLeft(feederNum-1);
     
@@ -254,7 +256,7 @@ public class FeederAgent extends Agent implements Feeder {
     }
     
     private void sendPartToRightLane(myParts p) {
-        
+        print("I am supplying parts to rightLane");
     	rightLane.msgHereAreParts(p.part,8);
     	dosendPartToRightLane(p);
     	//animation.setDiverterSwitchLeft(feederNum-1);

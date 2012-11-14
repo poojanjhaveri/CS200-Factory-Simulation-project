@@ -1,4 +1,5 @@
 package factory.factory201.feederManagement;
+
 import factory.factory201.interfaces.Feeder;
 import factory.factory201.interfaces.Gantry;
 import agent.Agent;
@@ -242,10 +243,10 @@ public class GantryAgent extends Agent implements Gantry {
     }
     private void doSupplyPart(myBin b,myFeeder f){
     	print("go to bin command");
-    	animation.goToBin(b.index-1);
+//    	animation.goToBin(b.index-1);
     	//while(animation.returnArrived()==false){;}
     	print("about to pick up bin");
-    	animation.pickUpBin(b.index-1);
+  //  	animation.pickUpBin(b.index-1);
     	//while(animation.p)
     	System.out.println("sending index " + f.index);
     	
@@ -255,7 +256,7 @@ public class GantryAgent extends Agent implements Gantry {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    	animation.goToFeeder(f.index-1);
+    //	animation.goToFeeder(f.index-1);
     	
     	try {
 			Thread.sleep(10000);
@@ -265,8 +266,8 @@ public class GantryAgent extends Agent implements Gantry {
 		}
     	
     	//while(animation.returnArrived()==false){;}
-    	animation1.fillInFeeder(f.index-1,b.index-1,8);
-    	animation1.dumpBinBoxIntoFeeder(f.index-1, b.index-1);
+    //	animation1.fillInFeeder(f.index-1,b.index-1,8);
+    //	animation1.dumpBinBoxIntoFeeder(f.index-1, b.index-1);
     	
     }
     public void setFeeder(Feeder feeder,int index) {
