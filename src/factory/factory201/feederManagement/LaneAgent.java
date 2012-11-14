@@ -190,7 +190,7 @@ public class LaneAgent extends Agent implements Lane {
         if(requestedPart==false){
         synchronized(parts){
         for(myParts p: parts){
-        	if(p.quantity<8){
+        	if(p.quantity<p.supplyAmount){
 	        	//if(askCount==0){
 	        	askForPart(p.part);
 	        	requestedPart=true;

@@ -75,6 +75,8 @@ public class AgentMain {
         for (int i = 0; i < LANE; i+=2) {
             lane[i].setFeeder(feeder[i/2]);
             lane[i+1].setFeeder(feeder[i/2]);
+            lane[i].setNest(nestAgent);
+            lane[i+1].setNest(nestAgent);
         }
 
         
