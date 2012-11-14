@@ -99,5 +99,17 @@ public class AgentMain {
             }
             feeder[i].startThread();
         }
+        Kit kit = new Kit("Kit 1");
+        
+        kit.addPart(new Part(1));
+        kit.addPart(new Part(2));
+        kit.addPart(new Part(3));
+        kit.addPart(new Part(4));
+        kit.addPart(new Part(5));
+        kit.addPart(new Part(6));
+        kit.addPart(new Part(7));
+        kit.addPart(new Part(8));
+        
+        partsAgent.msgEmptyKitReady(kit);
     }
 }
