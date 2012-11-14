@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 package factory.factory201.test;
-import factory.factory201.Test.mock.MockParts;
+import factory.factory201.test.mock.MockParts;
 import factory.factory201.partsManagement.NestAgent;
 import factory.factory201.test.mock.MockCamera;
 import factory.factory201.test.mock.MockLane;

@@ -45,7 +45,7 @@ public class NestAgent extends Agent implements NestInterface {
     //private List<Nest> nests = Collections.synchronizedList(new ArrayList<Nest>());
     enum Status {none, needPart, gettingPart, full, gettingInspected, readyForKit, purge};
     
-    NestAgent(String name) {
+   public NestAgent(String name) {
     super(name);
     this.myNests = Collections.synchronizedList(new ArrayList<Nest>());
     this.needParts = Collections.synchronizedList(new ArrayList<Part>());
@@ -89,7 +89,7 @@ public class NestAgent extends Agent implements NestInterface {
             }
     }*/
     public void msgNeedPart(Part p) {
-        
+        synchronized(myNests){
     	if (!hasPart(p)){
             for (Nest n: myNests){
                 //if (n.status == Nest.Status.empty){
@@ -108,7 +108,7 @@ public class NestAgent extends Agent implements NestInterface {
             giveToKit(n);}}}
     	
 
-        stateChanged();
+        stateChanged();}
     }
 
     public void msgHereAreParts(List<Part> kitParts){
