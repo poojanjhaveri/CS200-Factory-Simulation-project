@@ -40,11 +40,11 @@ public class AgentMain {
         FeederAgent[] feeder = new FeederAgent[FEEDER];
         GantryAgent gantry = new GantryAgent(8, "Gantry");
         LaneAgent[] lane = new LaneAgent[LANE];
-        for (int i = 0; i < FEEDER; i++) {
-            if(i < LANE) { 
-                lane[i] = new LaneAgent("Lane " + i); 
+        for (int i = 0; i < LANE; i++) {
+            if(i < FEEDER) { 
+                feeder[i] = new FeederAgent("Feeder " + i, i);
             }
-            feeder[i] = new FeederAgent("Feeder " + i, i);
+            lane[i] = new LaneAgent("Lane " + i);
         }
         
         
@@ -84,9 +84,12 @@ public class AgentMain {
         /*========== Start all of the threads ==========*/
         
         // Alex
-        kitRobot.startThread();
         camera.startThread();
         conveyor.startThread();
+        for(int i = 0; i < 10; i++) {
+            conveyor.generateKit(i);
+        }
+        kitRobot.startThread();
         
         //Patrick
         partsAgent.startThread();
@@ -101,11 +104,14 @@ public class AgentMain {
             feeder[i].startThread();
         }
         
+        /*========== Misc. ==========*/
+        
+        
         Kit kit = new Kit("Test Kit");
         for(int i = 1; i < 9; i++) {
             kit.addPart(new Part(i));
         }
-        partsAgent.msgEmptyKitReady(kit);
+        partsAgent.msgHereIsKit(kit);
         
     } // END main
 } // END AgentMain
