@@ -20,7 +20,8 @@ public class Part implements Serializable {
     private boolean inKit;
     public int size;
     public int nestNum;
-
+    public String word;
+    
     public Part(Type t, boolean inkit, int size) {
         this.type = t;
         this.inKit = false;
@@ -39,32 +40,44 @@ public class Part implements Serializable {
     public int getSize() {
         return this.size;
     }
+    //@Override
+    public String getString() {
+        return word;
+    }
     /* I am adding this constructor to test my agent codes (kevin) */
 
     public Part(int num) {
         if (num == 1) {
             this.type = Type.p1;
+            this.word = "p1";
         }
         if (num == 2) {
             this.type = Type.p2;
+            this.word = "p2";
         }
         if (num == 3) {
             this.type = Type.p3;
+            this.word = "p3";
         }
         if (num == 4) {
             this.type = Type.p4;
+            this.word = "p4";
         }
         if (num == 5) {
             this.type = Type.p5;
+            this.word = "p5";
         }
         if (num == 6) {
             this.type = Type.p6;
+            this.word = "p6";
         }
         if (num == 7) {
             this.type = Type.p7;
+            this.word = "p7";
         }
         if (num == 8) {
             this.type = Type.p8;
+            this.word = "p8";
         }
     }
     /**

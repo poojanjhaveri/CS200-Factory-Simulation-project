@@ -5,6 +5,7 @@
 package factory.factory201.partsManagement;
 
 import agent.Agent;
+import factory.factory201.feederManagement.LaneAgent;
 import factory.factory201.interfaces.Camera;
 import factory.factory201.interfaces.Lane;
 import factory.factory201.interfaces.NestInterface;
@@ -85,11 +86,11 @@ public class NestAgent extends Agent implements NestInterface {
     	if (!hasPart(p)){
             for (Nest n: myNests){
                 //if (n.status == Nest.Status.empty){
-                if(n.parts.size()==0){  
+                if(n.status == Nest.Status.empty){  
                 n.setPart(p);
                     //nestParts.put(n.nestNum, p);
                     n.status = Nest.Status.needPart;
-                    print("Part " + p + " is not taken by a nest, part is being assigned to the nest "+ n.nestNum);
+                    print("Part " + p.getString() + " is not taken by a nest, part is being assigned to the nest "+ n.nestNum);
                     break;
                 }
             }
@@ -106,7 +107,7 @@ public class NestAgent extends Agent implements NestInterface {
     public void msgHereAreParts(List<Part> kitParts){
         Part p = kitParts.get(0);
         for (Nest n : myNests) {
-            if (n.part.equals(p)) {
+            if (n.part == p) {
                 for (int i =0; i<kitParts.size(); i++){
                     n.parts.add(kitParts.get(i));
                 }
@@ -114,7 +115,7 @@ public class NestAgent extends Agent implements NestInterface {
                 n.status = Nest.Status.full;
             }
         }
-        print("adding " + kitParts.size() + " " + p + " to the nest ");
+        print("adding " + kitParts.size() + " " + p.getString() + " to the nest ");
         stateChanged();
     }
 
@@ -175,7 +176,8 @@ public class NestAgent extends Agent implements NestInterface {
     print("requesting " + n.part);
     	
     	n.status = Nest.Status.gettingPart;
-        lanes[n.nestNum].msgNeedPart(n.part);
+        //lanes[n.nestNum]
+        n.getLane().msgNeedPart(n.part);
     	stateChanged();
 
     }
@@ -191,10 +193,7 @@ public class NestAgent extends Agent implements NestInterface {
     
     private void giveToKit(Nest n){
         
-        //n.part.setNestNum(n.getNestNum());
     	partsagent.msgHereIsPart(n.parts.remove(0));
-        
-    	//n.howMany--;
         print("giving part " + n.part + " to kit now nest has " + n.parts.size());
         n.status = Nest.Status.none;
     	if (n.parts.size()<2)
@@ -206,7 +205,7 @@ public class NestAgent extends Agent implements NestInterface {
     n.parts.clear();
     //DoPurge();
     
-    n.status = Nest.Status.none;
+    n.status = Nest.Status.empty;
     stateChanged();
     }
     

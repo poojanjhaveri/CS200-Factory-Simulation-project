@@ -38,7 +38,7 @@ public class NestAgentTest extends TestCase{
        public MockLane lane6;
        public MockLane lane7;
        List<Part> nestParts = new ArrayList<Part>();
-       
+       Part p = new Part(1);
    @Override
 	protected void setUp() throws Exception {
 
@@ -50,14 +50,15 @@ public class NestAgentTest extends TestCase{
         lane5 = new MockLane("LANE5");
         lane6 = new MockLane("LANE6");
         lane7 = new MockLane("LANE7");
-        nestParts.add(new Part(1));
-        nestParts.add(new Part(1));
-        nestParts.add(new Part(1));
-        nestParts.add(new Part(1));
-        nestParts.add(new Part(1));
-        nestParts.add(new Part(1));
-        nestParts.add(new Part(1));
-        nestParts.add(new Part(1));
+        nestParts.add(p);
+        nestParts.add(p);
+        nestParts.add(p);
+        nestParts.add(p);
+        nestParts.add(p);
+        nestParts.add(p);
+        nestParts.add(p);
+        nestParts.add(p);
+        
         parts = new MockParts("MOCK PARTS");
        
         nest = new NestAgent("NEST AGENT");
@@ -89,7 +90,7 @@ public class NestAgentTest extends TestCase{
 	}
 @Test
 public void testfirstTest(){
-    nest.msgNeedPart(new Part(1));
+    nest.msgNeedPart(p);
     /*nest.msgNeedPart(new Part(2));
     nest.msgNeedPart(new Part(3));
     nest.msgNeedPart(new Part(4));
