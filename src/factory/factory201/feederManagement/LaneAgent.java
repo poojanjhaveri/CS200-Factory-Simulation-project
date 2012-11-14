@@ -164,9 +164,10 @@ public class LaneAgent extends Agent implements Lane {
             if (p.send == true) {
             	//System.out.println("there is an item to be sent");
             	//System.out.println("The quantity is  " + p.quantity);
-            	if(p.quantity>8){
-                //System.out.println("testing scheduler");
-            		supplyPart(p);  
+            	if(p.quantity>p.supplyAmount){
+                
+                    //System.out.println("testing scheduler");
+                    supplyPart(p);  
                     p.send = false;
 
                     //update the myParts object
@@ -180,7 +181,7 @@ public class LaneAgent extends Agent implements Lane {
             			requestedPart=true;
             			return true;
             			}
-            		} //ask for parts if it is running low
+                    } //ask for parts if it is running low
             	}
             	
         	}	
@@ -192,14 +193,13 @@ public class LaneAgent extends Agent implements Lane {
         	if(p.quantity<8){
 	        	//if(askCount==0){
 	        	askForPart(p.part);
-	        	//askCount++;
 	        	requestedPart=true;
 	        	return true;
 	        		
         		}
         	
         	}
-        }
+            }
         }
         
         //return false if no scheduler rule is fired
@@ -210,7 +210,6 @@ public class LaneAgent extends Agent implements Lane {
     private void askForPart(Part p){
     	print("I am asking for part ");
     	//feeder must know which lane the message is from
-    	//System.out.println("testing need part message sending");
     	feeder.msgNeedPart(p,this);
     	stateChanged();
     }
@@ -218,16 +217,12 @@ public class LaneAgent extends Agent implements Lane {
     
     	/*
     	 * ANIMATION REQUIREMENT: SEND PART DOWN THE LANE TO A NEST, TO ACCESS THE PART NUMBER, USE  part.partNum
-    	 * I AM NOT SURE HOW YOU ARE KEEPING A TRACK OF WHICH FEEDER DUMPS INTO WHICH NEST, I LEAVE THAT TO YOU
-    	 * I AM SENDING THE MESSAGE TO THE NEST AGENT HEREAREPARTS(); GOT NOTHING TO DO WITH ANIMATION THOUGH
-    	*/
+    	 *
+    	 */
     	print("I am supplying parts to the nest " );
         
-    	/*
-         * NEST IS AN INDEPENDENT EXECUTION OBJECT IN V0
-         * */
-    	
-    	//nest.msgHereAreParts(part.part, part.supplyAmount);
+    	nest.msgHereAreParts(part.part, part.supplyAmount);
+        
         stateChanged();
     }
 
