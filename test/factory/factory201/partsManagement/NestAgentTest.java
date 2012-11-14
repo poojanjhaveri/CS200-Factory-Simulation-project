@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package factory.factory201.test;
+package factory.factory201.partsManagement;
 import factory.factory201.test.mock.MockParts;
 import factory.factory201.partsManagement.NestAgent;
 import factory.factory201.test.mock.MockCamera;
@@ -22,7 +22,7 @@ import org.junit.Test;
  * @author polarpatbear
  */
 
-public class NestTest extends TestCase{
+public class NestAgentTest extends TestCase{
        
        public MockLane lane;
        //public KitAssemblyManager kam; 
@@ -88,8 +88,8 @@ public class NestTest extends TestCase{
 
 	}
 @Test
-public void firstTest(){
-    nest.msgNeedPart(null);
+public void testfirstTest(){
+    nest.msgNeedPart(new Part(1));
     /*nest.msgNeedPart(new Part(2));
     nest.msgNeedPart(new Part(3));
     nest.msgNeedPart(new Part(4));

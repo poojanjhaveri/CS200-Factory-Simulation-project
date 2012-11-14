@@ -175,7 +175,7 @@ public class NestAgent extends Agent implements NestInterface {
     print("requesting " + n.part);
     	
     	n.status = Nest.Status.gettingPart;
-        lanes[n.nestNum].msgNeedPart(null);
+        lanes[n.nestNum].msgNeedPart(n.part);
     	stateChanged();
 
     }

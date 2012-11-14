@@ -6,10 +6,15 @@ import factory.general.Drawable;
 
 public class GUIFeeder extends Drawable {
 
-	public GUIFeeder(Integer x, Integer y, Double r, ImageIcon i) {
-		super(x, y, r, i);
-		
+	
+
+	public GUIFeeder(Integer x, Integer y, Double r, String i) {
+		// TODO Auto-generated constructor stub
+		super(x,y,r,i);
 	}
+
+	
+	
 	
 
 }
