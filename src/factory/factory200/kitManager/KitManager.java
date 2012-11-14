@@ -9,9 +9,11 @@ import factory.general.Message;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.Insets;
 import java.util.ArrayList;
 import javax.swing.JFrame;
@@ -57,6 +59,7 @@ public class KitManager extends Manager {
 	
          public KitManager()
          {
+             
             this.bpkit = new BlueprintKits();
             this.bppart = new BlueprintParts();
             setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -81,7 +84,23 @@ public class KitManager extends Manager {
 	
         private void prepareMainPane()
         {
-            mainpanel = new JPanel();
+            mainpanel = new JPanel()
+            {     
+            public void paintComponent(Graphics g) 
+            {
+                Image img = new ImageIcon("pics/parts/part1.png").getImage();
+                Dimension size = new Dimension(600, 400);
+                setPreferredSize(size);
+                setMinimumSize(size);
+                setMaximumSize(size);
+                setSize(size);
+                setLayout(null);
+                g.drawImage(img, 0, 0, null);
+            } 
+        };
+                
+                
+            
             mainpanel.setBorder(new EmptyBorder(5, 5, 5, 5));
             mainpanel.setLayout(new BorderLayout(0, 0));
             setContentPane(mainpanel);
@@ -126,7 +145,7 @@ public class KitManager extends Manager {
  
             c.gridx=1;
             c.gridy=1;
-            
+         //   System.out.println("Size of part list is ",bppart.getSize());
             
             create_combo = new JComboBox(); // parts list
             for(int j=0;j<this.bppart.getSize();j++){
@@ -223,5 +242,17 @@ public class KitManager extends Manager {
             bpkit.removeKit(in);
         //	updateComboBox();
     }
+         
+          public void processMessage(String msg) {
+        super.processMessage(msg);
+        if(msg.contains( Message.PUSH_PARTS_LIST)) {
+        	
+	       this.bppart.recreate(this.grabParameter(msg));
+	       System.out.println("GRABBED NEW PARTS LIST FROM SERVER!: "+msg);
+		   this.bppart.debug();
+	   }
+    }
+         
+         
 
 }

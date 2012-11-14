@@ -218,7 +218,7 @@ public class GantryAgent extends Agent implements Gantry {
     	print("Sending message to feeder");
         f.feeder.msgHereAreParts(parts);
         
-    	doSupplyPart(b,f);
+//    	doSupplyPart(b,f);
     	//animation.goToBin(binNum);
     	//animation.pickUpBin(binNum);
     	//animation.goToFeeder(feederNum);

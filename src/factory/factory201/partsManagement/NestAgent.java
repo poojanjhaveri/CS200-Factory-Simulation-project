@@ -112,15 +112,17 @@ public class NestAgent extends Agent implements NestInterface {
     public void msgHereAreParts(List<Part> kitParts){
         Part p = kitParts.get(0);
         for (Nest n : myNests) {
-            if (n.part == p) {
+            if (n.part.type == p.type) {
                 for (int i =0; i<kitParts.size(); i++){
                     n.parts.add(kitParts.get(i));
                 }
-                if (n.parts.size()==n.threshold)
-                n.status = Nest.Status.full;
+                if (n.parts.size()>=n.threshold) {
+                    n.status = Nest.Status.full;     
+                }
+                print("adding " + kitParts.size() + " " + p.getString() + " to the nest " + n.nestNum);
+
             }
         }
-        print("adding " + kitParts.size() + " " + p.getString() + " to the nest ");
         stateChanged();
     }
 
