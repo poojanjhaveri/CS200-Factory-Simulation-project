@@ -44,6 +44,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
      */
     @Override
     public void msgNeedEmptyKit() {
+        print("msgNeedEmptyKit");
         partsAgentNeedsEmptyKit = true;
         stateChanged();
     }
@@ -92,6 +93,11 @@ public class KitRobotAgent extends Agent implements KitRobot {
     // ********* SCHEDULER *********
     @Override
     public boolean pickAndExecuteAnAction() {
+        //hack
+        if(this.partsAgentNeedsEmptyKit) {
+            giveEmptyKitToPartsAgent();
+            return true;
+        }//end hack
         if (!kitStand.isEmpty()) {
             if (!kitStand.isEmpty(2)) {
                 if (kitStand.get(2).status == Kit.Status.verified) {

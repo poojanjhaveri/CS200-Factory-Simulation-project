@@ -187,20 +187,20 @@ public class LaneAgent extends Agent implements Lane {
         	}	
     	}
     	
-        if(requestedPart==false){
-        synchronized(parts){
-        for(myParts p: parts){
-        	if(p.quantity<p.supplyAmount){
-	        	//if(askCount==0){
-	        	askForPart(p.part);
-	        	requestedPart=true;
-	        	return true;
-	        		
-        		}
-        	
-        	}
-            }
-        }
+//        if(requestedPart==false){
+//        synchronized(parts){
+//        for(myParts p: parts){
+//        	if(p.quantity<p.supplyAmount){
+//	        	//if(askCount==0){
+//	        	askForPart(p.part);
+//	        	requestedPart=true;
+//	        	return true;
+//	        		
+//        		}
+//        	
+//        	}
+//            }
+//        }
         
         //return false if no scheduler rule is fired
         return false;

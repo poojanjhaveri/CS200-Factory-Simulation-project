@@ -25,7 +25,6 @@ public class AgentMain {
         /*========== Declare all agents and etc. ==========*/
         
         // Misc
-//        LMServerMain serverMain = new LMServerMain();
         KitAssemblyManager KAM = new KitAssemblyManager();
 
         // Alex
@@ -37,19 +36,17 @@ public class AgentMain {
         PartsAgent partsAgent = new PartsAgent("Parts Agent");
         NestAgent nestAgent = new NestAgent("Nest Agent");
 
-//         Kevin
+        // Kevin
         FeederAgent[] feeder = new FeederAgent[FEEDER];
         GantryAgent gantry = new GantryAgent(8, "Gantry");
         LaneAgent[] lane = new LaneAgent[LANE];
-        
-        for (int i = 0; i < FEEDER; i++) {
-            feeder[i] = new FeederAgent("Feeder " + i, i+1);
+        for (int i = 0; i < LANE; i++) {
+            if(i < FEEDER) { 
+                feeder[i] = new FeederAgent("Feeder " + i, i);
+            }
+            lane[i] = new LaneAgent("Lane " + i);
         }
         
-        for(int i=0;i<LANE;i++)
-        {
-                lane[i] = new LaneAgent("Lane " + i); 
-        }
         
         /*========== Pass proper agents to everyone ==========*/
         
@@ -68,7 +65,7 @@ public class AgentMain {
         for (int i = 0; i<8; i++){
         nestAgent.getNest(i).setLane(lane[i]);  }
         
-        //Kevin
+        // Kevin
         for (int i = 0, j = 0; i < FEEDER; i++, j++) {
             feeder[i].setGantry(gantry);
             feeder[i].setLeftLane(lane[j]);
@@ -87,9 +84,12 @@ public class AgentMain {
         /*========== Start all of the threads ==========*/
         
         // Alex
-        kitRobot.startThread();
         camera.startThread();
         conveyor.startThread();
+        for(int i = 0; i < 10; i++) {
+            conveyor.generateKit(i);
+        }
+        kitRobot.startThread();
         
         //Patrick
         partsAgent.startThread();
@@ -104,11 +104,14 @@ public class AgentMain {
             feeder[i].startThread();
         }
         
+        /*========== Misc. ==========*/
+        
+        
         Kit kit = new Kit("Test Kit");
         for(int i = 1; i < 9; i++) {
             kit.addPart(new Part(i));
         }
-        partsAgent.msgEmptyKitReady(kit);
+        partsAgent.msgHereIsKit(kit);
         
     } // END main
 } // END AgentMain

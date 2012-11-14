@@ -31,9 +31,11 @@ public class PartsAgent extends Agent implements PartsInterface {
     Camera camera;
     private List<Part> inventory, grips, kitNeedsParts;
     private List<Kit> newKit;
+    boolean emptyKitReady;
 
     public PartsAgent(String name) {
         super(name);
+        emptyKitReady = false;
         this.inventory = Collections.synchronizedList(new ArrayList<Part>());
         this.grips = Collections.synchronizedList(new ArrayList<Part>());
         this.kitNeedsParts = Collections.synchronizedList(new ArrayList<Part>());
@@ -43,10 +45,11 @@ public class PartsAgent extends Agent implements PartsInterface {
     
 //Messages 
 
+    // message from server
     @Override
     public void msgHereIsKit(Kit k) {
         print("PartsAgent got message for new kit");
-        newKit.add(kit);
+        newKit.add(k);
         stateChanged();
 
     }
@@ -58,23 +61,10 @@ public class PartsAgent extends Agent implements PartsInterface {
         stateChanged();
     }
 
+    // msg from kit robot
     @Override
-    public void msgEmptyKitReady(Kit kit) {
-        /* switch (kit.num) {
-         case 1:
-         kit.standNum = Kit.StandNum.zero;
-         break;
-         case 2:
-         kit.standNum = Kit.StandNum.one;
-         break;
-         case 3:
-         kit.standNum = Kit.StandNum.two;
-         break;
-         default:
-         kit.standNum = Kit.StandNum.none;
-         }*/
-        print("PartsAgent got message for new kit");
-        newKit.add(kit);
+    public void msgEmptyKitReady(Kit k) {
+        kit.standNum = k.standNum;
         print("got an empty kit for stand #" + kit.standNum);
         stateChanged();
     }
@@ -84,8 +74,8 @@ public class PartsAgent extends Agent implements PartsInterface {
     protected boolean pickAndExecuteAnAction() {
 
         if (!newKit.isEmpty()) {
+           
             startNewKit(newKit.remove(newKit.size()-1));
-            //startNewKit(newKit.get(0));
             return true;
         }
 
@@ -129,13 +119,13 @@ public class PartsAgent extends Agent implements PartsInterface {
 
     private void startNewKit(Kit k) {
 
-        // kitrobot.msgNeedEmptyKit();
+         kitrobot.msgNeedEmptyKit();
         print("New kit being started");
         camera.msgHereIsKitInfo(k);
     	kitNeedsParts.clear();
     	this.kit = k;
        // kit.standNum = Kit.StandNum.one;
-    	for(int i=0; i<kit.getSize(); i++){
+    	for(int i=0; i<kit.parts.size(); i++){
     		kitNeedsParts.add(kit.getPart(i));
     	}
         

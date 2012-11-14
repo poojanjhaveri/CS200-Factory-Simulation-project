@@ -178,7 +178,7 @@ public class NestAgent extends Agent implements NestInterface {
     
     private void requestPart(Nest n){
        
-    print("requesting " + n.part);
+    print("requesting " + n.part.getString());
     	
     	n.status = Nest.Status.gettingPart;
         //lanes[n.nestNum]
@@ -199,7 +199,7 @@ public class NestAgent extends Agent implements NestInterface {
     private void giveToKit(Nest n){
         
     	partsagent.msgHereIsPart(n.parts.remove(0));
-        print("giving part " + n.part + " to kit now nest has " + n.parts.size());
+        print("giving part " + n.part.getString() + " to kit now nest has " + n.parts.size());
         n.status = Nest.Status.none;
     	if (n.parts.size()<2)
     		n.status = Nest.Status.needPart;
