@@ -1,8 +1,11 @@
 package factory.factory201.feederManagement;
-import factory.factory200.laneManager.*;
+
 import factory.factory201.interfaces.Feeder;
 import factory.factory201.interfaces.Gantry;
 import agent.Agent;
+import factory.factory200.laneManager.ServerSide.LMFeederForAgent;
+import factory.factory200.laneManager.ServerSide.LMGantryRobotForAgent;
+import factory.factory200.laneManager.ServerSide.LMServerMain;
 import factory.general.Part;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -28,13 +31,13 @@ public class GantryAgent extends Agent implements Gantry {
 
     Timer timer=new Timer();
     //---------------------------------------------------------------------------
-    private ServerMain serverMain;
-    private ServerForAgentGantry animation;
-    private ServerForAgentFeeder animation1;
+    private LMServerMain serverMain;
+    private LMGantryRobotForAgent animation;
+    private LMFeederForAgent animation1;
   //---------------------------------------------------------------------------
     
     //numOfBins is the number of bins that gantry is initialized to, will be the same for v0, each bin has 8 parts.
-    public GantryAgent(int numOfBins, String name, ServerMain serverMain){
+    public GantryAgent(int numOfBins, String name, LMServerMain serverMain){
     	super(name);
     	//---------------------------------------------------------------------------
     	this.serverMain = serverMain;
@@ -240,10 +243,10 @@ public class GantryAgent extends Agent implements Gantry {
     }
     private void doSupplyPart(myBin b,myFeeder f){
     	print("go to bin command");
-    	animation.goToBin(b.index-1);
+//    	animation.goToBin(b.index-1);
     	//while(animation.returnArrived()==false){;}
     	print("about to pick up bin");
-    	animation.pickUpBin(b.index-1);
+  //  	animation.pickUpBin(b.index-1);
     	//while(animation.p)
     	System.out.println("sending index " + f.index);
     	
@@ -253,7 +256,7 @@ public class GantryAgent extends Agent implements Gantry {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    	animation.goToFeeder(f.index-1);
+    //	animation.goToFeeder(f.index-1);
     	
     	try {
 			Thread.sleep(10000);
@@ -263,8 +266,8 @@ public class GantryAgent extends Agent implements Gantry {
 		}
     	
     	//while(animation.returnArrived()==false){;}
-    	animation1.fillInFeeder(f.index-1,b.index-1,8);
-    	animation1.dumpBinBoxIntoFeeder(f.index-1, b.index-1);
+    //	animation1.fillInFeeder(f.index-1,b.index-1,8);
+    //	animation1.dumpBinBoxIntoFeeder(f.index-1, b.index-1);
     	
     }
     public void setFeeder(Feeder feeder,int index) {
