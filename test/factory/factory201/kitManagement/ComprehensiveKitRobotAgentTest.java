@@ -8,8 +8,8 @@ import junit.framework.TestCase;
 import org.junit.Test;
 
 /**
- *
- * @author Alex
+ * @author Alex Young
+ * @version 1
  */
 public class ComprehensiveKitRobotAgentTest extends TestCase {
 
@@ -34,7 +34,7 @@ public class ComprehensiveKitRobotAgentTest extends TestCase {
     protected void tearDown() throws Exception {
         // Not used
     }
-    
+
     @Test
     public void testNormalScenarioKitRobot() {
         assertEquals(true, true);

@@ -18,7 +18,7 @@ import javax.swing.Timer;
  * cell.
  *
  * @author Alex Young
- * @version 0
+ * @version 1
  */
 public class ConveyorAgent extends Agent implements Conveyor {
 
@@ -32,10 +32,10 @@ public class ConveyorAgent extends Agent implements Conveyor {
     private KitRobot kitRobotAgent;
     private Timer removeKits;
     private KitAssemblyManager KAM;
-    
+
     public ConveyorAgent(String name) {
         super(name);
-        
+
         eventQueue = Collections.synchronizedList(new ArrayList<Event>());
         kits = new ArrayList<Kit>();
         removeKits = new Timer(1000, new ActionListener() {
@@ -49,7 +49,7 @@ public class ConveyorAgent extends Agent implements Conveyor {
                 }
             }
         });
-        
+
         removeKits.start();
         removeKits.stop();
     }
@@ -185,16 +185,16 @@ public class ConveyorAgent extends Agent implements Conveyor {
             removeKits.restart();
         }
     }
-    
+
     public void setKitAssemblyManager(KitAssemblyManager KAM) {
         this.KAM = KAM;
     }
-    
+
     public void setAll(KitAssemblyManager KAM, KitRobot kitRobot) {
         this.KAM = KAM;
         this.kitRobotAgent = kitRobot;
     }
-    
+
     private void DoAddKit(Kit k) {
         //Needs to be done
     }
