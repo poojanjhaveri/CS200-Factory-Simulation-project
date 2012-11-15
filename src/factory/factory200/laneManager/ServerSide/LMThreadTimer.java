@@ -24,8 +24,17 @@ class LMThreadTimer implements Runnable{
 
 	public class ServerTimer implements ActionListener{
 		public void actionPerformed(ActionEvent ae){
-			server.getClientHandler().sendToClient("&Timer&");
+			
+			//-----------------------------------------------------For Test
+			for(int i=0 ; i<server.clients.size() ; i++){
+				server.clients.get(i).sendToClient("&Timer&");
+			}
+			
+			//server.getClientHandler().sendToClient("&Timer&");
+			//------------------------------------------------------------------
+			
 			serverMain.getPartData().shakePartsFree();
+			serverMain.getPartData().laneVibrationController();
 			if(++feedingTiming == 60){
 				sendPartSignal.orderFeeding();
 				sendPartSignal.feederPartLowSensor();

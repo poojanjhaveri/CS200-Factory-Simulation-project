@@ -20,7 +20,14 @@ public class LMNestData {
 	public void setSwitchUp(){
 		// Signal To Managers
 		signal = nestNum + "&Nest&" + "Switch Up";
-		server.getClientHandler().sendToClient(signal);
+		
+		//----------------------------------------------------------------------------------For Test
+		for(int i=0 ; i<server.clients.size() ; i++){
+			server.clients.get(i).sendToClient(signal);
+		}
+		
+		//server.getClientHandler().sendToClient(signal);
+		//------------------------------------------------------------------------------------------------
 		
 		// Send To FPM
 		
@@ -31,7 +38,14 @@ public class LMNestData {
 	public void setSwitchDown(){
 		// Signal To Managers
 		signal = nestNum + "&Nest&" + "Switch Down";
-		server.getClientHandler().sendToClient(signal);
+		
+		//----------------------------------------------------------------------------------For Test
+		for(int i=0 ; i<server.clients.size() ; i++){
+			server.clients.get(i).sendToClient(signal);
+		}
+		
+		//server.getClientHandler().sendToClient(signal);
+		//-------------------------------------------------------------------------------------------------
 		
 		// Send To FPM
 

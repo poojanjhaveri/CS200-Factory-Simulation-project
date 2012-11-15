@@ -35,14 +35,11 @@ public class LMClient{
 	
 	public void connectToServer(){
 		try{
-			mySocket = new Socket( "localhost", 55555 );
+			mySocket = new Socket( "127.0.0.1" , 30006 );
 			hac = new HandleAClient( mySocket );
 			new Thread(hac).start();
 		}
-		catch( Exception e ){
-			e.printStackTrace();
-			System.exit(0);
-		}
+		catch( Exception e ){  e.printStackTrace(); System.exit(0);  }
 	}
 
     class HandleAClient implements Runnable {
@@ -55,10 +52,7 @@ public class LMClient{
         		pw = new PrintWriter( mySocket.getOutputStream(), true );
         		br = new BufferedReader( new InputStreamReader( mySocket.getInputStream() ) );
         	} 
-        	catch (Exception e) {
-    			e.printStackTrace();
-    			System.exit(0);
-        	}
+        	catch (Exception e) {  e.printStackTrace(); System.exit(0);  }
     	}
     	
     	public void sendToFactory(String message){

@@ -94,7 +94,14 @@ public class LMPartData {
 						
 						// Part Removal In Client Side
 						message = i + "&Part&Shake&";
-						server.getClientHandler().sendToClient(message);
+						
+						//----------------------------------------------------------------------------------For Test
+						for(int j=0 ; j<server.clients.size() ; j++){
+							server.clients.get(j).sendToClient(message);
+						}
+						
+						//server.getClientHandler().sendToClient(message);
+						//---------------------------------------------------------------------------------------------
 					}
 				}
 				else if( serverMain.getForAgentLane().getLane(i).getVibrationAmplitude() == 1 ){
@@ -104,7 +111,15 @@ public class LMPartData {
 						
 						// Part Removal In Client Side
 						message = i + "&Part&Shake&";
-						server.getClientHandler().sendToClient(message);
+						
+						//----------------------------------------------------------------------------------For Test
+						for(int j=0 ; j<server.clients.size() ; j++){
+							server.clients.get(j).sendToClient(message);
+						}
+						
+						//server.getClientHandler().sendToClient(message);
+						//------------------------------------------------------------------------------------------------
+						
 					}
 				}
 				else if( serverMain.getForAgentLane().getLane(i).getVibrationAmplitude() == 2 ){
@@ -114,9 +129,31 @@ public class LMPartData {
 						
 						// Part Removal In Client Side
 						message = i + "&Part&Shake&";
-						server.getClientHandler().sendToClient(message);
+						
+						//----------------------------------------------------------------------------------For Test
+						for(int j=0 ; j<server.clients.size() ; j++){
+							server.clients.get(j).sendToClient(message);
+						}
+						
+						//server.getClientHandler().sendToClient(message);
+						//-----------------------------------------------------------------------------------------------
+						
 					}
 				}
+			}
+		}
+	}
+	
+	public void laneVibrationController(){
+		for( int i=0 ; i<8 ; i++){
+			if( lanes.get(i).getSize() < 7 ){
+				serverMain.getForAgentLane().getLane(i).setVibrationAmplitudeWeak();
+			}
+			else if( lanes.get(i).getSize() < 14 ){
+				serverMain.getForAgentLane().getLane(i).setVibrationAmplitudeNormal();
+			}
+			else if( lanes.get(i).getSize() >= 14 ){
+				serverMain.getForAgentLane().getLane(i).setVibrationAmplitudeStrong();
 			}
 		}
 	}

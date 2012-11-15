@@ -48,11 +48,8 @@ public class LMServerMain extends JFrame{
 	public LMNestForAgent getForAgentNest(){
 		return agentNest;
 	}
+	
 	public LMPartData getPartData(){
 		return partData;
-	}
-        
-	public LMGantryRobotForAgent getForAgentGantry(){
-		return agentGantryRobot;
 	}
 }

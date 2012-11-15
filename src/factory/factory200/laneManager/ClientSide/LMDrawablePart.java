@@ -56,7 +56,7 @@ public class LMDrawablePart {
 	}
 	
 	public void partMove(){
-		if( currentLocationX < 93 & arrivedToNest == false ){
+		if( currentLocationX < 53 & arrivedToNest == false ){// DONE
 			if( availableToNest == true ){
 				arrivedToNest = true;
 				getAllPart.addPartFromLaneToNest(laneNestNum);
