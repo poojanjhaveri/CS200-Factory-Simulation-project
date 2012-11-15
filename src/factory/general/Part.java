@@ -95,28 +95,25 @@ public class Part implements Serializable {
     public Part(String n, String d) {
         this.name = n;
         this.description = d;
-//        this.img = new ImageIcon(fn);
         //this.number=time()\;
         this.guipart = null;
-        this.number = (int)(System.currentTimeMillis()/(long)1000);
+        this.number = (int) (System.currentTimeMillis()/(long)1000);
     }
-    public Part(String n, String d, Integer num)
-    {
+    
+    public Part(String n, String d, Integer num) {
         this.name = n;
         this.description = d;
         this.number = num;
         this.guipart = null;
     }
-    public Part(String n, String d, String file)
-    {
+    public Part(String n, String d, String file) {
         this.name = n;
         this.description = d;
         this.filename = file;
         this.guipart = null;
         this.number = (int)(System.currentTimeMillis()/(long)1000);
     }
-    public void setFilename(String in)
-    {
+    public void setFilename(String in) {
         this.filename = in;
     }
     public String getName() {
@@ -131,46 +128,41 @@ public class Part implements Serializable {
     public String getDescription() {
         return this.description;
     }
-    public GUIPart getGUIPart()
-    {
+    public GUIPart getGUIPart() {
         return this.guipart;
     }
-    public void setGUIPart(GUIPart in)
-    {
+    public void setGUIPart(GUIPart in) {
         this.guipart = in;
     }
-    public String serialize()
-    {
-	//        return "("+this.name+","+this.description+","+this.number+","+this.filename+")";
-	ArrayList<String> arr = new ArrayList<String>();
-	arr.add(this.name);
-	arr.add(this.description);
-	arr.add(this.number+"");
-	arr.add(this.filename);
-	return Util.serialize(arr);
+    public String serialize() {
+    	//        return "("+this.name+","+this.description+","+this.number+","+this.filename+")";
+    	ArrayList<String> arr = new ArrayList<String>();
+    	arr.add(this.name);
+    	arr.add(this.description);
+    	arr.add(this.number+"");
+    	arr.add(this.filename);
+    	return Util.serialize(arr);
     }
-    public static Part deserialize(String des)
-    {
-	//   ArrayList<String> arr = Util.stringExplode(",",des);        
-	ArrayList<String> arr = Util.deserialize(des);
-if(arr.size() != 4)
-            System.out.println("BAD PART DESERIALIZATION. ARRAY IS "+arr+"; SERIALIZED STRING IS "+des);
-        Part toreturn = new Part(arr.get(0),arr.get(1),Integer.parseInt(arr.get(2)));
-        toreturn.setFilename(arr.get(3));
-        return toreturn;
+    public static Part deserialize(String des) {
+    	//   ArrayList<String> arr = Util.stringExplode(",",des);        
+    	ArrayList<String> arr = Util.deserialize(des);
+    	if(arr.size() != 4)
+    		System.out.println("BAD PART DESERIALIZATION. ARRAY IS "+arr+"; SERIALIZED STRING IS "+des);
+    	Part toreturn = new Part(arr.get(0),arr.get(1),Integer.parseInt(arr.get(2)));
+    	toreturn.setFilename(arr.get(3));
+    	return toreturn;
     }
 
-    public static void main(String[] args)
-    {
-	Part p = new Part("part1","mydescriptipn","test.png");
-	String s = p.serialize();
-	System.out.println("Serialized part:\n" + s);
-	Part p2 = Part.deserialize(s);
-	String s2 = p2.serialize();
-	System.out.println("Deserialized serialized part:\n" + s2);
-	if(s.equals(s2))
-	    {
-		System.out.println("Test passed");
-	    }else System.out.println("TEST FAILED");
+    public static void main(String[] args) {
+    	Part p = new Part("part1","mydescriptipn","test.png");
+    	String s = p.serialize();
+    	System.out.println("Serialized part:\n" + s);
+    	Part p2 = Part.deserialize(s);
+    	String s2 = p2.serialize();
+    	System.out.println("Deserialized serialized part:\n" + s2);
+    	if (s.equals(s2)) {
+    		System.out.println("Test passed");
+    	} else
+    		System.out.println("TEST FAILED");
     }
 }

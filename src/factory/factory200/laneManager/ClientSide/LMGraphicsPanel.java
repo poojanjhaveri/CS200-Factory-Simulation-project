@@ -18,7 +18,7 @@ public class LMGraphicsPanel extends JPanel{
 	private ImageIcon backgroundImage = new ImageIcon( LMGraphicsPanel.class.getResource("./pics/background.png") );
 	
 	public LMGraphicsPanel(LMApplication app){
-		setPreferredSize(new Dimension(670,640));
+		setPreferredSize(new Dimension(520,700));
 		this.app = app;
 		
 		paintAllFeeder = new LMDrawableAllFeeder();

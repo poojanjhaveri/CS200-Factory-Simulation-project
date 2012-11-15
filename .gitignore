@@ -11,6 +11,7 @@
 
 nbproject/
 bin/
+target/
 
 # Package Files #
 *.jar

@@ -1,9 +1,10 @@
-package factory.factory200.laneManager.ClientSide;
+package factory.factory200.factoryProductionManager.LaneManager.Test;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import factory.factory200.factoryProductionManager.LaneManager.*;
 
 /**
  * This class sets up the server. In V0, there is no server requirements.
@@ -35,14 +36,11 @@ public class LMClient{
 	
 	public void connectToServer(){
 		try{
-			mySocket = new Socket( "localhost", 55555 );
+			mySocket = new Socket( "localhost" , 30006 );
 			hac = new HandleAClient( mySocket );
 			new Thread(hac).start();
 		}
-		catch( Exception e ){
-			e.printStackTrace();
-			System.exit(0);
-		}
+		catch( Exception e ){  e.printStackTrace(); System.exit(0);  }
 	}
 
     class HandleAClient implements Runnable {
@@ -55,10 +53,7 @@ public class LMClient{
         		pw = new PrintWriter( mySocket.getOutputStream(), true );
         		br = new BufferedReader( new InputStreamReader( mySocket.getInputStream() ) );
         	} 
-        	catch (Exception e) {
-    			e.printStackTrace();
-    			System.exit(0);
-        	}
+        	catch (Exception e) {  e.printStackTrace(); System.exit(0);  }
     	}
     	
     	public void sendToFactory(String message){

@@ -18,12 +18,14 @@ public class Message {
     public static final String PUSH_PARTS_LIST = "PUSH_PARTS_LIST";///<send serialized parts list over from server to partsmanager
     public static final String DEFINE_NEW_PART = "DEFINE_NEW_PART";///<send a new type of part over to the server
     public static final String UPDATE_PART = "UPDATE_PART";
+    public static final String UNDEFINE_PART = "UNDEFINE_PART";///<removes a part definition
 
     //kitsmanager section
     public static final String PULL_KITS_LIST = "PULL_KITS_LIST";///<simple request form kits to server asking for kits list
-    public static final String PUSH_KITS_LIST = "PUSH_PARTS_LIST";///<send serialized kits list over form server to kitsmanager
+    public static final String PUSH_KITS_LIST = "PUSH_KITS_LIST";///<send serialized kits list over form server to kitsmanager
     public static final String DEFINE_NEW_KIT = "DEFINE_NEW_KIT";///<send a new type of kit over to the server
     public static final String UPDATE_KIT = "UPDATE_KIT";
+    public static final String UNDEFINE_KIT = "UNDEFINE_KIT";///<removes a kit definition
 
     //factoryproductionmanager section
     //PULL_KITS_LIST is also used by FPM

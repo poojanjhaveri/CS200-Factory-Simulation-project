@@ -42,44 +42,75 @@ public class LMFeederData {
 		return feedPartsSwitch;
 	}
 	
-	//--------------------------------------------------------------------------------------------------
+	// For Agent------------------------------------------------------------------------------------
 	public void setSwitchOn(){
-		// Send To Managers		
+		// Send To Managers
 		signal = feederNum + "&Feeder&" + "Feeder Switch On";
-		server.getClientHandler().sendToClient(signal);
 		
-		// Send To FPM
+		//----------------------------------------------------------------------------------For Test
+		for(int i=0 ; i<server.clients.size() ; i++){
+			server.clients.get(i).sendToClient(signal);
+		}
+		
+		//server.getClientHandler().sendToClient(signal);
+		//----------------------------------------------------------------------------------		
+		
+		// Send To FPM 
 		
 		// Server Data Task
 		feederSwitch = true;
 	}
+	//----------------------------------------------------------------------------------------------------
 
+	// For Agent------------------------------------------------------------------------------------
 	public void setSwitchOff(){
 		// Send To Managers
 		signal = feederNum + "&Feeder&" + "Feeder Switch Off";
-		server.getClientHandler().sendToClient(signal);
+		
+		//----------------------------------------------------------------------------------For Test
+		for(int i=0 ; i<server.clients.size() ; i++){
+			server.clients.get(i).sendToClient(signal);
+		}
+		
+		//server.getClientHandler().sendToClient(signal);
+		//----------------------------------------------------------------------------------
 		
 		// Send To FPM
 		
 		// Server Data Task
 		feederSwitch = false;
 	}
+	//----------------------------------------------------------------------------------------------------
 
 	public void setPartLowSensorOn(){
 		// Send To Managers		
 		signal = feederNum + "&Feeder&" + "Part Low Sensor On";
-		server.getClientHandler().sendToClient(signal);
+		
+		//----------------------------------------------------------------------------------For Test
+		for(int i=0 ; i<server.clients.size() ; i++){
+			server.clients.get(i).sendToClient(signal);
+		}
+		
+		//server.getClientHandler().sendToClient(signal);
+		//----------------------------------------------------------------------------------
 		
 		// Send To FPM
 		
 		// Server Data Task
 		partLowSensor = true;
 	}
-
+	
 	public void setPartLowSensorOff(){
 		// Send To Managers		
 		signal = feederNum + "&Feeder&" + "Part Low Sensor Off";
-		server.getClientHandler().sendToClient(signal);
+		
+		//----------------------------------------------------------------------------------For Test
+		for(int i=0 ; i<server.clients.size() ; i++){
+			server.clients.get(i).sendToClient(signal);
+		}
+		
+		//server.getClientHandler().sendToClient(signal);
+		//----------------------------------------------------------------------------------
 		
 		// Send To FPM
 		
@@ -87,37 +118,70 @@ public class LMFeederData {
 		partLowSensor = false;
 	}
 
+	// For Agent------------------------------------------------------------------------------------
 	public void setFeedPartsSwitchOn(){
 		// Send To Managers		
 		signal = feederNum + "&Feeder&" + "Feed Part Switch On";
-		server.getClientHandler().sendToClient(signal);
+		
+		//----------------------------------------------------------------------------------For Test
+		for(int i=0 ; i<server.clients.size() ; i++){
+			server.clients.get(i).sendToClient(signal);
+		}
+		
+		//server.getClientHandler().sendToClient(signal);
+		//----------------------------------------------------------------------------------
 		
 		// Send To FPM
 		
 		// Server Data Task
 		feedPartsSwitch = true;
 	}
+	//----------------------------------------------------------------------------------------------------
 
+	// For Agent------------------------------------------------------------------------------------
 	public void setFeedPartsSwitchOff(){
 		// Send To Managers		
 		signal = feederNum + "&Feeder&" + "Feed Part Switch Off";
-		server.getClientHandler().sendToClient(signal);
+		
+		//----------------------------------------------------------------------------------For Test
+		for(int i=0 ; i<server.clients.size() ; i++){
+			server.clients.get(i).sendToClient(signal);
+		}
+		
+		//server.getClientHandler().sendToClient(signal);
+		//----------------------------------------------------------------------------------
 		
 		// Send To FPM
 		
 		// Server Data Task
 		feedPartsSwitch = false;
 	}
-
+	//----------------------------------------------------------------------------------------------------
+	
 	public void setPartFedCounterIncrease(){
 		signal = feederNum + "&Feeder&" + "Part Fed Counter";
-		server.getClientHandler().sendToClient(signal);
+		
+		//----------------------------------------------------------------------------------For Test
+		for(int i=0 ; i<server.clients.size() ; i++){
+			server.clients.get(i).sendToClient(signal);
+		}
+		
+		//server.getClientHandler().sendToClient(signal);
+		//----------------------------------------------------------------------------------
 	}
 
+	// For Agent------------------------------------------------------------------------------------
 	public void setRearGateSwitchLower(){
 		// Send To Managers		
 		signal = feederNum + "&Feeder&" + "Rear Gate Lower";
-		server.getClientHandler().sendToClient(signal);
+		
+		//----------------------------------------------------------------------------------For Test
+		for(int i=0 ; i<server.clients.size() ; i++){
+			server.clients.get(i).sendToClient(signal);
+		}
+		
+		//server.getClientHandler().sendToClient(signal);
+		//----------------------------------------------------------------------------------
 		
 		// Send To FPM
 		
@@ -125,59 +189,105 @@ public class LMFeederData {
 		rearGateSwitch = true;
 		serverMain.getPartData().rearGateOpen(feederNum);
 	}
-
+	//----------------------------------------------------------------------------------------------------
+	
+	// For Agent------------------------------------------------------------------------------------
 	public void setRearGateSwitchRaise(){
 		// Send To Managers		
 		signal = feederNum + "&Feeder&" + "Rear Gate Raise";
-		server.getClientHandler().sendToClient(signal);
+		
+		//----------------------------------------------------------------------------------For Test
+		for(int i=0 ; i<server.clients.size() ; i++){
+			server.clients.get(i).sendToClient(signal);
+		}
+		
+		//server.getClientHandler().sendToClient(signal);
+		//----------------------------------------------------------------------------------
 		
 		// Send To FPM
 		
 		// Server Data Task
 		rearGateSwitch = false;
 	}
+	//----------------------------------------------------------------------------------------------------
 
+	// For Agent------------------------------------------------------------------------------------
 	public void setPurgeBinSwitchOn(){
 		// Send To Managers		
 		signal = feederNum + "&Feeder&" + "Purge On";
-		server.getClientHandler().sendToClient(signal);
+		
+		//----------------------------------------------------------------------------------For Test
+		for(int i=0 ; i<server.clients.size() ; i++){
+			server.clients.get(i).sendToClient(signal);
+		}
+		
+		//server.getClientHandler().sendToClient(signal);
+		//----------------------------------------------------------------------------------
 		
 		// Send To FPM
 		
 		// Server Data Task
 		purgeSwitch = true;
 	}
+	//----------------------------------------------------------------------------------------------------
 
+	// For Agent------------------------------------------------------------------------------------
 	public void setPurgeBinSwitchOff(){
 		// Send To Managers		
 		signal = feederNum + "&Feeder&" + "Purge Off";
-		server.getClientHandler().sendToClient(signal);
+		
+		//----------------------------------------------------------------------------------For Test
+		for(int i=0 ; i<server.clients.size() ; i++){
+			server.clients.get(i).sendToClient(signal);
+		}
+		
+		//server.getClientHandler().sendToClient(signal);
+		//----------------------------------------------------------------------------------
 		
 		// Send To FPM
 		
 		// Server Data Task
 		purgeSwitch = false;
 	}
+	//----------------------------------------------------------------------------------------------------
 
+	// For Agent------------------------------------------------------------------------------------
 	public void setDiverterSwitchLeft(){
 		// Send To Managers		
 		signal = feederNum + "&Feeder&" + "Divert To Left";
-		server.getClientHandler().sendToClient(signal);
+		
+		//----------------------------------------------------------------------------------For Test
+		for(int i=0 ; i<server.clients.size() ; i++){
+			server.clients.get(i).sendToClient(signal);
+		}
+		
+		//server.getClientHandler().sendToClient(signal);
+		//----------------------------------------------------------------------------------
 		
 		// Send To FPM
 		
 		// Server Data Task
 		diversionSwitch = true;
 	}
+	//----------------------------------------------------------------------------------------------------
 
+	// For Agent------------------------------------------------------------------------------------
 	public void setDiverterSwitchRight(){
 		// Send To Managers
 		signal = feederNum + "&Feeder&" + "Divert To Right";
-		server.getClientHandler().sendToClient(signal);
+		
+		//----------------------------------------------------------------------------------For Test
+		for(int i=0 ; i<server.clients.size() ; i++){
+			server.clients.get(i).sendToClient(signal);
+		}
+		
+		//server.getClientHandler().sendToClient(signal);
+		//----------------------------------------------------------------------------------
 		
 		// Send To FPM
 		
 		// Server Data Task
 		diversionSwitch = false;
 	}
+	//----------------------------------------------------------------------------------------------------
 }

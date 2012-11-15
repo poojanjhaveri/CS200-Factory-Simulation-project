@@ -16,6 +16,13 @@ public class LMCameraData {
 	public void cameraShoot(){
 		signalToLM = nestCameraNum + "&Camera&" + "Shoot";
 		System.out.println(signalToLM);
-		server.getClientHandler().sendToClient(signalToLM);
+		//-----------------------------------------------------For Test
+		for(int i=0 ; i<server.clients.size() ; i++){
+			server.clients.get(i).sendToClient("signalToLM");
+		}
+		
+		// server.getClientHandler().sendToClient(signalToLM);
+		//------------------------------------------------------------------
+		
 	}
 }

@@ -14,7 +14,14 @@ public class LMPartRobotForAgent {
 	public void takePartFromNest(int nestNum){
 		// Signal To Managers
 		signal = nestNum + "&PartRobot&";
-		server.getClientHandler().sendToClient(signal);
+		
+		//----------------------------------------------------------------------------------For Test
+		for(int j=0 ; j<server.clients.size() ; j++){
+			server.clients.get(j).sendToClient(signal);
+		}
+		
+		//server.getClientHandler().sendToClient(signal);
+		//-----------------------------------------------------------------------------------------------
 		
 		// Send To FPM
 		

@@ -23,7 +23,7 @@ public class LMGUIPanel extends JPanel{
 		nestGUI = new LMGUINest(nestCount);
 		nonNormativeGUI = new LMGUINonNormativePanel();
 		
-		setPreferredSize(new Dimension(300,640));
+		setPreferredSize(new Dimension(300,650));
 		setLayout(new BorderLayout());
 				
 		tab.add("Feeder", feederGUI);

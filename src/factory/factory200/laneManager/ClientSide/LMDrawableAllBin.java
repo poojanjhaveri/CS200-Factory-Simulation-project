@@ -7,14 +7,14 @@ public class LMDrawableAllBin {
 
 	private LMDrawableBin newBin;
 	private ArrayList<LMDrawableBin> bins = new ArrayList<LMDrawableBin>();
-	private int binX = 595;
-	private int binY = 42; 
+	private int binX = 450;// DONE
+	private int binY = 78; // DONE
 	
 	public LMDrawableAllBin(){
 		for(int i=0 ; i<4 ; i++){
 			newBin = new LMDrawableBin(binX, binY);
 			bins.add(newBin);
-			binY += 156;
+			binY += 150;// DONE
 		}
 	}
 	 
