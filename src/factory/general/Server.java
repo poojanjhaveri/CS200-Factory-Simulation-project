@@ -52,14 +52,8 @@ public class Server { // KitAssemblyAgent
     private PartsAgent partsAgent;
     
     // Dongyoung's
-	private LMFeederForAgent agentFeeder;	// For Kevin
-	private LMLaneForAgent agentLane;	// For Kevin
-	private LMNestForAgent agentNest;	// For Patrick
-	private LMCameraForAgent agentNestCamera;	// For ? 
-	private LMGantryRobotForAgent agentGantryRobot; // For Kevin
-	private LMPartRobotForAgent agentPartRobot;	// For ?
-	private LMPartData partData;	// Not for agent
-	//private LMController controller;	// Only for testing
+	private LMServerMain serverLM;
+	private Thread threadLM;
     
     // Connection fields
     private FactoryState fstate;
@@ -81,16 +75,11 @@ public class Server { // KitAssemblyAgent
      * @param portNumber - the port number to create the server on.
      */
     public Server(int portNumber) {
-    	// TODO: Instantiate Managers
+    	
     	// Dongyoung's
-//		agentFeeder = new LMFeederForAgent(server, this); 
-//		agentLane = new LMLaneForAgent(server, this);
-//		agentNest = new LMNestForAgent(server, this);
-//		agentNestCamera = new LMCameraForAgent(server, this);
-//		agentGantryRobot = new LMGantryRobotForAgent(server, this); 
-//		agentPartRobot = new LMPartRobotForAgent(server, this); 
-//		partData = new LMPartData(server, this);
-//		controller = new LMController(agentFeeder, agentLane, agentNest, agentNestCamera, agentGantryRobot, agentPartRobot, this);
+//		serverLM = new LMServerMain(this);
+//    	threadLM = new Thread(serverLM);
+//    	threadLM.start();
     	
     	// TODO: Instantiate agents
 //    	feederAgent = new FeederAgent();
@@ -257,11 +246,4 @@ public class Server { // KitAssemblyAgent
             running = false;
         }
     }
-    
-    // By Dongyoung
-	public LMLaneForAgent getForAgentLane(){     return agentLane;     }
-	public LMFeederForAgent getForAgentFeeder(){     return agentFeeder;     }
-	public LMCameraForAgent getForAgentNestCamera(){     return agentNestCamera;     }
-	public LMNestForAgent getForAgentNest(){     	return agentNest;     }
-	public LMPartData getPartData(){     	return partData;     }
 }
