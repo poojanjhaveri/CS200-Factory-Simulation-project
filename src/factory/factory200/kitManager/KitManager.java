@@ -38,8 +38,8 @@ public class KitManager extends Manager {
 	/**
 	 * @param args
 	 */
-          BlueprintKits bpkit;
-          BlueprintParts bppart;///<contains list of kits for serialization
+    BlueprintKits bpkit;///<contains list of kits modifiable
+          BlueprintParts bppart;///<contains list of parts useable
           JPanel mainpanel;
           JTabbedPane tabbedPane;
           
@@ -152,7 +152,7 @@ public class KitManager extends Manager {
             
             create_combo = new JComboBox(); // parts list
             for(int j=0;j<this.bppart.getSize();j++){
-    		 create_combo.addItem(this.bppart.getPartAt(j).getName()); 
+    		 create_combo.addItem(this.bppart.getPartAt(j).getGUIPart()); 
                
             }
             ck_main.add(create_combo,c);
@@ -213,12 +213,6 @@ public class KitManager extends Manager {
             JButton deletebutton = new JButton("Delete Kit");
             deletekit.add(deletebutton);
             
-            
-            
-            
-            
-            
-            
         }
         
         
@@ -228,13 +222,46 @@ public class KitManager extends Manager {
         public void update() {
             
             this.mcon.out(Message.PULL_PARTS_LIST);
-            System.out.println("Updates parts list from the server");
+            System.out.println("Updated kits list from the server");
             
-            
-            //this.mcon.out(Message.PULL_KITS_LIST);
-            //System.out.println("Updates kits list from the server");
+
+            this.mcon.out(Message.PULL_KITS_LIST);
+            System.out.println("Updates kits list from the server");
+
          }
-        
+
+    public void createKit()
+    {
+
+	Kit newkit = new Kit("name goes here","description");//this will be the kit that just got made
+	//handle gui here
+
+
+
+
+
+
+	String msg = Message.DEFINE_NEW_KIT+":"+newkit.serialize();
+	this.mcon.out(msg);
+    }
+
+    public void processMessage(String msg)
+    {
+	super.processMessage(msg);
+        if(msg.contains( Message.PUSH_KITS_LIST)) {
+        	
+	       this.bpkit.recreate(this.grabParameter(msg));
+	       System.out.println("GRABBED NEW KITS LIST FROM SERVER!: "+msg);
+		   this.bpkit.debug();
+	   }
+        if(msg.contains(Message.PUSH_PARTS_LIST))
+        {
+            this.bppart.recreate(this.grabParameter(msg));
+            System.out.println("GRABBED NEW PARTS LIST FROM SERVER!" + msg);
+            this.bppart.debug();
+        }
+
+    }        
         
          /**
      * @brief deletes the kit with the specified kit name and sends data to
@@ -246,15 +273,6 @@ public class KitManager extends Manager {
         //	updateComboBox();
     }
          
-          public void processMessage(String msg) {
-        super.processMessage(msg);
-        if(msg.contains( Message.PUSH_PARTS_LIST)) {
-        	
-	       this.bppart.recreate(this.grabParameter(msg));
-	       System.out.println("GRABBED NEW PARTS LIST FROM SERVER!: "+msg);
-		   this.bppart.debug();
-	   }
-    }
          
          
 

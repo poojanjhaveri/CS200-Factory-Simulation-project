@@ -13,7 +13,7 @@ manager:
 	javac $(PARAM) $(GENERAL)
 	java $(PKGENERAL).Manager
 partsmanager:
-	javac $(PARAM) $(GENERAL) factory200/partsManager/*.java factory200/factoryProductionManager/*.java
+	javac $(PARAM) $(GENERAL) factory200/partsManager/*.java factory200/factoryProductionManager/*.java factory200/kitManager/*.java
 	rm ../../factory -R
 	mv factory ../..
 factoryproduction:
