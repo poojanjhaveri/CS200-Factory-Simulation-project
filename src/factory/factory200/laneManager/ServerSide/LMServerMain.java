@@ -21,6 +21,9 @@ public class LMServerMain extends JFrame implements Runnable{
 	
 	public LMServerMain(Server server){
 		this.server = server;
+	}
+	
+	public void run(){
 		agentFeeder = new LMFeederForAgent(server, this); 
 		agentLane = new LMLaneForAgent(server, this);
 		agentNest = new LMNestForAgent(server, this);
@@ -34,8 +37,6 @@ public class LMServerMain extends JFrame implements Runnable{
 		
 		controller = new LMController(agentFeeder, agentLane, agentNest, agentNestCamera, agentGantryRobot, agentPartRobot, this);
 	}
-	
-	public void run(){}
 
 	public LMLaneForAgent getForAgentLane(){
 		return agentLane;
