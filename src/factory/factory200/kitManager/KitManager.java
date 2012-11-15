@@ -148,7 +148,7 @@ public class KitManager extends Manager {
  
             c.gridx=1;
             c.gridy=1;
-         //   System.out.println("Size of part list is ",bppart.getSize());
+            System.out.println("Size of part list is "+bppart.getSize());
             
             create_combo = new JComboBox(); // parts list
             for(int j=0;j<this.bppart.getSize();j++){
@@ -231,8 +231,8 @@ public class KitManager extends Manager {
             System.out.println("Updates parts list from the server");
             
             
-            this.mcon.out(Message.PULL_KITS_LIST);
-            System.out.println("Updates kits list from the server");
+            //this.mcon.out(Message.PULL_KITS_LIST);
+            //System.out.println("Updates kits list from the server");
          }
         
         
