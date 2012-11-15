@@ -61,7 +61,10 @@ public class LMDrawablePart {
 				arrivedToNest = true;
 				getAllPart.addPartFromLaneToNest(laneNestNum);
 				message = laneNestNum + "&Nest&AddPart&";
-				app.getClient().getThread().sendToFactory(message);
+				
+				// FIXED ( Synchronization with 'Manager' Class )
+				app.getVerifyMessage().sendToServer(message);
+				//app.getClient().getThread().sendToFactory(message);
 			}
 		}
 		calculate();

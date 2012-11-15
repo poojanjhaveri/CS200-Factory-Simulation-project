@@ -1,11 +1,13 @@
 package factory.factory200.laneManager.ClientSide;
 
+import factory.general.*;
+
 /**
  * This class verifies signals from server( in V0, it is just a platform )
  * 
  * @author Dongyoung Jung
  */
-public class LMSignalFromServerVerification{
+public class LMSignalFromServerVerification extends Manager{
 	
 	private LMApplication app;	///< Instance of class 'LaneManagerApp'
 	private LMFeederHandler feederHandler;	///< Instance of class 'LaneManagerFeederHandler'
@@ -16,6 +18,7 @@ public class LMSignalFromServerVerification{
 	private LMPartRobotHandler partRobotHandler;
 	private LMGantryRobotHandler gantryRobotHandler;
 	private int feedingTiming;
+	private String tempMsg = "";
 	/**
 	 * @brief Constructor
 	 * @param laneManagerApp : Instance of class 'LaneManagerApp'
@@ -29,22 +32,23 @@ public class LMSignalFromServerVerification{
 		partHandler = new LMPartHandler(app);
 		partRobotHandler = new LMPartRobotHandler(app);
 		gantryRobotHandler = new LMGantryRobotHandler(app);
+		
+		super.processMessage(tempMsg);
 	}
 	
 	/**
 	 * This function clarifies where the signal should go.
-	 * The way it does it to check a specific letter inside the 'message' String.
+	 * The way it does it to check a specific letter inside the 'msg' String.
 	 * "&Camera&" : Message with cameras ( Signal : camera number + "&Camera&" )
 	 * "&Feeder&" : Message with feeders
 	 * "&Lane&" : Message with lanes
 	 * "&Nest&" : Message with nests
 	 * 
 	 * @brief Message Checker ( From Server )
-	 * @param message : Message from server
+	 * @param msg : Message from server
 	 */
-	public void verify(String message){		
-		
-		if( message.indexOf("&Timer&") != -1 ){
+	public void processMessage(String msg){
+		if( msg.indexOf("&Timer&") != -1 ){
 			feedingTiming++;
 			app.getGraphicsPanel().getAllLane().laneMove();
 			app.getGraphicsPanel().getAllCamera().cameraShoot();
@@ -52,32 +56,32 @@ public class LMSignalFromServerVerification{
 			app.getGraphicsPanel().repaint();
 		}
 		
-		else if( message.indexOf("&Camera&") != -1 ){
-			cameraHandler.cameraShoot(message);
+		else if( msg.indexOf("&Camera&") != -1 ){
+			cameraHandler.cameraShoot(msg);
 		}
 		
-		else if( message.indexOf("&Feeder&") != -1 ){
-			feederHandler.verify(message);
+		else if( msg.indexOf("&Feeder&") != -1 ){
+			feederHandler.verify(msg);
 		}
 		
-		else if( message.indexOf("&Lane&") != -1 ){
-			laneHandler.verify(message);
+		else if( msg.indexOf("&Lane&") != -1 ){
+			laneHandler.verify(msg);
 		}
 		
-		else if( message.indexOf("&Nest&") != -1 ){
-			nestHandler.verify(message);
+		else if( msg.indexOf("&Nest&") != -1 ){
+			nestHandler.verify(msg);
 		}
 		
-		else if( message.indexOf("&Part&") != -1 ){
-			partHandler.verify(message);
+		else if( msg.indexOf("&Part&") != -1 ){
+			partHandler.verify(msg);
 		}
 		
-		else if( message.indexOf("&PartRobot&") != -1 ){
-			partRobotHandler.verify(message);
+		else if( msg.indexOf("&PartRobot&") != -1 ){
+			partRobotHandler.verify(msg);
 		}
 		
-		else if( message.indexOf("&Bin&") != -1 ){
-			gantryRobotHandler.verify(message);
+		else if( msg.indexOf("&Bin&") != -1 ){
+			gantryRobotHandler.verify(msg);
 		}
 	}
 }
