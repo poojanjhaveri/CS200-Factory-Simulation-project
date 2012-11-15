@@ -1,6 +1,6 @@
 G=Drawable.java MovingDrawable.java Coordinate.java Manager.java ManagerConnection.java Message.java Printer.java GUIRobot.java Server.java Kit.java Part.java Inventory.java GUIPart.java Blueprint.java BlueprintKits.java BlueprintParts.java Util.java FactoryState.java
-GENERAL=$(addprefix general/, $(G))
-
+C201=factory201/feederManagement/*.java  factory201/partsManagement/*.java factory201/kitManagement/*.java
+GENERAL=$(addprefix general/, $(G)) $(C201) 
 PARAM=-d .
 PKGENERAL=factory.general
 
