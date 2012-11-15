@@ -16,7 +16,14 @@ public class LMGantryRobotForAgent {
 		
 		// Signal To Managers
 		signal = feederNum + "&Bin&Put&" + binNum;
-		server.getClientHandler().sendToClient(signal);
+		
+		//----------------------------------------------------------------------------------For Test
+		for(int i=0 ; i<server.clients.size() ; i++){
+			server.clients.get(i).sendToClient(signal);
+		}
+		
+		//server.getClientHandler().sendToClient(signal);
+		//-----------------------------------------------------------------------------------------------
 		
 		// Send To FPM
 		
@@ -27,7 +34,14 @@ public class LMGantryRobotForAgent {
 	public void purgeBin(int feederNum){
 		// Signal To Managers
 		signal = feederNum + "&Bin&Purge&";
-		server.getClientHandler().sendToClient(signal);
+		
+		//----------------------------------------------------------------------------------For Test
+		for(int i=0 ; i<server.clients.size() ; i++){
+			server.clients.get(i).sendToClient(signal);
+		}
+		
+		//server.getClientHandler().sendToClient(signal);
+		//-------------------------------------------------------------------------------------------------
 		
 		// Send To FPM
 		

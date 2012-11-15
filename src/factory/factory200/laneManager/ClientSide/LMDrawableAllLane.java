@@ -7,14 +7,14 @@ public class LMDrawableAllLane {
 	
 	private LMDrawableLane newLane;
 	private ArrayList<LMDrawableLane> lanes = new ArrayList<LMDrawableLane>();
-	private final int laneX = 51;
-	private int laneY = 25;
+	private final int laneX = 10;// DONE
+	private int laneY = 58;// DONE
 	
 	public LMDrawableAllLane(){		
 		for(int i=0 ; i<8 ; i++){
 			newLane = new LMDrawableLane(laneX, laneY);
 			lanes.add(newLane);
-			laneY += 78;
+			laneY += 75;// DONE
 		}
 	}
 	

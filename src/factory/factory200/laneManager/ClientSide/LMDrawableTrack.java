@@ -19,8 +19,8 @@ public class LMDrawableTrack {
 
 	public void trackMove(){
 		trackX-=2;
-		if(trackX == 49){
-			trackX = 471;
+		if(trackX == 8){// DONE
+			trackX = 310;// DONE
 		}
 	}
 }

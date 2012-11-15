@@ -7,14 +7,14 @@ public class LMDrawableAllNest {
 	
 	private LMDrawableNest newNest;
 	private ArrayList<LMDrawableNest> nests = new ArrayList<LMDrawableNest>();
-	private final int nestX = 50;
-	private int nestY = 5;
+	private final int nestX = 10;// DONE
+	private int nestY = 75/2;// DONE
 	
 	public LMDrawableAllNest(){
 		for(int i=0 ; i<8 ; i++){
 			newNest = new LMDrawableNest(nestX, nestY);
 			nests.add(newNest);
-			nestY += 78;
+			nestY += 75;// DONE
 		}
 	}
 	

@@ -36,7 +36,15 @@ public class LMSendPartSignal {
 					serverMain.getPartData().addPartToLaneFromFeeder(2*i+1, i);
 					message = "" + (2*i+1) + partNum + "&Part&Add&";
 				}
-				server.getClientHandler().sendToClient(message);
+				
+				//----------------------------------------------------------------------------------For Test
+				for(int j=0 ; j<server.clients.size() ; j++){
+					server.clients.get(j).sendToClient(message);
+				}
+				
+				//server.getClientHandler().sendToClient(message);
+				//-------------------------------------------------------------------------------------------------
+				
 				serverMain.getForAgentFeeder().getFeeder(i).setPartFedCounterIncrease();
 			}
 		}
