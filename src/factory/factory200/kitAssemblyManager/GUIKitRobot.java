@@ -320,7 +320,8 @@ public class GUIKitRobot extends GUIRobot {
 
 
         if (this.hasKit()) {
-            this.getKit().getImage().paintIcon(panel, g2d, this.getCoordinate().getX(), this.getCoordinate().getY());
+            this.getKit().updateParts();
+            this.getKit().paintMe(panel, g2d, this.getCoordinate().getX(), this.getCoordinate().getY());
         }
         this.getImage().paintIcon(panel, g2d, this.getCoordinate().getX(), this.getCoordinate().getY());
         g2d.dispose();

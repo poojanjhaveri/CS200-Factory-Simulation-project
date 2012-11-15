@@ -73,18 +73,21 @@ public class KitStand {
         }
         if(temp.getX()==kitPositions.get(0).getX() && temp.getY()==kitPositions.get(0).getY()){
             kitPositions.get(0).setKit(temp);
-            kitPositions.get(0).setFilled(true);
-            System.out.println(kitPositions.get(0).isFilled());
+            kitPositions.get(0).getKit().updateParts();
+            //kitPositions.get(0).setFilled(true);
+            //System.out.println(kitPositions.get(0).isFilled());
         }
         else if(temp.getX()==kitPositions.get(1).getX() && temp.getY()==kitPositions.get(1).getY()){
             kitPositions.get(1).setKit(temp);
-            kitPositions.get(1).setFilled(true);
-            System.out.println(kitPositions.get(1).isFilled());
+            kitPositions.get(1).getKit().updateParts();
+            //kitPositions.get(1).setFilled(true);
+            //System.out.println(kitPositions.get(1).isFilled());
         }
         else if(temp.getX()==kitPositions.get(2).getX() && temp.getY()==kitPositions.get(2).getY()){
             kitPositions.get(2).setKit(temp);
-            kitPositions.get(2).setFilled(true);
-            System.out.println(kitPositions.get(2).isFilled());
+            kitPositions.get(2).getKit().updateParts();
+            //kitPositions.get(2).setFilled(true);
+            //System.out.println(kitPositions.get(2).isFilled());
         }
     }
     
@@ -92,15 +95,18 @@ public class KitStand {
         KAMKit returnKit=null;
         if(y==0){
             returnKit=kitPositions.get(0).getKit();
-           kitPositions.get(0).setFilled(false);
+            kitPositions.get(0).setKit(null);
+           //kitPositions.get(0).setFilled(false);
         }
         else if(y==1){
             returnKit=kitPositions.get(1).getKit();
-            kitPositions.get(1).setFilled(false);
+            kitPositions.get(1).setKit(null);
+            //kitPositions.get(1).setFilled(false);
         }
         else if(y==2){
             returnKit=kitPositions.get(2).getKit();
-            kitPositions.get(2).setFilled(false);
+            kitPositions.get(2).setKit(null);
+            //kitPositions.get(2).setFilled(false);
         }
         return returnKit;
     }

@@ -19,8 +19,8 @@ public class KitPosition {
         
         
         public KitPosition(){
-            kit=new KAMKit();
-            filled=false;
+            kit=null;
+            //filled=false;
             
         }
 
@@ -44,7 +44,7 @@ public class KitPosition {
          * @return the filled
          */
         public boolean isFilled() {
-            return filled;
+            return kit==null?false:true;
         }
 
         /**
@@ -65,7 +65,7 @@ public class KitPosition {
          * @param x the x to set
          */
         public void setX(int x) {
-            kit.setX(x);
+            //kit.setX(x);
             this.x = x;
         }
 
@@ -80,7 +80,7 @@ public class KitPosition {
          * @param y the y to set
          */
         public void setY(int y) {
-            kit.setY(y);
+            //kit.setY(y);
             this.y = y;
         }
 }
