@@ -31,6 +31,9 @@ public class GUIBin{
 			part.setGUIPart(guiPart);
 		}
 		    
+	public void setPartToNull(){
+		this.part=null;
+	}
 	public Part getPart(){
 		return part;
 	}

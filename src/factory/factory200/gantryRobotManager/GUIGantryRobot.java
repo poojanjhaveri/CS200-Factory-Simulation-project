@@ -52,19 +52,19 @@ public class GUIGantryRobot extends MovingDrawable{
         {
         case 0:
 	    this.moveto = 0;
-            this.moveTo(GantryRobotManager.FEED0X+40,GantryRobotManager.FEED0Y+50);
+            this.moveTo(GantryRobotManager.FEED0X,GantryRobotManager.FEED0Y+50);
             break;
         case 1:
 	    this.moveto = 1;
-            this.moveTo(GantryRobotManager.FEED1X+40,GantryRobotManager.FEED1Y+50);
+            this.moveTo(GantryRobotManager.FEED1X,GantryRobotManager.FEED1Y+50);
             break;
         case 2:
 	    this.moveto = 2;
-            this.moveTo(GantryRobotManager.FEED2X+40,GantryRobotManager.FEED2Y+50);
+            this.moveTo(GantryRobotManager.FEED2X,GantryRobotManager.FEED2Y+50);
             break;
         case 3:
 	    this.moveto = 3;
-            this.moveTo(GantryRobotManager.FEED3X+40,GantryRobotManager.FEED3Y+50);
+            this.moveTo(GantryRobotManager.FEED3X,GantryRobotManager.FEED3Y+50);
             break;
         default:
             System.out.println("ERROR: Attempting to move GuiGantryRobot to nonexistent feeder " + i);
@@ -95,6 +95,7 @@ public class GUIGantryRobot extends MovingDrawable{
 	    }
     }
     
+    
     /**
     @brief Another moving statement which has binNumber b, and feeder number f to move
     */
@@ -119,6 +120,19 @@ public class GUIGantryRobot extends MovingDrawable{
     sets the new destination to the bin dump site
     */
     
+
+	public boolean arrivedAtFeeder(Integer feederNum){
+		if(this.getCoordinate().getX()==75 ){
+			return true;
+		}
+		else
+			return false;
+		
+	}
+	
+	public void supplyPartOnFeeder(){
+		this.bin.setPartToNull();
+	}
     public void moveToDump() {
         this.moveTo(GantryRobotManager.DUMPX,GantryRobotManager.DUMPY);
     }

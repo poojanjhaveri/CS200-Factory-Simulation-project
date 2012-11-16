@@ -43,24 +43,24 @@ public class GantryRobotManager extends Manager implements ActionListener {
     GantryState gs;
     GUIBin bin;
     public GUIGantryRobot ganbot; ///<class which includes Gantry Robot Manager Methods
-
+    PurgeStation ps;
     int purgeStationx;//x coordinate of purgeStation
     int purgeStationy;//y coordinate of purgeStation
 
 //   public void receiveFromServer();///<pull data from server
 //   GUIGantryManager gui;///<break the nonormative situations
    
-    public static final Integer FEED0X = 0;///<x-coordinate of feeder 0
+    public static final Integer FEED0X = 75;///<x-coordinate of feeders' right side
     public static final Integer FEED0Y = 50;///<y-coordinate of feeder 0
-    public static final Integer FEED1X = 0;///<x-coordinate of feeder 1
+    public static final Integer FEED1X = 75;///<x-coordinate of feeder 1
     public static final Integer FEED1Y = 200;///<y-coordinate of feeder 1
-    public static final Integer FEED2X = 0;///<x-coordinate of feeder 2
+    public static final Integer FEED2X = 75;///<x-coordinate of feeder 2
     public static final Integer FEED2Y = 350;///<y-coordinate of feeder 2
-    public static final Integer FEED3X = 0;///<x-coordinate of feeder 3
+    public static final Integer FEED3X = 75;///<x-coordinate of feeder 3
     public static final Integer FEED3Y = 500;///<y-coordinate of feeder 3
 
     public static final Integer DUMPX = 260;///<x-coordinate of dump 
-    public static final Integer DUMPY = 600;///<y-coordinate of dump 
+    public static final Integer DUMPY = 700;///<y-coordinate of dump 
 
     public static final Integer BIN_X = 450;///<x coordinate of all bin locations
     public static final Integer BIN0Y = 30;///<y coordinate of bin0
@@ -87,6 +87,7 @@ public class GantryRobotManager extends Manager implements ActionListener {
         setLayout(new GridLayout(1, 2));  
         ganbot = graphics.getGantryRobot();
         add(graphics);
+        ps = new PurgeStation();
         int x = 500;
         setSize(500 + x, 700);
         graphics.setVisible(true);
@@ -210,7 +211,7 @@ if(msg.contains(Message.MOVE_GANTRY_TO_BIN))
 			}
 		}
 		if (ae.getSource() ==dumpPart){
-			//ganbot.supplyPartOnFeeder();
+			ganbot.supplyPartOnFeeder();
 		}
 
 		if (ae.getSource() ==pickBin){
