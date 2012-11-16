@@ -19,13 +19,10 @@ public class GraphicsPanel extends JPanel{
 	private GantryRobotManager gantryRobotManager = new GantryRobotManager();
 	private KitAssemblyManager kitsAssemblyManager = new KitAssemblyManager();
 	private LMApplication laneManager = new LMApplication();
-	private Timer timer;
 	private ImageIcon backgroundImage = new ImageIcon( GraphicsPanel.class.getResource("background.png") );
 	
 	public GraphicsPanel(){
 		setBorder(new LineBorder( Color.red ));
-		timer = new Timer(30, new ServerTimer());
-		timer.start();
 	}
 
 	public void paint(Graphics graphics){
