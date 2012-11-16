@@ -64,7 +64,7 @@ public class PartsAgent extends Agent implements PartsInterface {
     // msg from kit robot
     @Override
     public void msgEmptyKitReady(Kit k) {
-        if(k.standNum==Kit.StandNum.zero || kit1.status == Kit.Status.ready)
+        if(k.standNum==Kit.StandNum.zero)
             kit0.status = Kit.Status.ready;
         else
             kit1.status = Kit.Status.ready;
@@ -81,13 +81,13 @@ public class PartsAgent extends Agent implements PartsInterface {
             //newKit.clear();
             return true;
         }
-        if (kit0!=null)
+        if (kit0!=null || kit1!=null){
             if (kit0.status == Kit.Status.full) {
                 print("giving kit to kitagent");
                 giveKitToKitAgent(kit0);
                 return true;
             }
-        if (kit1!=null)
+        
             if (kit1.status == Kit.Status.full) {
                 print("giving kit to kitagent");
                 giveKitToKitAgent(kit1);
@@ -117,7 +117,7 @@ public class PartsAgent extends Agent implements PartsInterface {
             pickUpPart(inventory.remove(0));
             return true;
         }
-        
+        }
         
 
 

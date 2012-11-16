@@ -33,7 +33,7 @@ public class MockKitRobot extends MockAgent implements KitRobot {
                 + "camera that the kit is verified."));
     }
 
-   // @Override
+   @Override
     public void msgKitIsFull(Kit k) {
         log.add(new LoggedEvent("Received msgKitIsFull from parts agent "
                 + "that the kit is full."));
@@ -63,8 +63,4 @@ public class MockKitRobot extends MockAgent implements KitRobot {
         this.partsagent=p;
     }
 
-    @Override
-    public void msgKitIsFull() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
 }
