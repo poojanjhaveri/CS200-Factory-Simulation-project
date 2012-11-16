@@ -6,6 +6,7 @@ import factory.general.Kit;
 
 import factory.general.Manager;
 import factory.general.Message;
+import factory.general.Part;
 import java.awt.AlphaComposite;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -16,6 +17,8 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.*;
@@ -33,7 +36,7 @@ import javax.swing.border.EmptyBorder;
 
 
 
-public class KitManager extends Manager {
+public class KitManager extends Manager  implements ActionListener {
 
 	/**
 	 * @param args
@@ -53,7 +56,9 @@ public class KitManager extends Manager {
           JComboBox create_combo;
           JComboBox delete_combo;
           
-          private ArrayList partlist = new ArrayList();
+          JButton createkitbutton;
+          
+          ArrayList<Part> partlist = new ArrayList();
           
     
     
@@ -80,6 +85,17 @@ public class KitManager extends Manager {
             frame.setVisible(true);
             
 	}
+        
+        
+         public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == createkitbutton) {
+         System.out.println("kit Created");
+            createKit();
+            
+        }
+    }
+        
+        
 	
 	//getters and setters as needed 
 	
@@ -152,7 +168,7 @@ public class KitManager extends Manager {
             
             create_combo = new JComboBox(); // parts list
             for(int j=0;j<this.bppart.getSize();j++){
-    		 create_combo.addItem(this.bppart.getPartAt(j).getGUIPart()); 
+    		 create_combo.addItem(this.bppart.getPartAt(j).getName()); 
                
             }
             ck_main.add(create_combo,c);
@@ -186,8 +202,10 @@ public class KitManager extends Manager {
             c.gridx=0;
             c.gridy=3;
             c.gridwidth=2;
-            JButton submitbutton = new JButton("Create Kit");
-            ck_main.add(submitbutton,c);
+            createkitbutton = new JButton("Create Kit");
+            createkitbutton.addActionListener(this);
+            
+            ck_main.add(createkitbutton,c);
             
             
     
@@ -232,17 +250,19 @@ public class KitManager extends Manager {
 
     public void createKit()
     {
-
-	Kit newkit = new Kit("name goes here","description");//this will be the kit that just got made
-	//handle gui here
-
-
+        
+	Kit newkit = new Kit(kitname.getText(),"description");//this will be the kit that just got made
+	newkit.setParts(partlist);
+        //handle gui here
+        
+        
 
 
 
 
 	String msg = Message.DEFINE_NEW_KIT+":"+newkit.serialize();
-	this.mcon.out(msg);
+        System.out.println(msg);
+	//this.mcon.out(msg);
     }
 
     public void processMessage(String msg)
