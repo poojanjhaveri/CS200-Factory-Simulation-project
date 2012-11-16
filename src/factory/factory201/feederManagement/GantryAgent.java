@@ -29,7 +29,7 @@ public class GantryAgent extends Agent implements Gantry {
     //holds info about all the feeders that are assigned to the gantry
     private List<myFeeder> myFeeders = Collections.synchronizedList(new ArrayList<myFeeder>());
     private List<myBin> bins = Collections.synchronizedList(new ArrayList<myBin>());
-    private HandleAManager;///<connection to the client
+    private HandleAManager client;///<connection to the client
 
     Timer timer=new Timer();
     //---------------------------------------------------------------------------
@@ -264,7 +264,8 @@ public class GantryAgent extends Agent implements Gantry {
 			e.printStackTrace();
 		}
         
-    	animation.ganbot.carryABin(b.index+1);
+    	/*Kevin - Alex commented this out because it was causing compiler errors and we need to run the agent code
+        animation.ganbot.carryABin(b.index+1);*/
         animation.ganbot.moveToFeeder(f.index);
         /*
          this.client.sendMessage(Message.GANTRY_CARRY_A_BIN"+":"+b.index+1); 

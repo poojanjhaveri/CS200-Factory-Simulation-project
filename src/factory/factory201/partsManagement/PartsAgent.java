@@ -81,12 +81,13 @@ public class PartsAgent extends Agent implements PartsInterface {
             //newKit.clear();
             return true;
         }
-        
+        if (kit0!=null)
             if (kit0.status == Kit.Status.full) {
                 print("giving kit to kitagent");
                 giveKitToKitAgent(kit0);
                 return true;
             }
+        if (kit1!=null)
             if (kit1.status == Kit.Status.full) {
                 print("giving kit to kitagent");
                 giveKitToKitAgent(kit1);
