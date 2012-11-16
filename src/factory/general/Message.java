@@ -27,6 +27,15 @@ public class Message {
     public static final String UPDATE_KIT = "UPDATE_KIT";
     public static final String UNDEFINE_KIT = "UNDEFINE_KIT";///<removes a kit definition
 
+    //gantryrobotmanager section
+    public static final String MOVE_GANTRY_TO_FEEDER = "MOVE_GANTRY_TO_FEEDER"; // takes in int for which feeder
+    public static final String MOVE_GANTRY_TO_BIN = "MOVE_GANTRY_TO_BIN"; // takes in int for which bin
+    public static final String MOVE_GANTRY_TO_PURGE = "MOVE_GANTRY_TO_PURGE"; // no params
+    public static final String MOVE_GANTRY_TO_DUMP_PART = "GANTRY_TO_DUMP_PART"; // no params
+    public static final String MOVE_GANTRY_TO_PICK_BIN = "MOVE_GANTRY_TO_PICK_BIN"; // takes in int for which bin
+
+    
+    
     //factoryproductionmanager section
     //PULL_KITS_LIST is also used by FPM
     public static final String PUSH_PRODUCTION_QUEUE = "PUSH_PRODUCTION_QUEUE";///<sends the server a list of comma delimited kit IDs 

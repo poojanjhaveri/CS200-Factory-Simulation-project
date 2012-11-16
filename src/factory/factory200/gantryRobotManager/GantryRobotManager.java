@@ -161,7 +161,19 @@ public class GantryRobotManager extends Manager implements ActionListener {
         }
     }
 
-
+    public void processMessage(String msg) {
+        // Decide action based on message from server
+        if (msg.contains(Message.TEST_CLIENT)) {
+            System.out.println("Client test passed.");
+        } else if (msg.contains(Message.MOVE_GANTRY_TO_FEEDER)) {
+            // Should have received a message like Message.MOVE_GANTRY_TO_FEEDER + ":" + 5
+            try {
+                int param = Integer.parse(grabParameter(msg));
+            } catch (Exception e) {
+                System.out.println("Bad message from server");
+            }
+        }
+    }
 	
 	public void actionPerformed(ActionEvent ae) {
 		// TODO Auto-generated method stub
