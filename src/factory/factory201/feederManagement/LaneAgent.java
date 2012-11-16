@@ -180,6 +180,7 @@ public class LaneAgent extends Agent implements Lane {
             	}    //supply part if it has correct quantity
             	else{
             		if(requestedPart==false){
+
             			askForPart(p.part);
             			requestedPart=true;
             			return true;

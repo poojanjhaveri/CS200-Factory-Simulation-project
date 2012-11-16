@@ -66,6 +66,7 @@ public class AgentMain {
         
         // Kevin
         for (int i = 0, j = 0; i < FEEDER; i++, j++) {
+            
             feeder[i].setGantry(gantry);
             feeder[i].setLeftLane(lane[j]);
             feeder[i].setRightLane(lane[++j]);
@@ -73,6 +74,7 @@ public class AgentMain {
             
         }
         for (int i = 0; i < LANE; i+=2) {
+       
             lane[i].setFeeder(feeder[i/2]);
             lane[i+1].setFeeder(feeder[i/2]);
             lane[i].setNest(nestAgent);
