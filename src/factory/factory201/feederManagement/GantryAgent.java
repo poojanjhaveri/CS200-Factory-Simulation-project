@@ -28,7 +28,7 @@ public class GantryAgent extends Agent implements Gantry {
     //holds info about all the feeders that are assigned to the gantry
     private List<myFeeder> myFeeders = Collections.synchronizedList(new ArrayList<myFeeder>());
     private List<myBin> bins = Collections.synchronizedList(new ArrayList<myBin>());
-    
+    private HandleA
 
     Timer timer=new Timer();
     //---------------------------------------------------------------------------
@@ -237,7 +237,16 @@ public class GantryAgent extends Agent implements Gantry {
     	//while(animation.returnArrived()==false){;}
     	print("about to pick up bin");
   	animation.ganbot.moveToBin(b.index+1);
-    
+    /*
+     if(this.client == null)
+         {
+         System.out.println("CRITICAL ERROR: CLIENT WAS NEVER CONNECTED.");
+         return;
+         }
+         this.client.sendMessage(Message.MOVE_GANTRY_TO_BIN+":"+b.index+1);
+         
+         
+     */
         //  	animation.pickUpBin(b.index-1);
     	//while(animation.p)
     	
@@ -250,6 +259,10 @@ public class GantryAgent extends Agent implements Gantry {
         
     	animation.ganbot.carryABin(b.index+1);
         animation.ganbot.moveToFeeder(f.index);
+        /*
+         this.client.sendMessage(Message.GANTRY_CARRY_A_BIN"+":"+b.index+1); 
+         this.client.sendMessage(Message.MOVE_GANTRY_TO_FEEDER+":"+f.index);
+         */
     	
         //	animation.goToFeeder(f.index-1);
     	
