@@ -1,13 +1,9 @@
 //PLEASE DO NOT FORMAT MY CODE IN ANYTHING OTHER THAN ASTYLE
-package factory.factory200.gantryRobotManager;
+package factory.factory200.factoryProductionManager.GantryRobotManager;
 import java.awt.Graphics2D;
-import java.util.ArrayList;
-import java.util.LinkedList;
-
-import javax.swing.JPanel;
-
+import factory.factory200.factoryProductionManager.GraphicsPanel;
 import factory.general.MovingDrawable;
-import factory.general.Part;
+
 /**
  * The gantry robot has basic bin movement and emptying capabilities. In
  * relation to the simulation GUI, the gantry robot has <ul> <li>arm extension
@@ -28,25 +24,18 @@ public class GUIGantryRobot extends MovingDrawable{
     Boolean hasbin;///<whether or not the robot is carrying a bin
     Integer moveto;///<where the gantry robot is heading towards
 
-    GUIGantryRobot() {
-	super(GantryRobotManager.ROBOT_INITIAL_X,GantryRobotManager.ROBOT_INITIAL_Y,0.0,GUIGantryRobot.IMAGE_PATH);
-	this.extended = false;
-	this.hasbin = false;
-	this.bin = null;
-	this.setConstants(GantryRobotManager.ROBOT_VELOCITY_X, GantryRobotManager.ROBOT_VELOCITY_Y, GantryRobotManager.ROBOT_TURN_RATE);
+    public GUIGantryRobot() {
+		super(GantryRobotManager.ROBOT_INITIAL_X,GantryRobotManager.ROBOT_INITIAL_Y,0.0,GUIGantryRobot.IMAGE_PATH);
+		this.extended = false;
+		this.hasbin = false;
+		this.bin = new GUIBin();
     }
+    
     /**
     @brief sets a new feeder destination for the gantry robot
     sets a new feeder destination coordinate for gantry robot, the passed Integer specifies which feeder to head to
     @param i feeder number
     */
-    
-    ///<Once gantry robot gets to a bin, it picks up the bin 
-    public void pickUpBin(Integer num){
-    	this.bin = new GUIBin(this.getX(),this.getY(),0.0,"pics/binBox"+(num+1)+".png",num+1);
-    }
-    
-    ///<moveToFeeder i which is assigned by agents in Server
     public void moveToFeeder(Integer i) {
         switch(i)
         {
@@ -71,7 +60,6 @@ public class GUIGantryRobot extends MovingDrawable{
         }
     }
     
-    ///<moveToBin i which is assigned by agents in Server
     public void moveToBin(Integer i)
     {
 	switch(i)
@@ -95,30 +83,15 @@ public class GUIGantryRobot extends MovingDrawable{
 	    }
     }
     
-    /**
-    @brief Another moving statement which has binNumber b, and feeder number f to move
-    */
-    
     public void moveBinToFeeder(Integer b, Integer f)
     {
-    	moveTo(GantryRobotManager.FEED1X,GantryRobotManager.FEED1Y);
+
     }
     
-    public boolean hasArrivedAtPurge(){
-    	if(this.getX()==GantryRobotManager.DUMPX && this.getY()==GantryRobotManager.DUMPY)
-    		return true;
-    	else
-    		return false;
-    }
-    
-    public void binPurged(){
-    	this.bin = null;
-    }
     /**
     @brief sets the new destination to the bin dump site
     sets the new destination to the bin dump site
     */
-    
     public void moveToDump() {
         this.moveTo(GantryRobotManager.DUMPX,GantryRobotManager.DUMPY);
     }
@@ -152,27 +125,11 @@ public class GUIGantryRobot extends MovingDrawable{
     {
         return this.extended;
     }
-    /**
-     * @return GUIBin objects in gantry robot 
-     */
-    public GUIBin getBin(){
-    	return bin;
-    }
     
-    /**
-     * paint function
-     * @param panel
-     * @param g
-     */
-     public void paintMe(JPanel panel, Graphics2D g){
-    	
-    	if(this.bin != null){
-    		this.bin.getImage().paintIcon(panel, g, this.getCoordinate().getX(), this.getCoordinate().getY());
-    		this.bin.getPart().getGUIPart().getImage().paintIcon(panel, g, this.bin.getX()+15,this.bin.getY()+15);
-        }
-    		
+     public void paintMe(GraphicsPanel panel, Graphics2D g){
+    	//if(this.bin != null){
+    	//	this.bin.getImage().paintIcon(panel, g2d, this.getCoordinate().getX(), this.getCoordinate().getY());
+        //}
     	this.getImage().paintIcon(panel, g, this.getCoordinate().getX(), this.getCoordinate().getY());
-    		    		     
      }
-            
 }

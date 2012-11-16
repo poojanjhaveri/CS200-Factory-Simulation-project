@@ -195,9 +195,4 @@ public class KitAssemblyManager extends JPanel implements ActionListener {
           this.graphics.paint(gpanel, g2);
           
       }
-      
-      public static void main(String[] args){
-       KitAssemblyManager mgr = new KitAssemblyManager();   
-      }
-      
 }
