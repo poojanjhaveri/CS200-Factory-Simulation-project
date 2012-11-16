@@ -66,22 +66,31 @@ public class KAMKit {
     public int getX() {
         return x;
     }
+    public void updateParts(){
+        if(parts.size()<4){
+          for(int i=0;i<parts.size();i++){
+              parts.get(i).getGUIPart().setX(this.getX());
+              parts.get(i).getGUIPart().setY(this.getY()+25*i);
+          }  
+        }
+        else if(parts.size()<8){
+            for(int i=0;i<4;i++){
+              parts.get(i).getGUIPart().setX(this.getX());
+              parts.get(i).getGUIPart().setY(this.getY()+25*i);
+          } 
+            for(int i=4;i<parts.size();i++){
+              parts.get(i).getGUIPart().setX(this.getX()+15);
+              parts.get(i).getGUIPart().setY(this.getY()+25*i);
+            }
+        }
+    }
+    
     
     public void addPart(LinkedList<Part> in){
         for(int i=0;i<in.size();i++){
            parts.add(in.get(i)); 
         }
-            parts.get(0).getGUIPart().setX(this.getX());
-            parts.get(0).getGUIPart().setY(this.getY());
-            
-            parts.get(1).getGUIPart().setX(this.getX());
-            parts.get(1).getGUIPart().setY(this.getY()+20);
-            
-            parts.get(2).getGUIPart().setX(this.getX());
-            parts.get(2).getGUIPart().setY(this.getY()+30);
-            
-            parts.get(3).getGUIPart().setX(this.getX());
-            parts.get(3).getGUIPart().setY(this.getY()+40);
+         this.updateParts();
         
     }
     
@@ -137,6 +146,7 @@ public class KAMKit {
     
     public void paintMe(JPanel j, Graphics2D g,int x, int y){
       this.getImage().paintIcon(j, g, x, y);
+      this.updateParts();
       if(this.parts.size()>0){
           for(int i=0;i<parts.size();i++){
               this.getParts().get(i).getGUIPart().getImage().paintIcon(j, g, this.getParts().get(i).getGUIPart().getX(), this.getParts().get(i).getGUIPart().getY());

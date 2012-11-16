@@ -20,7 +20,7 @@ public class PlaceHolder{
         
         public PlaceHolder(){
             placeholder=new ImageIcon("pics/KAMplaceholder.png");
-            show=true;
+            //show=true;
             kit=new KAMKit();
             
         }

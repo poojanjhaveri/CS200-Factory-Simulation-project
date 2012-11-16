@@ -79,6 +79,7 @@ public class KitDeliveryStation {
            int yPlace=this.getPlaceholder().get(i).getY();
            if(yPlace==300 && !(this.getPlaceholder().get(i).isShow())){
                this.getPlaceholder().get(i).setKit(kit);
+               this.getPlaceholder().get(i).getKit().updateParts();
                break;
            }
        }

@@ -16,6 +16,7 @@ import factory.factory201.kitManagement.ConveyorAgent;
 import factory.factory201.kitManagement.KitRobotAgent;
 import factory.factory201.partsManagement.NestAgent;
 import factory.factory201.partsManagement.PartsAgent;
+import factory.factory200.laneManager.ServerSide.*;
 
 /**
  * @brief This class is critical to the integration of GUI classes, agents, etc.
@@ -50,6 +51,10 @@ public class Server { // KitAssemblyAgent
     private NestAgent nestAgent;
     private PartsAgent partsAgent;
     
+    // Dongyoung's
+	private LMServerMain serverLM;
+	private Thread threadLM;
+    
     // Connection fields
     private FactoryState fstate;
     private ServerSocket ss = null;
@@ -70,6 +75,12 @@ public class Server { // KitAssemblyAgent
      * @param portNumber - the port number to create the server on.
      */
     public Server(int portNumber) {
+    	
+    	// Dongyoung's
+//		serverLM = new LMServerMain(this);
+//    	threadLM = new Thread(serverLM);
+//    	threadLM.start();
+    	
     	// TODO: Instantiate agents
 //    	feederAgent = new FeederAgent();
 //        gantryAgent = new GantryAgent();
@@ -83,7 +94,6 @@ public class Server { // KitAssemblyAgent
         // Patrick's
 //        nestAgent = new NestAgent();
 //        partsAgent = new PartsAgent();
-    	
     	
     	this.fstate = new FactoryState();
         numClients = 0; // initial num clients is 0

@@ -237,7 +237,7 @@ public class GUIKitRobot extends GUIRobot {
         Double dx = Math.abs((double) KAMGraphicPanel.KITROBOT_INITIAL_X - (double) this.getX());
         Double angle = Math.abs(Math.atan(dx / dy));
 
-        System.out.println(Math.toDegrees(angle) + " " + dy + " " + dx);
+        //System.out.println(Math.toDegrees(angle) + " " + dy + " " + dx);
 
         if (dx != 0) {
             Integer x = 0, y = 0;
@@ -288,11 +288,11 @@ public class GUIKitRobot extends GUIRobot {
                     x += (int) (40.0 * Math.abs(Math.sin(angle)));
                 }
 
-                System.out.println("ANGLE: " + (Math.toDegrees(angle) % 90));
-                System.out.println(Math.sin(angle) + " " + Math.cos(angle));
-                System.out.println(x + "," + y);
-                System.out.println(x - this.getX() + " " + (y - this.getY()));
-                System.out.println("Printed " + num + " times");
+		//                System.out.println("ANGLE: " + (Math.toDegrees(angle) % 90));
+		// System.out.println(Math.sin(angle) + " " + Math.cos(angle));
+                //System.out.println(x + "," + y);
+                //System.out.println(x - this.getX() + " " + (y - this.getY()));
+		//                System.out.println("Printed " + num + " times");
             }
 
         }
@@ -320,7 +320,8 @@ public class GUIKitRobot extends GUIRobot {
 
 
         if (this.hasKit()) {
-            this.getKit().getImage().paintIcon(panel, g2d, this.getCoordinate().getX(), this.getCoordinate().getY());
+            this.getKit().updateParts();
+            this.getKit().paintMe(panel, g2d, this.getCoordinate().getX(), this.getCoordinate().getY());
         }
         this.getImage().paintIcon(panel, g2d, this.getCoordinate().getX(), this.getCoordinate().getY());
         g2d.dispose();
