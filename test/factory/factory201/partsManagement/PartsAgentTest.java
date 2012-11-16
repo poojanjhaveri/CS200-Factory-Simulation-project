@@ -3,14 +3,12 @@
  * and open the template in the editor.
  */
 package factory.factory201.partsManagement;
-import factory.factory201.test.mock.MockParts;
-import factory.factory201.partsManagement.NestAgent;
 import factory.factory201.test.mock.MockCamera;
-import factory.factory201.test.mock.MockLane;
+import factory.factory201.test.mock.MockKitRobot;
+import factory.factory201.test.mock.MockNest;
+import factory.general.Kit;
 import factory.general.Nest;
 import factory.general.Part;
-import java.util.ArrayList;
-import java.util.List;
 import junit.framework.TestCase;
 import static org.junit.Assert.*;
 import org.junit.Test;
@@ -24,59 +22,30 @@ import org.junit.Test;
 
 public class PartsAgentTest extends TestCase{
        
-       public MockLane lane;
-       //public KitAssemblyManager kam; 
-       public MockParts parts;     
+       public MockKitRobot kitrobot; 
+       public PartsAgent parts;
+       public MockNest nest;
        public MockCamera camera;
-       public NestAgent nest;
-       public MockLane lane0;
-       public MockLane lane1;
-       public MockLane lane2;
-       public MockLane lane3;
-       public MockLane lane4;
-       public MockLane lane5;
-       public MockLane lane6;
-       public MockLane lane7;
-       List<Part> nestParts = new ArrayList<Part>();
+       Kit kit;
+       
        Part p = new Part(1);
    @Override
 	protected void setUp() throws Exception {
+       
+        kit = new Kit("Test Kit");
+        for (int i = 1; i < 9; i++) {
+            kit.addPart(new Part(i));
+        }
 
-        lane0 = new MockLane("LANE0");
-        lane1 = new MockLane("LANE1");
-        lane2 = new MockLane("LANE2");
-        lane3 = new MockLane("LANE3");
-        lane4 = new MockLane("LANE4");
-        lane5 = new MockLane("LANE5");
-        lane6 = new MockLane("LANE6");
-        lane7 = new MockLane("LANE7");
-        nestParts.add(p);
-        nestParts.add(p);
-        nestParts.add(p);
-        nestParts.add(p);
-        nestParts.add(p);
-        nestParts.add(p);
-        nestParts.add(p);
-        nestParts.add(p);
         
-        parts = new MockParts("MOCK PARTS");
+        nest = new MockNest("MockNest");
+        parts = new PartsAgent("PartsAgent");
+        kitrobot = new MockKitRobot("MockKitRobot");
+        camera = new MockCamera("MockCamera");
+        parts.setKitRobot(kitrobot);
+        parts.setNestInterface(nest);
+        parts.setCamera(camera);
        
-        nest = new NestAgent("NEST AGENT");
-        camera = new MockCamera("MOCK CAMERA");
-       
-        nest.getNest(0).setLane(lane0);
-        nest.getNest(1).setLane(lane1);
-        nest.getNest(2).setLane(lane2);
-        nest.getNest(3).setLane(lane3);
-        nest.getNest(4).setLane(lane4);
-        nest.getNest(5).setLane(lane5);
-        nest.getNest(6).setLane(lane6);
-        nest.getNest(7).setLane(lane7);
-        nest.setCamera(camera);
-        nest.setPartsAgent(parts);
-       
-        //nest.startThread();
-
 	}
 
 	/*
@@ -90,61 +59,63 @@ public class PartsAgentTest extends TestCase{
 	}
 @Test
 public void testfirstTest(){
-    nest.msgNeedPart(p);
-    /*nest.msgNeedPart(new Part(2));
-    nest.msgNeedPart(new Part(3));
-    nest.msgNeedPart(new Part(4));
-    nest.msgNeedPart(new Part(5));
-    nest.msgNeedPart(new Part(6));
-    nest.msgNeedPart(new Part(7));
-    nest.msgNeedPart(new Part(8));*/
-    
-    assertTrue("Nest 0 should have status of needPart", nest.myNests.get(0).status == Nest.Status.needPart);
-    
-    nest.pickAndExecuteAnAction();
-    assertTrue("Nest 0 status should be gettingPart", nest.myNests.get(0).status == Nest.Status.gettingPart);
-    assertTrue("Lane should have gotten msgNeedPart" + getLogs(), lane0.log.containsString("msgNeedPart"));
-    nest.msgHereAreParts(nestParts);
-    assertTrue("Nest parts array should contain 8 p1 parts", nest.myNests.get(0).parts.size()==8 && nest.myNests.get(0).parts.get(0).type==Part.Type.p1);
-    nest.pickAndExecuteAnAction();
-    assertTrue("Camera should have gotten msgRequestInspection from nest" + getLogs(), camera.log.containsString("msgNestIsFull"));
-    nest.msgNestInspected(nest.myNests.get(0), true);
-    nest.pickAndExecuteAnAction();
-    assertTrue("msgHereIsPart" + getLogs(), parts.log.containsString("msgHereIsPart"));
-    
-    /* 
-    nest.pickAndExecuteAnAction();
-    nest.pickAndExecuteAnAction();
-    nest.pickAndExecuteAnAction();
-    nest.pickAndExecuteAnAction();
-    nest.pickAndExecuteAnAction();
-    nest.pickAndExecuteAnAction();
-    nest.pickAndExecuteAnAction();*/
-    
+    parts.msgHereIsKit(kit);
+    assertTrue("Parts should have newKit size of 1 ", parts.newKit.size() == 1);
+    parts.pickAndExecuteAnAction();
+    assertTrue("Camera should have gotten msgHereIsKitInfo" + getLogs(), camera.log.containsString("msgHereIsKitInfo"));
+    assertTrue("KitRobot should have gotten two messages" + getLogs(), kitrobot.log.size()==2);
+    assertTrue("Kit0 and Kit1 needsParts list should both be of size 8", parts.kit0NeedsParts.size()==8 && parts.kit1NeedsParts.size()==8);
+    assertTrue("Nest should have gotten 16 requests" + getLogs(), nest.log.size()==16);
+    parts.msgEmptyKitReady(kit);
+    assertTrue("Parts should have set kit1 status as ready " , parts.kit1.status == Kit.Status.ready);
+    parts.msgEmptyKitReady(kit);
+    assertTrue("kit0 status should be ready", parts.kit0.status == Kit.Status.ready);
+    for (int i = 0; i < 8; i++) {
+    parts.msgHereIsPart(kit.getPart(i));
+    }
+    for (int i = 0; i < 8; i++) {
+    parts.msgHereIsPart(kit.getPart(i));
+    }
+    assertTrue("Parts inventory size should be 16", parts.inventory.size()==16);
+    parts.pickAndExecuteAnAction();
+    assertTrue("Kit0NeedsParts size should be 7", parts.kit0NeedsParts.size()==7 && parts.kit1NeedsParts.size()==8);
+    parts.pickAndExecuteAnAction();
+    assertTrue("Kit0NeedsParts size should be 6", parts.kit0NeedsParts.size()==6 && parts.kit1NeedsParts.size()==8);
+    parts.pickAndExecuteAnAction();
+    parts.pickAndExecuteAnAction();
+    assertTrue("Grips should be empty", parts.grips.isEmpty());
+    parts.pickAndExecuteAnAction();
+    parts.pickAndExecuteAnAction();
+    parts.pickAndExecuteAnAction();
+    parts.pickAndExecuteAnAction();
+    parts.pickAndExecuteAnAction();
+    assertTrue("Kit0NeedsParts size should be 0", parts.kit0NeedsParts.isEmpty() && parts.kit1NeedsParts.size()==8);
+    assertTrue("KitRobot should have recieved msgKitIsFull"+ getLogs(), kitrobot.log.containsString("msgKitIsFull"));
+    assertTrue("Kit0 status should be ready", parts.kit0.status== Kit.Status.empty);
     
 }
 public String getLogs() {
 		StringBuilder sb = new StringBuilder();
 		String newLine = System.getProperty("line.separator");
-		sb.append("-------Lane 0 Log-------");
+		sb.append("-------Nest Log-------");
 		sb.append(newLine);
-		sb.append(lane0.log.toString());
+		sb.append(nest.log.toString());
 		sb.append(newLine);
-		sb.append("-------End Lane 0 Log-------");
+		sb.append("-------End Nest Log-------");
 
 		sb.append(newLine);
 
-		sb.append("-------Camera Log-------");
+		sb.append("-------KitRobot Log-------");
+		sb.append(newLine);
+		sb.append(kitrobot.log.toString());
+		sb.append("-------End KitRobot Log-------");
+		
+		sb.append(newLine);
+		
+		sb.append("------Camera Log------");
 		sb.append(newLine);
 		sb.append(camera.log.toString());
 		sb.append("-------End Camera Log-------");
-		
-		sb.append(newLine);
-		
-		sb.append("------Parts Log------");
-		sb.append(newLine);
-		sb.append(parts.log.toString());
-		sb.append("-------End Parts Log-------");
 		
 		
 

@@ -15,7 +15,7 @@ public class Kit implements Serializable{
     /** CS 201 stuff */
     public enum Status {
 
-        empty, full, verified, error
+        empty, ready, full, verified, error
     };
 
     public static enum StandNum {
