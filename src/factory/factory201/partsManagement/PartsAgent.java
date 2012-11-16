@@ -109,15 +109,16 @@ public class PartsAgent extends Agent implements PartsInterface {
     private void giveKitToKitAgent() {
         print("giving kitrobot complete kit");
         kitrobot.msgKitIsFull();
-        kit.status = Kit.Status.empty;
+        //kit.status = Kit.Status.empty;
         //kit.standNum = Kit.StandNum.zero;
-        try {
+        /*try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             print("stopped sleeping for 10 seconds");
-        }
-        if(newKit.isEmpty())
+        }*/
+        if(newKit.isEmpty()){
             newKit.add(kit);
+            print("Adding kit of size "+ kit.getSize() + " to newKit list");}
         //kitrobot.msgNeedEmptyKit();
         stateChanged();
     }
@@ -131,11 +132,11 @@ public class PartsAgent extends Agent implements PartsInterface {
     	this.kit = k;
        
     	for(int i=0; i<kit.parts.size(); i++){
-    		kitNeedsParts.add(k.getPart(i));
+    		kitNeedsParts.add(kit.getPart(i));
     	}
        
     	for (int i = 0; i < kit.getSize(); i++) {
-            nest.msgNeedPart(k.getPart(i));
+            nest.msgNeedPart(kit.getPart(i));
     	}
     	stateChanged();
 

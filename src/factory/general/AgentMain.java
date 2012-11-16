@@ -112,7 +112,7 @@ public class AgentMain {
         }
         partsAgent.msgHereIsKit(kit);
         
-        if(true) {
+        if(false) {
             for (int i = 0; i < LANE; i++) {
                 if (i < FEEDER) {
                     feeder[i].print = false;

@@ -97,16 +97,16 @@ public class NestAgent extends Agent implements NestInterface {
      }
         else{
             for (Nest n: myNests){
-    		if(n.parts.contains(p)){
-            giveToKit(n);
+    		if(n.part.type == p.type){
+                giveToKit(n);
                 doPurge = false;}}}
     	if (doPurge){
             //for (Nest n: myNests){
              //   if(n.status == Nest.Status.empty || n.status) }
             
         }
-
-        stateChanged();}
+        }
+        stateChanged();
     }
 
     public void msgHereAreParts(List<Part> kitParts){
@@ -217,8 +217,9 @@ public class NestAgent extends Agent implements NestInterface {
     
     public boolean hasPart(Part p){
     	for (Nest n: myNests){
-    	if (n.parts.contains(p))
-    		return true;	}
+    	for (Part part: n.parts){
+            if(part.type == p.type)
+    		return true;	}}
     	return false;
     }
     
