@@ -24,7 +24,7 @@ public class GRMGraphicPanel extends JPanel implements ActionListener {
     Part newPart;
     GUIPart GUItemp;
     GUIFeeder feedertemp; 
-    
+    PurgeStation ps;
 	GUIGantryRobot gbot;
     
 	public void actionPerformed(ActionEvent arg0) {
@@ -35,7 +35,7 @@ public class GRMGraphicPanel extends JPanel implements ActionListener {
 	}
 
 	public GRMGraphicPanel(){
-		
+		ps = new PurgeStation();
 		gbot = new GUIGantryRobot();
 		bin = new GUIBin(450,0,0.0,"",0);
 		bins = new ArrayList<GUIBin>();
@@ -60,7 +60,7 @@ public class GRMGraphicPanel extends JPanel implements ActionListener {
         }
         
         ///<Set the timer
-        timer = new Timer(20, this);
+        timer = new Timer(15, this);
         timer.start();
         
 	}
@@ -68,17 +68,22 @@ public class GRMGraphicPanel extends JPanel implements ActionListener {
 	public GUIGantryRobot getGantryRobot(){
 		return gbot;
 	}
+	
+	
 	public void paint(Graphics g) {
         Graphics2D g2 = (Graphics2D) g;
         Rectangle2D.Double backgroundRectangle = new Rectangle2D.Double(0, 0, 500, 700);
         g2.setColor(Color.GRAY.darker().darker());//dark dark green background
         g2.fill(backgroundRectangle);
-        
+        paintPurge(this,g2);
         paintBinsWithParts(this, g2);
         paintFeeders(this,g2);
-	        gbot.paintMe(this,g2);
+	    gbot.paintMe(this,g2);
 	}
 	
+	public void paintPurge(JPanel j,Graphics2D g){
+		ps.getImage().paintIcon(j, g, 260, 600);
+	}
 	public void paintBinsWithParts(JPanel j,Graphics2D g){
 		
 		for (int i=0;i<8;i++){
