@@ -3,6 +3,7 @@ package factory.factory201.feederManagement;
 import factory.factory201.interfaces.Feeder;
 import factory.factory201.interfaces.Gantry;
 import agent.Agent;
+import factory.factory200.gantryRobotManager.GantryRobotManager;
 import factory.factory200.laneManager.ServerSide.LMFeederForAgent;
 import factory.factory200.laneManager.ServerSide.LMGantryRobotForAgent;
 import factory.factory200.laneManager.ServerSide.LMServerMain;
@@ -27,14 +28,15 @@ public class GantryAgent extends Agent implements Gantry {
     //holds info about all the feeders that are assigned to the gantry
     private List<myFeeder> myFeeders = Collections.synchronizedList(new ArrayList<myFeeder>());
     private List<myBin> bins = Collections.synchronizedList(new ArrayList<myBin>());
-     
+    
 
     Timer timer=new Timer();
     //---------------------------------------------------------------------------
     //private LMServerMain serverMain;
     //private LMGantryRobotForAgent animation;
     //private LMFeederForAgent animation1;
-  //---------------------------------------------------------------------------
+    private GantryRobotManager animation=new GantryRobotManager();
+    //---------------------------------------------------------------------------
     
     //numOfBins is the number of bins that gantry is initialized to, will be the same for v0, each bin has 8 parts.
     public GantryAgent(int numOfBins, String name){
@@ -59,28 +61,28 @@ public class GantryAgent extends Agent implements Gantry {
     	
     //	System.out.println("parts added");
     	//part 1 is in bin 1 
-    	bins.add(new myBin(p1,numOfBins,1));
+    	bins.add(new myBin(p1,numOfBins,0));
     	
     	//part 2 is in bin 2 
-    	bins.add(new myBin(p2,numOfBins,2));
+    	bins.add(new myBin(p2,numOfBins,1));
 
     	//part 3 is in bin 3 
-    	bins.add(new myBin(p3,numOfBins,3));
+    	bins.add(new myBin(p3,numOfBins,2));
     	
     	//part 4 is in bin 4 
-    	bins.add(new myBin(p4,numOfBins,4));
+    	bins.add(new myBin(p4,numOfBins,3));
     	
     	//part 5 is in bin 5 
-    	bins.add(new myBin(p5,numOfBins,5));
+    	bins.add(new myBin(p5,numOfBins,4));
     	
     	//part 6 is in bin 6 
-    	bins.add(new myBin(p6,numOfBins,6));
+    	bins.add(new myBin(p6,numOfBins,5));
     	
     	//part 7 is in bin 7 
-    	bins.add(new myBin(p7,numOfBins,7));
+    	bins.add(new myBin(p7,numOfBins,6));
     	
     	//part 8 is in bin 8 
-    	bins.add(new myBin(p8,numOfBins,8));
+    	bins.add(new myBin(p8,numOfBins,7));
     //	System.out.println("bins added");
     }
 
@@ -217,13 +219,11 @@ public class GantryAgent extends Agent implements Gantry {
          */
     	//print("Sending message to feeder");
         print("sending message here are parts to " + f.index);
+    	doSupplyPart(b,f);
+
         f.feeder.msgHereAreParts(parts);
         
-//    	doSupplyPart(b,f);
-    	//animation.goToBin(binNum);
-    	//animation.pickUpBin(binNum);
-    	//animation.goToFeeder(feederNum);
-    	//animation.putOffBin();
+        //animation.goToBin(binNum);
     	
         
         //print("request state has been set to false for " + f.index);
@@ -232,11 +232,13 @@ public class GantryAgent extends Agent implements Gantry {
         return;
     }
     private void doSupplyPart(myBin b,myFeeder f){
-    	print("go to bin command");
+   // 	print("go to bin command");
 //    	animation.goToBin(b.index-1);
     	//while(animation.returnArrived()==false){;}
     	print("about to pick up bin");
-  //  	animation.pickUpBin(b.index-1);
+  	animation.ganbot.moveToBin(b.index+1);
+    
+        //  	animation.pickUpBin(b.index-1);
     	//while(animation.p)
     	
     	try {
@@ -245,7 +247,11 @@ public class GantryAgent extends Agent implements Gantry {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    //	animation.goToFeeder(f.index-1);
+        
+    	animation.ganbot.carryABin(b.index+1);
+        animation.ganbot.moveToFeeder(f.index);
+    	
+        //	animation.goToFeeder(f.index-1);
     	
     	try {
 			Thread.sleep(10000);
@@ -257,6 +263,7 @@ public class GantryAgent extends Agent implements Gantry {
     	//while(animation.returnArrived()==false){;}
     //	animation1.fillInFeeder(f.index-1,b.index-1,8);
     //	animation1.dumpBinBoxIntoFeeder(f.index-1, b.index-1);
+    	//animation.ganbot.
     	
     }
     public void setFeeder(Feeder feeder,int index) {

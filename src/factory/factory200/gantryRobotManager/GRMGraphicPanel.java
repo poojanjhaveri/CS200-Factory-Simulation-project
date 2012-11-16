@@ -29,7 +29,7 @@ public class GRMGraphicPanel extends JPanel implements ActionListener {
     
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
-		System.out.println("printing");
+		
 		gbot.update();
 		repaint();
 	}
