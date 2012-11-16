@@ -52,7 +52,7 @@ public class CameraAgent extends Agent implements Camera {
      */
     @Override
     public void msgNestIsFull(Nest nest) {
-        print("Received msgNestIsFull that " + nest.nestNum + " is full.");
+//        print("Received msgNestIsFull that " + nest.nestNum + " is full.");
         synchronized (nests) {
             nests.add(nest);
         }
@@ -67,7 +67,7 @@ public class CameraAgent extends Agent implements Camera {
      */
     @Override
     public void msgKitIsFull(Kit kit) {
-        print("Received msgKitIsFull from Kit Robot Agent");
+//        print("Received msgKitIsFull from Kit Robot Agent");
         synchronized (kits) {
             kits.add(kit);
         }
@@ -134,7 +134,7 @@ public class CameraAgent extends Agent implements Camera {
      * @brief Inspects nests and returns result to nest agent.
      */
     public void inspectNest(Nest nest) {
-        print("Inspecting nest: [" + nest.nestNum + "].");
+        print("Inspecting nest: [Nest " + nest.nestNum + "].");
 //        Nest n = new Nest();
 //        boolean flag = false;
 //        for(Part p : n.parts) {

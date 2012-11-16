@@ -85,6 +85,7 @@ public class AgentMain {
         // Alex
         camera.startThread();
         conveyor.startThread();
+        conveyor.generateKit(10);
         kitRobot.startThread();
 
         //Patrick
@@ -102,17 +103,24 @@ public class AgentMain {
 
         /*========== Misc. ==========*/
 
-        // Alex
-        for (int i = 0; i < 10; i++) {
-            conveyor.generateKit(i);
-        }
-        
         // Patrick
         Kit kit = new Kit("Test Kit");
         for (int i = 1; i < 9; i++) {
             kit.addPart(new Part(i));
         }
         partsAgent.msgHereIsKit(kit);
+        
+//        if(true) {
+//            for (int i = 0; i < LANE; i++) {
+//                if (i < FEEDER) {
+//                    feeder[i].print = false;
+//                }
+//                lane[i].print = false;
+//            }
+//            gantry.print = false;
+//            nestAgent.print = false;
+//            partsAgent.print = false;
+//        }
 
     } // END main
 } // END AgentMain
