@@ -40,7 +40,7 @@ public class GantryRobotManager extends Manager implements ActionListener {
     GRMGraphicPanel graphics;    
     GantryState gs;
     GUIBin bin;
-    GUIGantryRobot ganbot; ///<class which includes Gantry Robot Manager Methods
+    public GUIGantryRobot ganbot; ///<class which includes Gantry Robot Manager Methods
 
     int purgeStationx;//x coordinate of purgeStation
     int purgeStationy;//y coordinate of purgeStation
@@ -160,7 +160,7 @@ public class GantryRobotManager extends Manager implements ActionListener {
         public void updatePurgeStation() {
         }
     }
-
+/*
     public void processMessage(String msg) {
         // Decide action based on message from server
         if (msg.contains(Message.TEST_CLIENT)) {
@@ -174,7 +174,7 @@ public class GantryRobotManager extends Manager implements ActionListener {
             }
         }
     }
-	
+	*/
 	public void actionPerformed(ActionEvent ae) {
 		// TODO Auto-generated method stub
 	
