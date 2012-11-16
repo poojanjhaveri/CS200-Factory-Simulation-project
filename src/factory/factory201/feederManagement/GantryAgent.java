@@ -36,7 +36,7 @@ public class GantryAgent extends Agent implements Gantry {
     //private LMServerMain serverMain;
     //private LMGantryRobotForAgent animation;
     //private LMFeederForAgent animation1;
-    private GantryRobotManager animation=new GantryRobotManager();
+    private GantryRobotManager animation;
     //---------------------------------------------------------------------------
     
     //numOfBins is the number of bins that gantry is initialized to, will be the same for v0, each bin has 8 parts.
@@ -289,6 +289,10 @@ public class GantryAgent extends Agent implements Gantry {
     public void setFeeder(Feeder feeder,int index) {
     //add feeders to the list
     myFeeders.add(new myFeeder(feeder,index));
+    }
+    
+    public void setGantryRobotManager(GantryRobotManager grm) {
+        this.animation = grm;
     }
 
     @Override //Unimplemented

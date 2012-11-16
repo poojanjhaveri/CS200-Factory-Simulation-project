@@ -73,7 +73,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
     @Override
     public void msgKitIsFull(Kit kit) {
 //        print("msgKitIsFull: " + kitStand.get(1).name);
-        kitStand.get(1).status = Kit.Status.full;
+        kit.status = Kit.Status.full;
         stateChanged();
     }
 
