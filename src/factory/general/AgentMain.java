@@ -12,6 +12,8 @@ import factory.factory201.partsManagement.NestAgent;
 import factory.factory201.partsManagement.PartsAgent;
 
 /**
+ * @brief Example usage of all the agents working together.
+ * Agents only depend on having instances of KitAssemblyManager and GantryRobotManager.
  * @author Alex Young
  * @version 1
  */
@@ -24,7 +26,7 @@ public class AgentMain {
 
         /*========== Declare all agents and etc. ==========*/
 
-        // Misc
+        // Misc - pass in the appropriate KAM and GRM
         KitAssemblyManager KAM = new KitAssemblyManager();
         GantryRobotManager GRM = new GantryRobotManager();
 

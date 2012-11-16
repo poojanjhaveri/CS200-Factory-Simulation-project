@@ -93,7 +93,7 @@ public class HandleAManager implements Runnable {
 			System.out.println("Server test passed. Testing client...");
 
 			pw.println(Message.TEST_CLIENT);
-		} else if (msg.contains(Message.CLIENT_EXITED)) {
+		} else if (msg.contains(Message.CLIENT_EXITED)) { // This is how we exit the server
 			stopThread();
 			this.server.decrementNumClients();
 			if (server.getNumClients() == 0) {
