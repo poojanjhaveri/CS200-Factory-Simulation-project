@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package factory.factory200.kitAssemblyManager;
+package factory.factory200.factoryProductionManager.KitsAssemblyManager;
 
 
 
@@ -80,7 +80,7 @@ public class KAMKit {
           } 
             for(int i=4;i<parts.size();i++){
               parts.get(i).getGUIPart().setX(this.getX()+15);
-              parts.get(i).getGUIPart().setY(this.getY()+25*i);
+              parts.get(i).getGUIPart().setY(this.getY()+25*(i-4));
             }
         }
     }

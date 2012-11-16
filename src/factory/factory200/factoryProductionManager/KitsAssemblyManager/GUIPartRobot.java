@@ -1,6 +1,6 @@
 //DO NOT FORMAT MY CODE IN ANYTHING OTHER THAN ASTYLE. THANKS.
 //                REVISION: JUST DON'T FORMAT MY CODE. TY.
-package factory.factory200.kitAssemblyManager;
+package factory.factory200.factoryProductionManager.KitsAssemblyManager;
 
 import factory.general.GUIRobot;
 import factory.general.Part;

@@ -55,6 +55,14 @@ public class KitAssemblyManager extends Manager implements ActionListener {
           this.graphics.stationRun=true;
           this.graphics.kitbot.dropOffFullKit();
     }
+    //input needs to be nest 0-7
+    public void pickUpPart(int nest){
+        this.graphics.kitter.moveToNest(nest);
+        this.graphics.kitter.pickPartCommand(nest);
+    }
+    public void dropOffPart(){
+        this.graphics.kitter.dropOffParts();
+    }
 
     public void flashKitCamera()
     {

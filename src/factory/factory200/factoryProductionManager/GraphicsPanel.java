@@ -17,7 +17,7 @@ import factory.factory200.factoryProductionManager.LaneManager.*;
 public class GraphicsPanel extends JPanel{
 	
 	private GantryRobotManager gantryRobotManager = new GantryRobotManager();
-	private KitsAssemblyManager kitsAssemblyManager = new KitsAssemblyManager();
+	private KitAssemblyManager kitsAssemblyManager = new KitAssemblyManager();
 	private LMApplication laneManager = new LMApplication();
 	private Timer timer;
 	private ImageIcon backgroundImage = new ImageIcon( GraphicsPanel.class.getResource("background.png") );

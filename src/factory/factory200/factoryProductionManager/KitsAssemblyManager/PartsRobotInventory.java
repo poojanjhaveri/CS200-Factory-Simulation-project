@@ -1,4 +1,4 @@
-package factory.factory200.kitAssemblyManager;
+package factory.factory200.factoryProductionManager.KitsAssemblyManager;
 
 import java.util.LinkedList;
 import java.util.Collection;

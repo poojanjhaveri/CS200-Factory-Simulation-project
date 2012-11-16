@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package factory.factory200.kitAssemblyManager;
+package factory.factory200.factoryProductionManager.KitsAssemblyManager;
 
 /*
  * To change this template, choose Tools | Templates
@@ -432,60 +432,60 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
         }
     }
 
-    public void paint(Graphics g) {
+    public void paint(JPanel j, Graphics g) {
         Graphics2D g2 = (Graphics2D) g;
         Rectangle2D.Double backgroundRectangle = new Rectangle2D.Double(0, 0, 700, 700);
         g2.setColor(Color.GRAY.darker().darker());//dark dark green background
         g2.fill(backgroundRectangle);
-        paintNests(this, g2);
-        kitstand.getKitStand().paintIcon(this, g2, kitstand.getX(), kitstand.getY());
+        paintNests(j, g2);
+        kitstand.getKitStand().paintIcon(j, g2, kitstand.getX(), kitstand.getY());
         for (int i = 0; i < 3; i++) {
             
             if (kitstand.getKitPositions().get(i).isFilled()) {
                
-                //kitstand.getKitPositions().get(i).getKit().getImage().paintIcon(this, g2, kitstand.getKitPositions().get(i).getX(), kitstand.getKitPositions().get(i).getY());
-                kitstand.getKitPositions().get(i).getKit().paintMe(this, g2, kitstand.getKitPositions().get(i).getX(), kitstand.getKitPositions().get(i).getY());
+                //kitstand.getKitPositions().get(i).getKit().getImage().paintIcon(j, g2, kitstand.getKitPositions().get(i).getX(), kitstand.getKitPositions().get(i).getY());
+                kitstand.getKitPositions().get(i).getKit().paintMe(j, g2, kitstand.getKitPositions().get(i).getX(), kitstand.getKitPositions().get(i).getY());
                 
             }
         }
         for (int i = 0; i < delivery.getNumEmptyKits(); i++) {
-            delivery.getPlaceholder().get(i).getPlaceholder().paintIcon(this, g2, delivery.getPlaceholder().get(i).getX(), delivery.getPlaceholder().get(i).getY());
+            delivery.getPlaceholder().get(i).getPlaceholder().paintIcon(j, g2, delivery.getPlaceholder().get(i).getX(), delivery.getPlaceholder().get(i).getY());
             if (delivery.getPlaceholder().get(i).isShow()) {
-                //delivery.getPlaceholder().get(i).getKit().getImage().paintIcon(this, g2, delivery.getPlaceholder().get(i).getX() + 10, delivery.getPlaceholder().get(i).getY() + 20);
+                //delivery.getPlaceholder().get(i).getKit().getImage().paintIcon(j, g2, delivery.getPlaceholder().get(i).getX() + 10, delivery.getPlaceholder().get(i).getY() + 20);
                 delivery.getPlaceholder().get(i).getKit().setX(delivery.getPlaceholder().get(i).getX() + 10);
                 delivery.getPlaceholder().get(i).getKit().setY(delivery.getPlaceholder().get(i).getY() + 20);
-                delivery.getPlaceholder().get(i).getKit().paintMe(this, g2, delivery.getPlaceholder().get(i).getKit().getX(), delivery.getPlaceholder().get(i).getKit().getY());
+                delivery.getPlaceholder().get(i).getKit().paintMe(j, g2, delivery.getPlaceholder().get(i).getKit().getX(), delivery.getPlaceholder().get(i).getKit().getY());
             }
         }
 
         //System.out.println(kitbot);
 //        if (kitbot.hasKit()) {
-//            kitbot.getKit().getImage().paintIcon(this, g2, kitbot.getCoordinate().getX(), kitbot.getCoordinate().getY());
+//            kitbot.getKit().getImage().paintIcon(j, g2, kitbot.getCoordinate().getX(), kitbot.getCoordinate().getY());
 //        }
-//        kitbot.getImage().paintIcon(this, g2, kitbot.getCoordinate().getX(), kitbot.getCoordinate().getY());
+//        kitbot.getImage().paintIcon(j, g2, kitbot.getCoordinate().getX(), kitbot.getCoordinate().getY());
 //        
-        kitbot.paintMe(this, g2);
+        kitbot.paintMe(j, g2);
         
         if (camera.isVisible()) {
-            camera.getCamera().paintIcon(this, g2, camera.getX(), camera.getY());
+            camera.getCamera().paintIcon(j, g2, camera.getX(), camera.getY());
 
         }
         if (camera.isVisible() && cameraCounter == 20) {
             camera.setVisible(false);
             cameraCounter = 0;
         }
-//        kitter.getImage().paintIcon(this, g2, kitter.getCoordinate().getX(), kitter.getCoordinate().getY());
+//        kitter.getImage().paintIcon(j, g2, kitter.getCoordinate().getX(), kitter.getCoordinate().getY());
 //	LinkedList<Part> kitterparts= kitter.getPart();
 //	for(int i = 0; i != kitterparts.size(); i++)
 //	    {
-//		kitterparts.get(i).getGUIPart().getImage().paintIcon(this, g2, kitterparts.get(i).getGUIPart().getX(), kitterparts.get(i).getGUIPart().getY());
+//		kitterparts.get(i).getGUIPart().getImage().paintIcon(j, g2, kitterparts.get(i).getGUIPart().getX(), kitterparts.get(i).getGUIPart().getY());
 //	    }
-        kitter.paintMe(this, g2);
+        kitter.paintMe(j, g2);
         
-        for(int j=0;j<this.nest.size();j++){
-        for(int i=0;i<this.nest.get(j).getParts().size();i++){
-            //System.out.println(this.nest.get(0).getParts().get(i).getGUIPart());
-            this.nest.get(j).getParts().get(i).getGUIPart().getImage().paintIcon(this, g2, nest.get(j).getParts().get(i).getGUIPart().getX(), nest.get(j).getParts().get(i).getGUIPart().getY());
+        for(int k=0;k<this.nest.size();k++){
+        for(int i=0;i<this.nest.get(k).getParts().size();i++){
+            //System.out.println(j.nest.get(0).getParts().get(i).getGUIPart());
+            this.nest.get(k).getParts().get(i).getGUIPart().getImage().paintIcon(j, g2, nest.get(k).getParts().get(i).getGUIPart().getX(), nest.get(k).getParts().get(i).getGUIPart().getY());
         }
         }
         
