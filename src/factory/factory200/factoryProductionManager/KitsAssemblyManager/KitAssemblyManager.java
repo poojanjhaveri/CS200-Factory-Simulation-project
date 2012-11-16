@@ -1,12 +1,11 @@
-package factory.factory200.kitAssemblyManager;
+package factory.factory200.factoryProductionManager.KitsAssemblyManager;
 
-import factory.factory200.kitAssemblyManager.GUIPartRobot;
-import factory.factory200.kitAssemblyManager.KitDeliveryStation;
-import factory.factory200.kitAssemblyManager.KitStand;
+import factory.factory200.factoryProductionManager.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import factory.general.Manager;
 import java.awt.Button;
+import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -26,7 +25,7 @@ import javax.swing.JPanel;
  * Manager
  * @author Deepa Borkar, YiWei Roy Zheng
  */
-public class KitAssemblyManager extends Manager implements ActionListener {
+public class KitAssemblyManager extends JPanel implements ActionListener {
 
     KAMGraphicPanel graphics;
     //private KitAssemblyManagerDeliveryStation kamdelivery;///<keeps track of all of the objects listed above and paints the objects according to a timer
@@ -141,16 +140,16 @@ public class KitAssemblyManager extends Manager implements ActionListener {
         this.add(graphics);
 
 
-        int x = 700;
-        this.setSize(700 + x, 700);
+        //int x = 700;
+        //this.setSize(700 + x, 700);
 
-        this.graphics.setVisible(true);
+        //this.graphics.setVisible(true);
 
-        this.add(TestPanel());
+        //this.add(TestPanel());
         //change TEST to just graphicPanel (above)
 
         this.setVisible(true);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
         //tester variables
     JButton partRobot;
@@ -192,6 +191,10 @@ public class KitAssemblyManager extends Manager implements ActionListener {
 
         return tester;
     }
+      public void paint(GraphicsPanel gpanel,Graphics2D g2){
+          this.graphics.paint(gpanel, g2);
+          
+      }
       
       public static void main(String[] args){
        KitAssemblyManager mgr = new KitAssemblyManager();   

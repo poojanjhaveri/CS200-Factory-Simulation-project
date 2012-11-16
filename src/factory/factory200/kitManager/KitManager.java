@@ -9,6 +9,7 @@ import factory.general.Message;
 import factory.general.Part;
 import java.awt.AlphaComposite;
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -23,6 +24,8 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 
 
@@ -70,9 +73,10 @@ public class KitManager extends Manager  implements ActionListener {
             this.bppart = new BlueprintParts();
             setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
              setBounds(100, 100, 600, 400);
-            this.update();  
+           
            
             prepareMainPane();
+             this.update();  
 	//	this.mcon.out(Message.PULL_PARTS_LIST);
               
          }
@@ -130,7 +134,22 @@ public class KitManager extends Manager  implements ActionListener {
             mainpanel.add(kittitle, BorderLayout.NORTH);
 
             tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+            
+            
+            tabbedPane.addChangeListener(new ChangeListener() {
+                    public void stateChanged(ChangeEvent e) {
+                   processtabchange();
+                    }
+                });
+            
+            
             mainpanel.add(tabbedPane,BorderLayout.CENTER);
+            
+            
+            
+            
+            
+            
             
             // CREATE KIT PANEL
             
@@ -228,7 +247,16 @@ public class KitManager extends Manager  implements ActionListener {
             i = new ImageIcon("kit/delete.jpg");
             tabbedPane.addTab("Delete Kit", i, deletekit);
             
+            
             delete_combo = new JComboBox();
+            for(int j=0;j<this.bpkit.getSize();j++){
+    		 delete_combo.addItem(this.bpkit.getKitAt(j)); 
+               
+            }
+            
+            
+            
+            
             deletekit.add(delete_combo);
             
             JButton deletebutton = new JButton("Delete Kit");
@@ -248,8 +276,22 @@ public class KitManager extends Manager  implements ActionListener {
 
             this.mcon.out(Message.PULL_KITS_LIST);
             System.out.println("Updates kits list from the server");
+            
+     
 
          }
+        
+        
+        private void updateComboBox(){
+            //  delete_combo.removeAllItems();
+               for(int i=0;i<bpkit.getSize();i++){
+    		 delete_combo.addItem(bpkit.getKitAt(i));     
+    	
+               }   
+    	
+    	 }
+    
+        
 
     public void createKit()
     {
@@ -262,7 +304,7 @@ public class KitManager extends Manager  implements ActionListener {
 
 	String msg = Message.DEFINE_NEW_KIT+":"+newkit.serialize();
         System.out.println(msg);
-	//this.mcon.out(msg);
+	this.mcon.out(msg);
     }
 
     public void processMessage(String msg)
@@ -293,7 +335,14 @@ public class KitManager extends Manager  implements ActionListener {
         //	updateComboBox();
     }
          
-         
+         public void processtabchange()
+         {
+              Component c = tabbedPane.getSelectedComponent();
+                if (c.equals(deletekit))
+                       updateComboBox();
+                    
+             
+         }
          
 
 }
