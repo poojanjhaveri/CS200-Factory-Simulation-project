@@ -28,6 +28,8 @@ public class Message {
     public static final String UNDEFINE_KIT = "UNDEFINE_KIT";///<removes a kit definition
 
     //gantryrobotmanager section
+    public static final String IDENTIFY_GANTRYROBOTMANAGER = "IDENTIFY_GANTRYROBOTMANAGER";//reports to server that this is a gantryrbtmgr
+    public static final String GANTRY_CARRY_A_BIN = "GANTRY_CARRY_A_BIN";
     public static final String MOVE_GANTRY_TO_FEEDER = "MOVE_GANTRY_TO_FEEDER"; // takes in int for which feeder
     public static final String MOVE_GANTRY_TO_BIN = "MOVE_GANTRY_TO_BIN"; // takes in int for which bin
     public static final String MOVE_GANTRY_TO_PURGE = "MOVE_GANTRY_TO_PURGE"; // no params
