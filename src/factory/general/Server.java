@@ -60,6 +60,9 @@ public class Server { // KitAssemblyAgent
     private ServerSocket ss = null;
     private Socket s = null;
     private HandleAManager hac;
+
+    // needed to handle multiple clients 
+    // private ArrayList<HandleAClient> clients = new ArrayList<HandleAClient>();
     
     public static void main(String[] args) {
         Server server = new Server(PORT_NUMBER);
@@ -154,6 +157,10 @@ public class Server { // KitAssemblyAgent
         public void debugMessage() {
             System.out.println("Sending test message to client...");
             pw.println(Message.TEST_CLIENT);
+        }
+
+        public void sendToClient(String msg) {
+            pw.println(msg);
         }
 
         // Key method of Runnable; when this method ends, the thread stops
