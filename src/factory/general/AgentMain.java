@@ -110,6 +110,7 @@ public class AgentMain {
         for (int i = 1; i < 9; i++) {
             kit.addPart(new Part(i));
         }
+
         partsAgent.msgHereIsKit(kit); // The primary agent
             // The message here tells the parts agent to start - 
             // The parts agent requests parts from the nest, nest asks lanes, laneagent asks feederagent
@@ -117,8 +118,8 @@ public class AgentMain {
             // Eventually coming back to the PartsAgent who will put the parts into the empty kit, and the
             // PartsAgent requests from the empty kit from kitrobot agent who then asks conveyor agent
             // See Interaction Diagram for better description
-
-        if(true) {
+        
+        if(false) {
             for (int i = 0; i < LANE; i++) {
                 if (i < FEEDER) {
                     feeder[i].print = false;
