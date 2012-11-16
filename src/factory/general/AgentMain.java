@@ -67,11 +67,13 @@ public class AgentMain {
 
         // Kevin
         for (int i = 0, j = 0; i < FEEDER; i++, j++) {
+            
             feeder[i].setGantry(gantry);
             feeder[i].setLeftLane(lane[j]);
             feeder[i].setRightLane(lane[++j]);
             gantry.setFeeder(feeder[i], i);
         }
+
         for (int i = 0; i < LANE; i += 2) {
             lane[i].setFeeder(feeder[i / 2]);
             lane[i].setNest(nestAgent);
@@ -116,17 +118,17 @@ public class AgentMain {
             // PartsAgent requests from the empty kit from kitrobot agent who then asks conveyor agent
             // See Interaction Diagram for better description
 
-//        if(true) {
-//            for (int i = 0; i < LANE; i++) {
-//                if (i < FEEDER) {
-//                    feeder[i].print = false;
-//                }
-//                lane[i].print = false;
-//            }
-//            gantry.print = false;
-//            nestAgent.print = false;
-//            partsAgent.print = false;
-//        }
+        if(true) {
+            for (int i = 0; i < LANE; i++) {
+                if (i < FEEDER) {
+                    feeder[i].print = false;
+                }
+                lane[i].print = false;
+            }
+            gantry.print = false;
+            nestAgent.print = false;
+            partsAgent.print = false;
+        }
 
     } // END main
 } // END AgentMain

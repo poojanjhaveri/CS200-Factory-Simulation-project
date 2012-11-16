@@ -60,6 +60,9 @@ public class Server { // KitAssemblyAgent
     private ServerSocket ss = null;
     private Socket s = null;
     private HandleAManager hac;
+
+    // needed to handle multiple clients 
+    // private ArrayList<HandleAClient> clients = new ArrayList<HandleAClient>();
     
     public static void main(String[] args) {
         Server server = new Server(PORT_NUMBER);

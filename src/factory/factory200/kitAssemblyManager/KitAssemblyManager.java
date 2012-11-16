@@ -34,16 +34,26 @@ public class KitAssemblyManager extends Manager implements ActionListener {
     /**
      * changes the panel based on what the user clicks
      */
-public GUIPartRobot getPartsRobot()
-{
-    return graphics.kitter;
-}
+    public GUIPartRobot getPartsRobot()
+    {
+        return graphics.kitter;
+    }
     public GUIKitRobot getKitRobot(){
 	return graphics.kitbot;
     }
-    
+    public KitDeliveryStation getDeliveryStation(){
+        return graphics.delivery;
+    }
+    public Boolean getStationRun(){
+        return graphics.stationRun;
+    }
     public KitStand getKitStand(){
         return graphics.kitstand;
+    }
+    public void KAMdropOffFullKit(){
+          this.graphics.deliveryStation=false;
+          this.graphics.stationRun=true;
+          this.graphics.kitbot.dropOffFullKit();
     }
 
     public void flashKitCamera()
@@ -80,7 +90,14 @@ public GUIPartRobot getPartsRobot()
             this.graphics.kitbot.moveEmptyKitToActive();
         }  
         if(ae.getSource()==partRobot){
-            this.graphics.kitter.cheat();
+            //this.graphics.kitter.cheat();
+            String choice = JOptionPane.showInputDialog("Please enter the nest number: ");
+            Integer nest = Integer.parseInt(choice);
+            this.graphics.kitter.moveToNest(nest);
+            this.graphics.kitter.pickPartCommand(nest);
+        }
+        if(ae.getSource()==movePartRobotBack){
+            this.graphics.kitter.dropOffParts();
         }
         if(ae.getSource()==kitRobotKitStand){
             this.graphics.kitbot.moveActiveKitToInspection();
@@ -135,12 +152,16 @@ public GUIPartRobot getPartsRobot()
     JButton cameraNest;
     JButton cameraKitStand;
     JButton moveKit;
+    JButton movePartRobotBack;
       public JPanel TestPanel() {
         JPanel tester = new JPanel();
         tester.setLayout(new BoxLayout(tester, BoxLayout.Y_AXIS));
-        partRobot = new JButton("Move Part Robot (Nest -> Kit Stand)");
+        partRobot = new JButton("Move Part Robot (Kit Stand -> Nest)");
         partRobot.addActionListener(this);
         tester.add(partRobot);
+        movePartRobotBack=new JButton("Move Part Robot (Nest->KitStand)");
+        movePartRobotBack.addActionListener(this);
+        tester.add(movePartRobotBack);
         moveKit = new JButton("Move Kit (Position 0->1)");
         moveKit.addActionListener(this);
         tester.add(moveKit);
