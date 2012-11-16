@@ -110,7 +110,7 @@ public class PartsAgent extends Agent implements PartsInterface {
         print("giving kitrobot complete kit");
         kitrobot.msgKitIsFull();
         //kit.status = Kit.Status.empty;
-        //kit.standNum = Kit.StandNum.zero;
+        kit.standNum = Kit.StandNum.none;
         /*try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {

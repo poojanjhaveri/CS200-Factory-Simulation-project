@@ -44,7 +44,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
      */
     @Override
     public void msgNeedEmptyKit() {
-        print("msgNeedEmptyKit");
+//        print("msgNeedEmptyKit");
         partsAgentNeedsEmptyKit = true;
         stateChanged();
     }
@@ -58,7 +58,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
      */
     @Override
     public void msgHereIsEmptyKit(Kit kit) {
-        print("msgHereIsEmptyKit");
+//        print("msgHereIsEmptyKit");
         kitStand.addKit(kit);
         requestedEmptyKit = false;
         stateChanged();
@@ -72,7 +72,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
      */
     @Override
     public void msgKitIsFull() {
-        print("msgKitIsFull");
+//        print("msgKitIsFull: " + kitStand.get(1).name);
         kitStand.get(1).status = Kit.Status.full;
         stateChanged();
     }
@@ -86,7 +86,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
      */
     @Override
     public void msgKitInspected(boolean result) {
-        print("msgKitInspected");
+//        print("msgKitInspected");
         kitStand.get(2).status = result ? Kit.Status.verified : Kit.Status.error;
         stateChanged();
     }
