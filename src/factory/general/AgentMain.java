@@ -112,17 +112,17 @@ public class AgentMain {
         }
         partsAgent.msgHereIsKit(kit);
         
-//        if(true) {
-//            for (int i = 0; i < LANE; i++) {
-//                if (i < FEEDER) {
-//                    feeder[i].print = false;
-//                }
-//                lane[i].print = false;
-//            }
-//            gantry.print = false;
-//            nestAgent.print = false;
-//            partsAgent.print = false;
-//        }
+        if(true) {
+            for (int i = 0; i < LANE; i++) {
+                if (i < FEEDER) {
+                    feeder[i].print = false;
+                }
+                lane[i].print = false;
+            }
+            gantry.print = false;
+            nestAgent.print = false;
+            partsAgent.print = false;
+        }
 
     } // END main
 } // END AgentMain

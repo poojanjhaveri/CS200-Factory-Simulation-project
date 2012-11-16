@@ -117,7 +117,17 @@ public class GUIKitRobot extends GUIRobot {
         this.orders.add(11);//move to kit stand
         this.orders.add(4);//drop kit onto stand
     }
-
+    /**
+     * @brief moves the empty kit to the active position immediately
+     * 
+     */
+public void pickUpEmptyKitToActive()
+{
+    this.orders.add(10);//move to conveyer
+    this.orders.add(0);//pick up empty kit
+    this.orders.add(12);//move to ACTIVE kit position
+    this.orders.add(5);//drop off the kit
+}
     /**
     @brief moves an empty kit to the active position
      */

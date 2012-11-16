@@ -189,6 +189,9 @@ public class KitManager extends Manager  implements ActionListener {
             JButton b7=new JButton();
             JButton b8=new JButton();
             
+     //       b1.addActionListener(new partbutton());
+            
+            
             partgrid.add(b1);
             partgrid.add(b2);
             partgrid.add(b3);
@@ -256,9 +259,6 @@ public class KitManager extends Manager  implements ActionListener {
         //handle gui here
         
         
-
-
-
 
 	String msg = Message.DEFINE_NEW_KIT+":"+newkit.serialize();
         System.out.println(msg);
