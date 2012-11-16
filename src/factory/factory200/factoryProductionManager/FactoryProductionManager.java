@@ -76,7 +76,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 		availableKits = new ArrayList<String>();
 
 		//Populate Debug Blueprint if no Blueprint exists on server
-		if(kitsbp.getKits().size() == 0)
+		if(kitsbp.getKits().isEmpty())
 		{
 			debug = true;
 			ArrayList<Kit> tempKits = new ArrayList<Kit> ();
@@ -212,7 +212,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 		}
 		if(ae.getSource() == queueue)
 		{
-			if(numE.getText() != "")
+			if(!numE.getText().equals(""))
 			{
 				try {
 					Integer.parseInt(numE.getText());
@@ -268,7 +268,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
     /**
      * start the factory production queue with the current kit selection
      */
-	void selKitRoutine(Object source)
+	private void selKitRoutine(Object source)
 	{
 		JComboBox cb = (JComboBox)source;
 		nameToAdd = (String)cb.getSelectedItem();
@@ -277,7 +277,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 		{
 			for(Kit kitty : kitsbp.getKits())
 			{
-				if(nameToAdd == kitty.getName())
+				if(nameToAdd.equals(kitty.getName()))
 				{
 					kitToAdd = kitty;
 				}
@@ -287,7 +287,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 		{
 			for(Kit kitty : debugbp.getKits())
 			{
-				if(nameToAdd == kitty.getName())
+				if(nameToAdd.equals(kitty.getName()))
 				{
 					kitToAdd = kitty;
 				}
