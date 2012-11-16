@@ -65,22 +65,8 @@ public class NestAgent extends Agent implements NestInterface {
      * @param p This is a part
      */
 
-    /*
-    public void msgNewKit(List<Part> kitParts){
-        
-            for (Nest n: myNests){
-                for(Part p: kitParts){
-                if (n.parts.contains(p))
-                    n.status = Nest.Status.hasPart;
-                    kitParts.remove(p);
-            }
-        }
-            for (Part p: kitParts){
-                for (Nest n: myNests){
-                    if(n.status != Nest.Status.hasPart)
-                }
-            }
-    }*/
+    
+  
     public void msgNeedPart(Part p) {
         boolean doPurge = true;
         synchronized(myNests){

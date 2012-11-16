@@ -36,6 +36,7 @@ NestAgent nest1;
 
     @Override
     public void msgHereIsKitInfo(Kit kit) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        log.add(new LoggedEvent("Received msgHereIsKitInfo from partsAgent for "
+                + "kit: " + kit.name));
     }
 }
