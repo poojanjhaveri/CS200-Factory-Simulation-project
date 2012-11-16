@@ -52,19 +52,19 @@ public class GUIGantryRobot extends MovingDrawable{
         {
         case 0:
 	    this.moveto = 0;
-            this.moveTo(GantryRobotManager.FEED0X,GantryRobotManager.FEED0Y);
+            this.moveTo(GantryRobotManager.FEED0X+40,GantryRobotManager.FEED0Y+50);
             break;
         case 1:
 	    this.moveto = 1;
-            this.moveTo(GantryRobotManager.FEED1X,GantryRobotManager.FEED1Y);
+            this.moveTo(GantryRobotManager.FEED1X+40,GantryRobotManager.FEED1Y+50);
             break;
         case 2:
 	    this.moveto = 2;
-            this.moveTo(GantryRobotManager.FEED2X,GantryRobotManager.FEED2Y);
+            this.moveTo(GantryRobotManager.FEED2X+40,GantryRobotManager.FEED2Y+50);
             break;
         case 3:
 	    this.moveto = 3;
-            this.moveTo(GantryRobotManager.FEED3X,GantryRobotManager.FEED3Y);
+            this.moveTo(GantryRobotManager.FEED3X+40,GantryRobotManager.FEED3Y+50);
             break;
         default:
             System.out.println("ERROR: Attempting to move GuiGantryRobot to nonexistent feeder " + i);
@@ -76,21 +76,21 @@ public class GUIGantryRobot extends MovingDrawable{
     {
 	switch(i)
 	    {
-	    case 0:this.moveTo(GantryRobotManager.BIN_X,GantryRobotManager.BIN0Y);
+	    case 0:this.moveTo(GantryRobotManager.BIN_X-100,GantryRobotManager.BIN0Y);
             break;
-	    case 1:this.moveTo(GantryRobotManager.BIN_X,GantryRobotManager.BIN1Y);
+	    case 1:this.moveTo(GantryRobotManager.BIN_X-100,GantryRobotManager.BIN1Y);
             break;
-	    case 2:this.moveTo(GantryRobotManager.BIN_X,GantryRobotManager.BIN2Y);
+	    case 2:this.moveTo(GantryRobotManager.BIN_X-100,GantryRobotManager.BIN2Y);
             break;
-	    case 3:this.moveTo(GantryRobotManager.BIN_X,GantryRobotManager.BIN3Y);
+	    case 3:this.moveTo(GantryRobotManager.BIN_X-100,GantryRobotManager.BIN3Y);
             break;
-	    case 4:this.moveTo(GantryRobotManager.BIN_X,GantryRobotManager.BIN4Y);
+	    case 4:this.moveTo(GantryRobotManager.BIN_X-100,GantryRobotManager.BIN4Y);
             break;
-	    case 5:this.moveTo(GantryRobotManager.BIN_X,GantryRobotManager.BIN5Y);
+	    case 5:this.moveTo(GantryRobotManager.BIN_X-100,GantryRobotManager.BIN5Y);
             break;
-	    case 6:this.moveTo(GantryRobotManager.BIN_X,GantryRobotManager.BIN6Y);
+	    case 6:this.moveTo(GantryRobotManager.BIN_X-100,GantryRobotManager.BIN6Y);
             break;
-	    case 7:this.moveTo(GantryRobotManager.BIN_X,GantryRobotManager.BIN7Y);
+	    case 7:this.moveTo(GantryRobotManager.BIN_X-100,GantryRobotManager.BIN7Y);
             break;
 	    }
     }
@@ -167,8 +167,10 @@ public class GUIGantryRobot extends MovingDrawable{
      public void paintMe(JPanel panel, Graphics2D g){
     	
     	if(this.bin != null){
-    		this.bin.getImage().paintIcon(panel, g, this.getCoordinate().getX(), this.getCoordinate().getY());
-    		this.bin.getPart().getGUIPart().getImage().paintIcon(panel, g, this.bin.getX()+15,this.bin.getY()+15);
+    		this.bin.getImage().paintIcon(panel, g, this.getCoordinate().getX()-30, this.getCoordinate().getY()-50);
+    		if(this.bin.getPart()!=null){
+    			this.bin.getPart().getGUIPart().getImage().paintIcon(panel, g, this.getCoordinate().getX()-15,this.getCoordinate().getY()-35);
+    		}
         }
     		
     	this.getImage().paintIcon(panel, g, this.getCoordinate().getX(), this.getCoordinate().getY());
