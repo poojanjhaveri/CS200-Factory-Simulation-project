@@ -156,6 +156,10 @@ public class Server { // KitAssemblyAgent
             pw.println(Message.TEST_CLIENT);
         }
 
+        public void sendToClient(String msg) {
+            pw.println(msg);
+        }
+
         // Key method of Runnable; when this method ends, the thread stops
         public void run() {
             try {
