@@ -75,7 +75,8 @@ public class PartsAgent extends Agent implements PartsInterface {
 
         if (!newKit.isEmpty()) {
            
-            startNewKit(newKit.remove(newKit.size()-1));
+            startNewKit(newKit.remove(0));
+            newKit.clear();
             return true;
         }
 
@@ -107,29 +108,30 @@ public class PartsAgent extends Agent implements PartsInterface {
         print("giving kitrobot complete kit");
         kitrobot.msgKitIsFull();
         kit.status = Kit.Status.empty;
-        kit.standNum = Kit.StandNum.zero;
+        //kit.standNum = Kit.StandNum.zero;
         try {
-            Thread.sleep(6000);
+            Thread.sleep(5000);
         } catch (InterruptedException e) {
             print("stopped sleeping for 10 seconds");
         }
-        kitrobot.msgNeedEmptyKit();
+        if(newKit.isEmpty())
+            newKit.add(kit);
+        //kitrobot.msgNeedEmptyKit();
         stateChanged();
     }
 
     private void startNewKit(Kit k) {
 
-         kitrobot.msgNeedEmptyKit();
+        kitrobot.msgNeedEmptyKit();
         print("New kit being started");
         camera.msgHereIsKitInfo(k);
     	kitNeedsParts.clear();
     	this.kit = k;
-       // kit.standNum = Kit.StandNum.one;
+       
     	for(int i=0; i<kit.parts.size(); i++){
     		kitNeedsParts.add(kit.getPart(i));
     	}
-        
-        
+       
     	for (int i = 0; i < kit.getSize(); i++) {
             nest.msgNeedPart(kit.getPart(i));
     	}
@@ -168,7 +170,7 @@ public class PartsAgent extends Agent implements PartsInterface {
             Thread.sleep(3);
         } catch (InterruptedException ex) {
         }
-
+        stateChanged();
     }
     
     public void setCamera(Camera c){
