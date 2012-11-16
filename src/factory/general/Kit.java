@@ -62,6 +62,7 @@ public class Kit {
     public Kit(String n, String d, Integer i) {
         this.name = n;
         this.number = i;
+        this.description = d;
     }
     public String getName()
     {
@@ -86,6 +87,11 @@ public class Kit {
      */
     public String serialize()
     {
+        if(this.parts == null)
+        {
+            System.out.println("CRITICAL ERROR SERIALIZING KIT: PARTS ARRAY WAS NEVER SET!");
+        return null;
+        }
         BlueprintParts bpp = new BlueprintParts((ArrayList<Part>)this.parts);
         return (this.name.length()+2)+"("+this.name+")"+(2+this.description.length())+"("+this.description+")"+(2+this.number.toString().length())+"("+this.number+")"+(2+bpp.serialize().length())+"("+bpp.serialize()+")";
     }
@@ -136,5 +142,17 @@ public class Kit {
 	    {
 		System.out.println("Test passed");
 	    }else System.out.println("TEST FAILED");
+        
+        System.out.println("Testing empty parts kit");
+        des = new Kit("mahkit","its my kit");
+        des.setParts(new ArrayList<Part>());
+        String s = des.serialize();
+        System.out.println("Serialized:"+s);
+        Kit newkit = Kit.deserialize(s);
+        System.out.println("Serialized deserialized serialized kit:"+newkit.serialize());
+        if(s.equals(newkit.serialize()))
+        {
+            System.out.println("Test passed");
+        }else System.out.println("TEST FAILED");
     }
 }
