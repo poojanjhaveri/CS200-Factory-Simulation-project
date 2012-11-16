@@ -86,6 +86,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
      */
     @Override
     public void msgKitInspected(boolean result) {
+        print("msgKitInspected");
         kitStand.get(2).status = result ? Kit.Status.verified : Kit.Status.error;
         stateChanged();
     }
@@ -93,37 +94,71 @@ public class KitRobotAgent extends Agent implements KitRobot {
     // ********* SCHEDULER *********
     @Override
     public boolean pickAndExecuteAnAction() {
-        //hack
-        if (this.partsAgentNeedsEmptyKit) {
-            giveEmptyKitToPartsAgent();
-            return true;
-        }//end hack
-        if (!kitStand.isEmpty()) {
-            if (!kitStand.isEmpty(2)) {
-                if (kitStand.get(2).status == Kit.Status.verified) {
+      
+        /*Commented out 11/15 1:53pm - going to refactor scheduler, see below*/
+//        //hack
+//        if (this.partsAgentNeedsEmptyKit) {
+//            giveEmptyKitToPartsAgent();
+//            return true;
+//        }//end hack
+//        if (!kitStand.isEmpty()) {
+//            if (!kitStand.isEmpty(2)) {
+//                if (kitStand.get(2).status == Kit.Status.verified) {
+//                    //if kit is ready to leave cell
+//                    sendVerifiedKitToConveyor();
+//                    return true;
+//                }
+//            }
+//            if (!kitStand.isEmpty(1)) {
+//                if (kitStand.get(1).status == Kit.Status.full) {
+//                    // if kit is ready for inspection
+//                    moveFullKitToInspection();
+//                    return true;
+//                }
+//            }
+//        } else {
+//            if (partsAgentNeedsEmptyKit && !requestedEmptyKit) {
+//                // if parts agent needs empty kit
+//                giveEmptyKitToPartsAgent();
+//                return true;
+//            } else if (kitStand.availability() > 0 && !requestedEmptyKit) {
+//                // if tempstand is empty
+//                getEmptyKitFromConveyor();
+//                return true;
+//            }
+//        }
+//        return false;
+
+
+//        if (!kitStand.isEmpty()) {
+//            if (!kitStand.isEmpty(2)) {
+                if (!kitStand.isEmpty(2) && kitStand.get(2).status == Kit.Status.verified) {
                     //if kit is ready to leave cell
                     sendVerifiedKitToConveyor();
                     return true;
                 }
-            }
-            if (!kitStand.isEmpty(1)) {
-                if (kitStand.get(1).status == Kit.Status.full) {
+//            }
+//            if (!kitStand.isEmpty(1)) {
+                if (!kitStand.isEmpty(1) && kitStand.get(1).status == Kit.Status.full) {
                     // if kit is ready for inspection
                     moveFullKitToInspection();
                     return true;
                 }
-            }
-        } else {
+//            }
+//        } else {
             if (partsAgentNeedsEmptyKit && !requestedEmptyKit) {
                 // if parts agent needs empty kit
                 giveEmptyKitToPartsAgent();
                 return true;
-            } else if (kitStand.availability() > 0 && !requestedEmptyKit) {
+            } 
+//            else 
+//            print(((Integer)kitStand.availability()).toString());
+                if (kitStand.availability() > 0 && !requestedEmptyKit) {
                 // if tempstand is empty
                 getEmptyKitFromConveyor();
                 return true;
             }
-        }
+//        }
         return false;
 
     }
