@@ -126,8 +126,10 @@ public class PartsAgent extends Agent implements PartsInterface {
 
     private void giveKitToKitAgent(Kit k) {
         print("giving kitrobot complete kit");
+
         kitrobot.msgKitIsFull(k);
         k.status = Kit.Status.empty;
+
         if(newKit.isEmpty()){
             newKit.add(k);
             print("Adding kit of size "+ k.getSize() + " to newKit list");}

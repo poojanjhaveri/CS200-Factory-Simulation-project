@@ -60,6 +60,7 @@ public class KitManager extends Manager  implements ActionListener {
           JComboBox delete_combo;
           
           JButton createkitbutton;
+          JButton deletekitbutton;
           
           ArrayList<Part> partlist = new ArrayList();
           
@@ -91,14 +92,6 @@ public class KitManager extends Manager  implements ActionListener {
 	}
         
         
-         public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == createkitbutton) {
-         System.out.println("kit Created");
-            createKit();
-            
-        }
-    }
-        
         
 	
 	//getters and setters as needed 
@@ -109,7 +102,7 @@ public class KitManager extends Manager  implements ActionListener {
             {     
             public void paintComponent(Graphics g) 
             {
-                Image img = new ImageIcon("pics/kitbackground.jpg").getImage();
+                Image img = new ImageIcon("background/kitbackground.jpg").getImage();
                 Dimension size = new Dimension(600, 400);
                 setPreferredSize(size);
                 setMinimumSize(size);
@@ -259,10 +252,41 @@ public class KitManager extends Manager  implements ActionListener {
             
             deletekit.add(delete_combo);
             
-            JButton deletebutton = new JButton("Delete Kit");
-            deletekit.add(deletebutton);
+            deletekitbutton = new JButton("Delete Kit");
+            deletekitbutton.addActionListener(this);
+            deletekit.add(deletekitbutton);
             
         }
+        
+        
+          public void actionPerformed(ActionEvent e) {
+                if (e.getSource() == createkitbutton) {
+                System.out.println("kit Created");
+                createKit();
+                }
+                if (e.getSource() == deletekitbutton) {
+                System.out.println("Kit deleted");
+                deleteKit((Kit)(delete_combo.getSelectedItem()));
+                }
+                
+                
+        }
+        
+          
+       private Kit getCurrentKit() {
+    	String s= (String) delete_combo.getSelectedItem();
+    	Kit temp= new Kit(null,null);
+    	for (int i=0;i<bpkit.getSize();i++) {
+    		if (bpkit.getKitAt(i).getName().equals(s)) {
+    			temp=bpkit.getKitAt(i);
+    			break;
+    		}
+    		
+    	}
+    	return temp;
+    }
+        
+        
         
         
         /**
@@ -283,7 +307,7 @@ public class KitManager extends Manager  implements ActionListener {
         
         
         private void updateComboBox(){
-            //  delete_combo.removeAllItems();
+              delete_combo.removeAllItems();
                for(int i=0;i<bpkit.getSize();i++){
     		 delete_combo.addItem(bpkit.getKitAt(i));     
     	
@@ -330,17 +354,19 @@ public class KitManager extends Manager  implements ActionListener {
      * the server and updates existing kits list
      */
         
-         public void deletePart(Kit in) {
+         public void deleteKit(Kit in) {
             bpkit.removeKit(in);
-        //	updateComboBox();
+            updateComboBox();
+        
     }
          
          public void processtabchange()
          {
               Component c = tabbedPane.getSelectedComponent();
                 if (c.equals(deletekit))
-                       updateComboBox();
-                    
+                {
+                     updateComboBox();
+                }   
              
          }
          

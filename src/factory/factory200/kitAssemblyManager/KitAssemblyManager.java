@@ -1,12 +1,11 @@
 package factory.factory200.kitAssemblyManager;
 
-import factory.factory200.kitAssemblyManager.GUIPartRobot;
-import factory.factory200.kitAssemblyManager.KitDeliveryStation;
-import factory.factory200.kitAssemblyManager.KitStand;
+import factory.factory200.kitAssemblyManager.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import factory.general.Manager;
 import java.awt.Button;
+import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -192,9 +191,14 @@ public class KitAssemblyManager extends Manager implements ActionListener {
 
         return tester;
     }
-      
+
+    public void processMessage(String msg)
+    {
+	super.processMessage(msg);
+	//todo - let me know what functions agent will call so I can process them here
+    }      
+
       public static void main(String[] args){
        KitAssemblyManager mgr = new KitAssemblyManager();   
       }
-      
 }

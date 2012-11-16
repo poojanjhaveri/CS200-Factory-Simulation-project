@@ -24,6 +24,8 @@ import factory.factory200.gantryRobotManager.GUIBin;
 import factory.factory200.gantryRobotManager.GUIGantryRobot;
 import factory.factory200.gantryRobotManager.GRMGraphicPanel;
 import factory.general.Manager;
+import factory.general.Message;
+
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -175,6 +177,21 @@ public class GantryRobotManager extends Manager implements ActionListener {
         }
     }
 	*/
+public void processMessage(String msg)
+{
+super.processMessage(msg);
+if(msg.contains(Message.MOVE_GANTRY_TO_BIN))
+    {
+	this.ganbot.moveToBin(Integer.parseInt(this.grabParameter(msg)));
+    }else if(msg.contains(Message.GANTRY_CARRY_A_BIN))
+    {
+	this.ganbot.pickUpBin(Integer.parseInt(this.grabParameter(msg)));
+    }else if(msg.contains(Message.MOVE_GANTRY_TO_FEEDER))
+    {
+	this.ganbot.moveToFeeder(Integer.parseInt(this.grabParameter(msg)));
+    }
+}
+
 	public void actionPerformed(ActionEvent ae) {
 		// TODO Auto-generated method stub
 	
@@ -197,11 +214,17 @@ public class GantryRobotManager extends Manager implements ActionListener {
 		}
 
 		if (ae.getSource() ==pickBin){
-			ganbot.carryABin(5);
+			ganbot.pickUpBin(5);
 		}
 	}
 	
-	/*public void doSupplyPart(int binNum, int feederNum){
+	
+	  public static void main(String[] args){
+	       GantryRobotManager mgr = new GantryRobotManager();   
+	      }
+	  
+	  
+	  /*public void doSupplyPart(int binNum, int feederNum){
 		ganbot= graphics.getGantryRobot();
 		
 		ganbot.moveToBin(binNum);
@@ -210,10 +233,6 @@ public class GantryRobotManager extends Manager implements ActionListener {
 		ganbot.moveToDump();
 	}
 	*/
-	  public static void main(String[] args){
-	       GantryRobotManager mgr = new GantryRobotManager();   
-	      }
-	  
 }
 
 

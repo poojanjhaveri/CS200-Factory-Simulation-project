@@ -96,27 +96,44 @@ public class KitStand {
      * Moves the full kit to inspection stand and if there is an empty kit in
      * the temporary stand it moves it into the kitting stand
      */
-    public void moveFullKitToInspection() {
-        kits[2] = kits[1];
-        kits[2].standNum = Kit.StandNum.two;
-        if (kits[0] != null) {
-            kits[1] = kits[0];
-            kits[1].standNum = Kit.StandNum.one;
-            DoMoveKitMoveKitFrom0to1();
-            kits[0] = null;
-        } else {
+    public void moveFullKitToInspection(Kit kit) {
+        if(kit.equals(kits[1])) {
+            kits[2] = kits[1];
             kits[1] = null;
+            
+            if (kits[0] != null) {
+                kits[1] = kits[0];
+                kits[1].standNum = Kit.StandNum.one;
+                kits[0] = null;
+            }
+        } else if(kit.equals(kits[0])) {
+            kits[2] = kits[0];
+            kits[0] = null;
         }
+        kits[2].standNum = Kit.StandNum.two;
+        
     }
 
     public boolean isEmpty() {
         return (kits[0] == null && kits[1] == null && kits[2] == null);
     }
-
-    private void DoMoveKitMoveKitFrom0to1() {
-        KAM.getKitRobot().moveEmptyKitToActive();
+    
+    private void DoMoveKitFromConveyorTo0() {
+        
     }
-
+    
+    private void DoMoveKitFromConveyorTo1() {
+        
+    }
+    
+    private void DoMoveKitFrom0to1() {
+//        KAM.getKitRobot().moveEmptyKitToActive();
+    }
+    
+    private void DoMoveKitFrom1to2() {
+        
+    }
+    
     public void setKitAssemblyManager(KitAssemblyManager KAM) {
         this.KAM = KAM;
     }
