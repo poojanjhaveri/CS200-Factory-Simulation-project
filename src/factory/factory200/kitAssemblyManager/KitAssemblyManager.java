@@ -1,12 +1,11 @@
 package factory.factory200.kitAssemblyManager;
 
-import factory.factory200.kitAssemblyManager.GUIPartRobot;
-import factory.factory200.kitAssemblyManager.KitDeliveryStation;
-import factory.factory200.kitAssemblyManager.KitStand;
+import factory.factory200.kitAssemblyManager.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import factory.general.Manager;
 import java.awt.Button;
+import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -144,9 +143,9 @@ public class KitAssemblyManager extends Manager implements ActionListener {
         int x = 700;
         this.setSize(700 + x, 700);
 
-        this.graphics.setVisible(true);
+        //this.graphics.setVisible(true);
 
-        this.add(TestPanel());
+        //this.add(TestPanel());
         //change TEST to just graphicPanel (above)
 
         this.setVisible(true);
@@ -192,9 +191,7 @@ public class KitAssemblyManager extends Manager implements ActionListener {
 
         return tester;
     }
-      
       public static void main(String[] args){
        KitAssemblyManager mgr = new KitAssemblyManager();   
       }
-      
 }
