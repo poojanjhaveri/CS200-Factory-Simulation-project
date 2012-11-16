@@ -71,7 +71,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
      * @brief Message called by PartsAgent when kit is complete.
      */
     @Override
-    public void msgKitIsFull() {
+    public void msgKitIsFull(Kit kit) {
 //        print("msgKitIsFull: " + kitStand.get(1).name);
         kitStand.get(1).status = Kit.Status.full;
         stateChanged();
@@ -101,7 +101,12 @@ public class KitRobotAgent extends Agent implements KitRobot {
         }
         if (!kitStand.isEmpty(1) && kitStand.get(1).status == Kit.Status.full) {
             // if kit is ready for inspection
-            moveFullKitToInspection();
+            moveFullKitToInspection(kitStand.get(1));
+            return true;
+        }
+        if (!kitStand.isEmpty(0) && kitStand.get(0).status == Kit.Status.full) {
+            // if kit is ready for inspection
+            moveFullKitToInspection(kitStand.get(0));
             return true;
         }
         if (partsAgentNeedsEmptyKit && !requestedEmptyKit) {
@@ -127,12 +132,12 @@ public class KitRobotAgent extends Agent implements KitRobot {
         stateChanged();
     }
 
-    private void moveFullKitToInspection() {
-        while (!kitStand.isEmpty(2)) {
-        }
+    @SuppressWarnings("empty-statement")
+    private void moveFullKitToInspection(Kit kit) {
+        while (!kitStand.isEmpty(2));
         print("Moving the full kit: [" + kitStand.get(1).name + "] to the inspection stand.");
         DoMoveFullKitToInspection();
-        kitStand.moveFullKitToInspection();
+        kitStand.moveFullKitToInspection(kit);
         camera.msgKitIsFull(kitStand.get(2));
         stateChanged();
     }
