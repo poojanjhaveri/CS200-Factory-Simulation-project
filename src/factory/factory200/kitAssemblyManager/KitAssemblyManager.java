@@ -191,14 +191,13 @@ public class KitAssemblyManager extends Manager implements ActionListener {
 
         return tester;
     }
-<<<<<<< HEAD
-=======
+
     public void processMessage(String msg)
     {
 	super.processMessage(msg);
 	//todo - let me know what functions agent will call so I can process them here
     }      
->>>>>>> ecfc3462bb3719e45d90d9007e3e434ba9855219
+
       public static void main(String[] args){
        KitAssemblyManager mgr = new KitAssemblyManager();   
       }
