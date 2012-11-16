@@ -238,8 +238,13 @@ public class GUIKitRobot extends GUIRobot {
         Double angle = Math.abs(Math.atan(dx / dy));
 
         //System.out.println(Math.toDegrees(angle) + " " + dy + " " + dx);
+        if (dx == 0) {
+            Graphics2D g2 = (Graphics2D) g.create();
+            g2.rotate(Math.toRadians(180), KAMGraphicPanel.KITROBOT_INITIAL_X + 15, KAMGraphicPanel.KITROBOT_INITIAL_Y + 20);
+            this.arm.paintIcon(panel, g2, KAMGraphicPanel.KITROBOT_INITIAL_X, KAMGraphicPanel.KITROBOT_INITIAL_Y);
+        } else {
 
-        if (dx != 0) {
+            //if (dx != 0) {
             Integer x = 0, y = 0;
             if (this.getY() < KAMGraphicPanel.KITROBOT_INITIAL_Y) {
                 y = KAMGraphicPanel.KITROBOT_INITIAL_Y;//-15;
@@ -261,7 +266,7 @@ public class GUIKitRobot extends GUIRobot {
             }
 
             Graphics2D g2 = (Graphics2D) g.create();
-            g2.rotate(angle, x + 15, y + 20);
+            g2.rotate(Math.toRadians(180) + angle, x + 15, y + 20);
 
             //while(Math.abs(x) > 15 && Math.abs(y) > 15){
             // while(Math.pow((this.getY()-y),2)+Math.pow((this.getX()-x),2) > 900) {
@@ -270,30 +275,30 @@ public class GUIKitRobot extends GUIRobot {
             double num = Math.pow(Math.pow(Math.abs(y - this.getY()), 2) + Math.pow(Math.abs(x - this.getX()), 2), .5);
             num -= 15;
             num = num / 40;
-            for (int i = 0; i != (int) num; i++) {
-                this.arm.paintIcon(panel, g2, x, y);
+            //for (int i = 0; i != (int) num; i++) {
+            this.arm.paintIcon(panel, g2, x, y);
 
-                //if(this.getY() <= KAMGraphicPanel.KITROBOT_INITIAL_Y)
-                if (this.getY() < y) // if(y > 0)
-                {
-                    y -= (int) (40.0 * Math.abs(Math.cos(angle)));
-                } else {
-                    y += (int) (40.0 * Math.abs(Math.cos(angle)));
-                }
-                //if(this.getX() <= KAMGraphicPanel.KITROBOT_INITIAL_X)
-                // if(x > 0)
-                if (this.getX() < x) {
-                    x -= (int) (40.0 * Math.abs(Math.sin(angle)));
-                } else {
-                    x += (int) (40.0 * Math.abs(Math.sin(angle)));
-                }
-
-		//                System.out.println("ANGLE: " + (Math.toDegrees(angle) % 90));
-		// System.out.println(Math.sin(angle) + " " + Math.cos(angle));
-                //System.out.println(x + "," + y);
-                //System.out.println(x - this.getX() + " " + (y - this.getY()));
-		//                System.out.println("Printed " + num + " times");
+            //if(this.getY() <= KAMGraphicPanel.KITROBOT_INITIAL_Y)
+            if (this.getY() < y) // if(y > 0)
+            {
+                y -= (int) (40.0 * Math.abs(Math.cos(angle / 2)));
+            } else {
+                y += (int) (40.0 * Math.abs(Math.cos(angle / 2)));
             }
+            //if(this.getX() <= KAMGraphicPanel.KITROBOT_INITIAL_X)
+            // if(x > 0)
+            if (this.getX() < x) {
+                x -= (int) (40.0 * Math.abs(Math.sin(angle)));
+            } else {
+                x += (int) (40.0 * Math.abs(Math.sin(angle)));
+            }
+
+            //                System.out.println("ANGLE: " + (Math.toDegrees(angle) % 90));
+            // System.out.println(Math.sin(angle) + " " + Math.cos(angle));
+            //System.out.println(x + "," + y);
+            //System.out.println(x - this.getX() + " " + (y - this.getY()));
+            //                System.out.println("Printed " + num + " times");
+            //}
 
         }
 
