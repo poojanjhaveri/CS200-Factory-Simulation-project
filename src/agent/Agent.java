@@ -13,11 +13,13 @@ public abstract class Agent {
     private AgentThread agentThread;
     private String name;
     public boolean partsRequested;
+    public boolean print;
     
     protected Agent(String name) {
         this.name = name;
         this.stateChange = new Semaphore(1, true);
         this.partsRequested = false;
+        this.print = true;
     }
 
     /**
@@ -65,15 +67,17 @@ public abstract class Agent {
      * Print message with exception stack trace
      */
     protected void print(String msg, Throwable e) {
-        StringBuffer sb = new StringBuffer();
-        sb.append(getName());
-        sb.append(": ");
-        sb.append(msg);
-        sb.append("\n");
-        if (e != null) {
-            sb.append(StringUtil.stackTraceString(e));
+        if(print) {
+            StringBuilder sb = new StringBuilder();
+            sb.append(getName());
+            sb.append(": ");
+            sb.append(msg);
+            sb.append("\n");
+            if (e != null) {
+                sb.append(StringUtil.stackTraceString(e));
+            }
+            System.out.print(sb.toString());
         }
-        System.out.print(sb.toString());
     }
 
     /**
@@ -113,6 +117,7 @@ public abstract class Agent {
         }
 
         @Override
+        @SuppressWarnings("empty-statement")
         public void run() {
             goOn = true;
 

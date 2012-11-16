@@ -1,10 +1,12 @@
 package factory.factory200.laneManager.ServerSide;
 
 import javax.swing.JFrame;
+import factory.general.Server;
 
-public class LMServerMain extends JFrame{
+public class LMServerMain extends JFrame implements Runnable{
 	
-	private LMServer server;
+	//private LMServer server;
+	private Server server;
 	
 	private LMFeederForAgent agentFeeder; ///<Instance of class 'ServerForAgentFeeder'
 	private LMLaneForAgent agentLane;	///<Instance of class 'ServerForAgentLane'
@@ -17,8 +19,11 @@ public class LMServerMain extends JFrame{
 	private LMThreadTimer threadTimer;	///<Instance of class 'Thread_Timer'
 	private LMController controller;
 	
-	public LMServerMain(){
-		server = new LMServer(this);
+	public LMServerMain(Server server){
+		this.server = server;
+	}
+	
+	public void run(){
 		agentFeeder = new LMFeederForAgent(server, this); 
 		agentLane = new LMLaneForAgent(server, this);
 		agentNest = new LMNestForAgent(server, this);
@@ -48,11 +53,8 @@ public class LMServerMain extends JFrame{
 	public LMNestForAgent getForAgentNest(){
 		return agentNest;
 	}
+	
 	public LMPartData getPartData(){
 		return partData;
-	}
-        
-	public LMGantryRobotForAgent getForAgentGantry(){
-		return agentGantryRobot;
 	}
 }

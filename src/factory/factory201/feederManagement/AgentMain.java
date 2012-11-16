@@ -39,21 +39,21 @@ public class AgentMain implements Runnable { // BY DONGYOUNG this class is RUNNA
 	
 	public void run(){
 		
-                gantry=new GantryAgent(8,"Gantry",serverMain);
-		
-		lane1=new LaneAgent("Lane 1",serverMain);
-		lane2=new LaneAgent("Lane 2",serverMain);
-		lane3=new LaneAgent("Lane 3",serverMain);
-		lane4=new LaneAgent("Lane 4",serverMain);
-		lane5=new LaneAgent("Lane 5",serverMain);
-		lane6=new LaneAgent("Lane 6",serverMain);
-		lane7=new LaneAgent("Lane 7",serverMain);
-		lane8=new LaneAgent("Lane 8",serverMain);
-		
-		feeder1=new FeederAgent("Feeder 1",1,serverMain);
-		feeder2=new FeederAgent("Feeder 2",2,serverMain);
-		feeder3=new FeederAgent("Feeder 3",3,serverMain);
-		feeder4=new FeederAgent("Feeder 4",4,serverMain);
+//                gantry=new GantryAgent(8,"Gantry",serverMain);
+//		
+//		lane1=new LaneAgent("Lane 1",serverMain);
+//		lane2=new LaneAgent("Lane 2",serverMain);
+//		lane3=new LaneAgent("Lane 3",serverMain);
+//		lane4=new LaneAgent("Lane 4",serverMain);
+//		lane5=new LaneAgent("Lane 5",serverMain);
+//		lane6=new LaneAgent("Lane 6",serverMain);
+//		lane7=new LaneAgent("Lane 7",serverMain);
+//		lane8=new LaneAgent("Lane 8",serverMain);
+//		
+//		feeder1=new FeederAgent("Feeder 1",1,serverMain);
+//		feeder2=new FeederAgent("Feeder 2",2,serverMain);
+//		feeder3=new FeederAgent("Feeder 3",3,serverMain);
+//		feeder4=new FeederAgent("Feeder 4",4,serverMain);
 		
 		lane1.setFeeder(feeder1);
 		lane2.setFeeder(feeder1);

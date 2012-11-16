@@ -16,12 +16,12 @@ import factory.general.Kit;
  * moves the complete kit onto the conveyor.
  *
  * @author Alex Young
- * @version 0
+ * @version 1
  */
 public class KitRobotAgent extends Agent implements KitRobot {
 
     private KitStand kitStand;
-    public KitAssemblyManager KAM;
+    private KitAssemblyManager KAM;
     private boolean partsAgentNeedsEmptyKit;
     private boolean requestedEmptyKit;
     private Conveyor conveyor;
@@ -30,12 +30,12 @@ public class KitRobotAgent extends Agent implements KitRobot {
 
     public KitRobotAgent(String name) {
         super(name);
-        
+
         kitStand = new KitStand();
         partsAgentNeedsEmptyKit = false;
         requestedEmptyKit = false;
     }
-    
+
     // ********** MESSAGES *********
     /**
      * Message called by PartsRobotAgent when it needs an empty kit.
@@ -86,6 +86,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
      */
     @Override
     public void msgKitInspected(boolean result) {
+        print("msgKitInspected");
         kitStand.get(2).status = result ? Kit.Status.verified : Kit.Status.error;
         stateChanged();
     }
@@ -93,37 +94,71 @@ public class KitRobotAgent extends Agent implements KitRobot {
     // ********* SCHEDULER *********
     @Override
     public boolean pickAndExecuteAnAction() {
-        //hack
-        if(this.partsAgentNeedsEmptyKit) {
-            giveEmptyKitToPartsAgent();
-            return true;
-        }//end hack
-        if (!kitStand.isEmpty()) {
-            if (!kitStand.isEmpty(2)) {
-                if (kitStand.get(2).status == Kit.Status.verified) {
+      
+        /*Commented out 11/15 1:53pm - going to refactor scheduler, see below*/
+//        //hack
+//        if (this.partsAgentNeedsEmptyKit) {
+//            giveEmptyKitToPartsAgent();
+//            return true;
+//        }//end hack
+//        if (!kitStand.isEmpty()) {
+//            if (!kitStand.isEmpty(2)) {
+//                if (kitStand.get(2).status == Kit.Status.verified) {
+//                    //if kit is ready to leave cell
+//                    sendVerifiedKitToConveyor();
+//                    return true;
+//                }
+//            }
+//            if (!kitStand.isEmpty(1)) {
+//                if (kitStand.get(1).status == Kit.Status.full) {
+//                    // if kit is ready for inspection
+//                    moveFullKitToInspection();
+//                    return true;
+//                }
+//            }
+//        } else {
+//            if (partsAgentNeedsEmptyKit && !requestedEmptyKit) {
+//                // if parts agent needs empty kit
+//                giveEmptyKitToPartsAgent();
+//                return true;
+//            } else if (kitStand.availability() > 0 && !requestedEmptyKit) {
+//                // if tempstand is empty
+//                getEmptyKitFromConveyor();
+//                return true;
+//            }
+//        }
+//        return false;
+
+
+//        if (!kitStand.isEmpty()) {
+//            if (!kitStand.isEmpty(2)) {
+                if (!kitStand.isEmpty(2) && kitStand.get(2).status == Kit.Status.verified) {
                     //if kit is ready to leave cell
                     sendVerifiedKitToConveyor();
                     return true;
                 }
-            }
-            if(!kitStand.isEmpty(1)) {
-                if (kitStand.get(1).status == Kit.Status.full) {
+//            }
+//            if (!kitStand.isEmpty(1)) {
+                if (!kitStand.isEmpty(1) && kitStand.get(1).status == Kit.Status.full) {
                     // if kit is ready for inspection
                     moveFullKitToInspection();
                     return true;
                 }
-            }
-        } else {
+//            }
+//        } else {
             if (partsAgentNeedsEmptyKit && !requestedEmptyKit) {
                 // if parts agent needs empty kit
                 giveEmptyKitToPartsAgent();
                 return true;
-            } else if (kitStand.availability() > 0 && !requestedEmptyKit) {
+            } 
+//            else 
+//            print(((Integer)kitStand.availability()).toString());
+                if (kitStand.availability() > 0 && !requestedEmptyKit) {
                 // if tempstand is empty
                 getEmptyKitFromConveyor();
                 return true;
             }
-        }
+//        }
         return false;
 
     }
@@ -167,68 +202,71 @@ public class KitRobotAgent extends Agent implements KitRobot {
     }
 
     // ************ MISC ***********
-    
     /**
-    * Sets the conveyor agent
-    * @param agent Conveyor Agent to be set
-    * @brief Sets the conveyor agent
-    */	 
+     * Sets the conveyor agent
+     *
+     * @param agent Conveyor Agent to be set
+     * @brief Sets the conveyor agent
+     */
     public void setConveyor(Conveyor agent) {
         conveyor = agent;
     }
 
     /**
-    * Sets the camera agent
-    * @param agent Camera agent to be set
-    * @brief Sets the camera agent 
-    */
+     * Sets the camera agent
+     *
+     * @param agent Camera agent to be set
+     * @brief Sets the camera agent
+     */
     public void setCamera(Camera agent) {
         camera = agent;
     }
 
     /**
-    * Sets the parts agent
-    * @param agent Parts agent to be set
-    * @brief Sets the parts agent
-    */
+     * Sets the parts agent
+     *
+     * @param agent Parts agent to be set
+     * @brief Sets the parts agent
+     */
     public void setPartsAgent(PartsInterface agent) {
         partsAgent = agent;
     }
 
     /**
-    * Sets the kit assembly manager
-    * @param KAM Kit assembly manager
-    * @brief Sets the kit assembly manager
-    */    
+     * Sets the kit assembly manager
+     *
+     * @param KAM Kit assembly manager
+     * @brief Sets the kit assembly manager
+     */
     public void setKitAssemblyManager(KitAssemblyManager KAM) {
         this.KAM = KAM;
     }
 
-    public void setAll(Camera camera, Conveyor conveyor, 
+    public void setAll(Camera camera, Conveyor conveyor,
             PartsInterface partsAgent, KitAssemblyManager KAM) {
         this.camera = camera;
         this.conveyor = conveyor;
         this.partsAgent = partsAgent;
         this.KAM = KAM;
     }
-    
+
     /**
-    * Animation call for agent action
-    */    
+     * Animation call for agent action
+     */
     private void DoRemoveVerifiedKit(Kit k) {
         KAM.getKitRobot().dropOffFullKit();
     }
 
     /**
-    * Animation call for agent action
-    */    
+     * Animation call for agent action
+     */
     private void DoMoveFullKitToInspection() {
         KAM.getKitRobot().moveActiveKitToInspection();
     }
 
     /**
-    * Animation call for agent action
-    */    
+     * Animation call for agent action
+     */
     private void DoGetEmptyKit() {
         KAM.getKitRobot().pickUpEmptyKit();
     }

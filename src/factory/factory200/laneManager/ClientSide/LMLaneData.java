@@ -44,12 +44,12 @@ public class LMLaneData {
 	public void checkNestStatus(int nestSize){
 		for(int i=0 ; i<parts.size() ; i++){
 			if(nestSize != 8){
-				parts.get(i).setDestination(90, 36+78*laneNum);
+				parts.get(i).setDestination(50, 65+75*laneNum);// DONE
 				parts.get(i).setAvailabilityToNest(true);
 			}
 			
 			if(nestSize == 8){
-				parts.get(i).setDestination(95 + 20*i, 36+78*laneNum);
+				parts.get(i).setDestination(55 + 20*i, 65+75*laneNum);// DONE
 				parts.get(i).setAvailabilityToNest(false);
 			}
 		}

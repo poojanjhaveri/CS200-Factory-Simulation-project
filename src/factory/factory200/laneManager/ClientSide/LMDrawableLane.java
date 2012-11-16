@@ -10,8 +10,8 @@ public class LMDrawableLane {
 	private Boolean laneSwitch = false;
 	
 	public LMDrawableLane(int laneX, int laneY){		
-		for(int i=0 ; i<13 ; i++){
-			newTrack = new LMDrawableTrack(laneX+40*i, laneY);
+		for(int i=0 ; i<10 ; i++){// DONE
+			newTrack = new LMDrawableTrack(laneX+40*i, laneY);// DONE
 			tracks.add(newTrack);
 		}
 	}

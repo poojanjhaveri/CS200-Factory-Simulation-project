@@ -15,7 +15,7 @@ public class FeederTest{
 	public void testneedParts(){
 		
 		//1 is the index of the feeder (feederNum)
-		feeder=new FeederAgent("Feeder", 1, new LMServerMain());
+//		feeder=new FeederAgent("Feeder", 1, new LMServerMain());
 		MockGantry gantry=new MockGantry("Gantry");
 		Part p=new Part(1);
 		MockLane leftLane=new MockLane("Left Lane");

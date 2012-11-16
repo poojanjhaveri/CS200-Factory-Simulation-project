@@ -7,14 +7,14 @@ public class LMDrawableAllCamera {
 	
 	private LMDrawableCamera newCamera;
 	private ArrayList<LMDrawableCamera> cameras = new ArrayList<LMDrawableCamera>();
-	private final int laneX = 45;
-	private int laneY = 53;
+	private final int cameraX = 5;// DONE
+	private int cameraY = 80;// DONE
 	
 	public LMDrawableAllCamera(){		
 		for(int i=0 ; i<4 ; i++){
-			newCamera = new LMDrawableCamera(laneX, laneY);
+			newCamera = new LMDrawableCamera(cameraX, cameraY);
 			cameras.add(newCamera);
-			laneY += 156;
+			cameraY += 150;// DONE
 		}
 	}
 	

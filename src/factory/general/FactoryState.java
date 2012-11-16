@@ -83,7 +83,20 @@ public class FactoryState {
             this.bpparts = new BlueprintParts();
         }
     }
-
+    /**
+@brief removes a part by its id
+     */
+    public void removePartById(Integer id)
+    {
+	this.bpparts.removePart(id);
+    }
+    /**
+@brief removes a kit by its id
+     */
+    public void removeKitById(Integer id)
+    {
+	this.bpkits.removeKit(id);
+    }
     public static void main(String[] args) {
         FactoryState fs = new FactoryState();
     }

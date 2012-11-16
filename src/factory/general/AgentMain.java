@@ -11,8 +11,8 @@ import factory.factory201.partsManagement.NestAgent;
 import factory.factory201.partsManagement.PartsAgent;
 
 /**
- *
- * @author Alex
+ * @author Alex Young
+ * @version 1
  */
 public class AgentMain {
 
@@ -22,7 +22,7 @@ public class AgentMain {
     public static void main(String[] args) {
 
         /*========== Declare all agents and etc. ==========*/
-        
+
         // Misc
         KitAssemblyManager KAM = new KitAssemblyManager();
 
@@ -30,7 +30,7 @@ public class AgentMain {
         KitRobotAgent kitRobot = new KitRobotAgent("Kit Robot");
         CameraAgent camera = new CameraAgent("Camera");
         ConveyorAgent conveyor = new ConveyorAgent("Conveyor");
-        
+
         // Patrick
         PartsAgent partsAgent = new PartsAgent("Parts Agent");
         NestAgent nestAgent = new NestAgent("Nest Agent");
@@ -40,20 +40,20 @@ public class AgentMain {
         GantryAgent gantry = new GantryAgent(8, "Gantry");
         LaneAgent[] lane = new LaneAgent[LANE];
         for (int i = 0; i < LANE; i++) {
-            if(i < FEEDER) { 
+            if (i < FEEDER) {
                 feeder[i] = new FeederAgent("Feeder " + i, i);
             }
             lane[i] = new LaneAgent("Lane " + i);
         }
-        
-        
+
+
         /*========== Pass proper agents to everyone ==========*/
-        
+
         // Alex
         kitRobot.setAll(camera, conveyor, partsAgent, KAM);
         camera.setAll(KAM, kitRobot, nestAgent);
         conveyor.setAll(KAM, kitRobot);
-        
+
         // Patrick
         partsAgent.setCamera(camera);
         partsAgent.setKitAssemblyManager(KAM);
@@ -61,9 +61,10 @@ public class AgentMain {
         partsAgent.setNestInterface(nestAgent);
         nestAgent.setCamera(camera);
         nestAgent.setPartsAgent(partsAgent);
-        for (int i = 0; i<8; i++){
-        nestAgent.getNest(i).setLane(lane[i]);  }
-        
+        for (int i = 0; i < 8; i++) {
+            nestAgent.getNest(i).setLane(lane[i]);
+        }
+
         // Kevin
         for (int i = 0, j = 0; i < FEEDER; i++, j++) {
             
@@ -71,48 +72,57 @@ public class AgentMain {
             feeder[i].setLeftLane(lane[j]);
             feeder[i].setRightLane(lane[++j]);
             gantry.setFeeder(feeder[i], i);
-            
-        }
-        for (int i = 0; i < LANE; i+=2) {
-       
-            lane[i].setFeeder(feeder[i/2]);
-            lane[i+1].setFeeder(feeder[i/2]);
-            lane[i].setNest(nestAgent);
-            lane[i+1].setNest(nestAgent);
         }
 
-        
+        for (int i = 0; i < LANE; i += 2) {
+            lane[i].setFeeder(feeder[i / 2]);
+            lane[i].setNest(nestAgent);
+            lane[i + 1].setFeeder(feeder[i / 2]);
+            lane[i + 1].setNest(nestAgent);
+        }
+
+
         /*========== Start all of the threads ==========*/
-        
+
         // Alex
         camera.startThread();
         conveyor.startThread();
-        for(int i = 0; i < 10; i++) {
-            conveyor.generateKit(i);
-        }
+        conveyor.generateKit(10);
         kitRobot.startThread();
-        
+
         //Patrick
         partsAgent.startThread();
         nestAgent.startThread();
-        
+
         // Kevin
         gantry.startThread();
-        for (int i = 0; i < FEEDER; i++) {
-            if(i < LANE) { 
-                lane[i].startThread(); 
+        for (int i = 0; i < LANE; i++) {
+            if (i < FEEDER) {
+                feeder[i].startThread();
             }
-            feeder[i].startThread();
+            lane[i].startThread();
         }
-        
+
         /*========== Misc. ==========*/
-        
-        
+
+        // Patrick
         Kit kit = new Kit("Test Kit");
-        for(int i = 1; i < 9; i++) {
+        for (int i = 1; i < 9; i++) {
             kit.addPart(new Part(i));
         }
         partsAgent.msgHereIsKit(kit);
         
+//        if(true) {
+//            for (int i = 0; i < LANE; i++) {
+//                if (i < FEEDER) {
+//                    feeder[i].print = false;
+//                }
+//                lane[i].print = false;
+//            }
+//            gantry.print = false;
+//            nestAgent.print = false;
+//            partsAgent.print = false;
+//        }
+
     } // END main
 } // END AgentMain

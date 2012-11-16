@@ -362,6 +362,7 @@ public class PartsManager extends Manager implements ActionListener {
     public void deletePart(Part pt) {
     	bp.removePart(pt);
     	updateComboBox();
+
     }
     
     /**

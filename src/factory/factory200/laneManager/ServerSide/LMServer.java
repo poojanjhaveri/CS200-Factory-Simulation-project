@@ -2,9 +2,11 @@ package factory.factory200.laneManager.ServerSide;
 
 import java.io.*;
 import java.net.*;
+import java.util.ArrayList;
 
 public class LMServer {
 	
+	ArrayList<HandleAClient> clients = new ArrayList<HandleAClient>();
 	private LMServerMain serverMain;
 	private Socket socket = null;
 	private ServerSocket serverSocket = null;
@@ -13,17 +15,17 @@ public class LMServer {
     public LMServer(LMServerMain serverMain){
     	this.serverMain = serverMain;
     	
-    	try {  serverSocket = new ServerSocket( 55555 );  }
-    	catch( Exception e ) {
-	    	System.out.println("The port you chose is currently in use. Please use other port number.");
-	    	System.exit(0);
-	    }
+    	try {  serverSocket = new ServerSocket( 30006 ); }
+    	catch( Exception e ) {  e.printStackTrace(); System.exit(0);  }
     	
-   		try {
-       		socket = serverSocket.accept();
-   			hac = new HandleAClient( socket );
-       		new Thread(hac).start();
-    	}catch( Exception e ) { e.printStackTrace(); System.exit(0); }
+   		for(int i=0 ; i<2 ; i++){
+   			try {
+	       		socket = serverSocket.accept();
+	   			hac = new HandleAClient( socket );
+	       		new Thread(hac).start();
+	       		clients.add(hac);
+   			}catch( Exception e ) { e.printStackTrace(); System.exit(0); }
+   		}
 	}
 	//--------------------------------------------------------------------------------------------------------------------------------
     class HandleAClient implements Runnable {
@@ -45,8 +47,6 @@ public class LMServer {
     		catch (Exception e) { e.printStackTrace(); System.exit(0); }
     	}
 
-
-    	
     	public void run(){
     		while(true){
     			try{  message = br.readLine(); signalFromAnimation.verify(message); }

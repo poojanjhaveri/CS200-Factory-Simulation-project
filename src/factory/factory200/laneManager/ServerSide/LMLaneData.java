@@ -29,7 +29,14 @@ public class LMLaneData {
 	public void switchOn(){
 		// Signal To Managers
 		signal = laneNum + "&Lane&" + "Switch On";
-		server.getClientHandler().sendToClient(signal);
+		
+		//----------------------------------------------------------------------------------For Test
+		for(int i=0 ; i<server.clients.size() ; i++){
+			server.clients.get(i).sendToClient(signal);
+		}
+		
+		//server.getClientHandler().sendToClient(signal);
+		//-----------------------------------------------------------------------------------------------
 		
 		// Send To FPM
 		
@@ -40,7 +47,14 @@ public class LMLaneData {
 	public void switchOff(){
 		// Signal To Managers
 		signal = laneNum + "&Lane&" + "Switch Off";
-		server.getClientHandler().sendToClient(signal);
+		
+		//----------------------------------------------------------------------------------For Test
+		for(int i=0 ; i<server.clients.size() ; i++){
+			server.clients.get(i).sendToClient(signal);
+		}
+		
+		//server.getClientHandler().sendToClient(signal);
+		//---------------------------------------------------------------------------------------------
 		
 		// Send To FPM
 		
@@ -51,7 +65,14 @@ public class LMLaneData {
 	public void setVibrationAmplitudeStrong(){
 		// Signal To Managers
 		signal = laneNum + "&Lane&" + "Amplitude Strong";
-		server.getClientHandler().sendToClient(signal);
+		
+		//----------------------------------------------------------------------------------For Test
+		for(int i=0 ; i<server.clients.size() ; i++){
+			server.clients.get(i).sendToClient(signal);
+		}
+		
+		//server.getClientHandler().sendToClient(signal);
+		//-----------------------------------------------------------------------------------
 		
 		// Server Data Task
 		vibrationAmplitude = 2;
@@ -60,7 +81,14 @@ public class LMLaneData {
 	public void setVibrationAmplitudeNormal(){
 		// Signal To Managers
 		signal = laneNum + "&Lane&" + "Amplitude Normal";
-		server.getClientHandler().sendToClient(signal);
+		
+		//----------------------------------------------------------------------------------For Test
+		for(int i=0 ; i<server.clients.size() ; i++){
+			server.clients.get(i).sendToClient(signal);
+		}
+		
+		//server.getClientHandler().sendToClient(signal);
+		//------------------------------------------------------------------------------------------------
 		
 		// Server Data Task
 		vibrationAmplitude = 1;
@@ -69,7 +97,14 @@ public class LMLaneData {
 	public void setVibrationAmplitudeWeak(){
 		// Signal To Managers
 		signal = laneNum + "&Lane&" + "Amplitude Weak";
-		server.getClientHandler().sendToClient(signal);
+		
+		//----------------------------------------------------------------------------------For Test
+		for(int i=0 ; i<server.clients.size() ; i++){
+			server.clients.get(i).sendToClient(signal);
+		}
+		
+		//server.getClientHandler().sendToClient(signal);
+		//----------------------------------------------------------------------------------
 		
 		// Server Data Task
 		vibrationAmplitude = 0;
