@@ -21,7 +21,7 @@ public class LMApplication {
 		paintAllCamera = new LMDrawableAllCamera();
 		paintAllPart = new LMDrawableAllPart(this);
 		paintAllBin = new LMDrawableAllBin();
-		client = new LMClient(this);
+		//client = new LMClient(this);
 	}
 	
 	public void paint(GraphicsPanel panel, Graphics2D graphics){

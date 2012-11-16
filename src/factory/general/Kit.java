@@ -2,7 +2,7 @@ package factory.general;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import java.io.Serializable;
 /**
  * Kit Object
  *
@@ -10,7 +10,7 @@ import java.util.List;
  * @author James Dalton, YiWei Roy Zheng, Poojan Jhaveri
  *
  */
-public class Kit {
+public class Kit implements Serializable{
 
     /** CS 201 stuff */
     public enum Status {

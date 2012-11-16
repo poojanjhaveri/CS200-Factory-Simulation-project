@@ -63,6 +63,17 @@ public class BlueprintKits implements Blueprint, Serializable {
         this.kits.add(in);
     }
     
+    
+    public int getSize(){
+    	return kits.size();
+    	
+    }
+    
+    public Kit getKitAt(int i) {
+        return kits.get(i);
+    }
+    
+    
     public void removeKit(Kit in) {
        kits.remove(in);
     }
