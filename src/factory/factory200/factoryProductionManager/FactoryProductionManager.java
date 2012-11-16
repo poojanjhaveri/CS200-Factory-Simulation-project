@@ -4,10 +4,7 @@ package factory.factory200.factoryProductionManager;
 import java.util.*;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.geom.*;
 import java.awt.event.*;
-import java.io.*;
-import java.net.*;
 
 import factory.general.BlueprintKits;
 
@@ -40,7 +37,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 	public JTextArea schedField, outField;
 	public JScrollPane schedPane, outPane;
 	public JTabbedPane tabs;
-	public PaintPanel graphics;
+	public PaintPanel gfx;
 
 	public String nameToAdd;
 	public Kit kitToAdd;
@@ -60,7 +57,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 		FactoryProductionManager fpm = new FactoryProductionManager();
 		
 		fpm.setVisible(true);
-		fpm.setSize(1000,600);
+		fpm.setSize(1375,700);
 		fpm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
@@ -116,7 +113,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 		outField.setEditable(false);
 		selKit = new JComboBox();
 		numE = new JTextField(20);
-		numE.setPreferredSize(new Dimension(60,10));
+		numE.setPreferredSize(new Dimension(5,8));
 		queueue = new JButton("Add Kits");
 		start = new JButton("Start");
 		stop = new JButton("Stop");
@@ -131,8 +128,8 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 		basePanel = new JPanel();
 		basePanel.setLayout(new BorderLayout());
 
-		graphics = new PaintPanel(this);
-		graphics.setPreferredSize(new Dimension(800, 550));
+		gfx = new PaintPanel(this);
+		gfx.setPreferredSize(new Dimension(1350, 700));
 		tabs = new JTabbedPane();
 		topPanel = new JPanel();
 		topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.LINE_AXIS));
@@ -143,10 +140,20 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 		midPanel.setLayout(gridbag);
 		rightPanel = new JPanel();
 		blankPanel = new JPanel();
-
+                
+                topPanel.add(new JPanel());
 		topPanel.add(schedLabel);
-		topPanel.add(blankPanel);
+		topPanel.add(new JPanel());
+                topPanel.add(new JPanel());
+                topPanel.add(new JPanel());
+                topPanel.add(new JPanel());
+                topPanel.add(new JPanel());
+                topPanel.add(new JPanel());
+                topPanel.add(new JPanel());
+                topPanel.add(new JPanel());
+                topPanel.add(new JPanel());
 		topPanel.add(consoleLabel);
+                topPanel.add(new JPanel());
 		
 		leftPanel.add(schedPane);
 		leftPanel.setPreferredSize(new Dimension(320, 600));
@@ -166,9 +173,15 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 		c.gridy = 2;
 		gridbag.setConstraints(queueue, c);
 		midPanel.add(queueue);
-		c.gridy = GridBagConstraints.RELATIVE;
+                c.gridy = GridBagConstraints.RELATIVE;
+                JPanel fill1 = new JPanel();
+                gridbag.setConstraints(fill1, c);
+                midPanel.add(fill1);
 		gridbag.setConstraints(start, c);
 		midPanel.add(start);
+                JPanel fill2 = new JPanel();
+                gridbag.setConstraints(fill2, c);
+                midPanel.add(fill2);
 		//gridbag.setConstraints(stop, c);
 		//midPanel.add(stop);
 		gridbag.setConstraints(reset, c);
@@ -191,19 +204,21 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 		basePanel.add(topPanel, BorderLayout.NORTH);
 		basePanel.add(botPanel, BorderLayout.CENTER);
 		
-
+                basePanel.setSize(1350, 700);
 		tabs.addTab("Control GUI", basePanel);
-		tabs.addTab("Simulation", graphics);
+		tabs.addTab("Simulation", gfx);
+                gfx.repaint();
 
 		selKit.addActionListener(this);
 		queueue.addActionListener(this);
 		start.addActionListener(this);
 		stop.addActionListener(this);
 		reset.addActionListener(this);
-
+                
 		add(tabs);
 	}
 	
+    @Override
 	public void actionPerformed(ActionEvent ae)
 	{
 		if(ae.getSource() == selKit)
@@ -340,6 +355,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
     /**
 @brief processes the serve'rs message
      */
+    @Override
     public void processMessage(String msg)
     {
 	super.processMessage(msg);
@@ -364,6 +380,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 		}
 	
 
+        @Override
 	  	public void paintComponent(Graphics g) {
 			super.paintComponent(g);
 			Graphics2D g2 = (Graphics2D) g;
