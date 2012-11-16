@@ -1,5 +1,6 @@
 package factory.general;
 
+import factory.factory200.gantryRobotManager.GantryRobotManager;
 import factory.factory200.kitAssemblyManager.KitAssemblyManager;
 import factory.factory201.feederManagement.FeederAgent;
 import factory.factory201.feederManagement.GantryAgent;
@@ -25,6 +26,7 @@ public class AgentMain {
 
         // Misc
         KitAssemblyManager KAM = new KitAssemblyManager();
+        GantryRobotManager GRM = new GantryRobotManager();
 
         // Alex
         KitRobotAgent kitRobot = new KitRobotAgent("Kit Robot");
@@ -66,6 +68,7 @@ public class AgentMain {
         }
 
         // Kevin
+        gantry.setGantryRobotManager(GRM);
         for (int i = 0, j = 0; i < FEEDER; i++, j++) {
             
             feeder[i].setGantry(gantry);
