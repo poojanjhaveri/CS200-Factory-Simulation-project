@@ -283,7 +283,7 @@ public class KitManager extends Manager  implements ActionListener {
         
         
         private void updateComboBox(){
-            //  delete_combo.removeAllItems();
+              delete_combo.removeAllItems();
                for(int i=0;i<bpkit.getSize();i++){
     		 delete_combo.addItem(bpkit.getKitAt(i));     
     	
@@ -339,8 +339,9 @@ public class KitManager extends Manager  implements ActionListener {
          {
               Component c = tabbedPane.getSelectedComponent();
                 if (c.equals(deletekit))
-                       updateComboBox();
-                    
+                {
+                     updateComboBox();
+                }   
              
          }
          
