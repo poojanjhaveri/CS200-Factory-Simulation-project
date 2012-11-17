@@ -59,7 +59,7 @@ public class AgentMain {
 
         // Patrick
         partsAgent.setCamera(cameraAgent);
-        partsAgent.setKitAssemblyManager(KAM);
+        //partsAgent.setKitAssemblyManager(KAM);
         partsAgent.setKitRobot(kitRobotAgent);
         partsAgent.setNestInterface(nestAgent);
         nestAgent.setCamera(cameraAgent);
