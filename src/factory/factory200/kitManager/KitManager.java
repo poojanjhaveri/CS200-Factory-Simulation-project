@@ -482,7 +482,6 @@ public class KitManager extends Manager  implements ActionListener {
          public void deleteKit(Kit in) {
             bpkit.removeKit(in);
             
-           
            this.sendToServer(Message.UNDEFINE_KIT+":"+in.getNumber());
             
            //  this.mcon.out(Message.UNDEFINE_KIT+":"+in.serialize());
