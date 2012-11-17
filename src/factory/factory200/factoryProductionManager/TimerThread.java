@@ -1,5 +1,7 @@
 package factory.factory200.factoryProductionManager;
 
+//@author Dongyoung Jung
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;

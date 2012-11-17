@@ -1,5 +1,7 @@
 package factory.factory200.factoryProductionManager;
 
+//@author Dongyoung Jung
+
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.ImageIcon;

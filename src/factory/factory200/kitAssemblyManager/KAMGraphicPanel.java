@@ -68,6 +68,8 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
     boolean deliveryStation;
     Timer timer;
     boolean stationRun;
+    
+    private ImageIcon backgroundImage = new ImageIcon("pics/background/part1");
 
     public KAMGraphicPanel() {
         deliveryStation = true;
@@ -448,6 +450,7 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
         Rectangle2D.Double backgroundRectangle = new Rectangle2D.Double(0, 0, 700, 700);
         g2.setColor(Color.GRAY.darker().darker());//dark dark green background
         g2.fill(backgroundRectangle);
+        //backgroundImage.paintIcon(this, g2, 500, 500);
         paintNests(this, g2);
         kitstand.getKitStand().paintIcon(this, g2, kitstand.getX(), kitstand.getY());
         for (int i = 0; i < 3; i++) {

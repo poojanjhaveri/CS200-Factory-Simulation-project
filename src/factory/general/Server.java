@@ -100,8 +100,9 @@ public class Server {
 			System.exit(0);
 		}
 
-		//while(true){
-		for(int i=0 ; i<2 ; i++){ // Since I am testing with two clients
+		//for(int i=0 ; i<2 ; i++){ // Since I am testing with two clients By Dongyoung
+		
+		while(true){
 			// Continuously check for a new client for which to create a thread
 			try {
 				s = ss.accept(); // Wait for a client (program halts here until connection occurs)
@@ -117,7 +118,7 @@ public class Server {
 			}
 			System.out.println("A client has connected");
 		}
-		startLaneManagerThread(); // By Dongyoung
+		//startLaneManagerThread(); // By Dongyoung
 	}
 
 
@@ -129,6 +130,7 @@ public class Server {
 		declareAgents();
 		connectAgentsAndManagers();
 		startAgentThreads();
+		
 		startInteractionSequence();
 		debugIfNecessaryForAgents();
 	}
@@ -208,7 +210,7 @@ public class Server {
         
         kitRobotAgent.startThread();
 
-        //Patrick
+        // Patrick
         partsAgent.startThread();
         nestAgent.startThread();
 
@@ -239,7 +241,7 @@ public class Server {
 		}
 		*/
 	}
-	//------------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------By Dongyoung
 	
 	private void startInteractionSequence() {
 		// Get kit from somewhere

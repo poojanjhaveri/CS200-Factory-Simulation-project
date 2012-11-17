@@ -238,7 +238,7 @@ public class GantryAgent extends Agent implements Gantry {
 //    	animation.goToBin(b.index-1);
     	//while(animation.returnArrived()==false){;}
     	print("about to pick up bin");
-  	animation.ganbot.moveToBin(b.index+1);
+  	animation.ganbot.moveToBin(b.index);
     /*
      if(this.client == null)
          {
@@ -250,9 +250,8 @@ public class GantryAgent extends Agent implements Gantry {
          
      */
         //  	animation.pickUpBin(b.index-1);
-    	//while(animation.p)
-    	
-    	try {
+  
+        try {
 			Thread.sleep(10000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
@@ -267,7 +266,7 @@ public class GantryAgent extends Agent implements Gantry {
          this.client.sendMessage(Message.MOVE_GANTRY_TO_FEEDER+":"+f.index);
          */
     	
-        //	animation.goToFeeder(f.index-1);
+        //animation.goToFeeder(f.index-1);
     	
     	try {
 			Thread.sleep(10000);
@@ -277,8 +276,8 @@ public class GantryAgent extends Agent implements Gantry {
 		}
     	
     	//while(animation.returnArrived()==false){;}
-    //	animation1.fillInFeeder(f.index-1,b.index-1,8);
-    //	animation1.dumpBinBoxIntoFeeder(f.index-1, b.index-1);
+        //animation1.fillInFeeder(f.index-1,b.index-1,8);
+        //animation1.dumpBinBoxIntoFeeder(f.index-1, b.index-1);
     	//animation.ganbot.
     	
     }
