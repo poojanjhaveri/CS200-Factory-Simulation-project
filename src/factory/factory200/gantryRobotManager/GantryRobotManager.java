@@ -97,7 +97,7 @@ public class GantryRobotManager extends Manager implements ActionListener {
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-	this.mcon.out(Message.IDENTIFY_GANTRYROBOTMANAGER);
+        this.sendToServer(Message.IDENTIFY_GANTRYROBOTMANAGER);
     }
     
     JButton toFeeder;
@@ -180,25 +180,22 @@ public class GantryRobotManager extends Manager implements ActionListener {
         }
     }
 	*/
-public void processMessage(String msg)
-{
-super.processMessage(msg);
-if(msg.contains(Message.MOVE_GANTRY_TO_BIN))
-    {
-	this.ganbot.moveToBin(Integer.parseInt(this.grabParameter(msg)));
-    }else if(msg.contains(Message.GANTRY_CARRY_A_BIN))
-    {
-	this.ganbot.pickUpBin(Integer.parseInt(this.grabParameter(msg)));
-    }else if(msg.contains(Message.MOVE_GANTRY_TO_FEEDER))
-    {
-	this.ganbot.moveToFeeder(Integer.parseInt(this.grabParameter(msg)));
-    }
-}
+   public void processMessage(String msg) {
+	   super.processMessage(msg);
+	   
+	   if (msg == null) { // shouldn't get a null message ever!
+		   return;
+	   } else if (msg.contains(Message.MOVE_GANTRY_TO_BIN)) {
+		   this.ganbot.moveToBin(Integer.parseInt(this.grabParameter(msg)));
+	   } else if(msg.contains(Message.GANTRY_CARRY_A_BIN)) {
+		   this.ganbot.pickUpBin(Integer.parseInt(this.grabParameter(msg)));
+	   } else if(msg.contains(Message.MOVE_GANTRY_TO_FEEDER)) {
+		   this.ganbot.moveToFeeder(Integer.parseInt(this.grabParameter(msg)));
+	   }
+   }
 
 	public void actionPerformed(ActionEvent ae) {
 		// TODO Auto-generated method stub
-	
-		
 		if (ae.getSource() ==toFeeder){
 			ganbot.moveToFeeder(2);
 		}
