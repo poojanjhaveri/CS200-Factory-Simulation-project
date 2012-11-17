@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package factory.factory201.test;
+package factory.factory201.FeederManegementTest;
 
 import factory.factory200.gantryRobotManager.GantryRobotManager;
 import factory.factory201.feederManagement.GantryAgent;
@@ -10,13 +10,18 @@ import factory.factory201.interfaces.Feeder;
 import factory.factory201.test.mock.MockFeeder;
 import factory.general.Part;
 import java.util.List;
-
+import junit.framework.TestCase;
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import static org.junit.Assert.*;
 
 /**
  *
  * @author Kevin
  */
-/*
 public class GantryAgentTest extends TestCase{
     public GantryAgent gantry;
 
@@ -138,5 +143,3 @@ Part p2=new Part(1);
 
   
 }
-* 
-*/
