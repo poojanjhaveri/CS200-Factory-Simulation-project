@@ -173,6 +173,6 @@ public class ConveyorAgent extends Agent implements Conveyor {
     }
 
     private void DoAddKit(Kit k) {
-        //Needs to be done
+	this.client.sendMessage(Message.KAM_ADD_KIT);
     }
 }
