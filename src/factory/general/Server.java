@@ -36,21 +36,26 @@ public class Server { // KitAssemblyAgent
     private static boolean SHOULD_DEBUG = false;
     private Printer p = new Printer();
     private int numClients; // accessible by Server and HandleAManager
-
-    // Kevin's
-    private FeederAgent feederAgent;
-    private GantryAgent gantryAgent;
-    private LaneAgent laneAgent;
-    // Alex's
-    private KitRobotAgent kitRobotAgent;
-    private ConveyorAgent conveyorAgent;
-    private CameraAgent cameraAgent;
-    // Patrick's
-    private NestAgent nestAgent;
-    private PartsAgent partsAgent;
-    // Dongyoung's
-    private LMServerMain serverLM;
-    private Thread threadLM;
+    
+    // Delete this?
+    // Agent
+    private AgentMain agentMain;
+    
+//    // Kevin's
+//    private FeederAgent feederAgent;
+//    private GantryAgent gantryAgent;
+//    private LaneAgent laneAgent;
+//    // Alex's
+//    private KitRobotAgent kitRobotAgent;
+//    private ConveyorAgent conveyorAgent;
+//    private CameraAgent cameraAgent;
+//    // Patrick's
+//    private NestAgent nestAgent;
+//    private PartsAgent partsAgent;
+//    // Dongyoung's
+//    private LMServerMain serverLM;
+//    private Thread threadLM;
+    
     // Connection fields
     private ServerSocket ss = null;
     private Socket s = null;
