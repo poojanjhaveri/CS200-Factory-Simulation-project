@@ -44,14 +44,14 @@ public class KitManager extends Manager  implements ActionListener {
 	/**
 	 * @param args
 	 */
-    BlueprintKits bpkit;///<contains list of kits modifiable
-          BlueprintParts bppart;///<contains list of parts useable
-          JPanel mainpanel;
-          JTabbedPane tabbedPane;
+          BlueprintKits bpkit;///<contains list of kits modifiable from server
+          BlueprintParts bppart;///<contains list of parts useable from server
+          JPanel mainpanel; // main panel of the JFrame 
+          JTabbedPane tabbedPane; // panel for tabbed layout
           
-          JPanel createkit;
-          JPanel updatekit;
-          JPanel deletekit;
+          JPanel createkit; // create kit panel - allows user to create kit
+          JPanel updatekit; // update kit panel - allows user to update existing kit
+          JPanel deletekit; // delete kit panel - allows user to delete existing kit
           JPanel ck_main;
           JPanel uk_main;
           JPanel dk_main;
@@ -97,7 +97,7 @@ public class KitManager extends Manager  implements ActionListener {
         
         
 	
-	//getters and setters as needed 
+	//Funtion to prepare entire layout for entire JFrame
 	
         private void prepareMainPane()
         {
@@ -393,7 +393,7 @@ public class KitManager extends Manager  implements ActionListener {
         
         
         /**
-     * @brief sends an update request which should result in the parts list being updated
+     * @brief sends an update request which should result in the parts list and kit list being updated
      */
         public void update() {
             
@@ -409,6 +409,11 @@ public class KitManager extends Manager  implements ActionListener {
          }
         
         
+        /**
+     * @brief updates the combo box to choose the kit to delete
+     */
+        
+        
         private void updateComboBox(){
               delete_combo.removeAllItems();
                for(int i=0;i<bpkit.getSize();i++){
@@ -419,21 +424,26 @@ public class KitManager extends Manager  implements ActionListener {
     	 }
     
         
+        /**
+     * @brief Function to create kit when the Create kit button is pressed and then pass the new kit to the server so that the list gets updated
+     */
 
-    public void createKit()
-    {
+        public void createKit()
+        {
         
-	Kit newkit = new Kit(kitname.getText(),"description");//this will be the kit that just got made
-	newkit.setParts(partlist);
-        //handle gui here
+            Kit newkit = new Kit(kitname.getText(),"description");//this will be the kit that just got made
+            newkit.setParts(partlist);
         
-        
+            String msg = Message.DEFINE_NEW_KIT+":"+newkit.serialize();
+            System.out.println(msg);
+            this.mcon.out(msg);
+        }
 
-	String msg = Message.DEFINE_NEW_KIT+":"+newkit.serialize();
-        System.out.println(msg);
-	this.mcon.out(msg);
-    }
-
+        
+        /**
+     * @brief Process messages sent using Manager Class ie processes that message
+     */
+    
     public void processMessage(String msg)
     {
 	super.processMessage(msg);
@@ -469,8 +479,8 @@ public class KitManager extends Manager  implements ActionListener {
          
          public void processtabchange()
          {
-              Component c = tabbedPane.getSelectedComponent();
-                if (c.equals(deletekit))
+              Integer t = tabbedPane.getSelectedIndex();
+                if (t==2)
                 {
                      updateComboBox();
                 }   
@@ -539,7 +549,7 @@ public class KitManager extends Manager  implements ActionListener {
                      
                      b7.setIcon(bppart.getPartAt(i).getGUIPart().getImage());
                      partlist.add(7, bppart.getPartAt(i));
-                     
+    
                  }
                     
                    
