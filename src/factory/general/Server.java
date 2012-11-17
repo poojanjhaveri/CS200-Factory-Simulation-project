@@ -65,7 +65,6 @@ public class Server { // KitAssemblyAgent
 
 	// needed to handle multiple clients?
 	// private ArrayList<HandleAClient> clients = new ArrayList<HandleAClient>();
-
 	public static void main(String[] args) {
 		Server server = new Server(PORT_NUMBER);
 		if (SHOULD_DEBUG) {
@@ -287,4 +286,10 @@ public class Server { // KitAssemblyAgent
 	public void setPartsAgentClient(HandleAManager in) {
 		this.partsAgent.setClient(in);
 	}
+
+	// here...
+	public LMServerMain getServerLM() {
+		return this.serverLM;
+	}
+
 }
