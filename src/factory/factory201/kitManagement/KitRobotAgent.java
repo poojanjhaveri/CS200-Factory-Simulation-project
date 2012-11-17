@@ -204,7 +204,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
 //	this.fpm.sendMessage(Message.KAM_PICK_UP_EMPTY_KIT);
     }
     public void DoMoveKitFromConveyorTo1() {
-//        this.client.sendMessage(Message.KAM_PICK_UP_EMPTY_KIT_TO_ACTIVE);
+//      this.client.sendMessage(Message.KAM_PICK_UP_EMPTY_KIT_TO_ACTIVE);
 //	this.fpm.sendMessage(Message.KAM_PICK_UP_EMPTY_KIT_TO_ACTIVE);
     }
     public void DoMoveKitFrom0to1() {
