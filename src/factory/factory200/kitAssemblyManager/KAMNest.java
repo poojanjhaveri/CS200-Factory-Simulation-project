@@ -45,11 +45,11 @@ public class KAMNest {
     
     public Part getPart(){
         
-        if(parts.isEmpty())
+        if(this.parts.isEmpty())
             System.out.println("ERROR: PART ROBOT ASKING FOR NULL PART!");
         
-        Part temp=parts.get(0);
-        parts.remove(0);
+        Part temp=this.parts.get(0);
+        this.parts.remove(0);
         return temp;
     }
 

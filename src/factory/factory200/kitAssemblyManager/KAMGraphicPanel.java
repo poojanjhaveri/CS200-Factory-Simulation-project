@@ -282,7 +282,7 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
                         for (int i = 0; i < delivery.getPlaceholder().size(); i++) {
                             //temp=delivery.getPlaceholder().get(i);
                             int yPlace = delivery.getPlaceholder().get(i).getY() - 1;
-                            int number = i * 200;
+                            int number = i* 200;
                             if (counter > number) {
                                 delivery.getPlaceholder().get(i).setY(yPlace);
                                 //if (delivery.getPlaceholder().get(i).isShow()) {
