@@ -96,6 +96,8 @@ public class GantryRobotManager extends Manager implements ActionListener {
 
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+	this.mcon.out(Message.IDENTIFY_GANTRYROBOTMANAGER);
     }
     
     JButton toFeeder;

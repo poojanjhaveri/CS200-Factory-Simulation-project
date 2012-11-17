@@ -230,4 +230,8 @@ public class KitRobotAgent extends Agent implements KitRobot {
     private void DoGetEmptyKit() {
         KAM.getKitRobot().pickUpEmptyKit();
     }
+    private void DoGetEmptyKitToActive()
+    {
+	this.client.sendMessage(Message.KAM_GET_EMPTY_KIT_TO_ACTIVE);
+    }
 }

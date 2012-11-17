@@ -127,7 +127,8 @@ public class KitStand {
     }
     
     private void DoMoveKitFrom0to1() {
-//        KAM.getKitRobot().moveEmptyKitToActive();
+        KAM.getKitRobot().moveEmptyKitToActive();
+	
     }
     
     private void DoMoveKitFrom1to2() {

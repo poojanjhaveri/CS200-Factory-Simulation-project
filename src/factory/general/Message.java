@@ -36,6 +36,10 @@ public class Message {
     public static final String MOVE_GANTRY_TO_DUMP_PART = "GANTRY_TO_DUMP_PART"; // no params
     public static final String MOVE_GANTRY_TO_PICK_BIN = "MOVE_GANTRY_TO_PICK_BIN"; // takes in int for which bin
 
+
+    //kitassemblymanager section
+public static final String KAM_GET_EMPTY_KIT_TO_ACTIVE
+
     //lanemanager section
     
     
