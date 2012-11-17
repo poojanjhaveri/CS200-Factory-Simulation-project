@@ -23,7 +23,7 @@ public class LMNestData {
 		signal = nestNum + "&Nest&" + "Switch Up";
 		
 		//----------------------------------------------------------------------------------For Test
-		server.sendMessage(signal);
+		server.signalToClient(signal);
 		//------------------------------------------------------------------------------------------------
 		
 		// Send To FPM
@@ -37,7 +37,7 @@ public class LMNestData {
 		signal = nestNum + "&Nest&" + "Switch Down";
 		
 		//----------------------------------------------------------------------------------For Test
-		server.sendMessage(signal);
+		server.signalToClient(signal);
 		//-------------------------------------------------------------------------------------------------
 		
 		// Send To FPM

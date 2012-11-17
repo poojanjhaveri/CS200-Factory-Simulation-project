@@ -40,7 +40,7 @@ public class LMSendPartSignal {
 				}
 				
 				//----------------------------------------------------------------------------------For Test
-				server.sendMessage(message);
+				server.signalToClient(message);
 				//-------------------------------------------------------------------------------------------------
 				
 				serverMain.getForAgentFeeder().getFeeder(i).setPartFedCounterIncrease();

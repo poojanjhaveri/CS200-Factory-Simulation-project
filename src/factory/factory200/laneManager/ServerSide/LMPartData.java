@@ -97,7 +97,7 @@ public class LMPartData {
 						message = i + "&Part&Shake&";
 						
 						//----------------------------------------------------------------------------------For Test
-						server.sendMessage(message);
+						server.signalToClient(message);
 						//---------------------------------------------------------------------------------------------
 					}
 				}
@@ -110,7 +110,7 @@ public class LMPartData {
 						message = i + "&Part&Shake&";
 						
 						//----------------------------------------------------------------------------------For Test
-						server.sendMessage(message);
+						server.signalToClient(message);
 						//------------------------------------------------------------------------------------------------
 						
 					}
@@ -124,7 +124,7 @@ public class LMPartData {
 						message = i + "&Part&Shake&";
 						
 						//----------------------------------------------------------------------------------For Test
-						server.sendMessage(message);
+						server.signalToClient(message);
 						//-----------------------------------------------------------------------------------------------
 						
 					}

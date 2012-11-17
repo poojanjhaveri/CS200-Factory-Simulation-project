@@ -20,7 +20,7 @@ public class LMCameraData {
 		System.out.println(signalToLM);
 		
 		//-----------------------------------------------------For Test
-		server.sendMessage(signalToLM);
+		server.signalToClient(signalToLM);
 		//------------------------------------------------------------------
 	}
 }

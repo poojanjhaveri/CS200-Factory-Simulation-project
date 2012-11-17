@@ -61,6 +61,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 		fpm.setVisible(true);
 		fpm.setSize(1375,700);
 		fpm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		fpm.setResizable(false);
 	}
 
 	public FactoryProductionManager()

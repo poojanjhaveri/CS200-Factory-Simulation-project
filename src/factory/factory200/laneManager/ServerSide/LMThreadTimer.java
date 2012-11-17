@@ -20,11 +20,18 @@ class LMThreadTimer implements Runnable{
 		this.server = server;
 		this.serverMain = serverMain;
 		sendPartSignal = new LMSendPartSignal(server, serverMain);
-		timer = new Timer(30, new ServerTimer());
-		timer.start();
+		timer = new Timer(30, new ServerTimer());	
 	}
 		
 	public void run(){}
+	
+	public void timerStart(){
+		timer.start();
+	}
+	
+	public void timerStop(){
+		timer.stop();
+	}
 
 	public class ServerTimer implements ActionListener{
 		public void actionPerformed(ActionEvent ae){

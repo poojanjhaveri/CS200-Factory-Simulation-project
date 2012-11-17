@@ -51,7 +51,7 @@ public class LMFeederData {
 		signal = feederNum + "&Feeder&" + "Feeder Switch On";
 		
 		//----------------------------------------------------------------------------------For Test
-		server.sendMessage(signal);
+		server.signalToClient(signal);
 		//----------------------------------------------------------------------------------		
 		
 		// Send To FPM 
@@ -67,7 +67,7 @@ public class LMFeederData {
 		signal = feederNum + "&Feeder&" + "Feeder Switch Off";
 		
 		//----------------------------------------------------------------------------------For Test
-		server.sendMessage(signal);
+		server.signalToClient(signal);
 		//----------------------------------------------------------------------------------
 		
 		// Send To FPM
@@ -82,7 +82,7 @@ public class LMFeederData {
 		signal = feederNum + "&Feeder&" + "Part Low Sensor On";
 		
 		//----------------------------------------------------------------------------------For Test
-		server.sendMessage(signal);
+		server.signalToClient(signal);
 		//----------------------------------------------------------------------------------
 		
 		// Send To FPM
@@ -96,7 +96,7 @@ public class LMFeederData {
 		signal = feederNum + "&Feeder&" + "Part Low Sensor Off";
 		
 		//----------------------------------------------------------------------------------For Test
-		server.sendMessage(signal);
+		server.signalToClient(signal);
 		//----------------------------------------------------------------------------------
 		
 		// Send To FPM
@@ -111,7 +111,7 @@ public class LMFeederData {
 		signal = feederNum + "&Feeder&" + "Feed Part Switch On";
 		
 		//----------------------------------------------------------------------------------For Test
-		server.sendMessage(signal);
+		server.signalToClient(signal);
 		//----------------------------------------------------------------------------------
 		
 		// Send To FPM
@@ -127,7 +127,7 @@ public class LMFeederData {
 		signal = feederNum + "&Feeder&" + "Feed Part Switch Off";
 		
 		//----------------------------------------------------------------------------------For Test
-		server.sendMessage(signal);
+		server.signalToClient(signal);
 		//----------------------------------------------------------------------------------
 		
 		// Send To FPM
@@ -141,7 +141,7 @@ public class LMFeederData {
 		signal = feederNum + "&Feeder&" + "Part Fed Counter";
 		
 		//----------------------------------------------------------------------------------For Test
-		server.sendMessage(signal);
+		server.signalToClient(signal);
 		//----------------------------------------------------------------------------------
 	}
 
@@ -151,7 +151,7 @@ public class LMFeederData {
 		signal = feederNum + "&Feeder&" + "Rear Gate Lower";
 		
 		//----------------------------------------------------------------------------------For Test
-		server.sendMessage(signal);
+		server.signalToClient(signal);
 		//----------------------------------------------------------------------------------
 		
 		// Send To FPM
@@ -168,7 +168,7 @@ public class LMFeederData {
 		signal = feederNum + "&Feeder&" + "Rear Gate Raise";
 		
 		//----------------------------------------------------------------------------------For Test
-		server.sendMessage(signal);
+		server.signalToClient(signal);
 		//----------------------------------------------------------------------------------
 		
 		// Send To FPM
@@ -184,7 +184,7 @@ public class LMFeederData {
 		signal = feederNum + "&Feeder&" + "Purge On";
 		
 		//----------------------------------------------------------------------------------For Test
-		server.sendMessage(signal);
+		server.signalToClient(signal);
 		//----------------------------------------------------------------------------------
 		
 		// Send To FPM
@@ -200,7 +200,7 @@ public class LMFeederData {
 		signal = feederNum + "&Feeder&" + "Purge Off";
 		
 		//----------------------------------------------------------------------------------For Test
-		server.sendMessage(signal);
+		server.signalToClient(signal);
 		//----------------------------------------------------------------------------------
 		
 		// Send To FPM
@@ -216,7 +216,7 @@ public class LMFeederData {
 		signal = feederNum + "&Feeder&" + "Divert To Left";
 		
 		//----------------------------------------------------------------------------------For Test
-		server.sendMessage(signal);
+		server.signalToClient(signal);
 		//----------------------------------------------------------------------------------
 		
 		// Send To FPM
@@ -232,7 +232,7 @@ public class LMFeederData {
 		signal = feederNum + "&Feeder&" + "Divert To Right";
 		
 		//----------------------------------------------------------------------------------For Test
-		server.sendMessage(signal);
+		server.signalToClient(signal);
 		//----------------------------------------------------------------------------------
 		
 		// Send To FPM

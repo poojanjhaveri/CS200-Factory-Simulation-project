@@ -20,7 +20,7 @@ public class LMGantryRobotForAgent {
 		signal = feederNum + "&Bin&Put&" + binNum;
 		
 		//----------------------------------------------------------------------------------For Test
-		server.sendMessage(signal);
+		server.signalToClient(signal);
 		//-----------------------------------------------------------------------------------------------
 		
 		// Send To FPM
@@ -34,7 +34,7 @@ public class LMGantryRobotForAgent {
 		signal = feederNum + "&Bin&Purge&";
 		
 		//----------------------------------------------------------------------------------For Test
-		server.sendMessage(signal);
+		server.signalToClient(signal);
 		//-------------------------------------------------------------------------------------------------
 		
 		// Send To FPM
