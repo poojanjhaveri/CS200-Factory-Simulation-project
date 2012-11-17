@@ -237,5 +237,5 @@ this.flashNestCamera(Integer.parseInt(this.grabParameter(msg)));
       public static void main(String[] args){
        KitAssemblyManager mgr = new KitAssemblyManager();   
       }
-
+	
 }
