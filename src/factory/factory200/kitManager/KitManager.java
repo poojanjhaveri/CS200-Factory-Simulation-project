@@ -455,6 +455,14 @@ public class KitManager extends Manager  implements ActionListener {
             if(partlist.size()!=0 && kitname.getText()!=null)
             {
             Kit newkit = new Kit(kitname.getText(),"description");//this will be the kit that just got made
+            
+            for(int p=0;p<7;p++)
+            {
+                System.out.println(partlist.get(p));
+            }
+            
+            
+            
             newkit.setParts(partlist);
         
             String msg = Message.DEFINE_NEW_KIT+":"+newkit.serialize();
@@ -543,7 +551,7 @@ public class KitManager extends Manager  implements ActionListener {
          
          
          
-       public class updateitembutton implements ActionListener
+       public class itembutton implements ActionListener
          {
              
              public void actionPerformed(ActionEvent e) {
@@ -563,7 +571,7 @@ public class KitManager extends Manager  implements ActionListener {
                         else
                      {
                           //    b0.setIcon(bppart.getPartAt(i).getGUIPart().getImage());
-                        b0.setIcon(new ImageIcon("pics/parts/part1.png"));
+                     b0.setIcon(new ImageIcon("pics/parts/part1.png"));
                      partlist.add(0, bppart.getPartAt(i));
                      }  
                    
@@ -573,7 +581,7 @@ public class KitManager extends Manager  implements ActionListener {
                     
                      if(i==0)
                      {
-                        b0.setIcon(new ImageIcon("pics/parts/no.png"));
+                        b1.setIcon(new ImageIcon("pics/parts/no.png"));
                       
                         }
                         else
@@ -587,7 +595,7 @@ public class KitManager extends Manager  implements ActionListener {
                  {
                     if(i==0)
                      {
-                        b0.setIcon(new ImageIcon("pics/parts/no.png"));
+                        b2.setIcon(new ImageIcon("pics/parts/no.png"));
                       
                         }
                         else
@@ -602,7 +610,7 @@ public class KitManager extends Manager  implements ActionListener {
                  {
                      if(i==0)
                      {
-                        b0.setIcon(new ImageIcon("pics/parts/no.png"));
+                        b3.setIcon(new ImageIcon("pics/parts/no.png"));
                       
                         }
                         else
@@ -615,7 +623,7 @@ public class KitManager extends Manager  implements ActionListener {
                  {
                     if(i==0)
                      {
-                        b0.setIcon(new ImageIcon("pics/parts/no.png"));
+                        b4.setIcon(new ImageIcon("pics/parts/no.png"));
                       
                         }
                         else
@@ -628,7 +636,7 @@ public class KitManager extends Manager  implements ActionListener {
                  {
                      if(i==0)
                      {
-                        b0.setIcon(new ImageIcon("pics/parts/no.png"));
+                        b5.setIcon(new ImageIcon("pics/parts/no.png"));
                       
                         }
                         else
@@ -641,7 +649,7 @@ public class KitManager extends Manager  implements ActionListener {
                  {
                      if(i==0)
                      {
-                        b0.setIcon(new ImageIcon("pics/parts/no.png"));
+                        b6.setIcon(new ImageIcon("pics/parts/no.png"));
                       
                         }
                         else
@@ -654,7 +662,7 @@ public class KitManager extends Manager  implements ActionListener {
                  {
                      if(i==0)
                      {
-                        b0.setIcon(new ImageIcon("pics/parts/no.png"));
+                        b7.setIcon(new ImageIcon("pics/parts/no.png"));
                       
                         }
                         else
@@ -669,7 +677,7 @@ public class KitManager extends Manager  implements ActionListener {
          } 
 
 
-       public class itembutton implements ActionListener
+       public class updateitembutton implements ActionListener
          {
              
              public void actionPerformed(ActionEvent e) {
@@ -683,7 +691,7 @@ public class KitManager extends Manager  implements ActionListener {
                  {
                      if(i==0)
                      {
-                        b0.setIcon(new ImageIcon("pics/parts/no.png"));
+                        ub0.setIcon(new ImageIcon("pics/parts/no.png"));
                       
                         }
                         else
