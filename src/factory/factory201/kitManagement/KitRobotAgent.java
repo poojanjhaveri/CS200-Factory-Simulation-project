@@ -231,5 +231,5 @@ public class KitRobotAgent extends Agent implements KitRobot {
     private void DoMoveKitFrom0to1() {
         this.KAM.getKitRobot().moveEmptyKitToActive();
     }
-
 }
+
