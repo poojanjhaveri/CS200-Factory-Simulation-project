@@ -195,11 +195,11 @@ public class KitAssemblyManager extends Manager implements ActionListener {
         return tester;
     }
 
-    public void processMessage(String msg)
-    {
-	super.processMessage(msg);
+    //public void processMessage(String msg)
+    //{
+    //	super.processMessage(msg);
 	//todo - let me know what functions agent will call so I can process them here
-    }      
+    //}      
 
       public static void main(String[] args){
        KitAssemblyManager mgr = new KitAssemblyManager();   
