@@ -103,9 +103,7 @@ public class GRMGraphicPanel extends JPanel implements ActionListener {
 	
 	
 		
-//		         boolean changed;
-		 //
-//		         
+
 //		         /**
 //		          * check if Server send any message or data back
 //		          */
