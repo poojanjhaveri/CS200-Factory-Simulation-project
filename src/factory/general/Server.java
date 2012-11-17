@@ -122,6 +122,7 @@ public class Server {
 		declareAgents();
 		connectAgentsAndManagers();
 		startAgentThreads();
+		
 		startInteractionSequence();
 		debugIfNecessaryForAgents();
 	}
@@ -201,7 +202,7 @@ public class Server {
         
         kitRobotAgent.startThread();
 
-        //Patrick
+        // Patrick
         partsAgent.startThread();
         nestAgent.startThread();
 
