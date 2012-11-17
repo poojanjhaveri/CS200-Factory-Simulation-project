@@ -31,80 +31,80 @@ public class AgentMain {
         GantryRobotManager GRM = new GantryRobotManager(); // *
 
         // Alex
-        KitRobotAgent kitRobot = new KitRobotAgent("Kit Robot");
-        CameraAgent camera = new CameraAgent("Camera");
-        ConveyorAgent conveyor = new ConveyorAgent("Conveyor");
+        KitRobotAgent kitRobotAgent = new KitRobotAgent("Kit Robot");
+        CameraAgent cameraAgent = new CameraAgent("Camera");
+        ConveyorAgent conveyorAgent = new ConveyorAgent("Conveyor");
 
         // Patrick
         PartsAgent partsAgent = new PartsAgent("Parts Agent");
         NestAgent nestAgent = new NestAgent("Nest Agent");
 
         // Kevin
-        FeederAgent[] feeder = new FeederAgent[FEEDER];
-        GantryAgent gantry = new GantryAgent(8, "Gantry");
-        LaneAgent[] lane = new LaneAgent[LANE];
+        FeederAgent[] feederAgents = new FeederAgent[FEEDER];
+        GantryAgent gantryAgent = new GantryAgent(8, "Gantry");
+        LaneAgent[] laneAgents = new LaneAgent[LANE];
         for (int i = 0; i < LANE; i++) {
             if (i < FEEDER) {
-                feeder[i] = new FeederAgent("Feeder " + i, i);
+                feederAgents[i] = new FeederAgent("Feeder " + i, i);
             }
-            lane[i] = new LaneAgent("Lane " + i);
+            laneAgents[i] = new LaneAgent("Lane " + i);
         }
 
         /*========== Pass proper agents to everyone (connect agents and managers) ==========*/
 
         // Alex
-        kitRobot.setAll(camera, conveyor, partsAgent);
-        camera.setAll(kitRobot, nestAgent);
-        conveyor.setKitRobot(kitRobot);
+        kitRobotAgent.setAll(cameraAgent, conveyorAgent, partsAgent);
+        cameraAgent.setAll(kitRobotAgent, nestAgent);
+        conveyorAgent.setKitRobot(kitRobotAgent);
 
         // Patrick
-        partsAgent.setCamera(camera);
+        partsAgent.setCamera(cameraAgent);
         partsAgent.setKitAssemblyManager(KAM);
-        partsAgent.setKitRobot(kitRobot);
+        partsAgent.setKitRobot(kitRobotAgent);
         partsAgent.setNestInterface(nestAgent);
-        nestAgent.setCamera(camera);
+        nestAgent.setCamera(cameraAgent);
         nestAgent.setPartsAgent(partsAgent);
         for (int i = 0; i < 8; i++) {
-            nestAgent.getNest(i).setLane(lane[i]);
+            nestAgent.getNest(i).setLane(laneAgents[i]);
         }
 
         // Kevin
-        gantry.setGantryRobotManager(GRM);
+        gantryAgent.setGantryRobotManager(GRM);
         for (int i = 0, j = 0; i < FEEDER; i++, j++) {
             
-            feeder[i].setGantry(gantry);
-            feeder[i].setLeftLane(lane[j]);
-            feeder[i].setRightLane(lane[++j]);
-            gantry.setFeeder(feeder[i], i);
+            feederAgents[i].setGantry(gantryAgent);
+            feederAgents[i].setLeftLane(laneAgents[j]);
+            feederAgents[i].setRightLane(laneAgents[++j]);
+            gantryAgent.setFeeder(feederAgents[i], i);
         }
 
         for (int i = 0; i < LANE; i += 2) {
-            lane[i].setFeeder(feeder[i / 2]);
-            lane[i].setNest(nestAgent);
-            lane[i + 1].setFeeder(feeder[i / 2]);
-            lane[i + 1].setNest(nestAgent);
+            laneAgents[i].setFeeder(feederAgents[i / 2]);
+            laneAgents[i].setNest(nestAgent);
+            laneAgents[i + 1].setFeeder(feederAgents[i / 2]);
+            laneAgents[i + 1].setNest(nestAgent);
         }
 
 
         /*========== Start all of the threads ==========*/
 
         // Alex
-        camera.startThread();
-        conveyor.startThread();
-        conveyor.generateKit(10); // * This generates 10 new kits, among other things if you pass string... *
-        kitRobot.startThread();
+        cameraAgent.startThread();
+        conveyorAgent.startThread();
+        conveyorAgent.generateKit(10); // * This generates 10 new kits, among other things if you pass string... *
+        kitRobotAgent.startThread();
 
         //Patrick
         partsAgent.startThread();
         nestAgent.startThread();
 
         // Kevin
-        gantry.startThread();
+        gantryAgent.startThread();
         for (int i = 0; i < LANE; i++) {
             if (i < FEEDER) {
-                feeder[i].startThread();
+                feederAgents[i].startThread();
             }
-            lane[i].startThread();
+            laneAgents[i].startThread();
         }
 
         /*========== Start Agent Interaction Sequence based on a Kit ==========*/
@@ -132,11 +132,11 @@ public class AgentMain {
         if (TEST_MODE) {
             for (int i = 0; i < LANE; i++) {
                 if (i < FEEDER) {
-                    feeder[i].print = false;
+                    feederAgents[i].print = false;
                 }
-                lane[i].print = false;
+                laneAgents[i].print = false;
             }
-            gantry.print = false;
+            gantryAgent.print = false;
             nestAgent.print = false;
             partsAgent.print = false;
         }
