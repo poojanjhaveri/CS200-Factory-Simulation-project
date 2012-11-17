@@ -24,7 +24,7 @@ import java.util.List;
  */
 public class PartsAgent extends Agent implements PartsInterface {
 
-    KitAssemblyManager kam;
+    // KitAssemblyManager kam; // Should not have!
     KitRobot kitrobot;
     Kit kit0;
     Kit kit1;
@@ -36,13 +36,14 @@ public class PartsAgent extends Agent implements PartsInterface {
     boolean emptyKitReady;
 
     public PartsAgent(String name) {
-        super(name);
+        super(name); 
+        // Should these be creating NEW ArrayLists of things, or should they be getting the list
+        // from somewhere else (i.e., the server)?
         this.inventory = Collections.synchronizedList(new ArrayList<Part>());
         this.grips = Collections.synchronizedList(new ArrayList<Part>());
         this.kit0NeedsParts = Collections.synchronizedList(new ArrayList<Part>());
         this.kit1NeedsParts = Collections.synchronizedList(new ArrayList<Part>());
         this.newKit = Collections.synchronizedList(new ArrayList<Kit>());
-
     }
     
 //Messages 
@@ -242,9 +243,10 @@ public class PartsAgent extends Agent implements PartsInterface {
         this.nest = n;
     }
 
-    public void setKitAssemblyManager(KitAssemblyManager k) {
-        this.kam = k;
-    }
+    // Shouldn't need this anymore
+    // public void setKitAssemblyManager(KitAssemblyManager k) {
+    //     this.kam = k;
+    // }
 
     @Override
     public void msgNeedPart(Part partType) {
@@ -257,22 +259,17 @@ public class PartsAgent extends Agent implements PartsInterface {
     }
     
     public void DoMoveToNest(int nestNum){
-            kam.getPartsRobot().moveToNestCommand(nestNum);
-	    //this.client.sendMessage(KAM_PARTS_MOVE_TO_NEST+":"+nestNum);
+        // kam.getPartsRobot().moveToNestCommand(nestNum);
+	    this.client.sendMessage(KAM_PARTS_MOVE_TO_NEST+":"+nestNum);
     }
     
     public void DoPickUpPart(int nestNum){
-     kam.getPartsRobot().pickPartCommand(nestNum);   
-     //this.client.sendMessage(KAM_PARTS_PICK_PART+":"+nestNum);
+        // kam.getPartsRobot().pickPartCommand(nestNum);   
+        this.client.sendMessage(KAM_PARTS_PICK_PART+":"+nestNum);
     }
     
-    // Patrick - STOP COMMITTING CODE THAT ISN'T MERGED :P -david
-//    public void DoPutInKit(){
-//      kam.getPartsRobot().dropOffParts();  
-//      //this.client.sendMessage(KAM_PARTS_DROP_OFF_PARTS+":"+kitNum);
-//    }
-    
     public void DoPutInKit(int kitNum) {
-      kam.getPartsRobot().dropOffParts(kitNum);  
+        // kam.getPartsRobot().dropOffParts(kitNum);
+        this.client.sendMessage(KAM_PARTS_DROP_OFF_PARTS+":"+kitNum);
     }
 }
