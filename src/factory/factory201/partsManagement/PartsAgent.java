@@ -7,6 +7,7 @@ import factory.factory201.interfaces.KitRobot;
 import factory.factory201.interfaces.NestInterface;
 import factory.factory201.interfaces.PartsInterface;
 import factory.general.Kit;
+import factory.general.Message;
 import factory.general.Part;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -146,9 +147,9 @@ public class PartsAgent extends Agent implements PartsInterface {
     }
 
     private void startNewKit(Kit k) {
-        if(kitInfo!=null && kitInfo!=k){
+       /* if(kitInfo!=null && kitInfo!=k){
            nest.setNestPurge(k.parts); 
-        }
+        }*/
         this.kitInfo = k;
         print("New kit being started");
         camera.msgHereIsKitInfo(k);
@@ -257,19 +258,19 @@ public class PartsAgent extends Agent implements PartsInterface {
     }
     
     public void DoMoveToNest(int nestNum){
-            kam.getPartsRobot().moveToNestCommand(nestNum);
-	    //this.client.sendMessage(KAM_PARTS_MOVE_TO_NEST+":"+nestNum);
+           // kam.getPartsRobot().moveToNestCommand(nestNum);
+	    this.client.sendMessage(Message.KAM_PARTS_MOVE_TO_NEST+":"+nestNum);
     }
     
     public void DoPickUpPart(int nestNum){
-     kam.getPartsRobot().pickPartCommand(nestNum);   
-     //this.client.sendMessage(KAM_PARTS_PICK_PART+":"+nestNum);
+    // kam.getPartsRobot().pickPartCommand(nestNum);   
+     this.client.sendMessage(Message.KAM_PARTS_PICK_PART+":"+nestNum);
     }
 
 
     public void DoPutInKit(int kitNum){
-      kam.getPartsRobot().dropOffParts(kitNum);  
-      //this.client.sendMessage(KAM_PARTS_DROP_OFF_PARTS+":"+kitNum);
+    //  kam.getPartsRobot().dropOffParts(kitNum);  
+      this.client.sendMessage(Message.KAM_PARTS_DROP_OFF_PARTS+":"+kitNum);
 
 
     }
