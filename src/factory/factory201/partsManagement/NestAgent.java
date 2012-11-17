@@ -84,12 +84,17 @@ public class NestAgent extends Agent implements NestInterface {
         else{
             for (Nest n: myNests){
     		if(n.part.type == p.type){
+                    if(n.status!=Nest.Status.empty)
                 giveToKit(n);
+                    else
+                        print("EMPTY NEST ERROR!");
                 doPurge = false;}}}
     	if (doPurge){
-            //for (Nest n: myNests){
-             //   if(n.status == Nest.Status.empty || n.status) }
-            
+           /* for (Nest n: myNests){
+                if(n.status != Nest.Status.needPart) 
+                    n.setPart(p);
+                    purge(n);}
+            */
         }
         }
         stateChanged();
@@ -191,6 +196,8 @@ public class NestAgent extends Agent implements NestInterface {
         n.status = Nest.Status.none;
     	if (n.parts.size()<2)
     		n.status = Nest.Status.needPart;
+        if (n.parts.isEmpty())
+                n.status = Nest.Status.empty;
     	stateChanged();	
     }
     
@@ -213,7 +220,7 @@ public class NestAgent extends Agent implements NestInterface {
         
         for (Nest n: myNests){
             for (Part p: purgeParts){
-         if (n.part == p){
+         if (n.part.type == p.type){
              purgeParts.remove(p);
              n.status = Nest.Status.hasPart;
          }   
@@ -222,7 +229,8 @@ public class NestAgent extends Agent implements NestInterface {
         for (Part p: purgeParts){
             for(Nest n: myNests){
                 if(n.status != Nest.Status.hasPart)
-                    n.status = Nest.Status.purge;
+                    //n.status = Nest.Status.purge;
+                    purge(n);
                     n.setPart(p);
             }
         }
