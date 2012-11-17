@@ -64,10 +64,12 @@ public class PartsAgent extends Agent implements PartsInterface {
     // msg from kit robot
     @Override
     public void msgEmptyKitReady(Kit k) {
-        if(k.standNum==Kit.StandNum.zero)
+        if(k.standNum==Kit.StandNum.zero) {
+            kit0 = k;
             kit0.status = Kit.Status.ready;
-        else
+        }else{
             kit1.status = Kit.Status.ready;
+        }
         print("got an empty kit for stand #" + k.standNum);
         stateChanged();
     }

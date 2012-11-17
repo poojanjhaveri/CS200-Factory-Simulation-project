@@ -10,6 +10,8 @@ import factory.general.*;
 public class KitStand {
 
     private KitAssemblyManager KAM;
+    private KitRobotAgent agent;
+    
     /**
      * The kit stand has three stands 1. Temporary stand to hold an empty kit 2.
      * Kitting stand which will hold the kit into which parts are being put 3.
@@ -17,8 +19,9 @@ public class KitStand {
      */
     private Kit[] kits = new Kit[3];
 
-    public KitStand() {
+    public KitStand(KitRobotAgent agent) {
         kits[0] = kits[1] = kits[2] = null;
+        this.agent = agent;
 //        Kit k = new Kit("Test");
 //        k.status = Kit.Status.full;
 //        kits[1] = k;
@@ -116,25 +119,5 @@ public class KitStand {
 
     public boolean isEmpty() {
         return (kits[0] == null && kits[1] == null && kits[2] == null);
-    }
-    
-    private void DoMoveKitFromConveyorTo0() {
-        
-    }
-    
-    private void DoMoveKitFromConveyorTo1() {
-        
-    }
-    
-    private void DoMoveKitFrom0to1() {
-//        KAM.getKitRobot().moveEmptyKitToActive();
-    }
-    
-    private void DoMoveKitFrom1to2() {
-        
-    }
-    
-    public void setKitAssemblyManager(KitAssemblyManager KAM) {
-        this.KAM = KAM;
     }
 }
