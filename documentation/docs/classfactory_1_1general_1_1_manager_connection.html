@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Factory Project
-   &#160;<span id="projectnumber">0.0.1</span>
+   &#160;<span id="projectnumber">0.1.0</span>
    </div>
    <div id="projectbrief">team 1 joint cs200/cs201</div>
   </td>
@@ -177,17 +177,7 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Definition at line <a class="el" href="_manager_connection_8java_source.html#l00027">27</a> of file <a class="el" href="_manager_connection_8java_source.html">ManagerConnection.java</a>.</p>
-<div class="fragment"><div class="line">                                          {</div>
-<div class="line">        <a class="code" href="classfactory_1_1general_1_1_manager_connection.html#a5ba07eca61325009df825b16965bdebf">p</a>.<a class="code" href="classfactory_1_1general_1_1_printer.html#a6dd4426e6a3bb2444dfc39d4dbd7fc99">println</a>(<span class="stringliteral">&quot;ManagerConnection created&quot;</span>);</div>
-<div class="line">        <a class="code" href="classfactory_1_1general_1_1_manager_connection.html#abf2e51524090b1b5c3ef3d96105d5efc" title="socket connection">socket</a> = null;</div>
-<div class="line">        <a class="code" href="classfactory_1_1general_1_1_manager_connection.html#af18b98a7e188f6077698830e56899fda" title="data out">out</a> = null;</div>
-<div class="line">        <a class="code" href="classfactory_1_1general_1_1_manager_connection.html#aed5728beb6547307aa1a99eaeddd6d4d" title="data in">in</a> = null;</div>
-<div class="line">        this.<a class="code" href="classfactory_1_1general_1_1_manager_connection.html#af4a06fa292abc8396ee9d44d9abe5105" title="reference to parent">mgr</a> = ref;</div>
-<div class="line">        <span class="keywordflow">if</span> (ref == null) {</div>
-<div class="line">            System.out.println(<span class="stringliteral">&quot;ManagerConnection initialized with a null Manager object. This is bad. Fix it!&quot;</span>);</div>
-<div class="line">        }</div>
-<div class="line">    }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -215,30 +205,7 @@ Static Private Attributes</h2></td></tr>
 <p>attempts to connect to the server </p>
 
 <p>Definition at line <a class="el" href="_manager_connection_8java_source.html#l00041">41</a> of file <a class="el" href="_manager_connection_8java_source.html">ManagerConnection.java</a>.</p>
-<div class="fragment"><div class="line">                          {</div>
-<div class="line">        <a class="code" href="classfactory_1_1general_1_1_manager_connection.html#a5ba07eca61325009df825b16965bdebf">p</a>.<a class="code" href="classfactory_1_1general_1_1_printer.html#a6dd4426e6a3bb2444dfc39d4dbd7fc99">println</a>(<span class="stringliteral">&quot;host name: &quot;</span> + Server.HOST_NAME);</div>
-<div class="line">        <a class="code" href="classfactory_1_1general_1_1_manager_connection.html#a5ba07eca61325009df825b16965bdebf">p</a>.<a class="code" href="classfactory_1_1general_1_1_printer.html#a6dd4426e6a3bb2444dfc39d4dbd7fc99">println</a>(<span class="stringliteral">&quot;port num: &quot;</span> + Server.PORT_NUMBER);</div>
-<div class="line"></div>
-<div class="line">        System.out.println(<span class="stringliteral">&quot;Connecting...&quot;</span>);</div>
-<div class="line">        <a class="code" href="classfactory_1_1general_1_1_manager_connection.html#abf2e51524090b1b5c3ef3d96105d5efc" title="socket connection">socket</a> = null;</div>
-<div class="line">        <a class="code" href="classfactory_1_1general_1_1_manager_connection.html#af18b98a7e188f6077698830e56899fda" title="data out">out</a> = null;</div>
-<div class="line">        <a class="code" href="classfactory_1_1general_1_1_manager_connection.html#aed5728beb6547307aa1a99eaeddd6d4d" title="data in">in</a> = null;</div>
-<div class="line"></div>
-<div class="line">        <span class="keywordflow">try</span> {</div>
-<div class="line">            <a class="code" href="classfactory_1_1general_1_1_manager_connection.html#abf2e51524090b1b5c3ef3d96105d5efc" title="socket connection">socket</a> = <span class="keyword">new</span> Socket(Server.HOST_NAME, Server.PORT_NUMBER);</div>
-<div class="line">            <a class="code" href="classfactory_1_1general_1_1_manager_connection.html#af18b98a7e188f6077698830e56899fda" title="data out">out</a> = <span class="keyword">new</span> PrintWriter(<a class="code" href="classfactory_1_1general_1_1_manager_connection.html#abf2e51524090b1b5c3ef3d96105d5efc" title="socket connection">socket</a>.getOutputStream(), <span class="keyword">true</span>);</div>
-<div class="line">            <a class="code" href="classfactory_1_1general_1_1_manager_connection.html#aed5728beb6547307aa1a99eaeddd6d4d" title="data in">in</a> = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(<a class="code" href="classfactory_1_1general_1_1_manager_connection.html#abf2e51524090b1b5c3ef3d96105d5efc" title="socket connection">socket</a>.getInputStream()));</div>
-<div class="line">        } <span class="keywordflow">catch</span> (UnknownHostException e) {</div>
-<div class="line">            System.err.println(<span class="stringliteral">&quot;Don&#39;t know about host&quot;</span>);</div>
-<div class="line">            System.exit(1);</div>
-<div class="line">        } <span class="keywordflow">catch</span> (IOException e) {</div>
-<div class="line">            System.err.println(<span class="stringliteral">&quot;Couldn&#39;t get I/O for the connection.&quot;</span>);</div>
-<div class="line">            System.exit(1);</div>
-<div class="line">        }</div>
-<div class="line"></div>
-<div class="line">        System.out.println(<span class="stringliteral">&quot;Done connecting&quot;</span>);</div>
-<div class="line">    }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a class="anchor" id="ab2eab31ec7a5b2f8df041c609eefb531"></a>
@@ -264,17 +231,8 @@ Static Private Attributes</h2></td></tr>
 
 <p>listen for a message from the server </p>
 
-<p>Definition at line <a class="el" href="_manager_connection_8java_source.html#l00088">88</a> of file <a class="el" href="_manager_connection_8java_source.html">ManagerConnection.java</a>.</p>
-<div class="fragment"><div class="line">                                 {</div>
-<div class="line">        <a class="code" href="classfactory_1_1general_1_1_manager_connection.html#a5ba07eca61325009df825b16965bdebf">p</a>.<a class="code" href="classfactory_1_1general_1_1_printer.html#a6dd4426e6a3bb2444dfc39d4dbd7fc99">println</a>(<span class="stringliteral">&quot;Listening to the server (ManagerConnection)...&quot;</span>);</div>
-<div class="line">        <span class="keywordflow">try</span> {</div>
-<div class="line">            String msg = <a class="code" href="classfactory_1_1general_1_1_manager_connection.html#aed5728beb6547307aa1a99eaeddd6d4d" title="data in">in</a>.readLine();</div>
-<div class="line">            this.<a class="code" href="classfactory_1_1general_1_1_manager_connection.html#af4a06fa292abc8396ee9d44d9abe5105" title="reference to parent">mgr</a>.<a class="code" href="classfactory_1_1general_1_1_manager.html#a759d0e608bfa9d64f43b2eca585bba0a" title="processes a message">processMessage</a>(msg);</div>
-<div class="line">        } <span class="keywordflow">catch</span> (Exception e) {</div>
-<div class="line">            e.printStackTrace();</div>
-<div class="line">        }</div>
-<div class="line">    }</div>
-</div><!-- fragment -->
+<p>Definition at line <a class="el" href="_manager_connection_8java_source.html#l00093">93</a> of file <a class="el" href="_manager_connection_8java_source.html">ManagerConnection.java</a>.</p>
+
 </div>
 </div>
 <a class="anchor" id="ada8073ddc3388b520de2c9368a82460c"></a>
@@ -308,10 +266,7 @@ Static Private Attributes</h2></td></tr>
 </dl>
 
 <p>Definition at line <a class="el" href="_manager_connection_8java_source.html#l00081">81</a> of file <a class="el" href="_manager_connection_8java_source.html">ManagerConnection.java</a>.</p>
-<div class="fragment"><div class="line">                              {</div>
-<div class="line">        this.<a class="code" href="classfactory_1_1general_1_1_manager_connection.html#af18b98a7e188f6077698830e56899fda" title="data out">out</a>.println(o);</div>
-<div class="line">    }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a class="anchor" id="af71a38ffcc73b2a531cb710676105daf"></a>
@@ -344,12 +299,7 @@ Static Private Attributes</h2></td></tr>
 </dl>
 
 <p>Definition at line <a class="el" href="_manager_connection_8java_source.html#l00070">70</a> of file <a class="el" href="_manager_connection_8java_source.html">ManagerConnection.java</a>.</p>
-<div class="fragment"><div class="line">                      {</div>
-<div class="line">        <span class="keywordflow">while</span> (<span class="keyword">true</span>) {</div>
-<div class="line">            this.<a class="code" href="classfactory_1_1general_1_1_manager_connection.html#ab2eab31ec7a5b2f8df041c609eefb531" title="listen for a message from the server">listenToServer</a>();</div>
-<div class="line">        }</div>
-<div class="line">    }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -477,7 +427,7 @@ Static Private Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Nov 4 2012 12:20:07 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Nov 17 2012 01:37:10 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Factory Project
-   &#160;<span id="projectnumber">0.0.1</span>
+   &#160;<span id="projectnumber">0.1.0</span>
    </div>
    <div id="projectbrief">team 1 joint cs200/cs201</div>
   </td>
@@ -110,15 +110,22 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;{</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    super.update();</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;}</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
-<div class="line"><a name="l00034"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_g_u_i_robot.html#a7bad0fdc85857184cc6b6dff958c1304">   34</a></span>&#160;    <span class="keyword">public</span> Boolean <a class="code" href="classfactory_1_1general_1_1_g_u_i_robot.html#a7bad0fdc85857184cc6b6dff958c1304" title="if something went wrong">bad</a>() {</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keywordflow">return</span> this.<a class="code" href="classfactory_1_1general_1_1_g_u_i_robot.html#ac32ba3d35283e8f9ede989e4694b4edd" title="if this is ever set to true something is wrong">flag</a>;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    }</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;}</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_g_u_i_robot.html#a7bad0fdc85857184cc6b6dff958c1304">   33</a></span>&#160;    <span class="keyword">public</span> Boolean <a class="code" href="classfactory_1_1general_1_1_g_u_i_robot.html#a7bad0fdc85857184cc6b6dff958c1304" title="if something went wrong">bad</a>() {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keywordflow">return</span> this.<a class="code" href="classfactory_1_1general_1_1_g_u_i_robot.html#ac32ba3d35283e8f9ede989e4694b4edd" title="if this is ever set to true something is wrong">flag</a>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    }</div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_g_u_i_robot.html#ad381d07d1843e200481bf9b10bae640f">   36</a></span>&#160;    <span class="keyword">public</span> Integer <a class="code" href="classfactory_1_1general_1_1_g_u_i_robot.html#ad381d07d1843e200481bf9b10bae640f">getOrder</a>()</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keywordflow">return</span> ((this.<a class="code" href="classfactory_1_1general_1_1_g_u_i_robot.html#a380270c0c5b71018e2ef64e94857cb3c" title="a queue of orders for the robot">orders</a>.isEmpty())?-1:this.<a class="code" href="classfactory_1_1general_1_1_g_u_i_robot.html#a380270c0c5b71018e2ef64e94857cb3c" title="a queue of orders for the robot">orders</a>.get(0));</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    }</div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_g_u_i_robot.html#aaeaa9f19af74f7241e46540eaf61ce04">   40</a></span>&#160;    <span class="keyword">public</span> Integer <a class="code" href="classfactory_1_1general_1_1_g_u_i_robot.html#aaeaa9f19af74f7241e46540eaf61ce04">popOrder</a>()</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keywordflow">return</span> ((this.<a class="code" href="classfactory_1_1general_1_1_g_u_i_robot.html#a380270c0c5b71018e2ef64e94857cb3c" title="a queue of orders for the robot">orders</a>.isEmpty())?-1:this.<a class="code" href="classfactory_1_1general_1_1_g_u_i_robot.html#a380270c0c5b71018e2ef64e94857cb3c" title="a queue of orders for the robot">orders</a>.poll());</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    }</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Nov 4 2012 12:20:00 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Nov 17 2012 01:36:59 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

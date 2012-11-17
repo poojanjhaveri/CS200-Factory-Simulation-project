@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Factory Project
-   &#160;<span id="projectnumber">0.0.1</span>
+   &#160;<span id="projectnumber">0.1.0</span>
    </div>
    <div id="projectbrief">team 1 joint cs200/cs201</div>
   </td>
@@ -92,6 +92,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pac-attribs">Package Attributes</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent-members.html">List of all members</a>  </div>
@@ -123,43 +124,63 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a99c7d1a962d0b73c0ce8996dab58fbdb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#a99c7d1a962d0b73c0ce8996dab58fbdb">FeederAgent</a> (int index)</td></tr>
-<tr class="separator:a99c7d1a962d0b73c0ce8996dab58fbdb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a182f7e9677eb639a3a46745e6c3a5a6d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#a182f7e9677eb639a3a46745e6c3a5a6d">msgNeedPart</a> (<a class="el" href="classfactory_1_1general_1_1_part.html">Part</a> part, <a class="el" href="interfacefactory_1_1factory201_1_1interfaces_1_1_lane.html">Lane</a> lane)</td></tr>
+<tr class="memitem:a9f99f6c6e067f211996b163ab96c90f6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#a9f99f6c6e067f211996b163ab96c90f6">FeederAgent</a> (String <a class="el" href="classagent_1_1_agent.html#ab75970bde0364900221f7e5e79fd7d77">name</a>, int index)</td></tr>
+<tr class="separator:a9f99f6c6e067f211996b163ab96c90f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a182f7e9677eb639a3a46745e6c3a5a6d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#a182f7e9677eb639a3a46745e6c3a5a6d">msgNeedPart</a> (<a class="el" href="classfactory_1_1general_1_1_part.html">Part</a> part, <a class="el" href="interfacefactory_1_1factory201_1_1interfaces_1_1_lane.html">Lane</a> <a class="el" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#acbfa34231d9fead9b51445c49589e245">lane</a>)</td></tr>
 <tr class="separator:a182f7e9677eb639a3a46745e6c3a5a6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad0f8dc22c09e46dffe076f2d6600db89"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#ad0f8dc22c09e46dffe076f2d6600db89">msgHereAreParts</a> (<a class="el" href="classfactory_1_1general_1_1_part.html">Part</a> part, int quantity)</td></tr>
-<tr class="separator:ad0f8dc22c09e46dffe076f2d6600db89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab87bde48688ac709feac7be0a9820f95"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#ab87bde48688ac709feac7be0a9820f95">msgHereAreParts</a> (List&lt; <a class="el" href="classfactory_1_1general_1_1_part.html">Part</a> &gt; part)</td></tr>
+<tr class="separator:ab87bde48688ac709feac7be0a9820f95"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a869ef835ac24f7e496057dc2796a465f"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#a869ef835ac24f7e496057dc2796a465f">pickAndExecuteAnAction</a> ()</td></tr>
 <tr class="separator:a869ef835ac24f7e496057dc2796a465f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abbf1d26a18ed0a9da0cbcc19155806d0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#abbf1d26a18ed0a9da0cbcc19155806d0">setLeftLane</a> (<a class="el" href="interfacefactory_1_1factory201_1_1interfaces_1_1_lane.html">Lane</a> lane)</td></tr>
+<tr class="memitem:abbf1d26a18ed0a9da0cbcc19155806d0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#abbf1d26a18ed0a9da0cbcc19155806d0">setLeftLane</a> (<a class="el" href="interfacefactory_1_1factory201_1_1interfaces_1_1_lane.html">Lane</a> <a class="el" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#acbfa34231d9fead9b51445c49589e245">lane</a>)</td></tr>
 <tr class="separator:abbf1d26a18ed0a9da0cbcc19155806d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d7c976b560b4eeb17714324188f4b53"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#a2d7c976b560b4eeb17714324188f4b53">setRightLane</a> (<a class="el" href="interfacefactory_1_1factory201_1_1interfaces_1_1_lane.html">Lane</a> lane)</td></tr>
+<tr class="memitem:a2d7c976b560b4eeb17714324188f4b53"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#a2d7c976b560b4eeb17714324188f4b53">setRightLane</a> (<a class="el" href="interfacefactory_1_1factory201_1_1interfaces_1_1_lane.html">Lane</a> <a class="el" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#acbfa34231d9fead9b51445c49589e245">lane</a>)</td></tr>
 <tr class="separator:a2d7c976b560b4eeb17714324188f4b53"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2a567f51b08c73c521996691c20ec5e6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#a2a567f51b08c73c521996691c20ec5e6">setGantry</a> (<a class="el" href="interfacefactory_1_1factory201_1_1interfaces_1_1_gantry.html">Gantry</a> <a class="el" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#a6be035665db67b981eafb5492bf120b6">gantry</a>)</td></tr>
 <tr class="separator:a2a567f51b08c73c521996691c20ec5e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4a2a85fe1c4c7b7f7d1b89cca9a14257"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#a4a2a85fe1c4c7b7f7d1b89cca9a14257">msgNeedPart</a> (<a class="el" href="classfactory_1_1general_1_1_part.html">Part</a> part)</td></tr>
-<tr class="separator:a4a2a85fe1c4c7b7f7d1b89cca9a14257"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a898c2c068f466fe10d088d1ee2acb929"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#a898c2c068f466fe10d088d1ee2acb929">setLane</a> (<a class="el" href="interfacefactory_1_1factory201_1_1interfaces_1_1_lane.html">Lane</a> <a class="el" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#acbfa34231d9fead9b51445c49589e245">lane</a>)</td></tr>
+<tr class="separator:a898c2c068f466fe10d088d1ee2acb929"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2820311161d46700c4013bd4b271739"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#aa2820311161d46700c4013bd4b271739">msgNeedPart</a> (<a class="el" href="classfactory_1_1general_1_1_part.html">Part</a> partType)</td></tr>
+<tr class="separator:aa2820311161d46700c4013bd4b271739"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classagent_1_1_agent"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classagent_1_1_agent')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classagent_1_1_agent.html">agent.Agent</a></td></tr>
+<tr class="memitem:aeaf393e5baea748d622e7e8abeb3c60f inherit pub_methods_classagent_1_1_agent"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagent_1_1_agent.html#aeaf393e5baea748d622e7e8abeb3c60f">getName</a> ()</td></tr>
+<tr class="separator:aeaf393e5baea748d622e7e8abeb3c60f inherit pub_methods_classagent_1_1_agent"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac1f48dbd7a77a9f769b22bcfdfa1c308 inherit pub_methods_classagent_1_1_agent"><td class="memItemLeft" align="right" valign="top">synchronized void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagent_1_1_agent.html#ac1f48dbd7a77a9f769b22bcfdfa1c308">startThread</a> ()</td></tr>
 <tr class="separator:ac1f48dbd7a77a9f769b22bcfdfa1c308 inherit pub_methods_classagent_1_1_agent"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae6f3a57b985819a46372a0c1ca1940ab inherit pub_methods_classagent_1_1_agent"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagent_1_1_agent.html#ae6f3a57b985819a46372a0c1ca1940ab">stopThread</a> ()</td></tr>
 <tr class="separator:ae6f3a57b985819a46372a0c1ca1940ab inherit pub_methods_classagent_1_1_agent"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4fff8beed11031829fbf602b00308646 inherit pub_methods_classagent_1_1_agent"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagent_1_1_agent.html#a4fff8beed11031829fbf602b00308646">setClient</a> (<a class="el" href="classfactory_1_1general_1_1_handle_a_manager.html">HandleAManager</a> i)</td></tr>
+<tr class="memdesc:a4fff8beed11031829fbf602b00308646 inherit pub_methods_classagent_1_1_agent"><td class="mdescLeft">&#160;</td><td class="mdescRight">sets the client  <a href="#a4fff8beed11031829fbf602b00308646"></a><br/></td></tr>
+<tr class="separator:a4fff8beed11031829fbf602b00308646 inherit pub_methods_classagent_1_1_agent"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_interfacefactory_1_1factory201_1_1interfaces_1_1_feeder"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_interfacefactory_1_1factory201_1_1interfaces_1_1_feeder')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="interfacefactory_1_1factory201_1_1interfaces_1_1_feeder.html">factory.factory201.interfaces.Feeder</a></td></tr>
 <tr class="memitem:adaee3ffbdd3cddad1b915f51c277f4a3 inherit pub_methods_interfacefactory_1_1factory201_1_1interfaces_1_1_feeder"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacefactory_1_1factory201_1_1interfaces_1_1_feeder.html#adaee3ffbdd3cddad1b915f51c277f4a3">msgNeedPart</a> (<a class="el" href="classfactory_1_1general_1_1_part.html">Part</a> part, <a class="el" href="interfacefactory_1_1factory201_1_1interfaces_1_1_lane.html">Lane</a> lane)</td></tr>
 <tr class="separator:adaee3ffbdd3cddad1b915f51c277f4a3 inherit pub_methods_interfacefactory_1_1factory201_1_1interfaces_1_1_feeder"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_interfacefactory_1_1factory201_1_1interfaces_1_1_factory_base"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_interfacefactory_1_1factory201_1_1interfaces_1_1_factory_base')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="interfacefactory_1_1factory201_1_1interfaces_1_1_factory_base.html">factory.factory201.interfaces.FactoryBase</a></td></tr>
 <tr class="memitem:a310e7dc910dc8b13de99cae20f3f552a inherit pub_methods_interfacefactory_1_1factory201_1_1interfaces_1_1_factory_base"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacefactory_1_1factory201_1_1interfaces_1_1_factory_base.html#a310e7dc910dc8b13de99cae20f3f552a">msgNeedPart</a> (<a class="el" href="classfactory_1_1general_1_1_part.html">Part</a> part)</td></tr>
 <tr class="separator:a310e7dc910dc8b13de99cae20f3f552a inherit pub_methods_interfacefactory_1_1factory201_1_1interfaces_1_1_factory_base"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae77b216d2f4acc4d7446e334528b955a inherit pub_methods_interfacefactory_1_1factory201_1_1interfaces_1_1_factory_base"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacefactory_1_1factory201_1_1interfaces_1_1_factory_base.html#ae77b216d2f4acc4d7446e334528b955a">msgHereAreParts</a> (<a class="el" href="classfactory_1_1general_1_1_part.html">Part</a> part, int quantity)</td></tr>
-<tr class="separator:ae77b216d2f4acc4d7446e334528b955a inherit pub_methods_interfacefactory_1_1factory201_1_1interfaces_1_1_factory_base"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12c8f01fec0147dd8f5c44a3ae17448b inherit pub_methods_interfacefactory_1_1factory201_1_1interfaces_1_1_factory_base"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacefactory_1_1factory201_1_1interfaces_1_1_factory_base.html#a12c8f01fec0147dd8f5c44a3ae17448b">msgHereAreParts</a> (List&lt; <a class="el" href="classfactory_1_1general_1_1_part.html">Part</a> &gt; parts)</td></tr>
+<tr class="separator:a12c8f01fec0147dd8f5c44a3ae17448b inherit pub_methods_interfacefactory_1_1factory201_1_1interfaces_1_1_factory_base"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a1992602134680ce8c95122359c5ecc64"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#a1992602134680ce8c95122359c5ecc64">feederNum</a> =0</td></tr>
+<tr class="memitem:a1992602134680ce8c95122359c5ecc64"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#a1992602134680ce8c95122359c5ecc64">feederNum</a></td></tr>
 <tr class="separator:a1992602134680ce8c95122359c5ecc64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_attribs_classagent_1_1_agent"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_classagent_1_1_agent')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="classagent_1_1_agent.html">agent.Agent</a></td></tr>
+<tr class="memitem:a357c70ddbd86959a12b418d1183a16f7 inherit pub_attribs_classagent_1_1_agent"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagent_1_1_agent.html#a357c70ddbd86959a12b418d1183a16f7">partsRequested</a></td></tr>
+<tr class="separator:a357c70ddbd86959a12b418d1183a16f7 inherit pub_attribs_classagent_1_1_agent"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa45dc0889c021c7f98cd83e0385ec271 inherit pub_attribs_classagent_1_1_agent"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagent_1_1_agent.html#aa45dc0889c021c7f98cd83e0385ec271">print</a></td></tr>
+<tr class="separator:aa45dc0889c021c7f98cd83e0385ec271 inherit pub_attribs_classagent_1_1_agent"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_attribs_interfacefactory_1_1factory201_1_1interfaces_1_1_feeder"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_interfacefactory_1_1factory201_1_1interfaces_1_1_feeder')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="interfacefactory_1_1factory201_1_1interfaces_1_1_feeder.html">factory.factory201.interfaces.Feeder</a></td></tr>
 <tr class="memitem:a42bf92e5bba1b167d430075e50e13b8f inherit pub_attribs_interfacefactory_1_1factory201_1_1interfaces_1_1_feeder"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacefactory_1_1factory201_1_1interfaces_1_1_feeder.html#a42bf92e5bba1b167d430075e50e13b8f">capacity</a> = 0</td></tr>
 <tr class="separator:a42bf92e5bba1b167d430075e50e13b8f inherit pub_attribs_interfacefactory_1_1factory201_1_1interfaces_1_1_feeder"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pac-attribs"></a>
+Package Attributes</h2></td></tr>
+<tr class="memitem:a105f632a02c10ae555952fe4b8294c52"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#a105f632a02c10ae555952fe4b8294c52">requestState</a> =false</td></tr>
+<tr class="separator:a105f632a02c10ae555952fe4b8294c52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pac_attribs_classagent_1_1_agent"><td colspan="2" onclick="javascript:toggleInherit('pac_attribs_classagent_1_1_agent')"><img src="closed.png" alt="-"/>&#160;Package Attributes inherited from <a class="el" href="classagent_1_1_agent.html">agent.Agent</a></td></tr>
+<tr class="memitem:adf2eafb1d9ae92666b8196ebe0898c03 inherit pac_attribs_classagent_1_1_agent"><td class="memItemLeft" align="right" valign="top">Semaphore&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagent_1_1_agent.html#adf2eafb1d9ae92666b8196ebe0898c03">stateChange</a></td></tr>
+<tr class="separator:adf2eafb1d9ae92666b8196ebe0898c03 inherit pac_attribs_classagent_1_1_agent"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -169,6 +190,10 @@ Private Member Functions</h2></td></tr>
 <tr class="separator:ade34b5a0cf162167a682a62863d94dcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a97eb5924ffd3ae38d652319e7125fe04"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#a97eb5924ffd3ae38d652319e7125fe04">sendPartToRightLane</a> (<a class="el" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent_1_1my_parts.html">myParts</a> p)</td></tr>
 <tr class="separator:a97eb5924ffd3ae38d652319e7125fe04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac6b0dd4128fe48527510bcfaca78d48"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#aac6b0dd4128fe48527510bcfaca78d48">dosendPartToLeftLane</a> (<a class="el" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent_1_1my_parts.html">myParts</a> p)</td></tr>
+<tr class="separator:aac6b0dd4128fe48527510bcfaca78d48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c60e0a7cf25657bddc203d14599e822"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#a7c60e0a7cf25657bddc203d14599e822">dosendPartToRightLane</a> (<a class="el" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent_1_1my_parts.html">myParts</a> p)</td></tr>
+<tr class="separator:a7c60e0a7cf25657bddc203d14599e822"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -178,36 +203,45 @@ Private Attributes</h2></td></tr>
 <tr class="separator:aaf42f62da73e543327acda99c29785f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a749bfce7a97b4c5de86720af6cdf3e1b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="interfacefactory_1_1factory201_1_1interfaces_1_1_lane.html">Lane</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#a749bfce7a97b4c5de86720af6cdf3e1b">rightLane</a></td></tr>
 <tr class="separator:a749bfce7a97b4c5de86720af6cdf3e1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acbfa34231d9fead9b51445c49589e245"><td class="memItemLeft" align="right" valign="top"><a class="el" href="interfacefactory_1_1factory201_1_1interfaces_1_1_lane.html">Lane</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#acbfa34231d9fead9b51445c49589e245">lane</a></td></tr>
+<tr class="separator:acbfa34231d9fead9b51445c49589e245"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a043fb8cf8b1cec4fae32344c7fc26d84"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#a043fb8cf8b1cec4fae32344c7fc26d84">leftCount</a> =0</td></tr>
+<tr class="separator:a043fb8cf8b1cec4fae32344c7fc26d84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6afe615d208545d0f15ca7c2fa66b79"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#af6afe615d208545d0f15ca7c2fa66b79">rightCount</a> =0</td></tr>
+<tr class="separator:af6afe615d208545d0f15ca7c2fa66b79"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6be035665db67b981eafb5492bf120b6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="interfacefactory_1_1factory201_1_1interfaces_1_1_gantry.html">Gantry</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#a6be035665db67b981eafb5492bf120b6">gantry</a></td></tr>
 <tr class="separator:a6be035665db67b981eafb5492bf120b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc3834976651863366687e1347c4cfe6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classfactory_1_1factory200_1_1lane_manager_1_1_server_side_1_1_l_m_server_main.html">LMServerMain</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#afc3834976651863366687e1347c4cfe6">serverMain</a></td></tr>
+<tr class="separator:afc3834976651863366687e1347c4cfe6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad22ec6b639938ce20623ddf70c02f5c2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classfactory_1_1factory200_1_1lane_manager_1_1_server_side_1_1_l_m_feeder_for_agent.html">LMFeederForAgent</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#ad22ec6b639938ce20623ddf70c02f5c2">animation</a></td></tr>
+<tr class="separator:ad22ec6b639938ce20623ddf70c02f5c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_methods_classagent_1_1_agent"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classagent_1_1_agent')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classagent_1_1_agent.html">agent.Agent</a></td></tr>
-<tr class="memitem:a8d54d41fe030b4dfaa0e291e2cfadabf inherit pro_methods_classagent_1_1_agent"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagent_1_1_agent.html#a8d54d41fe030b4dfaa0e291e2cfadabf">Agent</a> ()</td></tr>
-<tr class="separator:a8d54d41fe030b4dfaa0e291e2cfadabf inherit pro_methods_classagent_1_1_agent"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5adbea33abbf8455e24ca77c9f6b417b inherit pro_methods_classagent_1_1_agent"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagent_1_1_agent.html#a5adbea33abbf8455e24ca77c9f6b417b">Agent</a> (String <a class="el" href="classagent_1_1_agent.html#ab75970bde0364900221f7e5e79fd7d77">name</a>)</td></tr>
+<tr class="separator:a5adbea33abbf8455e24ca77c9f6b417b inherit pro_methods_classagent_1_1_agent"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a44f653501d47022141315a1835e9927a inherit pro_methods_classagent_1_1_agent"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagent_1_1_agent.html#a44f653501d47022141315a1835e9927a">stateChanged</a> ()</td></tr>
 <tr class="separator:a44f653501d47022141315a1835e9927a inherit pro_methods_classagent_1_1_agent"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeaf393e5baea748d622e7e8abeb3c60f inherit pro_methods_classagent_1_1_agent"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagent_1_1_agent.html#aeaf393e5baea748d622e7e8abeb3c60f">getName</a> ()</td></tr>
-<tr class="separator:aeaf393e5baea748d622e7e8abeb3c60f inherit pro_methods_classagent_1_1_agent"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3e56bf2c3ab7224d8d628cae2b6aa784 inherit pro_methods_classagent_1_1_agent"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagent_1_1_agent.html#a3e56bf2c3ab7224d8d628cae2b6aa784">Do</a> (String msg)</td></tr>
 <tr class="separator:a3e56bf2c3ab7224d8d628cae2b6aa784 inherit pro_methods_classagent_1_1_agent"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a55ba4536b330845b8f2d1d57191dad38 inherit pro_methods_classagent_1_1_agent"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagent_1_1_agent.html#a55ba4536b330845b8f2d1d57191dad38">print</a> (String msg)</td></tr>
 <tr class="separator:a55ba4536b330845b8f2d1d57191dad38 inherit pro_methods_classagent_1_1_agent"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3d856ff8f7818291077234968d1500cd inherit pro_methods_classagent_1_1_agent"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagent_1_1_agent.html#a3d856ff8f7818291077234968d1500cd">print</a> (String msg, Throwable e)</td></tr>
 <tr class="separator:a3d856ff8f7818291077234968d1500cd inherit pro_methods_classagent_1_1_agent"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pac_attribs_classagent_1_1_agent"><td colspan="2" onclick="javascript:toggleInherit('pac_attribs_classagent_1_1_agent')"><img src="closed.png" alt="-"/>&#160;Package Attributes inherited from <a class="el" href="classagent_1_1_agent.html">agent.Agent</a></td></tr>
-<tr class="memitem:adf2eafb1d9ae92666b8196ebe0898c03 inherit pac_attribs_classagent_1_1_agent"><td class="memItemLeft" align="right" valign="top">Semaphore&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagent_1_1_agent.html#adf2eafb1d9ae92666b8196ebe0898c03">stateChange</a> = new Semaphore(1, true)</td></tr>
-<tr class="separator:adf2eafb1d9ae92666b8196ebe0898c03 inherit pac_attribs_classagent_1_1_agent"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_attribs_classagent_1_1_agent"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classagent_1_1_agent')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classagent_1_1_agent.html">agent.Agent</a></td></tr>
+<tr class="memitem:a20abf2e7bd1c529b185ad0754e049a46 inherit pro_attribs_classagent_1_1_agent"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classfactory_1_1general_1_1_handle_a_manager.html">HandleAManager</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagent_1_1_agent.html#a20abf2e7bd1c529b185ad0754e049a46">client</a></td></tr>
+<tr class="memdesc:a20abf2e7bd1c529b185ad0754e049a46 inherit pro_attribs_classagent_1_1_agent"><td class="mdescLeft">&#160;</td><td class="mdescRight">communication channel with client A reference to the corresponding client  <a href="#a20abf2e7bd1c529b185ad0754e049a46"></a><br/></td></tr>
+<tr class="separator:a20abf2e7bd1c529b185ad0754e049a46 inherit pro_attribs_classagent_1_1_agent"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>agent for the Feeder This class is the agent for the Feeder which does the following: 1) Get messages from the lanes when they need parts 2) Send parts to the lanes 3) Request for parts from the gantry </p>
 <dl class="section author"><dt>Author</dt><dd>Kevin Macwan </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>0 </dd></dl>
 
-<p>Definition at line <a class="el" href="_feeder_agent_8java_source.html#l00021">21</a> of file <a class="el" href="_feeder_agent_8java_source.html">FeederAgent.java</a>.</p>
+<p>Definition at line <a class="el" href="_feeder_agent_8java_source.html#l00025">25</a> of file <a class="el" href="_feeder_agent_8java_source.html">FeederAgent.java</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a99c7d1a962d0b73c0ce8996dab58fbdb"></a>
+<a class="anchor" id="a9f99f6c6e067f211996b163ab96c90f6"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -217,66 +251,14 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">factory.factory201.feederManagement.FeederAgent.FeederAgent </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>index</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="_feeder_agent_8java_source.html#l00031">31</a> of file <a class="el" href="_feeder_agent_8java_source.html">FeederAgent.java</a>.</p>
-<div class="fragment"><div class="line">                                 {</div>
-<div class="line">        </div>
-<div class="line">        System.out.println(<span class="stringliteral">&quot;testing null pointer exception&quot;</span>);</div>
-<div class="line">        this.<a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#a1992602134680ce8c95122359c5ecc64">feederNum</a>=index;</div>
-<div class="line">        Part p1=<span class="keyword">new</span> Part(1);</div>
-<div class="line">        Part p2=<span class="keyword">new</span> Part(2);</div>
-<div class="line">        Part p3=<span class="keyword">new</span> Part(3);</div>
-<div class="line">        Part p4=<span class="keyword">new</span> Part(4);</div>
-<div class="line">        Part p5=<span class="keyword">new</span> Part(5);</div>
-<div class="line">        Part p6=<span class="keyword">new</span> Part(6);</div>
-<div class="line">        Part p7=<span class="keyword">new</span> Part(7);</div>
-<div class="line">        Part p8=<span class="keyword">new</span> Part(8);</div>
-<div class="line">        System.out.println(<span class="stringliteral">&quot;All parts created&quot;</span>);</div>
-<div class="line">        </div>
-<div class="line">        <span class="comment">//part type, quantity, index (quantity started with is 0</span></div>
-<div class="line">        <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#a7486f4d6e00445297745ce2ebaac099e">parts</a>.add(<span class="keyword">new</span> myParts(p1,0,1));</div>
-<div class="line">        <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#a7486f4d6e00445297745ce2ebaac099e">parts</a>.add(<span class="keyword">new</span> myParts(p2,0,2));</div>
-<div class="line">        <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#a7486f4d6e00445297745ce2ebaac099e">parts</a>.add(<span class="keyword">new</span> myParts(p3,0,3));</div>
-<div class="line">        <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#a7486f4d6e00445297745ce2ebaac099e">parts</a>.add(<span class="keyword">new</span> myParts(p4,0,4));</div>
-<div class="line">        <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#a7486f4d6e00445297745ce2ebaac099e">parts</a>.add(<span class="keyword">new</span> myParts(p5,0,5));</div>
-<div class="line">        <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#a7486f4d6e00445297745ce2ebaac099e">parts</a>.add(<span class="keyword">new</span> myParts(p6,0,6));</div>
-<div class="line">        <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#a7486f4d6e00445297745ce2ebaac099e">parts</a>.add(<span class="keyword">new</span> myParts(p7,0,7));</div>
-<div class="line">        <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#a7486f4d6e00445297745ce2ebaac099e">parts</a>.add(<span class="keyword">new</span> myParts(p8,0,8));</div>
-<div class="line">        System.out.println(<span class="stringliteral">&quot;parts added to the list&quot;</span>);</div>
-<div class="line">    }</div>
-</div><!-- fragment -->
-</div>
-</div>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="ad0f8dc22c09e46dffe076f2d6600db89"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void factory.factory201.feederManagement.FeederAgent.msgHereAreParts </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classfactory_1_1general_1_1_part.html">Part</a>&#160;</td>
-          <td class="paramname"><em>part</em>, </td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>quantity</em>&#160;</td>
+          <td class="paramname"><em>index</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -291,48 +273,87 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_feeder_agent_8java_source.html#l00120">120</a> of file <a class="el" href="_feeder_agent_8java_source.html">FeederAgent.java</a>.</p>
-<div class="fragment"><div class="line">                                                         {</div>
-<div class="line">        <span class="keywordtype">int</span> partIndex=0;</div>
-<div class="line">        <span class="comment">//add to the existing list of parts if the parts already exist</span></div>
-<div class="line">        <span class="keywordflow">for</span> (myParts p : <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#a7486f4d6e00445297745ce2ebaac099e">parts</a>) {</div>
-<div class="line">            <span class="keywordflow">if</span> (p.part.type == part.type) {</div>
-<div class="line">                p.quantity = p.quantity + quantity;</div>
-<div class="line"></div>
-<div class="line">                <span class="comment">/*</span></div>
-<div class="line"><span class="comment">                 //if it received the part, and the quantity is less than the lane capacity, send another request.</span></div>
-<div class="line"><span class="comment">                 if(p.quantity&lt;lane.capacity){</span></div>
-<div class="line"><span class="comment">                 p.state=PartState.needPart;</span></div>
-<div class="line"><span class="comment">                 }</span></div>
-<div class="line"><span class="comment">                 else</span></div>
-<div class="line"><span class="comment">                 p.state=PartState.noState;</span></div>
-<div class="line"><span class="comment">                 */</span></div>
-<div class="line">                <a class="code" href="classagent_1_1_agent.html#a44f653501d47022141315a1835e9927a">stateChanged</a>();</div>
-<div class="line">                <span class="keywordflow">return</span>;</div>
-<div class="line">            }</div>
-<div class="line">        }</div>
-<div class="line"></div>
-<div class="line"><span class="comment">//create a new type if the current list does not contain parts of this type.    </span></div>
-<div class="line">        <span class="keywordflow">if</span>(part.type==part.type.p1)</div>
-<div class="line">            partIndex=1;</div>
-<div class="line">        <span class="keywordflow">if</span>(part.type==part.type.p2)</div>
-<div class="line">            partIndex=2;</div>
-<div class="line">        <span class="keywordflow">if</span>(part.type==part.type.p3)</div>
-<div class="line">            partIndex=3;</div>
-<div class="line">        <span class="keywordflow">if</span>(part.type==part.type.p4)</div>
-<div class="line">            partIndex=4;</div>
-<div class="line">        <span class="keywordflow">if</span>(part.type==part.type.p5)</div>
-<div class="line">            partIndex=5;</div>
-<div class="line">        <span class="keywordflow">if</span>(part.type==part.type.p6)</div>
-<div class="line">            partIndex=6;</div>
-<div class="line">        <span class="keywordflow">if</span>(part.type==part.type.p7)</div>
-<div class="line">            partIndex=7;</div>
-<div class="line">        <span class="keywordflow">if</span>(part.type==part.type.p8)</div>
-<div class="line">            partIndex=8;</div>
-<div class="line">        parts.add(<span class="keyword">new</span> myParts(part,quantity,partIndex));</div>
-<div class="line">        <a class="code" href="classagent_1_1_agent.html#a44f653501d47022141315a1835e9927a">stateChanged</a>();</div>
-<div class="line">    }</div>
-</div><!-- fragment -->
+<p>Definition at line <a class="el" href="_feeder_agent_8java_source.html#l00054">54</a> of file <a class="el" href="_feeder_agent_8java_source.html">FeederAgent.java</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="aac6b0dd4128fe48527510bcfaca78d48"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void factory.factory201.feederManagement.FeederAgent.dosendPartToLeftLane </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent_1_1my_parts.html">myParts</a>&#160;</td>
+          <td class="paramname"><em>p</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_feeder_agent_8java_source.html#l00277">277</a> of file <a class="el" href="_feeder_agent_8java_source.html">FeederAgent.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a7c60e0a7cf25657bddc203d14599e822"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void factory.factory201.feederManagement.FeederAgent.dosendPartToRightLane </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent_1_1my_parts.html">myParts</a>&#160;</td>
+          <td class="paramname"><em>p</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_feeder_agent_8java_source.html#l00288">288</a> of file <a class="el" href="_feeder_agent_8java_source.html">FeederAgent.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab87bde48688ac709feac7be0a9820f95"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void factory.factory201.feederManagement.FeederAgent.msgHereAreParts </td>
+          <td>(</td>
+          <td class="paramtype">List&lt; <a class="el" href="classfactory_1_1general_1_1_part.html">Part</a> &gt;&#160;</td>
+          <td class="paramname"><em>part</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_feeder_agent_8java_source.html#l00154">154</a> of file <a class="el" href="_feeder_agent_8java_source.html">FeederAgent.java</a>.</p>
+
 </div>
 </div>
 <a class="anchor" id="a182f7e9677eb639a3a46745e6c3a5a6d"></a>
@@ -367,49 +388,11 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_feeder_agent_8java_source.html#l00080">80</a> of file <a class="el" href="_feeder_agent_8java_source.html">FeederAgent.java</a>.</p>
-<div class="fragment"><div class="line">                                                  {</div>
-<div class="line"></div>
-<div class="line">        <span class="comment">/*</span></div>
-<div class="line"><span class="comment">         * Search in the myParts list and see if the request can be fulfilled by checking with the quantity of each part</span></div>
-<div class="line"><span class="comment">         */</span></div>
-<div class="line">        <span class="keywordflow">for</span> (myParts p : <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#a7486f4d6e00445297745ce2ebaac099e">parts</a>) {</div>
-<div class="line">            <span class="keywordflow">if</span> (p.part.type == part.type) {</div>
-<div class="line"></div>
-<div class="line">                <span class="comment">//is the message from the left lane?</span></div>
-<div class="line">                <span class="keywordflow">if</span> (lane == this.<a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#aaf42f62da73e543327acda99c29785f4">leftLane</a>) {</div>
-<div class="line">                    p.send = <span class="keyword">true</span>;</div>
-<div class="line">                    p.sendTo = SendTo.leftLane;</div>
-<div class="line">                    p.supplyAmount = 8; <span class="comment">//8 parts are passed over</span></div>
-<div class="line">                    <span class="comment">//p.state=PartState.canSend;</span></div>
-<div class="line">                    <a class="code" href="classagent_1_1_agent.html#a44f653501d47022141315a1835e9927a">stateChanged</a>();</div>
-<div class="line">                    <span class="keywordflow">return</span>;</div>
-<div class="line"></div>
-<div class="line">                }</div>
-<div class="line"></div>
-<div class="line">                <span class="comment">//is the message from the right lane?</span></div>
-<div class="line">                <span class="keywordflow">if</span> (lane == this.<a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#a749bfce7a97b4c5de86720af6cdf3e1b">rightLane</a>) {</div>
-<div class="line">                    p.send = <span class="keyword">true</span>;</div>
-<div class="line">                    p.sendTo = SendTo.rightLane;</div>
-<div class="line">                    p.supplyAmount = <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#a749bfce7a97b4c5de86720af6cdf3e1b">rightLane</a>.<a class="code" href="interfacefactory_1_1factory201_1_1interfaces_1_1_lane.html#af7fb81c22f0a7342d7186c91b5699cc5">capacity</a>;</div>
-<div class="line">                    <span class="comment">//p.state=PartState.canSend;</span></div>
-<div class="line">                    <a class="code" href="classagent_1_1_agent.html#a44f653501d47022141315a1835e9927a">stateChanged</a>();</div>
-<div class="line">                    <span class="keywordflow">return</span>;</div>
-<div class="line"></div>
-<div class="line">                }</div>
-<div class="line"></div>
-<div class="line">            }</div>
-<div class="line">        }</div>
-<div class="line"></div>
-<div class="line"></div>
-<div class="line"></div>
-<div class="line">        <a class="code" href="classagent_1_1_agent.html#a44f653501d47022141315a1835e9927a">stateChanged</a>();</div>
-<div class="line"></div>
-<div class="line">    }</div>
-</div><!-- fragment -->
+<p>Definition at line <a class="el" href="_feeder_agent_8java_source.html#l00115">115</a> of file <a class="el" href="_feeder_agent_8java_source.html">FeederAgent.java</a>.</p>
+
 </div>
 </div>
-<a class="anchor" id="a4a2a85fe1c4c7b7f7d1b89cca9a14257"></a>
+<a class="anchor" id="aa2820311161d46700c4013bd4b271739"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -420,7 +403,7 @@ Additional Inherited Members</h2></td></tr>
           <td class="memname">void factory.factory201.feederManagement.FeederAgent.msgNeedPart </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classfactory_1_1general_1_1_part.html">Part</a>&#160;</td>
-          <td class="paramname"><em>part</em></td><td>)</td>
+          <td class="paramname"><em>partType</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -431,11 +414,8 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_feeder_agent_8java_source.html#l00248">248</a> of file <a class="el" href="_feeder_agent_8java_source.html">FeederAgent.java</a>.</p>
-<div class="fragment"><div class="line">                                       {</div>
-<div class="line">        <span class="comment">// TODO Auto-generated method stub</span></div>
-<div class="line">    }</div>
-</div><!-- fragment -->
+<p>Definition at line <a class="el" href="_feeder_agent_8java_source.html#l00320">320</a> of file <a class="el" href="_feeder_agent_8java_source.html">FeederAgent.java</a>.</p>
+
 </div>
 </div>
 <a class="anchor" id="afb5ce6ac29d191eff9263fc827c1b340"></a>
@@ -460,13 +440,8 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_feeder_agent_8java_source.html#l00194">194</a> of file <a class="el" href="_feeder_agent_8java_source.html">FeederAgent.java</a>.</p>
-<div class="fragment"><div class="line">                                     {</div>
-<div class="line"></div>
-<div class="line">        System.out.println(<span class="stringliteral">&quot;sending message to gantry&quot;</span>);</div>
-<div class="line">        <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#a6be035665db67b981eafb5492bf120b6">gantry</a>.<a class="code" href="interfacefactory_1_1factory201_1_1interfaces_1_1_gantry.html#a3f1aaec2aacc1b14163b8afe5cbd15e4">msgNeedPart</a>(p.part,<span class="keyword">this</span>);</div>
-<div class="line">    }</div>
-</div><!-- fragment -->
+<p>Definition at line <a class="el" href="_feeder_agent_8java_source.html#l00237">237</a> of file <a class="el" href="_feeder_agent_8java_source.html">FeederAgent.java</a>.</p>
+
 </div>
 </div>
 <a class="anchor" id="a869ef835ac24f7e496057dc2796a465f"></a>
@@ -494,40 +469,8 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classagent_1_1_agent.html#abaf1e04478122d7e10bd7bb8b75fc967">agent.Agent</a>.</p>
 
-<p>Definition at line <a class="el" href="_feeder_agent_8java_source.html#l00161">161</a> of file <a class="el" href="_feeder_agent_8java_source.html">FeederAgent.java</a>.</p>
-<div class="fragment"><div class="line">                                            {</div>
-<div class="line"></div>
-<div class="line">        <span class="keywordflow">for</span> (myParts p : <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#a7486f4d6e00445297745ce2ebaac099e">parts</a>) {</div>
-<div class="line">            <span class="keywordflow">if</span> (p.send == <span class="keyword">true</span>) {</div>
-<div class="line">                <span class="keywordflow">if</span> (p.sendTo == SendTo.leftLane) {</div>
-<div class="line">                    System.out.println(<span class="stringliteral">&quot;left lane needs a part&quot;</span>);</div>
-<div class="line">                    <span class="keywordflow">if</span> (p.quantity &lt; 8) {</div>
-<div class="line">                        System.out.println(<span class="stringliteral">&quot;left lane needs a part but qty is less than 8&quot;</span>);</div>
-<div class="line">                        <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#afb5ce6ac29d191eff9263fc827c1b340">needPart</a>(p);</div>
-<div class="line">                        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line">                    } <span class="keywordflow">else</span> {</div>
-<div class="line">                        <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#ade34b5a0cf162167a682a62863d94dcc">sendPartToLeftLane</a>(p);</div>
-<div class="line">                        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line">                    }</div>
-<div class="line">                }</div>
-<div class="line"></div>
-<div class="line">                <span class="keywordflow">if</span> (p.sendTo == SendTo.rightLane) {</div>
-<div class="line">                    <span class="keywordflow">if</span> (p.quantity &lt; <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#a749bfce7a97b4c5de86720af6cdf3e1b">rightLane</a>.<a class="code" href="interfacefactory_1_1factory201_1_1interfaces_1_1_lane.html#af7fb81c22f0a7342d7186c91b5699cc5">capacity</a>) {</div>
-<div class="line">                        <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#afb5ce6ac29d191eff9263fc827c1b340">needPart</a>(p);</div>
-<div class="line">                        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line">                    } <span class="keywordflow">else</span> {</div>
-<div class="line">                        <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#a97eb5924ffd3ae38d652319e7125fe04">sendPartToRightLane</a>(p);</div>
-<div class="line">                        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line">                    }</div>
-<div class="line">                }</div>
-<div class="line">                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line">            }</div>
-<div class="line">        }</div>
-<div class="line"></div>
-<div class="line">        <span class="comment">//return false if no action is to be called</span></div>
-<div class="line">        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line">    }</div>
-</div><!-- fragment -->
+<p>Definition at line <a class="el" href="_feeder_agent_8java_source.html#l00201">201</a> of file <a class="el" href="_feeder_agent_8java_source.html">FeederAgent.java</a>.</p>
+
 </div>
 </div>
 <a class="anchor" id="ade34b5a0cf162167a682a62863d94dcc"></a>
@@ -552,25 +495,8 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_feeder_agent_8java_source.html#l00200">200</a> of file <a class="el" href="_feeder_agent_8java_source.html">FeederAgent.java</a>.</p>
-<div class="fragment"><div class="line">                                               {</div>
-<div class="line">        <span class="comment">/*</span></div>
-<div class="line"><span class="comment">         * FEEDERNUM IS INITIALIZED THROUGH THE CONSTRUCTOR SO THAT EVERY FEEDER HAS A UNIQUE NUMBER</span></div>
-<div class="line"><span class="comment">         * PART NUM IS ACCESSED THROUGH p.index</span></div>
-<div class="line"><span class="comment">         * PUT IN WHILE LOOP SO THAT ONE ANIMATION FUNCTION EXECUTES TO COMPLETION BEFORE OTHER ONE STARTS</span></div>
-<div class="line"><span class="comment">         * */</span></div>
-<div class="line">        </div>
-<div class="line">        <span class="comment">//animation.dumpBinBoxIntoFeeder(feederNum); //revise</span></div>
-<div class="line">        <span class="comment">//animation.feedToLeftLane(feederNum, p.index);</span></div>
-<div class="line">        <span class="comment">//animation.fillInFeeder(feederNum,p.index, p.supplyAmount);</span></div>
-<div class="line">        <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#aaf42f62da73e543327acda99c29785f4">leftLane</a>.<a class="code" href="interfacefactory_1_1factory201_1_1interfaces_1_1_factory_base.html#ae77b216d2f4acc4d7446e334528b955a">msgHereAreParts</a>(p.part, p.supplyAmount);</div>
-<div class="line">        p.send = <span class="keyword">false</span>;</div>
-<div class="line">        p.sendTo = SendTo.none;</div>
-<div class="line">        <span class="comment">//update the myParts object</span></div>
-<div class="line">        p.quantity = p.quantity - p.supplyAmount;</div>
-<div class="line">        <a class="code" href="classagent_1_1_agent.html#a44f653501d47022141315a1835e9927a">stateChanged</a>();</div>
-<div class="line">    }</div>
-</div><!-- fragment -->
+<p>Definition at line <a class="el" href="_feeder_agent_8java_source.html#l00244">244</a> of file <a class="el" href="_feeder_agent_8java_source.html">FeederAgent.java</a>.</p>
+
 </div>
 </div>
 <a class="anchor" id="a97eb5924ffd3ae38d652319e7125fe04"></a>
@@ -595,21 +521,8 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_feeder_agent_8java_source.html#l00218">218</a> of file <a class="el" href="_feeder_agent_8java_source.html">FeederAgent.java</a>.</p>
-<div class="fragment"><div class="line">                                                {</div>
-<div class="line">        </div>
-<div class="line">        <span class="comment">//animation.dumpBinBoxIntoFeeder(feederNum);</span></div>
-<div class="line">        <span class="comment">//animation.feedToRightLane(feederNum, p.index);</span></div>
-<div class="line">        <span class="comment">//animation.fillInFeeder(feederNum,p.index,p.supplyAmount);</span></div>
-<div class="line">        </div>
-<div class="line">        <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#a749bfce7a97b4c5de86720af6cdf3e1b">rightLane</a>.<a class="code" href="interfacefactory_1_1factory201_1_1interfaces_1_1_factory_base.html#ae77b216d2f4acc4d7446e334528b955a">msgHereAreParts</a>(p.part, p.quantity);</div>
-<div class="line">        p.send = <span class="keyword">false</span>;</div>
-<div class="line">        p.sendTo = SendTo.none;</div>
-<div class="line">        <span class="comment">//update the myParts object</span></div>
-<div class="line">        p.quantity = p.quantity - p.supplyAmount;</div>
-<div class="line">        <a class="code" href="classagent_1_1_agent.html#a44f653501d47022141315a1835e9927a">stateChanged</a>();</div>
-<div class="line">    }</div>
-</div><!-- fragment -->
+<p>Definition at line <a class="el" href="_feeder_agent_8java_source.html#l00262">262</a> of file <a class="el" href="_feeder_agent_8java_source.html">FeederAgent.java</a>.</p>
+
 </div>
 </div>
 <a class="anchor" id="a2a567f51b08c73c521996691c20ec5e6"></a>
@@ -634,11 +547,34 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_feeder_agent_8java_source.html#l00243">243</a> of file <a class="el" href="_feeder_agent_8java_source.html">FeederAgent.java</a>.</p>
-<div class="fragment"><div class="line">                                         {</div>
-<div class="line">        this.<a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#a6be035665db67b981eafb5492bf120b6">gantry</a> = <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#a6be035665db67b981eafb5492bf120b6">gantry</a>;</div>
-<div class="line">    }</div>
-</div><!-- fragment -->
+<p>Definition at line <a class="el" href="_feeder_agent_8java_source.html#l00311">311</a> of file <a class="el" href="_feeder_agent_8java_source.html">FeederAgent.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a898c2c068f466fe10d088d1ee2acb929"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void factory.factory201.feederManagement.FeederAgent.setLane </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="interfacefactory_1_1factory201_1_1interfaces_1_1_lane.html">Lane</a>&#160;</td>
+          <td class="paramname"><em>lane</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_feeder_agent_8java_source.html#l00315">315</a> of file <a class="el" href="_feeder_agent_8java_source.html">FeederAgent.java</a>.</p>
+
 </div>
 </div>
 <a class="anchor" id="abbf1d26a18ed0a9da0cbcc19155806d0"></a>
@@ -663,11 +599,8 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_feeder_agent_8java_source.html#l00233">233</a> of file <a class="el" href="_feeder_agent_8java_source.html">FeederAgent.java</a>.</p>
-<div class="fragment"><div class="line">                                       {</div>
-<div class="line">        this.<a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#aaf42f62da73e543327acda99c29785f4">leftLane</a> = lane;</div>
-<div class="line">    }</div>
-</div><!-- fragment -->
+<p>Definition at line <a class="el" href="_feeder_agent_8java_source.html#l00301">301</a> of file <a class="el" href="_feeder_agent_8java_source.html">FeederAgent.java</a>.</p>
+
 </div>
 </div>
 <a class="anchor" id="a2d7c976b560b4eeb17714324188f4b53"></a>
@@ -692,25 +625,44 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_feeder_agent_8java_source.html#l00238">238</a> of file <a class="el" href="_feeder_agent_8java_source.html">FeederAgent.java</a>.</p>
-<div class="fragment"><div class="line">                                        {</div>
-<div class="line">        this.<a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#a749bfce7a97b4c5de86720af6cdf3e1b">rightLane</a> = lane;</div>
-<div class="line">    }</div>
-</div><!-- fragment -->
+<p>Definition at line <a class="el" href="_feeder_agent_8java_source.html#l00306">306</a> of file <a class="el" href="_feeder_agent_8java_source.html">FeederAgent.java</a>.</p>
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="ad22ec6b639938ce20623ddf70c02f5c2"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classfactory_1_1factory200_1_1lane_manager_1_1_server_side_1_1_l_m_feeder_for_agent.html">LMFeederForAgent</a> factory.factory201.feederManagement.FeederAgent.animation</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_feeder_agent_8java_source.html#l00048">48</a> of file <a class="el" href="_feeder_agent_8java_source.html">FeederAgent.java</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a1992602134680ce8c95122359c5ecc64"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int factory.factory201.feederManagement.FeederAgent.feederNum =0</td>
+          <td class="memname">int factory.factory201.feederManagement.FeederAgent.feederNum</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_feeder_agent_8java_source.html#l00028">28</a> of file <a class="el" href="_feeder_agent_8java_source.html">FeederAgent.java</a>.</p>
+<p>Definition at line <a class="el" href="_feeder_agent_8java_source.html#l00044">44</a> of file <a class="el" href="_feeder_agent_8java_source.html">FeederAgent.java</a>.</p>
 
 </div>
 </div>
@@ -732,7 +684,51 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_feeder_agent_8java_source.html#l00027">27</a> of file <a class="el" href="_feeder_agent_8java_source.html">FeederAgent.java</a>.</p>
+<p>Definition at line <a class="el" href="_feeder_agent_8java_source.html#l00043">43</a> of file <a class="el" href="_feeder_agent_8java_source.html">FeederAgent.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="acbfa34231d9fead9b51445c49589e245"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="interfacefactory_1_1factory201_1_1interfaces_1_1_lane.html">Lane</a> factory.factory201.feederManagement.FeederAgent.lane</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_feeder_agent_8java_source.html#l00030">30</a> of file <a class="el" href="_feeder_agent_8java_source.html">FeederAgent.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a043fb8cf8b1cec4fae32344c7fc26d84"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int factory.factory201.feederManagement.FeederAgent.leftCount =0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_feeder_agent_8java_source.html#l00040">40</a> of file <a class="el" href="_feeder_agent_8java_source.html">FeederAgent.java</a>.</p>
 
 </div>
 </div>
@@ -754,7 +750,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_feeder_agent_8java_source.html#l00025">25</a> of file <a class="el" href="_feeder_agent_8java_source.html">FeederAgent.java</a>.</p>
+<p>Definition at line <a class="el" href="_feeder_agent_8java_source.html#l00028">28</a> of file <a class="el" href="_feeder_agent_8java_source.html">FeederAgent.java</a>.</p>
 
 </div>
 </div>
@@ -776,7 +772,51 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_feeder_agent_8java_source.html#l00023">23</a> of file <a class="el" href="_feeder_agent_8java_source.html">FeederAgent.java</a>.</p>
+<p>Definition at line <a class="el" href="_feeder_agent_8java_source.html#l00027">27</a> of file <a class="el" href="_feeder_agent_8java_source.html">FeederAgent.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a105f632a02c10ae555952fe4b8294c52"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">boolean factory.factory201.feederManagement.FeederAgent.requestState =false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">package</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_feeder_agent_8java_source.html#l00045">45</a> of file <a class="el" href="_feeder_agent_8java_source.html">FeederAgent.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af6afe615d208545d0f15ca7c2fa66b79"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int factory.factory201.feederManagement.FeederAgent.rightCount =0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_feeder_agent_8java_source.html#l00041">41</a> of file <a class="el" href="_feeder_agent_8java_source.html">FeederAgent.java</a>.</p>
 
 </div>
 </div>
@@ -798,7 +838,29 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_feeder_agent_8java_source.html#l00026">26</a> of file <a class="el" href="_feeder_agent_8java_source.html">FeederAgent.java</a>.</p>
+<p>Definition at line <a class="el" href="_feeder_agent_8java_source.html#l00029">29</a> of file <a class="el" href="_feeder_agent_8java_source.html">FeederAgent.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="afc3834976651863366687e1347c4cfe6"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classfactory_1_1factory200_1_1lane_manager_1_1_server_side_1_1_l_m_server_main.html">LMServerMain</a> factory.factory201.feederManagement.FeederAgent.serverMain</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_feeder_agent_8java_source.html#l00047">47</a> of file <a class="el" href="_feeder_agent_8java_source.html">FeederAgent.java</a>.</p>
 
 </div>
 </div>
@@ -808,7 +870,7 @@ Additional Inherited Members</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Nov 4 2012 12:20:06 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Nov 17 2012 01:37:07 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>
