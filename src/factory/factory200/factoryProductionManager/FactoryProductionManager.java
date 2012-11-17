@@ -218,6 +218,8 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 		reset.addActionListener(this);
                 
 		add(tabs);
+
+		this.sendToServer(Message.IDENTIFY_FACTORYPRODUCTIONMANAGER);
 	}
 	
     @Override

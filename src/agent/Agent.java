@@ -22,7 +22,11 @@ A reference to the corresponding client
 @author Roy YiWei Zheng
      */
     protected HandleAManager client;
-
+    /**
+@brief communication channel with factory production manager
+A reference to the factory production manager
+     */
+    protected HandleAManager fpm;
     
     protected Agent(String name) {
         this.name = name;
@@ -161,5 +165,12 @@ A reference to the corresponding client
     {
 	this.client = i;
     }
-
+    /**
+@brief sets the factory production manager client
+@author Roy YiWei Zheng
+     */
+    public void setFactoryProductionManager(HandleAManager i)
+    {
+	this.fpm = i;
+    }
 }
