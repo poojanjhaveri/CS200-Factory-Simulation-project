@@ -1,7 +1,10 @@
 package factory.factory201.partsManagement;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import agent.Agent;
-import factory.factory200.kitAssemblyManager.KitAssemblyManager;
 import factory.factory201.interfaces.Camera;
 import factory.factory201.interfaces.KitRobot;
 import factory.factory201.interfaces.NestInterface;
@@ -9,9 +12,6 @@ import factory.factory201.interfaces.PartsInterface;
 import factory.general.Kit;
 import factory.general.Message;
 import factory.general.Part;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 /**
  * Factory PartsAgent gets kit information from server and obtains necessary
@@ -25,7 +25,7 @@ import java.util.List;
  */
 public class PartsAgent extends Agent implements PartsInterface {
 
-    KitAssemblyManager kam;
+    // KitAssemblyManager kam; // Should not have!
     KitRobot kitrobot;
     Kit kit0;
     Kit kit1;
@@ -37,13 +37,14 @@ public class PartsAgent extends Agent implements PartsInterface {
     boolean emptyKitReady;
 
     public PartsAgent(String name) {
-        super(name);
+        super(name); 
+        // Should these be creating NEW ArrayLists of things, or should they be getting the list
+        // from somewhere else (i.e., the server)?
         this.inventory = Collections.synchronizedList(new ArrayList<Part>());
         this.grips = Collections.synchronizedList(new ArrayList<Part>());
         this.kit0NeedsParts = Collections.synchronizedList(new ArrayList<Part>());
         this.kit1NeedsParts = Collections.synchronizedList(new ArrayList<Part>());
         this.newKit = Collections.synchronizedList(new ArrayList<Kit>());
-
     }
     
 //Messages 
@@ -243,9 +244,10 @@ public class PartsAgent extends Agent implements PartsInterface {
         this.nest = n;
     }
 
-    public void setKitAssemblyManager(KitAssemblyManager k) {
-        this.kam = k;
-    }
+    // Shouldn't need this anymore
+    // public void setKitAssemblyManager(KitAssemblyManager k) {
+    //     this.kam = k;
+    // }
 
     @Override
     public void msgNeedPart(Part partType) {
@@ -258,11 +260,14 @@ public class PartsAgent extends Agent implements PartsInterface {
     }
     
     public void DoMoveToNest(int nestNum){
+
            // kam.getPartsRobot().moveToNestCommand(nestNum);
+
 	    this.client.sendMessage(Message.KAM_PARTS_MOVE_TO_NEST+":"+nestNum);
     }
     
     public void DoPickUpPart(int nestNum){
+
     // kam.getPartsRobot().pickPartCommand(nestNum);   
      this.client.sendMessage(Message.KAM_PARTS_PICK_PART+":"+nestNum);
     }
@@ -271,6 +276,7 @@ public class PartsAgent extends Agent implements PartsInterface {
     public void DoPutInKit(int kitNum){
     //  kam.getPartsRobot().dropOffParts(kitNum);  
       this.client.sendMessage(Message.KAM_PARTS_DROP_OFF_PARTS+":"+kitNum);
+
 
 
     }

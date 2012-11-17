@@ -1,9 +1,5 @@
 package factory.factory201.kitManagement;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 import agent.Agent;
 import factory.factory201.interfaces.Camera;
 import factory.factory201.interfaces.KitRobot;
@@ -12,6 +8,10 @@ import factory.general.Kit;
 import factory.general.Message;
 import factory.general.Nest;
 import factory.general.Part;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Stack;
 
 /**
  * Agent for the camera.
@@ -114,15 +114,27 @@ public class CameraAgent extends Agent implements Camera {
      */
     public void inspectKit(Kit kit) {
         print("Inspecting kit: [" + kit.name + "].");
-//        Kit k = new Kit("1");
-////        k = server.getKit();
-//        if(k.equals(kit)) {
-//            
-//        } else {
-//            
-//        }
+        boolean result = true;
+        
+        if(kit.parts.size() != kitInfo.size()) {
+            result = false;
+        } else {
+            Stack<Part.Type> types = new Stack<Part.Type>();
+            for(Part.Type t : kitInfo) {
+                types.add(t);
+            }
+            
+            for(Part p : kit.parts) {
+                for(Part.Type t : types) {
+                    if(t == p.type) {
+                        
+                    }
+                }
+            }
+        }
+        
         DoInspectKit(kit);
-        kitRobotAgent.msgKitInspected(true);
+        kitRobotAgent.msgKitInspected(result);
         kits.remove(kit);
         stateChanged();
     }
@@ -135,15 +147,16 @@ public class CameraAgent extends Agent implements Camera {
      */
     public void inspectNest(Nest nest) {
         print("Inspecting nest: [Nest " + nest.nestNum + "].");
-//        Nest n = new Nest();
-//        boolean flag = false;
-//        for(Part p : n.parts) {
-//            if(p.type != n.partType) {
-//                flag = true;
-//            }
-//        }
+        Part.Type type = nest.part.type;
+        boolean result = true;
+        for(Part p : nest.parts) {
+            if(p.type != type) {
+                result = false;
+                break;
+            }
+        }
         DoInspectNest(nest);
-        nestAgent.msgNestInspected(nest, true);
+        nestAgent.msgNestInspected(nest, result);
         nests.remove(nest);
         stateChanged();
     }
