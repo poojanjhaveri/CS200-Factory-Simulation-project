@@ -224,7 +224,7 @@ public class PartsAgent extends Agent implements PartsInterface {
         } catch (InterruptedException ex) {
         }
         grips.clear();
-        DoPutInKit();
+        DoPutInKit(kitNum);
         //COMMENTED OUT FOR UNIT TEST
        
         //print("Kitneedsparts size =" + kitNeedsParts.size());
@@ -266,8 +266,13 @@ public class PartsAgent extends Agent implements PartsInterface {
      //this.client.sendMessage(KAM_PARTS_PICK_PART+":"+nestNum);
     }
     
+<<<<<<< HEAD
     public void DoPutInKit(){
       kam.getPartsRobot().dropOffParts();  
       //this.client.sendMessage(KAM_PARTS_DROP_OFF_PARTS+":"+kitNum);
+=======
+    public void DoPutInKit(int kitNum){
+      kam.getPartsRobot().dropOffParts(kitNum);  
+>>>>>>> e4cefed955e10ad39a3643d16929691ab2f1528b
     }
 }
