@@ -124,7 +124,7 @@ public class AgentMain {
             // PartsAgent requests from the empty kit from kitrobot agent who then asks conveyor agent
             // See Interaction Diagram for better description
         
-        if(true) {
+        if(false) {
             for (int i = 0; i < LANE; i++) {
                 if (i < FEEDER) {
                     feeder[i].print = false;
