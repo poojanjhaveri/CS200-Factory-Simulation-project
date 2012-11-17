@@ -28,6 +28,7 @@ public class PartsAgent extends Agent implements PartsInterface {
     KitRobot kitrobot;
     Kit kit0;
     Kit kit1;
+    Kit kitInfo;
     NestInterface nest;
     Camera camera;
     public List<Part> inventory, grips, kit0NeedsParts, kit1NeedsParts;
@@ -51,6 +52,8 @@ public class PartsAgent extends Agent implements PartsInterface {
     public void msgHereIsKit(Kit k) {
         print("PartsAgent got message for new kit");
         newKit.add(k);
+        //if(newKit.)
+        
         stateChanged();
     }
 
@@ -64,10 +67,16 @@ public class PartsAgent extends Agent implements PartsInterface {
     // msg from kit robot
     @Override
     public void msgEmptyKitReady(Kit k) {
-        if(k.standNum==Kit.StandNum.zero)
+
+        if(k.standNum==Kit.StandNum.zero){
+            this.kit0 =k;
             kit0.status = Kit.Status.ready;
-        else
+            }
+            else{
+            this.kit1=k;
             kit1.status = Kit.Status.ready;
+            }
+
         print("got an empty kit for stand #" + k.standNum);
         stateChanged();
     }
@@ -76,12 +85,18 @@ public class PartsAgent extends Agent implements PartsInterface {
     @Override
     public boolean pickAndExecuteAnAction() {
 
-        if (!newKit.isEmpty()) {
-           startNewKit(newKit.remove(0));
-            //newKit.clear();
+        
+        if (kit0!=null && kit1!=null){
+            if (!inventory.isEmpty() && kit0.status == Kit.Status.ready && grips.size() != 4) {
+            pickUpPart(inventory.remove(0));
             return true;
-        }
-        if (kit0!=null || kit1!=null){
+            }
+        
+            if (!inventory.isEmpty() && kit1.status == Kit.Status.ready && grips.size() != 4) {
+            pickUpPart(inventory.remove(0));
+            return true;
+            }
+        
             if (kit0.status == Kit.Status.full) {
                 print("giving kit to kitagent");
                 giveKitToKitAgent(kit0);
@@ -105,20 +120,13 @@ public class PartsAgent extends Agent implements PartsInterface {
                 giveKitToKitAgent(kit1);
                 return true;
             }
-
-
-        
-        if (!inventory.isEmpty() && kit0.status == Kit.Status.ready && grips.size() != 4) {
-            pickUpPart(inventory.remove(0));
+}
+       if (!newKit.isEmpty()) {
+           
+           startNewKit(newKit.remove(0));
+            //newKit.clear();
             return true;
-        }
-        
-        if (!inventory.isEmpty() && kit1.status == Kit.Status.ready && grips.size() != 4) {
-            pickUpPart(inventory.remove(0));
-            return true;
-        }
-        }
-        
+        } 
 
 
         return false;
@@ -132,14 +140,16 @@ public class PartsAgent extends Agent implements PartsInterface {
         k.status = Kit.Status.empty;
 
         if(newKit.isEmpty()){
-            newKit.add(k);
-            print("Adding kit of size "+ k.getSize() + " to newKit list");}
+            newKit.add(kitInfo);
+            print("Adding kit of size "+ kitInfo.getSize() + " to newKit list");}
         stateChanged();
     }
 
     private void startNewKit(Kit k) {
-
-        
+        if(kitInfo!=null && kitInfo!=k){
+           nest.setNestPurge(k.parts); 
+        }
+        this.kitInfo = k;
         print("New kit being started");
         camera.msgHereIsKitInfo(k);
     	//kitNeedsParts.clear();
@@ -172,45 +182,50 @@ public class PartsAgent extends Agent implements PartsInterface {
     private void pickUpPart(Part p) {
         grips.add(p);
         boolean next = true;
+        int kitNum=-1000;
         for (Part part: kit0NeedsParts){
             if (part.type == p.type){
               kit0NeedsParts.remove(part);
               next = false;
+              kitNum=0;
               break;
             }}
         if(next){
         for (Part part: kit1NeedsParts){
             if (part.type == p.type){
               kit1NeedsParts.remove(part);
+              kitNum=1;
               break;
             }}}
         
         print("picking up part " + p.getString());
         //kam.getKitStand().getKitPositions().get(1).setFilled(true);
-//        kam.getPartsRobot().moveToNestCommand(p.getNestNum()); **COMMENTED OUT FOR UNIT TEST
+         DoMoveToNest(p.getNestNum());//**COMMENTED OUT FOR UNIT TEST
         try {
             Thread.sleep(1000);
         } catch (InterruptedException ex) {
             print("stopped sleeping");
         }
-    //    kam.getPartsRobot().pickPartCommand(p.getNestNum()); **COMMENTED OUT FOR UNIT TEST
+        DoPickUpPart(p.getNestNum());
+         //**COMMENTED OUT FOR UNIT TEST
         if (grips.size() == 4 || kit0NeedsParts.isEmpty() || kit1NeedsParts.isEmpty()) {
 
-            putPartsInKit();
+            putPartsInKit(kitNum);
         }
         stateChanged();
     }
 
-    private void putPartsInKit() {
+    private void putPartsInKit(int kitNum) {
         for (Part p : grips) {
-            print("putting part " + p.getString() + " in kit");
+            print("putting part " + p.getString() + " in kit number "+ kitNum);
         }
         try {
             Thread.sleep(3000);
         } catch (InterruptedException ex) {
         }
         grips.clear();
-   //     kam.getPartsRobot().dropOffParts(); **COMMENTED OUT FOR UNIT TEST
+        DoPutInKit(kitNum);
+        //COMMENTED OUT FOR UNIT TEST
        
         //print("Kitneedsparts size =" + kitNeedsParts.size());
         stateChanged();
@@ -239,5 +254,25 @@ public class PartsAgent extends Agent implements PartsInterface {
     @Override
     public void msgHereAreParts(List<Part> parts) {
         throw new UnsupportedOperationException("Not supported yet.");
+    }
+    
+    public void DoMoveToNest(int nestNum){
+            kam.getPartsRobot().moveToNestCommand(nestNum);
+	    //this.client.sendMessage(KAM_PARTS_MOVE_TO_NEST+":"+nestNum);
+    }
+    
+    public void DoPickUpPart(int nestNum){
+     kam.getPartsRobot().pickPartCommand(nestNum);   
+     //this.client.sendMessage(KAM_PARTS_PICK_PART+":"+nestNum);
+    }
+    
+    // Patrick - STOP COMMITTING CODE THAT ISN'T MERGED :P -david
+//    public void DoPutInKit(){
+//      kam.getPartsRobot().dropOffParts();  
+//      //this.client.sendMessage(KAM_PARTS_DROP_OFF_PARTS+":"+kitNum);
+//    }
+    
+    public void DoPutInKit(int kitNum) {
+      kam.getPartsRobot().dropOffParts(kitNum);  
     }
 }

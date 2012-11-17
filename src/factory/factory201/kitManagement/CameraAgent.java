@@ -1,16 +1,17 @@
 package factory.factory201.kitManagement;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import agent.Agent;
-import factory.factory200.kitAssemblyManager.KitAssemblyManager;
 import factory.factory201.interfaces.Camera;
 import factory.factory201.interfaces.KitRobot;
 import factory.factory201.interfaces.NestInterface;
 import factory.general.Kit;
+import factory.general.Message;
 import factory.general.Nest;
 import factory.general.Part;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 /**
  * Agent for the camera.
@@ -29,7 +30,6 @@ public class CameraAgent extends Agent implements Camera {
 
     private KitRobot kitRobotAgent;
     private NestInterface nestAgent;
-    private KitAssemblyManager KAM;
     private List<Nest> nests;
     private List<Kit> kits;
     private Kit tempKit;
@@ -157,7 +157,7 @@ public class CameraAgent extends Agent implements Camera {
     }
 
     // ************ MISC ***********
-    public void setKitRobotAgent(KitRobot agent) {
+    public void setKitRobot(KitRobot agent) {
         kitRobotAgent = agent;
     }
 
@@ -165,22 +165,18 @@ public class CameraAgent extends Agent implements Camera {
         nestAgent = agent;
     }
 
-    public void setKitAssemblyManager(KitAssemblyManager KAM) {
-        this.KAM = KAM;
-    }
-
-    public void setAll(KitAssemblyManager KAM, KitRobot kitRobot,
-            NestInterface nestAgent) {
-        this.KAM = KAM;
+    public void setAll(KitRobot kitRobot, NestInterface nestAgent) {
         this.kitRobotAgent = kitRobot;
         this.nestAgent = nestAgent;
     }
 
     private void DoInspectKit(Kit kit) {
-        KAM.flashKitCamera();
+//        KAM.flashKitCamera();
+    	this.client.sendMessage(Message.KAM_FLASH_KIT_CAMERA);
     }
 
     private void DoInspectNest(Nest nest) {
-        KAM.flashNestCamera(nest.nestNum);
+//        KAM.flashNestCamera(nest.nestNum);
+    	this.client.sendMessage(Message.KAM_FLASH_NEST_CAMERA+":"+nest.nestNum);
     }
 }

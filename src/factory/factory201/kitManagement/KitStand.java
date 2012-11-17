@@ -1,6 +1,5 @@
 package factory.factory201.kitManagement;
 
-import factory.factory200.kitAssemblyManager.KitAssemblyManager;
 import factory.general.*;
 
 /**
@@ -9,7 +8,8 @@ import factory.general.*;
  */
 public class KitStand {
 
-    private KitAssemblyManager KAM;
+    private KitRobotAgent agent;
+    
     /**
      * The kit stand has three stands 1. Temporary stand to hold an empty kit 2.
      * Kitting stand which will hold the kit into which parts are being put 3.
@@ -17,8 +17,9 @@ public class KitStand {
      */
     private Kit[] kits = new Kit[3];
 
-    public KitStand() {
+    public KitStand(KitRobotAgent agent) {
         kits[0] = kits[1] = kits[2] = null;
+        this.agent = agent;
 //        Kit k = new Kit("Test");
 //        k.status = Kit.Status.full;
 //        kits[1] = k;
@@ -35,10 +36,12 @@ public class KitStand {
         if (kits[1] == null) {
             kits[1] = kit;
             kits[1].standNum = Kit.StandNum.one;
+            agent.DoMoveKitFromConveyorTo1();
             return true;
         } else if (kits[0] == null) {
             kits[0] = kit;
             kits[0].standNum = Kit.StandNum.zero;
+            agent.DoMoveKitFromConveyorTo0();
             return true;
         } else {
             return false;
@@ -76,6 +79,14 @@ public class KitStand {
     public boolean isEmpty(int i) {
         return (kits[i] == null);
     }
+    
+    public boolean contains(int i) {
+        return (kits[i] != null);
+    }
+    
+    public boolean availableToGive(int i) {
+        return (kits[i] != null && !kits[i].beingUsedByPartsAgent);
+    }
 
     /**
      * Checks the availability of the kit stand
@@ -100,15 +111,17 @@ public class KitStand {
         if(kit.equals(kits[1])) {
             kits[2] = kits[1];
             kits[1] = null;
-            
+            agent.DoMoveKitFrom1to2();
             if (kits[0] != null) {
                 kits[1] = kits[0];
                 kits[1].standNum = Kit.StandNum.one;
                 kits[0] = null;
+                agent.DoMoveKitFrom0to1();
             }
         } else if(kit.equals(kits[0])) {
             kits[2] = kits[0];
             kits[0] = null;
+            agent.DoMoveKitFrom0to2();
         }
         kits[2].standNum = Kit.StandNum.two;
         
@@ -116,25 +129,5 @@ public class KitStand {
 
     public boolean isEmpty() {
         return (kits[0] == null && kits[1] == null && kits[2] == null);
-    }
-    
-    private void DoMoveKitFromConveyorTo0() {
-        
-    }
-    
-    private void DoMoveKitFromConveyorTo1() {
-        
-    }
-    
-    private void DoMoveKitFrom0to1() {
-//        KAM.getKitRobot().moveEmptyKitToActive();
-    }
-    
-    private void DoMoveKitFrom1to2() {
-        
-    }
-    
-    public void setKitAssemblyManager(KitAssemblyManager KAM) {
-        this.KAM = KAM;
     }
 }

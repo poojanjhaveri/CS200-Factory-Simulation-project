@@ -137,6 +137,13 @@ public void pickUpEmptyKitToActive()
         this.orders.add(12);//move to the active stand position
         this.orders.add(5);//drop the kit onto stand
     }
+    public void moveFrom0To2()
+    {
+        this.orders.add(11);
+        this.orders.add(1);
+        this.orders.add(13);
+        this.orders.add(6);
+    }
 
     /**
     @brief moves the active kit to the camera inspection stand
@@ -266,7 +273,7 @@ public void pickUpEmptyKitToActive()
             } else {
                 x = KAMGraphicPanel.KITROBOT_INITIAL_X;// + 15;
             }
-            if (this.getX() <= KAMGraphicPanel.KITROBOT_INITIAL_X && this.getY() < KAMGraphicPanel.KITROBOT_INITIAL_Y) {
+            if (this.getX() <= KAMGraphicPanel.KITROBOT_INITIAL_X && this.getY() <= KAMGraphicPanel.KITROBOT_INITIAL_Y) {
                 angle *= -1;
             }
             // if(this.getX() == KAMGraphicPanel.KITROBOT_INITIAL_X && this.getY() == KAMGraphicPanel.KITROBOT_INITIAL_Y){
