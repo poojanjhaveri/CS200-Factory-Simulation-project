@@ -172,7 +172,11 @@ public class Server {
 
         // Patrick
         partsAgent.setCamera(cameraAgent);
+<<<<<<< HEAD
         //partsAgent.setKitAssemblyManager(KAM);
+=======
+ //       partsAgent.setKitAssemblyManager(KAM);
+>>>>>>> Kit manager fixed issue
         partsAgent.setKitRobot(kitRobotAgent);
         partsAgent.setNestInterface(nestAgent);
         nestAgent.setCamera(cameraAgent);
