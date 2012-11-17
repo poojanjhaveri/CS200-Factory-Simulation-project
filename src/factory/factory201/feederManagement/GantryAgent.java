@@ -29,14 +29,13 @@ public class GantryAgent extends Agent implements Gantry {
     //holds info about all the feeders that are assigned to the gantry
     private List<myFeeder> myFeeders = Collections.synchronizedList(new ArrayList<myFeeder>());
     private List<myBin> bins = Collections.synchronizedList(new ArrayList<myBin>());
-    private HandleAManager;///<connection to the client
 
     Timer timer=new Timer();
     //---------------------------------------------------------------------------
     //private LMServerMain serverMain;
     //private LMGantryRobotForAgent animation;
     //private LMFeederForAgent animation1;
-    private GantryRobotManager animation=new GantryRobotManager();
+    private GantryRobotManager animation;
     //---------------------------------------------------------------------------
     
     //numOfBins is the number of bins that gantry is initialized to, will be the same for v0, each bin has 8 parts.
@@ -220,7 +219,9 @@ public class GantryAgent extends Agent implements Gantry {
          */
     	//print("Sending message to feeder");
         print("sending message here are parts to " + f.index);
-//    	doSupplyPart(b,f);
+
+    	//doSupplyPart(b,f);
+
 
         f.feeder.msgHereAreParts(parts);
         
@@ -231,10 +232,6 @@ public class GantryAgent extends Agent implements Gantry {
         //update the quantity of bins
         stateChanged();
         return;
-    }
-    public void setClient(HandleAManager i)
-    {
-	this.client = i;
     }
     private void doSupplyPart(myBin b,myFeeder f){
    // 	print("go to bin command");
@@ -262,7 +259,8 @@ public class GantryAgent extends Agent implements Gantry {
 			e.printStackTrace();
 		}
         
-    	animation.ganbot.carryABin(b.index+1);
+    	/*Kevin - Alex commented this out because it was causing compiler errors and we need to run the agent code
+        animation.ganbot.carryABin(b.index+1);*/
         animation.ganbot.moveToFeeder(f.index);
         /*
          this.client.sendMessage(Message.GANTRY_CARRY_A_BIN"+":"+b.index+1); 
@@ -287,6 +285,10 @@ public class GantryAgent extends Agent implements Gantry {
     public void setFeeder(Feeder feeder,int index) {
     //add feeders to the list
     myFeeders.add(new myFeeder(feeder,index));
+    }
+    
+    public void setGantryRobotManager(GantryRobotManager grm) {
+        this.animation = grm;
     }
 
     @Override //Unimplemented

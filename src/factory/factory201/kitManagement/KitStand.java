@@ -1,6 +1,5 @@
 package factory.factory201.kitManagement;
 
-import factory.factory200.kitAssemblyManager.KitAssemblyManager;
 import factory.general.*;
 
 /**
@@ -9,7 +8,8 @@ import factory.general.*;
  */
 public class KitStand {
 
-    private KitAssemblyManager KAM;
+    private KitRobotAgent agent;
+    
     /**
      * The kit stand has three stands 1. Temporary stand to hold an empty kit 2.
      * Kitting stand which will hold the kit into which parts are being put 3.
@@ -17,8 +17,9 @@ public class KitStand {
      */
     private Kit[] kits = new Kit[3];
 
-    public KitStand() {
+    public KitStand(KitRobotAgent agent) {
         kits[0] = kits[1] = kits[2] = null;
+        this.agent = agent;
 //        Kit k = new Kit("Test");
 //        k.status = Kit.Status.full;
 //        kits[1] = k;
@@ -96,28 +97,25 @@ public class KitStand {
      * Moves the full kit to inspection stand and if there is an empty kit in
      * the temporary stand it moves it into the kitting stand
      */
-    public void moveFullKitToInspection() {
-        kits[2] = kits[1];
-        kits[2].standNum = Kit.StandNum.two;
-        if (kits[0] != null) {
-            kits[1] = kits[0];
-            kits[1].standNum = Kit.StandNum.one;
-            DoMoveKitMoveKitFrom0to1();
-            kits[0] = null;
-        } else {
+    public void moveFullKitToInspection(Kit kit) {
+        if(kit.equals(kits[1])) {
+            kits[2] = kits[1];
             kits[1] = null;
+            
+            if (kits[0] != null) {
+                kits[1] = kits[0];
+                kits[1].standNum = Kit.StandNum.one;
+                kits[0] = null;
+            }
+        } else if(kit.equals(kits[0])) {
+            kits[2] = kits[0];
+            kits[0] = null;
         }
+        kits[2].standNum = Kit.StandNum.two;
+        
     }
 
     public boolean isEmpty() {
         return (kits[0] == null && kits[1] == null && kits[2] == null);
-    }
-
-    private void DoMoveKitMoveKitFrom0to1() {
-//        KAM.getKitRobot().moveEmptyKitToActive();
-    }
-
-    public void setKitAssemblyManager(KitAssemblyManager KAM) {
-        this.KAM = KAM;
     }
 }

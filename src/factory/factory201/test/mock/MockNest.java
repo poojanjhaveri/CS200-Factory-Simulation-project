@@ -15,7 +15,7 @@ public class MockNest extends MockAgent implements NestInterface {
 
     @Override
     public void msgNeedPart(Part partType) {
-        
+        log.add(new LoggedEvent("Received msgNeedPart of part " + partType.getString()));
     }
 
     @Override

@@ -1,17 +1,17 @@
 package factory.factory200.kitAssemblyManager;
 
-import factory.factory200.kitAssemblyManager.GUIPartRobot;
-import factory.factory200.kitAssemblyManager.KitDeliveryStation;
-import factory.factory200.kitAssemblyManager.KitStand;
+import factory.factory200.kitAssemblyManager.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import factory.general.Manager;
 import java.awt.Button;
+import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import factory.general.Message;
 import javax.swing.JPanel;
 /**
  * This class keeps track of everything that will be visible to the Kit Assembly
@@ -151,6 +151,8 @@ public class KitAssemblyManager extends Manager implements ActionListener {
 
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+	this.mcon.out(Message.IDENTIFY_KITASSEMBLYMANAGER);
     }
         //tester variables
     JButton partRobot;
@@ -192,13 +194,14 @@ public class KitAssemblyManager extends Manager implements ActionListener {
 
         return tester;
     }
+
     public void processMessage(String msg)
     {
 	super.processMessage(msg);
 	//todo - let me know what functions agent will call so I can process them here
     }      
+
       public static void main(String[] args){
        KitAssemblyManager mgr = new KitAssemblyManager();   
       }
-      
 }

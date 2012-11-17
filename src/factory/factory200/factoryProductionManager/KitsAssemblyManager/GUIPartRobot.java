@@ -39,7 +39,7 @@ public class GUIPartRobot extends GUIRobot {
 
     public GUIPartRobot() {
         // variables will be set in the KAMGraphicsPanel
-        super(KAMGraphicPanel.PARTSROBOTINITIALX, KAMGraphicPanel.PARTSROBOTINITIALY, "pics/partsrobot.png");
+        super(KAMGraphicPanel.PARTSROBOTINITIALX, KAMGraphicPanel.PARTSROBOTINITIALY, "pics/robots/robot2.png");
         this.busy = false;
         this.parts = new PartsRobotInventory();
         this.moveto = 0;

@@ -321,7 +321,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 			msg = msg+this.selectedKits.get(i).getNumber();
 			if(i != this.selectedKits.size()-1)
 				msg=msg+",";
-		}
+				}
 		this.mcon.out(msg);
     }
 

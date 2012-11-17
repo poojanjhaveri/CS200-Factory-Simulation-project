@@ -31,7 +31,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
     public KitRobotAgent(String name) {
         super(name);
 
-        kitStand = new KitStand();
+        kitStand = new KitStand(this);
         partsAgentNeedsEmptyKit = false;
         requestedEmptyKit = false;
     }
@@ -71,9 +71,9 @@ public class KitRobotAgent extends Agent implements KitRobot {
      * @brief Message called by PartsAgent when kit is complete.
      */
     @Override
-    public void msgKitIsFull() {
+    public void msgKitIsFull(Kit kit) {
 //        print("msgKitIsFull: " + kitStand.get(1).name);
-        kitStand.get(1).status = Kit.Status.full;
+        kit.status = Kit.Status.full;
         stateChanged();
     }
 
@@ -101,10 +101,15 @@ public class KitRobotAgent extends Agent implements KitRobot {
         }
         if (!kitStand.isEmpty(1) && kitStand.get(1).status == Kit.Status.full) {
             // if kit is ready for inspection
-            moveFullKitToInspection();
+            moveFullKitToInspection(kitStand.get(1));
             return true;
         }
-        if (partsAgentNeedsEmptyKit && !requestedEmptyKit) {
+        if (!kitStand.isEmpty(0) && kitStand.get(0).status == Kit.Status.full) {
+            // if kit is ready for inspection
+            moveFullKitToInspection(kitStand.get(0));
+            return true;
+        }
+        if (partsAgentNeedsEmptyKit) {
             // if parts agent needs empty kit
             giveEmptyKitToPartsAgent();
             return true;
@@ -127,12 +132,12 @@ public class KitRobotAgent extends Agent implements KitRobot {
         stateChanged();
     }
 
-    private void moveFullKitToInspection() {
-        while (!kitStand.isEmpty(2)) {
-        }
+    @SuppressWarnings("empty-statement")
+    private void moveFullKitToInspection(Kit kit) {
+        while (!kitStand.isEmpty(2));
         print("Moving the full kit: [" + kitStand.get(1).name + "] to the inspection stand.");
-        DoMoveFullKitToInspection();
-        kitStand.moveFullKitToInspection();
+        DoMoveKitFrom1to2();
+        kitStand.moveFullKitToInspection(kit);
         camera.msgKitIsFull(kitStand.get(2));
         stateChanged();
     }
@@ -143,14 +148,16 @@ public class KitRobotAgent extends Agent implements KitRobot {
             partsAgent.msgEmptyKitReady(kitStand.get(1));
             partsAgentNeedsEmptyKit = false;
         } else {
-            getEmptyKitFromConveyor();
+            if(!requestedEmptyKit) {
+                getEmptyKitFromConveyor();
+            }
         }
         stateChanged();
     }
 
     private void getEmptyKitFromConveyor() {
         print("Requesting an empty kit from the conveyor.");
-        DoGetEmptyKit();
+        DoMoveKitFromConveyorTo0();
         conveyor.msgNeedEmptyKit();
         requestedEmptyKit = true;
         stateChanged();
@@ -195,6 +202,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
      */
     public void setKitAssemblyManager(KitAssemblyManager KAM) {
         this.KAM = KAM;
+//        this.kitStand.setKitAssemblyManager(KAM);
     }
 
     public void setAll(Camera camera, Conveyor conveyor,
@@ -205,24 +213,30 @@ public class KitRobotAgent extends Agent implements KitRobot {
         this.KAM = KAM;
     }
 
-    /**
-     * Animation call for agent action
-     */
+
     private void DoRemoveVerifiedKit(Kit k) {
+
         KAM.KAMdropOffFullKit();
+	//this.client.sendMessage(Message.KAM_DROP_OFF_FULL_KIT);
     }
 
-    /**
-     * Animation call for agent action
-     */
-    private void DoMoveFullKitToInspection() {
+    private void DoMoveKitFrom1to2() {
         KAM.getKitRobot().moveActiveKitToInspection();
+	//this.client.sendMessage(Message.KAM_MOVE_ACTIVE_KIT_TO_INSPECTION);
     }
 
-    /**
-     * Animation call for agent action
-     */
-    private void DoGetEmptyKit() {
+    private void DoMoveKitFromConveyorTo0() {
         KAM.getKitRobot().pickUpEmptyKit();
+	//this.client.sendMessage(Message.PICK_UP_EMPTY_KIT);
+    }
+    
+    private void DoMoveKitFromConveyorTo1() {
+        //this.client.sendMessage(Message.PICK_UP_EMPTY_KIT_TO_ACTIVE);
+    }
+    
+    private void DoMoveKitFrom0to1() {
+        this.KAM.getKitRobot().moveEmptyKitToActive();
+	//this.client.sendMessage(Message.MOVE_EMPTY_KIT_TO_ACTIVE);
     }
 }
+

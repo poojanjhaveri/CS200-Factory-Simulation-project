@@ -177,10 +177,10 @@ public class CameraAgent extends Agent implements Camera {
     }
 
     private void DoInspectKit(Kit kit) {
-        KAM.flashKitCamera();
+//        KAM.flashKitCamera();
     }
 
     private void DoInspectNest(Nest nest) {
-        KAM.flashNestCamera(nest.nestNum);
+//        KAM.flashNestCamera(nest.nestNum);
     }
 }
