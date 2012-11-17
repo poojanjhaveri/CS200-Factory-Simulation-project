@@ -128,7 +128,20 @@ public class GantryRobotManager extends Manager implements ActionListener {
 
         return tester;
     }
-    
+     public void processMessage(String msg) {
+	   super.processMessage(msg);
+	   if(msg.contains(Message.MOVE_GANTRY_TO_BIN))
+	   {
+		   this.gs.moveToBin(Integer.parseInt(this.grabParameter(msg)));
+	   }
+	   else if(msg.contains(Message.GANTRY_CARRY_A_BIN))
+	   {
+		   this.gs.purgeBin();
+	   }else if(msg.contains(Message.MOVE_GANTRY_TO_FEEDER))
+	   {
+		   this.gs.moveToFeeder(Integer.parseInt(this.grabParameter(msg)));
+	   }
+   }
     /**
      * @brief Inner class GUIGantryManager
      */
@@ -161,22 +174,8 @@ public class GantryRobotManager extends Manager implements ActionListener {
          */
         public void updatePurgeStation() {
         }
-    }
-
-   public void processMessage(String msg) {
-	   super.processMessage(msg);
-	   if(msg.contains(Message.MOVE_GANTRY_TO_BIN))
-	   {
-		   this.moveToBin(Integer.parseInt(this.grabParameter(msg)));
-	   }
-	   else if(msg.contains(Message.GANTRY_CARRY_A_BIN))//////
-	   {
-		   this.purgeBin();
-	   }else if(msg.contains(Message.MOVE_GANTRY_TO_FEEDER))
-	   {
-		   this.moveToFeeder(Integer.parseInt(this.grabParameter(msg)));
-	   }
-   }
+    
+  
 
    public void moveToBin(Integer binIndex){
 	   ganbot.moveToBin(binIndex);
@@ -200,7 +199,7 @@ public class GantryRobotManager extends Manager implements ActionListener {
 	   }
    }
 
-
+   }
 	public void actionPerformed(ActionEvent ae) {
 		// TODO Auto-generated method stub
 	
