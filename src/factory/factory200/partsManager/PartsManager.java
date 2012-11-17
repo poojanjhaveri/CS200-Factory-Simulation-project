@@ -358,7 +358,9 @@ public class PartsManager extends Manager implements ActionListener {
      * the server
      */
     public void deletePart(Part pt) {
-        this.mcon.out(Message.UNDEFINE_PART+":"+pt.getNumber());
+        String s = Message.UNDEFINE_PART+":"+pt.getNumber();
+        System.out.println("sending message " + s);
+        this.mcon.out(s);
     	bp.removePart(pt);
     	updateComboBox();
     }

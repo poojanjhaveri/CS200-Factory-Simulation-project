@@ -252,7 +252,7 @@ public class Server {
 		}
 
 		// Officially start the agent interaction sequence!
-		partsAgent.msgHereIsKit(kit); // The primary agent
+		//partsAgent.msgHereIsKit(kit); // The primary agent
 	}
 
 	private void debugIfNecessaryForAgents() {

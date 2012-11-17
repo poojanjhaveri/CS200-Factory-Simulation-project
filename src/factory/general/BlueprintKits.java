@@ -76,6 +76,7 @@ public class BlueprintKits implements Blueprint, Serializable {
     
     public void removeKit(Kit in) {
        kits.remove(in);
+       this.save();
     }
     
     /**
@@ -90,6 +91,7 @@ public class BlueprintKits implements Blueprint, Serializable {
 			this.kits.remove((int)i);
 		    }
 	    }
+        this.save();
     }    
     
     
