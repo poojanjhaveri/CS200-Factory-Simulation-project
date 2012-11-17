@@ -63,7 +63,31 @@ public class KitAssemblyManager extends Manager implements ActionListener {
     public void dropOffPart(){
         this.graphics.kitter.dropOffParts();
     }
-
+public void processMessage(String msg)
+    {
+	super.processMessage(msg);
+        
+        if(msg.contains(Message.KAM_DROP_OFF_FULL_KIT))
+        {
+           this.graphics.kitbot.dropOffFullKit();
+        }
+        else if(msg.contains(Message.KAM_MOVE_ACTIVE_KIT_TO_INSPECTION))
+        {
+            this.graphics.kitbot.moveActiveKitToInspection();
+        }
+        else if(msg.contains(Message.KAM_PICK_UP_EMPTY_KIT_TO_ACTIVE))
+        {
+            this.graphics.kitbot.pickUpEmptyKitToActive();
+        } else if(msg.contains(Message.KAM_PICK_UP_EMPTY_KIT))
+        {
+            this.graphics.kitbot.pickUpEmptyKit();
+        } else if(msg.contains(Message.KAM_MOVE_EMPTY_KIT_TO_ACTIVE))
+        {
+            this.graphics.kitbot.moveEmptyKitToActive();
+        }
+    
+	//todo - let me know what functions agent will call so I can process them here
+    }
     public void flashKitCamera()
     {
                 this.graphics.camera.setX(KAMGraphicPanel.KITX);
@@ -152,6 +176,7 @@ public class KitAssemblyManager extends Manager implements ActionListener {
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        System.out.println("Attempting to identify self....");
 	this.mcon.out(Message.IDENTIFY_KITASSEMBLYMANAGER);
     }
         //tester variables
@@ -195,11 +220,7 @@ public class KitAssemblyManager extends Manager implements ActionListener {
         return tester;
     }
 
-    public void processMessage(String msg)
-    {
-	super.processMessage(msg);
-	//todo - let me know what functions agent will call so I can process them here
-    }      
+          
 
       public static void main(String[] args){
        KitAssemblyManager mgr = new KitAssemblyManager();   

@@ -39,12 +39,11 @@ public class Message {
 
     //kitassemblymanager section
     public static final String IDENTIFY_KITASSEMBLYMANAGER = "IDENTIFY_KITASSEMBLYMANAGER";
-    public static final String KAM_GET_EMPTY_KIT_TO_ACTIVE = "KAM_GET_EMPTY_KIT_TO_ACTIVE";
     public static final String KAM_DROP_OFF_FULL_KIT = "KAM_DROP_OFF_FULL_KIT";
     public static final String KAM_MOVE_ACTIVE_KIT_TO_INSPECTION = "KAM_MOVE_ACTIVE_KIT_TO_INSPECTION";
-    public static final String PICK_UP_EMPTY_KIT_TO_ACTIVE = "PICK_UP_EMPTY_KIT_TO_ACTIVE";
-    public static final String PICK_UP_EMPTY_KIT = "PICK_UP_EMPTY_KIT";
-    public static final String MOVE_EMPTY_KIT_TO_ACTIVE = "MOVE_EMPTY_KIT_TO_ACTIVE";
+    public static final String KAM_PICK_UP_EMPTY_KIT_TO_ACTIVE = "PICK_UP_EMPTY_KIT_TO_ACTIVE";
+    public static final String KAM_PICK_UP_EMPTY_KIT = "PICK_UP_EMPTY_KIT";
+    public static final String KAM_MOVE_EMPTY_KIT_TO_ACTIVE = "MOVE_EMPTY_KIT_TO_ACTIVE";
 
     //lanemanager section
 
