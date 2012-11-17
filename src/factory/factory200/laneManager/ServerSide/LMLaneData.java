@@ -33,7 +33,7 @@ public class LMLaneData {
 		signal = laneNum + "&Lane&" + "Switch On";
 		
 		//----------------------------------------------------------------------------------For Test
-		server.sendMessage(signal);
+		server.signalToClient(signal);
 		//-----------------------------------------------------------------------------------------------
 		
 		// Send To FPM
@@ -47,7 +47,7 @@ public class LMLaneData {
 		signal = laneNum + "&Lane&" + "Switch Off";
 		
 		//----------------------------------------------------------------------------------For Test
-		server.sendMessage(signal);
+		server.signalToClient(signal);
 		//---------------------------------------------------------------------------------------------
 		
 		// Send To FPM
@@ -61,7 +61,7 @@ public class LMLaneData {
 		signal = laneNum + "&Lane&" + "Amplitude Strong";
 		
 		//----------------------------------------------------------------------------------For Test
-		server.sendMessage(signal);
+		server.signalToClient(signal);
 		//-----------------------------------------------------------------------------------
 		
 		// Server Data Task
@@ -73,7 +73,7 @@ public class LMLaneData {
 		signal = laneNum + "&Lane&" + "Amplitude Normal";
 		
 		//----------------------------------------------------------------------------------For Test
-		server.sendMessage(signal);
+		server.signalToClient(signal);
 		//------------------------------------------------------------------------------------------------
 		
 		// Server Data Task
@@ -85,7 +85,7 @@ public class LMLaneData {
 		signal = laneNum + "&Lane&" + "Amplitude Weak";
 		
 		//----------------------------------------------------------------------------------For Test
-		server.sendMessage(signal);
+		server.signalToClient(signal);
 		//----------------------------------------------------------------------------------
 		
 		// Server Data Task

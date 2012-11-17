@@ -18,7 +18,7 @@ public class LMPartRobotForAgent {
 		signal = nestNum + "&PartRobot&";
 		
 		//----------------------------------------------------------------------------------For Test
-		server.sendMessage(signal);
+		server.signalToClient(signal);
 		//-----------------------------------------------------------------------------------------------
 		
 		// Send To FPM
