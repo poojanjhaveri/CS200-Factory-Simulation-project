@@ -1,6 +1,7 @@
 package factory.factory200.laneManager.ClientSide;
 
-import factory.general.*;
+import factory.general.Manager;
+import factory.general.Message;
 
 /**
  * This class verifies signals from server( in V0, it is just a platform )
@@ -33,7 +34,7 @@ public class LMSignalFromServerVerification extends Manager{
 		partRobotHandler = new LMPartRobotHandler(app);
 		gantryRobotHandler = new LMGantryRobotHandler(app);
 		
-		super.processMessage(tempMsg);
+		this.sendToServer(Message.IDENTIFY_LANEMANAGER);
 	}
 	
 	/**
@@ -48,6 +49,7 @@ public class LMSignalFromServerVerification extends Manager{
 	 * @param msg : Message from server
 	 */
 	public void processMessage(String msg){
+		super.processMessage(msg);
 		if( msg.indexOf("&Timer&") != -1 ){
 			feedingTiming++;
 			app.getGraphicsPanel().getAllLane().laneMove();

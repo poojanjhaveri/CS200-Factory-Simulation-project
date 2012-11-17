@@ -61,10 +61,12 @@ public class KitManager extends Manager  implements ActionListener {
           
           JButton createkitbutton;
           JButton deletekitbutton;
+          JButton updatekitbutton;
           
           ArrayList<Part> partlist = new ArrayList();
           ArrayList<JButton> jbtnlist = new ArrayList();
           JButton b1,b2,b3,b4,b5,b6,b7,b0;
+          JButton ub1,ub2,ub3,ub4,ub5,ub6,ub7,ub0;
     
     
 	
@@ -250,6 +252,91 @@ public class KitManager extends Manager  implements ActionListener {
             tabbedPane.addTab("Modify Kit", i, updatekit);
             
             
+            c.ipady=10;
+            c.ipadx=10;
+            c.insets=new Insets(0, 0, 15, 0);;
+          
+            
+            c.gridx=0;
+            c.gridy=0;
+            updatekit.add(new JLabel("Kit Name :"),c);
+            
+            c.gridx=1;
+            c.gridy=0;
+            kitname = new JTextField(15);
+            updatekit.add(kitname,c);
+            
+            c.gridx=0;
+            c.gridy=1;
+            updatekit.add(new JLabel("Select part:"),c);
+            
+ 
+            c.gridx=1;
+            c.gridy=1;
+            System.out.println("Size of part list is "+bppart.getSize());
+            
+            create_combo = new JComboBox(); // parts list
+            for(int j=0;j<this.bppart.getSize();j++){
+    		 create_combo.addItem(this.bppart.getPartAt(j).getName()); 
+               
+            }
+            
+            updatekit.add(create_combo,c);
+            
+            c.gridx=0;
+            c.gridy=2;
+            c.gridwidth=2;
+            
+            JPanel upartgrid = new JPanel();
+            upartgrid.setLayout(new GridLayout(2,4));
+            
+            ub0 = new JButton();
+            ub1 = new JButton();
+            ub2 = new JButton();
+            ub3 = new JButton();
+            ub4 = new JButton();
+            ub5 = new JButton();
+            ub6 = new JButton();
+            ub7 = new JButton();
+            
+            
+            upartgrid.add(b0);
+            upartgrid.add(b1);
+            upartgrid.add(b2);
+            upartgrid.add(b3);
+            upartgrid.add(b4);
+            upartgrid.add(b5);
+            upartgrid.add(b6);
+            upartgrid.add(b7);
+            
+            ub0.addActionListener(new itembutton());
+            ub1.addActionListener(new itembutton());
+            ub2.addActionListener(new itembutton());
+            ub3.addActionListener(new itembutton());
+            ub4.addActionListener(new itembutton());
+            ub5.addActionListener(new itembutton());
+            ub6.addActionListener(new itembutton());
+            ub7.addActionListener(new itembutton());
+           
+             
+            
+     //       b1.addActionListener(new partbutton());
+            
+            
+            
+            updatekit.add(upartgrid,c);
+            
+            c.gridx=0;
+            c.gridy=3;
+            c.gridwidth=2;
+            updatekitbutton = new JButton("Create Kit");
+            updatekitbutton.addActionListener(this);
+            
+            updatekit.add(updatekitbutton,c);
+            
+            
+            
+            
             
             deletekit = new JPanel();
             
@@ -375,9 +462,9 @@ public class KitManager extends Manager  implements ActionListener {
             
             
             // this.mcon.out(Message.UNDEFINE_KIT+":"+in.serialize());
-              //  System.out.println("Updates kits list to the server");
+            //  System.out.println("Updates kits list to the server");
             
-        
+ 
         }
          
          public void processtabchange()
@@ -396,61 +483,63 @@ public class KitManager extends Manager  implements ActionListener {
              
              public void actionPerformed(ActionEvent e) {
                     
+                 
+                  Integer i = create_combo.getSelectedIndex();
                  if( e.getSource() == b0)
                  {
-                     Integer i = create_combo.getSelectedIndex();
-                     b1.setIcon(bppart.getPartAt(i).getGUIPart().getImage());
+                    
+                     b0.setIcon(bppart.getPartAt(i).getGUIPart().getImage());
                      partlist.add(0, bppart.getPartAt(i));
-                     System.out.println(partlist.size());
+                   
                  }
                  if( e.getSource() == b1)
                  {
-                     Integer i = create_combo.getSelectedIndex();
+                    
                      b1.setIcon(bppart.getPartAt(i).getGUIPart().getImage());
-                     partlist.add(0, bppart.getPartAt(i));
-                     System.out.println(partlist.size());
+                     partlist.add(1, bppart.getPartAt(i));
+                     
                  }
                  if( e.getSource() == b2)
                  {
-                     Integer i = create_combo.getSelectedIndex();
-                     b1.setIcon(bppart.getPartAt(i).getGUIPart().getImage());
-                     partlist.add(0, bppart.getPartAt(i));
-                     System.out.println(partlist.size());
+                    
+                     b2.setIcon(bppart.getPartAt(i).getGUIPart().getImage());
+                     partlist.add(2, bppart.getPartAt(i));
+                    
                  }
                  if( e.getSource() == b3)
                  {
-                     Integer i = create_combo.getSelectedIndex();
-                     b1.setIcon(bppart.getPartAt(i).getGUIPart().getImage());
-                     partlist.add(0, bppart.getPartAt(i));
-                     System.out.println(partlist.size());
+                     
+                     b3.setIcon(bppart.getPartAt(i).getGUIPart().getImage());
+                     partlist.add(3, bppart.getPartAt(i));
+                     
                  }
                  if( e.getSource() == b4)
                  {
-                     Integer i = create_combo.getSelectedIndex();
-                     b1.setIcon(bppart.getPartAt(i).getGUIPart().getImage());
-                     partlist.add(0, bppart.getPartAt(i));
-                     System.out.println(partlist.size());
+                    
+                     b4.setIcon(bppart.getPartAt(i).getGUIPart().getImage());
+                     partlist.add(4, bppart.getPartAt(i));
+                     
                  }
                  if( e.getSource() == b5)
                  {
-                     Integer i = create_combo.getSelectedIndex();
+                     
                      b5.setIcon(bppart.getPartAt(i).getGUIPart().getImage());
                      partlist.add(5, bppart.getPartAt(i));
-                     System.out.println(partlist.size());
+                     
                  }
                  if( e.getSource() == b6)
                  {
-                     Integer i = create_combo.getSelectedIndex();
+                     
                      b6.setIcon(bppart.getPartAt(i).getGUIPart().getImage());
                      partlist.add(6, bppart.getPartAt(i));
-                     System.out.println(partlist.size());
+                     
                  }
                  if( e.getSource() == b7)
                  {
-                     Integer i = create_combo.getSelectedIndex();
+                     
                      b7.setIcon(bppart.getPartAt(i).getGUIPart().getImage());
                      partlist.add(7, bppart.getPartAt(i));
-                     System.out.println(partlist.size());
+                     
                  }
                     
                    

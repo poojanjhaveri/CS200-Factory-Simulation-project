@@ -23,6 +23,7 @@ public class HandleAManager implements Runnable {
      * Used to identify a HandleAManager's connection.
      * 0 - GantryRobotManager
      * 1 - KitAssemblyManager
+     * 2 - LaneManager
      */
     Integer id;
 
@@ -37,11 +38,11 @@ public class HandleAManager implements Runnable {
         System.out.println("Sending test message to client...");
         pw.println(Message.TEST_CLIENT);
     }
-
+    /*DEPRECATED SEE SENDMESSAGE
     public void sendToClient(String msg) {
         pw.println(msg);
     }
-
+    */
     // Key method of Runnable; when this method ends, the thread stops
     public void run() {
         try {
@@ -94,7 +95,7 @@ public class HandleAManager implements Runnable {
      */
     private void processMessage(String msg) {
         if (msg == null) {
-            System.out.println("NULL MESSAGE RECEIVED ON THE SERVER.");
+            p.println("NULL MESSAGE RECEIVED ON THE SERVER.");
             return;
         }
         // Decide action based on message from client
@@ -108,12 +109,16 @@ public class HandleAManager implements Runnable {
                 System.out.println("Number of clients is 0; exiting Server");
                 System.exit(0);
             }
-        } else if (msg.contains(Message.IDENTIFY_GANTRYROBOTMANAGER)) {
-            System.out.println("SERVER HAS IDENTIFIED A GANTRYROBOTMANAGER");
+        } else if(msg.contains(Message.IDENTIFY_LANEMANAGER)) {
+        	p.println("SERVER HAS IDENTIFIED A LANEMANAGER");
+        	this.id = 2;
+//        	this.server.getServerLM().setClient(this); // NEED THIS, DONGYOUNG
+    	} else if (msg.contains(Message.IDENTIFY_GANTRYROBOTMANAGER)) {
+            p.println("SERVER HAS IDENTIFIED A GANTRYROBOTMANAGER");
             this.id = 0;
             this.server.setGantryAgentClient(this); // make sure client is initialized - SOLVE THIS BY INSTANTIATING AGENTS ON SERVER ALREADY
         } else if (msg.contains(Message.IDENTIFY_KITASSEMBLYMANAGER)) {
-            System.out.println("SERVER HAS IDENTIFIED A KITASSEMBLYMANAGER");
+            p.println("SERVER HAS IDENTIFIED A KITASSEMBLYMANAGER");
             this.id = 1;
             this.server.setKitRobotAgentClient(this);
             this.server.setCameraAgentClient(this);

@@ -49,7 +49,25 @@ public class KitAssemblyManager extends Manager implements ActionListener {
             this.graphics.kitbot.pickUpEmptyKit();
         } else if (msg.contains(Message.KAM_MOVE_EMPTY_KIT_TO_ACTIVE)) {
             this.graphics.kitbot.moveEmptyKitToActive();
-        } else if (msg.contains(Message.KAM_FLASH_KIT_CAMERA)) {
+
+        }else if(msg.contains(Message.KAM_FLASH_KIT_CAMERA))
+	    {
+this.flashKitCamera();
+	    }else if(msg.contains(Message.KAM_FLASH_NEST_CAMERA))
+	    {
+this.flashNestCamera(Integer.parseInt(this.grabParameter(msg)));
+	    }else if(msg.contains(Message.KAM_PARTS_MOVE_TO_NEST))
+	    {
+		this.getPartsRobot().moveToNestCommand(Integer.parseInt(this.grabParameter(msg)));
+	    }else if(msg.contains(Message.KAM_PARTS_PICK_PART))
+	    {
+		this.getPartsRobot().pickPartCommand(Integer.parseInt(this.grabParameter(msg)));
+	    }else if(msg.contains(Message.KAM_PARTS_DROP_OFF_PARTS))
+	    {
+		this.getPartsRobot().dropOffParts(Integer.parseInt(this.grabParameter(msg)));
+	    }
+    
+         else if (msg.contains(Message.KAM_FLASH_KIT_CAMERA)) {
             this.flashKitCamera();
         } else if (msg.contains(Message.KAM_FLASH_NEST_CAMERA)) {
             this.flashNestCamera(Integer.parseInt(this.grabParameter(msg)));
