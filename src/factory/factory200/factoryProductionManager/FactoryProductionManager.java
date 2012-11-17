@@ -7,7 +7,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 import factory.general.BlueprintKits;
-
+import factory.general.Util;
 import factory.general.Kit;
 import factory.general.Manager;
 import factory.general.Message;
@@ -319,13 +319,19 @@ public class FactoryProductionManager extends Manager implements ActionListener 
     void start() {
 		//add this when you change arraylist to kits
 		String msg = Message.PUSH_PRODUCTION_QUEUE+":";
-		for(int i = 0; i != this.selectedKits.size(); i++)
+		/*for(int i = 0; i != this.selectedKits.size(); i++)
 		{
 			msg = msg+this.selectedKits.get(i).getNumber();
 			if(i != this.selectedKits.size()-1)
 				msg=msg+",";
-				}
-		this.mcon.out(msg);
+				}*/
+		ArrayList<String> serialized = new ArrayList<String>();
+		for(int i = 0; i != this.selectedKits.size(); i++)
+		    {
+			this.serialized.add(this.selectedKits.get(i).getNumber()+"");
+		    }
+		msg = msg + Util.serialize(serialized);
+		this.sendToServer(msg);
     }
 
     /**
@@ -370,7 +376,8 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 			System.out.println("GRABBED A NEW BLUEPRINTKITS FROM THE SERVER");
 			this.kitsbp.debug();
 	    }
-	
+
+	//DONGYOUNG: please run each manager's processMessage(msg) function here	
 		// Lane Manager
 	    gfx.verifyMessage(msg);
     }

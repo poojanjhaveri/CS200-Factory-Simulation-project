@@ -153,7 +153,17 @@ public class HandleAManager implements Runnable {
              Integer id = Integer.parseInt(this.grabParameter(msg));
              System.out.println("Undefining part " + id);
             fstate.removeKitById(id);
-        }
+        }else if(msg.contains(Message.PUSH_PRODUCTION_QUEUE))
+	    {
+		ArrayList<Kit> queue = new ArrayList<Kit>();
+		ArrayList<String> deserialized = Util.deserialize(this.grabParameter(msg));
+		for(int i = 0; i != this.deserialized.size(); i++)
+		    {
+			this.queue.add(this.server.getKitById(Integer.parseInt(this.deserialized.get(i))));
+			System.out.println(this.deserialized.get(i));
+		    }
+		//now what do i do with the queue?
+	    }
     }
 
     /**
