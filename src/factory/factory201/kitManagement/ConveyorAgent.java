@@ -1,7 +1,6 @@
 package factory.factory201.kitManagement;
 
 import agent.Agent;
-import factory.factory200.kitAssemblyManager.KitAssemblyManager;
 import factory.factory201.interfaces.Conveyor;
 import factory.factory201.interfaces.KitRobot;
 import factory.general.Kit;
@@ -31,7 +30,6 @@ public class ConveyorAgent extends Agent implements Conveyor {
     private Kit tempKit;
     private KitRobot kitRobotAgent;
     private Timer removeKits;
-    private KitAssemblyManager KAM;
 
     public ConveyorAgent(String name) {
         super(name);
@@ -138,14 +136,6 @@ public class ConveyorAgent extends Agent implements Conveyor {
     }
 
     // ************ MISC ***********
-    /**
-     * Sets the KitRobotAgent
-     *
-     * @param agent KitRobotAgent
-     */
-    public void setKitRobotAgent(KitRobot agent) {
-        kitRobotAgent = agent;
-    }
 
     public void generateKit(int num) {
         num--;
@@ -185,16 +175,16 @@ public class ConveyorAgent extends Agent implements Conveyor {
             removeKits.restart();
         }
     }
-
-    public void setKitAssemblyManager(KitAssemblyManager KAM) {
-        this.KAM = KAM;
+    
+    /**
+     * Sets the KitRobotAgent
+     *
+     * @param agent KitRobotAgent
+     */
+    public void setKitRobot(KitRobot agent) {
+        kitRobotAgent = agent;
     }
-
-    public void setAll(KitAssemblyManager KAM, KitRobot kitRobot) {
-        this.KAM = KAM;
-        this.kitRobotAgent = kitRobot;
-    }
-
+    
     private void DoAddKit(Kit k) {
         //Needs to be done
     }

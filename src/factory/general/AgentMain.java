@@ -53,9 +53,9 @@ public class AgentMain {
         /*========== Pass proper agents to everyone (connect agents and managers) ==========*/
 
         // Alex
-        kitRobot.setAll(camera, conveyor, partsAgent, KAM);
-        camera.setAll(KAM, kitRobot, nestAgent);
-        conveyor.setAll(KAM, kitRobot);
+        kitRobot.setAll(camera, conveyor, partsAgent);
+        camera.setAll(kitRobot, nestAgent);
+        conveyor.setKitRobot(kitRobot);
 
         // Patrick
         partsAgent.setCamera(camera);
@@ -129,7 +129,7 @@ public class AgentMain {
         
         /*========== Turn on or off debugging (print statements) ==========*/
         // Just for debugging; put 'true' to turn off print statements
-        if (!TEST_MODE) {
+        if (TEST_MODE) {
             for (int i = 0; i < LANE; i++) {
                 if (i < FEEDER) {
                     feeder[i].print = false;
