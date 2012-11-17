@@ -1,5 +1,8 @@
 package factory.factory200.gantryRobotManager;
 
+/**
+ * @author Yuting Liu
+ */
 import javax.swing.ImageIcon;
 
 public class PurgeStation {
