@@ -109,7 +109,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
             moveFullKitToInspection(kitStand.get(0));
             return true;
         }
-        if (partsAgentNeedsEmptyKit && !requestedEmptyKit) {
+        if (partsAgentNeedsEmptyKit) {
             // if parts agent needs empty kit
             giveEmptyKitToPartsAgent();
             return true;
@@ -148,7 +148,9 @@ public class KitRobotAgent extends Agent implements KitRobot {
             partsAgent.msgEmptyKitReady(kitStand.get(1));
             partsAgentNeedsEmptyKit = false;
         } else {
-            getEmptyKitFromConveyor();
+            if(!requestedEmptyKit) {
+                getEmptyKitFromConveyor();
+            }
         }
         stateChanged();
     }
@@ -213,6 +215,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
 
 
     private void DoRemoveVerifiedKit(Kit k) {
+
         KAM.KAMdropOffFullKit();
 	//this.client.sendMessage(Message.KAM_DROP_OFF_FULL_KIT);
     }
