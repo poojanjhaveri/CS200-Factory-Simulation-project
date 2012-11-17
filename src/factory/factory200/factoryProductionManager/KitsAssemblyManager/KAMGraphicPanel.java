@@ -12,6 +12,7 @@ package factory.factory200.factoryProductionManager.KitsAssemblyManager;
  *
  * @author Deepa
  */
+import factory.factory200.kitAssemblyManager.*;
 import factory.general.GUIPart;
 import factory.general.Part;
 import java.awt.*;
