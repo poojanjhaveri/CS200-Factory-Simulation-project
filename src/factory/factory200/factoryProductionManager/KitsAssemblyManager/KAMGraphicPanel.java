@@ -435,7 +435,7 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
 
     public void paint(JPanel j, Graphics g) {
         Graphics2D g2 = (Graphics2D) g;
-        Rectangle2D.Double backgroundRectangle = new Rectangle2D.Double(0, 0, 700, 700);
+        Rectangle2D.Double backgroundRectangle = new Rectangle2D.Double(0, 0, 500, 700);
         g2.setColor(Color.GRAY.darker().darker());//dark dark green background
         g2.fill(backgroundRectangle);
         paintNests(j, g2);

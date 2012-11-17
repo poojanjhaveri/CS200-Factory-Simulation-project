@@ -190,8 +190,8 @@ public class KitAssemblyManager extends JPanel implements ActionListener {
         this.add(graphics);
 
 
-        int x = 700;
-        this.setSize(700 + x, 700);
+        //int x = 700;
+        //this.setSize(700 + x, 700);
 
         this.graphics.setVisible(true);
 
