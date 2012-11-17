@@ -84,7 +84,13 @@ public void processMessage(String msg)
         } else if(msg.contains(Message.KAM_MOVE_EMPTY_KIT_TO_ACTIVE))
         {
             this.graphics.kitbot.moveEmptyKitToActive();
-        }
+        }else if(msg.contains(Message.KAM_FLASH_KIT_CAMERA))
+	    {
+this.flashKitCamera();
+	    }else if(msg.contains(Message.KAM_FLASH_NEST_CAMERA))
+	    {
+this.flashNestCamera(Integer.parseInt(this.grabParameter(msg)));
+	    }
     
 	//todo - let me know what functions agent will call so I can process them here
     }

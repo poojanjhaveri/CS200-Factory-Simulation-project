@@ -44,7 +44,8 @@ public class Message {
     public static final String KAM_PICK_UP_EMPTY_KIT_TO_ACTIVE = "PICK_UP_EMPTY_KIT_TO_ACTIVE";
     public static final String KAM_PICK_UP_EMPTY_KIT = "PICK_UP_EMPTY_KIT";
     public static final String KAM_MOVE_EMPTY_KIT_TO_ACTIVE = "MOVE_EMPTY_KIT_TO_ACTIVE";
-
+    public static final String KAM_FLASH_KIT_CAMERA;
+    public static final String KAM_FLASH_NEST_CAMERA;
     //lanemanager section
 
 

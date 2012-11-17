@@ -48,8 +48,12 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
     public static final Integer LANE6Y = 75/2 + 6 * 75;///<y-coordinate of lane 6's nest
     public static final Integer LANE7Y = 75/2 + 7 * 75;///<y-coordinate of lane 7's nest
     public static final Integer RAILX = 75/2 + 8 * 75;///<fixed x-coordinate of the rail the parts robot traverses
-    public static final Integer PARTS_ROBOT_KITX=KAMGraphicPanel.KITX+20;
-    public static final Integer PARTS_ROBOT_KITY=KAMGraphicPanel.KIT1Y+20;
+    
+    public static final Integer PARTS_ROBOT_KIT0X=KAMGraphicPanel.KITX+20;
+    public static final Integer PARTS_ROBOT_KIT0Y=KAMGraphicPanel.KIT0Y+20;
+    
+    public static final Integer PARTS_ROBOT_KIT1X=KAMGraphicPanel.KITX+20;
+    public static final Integer PARTS_ROBOT_KIT1Y=KAMGraphicPanel.KIT1Y+20;
     public static final Integer PARTSROBOT_VELOCITYX=2;
     public static final Integer PARTSROBOT_VELOCITYY= 2;     
     public static final Integer PARTSROBOTINITIALX = 400;///<x coordinate for parts robot to spawn in
