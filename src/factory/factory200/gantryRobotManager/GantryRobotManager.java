@@ -220,8 +220,8 @@ public class GantryRobotManager extends Manager implements ActionListener {
 	
 	
 	  public static void main(String[] args){
-	       GantryRobotManager mgr = new GantryRobotManager();   
-	      }
+		  GantryRobotManager mgr = new GantryRobotManager();   
+	  }
 	  
 	  
 	  /*public void doSupplyPart(int binNum, int feederNum){

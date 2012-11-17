@@ -25,7 +25,7 @@ import factory.factory201.partsManagement.PartsAgent;
  * clients and creates a new thread for each.
  * @author David Zhang, YiWei Roy Zheng
  */
-public class Server { // KitAssemblyAgent
+public class Server {
 
 	/**
 	 * Instance fields
@@ -175,7 +175,6 @@ public class Server { // KitAssemblyAgent
         // Kevin
         gantryAgent.setGantryRobotManager(GRM);
         for (int i = 0, j = 0; i < FEEDER; i++, j++) {
-            
             feederAgents[i].setGantry(gantryAgent);
             feederAgents[i].setLeftLane(laneAgents[j]);
             feederAgents[i].setRightLane(laneAgents[++j]);
