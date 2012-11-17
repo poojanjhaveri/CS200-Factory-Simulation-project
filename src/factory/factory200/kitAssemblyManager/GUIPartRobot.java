@@ -25,7 +25,8 @@ Orders
 8 - drop parts onto kit
 ...
 10-17 - move to nest 0-7
-18 - move to kit
+18 - move to kit0
+19 - move to kit1
 20 - move to default
  * @brief Robot that creates kits using parts from the lane nests
  * @author YiWei Roy Zheng
@@ -89,8 +90,12 @@ public class GUIPartRobot extends GUIRobot {
     /**
     @brief moves the parts robot to the dropoff site for parts
      */
-    public void moveToKit() {
-        this.moveTo(KAMGraphicPanel.PARTS_ROBOT_KITX, KAMGraphicPanel.PARTS_ROBOT_KITY);
+    public void moveToKit0() {
+        this.moveTo(KAMGraphicPanel.PARTS_ROBOT_KIT0X, KAMGraphicPanel.PARTS_ROBOT_KIT0Y);
+    }
+    public void moveToKit1()
+    {
+        this.moveTo(KAMGraphicPanel.PARTS_ROBOT_KIT1X,KAMGraphicPanel.PARTS_ROBOT_KIT1Y);
     }
 
     public void update() {
@@ -114,8 +119,10 @@ public class GUIPartRobot extends GUIRobot {
         this.orders.add(i);
     }
 
-    public void dropPartCommand() {
-        this.orders.add(8);
+    public void dropPartCommand(Integer nest) {
+        if(nest == 0 || nest == 1)
+        this.orders.add(nest+8);
+        else System.out.println("Invalid attempt to drop part off in nest " +nest);
     }
 
     public void cheat() {
@@ -124,16 +131,16 @@ public class GUIPartRobot extends GUIRobot {
         pickPartCommand(0);
         pickPartCommand(0);
         pickPartCommand(0);
-        dropOffParts();
+        dropOffParts(1);
     }
 
     public void moveToNestCommand(Integer i) {
         this.orders.add(i + 10);
     }
 
-    public void dropOffParts() {
+    public void dropOffParts(Integer i) {
         this.orders.add(18);
-        dropPartCommand();
+        dropPartCommand(i);
     }
 
     /**
@@ -154,8 +161,10 @@ public class GUIPartRobot extends GUIRobot {
                 this.moveToNest(i - 10);
                 break;
             case 18:
-                this.moveToKit();
+                this.moveToKit1();
                 break;
+            case 19:
+                this.moveToKit0();
             case 20:
                 this.moveToDefault();
                 break;
