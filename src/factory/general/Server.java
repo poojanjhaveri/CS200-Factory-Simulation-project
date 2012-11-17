@@ -78,7 +78,8 @@ public class Server { // KitAssemblyAgent
 	 * @param portNumber - the port number to create the server on.
 	 */
 	public Server(int portNumber) {
-//		prepareAllAgents(); // Prepare all agents; based on AgentMain.java
+        // TODO: uncomment when ready
+		prepareAllAgents(); // Prepare all agents; based on AgentMain.java
 		numClients = 0; // Initialize num clients is 0
 		start(portNumber); // Start listening for clients and making new HandleAManager instances
 	}
