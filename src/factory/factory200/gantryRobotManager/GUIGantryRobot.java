@@ -104,13 +104,7 @@ public class GUIGantryRobot extends MovingDrawable{
     {
     	moveTo(GantryRobotManager.FEED1X,GantryRobotManager.FEED1Y);
     }
-    
-    public boolean hasArrivedAtPurge(){
-    	if(this.getX()==GantryRobotManager.DUMPX && this.getY()==GantryRobotManager.DUMPY)
-    		return true;
-    	else
-    		return false;
-    }
+   
     
     public void binPurged(){
     	this.bin = null;
@@ -134,9 +128,21 @@ public class GUIGantryRobot extends MovingDrawable{
 		this.bin.setPartToNull();
 	}
     public void moveToDump() {
-        this.moveTo(GantryRobotManager.DUMPX,GantryRobotManager.DUMPY);
+        this.moveTo(210,550);//,GantryRobotManager.DUMPY);
     }
     
+    
+    public void RobotInitialization(){
+    	this.moveTo(GantryRobotManager.ROBOT_INITIAL_X,GantryRobotManager.ROBOT_INITIAL_Y);
+    }
+    
+    public boolean arrivedAtPurge(){
+    	if(this.getCoordinate().getX()==210 && this.getCoordinate().getY()==550){
+    		return true;
+    	}
+    	else 
+    		return false;
+    }
     /**
     brief extends the arm
     extends the arm

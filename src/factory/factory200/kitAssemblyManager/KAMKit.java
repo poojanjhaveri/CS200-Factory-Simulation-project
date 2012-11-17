@@ -81,6 +81,7 @@ public class KAMKit {
             for(int i=4;i<parts.size();i++){
               parts.get(i).getGUIPart().setX(this.getX()+20);
               parts.get(i).getGUIPart().setY(this.getY()+25*(i-4));
+              System.out.println("parts size: "+parts.size());
             }
         }
     }
