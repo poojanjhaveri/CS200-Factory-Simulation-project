@@ -110,7 +110,11 @@ public class HandleAManager implements Runnable {
                 System.out.println("Number of clients is 0; exiting Server");
                 System.exit(0);
             }
-        } else if(msg.contains(Message.IDENTIFY_LANEMANAGER)) {
+        } else if(msg.contains(Message.IDENTIFY_FACTORYPRODUCTIONMANAGER))
+        {
+            this.server.setFactoryProductionManagerToAll(this);
+        }
+        else if(msg.contains(Message.IDENTIFY_LANEMANAGER)) {
         	p.println("SERVER HAS IDENTIFIED A LANEMANAGER");
         	this.id = 2;
 //        	this.server.getServerLM().setClient(this); // NEED THIS, DONGYOUNG
