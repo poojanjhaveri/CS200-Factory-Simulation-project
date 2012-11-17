@@ -57,6 +57,7 @@ public class KitManager extends Manager  implements ActionListener {
           JPanel dk_main;
           JTextField kitname;
           JComboBox create_combo;
+          JComboBox ucreate_combo;
           JComboBox delete_combo;
           JComboBox update_kitcombo;
           JComboBox update_partcombo;
@@ -274,8 +275,15 @@ public class KitManager extends Manager  implements ActionListener {
             c.gridx=1;
             c.gridy=0;
             update_kitcombo = new JComboBox();  
+            update_kitcombo.addActionListener (new ActionListener () {
+                public void actionPerformed(ActionEvent e) {
+                             updateinfoforkit();
+                         }
+}                   );
+            
+            
             for(int j=0;j<this.bpkit.getSize();j++)
-    		 update_kitcombo.addItem(this.bpkit.getKitAt(j)); 
+    		 update_kitcombo.addItem(this.bpkit.getKitAt(j).getName()); 
             uk_main.add(update_kitcombo,c);
             
                  
@@ -288,13 +296,13 @@ public class KitManager extends Manager  implements ActionListener {
             c.gridy=1;
             System.out.println("Size of part list is "+bppart.getSize());
             
-            create_combo = new JComboBox(); // parts list
+            ucreate_combo = new JComboBox(); // parts list
             for(int p=0;p<this.bppart.getSize();p++){
-    		 create_combo.addItem(this.bppart.getPartAt(p).getName()); 
+    		 ucreate_combo.addItem(this.bppart.getPartAt(p).getName()); 
                
             }
             
-             uk_main.add(create_combo,c);
+             uk_main.add(ucreate_combo,c);
             
             c.gridx=0;
             c.gridy=2;
@@ -354,7 +362,7 @@ public class KitManager extends Manager  implements ActionListener {
             
             delete_combo = new JComboBox();
             for(int m=0;m<this.bpkit.getSize();m++){
-    		 delete_combo.addItem(this.bpkit.getKitAt(m)); 
+    		 delete_combo.addItem(this.bpkit.getKitAt(m).getName()); 
                
             }
             
@@ -372,7 +380,6 @@ public class KitManager extends Manager  implements ActionListener {
         
           public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == createkitbutton) {
-                System.out.println("kit Created");
                 createKit();
                 }
                 if (e.getSource() == deletekitbutton) {
@@ -438,11 +445,13 @@ public class KitManager extends Manager  implements ActionListener {
 
         public void createKit()
         {
-        
+            if(partlist.size()!=0 && kitname.getText()!=null)
+            {
             Kit newkit = new Kit(kitname.getText(),"description");//this will be the kit that just got made
             newkit.setParts(partlist);
         
             String msg = Message.DEFINE_NEW_KIT+":"+newkit.serialize();
+            System.out.println("kit Created");
             System.out.println(msg);
             this.mcon.out(msg);
             
@@ -450,6 +459,7 @@ public class KitManager extends Manager  implements ActionListener {
             
             prepareMainPane();
             tabbedPane.setSelectedIndex(0);
+            }
         }
 
         
@@ -499,10 +509,28 @@ public class KitManager extends Manager  implements ActionListener {
               Integer t = tabbedPane.getSelectedIndex();
                 if (t==2)
                 {
-                     updateComboBox();
+                 //    updateComboBox();
                 }   
              
          }
+         
+         
+          public void updateinfoforkit()
+         {
+              ub0.setIcon(bpkit.getKitAt(ucreate_combo.getSelectedIndex()).parts.get(0).getGUIPart().getImage());   
+             
+              ub1.setIcon(bpkit.getKitAt(ucreate_combo.getSelectedIndex()).parts.get(1).getGUIPart().getImage());   
+              ub2.setIcon(bpkit.getKitAt(ucreate_combo.getSelectedIndex()).parts.get(2).getGUIPart().getImage());   
+              ub3.setIcon(bpkit.getKitAt(ucreate_combo.getSelectedIndex()).parts.get(3).getGUIPart().getImage());   
+              ub4.setIcon(bpkit.getKitAt(ucreate_combo.getSelectedIndex()).parts.get(4).getGUIPart().getImage());   
+              ub5.setIcon(bpkit.getKitAt(ucreate_combo.getSelectedIndex()).parts.get(5).getGUIPart().getImage());   
+              ub6.setIcon(bpkit.getKitAt(ucreate_combo.getSelectedIndex()).parts.get(6).getGUIPart().getImage());   
+              ub7.setIcon(bpkit.getKitAt(ucreate_combo.getSelectedIndex()).parts.get(7).getGUIPart().getImage());   
+              
+         }
+         
+         
+         
          
          
        public class itembutton implements ActionListener

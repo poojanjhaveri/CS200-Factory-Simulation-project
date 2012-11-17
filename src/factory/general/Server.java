@@ -172,7 +172,7 @@ public class Server {
 
         // Patrick
         partsAgent.setCamera(cameraAgent);
-        partsAgent.setKitAssemblyManager(KAM);
+        //partsAgent.setKitAssemblyManager(KAM);
         partsAgent.setKitRobot(kitRobotAgent);
         partsAgent.setNestInterface(nestAgent);
         nestAgent.setCamera(cameraAgent);
@@ -252,7 +252,7 @@ public class Server {
 		}
 
 		// Officially start the agent interaction sequence!
-		partsAgent.msgHereIsKit(kit); // The primary agent
+		//partsAgent.msgHereIsKit(kit); // The primary agent
 	}
 
 	private void debugIfNecessaryForAgents() {

@@ -52,6 +52,7 @@ public class BlueprintParts implements Blueprint, Serializable {
     }
     public void removePart(Part pt) {
        parts.remove(pt);
+       this.save();
     }
     /**
 @brief removes a part by its id
@@ -65,6 +66,7 @@ public class BlueprintParts implements Blueprint, Serializable {
 			this.parts.remove((int)i);
 		    }
 	    }
+        this.save();
     }    
     public Part getPartAt(int i) {
         return this.parts.get(i);
