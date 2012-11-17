@@ -1,18 +1,14 @@
 package factory.factory200.factoryProductionManager;
 
-import java.awt.Color;
+//@author Dongyoung Jung
+
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
-import javax.swing.Timer;
-import javax.swing.border.LineBorder;
+import factory.factory200.factoryProductionManager.LaneManager.*;
 import factory.factory200.factoryProductionManager.GantryRobotManager.*;
 import factory.factory200.factoryProductionManager.KitsAssemblyManager.*;
-import factory.factory200.factoryProductionManager.LaneManager.*;
 
 public class GraphicsPanel extends JPanel{
 	
@@ -20,9 +16,11 @@ public class GraphicsPanel extends JPanel{
 	private KitAssemblyManager kitsAssemblyManager = new KitAssemblyManager();
 	private LMApplication laneManager = new LMApplication();
 	private ImageIcon backgroundImage = new ImageIcon( GraphicsPanel.class.getResource("background.png") );
+	private TimerThread timer = new TimerThread(this);
 	
 	public GraphicsPanel(){
-		setBorder(new LineBorder( Color.red ));
+		new Thread(timer).start();
+		timer.timerStart();
 	}
 
 	public void paint(Graphics graphics){
@@ -32,9 +30,12 @@ public class GraphicsPanel extends JPanel{
 		laneManager.paint(this, (Graphics2D)graphics);
 	}
 	
-	public class ServerTimer implements ActionListener{
-		public void actionPerformed(ActionEvent ae){
-			repaint();
-		}
+	public void timerAction(){
+		repaint();
+		laneManager.timerAction();
+	}
+	
+	public void verifyMessage(String msg){
+		laneManager.getServerVerify().verify(msg);
 	}
 }
