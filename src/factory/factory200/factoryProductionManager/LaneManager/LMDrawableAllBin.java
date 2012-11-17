@@ -9,7 +9,7 @@ public class LMDrawableAllBin {
 	private LMDrawableBin newBin;
 	private ArrayList<LMDrawableBin> bins = new ArrayList<LMDrawableBin>();
 	private int binX = 940;
-	private int binY = 78; 
+	private int binY = 53; 
 	
 	public LMDrawableAllBin(){
 		for(int i=0 ; i<4 ; i++){

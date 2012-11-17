@@ -33,9 +33,6 @@ public class FeederAgent extends Agent implements Feeder {
      * THESE LEFT AND RIGHT COUNT VARIABLES WILL BE USED TO SET THE LEFT/RIGHT LANE ON.
      * STARTS WITH LEFTLANE==RIGHTLANE, THE PROGRAM CHOSES SENDTOLEFTLANE(). SO LEFTLANE IS INCREMENTED
      * NEXT WHEN THE SCHEDULER RUNS, IT SEES THAT RIGHTLANE HAS LESS PARTS THAN LEFT LANE SO IT WILL
-     * SEND TO RIGHTLANE, AND INCREMENT RIGHTLANE COUNT
-     * I TRIED TO BRING IT IN, BUT IT GAVE ME WEIRD RESULTS AND IT NEVER SWITCHED THE LANES.
-     * PLEASE SEE IF YOU HAVE ANY FUNCTION FOR THIS REQUIREMENT, WE ARE DONE!
      * */
     private int leftCount=0;
     private int rightCount=0;
@@ -113,7 +110,7 @@ public class FeederAgent extends Agent implements Feeder {
 
     @Override
     public void msgNeedPart(Part part, Lane lane) {
-    	print("Received msgNeedPart from Lane: "+((LaneAgent) lane).getName()+" for type " + part.type);
+    	//print("Received msgNeedPart from Lane: "+((LaneAgent) lane).getName()+" for type " + part.type);
         /*
          * Search in the myParts list and see if the request can be fulfilled by checking with the quantity of each part
          */

@@ -9,7 +9,7 @@ public class LMDrawableAllLane {
 	private LMDrawableLane newLane;
 	private ArrayList<LMDrawableLane> lanes = new ArrayList<LMDrawableLane>();
 	private final int laneX = 500;
-	private int laneY = 58;
+	private int laneY = 33;
 	
 	public LMDrawableAllLane(){		
 		for(int i=0 ; i<8 ; i++){

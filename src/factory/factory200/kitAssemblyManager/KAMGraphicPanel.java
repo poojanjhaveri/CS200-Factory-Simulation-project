@@ -68,6 +68,8 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
     boolean deliveryStation;
     Timer timer;
     boolean stationRun;
+    
+    private ImageIcon backgroundImage = new ImageIcon("pics/background/part1");
 
     public KAMGraphicPanel() {
         deliveryStation = true;
@@ -282,12 +284,12 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
                         for (int i = 0; i < delivery.getPlaceholder().size(); i++) {
                             //temp=delivery.getPlaceholder().get(i);
                             int yPlace = delivery.getPlaceholder().get(i).getY() - 1;
-                            int number = i * 200;
+                            int number = i* 200;
                             if (counter > number) {
                                 delivery.getPlaceholder().get(i).setY(yPlace);
-                                if (delivery.getPlaceholder().get(i).isShow()) {
-                                    delivery.getPlaceholder().get(i).getKit().updateParts();
-                                }
+                                //if (delivery.getPlaceholder().get(i).isShow()) {
+                                //    delivery.getPlaceholder().get(i).getKit().updateParts();
+                                //}
                             }
                             if (yPlace == 300 && delivery.getPlaceholder().get(i).isShow()) {
                                 stationRun = false;
@@ -298,9 +300,9 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
                     } else {
                         for (int i = 0; i < delivery.getNumEmptyKits(); i++) {
                             delivery.getPlaceholder().get(i).setY(680);
-                            if (delivery.getPlaceholder().get(i).isShow()) {
-                                delivery.getPlaceholder().get(i).getKit().updateParts();
-                            }
+                            //if (delivery.getPlaceholder().get(i).isShow()) {
+                            //    delivery.getPlaceholder().get(i).getKit().updateParts();
+                            //}
                             counter = 0;
                         }
                     }
@@ -309,9 +311,9 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
                     for (int i = 0; i < delivery.getPlaceholder().size(); i++) {
                         int yPlace = delivery.getPlaceholder().get(i).getY();
                         delivery.getPlaceholder().get(i).setY(yPlace);
-                        if (delivery.getPlaceholder().get(i).isShow()) {
-                            delivery.getPlaceholder().get(i).getKit().updateParts();
-                        }
+                        //if (delivery.getPlaceholder().get(i).isShow()) {
+                        //    delivery.getPlaceholder().get(i).getKit().updateParts();
+                        //}
                         if (yPlace == 300 && !(delivery.getPlaceholder().get(i).isShow())) {
                             stationRun = true;
                             break;
@@ -329,9 +331,9 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
                             int number = i * 200;
                             if (counter > number) {
                                 delivery.getPlaceholder().get(i).setY(yPlace);
-                                if (delivery.getPlaceholder().get(i).isShow()) {
-                                    delivery.getPlaceholder().get(i).getKit().updateParts();
-                                }
+                                //if (delivery.getPlaceholder().get(i).isShow()) {
+                                //    delivery.getPlaceholder().get(i).getKit().updateParts();
+                                //}
                             }
                             if (yPlace == 300 && !(delivery.getPlaceholder().get(i).isShow())) {
                                 stationRun = false;
@@ -342,9 +344,9 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
                     } else {
                         for (int i = 0; i < delivery.getNumEmptyKits(); i++) {
                             delivery.getPlaceholder().get(i).setY(680);
-                            if (delivery.getPlaceholder().get(i).isShow()) {
-                                delivery.getPlaceholder().get(i).getKit().updateParts();
-                            }
+                            //if (delivery.getPlaceholder().get(i).isShow()) {
+                            //    delivery.getPlaceholder().get(i).getKit().updateParts();
+                            //}
                             counter = 0;
                         }
                     }
@@ -353,9 +355,9 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
                     for (int i = 0; i < delivery.getPlaceholder().size(); i++) {
                         int yPlace = delivery.getPlaceholder().get(i).getY();
                         delivery.getPlaceholder().get(i).setY(yPlace);
-                        if (delivery.getPlaceholder().get(i).isShow()) {
-                            delivery.getPlaceholder().get(i).getKit().updateParts();
-                        }
+                        //if (delivery.getPlaceholder().get(i).isShow()) {
+                        //    delivery.getPlaceholder().get(i).getKit().updateParts();
+                        //}
                         if (yPlace == 300 && (delivery.getPlaceholder().get(i).isShow())) {
                             stationRun = true;
                             deliveryStation = true;
@@ -448,6 +450,7 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
         Rectangle2D.Double backgroundRectangle = new Rectangle2D.Double(0, 0, 700, 700);
         g2.setColor(Color.GRAY.darker().darker());//dark dark green background
         g2.fill(backgroundRectangle);
+        //backgroundImage.paintIcon(this, g2, 500, 500);
         paintNests(this, g2);
         kitstand.getKitStand().paintIcon(this, g2, kitstand.getX(), kitstand.getY());
         for (int i = 0; i < 3; i++) {

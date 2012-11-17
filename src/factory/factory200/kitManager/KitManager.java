@@ -44,20 +44,22 @@ public class KitManager extends Manager  implements ActionListener {
 	/**
 	 * @param args
 	 */
-    BlueprintKits bpkit;///<contains list of kits modifiable
-          BlueprintParts bppart;///<contains list of parts useable
-          JPanel mainpanel;
-          JTabbedPane tabbedPane;
+          BlueprintKits bpkit;///<contains list of kits modifiable from server
+          BlueprintParts bppart;///<contains list of parts useable from server
+          JPanel mainpanel; // main panel of the JFrame 
+          JTabbedPane tabbedPane; // panel for tabbed layout
           
-          JPanel createkit;
-          JPanel updatekit;
-          JPanel deletekit;
+          JPanel createkit; // create kit panel - allows user to create kit
+          JPanel updatekit; // update kit panel - allows user to update existing kit
+          JPanel deletekit; // delete kit panel - allows user to delete existing kit
           JPanel ck_main;
           JPanel uk_main;
           JPanel dk_main;
           JTextField kitname;
           JComboBox create_combo;
           JComboBox delete_combo;
+          JComboBox update_kitcombo;
+          JComboBox update_partcombo;
           
           JButton createkitbutton;
           JButton deletekitbutton;
@@ -68,7 +70,6 @@ public class KitManager extends Manager  implements ActionListener {
           JButton b1,b2,b3,b4,b5,b6,b7,b0;
           JButton ub1,ub2,ub3,ub4,ub5,ub6,ub7,ub0;
     
-    
 	
          public KitManager()
          {
@@ -76,11 +77,11 @@ public class KitManager extends Manager  implements ActionListener {
             this.bpkit = new BlueprintKits();
             this.bppart = new BlueprintParts();
             setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-             setBounds(100, 100, 600, 400);
+             setBounds(100, 100, 600 , 400);
            
-           
+            this.update();  
             prepareMainPane();
-             this.update();  
+            
 	//	this.mcon.out(Message.PULL_PARTS_LIST);
               
          }
@@ -97,7 +98,7 @@ public class KitManager extends Manager  implements ActionListener {
         
         
 	
-	//getters and setters as needed 
+	//Funtion to prepare entire layout for entire JFrame
 	
         private void prepareMainPane()
         {
@@ -105,7 +106,7 @@ public class KitManager extends Manager  implements ActionListener {
             {     
             public void paintComponent(Graphics g) 
             {
-                Image img = new ImageIcon("background/kitbackground.jpg").getImage();
+                Image img = new ImageIcon("pics/background/mainbg.png").getImage();
                 Dimension size = new Dimension(600, 400);
                 setPreferredSize(size);
                 setMinimumSize(size);
@@ -132,6 +133,7 @@ public class KitManager extends Manager  implements ActionListener {
             tabbedPane = new JTabbedPane(JTabbedPane.TOP);
             
             
+            
             tabbedPane.addChangeListener(new ChangeListener() {
                     public void stateChanged(ChangeEvent e) {
                    processtabchange();
@@ -150,6 +152,8 @@ public class KitManager extends Manager  implements ActionListener {
             // CREATE KIT PANEL
             
             createkit = new JPanel();
+           
+            
             
             ImageIcon i = new ImageIcon("kit/create.jpg");
             tabbedPane.addTab("Create Kit", i, createkit);
@@ -179,7 +183,7 @@ public class KitManager extends Manager  implements ActionListener {
  
             c.gridx=1;
             c.gridy=1;
-            System.out.println("Size of part list is "+bppart.getSize());
+            System.out.println("Size of part list is "+this.bppart.getSize());
             
             create_combo = new JComboBox(); // parts list
             for(int j=0;j<this.bppart.getSize();j++){
@@ -244,13 +248,19 @@ public class KitManager extends Manager  implements ActionListener {
     
             createkit.add(ck_main);
             
-            
+           
             
             updatekit = new JPanel();
             
-            i = new ImageIcon("kit/edit.png");
+             i = new ImageIcon("kit/edit.png");
             tabbedPane.addTab("Modify Kit", i, updatekit);
             
+            
+            uk_main = new JPanel();
+            uk_main.setLayout(new GridBagLayout());
+            c = new GridBagConstraints();
+            
+ 
             
             c.ipady=10;
             c.ipadx=10;
@@ -259,16 +269,19 @@ public class KitManager extends Manager  implements ActionListener {
             
             c.gridx=0;
             c.gridy=0;
-            updatekit.add(new JLabel("Kit Name :"),c);
+             uk_main.add(new JLabel("Select Kit :"),c);
             
             c.gridx=1;
             c.gridy=0;
-            kitname = new JTextField(15);
-            updatekit.add(kitname,c);
+            update_kitcombo = new JComboBox();  
+            for(int j=0;j<this.bpkit.getSize();j++)
+    		 update_kitcombo.addItem(this.bpkit.getKitAt(j)); 
+            uk_main.add(update_kitcombo,c);
             
+                 
             c.gridx=0;
             c.gridy=1;
-            updatekit.add(new JLabel("Select part:"),c);
+             uk_main.add(new JLabel("Select part:"),c);
             
  
             c.gridx=1;
@@ -276,12 +289,12 @@ public class KitManager extends Manager  implements ActionListener {
             System.out.println("Size of part list is "+bppart.getSize());
             
             create_combo = new JComboBox(); // parts list
-            for(int j=0;j<this.bppart.getSize();j++){
-    		 create_combo.addItem(this.bppart.getPartAt(j).getName()); 
+            for(int p=0;p<this.bppart.getSize();p++){
+    		 create_combo.addItem(this.bppart.getPartAt(p).getName()); 
                
             }
             
-            updatekit.add(create_combo,c);
+             uk_main.add(create_combo,c);
             
             c.gridx=0;
             c.gridy=2;
@@ -300,14 +313,14 @@ public class KitManager extends Manager  implements ActionListener {
             ub7 = new JButton();
             
             
-            upartgrid.add(b0);
-            upartgrid.add(b1);
-            upartgrid.add(b2);
-            upartgrid.add(b3);
-            upartgrid.add(b4);
-            upartgrid.add(b5);
-            upartgrid.add(b6);
-            upartgrid.add(b7);
+            upartgrid.add(ub0);
+            upartgrid.add(ub1);
+            upartgrid.add(ub2);
+            upartgrid.add(ub3);
+            upartgrid.add(ub4);
+            upartgrid.add(ub5);
+            upartgrid.add(ub6);
+            upartgrid.add(ub7);
             
             ub0.addActionListener(new itembutton());
             ub1.addActionListener(new itembutton());
@@ -317,23 +330,18 @@ public class KitManager extends Manager  implements ActionListener {
             ub5.addActionListener(new itembutton());
             ub6.addActionListener(new itembutton());
             ub7.addActionListener(new itembutton());
-           
-             
+          
             
-     //       b1.addActionListener(new partbutton());
-            
-            
-            
-            updatekit.add(upartgrid,c);
+            uk_main.add(upartgrid,c);
             
             c.gridx=0;
             c.gridy=3;
             c.gridwidth=2;
-            updatekitbutton = new JButton("Create Kit");
+            updatekitbutton = new JButton("Update Kit");
             updatekitbutton.addActionListener(this);
             
-            updatekit.add(updatekitbutton,c);
-            
+            uk_main.add(updatekitbutton,c);
+            updatekit.add(uk_main);
             
             
             
@@ -345,8 +353,8 @@ public class KitManager extends Manager  implements ActionListener {
             
             
             delete_combo = new JComboBox();
-            for(int j=0;j<this.bpkit.getSize();j++){
-    		 delete_combo.addItem(this.bpkit.getKitAt(j)); 
+            for(int m=0;m<this.bpkit.getSize();m++){
+    		 delete_combo.addItem(this.bpkit.getKitAt(m)); 
                
             }
             
@@ -393,7 +401,7 @@ public class KitManager extends Manager  implements ActionListener {
         
         
         /**
-     * @brief sends an update request which should result in the parts list being updated
+     * @brief sends an update request which should result in the parts list and kit list being updated
      */
         public void update() {
             
@@ -409,6 +417,11 @@ public class KitManager extends Manager  implements ActionListener {
          }
         
         
+        /**
+     * @brief updates the combo box to choose the kit to delete
+     */
+        
+        
         private void updateComboBox(){
               delete_combo.removeAllItems();
                for(int i=0;i<bpkit.getSize();i++){
@@ -419,21 +432,31 @@ public class KitManager extends Manager  implements ActionListener {
     	 }
     
         
+        /**
+     * @brief Function to create kit when the Create kit button is pressed and then pass the new kit to the server so that the list gets updated
+     */
 
-    public void createKit()
-    {
+        public void createKit()
+        {
         
-	Kit newkit = new Kit(kitname.getText(),"description");//this will be the kit that just got made
-	newkit.setParts(partlist);
-        //handle gui here
+            Kit newkit = new Kit(kitname.getText(),"description");//this will be the kit that just got made
+            newkit.setParts(partlist);
         
-        
+            String msg = Message.DEFINE_NEW_KIT+":"+newkit.serialize();
+            System.out.println(msg);
+            this.mcon.out(msg);
+            
+            update();
+            
+            prepareMainPane();
+            tabbedPane.setSelectedIndex(0);
+        }
 
-	String msg = Message.DEFINE_NEW_KIT+":"+newkit.serialize();
-        System.out.println(msg);
-	this.mcon.out(msg);
-    }
-
+        
+        /**
+     * @brief Process messages sent using Manager Class ie processes that message
+     */
+    
     public void processMessage(String msg)
     {
 	super.processMessage(msg);
@@ -458,19 +481,23 @@ public class KitManager extends Manager  implements ActionListener {
         
          public void deleteKit(Kit in) {
             bpkit.removeKit(in);
-            updateComboBox();
             
+           
             
-            // this.mcon.out(Message.UNDEFINE_KIT+":"+in.serialize());
+           //  this.mcon.out(Message.UNDEFINE_KIT+":"+in.serialize());
             //  System.out.println("Updates kits list to the server");
             
- 
+         //   update();
+            prepareMainPane();
+            tabbedPane.setSelectedIndex(2);
+            
+            
         }
          
          public void processtabchange()
          {
-              Component c = tabbedPane.getSelectedComponent();
-                if (c.equals(deletekit))
+              Integer t = tabbedPane.getSelectedIndex();
+                if (t==2)
                 {
                      updateComboBox();
                 }   
@@ -488,7 +515,8 @@ public class KitManager extends Manager  implements ActionListener {
                  if( e.getSource() == b0)
                  {
                     
-                     b0.setIcon(bppart.getPartAt(i).getGUIPart().getImage());
+                 //    b0.setIcon(bppart.getPartAt(i).getGUIPart().getImage());
+                        b0.setIcon(new ImageIcon("pics/parts/part1.png"));
                      partlist.add(0, bppart.getPartAt(i));
                    
                  }
@@ -539,7 +567,7 @@ public class KitManager extends Manager  implements ActionListener {
                      
                      b7.setIcon(bppart.getPartAt(i).getGUIPart().getImage());
                      partlist.add(7, bppart.getPartAt(i));
-                     
+    
                  }
                     
                    

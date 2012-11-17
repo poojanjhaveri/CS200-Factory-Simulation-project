@@ -9,7 +9,7 @@ public class LMDrawableAllCamera {
 	private LMDrawableCamera newCamera;
 	private ArrayList<LMDrawableCamera> cameras = new ArrayList<LMDrawableCamera>();
 	private final int cameraX = 495;
-	private int cameraY = 80;
+	private int cameraY = 55;
 	
 	public LMDrawableAllCamera(){		
 		for(int i=0 ; i<4 ; i++){

@@ -159,12 +159,19 @@ public class GUIPartRobot extends GUIRobot {
         Integer i = this.popOrder();
         switch (i) {
             case 10:
+               
             case 11:
+               
             case 12:
+               
             case 13:
+               
             case 14:
+              
             case 15:
+              
             case 16:
+              
             case 17:
                 this.moveToNest(i - 10);
                 break;

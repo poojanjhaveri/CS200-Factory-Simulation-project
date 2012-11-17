@@ -3,7 +3,10 @@ import javax.swing.ImageIcon;
 
 
 import factory.general.Drawable;
-
+/**
+ * @author Yuting L
+ *
+ */
 public class GUIFeeder extends Drawable {
 
 	

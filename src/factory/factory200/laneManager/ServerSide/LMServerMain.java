@@ -34,6 +34,7 @@ public class LMServerMain extends JFrame implements Runnable{
 		
 		threadTimer = new LMThreadTimer(server, this);		
 		new Thread(threadTimer).start();
+		threadTimer.timerStart();
 		
 		controller = new LMController(agentFeeder, agentLane, agentNest, agentNestCamera, agentGantryRobot, agentPartRobot, this);
 	}

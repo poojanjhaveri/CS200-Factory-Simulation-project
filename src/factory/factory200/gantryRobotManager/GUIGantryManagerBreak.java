@@ -1,5 +1,9 @@
 package factory.factory200.gantryRobotManager;
 
+/**
+ * @author Yuting Liu
+ * 
+ */
 public class GUIGantryManagerBreak {
 
 //  public class GUIGantryManager extends JPanel implements ActionListener 
