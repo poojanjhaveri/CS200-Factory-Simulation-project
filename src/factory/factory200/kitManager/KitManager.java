@@ -63,7 +63,8 @@ public class KitManager extends Manager  implements ActionListener {
           JButton deletekitbutton;
           
           ArrayList<Part> partlist = new ArrayList();
-          
+          ArrayList<JButton> jbtnlist = new ArrayList();
+          JButton b1,b2,b3,b4,b5,b6,b7,b8;
     
     
 	
@@ -183,6 +184,7 @@ public class KitManager extends Manager  implements ActionListener {
     		 create_combo.addItem(this.bppart.getPartAt(j).getName()); 
                
             }
+            
             ck_main.add(create_combo,c);
             
             c.gridx=0;
@@ -192,17 +194,14 @@ public class KitManager extends Manager  implements ActionListener {
             JPanel partgrid = new JPanel();
             partgrid.setLayout(new GridLayout(2,4));
             
-            JButton b1=new JButton();
-            JButton b2=new JButton();
-            JButton b3=new JButton();
-            JButton b4=new JButton();
-            JButton b5=new JButton();
-            JButton b6=new JButton();
-            JButton b7=new JButton();
-            JButton b8=new JButton();
-            
-     //       b1.addActionListener(new partbutton());
-            
+            b1 = new JButton();
+            b2 = new JButton();
+            b3 = new JButton();
+            b4 = new JButton();
+            b5 = new JButton();
+            b6 = new JButton();
+            b7 = new JButton();
+            b8 = new JButton();
             
             partgrid.add(b1);
             partgrid.add(b2);
@@ -212,6 +211,21 @@ public class KitManager extends Manager  implements ActionListener {
             partgrid.add(b6);
             partgrid.add(b7);
             partgrid.add(b8);
+            
+            b1.addActionListener(new itembutton());
+            b2.addActionListener(new itembutton());
+            b3.addActionListener(new itembutton());
+            b4.addActionListener(new itembutton());
+            b5.addActionListener(new itembutton());
+            b6.addActionListener(new itembutton());
+            b7.addActionListener(new itembutton());
+            b8.addActionListener(new itembutton());
+             
+            
+     //       b1.addActionListener(new partbutton());
+            
+            
+            
             ck_main.add(partgrid,c);
             
             c.gridx=0;
@@ -282,9 +296,9 @@ public class KitManager extends Manager  implements ActionListener {
     			break;
     		}
     		
-    	}
-    	return temp;
-    }
+            }
+            return temp;
+        }
         
         
         
@@ -357,8 +371,13 @@ public class KitManager extends Manager  implements ActionListener {
          public void deleteKit(Kit in) {
             bpkit.removeKit(in);
             updateComboBox();
+            
+            
+            // this.mcon.out(Message.UNDEFINE_KIT+":"+in.serialize());
+              //  System.out.println("Updates kits list to the server");
+            
         
-    }
+        }
          
          public void processtabchange()
          {
@@ -369,6 +388,26 @@ public class KitManager extends Manager  implements ActionListener {
                 }   
              
          }
+         
+         
+       public class itembutton implements ActionListener
+         {
+             
+             public void actionPerformed(ActionEvent e) {
+                    
+                 if( e.getSource() == b1)
+                 {
+                     Integer i = create_combo.getSelectedIndex();
+                     b1.setIcon(bppart.getPartAt(i).getGUIPart().getImage());
+                    
+                 }
+                    
+                   
+                }
+         } 
+
+
+
          
 
 }
