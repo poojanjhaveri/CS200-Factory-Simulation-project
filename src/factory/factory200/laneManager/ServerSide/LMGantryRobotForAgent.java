@@ -1,12 +1,14 @@
 package factory.factory200.laneManager.ServerSide;
 
+import factory.general.*;
+
 public class LMGantryRobotForAgent {
 	
-	private LMServer server;
+	private Server server;
 	private LMServerMain serverMain;
 	private String signal = "";
 	
-	public LMGantryRobotForAgent(LMServer server, LMServerMain serverMain){
+	public LMGantryRobotForAgent(Server server, LMServerMain serverMain){
 		this.server = server;
 		this.serverMain = serverMain;
 	}
@@ -18,11 +20,7 @@ public class LMGantryRobotForAgent {
 		signal = feederNum + "&Bin&Put&" + binNum;
 		
 		//----------------------------------------------------------------------------------For Test
-		for(int i=0 ; i<server.clients.size() ; i++){
-			server.clients.get(i).sendToClient(signal);
-		}
-		
-		//server.getClientHandler().sendToClient(signal);
+		server.sendMessage(signal);
 		//-----------------------------------------------------------------------------------------------
 		
 		// Send To FPM
@@ -36,11 +34,7 @@ public class LMGantryRobotForAgent {
 		signal = feederNum + "&Bin&Purge&";
 		
 		//----------------------------------------------------------------------------------For Test
-		for(int i=0 ; i<server.clients.size() ; i++){
-			server.clients.get(i).sendToClient(signal);
-		}
-		
-		//server.getClientHandler().sendToClient(signal);
+		server.sendMessage(signal);
 		//-------------------------------------------------------------------------------------------------
 		
 		// Send To FPM

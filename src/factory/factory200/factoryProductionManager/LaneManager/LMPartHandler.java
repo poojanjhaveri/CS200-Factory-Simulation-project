@@ -1,6 +1,4 @@
-package factory.factory200.factoryProductionManager.LaneManager.Test;
-
-import factory.factory200.factoryProductionManager.LaneManager.*;
+package factory.factory200.factoryProductionManager.LaneManager;
 
 public class LMPartHandler {
 	

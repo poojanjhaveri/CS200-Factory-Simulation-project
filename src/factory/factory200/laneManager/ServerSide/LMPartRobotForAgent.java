@@ -1,12 +1,14 @@
 package factory.factory200.laneManager.ServerSide;
 
+import factory.general.*;
+
 public class LMPartRobotForAgent {
 	
-	private LMServer server;
+	private Server server;
 	private LMServerMain serverMain;
 	private String signal = "";
 	
-	public LMPartRobotForAgent(LMServer server, LMServerMain serverMain){
+	public LMPartRobotForAgent(Server server, LMServerMain serverMain){
 		this.server = server;
 		this.serverMain = serverMain;
 	}
@@ -16,11 +18,7 @@ public class LMPartRobotForAgent {
 		signal = nestNum + "&PartRobot&";
 		
 		//----------------------------------------------------------------------------------For Test
-		for(int j=0 ; j<server.clients.size() ; j++){
-			server.clients.get(j).sendToClient(signal);
-		}
-		
-		//server.getClientHandler().sendToClient(signal);
+		server.sendMessage(signal);
 		//-----------------------------------------------------------------------------------------------
 		
 		// Send To FPM

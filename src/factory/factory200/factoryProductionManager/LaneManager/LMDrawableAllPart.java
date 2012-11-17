@@ -50,7 +50,7 @@ public class LMDrawableAllPart {
 	}
 	
 	public void addPartFromFeederToLane(int laneNum, int partNum){
-		newPart = new LMDrawablePart(app, this, laneNum, partNum, 810, 65+75*laneNum, 540, 65+75*laneNum);
+		newPart = new LMDrawablePart(app, this, laneNum, partNum, 810, 40+75*laneNum, 540, 40+75*laneNum);
 		laneDatas.get(laneNum).addPart(newPart);
 	}
 	

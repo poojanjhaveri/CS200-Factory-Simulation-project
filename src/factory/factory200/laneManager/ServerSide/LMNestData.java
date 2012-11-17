@@ -1,17 +1,18 @@
 package factory.factory200.laneManager.ServerSide;
 
 import java.util.ArrayList;
+import factory.general.*;
 
 public class LMNestData {
 	
-	private LMServer server;
+	private Server server;
 	private LMServerMain serverMain;
 	private String signal = "";
 	
 	private int nestNum;	///< Nest number
 	private Boolean nestSwitch = true; // false : down, true : up
 	
-	public LMNestData( int nestNum, LMServer server, LMServerMain serverMain ){
+	public LMNestData( int nestNum, Server server, LMServerMain serverMain ){
 		this.nestNum = nestNum;
 		this.server = server;
 		this.serverMain = serverMain;
@@ -22,11 +23,7 @@ public class LMNestData {
 		signal = nestNum + "&Nest&" + "Switch Up";
 		
 		//----------------------------------------------------------------------------------For Test
-		for(int i=0 ; i<server.clients.size() ; i++){
-			server.clients.get(i).sendToClient(signal);
-		}
-		
-		//server.getClientHandler().sendToClient(signal);
+		server.sendMessage(signal);
 		//------------------------------------------------------------------------------------------------
 		
 		// Send To FPM
@@ -40,11 +37,7 @@ public class LMNestData {
 		signal = nestNum + "&Nest&" + "Switch Down";
 		
 		//----------------------------------------------------------------------------------For Test
-		for(int i=0 ; i<server.clients.size() ; i++){
-			server.clients.get(i).sendToClient(signal);
-		}
-		
-		//server.getClientHandler().sendToClient(signal);
+		server.sendMessage(signal);
 		//-------------------------------------------------------------------------------------------------
 		
 		// Send To FPM

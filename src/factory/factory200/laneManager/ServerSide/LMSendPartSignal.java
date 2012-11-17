@@ -1,13 +1,15 @@
 package factory.factory200.laneManager.ServerSide;
 
+import factory.general.*;
+
 public class LMSendPartSignal {
 	
+	private Server server;
 	private LMServerMain serverMain;
-	private LMServer server;
 	private String message = "";
 	private int partNum;
 	
-	public LMSendPartSignal(LMServer server, LMServerMain serverMain){
+	public LMSendPartSignal(Server server, LMServerMain serverMain){
 		this.server = server;
 		this.serverMain = serverMain;
 	}
@@ -38,11 +40,7 @@ public class LMSendPartSignal {
 				}
 				
 				//----------------------------------------------------------------------------------For Test
-				for(int j=0 ; j<server.clients.size() ; j++){
-					server.clients.get(j).sendToClient(message);
-				}
-				
-				//server.getClientHandler().sendToClient(message);
+				server.sendMessage(message);
 				//-------------------------------------------------------------------------------------------------
 				
 				serverMain.getForAgentFeeder().getFeeder(i).setPartFedCounterIncrease();

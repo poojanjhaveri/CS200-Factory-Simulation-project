@@ -1,11 +1,12 @@
 package factory.factory200.laneManager.ServerSide;
 
 import java.util.ArrayList;
+import factory.general.*;
 
 public class LMPartData {
 	
+	private Server server;
 	private LMServerMain serverMain;
-	private LMServer server;
 	
 	private LMPartDataInFeeder newFeeder;
 	private LMPartDataInLane newLane;
@@ -19,7 +20,7 @@ public class LMPartData {
 	private int randomChosenPart;
 	private String message = "";
 	
-	public LMPartData(LMServer server, LMServerMain serverMain){
+	public LMPartData(Server server, LMServerMain serverMain){
 		this.server = server;
 		this.serverMain = serverMain;
 		
@@ -96,11 +97,7 @@ public class LMPartData {
 						message = i + "&Part&Shake&";
 						
 						//----------------------------------------------------------------------------------For Test
-						for(int j=0 ; j<server.clients.size() ; j++){
-							server.clients.get(j).sendToClient(message);
-						}
-						
-						//server.getClientHandler().sendToClient(message);
+						server.sendMessage(message);
 						//---------------------------------------------------------------------------------------------
 					}
 				}
@@ -113,11 +110,7 @@ public class LMPartData {
 						message = i + "&Part&Shake&";
 						
 						//----------------------------------------------------------------------------------For Test
-						for(int j=0 ; j<server.clients.size() ; j++){
-							server.clients.get(j).sendToClient(message);
-						}
-						
-						//server.getClientHandler().sendToClient(message);
+						server.sendMessage(message);
 						//------------------------------------------------------------------------------------------------
 						
 					}
@@ -131,11 +124,7 @@ public class LMPartData {
 						message = i + "&Part&Shake&";
 						
 						//----------------------------------------------------------------------------------For Test
-						for(int j=0 ; j<server.clients.size() ; j++){
-							server.clients.get(j).sendToClient(message);
-						}
-						
-						//server.getClientHandler().sendToClient(message);
+						server.sendMessage(message);
 						//-----------------------------------------------------------------------------------------------
 						
 					}

@@ -367,6 +367,9 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 			System.out.println("GRABBED A NEW BLUEPRINTKITS FROM THE SERVER");
 			this.kitsbp.debug();
 	    }
+	
+		// Lane Manager
+	    gfx.verifyMessage(msg);
     }
     /**
      * @brief Controls Kit selection and Factory ON/OFF Controls Kit selection
