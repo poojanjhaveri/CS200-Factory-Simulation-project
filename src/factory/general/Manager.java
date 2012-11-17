@@ -100,9 +100,8 @@ public class Manager extends JFrame {
      * the possibilities.
      */
     public void processMessage(String msg) {
-        if(msg == null)
-        {
-            System.out.println("CRITICAL ERROR: MANAGER HAS RECEIVED A NULL MESSAGE FROM THE SERVER!");
+        if (msg == null) {
+//            System.out.println("CRITICAL ERROR: MANAGER HAS RECEIVED A NULL MESSAGE FROM THE SERVER!");
             return;
         }
         // Decide action based on message from server

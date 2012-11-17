@@ -152,7 +152,9 @@ public class KitAssemblyManager extends Manager implements ActionListener {
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-	this.mcon.out(Message.IDENTIFY_KITASSEMBLYMANAGER);
+        
+        this.sendToServer(Message.IDENTIFY_KITASSEMBLYMANAGER);
+        
     }
         //tester variables
     JButton partRobot;
@@ -195,13 +197,12 @@ public class KitAssemblyManager extends Manager implements ActionListener {
         return tester;
     }
 
-    public void processMessage(String msg)
-    {
-	super.processMessage(msg);
-	//todo - let me know what functions agent will call so I can process them here
+    public void processMessage(String msg) {
+    	super.processMessage(msg);
+    	//	todo - let me know what functions agent will call so I can process them here
     }      
 
-      public static void main(String[] args){
-       KitAssemblyManager mgr = new KitAssemblyManager();   
-      }
+    public static void main(String[] args){
+    	KitAssemblyManager mgr = new KitAssemblyManager();   
+    }
 }
