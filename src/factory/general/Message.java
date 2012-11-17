@@ -51,6 +51,7 @@ public class Message {
     public static final String KAM_PARTS_DROP_OFF_PARTS = "KAM_PARTS_DROP_OFF_PARTS";
     public static final String KAM_MOVE_FROM_0_TO_2 = "KAM_MOVE_FROM_0_TO_2";
     public static final String KAM_ADD_KIT = "KAM_ADD_KIT";///<places another empty kit onto the conveyor
+    public static final String KAM_REMOVE_KIT = "KAM_REMOVE_KIT";///<removes a kit off screen from conveyor
 
     //lanemanager section
     public static final String IDENTIFY_LANEMANAGER = "IDENTIFY_LANEMANAGER";
