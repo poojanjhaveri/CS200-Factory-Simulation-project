@@ -37,11 +37,11 @@ public class HandleAManager implements Runnable {
         System.out.println("Sending test message to client...");
         pw.println(Message.TEST_CLIENT);
     }
-
+    /*DEPRECATED SEE SENDMESSAGE
     public void sendToClient(String msg) {
         pw.println(msg);
     }
-
+    */
     // Key method of Runnable; when this method ends, the thread stops
     public void run() {
         try {
