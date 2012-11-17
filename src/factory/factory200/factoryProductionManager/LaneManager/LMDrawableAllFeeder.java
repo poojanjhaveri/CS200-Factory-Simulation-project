@@ -31,13 +31,13 @@ public class LMDrawableAllFeeder extends JPanel{
 	private final int rearGateBulbX = 890;
 	private final int binHolderX = 930;
 	
-	private int feederY = 52;
-	private int diversionBulbY = 68;
-	private int feedingBulbY = 60;
-	private int partLowBulbY = 90;
-	private int purgingBulbY = 120;
-	private int rearGateBulbY = 150;
-	private int binHolderY = 65;
+	private int feederY = 27;
+	private int diversionBulbY = 43;
+	private int feedingBulbY = 35;
+	private int partLowBulbY = 65;
+	private int purgingBulbY = 95;
+	private int rearGateBulbY = 125;
+	private int binHolderY = 40;
 	
 	public LMDrawableAllFeeder(){
 		for(int i=0 ; i<4 ; i++){

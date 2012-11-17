@@ -17,9 +17,9 @@ public abstract class Agent {
     public boolean print;
 
     /**
-@brief communication channel with client
-A reference to the corresponding client
-@author Roy YiWei Zheng
+     * @brief communication channel with client
+     * A reference to the corresponding client
+     * @author Roy YiWei Zheng
      */
     protected HandleAManager client;
 
@@ -154,12 +154,11 @@ A reference to the corresponding client
         }
     }
     /**
-@brief sets the client
-@author Roy YiWei Zheng
+     * @brief sets the client
+     * @author Roy YiWei Zheng
      */
-    public void setClient(HandleAManager i)
-    {
-	this.client = i;
+    public void setClient(HandleAManager i) {
+    	this.client = i;
     }
 
 }

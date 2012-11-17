@@ -212,7 +212,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
 	this.client.sendMessage(Message.KAM_MOVE_ACTIVE_KIT_TO_INSPECTION);
     }
     public void DoMoveKitFrom0to2() {
-
+	this.client.sendMessage(Message.KAM_MOVE_FROM_0_TO_2);
     }
     public void DoMoveKitFrom2ToConveyor(Kit k) {
 	this.client.sendMessage(Message.KAM_DROP_OFF_FULL_KIT);

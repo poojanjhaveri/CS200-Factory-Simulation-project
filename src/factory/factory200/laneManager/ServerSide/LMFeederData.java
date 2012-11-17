@@ -1,5 +1,7 @@
 package factory.factory200.laneManager.ServerSide;
 
+import factory.general.*;
+
 /**
  * This class contains all data for feeders. Lane agent and lane manager use these data to process.
  * 
@@ -7,7 +9,8 @@ package factory.factory200.laneManager.ServerSide;
  *	@author Dongyoung Jung
  */
 public class LMFeederData {
-	private LMServer server;
+	
+	private Server server;
 	private LMServerMain serverMain;
 	private String signal = "";
 	
@@ -20,7 +23,7 @@ public class LMFeederData {
 	
 	private int feederNum;
 
-	public LMFeederData( int feederNum, LMServer server, LMServerMain serverMain ){		
+	public LMFeederData( int feederNum, Server server, LMServerMain serverMain ){		
 		this.feederNum = feederNum;
 		this.server = server;
 		this.serverMain = serverMain;
@@ -48,11 +51,7 @@ public class LMFeederData {
 		signal = feederNum + "&Feeder&" + "Feeder Switch On";
 		
 		//----------------------------------------------------------------------------------For Test
-		for(int i=0 ; i<server.clients.size() ; i++){
-			server.clients.get(i).sendToClient(signal);
-		}
-		
-		//server.getClientHandler().sendToClient(signal);
+		server.signalToClient(signal);
 		//----------------------------------------------------------------------------------		
 		
 		// Send To FPM 
@@ -68,11 +67,7 @@ public class LMFeederData {
 		signal = feederNum + "&Feeder&" + "Feeder Switch Off";
 		
 		//----------------------------------------------------------------------------------For Test
-		for(int i=0 ; i<server.clients.size() ; i++){
-			server.clients.get(i).sendToClient(signal);
-		}
-		
-		//server.getClientHandler().sendToClient(signal);
+		server.signalToClient(signal);
 		//----------------------------------------------------------------------------------
 		
 		// Send To FPM
@@ -87,11 +82,7 @@ public class LMFeederData {
 		signal = feederNum + "&Feeder&" + "Part Low Sensor On";
 		
 		//----------------------------------------------------------------------------------For Test
-		for(int i=0 ; i<server.clients.size() ; i++){
-			server.clients.get(i).sendToClient(signal);
-		}
-		
-		//server.getClientHandler().sendToClient(signal);
+		server.signalToClient(signal);
 		//----------------------------------------------------------------------------------
 		
 		// Send To FPM
@@ -105,11 +96,7 @@ public class LMFeederData {
 		signal = feederNum + "&Feeder&" + "Part Low Sensor Off";
 		
 		//----------------------------------------------------------------------------------For Test
-		for(int i=0 ; i<server.clients.size() ; i++){
-			server.clients.get(i).sendToClient(signal);
-		}
-		
-		//server.getClientHandler().sendToClient(signal);
+		server.signalToClient(signal);
 		//----------------------------------------------------------------------------------
 		
 		// Send To FPM
@@ -124,11 +111,7 @@ public class LMFeederData {
 		signal = feederNum + "&Feeder&" + "Feed Part Switch On";
 		
 		//----------------------------------------------------------------------------------For Test
-		for(int i=0 ; i<server.clients.size() ; i++){
-			server.clients.get(i).sendToClient(signal);
-		}
-		
-		//server.getClientHandler().sendToClient(signal);
+		server.signalToClient(signal);
 		//----------------------------------------------------------------------------------
 		
 		// Send To FPM
@@ -144,11 +127,7 @@ public class LMFeederData {
 		signal = feederNum + "&Feeder&" + "Feed Part Switch Off";
 		
 		//----------------------------------------------------------------------------------For Test
-		for(int i=0 ; i<server.clients.size() ; i++){
-			server.clients.get(i).sendToClient(signal);
-		}
-		
-		//server.getClientHandler().sendToClient(signal);
+		server.signalToClient(signal);
 		//----------------------------------------------------------------------------------
 		
 		// Send To FPM
@@ -162,11 +141,7 @@ public class LMFeederData {
 		signal = feederNum + "&Feeder&" + "Part Fed Counter";
 		
 		//----------------------------------------------------------------------------------For Test
-		for(int i=0 ; i<server.clients.size() ; i++){
-			server.clients.get(i).sendToClient(signal);
-		}
-		
-		//server.getClientHandler().sendToClient(signal);
+		server.signalToClient(signal);
 		//----------------------------------------------------------------------------------
 	}
 
@@ -176,11 +151,7 @@ public class LMFeederData {
 		signal = feederNum + "&Feeder&" + "Rear Gate Lower";
 		
 		//----------------------------------------------------------------------------------For Test
-		for(int i=0 ; i<server.clients.size() ; i++){
-			server.clients.get(i).sendToClient(signal);
-		}
-		
-		//server.getClientHandler().sendToClient(signal);
+		server.signalToClient(signal);
 		//----------------------------------------------------------------------------------
 		
 		// Send To FPM
@@ -197,11 +168,7 @@ public class LMFeederData {
 		signal = feederNum + "&Feeder&" + "Rear Gate Raise";
 		
 		//----------------------------------------------------------------------------------For Test
-		for(int i=0 ; i<server.clients.size() ; i++){
-			server.clients.get(i).sendToClient(signal);
-		}
-		
-		//server.getClientHandler().sendToClient(signal);
+		server.signalToClient(signal);
 		//----------------------------------------------------------------------------------
 		
 		// Send To FPM
@@ -217,11 +184,7 @@ public class LMFeederData {
 		signal = feederNum + "&Feeder&" + "Purge On";
 		
 		//----------------------------------------------------------------------------------For Test
-		for(int i=0 ; i<server.clients.size() ; i++){
-			server.clients.get(i).sendToClient(signal);
-		}
-		
-		//server.getClientHandler().sendToClient(signal);
+		server.signalToClient(signal);
 		//----------------------------------------------------------------------------------
 		
 		// Send To FPM
@@ -237,11 +200,7 @@ public class LMFeederData {
 		signal = feederNum + "&Feeder&" + "Purge Off";
 		
 		//----------------------------------------------------------------------------------For Test
-		for(int i=0 ; i<server.clients.size() ; i++){
-			server.clients.get(i).sendToClient(signal);
-		}
-		
-		//server.getClientHandler().sendToClient(signal);
+		server.signalToClient(signal);
 		//----------------------------------------------------------------------------------
 		
 		// Send To FPM
@@ -257,11 +216,7 @@ public class LMFeederData {
 		signal = feederNum + "&Feeder&" + "Divert To Left";
 		
 		//----------------------------------------------------------------------------------For Test
-		for(int i=0 ; i<server.clients.size() ; i++){
-			server.clients.get(i).sendToClient(signal);
-		}
-		
-		//server.getClientHandler().sendToClient(signal);
+		server.signalToClient(signal);
 		//----------------------------------------------------------------------------------
 		
 		// Send To FPM
@@ -277,11 +232,7 @@ public class LMFeederData {
 		signal = feederNum + "&Feeder&" + "Divert To Right";
 		
 		//----------------------------------------------------------------------------------For Test
-		for(int i=0 ; i<server.clients.size() ; i++){
-			server.clients.get(i).sendToClient(signal);
-		}
-		
-		//server.getClientHandler().sendToClient(signal);
+		server.signalToClient(signal);
 		//----------------------------------------------------------------------------------
 		
 		// Send To FPM

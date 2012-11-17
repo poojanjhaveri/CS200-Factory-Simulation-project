@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Factory Project
-   &#160;<span id="projectnumber">0.0.1</span>
+   &#160;<span id="projectnumber">0.1.0</span>
    </div>
    <div id="projectbrief">team 1 joint cs200/cs201</div>
   </td>
@@ -109,7 +109,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00027"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_manager.html">   27</a></span>&#160;<span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classfactory_1_1general_1_1_manager.html" title="used to standardize methods for all managers">Manager</a> <span class="keyword">extends</span> JFrame {</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="comment">// Connection fields</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_manager.html#ac19ccd02c9fb3a0d507e478a4f54d998">   33</a></span>&#160;    <span class="keyword">private</span> <a class="code" href="classfactory_1_1general_1_1_manager_connection.html" title="connection to server from manager">ManagerConnection</a> <a class="code" href="classfactory_1_1general_1_1_manager.html#ac19ccd02c9fb3a0d507e478a4f54d998">mcon</a>;</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_manager.html#ac19ccd02c9fb3a0d507e478a4f54d998">   33</a></span>&#160;    <span class="keyword">protected</span> <a class="code" href="classfactory_1_1general_1_1_manager_connection.html" title="connection to server from manager">ManagerConnection</a> <a class="code" href="classfactory_1_1general_1_1_manager.html#ac19ccd02c9fb3a0d507e478a4f54d998">mcon</a>;</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    </div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="comment">// Other fields</span></div>
 <div class="line"><a name="l00036"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_manager.html#aa7ec65dc54c81087b06dc116f33521a5">   36</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="classfactory_1_1general_1_1_printer.html" title="A class just to make printing and quick debugging easier. This allows turning off print and println s...">Printer</a> <a class="code" href="classfactory_1_1general_1_1_manager.html#aa7ec65dc54c81087b06dc116f33521a5">p</a> = <span class="keyword">new</span> <a class="code" href="classfactory_1_1general_1_1_printer.html" title="A class just to make printing and quick debugging easier. This allows turning off print and println s...">Printer</a>();</div>
@@ -158,35 +158,39 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        }</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    }</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
-<div class="line"><a name="l00102"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_manager.html#a759d0e608bfa9d64f43b2eca585bba0a">  102</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1general_1_1_manager.html#a759d0e608bfa9d64f43b2eca585bba0a" title="processes a message">processMessage</a>(String msg) {</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="comment">// Decide action based on message from server</span></div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <span class="keywordflow">if</span> (msg.contains(<a class="code" href="classfactory_1_1general_1_1_message.html" title="This class stores constant strings to establish clear messages between the server and client...">Message</a>.<a class="code" href="classfactory_1_1general_1_1_message.html#a3491f4ed6418f0f45886748c6e2f639f">TEST_CLIENT</a>)) {</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            System.out.println(<span class="stringliteral">&quot;Client test passed.&quot;</span>);</div>
+<div class="line"><a name="l00102"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_manager.html#a759d0e608bfa9d64f43b2eca585bba0a">  102</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1general_1_1_manager.html#a759d0e608bfa9d64f43b2eca585bba0a" title="processes a message. override this for specific functionality. always call super.processMessage() bef...">processMessage</a>(String msg) {</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="keywordflow">if</span> (msg == null) {</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="comment">//            System.out.println(&quot;CRITICAL ERROR: MANAGER HAS RECEIVED A NULL MESSAGE FROM THE SERVER!&quot;);</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        }</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        <span class="comment">// Example:</span></div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="comment">//      else if (msg.contains(Message.SELECTED_PLAYER_OK)) {</span></div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="comment">//          String answer = grabParameter(msg); </span></div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="comment">//          p.println(&quot;Answer from server: &quot;+answer);</span></div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="comment">//          if (answer.equals(&quot;true&quot;)) {</span></div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="comment">//              // If the chosen player is OK</span></div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="comment">//              lblPlayerName.setText(existingPlayerPanels.get(chosenPlayerIndex).getName());</span></div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="comment">//              JOptionPane.showMessageDialog(this, &quot;Player selected&quot;, &quot;Notification&quot;, JOptionPane.PLAIN_MESSAGE);</span></div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="comment">//          } else {</span></div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="comment">//              // If not OK</span></div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="comment">//              chosenPlayerIndex = 0; // reset. 0 is default.</span></div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="comment">//              JOptionPane.showMessageDialog(this, &quot;Player currently in use by other user&quot;, &quot;Notification&quot;, JOptionPane.PLAIN_MESSAGE);</span></div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="comment">//          }</span></div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="comment">//      }</span></div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    }</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;</div>
-<div class="line"><a name="l00129"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_manager.html#ac62ebc3907f4b1c2a862c595317eeec0">  129</a></span>&#160;    <span class="keyword">public</span> String <a class="code" href="classfactory_1_1general_1_1_manager.html#ac62ebc3907f4b1c2a862c595317eeec0" title="standard way to grab parameter data via protocol Use this method in an if-statement in processMessage...">grabParameter</a>(String msg) {</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        <span class="keywordflow">return</span> msg.substring(msg.indexOf(<span class="stringliteral">&quot;:&quot;</span>) + 1);</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    }</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;}</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        <span class="comment">// Decide action based on message from server</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        <span class="keywordflow">if</span> (msg.contains(<a class="code" href="classfactory_1_1general_1_1_message.html" title="This class stores constant strings to establish clear messages between the server and client...">Message</a>.<a class="code" href="classfactory_1_1general_1_1_message.html#a3491f4ed6418f0f45886748c6e2f639f">TEST_CLIENT</a>)) {</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            System.out.println(<span class="stringliteral">&quot;Client test passed.&quot;</span>);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        }</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        <span class="comment">// Example:</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="comment">//      else if (msg.contains(Message.SELECTED_PLAYER_OK)) {</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="comment">//          String answer = grabParameter(msg); </span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="comment">//          p.println(&quot;Answer from server: &quot;+answer);</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="comment">//          if (answer.equals(&quot;true&quot;)) {</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="comment">//              // If the chosen player is OK</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="comment">//              lblPlayerName.setText(existingPlayerPanels.get(chosenPlayerIndex).getName());</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="comment">//              JOptionPane.showMessageDialog(this, &quot;Player selected&quot;, &quot;Notification&quot;, JOptionPane.PLAIN_MESSAGE);</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="comment">//          } else {</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="comment">//              // If not OK</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="comment">//              chosenPlayerIndex = 0; // reset. 0 is default.</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="comment">//              JOptionPane.showMessageDialog(this, &quot;Player currently in use by other user&quot;, &quot;Notification&quot;, JOptionPane.PLAIN_MESSAGE);</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="comment">//          }</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="comment">//      }</span></div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    }</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;</div>
+<div class="line"><a name="l00133"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_manager.html#ac62ebc3907f4b1c2a862c595317eeec0">  133</a></span>&#160;    <span class="keyword">public</span> String <a class="code" href="classfactory_1_1general_1_1_manager.html#ac62ebc3907f4b1c2a862c595317eeec0" title="standard way to grab parameter data via protocol Use this method in an if-statement in processMessage...">grabParameter</a>(String msg) {</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        <span class="keywordflow">return</span> msg.substring(msg.indexOf(<span class="stringliteral">&quot;:&quot;</span>) + 1);</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    }</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Nov 4 2012 12:20:01 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Nov 17 2012 01:36:59 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

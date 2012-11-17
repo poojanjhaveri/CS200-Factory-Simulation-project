@@ -96,8 +96,6 @@ public class GantryRobotManager extends Manager implements ActionListener {
 
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        this.sendToServer(Message.IDENTIFY_GANTRYROBOTMANAGER);
     }
     
     JButton toFeeder;
@@ -112,15 +110,14 @@ public class GantryRobotManager extends Manager implements ActionListener {
         toBin = new JButton("Move Gantry Robot to Bin");///<bin1 to feeder2
         toBin.addActionListener(this);
         tester.add(toBin);
-        
-        toFeeder = new JButton("Move Gantry Robot to feeder");///<go to feeder
-        toFeeder.addActionListener(this);
-        tester.add(toFeeder);
-        
+                
         pickBin = new JButton("pickBin");///<pick up Bin
         pickBin.addActionListener(this);
         tester.add(pickBin);
         
+        toFeeder = new JButton("Move Gantry Robot to feeder");///<go to feeder
+        toFeeder.addActionListener(this);
+        tester.add(toFeeder);
         dumpPart = new JButton("Dump part");///<when arrived at feeder ,dump part
         dumpPart.addActionListener(this);
         tester.add(dumpPart);
@@ -131,7 +128,20 @@ public class GantryRobotManager extends Manager implements ActionListener {
 
         return tester;
     }
-    
+     public void processMessage(String msg) {
+	   super.processMessage(msg);
+	   if(msg.contains(Message.MOVE_GANTRY_TO_BIN))
+	   {
+		   this.gs.moveToBin(Integer.parseInt(this.grabParameter(msg)));
+	   }
+	   else if(msg.contains(Message.GANTRY_CARRY_A_BIN))
+	   {
+		   this.gs.purgeBin();
+	   }else if(msg.contains(Message.MOVE_GANTRY_TO_FEEDER))
+	   {
+		   this.gs.moveToFeeder(Integer.parseInt(this.grabParameter(msg)));
+	   }
+   }
     /**
      * @brief Inner class GUIGantryManager
      */
@@ -164,38 +174,36 @@ public class GantryRobotManager extends Manager implements ActionListener {
          */
         public void updatePurgeStation() {
         }
-    }
-/*
-    public void processMessage(String msg) {
-        // Decide action based on message from server
-        if (msg.contains(Message.TEST_CLIENT)) {
-            System.out.println("Client test passed.");
-        } else if (msg.contains(Message.MOVE_GANTRY_TO_FEEDER)) {
-            // Should have received a message like Message.MOVE_GANTRY_TO_FEEDER + ":" + 5
-            try {
-                int param = Integer.parse(grabParameter(msg));
-            } catch (Exception e) {
-                System.out.println("Bad message from server");
-            }
-        }
-    }
-	*/
-   public void processMessage(String msg) {
-	   super.processMessage(msg);
-	   
-	   if (msg == null) { // shouldn't get a null message ever!
-		   return;
-	   } else if (msg.contains(Message.MOVE_GANTRY_TO_BIN)) {
-		   this.ganbot.moveToBin(Integer.parseInt(this.grabParameter(msg)));
-	   } else if(msg.contains(Message.GANTRY_CARRY_A_BIN)) {
-		   this.ganbot.pickUpBin(Integer.parseInt(this.grabParameter(msg)));
-	   } else if(msg.contains(Message.MOVE_GANTRY_TO_FEEDER)) {
-		   this.ganbot.moveToFeeder(Integer.parseInt(this.grabParameter(msg)));
+    
+  
+
+   public void moveToBin(Integer binIndex){
+	   ganbot.moveToBin(binIndex);
+	   if(ganbot.arrivedAtBin(binIndex)){
+		   ganbot.pickUpBin(binIndex);
 	   }
    }
 
+   public void moveToFeeder(Integer feederIndex){
+	   ganbot.moveToFeeder(feederIndex);
+	   if(ganbot.arrivedAtFeeder(feederIndex)){
+		   ganbot.supplyPartOnFeeder();
+	   }
+   }
+
+   public void purgeBin(){
+	   ganbot.moveToDump(); ////It still does not successfully purge the bin unless you click it twice??
+	   if(ganbot.arrivedAtPurge()){
+		   ganbot.binPurged();
+		   ganbot.RobotInitialization();
+	   }
+   }
+
+   }
 	public void actionPerformed(ActionEvent ae) {
 		// TODO Auto-generated method stub
+	
+		
 		if (ae.getSource() ==toFeeder){
 			ganbot.moveToFeeder(2);
 		}
@@ -204,9 +212,10 @@ public class GantryRobotManager extends Manager implements ActionListener {
 			ganbot.moveToBin(5);
 		}
 		if (ae.getSource() ==purgeStation){
-			ganbot.moveToDump();
-			if(ganbot.hasArrivedAtPurge()){
+			ganbot.moveToDump(); ////It still does not successfully purge the bin unless you click it twice??
+			if(ganbot.arrivedAtPurge()){
 				ganbot.binPurged();
+				ganbot.RobotInitialization();
 			}
 		}
 		if (ae.getSource() ==dumpPart){

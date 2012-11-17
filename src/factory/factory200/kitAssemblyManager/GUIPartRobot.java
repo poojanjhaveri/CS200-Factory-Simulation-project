@@ -22,10 +22,12 @@ import java.awt.Graphics2D;
  *
 Orders
 0-7 - pick up part nest 0-7
-8 - drop parts onto kit
+8 - drop parts onto kit 1
+9 - drop parts onto kit 0
 ...
 10-17 - move to nest 0-7
-18 - move to kit
+18 - move to kit0
+19 - move to kit1
 20 - move to default
  * @brief Robot that creates kits using parts from the lane nests
  * @author YiWei Roy Zheng
@@ -89,8 +91,12 @@ public class GUIPartRobot extends GUIRobot {
     /**
     @brief moves the parts robot to the dropoff site for parts
      */
-    public void moveToKit() {
-        this.moveTo(KAMGraphicPanel.PARTS_ROBOT_KITX, KAMGraphicPanel.PARTS_ROBOT_KITY);
+    public void moveToKit0() {
+        this.moveTo(KAMGraphicPanel.PARTS_ROBOT_KIT0X, KAMGraphicPanel.PARTS_ROBOT_KIT0Y);
+    }
+    public void moveToKit1()
+    {
+        this.moveTo(KAMGraphicPanel.PARTS_ROBOT_KIT1X,KAMGraphicPanel.PARTS_ROBOT_KIT1Y);
     }
 
     public void update() {
@@ -114,8 +120,12 @@ public class GUIPartRobot extends GUIRobot {
         this.orders.add(i);
     }
 
-    public void dropPartCommand() {
-        this.orders.add(8);
+    public void dropPartCommand(Integer kit) {
+        if(kit == 0)
+        this.orders.add(9);
+        else if(kit == 1)
+            this.orders.add(8);
+        else System.out.println("Invalid attempt to drop part off in kit " +kit);
     }
 
     public void cheat() {
@@ -124,16 +134,21 @@ public class GUIPartRobot extends GUIRobot {
         pickPartCommand(0);
         pickPartCommand(0);
         pickPartCommand(0);
-        dropOffParts();
+        dropOffParts(1);
     }
 
     public void moveToNestCommand(Integer i) {
         this.orders.add(i + 10);
     }
 
-    public void dropOffParts() {
+    public void dropOffParts(Integer i) {
+        if(i==0){
         this.orders.add(18);
-        dropPartCommand();
+        }
+        else if(i==1){
+            this.orders.add(19);
+        }
+        dropPartCommand(i);
     }
 
     /**
@@ -144,17 +159,27 @@ public class GUIPartRobot extends GUIRobot {
         Integer i = this.popOrder();
         switch (i) {
             case 10:
+               
             case 11:
+               
             case 12:
+               
             case 13:
+               
             case 14:
+              
             case 15:
+              
             case 16:
+              
             case 17:
                 this.moveToNest(i - 10);
                 break;
             case 18:
-                this.moveToKit();
+                this.moveToKit0();
+                break;
+            case 19:
+                this.moveToKit1();
                 break;
             case 20:
                 this.moveToDefault();
@@ -163,6 +188,16 @@ public class GUIPartRobot extends GUIRobot {
                 return false;
         }
         return true;
+    }
+    public void checkDefault()
+    {
+        if(this.orders.size() == 0){
+            
+          this.orders.add(20);
+        }
+    }
+    public Integer popOrder() {
+        return super.popOrder();
     }
 
     private void moveToDefault() {

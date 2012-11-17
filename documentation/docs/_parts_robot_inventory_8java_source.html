@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Factory Project
-   &#160;<span id="projectnumber">0.0.1</span>
+   &#160;<span id="projectnumber">0.1.0</span>
    </div>
    <div id="projectbrief">team 1 joint cs200/cs201</div>
   </td>
@@ -92,40 +92,66 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="_parts_robot_inventory_8java.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">package </span>factory.factory200.kitAssemblyManager;</div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">import</span> java.util.LinkedList;</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">import</span> factory.general.Inventory;</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">import</span> factory.general.Part;</div>
-<div class="line"><a name="l00012"></a><span class="lineno"><a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_parts_robot_inventory.html">   12</a></span>&#160;<span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_parts_robot_inventory.html" title="custom inventory for parts robot">PartsRobotInventory</a> <span class="keyword">implements</span> <a class="code" href="interfacefactory_1_1general_1_1_inventory.html" title="holds a set of parts">Inventory</a> {</div>
-<div class="line"><a name="l00013"></a><span class="lineno"><a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_parts_robot_inventory.html#a1be61815132aa66ff3563e2998cb9c83">   13</a></span>&#160;    LinkedList&lt;Part&gt; <a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_parts_robot_inventory.html#a1be61815132aa66ff3563e2998cb9c83" title="queue of parts">parts</a>;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
-<div class="line"><a name="l00015"></a><span class="lineno"><a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_parts_robot_inventory.html#a63befffc78ad63ecfdc17b847459030c">   15</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_parts_robot_inventory.html#a63befffc78ad63ecfdc17b847459030c">PartsRobotInventory</a>()</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    {</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        this.<a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_parts_robot_inventory.html#a1be61815132aa66ff3563e2998cb9c83" title="queue of parts">parts</a> = <span class="keyword">new</span> LinkedList&lt;Part&gt;();</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    }</div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_parts_robot_inventory.html#a55d5f7f5dbd32c638223618e5da2c1a8">   19</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_parts_robot_inventory.html#a55d5f7f5dbd32c638223618e5da2c1a8">addPart</a>(<a class="code" href="classfactory_1_1general_1_1_part.html" title="digital representation of a part">Part</a> in)</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    {</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keywordflow">if</span>(this.<a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_parts_robot_inventory.html#a1be61815132aa66ff3563e2998cb9c83" title="queue of parts">parts</a>.size() &gt; 4)</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        {</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            System.out.println(<span class="stringliteral">&quot;CRITICAL ERROR: ATTEMPTING TO GIVE PARTSROBOTINVENTORY MORE THAN 4 PARTS! LAST PART GIVEN WAS IGNORED.&quot;</span>);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        } <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            this.<a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_parts_robot_inventory.html#a1be61815132aa66ff3563e2998cb9c83" title="queue of parts">parts</a>.add(in);</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    }</div>
-<div class="line"><a name="l00027"></a><span class="lineno"><a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_parts_robot_inventory.html#a5507f8ac5d127bc4b2451aca99a83fe4">   27</a></span>&#160;    <span class="keyword">public</span> Integer <a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_parts_robot_inventory.html#a5507f8ac5d127bc4b2451aca99a83fe4">size</a>()</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    {</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keywordflow">return</span> this.<a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_parts_robot_inventory.html#a1be61815132aa66ff3563e2998cb9c83" title="queue of parts">parts</a>.size();</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    }</div>
-<div class="line"><a name="l00031"></a><span class="lineno"><a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_parts_robot_inventory.html#a48b7ce1b6132314d9848397593bd232a">   31</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_parts_robot_inventory.html#a48b7ce1b6132314d9848397593bd232a">clear</a>()</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    {</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        this.<a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_parts_robot_inventory.html#a1be61815132aa66ff3563e2998cb9c83" title="queue of parts">parts</a>.clear();</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    }</div>
-<div class="line"><a name="l00035"></a><span class="lineno"><a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_parts_robot_inventory.html#aac8151a884c415ba5251254c691e80bf">   35</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classfactory_1_1general_1_1_part.html" title="digital representation of a part">Part</a> <span class="keyword">get</span>()</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    {</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keywordflow">return</span> this.<a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_parts_robot_inventory.html#a1be61815132aa66ff3563e2998cb9c83" title="queue of parts">parts</a>.poll();</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    }</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;}</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">import</span> java.util.Collection;</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">import</span> factory.general.Inventory;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">import</span> factory.general.Part;</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">import</span> factory.general.Coordinate;</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_parts_robot_inventory.html">   14</a></span>&#160;<span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_parts_robot_inventory.html" title="custom inventory for parts robot">PartsRobotInventory</a> <span class="keyword">implements</span> <a class="code" href="interfacefactory_1_1general_1_1_inventory.html" title="holds a set of parts">Inventory</a> {</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_parts_robot_inventory.html#a1be61815132aa66ff3563e2998cb9c83">   15</a></span>&#160;    LinkedList&lt;Part&gt; <a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_parts_robot_inventory.html#a1be61815132aa66ff3563e2998cb9c83" title="queue of parts">parts</a>;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_parts_robot_inventory.html#a63befffc78ad63ecfdc17b847459030c">   17</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_parts_robot_inventory.html#a63befffc78ad63ecfdc17b847459030c">PartsRobotInventory</a>()</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        this.<a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_parts_robot_inventory.html#a1be61815132aa66ff3563e2998cb9c83" title="queue of parts">parts</a> = <span class="keyword">new</span> LinkedList&lt;Part&gt;();</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    }</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_parts_robot_inventory.html#a55d5f7f5dbd32c638223618e5da2c1a8">   21</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_parts_robot_inventory.html#a55d5f7f5dbd32c638223618e5da2c1a8">addPart</a>(<a class="code" href="classfactory_1_1general_1_1_part.html" title="digital representation of a part">Part</a> in)</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keywordflow">if</span>(this.<a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_parts_robot_inventory.html#a1be61815132aa66ff3563e2998cb9c83" title="queue of parts">parts</a>.size() &gt;= 4)</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        {</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            System.out.println(<span class="stringliteral">&quot;CRITICAL ERROR: ATTEMPTING TO GIVE PARTSROBOTINVENTORY MORE THAN 4 PARTS! LAST PART GIVEN WAS IGNORED.&quot;</span>);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(in == null)</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            System.out.println(<span class="stringliteral">&quot;GIVING PARTSROBOTINVENTORY A NULL PART WTF&quot;</span>);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        }<span class="keywordflow">else</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            this.<a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_parts_robot_inventory.html#a1be61815132aa66ff3563e2998cb9c83" title="queue of parts">parts</a>.add(in);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    }</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_parts_robot_inventory.html#a5507f8ac5d127bc4b2451aca99a83fe4">   32</a></span>&#160;    <span class="keyword">public</span> Integer <a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_parts_robot_inventory.html#a5507f8ac5d127bc4b2451aca99a83fe4">size</a>()</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keywordflow">return</span> this.<a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_parts_robot_inventory.html#a1be61815132aa66ff3563e2998cb9c83" title="queue of parts">parts</a>.size();</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    }</div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_parts_robot_inventory.html#a48b7ce1b6132314d9848397593bd232a">   36</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_parts_robot_inventory.html#a48b7ce1b6132314d9848397593bd232a">clear</a>()</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        this.<a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_parts_robot_inventory.html#a1be61815132aa66ff3563e2998cb9c83" title="queue of parts">parts</a>.clear();</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    }</div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_parts_robot_inventory.html#aac8151a884c415ba5251254c691e80bf">   40</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classfactory_1_1general_1_1_part.html" title="digital representation of a part">Part</a> <span class="keyword">get</span>()</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keywordflow">return</span> this.<a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_parts_robot_inventory.html#a1be61815132aa66ff3563e2998cb9c83" title="queue of parts">parts</a>.poll();</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    }</div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_parts_robot_inventory.html#ac14c8f69252427e6ae93377153a7acb0">   44</a></span>&#160;    <span class="keyword">public</span> LinkedList&lt;Part&gt; <a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_parts_robot_inventory.html#ac14c8f69252427e6ae93377153a7acb0">getAll</a>()</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordflow">return</span> this.<a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_parts_robot_inventory.html#a1be61815132aa66ff3563e2998cb9c83" title="queue of parts">parts</a>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    }</div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_parts_robot_inventory.html#a8f5ab794335bf4342e5bb76e66207883">   48</a></span>&#160;    <span class="keyword">public</span> LinkedList&lt;Part&gt; <a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_parts_robot_inventory.html#a8f5ab794335bf4342e5bb76e66207883">giveAll</a>()</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    LinkedList&lt;Part&gt; col = this.<a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_parts_robot_inventory.html#a1be61815132aa66ff3563e2998cb9c83" title="queue of parts">parts</a>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    this.<a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_parts_robot_inventory.html#a1be61815132aa66ff3563e2998cb9c83" title="queue of parts">parts</a> = <span class="keyword">new</span> LinkedList&lt;Part&gt;();</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordflow">return</span> col;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    }</div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_parts_robot_inventory.html#a19ac61aaa445c653f3f70a25a1e24a36">   54</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_parts_robot_inventory.html#a19ac61aaa445c653f3f70a25a1e24a36">update</a>(<a class="code" href="classfactory_1_1general_1_1_coordinate.html" title="a set of x,y coordinates for painting onto a JPanel">Coordinate</a> in)</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    Integer x = in.<a class="code" href="classfactory_1_1general_1_1_coordinate.html#a7f0bd8b4d52899cfa555a359f21303ea">getX</a>()+3;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    Integer y = in.<a class="code" href="classfactory_1_1general_1_1_coordinate.html#a7b56029afb6239ed27f4b7f4435354ee">getY</a>()+3;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i != this.<a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_parts_robot_inventory.html#a1be61815132aa66ff3563e2998cb9c83" title="queue of parts">parts</a>.size(); i++)</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        {</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        this.<a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_parts_robot_inventory.html#a1be61815132aa66ff3563e2998cb9c83" title="queue of parts">parts</a>.get(i).getGUIPart().setY(y);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        this.<a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_parts_robot_inventory.html#a1be61815132aa66ff3563e2998cb9c83" title="queue of parts">parts</a>.get(i).getGUIPart().setX(x);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        y+= 23;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        }</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    }</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Nov 4 2012 12:20:00 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Nov 17 2012 01:36:58 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

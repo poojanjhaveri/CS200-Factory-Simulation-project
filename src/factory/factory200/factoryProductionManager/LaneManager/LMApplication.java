@@ -2,17 +2,16 @@ package factory.factory200.factoryProductionManager.LaneManager;
 
 import java.awt.Graphics2D;
 import factory.factory200.factoryProductionManager.*;
-import factory.factory200.factoryProductionManager.LaneManager.Test.*;
 
 public class LMApplication {
 
-	private LMClient client;
 	private LMDrawableAllFeeder paintAllFeeder;
 	private LMDrawableAllNest paintAllNest;
 	private LMDrawableAllLane paintAllLane;
 	private LMDrawableAllCamera paintAllCamera;
 	private LMDrawableAllPart paintAllPart;
 	private LMDrawableAllBin paintAllBin;
+	private LMSignalFromServerVerification serverVerify;
 	
 	public LMApplication(){
 		paintAllFeeder = new LMDrawableAllFeeder();
@@ -21,7 +20,7 @@ public class LMApplication {
 		paintAllCamera = new LMDrawableAllCamera();
 		paintAllPart = new LMDrawableAllPart(this);
 		paintAllBin = new LMDrawableAllBin();
-		//client = new LMClient(this);
+		serverVerify = new LMSignalFromServerVerification(this);
 	}
 	
 	public void paint(GraphicsPanel panel, Graphics2D graphics){
@@ -31,6 +30,10 @@ public class LMApplication {
 		paintAllFeeder.paint(panel, graphics);
 		paintAllCamera.paint(panel, graphics);
 		paintAllBin.paint(panel, graphics);
+	}
+	
+	public void timerAction(){
+		serverVerify.timerAction();
 	}
 	
 	public LMDrawableAllFeeder getAllFeeder(){
@@ -55,5 +58,9 @@ public class LMApplication {
 	
 	public LMDrawableAllBin getAllBin(){
 		return paintAllBin;
+	}
+	
+	public LMSignalFromServerVerification getServerVerify(){
+		return serverVerify;
 	}
 }

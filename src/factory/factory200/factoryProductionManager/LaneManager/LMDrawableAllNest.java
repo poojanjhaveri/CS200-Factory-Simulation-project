@@ -9,7 +9,7 @@ public class LMDrawableAllNest {
 	private LMDrawableNest newNest;
 	private ArrayList<LMDrawableNest> nests = new ArrayList<LMDrawableNest>();
 	private final int nestX = 500;
-	private int nestY = 75 / 2;
+	private int nestY = 15;
 	
 	public LMDrawableAllNest(){
 		for(int i=0 ; i<8 ; i++){

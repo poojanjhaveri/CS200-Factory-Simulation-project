@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>Factory Project: src/factory/factory201/Test/MockNest.java Source File</title>
+<title>Factory Project: src/factory/factory201/test/mock/MockNest.java Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Factory Project
-   &#160;<span id="projectnumber">0.0.1</span>
+   &#160;<span id="projectnumber">0.1.0</span>
    </div>
    <div id="projectbrief">team 1 joint cs200/cs201</div>
   </td>
@@ -81,7 +81,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_339115f1b781ea71218b7406990eb67d.html">factory</a></li><li class="navelem"><a class="el" href="dir_83378976ba2ece7b6d274bfe9b80a044.html">factory201</a></li><li class="navelem"><a class="el" href="dir_0c849ba3731cccda27eeb4a5e0eb030f.html">Test</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_339115f1b781ea71218b7406990eb67d.html">factory</a></li><li class="navelem"><a class="el" href="dir_83378976ba2ece7b6d274bfe9b80a044.html">factory201</a></li><li class="navelem"><a class="el" href="dir_1b1ea8c3b73df68a684d9b2eb4b86928.html">test</a></li><li class="navelem"><a class="el" href="dir_3ae5ad0cfcc8ad76320e490c5251b6ab.html">mock</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -89,38 +89,40 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">MockNest.java</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="_mock_nest_8java.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">package </span>factory.factory201.Test;</div>
+<a href="_mock_nest_8java.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">package </span>factory.factory201.test.mock;</div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">import</span> factory.factory201.interfaces.NestInterface;</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">import</span> factory.general.Part;</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
-<div class="line"><a name="l00006"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1_test_1_1_mock_nest.html">    6</a></span>&#160;<span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classfactory_1_1factory201_1_1_test_1_1_mock_nest.html">MockNest</a> <span class="keyword">extends</span> <a class="code" href="classfactory_1_1factory201_1_1_test_1_1_mock_agent.html">MockAgent</a> implements <a class="code" href="interfacefactory_1_1factory201_1_1interfaces_1_1_nest_interface.html">NestInterface</a> {</div>
-<div class="line"><a name="l00007"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1_test_1_1_mock_nest.html#aa3aab1d8692766d6a960561f892a6d3c">    7</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classfactory_1_1factory201_1_1_test_1_1_event_log.html">EventLog</a> <a class="code" href="classfactory_1_1factory201_1_1_test_1_1_mock_nest.html#aa3aab1d8692766d6a960561f892a6d3c">log</a> = <span class="keyword">new</span> <a class="code" href="classfactory_1_1factory201_1_1_test_1_1_event_log.html">EventLog</a>();</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
-<div class="line"><a name="l00009"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1_test_1_1_mock_nest.html#a44b8fb8d906453a75fc05c9a90444f26">    9</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classfactory_1_1factory201_1_1_test_1_1_mock_nest.html#a44b8fb8d906453a75fc05c9a90444f26">MockNest</a>(String <a class="code" href="classfactory_1_1factory201_1_1_test_1_1_mock_agent.html#a300b3e241e9da5c9bb83856698723d8d">name</a>) {</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        super(name);</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <span class="comment">// TODO Auto-generated constructor stub</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    }</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    @Override</div>
-<div class="line"><a name="l00015"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1_test_1_1_mock_nest.html#af5095072e55be9276df135d391859ea7">   15</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory201_1_1_test_1_1_mock_nest.html#af5095072e55be9276df135d391859ea7">msgNeedPart</a>(<a class="code" href="classfactory_1_1general_1_1_part.html" title="digital representation of a part">Part</a> part) {</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="comment">// TODO Auto-generated method stub</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    }</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    @Override</div>
-<div class="line"><a name="l00021"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1_test_1_1_mock_nest.html#a15679d8f89af4c58ed46afa8d093b8aa">   21</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory201_1_1_test_1_1_mock_nest.html#a15679d8f89af4c58ed46afa8d093b8aa">msgHereAreParts</a>(<a class="code" href="classfactory_1_1general_1_1_part.html" title="digital representation of a part">Part</a> part, <span class="keywordtype">int</span> quantity) {</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="comment">// TODO Auto-generated method stub</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <a class="code" href="classfactory_1_1factory201_1_1_test_1_1_mock_nest.html#aa3aab1d8692766d6a960561f892a6d3c">log</a>.<a class="code" href="classfactory_1_1factory201_1_1_test_1_1_event_log.html#a238af292d310aeea81b5d923cbf4ff83">add</a>(<span class="keyword">new</span> <a class="code" href="classfactory_1_1factory201_1_1_test_1_1_logged_event.html">LoggedEvent</a>(</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                <span class="stringliteral">&quot;Received parts event encountered&quot;</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                        )); </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    }</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;}</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">import</span> factory.general.Nest;</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">import</span> factory.general.Part;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">import</span> java.util.List;</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_nest.html">    8</a></span>&#160;<span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_nest.html">MockNest</a> <span class="keyword">extends</span> <a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_agent.html">MockAgent</a> implements <a class="code" href="interfacefactory_1_1factory201_1_1interfaces_1_1_nest_interface.html">NestInterface</a> {</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_nest.html#a145ad1c918d2460762242e9d165f4a58">   10</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_event_log.html">EventLog</a> <a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_nest.html#a145ad1c918d2460762242e9d165f4a58">log</a> = <span class="keyword">new</span> <a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_event_log.html">EventLog</a>();</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_nest.html#a506db598401df0a7887e0882f431f7b1">   12</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_nest.html#a506db598401df0a7887e0882f431f7b1">MockNest</a>(String <a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_agent.html#ad7f261be75d72bfec29edb2d8631c6ca">name</a>) {</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        super(name);</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    }</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    @Override</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_nest.html#a2f4e0150567ef0d7ceb91c654e8c2948">   17</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_nest.html#a2f4e0150567ef0d7ceb91c654e8c2948">msgNeedPart</a>(<a class="code" href="classfactory_1_1general_1_1_part.html" title="digital representation of a part">Part</a> partType) {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_nest.html#a145ad1c918d2460762242e9d165f4a58">log</a>.<a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_event_log.html#a65a7e73fb40ee02aba2ae3d2d666f390">add</a>(<span class="keyword">new</span> <a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_logged_event.html">LoggedEvent</a>(<span class="stringliteral">&quot;Received msgNeedPart of part &quot;</span> + partType.<a class="code" href="classfactory_1_1general_1_1_part.html#a464a6bd0ab3a24c08d0751eacac1278e">getString</a>()));</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    }</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    @Override</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_nest.html#adbe60fb6733be2946032659538968322">   22</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_nest.html#adbe60fb6733be2946032659538968322">msgHereAreParts</a>(List&lt;Part&gt; parts) {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    }</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    @Override</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_nest.html#a729a6d58f022f2a44e3ea02fe91e9aa8">   27</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_nest.html#a729a6d58f022f2a44e3ea02fe91e9aa8">msgNestInspected</a>(<a class="code" href="classfactory_1_1general_1_1_nest.html">Nest</a> n, <span class="keywordtype">boolean</span> result) {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    }</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Nov 4 2012 12:20:00 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Nov 17 2012 01:36:59 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Factory Project
-   &#160;<span id="projectnumber">0.0.1</span>
+   &#160;<span id="projectnumber">0.1.0</span>
    </div>
    <div id="projectbrief">team 1 joint cs200/cs201</div>
   </td>
@@ -156,9 +156,7 @@ Static Private Member Functions</h2></td></tr>
 <p>Don't construct. </p>
 
 <p>Definition at line <a class="el" href="_list_util_8java_source.html#l00040">40</a> of file <a class="el" href="_list_util_8java_source.html">ListUtil.java</a>.</p>
-<div class="fragment"><div class="line">                       {</div>
-<div class="line">    }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -186,14 +184,7 @@ Static Private Member Functions</h2></td></tr>
 <p>Create a list containing the elements of an array </p>
 
 <p>Definition at line <a class="el" href="_list_util_8java_source.html#l00057">57</a> of file <a class="el" href="_list_util_8java_source.html">ListUtil.java</a>.</p>
-<div class="fragment"><div class="line">                                                         {</div>
-<div class="line">        List&lt;Object&gt; l = <a class="code" href="classagent_1_1_list_util.html#aa29da36a81a3925f7dab944340f3c07d">list</a>();</div>
-<div class="line">        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; array.length; i++) {</div>
-<div class="line">            l.add(array[i]);</div>
-<div class="line">        }</div>
-<div class="line">        <span class="keywordflow">return</span> l;</div>
-<div class="line">    }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a class="anchor" id="abb548e676d32c75e315e1bc3d8dd37ed"></a>
@@ -220,16 +211,7 @@ Static Private Member Functions</h2></td></tr>
 <p>Create a list containing the elements of a comma separated string </p>
 
 <p>Definition at line <a class="el" href="_list_util_8java_source.html#l00079">79</a> of file <a class="el" href="_list_util_8java_source.html">ListUtil.java</a>.</p>
-<div class="fragment"><div class="line">                                                   {</div>
-<div class="line">        List&lt;Object&gt; res = <a class="code" href="classagent_1_1_list_util.html#aa29da36a81a3925f7dab944340f3c07d">list</a>();</div>
-<div class="line">        StringTokenizer st = <span class="keyword">new</span> StringTokenizer(csv, <span class="stringliteral">&quot;,&quot;</span>);</div>
-<div class="line">        <span class="keywordflow">while</span> (st.hasMoreTokens()) {</div>
-<div class="line">            String <span class="keywordtype">id</span> = st.nextToken();</div>
-<div class="line">            res.add(<span class="keywordtype">id</span>);</div>
-<div class="line">        }</div>
-<div class="line">        <span class="keywordflow">return</span> res;</div>
-<div class="line">    }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a class="anchor" id="adf3b1304a4e4e2856ca0ccabc69cf29e"></a>
@@ -256,14 +238,7 @@ Static Private Member Functions</h2></td></tr>
 <p>Create a list containing the elements of an iterator </p>
 
 <p>Definition at line <a class="el" href="_list_util_8java_source.html#l00068">68</a> of file <a class="el" href="_list_util_8java_source.html">ListUtil.java</a>.</p>
-<div class="fragment"><div class="line">                                                               {</div>
-<div class="line">        List&lt;Object&gt; l = <a class="code" href="classagent_1_1_list_util.html#aa29da36a81a3925f7dab944340f3c07d">list</a>();</div>
-<div class="line">        <span class="keywordflow">while</span> (iterator.hasNext()) {</div>
-<div class="line">            l.add(iterator.next());</div>
-<div class="line">        }</div>
-<div class="line">        <span class="keywordflow">return</span> l;</div>
-<div class="line">    }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a class="anchor" id="af6e874903e296aa85120d669fc2eccc9"></a>
@@ -314,10 +289,7 @@ Static Private Member Functions</h2></td></tr>
 </dl>
 
 <p>Definition at line <a class="el" href="_list_util_8java_source.html#l00100">100</a> of file <a class="el" href="_list_util_8java_source.html">ListUtil.java</a>.</p>
-<div class="fragment"><div class="line">                                                                                  {</div>
-<div class="line">        <span class="keywordflow">return</span> <a class="code" href="classagent_1_1_list_util.html#af6e874903e296aa85120d669fc2eccc9">immutableListOfType</a>(<a class="code" href="classagent_1_1_list_util.html#aa29da36a81a3925f7dab944340f3c07d">list</a>, type, <span class="keyword">false</span>);</div>
-<div class="line">    }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a class="anchor" id="a5690eb79f851493ac7a74290522f6af6"></a>
@@ -359,23 +331,7 @@ Static Private Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Definition at line <a class="el" href="_list_util_8java_source.html#l00119">119</a> of file <a class="el" href="_list_util_8java_source.html">ListUtil.java</a>.</p>
-<div class="fragment"><div class="line">                                        {</div>
-<div class="line">        List&lt;Object&gt; l = <span class="keyword">new</span> ArrayList&lt;Object&gt;(<a class="code" href="classagent_1_1_list_util.html#aa29da36a81a3925f7dab944340f3c07d">list</a>.size());</div>
-<div class="line">        <span class="keywordflow">for</span> (Iterator iter = <a class="code" href="classagent_1_1_list_util.html#aa29da36a81a3925f7dab944340f3c07d">list</a>.iterator(); iter.hasNext();) {</div>
-<div class="line">            Object item = iter.next();</div>
-<div class="line">            <span class="keywordflow">if</span> (item == null) {</div>
-<div class="line">                <span class="keywordflow">if</span> (!nullOk) {</div>
-<div class="line">                    <span class="keywordflow">throw</span> <span class="keyword">new</span> NullPointerException(<span class="stringliteral">&quot;item of list is null&quot;</span>);</div>
-<div class="line">                }</div>
-<div class="line">            } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!type.isInstance(item)) {</div>
-<div class="line">                <span class="keywordflow">throw</span> <span class="keyword">new</span> ClassCastException(<span class="stringliteral">&quot;item &lt;&quot;</span> + item</div>
-<div class="line">                        + <span class="stringliteral">&quot;&gt; of list is not an instance of &quot;</span> + type);</div>
-<div class="line">            }</div>
-<div class="line">            l.add(item);</div>
-<div class="line">        }</div>
-<div class="line">        <span class="keywordflow">return</span> Collections.unmodifiableList(l);</div>
-<div class="line">    }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a class="anchor" id="ad610569eee49023f25a2bd4d77140a9b"></a>
@@ -426,10 +382,7 @@ Static Private Member Functions</h2></td></tr>
 </dl>
 
 <p>Definition at line <a class="el" href="_list_util_8java_source.html#l00114">114</a> of file <a class="el" href="_list_util_8java_source.html">ListUtil.java</a>.</p>
-<div class="fragment"><div class="line">                        {</div>
-<div class="line">        <span class="keywordflow">return</span> <a class="code" href="classagent_1_1_list_util.html#af6e874903e296aa85120d669fc2eccc9">immutableListOfType</a>(<a class="code" href="classagent_1_1_list_util.html#aa29da36a81a3925f7dab944340f3c07d">list</a>, type, <span class="keyword">true</span>);</div>
-<div class="line">    }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a class="anchor" id="aa29da36a81a3925f7dab944340f3c07d"></a>
@@ -456,14 +409,7 @@ Static Private Member Functions</h2></td></tr>
 <p>Create list from arg list. </p>
 
 <p>Definition at line <a class="el" href="_list_util_8java_source.html#l00046">46</a> of file <a class="el" href="_list_util_8java_source.html">ListUtil.java</a>.</p>
-<div class="fragment"><div class="line">                                                    {</div>
-<div class="line">        List&lt;Object&gt; l = <span class="keyword">new</span> ArrayList&lt;Object&gt;();</div>
-<div class="line">        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; args.length; i++) {</div>
-<div class="line">            l.add(args[i]);</div>
-<div class="line">        }</div>
-<div class="line">        <span class="keywordflow">return</span> l;</div>
-<div class="line">    }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a class="anchor" id="a9cc9907903e3031a0c9b98b093ef89fe"></a>
@@ -497,12 +443,7 @@ Static Private Member Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>A new list with elements in reverse order of the original list. </dd></dl>
 
 <p>Definition at line <a class="el" href="_list_util_8java_source.html#l00143">143</a> of file <a class="el" href="_list_util_8java_source.html">ListUtil.java</a>.</p>
-<div class="fragment"><div class="line">                                                              {</div>
-<div class="line">        List&lt;Object&gt; res = <span class="keyword">new</span> ArrayList&lt;Object&gt;(<a class="code" href="classagent_1_1_list_util.html#aa29da36a81a3925f7dab944340f3c07d">list</a>);</div>
-<div class="line">        Collections.reverse(res);</div>
-<div class="line">        <span class="keywordflow">return</span> res;</div>
-<div class="line">    }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
@@ -511,7 +452,7 @@ Static Private Member Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Nov 4 2012 12:20:01 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Nov 17 2012 01:37:02 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>
