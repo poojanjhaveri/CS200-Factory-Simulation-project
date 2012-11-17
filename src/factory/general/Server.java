@@ -42,16 +42,16 @@ public class Server { // KitAssemblyAgent
     private AgentMain agentMain;
     
 //    // Kevin's
-//    private FeederAgent feederAgent;
-//    private GantryAgent gantryAgent;
-//    private LaneAgent laneAgent;
+   private FeederAgent feederAgent;
+    private GantryAgent gantryAgent;
+    private LaneAgent laneAgent;
 //    // Alex's
-//    private KitRobotAgent kitRobotAgent;
-//    private ConveyorAgent conveyorAgent;
-//    private CameraAgent cameraAgent;
+    private KitRobotAgent kitRobotAgent;
+    private ConveyorAgent conveyorAgent;
+    private CameraAgent cameraAgent;
 //    // Patrick's
-//    private NestAgent nestAgent;
-//    private PartsAgent partsAgent;
+    private NestAgent nestAgent;
+    private PartsAgent partsAgent;
 //    // Dongyoung's
 //    private LMServerMain serverLM;
 //    private Thread threadLM;
@@ -146,7 +146,7 @@ public class Server { // KitAssemblyAgent
         this.cameraAgent.setClient(in);
     }
     public void setConveyerAgentClient(HandleAManager in) {
-        this.conveyerAgent.setClient(in);
+        this.conveyorAgent.setClient(in);
     }
     public void setKitRobotAgentClient(HandleAManager in) {
         this.kitRobotAgent.setClient(in);

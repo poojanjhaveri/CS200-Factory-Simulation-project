@@ -11,6 +11,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import factory.general.Message;
 import javax.swing.JPanel;
 /**
  * This class keeps track of everything that will be visible to the Kit Assembly
@@ -150,6 +151,8 @@ public class KitAssemblyManager extends Manager implements ActionListener {
 
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+	this.mcon.out(Message.IDENTIFY_KITASSEMBLYMANAGER);
     }
         //tester variables
     JButton partRobot;
