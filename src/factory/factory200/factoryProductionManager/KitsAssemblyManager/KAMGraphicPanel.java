@@ -42,14 +42,14 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
     public static final int EMPTY_CONVEYERY = 300;
     public static final int FULL_CONVEYERX = 25;
     public static final int FULL_CONVEYERY = 300;
-    public static final Integer LANE0Y = 75 / 2 + 0 * 75;///<y-coordinate of lane 0's nest
-    public static final Integer LANE1Y = 75 / 2 + 1 * 75;///<y-coordinate of lane 1's nest
-    public static final Integer LANE2Y = 75 / 2 + 2 * 75;///<y-coordinate of lane 2's nest
-    public static final Integer LANE3Y = 75 / 2 + 3 * 75;///<y-coordinate of lane 3's nest
-    public static final Integer LANE4Y = 75 / 2 + 4 * 75;///<y-coordinate of lane 4's nest
-    public static final Integer LANE5Y = 75 / 2 + 5 * 75;///<y-coordinate of lane 5's nest
-    public static final Integer LANE6Y = 75 / 2 + 6 * 75;///<y-coordinate of lane 6's nest
-    public static final Integer LANE7Y = 75 / 2 + 7 * 75;///<y-coordinate of lane 7's nest
+    public static final Integer LANE0Y = 75 / 2 + 0 * 75 -20;///<y-coordinate of lane 0's nest
+    public static final Integer LANE1Y = 75 / 2 + 1 * 75-20;///<y-coordinate of lane 1's nest
+    public static final Integer LANE2Y = 75 / 2 + 2 * 75-20;///<y-coordinate of lane 2's nest
+    public static final Integer LANE3Y = 75 / 2 + 3 * 75-20;///<y-coordinate of lane 3's nest
+    public static final Integer LANE4Y = 75 / 2 + 4 * 75-20;///<y-coordinate of lane 4's nest
+    public static final Integer LANE5Y = 75 / 2 + 5 * 75-20;///<y-coordinate of lane 5's nest
+    public static final Integer LANE6Y = 75 / 2 + 6 * 75-20;///<y-coordinate of lane 6's nest
+    public static final Integer LANE7Y = 75 / 2 + 7 * 75-20;///<y-coordinate of lane 7's nest
     public static final Integer RAILX = (75 / 2 + 8 * 75)-150;///<fixed x-coordinate of the rail the parts robot traverses
     public static final Integer PARTS_ROBOT_KIT0X = KAMGraphicPanel.KITX + 20;
     public static final Integer PARTS_ROBOT_KIT0Y = KAMGraphicPanel.KIT0Y + 20;
@@ -100,7 +100,7 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
 
         int yNum = 75 / 2;
         for (int i = 0; i < 8; i++) {
-            nest.get(i).setY(yNum + i * 75);
+            nest.get(i).setY(yNum + i * 75 -20);
         }
 
         //only for version 0
