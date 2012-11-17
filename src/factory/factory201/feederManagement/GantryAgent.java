@@ -29,7 +29,6 @@ public class GantryAgent extends Agent implements Gantry {
     //holds info about all the feeders that are assigned to the gantry
     private List<myFeeder> myFeeders = Collections.synchronizedList(new ArrayList<myFeeder>());
     private List<myBin> bins = Collections.synchronizedList(new ArrayList<myBin>());
-    private HandleAManager client;///<connection to the client
 
     Timer timer=new Timer();
     //---------------------------------------------------------------------------
@@ -233,10 +232,6 @@ public class GantryAgent extends Agent implements Gantry {
         //update the quantity of bins
         stateChanged();
         return;
-    }
-    public void setClient(HandleAManager i)
-    {
-	this.client = i;
     }
     private void doSupplyPart(myBin b,myFeeder f){
    // 	print("go to bin command");

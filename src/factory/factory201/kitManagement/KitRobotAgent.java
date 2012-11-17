@@ -31,7 +31,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
     public KitRobotAgent(String name) {
         super(name);
 
-        kitStand = new KitStand();
+        kitStand = new KitStand(this);
         partsAgentNeedsEmptyKit = false;
         requestedEmptyKit = false;
     }
@@ -136,7 +136,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
     private void moveFullKitToInspection(Kit kit) {
         while (!kitStand.isEmpty(2));
         print("Moving the full kit: [" + kitStand.get(1).name + "] to the inspection stand.");
-        DoMoveFullKitToInspection();
+        DoMoveKitFrom1to2();
         kitStand.moveFullKitToInspection(kit);
         camera.msgKitIsFull(kitStand.get(2));
         stateChanged();
@@ -155,7 +155,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
 
     private void getEmptyKitFromConveyor() {
         print("Requesting an empty kit from the conveyor.");
-        DoGetEmptyKit();
+        DoMoveKitFromConveyorTo0();
         conveyor.msgNeedEmptyKit();
         requestedEmptyKit = true;
         stateChanged();
@@ -200,6 +200,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
      */
     public void setKitAssemblyManager(KitAssemblyManager KAM) {
         this.KAM = KAM;
+//        this.kitStand.setKitAssemblyManager(KAM);
     }
 
     public void setAll(Camera camera, Conveyor conveyor,
@@ -210,24 +211,25 @@ public class KitRobotAgent extends Agent implements KitRobot {
         this.KAM = KAM;
     }
 
-    /**
-     * Animation call for agent action
-     */
+
     private void DoRemoveVerifiedKit(Kit k) {
         KAM.KAMdropOffFullKit();
     }
 
-    /**
-     * Animation call for agent action
-     */
-    private void DoMoveFullKitToInspection() {
+    private void DoMoveKitFrom1to2() {
         KAM.getKitRobot().moveActiveKitToInspection();
     }
 
-    /**
-     * Animation call for agent action
-     */
-    private void DoGetEmptyKit() {
+    private void DoMoveKitFromConveyorTo0() {
         KAM.getKitRobot().pickUpEmptyKit();
     }
+    
+    private void DoMoveKitFromConveyorTo1() {
+        
+    }
+    
+    private void DoMoveKitFrom0to1() {
+        this.KAM.getKitRobot().moveEmptyKitToActive();
+    }
 }
+

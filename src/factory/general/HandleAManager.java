@@ -93,7 +93,7 @@ public class HandleAManager implements Runnable {
 			System.out.println("Server test passed. Testing client...");
 
 			pw.println(Message.TEST_CLIENT);
-		} else if (msg.contains(Message.CLIENT_EXITED)) {
+		} else if (msg.contains(Message.CLIENT_EXITED)) { // This is how we exit the server
 			stopThread();
 			this.server.decrementNumClients();
 			if (server.getNumClients() == 0) {
@@ -102,6 +102,7 @@ public class HandleAManager implements Runnable {
 			}
 		} else if (msg.contains(Message.IDENTIFY_GANTRYROBOTMANAGER)) {
 			this.id = 0;
+			this.server.setGantryAgentClient(this);
 		} else if (msg.contains(Message.PULL_KITS_LIST)) {
 			//TODO THIS IS AD HOC NEED TO RETRIEVE MASTER BLUEPRINTKITS FROM FACTORY STATE
 			pw.println(Message.PUSH_KITS_LIST + ":" + fstate.getBlueprintKits().serialize());

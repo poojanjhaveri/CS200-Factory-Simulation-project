@@ -14,6 +14,14 @@ public abstract class Agent {
     private String name;
     public boolean partsRequested;
     public boolean print;
+
+    /**
+@brief communication channel with client
+A reference to the corresponding client
+@author Roy YiWei Zheng
+     */
+    private HandleAManager client;
+
     
     protected Agent(String name) {
         this.name = name;
@@ -144,4 +152,13 @@ public abstract class Agent {
             this.interrupt();
         }
     }
+    /**
+@brief sets the client
+@author Roy YiWei Zheng
+     */
+    public void setClient(HandleAManager i)
+    {
+	this.client = i;
+    }
+
 }
