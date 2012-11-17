@@ -137,6 +137,14 @@ public class Server { // KitAssemblyAgent
             Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    public void setCameraAgentClient(HandleAManager in)
+    {
+	this.cameraAgent.setClient(in);
+    }
+    public void setConveyerAgentClient(HandleAManager in)
+    {
+	this.conveyerAgent.setClient(in);
+    }
     public void setKitRobotAgentClient(HandleAManager in)
     {
 	this.kitRobotAgent.setClient(in);
@@ -144,5 +152,9 @@ public class Server { // KitAssemblyAgent
     public void setGantryAgentClient(HandleAManager in)
     {
 	this.gantryAgent.setClient(in);
+    }
+    public void setPartsAgentClient(HandleAManager in)
+    {
+	this.partsAgent.setClient(in);
     }
 }
