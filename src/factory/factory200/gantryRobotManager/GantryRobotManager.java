@@ -179,7 +179,7 @@ public class GantryRobotManager extends Manager implements ActionListener {
         }
     }
 	*/
-<<<<<<< HEAD
+   /*
 public void processMessage(String msg)
 {
 super.processMessage(msg);
@@ -194,7 +194,6 @@ if(msg.contains(Message.MOVE_GANTRY_TO_BIN))
 	this.ganbot.moveToFeeder(Integer.parseInt(this.grabParameter(msg)));
     }
 }
-=======
    public void processMessage(String msg) {
 	   super.processMessage(msg);
 	   
@@ -207,8 +206,7 @@ if(msg.contains(Message.MOVE_GANTRY_TO_BIN))
 	   } else if(msg.contains(Message.MOVE_GANTRY_TO_FEEDER)) {
 		   this.ganbot.moveToFeeder(Integer.parseInt(this.grabParameter(msg)));
 	   }
-   }
->>>>>>> c9f96823541ad98c15f1d3d5adfb122efec95323
+   }*/
 
 	public void actionPerformed(ActionEvent ae) {
 		// TODO Auto-generated method stub
