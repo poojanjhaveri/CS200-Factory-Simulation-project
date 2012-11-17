@@ -185,11 +185,11 @@ public class CameraAgent extends Agent implements Camera {
 
     private void DoInspectKit(Kit kit) {
 //        KAM.flashKitCamera();
-    	this.client.sendMessage(Message.KAM_FLASH_KIT_CAMERA);
+//    	this.client.sendMessage(Message.KAM_FLASH_KIT_CAMERA);
     }
 
     private void DoInspectNest(Nest nest) {
 //        KAM.flashNestCamera(nest.nestNum);
-    	this.client.sendMessage(Message.KAM_FLASH_NEST_CAMERA+":"+nest.nestNum);
+//    	this.client.sendMessage(Message.KAM_FLASH_NEST_CAMERA+":"+nest.nestNum);
     }
 }
