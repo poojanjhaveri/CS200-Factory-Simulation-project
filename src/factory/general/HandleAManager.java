@@ -102,6 +102,7 @@ public class HandleAManager implements Runnable {
 			}
 		} else if (msg.contains(Message.IDENTIFY_GANTRYROBOTMANAGER)) {
 			this.id = 0;
+			this.server.setGantryAgentClient(this);
 		} else if (msg.contains(Message.PULL_KITS_LIST)) {
 			//TODO THIS IS AD HOC NEED TO RETRIEVE MASTER BLUEPRINTKITS FROM FACTORY STATE
 			pw.println(Message.PUSH_KITS_LIST + ":" + fstate.getBlueprintKits().serialize());

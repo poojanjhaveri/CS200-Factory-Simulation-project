@@ -263,7 +263,7 @@ public class AgentMain {
         
         /*========== Turn on or off debugging (print statements) ==========*/
         // Just for debugging; put 'true' to turn off print statements
-        if (true) {
+        if (!TEST_MODE) {
             for (int i = 0; i < LANE; i++) {
                 if (i < FEEDER) {
                     feeder[i].print = false;
