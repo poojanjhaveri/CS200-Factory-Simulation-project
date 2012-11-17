@@ -53,6 +53,9 @@ public class KitAssemblyManager extends Manager implements ActionListener {
             this.flashKitCamera();
         } else if (msg.contains(Message.KAM_FLASH_NEST_CAMERA)) {
             this.flashNestCamera(Integer.parseInt(this.grabParameter(msg)));
+        }else if(msg.contains(Message.KAM_MOVE_FROM_0_TO_2))
+        {
+            this.moveFrom0To2();
         }
 
         //todo - let me know what functions agent will call so I can process them here
@@ -90,17 +93,13 @@ public class KitAssemblyManager extends Manager implements ActionListener {
         this.graphics.kitter.pickPartCommand(nest);
     }
 
-    public void dropOffPart() {
-        //this.graphics.kitter.dropOffParts();
+    public void dropOffPart(Integer i) {
+        this.graphics.kitter.dropOffParts(i);
     }
 
     public void flashKitCamera() {
         this.graphics.camera.setX(KAMGraphicPanel.KITX);
-        //System.out.println(this.graphics.nest.get(0).getX());
-        //System.out.println(this.graphics.camera.getX());
         this.graphics.camera.setY(KAMGraphicPanel.KIT2Y);
-        //System.out.println(this.graphics.nest.get(0).getY());
-        //System.out.println(this.graphics.camera.getY());
         this.graphics.camera.setVisible(true);
         this.graphics.repaint();
 
@@ -112,6 +111,9 @@ public class KitAssemblyManager extends Manager implements ActionListener {
         this.graphics.camera.setVisible(true);
         this.graphics.repaint();
     }
+    public void moveFrom0To2(){
+        this.graphics.kitbot.moveFrom0To2();
+    }
 
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == cameraKitStand) {
@@ -122,7 +124,6 @@ public class KitAssemblyManager extends Manager implements ActionListener {
             String choice = JOptionPane.showInputDialog("Please enter the nest number: ");
             Integer nest = Integer.parseInt(choice);
             this.flashNestCamera(nest);
-            //System.out.println(nest);
         }
         if (ae.getSource() == moveKit) {
             this.graphics.kitbot.moveEmptyKitToActive();
@@ -135,7 +136,9 @@ public class KitAssemblyManager extends Manager implements ActionListener {
             this.graphics.kitter.pickPartCommand(nest);
         }
         if (ae.getSource() == movePartRobotBack) {
-            //this.graphics.kitter.dropOffParts();
+            String choice = JOptionPane.showInputDialog("Please enter the kit number (0 or 1): ");
+            Integer kit = Integer.parseInt(choice);
+            this.graphics.kitter.dropOffParts(kit);
         }
         if (ae.getSource() == kitRobotKitStand) {
             this.graphics.kitbot.moveActiveKitToInspection();
@@ -148,22 +151,17 @@ public class KitAssemblyManager extends Manager implements ActionListener {
         }
 
         if (ae.getSource() == kitRobotEmpty) {
-            //System.out.println("GOGOGO");
-            //this.graphics.deliveryStation=false;
+            
             this.graphics.kitbot.pickUpEmptyKit();
-            //this.graphics.kitstand.getKitPositions().get(0).setFilled(true);
-            //after robot goes back to kit stand
-
-            //this.graphics.timer.start();
+            
         }
         if (ae.getSource() == kitRobotEmpty0) {
-            //System.out.println("GOGOGO");
-            //this.graphics.deliveryStation=false;
+            
             this.graphics.kitbot.pickUpEmptyKitToActive();
-            //this.graphics.kitstand.getKitPositions().get(0).setFilled(true);
-            //after robot goes back to kit stand
-
-            //this.graphics.timer.start();
+            
+        }
+        if(ae.getSource()==moveFrom0To2){
+            this.graphics.kitbot.moveFrom0To2();
         }
     }
 
@@ -191,7 +189,7 @@ public class KitAssemblyManager extends Manager implements ActionListener {
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        this.mcon.out(Message.IDENTIFY_KITASSEMBLYMANAGER);
+        //this.mcon.out(Message.IDENTIFY_KITASSEMBLYMANAGER);
     }
     //tester variables
     JButton partRobot;
@@ -203,7 +201,7 @@ public class KitAssemblyManager extends Manager implements ActionListener {
     JButton cameraKitStand;
     JButton moveKit;
     JButton movePartRobotBack;
-
+    JButton moveFrom0To2;
     public JPanel TestPanel() {
         JPanel tester = new JPanel();
         tester.setLayout(new BoxLayout(tester, BoxLayout.Y_AXIS));
@@ -216,9 +214,12 @@ public class KitAssemblyManager extends Manager implements ActionListener {
         moveKit = new JButton("Move Kit (Position 0->1)");
         moveKit.addActionListener(this);
         tester.add(moveKit);
-        kitRobotKitStand = new JButton("Move Kit Robot (Full Kit -> Camera Inspected)");
+        kitRobotKitStand = new JButton("Move Kit Robot (Full Kit -> Camera Inspected (1->2))");
         kitRobotKitStand.addActionListener(this);
         tester.add(kitRobotKitStand);
+        moveFrom0To2 = new JButton("Move Kit Robot (Full Kit -> Camera Inspected (0->2))");
+        moveFrom0To2.addActionListener(this);
+        tester.add(moveFrom0To2);
         kitRobotEmpty = new JButton("Move Kit Robot (Empty Kit -> KitStand (0))");
         kitRobotEmpty.addActionListener(this);
         tester.add(kitRobotEmpty);
@@ -238,12 +239,7 @@ public class KitAssemblyManager extends Manager implements ActionListener {
 
         return tester;
     }
-
-    //public void processMessage(String msg)
-    //{
-    //	super.processMessage(msg);
-    //todo - let me know what functions agent will call so I can process them here
-    //}      
+      
     public static void main(String[] args) {
         KitAssemblyManager mgr = new KitAssemblyManager();
     }

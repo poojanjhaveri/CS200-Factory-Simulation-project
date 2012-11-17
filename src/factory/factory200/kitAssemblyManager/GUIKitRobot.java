@@ -273,7 +273,7 @@ public void pickUpEmptyKitToActive()
             } else {
                 x = KAMGraphicPanel.KITROBOT_INITIAL_X;// + 15;
             }
-            if (this.getX() <= KAMGraphicPanel.KITROBOT_INITIAL_X && this.getY() < KAMGraphicPanel.KITROBOT_INITIAL_Y) {
+            if (this.getX() <= KAMGraphicPanel.KITROBOT_INITIAL_X && this.getY() <= KAMGraphicPanel.KITROBOT_INITIAL_Y) {
                 angle *= -1;
             }
             // if(this.getX() == KAMGraphicPanel.KITROBOT_INITIAL_X && this.getY() == KAMGraphicPanel.KITROBOT_INITIAL_Y){
