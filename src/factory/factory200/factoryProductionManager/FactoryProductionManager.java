@@ -37,7 +37,9 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 	public JTextArea schedField, outField;
 	public JScrollPane schedPane, outPane;
 	public JTabbedPane tabs;
-	public PaintPanel gfx;
+	//public PaintPanel gfx;
+        
+        public GraphicsPanel gfx;
 
 	public String nameToAdd;
 	public Kit kitToAdd;
@@ -128,7 +130,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 		basePanel = new JPanel();
 		basePanel.setLayout(new BorderLayout());
 
-		gfx = new PaintPanel(this);
+		gfx = new GraphicsPanel();
 		gfx.setPreferredSize(new Dimension(1350, 700));
 		tabs = new JTabbedPane();
 		topPanel = new JPanel();
