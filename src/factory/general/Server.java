@@ -1,22 +1,9 @@
 package factory.general;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import factory.factory201.feederManagement.FeederAgent;
-import factory.factory201.feederManagement.GantryAgent;
-import factory.factory201.feederManagement.LaneAgent;
-import factory.factory201.kitManagement.CameraAgent;
-import factory.factory201.kitManagement.ConveyorAgent;
-import factory.factory201.kitManagement.KitRobotAgent;
-import factory.factory201.partsManagement.NestAgent;
-import factory.factory201.partsManagement.PartsAgent;
-import factory.factory200.laneManager.ServerSide.*;
 
 /**
  * @brief This class is critical to the integration of GUI classes, agents, etc.
@@ -142,12 +129,10 @@ public class Server { // KitAssemblyAgent
             Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    public void setKitRobotAgentClient(HandleAManager in)
-    {
-	this.kitRobotAgent.setClient(in);
+    public void setKitRobotAgentClient(HandleAManager in) {
+    	this.kitRobotAgent.setClient(in);
     }
-    public void setGantryAgentClient(HandleAManager in)
-    {
-	this.gantryAgent.setClient(in);
+    public void setGantryAgentClient(HandleAManager in) {
+    	this.gantryAgent.setClient(in);
     }
 }
