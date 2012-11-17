@@ -51,7 +51,7 @@ public class Message {
     public static final String KAM_PARTS_DROP_OFF_PARTS = "KAM_PARTS_DROP_OFF_PARTS";
 
     //lanemanager section
-
+public static final String IDENTIFY_LANEMANAGER;
 
     //factoryproductionmanager section
     //PULL_KITS_LIST is also used by FPM
