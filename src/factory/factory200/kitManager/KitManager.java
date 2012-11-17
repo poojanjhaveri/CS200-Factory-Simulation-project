@@ -275,7 +275,7 @@ public class KitManager extends Manager  implements ActionListener {
             c.gridy=0;
             update_kitcombo = new JComboBox();  
             for(int j=0;j<this.bpkit.getSize();j++)
-    		 update_kitcombo.addItem(this.bpkit.getKitAt(j)); 
+    		 update_kitcombo.addItem(this.bpkit.getKitAt(j).getName()); 
             uk_main.add(update_kitcombo,c);
             
                  
@@ -354,7 +354,7 @@ public class KitManager extends Manager  implements ActionListener {
             
             delete_combo = new JComboBox();
             for(int m=0;m<this.bpkit.getSize();m++){
-    		 delete_combo.addItem(this.bpkit.getKitAt(m)); 
+    		 delete_combo.addItem(this.bpkit.getKitAt(m).getName()); 
                
             }
             
@@ -499,7 +499,7 @@ public class KitManager extends Manager  implements ActionListener {
               Integer t = tabbedPane.getSelectedIndex();
                 if (t==2)
                 {
-                     updateComboBox();
+                 //    updateComboBox();
                 }   
              
          }
