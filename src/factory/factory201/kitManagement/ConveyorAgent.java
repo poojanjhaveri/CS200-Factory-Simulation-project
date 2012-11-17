@@ -173,6 +173,10 @@ public class ConveyorAgent extends Agent implements Conveyor {
     }
 
     private void DoAddKit(Kit k) {
-        //Needs to be done
+
+    }
+    
+    private void DoRemoveKit(Kit k) {
+        
     }
 }
