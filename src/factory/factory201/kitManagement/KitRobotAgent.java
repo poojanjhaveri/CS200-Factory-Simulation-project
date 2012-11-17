@@ -1,12 +1,12 @@
 package factory.factory201.kitManagement;
 
 import agent.Agent;
-import factory.factory200.kitAssemblyManager.KitAssemblyManager;
 import factory.factory201.interfaces.Camera;
 import factory.factory201.interfaces.Conveyor;
 import factory.factory201.interfaces.KitRobot;
 import factory.factory201.interfaces.PartsInterface;
 import factory.general.Kit;
+import factory.general.Message;
 
 /**
  * @brief This class is the agent for the Kit Robot which gets empty kits from
@@ -21,8 +21,7 @@ import factory.general.Kit;
 public class KitRobotAgent extends Agent implements KitRobot {
 
     private KitStand kitStand;
-    private KitAssemblyManager KAM;
-    private boolean partsAgentNeedsEmptyKit;
+    private int emptyKitRequestsFromPartsAgent;
     private boolean requestedEmptyKit;
     private Conveyor conveyor;
     private Camera camera;
@@ -32,8 +31,8 @@ public class KitRobotAgent extends Agent implements KitRobot {
         super(name);
 
         kitStand = new KitStand(this);
-        partsAgentNeedsEmptyKit = false;
         requestedEmptyKit = false;
+        emptyKitRequestsFromPartsAgent = 0;
     }
 
     // ********** MESSAGES *********
@@ -44,8 +43,8 @@ public class KitRobotAgent extends Agent implements KitRobot {
      */
     @Override
     public void msgNeedEmptyKit() {
-//        print("msgNeedEmptyKit");
-        partsAgentNeedsEmptyKit = true;
+        print("msgNeedEmptyKit");
+        emptyKitRequestsFromPartsAgent++;
         stateChanged();
     }
 
@@ -74,6 +73,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
     public void msgKitIsFull(Kit kit) {
 //        print("msgKitIsFull: " + kitStand.get(1).name);
         kit.status = Kit.Status.full;
+        kit.beingUsedByPartsAgent = false;
         stateChanged();
     }
 
@@ -109,14 +109,14 @@ public class KitRobotAgent extends Agent implements KitRobot {
             moveFullKitToInspection(kitStand.get(0));
             return true;
         }
-        if (partsAgentNeedsEmptyKit) {
+        if (emptyKitRequestsFromPartsAgent > 0) {
             // if parts agent needs empty kit
             giveEmptyKitToPartsAgent();
             return true;
         }
         if (kitStand.availability() > 0 && !requestedEmptyKit) {
             // if tempstand is empty
-            getEmptyKitFromConveyor();
+            requestEmptyKitFromConveyor();
             return true;
         }
         return false;
@@ -127,37 +127,33 @@ public class KitRobotAgent extends Agent implements KitRobot {
     private void sendVerifiedKitToConveyor() {
         Kit k = kitStand.remove(2);
         print("Sending verified kit: [" + k.name + "] to the conveyor.");
-        DoRemoveVerifiedKit(k);
+        DoMoveKitFrom2ToConveyor(k);
         conveyor.msgHereIsVerifiedKit(k);
         stateChanged();
     }
 
-    @SuppressWarnings("empty-statement")
     private void moveFullKitToInspection(Kit kit) {
-        while (!kitStand.isEmpty(2));
         print("Moving the full kit: [" + kitStand.get(1).name + "] to the inspection stand.");
-        DoMoveKitFrom1to2();
         kitStand.moveFullKitToInspection(kit);
         camera.msgKitIsFull(kitStand.get(2));
         stateChanged();
     }
 
     private void giveEmptyKitToPartsAgent() {
-        if (!kitStand.isEmpty()) {
-            print("Notifying the parts agent that an empty kit: [" + kitStand.get(1).name + "] is ready.");
-            partsAgent.msgEmptyKitReady(kitStand.get(1));
-            partsAgentNeedsEmptyKit = false;
-        } else {
-            if(!requestedEmptyKit) {
-                getEmptyKitFromConveyor();
-            }
+        if(kitStand.availableToGive(1) || kitStand.availableToGive(0)) {
+            int i = kitStand.availableToGive(1) ? 1 : 0;
+            print("Notifying the parts agent that an empty kit: [" + kitStand.get(i).name + "] is ready.");
+            partsAgent.msgEmptyKitReady(kitStand.get(i));
+            kitStand.get(i).beingUsedByPartsAgent = true;
+            emptyKitRequestsFromPartsAgent--;
+        } else if(!requestedEmptyKit){
+            requestEmptyKitFromConveyor();
         }
         stateChanged();
     }
 
-    private void getEmptyKitFromConveyor() {
+    private void requestEmptyKitFromConveyor() {
         print("Requesting an empty kit from the conveyor.");
-        DoMoveKitFromConveyorTo0();
         conveyor.msgNeedEmptyKit();
         requestedEmptyKit = true;
         stateChanged();
@@ -194,49 +190,29 @@ public class KitRobotAgent extends Agent implements KitRobot {
         partsAgent = agent;
     }
 
-    /**
-     * Sets the kit assembly manager
-     *
-     * @param KAM Kit assembly manager
-     * @brief Sets the kit assembly manager
-     */
-    public void setKitAssemblyManager(KitAssemblyManager KAM) {
-        this.KAM = KAM;
-//        this.kitStand.setKitAssemblyManager(KAM);
-    }
-
     public void setAll(Camera camera, Conveyor conveyor,
-            PartsInterface partsAgent, KitAssemblyManager KAM) {
+            PartsInterface partsAgent) {
         this.camera = camera;
         this.conveyor = conveyor;
         this.partsAgent = partsAgent;
-        this.KAM = KAM;
     }
 
+    public void DoMoveKitFromConveyorTo0() {
+	this.client.sendMessage(Message.PICK_UP_EMPTY_KIT);
+    }
+    public void DoMoveKitFromConveyorTo1() {
+        this.client.sendMessage(Message.PICK_UP_EMPTY_KIT_TO_ACTIVE);
+    }
+    public void DoMoveKitFrom0to1() {
+	this.client.sendMessage(Message.MOVE_EMPTY_KIT_TO_ACTIVE);
+    }
+    public void DoMoveKitFrom1to2() {
+	this.client.sendMessage(Message.KAM_MOVE_ACTIVE_KIT_TO_INSPECTION);
+    }
+    public void DoMoveKitFrom0to2() {
 
-    private void DoRemoveVerifiedKit(Kit k) {
-
-        KAM.KAMdropOffFullKit();
-	//this.client.sendMessage(Message.KAM_DROP_OFF_FULL_KIT);
     }
-
-    private void DoMoveKitFrom1to2() {
-        KAM.getKitRobot().moveActiveKitToInspection();
-	//this.client.sendMessage(Message.KAM_MOVE_ACTIVE_KIT_TO_INSPECTION);
-    }
-
-    private void DoMoveKitFromConveyorTo0() {
-        KAM.getKitRobot().pickUpEmptyKit();
-	//this.client.sendMessage(Message.KAM_PICK_UP_EMPTY_KIT);
-    }
-    
-    private void DoMoveKitFromConveyorTo1() {
-        //this.client.sendMessage(Message.KAM_PICK_UP_EMPTY_KIT_TO_ACTIVE);
-    }
-    
-    private void DoMoveKitFrom0to1() {
-        this.KAM.getKitRobot().moveEmptyKitToActive();
-	//this.client.sendMessage(Message.KAM_MOVE_EMPTY_KIT_TO_ACTIVE);
-    }
+    public void DoMoveKitFrom2ToConveyor(Kit k) {
+	this.client.sendMessage(Message.KAM_DROP_OFF_FULL_KIT);
+    } 
 }
-
