@@ -98,6 +98,7 @@ public class HandleAManager implements Runnable {
             p.println("NULL MESSAGE RECEIVED ON THE SERVER.");
             return;
         }
+        
         // Decide action based on message from client
         if (msg.contains(Message.TEST_SERVER)) {
             System.out.println("Server test passed. Testing client...");

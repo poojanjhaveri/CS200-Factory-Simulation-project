@@ -265,11 +265,12 @@ public class PartsAgent extends Agent implements PartsInterface {
      kam.getPartsRobot().pickPartCommand(nestNum);   
      //this.client.sendMessage(KAM_PARTS_PICK_PART+":"+nestNum);
     }
-    
+
 
     public void DoPutInKit(int kitNum){
       kam.getPartsRobot().dropOffParts(kitNum);  
       //this.client.sendMessage(KAM_PARTS_DROP_OFF_PARTS+":"+kitNum);
+
 
     }
 }

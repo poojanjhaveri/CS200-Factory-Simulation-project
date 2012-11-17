@@ -50,27 +50,22 @@ public class KitAssemblyManager extends Manager implements ActionListener {
         } else if (msg.contains(Message.KAM_MOVE_EMPTY_KIT_TO_ACTIVE)) {
             this.graphics.kitbot.moveEmptyKitToActive();
 
-        }else if(msg.contains(Message.KAM_FLASH_KIT_CAMERA))
-	    {
-this.flashKitCamera();
-	    }else if(msg.contains(Message.KAM_FLASH_NEST_CAMERA))
-	    {
-this.flashNestCamera(Integer.parseInt(this.grabParameter(msg)));
-	    }else if(msg.contains(Message.KAM_PARTS_MOVE_TO_NEST))
-	    {
-		this.getPartsRobot().moveToNestCommand(Integer.parseInt(this.grabParameter(msg)));
-	    }else if(msg.contains(Message.KAM_PARTS_PICK_PART))
-	    {
-		this.getPartsRobot().pickPartCommand(Integer.parseInt(this.grabParameter(msg)));
-	    }else if(msg.contains(Message.KAM_PARTS_DROP_OFF_PARTS))
-	    {
-		this.getPartsRobot().dropOffParts(Integer.parseInt(this.grabParameter(msg)));
-	    }
-    
-         else if (msg.contains(Message.KAM_FLASH_KIT_CAMERA)) {
+        } else if (msg.contains(Message.KAM_FLASH_KIT_CAMERA)) {
             this.flashKitCamera();
         } else if (msg.contains(Message.KAM_FLASH_NEST_CAMERA)) {
             this.flashNestCamera(Integer.parseInt(this.grabParameter(msg)));
+        } else if (msg.contains(Message.KAM_PARTS_MOVE_TO_NEST)) {
+            this.getPartsRobot().moveToNestCommand(Integer.parseInt(this.grabParameter(msg)));
+        } else if (msg.contains(Message.KAM_PARTS_PICK_PART)) {
+            this.getPartsRobot().pickPartCommand(Integer.parseInt(this.grabParameter(msg)));
+        } else if (msg.contains(Message.KAM_PARTS_DROP_OFF_PARTS)) {
+            this.getPartsRobot().dropOffParts(Integer.parseInt(this.grabParameter(msg)));
+        } else if (msg.contains(Message.KAM_FLASH_KIT_CAMERA)) {
+            this.flashKitCamera();
+        } else if (msg.contains(Message.KAM_FLASH_NEST_CAMERA)) {
+            this.flashNestCamera(Integer.parseInt(this.grabParameter(msg)));
+        } else if (msg.contains(Message.KAM_MOVE_FROM_0_TO_2)) {
+            this.moveFrom0To2();
         }
 
         //todo - let me know what functions agent will call so I can process them here
@@ -108,17 +103,13 @@ this.flashNestCamera(Integer.parseInt(this.grabParameter(msg)));
         this.graphics.kitter.pickPartCommand(nest);
     }
 
-    public void dropOffPart() {
-        //this.graphics.kitter.dropOffParts();
+    public void dropOffPart(Integer i) {
+        this.graphics.kitter.dropOffParts(i);
     }
 
     public void flashKitCamera() {
         this.graphics.camera.setX(KAMGraphicPanel.KITX);
-        //System.out.println(this.graphics.nest.get(0).getX());
-        //System.out.println(this.graphics.camera.getX());
         this.graphics.camera.setY(KAMGraphicPanel.KIT2Y);
-        //System.out.println(this.graphics.nest.get(0).getY());
-        //System.out.println(this.graphics.camera.getY());
         this.graphics.camera.setVisible(true);
         this.graphics.repaint();
 
@@ -131,6 +122,10 @@ this.flashNestCamera(Integer.parseInt(this.grabParameter(msg)));
         this.graphics.repaint();
     }
 
+    public void moveFrom0To2() {
+        this.graphics.kitbot.moveFrom0To2();
+    }
+
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == cameraKitStand) {
             this.flashKitCamera();
@@ -140,7 +135,6 @@ this.flashNestCamera(Integer.parseInt(this.grabParameter(msg)));
             String choice = JOptionPane.showInputDialog("Please enter the nest number: ");
             Integer nest = Integer.parseInt(choice);
             this.flashNestCamera(nest);
-            //System.out.println(nest);
         }
         if (ae.getSource() == moveKit) {
             this.graphics.kitbot.moveEmptyKitToActive();
@@ -153,7 +147,9 @@ this.flashNestCamera(Integer.parseInt(this.grabParameter(msg)));
             this.graphics.kitter.pickPartCommand(nest);
         }
         if (ae.getSource() == movePartRobotBack) {
-            //this.graphics.kitter.dropOffParts();
+            String choice = JOptionPane.showInputDialog("Please enter the kit number (0 or 1): ");
+            Integer kit = Integer.parseInt(choice);
+            this.graphics.kitter.dropOffParts(kit);
         }
         if (ae.getSource() == kitRobotKitStand) {
             this.graphics.kitbot.moveActiveKitToInspection();
@@ -166,22 +162,17 @@ this.flashNestCamera(Integer.parseInt(this.grabParameter(msg)));
         }
 
         if (ae.getSource() == kitRobotEmpty) {
-            //System.out.println("GOGOGO");
-            //this.graphics.deliveryStation=false;
-            this.graphics.kitbot.pickUpEmptyKit();
-            //this.graphics.kitstand.getKitPositions().get(0).setFilled(true);
-            //after robot goes back to kit stand
 
-            //this.graphics.timer.start();
+            this.graphics.kitbot.pickUpEmptyKit();
+
         }
         if (ae.getSource() == kitRobotEmpty0) {
-            //System.out.println("GOGOGO");
-            //this.graphics.deliveryStation=false;
-            this.graphics.kitbot.pickUpEmptyKitToActive();
-            //this.graphics.kitstand.getKitPositions().get(0).setFilled(true);
-            //after robot goes back to kit stand
 
-            //this.graphics.timer.start();
+            this.graphics.kitbot.pickUpEmptyKitToActive();
+
+        }
+        if (ae.getSource() == moveFrom0To2) {
+            this.graphics.kitbot.moveFrom0To2();
         }
     }
 
@@ -209,7 +200,7 @@ this.flashNestCamera(Integer.parseInt(this.grabParameter(msg)));
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        this.mcon.out(Message.IDENTIFY_KITASSEMBLYMANAGER);
+        //this.mcon.out(Message.IDENTIFY_KITASSEMBLYMANAGER);
     }
     //tester variables
     JButton partRobot;
@@ -221,6 +212,7 @@ this.flashNestCamera(Integer.parseInt(this.grabParameter(msg)));
     JButton cameraKitStand;
     JButton moveKit;
     JButton movePartRobotBack;
+    JButton moveFrom0To2;
 
     public JPanel TestPanel() {
         JPanel tester = new JPanel();
@@ -231,18 +223,21 @@ this.flashNestCamera(Integer.parseInt(this.grabParameter(msg)));
         movePartRobotBack = new JButton("Move Part Robot (Nest->KitStand)");
         movePartRobotBack.addActionListener(this);
         tester.add(movePartRobotBack);
-        moveKit = new JButton("Move Kit (Position 0->1)");
-        moveKit.addActionListener(this);
-        tester.add(moveKit);
-        kitRobotKitStand = new JButton("Move Kit Robot (Full Kit -> Camera Inspected)");
-        kitRobotKitStand.addActionListener(this);
-        tester.add(kitRobotKitStand);
         kitRobotEmpty = new JButton("Move Kit Robot (Empty Kit -> KitStand (0))");
         kitRobotEmpty.addActionListener(this);
         tester.add(kitRobotEmpty);
         kitRobotEmpty0 = new JButton("Move Kit Robot (Empty Kit -> KitStand (1))");
         kitRobotEmpty0.addActionListener(this);
         tester.add(kitRobotEmpty0);
+        moveKit = new JButton("Move Kit (Position 0->1)");
+        moveKit.addActionListener(this);
+        tester.add(moveKit);
+        kitRobotKitStand = new JButton("Move Kit Robot (Full Kit -> Camera Inspected (1->2))");
+        kitRobotKitStand.addActionListener(this);
+        tester.add(kitRobotKitStand);
+        moveFrom0To2 = new JButton("Move Kit Robot (Full Kit -> Camera Inspected (0->2))");
+        moveFrom0To2.addActionListener(this);
+        tester.add(moveFrom0To2);
         kitRobotFull = new JButton("Move Kit Robot (Full Kit -> Conveyor)");
         kitRobotFull.addActionListener(this);
         tester.add(kitRobotFull);
@@ -257,11 +252,6 @@ this.flashNestCamera(Integer.parseInt(this.grabParameter(msg)));
         return tester;
     }
 
-    //public void processMessage(String msg)
-    //{
-    //	super.processMessage(msg);
-    //todo - let me know what functions agent will call so I can process them here
-    //}      
     public static void main(String[] args) {
         KitAssemblyManager mgr = new KitAssemblyManager();
     }
