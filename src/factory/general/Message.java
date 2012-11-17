@@ -46,6 +46,10 @@ public class Message {
     public static final String KAM_MOVE_EMPTY_KIT_TO_ACTIVE = "MOVE_EMPTY_KIT_TO_ACTIVE";
     public static final String KAM_FLASH_KIT_CAMERA;
     public static final String KAM_FLASH_NEST_CAMERA;
+    public static final String KAM_PARTS_MOVE_TO_NEST = "KAM_PARTS_MOVE_TO_NEST";
+    public static final String KAM_PARTS_PICK_PART = "KAM_PARTS_PICK_PART";
+    public static final String KAM_PARTS_DROP_OFF_PARTS = "KAM_PARTS_DROP_OFF_PARTS";
+
     //lanemanager section
 
 

@@ -61,9 +61,17 @@ this.flashKitCamera();
 	    }else if(msg.contains(Message.KAM_FLASH_NEST_CAMERA))
 	    {
 this.flashNestCamera(Integer.parseInt(this.grabParameter(msg)));
+	    }else if(msg.contains(Message.KAM_PARTS_MOVE_TO_NEST))
+	    {
+		this.getPartsRobot().moveToNestCommand(Integer.parseInt(this.grabParameter(msg)));
+	    }else if(msg.contains(Message.KAM_PARTS_PICK_PART))
+	    {
+		this.getPartsRobot().pickPartCommand(Integer.parseInt(this.grabParameter(msg)));
+	    }else if(msg.contains(Message.KAM_PARTS_DROP_OFF_PARTS))
+	    {
+		this.getPartsRobot().dropOffParts(Integer.parseInt(this.grabParameter(msg)));
 	    }
     
-	//todo - let me know what functions agent will call so I can process them here
     }
 
           
