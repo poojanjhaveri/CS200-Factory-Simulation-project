@@ -111,7 +111,7 @@ public class HandleAManager implements Runnable {
         } else if (msg.contains(Message.IDENTIFY_GANTRYROBOTMANAGER)) {
             System.out.println("SERVER HAS IDENTIFIED A GANTRYROBOTMANAGER");
             this.id = 0;
-            this.server.setGantryAgentClient(this);
+            this.server.setGantryAgentClient(this); // make sure client is initialized - SOLVE THIS BY INSTANTIATING AGENTS ON SERVER ALREADY
         } else if (msg.contains(Message.IDENTIFY_KITASSEMBLYMANAGER)) {
             System.out.println("SERVER HAS IDENTIFIED A KITASSEMBLYMANAGER");
             this.id = 1;

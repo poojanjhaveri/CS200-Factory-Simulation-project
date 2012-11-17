@@ -1,7 +1,6 @@
 package factory.factory201.kitManagement;
 
 import agent.Agent;
-import factory.factory200.kitAssemblyManager.KitAssemblyManager;
 import factory.factory201.interfaces.Camera;
 import factory.factory201.interfaces.KitRobot;
 import factory.factory201.interfaces.NestInterface;
@@ -29,7 +28,6 @@ public class CameraAgent extends Agent implements Camera {
 
     private KitRobot kitRobotAgent;
     private NestInterface nestAgent;
-    private KitAssemblyManager KAM;
     private List<Nest> nests;
     private List<Kit> kits;
     private Kit tempKit;
@@ -157,7 +155,7 @@ public class CameraAgent extends Agent implements Camera {
     }
 
     // ************ MISC ***********
-    public void setKitRobotAgent(KitRobot agent) {
+    public void setKitRobot(KitRobot agent) {
         kitRobotAgent = agent;
     }
 
@@ -165,13 +163,7 @@ public class CameraAgent extends Agent implements Camera {
         nestAgent = agent;
     }
 
-    public void setKitAssemblyManager(KitAssemblyManager KAM) {
-        this.KAM = KAM;
-    }
-
-    public void setAll(KitAssemblyManager KAM, KitRobot kitRobot,
-            NestInterface nestAgent) {
-        this.KAM = KAM;
+    public void setAll(KitRobot kitRobot, NestInterface nestAgent) {
         this.kitRobotAgent = kitRobot;
         this.nestAgent = nestAgent;
     }

@@ -34,35 +34,6 @@ public class KitAssemblyManager extends Manager implements ActionListener {
     /**
      * changes the panel based on what the user clicks
      */
-    public GUIPartRobot getPartsRobot()
-    {
-        return graphics.kitter;
-    }
-    public GUIKitRobot getKitRobot(){
-	return graphics.kitbot;
-    }
-    public KitDeliveryStation getDeliveryStation(){
-        return graphics.delivery;
-    }
-    public Boolean getStationRun(){
-        return graphics.stationRun;
-    }
-    public KitStand getKitStand(){
-        return graphics.kitstand;
-    }
-    public void KAMdropOffFullKit(){
-          this.graphics.deliveryStation=false;
-          this.graphics.stationRun=true;
-          this.graphics.kitbot.dropOffFullKit();
-    }
-    //input needs to be nest 0-7
-    public void pickUpPart(int nest){
-        this.graphics.kitter.moveToNest(nest);
-        this.graphics.kitter.pickPartCommand(nest);
-    }
-    public void dropOffPart(){
-        this.graphics.kitter.dropOffParts();
-    }
 public void processMessage(String msg)
     {
 	super.processMessage(msg);
@@ -94,6 +65,38 @@ this.flashNestCamera(Integer.parseInt(this.grabParameter(msg)));
     
 	//todo - let me know what functions agent will call so I can process them here
     }
+
+          
+	public GUIPartRobot getPartsRobot()
+	{
+		return graphics.kitter;
+	}
+	public GUIKitRobot getKitRobot(){
+		return graphics.kitbot;
+	}
+	public KitDeliveryStation getDeliveryStation(){
+		return graphics.delivery;
+	}
+	public Boolean getStationRun(){
+		return graphics.stationRun;
+	}
+	public KitStand getKitStand(){
+		return graphics.kitstand;
+	}
+	public void KAMdropOffFullKit(){
+		this.graphics.deliveryStation=false;
+		this.graphics.stationRun=true;
+		this.graphics.kitbot.dropOffFullKit();
+	}
+	//input needs to be nest 0-7
+	public void pickUpPart(int nest){
+		this.graphics.kitter.moveToNest(nest);
+		this.graphics.kitter.pickPartCommand(nest);
+	}
+	public void dropOffPart(){
+		this.graphics.kitter.dropOffParts();
+	}
+
     public void flashKitCamera()
     {
                 this.graphics.camera.setX(KAMGraphicPanel.KITX);
@@ -182,7 +185,6 @@ this.flashNestCamera(Integer.parseInt(this.grabParameter(msg)));
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        System.out.println("Attempting to identify self....");
 	this.mcon.out(Message.IDENTIFY_KITASSEMBLYMANAGER);
     }
         //tester variables
@@ -226,9 +228,14 @@ this.flashNestCamera(Integer.parseInt(this.grabParameter(msg)));
         return tester;
     }
 
-          
+    //public void processMessage(String msg)
+    //{
+    //	super.processMessage(msg);
+	//todo - let me know what functions agent will call so I can process them here
+    //}      
 
       public static void main(String[] args){
        KitAssemblyManager mgr = new KitAssemblyManager();   
       }
+
 }

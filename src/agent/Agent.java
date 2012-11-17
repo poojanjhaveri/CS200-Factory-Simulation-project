@@ -21,7 +21,7 @@ public abstract class Agent {
 A reference to the corresponding client
 @author Roy YiWei Zheng
      */
-    private HandleAManager client;
+    protected HandleAManager client;
 
     
     protected Agent(String name) {

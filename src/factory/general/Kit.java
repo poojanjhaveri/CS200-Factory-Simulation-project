@@ -27,11 +27,13 @@ public class Kit implements Serializable{
     public StandNum standNum;
     public List<Part> parts = new ArrayList<Part>();
     public int kitNeedsParts;
+    public boolean beingUsedByPartsAgent; // for Alex
 
     public Kit(String name) {
         this.name = name;
         this.status = Status.empty;
         this.standNum = StandNum.none;
+        this.beingUsedByPartsAgent = false;
 //        this.kitNeedsParts = p.length;
     }
 

@@ -1,13 +1,11 @@
 package factory.general;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import factory.factory200.laneManager.ServerSide.LMServerMain;
 import factory.factory201.feederManagement.FeederAgent;
 import factory.factory201.feederManagement.GantryAgent;
 import factory.factory201.feederManagement.LaneAgent;
@@ -16,7 +14,6 @@ import factory.factory201.kitManagement.ConveyorAgent;
 import factory.factory201.kitManagement.KitRobotAgent;
 import factory.factory201.partsManagement.NestAgent;
 import factory.factory201.partsManagement.PartsAgent;
-import factory.factory200.laneManager.ServerSide.*;
 
 /**
  * @brief This class is critical to the integration of GUI classes, agents, etc.
@@ -39,20 +36,20 @@ public class Server { // KitAssemblyAgent
     
     // Delete this?
     // Agent
-    private AgentMain agentMain;
+//    private AgentMain agentMain;
     
-//    // Kevin's
-   private FeederAgent feederAgent;
+    // Kevin's
+    private FeederAgent feederAgent;
     private GantryAgent gantryAgent;
     private LaneAgent laneAgent;
-//    // Alex's
+    // Alex's
     private KitRobotAgent kitRobotAgent;
     private ConveyorAgent conveyorAgent;
     private CameraAgent cameraAgent;
-//    // Patrick's
+    // Patrick's
     private NestAgent nestAgent;
     private PartsAgent partsAgent;
-//    // Dongyoung's
+    // Dongyoung's
 //    private LMServerMain serverLM;
 //    private Thread threadLM;
     
@@ -141,7 +138,8 @@ public class Server { // KitAssemblyAgent
         } catch (InterruptedException ex) {
             Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
+    }    	
+    	
     public void setCameraAgentClient(HandleAManager in) {
         this.cameraAgent.setClient(in);
     }
