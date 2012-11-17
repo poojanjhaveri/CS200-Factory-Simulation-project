@@ -1,16 +1,17 @@
 package factory.factory201.partsManagement;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import agent.Agent;
-import factory.factory200.kitAssemblyManager.KitAssemblyManager;
 import factory.factory201.interfaces.Camera;
 import factory.factory201.interfaces.KitRobot;
 import factory.factory201.interfaces.NestInterface;
 import factory.factory201.interfaces.PartsInterface;
 import factory.general.Kit;
+import factory.general.Message;
 import factory.general.Part;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 /**
  * Factory PartsAgent gets kit information from server and obtains necessary
@@ -260,16 +261,16 @@ public class PartsAgent extends Agent implements PartsInterface {
     
     public void DoMoveToNest(int nestNum){
         // kam.getPartsRobot().moveToNestCommand(nestNum);
-	    this.client.sendMessage(KAM_PARTS_MOVE_TO_NEST+":"+nestNum);
+	    this.client.sendMessage(Message.KAM_PARTS_MOVE_TO_NEST+":"+nestNum);
     }
     
     public void DoPickUpPart(int nestNum){
         // kam.getPartsRobot().pickPartCommand(nestNum);   
-        this.client.sendMessage(KAM_PARTS_PICK_PART+":"+nestNum);
+        this.client.sendMessage(Message.KAM_PARTS_PICK_PART+":"+nestNum);
     }
     
     public void DoPutInKit(int kitNum) {
         // kam.getPartsRobot().dropOffParts(kitNum);
-        this.client.sendMessage(KAM_PARTS_DROP_OFF_PARTS+":"+kitNum);
+        this.client.sendMessage(Message.KAM_PARTS_DROP_OFF_PARTS+":"+kitNum);
     }
 }
