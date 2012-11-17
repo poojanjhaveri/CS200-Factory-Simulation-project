@@ -342,7 +342,7 @@ public void pickUpEmptyKitToActive()
 
 
         if (this.hasKit()) {
-            this.getKit().updateParts();
+            //this.getKit().updateParts();
             this.getKit().paintMe(panel, g2d, this.getCoordinate().getX(), this.getCoordinate().getY());
         }
         this.getImage().paintIcon(panel, g2d, this.getCoordinate().getX(), this.getCoordinate().getY());

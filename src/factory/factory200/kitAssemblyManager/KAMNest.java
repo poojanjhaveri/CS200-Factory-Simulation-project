@@ -46,7 +46,7 @@ public class KAMNest {
     public Part getPart(){
         
         if(parts.isEmpty())
-            return null;
+            System.out.println("ERROR: PART ROBOT ASKING FOR NULL PART!");
         
         Part temp=parts.get(0);
         parts.remove(0);
