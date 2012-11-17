@@ -96,8 +96,6 @@ public class GantryRobotManager extends Manager implements ActionListener {
 
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        this.sendToServer(Message.IDENTIFY_GANTRYROBOTMANAGER);
     }
     
     JButton toFeeder;
@@ -179,37 +177,49 @@ public class GantryRobotManager extends Manager implements ActionListener {
         }
     }
 	*/
-   /*
-public void processMessage(String msg)
-{
-super.processMessage(msg);
-if(msg.contains(Message.MOVE_GANTRY_TO_BIN))
-    {
-	this.ganbot.moveToBin(Integer.parseInt(this.grabParameter(msg)));
-    }else if(msg.contains(Message.GANTRY_CARRY_A_BIN))//////
-    {
-	this.ganbot.pickUpBin(Integer.parseInt(this.grabParameter(msg)));
-    }else if(msg.contains(Message.MOVE_GANTRY_TO_FEEDER))
-    {
-	this.ganbot.moveToFeeder(Integer.parseInt(this.grabParameter(msg)));
-    }
-}
-   public void processMessage(String msg) {
+   public void processMessage(String msg)
+   {
 	   super.processMessage(msg);
-	   
-	   if (msg == null) { // shouldn't get a null message ever!
-		   return;
-	   } else if (msg.contains(Message.MOVE_GANTRY_TO_BIN)) {
-		   this.ganbot.moveToBin(Integer.parseInt(this.grabParameter(msg)));
-	   } else if(msg.contains(Message.GANTRY_CARRY_A_BIN)) {
-		   this.ganbot.pickUpBin(Integer.parseInt(this.grabParameter(msg)));
-	   } else if(msg.contains(Message.MOVE_GANTRY_TO_FEEDER)) {
-		   this.ganbot.moveToFeeder(Integer.parseInt(this.grabParameter(msg)));
+	   if(msg.contains(Message.MOVE_GANTRY_TO_BIN))
+	   {
+		   this.moveToBin(Integer.parseInt(this.grabParameter(msg)));
 	   }
-   }*/
+	   else if(msg.contains(Message.GANTRY_CARRY_A_BIN))//////
+	   {
+		   this.purgeBin();
+	   }else if(msg.contains(Message.MOVE_GANTRY_TO_FEEDER))
+	   {
+		   this.moveToFeeder(Integer.parseInt(this.grabParameter(msg)));
+	   }
+   }
+
+   public void moveToBin(Integer binIndex){
+	   ganbot.moveToBin(binIndex);
+	   if(ganbot.arrivedAtBin(binIndex)){
+		   ganbot.pickUpBin(binIndex);
+	   }
+   }
+
+   public void moveToFeeder(Integer feederIndex){
+	   ganbot.moveToFeeder(feederIndex);
+	   if(ganbot.arrivedAtFeeder(feederIndex)){
+		   ganbot.supplyPartOnFeeder();
+	   }
+   }
+
+   public void purgeBin(){
+	   ganbot.moveToDump(); ////It still does not successfully purge the bin unless you click it twice??
+	   if(ganbot.arrivedAtPurge()){
+		   ganbot.binPurged();
+		   ganbot.RobotInitialization();
+	   }
+   }
+
 
 	public void actionPerformed(ActionEvent ae) {
 		// TODO Auto-generated method stub
+	
+		
 		if (ae.getSource() ==toFeeder){
 			ganbot.moveToFeeder(2);
 		}
@@ -235,8 +245,8 @@ if(msg.contains(Message.MOVE_GANTRY_TO_BIN))
 	
 	
 	  public static void main(String[] args){
-		  GantryRobotManager mgr = new GantryRobotManager();   
-	  }
+	       GantryRobotManager mgr = new GantryRobotManager();   
+	      }
 	  
 	  
 	  /*public void doSupplyPart(int binNum, int feederNum){

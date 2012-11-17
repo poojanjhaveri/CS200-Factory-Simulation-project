@@ -26,11 +26,14 @@ public class KAMKit {
     private int x;
     private int y;
     private ArrayList<Part> parts;
+    Integer partsSize;
 
     public KAMKit() {
         kit = new ImageIcon("pics/KAMkit.png");
-        parts = new ArrayList<Part>();
+        parts =new ArrayList<Part>();
+        //parts=null;
         //kitNumber=i;
+        partsSize=0;
     }
 
     /**
@@ -58,20 +61,21 @@ public class KAMKit {
     }
 
     public void updateParts() {
-        System.out.println("parts size: "+parts.size());
-        if (parts.size() < 4) {
-            for (int i = 0; i < parts.size(); i++) {
-                parts.get(i).getGUIPart().setX(this.getX());
-                parts.get(i).getGUIPart().setY(this.getY() + 25 * i);
+        //System.out.println("parts size: "+parts.size());
+        if (this.parts.size() <= 4 && this.parts.size()>0) {
+            for (int i = 0; i < this.partsSize; i++) {
+                this.parts.get(i).getGUIPart().setX(this.getX());
+                this.parts.get(i).getGUIPart().setY(this.getY() + 25 * i);
             }
-        } else if (parts.size() < 8) {
+        }
+        if (this.parts.size() <= 8 && this.parts.size()>4) {
             for (int i = 0; i < 4; i++) {
-                parts.get(i).getGUIPart().setX(this.getX());
-                parts.get(i).getGUIPart().setY(this.getY() + 25 * i);
+                this.parts.get(i).getGUIPart().setX(this.getX());
+                this.parts.get(i).getGUIPart().setY(this.getY() + 25 * i);
             }
             for (int i = 4; i < parts.size(); i++) {
-                parts.get(i).getGUIPart().setX(this.getX() + 20);
-                parts.get(i).getGUIPart().setY(this.getY() + 25 * (i - 4));
+                this.parts.get(i).getGUIPart().setX(this.getX() + 25);
+                this.parts.get(i).getGUIPart().setY(this.getY() + 25 * (i - 4));
                 //System.out.println("parts size: " + parts.size());
             }
         }
@@ -83,8 +87,9 @@ public class KAMKit {
             if (in.get(i) == null) {
                 System.out.println("ERROR: GIVING KIT A NULL PART!!");
             } else {
-                parts.add(in.get(i));
-                System.out.println("PARTS SIZE: "+parts.size());
+                this.parts.add(in.get(i));
+                partsSize++;
+                //System.out.println("PARTS SIZE: "+this.parts.size());
             }
         }
         this.updateParts();

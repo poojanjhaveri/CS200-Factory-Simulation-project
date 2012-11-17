@@ -80,6 +80,13 @@ public class KitDeliveryStation {
            if(yPlace==300 && !(this.getPlaceholder().get(i).isShow())){
                this.getPlaceholder().get(i).setKit(kit);
                this.getPlaceholder().get(i).getKit().updateParts();
+               if(this.getPlaceholder().get(i).getKit().getParts().size() != 0){
+                   this.getPlaceholder().get(i).getKit().setImage(new ImageIcon("pics/giftkit.png"));
+                   int size=this.getPlaceholder().get(i).getKit().getParts().size();
+                   for(int k=0;k<size;k++){
+                   this.getPlaceholder().get(i).getKit().getParts().remove(0);
+                   }
+               }
                break;
            }
        }

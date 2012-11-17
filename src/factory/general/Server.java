@@ -2,6 +2,7 @@ package factory.general;
 
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -63,8 +64,9 @@ public class Server {
 	private Socket s = null;
 	private HandleAManager hac;
 
-	// needed to handle multiple clients?
-	// private ArrayList<HandleAClient> clients = new ArrayList<HandleAClient>();
+	//For testing by Dongyoung
+	//private ArrayList<HandleAManager> managers = new ArrayList<HandleAManager>();
+	
 	public static void main(String[] args) {
 		Server server = new Server(PORT_NUMBER);
 		if (SHOULD_DEBUG) {
@@ -98,7 +100,8 @@ public class Server {
 			System.exit(0);
 		}
 
-		while (true) {
+		//while(true){
+		for(int i=0 ; i<2 ; i++){ // Since I am testing with two clients
 			// Continuously check for a new client for which to create a thread
 			try {
 				s = ss.accept(); // Wait for a client (program halts here until connection occurs)
@@ -106,11 +109,15 @@ public class Server {
 				p.println("num clients: " + numClients);
 				this.hac = new HandleAManager(s, this);
 				new Thread(hac).start(); // Create the thread
+				
+				//managers.add(hac);  // For Testing by Dongyoung
+				
 			} catch (Exception e) {
 				System.out.println("got an exception" + e.getMessage());
 			}
 			System.out.println("A client has connected");
 		}
+		startLaneManagerThread(); // By Dongyoung
 	}
 
 
@@ -216,6 +223,25 @@ public class Server {
         }
 	}
 
+	//------------------------------------------------------------------------------------By Dongyoung
+	private void startLaneManagerThread() {
+	    LMServerMain serverLM = new LMServerMain(this);
+	    Thread threadLM = new Thread(serverLM);
+	    threadLM.start();
+	}
+	
+	public void signalToClient(String signal){
+		hac.sendMessage(signal);
+		
+		// For testing by Dongyoung
+		/*
+		for(int i=0 ; i<managers.size() ; i++){
+			managers.get(i).sendMessage(signal);
+		}
+		*/
+	}
+	//------------------------------------------------------------------------------------
+	
 	private void startInteractionSequence() {
 		// Get kit from somewhere
 		// * 
@@ -287,10 +313,4 @@ public class Server {
 	public void setPartsAgentClient(HandleAManager in) {
 		this.partsAgent.setClient(in);
 	}
-
-	// here...
-	public LMServerMain getServerLM() {
-		return this.serverLM;
-	}
-
 }

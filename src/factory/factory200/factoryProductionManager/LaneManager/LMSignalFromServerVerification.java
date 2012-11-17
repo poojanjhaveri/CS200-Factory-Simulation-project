@@ -1,6 +1,4 @@
-package factory.factory200.factoryProductionManager.LaneManager.Test;
-
-import factory.factory200.factoryProductionManager.LaneManager.*;
+package factory.factory200.factoryProductionManager.LaneManager;
 
 /**
  * This class verifies signals from server( in V0, it is just a platform )
@@ -9,15 +7,15 @@ import factory.factory200.factoryProductionManager.LaneManager.*;
  */
 public class LMSignalFromServerVerification{
 	
-	private LMApplication app;	///< Instance of class 'LaneManagerApp'
-	private LMFeederHandler feederHandler;	///< Instance of class 'LaneManagerFeederHandler'
-	private LMLaneHandler laneHandler;	///< Instance of class 'LaneManagerLaneHandler'
-	private LMNestHandler nestHandler;	///< Instance of class 'LaneManagerNestHandler'
-	private LMCameraHandler cameraHandler;	///< Instance of class 'LaneManagerCameraHandler'
-	private LMPartHandler partHandler;	///< Instance of class 'LMPartHandler'
+	private LMApplication app;
+	private LMFeederHandler feederHandler;
+	private LMLaneHandler laneHandler;
+	private LMNestHandler nestHandler;	
+	private LMCameraHandler cameraHandler;
+	private LMPartHandler partHandler;
 	private LMPartRobotHandler partRobotHandler;
 	private LMGantryRobotHandler gantryRobotHandler;
-	private int feedingTiming;
+
 	/**
 	 * @brief Constructor
 	 * @param laneManagerApp : Instance of class 'LaneManagerApp'
@@ -33,6 +31,12 @@ public class LMSignalFromServerVerification{
 		gantryRobotHandler = new LMGantryRobotHandler(app);
 	}
 	
+	public void timerAction(){
+		app.getAllLane().laneMove();
+		app.getAllCamera().cameraShoot();
+		app.getAllPart().partMove();
+	}
+	
 	/**
 	 * This function clarifies where the signal should go.
 	 * The way it does it to check a specific letter inside the 'message' String.
@@ -45,15 +49,7 @@ public class LMSignalFromServerVerification{
 	 * @param message : Message from server
 	 */
 	public void verify(String message){		
-		
-		if( message.indexOf("&Timer&") != -1 ){
-			feedingTiming++;
-			app.getAllLane().laneMove();
-			app.getAllCamera().cameraShoot();
-			app.getAllPart().partMove();
-		}
-		
-		else if( message.indexOf("&Camera&") != -1 ){
+		if( message.indexOf("&Camera&") != -1 ){
 			cameraHandler.cameraShoot(message);
 		}
 		

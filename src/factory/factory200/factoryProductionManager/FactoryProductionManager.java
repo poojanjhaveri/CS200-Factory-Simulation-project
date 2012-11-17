@@ -61,6 +61,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 		fpm.setVisible(true);
 		fpm.setSize(1375,700);
 		fpm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		fpm.setResizable(false);
 	}
 
 	public FactoryProductionManager()
@@ -367,6 +368,9 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 			System.out.println("GRABBED A NEW BLUEPRINTKITS FROM THE SERVER");
 			this.kitsbp.debug();
 	    }
+	
+		// Lane Manager
+	    gfx.verifyMessage(msg);
     }
     /**
      * @brief Controls Kit selection and Factory ON/OFF Controls Kit selection
