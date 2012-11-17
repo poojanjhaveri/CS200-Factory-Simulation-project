@@ -98,6 +98,7 @@ public class HandleAManager implements Runnable {
             p.println("NULL MESSAGE RECEIVED ON THE SERVER.");
             return;
         }
+        
         // Decide action based on message from client
         if (msg.contains(Message.TEST_SERVER)) {
             System.out.println("Server test passed. Testing client...");
@@ -141,9 +142,13 @@ public class HandleAManager implements Runnable {
             fstate.getBlueprintKits().save();
             System.out.println("Defined new kit:" + k.serialize());
         } else if (msg.contains(Message.UNDEFINE_PART)) {
-            fstate.removePartById(Integer.parseInt(this.grabParameter(msg)));
+            Integer id = Integer.parseInt(this.grabParameter(msg));
+            System.out.println("Undefining part " + id);
+            fstate.removePartById(id);
         } else if (msg.contains(Message.UNDEFINE_KIT)) {
-            fstate.removeKitById(Integer.parseInt(this.grabParameter(msg)));
+             Integer id = Integer.parseInt(this.grabParameter(msg));
+             System.out.println("Undefining part " + id);
+            fstate.removeKitById(id);
         }
     }
 

@@ -22,7 +22,8 @@ import java.awt.Graphics2D;
  *
 Orders
 0-7 - pick up part nest 0-7
-8 - drop parts onto kit
+8 - drop parts onto kit 1
+9 - drop parts onto kit 0
 ...
 10-17 - move to nest 0-7
 18 - move to kit0
@@ -119,10 +120,12 @@ public class GUIPartRobot extends GUIRobot {
         this.orders.add(i);
     }
 
-    public void dropPartCommand(Integer nest) {
-        if(nest == 0 || nest == 1)
-        this.orders.add(nest+8);
-        else System.out.println("Invalid attempt to drop part off in nest " +nest);
+    public void dropPartCommand(Integer kit) {
+        if(kit == 0)
+        this.orders.add(9);
+        else if(kit == 1)
+            this.orders.add(8);
+        else System.out.println("Invalid attempt to drop part off in kit " +kit);
     }
 
     public void cheat() {
@@ -139,7 +142,12 @@ public class GUIPartRobot extends GUIRobot {
     }
 
     public void dropOffParts(Integer i) {
+        if(i==0){
         this.orders.add(18);
+        }
+        else if(i==1){
+            this.orders.add(19);
+        }
         dropPartCommand(i);
     }
 
@@ -151,20 +159,28 @@ public class GUIPartRobot extends GUIRobot {
         Integer i = this.popOrder();
         switch (i) {
             case 10:
+               
             case 11:
+               
             case 12:
+               
             case 13:
+               
             case 14:
+              
             case 15:
+              
             case 16:
+              
             case 17:
                 this.moveToNest(i - 10);
                 break;
             case 18:
-                this.moveToKit1();
+                this.moveToKit0();
                 break;
             case 19:
-                this.moveToKit0();
+                this.moveToKit1();
+                break;
             case 20:
                 this.moveToDefault();
                 break;
@@ -172,6 +188,16 @@ public class GUIPartRobot extends GUIRobot {
                 return false;
         }
         return true;
+    }
+    public void checkDefault()
+    {
+        if(this.orders.size() == 0){
+            
+          this.orders.add(20);
+        }
+    }
+    public Integer popOrder() {
+        return super.popOrder();
     }
 
     private void moveToDefault() {

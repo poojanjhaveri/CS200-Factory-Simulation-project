@@ -1,5 +1,7 @@
 package factory.factory200.gantryRobotManager;
-
+/**
+ * @author Yuting Liu
+ */
 import factory.general.Coordinate;
 import factory.general.GUIPart;
 import factory.general.Part;

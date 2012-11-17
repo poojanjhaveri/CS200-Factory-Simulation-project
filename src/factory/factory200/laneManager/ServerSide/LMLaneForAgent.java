@@ -1,15 +1,16 @@
 package factory.factory200.laneManager.ServerSide;
 
 import java.util.ArrayList;
+import factory.general.*;
 
 public class LMLaneForAgent {
 	
-	private LMServer server;
+	private Server server;
 	private LMServerMain serverMain;
 	private LMLaneData newLane;	///< Instance of class 'ServerLaneManagerThreadLane'
 	private ArrayList<LMLaneData> lanes = new ArrayList<LMLaneData>();	///< ArrayList of lanes
 
-	public LMLaneForAgent(LMServer server, LMServerMain serverMain){
+	public LMLaneForAgent(Server server, LMServerMain serverMain){
 		this.server = server;
 		this.serverMain = serverMain;
 		

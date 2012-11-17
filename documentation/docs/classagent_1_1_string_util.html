@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Factory Project
-   &#160;<span id="projectnumber">0.0.1</span>
+   &#160;<span id="projectnumber">0.1.0</span>
    </div>
    <div id="projectbrief">team 1 joint cs200/cs201</div>
   </td>
@@ -254,37 +254,7 @@ Static Private Attributes</h2></td></tr>
 </dl>
 
 <p>Definition at line <a class="el" href="_string_util_8java_source.html#l00221">221</a> of file <a class="el" href="_string_util_8java_source.html">StringUtil.java</a>.</p>
-<div class="fragment"><div class="line">                                                                 {</div>
-<div class="line">        Vector&lt;String&gt; res = <span class="keyword">new</span> Vector&lt;String&gt;();</div>
-<div class="line">        <span class="keywordtype">int</span> len;</div>
-<div class="line">        <span class="keywordflow">if</span> (s == null || (len = s.length()) == 0) {</div>
-<div class="line">            <span class="keywordflow">return</span> res;</div>
-<div class="line">        }</div>
-<div class="line">        <span class="keywordflow">if</span> (maxItems &lt;= 0) {</div>
-<div class="line">            maxItems = Integer.MAX_VALUE;</div>
-<div class="line">        }</div>
-<div class="line">        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> pos = 0; maxItems &gt; 0; maxItems--) {</div>
-<div class="line">            <span class="keywordtype">int</span> end = s.indexOf(sep, pos);</div>
-<div class="line">            <span class="keywordflow">if</span> (end == -1) {</div>
-<div class="line">                <span class="keywordflow">if</span> (pos &gt; len) {</div>
-<div class="line">                    <span class="keywordflow">break</span>;</div>
-<div class="line">                }</div>
-<div class="line">                end = len;</div>
-<div class="line">            }</div>
-<div class="line">            <span class="keywordflow">if</span> (!discardEmptyStrings || pos != end) {</div>
-<div class="line">                String str = s.substring(pos, end);</div>
-<div class="line">                <span class="keywordflow">if</span> (trimEachString) {</div>
-<div class="line">                    str = str.trim();</div>
-<div class="line">                }</div>
-<div class="line">                <span class="keywordflow">if</span> (!discardEmptyStrings || str.length() != 0) {</div>
-<div class="line">                    res.addElement(str);</div>
-<div class="line">                }</div>
-<div class="line">            }</div>
-<div class="line">            pos = end + 1;</div>
-<div class="line">        }</div>
-<div class="line">        <span class="keywordflow">return</span> res;</div>
-<div class="line">    }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a class="anchor" id="a801a6562ab6b0fd110aedb9f42033f2e"></a>
@@ -339,10 +309,7 @@ Static Private Attributes</h2></td></tr>
 </dl>
 
 <p>Definition at line <a class="el" href="_string_util_8java_source.html#l00261">261</a> of file <a class="el" href="_string_util_8java_source.html">StringUtil.java</a>.</p>
-<div class="fragment"><div class="line">                                         {</div>
-<div class="line">        <span class="keywordflow">return</span> <a class="code" href="classagent_1_1_string_util.html#afbe6a20eef728bb2a3b87c4ead288c51">breakAt</a>(s, sep, maxItems, discardEmptyStrings, <span class="keyword">false</span>);</div>
-<div class="line">    }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a class="anchor" id="a5a01c82b33398ddf372df07dc97e0fb2"></a>
@@ -379,10 +346,7 @@ Static Private Attributes</h2></td></tr>
 <p>Break a string at a separator char, returning a vector of strings. Include any empty strings in the result. </p>
 
 <p>Definition at line <a class="el" href="_string_util_8java_source.html#l00270">270</a> of file <a class="el" href="_string_util_8java_source.html">StringUtil.java</a>.</p>
-<div class="fragment"><div class="line">                                                     {</div>
-<div class="line">        <span class="keywordflow">return</span> <a class="code" href="classagent_1_1_string_util.html#afbe6a20eef728bb2a3b87c4ead288c51">breakAt</a>(s, sep, 0);</div>
-<div class="line">    }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a class="anchor" id="a29b31bea9f1bd4402e48b5fea2a3889b"></a>
@@ -425,10 +389,7 @@ Static Private Attributes</h2></td></tr>
 <p>Break a string at a separator char, returning a vector of at most maxItems strings. Include any empty strings in the result. </p>
 
 <p>Definition at line <a class="el" href="_string_util_8java_source.html#l00278">278</a> of file <a class="el" href="_string_util_8java_source.html">StringUtil.java</a>.</p>
-<div class="fragment"><div class="line">                                                                   {</div>
-<div class="line">        <span class="keywordflow">return</span> <a class="code" href="classagent_1_1_string_util.html#afbe6a20eef728bb2a3b87c4ead288c51">breakAt</a>(s, sep, maxItems, <span class="keyword">false</span>);</div>
-<div class="line">    }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a class="anchor" id="ad4d3b2a1cfe7ca3a521e8c42690511c6"></a>
@@ -465,20 +426,7 @@ Static Private Attributes</h2></td></tr>
 <p>Returns the number of instances of a particular substring in a string. This ignores overlap, starting from the left, so 'xxxxxy' would have 2 instances of 'xx', not 4. Empty string as a substring returns 0. </p>
 
 <p>Definition at line <a class="el" href="_string_util_8java_source.html#l00358">358</a> of file <a class="el" href="_string_util_8java_source.html">StringUtil.java</a>.</p>
-<div class="fragment"><div class="line">                                                                 {</div>
-<div class="line">        <span class="keywordtype">int</span> len = subStr.length();</div>
-<div class="line">        <span class="keywordflow">if</span> (len == 0) {</div>
-<div class="line">            <span class="keywordflow">return</span> 0;</div>
-<div class="line">        }</div>
-<div class="line">        <span class="keywordtype">int</span> pos = 0;</div>
-<div class="line">        <span class="keywordtype">int</span> count = 0;</div>
-<div class="line">        <span class="keywordflow">while</span> ((pos = str.indexOf(subStr, pos)) &gt;= 0) {</div>
-<div class="line">            count++;</div>
-<div class="line">            pos += len;</div>
-<div class="line">        }</div>
-<div class="line">        <span class="keywordflow">return</span> count;</div>
-<div class="line">    }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a class="anchor" id="aa3842fe4c2be315db7f2748e37a97b91"></a>
@@ -514,11 +462,7 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Definition at line <a class="el" href="_string_util_8java_source.html#l00316">316</a> of file <a class="el" href="_string_util_8java_source.html">StringUtil.java</a>.</p>
-<div class="fragment"><div class="line">                                                                     {</div>
-<div class="line">        <span class="keywordtype">int</span> lend = end.length();</div>
-<div class="line">        <span class="keywordflow">return</span> str.regionMatches(<span class="keyword">true</span>, str.length() - lend, end, 0, lend);</div>
-<div class="line">    }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a class="anchor" id="aa55d3e3a6a84190fa482fc7d209f96be"></a>
@@ -563,14 +507,7 @@ Static Private Attributes</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>true if strings are equal or both null </dd></dl>
 
 <p>Definition at line <a class="el" href="_string_util_8java_source.html#l00413">413</a> of file <a class="el" href="_string_util_8java_source.html">StringUtil.java</a>.</p>
-<div class="fragment"><div class="line">                                                             {</div>
-<div class="line">        <span class="keywordflow">if</span> (s1 == null) {</div>
-<div class="line">            <span class="keywordflow">return</span> s2 == null;</div>
-<div class="line">        } <span class="keywordflow">else</span> {</div>
-<div class="line">            <span class="keywordflow">return</span> s1.equals(s2);</div>
-<div class="line">        }</div>
-<div class="line">    }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a class="anchor" id="aae69d0a56c4cdb9a86182698f5a5bb07"></a>
@@ -597,10 +534,7 @@ Static Private Attributes</h2></td></tr>
 <p>Reads in the entire contents of a file into a string </p>
 
 <p>Definition at line <a class="el" href="_string_util_8java_source.html#l00392">392</a> of file <a class="el" href="_string_util_8java_source.html">StringUtil.java</a>.</p>
-<div class="fragment"><div class="line">                                                                  {</div>
-<div class="line">        <span class="keywordflow">return</span> <a class="code" href="classagent_1_1_string_util.html#ac2c4279d2eb353957a2ce1e1ef85b6ba">fromReader</a>(<span class="keyword">new</span> FileReader(path));</div>
-<div class="line">    }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a class="anchor" id="aa40299e4671cc6a73e6ba17f2c1a2559"></a>
@@ -626,11 +560,7 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Definition at line <a class="el" href="_string_util_8java_source.html#l00384">384</a> of file <a class="el" href="_string_util_8java_source.html">StringUtil.java</a>.</p>
-<div class="fragment"><div class="line">                                                                            {</div>
-<div class="line">        <span class="comment">// use our default encoding rather than system default</span></div>
-<div class="line">        <span class="keywordflow">return</span> <a class="code" href="classagent_1_1_string_util.html#ac2c4279d2eb353957a2ce1e1ef85b6ba">fromReader</a>(<span class="keyword">new</span> InputStreamReader(in, Constants.DEFAULT_ENCODING));</div>
-<div class="line">    }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a class="anchor" id="ac2c4279d2eb353957a2ce1e1ef85b6ba"></a>
@@ -656,16 +586,7 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Definition at line <a class="el" href="_string_util_8java_source.html#l00373">373</a> of file <a class="el" href="_string_util_8java_source.html">StringUtil.java</a>.</p>
-<div class="fragment"><div class="line">                                                                 {</div>
-<div class="line">        <span class="keywordtype">char</span>[] buf = <span class="keyword">new</span> <span class="keywordtype">char</span>[1000];</div>
-<div class="line">        StringBuffer sb = <span class="keyword">new</span> StringBuffer(1000);</div>
-<div class="line">        <span class="keywordtype">int</span> len;</div>
-<div class="line">        <span class="keywordflow">while</span> ((len = r.read(buf)) &gt; 0) {</div>
-<div class="line">            sb.append(buf, 0, len);</div>
-<div class="line">        }</div>
-<div class="line">        <span class="keywordflow">return</span> sb.toString();</div>
-<div class="line">    }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a class="anchor" id="aae93b25d44fab8074277edad51462d91"></a>
@@ -699,10 +620,7 @@ Static Private Attributes</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>a string consisting of the supplied initial substring and a unique counter value. </dd></dl>
 
 <p>Definition at line <a class="el" href="_string_util_8java_source.html#l00429">429</a> of file <a class="el" href="_string_util_8java_source.html">StringUtil.java</a>.</p>
-<div class="fragment"><div class="line">                                             {</div>
-<div class="line">        <span class="keywordflow">return</span> base + (<a class="code" href="classagent_1_1_string_util.html#a379c85140a9c33ed28f3611d3f1b74a1">gensymCtr</a>++);</div>
-<div class="line">    }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a class="anchor" id="a2341368bd93367f36786e2f3984a088f"></a>
@@ -739,13 +657,7 @@ Static Private Attributes</h2></td></tr>
 <p>Like indevOf except is case-independent </p>
 
 <p>Definition at line <a class="el" href="_string_util_8java_source.html#l00309">309</a> of file <a class="el" href="_string_util_8java_source.html">StringUtil.java</a>.</p>
-<div class="fragment"><div class="line">                                                                      {</div>
-<div class="line">        <span class="keywordflow">if</span> (str != null &amp;&amp; subStr != null) {</div>
-<div class="line">            <span class="keywordflow">return</span> (str.toUpperCase()).indexOf(subStr.toUpperCase());</div>
-<div class="line">        }</div>
-<div class="line">        <span class="keywordflow">return</span> -1;</div>
-<div class="line">    }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a class="anchor" id="a02800c5d1402b8366eeab62dae380022"></a>
@@ -779,10 +691,7 @@ Static Private Attributes</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>true if s is null or the empty string </dd></dl>
 
 <p>Definition at line <a class="el" href="_string_util_8java_source.html#l00402">402</a> of file <a class="el" href="_string_util_8java_source.html">StringUtil.java</a>.</p>
-<div class="fragment"><div class="line">                                                 {</div>
-<div class="line">        <span class="keywordflow">return</span> s == null || <span class="stringliteral">&quot;&quot;</span>.equals(s);</div>
-<div class="line">    }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a class="anchor" id="aa888705adea25aa7246f6bb6e201417c"></a>
@@ -816,43 +725,7 @@ Static Private Attributes</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>interval in milliseconds </dd></dl>
 
 <p>Definition at line <a class="el" href="_string_util_8java_source.html#l00466">466</a> of file <a class="el" href="_string_util_8java_source.html">StringUtil.java</a>.</p>
-<div class="fragment"><div class="line">                                                     {</div>
-<div class="line">        <span class="keywordflow">try</span> {</div>
-<div class="line">            <span class="keywordtype">int</span> len = str.length();</div>
-<div class="line">            <span class="keywordtype">char</span> suffix = str.charAt(len - 1);</div>
-<div class="line">            String numstr;</div>
-<div class="line">            <span class="keywordtype">long</span> mult = 1;</div>
-<div class="line">            <span class="keywordflow">if</span> (Character.isDigit(suffix)) {</div>
-<div class="line">                numstr = str;</div>
-<div class="line">            } <span class="keywordflow">else</span> {</div>
-<div class="line">                numstr = str.substring(0, len - 1);</div>
-<div class="line">                <span class="keywordflow">switch</span> (Character.toUpperCase(suffix)) {</div>
-<div class="line">                    <span class="keywordflow">case</span> <span class="charliteral">&#39;S&#39;</span>:</div>
-<div class="line">                        mult = Constants.SECOND;</div>
-<div class="line">                        <span class="keywordflow">break</span>;</div>
-<div class="line">                    <span class="keywordflow">case</span> <span class="charliteral">&#39;M&#39;</span>:</div>
-<div class="line">                        mult = Constants.MINUTE;</div>
-<div class="line">                        <span class="keywordflow">break</span>;</div>
-<div class="line">                    <span class="keywordflow">case</span> <span class="charliteral">&#39;H&#39;</span>:</div>
-<div class="line">                        mult = Constants.HOUR;</div>
-<div class="line">                        <span class="keywordflow">break</span>;</div>
-<div class="line">                    <span class="keywordflow">case</span> <span class="charliteral">&#39;D&#39;</span>:</div>
-<div class="line">                        mult = Constants.DAY;</div>
-<div class="line">                        <span class="keywordflow">break</span>;</div>
-<div class="line">                    <span class="keywordflow">case</span> <span class="charliteral">&#39;W&#39;</span>:</div>
-<div class="line">                        mult = Constants.WEEK;</div>
-<div class="line">                        <span class="keywordflow">break</span>;</div>
-<div class="line">                    <span class="keywordflow">default</span>:</div>
-<div class="line">                        <span class="keywordflow">throw</span> <span class="keyword">new</span> NumberFormatException(</div>
-<div class="line">                                <span class="stringliteral">&quot;Illegal time interval suffix&quot;</span>);</div>
-<div class="line">                }</div>
-<div class="line">            }</div>
-<div class="line">            <span class="keywordflow">return</span> Long.parseLong(numstr) * mult;</div>
-<div class="line">        } <span class="keywordflow">catch</span> (IndexOutOfBoundsException e) {</div>
-<div class="line">            <span class="keywordflow">throw</span> <span class="keyword">new</span> NumberFormatException(<span class="stringliteral">&quot;empty string&quot;</span>);</div>
-<div class="line">        }</div>
-<div class="line">    }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a class="anchor" id="ab053b9dd0a3a782bc33de2ff2e47d954"></a>
@@ -894,26 +767,7 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Definition at line <a class="el" href="_string_util_8java_source.html#l00073">73</a> of file <a class="el" href="_string_util_8java_source.html">StringUtil.java</a>.</p>
-<div class="fragment"><div class="line">                                                                                 {</div>
-<div class="line">        <span class="keywordtype">int</span> oldLen = oldstr.length();</div>
-<div class="line">        <span class="keywordflow">if</span> (oldLen == 0 || oldstr.equals(newstr)) {</div>
-<div class="line">            <span class="keywordflow">return</span> line;</div>
-<div class="line">        }</div>
-<div class="line">        <span class="keywordtype">int</span> lineLen = line.length();</div>
-<div class="line">        StringBuffer sb = <span class="keyword">new</span> StringBuffer(lineLen);</div>
-<div class="line">        <span class="keywordtype">int</span> index = line.indexOf(oldstr);</div>
-<div class="line">        <span class="keywordflow">if</span> (index &lt; 0) {</div>
-<div class="line">            <span class="keywordflow">return</span> line;</div>
-<div class="line">        } <span class="keywordflow">else</span> {</div>
-<div class="line">            sb.append(line.substring(0, index));</div>
-<div class="line">            sb.append(newstr);</div>
-<div class="line">            <span class="keywordflow">if</span> (index + oldLen &lt; line.length()) {</div>
-<div class="line">                sb.append(line.substring(index + oldLen));</div>
-<div class="line">            }</div>
-<div class="line">        }</div>
-<div class="line">        <span class="keywordflow">return</span> sb.toString();</div>
-<div class="line">    }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a class="anchor" id="a48df6a2b8914e786fe55f4210057755c"></a>
@@ -965,28 +819,7 @@ Static Private Attributes</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>new string with oldstr replaced by newstr </dd></dl>
 
 <p>Definition at line <a class="el" href="_string_util_8java_source.html#l00051">51</a> of file <a class="el" href="_string_util_8java_source.html">StringUtil.java</a>.</p>
-<div class="fragment"><div class="line">                                                                                  {</div>
-<div class="line">        <span class="keywordtype">int</span> oldLen = oldstr.length();</div>
-<div class="line">        <span class="keywordflow">if</span> (oldLen == 0 || oldstr.equals(newstr)) {</div>
-<div class="line">            <span class="keywordflow">return</span> line;</div>
-<div class="line">        }</div>
-<div class="line">        <span class="keywordtype">int</span> lineLen = line.length();</div>
-<div class="line">        StringBuffer sb = <span class="keyword">new</span> StringBuffer(lineLen);</div>
-<div class="line">        <span class="keywordtype">int</span> oldIdx = 0;</div>
-<div class="line">        <span class="keywordtype">int</span> thisIdx;</div>
-<div class="line">        <span class="keywordflow">while</span> ((thisIdx = line.indexOf(oldstr, oldIdx)) &gt;= 0) {</div>
-<div class="line">            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> ix = oldIdx; ix &lt; thisIdx; ix++) {</div>
-<div class="line">                sb.append(line.charAt(ix));</div>
-<div class="line">            }</div>
-<div class="line">            sb.append(newstr);</div>
-<div class="line">            oldIdx = thisIdx + oldLen;</div>
-<div class="line">        }</div>
-<div class="line">        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> ix = oldIdx; ix &lt; lineLen; ix++) {</div>
-<div class="line">            sb.append(line.charAt(ix));</div>
-<div class="line">        }</div>
-<div class="line">        <span class="keywordflow">return</span> sb.toString();</div>
-<div class="line">    }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a class="anchor" id="a19e9547f829ee655fc1938ac8f5e808a"></a>
@@ -1038,11 +871,7 @@ Static Private Attributes</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>Concatenated string </dd></dl>
 
 <p>Definition at line <a class="el" href="_string_util_8java_source.html#l00139">139</a> of file <a class="el" href="_string_util_8java_source.html">StringUtil.java</a>.</p>
-<div class="fragment"><div class="line">                                                {</div>
-<div class="line">        <span class="keywordflow">return</span> <a class="code" href="classagent_1_1_string_util.html#a1330ed358c7db80c5134363c7f262f4a">separatedString</a>(c, delimiter, delimiter + separator + delimiter,</div>
-<div class="line">                delimiter, <span class="keyword">new</span> StringBuffer()).toString();</div>
-<div class="line">    }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a class="anchor" id="afa58ca9358d8f383dab149e6e4fd2f0f"></a>
@@ -1101,12 +930,7 @@ Static Private Attributes</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>Concatenated string </dd></dl>
 
 <p>Definition at line <a class="el" href="_string_util_8java_source.html#l00155">155</a> of file <a class="el" href="_string_util_8java_source.html">StringUtil.java</a>.</p>
-<div class="fragment"><div class="line">                                                                    {</div>
-<div class="line">        <span class="keywordflow">return</span> <a class="code" href="classagent_1_1_string_util.html#a1330ed358c7db80c5134363c7f262f4a">separatedString</a>(c, delimiter1,</div>
-<div class="line">                delimiter2 + separator + delimiter1, delimiter2,</div>
-<div class="line">                <span class="keyword">new</span> StringBuffer()).toString();</div>
-<div class="line">    }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a class="anchor" id="a1330ed358c7db80c5134363c7f262f4a"></a>
@@ -1151,11 +975,7 @@ Static Private Attributes</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>Concatenated string </dd></dl>
 
 <p>Definition at line <a class="el" href="_string_util_8java_source.html#l00100">100</a> of file <a class="el" href="_string_util_8java_source.html">StringUtil.java</a>.</p>
-<div class="fragment"><div class="line">                                                                         {</div>
-<div class="line">        <span class="keywordflow">return</span> <a class="code" href="classagent_1_1_string_util.html#a1330ed358c7db80c5134363c7f262f4a">separatedString</a>(c, <span class="stringliteral">&quot;&quot;</span>, separator, <span class="stringliteral">&quot;&quot;</span>, <span class="keyword">new</span> StringBuffer())</div>
-<div class="line">                .toString();</div>
-<div class="line">    }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a class="anchor" id="ada28e53a0f27077e1d7f3e152c71ba2d"></a>
@@ -1200,11 +1020,7 @@ Static Private Attributes</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>Concatenated string </dd></dl>
 
 <p>Definition at line <a class="el" href="_string_util_8java_source.html#l00112">112</a> of file <a class="el" href="_string_util_8java_source.html">StringUtil.java</a>.</p>
-<div class="fragment"><div class="line">                                                                         {</div>
-<div class="line">        <span class="keywordflow">return</span> <a class="code" href="classagent_1_1_string_util.html#a1330ed358c7db80c5134363c7f262f4a">separatedString</a>(ListUtil.fromArray(arr), <span class="stringliteral">&quot;&quot;</span>, separator, <span class="stringliteral">&quot;&quot;</span>,</div>
-<div class="line">                <span class="keyword">new</span> StringBuffer()).toString();</div>
-<div class="line">    }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a class="anchor" id="a1e0f5c147898fc8fde8304714f46349a"></a>
@@ -1256,10 +1072,7 @@ Static Private Attributes</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>sb </dd></dl>
 
 <p>Definition at line <a class="el" href="_string_util_8java_source.html#l00125">125</a> of file <a class="el" href="_string_util_8java_source.html">StringUtil.java</a>.</p>
-<div class="fragment"><div class="line">                             {</div>
-<div class="line">        <span class="keywordflow">return</span> <a class="code" href="classagent_1_1_string_util.html#a1330ed358c7db80c5134363c7f262f4a">separatedString</a>(c, <span class="stringliteral">&quot;&quot;</span>, separator, <span class="stringliteral">&quot;&quot;</span>, sb);</div>
-<div class="line">    }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a class="anchor" id="ac4170defaa1e0623ec1a26faae78116a"></a>
@@ -1325,28 +1138,7 @@ Static Private Attributes</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>Concatenated string </dd></dl>
 
 <p>Definition at line <a class="el" href="_string_util_8java_source.html#l00188">188</a> of file <a class="el" href="_string_util_8java_source.html">StringUtil.java</a>.</p>
-<div class="fragment"><div class="line">                             {</div>
-<div class="line">        <span class="keywordflow">if</span> (c == null) {</div>
-<div class="line">            <span class="keywordflow">return</span> sb;</div>
-<div class="line">        }</div>
-<div class="line">        Iterator iter = c.iterator();</div>
-<div class="line">        <span class="keywordtype">boolean</span> first = <span class="keyword">true</span>;</div>
-<div class="line">        <span class="keywordflow">while</span> (iter.hasNext()) {</div>
-<div class="line">            <span class="keywordflow">if</span> (first) {</div>
-<div class="line">                first = <span class="keyword">false</span>;</div>
-<div class="line">                sb.append(separatorFirst);</div>
-<div class="line">            } <span class="keywordflow">else</span> {</div>
-<div class="line">                sb.append(separatorInner);</div>
-<div class="line">            }</div>
-<div class="line">            Object obj = iter.next();</div>
-<div class="line">            sb.append(obj == null ? <span class="stringliteral">&quot;(null)&quot;</span> : obj.toString());</div>
-<div class="line">        }</div>
-<div class="line">        <span class="keywordflow">if</span> (!first) {</div>
-<div class="line">            sb.append(separatorLast);</div>
-<div class="line">        }</div>
-<div class="line">        <span class="keywordflow">return</span> sb;</div>
-<div class="line">    }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a class="anchor" id="af6a858c9a74770863227bac0979f9301"></a>
@@ -1372,14 +1164,7 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Definition at line <a class="el" href="_string_util_8java_source.html#l00334">334</a> of file <a class="el" href="_string_util_8java_source.html">StringUtil.java</a>.</p>
-<div class="fragment"><div class="line">                                                  {</div>
-<div class="line">        <span class="keywordflow">if</span> (<span class="keywordtype">object</span> == null) {</div>
-<div class="line">            <span class="keywordflow">return</span> null;</div>
-<div class="line">        }</div>
-<div class="line">        String name = <span class="keywordtype">object</span>.toString();</div>
-<div class="line">        <span class="keywordflow">return</span> name.substring(name.lastIndexOf(<span class="charliteral">&#39;.&#39;</span>) + 1);</div>
-<div class="line">    }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a class="anchor" id="a46ec37bdfc5abc2f75375e88343a86b2"></a>
@@ -1405,11 +1190,7 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Definition at line <a class="el" href="_string_util_8java_source.html#l00343">343</a> of file <a class="el" href="_string_util_8java_source.html">StringUtil.java</a>.</p>
-<div class="fragment"><div class="line">                                                {</div>
-<div class="line">        String className = clazz.getName();</div>
-<div class="line">        <span class="keywordflow">return</span> className.substring(className.lastIndexOf(<span class="charliteral">&#39;.&#39;</span>) + 1);</div>
-<div class="line">    }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a class="anchor" id="aa7c8c51bac776a03b0665a26e32e70b6"></a>
@@ -1435,10 +1216,7 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Definition at line <a class="el" href="_string_util_8java_source.html#l00349">349</a> of file <a class="el" href="_string_util_8java_source.html">StringUtil.java</a>.</p>
-<div class="fragment"><div class="line">                                                  {</div>
-<div class="line">        <span class="keywordflow">return</span> <a class="code" href="classagent_1_1_string_util.html#af6a858c9a74770863227bac0979f9301">shortName</a>(method.getDeclaringClass()) + <span class="stringliteral">&quot;.&quot;</span> + method.getName();</div>
-<div class="line">    }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a class="anchor" id="ad95eae8c7dc26281b1635462d282244c"></a>
@@ -1465,13 +1243,7 @@ Static Private Attributes</h2></td></tr>
 <p>Translate an exception's stack trace to a string. </p>
 
 <p>Definition at line <a class="el" href="_string_util_8java_source.html#l00599">599</a> of file <a class="el" href="_string_util_8java_source.html">StringUtil.java</a>.</p>
-<div class="fragment"><div class="line">                                                        {</div>
-<div class="line">        StringWriter sw = <span class="keyword">new</span> StringWriter();</div>
-<div class="line">        PrintWriter pw = <span class="keyword">new</span> PrintWriter(sw);</div>
-<div class="line">        th.printStackTrace(pw);</div>
-<div class="line">        <span class="keywordflow">return</span> sw.toString();</div>
-<div class="line">    }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a class="anchor" id="a64c4930b0616fabf2801ad116cfa0dd0"></a>
@@ -1523,11 +1295,7 @@ Static Private Attributes</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>Concatenated string </dd></dl>
 
 <p>Definition at line <a class="el" href="_string_util_8java_source.html#l00171">171</a> of file <a class="el" href="_string_util_8java_source.html">StringUtil.java</a>.</p>
-<div class="fragment"><div class="line">                                                 {</div>
-<div class="line">        <span class="keywordflow">return</span> <a class="code" href="classagent_1_1_string_util.html#a1330ed358c7db80c5134363c7f262f4a">separatedString</a>(c, <span class="stringliteral">&quot;&quot;</span>, separator, terminator, <span class="keyword">new</span> StringBuffer())</div>
-<div class="line">                .toString();</div>
-<div class="line">    }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a class="anchor" id="aa57f00e7db199e580081b44b7dd951a2"></a>
@@ -1561,37 +1329,7 @@ Static Private Attributes</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>a string in the form dDhHmMsS </dd></dl>
 
 <p>Definition at line <a class="el" href="_string_util_8java_source.html#l00550">550</a> of file <a class="el" href="_string_util_8java_source.html">StringUtil.java</a>.</p>
-<div class="fragment"><div class="line">                                                           {</div>
-<div class="line">        StringBuffer sb = <span class="keyword">new</span> StringBuffer();</div>
-<div class="line">        <span class="keywordflow">if</span> (millis &lt; 10 * Constants.SECOND) {</div>
-<div class="line">            sb.append(millis);</div>
-<div class="line">            sb.append(<span class="stringliteral">&quot;ms&quot;</span>);</div>
-<div class="line">        } <span class="keywordflow">else</span> {</div>
-<div class="line">            <span class="keywordtype">boolean</span> force = <span class="keyword">false</span>;</div>
-<div class="line">            String stop = null;</div>
-<div class="line">            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> ix = 0; ix &lt; <a class="code" href="classagent_1_1_string_util.html#a610caf86c4f2711738989751cbccd00e">units</a>.length; ix++) {</div>
-<div class="line">                UD iu = <a class="code" href="classagent_1_1_string_util.html#a610caf86c4f2711738989751cbccd00e">units</a>[ix];</div>
-<div class="line">                <span class="keywordtype">long</span> n = millis / iu.<a class="code" href="classagent_1_1_string_util_1_1_u_d.html#a571d9adcbdd7c5a3e2db5f96001b4ea4">millis</a>;</div>
-<div class="line">                <span class="keywordflow">if</span> (force || n &gt;= iu.threshold) {</div>
-<div class="line">                    millis %= iu.millis;</div>
-<div class="line">                    sb.append(n);</div>
-<div class="line">                    sb.append(iu.str);</div>
-<div class="line">                    force = <span class="keyword">true</span>;</div>
-<div class="line">                    <span class="keywordflow">if</span> (stop == null) {</div>
-<div class="line">                        <span class="keywordflow">if</span> (iu.stop != null) {</div>
-<div class="line">                            stop = iu.stop;</div>
-<div class="line">                        }</div>
-<div class="line">                    } <span class="keywordflow">else</span> {</div>
-<div class="line">                        <span class="keywordflow">if</span> (stop.equals(iu.str)) {</div>
-<div class="line">                            <span class="keywordflow">break</span>;</div>
-<div class="line">                        }</div>
-<div class="line">                    }</div>
-<div class="line">                }</div>
-<div class="line">            }</div>
-<div class="line">        }</div>
-<div class="line">        <span class="keywordflow">return</span> sb.toString();</div>
-<div class="line">    }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a class="anchor" id="aad7ef3734d3ad518ac6ef3fa49b1fb5f"></a>
@@ -1618,18 +1356,7 @@ Static Private Attributes</h2></td></tr>
 <p>Convert the first character and every character that follows a space to uppercase. </p>
 
 <p>Definition at line <a class="el" href="_string_util_8java_source.html#l00610">610</a> of file <a class="el" href="_string_util_8java_source.html">StringUtil.java</a>.</p>
-<div class="fragment"><div class="line">                                               {</div>
-<div class="line">        StringBuffer buf = <span class="keyword">new</span> StringBuffer(txt);</div>
-<div class="line">        <span class="keywordtype">int</span> len = buf.length();</div>
-<div class="line">        buf.setCharAt(0, Character.toUpperCase(buf.charAt(0)));</div>
-<div class="line">        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 1; i &lt; len; i++) {</div>
-<div class="line">            <span class="keywordflow">if</span> (buf.charAt(i - 1) == <span class="charliteral">&#39; &#39;</span>) {</div>
-<div class="line">                buf.setCharAt(i, Character.toUpperCase(buf.charAt(i)));</div>
-<div class="line">            }</div>
-<div class="line">        }</div>
-<div class="line">        <span class="keywordflow">return</span> buf.toString();</div>
-<div class="line">    }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a class="anchor" id="aa5d211a4808218a2260eb4dbb9df5f04"></a>
@@ -1674,22 +1401,7 @@ Static Private Attributes</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>str turncated at the first occurance of any of the chars </dd></dl>
 
 <p>Definition at line <a class="el" href="_string_util_8java_source.html#l00290">290</a> of file <a class="el" href="_string_util_8java_source.html">StringUtil.java</a>.</p>
-<div class="fragment"><div class="line">                                                                  {</div>
-<div class="line">        <span class="keywordflow">if</span> (str == null) {</div>
-<div class="line">            <span class="keywordflow">return</span> null;</div>
-<div class="line">        }</div>
-<div class="line">        <span class="keywordflow">if</span> (chars != null) {</div>
-<div class="line">            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> ix = 0; ix &lt; str.length(); ix++) {</div>
-<div class="line">                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> jx = 0; jx &lt; chars.length(); jx++) {</div>
-<div class="line">                    <span class="keywordflow">if</span> (str.charAt(ix) == chars.charAt(jx)) {</div>
-<div class="line">                        <span class="keywordflow">return</span> str.substring(0, ix);</div>
-<div class="line">                    }</div>
-<div class="line">                }</div>
-<div class="line">            }</div>
-<div class="line">        }</div>
-<div class="line">        <span class="keywordflow">return</span> str;</div>
-<div class="line">    }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a class="anchor" id="ad21a748fe69374492f0ea62ce6c61098"></a>
@@ -1716,17 +1428,7 @@ Static Private Attributes</h2></td></tr>
 <p>Trim leading and trailing blank lines from a block of text </p>
 
 <p>Definition at line <a class="el" href="_string_util_8java_source.html#l00506">506</a> of file <a class="el" href="_string_util_8java_source.html">StringUtil.java</a>.</p>
-<div class="fragment"><div class="line">                                                    {</div>
-<div class="line">        StringBuffer buf = <span class="keyword">new</span> StringBuffer(txt);</div>
-<div class="line">        <span class="keywordflow">while</span> (buf.charAt(0) == <span class="charliteral">&#39;\n&#39;</span>) {</div>
-<div class="line">            buf.deleteCharAt(0);</div>
-<div class="line">        }</div>
-<div class="line">        <span class="keywordflow">while</span> (buf.charAt(buf.length() - 1) == <span class="charliteral">&#39;\n&#39;</span>) {</div>
-<div class="line">            buf.deleteCharAt(buf.length() - 1);</div>
-<div class="line">        }</div>
-<div class="line">        <span class="keywordflow">return</span> buf.toString();</div>
-<div class="line">    }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a class="anchor" id="ab61c574315ab00056fb843e25b65f596"></a>
@@ -1760,22 +1462,7 @@ Static Private Attributes</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>the trimmed hostname </dd></dl>
 
 <p>Definition at line <a class="el" href="_string_util_8java_source.html#l00441">441</a> of file <a class="el" href="_string_util_8java_source.html">StringUtil.java</a>.</p>
-<div class="fragment"><div class="line">                                                       {</div>
-<div class="line">        <span class="keywordflow">if</span> (hostname == null) {</div>
-<div class="line">            <span class="keywordflow">return</span> null;</div>
-<div class="line">        }</div>
-<div class="line">        <span class="keywordtype">int</span> start = 0;</div>
-<div class="line">        <span class="keywordflow">if</span> (hostname.regionMatches(<span class="keyword">true</span>, 0, <span class="stringliteral">&quot;www.&quot;</span>, 0, 4)) {</div>
-<div class="line">            start = 4;</div>
-<div class="line">        }</div>
-<div class="line">        <span class="keywordtype">int</span> end = hostname.lastIndexOf(<span class="charliteral">&#39;.&#39;</span>);</div>
-<div class="line">        <span class="keywordflow">if</span> (end &lt;= start) {</div>
-<div class="line">            <span class="comment">// if trimming www left nothing but TLD, return whole name</span></div>
-<div class="line">            <span class="keywordflow">return</span> hostname;</div>
-<div class="line">        }</div>
-<div class="line">        <span class="keywordflow">return</span> hostname.substring(start, end);</div>
-<div class="line">    }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a class="anchor" id="a42021e85157ff8f8df945cc0af707d24"></a>
@@ -1812,17 +1499,7 @@ Static Private Attributes</h2></td></tr>
 <p>Remove the first line of the stack trace, iff it duplicates the end of the exception message </p>
 
 <p>Definition at line <a class="el" href="_string_util_8java_source.html#l00585">585</a> of file <a class="el" href="_string_util_8java_source.html">StringUtil.java</a>.</p>
-<div class="fragment"><div class="line">                                                                  {</div>
-<div class="line">        <span class="keywordtype">int</span> pos = trace.indexOf(<span class="stringliteral">&quot;\n&quot;</span>);</div>
-<div class="line">        <span class="keywordflow">if</span> (pos &gt; 0) {</div>
-<div class="line">            String l1 = trace.substring(0, pos);</div>
-<div class="line">            <span class="keywordflow">if</span> (msg.endsWith(l1)) {</div>
-<div class="line">                <span class="keywordflow">return</span> trace.substring(pos + 1);</div>
-<div class="line">            }</div>
-<div class="line">        }</div>
-<div class="line">        <span class="keywordflow">return</span> trace;</div>
-<div class="line">    }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a class="anchor" id="aefa4e35f018d2b2913ea9fe6c115da19"></a>
@@ -1859,14 +1536,7 @@ Static Private Attributes</h2></td></tr>
 <p>Remove the substring beginning with the final occurrence of the separator, if any. </p>
 
 <p>Definition at line <a class="el" href="_string_util_8java_source.html#l00325">325</a> of file <a class="el" href="_string_util_8java_source.html">StringUtil.java</a>.</p>
-<div class="fragment"><div class="line">                                                           {</div>
-<div class="line">        <span class="keywordtype">int</span> pos = str.lastIndexOf(sep);</div>
-<div class="line">        <span class="keywordflow">if</span> (pos &lt; 0) {</div>
-<div class="line">            <span class="keywordflow">return</span> str;</div>
-<div class="line">        }</div>
-<div class="line">        <span class="keywordflow">return</span> str.substring(0, pos);</div>
-<div class="line">    }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -1923,7 +1593,7 @@ Static Private Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Nov 4 2012 12:20:01 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Nov 17 2012 01:37:02 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

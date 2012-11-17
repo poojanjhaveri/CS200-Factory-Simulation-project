@@ -19,7 +19,7 @@ import factory.factory201.partsManagement.PartsAgent;
  */
 public class AgentMain {
 
-    private static final boolean TEST_MODE = true;
+    private static final boolean TEST_MODE = false;
     private static final int FEEDER = 4;
     private static final int LANE = 8;
 
@@ -59,7 +59,7 @@ public class AgentMain {
 
         // Patrick
         partsAgent.setCamera(cameraAgent);
-        partsAgent.setKitAssemblyManager(KAM);
+//        partsAgent.setKitAssemblyManager(KAM);
         partsAgent.setKitRobot(kitRobotAgent);
         partsAgent.setNestInterface(nestAgent);
         nestAgent.setCamera(cameraAgent);
@@ -91,7 +91,7 @@ public class AgentMain {
         // Alex
         cameraAgent.startThread();
         conveyorAgent.startThread();
-        conveyorAgent.generateKit(10); // * This generates 10 new kits, among other things if you pass string... *
+//        conveyorAgent.generateKit(10); // * This generates 10 new kits, among other things if you pass string... *
         kitRobotAgent.startThread();
 
         //Patrick
@@ -128,8 +128,8 @@ public class AgentMain {
             // See Interaction Diagram for better description
         
         /*========== Turn on or off debugging (print statements) ==========*/
-        // Just for debugging; put 'true' to turn off print statements
-        if (!TEST_MODE) { // Alex, just changed TEST_MODE from true to false at the top -David
+        // Just for debugging; put 'false' to turn off print statements
+        if (TEST_MODE) {
             for (int i = 0; i < LANE; i++) {
                 if (i < FEEDER) {
                     feederAgents[i].print = false;
@@ -141,5 +141,6 @@ public class AgentMain {
             partsAgent.print = false;
         }
 
+        conveyorAgent.generateKit(10);
     } // END main
 } // END AgentMain

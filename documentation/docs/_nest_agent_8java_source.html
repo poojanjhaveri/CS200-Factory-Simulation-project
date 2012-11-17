@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Factory Project
-   &#160;<span id="projectnumber">0.0.1</span>
+   &#160;<span id="projectnumber">0.1.0</span>
    </div>
    <div id="projectbrief">team 1 joint cs200/cs201</div>
   </td>
@@ -89,154 +89,260 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">NestAgent.java</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="_nest_agent_8java.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; <span class="keyword">public</span> <span class="keyword">class </span>NestAgent {</div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;    <span class="keyword">private</span> List&lt;Nest&gt; myNests = Collections.synchronizedList(<span class="keyword">new</span> ArrayList&lt;Nest&gt;());</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;    <span class="keyword">private</span> Map &lt;Nest, LaneAgent&gt; lanes = Collections.synchronizedList(<span class="keyword">new</span> HashMap&lt;Nest, LaneAgent&gt;);</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;    <span class="keyword">private</span> List&lt;Part&gt; needParts =</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;            Collections.synchronizedList(<span class="keyword">new</span> ArrayList&lt;Part&gt;());</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    PartsAgent partsagent;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    </div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    CameraAgent camera;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    </div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keyword">private</span> <span class="keywordtype">int</span> nestNumber;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keyword">private</span> List&lt;Nest&gt; nests = Collections.synchronizedList(<span class="keyword">new</span> ArrayList&lt;Nest&gt;());</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keyword">enum</span> Status {none, needPart, gettingPart, full, gettingInspected, readyForKit, purge};</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    NestAgent()) {</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        this.nestNumber = nestNum;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        this.lane = lane;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    }</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keyword">class </span>Nest{</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">int</span> threshold;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keyword">private</span> Part part;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">int</span> howMany = 0;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        Lane lane;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        Status status;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        Nest (Part p){</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            this.part = p;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            this.threshold = 10/p.size;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            this.status = Status.needPart;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        }</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> setPart(Part p){</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            this.part = p;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            this.threshold = 10/p.size;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        }</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> setLane(Lane lane){</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            this.lane = lane;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        }</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    }</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">//messages</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> msgNeedPart(Part p) {</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keywordflow">if</span> (!hasPart())</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        myNests.add(<span class="keyword">new</span> Nest(p));</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        stateChanged();</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    }</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> msgHereAreParts(Part p, <span class="keywordtype">int</span> quantity) {</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        part = p;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        howMany += quantity;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        myNests.getNest(p).status = Status.full;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        stateChanged();</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    }</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> msgNestInspected(Nest n, <span class="keywordtype">boolean</span> result) {</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordflow">if</span> (result){</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            n.status = Status.readyForKit;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        }</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            n.status = Status.purge;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        stateChanged();</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    }</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="comment">//scheduler</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keyword">protected</span> <span class="keywordtype">boolean</span> pickAndExecuteAnAction() {</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordflow">if</span> (!myNests.isEmpty()){</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            </div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            <span class="keywordflow">for</span> (Nest n: myNests){</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                <span class="keywordflow">if</span> (n.status == Status.needPart)</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                    requestPart(n);</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            }</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            </div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            <span class="keywordflow">for</span> (Nest n: myNests){</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                <span class="keywordflow">if</span> (n.status == Status.full)</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                    requestInspection(n);</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            }</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        }</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        </div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            <span class="keywordflow">for</span> (Nest n: myNests){</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                <span class="keywordflow">if</span> (n.status == Status.readyForKit){</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                    giveToKit(n);</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                }</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            }</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            </div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            <span class="keywordflow">for</span> (Nest n: myNests){</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                <span class="keywordflow">if</span> (n.status == Status.purge){</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                    purge(n);</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                }</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            }</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    }</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    </div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keyword">public</span> Nest getNest(Part p){</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        <span class="keywordflow">for</span> (Nest n: MyNests){</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            <span class="keywordflow">if</span>(n.part.equals(p))</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                <span class="keywordflow">return</span> n;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        }</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    }</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    </div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    </div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="keyword">private</span> <span class="keywordtype">void</span> requestPart(Nest n){</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        n.lane.msgNeedPart(n.part);</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        n.status = Status.gettingPart;</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        stateChanged();</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    }</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    </div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <span class="keyword">private</span> <span class="keywordtype">void</span> requestInspection(Nest n){</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        camera.msgNestIsFull(<span class="keyword">this</span>);</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        n.status = Status.gettingInspected;</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        stateChanged();</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    }</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    </div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keyword">private</span> <span class="keywordtype">void</span> giveToKit(Nest n){</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        partsagent.msgHereIsPart(Part p);</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        n.howMany--;</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        <span class="keywordflow">if</span> (howMany==0)</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            n.status = Status.needPart;</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        stateChanged(); </div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    }</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    </div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <span class="keyword">private</span> <span class="keywordtype">void</span> purge(Nest n){</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    n.howMany = 0;</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    DoPurge();</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    n.status = Status.needPart;</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    stateChanged();</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    }</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    </div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    <span class="keyword">public</span> <span class="keywordtype">boolean</span> hasPart(Part p){</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        <span class="keywordflow">for</span> (Nest n: myNest){</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        <span class="keywordflow">if</span> (n.part.equals(p))</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;    }</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    }</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    </div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> setPartsAgent(Parts parts) {</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        this.partsagent = parts;</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    }</div>
+<a href="_nest_agent_8java.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * To change this template, choose Tools | Templates</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * and open the template in the editor.</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno"><a class="code" href="namespacefactory_1_1factory201_1_1parts_management.html">    5</a></span>&#160;<span class="keyword">package </span>factory.factory201.partsManagement;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">import</span> agent.Agent;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">import</span> factory.factory201.feederManagement.LaneAgent;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">import</span> factory.factory201.interfaces.Camera;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">import</span> factory.factory201.interfaces.Lane;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">import</span> factory.factory201.interfaces.NestInterface;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">import</span> factory.factory201.interfaces.PartsInterface;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">import</span> factory.factory201.test.mock.MockLane;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">import</span> factory.general.Nest;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">import</span> factory.general.Part;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">import</span> java.util.ArrayList;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">import</span> java.util.Collections;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">import</span> java.util.List;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html">   20</a></span>&#160;<span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html">NestAgent</a> <span class="keyword">extends</span> <a class="code" href="classagent_1_1_agent.html" title="Base class for simple agents.">Agent</a> implements <a class="code" href="interfacefactory_1_1factory201_1_1interfaces_1_1_nest_interface.html">NestInterface</a> {</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a60098d458dd8c6b301f77eb17c2d1d2a">   22</a></span>&#160;    <a class="code" href="interfacefactory_1_1factory201_1_1interfaces_1_1_lane.html">Lane</a> <a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a60098d458dd8c6b301f77eb17c2d1d2a">lane0</a>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a1a92557ace633eda5490789d3d4defba">   23</a></span>&#160;    <a class="code" href="interfacefactory_1_1factory201_1_1interfaces_1_1_lane.html">Lane</a> <a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a1a92557ace633eda5490789d3d4defba">lane1</a>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a7ad6ca6e8c2a20a40af370c5b383d9cc">   24</a></span>&#160;    <a class="code" href="interfacefactory_1_1factory201_1_1interfaces_1_1_lane.html">Lane</a> <a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a7ad6ca6e8c2a20a40af370c5b383d9cc">lane2</a>;</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a7bf42f0af74c2929127cf96fa9511b82">   25</a></span>&#160;    <a class="code" href="interfacefactory_1_1factory201_1_1interfaces_1_1_lane.html">Lane</a> <a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a7bf42f0af74c2929127cf96fa9511b82">lane3</a>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a45aef7dc87d737eba0a835840511cdaf">   26</a></span>&#160;    <a class="code" href="interfacefactory_1_1factory201_1_1interfaces_1_1_lane.html">Lane</a> <a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a45aef7dc87d737eba0a835840511cdaf">lane4</a>;</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#acbd7d3c9e4377ce0688e8bdc4de216a6">   27</a></span>&#160;    <a class="code" href="interfacefactory_1_1factory201_1_1interfaces_1_1_lane.html">Lane</a> <a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#acbd7d3c9e4377ce0688e8bdc4de216a6">lane5</a>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#ac389962f4473c55b3b0dfd9d4d8702a3">   28</a></span>&#160;    <a class="code" href="interfacefactory_1_1factory201_1_1interfaces_1_1_lane.html">Lane</a> <a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#ac389962f4473c55b3b0dfd9d4d8702a3">lane6</a>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#ac2b03ab8c224b3ad68dccdf4f8354c1c">   29</a></span>&#160;    <a class="code" href="interfacefactory_1_1factory201_1_1interfaces_1_1_lane.html">Lane</a> <a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#ac2b03ab8c224b3ad68dccdf4f8354c1c">lane7</a>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a9dcc1af2c071183a6bcc762b50555a4f">   30</a></span>&#160;    <a class="code" href="interfacefactory_1_1factory201_1_1interfaces_1_1_lane.html">Lane</a> <a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a9dcc1af2c071183a6bcc762b50555a4f">lanes</a>[] = {<a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a60098d458dd8c6b301f77eb17c2d1d2a">lane0</a>, <a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a1a92557ace633eda5490789d3d4defba">lane1</a>, <a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a7ad6ca6e8c2a20a40af370c5b383d9cc">lane2</a>, <a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a7bf42f0af74c2929127cf96fa9511b82">lane3</a>, <a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a45aef7dc87d737eba0a835840511cdaf">lane4</a>, <a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#acbd7d3c9e4377ce0688e8bdc4de216a6">lane5</a>, <a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#ac389962f4473c55b3b0dfd9d4d8702a3">lane6</a>, <a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#ac2b03ab8c224b3ad68dccdf4f8354c1c">lane7</a>};</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="comment">//Kit kit;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    </div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#af558bb4292096c9774d236d40c903293">   33</a></span>&#160;    <a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_lane.html">MockLane</a> <a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#af558bb4292096c9774d236d40c903293">lane</a>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a01c3ce196a6014cd1ab4051565e91715">   35</a></span>&#160;    <span class="keyword">public</span> List&lt;Nest&gt; <a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a01c3ce196a6014cd1ab4051565e91715">myNests</a>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="comment">//private Map&lt;Nest, LaneAgent&gt; lanes = new HashMap&lt;Nest, LaneAgent&gt;();</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a25d7a835cfa147262663d9f77c6ea001">   37</a></span>&#160;    <span class="keyword">private</span> List&lt;Part&gt; <a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a25d7a835cfa147262663d9f77c6ea001">needParts</a>;</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a5961ee3414e7da322f5835ffb8e79aca">   38</a></span>&#160;    <span class="keyword">private</span> List&lt;Nest&gt; <a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a5961ee3414e7da322f5835ffb8e79aca">nests</a>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a86db6db56cf59e4144f4844615308495">   39</a></span>&#160;    <a class="code" href="interfacefactory_1_1factory201_1_1interfaces_1_1_parts_interface.html">PartsInterface</a> <a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a86db6db56cf59e4144f4844615308495">partsagent</a>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a8ce87b5cb14b655831f4a14fd030281d">   40</a></span>&#160;    <a class="code" href="interfacefactory_1_1factory201_1_1interfaces_1_1_camera.html" title="contains messages for CameraAgent This interface contains all of the messages for the CameraAgent...">Camera</a> <a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a8ce87b5cb14b655831f4a14fd030281d">camera</a>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a0e6647b910b1d14c5e6b4d1842b9eeec">   41</a></span>&#160;    <span class="keyword">private</span> <span class="keywordtype">int</span> <a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a0e6647b910b1d14c5e6b4d1842b9eeec">nestNumber</a>;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="comment">//private List&lt;Nest&gt; nests = Collections.synchronizedList(new ArrayList&lt;Nest&gt;());</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="code" href="enumfactory_1_1factory201_1_1parts_management_1_1_nest_agent_1_1_status.html#af6e2d49a04442efc8b5f13da499288b8">   44</a></span>&#160;    <span class="keyword">enum</span> <a class="code" href="enumfactory_1_1factory201_1_1parts_management_1_1_nest_agent_1_1_status.html">Status</a> {none, needPart, gettingPart, full, gettingInspected, <a class="code" href="enumfactory_1_1factory201_1_1parts_management_1_1_nest_agent_1_1_status.html#af6e2d49a04442efc8b5f13da499288b8">readyForKit</a>, <a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a854132451f9f137a313c6c63fc813a7f">purge</a>};</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    </div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a0107b9f692875e051c73a2f8ed0bb8ba">   46</a></span>&#160;   <span class="keyword">public</span> <a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a0107b9f692875e051c73a2f8ed0bb8ba">NestAgent</a>(String <a class="code" href="classagent_1_1_agent.html#ab75970bde0364900221f7e5e79fd7d77">name</a>) {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    super(name);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    this.<a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a01c3ce196a6014cd1ab4051565e91715">myNests</a> = Collections.synchronizedList(<span class="keyword">new</span> ArrayList&lt;Nest&gt;());</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    this.<a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a25d7a835cfa147262663d9f77c6ea001">needParts</a> = Collections.synchronizedList(<span class="keyword">new</span> ArrayList&lt;Part&gt;());</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    this.<a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a5961ee3414e7da322f5835ffb8e79aca">nests</a> = Collections.synchronizedList(<span class="keyword">new</span> ArrayList&lt;Nest&gt;());</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a01c3ce196a6014cd1ab4051565e91715">myNests</a>.add(<span class="keyword">new</span> <a class="code" href="classfactory_1_1general_1_1_nest.html">Nest</a>(0));</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a01c3ce196a6014cd1ab4051565e91715">myNests</a>.add(<span class="keyword">new</span> <a class="code" href="classfactory_1_1general_1_1_nest.html">Nest</a>(1));</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a01c3ce196a6014cd1ab4051565e91715">myNests</a>.add(<span class="keyword">new</span> <a class="code" href="classfactory_1_1general_1_1_nest.html">Nest</a>(2));</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a01c3ce196a6014cd1ab4051565e91715">myNests</a>.add(<span class="keyword">new</span> <a class="code" href="classfactory_1_1general_1_1_nest.html">Nest</a>(3));</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a01c3ce196a6014cd1ab4051565e91715">myNests</a>.add(<span class="keyword">new</span> <a class="code" href="classfactory_1_1general_1_1_nest.html">Nest</a>(4));</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a01c3ce196a6014cd1ab4051565e91715">myNests</a>.add(<span class="keyword">new</span> <a class="code" href="classfactory_1_1general_1_1_nest.html">Nest</a>(5));</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a01c3ce196a6014cd1ab4051565e91715">myNests</a>.add(<span class="keyword">new</span> <a class="code" href="classfactory_1_1general_1_1_nest.html">Nest</a>(6));</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a01c3ce196a6014cd1ab4051565e91715">myNests</a>.add(<span class="keyword">new</span> <a class="code" href="classfactory_1_1general_1_1_nest.html">Nest</a>(7));</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; }</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment">//messages</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#adfbc85f7b9341fac61b2f83a78d3621d">   70</a></span>&#160;<span class="comment"></span>    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#adfbc85f7b9341fac61b2f83a78d3621d">msgNeedPart</a>(<a class="code" href="classfactory_1_1general_1_1_part.html" title="digital representation of a part">Part</a> p) {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keywordtype">boolean</span> doPurge = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keyword">synchronized</span>(<a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a01c3ce196a6014cd1ab4051565e91715">myNests</a>){</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keywordflow">if</span> (!<a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a6d0d6e03902e5a46a76317f9ffdeebe9">hasPart</a>(p)){</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            <span class="keywordflow">for</span> (<a class="code" href="classfactory_1_1general_1_1_nest.html">Nest</a> n: <a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a01c3ce196a6014cd1ab4051565e91715">myNests</a>){</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                <span class="keywordflow">if</span>(n.status == <a class="code" href="classfactory_1_1general_1_1_nest.html">Nest</a>.Status.empty){  </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                    n.setPart(p);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                    n.status = <a class="code" href="classfactory_1_1general_1_1_nest.html">Nest</a>.Status.needPart;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                    doPurge = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                    <a class="code" href="classagent_1_1_agent.html#aa45dc0889c021c7f98cd83e0385ec271">print</a>(<span class="stringliteral">&quot;Part &quot;</span> + p.<a class="code" href="classfactory_1_1general_1_1_part.html#a464a6bd0ab3a24c08d0751eacac1278e">getString</a>() + <span class="stringliteral">&quot; is not taken by a nest, part is being assigned to the nest &quot;</span>+ n.nestNum);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            }</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;     }</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="keywordflow">else</span>{</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            <span class="keywordflow">for</span> (<a class="code" href="classfactory_1_1general_1_1_nest.html">Nest</a> n: <a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a01c3ce196a6014cd1ab4051565e91715">myNests</a>){</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            <span class="keywordflow">if</span>(n.part.type == p.<a class="code" href="classfactory_1_1general_1_1_part.html#ae6ca4e50a810529fc635ec76f029ab6b">type</a>){</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                    <span class="keywordflow">if</span>(n.status!=<a class="code" href="classfactory_1_1general_1_1_nest.html">Nest</a>.Status.empty)</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                <a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a93c8adb56be68072e7d8f1f2bb1916a4">giveToKit</a>(n);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                        <a class="code" href="classagent_1_1_agent.html#aa45dc0889c021c7f98cd83e0385ec271">print</a>(<span class="stringliteral">&quot;EMPTY NEST ERROR!&quot;</span>);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                doPurge = <span class="keyword">false</span>;}}}</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keywordflow">if</span> (doPurge){</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;           <span class="comment">/* for (Nest n: myNests){</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment">                if(n.status != Nest.Status.needPart) </span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="comment">                    n.setPart(p);</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="comment">                    purge(n);}</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="comment">            */</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        }</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        }</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <a class="code" href="classagent_1_1_agent.html#a44f653501d47022141315a1835e9927a">stateChanged</a>();</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    }</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
+<div class="line"><a name="l00103"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#ac40b56a7f65b957dd1cf14c6aad8ea73">  103</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#ac40b56a7f65b957dd1cf14c6aad8ea73">msgHereAreParts</a>(List&lt;Part&gt; kitParts){</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <a class="code" href="classfactory_1_1general_1_1_part.html" title="digital representation of a part">Part</a> p = kitParts.get(0);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        <span class="keywordflow">for</span> (<a class="code" href="classfactory_1_1general_1_1_nest.html">Nest</a> n : <a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a01c3ce196a6014cd1ab4051565e91715">myNests</a>) {</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            <span class="keywordflow">if</span> (n.part.type == p.<a class="code" href="classfactory_1_1general_1_1_part.html#ae6ca4e50a810529fc635ec76f029ab6b">type</a>) {</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i =0; i&lt;kitParts.size(); i++){</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                    n.parts.add(kitParts.get(i));</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                }</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                <span class="keywordflow">if</span> (n.parts.size()&gt;=n.threshold) {</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                    n.status = <a class="code" href="classfactory_1_1general_1_1_nest.html">Nest</a>.Status.full;     </div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                }</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                <a class="code" href="classagent_1_1_agent.html#aa45dc0889c021c7f98cd83e0385ec271">print</a>(<span class="stringliteral">&quot;adding &quot;</span> + kitParts.size() + <span class="stringliteral">&quot; &quot;</span> + p.<a class="code" href="classfactory_1_1general_1_1_part.html#a464a6bd0ab3a24c08d0751eacac1278e">getString</a>() + <span class="stringliteral">&quot; to the nest &quot;</span> + n.nestNum);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            }</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        }</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        <a class="code" href="classagent_1_1_agent.html#a44f653501d47022141315a1835e9927a">stateChanged</a>();</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    }</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    @Override</div>
+<div class="line"><a name="l00121"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#ac34aa1b84c355f273a26633f298f7760">  121</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#ac34aa1b84c355f273a26633f298f7760">msgNestInspected</a>(<a class="code" href="classfactory_1_1general_1_1_nest.html">Nest</a> n, <span class="keywordtype">boolean</span> result) {</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <span class="keywordflow">if</span> (result) {</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            n.<a class="code" href="classfactory_1_1general_1_1_nest.html#afb92ece130dd4d209ea222c1f004044c">status</a> = <a class="code" href="classfactory_1_1general_1_1_nest.html">Nest</a>.Status.readyForKit;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            <a class="code" href="classagent_1_1_agent.html#aa45dc0889c021c7f98cd83e0385ec271">print</a>(<span class="stringliteral">&quot;Nest inspected and verified&quot;</span>);</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            n.<a class="code" href="classfactory_1_1general_1_1_nest.html#afb92ece130dd4d209ea222c1f004044c">status</a> = <a class="code" href="classfactory_1_1general_1_1_nest.html">Nest</a>.Status.purge;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            <a class="code" href="classagent_1_1_agent.html#aa45dc0889c021c7f98cd83e0385ec271">print</a>(<span class="stringliteral">&quot;Nest is not verified&quot;</span>);</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        }</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        <a class="code" href="classagent_1_1_agent.html#a44f653501d47022141315a1835e9927a">stateChanged</a>();</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    }</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="comment">//scheduler</span></div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    @Override</div>
+<div class="line"><a name="l00134"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a4eb114f4873c65d47228e007efeaef3d">  134</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">boolean</span> <a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a4eb114f4873c65d47228e007efeaef3d">pickAndExecuteAnAction</a>() {</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            <span class="keywordflow">for</span> (<a class="code" href="classfactory_1_1general_1_1_nest.html">Nest</a> n : <a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a01c3ce196a6014cd1ab4051565e91715">myNests</a>) {</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                <span class="keywordflow">if</span> (n.status == <a class="code" href="classfactory_1_1general_1_1_nest.html">Nest</a>.Status.needPart) {</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;                    <a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#af404da6190853c48c6bcc7d636f2f57b">requestPart</a>(n);</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;                }</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;            }</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;            <span class="keywordflow">for</span> (<a class="code" href="classfactory_1_1general_1_1_nest.html">Nest</a> n : myNests) {</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                <span class="keywordflow">if</span> (n.status == <a class="code" href="classfactory_1_1general_1_1_nest.html">Nest</a>.Status.full) {</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                    <a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a257a0a790dcaccd2ff841639448228b7">requestInspection</a>(n);</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                }</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;            }</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        </div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        <span class="keywordflow">for</span> (<a class="code" href="classfactory_1_1general_1_1_nest.html">Nest</a> n : myNests) {</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;            <span class="keywordflow">if</span> (n.status == <a class="code" href="classfactory_1_1general_1_1_nest.html">Nest</a>.Status.readyForKit) {</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                <a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a93c8adb56be68072e7d8f1f2bb1916a4">giveToKit</a>(n);</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;            }</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        }</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        <span class="keywordflow">for</span> (<a class="code" href="classfactory_1_1general_1_1_nest.html">Nest</a> n : myNests) {</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;            <span class="keywordflow">if</span> (n.status == <a class="code" href="classfactory_1_1general_1_1_nest.html">Nest</a>.Status.purge) {</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                <a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a854132451f9f137a313c6c63fc813a7f">purge</a>(n);</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;            }</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        }</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    }</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    </div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    </div>
+<div class="line"><a name="l00172"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#af404da6190853c48c6bcc7d636f2f57b">  172</a></span>&#160;    <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#af404da6190853c48c6bcc7d636f2f57b">requestPart</a>(<a class="code" href="classfactory_1_1general_1_1_nest.html">Nest</a> n){</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;       </div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    <a class="code" href="classagent_1_1_agent.html#aa45dc0889c021c7f98cd83e0385ec271">print</a>(<span class="stringliteral">&quot;requesting &quot;</span> + n.<a class="code" href="classfactory_1_1general_1_1_nest.html#a5f6fd4ec8385025c24fd7c832f726586">part</a>.<a class="code" href="classfactory_1_1general_1_1_part.html#a464a6bd0ab3a24c08d0751eacac1278e">getString</a>());</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        </div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        n.<a class="code" href="classfactory_1_1general_1_1_nest.html#afb92ece130dd4d209ea222c1f004044c">status</a> = <a class="code" href="classfactory_1_1general_1_1_nest.html">Nest</a>.Status.gettingPart;</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        <span class="comment">//lanes[n.nestNum]</span></div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        n.<a class="code" href="classfactory_1_1general_1_1_nest.html#a5e9a11b5cab43d891c285b4666173084">getLane</a>().<a class="code" href="interfacefactory_1_1factory201_1_1interfaces_1_1_factory_base.html#a310e7dc910dc8b13de99cae20f3f552a">msgNeedPart</a>(n.<a class="code" href="classfactory_1_1general_1_1_nest.html#a5f6fd4ec8385025c24fd7c832f726586">part</a>);</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        <a class="code" href="classagent_1_1_agent.html#a44f653501d47022141315a1835e9927a">stateChanged</a>();</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    }</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;</div>
+<div class="line"><a name="l00183"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a257a0a790dcaccd2ff841639448228b7">  183</a></span>&#160;    <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a257a0a790dcaccd2ff841639448228b7">requestInspection</a>(<a class="code" href="classfactory_1_1general_1_1_nest.html">Nest</a> n) {</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        <a class="code" href="classagent_1_1_agent.html#aa45dc0889c021c7f98cd83e0385ec271">print</a>(<span class="stringliteral">&quot;Requesting inspection for nest &quot;</span> + n.<a class="code" href="classfactory_1_1general_1_1_nest.html#a24ae0add73aac42ab2e0da47f9a54c08">getNestNum</a>());</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        n.<a class="code" href="classfactory_1_1general_1_1_nest.html#afb92ece130dd4d209ea222c1f004044c">status</a> = <a class="code" href="classfactory_1_1general_1_1_nest.html">Nest</a>.Status.gettingInspected;</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;        <a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a8ce87b5cb14b655831f4a14fd030281d">camera</a>.<a class="code" href="interfacefactory_1_1factory201_1_1interfaces_1_1_camera.html#a11562f5b3a8a3a91f24fa473a9930881">msgNestIsFull</a>(n);</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        <a class="code" href="classagent_1_1_agent.html#a44f653501d47022141315a1835e9927a">stateChanged</a>();</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    }</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    </div>
+<div class="line"><a name="l00192"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a93c8adb56be68072e7d8f1f2bb1916a4">  192</a></span>&#160;    <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a93c8adb56be68072e7d8f1f2bb1916a4">giveToKit</a>(<a class="code" href="classfactory_1_1general_1_1_nest.html">Nest</a> n){</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        </div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        <a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a86db6db56cf59e4144f4844615308495">partsagent</a>.<a class="code" href="interfacefactory_1_1factory201_1_1interfaces_1_1_parts_interface.html#a1c23496611fae8e7ad9076f2ad9217f5">msgHereIsPart</a>(n.<a class="code" href="classfactory_1_1general_1_1_nest.html#a1bb82e650856a23ef5920855efba1e2d">parts</a>.remove(0));</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        <a class="code" href="classagent_1_1_agent.html#aa45dc0889c021c7f98cd83e0385ec271">print</a>(<span class="stringliteral">&quot;giving part &quot;</span> + n.<a class="code" href="classfactory_1_1general_1_1_nest.html#a5f6fd4ec8385025c24fd7c832f726586">part</a>.<a class="code" href="classfactory_1_1general_1_1_part.html#a464a6bd0ab3a24c08d0751eacac1278e">getString</a>() + <span class="stringliteral">&quot; to kit now nest has &quot;</span> + n.<a class="code" href="classfactory_1_1general_1_1_nest.html#a1bb82e650856a23ef5920855efba1e2d">parts</a>.size());</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        n.<a class="code" href="classfactory_1_1general_1_1_nest.html#afb92ece130dd4d209ea222c1f004044c">status</a> = <a class="code" href="classfactory_1_1general_1_1_nest.html">Nest</a>.Status.none;</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        <span class="keywordflow">if</span> (n.<a class="code" href="classfactory_1_1general_1_1_nest.html#a1bb82e650856a23ef5920855efba1e2d">parts</a>.size()&lt;2)</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;            n.<a class="code" href="classfactory_1_1general_1_1_nest.html#afb92ece130dd4d209ea222c1f004044c">status</a> = <a class="code" href="classfactory_1_1general_1_1_nest.html">Nest</a>.Status.needPart;</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        if (n.<a class="code" href="classfactory_1_1general_1_1_nest.html#a1bb82e650856a23ef5920855efba1e2d">parts</a>.isEmpty())</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;                n.<a class="code" href="classfactory_1_1general_1_1_nest.html#afb92ece130dd4d209ea222c1f004044c">status</a> = <a class="code" href="classfactory_1_1general_1_1_nest.html">Nest</a>.Status.empty;</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;        <a class="code" href="classagent_1_1_agent.html#a44f653501d47022141315a1835e9927a">stateChanged</a>(); </div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    }</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    </div>
+<div class="line"><a name="l00204"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a854132451f9f137a313c6c63fc813a7f">  204</a></span>&#160;    <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a854132451f9f137a313c6c63fc813a7f">purge</a>(<a class="code" href="classfactory_1_1general_1_1_nest.html">Nest</a> n){</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    n.<a class="code" href="classfactory_1_1general_1_1_nest.html#a1bb82e650856a23ef5920855efba1e2d">parts</a>.clear();</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    <span class="comment">//DoPurge();</span></div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    n.<a class="code" href="classfactory_1_1general_1_1_nest.html#afb92ece130dd4d209ea222c1f004044c">status</a> = <a class="code" href="classfactory_1_1general_1_1_nest.html">Nest</a>.Status.empty;</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    <a class="code" href="classagent_1_1_agent.html#a44f653501d47022141315a1835e9927a">stateChanged</a>();</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    }</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    </div>
+<div class="line"><a name="l00211"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a6d0d6e03902e5a46a76317f9ffdeebe9">  211</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">boolean</span> <a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a6d0d6e03902e5a46a76317f9ffdeebe9">hasPart</a>(<a class="code" href="classfactory_1_1general_1_1_part.html" title="digital representation of a part">Part</a> p){</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;        <span class="keywordflow">for</span> (<a class="code" href="classfactory_1_1general_1_1_nest.html">Nest</a> n: <a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a01c3ce196a6014cd1ab4051565e91715">myNests</a>){</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;        <span class="keywordflow">for</span> (<a class="code" href="classfactory_1_1general_1_1_part.html" title="digital representation of a part">Part</a> part: n.parts){</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;            <span class="keywordflow">if</span>(part.<a class="code" href="classfactory_1_1general_1_1_part.html#ae6ca4e50a810529fc635ec76f029ab6b">type</a> == p.<a class="code" href="classfactory_1_1general_1_1_part.html#ae6ca4e50a810529fc635ec76f029ab6b">type</a>)</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;    }}</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    }</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    </div>
+<div class="line"><a name="l00219"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a7aa53f91b41ae9150e07603b2cf09d3a">  219</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a7aa53f91b41ae9150e07603b2cf09d3a">setNestPurge</a>(List&lt;Part&gt; purgeParts){</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        </div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        <span class="keywordflow">for</span> (<a class="code" href="classfactory_1_1general_1_1_nest.html">Nest</a> n: <a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a01c3ce196a6014cd1ab4051565e91715">myNests</a>){</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;            <span class="keywordflow">for</span> (<a class="code" href="classfactory_1_1general_1_1_part.html" title="digital representation of a part">Part</a> p: purgeParts){</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;         <span class="keywordflow">if</span> (n.part.type == p.type){</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;             purgeParts.remove(p);</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;             n.status = <a class="code" href="classfactory_1_1general_1_1_nest.html">Nest</a>.Status.hasPart;</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;         }   </div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;        }</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;        }</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;        <span class="keywordflow">for</span> (<a class="code" href="classfactory_1_1general_1_1_part.html" title="digital representation of a part">Part</a> p: purgeParts){</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;            <span class="keywordflow">for</span>(<a class="code" href="classfactory_1_1general_1_1_nest.html">Nest</a> n: myNests){</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                <span class="keywordflow">if</span>(n.status != <a class="code" href="classfactory_1_1general_1_1_nest.html">Nest</a>.Status.hasPart)</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;                    <span class="comment">//n.status = Nest.Status.purge;</span></div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;                    <a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a854132451f9f137a313c6c63fc813a7f">purge</a>(n);</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;                    n.setPart(p);</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;            }</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;        }</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    }</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    </div>
+<div class="line"><a name="l00239"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a5c4ea64624c68c717d87661e2449a653">  239</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">boolean</span> <a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a5c4ea64624c68c717d87661e2449a653">emptyNest</a>(){</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;        <span class="keywordflow">for</span> (<a class="code" href="classfactory_1_1general_1_1_nest.html">Nest</a> n: <a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a01c3ce196a6014cd1ab4051565e91715">myNests</a>){</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;            <span class="keywordflow">if</span> (n.status == <a class="code" href="classfactory_1_1general_1_1_nest.html">Nest</a>.Status.empty)</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;        }</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    }</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    </div>
+<div class="line"><a name="l00247"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#ae88cd28fb369c5e1f0a3e9f9da3b2253">  247</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classfactory_1_1general_1_1_nest.html">Nest</a> <a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#ae88cd28fb369c5e1f0a3e9f9da3b2253">getNest</a>(<span class="keywordtype">int</span> n){</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a01c3ce196a6014cd1ab4051565e91715">myNests</a>.get(n);</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    }</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    </div>
+<div class="line"><a name="l00251"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#afc2e09b5bad150e24ebf61cbb7cca3d9">  251</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#afc2e09b5bad150e24ebf61cbb7cca3d9">setCamera</a>(<a class="code" href="interfacefactory_1_1factory201_1_1interfaces_1_1_camera.html" title="contains messages for CameraAgent This interface contains all of the messages for the CameraAgent...">Camera</a> c){</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        this.<a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a8ce87b5cb14b655831f4a14fd030281d">camera</a> = c;</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    }</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;</div>
+<div class="line"><a name="l00255"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a80fd8d9398cc32a09dbc05589116b771">  255</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a80fd8d9398cc32a09dbc05589116b771">setPartsAgent</a>(<a class="code" href="interfacefactory_1_1factory201_1_1interfaces_1_1_parts_interface.html">PartsInterface</a> parts) {</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;        this.<a class="code" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a86db6db56cf59e4144f4844615308495">partsagent</a> = parts;</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    }</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Nov 4 2012 12:20:00 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Nov 17 2012 01:36:59 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

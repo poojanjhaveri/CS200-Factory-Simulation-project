@@ -18,8 +18,9 @@ public class LMSignalFromServerVerification extends Manager{
 	private LMPartHandler partHandler;	///< Instance of class 'LMPartHandler'
 	private LMPartRobotHandler partRobotHandler;
 	private LMGantryRobotHandler gantryRobotHandler;
+	private LMTimerThread timer = new LMTimerThread(this);
 	private int feedingTiming;
-	private String tempMsg = "";
+	
 	/**
 	 * @brief Constructor
 	 * @param laneManagerApp : Instance of class 'LaneManagerApp'
@@ -34,7 +35,16 @@ public class LMSignalFromServerVerification extends Manager{
 		partRobotHandler = new LMPartRobotHandler(app);
 		gantryRobotHandler = new LMGantryRobotHandler(app);
 		
-		this.sendToServer(Message.IDENTIFY_LANEMANAGER);
+		new Thread(timer).start();
+		timer.timerStart();
+	}
+	
+	public void timerAction(){
+		feedingTiming++;
+		app.getGraphicsPanel().getAllLane().laneMove();
+		app.getGraphicsPanel().getAllCamera().cameraShoot();
+		app.getGraphicsPanel().getAllPart().partMove();
+		app.getGraphicsPanel().repaint();
 	}
 	
 	/**
@@ -50,15 +60,8 @@ public class LMSignalFromServerVerification extends Manager{
 	 */
 	public void processMessage(String msg){
 		super.processMessage(msg);
-		if( msg.indexOf("&Timer&") != -1 ){
-			feedingTiming++;
-			app.getGraphicsPanel().getAllLane().laneMove();
-			app.getGraphicsPanel().getAllCamera().cameraShoot();
-			app.getGraphicsPanel().getAllPart().partMove();
-			app.getGraphicsPanel().repaint();
-		}
 		
-		else if( msg.indexOf("&Camera&") != -1 ){
+		if( msg.indexOf("&Camera&") != -1 ){
 			cameraHandler.cameraShoot(msg);
 		}
 		

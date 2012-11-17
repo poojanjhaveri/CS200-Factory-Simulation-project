@@ -1,5 +1,7 @@
 package factory.factory200.gantryRobotManager;
-
+/**
+ * @author Yuting Liu
+ */
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -103,9 +105,7 @@ public class GRMGraphicPanel extends JPanel implements ActionListener {
 	
 	
 		
-//		         boolean changed;
-		 //
-//		         
+
 //		         /**
 //		          * check if Server send any message or data back
 //		          */

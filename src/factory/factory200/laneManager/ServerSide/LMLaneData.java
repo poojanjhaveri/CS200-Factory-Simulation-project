@@ -1,5 +1,7 @@
 package factory.factory200.laneManager.ServerSide;
 
+import factory.general.*;
+
 /**
  * This class contains all data for lanes. Lane agent and lane manager use these data to process.
  * 
@@ -8,7 +10,7 @@ package factory.factory200.laneManager.ServerSide;
  */
 public class LMLaneData {
 
-	private LMServer server;
+	private Server server;
 	private LMServerMain serverMain;
 	private String signal = "";	///< Signal to Lane Manager
 	
@@ -16,7 +18,7 @@ public class LMLaneData {
 	private int vibrationAmplitude;
 	private Boolean laneSwitch = false;	///< Feeder switched on : true, Feeder switched off : false
 	
-	public LMLaneData( int laneNum, LMServer server, LMServerMain serverMain ){
+	public LMLaneData( int laneNum, Server server, LMServerMain serverMain ){
 		this.laneNum = laneNum;
 		this.server = server;
 		this.serverMain = serverMain;
@@ -31,11 +33,7 @@ public class LMLaneData {
 		signal = laneNum + "&Lane&" + "Switch On";
 		
 		//----------------------------------------------------------------------------------For Test
-		for(int i=0 ; i<server.clients.size() ; i++){
-			server.clients.get(i).sendToClient(signal);
-		}
-		
-		//server.getClientHandler().sendToClient(signal);
+		server.signalToClient(signal);
 		//-----------------------------------------------------------------------------------------------
 		
 		// Send To FPM
@@ -49,11 +47,7 @@ public class LMLaneData {
 		signal = laneNum + "&Lane&" + "Switch Off";
 		
 		//----------------------------------------------------------------------------------For Test
-		for(int i=0 ; i<server.clients.size() ; i++){
-			server.clients.get(i).sendToClient(signal);
-		}
-		
-		//server.getClientHandler().sendToClient(signal);
+		server.signalToClient(signal);
 		//---------------------------------------------------------------------------------------------
 		
 		// Send To FPM
@@ -67,11 +61,7 @@ public class LMLaneData {
 		signal = laneNum + "&Lane&" + "Amplitude Strong";
 		
 		//----------------------------------------------------------------------------------For Test
-		for(int i=0 ; i<server.clients.size() ; i++){
-			server.clients.get(i).sendToClient(signal);
-		}
-		
-		//server.getClientHandler().sendToClient(signal);
+		server.signalToClient(signal);
 		//-----------------------------------------------------------------------------------
 		
 		// Server Data Task
@@ -83,11 +73,7 @@ public class LMLaneData {
 		signal = laneNum + "&Lane&" + "Amplitude Normal";
 		
 		//----------------------------------------------------------------------------------For Test
-		for(int i=0 ; i<server.clients.size() ; i++){
-			server.clients.get(i).sendToClient(signal);
-		}
-		
-		//server.getClientHandler().sendToClient(signal);
+		server.signalToClient(signal);
 		//------------------------------------------------------------------------------------------------
 		
 		// Server Data Task
@@ -99,11 +85,7 @@ public class LMLaneData {
 		signal = laneNum + "&Lane&" + "Amplitude Weak";
 		
 		//----------------------------------------------------------------------------------For Test
-		for(int i=0 ; i<server.clients.size() ; i++){
-			server.clients.get(i).sendToClient(signal);
-		}
-		
-		//server.getClientHandler().sendToClient(signal);
+		server.signalToClient(signal);
 		//----------------------------------------------------------------------------------
 		
 		// Server Data Task

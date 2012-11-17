@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Factory Project
-   &#160;<span id="projectnumber">0.0.1</span>
+   &#160;<span id="projectnumber">0.1.0</span>
    </div>
    <div id="projectbrief">team 1 joint cs200/cs201</div>
   </td>
@@ -92,7 +92,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classfactory_1_1general_1_1_manager-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">factory.general.Manager Class Reference</div>  </div>
@@ -107,9 +107,11 @@ Inheritance diagram for factory.general.Manager:</div>
  <div class="center">
   <img src="classfactory_1_1general_1_1_manager.png" usemap="#factory.general.Manager_map" alt=""/>
   <map id="factory.general.Manager_map" name="factory.general.Manager_map">
-<area href="classfactory_1_1factory200_1_1gantry_robot_manager_1_1_gantry_robot_manager.html" title="takes care of movement of gantry robot, bins, purge station, feeders." alt="factory.factory200.gantryRobotManager.GantryRobotManager" shape="rect" coords="0,112,365,136"/>
-<area href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_kit_assembly_manager.html" title="keeps track of everything that will be visible to the Kit Assembly Manager" alt="factory.factory200.kitAssemblyManager.KitAssemblyManager" shape="rect" coords="375,112,740,136"/>
-<area href="classfactory_1_1factory200_1_1parts_manager_1_1_parts_manager.html" title="JFrame that represents the parts manager." alt="factory.factory200.partsManager.PartsManager" shape="rect" coords="750,112,1115,136"/>
+<area href="classfactory_1_1factory200_1_1factory_production_manager_1_1_factory_production_manager.html" title="selects active kit production routines, how many of each kit to produce, and also will control non-no..." alt="factory.factory200.factoryProductionManager.FactoryProductionManager" shape="rect" coords="0,112,447,136"/>
+<area href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_kit_assembly_manager.html" title="keeps track of everything that will be visible to the Kit Assembly Manager" alt="factory.factory200.kitAssemblyManager.KitAssemblyManager" shape="rect" coords="457,112,904,136"/>
+<area href="classfactory_1_1factory200_1_1kit_manager_1_1_kit_manager.html" alt="factory.factory200.kitManager.KitManager" shape="rect" coords="914,112,1361,136"/>
+<area href="classfactory_1_1factory200_1_1lane_manager_1_1_client_side_1_1_l_m_signal_from_server_verification.html" alt="factory.factory200.laneManager.ClientSide.LMSignalFromServerVerification" shape="rect" coords="1371,112,1818,136"/>
+<area href="classfactory_1_1factory200_1_1parts_manager_1_1_parts_manager.html" title="JFrame that represents the parts manager." alt="factory.factory200.partsManager.PartsManager" shape="rect" coords="1828,112,2275,136"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -122,7 +124,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:addc863daf9017f884eba4688b08e8695"><td class="mdescLeft">&#160;</td><td class="mdescRight">send a message to the server  <a href="#addc863daf9017f884eba4688b08e8695"></a><br/></td></tr>
 <tr class="separator:addc863daf9017f884eba4688b08e8695"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a759d0e608bfa9d64f43b2eca585bba0a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_manager.html#a759d0e608bfa9d64f43b2eca585bba0a">processMessage</a> (String msg)</td></tr>
-<tr class="memdesc:a759d0e608bfa9d64f43b2eca585bba0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">processes a message  <a href="#a759d0e608bfa9d64f43b2eca585bba0a"></a><br/></td></tr>
+<tr class="memdesc:a759d0e608bfa9d64f43b2eca585bba0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">processes a message. override this for specific functionality. always call super.processMessage() before  <a href="#a759d0e608bfa9d64f43b2eca585bba0a"></a><br/></td></tr>
 <tr class="separator:a759d0e608bfa9d64f43b2eca585bba0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac62ebc3907f4b1c2a862c595317eeec0"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_manager.html#ac62ebc3907f4b1c2a862c595317eeec0">grabParameter</a> (String msg)</td></tr>
 <tr class="memdesc:ac62ebc3907f4b1c2a862c595317eeec0"><td class="mdescLeft">&#160;</td><td class="mdescRight">standard way to grab parameter data via protocol Use this method in an if-statement in processMessage.  <a href="#ac62ebc3907f4b1c2a862c595317eeec0"></a><br/></td></tr>
@@ -139,8 +141,8 @@ Static Public Attributes</h2></td></tr>
 <tr class="memitem:aa7ec65dc54c81087b06dc116f33521a5"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classfactory_1_1general_1_1_printer.html">Printer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_manager.html#aa7ec65dc54c81087b06dc116f33521a5">p</a> = new <a class="el" href="classfactory_1_1general_1_1_printer.html">Printer</a>()</td></tr>
 <tr class="separator:aa7ec65dc54c81087b06dc116f33521a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
 <tr class="memitem:ac19ccd02c9fb3a0d507e478a4f54d998"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classfactory_1_1general_1_1_manager_connection.html">ManagerConnection</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_manager.html#ac19ccd02c9fb3a0d507e478a4f54d998">mcon</a></td></tr>
 <tr class="separator:ac19ccd02c9fb3a0d507e478a4f54d998"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -177,21 +179,7 @@ Private Attributes</h2></td></tr>
 <p>Set actions on exiting the entire application </p>
 
 <p>Definition at line <a class="el" href="_manager_8java_source.html#l00067">67</a> of file <a class="el" href="_manager_8java_source.html">Manager.java</a>.</p>
-<div class="fragment"><div class="line">                     {</div>
-<div class="line">        <span class="comment">// Force clients to tell the server that the client is exiting when the window closes</span></div>
-<div class="line">        addWindowListener(<span class="keyword">new</span> java.awt.event.WindowAdapter() {</div>
-<div class="line">            @Override</div>
-<div class="line">            <span class="keyword">public</span> <span class="keywordtype">void</span> windowClosing(java.awt.event.WindowEvent windowEvent) {</div>
-<div class="line">                <a class="code" href="classfactory_1_1general_1_1_manager.html#addc863daf9017f884eba4688b08e8695" title="send a message to the server">sendToServer</a>(Message.CLIENT_EXITED);</div>
-<div class="line">            }</div>
-<div class="line">        });</div>
-<div class="line">        </div>
-<div class="line">        <span class="comment">// On instantiation of a major, connect to the server</span></div>
-<div class="line">        this.<a class="code" href="classfactory_1_1general_1_1_manager.html#ac19ccd02c9fb3a0d507e478a4f54d998">mcon</a> = <span class="keyword">new</span> ManagerConnection(<span class="keyword">this</span>);</div>
-<div class="line">        this.mcon.connect();</div>
-<div class="line">        (<span class="keyword">new</span> Thread(this.mcon)).start(); <span class="comment">// create new thread with this connection</span></div>
-<div class="line">    }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -226,11 +214,8 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the parameter from the received message </dd></dl>
 
-<p>Definition at line <a class="el" href="_manager_8java_source.html#l00129">129</a> of file <a class="el" href="_manager_8java_source.html">Manager.java</a>.</p>
-<div class="fragment"><div class="line">                                            {</div>
-<div class="line">        <span class="keywordflow">return</span> msg.substring(msg.indexOf(<span class="stringliteral">&quot;:&quot;</span>) + 1);</div>
-<div class="line">    }</div>
-</div><!-- fragment -->
+<p>Definition at line <a class="el" href="_manager_8java_source.html#l00133">133</a> of file <a class="el" href="_manager_8java_source.html">Manager.java</a>.</p>
+
 </div>
 </div>
 <a class="anchor" id="aa4e8bbfa96f1d17ec06a0326a37f2ea0"></a>
@@ -258,27 +243,7 @@ Private Attributes</h2></td></tr>
 <p>main method to test <a class="el" href="classfactory_1_1general_1_1_manager.html" title="used to standardize methods for all managers">Manager</a> interaction with <a class="el" href="classfactory_1_1general_1_1_server.html" title="This class is critical to the integration of GUI classes, agents, etc. It uses a protocol established...">Server</a> </p>
 
 <p>Definition at line <a class="el" href="_manager_8java_source.html#l00041">41</a> of file <a class="el" href="_manager_8java_source.html">Manager.java</a>.</p>
-<div class="fragment"><div class="line">                                           {</div>
-<div class="line">        <span class="comment">// EXAMPLE INTERACTION</span></div>
-<div class="line"></div>
-<div class="line">        <a class="code" href="classfactory_1_1general_1_1_manager.html#a3c01c8ce73987fc7efa4686e12c61ec7" title="important constructor that each manager calls Java automatically makes subclasses the super class&#39;s d...">Manager</a> manager = <span class="keyword">new</span> <a class="code" href="classfactory_1_1general_1_1_manager.html#a3c01c8ce73987fc7efa4686e12c61ec7" title="important constructor that each manager calls Java automatically makes subclasses the super class&#39;s d...">Manager</a>();</div>
-<div class="line">        </div>
-<div class="line">        <span class="comment">// Test a server interaction</span></div>
-<div class="line">        manager.sendToServer(Message.TEST_SERVER);</div>
-<div class="line">        System.out.println(<span class="stringliteral">&quot;I&#39;m here and about to exit&quot;</span>);</div>
-<div class="line">        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i != 100; i++) {</div>
-<div class="line">            System.out.println(<span class="stringliteral">&quot;I&#39;m doing some random stuff&quot;</span>);</div>
-<div class="line">            <span class="keywordflow">try</span> {</div>
-<div class="line">                Thread.sleep(1000);</div>
-<div class="line">            } <span class="keywordflow">catch</span> (InterruptedException ex) {</div>
-<div class="line">                Logger.getLogger(<a class="code" href="classfactory_1_1general_1_1_manager.html#a3c01c8ce73987fc7efa4686e12c61ec7" title="important constructor that each manager calls Java automatically makes subclasses the super class&#39;s d...">Manager</a>.class.getName()).log(Level.SEVERE, null, ex);</div>
-<div class="line">            }</div>
-<div class="line">        }</div>
-<div class="line"></div>
-<div class="line">        <span class="comment">// When a manager is about to exit, tell the server!</span></div>
-<div class="line">        manager.sendToServer(Message.CLIENT_EXITED);</div>
-<div class="line">    }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a class="anchor" id="a759d0e608bfa9d64f43b2eca585bba0a"></a>
@@ -303,7 +268,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>processes a message </p>
+<p>processes a message. override this for specific functionality. always call super.processMessage() before </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">msg</td><td>- the message to process. Use an if-statement to go through the possibilities. </td></tr>
@@ -312,27 +277,7 @@ Private Attributes</h2></td></tr>
 </dl>
 
 <p>Definition at line <a class="el" href="_manager_8java_source.html#l00102">102</a> of file <a class="el" href="_manager_8java_source.html">Manager.java</a>.</p>
-<div class="fragment"><div class="line">                                           {</div>
-<div class="line">        <span class="comment">// Decide action based on message from server</span></div>
-<div class="line">        <span class="keywordflow">if</span> (msg.contains(Message.TEST_CLIENT)) {</div>
-<div class="line">            System.out.println(<span class="stringliteral">&quot;Client test passed.&quot;</span>);</div>
-<div class="line">        }</div>
-<div class="line">        <span class="comment">// Example:</span></div>
-<div class="line"><span class="comment">//      else if (msg.contains(Message.SELECTED_PLAYER_OK)) {</span></div>
-<div class="line"><span class="comment">//          String answer = grabParameter(msg); </span></div>
-<div class="line"><span class="comment">//          p.println(&quot;Answer from server: &quot;+answer);</span></div>
-<div class="line"><span class="comment">//          if (answer.equals(&quot;true&quot;)) {</span></div>
-<div class="line"><span class="comment">//              // If the chosen player is OK</span></div>
-<div class="line"><span class="comment">//              lblPlayerName.setText(existingPlayerPanels.get(chosenPlayerIndex).getName());</span></div>
-<div class="line"><span class="comment">//              JOptionPane.showMessageDialog(this, &quot;Player selected&quot;, &quot;Notification&quot;, JOptionPane.PLAIN_MESSAGE);</span></div>
-<div class="line"><span class="comment">//          } else {</span></div>
-<div class="line"><span class="comment">//              // If not OK</span></div>
-<div class="line"><span class="comment">//              chosenPlayerIndex = 0; // reset. 0 is default.</span></div>
-<div class="line"><span class="comment">//              JOptionPane.showMessageDialog(this, &quot;Player currently in use by other user&quot;, &quot;Notification&quot;, JOptionPane.PLAIN_MESSAGE);</span></div>
-<div class="line"><span class="comment">//          }</span></div>
-<div class="line"><span class="comment">//      }</span></div>
-<div class="line">    }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a class="anchor" id="addc863daf9017f884eba4688b08e8695"></a>
@@ -366,14 +311,7 @@ Private Attributes</h2></td></tr>
 </dl>
 
 <p>Definition at line <a class="el" href="_manager_8java_source.html#l00089">89</a> of file <a class="el" href="_manager_8java_source.html">Manager.java</a>.</p>
-<div class="fragment"><div class="line">                                         {</div>
-<div class="line">        <span class="keywordflow">try</span> {</div>
-<div class="line">            this.<a class="code" href="classfactory_1_1general_1_1_manager.html#ac19ccd02c9fb3a0d507e478a4f54d998">mcon</a>.<a class="code" href="classfactory_1_1general_1_1_manager_connection.html#af18b98a7e188f6077698830e56899fda" title="data out">out</a>(msg);</div>
-<div class="line">        } <span class="keywordflow">catch</span> (Exception e) {</div>
-<div class="line">            e.printStackTrace();</div>
-<div class="line">        }</div>
-<div class="line">    }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -390,7 +328,7 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -428,7 +366,7 @@ Private Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Nov 4 2012 12:20:07 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Nov 17 2012 01:37:09 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

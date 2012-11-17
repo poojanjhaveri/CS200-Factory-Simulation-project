@@ -11,7 +11,7 @@ import factory.factory201.test.mock.MockCamera;
 import factory.factory201.test.mock.MockLane;
 
 /**
- *
+ * Just a class to demonstrate PartsAgent working.
  * @author James Dalton
  */
 public class PartsAgentMain{
