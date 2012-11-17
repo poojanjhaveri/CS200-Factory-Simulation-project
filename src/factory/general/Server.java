@@ -36,7 +36,7 @@ public class Server { // KitAssemblyAgent
     
     // Delete this?
     // Agent
-    private AgentMain agentMain;
+//    private AgentMain agentMain;
     
     // Kevin's
     private FeederAgent feederAgent;
@@ -50,8 +50,8 @@ public class Server { // KitAssemblyAgent
     private NestAgent nestAgent;
     private PartsAgent partsAgent;
     // Dongyoung's
-    private LMServerMain serverLM;
-    private Thread threadLM;
+//    private LMServerMain serverLM;
+//    private Thread threadLM;
     
     // Connection fields
     private ServerSocket ss = null;
