@@ -314,4 +314,22 @@ public class Server {
 	public void setPartsAgentClient(HandleAManager in) {
 		this.partsAgent.setClient(in);
 	}
+    public void setFactoryProductionManagerToAll(HandleAManager in)
+    {
+	nestAgent.setFactoryProductionManager(in);
+	partsAgent.setFactoryProductionManager(in);
+    kitRobotAgent.setFactoryProductionManager(in);
+    cameraAgent.setFactoryProductionManager(in);
+    conveyorAgent.setFactoryProductionManager(in);
+    for(int i = 0; i != 4; i++)
+    feederAgents[i].setFactoryProductionManager(in);
+    gantryAgent.setFactoryProductionManager(in);
+    for(int i = 0; i != 8; i++)
+    laneAgents[i].setFactoryProductionManager(in);
+    }
+	// here...
+	public LMServerMain getServerLM() {
+		return this.serverLM;
+	}
+
 }
