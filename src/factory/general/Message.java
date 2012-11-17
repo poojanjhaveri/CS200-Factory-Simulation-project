@@ -12,7 +12,7 @@ public class Message {
     public static final String CLIENT_EXITED = "CLIENT_EXITED";
     public static final String TEST_SERVER = "TEST_SERVER";
     public static final String TEST_CLIENT = "TEST_CLIENT";
-    
+
     //partsmanager section
     public static final String PULL_PARTS_LIST = "PULL_PARTS_LIST";///<simple request from partsmanager to server asking for parts list
     public static final String PUSH_PARTS_LIST = "PUSH_PARTS_LIST";///<send serialized parts list over from server to partsmanager
@@ -38,12 +38,17 @@ public class Message {
 
 
     //kitassemblymanager section
-public static final String KAM_GET_EMPTY_KIT_TO_ACTIVE
+    public static final String KAM_GET_EMPTY_KIT_TO_ACTIVE = "KAM_GET_EMPTY_KIT_TO_ACTIVE";
+    public static final String KAM_DROP_OFF_FULL_KIT = "KAM_DROP_OFF_FULL_KIT";
+    public static final String KAM_MOVE_ACTIVE_KIT_TO_INSPECTION = "KAM_MOVE_ACTIVE_KIT_TO_INSPECTION";
+    public static final String PICK_UP_EMPTY_KIT_TO_ACTIVE = "PICK_UP_EMPTY_KIT_TO_ACTIVE";
+    public static final String PICK_UP_EMPTY_KIT = "PICK_UP_EMPTY_KIT";
+    public static final String MOVE_EMPTY_KIT_TO_ACTIVE = "MOVE_EMPTY_KIT_TO_ACTIVE";
 
     //lanemanager section
-    
-    
+
+
     //factoryproductionmanager section
     //PULL_KITS_LIST is also used by FPM
-    public static final String PUSH_PRODUCTION_QUEUE = "PUSH_PRODUCTION_QUEUE";///<sends the server a list of comma delimited kit IDs 
+    public static final String PUSH_PRODUCTION_QUEUE = "PUSH_PRODUCTION_QUEUE";///<sends the server a list of comma delimited kit IDs
 }

@@ -215,23 +215,28 @@ public class KitRobotAgent extends Agent implements KitRobot {
 
 
     private void DoRemoveVerifiedKit(Kit k) {
-//        KAM.KAMdropOffFullKit();
+
+        KAM.KAMdropOffFullKit();
+	//this.client.sendMessage(Message.KAM_DROP_OFF_FULL_KIT);
     }
 
     private void DoMoveKitFrom1to2() {
-//        KAM.getKitRobot().moveActiveKitToInspection();
+        KAM.getKitRobot().moveActiveKitToInspection();
+	//this.client.sendMessage(Message.KAM_MOVE_ACTIVE_KIT_TO_INSPECTION);
     }
 
     private void DoMoveKitFromConveyorTo0() {
-//        KAM.getKitRobot().pickUpEmptyKit();
+        KAM.getKitRobot().pickUpEmptyKit();
+	//this.client.sendMessage(Message.PICK_UP_EMPTY_KIT);
     }
     
     private void DoMoveKitFromConveyorTo1() {
-        
+        //this.client.sendMessage(Message.PICK_UP_EMPTY_KIT_TO_ACTIVE);
     }
     
     private void DoMoveKitFrom0to1() {
-//        this.KAM.getKitRobot().moveEmptyKitToActive();
+        this.KAM.getKitRobot().moveEmptyKitToActive();
+	//this.client.sendMessage(Message.MOVE_EMPTY_KIT_TO_ACTIVE);
     }
 }
 
