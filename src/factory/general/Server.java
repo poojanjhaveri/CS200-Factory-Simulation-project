@@ -37,6 +37,9 @@ public class Server {
 	private Printer p = new Printer();
 	private int numClients; // accessible by Server and HandleAManager
 
+        
+    private FactoryState fstate;
+    
 	/** Agents */
     // Fields just for "AgentMain" stuff (Agent preparation) 
     private static final boolean TEST_MODE = true;
@@ -80,12 +83,17 @@ public class Server {
 	 * @param portNumber - the port number to create the server on.
 	 */
 	public Server(int portNumber) {
+            
+        this.fstate = new FactoryState();
         // TODO: uncomment when ready
 //		prepareAllAgents(); // Prepare all agents; based on AgentMain.java
 		numClients = 0; // Initialize num clients is 0
 		start(portNumber); // Start listening for clients and making new HandleAManager instances
 	}
-
+public FactoryState getFactoryState()
+{
+    return this.fstate;
+}
 	/**
 	 * @brief Starts the server, listening for clients and making new HandleAManager instances (threads) appropriately
 	 * Contains the central loop. We break out of this loop by forcing System.exit(0) in HandleAManager.

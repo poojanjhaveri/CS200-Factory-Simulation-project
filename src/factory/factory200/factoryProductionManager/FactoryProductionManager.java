@@ -220,7 +220,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
                 
 		add(tabs);
 
-		this.sendToServer(Message.IDENTIFY_FACTORYPRODUCTIONMANAGER);
+		//this.sendToServer(Message.IDENTIFY_FACTORYPRODUCTIONMANAGER);
 	}
 	
     @Override
@@ -328,7 +328,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 		ArrayList<String> serialized = new ArrayList<String>();
 		for(int i = 0; i != this.selectedKits.size(); i++)
 		    {
-			this.serialized.add(this.selectedKits.get(i).getNumber()+"");
+			serialized.add(this.selectedKits.get(i).getNumber()+"");
 		    }
 		msg = msg + Util.serialize(serialized);
 		this.sendToServer(msg);
@@ -379,7 +379,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 
 	//DONGYOUNG: please run each manager's processMessage(msg) function here	
 		// Lane Manager
-	    gfx.verifyMessage(msg);
+	    //gfx.verifyMessage(msg);
     }
     /**
      * @brief Controls Kit selection and Factory ON/OFF Controls Kit selection
