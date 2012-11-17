@@ -1,6 +1,5 @@
 package factory.factory201.kitManagement;
 
-import factory.factory200.kitAssemblyManager.KitAssemblyManager;
 import factory.general.*;
 
 /**
@@ -9,7 +8,6 @@ import factory.general.*;
  */
 public class KitStand {
 
-    private KitAssemblyManager KAM;
     private KitRobotAgent agent;
     
     /**
