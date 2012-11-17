@@ -224,7 +224,7 @@ public class PartsAgent extends Agent implements PartsInterface {
         } catch (InterruptedException ex) {
         }
         grips.clear();
-        DoPutInKit();
+        DoPutInKit(kitNum);
         //COMMENTED OUT FOR UNIT TEST
        
         //print("Kitneedsparts size =" + kitNeedsParts.size());
@@ -264,7 +264,7 @@ public class PartsAgent extends Agent implements PartsInterface {
      kam.getPartsRobot().pickPartCommand(nestNum);   
     }
     
-    public void DoPutInKit(){
-      kam.getPartsRobot().dropOffParts();  
+    public void DoPutInKit(int kitNum){
+      kam.getPartsRobot().dropOffParts(kitNum);  
     }
 }
