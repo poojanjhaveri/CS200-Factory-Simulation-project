@@ -86,7 +86,12 @@ public class PartsAgent extends Agent implements PartsInterface {
 
     @Override
     public boolean pickAndExecuteAnAction() {
-
+        if (!newKit.isEmpty()) {
+           
+           startNewKit(newKit.remove(0));
+            //newKit.clear();
+            return true;
+        } 
         
         if (kit0!=null && kit1!=null){
             if (!inventory.isEmpty() && kit0.status == Kit.Status.ready && grips.size() != 4) {
@@ -123,12 +128,7 @@ public class PartsAgent extends Agent implements PartsInterface {
                 return true;
             }
 }
-       if (!newKit.isEmpty()) {
-           
-           startNewKit(newKit.remove(0));
-            //newKit.clear();
-            return true;
-        } 
+       
 
 
         return false;
@@ -263,7 +263,7 @@ public class PartsAgent extends Agent implements PartsInterface {
 
            // kam.getPartsRobot().moveToNestCommand(nestNum);
 
-	    this.client.sendMessage(Message.KAM_PARTS_MOVE_TO_NEST+":"+nestNum);
+//	    this.client.sendMessage(Message.KAM_PARTS_MOVE_TO_NEST+":"+nestNum);
     }
     
     public void DoPickUpPart(int nestNum){
@@ -273,7 +273,7 @@ public class PartsAgent extends Agent implements PartsInterface {
 
     public void DoPutInKit(int kitNum){
     //  kam.getPartsRobot().dropOffParts(kitNum);  
-      this.client.sendMessage(Message.KAM_PARTS_DROP_OFF_PARTS+":"+kitNum);
-      this.fpm.sendMessage(Message.KAM_PARTS_DROP_OFF_PARTS+":"+kitNum);
+    //  this.client.sendMessage(Message.KAM_PARTS_DROP_OFF_PARTS+":"+kitNum);
+  //    this.fpm.sendMessage(Message.KAM_PARTS_DROP_OFF_PARTS+":"+kitNum);
     }
 }
