@@ -76,11 +76,11 @@ public class KitManager extends Manager  implements ActionListener {
             this.bpkit = new BlueprintKits();
             this.bppart = new BlueprintParts();
             setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-             setBounds(100, 100, 600, 400);
+             setBounds(100, 100, 500 , 700);
            
-           
+            this.update();  
             prepareMainPane();
-             this.update();  
+            
 	//	this.mcon.out(Message.PULL_PARTS_LIST);
               
          }
@@ -105,8 +105,8 @@ public class KitManager extends Manager  implements ActionListener {
             {     
             public void paintComponent(Graphics g) 
             {
-                Image img = new ImageIcon("background/kitbackground.jpg").getImage();
-                Dimension size = new Dimension(600, 400);
+                Image img = new ImageIcon("pics/background/part1.png").getImage();
+                Dimension size = new Dimension(500, 700);
                 setPreferredSize(size);
                 setMinimumSize(size);
                 setMaximumSize(size);
@@ -132,6 +132,7 @@ public class KitManager extends Manager  implements ActionListener {
             tabbedPane = new JTabbedPane(JTabbedPane.TOP);
             
             
+            
             tabbedPane.addChangeListener(new ChangeListener() {
                     public void stateChanged(ChangeEvent e) {
                    processtabchange();
@@ -149,7 +150,22 @@ public class KitManager extends Manager  implements ActionListener {
             
             // CREATE KIT PANEL
             
-            createkit = new JPanel();
+            createkit = new JPanel()
+            {
+            public void paintComponent(Graphics g) 
+            {
+                Image img = new ImageIcon("pics/background/part1.png").getImage();
+                Dimension size = new Dimension(500, 700);
+                setPreferredSize(size);
+                setMinimumSize(size);
+                setMaximumSize(size);
+                setSize(size);
+                setLayout(null);
+                
+                g.drawImage(img, 0, 0, null);
+            } 
+        };
+            
             
             ImageIcon i = new ImageIcon("kit/create.jpg");
             tabbedPane.addTab("Create Kit", i, createkit);
@@ -179,7 +195,7 @@ public class KitManager extends Manager  implements ActionListener {
  
             c.gridx=1;
             c.gridy=1;
-            System.out.println("Size of part list is "+bppart.getSize());
+            System.out.println("Size of part list is "+this.bppart.getSize());
             
             create_combo = new JComboBox(); // parts list
             for(int j=0;j<this.bppart.getSize();j++){
@@ -300,14 +316,14 @@ public class KitManager extends Manager  implements ActionListener {
             ub7 = new JButton();
             
             
-            upartgrid.add(b0);
-            upartgrid.add(b1);
-            upartgrid.add(b2);
-            upartgrid.add(b3);
-            upartgrid.add(b4);
-            upartgrid.add(b5);
-            upartgrid.add(b6);
-            upartgrid.add(b7);
+            upartgrid.add(ub0);
+            upartgrid.add(ub1);
+            upartgrid.add(ub2);
+            upartgrid.add(ub3);
+            upartgrid.add(ub4);
+            upartgrid.add(ub5);
+            upartgrid.add(ub6);
+            upartgrid.add(ub7);
             
             ub0.addActionListener(new itembutton());
             ub1.addActionListener(new itembutton());
