@@ -79,6 +79,11 @@ public class ManagerConnection implements Runnable {
      * specific parameters.
      */
     public void out(String o) {
+        if(o == null)
+        {
+            System.out.println("CRITICAL ERROR: ATTEMPTING TO SEND A NULL STRING FROM MANAGER");
+            return;
+        }
         this.out.println(o);
     }
 
