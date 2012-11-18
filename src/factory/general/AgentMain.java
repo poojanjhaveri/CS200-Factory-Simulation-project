@@ -10,6 +10,8 @@ import factory.factory201.kitManagement.ConveyorAgent;
 import factory.factory201.kitManagement.KitRobotAgent;
 import factory.factory201.partsManagement.NestAgent;
 import factory.factory201.partsManagement.PartsAgent;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @brief Example usage of all the agents working together.
@@ -119,7 +121,11 @@ public class AgentMain {
         }
 
         // Officially start the agent interaction sequence!
-        partsAgent.msgHereIsKit(kit); // The primary agent
+        List<Kit> kits = new ArrayList<Kit>();
+        kits.add(kit);
+        kits.add(kit);
+        kits.add(kit);
+        partsAgent.msgHereIsKit(kits); // The primary agent
             // The message here tells the parts agent to start - 
             // The parts agent requests parts from the nest, nest asks lanes, laneagent asks feederagent
             // Feederagent asks GantryAgent, GantryAgent gets parts from bins, gives back to feederagent
