@@ -490,6 +490,7 @@ public class KitManager extends Manager  implements ActionListener {
     		 ucreate_combo.addItem(KitManager.bppart.getPartAt(j).getName()); 
                 } 
                
+           //    prepareMainPane();
              
     	 }
     

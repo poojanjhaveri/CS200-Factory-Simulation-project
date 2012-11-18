@@ -401,6 +401,9 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
                     }
                 }
             }
+            for(int i=0;i<nest.size();i++){
+                nest.get(i).updateParts();
+            }
 
             if (!kitbot.moving()) {
                 Integer order = kitbot.getOrder();

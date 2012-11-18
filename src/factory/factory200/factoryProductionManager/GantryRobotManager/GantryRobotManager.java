@@ -14,12 +14,14 @@ package factory.factory200.factoryProductionManager.GantryRobotManager;
  */
 
 import factory.factory200.factoryProductionManager.*;
+import factory.general.Message;
+
 import java.awt.Graphics2D;
 
 public class GantryRobotManager{
    
     GRMGraphicPanel graphics;    
-   // GUIGantryRobot gbot;///<class which includes Gantry Robot Manager Methods
+    factory.factory200.gantryRobotManager.GUIGantryRobot ganbot;///<class which includes Gantry Robot Manager Methods
     int purgeStationx;//x coordinate of purgeStation
     int purgeStationy;//y coordinate of purgeStation
 
@@ -57,4 +59,38 @@ public class GantryRobotManager{
 	public void paint(GraphicsPanel panel, Graphics2D g){
 		graphics.paint(panel, g);
 	}
+
+	public void processMessage(String msg) {
+		//		   super.processMessage(msg);
+		if(msg.contains(Message.MOVE_GANTRY_TO_BIN))
+		{
+			this.ganbot.moveToBinCommand(Integer.parseInt(this.grabParameter(msg)));
+		}
+		else if(msg.contains(Message.GANTRY_CARRY_A_BIN))
+		{
+			this.ganbot.pickUpBinCommand(Integer.parseInt(this.grabParameter(msg)));
+		}
+		else if(msg.contains(Message.MOVE_GANTRY_TO_FEEDER))
+		{
+			this.ganbot.moveToFeederCommand(Integer.parseInt(this.grabParameter(msg)));
+		}
+		else if(msg.contains(Message.SUPPLY_PART_ON_FEEDER)){
+			this.ganbot.supplyPartOnFeederCommand(Integer.parseInt(this.grabParameter(msg)));
+		}
+
+		else if(msg.contains(Message.MOVE_GANTRY_TO_DUMP)){
+			this.ganbot.purgeBinCommand();
+		}
+	}
+	
+	/**
+     * ad hoc addition, copy-paste from manager :/
+     * @brief standard way to grab parameter data via protocol Use this method
+     * in an if-statement in processMessage.
+     * @param msg - the message to grab a parameter from.
+     * @return the parameter from the received message
+     */
+    public String grabParameter(String msg) {
+        return msg.substring(msg.indexOf(":") + 1);
+    }
 }
