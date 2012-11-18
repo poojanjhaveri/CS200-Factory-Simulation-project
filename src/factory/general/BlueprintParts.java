@@ -81,7 +81,7 @@ public class BlueprintParts implements Blueprint, Serializable {
         return null;
     }
     public Part getPartAt(int i) {
-        return this.parts.get(i);
+        return parts.get(i);
     }
     
     public int getSize(){
