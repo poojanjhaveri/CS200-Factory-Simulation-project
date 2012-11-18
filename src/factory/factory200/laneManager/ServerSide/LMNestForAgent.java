@@ -4,17 +4,15 @@ import java.util.ArrayList;
 
 public class LMNestForAgent {
 	
-	private LMServer server;
 	private LMServerMain serverMain;
 	private LMNestData newNest;	///< Instance of class 'ServerLaneManagerThreadNest
 	private ArrayList<LMNestData> nests = new ArrayList<LMNestData>();	///< ArrayList of nests
 
-	public LMNestForAgent(LMServer server, LMServerMain serverMain){
-		this.server = server;
+	public LMNestForAgent(LMServerMain serverMain){
 		this.serverMain = serverMain;
 		
 		for(int i=0 ; i<8 ; i++){
-			newNest = new LMNestData( i, server, serverMain );
+			newNest = new LMNestData( i, serverMain );
 			nests.add(newNest);
 		}
 	}

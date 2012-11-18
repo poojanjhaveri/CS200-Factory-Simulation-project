@@ -1,5 +1,6 @@
 package agent;
 
+import factory.general.HandleAManager;
 import java.util.concurrent.*;
 
 /**
@@ -14,6 +15,18 @@ public abstract class Agent {
     private String name;
     public boolean partsRequested;
     public boolean print;
+
+    /**
+     * @brief communication channel with client
+     * A reference to the corresponding client
+     * @author Roy YiWei Zheng
+     */
+    protected HandleAManager client;
+    /**
+@brief communication channel with factory production manager
+A reference to the factory production manager
+     */
+    protected HandleAManager fpm;
     
     protected Agent(String name) {
         this.name = name;
@@ -143,5 +156,28 @@ public abstract class Agent {
             goOn = false;
             this.interrupt();
         }
+    }
+    /**
+     * @brief sets the client
+     * @author Roy YiWei Zheng
+     */
+    public void setClient(HandleAManager i) {
+    	this.client = i;
+    }
+    
+    public HandleAManager getClient() {
+    	return this.client;
+    }
+    
+    /**
+@brief sets the factory production manager client
+@author Roy YiWei Zheng
+     */
+    public void setFactoryProductionManagerClient(HandleAManager i) {
+    	this.fpm = i;
+    }
+    
+    public HandleAManager getFactoryProductionManagerClient() {
+    	return this.fpm;
     }
 }

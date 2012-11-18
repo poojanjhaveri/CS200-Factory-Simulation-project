@@ -26,18 +26,26 @@ public class KitDeliveryStation {
     public KitDeliveryStation(int kits){
         numEmptyKits=kits;
         placeholder=new ArrayList<PlaceHolder>();
+        if(numEmptyKits>0){
         for(int i=0;i<numEmptyKits;i++){
             PlaceHolder temp = new PlaceHolder();
             temp.setNumber(i+1);
             placeholder.add(temp);
             
         }  
+        }
         int xStart=25;
         int yStart=680;
         for(int i=0;i<numEmptyKits;i++){
-        placeholder.get(i).setX(xStart);
+        placeholder.get(i).setX(xStart-10);
         placeholder.get(i).setY(yStart);
         }
+    }
+    
+    public void addKit(){
+        numEmptyKits++;
+        PlaceHolder temp = new PlaceHolder();
+        placeholder.add(temp);
     }
     
     public Boolean inPosition(){
@@ -45,7 +53,7 @@ public class KitDeliveryStation {
         for(int i=0;i<this.getPlaceholder().size();i++){
            num=i;
            int yPlace=this.getPlaceholder().get(i).getY();
-           if(yPlace==300 && this.getPlaceholder().get(i).isShow()){
+           if(yPlace==KAMGraphicPanel.EMPTY_CONVEYERY && this.getPlaceholder().get(i).isShow()){
                inPlace=true;
                break;
            }
@@ -59,7 +67,7 @@ public class KitDeliveryStation {
         for(int i=0;i<this.getPlaceholder().size();i++){
            num=i;
            int yPlace=this.getPlaceholder().get(i).getY();
-           if(yPlace==300 && !(this.getPlaceholder().get(i).isShow())){
+           if(yPlace==KAMGraphicPanel.FULL_CONVEYERY && !(this.getPlaceholder().get(i).isShow())){
                inPlace=true;
                break;
            }
@@ -77,8 +85,16 @@ public class KitDeliveryStation {
        for(int i=0;i<this.getPlaceholder().size();i++){
            //temp=this.getPlaceholder().get(i);
            int yPlace=this.getPlaceholder().get(i).getY();
-           if(yPlace==300 && !(this.getPlaceholder().get(i).isShow())){
+           if(yPlace==KAMGraphicPanel.FULL_CONVEYERY && !(this.getPlaceholder().get(i).isShow())){
                this.getPlaceholder().get(i).setKit(kit);
+               this.getPlaceholder().get(i).getKit().updateParts();
+               if(this.getPlaceholder().get(i).getKit().getParts().size() != 0){
+                   this.getPlaceholder().get(i).getKit().setImage(new ImageIcon("pics/giftkit.png"));
+                   int size=this.getPlaceholder().get(i).getKit().getParts().size();
+                   for(int k=0;k<size;k++){
+                   this.getPlaceholder().get(i).getKit().getParts().remove(0);
+                   }
+               }
                break;
            }
        }

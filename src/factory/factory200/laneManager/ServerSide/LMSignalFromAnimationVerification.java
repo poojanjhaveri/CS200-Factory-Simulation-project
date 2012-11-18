@@ -11,9 +11,7 @@ public class LMSignalFromAnimationVerification {
 	
 	public void verify(String message){
 		if(message.indexOf("&Nest&AddPart&") != -1){
-			System.out.println("(Server) From Client : " + message);
 			laneNestNum = message.charAt(0) - 48;
-			System.out.println("LaneNestNum : " + laneNestNum);
 			serverMain.getPartData().sendPartToNestFromLane(laneNestNum);
 		}
 	}

@@ -178,7 +178,10 @@ public class LaneAgent extends Agent implements Lane {
             	}    //supply part if it has correct quantity
             	else{
             		if(requestedPart==false){
-                                askForPart(p.part);
+
+
+            			askForPart(p.part);
+
             			requestedPart=true;
             			return true;
             			}
@@ -210,7 +213,7 @@ public class LaneAgent extends Agent implements Lane {
 
     //ask for parts if it is low
     private void askForPart(Part p){
-    	print("I am asking feeder: "+((FeederAgent)feeder).getName() +" for part: " + p.type);
+    	//print("I am asking feeder: "+((FeederAgent)feeder).getName() +" for part: " + p.type);
     	//feeder must know which lane the message is from
     	feeder.msgNeedPart(p,this);
     	stateChanged();

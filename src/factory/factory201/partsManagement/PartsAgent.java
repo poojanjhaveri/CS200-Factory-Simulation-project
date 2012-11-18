@@ -1,16 +1,17 @@
 package factory.factory201.partsManagement;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import agent.Agent;
-import factory.factory200.kitAssemblyManager.KitAssemblyManager;
 import factory.factory201.interfaces.Camera;
 import factory.factory201.interfaces.KitRobot;
 import factory.factory201.interfaces.NestInterface;
 import factory.factory201.interfaces.PartsInterface;
 import factory.general.Kit;
+import factory.general.Message;
 import factory.general.Part;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 /**
  * Factory PartsAgent gets kit information from server and obtains necessary
@@ -24,34 +25,40 @@ import java.util.List;
  */
 public class PartsAgent extends Agent implements PartsInterface {
 
-    KitAssemblyManager kam;
+    // KitAssemblyManager kam; // Should not have!
     KitRobot kitrobot;
-    Kit kit;
+    Kit kit0;
+    Kit kit1;
+    Kit kitInfo;
     NestInterface nest;
     Camera camera;
-    private List<Part> inventory, grips, kitNeedsParts;
-    private List<Kit> newKit;
+    int kits=0;
+    boolean kitZero = false;
+    boolean kitOne = false;
+    public List<Part> inventory, grips, kit0NeedsParts, kit1NeedsParts;
+    public List<Kit> newKit;
     boolean emptyKitReady;
 
     public PartsAgent(String name) {
-        super(name);
-        emptyKitReady = false;
+        super(name); 
+        // Should these be creating NEW ArrayLists of things, or should they be getting the list
+        // from somewhere else (i.e., the server)?
         this.inventory = Collections.synchronizedList(new ArrayList<Part>());
         this.grips = Collections.synchronizedList(new ArrayList<Part>());
-        this.kitNeedsParts = Collections.synchronizedList(new ArrayList<Part>());
+        this.kit0NeedsParts = Collections.synchronizedList(new ArrayList<Part>());
+        this.kit1NeedsParts = Collections.synchronizedList(new ArrayList<Part>());
         this.newKit = Collections.synchronizedList(new ArrayList<Kit>());
-
     }
     
 //Messages 
 
     // message from server
-    @Override
-    public void msgHereIsKit(Kit k) {
-        print("PartsAgent got message for new kit");
-        newKit.add(k);
+    //@Override
+    public void msgHereIsKit(List<Kit> newKits) {
+        print("PartsAgent got message for new kits");
+        for (Kit k: newKits){
+        newKit.add(k);}
         stateChanged();
-
     }
 
     @Override
@@ -64,111 +71,168 @@ public class PartsAgent extends Agent implements PartsInterface {
     // msg from kit robot
     @Override
     public void msgEmptyKitReady(Kit k) {
-        kit.standNum = k.standNum;
-        print("got an empty kit for stand #" + kit.standNum);
+
+        if(k.standNum==Kit.StandNum.zero){
+            this.kit0 =k;
+            kitZero=true;
+            kit0.status = Kit.Status.ready;
+            }
+            else{
+            this.kit1=k;
+            kitOne=true;
+            kit1.status = Kit.Status.ready;
+            }
+
+        print("got an empty kit for stand #" + k.standNum);
         stateChanged();
     }
 //Scheduler
 
     @Override
     public boolean pickAndExecuteAnAction() {
-
-        if (!newKit.isEmpty()) {
-           
-            startNewKit(newKit.remove(newKit.size()-1));
+        if (!newKit.isEmpty() && kits!=2) {
+            kits++;
+           startNewKit(newKit.remove(0));
+            //newKit.clear();
             return true;
-        }
-
-
-        if (kit != null) {
-            if (kit.status == Kit.Status.full) {
-                giveKitToKitAgent();
-                return true;
-            }
-
-            if (kitNeedsParts.isEmpty()) {
-                giveKitToKitAgent();
-                return true;
-            }
-
-
-        }
-        if (!inventory.isEmpty() && kit.standNum != Kit.StandNum.none && grips.size() != 4) {
+        } 
+        
+        if (kit0!=null && kits!=0 && kitZero){
+            if (!inventory.isEmpty() && kit0.status == Kit.Status.ready && grips.size() != 4) {
             pickUpPart(inventory.remove(0));
             return true;
+            }
+     
+        
+            if (kit0NeedsParts.isEmpty()) {
+                print("giving kit to kitagent");
+                giveKitToKitAgent(kit0);
+                return true;
+            }    
+}
+        
+        if(kit1!=null && kits!=0 && kitOne){
+           
+            if (!inventory.isEmpty() && kit1.status == Kit.Status.ready && grips.size() != 4) {
+            pickUpPart(inventory.remove(0));
+            return true;
+            }  
+           
+            
+             if (kit1NeedsParts.isEmpty()) {
+                print("giving kit to kitagent");
+                giveKitToKitAgent(kit1);
+                return true;
+            }
         }
+       
 
 
         return false;
     }
 //Actions
 
-    private void giveKitToKitAgent() {
-        print("giving kitrobot complete kit");
-        kitrobot.msgKitIsFull();
-        kit.status = Kit.Status.empty;
-        kit.standNum = Kit.StandNum.zero;
-        try {
-            Thread.sleep(6000);
-        } catch (InterruptedException e) {
-            print("stopped sleeping for 10 seconds");
+    private void giveKitToKitAgent(Kit k) {
+        print("giving kitrobot complete kit #" + k.standNum);
+
+        kitrobot.msgKitIsFull(k);
+       // k.status = Kit.Status.empty;
+        kits--;
+        if(k.standNum==Kit.StandNum.zero){
+            kit0=null;
         }
-        kitrobot.msgNeedEmptyKit();
+        else
+            kit1=null;
+        /*if(newKit.isEmpty()){
+            newKit.add(kitInfo);
+            print("Adding kit of size "+ kitInfo.getSize() + " to newKit list");}*/
         stateChanged();
     }
 
     private void startNewKit(Kit k) {
-
-         kitrobot.msgNeedEmptyKit();
+       /* if(kitInfo!=null && kitInfo!=k){
+           nest.setNestPurge(k.parts); 
+        }*/
+        this.kitInfo = k;
         print("New kit being started");
         camera.msgHereIsKitInfo(k);
-    	kitNeedsParts.clear();
-    	this.kit = k;
-       // kit.standNum = Kit.StandNum.one;
-    	for(int i=0; i<kit.parts.size(); i++){
-    		kitNeedsParts.add(kit.getPart(i));
+    	//kitNeedsParts.clear();
+   
+        if(kit0==null){
+        kitrobot.msgNeedEmptyKit();
+    	this.kit0 = k;
+        for(int i=0; i<k.parts.size(); i++){
+    		kit0NeedsParts.add(k.getPart(i));
     	}
-        
-        
-    	for (int i = 0; i < kit.getSize(); i++) {
-            nest.msgNeedPart(kit.getPart(i));
+       
+    	for (int i = 0; i < k.getSize(); i++) {
+            nest.msgNeedPart(k.getPart(i));
     	}
+    }
+        else{
+        kitrobot.msgNeedEmptyKit();
+    	this.kit1 = k;
+        for(int i=0; i<k.parts.size(); i++){
+    		kit1NeedsParts.add(k.getPart(i));
+    	}
+       
+    	for (int i = 0; i < k.getSize(); i++) {
+            nest.msgNeedPart(k.getPart(i));
+    	}}
+      
     	stateChanged();
 
     }
 
     private void pickUpPart(Part p) {
         grips.add(p);
-
-
-        kitNeedsParts.remove(p);
+        boolean next = true;
+        int kitNum=-1000;
+        for (Part part: kit0NeedsParts){
+            if (part.type == p.type){
+              kit0NeedsParts.remove(part);
+              next = false;
+              kitNum=0;
+              break;
+            }}
+        if(next){
+        for (Part part: kit1NeedsParts){
+            if (part.type == p.type){
+              kit1NeedsParts.remove(part);
+              kitNum=1;
+              break;
+            }}}
+        
         print("picking up part " + p.getString());
         //kam.getKitStand().getKitPositions().get(1).setFilled(true);
-        kam.getPartsRobot().moveToNestCommand(p.getNestNum());
+         DoMoveToNest(p.getNestNum());//**COMMENTED OUT FOR UNIT TEST
         try {
             Thread.sleep(1000);
         } catch (InterruptedException ex) {
             print("stopped sleeping");
         }
-        kam.getPartsRobot().pickPartCommand(p.getNestNum());
-        if (grips.size() == 4 || kitNeedsParts.isEmpty()) {
-
-            putPartsInKit();
+        DoPickUpPart(p.getNestNum());
+         //**COMMENTED OUT FOR UNIT TEST
+        if (grips.size() == 4 || kit0NeedsParts.isEmpty() || kit1NeedsParts.isEmpty()) {
+        putPartsInKit(kitNum);
         }
         stateChanged();
     }
 
-    private void putPartsInKit() {
+    private void putPartsInKit(int kitNum) {
         for (Part p : grips) {
-            print("putting part " + p.getString() + " in kit");
+            print("putting part " + p.getString() + " in kit number "+ kitNum);
         }
-        grips.clear();
-        kam.getPartsRobot().dropOffParts();
-        try {
-            Thread.sleep(3);
+      /*  try {
+            Thread.sleep(3000);
         } catch (InterruptedException ex) {
-        }
-
+        }*/
+        grips.clear();
+        DoPutInKit(kitNum);
+        //COMMENTED OUT FOR UNIT TEST
+       
+        //print("Kitneedsparts size =" + kitNeedsParts.size());
+        stateChanged();
     }
     
     public void setCamera(Camera c){
@@ -182,9 +246,10 @@ public class PartsAgent extends Agent implements PartsInterface {
         this.nest = n;
     }
 
-    public void setKitAssemblyManager(KitAssemblyManager k) {
-        this.kam = k;
-    }
+    // Shouldn't need this anymore
+    // public void setKitAssemblyManager(KitAssemblyManager k) {
+    //     this.kam = k;
+    // }
 
     @Override
     public void msgNeedPart(Part partType) {
@@ -193,6 +258,29 @@ public class PartsAgent extends Agent implements PartsInterface {
 
     @Override
     public void msgHereAreParts(List<Part> parts) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+    
+    public void DoMoveToNest(int nestNum){
+
+           // kam.getPartsRobot().moveToNestCommand(nestNum);
+        this.fpm.sendMessage(Message.KAM_PARTS_MOVE_TO_NEST+":"+nestNum);
+	    this.client.sendMessage(Message.KAM_PARTS_MOVE_TO_NEST+":"+nestNum);
+    }
+    
+    public void DoPickUpPart(int nestNum){
+     this.client.sendMessage(Message.KAM_PARTS_PICK_PART+":"+nestNum);
+     this.fpm.sendMessage(Message.KAM_PARTS_PICK_PART+":"+nestNum);
+    }
+
+    public void DoPutInKit(int kitNum){
+    //  kam.getPartsRobot().dropOffParts(kitNum);  
+    this.client.sendMessage(Message.KAM_PARTS_DROP_OFF_PARTS+":"+kitNum);
+    this.fpm.sendMessage(Message.KAM_PARTS_DROP_OFF_PARTS+":"+kitNum);
+    }
+
+    @Override
+    public void msgHereIsKit(Kit kit) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 }

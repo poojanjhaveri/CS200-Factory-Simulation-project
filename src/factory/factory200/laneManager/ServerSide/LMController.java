@@ -26,6 +26,8 @@ public class LMController extends JFrame {
 	private LMControlPanel5 panel5;
 	private LMControlPanel6 panel6;
 	private LMControlPanel7 panel7;
+		
+	private FlowLayout layout = new FlowLayout( FlowLayout.CENTER );
 	
 	public LMController(LMFeederForAgent agentFeeder, LMLaneForAgent agentLane, LMNestForAgent agentNest, LMCameraForAgent agentNestCamera, LMGantryRobotForAgent agentGantryRobot, LMPartRobotForAgent agentPartRobot, LMServerMain serverMain){
 		this.serverMain = serverMain;
@@ -38,8 +40,8 @@ public class LMController extends JFrame {
 		
 		setSize(500,750);
 		setVisible(true);
-		setLayout(new FlowLayout());
-		setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );	
+		setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+		setLayout(layout);
 		
 		panel = new LMControllerTitle();
 		panel1 = new LMControlPanel1(agentFeeder);
@@ -59,6 +61,6 @@ public class LMController extends JFrame {
 		add(panel5);
 		add(panel7);
 		
-		revalidate();
+		validate();
 	}
 }

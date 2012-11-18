@@ -1,19 +1,32 @@
 package factory.factory200.factoryProductionManager;
 //import factory.agentGUI.*;
 
-import java.util.*;
-import javax.swing.*;
-import java.awt.*;
-import java.awt.geom.*;
-import java.awt.event.*;
-import java.io.*;
-import java.net.*;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 import factory.general.BlueprintKits;
-
 import factory.general.Kit;
 import factory.general.Manager;
 import factory.general.Message;
+import factory.general.Util;
 
 /**
  * Factory Production Manager selects active kit production routines, how many
@@ -40,7 +53,9 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 	public JTextArea schedField, outField;
 	public JScrollPane schedPane, outPane;
 	public JTabbedPane tabs;
-	public PaintPanel graphics;
+	//public PaintPanel gfx;
+        
+        public GraphicsPanel gfx;
 
 	public String nameToAdd;
 	public Kit kitToAdd;
@@ -50,8 +65,9 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 	public ArrayList<Kit> selectedKits;
 
 	private boolean debug;
+        private boolean empty;
 	private BlueprintKits debugbp;
-    private BlueprintKits kitsbp;
+        private BlueprintKits kitsbp;
 	private final static String newline = "\n";
 	
 
@@ -60,47 +76,25 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 		FactoryProductionManager fpm = new FactoryProductionManager();
 		
 		fpm.setVisible(true);
-		fpm.setSize(1000,600);
+		fpm.setSize(1375,700);
 		fpm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		fpm.setResizable(false);
 	}
 
 	public FactoryProductionManager()
 	{
+		gfx = new GraphicsPanel();
+		gfx.setPreferredSize(new Dimension(1350, 700));
+		
 		debug = false;
+                empty = false;
 		GridBagLayout gridbag = new GridBagLayout();
 		GridBagConstraints c = new GridBagConstraints();
-		
-		//Pull Blueprint from server
-	    this.kitsbp = new BlueprintKits();
-		this.mcon.out(Message.PULL_KITS_LIST);
 		availableKits = new ArrayList<String>();
-
-		//Populate Debug Blueprint if no Blueprint exists on server
-		if(kitsbp.getKits().size() == 0)
-		{
-			debug = true;
-			ArrayList<Kit> tempKits = new ArrayList<Kit> ();
-			tempKits.add(new Kit("Uno", "One"));
-			tempKits.add(new Kit("Dos", "Two"));
-			tempKits.add(new Kit("Tres", "Three"));
-			debugbp = new BlueprintKits(tempKits);
-		}
-
-		//Populate Combobox array with names of Blueprint Kits
-		if(!debug)
-		{
-			for(int i=0;i<kitsbp.getKits().size();i++)
-			{
-				availableKits.add(kitsbp.getKits().get(i).getName());
-			}
-		}
-		else
-		{
-			for(int i=0;i<debugbp.getKits().size();i++)
-			{
-				availableKits.add(debugbp.getKits().get(i).getName());
-			}
-		}
+                selKit = new JComboBox();
+		//Pull Blueprint from server
+                this.kitsbp = new BlueprintKits();
+		this.mcon.out(Message.PULL_KITS_LIST);
 
 		
 		selectedKits = new ArrayList<Kit>();
@@ -114,25 +108,19 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 		outPane = new JScrollPane(outField);
 		schedField.setEditable(false);
 		outField.setEditable(false);
-		selKit = new JComboBox();
+		
 		numE = new JTextField(20);
-		numE.setPreferredSize(new Dimension(60,10));
+		numE.setPreferredSize(new Dimension(5,8));
 		queueue = new JButton("Add Kits");
 		start = new JButton("Start");
 		stop = new JButton("Stop");
 		reset = new JButton("Reset");
 
-		for(String kitty : availableKits)
-		{
-			selKit.addItem(kitty);
-		}
-		selKit.setSelectedItem(0);
-		selKitRoutine(selKit);
+
 		basePanel = new JPanel();
 		basePanel.setLayout(new BorderLayout());
 
-		graphics = new PaintPanel(this);
-		graphics.setPreferredSize(new Dimension(800, 550));
+
 		tabs = new JTabbedPane();
 		topPanel = new JPanel();
 		topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.LINE_AXIS));
@@ -143,10 +131,20 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 		midPanel.setLayout(gridbag);
 		rightPanel = new JPanel();
 		blankPanel = new JPanel();
-
+                
+                topPanel.add(new JPanel());
 		topPanel.add(schedLabel);
-		topPanel.add(blankPanel);
+		topPanel.add(new JPanel());
+                topPanel.add(new JPanel());
+                topPanel.add(new JPanel());
+                topPanel.add(new JPanel());
+                topPanel.add(new JPanel());
+                topPanel.add(new JPanel());
+                topPanel.add(new JPanel());
+                topPanel.add(new JPanel());
+                topPanel.add(new JPanel());
 		topPanel.add(consoleLabel);
+                topPanel.add(new JPanel());
 		
 		leftPanel.add(schedPane);
 		leftPanel.setPreferredSize(new Dimension(320, 600));
@@ -166,9 +164,15 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 		c.gridy = 2;
 		gridbag.setConstraints(queueue, c);
 		midPanel.add(queueue);
-		c.gridy = GridBagConstraints.RELATIVE;
+                c.gridy = GridBagConstraints.RELATIVE;
+                JPanel fill1 = new JPanel();
+                gridbag.setConstraints(fill1, c);
+                midPanel.add(fill1);
 		gridbag.setConstraints(start, c);
 		midPanel.add(start);
+                JPanel fill2 = new JPanel();
+                gridbag.setConstraints(fill2, c);
+                midPanel.add(fill2);
 		//gridbag.setConstraints(stop, c);
 		//midPanel.add(stop);
 		gridbag.setConstraints(reset, c);
@@ -191,28 +195,38 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 		basePanel.add(topPanel, BorderLayout.NORTH);
 		basePanel.add(botPanel, BorderLayout.CENTER);
 		
-
+                basePanel.setSize(1350, 700);
 		tabs.addTab("Control GUI", basePanel);
-		tabs.addTab("Simulation", graphics);
+		tabs.addTab("Simulation", gfx);
+                gfx.repaint();
 
 		selKit.addActionListener(this);
 		queueue.addActionListener(this);
 		start.addActionListener(this);
 		stop.addActionListener(this);
 		reset.addActionListener(this);
-
+                
 		add(tabs);
+
+		// Identify this manager
+		this.sendToServer(Message.PUSH_PRODUCTION_QUEUE+":"+1353202603);
 	}
 	
+    @Override
 	public void actionPerformed(ActionEvent ae)
 	{
 		if(ae.getSource() == selKit)
 		{
+                    if(!empty)
+                    {
 			selKitRoutine(ae.getSource());
+                    }
 		}
 		if(ae.getSource() == queueue)
 		{
-			if(numE.getText() != "")
+                    if(!empty)
+                    {
+			if(!numE.getText().equals(""))
 			{
 				try {
 					Integer.parseInt(numE.getText());
@@ -220,7 +234,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 					for(int i=0;i<qtyToAdd;i++)
 					{
 
-						System.out.println(nameToAdd);
+						System.out.println("Name = " + nameToAdd);
 						selectedKits.add(kitToAdd);
 						schedField.append(nameToAdd + newline);
 					}
@@ -234,15 +248,18 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 			{
 				outField.append("Please enter a number of kits to add." + newline);
 			}
+                    }
 		}
 		if(ae.getSource() == start)
 		{
+                    if(!empty)
+                    {
 			if(selectedKits.size() > 0)
 			{
 				outField.append("~~~~~~~~~~~~~" + newline);
 				for(Kit kitty : selectedKits)
 				{
-					System.out.println(kitty.getName());
+					System.out.println("Kitty name = " + kitty.getName());
 					outField.append(kitty.getName() + newline);
 				}
 				start();
@@ -253,31 +270,35 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 				//Error to console out
 				outField.append("No kits added to Blueprint" + newline);
 			}
+                    }
 		}
 		if(ae.getSource() == reset)
 		{
+                    if(!empty)
+                    {
 			if(selectedKits.size() > 0)
 			{
 				//Message to console
 				selectedKits.clear();
 				schedField.setText("");
 			}
+                    }
 		}
 	}
 
     /**
      * start the factory production queue with the current kit selection
      */
-	void selKitRoutine(Object source)
+	private void selKitRoutine(Object source)
 	{
 		JComboBox cb = (JComboBox)source;
 		nameToAdd = (String)cb.getSelectedItem();
-		System.out.println(nameToAdd);
+		System.out.println("Name to add = " + nameToAdd);
 		if(!debug)
 		{
 			for(Kit kitty : kitsbp.getKits())
 			{
-				if(nameToAdd == kitty.getName())
+				if(nameToAdd.equals(kitty.getName()))
 				{
 					kitToAdd = kitty;
 				}
@@ -287,25 +308,31 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 		{
 			for(Kit kitty : debugbp.getKits())
 			{
-				if(nameToAdd == kitty.getName())
+				if(nameToAdd.equals(kitty.getName()))
 				{
 					kitToAdd = kitty;
 				}
 			}
 		}
-		System.out.println(numE.getText());
+		System.out.println("NumE = " + numE.getText());
 	}
 
     void start() {
 		//add this when you change arraylist to kits
 		String msg = Message.PUSH_PRODUCTION_QUEUE+":";
-		for(int i = 0; i != this.selectedKits.size(); i++)
+		/*for(int i = 0; i != this.selectedKits.size(); i++)
 		{
 			msg = msg+this.selectedKits.get(i).getNumber();
 			if(i != this.selectedKits.size()-1)
 				msg=msg+",";
-		}
-		this.mcon.out(msg);
+		}*/
+		ArrayList<String> serialized = new ArrayList<String>();
+		for(int i = 0; i != this.selectedKits.size(); i++)
+		    {
+			serialized.add(this.selectedKits.get(i).getNumber()+"");
+		    }
+		msg = msg + Util.serialize(serialized);
+		this.sendToServer(msg);
     }
 
     /**
@@ -340,15 +367,54 @@ public class FactoryProductionManager extends Manager implements ActionListener 
     /**
 @brief processes the serve'rs message
      */
+    @Override
     public void processMessage(String msg)
     {
 	super.processMessage(msg);
+
 	if(msg.contains(Message.PUSH_KITS_LIST))
 	    {
 			this.kitsbp.recreate(this.grabParameter(msg));
 			System.out.println("GRABBED A NEW BLUEPRINTKITS FROM THE SERVER");
 			this.kitsbp.debug();
+                        this.reconstructComboBox();
 	    }
+	
+		//Lane Manager( pass 'msg' into Lane Manager Message Interpreter and take a proper action )
+//	    gfx.verifyMessage(msg); // TODO: Why nullpointer?
+    }
+    
+    public void reconstructComboBox()
+    {
+        System.out.println("Kitsbp size = " + kitsbp.getKits().size());
+        //Populate Debug Blueprint if no Blueprint exists on server
+        if(kitsbp.getKits().isEmpty())
+        {
+                debug = true;
+                ArrayList<Kit> tempKits = new ArrayList<Kit> ();
+                tempKits.add(new Kit("Uno", "One"));
+                tempKits.add(new Kit("Dos", "Two"));
+                tempKits.add(new Kit("Tres", "Three"));
+                debugbp = new BlueprintKits(tempKits);
+        }
+
+        //Populate Combobox array with names of Blueprint Kits
+
+        for(int i=0;i<kitsbp.getKits().size();i++)
+        {
+                availableKits.add(kitsbp.getKits().get(i).getName());
+        }
+
+        System.out.println("Available kits size = " + availableKits.size());
+        for(String kitty : availableKits)
+        {
+                selKit.addItem(kitty);
+        }
+        //selKit.setSelectedItem(0);
+        if(!empty)
+        {
+            selKitRoutine(selKit);
+        }
     }
     /**
      * @brief Controls Kit selection and Factory ON/OFF Controls Kit selection
@@ -364,6 +430,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 		}
 	
 
+        @Override
 	  	public void paintComponent(Graphics g) {
 			super.paintComponent(g);
 			Graphics2D g2 = (Graphics2D) g;

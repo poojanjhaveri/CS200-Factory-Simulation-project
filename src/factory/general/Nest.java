@@ -4,7 +4,6 @@
  */
 package factory.general;
 
-import factory.factory201.feederManagement.LaneAgent;
 import factory.factory201.interfaces.Lane;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +16,6 @@ public class Nest {
    
     public String name;
     public int nestNum;
-    public Part.Type partType;
     public Status status;
     public List<Part> parts = new ArrayList<Part>();
     public enum Status {none, empty, needPart, gettingPart, hasPart, full, gettingInspected, readyForKit, purge};

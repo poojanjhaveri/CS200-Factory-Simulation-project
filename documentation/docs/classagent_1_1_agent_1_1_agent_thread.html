@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Factory Project
-   &#160;<span id="projectnumber">0.0.1</span>
+   &#160;<span id="projectnumber">0.1.0</span>
    </div>
    <div id="projectbrief">team 1 joint cs200/cs201</div>
   </td>
@@ -116,7 +116,7 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:a468d1a846a472ae54c9e29b487e7b4ea"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagent_1_1_agent_1_1_agent_thread.html#a468d1a846a472ae54c9e29b487e7b4ea">AgentThread</a> (String name)</td></tr>
+<tr class="memitem:a468d1a846a472ae54c9e29b487e7b4ea"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagent_1_1_agent_1_1_agent_thread.html#a468d1a846a472ae54c9e29b487e7b4ea">AgentThread</a> (String <a class="el" href="classagent_1_1_agent.html#ab75970bde0364900221f7e5e79fd7d77">name</a>)</td></tr>
 <tr class="separator:a468d1a846a472ae54c9e29b487e7b4ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab54ca09b51f4f7afdcf1062a086fb9de"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagent_1_1_agent_1_1_agent_thread.html#ab54ca09b51f4f7afdcf1062a086fb9de">stopAgent</a> ()</td></tr>
 <tr class="separator:ab54ca09b51f4f7afdcf1062a086fb9de"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -129,7 +129,7 @@ Private Attributes</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classagent_1_1_agent.html" title="Base class for simple agents.">Agent</a> scheduler thread <a class="el" href="classagent_1_1_agent.html" title="Base class for simple agents.">Agent</a> scheduler thread, calls respondToStateChange() whenever a state change has been signalled. </p>
 
-<p>Definition at line <a class="el" href="_agent_8java_source.html#l00100">100</a> of file <a class="el" href="_agent_8java_source.html">Agent.java</a>.</p>
+<p>Definition at line <a class="el" href="_agent_8java_source.html#l00120">120</a> of file <a class="el" href="_agent_8java_source.html">Agent.java</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a468d1a846a472ae54c9e29b487e7b4ea"></a>
 <div class="memitem">
@@ -153,11 +153,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_agent_8java_source.html#l00104">104</a> of file <a class="el" href="_agent_8java_source.html">Agent.java</a>.</p>
-<div class="fragment"><div class="line">                                         {</div>
-<div class="line">            super(name);</div>
-<div class="line">        }</div>
-</div><!-- fragment -->
+<p>Definition at line <a class="el" href="_agent_8java_source.html#l00124">124</a> of file <a class="el" href="_agent_8java_source.html">Agent.java</a>.</p>
+
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -182,28 +179,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_agent_8java_source.html#l00109">109</a> of file <a class="el" href="_agent_8java_source.html">Agent.java</a>.</p>
-<div class="fragment"><div class="line">                          {</div>
-<div class="line">            <a class="code" href="classagent_1_1_agent_1_1_agent_thread.html#ac430ed7f34d3b6d20e597867e3eb4bb8">goOn</a> = <span class="keyword">true</span>;</div>
-<div class="line"></div>
-<div class="line">            <span class="keywordflow">while</span> (<a class="code" href="classagent_1_1_agent_1_1_agent_thread.html#ac430ed7f34d3b6d20e597867e3eb4bb8">goOn</a>) {</div>
-<div class="line">                <span class="keywordflow">try</span> {</div>
-<div class="line">                    <span class="comment">// The agent sleeps here until someone calls, stateChanged(),</span></div>
-<div class="line">                    <span class="comment">// which causes a call to stateChange.give(), which wakes up agent.</span></div>
-<div class="line">                    <a class="code" href="classagent_1_1_agent.html#adf2eafb1d9ae92666b8196ebe0898c03">stateChange</a>.acquire();</div>
-<div class="line">                    <span class="comment">//The next while clause is the key to the control flow.</span></div>
-<div class="line">                    <span class="comment">//When the agent wakes up it will call respondToStateChange()</span></div>
-<div class="line">                    <span class="comment">//repeatedly until it returns FALSE.</span></div>
-<div class="line">                    <span class="comment">//You will see that pickAndExecuteAnAction() is the agent scheduler.</span></div>
-<div class="line">                    <span class="keywordflow">while</span> (<a class="code" href="classagent_1_1_agent.html#abaf1e04478122d7e10bd7bb8b75fc967">pickAndExecuteAnAction</a>());</div>
-<div class="line">                } <span class="keywordflow">catch</span> (InterruptedException e) {</div>
-<div class="line">                    <span class="comment">// no action - expected when stopping or when deadline changed</span></div>
-<div class="line">                } <span class="keywordflow">catch</span> (Exception e) {</div>
-<div class="line">                    <a class="code" href="classagent_1_1_agent.html#a55ba4536b330845b8f2d1d57191dad38">print</a>(<span class="stringliteral">&quot;Unexpected exception caught in Agent thread:&quot;</span>, e);</div>
-<div class="line">                }</div>
-<div class="line">            }</div>
-<div class="line">        }</div>
-</div><!-- fragment -->
+<p>Definition at line <a class="el" href="_agent_8java_source.html#l00130">130</a> of file <a class="el" href="_agent_8java_source.html">Agent.java</a>.</p>
+
 </div>
 </div>
 <a class="anchor" id="ab54ca09b51f4f7afdcf1062a086fb9de"></a>
@@ -227,12 +204,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_agent_8java_source.html#l00130">130</a> of file <a class="el" href="_agent_8java_source.html">Agent.java</a>.</p>
-<div class="fragment"><div class="line">                                 {</div>
-<div class="line">            <a class="code" href="classagent_1_1_agent_1_1_agent_thread.html#ac430ed7f34d3b6d20e597867e3eb4bb8">goOn</a> = <span class="keyword">false</span>;</div>
-<div class="line">            this.interrupt();</div>
-<div class="line">        }</div>
-</div><!-- fragment -->
+<p>Definition at line <a class="el" href="_agent_8java_source.html#l00151">151</a> of file <a class="el" href="_agent_8java_source.html">Agent.java</a>.</p>
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -254,7 +227,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_agent_8java_source.html#l00102">102</a> of file <a class="el" href="_agent_8java_source.html">Agent.java</a>.</p>
+<p>Definition at line <a class="el" href="_agent_8java_source.html#l00122">122</a> of file <a class="el" href="_agent_8java_source.html">Agent.java</a>.</p>
 
 </div>
 </div>
@@ -264,7 +237,7 @@ Private Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Nov 4 2012 12:20:01 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Nov 17 2012 01:37:02 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

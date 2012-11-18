@@ -22,30 +22,30 @@ public class LMDrawableAllFeeder extends JPanel{
 	private ArrayList<LMDrawableRearGateBulb> rearGateBulbs = new ArrayList<LMDrawableRearGateBulb>();
 	private ArrayList<LMDrawableBinHolder> binHolders = new ArrayList<LMDrawableBinHolder>();
 	
-	private final int feederX = 455;
-	private final int diversionBulbX = 465;
-	private final int feedingBulbX = 545;
-	private final int partLowBulbX = 545;
-	private final int purgingBulbX = 545;
-	private final int rearGateBulbX = 545;
-	private final int binHolderX = 585;
+	private final int feederX = 310;// DONE
+	private final int diversionBulbX = 320;// DONE
+	private final int feedingBulbX = 400;// DONE
+	private final int partLowBulbX = 400;// DONE
+	private final int purgingBulbX = 400;// DONE
+	private final int rearGateBulbX = 400;// DONE
+	private final int binHolderX = 440;// DONE
 	
-	private int feederY = 20;
-	private int diversionBulbY = 34;
-	private int feedingBulbY = 27;
-	private int partLowBulbY = 57;
-	private int purgingBulbY = 87;
-	private int rearGateBulbY = 117;
-	private int binHolderY = 32;
+	private int feederY = 52;// DONE
+	private int diversionBulbY = 68;// DONE
+	private int feedingBulbY = 60;// DONE
+	private int partLowBulbY = 90;// DONE
+	private int purgingBulbY = 120;// DONE
+	private int rearGateBulbY = 150;// DONE
+	private int binHolderY = 65;// DONE
 	
 	public LMDrawableAllFeeder(){
 		for(int i=0 ; i<4 ; i++){
 			newFeeder = new LMDrawableFeeder(feederX, feederY);
-			newDiversionBulb = new LMDrawableDiversionBulb(diversionBulbX, diversionBulbY, diversionBulbX, diversionBulbY+76); 
-			newFeedingBulb = new LMDrawableFeedingBulb(feedingBulbX-35, feedingBulbY, feedingBulbX, feedingBulbY);
-			newPartLowBulb = new LMDrawablePartLowBulb(partLowBulbX-35, partLowBulbY, partLowBulbX, partLowBulbY);
-			newPurgingBulb = new LMDrawablePurgingBulb(purgingBulbX-35, purgingBulbY, purgingBulbX, purgingBulbY);
-			newRearGateBulb = new LMDrawableRearGateBulb(rearGateBulbX-35, rearGateBulbY, rearGateBulbX, rearGateBulbY);
+			newDiversionBulb = new LMDrawableDiversionBulb(diversionBulbX, diversionBulbY, diversionBulbX, diversionBulbY+76);// DONE
+			newFeedingBulb = new LMDrawableFeedingBulb(feedingBulbX-35, feedingBulbY, feedingBulbX, feedingBulbY);// DONE
+			newPartLowBulb = new LMDrawablePartLowBulb(partLowBulbX-35, partLowBulbY, partLowBulbX, partLowBulbY);// DONE
+			newPurgingBulb = new LMDrawablePurgingBulb(purgingBulbX-35, purgingBulbY, purgingBulbX, purgingBulbY);// DONE
+			newRearGateBulb = new LMDrawableRearGateBulb(rearGateBulbX-35, rearGateBulbY, rearGateBulbX, rearGateBulbY);// DONE
 			newBinHolder = new LMDrawableBinHolder(binHolderX, binHolderY);
 			
 			feeders.add(newFeeder);
@@ -56,13 +56,13 @@ public class LMDrawableAllFeeder extends JPanel{
 			rearGateBulbs.add(newRearGateBulb);
 			binHolders.add(newBinHolder);
 			
-			feederY += 156;
-			binHolderY += 156;
-			diversionBulbY += 156;
-			feedingBulbY += 156;
-			partLowBulbY += 156;
-			purgingBulbY += 156;
-			rearGateBulbY += 156;
+			feederY += 150;// DONE
+			binHolderY += 150;// DONE
+			diversionBulbY += 150;// DONE
+			feedingBulbY += 150;// DONE
+			partLowBulbY += 150;// DONE
+			purgingBulbY += 150;// DONE
+			rearGateBulbY += 150;// DONE
 		}
 	}
 

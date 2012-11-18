@@ -11,6 +11,7 @@
 
 nbproject/
 bin/
+target/
 
 # Package Files #
 *.jar
@@ -18,3 +19,4 @@ bin/
 *.war
 *.ear
 /build/
+/dist/

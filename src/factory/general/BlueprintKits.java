@@ -63,8 +63,20 @@ public class BlueprintKits implements Blueprint, Serializable {
         this.kits.add(in);
     }
     
+    
+    public int getSize(){
+    	return kits.size();
+    	
+    }
+    
+    public Kit getKitAt(int i) {
+        return kits.get(i);
+    }
+    
+    
     public void removeKit(Kit in) {
        kits.remove(in);
+       this.save();
     }
     
     /**
@@ -79,15 +91,27 @@ public class BlueprintKits implements Blueprint, Serializable {
 			this.kits.remove((int)i);
 		    }
 	    }
+        this.save();
     }    
     
-    
+    public Kit getKitById(int id)
+    {
+        for(int i = this.kits.size()-1; i != -1; i--)
+	    {
+		if(this.kits.get(i).getNumber() == id)
+		    {
+			return this.kits.get(i);
+		    }
+	    }
+        System.out.println("CRITICAL ERROR: COULD NOT FIND KIT BY ID " + id);
+        return null;
+    }
     public void save() {
         try {
             FileOutputStream out = new FileOutputStream(FactoryState.PATH_BP_KITS);
             ObjectOutputStream objOut = new ObjectOutputStream(out);
             objOut.writeObject(this);
-	    System.out.println("BlueprintKits saved.");
+	    System.out.println("BlueprintKits saved. (size "+this.getSize()+")");
         } catch (Exception e) {
             System.out.println("ERROR OCCURRED INVOKING BP KITS SAVE METHOD!" + e.getMessage());
             e.printStackTrace();

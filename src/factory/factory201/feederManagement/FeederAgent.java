@@ -1,14 +1,16 @@
 package factory.factory201.feederManagement;
-import factory.factory201.interfaces.Feeder;
-import factory.factory201.interfaces.Lane;
-import factory.factory201.interfaces.Gantry;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import agent.Agent;
-import com.sun.corba.se.impl.activation.ServerMain;
 import factory.factory200.laneManager.ServerSide.LMFeederForAgent;
 import factory.factory200.laneManager.ServerSide.LMServerMain;
+import factory.factory201.interfaces.Feeder;
+import factory.factory201.interfaces.Gantry;
+import factory.factory201.interfaces.Lane;
 import factory.general.Part;
 import factory.general.Part.Type;
-import java.util.*;
 
 /**
  * @brief agent for the Feeder This class is the agent for the Feeder which does
@@ -31,9 +33,6 @@ public class FeederAgent extends Agent implements Feeder {
      * THESE LEFT AND RIGHT COUNT VARIABLES WILL BE USED TO SET THE LEFT/RIGHT LANE ON.
      * STARTS WITH LEFTLANE==RIGHTLANE, THE PROGRAM CHOSES SENDTOLEFTLANE(). SO LEFTLANE IS INCREMENTED
      * NEXT WHEN THE SCHEDULER RUNS, IT SEES THAT RIGHTLANE HAS LESS PARTS THAN LEFT LANE SO IT WILL
-     * SEND TO RIGHTLANE, AND INCREMENT RIGHTLANE COUNT
-     * I TRIED TO BRING IT IN, BUT IT GAVE ME WEIRD RESULTS AND IT NEVER SWITCHED THE LANES.
-     * PLEASE SEE IF YOU HAVE ANY FUNCTION FOR THIS REQUIREMENT, WE ARE DONE!
      * */
     private int leftCount=0;
     private int rightCount=0;
@@ -111,7 +110,8 @@ public class FeederAgent extends Agent implements Feeder {
 
     @Override
     public void msgNeedPart(Part part, Lane lane) {
-    	print("Received msgNeedPart from Lane: "+((LaneAgent) lane).getName()+" for type " + part.type);
+    	//print("Received msgNeedPart from Lane: "+((LaneAgent) lane).getName()+" for type " + part.type);
+        print("Received msgNeedPart for part type " + part.type);
         /*
          * Search in the myParts list and see if the request can be fulfilled by checking with the quantity of each part
          */

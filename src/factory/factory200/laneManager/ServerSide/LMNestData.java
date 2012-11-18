@@ -1,39 +1,33 @@
 package factory.factory200.laneManager.ServerSide;
 
-import java.util.ArrayList;
-
 public class LMNestData {
 	
-	private LMServer server;
 	private LMServerMain serverMain;
 	private String signal = "";
 	
 	private int nestNum;	///< Nest number
 	private Boolean nestSwitch = true; // false : down, true : up
 	
-	public LMNestData( int nestNum, LMServer server, LMServerMain serverMain ){
+	public LMNestData( int nestNum, LMServerMain serverMain ){
 		this.nestNum = nestNum;
-		this.server = server;
 		this.serverMain = serverMain;
 	}
 	
 	public void setSwitchUp(){
-		// Signal To Managers
+		// Signal To LM & FPM
 		signal = nestNum + "&Nest&" + "Switch Up";
-		server.getClientHandler().sendToClient(signal);
-		
-		// Send To FPM
+		serverMain.sendToLM(signal);
+		serverMain.sendToFPM(signal);
 		
 		// Server Data Task
 		nestSwitch = true;
 	}
 	
 	public void setSwitchDown(){
-		// Signal To Managers
+		// Signal To LM  & FPM
 		signal = nestNum + "&Nest&" + "Switch Down";
-		server.getClientHandler().sendToClient(signal);
-		
-		// Send To FPM
+		serverMain.sendToLM(signal);
+		serverMain.sendToFPM(signal);
 
 		// Server Data Task
 		nestSwitch = false;

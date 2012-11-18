@@ -7,11 +7,11 @@ public class LMApplication extends JFrame{
 	
 	private LMGraphicsPanel panelGraphics;	///< Instance of class 'LaneManagerGraphicsPanel'
 	private LMGUIPanel panelGUI;	///< Instance of class 'LaneManagerGUIPanel'
-	private LMClient client;
+	private LMSignalFromServerVerification verifyMessage;
 	
 	public LMApplication(){
 		setTitle("Lane Manager");
-		setSize(1000,700);
+		setSize(850,720);
 		setLocation(0,0);
 		setVisible(true);
 		setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
@@ -20,7 +20,7 @@ public class LMApplication extends JFrame{
 
 		panelGraphics = new LMGraphicsPanel(this);
 		panelGUI = new LMGUIPanel();
-		client = new LMClient(this);
+		verifyMessage = new LMSignalFromServerVerification(this);
 		
 		add( panelGraphics );
 		add( panelGUI );
@@ -37,7 +37,7 @@ public class LMApplication extends JFrame{
 		return panelGUI;
 	}
 
-	public LMClient getClient(){
-		return client;
+	public LMSignalFromServerVerification getVerifyMessage(){
+		return verifyMessage;
 	}
 }

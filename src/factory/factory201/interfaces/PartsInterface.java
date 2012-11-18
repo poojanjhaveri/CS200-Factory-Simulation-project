@@ -9,7 +9,7 @@ import factory.general.Part;
 
 /**
  *
- * @author polarpatbear
+ * @author James Dalton
  */
 public interface PartsInterface extends FactoryBase{
 

@@ -4,17 +4,15 @@ import java.util.ArrayList;
 
 public class LMCameraForAgent {
 
-	private LMServer server;
 	private LMServerMain serverMain;
 	private LMCameraData newNestCamera;	///< Instance of class 'ServerLaneManagerThreadNestCamera'
 	private ArrayList<LMCameraData> nestCameras = new ArrayList<LMCameraData>();	///< ArrayList of cameras
 
-	public LMCameraForAgent(LMServer server, LMServerMain serverMain){
-		this.server = server;
+	public LMCameraForAgent(LMServerMain serverMain){
 		this.serverMain = serverMain;
 
 		for(int i=0 ; i<4 ; i++){
-			newNestCamera = new LMCameraData( i, server, serverMain );
+			newNestCamera = new LMCameraData( i, serverMain );
 			nestCameras.add(newNestCamera);
 		}
 	}

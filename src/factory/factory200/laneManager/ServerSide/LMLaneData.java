@@ -8,7 +8,6 @@ package factory.factory200.laneManager.ServerSide;
  */
 public class LMLaneData {
 
-	private LMServer server;
 	private LMServerMain serverMain;
 	private String signal = "";	///< Signal to Lane Manager
 	
@@ -16,9 +15,8 @@ public class LMLaneData {
 	private int vibrationAmplitude;
 	private Boolean laneSwitch = false;	///< Feeder switched on : true, Feeder switched off : false
 	
-	public LMLaneData( int laneNum, LMServer server, LMServerMain serverMain ){
+	public LMLaneData( int laneNum, LMServerMain serverMain ){
 		this.laneNum = laneNum;
-		this.server = server;
 		this.serverMain = serverMain;
 	}	
 	
@@ -27,49 +25,47 @@ public class LMLaneData {
 	}
 	
 	public void switchOn(){
-		// Signal To Managers
+		// Signal To LM & FPM
 		signal = laneNum + "&Lane&" + "Switch On";
-		server.getClientHandler().sendToClient(signal);
-		
-		// Send To FPM
+		serverMain.sendToLM(signal);
+		serverMain.sendToFPM(signal);
 		
 		// Server Data Task
 		laneSwitch = true;
 	}
 
 	public void switchOff(){
-		// Signal To Managers
+		// Signal To LM & FPM
 		signal = laneNum + "&Lane&" + "Switch Off";
-		server.getClientHandler().sendToClient(signal);
-		
-		// Send To FPM
+		serverMain.sendToLM(signal);
+		serverMain.sendToFPM(signal);
 		
 		// Server Data Task
 		laneSwitch = false;
 	}
 	
 	public void setVibrationAmplitudeStrong(){
-		// Signal To Managers
+		// Signal To LM
 		signal = laneNum + "&Lane&" + "Amplitude Strong";
-		server.getClientHandler().sendToClient(signal);
+		serverMain.sendToLM(signal);
 		
 		// Server Data Task
 		vibrationAmplitude = 2;
 	}
 	
 	public void setVibrationAmplitudeNormal(){
-		// Signal To Managers
+		// Signal To LM
 		signal = laneNum + "&Lane&" + "Amplitude Normal";
-		server.getClientHandler().sendToClient(signal);
+		serverMain.sendToLM(signal);
 		
 		// Server Data Task
 		vibrationAmplitude = 1;
 	}
 
 	public void setVibrationAmplitudeWeak(){
-		// Signal To Managers
+		// Signal To LM
 		signal = laneNum + "&Lane&" + "Amplitude Weak";
-		server.getClientHandler().sendToClient(signal);
+		serverMain.sendToLM(signal);
 		
 		// Server Data Task
 		vibrationAmplitude = 0;

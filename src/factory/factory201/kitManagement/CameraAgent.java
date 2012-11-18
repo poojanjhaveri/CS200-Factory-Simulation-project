@@ -1,16 +1,17 @@
 package factory.factory201.kitManagement;
 
 import agent.Agent;
-import factory.factory200.kitAssemblyManager.KitAssemblyManager;
 import factory.factory201.interfaces.Camera;
 import factory.factory201.interfaces.KitRobot;
 import factory.factory201.interfaces.NestInterface;
 import factory.general.Kit;
+import factory.general.Message;
 import factory.general.Nest;
 import factory.general.Part;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Stack;
 
 /**
  * Agent for the camera.
@@ -21,7 +22,7 @@ import java.util.List;
  * the FCS.
  *
  * @author Alex Young
- * @version 0
+ * @version 1
  *
  * @brief agent for the Camera
  */
@@ -29,12 +30,11 @@ public class CameraAgent extends Agent implements Camera {
 
     private KitRobot kitRobotAgent;
     private NestInterface nestAgent;
-    private KitAssemblyManager KAM;
     private List<Nest> nests;
     private List<Kit> kits;
     private Kit tempKit;
     private List<Part.Type> kitInfo;
-    
+
     public CameraAgent(String name) {
         super(name);
         nests = Collections.synchronizedList(new ArrayList<Nest>());
@@ -42,7 +42,7 @@ public class CameraAgent extends Agent implements Camera {
         tempKit = null;
         kitInfo = new ArrayList<Part.Type>();
     }
-    
+
     // ********** MESSAGES *********
     /**
      * Message called by NestAgent to inspect nest.
@@ -52,8 +52,8 @@ public class CameraAgent extends Agent implements Camera {
      */
     @Override
     public void msgNestIsFull(Nest nest) {
-        print("Received msgNestIsFull that " + nest.nestNum + " is full.");
-        synchronized(nests) {
+//        print("Received msgNestIsFull that " + nest.nestNum + " is full.");
+        synchronized (nests) {
             nests.add(nest);
         }
         stateChanged();
@@ -67,8 +67,8 @@ public class CameraAgent extends Agent implements Camera {
      */
     @Override
     public void msgKitIsFull(Kit kit) {
-        print("Received msgKitIsFull from Kit Robot Agent");
-        synchronized(kits) {
+//        print("Received msgKitIsFull from Kit Robot Agent");
+        synchronized (kits) {
             kits.add(kit);
         }
         stateChanged();
@@ -78,16 +78,15 @@ public class CameraAgent extends Agent implements Camera {
     public void msgHereIsKitInfo(Kit kit) {
         tempKit = kit;
     }
-    
-    
+
     // ********* SCHEDULER *********
     @Override
     public boolean pickAndExecuteAnAction() {
-        if(tempKit != null) {
+        if (tempKit != null) {
             configureKitInfo(tempKit);
             return true;
         }
-        synchronized(kits) {
+        synchronized (kits) {
             for (Kit k : kits) {
                 if (k.status == Kit.Status.full) {
                     inspectKit(k);
@@ -95,7 +94,7 @@ public class CameraAgent extends Agent implements Camera {
                 }
             }
         }
-        synchronized(nests) {
+        synchronized (nests) {
             for (Nest n : nests) {
                 if (n.status == Nest.Status.gettingInspected) {
                     inspectNest(n);
@@ -115,13 +114,25 @@ public class CameraAgent extends Agent implements Camera {
      */
     public void inspectKit(Kit kit) {
         print("Inspecting kit: [" + kit.name + "].");
-//        Kit k = new Kit("1");
-////        k = server.getKit();
-//        if(k.equals(kit)) {
-//            
-//        } else {
-//            
-//        }
+        boolean result = true;
+        
+        if(kit.parts.size() != kitInfo.size()) {
+            result = false;
+        } else {
+            Stack<Part.Type> types = new Stack<Part.Type>();
+            for(Part.Type t : kitInfo) {
+                types.add(t);
+            }
+            
+            for(Part p : kit.parts) {
+                for(Part.Type t : types) {
+                    if(t == p.type) {
+                        
+                    }
+                }
+            }
+        }
+        
         DoInspectKit(kit);
         kitRobotAgent.msgKitInspected(true);
         kits.remove(kit);
@@ -135,14 +146,15 @@ public class CameraAgent extends Agent implements Camera {
      * @brief Inspects nests and returns result to nest agent.
      */
     public void inspectNest(Nest nest) {
-        print("Inspecting nest: [" + nest.nestNum + "].");
-//        Nest n = new Nest();
-//        boolean flag = false;
-//        for(Part p : n.parts) {
-//            if(p.type != n.partType) {
-//                flag = true;
-//            }
-//        }
+        print("Inspecting nest: [Nest " + nest.nestNum + "].");
+        Part.Type type = nest.part.type;
+        boolean result = true;
+        for(Part p : nest.parts) {
+            if(p.type != type) {
+                result = false;
+                break;
+            }
+        }
         DoInspectNest(nest);
         nestAgent.msgNestInspected(nest, true);
         nests.remove(nest);
@@ -151,39 +163,33 @@ public class CameraAgent extends Agent implements Camera {
 
     public void configureKitInfo(Kit info) {
         kitInfo.clear();
-        for(int i = 0; i < info.getSize(); i++) {
+        for (int i = 0; i < info.getSize(); i++) {
             kitInfo.add(info.getPart(i).type);
         }
         tempKit = null;
     }
-    
-    
+
     // ************ MISC ***********
-    public void setKitRobotAgent(KitRobot agent) {
+    public void setKitRobot(KitRobot agent) {
         kitRobotAgent = agent;
     }
 
     public void setNestAgent(NestInterface agent) {
         nestAgent = agent;
     }
-    
-    public void setKitAssemblyManager(KitAssemblyManager KAM) {
-        this.KAM = KAM;
-    }
-    
-    public void setAll(KitAssemblyManager KAM, KitRobot kitRobot, 
-            NestInterface nestAgent) {
-        this.KAM = KAM;
+
+    public void setAll(KitRobot kitRobot, NestInterface nestAgent) {
         this.kitRobotAgent = kitRobot;
         this.nestAgent = nestAgent;
     }
-    
 
     private void DoInspectKit(Kit kit) {
-        KAM.flashKitCamera();
+//        KAM.flashKitCamera();
+//    	this.client.sendMessage(Message.KAM_FLASH_KIT_CAMERA);
     }
 
     private void DoInspectNest(Nest nest) {
-        KAM.flashNestCamera(nest.nestNum);
+//        KAM.flashNestCamera(nest.nestNum);
+//    	this.client.sendMessage(Message.KAM_FLASH_NEST_CAMERA+":"+nest.nestNum);
     }
 }

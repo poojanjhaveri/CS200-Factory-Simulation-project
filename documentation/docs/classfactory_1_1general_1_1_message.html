@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Factory Project
-   &#160;<span id="projectnumber">0.0.1</span>
+   &#160;<span id="projectnumber">0.1.0</span>
    </div>
    <div id="projectbrief">team 1 joint cs200/cs201</div>
   </td>
@@ -102,6 +102,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
 <tr class="memitem:a4742e0238811f9f7b5bfd87849a7d211"><td class="memItemLeft" align="right" valign="top">static final String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_message.html#a4742e0238811f9f7b5bfd87849a7d211">CREATE_KIT</a> = &quot;CREATE_KIT&quot;</td></tr>
+<tr class="memdesc:a4742e0238811f9f7b5bfd87849a7d211"><td class="mdescLeft">&#160;</td><td class="mdescRight">manager: sendToServer(<a class="el" href="classfactory_1_1general_1_1_message.html#a4742e0238811f9f7b5bfd87849a7d211" title="manager: sendToServer(Message.CREATE_KIT+&quot;:&quot;+asdf)">Message.CREATE_KIT</a>+":"+asdf)  <a href="#a4742e0238811f9f7b5bfd87849a7d211"></a><br/></td></tr>
 <tr class="separator:a4742e0238811f9f7b5bfd87849a7d211"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af299d82eb1348e92e5a4c2aed172fff3"><td class="memItemLeft" align="right" valign="top">static final String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_message.html#af299d82eb1348e92e5a4c2aed172fff3">CLIENT_EXITED</a> = &quot;CLIENT_EXITED&quot;</td></tr>
 <tr class="separator:af299d82eb1348e92e5a4c2aed172fff3"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -109,10 +110,81 @@ Static Public Attributes</h2></td></tr>
 <tr class="separator:a7b0f50b982ebcc46f5bbc5fc47187e3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3491f4ed6418f0f45886748c6e2f639f"><td class="memItemLeft" align="right" valign="top">static final String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_message.html#a3491f4ed6418f0f45886748c6e2f639f">TEST_CLIENT</a> = &quot;TEST_CLIENT&quot;</td></tr>
 <tr class="separator:a3491f4ed6418f0f45886748c6e2f639f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa57141466a2bf37721feb7054913f4cf"><td class="memItemLeft" align="right" valign="top">static final String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_message.html#aa57141466a2bf37721feb7054913f4cf">PULL_PARTS_LIST</a> = &quot;PULL_PARTS_LIST&quot;</td></tr>
+<tr class="memdesc:aa57141466a2bf37721feb7054913f4cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">simple request from partsmanager to server asking for parts list  <a href="#aa57141466a2bf37721feb7054913f4cf"></a><br/></td></tr>
+<tr class="separator:aa57141466a2bf37721feb7054913f4cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48e41676acaded358a1ac3405704025c"><td class="memItemLeft" align="right" valign="top">static final String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_message.html#a48e41676acaded358a1ac3405704025c">PUSH_PARTS_LIST</a> = &quot;PUSH_PARTS_LIST&quot;</td></tr>
+<tr class="memdesc:a48e41676acaded358a1ac3405704025c"><td class="mdescLeft">&#160;</td><td class="mdescRight">send serialized parts list over from server to partsmanager  <a href="#a48e41676acaded358a1ac3405704025c"></a><br/></td></tr>
+<tr class="separator:a48e41676acaded358a1ac3405704025c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77b73614c4d0470a16037546ddc5a51e"><td class="memItemLeft" align="right" valign="top">static final String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_message.html#a77b73614c4d0470a16037546ddc5a51e">DEFINE_NEW_PART</a> = &quot;DEFINE_NEW_PART&quot;</td></tr>
+<tr class="memdesc:a77b73614c4d0470a16037546ddc5a51e"><td class="mdescLeft">&#160;</td><td class="mdescRight">send a new type of part over to the server  <a href="#a77b73614c4d0470a16037546ddc5a51e"></a><br/></td></tr>
+<tr class="separator:a77b73614c4d0470a16037546ddc5a51e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac35cf9514e8ff4dd6400db6c81cde4e0"><td class="memItemLeft" align="right" valign="top">static final String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_message.html#ac35cf9514e8ff4dd6400db6c81cde4e0">UPDATE_PART</a> = &quot;UPDATE_PART&quot;</td></tr>
+<tr class="separator:ac35cf9514e8ff4dd6400db6c81cde4e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a246bd3200a7b860be353f14e24f9f52a"><td class="memItemLeft" align="right" valign="top">static final String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_message.html#a246bd3200a7b860be353f14e24f9f52a">UNDEFINE_PART</a> = &quot;UNDEFINE_PART&quot;</td></tr>
+<tr class="memdesc:a246bd3200a7b860be353f14e24f9f52a"><td class="mdescLeft">&#160;</td><td class="mdescRight">removes a part definition  <a href="#a246bd3200a7b860be353f14e24f9f52a"></a><br/></td></tr>
+<tr class="separator:a246bd3200a7b860be353f14e24f9f52a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac54f35c5de0a2ba0f637e30e5348e591"><td class="memItemLeft" align="right" valign="top">static final String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_message.html#ac54f35c5de0a2ba0f637e30e5348e591">PULL_KITS_LIST</a> = &quot;PULL_KITS_LIST&quot;</td></tr>
+<tr class="memdesc:ac54f35c5de0a2ba0f637e30e5348e591"><td class="mdescLeft">&#160;</td><td class="mdescRight">simple request form kits to server asking for kits list  <a href="#ac54f35c5de0a2ba0f637e30e5348e591"></a><br/></td></tr>
+<tr class="separator:ac54f35c5de0a2ba0f637e30e5348e591"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc30bdae0b433cc6d39c80ae93917ce3"><td class="memItemLeft" align="right" valign="top">static final String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_message.html#abc30bdae0b433cc6d39c80ae93917ce3">PUSH_KITS_LIST</a> = &quot;PUSH_KITS_LIST&quot;</td></tr>
+<tr class="memdesc:abc30bdae0b433cc6d39c80ae93917ce3"><td class="mdescLeft">&#160;</td><td class="mdescRight">send serialized kits list over form server to kitsmanager  <a href="#abc30bdae0b433cc6d39c80ae93917ce3"></a><br/></td></tr>
+<tr class="separator:abc30bdae0b433cc6d39c80ae93917ce3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb9a0b0f83c03ba39154b63de89d06ad"><td class="memItemLeft" align="right" valign="top">static final String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_message.html#acb9a0b0f83c03ba39154b63de89d06ad">DEFINE_NEW_KIT</a> = &quot;DEFINE_NEW_KIT&quot;</td></tr>
+<tr class="memdesc:acb9a0b0f83c03ba39154b63de89d06ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">send a new type of kit over to the server  <a href="#acb9a0b0f83c03ba39154b63de89d06ad"></a><br/></td></tr>
+<tr class="separator:acb9a0b0f83c03ba39154b63de89d06ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa450c60052d05f0067b0e8cfd2e85067"><td class="memItemLeft" align="right" valign="top">static final String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_message.html#aa450c60052d05f0067b0e8cfd2e85067">UPDATE_KIT</a> = &quot;UPDATE_KIT&quot;</td></tr>
+<tr class="separator:aa450c60052d05f0067b0e8cfd2e85067"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a584be742826bd37c000db29e0edcc93d"><td class="memItemLeft" align="right" valign="top">static final String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_message.html#a584be742826bd37c000db29e0edcc93d">UNDEFINE_KIT</a> = &quot;UNDEFINE_KIT&quot;</td></tr>
+<tr class="memdesc:a584be742826bd37c000db29e0edcc93d"><td class="mdescLeft">&#160;</td><td class="mdescRight">removes a kit definition  <a href="#a584be742826bd37c000db29e0edcc93d"></a><br/></td></tr>
+<tr class="separator:a584be742826bd37c000db29e0edcc93d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf03b40c4f28968c51e2d4573c912b04"><td class="memItemLeft" align="right" valign="top">static final String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_message.html#aaf03b40c4f28968c51e2d4573c912b04">IDENTIFY_GANTRYROBOTMANAGER</a> = &quot;IDENTIFY_GANTRYROBOTMANAGER&quot;</td></tr>
+<tr class="separator:aaf03b40c4f28968c51e2d4573c912b04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa79e1dd808f3417476b3a7b972e4c597"><td class="memItemLeft" align="right" valign="top">static final String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_message.html#aa79e1dd808f3417476b3a7b972e4c597">GANTRY_CARRY_A_BIN</a> = &quot;GANTRY_CARRY_A_BIN&quot;</td></tr>
+<tr class="separator:aa79e1dd808f3417476b3a7b972e4c597"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8dfe0024b95360392d1bd184679dcfce"><td class="memItemLeft" align="right" valign="top">static final String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_message.html#a8dfe0024b95360392d1bd184679dcfce">MOVE_GANTRY_TO_FEEDER</a> = &quot;MOVE_GANTRY_TO_FEEDER&quot;</td></tr>
+<tr class="separator:a8dfe0024b95360392d1bd184679dcfce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3cc86aae2606bd9c136a7d39db6cbbe5"><td class="memItemLeft" align="right" valign="top">static final String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_message.html#a3cc86aae2606bd9c136a7d39db6cbbe5">MOVE_GANTRY_TO_BIN</a> = &quot;MOVE_GANTRY_TO_BIN&quot;</td></tr>
+<tr class="separator:a3cc86aae2606bd9c136a7d39db6cbbe5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c646e85f1d94c192d0261f260835dee"><td class="memItemLeft" align="right" valign="top">static final String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_message.html#a7c646e85f1d94c192d0261f260835dee">MOVE_GANTRY_TO_PURGE</a> = &quot;MOVE_GANTRY_TO_PURGE&quot;</td></tr>
+<tr class="separator:a7c646e85f1d94c192d0261f260835dee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1057f79a4e75e197bc2c785e9c4bc952"><td class="memItemLeft" align="right" valign="top">static final String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_message.html#a1057f79a4e75e197bc2c785e9c4bc952">MOVE_GANTRY_TO_DUMP_PART</a> = &quot;GANTRY_TO_DUMP_PART&quot;</td></tr>
+<tr class="separator:a1057f79a4e75e197bc2c785e9c4bc952"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad15b0901a67eaf40288a375f79aecfb3"><td class="memItemLeft" align="right" valign="top">static final String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_message.html#ad15b0901a67eaf40288a375f79aecfb3">MOVE_GANTRY_TO_PICK_BIN</a> = &quot;MOVE_GANTRY_TO_PICK_BIN&quot;</td></tr>
+<tr class="separator:ad15b0901a67eaf40288a375f79aecfb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3064971d6fdaceddbc9644e35a82ad6"><td class="memItemLeft" align="right" valign="top">static final String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_message.html#ae3064971d6fdaceddbc9644e35a82ad6">IDENTIFY_KITASSEMBLYMANAGER</a> = &quot;IDENTIFY_KITASSEMBLYMANAGER&quot;</td></tr>
+<tr class="separator:ae3064971d6fdaceddbc9644e35a82ad6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af02c5f0ace2f6ae0589bcf2dd5ee7554"><td class="memItemLeft" align="right" valign="top">static final String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_message.html#af02c5f0ace2f6ae0589bcf2dd5ee7554">KAM_DROP_OFF_FULL_KIT</a> = &quot;KAM_DROP_OFF_FULL_KIT&quot;</td></tr>
+<tr class="separator:af02c5f0ace2f6ae0589bcf2dd5ee7554"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab98742231b03f07fdf202f2c735b75ca"><td class="memItemLeft" align="right" valign="top">static final String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_message.html#ab98742231b03f07fdf202f2c735b75ca">KAM_MOVE_ACTIVE_KIT_TO_INSPECTION</a> = &quot;KAM_MOVE_ACTIVE_KIT_TO_INSPECTION&quot;</td></tr>
+<tr class="separator:ab98742231b03f07fdf202f2c735b75ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21bf5d9e6dd1118d846d6d44a61cdd7b"><td class="memItemLeft" align="right" valign="top">static final String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_message.html#a21bf5d9e6dd1118d846d6d44a61cdd7b">KAM_PICK_UP_EMPTY_KIT_TO_ACTIVE</a> = &quot;PICK_UP_EMPTY_KIT_TO_ACTIVE&quot;</td></tr>
+<tr class="separator:a21bf5d9e6dd1118d846d6d44a61cdd7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ede1bef2b6d3463e1e0f9aec63114f0"><td class="memItemLeft" align="right" valign="top">static final String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_message.html#a5ede1bef2b6d3463e1e0f9aec63114f0">KAM_PICK_UP_EMPTY_KIT</a> = &quot;PICK_UP_EMPTY_KIT&quot;</td></tr>
+<tr class="separator:a5ede1bef2b6d3463e1e0f9aec63114f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aedf00def67ee88c4bf2a322afa0ef5a8"><td class="memItemLeft" align="right" valign="top">static final String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_message.html#aedf00def67ee88c4bf2a322afa0ef5a8">KAM_MOVE_EMPTY_KIT_TO_ACTIVE</a> = &quot;MOVE_EMPTY_KIT_TO_ACTIVE&quot;</td></tr>
+<tr class="separator:aedf00def67ee88c4bf2a322afa0ef5a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed88d86dabc0aaba6ada2f6420b2bacd"><td class="memItemLeft" align="right" valign="top">static final String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_message.html#aed88d86dabc0aaba6ada2f6420b2bacd">KAM_FLASH_KIT_CAMERA</a> = &quot;KAM_FLASH_KIT_CAMERA&quot;</td></tr>
+<tr class="separator:aed88d86dabc0aaba6ada2f6420b2bacd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d06697c4eac16c93d5a8495d13ce06e"><td class="memItemLeft" align="right" valign="top">static final String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_message.html#a2d06697c4eac16c93d5a8495d13ce06e">KAM_FLASH_NEST_CAMERA</a> = &quot;KAM_FLASH_NEST_CAMERA&quot;</td></tr>
+<tr class="separator:a2d06697c4eac16c93d5a8495d13ce06e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78bc66d05ef7ddf580c4794fd0b03994"><td class="memItemLeft" align="right" valign="top">static final String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_message.html#a78bc66d05ef7ddf580c4794fd0b03994">KAM_PARTS_MOVE_TO_NEST</a> = &quot;KAM_PARTS_MOVE_TO_NEST&quot;</td></tr>
+<tr class="separator:a78bc66d05ef7ddf580c4794fd0b03994"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a245ca358d7148c4d123fa9a18993fbbc"><td class="memItemLeft" align="right" valign="top">static final String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_message.html#a245ca358d7148c4d123fa9a18993fbbc">KAM_PARTS_PICK_PART</a> = &quot;KAM_PARTS_PICK_PART&quot;</td></tr>
+<tr class="separator:a245ca358d7148c4d123fa9a18993fbbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4f61f7c14201af14c7525f5d1434727"><td class="memItemLeft" align="right" valign="top">static final String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_message.html#ad4f61f7c14201af14c7525f5d1434727">KAM_PARTS_DROP_OFF_PARTS</a> = &quot;KAM_PARTS_DROP_OFF_PARTS&quot;</td></tr>
+<tr class="separator:ad4f61f7c14201af14c7525f5d1434727"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ebaca9375dfd45d7212ee0ae214f56a"><td class="memItemLeft" align="right" valign="top">static final String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_message.html#a0ebaca9375dfd45d7212ee0ae214f56a">KAM_MOVE_FROM_0_TO_2</a> = &quot;KAM_MOVE_FROM_0_TO_2&quot;</td></tr>
+<tr class="separator:a0ebaca9375dfd45d7212ee0ae214f56a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8c0163402f8be82ec4e29b45bd1e67e"><td class="memItemLeft" align="right" valign="top">static final String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_message.html#ad8c0163402f8be82ec4e29b45bd1e67e">IDENTIFY_LANEMANAGER</a> = &quot;IDENTIFY_LANEMANAGER&quot;</td></tr>
+<tr class="separator:ad8c0163402f8be82ec4e29b45bd1e67e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3260deef0bc60aae15eecfdd71f05aad"><td class="memItemLeft" align="right" valign="top">static final String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_message.html#a3260deef0bc60aae15eecfdd71f05aad">PUSH_PRODUCTION_QUEUE</a> = &quot;PUSH_PRODUCTION_QUEUE&quot;</td></tr>
+<tr class="memdesc:a3260deef0bc60aae15eecfdd71f05aad"><td class="mdescLeft">&#160;</td><td class="mdescRight">sends the server a list of comma delimited kit IDs  <a href="#a3260deef0bc60aae15eecfdd71f05aad"></a><br/></td></tr>
+<tr class="separator:a3260deef0bc60aae15eecfdd71f05aad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This class stores constant strings to establish clear messages between the server and client. Protocol: Some messages will be passed with a ":"; anything after this is parameter data (e.g., a number) </p>
-<dl class="section author"><dt>Author</dt><dd>David Zhang </dd></dl>
+<dl class="section author"><dt>Author</dt><dd>David Zhang, YiWei Roy Zheng </dd></dl>
 
 <p>Definition at line <a class="el" href="_message_8java_source.html#l00009">9</a> of file <a class="el" href="_message_8java_source.html">Message.java</a>.</p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
@@ -156,7 +228,617 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>manager: sendToServer(<a class="el" href="classfactory_1_1general_1_1_message.html#a4742e0238811f9f7b5bfd87849a7d211" title="manager: sendToServer(Message.CREATE_KIT+&quot;:&quot;+asdf)">Message.CREATE_KIT</a>+":"+asdf) </p>
+
 <p>Definition at line <a class="el" href="_message_8java_source.html#l00011">11</a> of file <a class="el" href="_message_8java_source.html">Message.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="acb9a0b0f83c03ba39154b63de89d06ad"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">final String factory.general.Message.DEFINE_NEW_KIT = &quot;DEFINE_NEW_KIT&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>send a new type of kit over to the server </p>
+
+<p>Definition at line <a class="el" href="_message_8java_source.html#l00026">26</a> of file <a class="el" href="_message_8java_source.html">Message.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a77b73614c4d0470a16037546ddc5a51e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">final String factory.general.Message.DEFINE_NEW_PART = &quot;DEFINE_NEW_PART&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>send a new type of part over to the server </p>
+
+<p>Definition at line <a class="el" href="_message_8java_source.html#l00019">19</a> of file <a class="el" href="_message_8java_source.html">Message.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aa79e1dd808f3417476b3a7b972e4c597"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">final String factory.general.Message.GANTRY_CARRY_A_BIN = &quot;GANTRY_CARRY_A_BIN&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_message_8java_source.html#l00032">32</a> of file <a class="el" href="_message_8java_source.html">Message.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aaf03b40c4f28968c51e2d4573c912b04"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">final String factory.general.Message.IDENTIFY_GANTRYROBOTMANAGER = &quot;IDENTIFY_GANTRYROBOTMANAGER&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_message_8java_source.html#l00031">31</a> of file <a class="el" href="_message_8java_source.html">Message.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae3064971d6fdaceddbc9644e35a82ad6"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">final String factory.general.Message.IDENTIFY_KITASSEMBLYMANAGER = &quot;IDENTIFY_KITASSEMBLYMANAGER&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_message_8java_source.html#l00041">41</a> of file <a class="el" href="_message_8java_source.html">Message.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ad8c0163402f8be82ec4e29b45bd1e67e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">final String factory.general.Message.IDENTIFY_LANEMANAGER = &quot;IDENTIFY_LANEMANAGER&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_message_8java_source.html#l00055">55</a> of file <a class="el" href="_message_8java_source.html">Message.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af02c5f0ace2f6ae0589bcf2dd5ee7554"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">final String factory.general.Message.KAM_DROP_OFF_FULL_KIT = &quot;KAM_DROP_OFF_FULL_KIT&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_message_8java_source.html#l00042">42</a> of file <a class="el" href="_message_8java_source.html">Message.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aed88d86dabc0aaba6ada2f6420b2bacd"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">final String factory.general.Message.KAM_FLASH_KIT_CAMERA = &quot;KAM_FLASH_KIT_CAMERA&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_message_8java_source.html#l00047">47</a> of file <a class="el" href="_message_8java_source.html">Message.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a2d06697c4eac16c93d5a8495d13ce06e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">final String factory.general.Message.KAM_FLASH_NEST_CAMERA = &quot;KAM_FLASH_NEST_CAMERA&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_message_8java_source.html#l00048">48</a> of file <a class="el" href="_message_8java_source.html">Message.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab98742231b03f07fdf202f2c735b75ca"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">final String factory.general.Message.KAM_MOVE_ACTIVE_KIT_TO_INSPECTION = &quot;KAM_MOVE_ACTIVE_KIT_TO_INSPECTION&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_message_8java_source.html#l00043">43</a> of file <a class="el" href="_message_8java_source.html">Message.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aedf00def67ee88c4bf2a322afa0ef5a8"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">final String factory.general.Message.KAM_MOVE_EMPTY_KIT_TO_ACTIVE = &quot;MOVE_EMPTY_KIT_TO_ACTIVE&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_message_8java_source.html#l00046">46</a> of file <a class="el" href="_message_8java_source.html">Message.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a0ebaca9375dfd45d7212ee0ae214f56a"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">final String factory.general.Message.KAM_MOVE_FROM_0_TO_2 = &quot;KAM_MOVE_FROM_0_TO_2&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_message_8java_source.html#l00052">52</a> of file <a class="el" href="_message_8java_source.html">Message.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ad4f61f7c14201af14c7525f5d1434727"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">final String factory.general.Message.KAM_PARTS_DROP_OFF_PARTS = &quot;KAM_PARTS_DROP_OFF_PARTS&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_message_8java_source.html#l00051">51</a> of file <a class="el" href="_message_8java_source.html">Message.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a78bc66d05ef7ddf580c4794fd0b03994"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">final String factory.general.Message.KAM_PARTS_MOVE_TO_NEST = &quot;KAM_PARTS_MOVE_TO_NEST&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_message_8java_source.html#l00049">49</a> of file <a class="el" href="_message_8java_source.html">Message.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a245ca358d7148c4d123fa9a18993fbbc"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">final String factory.general.Message.KAM_PARTS_PICK_PART = &quot;KAM_PARTS_PICK_PART&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_message_8java_source.html#l00050">50</a> of file <a class="el" href="_message_8java_source.html">Message.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a5ede1bef2b6d3463e1e0f9aec63114f0"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">final String factory.general.Message.KAM_PICK_UP_EMPTY_KIT = &quot;PICK_UP_EMPTY_KIT&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_message_8java_source.html#l00045">45</a> of file <a class="el" href="_message_8java_source.html">Message.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a21bf5d9e6dd1118d846d6d44a61cdd7b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">final String factory.general.Message.KAM_PICK_UP_EMPTY_KIT_TO_ACTIVE = &quot;PICK_UP_EMPTY_KIT_TO_ACTIVE&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_message_8java_source.html#l00044">44</a> of file <a class="el" href="_message_8java_source.html">Message.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a3cc86aae2606bd9c136a7d39db6cbbe5"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">final String factory.general.Message.MOVE_GANTRY_TO_BIN = &quot;MOVE_GANTRY_TO_BIN&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_message_8java_source.html#l00034">34</a> of file <a class="el" href="_message_8java_source.html">Message.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a1057f79a4e75e197bc2c785e9c4bc952"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">final String factory.general.Message.MOVE_GANTRY_TO_DUMP_PART = &quot;GANTRY_TO_DUMP_PART&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_message_8java_source.html#l00036">36</a> of file <a class="el" href="_message_8java_source.html">Message.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a8dfe0024b95360392d1bd184679dcfce"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">final String factory.general.Message.MOVE_GANTRY_TO_FEEDER = &quot;MOVE_GANTRY_TO_FEEDER&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_message_8java_source.html#l00033">33</a> of file <a class="el" href="_message_8java_source.html">Message.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ad15b0901a67eaf40288a375f79aecfb3"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">final String factory.general.Message.MOVE_GANTRY_TO_PICK_BIN = &quot;MOVE_GANTRY_TO_PICK_BIN&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_message_8java_source.html#l00037">37</a> of file <a class="el" href="_message_8java_source.html">Message.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a7c646e85f1d94c192d0261f260835dee"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">final String factory.general.Message.MOVE_GANTRY_TO_PURGE = &quot;MOVE_GANTRY_TO_PURGE&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_message_8java_source.html#l00035">35</a> of file <a class="el" href="_message_8java_source.html">Message.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac54f35c5de0a2ba0f637e30e5348e591"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">final String factory.general.Message.PULL_KITS_LIST = &quot;PULL_KITS_LIST&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>simple request form kits to server asking for kits list </p>
+
+<p>Definition at line <a class="el" href="_message_8java_source.html#l00024">24</a> of file <a class="el" href="_message_8java_source.html">Message.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aa57141466a2bf37721feb7054913f4cf"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">final String factory.general.Message.PULL_PARTS_LIST = &quot;PULL_PARTS_LIST&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>simple request from partsmanager to server asking for parts list </p>
+
+<p>Definition at line <a class="el" href="_message_8java_source.html#l00017">17</a> of file <a class="el" href="_message_8java_source.html">Message.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="abc30bdae0b433cc6d39c80ae93917ce3"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">final String factory.general.Message.PUSH_KITS_LIST = &quot;PUSH_KITS_LIST&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>send serialized kits list over form server to kitsmanager </p>
+
+<p>Definition at line <a class="el" href="_message_8java_source.html#l00025">25</a> of file <a class="el" href="_message_8java_source.html">Message.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a48e41676acaded358a1ac3405704025c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">final String factory.general.Message.PUSH_PARTS_LIST = &quot;PUSH_PARTS_LIST&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>send serialized parts list over from server to partsmanager </p>
+
+<p>Definition at line <a class="el" href="_message_8java_source.html#l00018">18</a> of file <a class="el" href="_message_8java_source.html">Message.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a3260deef0bc60aae15eecfdd71f05aad"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">final String factory.general.Message.PUSH_PRODUCTION_QUEUE = &quot;PUSH_PRODUCTION_QUEUE&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>sends the server a list of comma delimited kit IDs </p>
+
+<p>Definition at line <a class="el" href="_message_8java_source.html#l00059">59</a> of file <a class="el" href="_message_8java_source.html">Message.java</a>.</p>
 
 </div>
 </div>
@@ -204,13 +886,105 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a584be742826bd37c000db29e0edcc93d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">final String factory.general.Message.UNDEFINE_KIT = &quot;UNDEFINE_KIT&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>removes a kit definition </p>
+
+<p>Definition at line <a class="el" href="_message_8java_source.html#l00028">28</a> of file <a class="el" href="_message_8java_source.html">Message.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a246bd3200a7b860be353f14e24f9f52a"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">final String factory.general.Message.UNDEFINE_PART = &quot;UNDEFINE_PART&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>removes a part definition </p>
+
+<p>Definition at line <a class="el" href="_message_8java_source.html#l00021">21</a> of file <a class="el" href="_message_8java_source.html">Message.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aa450c60052d05f0067b0e8cfd2e85067"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">final String factory.general.Message.UPDATE_KIT = &quot;UPDATE_KIT&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_message_8java_source.html#l00027">27</a> of file <a class="el" href="_message_8java_source.html">Message.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac35cf9514e8ff4dd6400db6c81cde4e0"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">final String factory.general.Message.UPDATE_PART = &quot;UPDATE_PART&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_message_8java_source.html#l00020">20</a> of file <a class="el" href="_message_8java_source.html">Message.java</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>src/factory/general/<a class="el" href="_message_8java_source.html">Message.java</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Nov 4 2012 12:20:07 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Nov 17 2012 01:37:10 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

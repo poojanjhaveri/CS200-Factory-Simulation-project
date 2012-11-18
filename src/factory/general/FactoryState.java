@@ -33,6 +33,14 @@ public class FactoryState {
         bpparts.save();
         bpkits.save();
     }
+    public Kit getKitById(Integer id)
+    {
+       return this.bpkits.getKitById(id);
+    }
+    public Part getPartById(Integer id)
+    {
+        return this.bpparts.getPartById(id);
+    }
     public BlueprintKits getBlueprintKits()
     {
 	return this.bpkits;

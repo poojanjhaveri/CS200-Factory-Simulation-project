@@ -3,12 +3,10 @@ package factory.factory200.laneManager.ServerSide;
 public class LMSendPartSignal {
 	
 	private LMServerMain serverMain;
-	private LMServer server;
-	private String message = "";
+	private String signal = "";
 	private int partNum;
 	
-	public LMSendPartSignal(LMServer server, LMServerMain serverMain){
-		this.server = server;
+	public LMSendPartSignal(LMServerMain serverMain){
 		this.serverMain = serverMain;
 	}
 	
@@ -30,13 +28,16 @@ public class LMSendPartSignal {
 				
 				if(serverMain.getForAgentFeeder().getFeeder(i).getDiversion() == false && serverMain.getForAgentLane().getLane(2*i).getSwitch() == true){	//right
 					serverMain.getPartData().addPartToLaneFromFeeder(2*i, i);
-					message = "" + (2*i) + partNum + "&Part&Add&";
+					signal = "" + (2*i) + partNum + "&Part&Add&";
 				}
 				else if(serverMain.getForAgentFeeder().getFeeder(i).getDiversion() == true && serverMain.getForAgentLane().getLane(2*i+1).getSwitch() == true){	//left
 					serverMain.getPartData().addPartToLaneFromFeeder(2*i+1, i);
-					message = "" + (2*i+1) + partNum + "&Part&Add&";
+					signal = "" + (2*i+1) + partNum + "&Part&Add&";
 				}
-				server.getClientHandler().sendToClient(message);
+				
+				serverMain.sendToLM(signal);
+				serverMain.sendToFPM(signal);
+				
 				serverMain.getForAgentFeeder().getFeeder(i).setPartFedCounterIncrease();
 			}
 		}

@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>Factory Project: src/factory/factory201/Test/FeederTest.java Source File</title>
+<title>Factory Project: src/factory/factory201/test/FeederTest.java Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Factory Project
-   &#160;<span id="projectnumber">0.0.1</span>
+   &#160;<span id="projectnumber">0.1.0</span>
    </div>
    <div id="projectbrief">team 1 joint cs200/cs201</div>
   </td>
@@ -81,7 +81,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_339115f1b781ea71218b7406990eb67d.html">factory</a></li><li class="navelem"><a class="el" href="dir_83378976ba2ece7b6d274bfe9b80a044.html">factory201</a></li><li class="navelem"><a class="el" href="dir_0c849ba3731cccda27eeb4a5e0eb030f.html">Test</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_339115f1b781ea71218b7406990eb67d.html">factory</a></li><li class="navelem"><a class="el" href="dir_83378976ba2ece7b6d274bfe9b80a044.html">factory201</a></li><li class="navelem"><a class="el" href="dir_1b1ea8c3b73df68a684d9b2eb4b86928.html">test</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -89,44 +89,47 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">FeederTest.java</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="_feeder_test_8java.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">package </span>factory.factory201.Test;</div>
+<a href="_feeder_test_8java.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">package </span>factory.factory201.test;</div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">import</span> factory.factory201.feederManagement.*;</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">import</span> factory.general.*;</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//import junit.framework.TestCase;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
-<div class="line"><a name="l00007"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1_test_1_1_feeder_test.html">    7</a></span>&#160;<span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classfactory_1_1factory201_1_1_test_1_1_feeder_test.html">FeederTest</a>{</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    </div>
-<div class="line"><a name="l00009"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1_test_1_1_feeder_test.html#a93e3f16cf8796424960bdd6ceef28322">    9</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html" title="agent for the Feeder This class is the agent for the Feeder which does the following: 1) Get messages...">FeederAgent</a> <a class="code" href="classfactory_1_1factory201_1_1_test_1_1_feeder_test.html#a93e3f16cf8796424960bdd6ceef28322">feeder</a>;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    </div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="comment">//sent by the nestagent</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1_test_1_1_feeder_test.html#a2a155b4ce1397f8b76b5fcf540b6464f">   12</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory201_1_1_test_1_1_feeder_test.html#a2a155b4ce1397f8b76b5fcf540b6464f">testneedParts</a>(){</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="comment">//1 is the index of the feeder (feederNum)</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <a class="code" href="classfactory_1_1factory201_1_1_test_1_1_feeder_test.html#a93e3f16cf8796424960bdd6ceef28322">feeder</a>=<span class="keyword">new</span> <a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html" title="agent for the Feeder This class is the agent for the Feeder which does the following: 1) Get messages...">FeederAgent</a>(1);</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <a class="code" href="classfactory_1_1factory201_1_1_test_1_1_mock_gantry.html">MockGantry</a> gantry=<span class="keyword">new</span> <a class="code" href="classfactory_1_1factory201_1_1_test_1_1_mock_gantry.html">MockGantry</a>(<span class="stringliteral">&quot;Gantry&quot;</span>);</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <a class="code" href="classfactory_1_1general_1_1_part.html" title="digital representation of a part">Part</a> p=<span class="keyword">new</span> <a class="code" href="classfactory_1_1general_1_1_part.html" title="digital representation of a part">Part</a>(1);</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <a class="code" href="classfactory_1_1factory201_1_1_test_1_1_mock_lane.html">MockLane</a> leftLane=<span class="keyword">new</span> <a class="code" href="classfactory_1_1factory201_1_1_test_1_1_mock_lane.html">MockLane</a>(<span class="stringliteral">&quot;Left Lane&quot;</span>);</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <a class="code" href="classfactory_1_1factory201_1_1_test_1_1_mock_lane.html">MockLane</a> rightLane=<span class="keyword">new</span> <a class="code" href="classfactory_1_1factory201_1_1_test_1_1_mock_lane.html">MockLane</a>(<span class="stringliteral">&quot;Right Lane&quot;</span>);</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <a class="code" href="classfactory_1_1factory201_1_1_test_1_1_feeder_test.html#a93e3f16cf8796424960bdd6ceef28322">feeder</a>.<a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#abbf1d26a18ed0a9da0cbcc19155806d0">setLeftLane</a>(leftLane);</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <a class="code" href="classfactory_1_1factory201_1_1_test_1_1_feeder_test.html#a93e3f16cf8796424960bdd6ceef28322">feeder</a>.<a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#a2d7c976b560b4eeb17714324188f4b53">setRightLane</a>(rightLane);</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <a class="code" href="classfactory_1_1factory201_1_1_test_1_1_feeder_test.html#a93e3f16cf8796424960bdd6ceef28322">feeder</a>.<a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#a2a567f51b08c73c521996691c20ec5e6">setGantry</a>(gantry);</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <a class="code" href="classfactory_1_1factory201_1_1_test_1_1_feeder_test.html#a93e3f16cf8796424960bdd6ceef28322">feeder</a>.<a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#a182f7e9677eb639a3a46745e6c3a5a6d">msgNeedPart</a>(p,leftLane);</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <a class="code" href="classfactory_1_1factory201_1_1_test_1_1_feeder_test.html#a93e3f16cf8796424960bdd6ceef28322">feeder</a>.<a class="code" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#a869ef835ac24f7e496057dc2796a465f">pickAndExecuteAnAction</a>();</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="comment">/*  </span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">        assertTrue(</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">                &quot;Mock feeder should have received message here are parts. Event log: &quot;</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">                        + gantry.log.toString(), gantry.log</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">                        .containsString(&quot;Need parts event encountered&quot;));</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">    */</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    }</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;}</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">import</span> factory.factory200.laneManager.ServerSide.LMServerMain;</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">import</span> factory.factory201.feederManagement.*;</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">import</span> factory.factory201.test.mock.MockGantry;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">import</span> factory.factory201.test.mock.MockLane;</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">import</span> factory.general.*;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">//import junit.framework.TestCase;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1test_1_1_feeder_test.html">   10</a></span>&#160;<span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classfactory_1_1factory201_1_1test_1_1_feeder_test.html">FeederTest</a>{</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    </div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1test_1_1_feeder_test.html#ab37701b53e55987ab37f0b776302841a">   12</a></span>&#160;    <span class="keyword">public</span> FeederAgent <a class="code" href="classfactory_1_1factory201_1_1test_1_1_feeder_test.html#ab37701b53e55987ab37f0b776302841a">feeder</a>;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="comment">//sent by the nestagent</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1test_1_1_feeder_test.html#ab83fb6197ca67c774e9a8ee781ee840a">   15</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory201_1_1test_1_1_feeder_test.html#ab83fb6197ca67c774e9a8ee781ee840a">testneedParts</a>(){</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="comment">//1 is the index of the feeder (feederNum)</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">//      feeder=new FeederAgent(&quot;Feeder&quot;, 1, new LMServerMain());</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_gantry.html">MockGantry</a> gantry=<span class="keyword">new</span> <a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_gantry.html">MockGantry</a>(<span class="stringliteral">&quot;Gantry&quot;</span>);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <a class="code" href="classfactory_1_1general_1_1_part.html" title="digital representation of a part">Part</a> p=<span class="keyword">new</span> <a class="code" href="classfactory_1_1general_1_1_part.html" title="digital representation of a part">Part</a>(1);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_lane.html">MockLane</a> leftLane=<span class="keyword">new</span> <a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_lane.html">MockLane</a>(<span class="stringliteral">&quot;Left Lane&quot;</span>);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_lane.html">MockLane</a> rightLane=<span class="keyword">new</span> <a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_lane.html">MockLane</a>(<span class="stringliteral">&quot;Right Lane&quot;</span>);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <a class="code" href="classfactory_1_1factory201_1_1test_1_1_feeder_test.html#ab37701b53e55987ab37f0b776302841a">feeder</a>.setLeftLane(leftLane);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <a class="code" href="classfactory_1_1factory201_1_1test_1_1_feeder_test.html#ab37701b53e55987ab37f0b776302841a">feeder</a>.setRightLane(rightLane);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <a class="code" href="classfactory_1_1factory201_1_1test_1_1_feeder_test.html#ab37701b53e55987ab37f0b776302841a">feeder</a>.setGantry(gantry);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <a class="code" href="classfactory_1_1factory201_1_1test_1_1_feeder_test.html#ab37701b53e55987ab37f0b776302841a">feeder</a>.msgNeedPart(p,leftLane);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <a class="code" href="classfactory_1_1factory201_1_1test_1_1_feeder_test.html#ab37701b53e55987ab37f0b776302841a">feeder</a>.pickAndExecuteAnAction();</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="comment">/*  </span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">        assertTrue(</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">                &quot;Mock feeder should have received message here are parts. Event log: &quot;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">                        + gantry.log.toString(), gantry.log</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">                        .containsString(&quot;Need parts event encountered&quot;));</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">    */</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    }</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Nov 4 2012 12:20:00 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Nov 17 2012 01:36:59 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

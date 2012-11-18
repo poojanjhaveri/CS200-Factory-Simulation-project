@@ -35,9 +35,7 @@ public class PartsManager extends Manager implements ActionListener {
 
 
     BlueprintParts bp;///<contains list of parts
-
-    // TODO: NEED GUIPart.java class in partsManager package
-
+    
     private JPanel contentPane;
     private JLabel lblPartsManager;
     private JTabbedPane tabbedPane;
@@ -385,10 +383,15 @@ public class PartsManager extends Manager implements ActionListener {
      * the server
      */
     public void deletePart(Part pt) {
+        String s = Message.UNDEFINE_PART+":"+pt.getNumber();
+        System.out.println("sending message " + s);
+        this.mcon.out(s);
     	bp.removePart(pt);
     	updateComboBox();
+
     	updateManagePartsImagePanel();
     	this.repaint();
+
     }
     
     /**

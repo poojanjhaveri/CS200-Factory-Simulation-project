@@ -1,5 +1,7 @@
 package factory.factory200.gantryRobotManager;
-
+/**
+ * @author Yuting Liu
+ */
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -24,17 +26,20 @@ public class GRMGraphicPanel extends JPanel implements ActionListener {
     Part newPart;
     GUIPart GUItemp;
     GUIFeeder feedertemp; 
-    
+    PurgeStation ps;
 	GUIGantryRobot gbot;
     
 	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub		
+		// TODO Auto-generated method stub
+		
+		gbot.update();
+		repaint();
 	}
 
 	public GRMGraphicPanel(){
-		
+		ps = new PurgeStation();
 		gbot = new GUIGantryRobot();
-		bin = new GUIBin(450,0,0.0,"");
+		bin = new GUIBin(450,0,0.0,"",0);
 		bins = new ArrayList<GUIBin>();
 		parts = new ArrayList<Part>();
 		newPart = new Part(null,null);
@@ -42,8 +47,8 @@ public class GRMGraphicPanel extends JPanel implements ActionListener {
 		feedertemp = new GUIFeeder((Integer)0,(Integer)0,(Double)0.0,"");
 		
 		///<Initialize all 8 bins, 8 parts within its bins
-        for (int i = 1; i < 9; i++) {
-           bin=new GUIBin(450,(i*80-50),0.0, "pics/binBox"+i+".png");
+        for (int i = 1; i <= 8; i++) {
+           bin=new GUIBin(450,(i*80-50),0.0, "pics/binBox"+i+".png",i);
            bins.add(bin);
            GUItemp=new GUIPart(bins.get(i-1).getX()+15, bins.get(i-1).getY()+20, 0.0, new ImageIcon("pics/parts/part"+i+".png"));
            newPart = new Part(null,null);
@@ -57,22 +62,30 @@ public class GRMGraphicPanel extends JPanel implements ActionListener {
         }
         
         ///<Set the timer
-        timer = new Timer(20, this);
+        timer = new Timer(15, this);
         timer.start();
         
 	}
+	
+	public GUIGantryRobot getGantryRobot(){
+		return gbot;
+	}
+	
 	
 	public void paint(Graphics g) {
         Graphics2D g2 = (Graphics2D) g;
         Rectangle2D.Double backgroundRectangle = new Rectangle2D.Double(0, 0, 500, 700);
         g2.setColor(Color.GRAY.darker().darker());//dark dark green background
         g2.fill(backgroundRectangle);
-        
+        paintPurge(this,g2);
         paintBinsWithParts(this, g2);
         paintFeeders(this,g2);
-        gbot.paintMe(this,g2);
+	    gbot.paintMe(this,g2);
 	}
 	
+	public void paintPurge(JPanel j,Graphics2D g){
+		ps.getImage().paintIcon(j, g, 260, 600);
+	}
 	public void paintBinsWithParts(JPanel j,Graphics2D g){
 		
 		for (int i=0;i<8;i++){
@@ -92,11 +105,7 @@ public class GRMGraphicPanel extends JPanel implements ActionListener {
 	
 	
 		
-//		         boolean changed;
-		 //
-//		         public GraphicGantryPanel() {//set up a Timer	
-//		         }
-		 //
+
 //		         /**
 //		          * check if Server send any message or data back
 //		          */
