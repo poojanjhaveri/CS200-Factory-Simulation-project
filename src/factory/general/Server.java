@@ -82,11 +82,10 @@ public class Server {
 	 */
 	public Server(int portNumber) {
         this.fstate = new FactoryState();
+
 		initializeManagers();
-		
         // TODO: uncomment when ready
-		prepareAllAgents(); // Prepare all agents; based on AgentMain.java
-		
+//		prepareAllAgents(); // Prepare all agents; based on AgentMain.java
 		
 		numClients = 0; // Initialize num clients is 0
 		start(portNumber); // Start listening for clients and making new HandleAManager instances
@@ -214,10 +213,6 @@ public class Server {
         // Alex
         cameraAgent.startThread();
         conveyorAgent.startThread();
-        
-        // *Change this!
-        conveyorAgent.generateKit(10); // * This generates 10 new kits, among other things if you pass string... *
-        
         kitRobotAgent.startThread();
 
         // Patrick
@@ -232,6 +227,10 @@ public class Server {
             }
             laneAgents[i].startThread();
         }
+        
+        // *Put this wherever the FPM sends the signal to create (generate) kits
+//        conveyorAgent.generateKit(10); // * This generates 10 new kits, among other things if you pass string... *
+        
 	}
 	
 	private void startInteractionSequence() {
@@ -307,16 +306,20 @@ public class Server {
 		this.partsAgent.setClient(in);
 	}
 	
-	public void setFactoryProductionManagerToAll(HandleAManager in) {
-		nestAgent.setFactoryProductionManager(in);
-		partsAgent.setFactoryProductionManager(in);
-		kitRobotAgent.setFactoryProductionManager(in);
-		cameraAgent.setFactoryProductionManager(in);
-		conveyorAgent.setFactoryProductionManager(in);
-		for(int i = 0; i != 4; i++)
-			feederAgents[i].setFactoryProductionManager(in);
-		gantryAgent.setFactoryProductionManager(in);
-		for(int i = 0; i != 8; i++)
-			laneAgents[i].setFactoryProductionManager(in);
+    public void setFactoryProductionManagerToAll(HandleAManager in) {
+	nestAgent.setFactoryProductionManager(in);
+	partsAgent.setFactoryProductionManager(in);
+    kitRobotAgent.setFactoryProductionManager(in);
+    cameraAgent.setFactoryProductionManager(in);
+    conveyorAgent.setFactoryProductionManager(in);
+    for(int i = 0; i != 4; i++)
+    feederAgents[i].setFactoryProductionManager(in);
+    gantryAgent.setFactoryProductionManager(in);
+    for(int i = 0; i != 8; i++)
+    laneAgents[i].setFactoryProductionManager(in);
     }
+
+	public LMServerMain getServerLM() {
+		return this.serverLM;
+	}
 }
