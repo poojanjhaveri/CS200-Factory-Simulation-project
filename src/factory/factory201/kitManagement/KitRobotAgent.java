@@ -132,7 +132,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
     }
 
     private void moveFullKitToInspection(Kit kit) {
-        print("Moving the full kit: [" + kitStand.get(1).name + "] to the inspection stand.");
+        print("Moving the full kit: [" + kit.name + "] to the inspection stand.");
         kitStand.moveFullKitToInspection(kit);
         kit.beingUsedByPartsAgent = false;
         camera.msgKitIsFull(kitStand.get(2));
