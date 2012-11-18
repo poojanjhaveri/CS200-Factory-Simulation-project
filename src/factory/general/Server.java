@@ -43,8 +43,8 @@ public class Server {
     
 	/** Agents */
     // Fields just for "AgentMain" stuff (Agent preparation) 
-    private static final boolean PATRICK = true;
-    private static final boolean KEVIN = true;
+    private static final boolean PATRICK = false;
+    private static final boolean KEVIN = false;
     private static final boolean ALEX = true;
     
     private static final int FEEDER = 4;
@@ -139,10 +139,10 @@ public class Server {
 	 */
         private void prepareAllAgents() {
             declareAgents();
+            turnOffAgentPrintStatements();
             connectAgentsAndManagers();
             startAgentThreads();
             startInteractionSequence();
-            turnOffAgentPrintStatements();
         }
 
         private void declareAgents() {

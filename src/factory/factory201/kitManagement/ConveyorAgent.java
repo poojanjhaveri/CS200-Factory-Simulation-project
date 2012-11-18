@@ -19,22 +19,15 @@ import java.util.List;
  */
 public class ConveyorAgent extends Agent implements Conveyor {
 
-    private enum Event {
-
-        emptyKit, verifiedKit
-    };
-    private List<Kit> fullKits;
-    private List<Kit> kits;
-    private Kit tempKit;
     private KitRobot kitRobotAgent;
-    private int kitRobotNeedsKit;
+    private List<Kit> kitList;
+    private int kitRequestsFromKitRobot;
 
     public ConveyorAgent(String name) {
         super(name);
 
-        kits = Collections.synchronizedList(new ArrayList<Kit>());
-        fullKits = new ArrayList<Kit>();
-        kitRobotNeedsKit = 0;
+        kitList = Collections.synchronizedList(new ArrayList<Kit>());
+        kitRequestsFromKitRobot = 0;
     }
 
     // ********** MESSAGES *********
@@ -44,7 +37,7 @@ public class ConveyorAgent extends Agent implements Conveyor {
      */
     @Override
     public void msgNeedEmptyKit() {
-        kitRobotNeedsKit++;
+        kitRequestsFromKitRobot++;
         stateChanged();
     }
 
@@ -56,7 +49,10 @@ public class ConveyorAgent extends Agent implements Conveyor {
      */
     @Override
     public void msgHereIsVerifiedKit(Kit kit) {
-        fullKits.add(kit);
+        print("Accepting a verified kit: [" + kit.name + "] from the kits robot");
+        synchronized (kitList) {
+            kitList.add(kit);
+        }
         stateChanged();
     }
 
@@ -68,12 +64,8 @@ public class ConveyorAgent extends Agent implements Conveyor {
      */
     @Override
     public boolean pickAndExecuteAnAction() {
-        if (kitRobotNeedsKit > 0) {
+        if (kitRequestsFromKitRobot > 0) {
             giveEmptyKit();
-            return true;
-        }
-        if (!fullKits.isEmpty()) {
-            acceptVerifiedKit();
             return true;
         }
         return false;
@@ -85,27 +77,17 @@ public class ConveyorAgent extends Agent implements Conveyor {
      * kit.
      */
     private void giveEmptyKit() {
-        synchronized (kits) {
-            for (Kit k : kits) {
+        synchronized (kitList) {
+            for (Kit k : kitList) {
                 if (k.status == Kit.Status.empty) {
                     print("Notifying the kit robot that an empty kit: [" + k.name + "] is ready.");
                     kitRobotAgent.msgHereIsEmptyKit(k);
-                    kitRobotNeedsKit--;
-                    kits.remove(k);
+                    kitRequestsFromKitRobot--;
+                    kitList.remove(k);
                     break;
                 }
             }
         }
-        stateChanged();
-    }
-
-    /**
-     * Adds the completed kit to the list of completed kits (...which will
-     * eventually be taken out of the kitting cell).
-     */
-    private void acceptVerifiedKit() {
-        print("Accepting a verified kit: [" + fullKits.get(0).name + "] from the kits robot");
-        kits.add(fullKits.remove(0));
         stateChanged();
     }
 
@@ -114,29 +96,29 @@ public class ConveyorAgent extends Agent implements Conveyor {
         num--;
         for (int i = 0; i < num; i++) {
             Kit k = new Kit("Kit " + i);
-            kits.add(k);
+            kitList.add(k);
             DoAddKit(k);
         }
     }
 
     public void generateKit(String name) {
         Kit k = new Kit("Kit " + name);
-        kits.add(k);
+        kitList.add(k);
     }
 
     public void removeKit(String name) {
-        for (Kit k : kits) {
+        for (Kit k : kitList) {
             if (k.name.equals(name)) {
-                kits.remove(k);
+                kitList.remove(k);
                 break;
             }
         }
     }
 
     public void removeAllVerifiedKits() {
-        for (Kit k : kits) {
+        for (Kit k : kitList) {
             if (k.status == Kit.Status.verified) {
-                kits.remove(k);
+                kitList.remove(k);
             }
         }
     }
@@ -155,7 +137,7 @@ public class ConveyorAgent extends Agent implements Conveyor {
             this.client.sendMessage(Message.KAM_ADD_KIT);
             this.fpm.sendMessage(Message.KAM_ADD_KIT);
         } else {
-            print("[ERROR] - Kit Assembly Manager is not online.");
+//            print("[ERROR] - Kit Assembly Manager is not online.");
         }
     }
 
@@ -164,7 +146,7 @@ public class ConveyorAgent extends Agent implements Conveyor {
             this.client.sendMessage(Message.KAM_REMOVE_KIT);
             this.fpm.sendMessage(Message.KAM_REMOVE_KIT);
         } else {
-            print("[ERROR] - Kit Assembly Manager is not online.");
+//            print("[ERROR] - Kit Assembly Manager is not online.");
         }
     }
 }
