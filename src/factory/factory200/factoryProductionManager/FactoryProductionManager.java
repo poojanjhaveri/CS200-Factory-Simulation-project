@@ -381,7 +381,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
             FactoryProductionManager fpm = new FactoryProductionManager();
 
             fpm.setVisible(true);
-            fpm.setSize(1375,700);
+            fpm.setSize(1350,700); //CONSULT PEOPLE IN CHARGE OF GRAPHICS BEFORE CHANGING THIS SIZE! 
             fpm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             fpm.setResizable(false);
     }
