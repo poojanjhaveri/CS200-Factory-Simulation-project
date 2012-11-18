@@ -4,18 +4,12 @@
  */
 package factory.factory201.kitManagement;
 
-import factory.factory201.interfaces.KitRobot;
-import factory.factory201.interfaces.NestInterface;
 import factory.factory201.test.mock.MockKitRobot;
 import factory.factory201.test.mock.MockNest;
 import factory.general.Kit;
 import factory.general.Nest;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Test;
 
 /**
  *
