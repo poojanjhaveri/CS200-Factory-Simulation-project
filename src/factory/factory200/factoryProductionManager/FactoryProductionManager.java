@@ -79,6 +79,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 		availableKits = new ArrayList<String>();
 
 		//Populate Debug Blueprint if no Blueprint exists on server
+                /*
 		if(kitsbp.getKits().isEmpty())
 		{
 			debug = true;
@@ -88,6 +89,8 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 			tempKits.add(new Kit("Tres", "Three"));
 			debugbp = new BlueprintKits(tempKits);
 		}
+                 * 
+                 */
 
 		//Populate Combobox array with names of Blueprint Kits
 		if(!debug)
