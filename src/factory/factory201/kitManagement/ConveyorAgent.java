@@ -5,12 +5,10 @@ import factory.factory201.interfaces.Conveyor;
 import factory.factory201.interfaces.KitRobot;
 import factory.general.Kit;
 import factory.general.Message;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import javax.swing.Timer;
+
 /**
  * @brief This class is the agent for the {@link Conveyor} which brings empty
  * {@link Kit}s into the kitting cell and takes complete kits out of the kitting
@@ -29,7 +27,6 @@ public class ConveyorAgent extends Agent implements Conveyor {
     private List<Kit> kits;
     private Kit tempKit;
     private KitRobot kitRobotAgent;
-    private Timer removeKits;
     private int kitRobotNeedsKit;
 
     public ConveyorAgent(String name) {
@@ -37,20 +34,6 @@ public class ConveyorAgent extends Agent implements Conveyor {
 
         kits = Collections.synchronizedList(new ArrayList<Kit>());
         fullKits = new ArrayList<Kit>();
-        removeKits = new Timer(1000, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                for (Kit k : kits) {
-                    if (k.status == Kit.Status.verified) {
-                        kits.remove(k);
-                        break;
-                    }
-                }
-            }
-        });
-
-        removeKits.start();
-        removeKits.stop();
         kitRobotNeedsKit = 0;
     }
 
@@ -79,7 +62,7 @@ public class ConveyorAgent extends Agent implements Conveyor {
 
     // ********* SCHEDULER *********
     /**
-     * Scheduler
+     * Scheduler\
      *
      * @return Returns true if action
      */
@@ -102,7 +85,7 @@ public class ConveyorAgent extends Agent implements Conveyor {
      * kit.
      */
     private void giveEmptyKit() {
-        synchronized(kits) {
+        synchronized (kits) {
             for (Kit k : kits) {
                 if (k.status == Kit.Status.empty) {
                     print("Notifying the kit robot that an empty kit: [" + k.name + "] is ready.");
@@ -158,14 +141,6 @@ public class ConveyorAgent extends Agent implements Conveyor {
         }
     }
 
-    public void toggleAutoRemove() {
-        if (removeKits.isRunning()) {
-            removeKits.stop();
-        } else {
-            removeKits.restart();
-        }
-    }
-
     /**
      * Sets the KitRobotAgent
      *
@@ -175,11 +150,21 @@ public class ConveyorAgent extends Agent implements Conveyor {
         kitRobotAgent = agent;
     }
 
-    private void DoAddKit(Kit k) { // need to setClient
-//	this.client.sendMessage(Message.KAM_ADD_KIT);
+    private void DoAddKit(Kit k) {
+        if (this.client != null) {
+            this.client.sendMessage(Message.KAM_ADD_KIT);
+            this.fpm.sendMessage(Message.KAM_ADD_KIT);
+        } else {
+            print("[ERROR] - Kit Assembly Manager is not online.");
+        }
     }
-    
+
     private void DoRemoveKit(Kit k) {
-//        this.client.sendMessage(Message.KAM_REMOVE_KIT);
+        if (this.client != null) {
+            this.client.sendMessage(Message.KAM_REMOVE_KIT);
+            this.fpm.sendMessage(Message.KAM_REMOVE_KIT);
+        } else {
+            print("[ERROR] - Kit Assembly Manager is not online.");
+        }
     }
 }

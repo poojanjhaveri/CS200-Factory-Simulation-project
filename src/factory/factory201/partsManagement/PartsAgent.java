@@ -304,26 +304,31 @@ public class PartsAgent extends Agent implements PartsInterface {
         throw new UnsupportedOperationException("Not supported yet.");
     }
     
-    public void DoMoveToNest(int nestNum){
 
-           // kam.getPartsRobot().moveToNestCommand(nestNum);
-//        this.fpm.sendMessage(Message.KAM_PARTS_MOVE_TO_NEST+":"+nestNum);
-//	    this.client.sendMessage(Message.KAM_PARTS_MOVE_TO_NEST+":"+nestNum);
-    }
-    
-    public void DoPickUpPart(int nestNum){
-    // this.client.sendMessage(Message.KAM_PARTS_PICK_PART+":"+nestNum);
- //    this.fpm.sendMessage(Message.KAM_PARTS_PICK_PART+":"+nestNum);
+    public void DoMoveToNest(int nestNum) {
+        if (this.client != null) {
+            this.fpm.sendMessage(Message.KAM_PARTS_MOVE_TO_NEST + ":" + nestNum);
+            this.client.sendMessage(Message.KAM_PARTS_MOVE_TO_NEST + ":" + nestNum);
+        } else {
+            print("[ERROR] - Kit Assembly Manager is not online.");
+        }
     }
 
-    public void DoPutInKit(int kitNum){
-    //  kam.getPartsRobot().dropOffParts(kitNum);  
-//    this.client.sendMessage(Message.KAM_PARTS_DROP_OFF_PARTS+":"+kitNum);
-//    this.fpm.sendMessage(Message.KAM_PARTS_DROP_OFF_PARTS+":"+kitNum);
+    public void DoPickUpPart(int nestNum) {
+        if (this.client != null) {
+            this.client.sendMessage(Message.KAM_PARTS_PICK_PART + ":" + nestNum);
+            this.fpm.sendMessage(Message.KAM_PARTS_PICK_PART + ":" + nestNum);
+        } else {
+            print("[ERROR] - Kit Assembly Manager is not online.");
+        }
     }
 
-    @Override
-    public void msgHereIsKit(Kit kit) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void DoPutInKit(int kitNum) {
+        if (this.client != null) {
+            this.client.sendMessage(Message.KAM_PARTS_DROP_OFF_PARTS + ":" + kitNum);
+            this.fpm.sendMessage(Message.KAM_PARTS_DROP_OFF_PARTS + ":" + kitNum);
+        } else {
+            print("[ERROR] - Kit Assembly Manager is not online.");
+        }
     }
 }
