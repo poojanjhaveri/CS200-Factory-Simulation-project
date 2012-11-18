@@ -42,10 +42,11 @@ public class Server {
     private FactoryState fstate;
     
 	/** Agents */
-    // Fields just for "AgentMain" stuff (Agent preparation) 
-    private static final boolean PATRICK = true;
-    private static final boolean KEVIN = true;
-    private static final boolean ALEX = true;
+    // Fields just for "AgentMain" stuff (Agent preparation)
+    // If true, print statements for this 201 person are on
+    private static final boolean PATRICK = false;
+    private static final boolean KEVIN = false;
+    private static final boolean ALEX = false;
     
     private static final int FEEDER = 4;
     private static final int LANE = 8;
@@ -87,7 +88,10 @@ public class Server {
 	public Server(int portNumber) {
         this.fstate = new FactoryState();
 		initializeManagers(); // Something by Dongyoung
-		//prepareAllAgents(); // Prepare all agents; based on AgentMain.java; commented out by Dongyoung to test animation; included after connections accepted by server
+		
+		prepareAllAgents(); // Prepare all agents; based on AgentMain.java; commented out by Dongyoung to test animation; included after connections accepted by server
+			// should happen AFTER initializeManagers(), according to Dongyoung
+		
 		numClients = 0; // Initialize num clients is 0
 		start(portNumber); // Start listening for clients and making new HandleAManager instances
 	}
@@ -101,8 +105,7 @@ public class Server {
 	 * Contains the central loop. We break out of this loop by forcing System.exit(0) in HandleAManager.
 	 */
 	private void start(int portNumber) {
-            int count=0; //hack to start the agents once after V1LaneManagerCompileClient.java is connected with server- by Kevin
-            System.out.println("Port number: " + portNumber);
+		System.out.println("Port number: " + portNumber);
 		try {
 			ss = new ServerSocket(portNumber);
 			System.out.println("Server started; waiting for clients");
@@ -111,7 +114,7 @@ public class Server {
 			System.exit(0);
 		}
 		
-		for(int i=0 ; i<1 ; i++){ // For Testing By Dongyoung, if want to need communicate n managers, change into for(int i=0 ; i<n ; i++)
+		for (int i=0 ; i<1 ; i++){ // For Testing By Dongyoung, if want to need communicate n managers, change into for(int i=0 ; i<n ; i++)
 		//while(true){
 			// Continuously check for a new client for which to create a thread
 			try {
@@ -146,7 +149,8 @@ public class Server {
             turnOffAgentPrintStatements();
             connectAgentsAndManagers();
             startAgentThreads();
-            startInteractionSequence();  //starting to test the animation- kevin
+            if (PATRICK && ALEX && KEVIN)
+            	startInteractionSequence();  // only for 201 testing of the animation- kevin
         }
 
         private void declareAgents() {
@@ -235,6 +239,9 @@ public class Server {
             }
         }
 
+        /**
+         * @brief This is only a test mode for 201 to debug animation and agent interaction.
+         */
         private void startInteractionSequence() {
             // Get kit from somewhere
             // * 
@@ -258,7 +265,6 @@ public class Server {
 
             // Officially start the agent interaction sequence!
             partsAgent.msgHereIsKit(kits);
-            //		 TODO: UNCOMMENT WHEN READY
         }
 
         private void turnOffAgentPrintStatements() {
@@ -316,7 +322,7 @@ public class Server {
 		} catch (InterruptedException ex) {
 			Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
 		}
-	}    	
+	}	
 
 	
 	/**
