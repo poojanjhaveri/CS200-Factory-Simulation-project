@@ -9,9 +9,22 @@ import java.util.LinkedList;
 
 import javax.swing.JPanel;
 
+import factory.factory200.kitAssemblyManager.KAMGraphicPanel;
+import factory.general.GUIRobot;
 import factory.general.MovingDrawable;
 import factory.general.Part;
 /**
+ * 
+ * Orders identification
+ * 0-7 - go to bin [#]
+ * 8-15 - pick up bin [#]
+ * 16-19 - move to feeder [#]
+ * 
+ * 20 - move to default
+ * 21-24 - drop off at feeder [#]
+ * 25 -move to dump
+ * 26 - purge bin
+ * 
  * The gantry robot has basic bin movement and emptying capabilities. In
  * relation to the simulation GUI, the gantry robot has <ul> <li>arm extension
  * functionality (purely aesthetic)</li> <li>bin picking functionality</li>
@@ -23,7 +36,7 @@ import factory.general.Part;
  * @brief shared Robot that manipulates part bins
  * @author YiWei Roy Zheng
  */
-public class GUIGantryRobot extends MovingDrawable{
+public class GUIGantryRobot extends GUIRobot{
     public static final String IMAGE_PATH = "pics/robots/gantryrobot.png";
 
     GUIBin bin;///<null if no bin, otherwise contains the information on the bin
@@ -32,7 +45,7 @@ public class GUIGantryRobot extends MovingDrawable{
     Integer moveto;///<where the gantry robot is heading towards
 
     GUIGantryRobot() {
-	super(GantryRobotManager.ROBOT_INITIAL_X,GantryRobotManager.ROBOT_INITIAL_Y,0.0,GUIGantryRobot.IMAGE_PATH);
+	super(GantryRobotManager.ROBOT_INITIAL_X,GantryRobotManager.ROBOT_INITIAL_Y,GUIGantryRobot.IMAGE_PATH);
 	this.extended = false;
 	this.hasbin = false;
 	this.bin = null;
@@ -137,8 +150,9 @@ public class GUIGantryRobot extends MovingDrawable{
 	}
 	
 	public void supplyPartOnFeeder(){
-		this.bin.setPartToNull();
+		//this.bin.setPartToNull();
 	}
+	
     public void moveToDump() {
         this.moveTo(210,550);//,GantryRobotManager.DUMPY);
     }
@@ -190,6 +204,69 @@ public class GUIGantryRobot extends MovingDrawable{
     public GUIBin getBin(){
     	return bin;
     }
+    
+    public void performOrder()
+    {
+    	if(this.getOrder() > -1 && this.getOrder() < 8){
+    		this.moveToBin(this.getOrder());
+    		this.popOrder();
+    	}
+    	if(this.getOrder() < 16 && this.getOrder() > 7)
+		{
+			this.pickUpBin(this.getOrder()-8);
+			this.popOrder();
+		}else if(this.getOrder() < 25 && this.getOrder() > 20)
+		{
+			this.supplyPartOnFeeder();//this.gbot.getOrder()-21);
+			this.popOrder();
+		}
+    	if(this.getOrder() > 15 && this.getOrder() < 20)
+    	{
+    		this.moveToFeeder(this.getOrder()-16);
+    		this.popOrder();
+    	}
+    	if(this.getOrder() == 25)
+    	{    		
+    		this.moveToDump();
+    		this.popOrder();
+    	}
+    	if(this.getOrder() == 26)
+    	{
+    		
+    		this.binPurged();
+    		this.popOrder();
+    	}
+    	
+    	
+    }
+    public void moveToBinCommand(Integer index)
+    {
+    	this.orders.add(index);
+    	this.orders.add(index+8);
+    }
+    public void moveToFeederCommand(Integer index)
+    {
+    	this.orders.add(index+16);
+    	this.orders.add(index+21);
+    }
+    public void purgeBinCommand()
+    {
+    	this.orders.add(25);
+    	this.orders.add(26);
+    }
+    private void moveToDefault() {
+        this.moveTo(GantryRobotManager.ROBOT_INITIAL_X, GantryRobotManager.ROBOT_INITIAL_Y);
+    }
+    
+    public void checkDefault()
+    {
+        if(this.orders.size() == 0){
+            
+          this.orders.add(20);
+        }
+    }
+    
+    	
     
     /**
      * paint function

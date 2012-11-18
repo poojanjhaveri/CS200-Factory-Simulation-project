@@ -739,7 +739,7 @@ public class KitManager extends Manager  implements ActionListener {
                      }  
                    
                  }
-                 if( e.getSource() == b1)
+                 if( e.getSource() == ub1)
                  {
                     
                      if(i==0)
@@ -754,7 +754,7 @@ public class KitManager extends Manager  implements ActionListener {
                      }
                      
                  }
-                 if( e.getSource() == b2)
+                 if( e.getSource() == ub2)
                  {
                     if(i==0)
                      {
@@ -769,7 +769,7 @@ public class KitManager extends Manager  implements ActionListener {
                      }
                     
                  }
-                 if( e.getSource() == b3)
+                 if( e.getSource() == ub3)
                  {
                      if(i==0)
                      {
@@ -857,11 +857,14 @@ public class KitManager extends Manager  implements ActionListener {
                  jbtnlist.add(ub6);
                  jbtnlist.add(ub7);
                  
-                // System.out.println("akhbsdkabdsk "+p);
-               //  Integer p=bpkit.getKitAt(ucreate_combo.getSelectedIndex()).getSize();
-                 for(int s=0;s<8;s++)
+                
+                 Integer p=(bpkit.getKitAt(cb.getSelectedIndex())).getSize();
+                 
+                
+                 
+                 for(int s=0;s<p;s++)
                  {
-               //      jbtnlist.get(s).setIcon(new ImageIcon(bpkit.getKitAt(ucreate_combo.getSelectedIndex()).getPart(s).getFilename()));
+                    jbtnlist.get(s).setIcon(new ImageIcon((bpkit.getKitAt(cb.getSelectedIndex())).getPart(s).getFilename()));
                  }
                  
                 

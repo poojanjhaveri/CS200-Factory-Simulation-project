@@ -89,7 +89,7 @@ A reference to the factory production manager
             if (e != null) {
                 sb.append(StringUtil.stackTraceString(e));
             }
-            System.out.print(sb.toString());
+            System.err.print(sb.toString());
         }
     }
 

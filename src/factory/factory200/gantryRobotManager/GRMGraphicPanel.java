@@ -31,7 +31,17 @@ public class GRMGraphicPanel extends JPanel implements ActionListener {
     
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
-		
+		if(!gbot.moving()){
+			gbot.performOrder();
+			/*if(this.gbot.getOrder() < 16 && this.gbot.getOrder() > 7)
+			{
+				this.gbot.pickUpBin(this.gbot.getOrder()-8);
+			}else if(this.gbot.getOrder() < 25 && this.gbot.getOrder() > 20)
+			{
+				this.gbot.supplyPartOnFeeder();//this.gbot.getOrder()-21);
+			}
+			*/
+		}	
 		gbot.update();
 		repaint();
 	}

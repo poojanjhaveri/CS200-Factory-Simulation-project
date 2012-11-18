@@ -45,6 +45,10 @@ public class FactoryState {
     {
 	return this.bpkits;
     }
+    public Part getPartCheat()
+    {
+        return this.bpparts.getPartAt(0);
+    }
     public BlueprintParts getBlueprintParts()
     {
 	return this.bpparts;

@@ -137,7 +137,7 @@ public class ConveyorAgent extends Agent implements Conveyor {
             this.client.sendMessage(Message.KAM_ADD_KIT);
             this.fpm.sendMessage(Message.KAM_ADD_KIT);
         } else {
-//            print("[ERROR] - Kit Assembly Manager is not online.");
+            print("[ERROR] - Kit Assembly Manager is not online.");
         }
     }
 
@@ -146,7 +146,7 @@ public class ConveyorAgent extends Agent implements Conveyor {
             this.client.sendMessage(Message.KAM_REMOVE_KIT);
             this.fpm.sendMessage(Message.KAM_REMOVE_KIT);
         } else {
-//            print("[ERROR] - Kit Assembly Manager is not online.");
+            print("[ERROR] - Kit Assembly Manager is not online.");
         }
     }
 }
