@@ -50,7 +50,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 
 	private boolean debug;
 	private BlueprintKits debugbp;
-    private BlueprintKits kitsbp;
+        private BlueprintKits kitsbp;
 	private final static String newline = "\n";
 	
 
@@ -79,6 +79,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 		availableKits = new ArrayList<String>();
 
 		//Populate Debug Blueprint if no Blueprint exists on server
+                /*
 		if(kitsbp.getKits().isEmpty())
 		{
 			debug = true;
@@ -88,6 +89,8 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 			tempKits.add(new Kit("Tres", "Three"));
 			debugbp = new BlueprintKits(tempKits);
 		}
+                 * 
+                 */
 
 		//Populate Combobox array with names of Blueprint Kits
 		if(!debug)
@@ -382,7 +385,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 	    }
 	
 		//Lane Manager( pass 'msg' into Lane Manager Message Interpreter and take a proper action )
-	    gfx.verifyMessage(msg);
+//	    gfx.verifyMessage(msg); // TODO: Why nullpointer?
     }
     /**
      * @brief Controls Kit selection and Factory ON/OFF Controls Kit selection

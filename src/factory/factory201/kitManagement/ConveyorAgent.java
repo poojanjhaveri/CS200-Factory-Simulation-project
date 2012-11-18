@@ -175,7 +175,7 @@ public class ConveyorAgent extends Agent implements Conveyor {
         kitRobotAgent = agent;
     }
 
-    private void DoAddKit(Kit k) {
+    private void DoAddKit(Kit k) { // need to setClient
 //	this.client.sendMessage(Message.KAM_ADD_KIT);
     }
     
