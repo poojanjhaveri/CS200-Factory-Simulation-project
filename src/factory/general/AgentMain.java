@@ -32,8 +32,8 @@ public class AgentMain {
         /*========== Declare all agents and etc. ==========*/
 
         // Misc - pass in the appropriate KAM and GRM
-        KitAssemblyManager KAM = new KitAssemblyManager(); // *
-        GantryRobotManager GRM = new GantryRobotManager(); // *
+//        KitAssemblyManager KAM = new KitAssemblyManager(); // *
+       // GantryRobotManager GRM = new GantryRobotManager(); // *
 
         // Alex
         KitRobotAgent kitRobotAgent = new KitRobotAgent("Kit Robot");
@@ -98,7 +98,7 @@ public class AgentMain {
         }
 
         // Kevin
-        gantryAgent.setGantryRobotManager(GRM);
+//        gantryAgent.setGantryRobotManager(GRM);
         for (int i = 0, j = 0; i < FEEDER; i++, j++) {
 
             feederAgents[i].setGantry(gantryAgent);
