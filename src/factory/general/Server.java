@@ -42,11 +42,13 @@ public class Server {
     private FactoryState fstate;
     
 	/** Agents */
+
     // Fields just for "AgentMain" stuff (Agent preparation)
     // If true, print statements for this 201 person are on
     private static final boolean PATRICK = false;
     private static final boolean KEVIN = false;
     private static final boolean ALEX = false;
+
     
     private static final int FEEDER = 4;
     private static final int LANE = 8;
@@ -89,7 +91,7 @@ public class Server {
         this.fstate = new FactoryState();
 		initializeManagers(); // Something by Dongyoung
 		
-		prepareAllAgents(); // Prepare all agents; based on AgentMain.java; commented out by Dongyoung to test animation; included after connections accepted by server
+		//prepareAllAgents(); // Prepare all agents; based on AgentMain.java; commented out by Dongyoung to test animation; included after connections accepted by server
 			// should happen AFTER initializeManagers(), according to Dongyoung
 		
 		numClients = 0; // Initialize num clients is 0
@@ -114,7 +116,6 @@ public class Server {
 			System.exit(0);
 		}
 		
-
 		for (int i=0 ; i<1 ; i++){ // For Testing By Dongyoung, if want to need communicate n managers, change into for(int i=0 ; i<n ; i++)
 		//while(true){
 			// Continuously check for a new client for which to create a thread

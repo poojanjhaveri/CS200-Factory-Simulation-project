@@ -11,8 +11,8 @@ import java.util.List;
 import agent.Agent;
 import factory.factory201.interfaces.Camera;
 import factory.factory201.interfaces.Lane;
-import factory.factory201.interfaces.NestInterface;
 import factory.factory201.interfaces.PartsInterface;
+import factory.factory201.interfaces.NestInterface;
 import factory.general.Nest;
 import factory.general.Part;
 
@@ -72,6 +72,7 @@ public class NestAgent extends Agent implements NestInterface {
 
     public void msgHereAreParts(List<Part> kitParts){
         Part p = kitParts.get(0);
+        synchronized(myNests){
         for (Nest n : myNests) {
             if (n.part.type == p.type) {
                 for (int i =0; i<kitParts.size(); i++){
@@ -83,7 +84,7 @@ public class NestAgent extends Agent implements NestInterface {
                 print("adding " + kitParts.size() + " " + p.getString() + " to the nest " + n.nestNum);
 
             }
-        }
+        }}
         stateChanged();
     }
 
@@ -207,8 +208,4 @@ public class NestAgent extends Agent implements NestInterface {
         this.partsagent = parts;
     }
     
-    @Override
-    public void setNestPurge(List<Part> parts) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
 }
