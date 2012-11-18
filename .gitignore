@@ -20,3 +20,8 @@ target/
 *.ear
 /build/
 /dist/
+*.data
+
+*.data
+
+*.data

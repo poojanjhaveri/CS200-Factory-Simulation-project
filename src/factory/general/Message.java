@@ -21,6 +21,7 @@ public class Message {
     public static final String UNDEFINE_PART = "UNDEFINE_PART";///<removes a part definition
 
     //kitsmanager section
+    public static final String IDENTIFY_KITMANAGER = "IDENTIFY_KITMANAGER";
     public static final String PULL_KITS_LIST = "PULL_KITS_LIST";///<simple request form kits to server asking for kits list
     public static final String PUSH_KITS_LIST = "PUSH_KITS_LIST";///<send serialized kits list over form server to kitsmanager
     public static final String DEFINE_NEW_KIT = "DEFINE_NEW_KIT";///<send a new type of kit over to the server
@@ -55,8 +56,10 @@ public class Message {
 
     //lanemanager section
     public static final String IDENTIFY_LANEMANAGER = "IDENTIFY_LANEMANAGER";
+    public static final String PART_TO_NEST_FROM_LANE = "PART_TO_NEST_FROM_LANE";
 
     //PULL_KITS_LIST is also used by FPM
     public static final String IDENTIFY_FACTORYPRODUCTIONMANAGER = "IDENTIFY_FACTORYPRODUCTIONMANAGER"; 
     public static final String PUSH_PRODUCTION_QUEUE = "PUSH_PRODUCTION_QUEUE";///<sends the server a list of comma delimited kit IDs
+    public static final String ALERT_FPM_KIT_INSPECTED = "ALERT_FPM_KIT_INSPECTED";
 }

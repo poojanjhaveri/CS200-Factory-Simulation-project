@@ -7,11 +7,16 @@ public class LMPartDataInNest {
 	private LMServerMain serverMain;
 	private LMPart newPart;
 	private ArrayList<LMPart> parts = new ArrayList<LMPart>();
-	private int laneNum;
+	private int nestNum;
+	private String signal = "";
+	private ArrayList<Integer> partNumInfos = new ArrayList<Integer>();
 	
-	public LMPartDataInNest(int laneNum, LMServerMain serverMain){
-		this.laneNum = laneNum;
+	public LMPartDataInNest(int nestNum, LMServerMain serverMain){
+		this.nestNum = nestNum;
 		this.serverMain = serverMain;
+		for(int i=0 ; i<8 ; i++){
+			partNumInfos.add(0);
+		}
 	}
 	
 	public void addPart(int partNum, int quantity){
@@ -36,7 +41,9 @@ public class LMPartDataInNest {
 	}
 		
 	public void addPartFromLane(LMPart newPartFromLane){
+		signal = "LMA_";
 		parts.add(newPartFromLane);
+		signal += nestNum + "_" + newPartFromLane.getPartNum();
+		serverMain.sendToKAM(signal);
 	}
-	
 }

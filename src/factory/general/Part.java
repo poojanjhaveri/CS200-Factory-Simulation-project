@@ -16,17 +16,17 @@ public class Part implements Serializable {
     public enum Type {
     p1, p2, p3, p4, p5, p6, p7, p8
     };
-    public Type type;
+    public Integer type;
     private boolean inKit;
     public int size;
     public int nestNum;
     public String word;
-    
+    /*
     public Part(Type t, boolean inkit, int size) {
         this.type = t;
         this.inKit = false;
         this.size = size;
-    }
+    }*/
 
     public int getNestNum() {
         return this.nestNum;
@@ -42,10 +42,10 @@ public class Part implements Serializable {
     }
     //@Override
     public String getString() {
-        return word;
+        return name;
     }
     /* I am adding this constructor to test my agent codes (kevin) */
-
+/*
     public Part(int num) {
         if (num == 1) {
             this.type = Type.p1;
@@ -79,7 +79,7 @@ public class Part implements Serializable {
             this.type = Type.p8;
             this.word = "p8";
         }
-    }
+    }*/
     /**
      * End CS 201 stuff
      */
@@ -98,6 +98,8 @@ public class Part implements Serializable {
         //this.number=time()\;
         this.guipart = null;
         this.number = (int) (System.currentTimeMillis()/(long)1000);
+        this.type = number;
+        
     }
     
     public Part(String n, String d, Integer num) {
@@ -133,6 +135,9 @@ public class Part implements Serializable {
     }
     public void setGUIPart(GUIPart in) {
         this.guipart = in;
+    }
+    public int getNum(){
+    	return this.number;
     }
     public String serialize() {
     	//        return "("+this.name+","+this.description+","+this.number+","+this.filename+")";

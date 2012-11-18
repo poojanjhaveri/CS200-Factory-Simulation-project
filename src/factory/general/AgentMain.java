@@ -21,7 +21,7 @@ import java.util.List;
  */
 public class AgentMain {
 
-    private static final boolean PATRICK = false;
+    private static final boolean PATRICK = true;
     private static final boolean KEVIN = false;
     private static final boolean ALEX = true;
     
@@ -30,10 +30,6 @@ public class AgentMain {
 
     public static void main(String[] args) {
         /*========== Declare all agents and etc. ==========*/
-
-        // Misc - pass in the appropriate KAM and GRM
-        KitAssemblyManager KAM = new KitAssemblyManager(); // *
-        GantryRobotManager GRM = new GantryRobotManager(); // *
 
         // Alex
         KitRobotAgent kitRobotAgent = new KitRobotAgent("Kit Robot");
@@ -52,7 +48,7 @@ public class AgentMain {
             if (i < FEEDER) {
                 feederAgents[i] = new FeederAgent("Feeder " + i, i);
             }
-            laneAgents[i] = new LaneAgent("Lane " + i);
+            laneAgents[i] = new LaneAgent("Lane " + i,i);
         }
 
         
@@ -97,10 +93,7 @@ public class AgentMain {
             nestAgent.getNest(i).setLane(laneAgents[i]);
         }
 
-        // Kevin
-        gantryAgent.setGantryRobotManager(GRM);
         for (int i = 0, j = 0; i < FEEDER; i++, j++) {
-
             feederAgents[i].setGantry(gantryAgent);
             feederAgents[i].setLeftLane(laneAgents[j]);
             feederAgents[i].setRightLane(laneAgents[++j]);
@@ -142,7 +135,7 @@ public class AgentMain {
         // * 
         Kit kit = new Kit("Test Kit");
         for (int i = 1; i < 9; i++) {
-            kit.addPart(new Part(i)); // This is a kit that has actual parts...
+            kit.addPart(new Part("Name", "Description")); // This is a kit that has actual parts...
         }
         conveyorAgent.generateKit(10);
 
@@ -161,6 +154,25 @@ public class AgentMain {
 
         /*========== Turn on or off debugging (print statements) ==========*/
         // Just for debugging; put 'false' to turn off print statements
+
+        if (PATRICK) {
+            nestAgent.print = true;
+            partsAgent.print = true;
+        }
+        if(KEVIN) {
+            for (int i = 0; i < LANE; i++) {
+                if (i < FEEDER) {
+                    feederAgents[i].print = false;
+                }
+                laneAgents[i].print = false;
+            }
+            gantryAgent.print = false;
+        }
+        if(ALEX) {
+            kitRobotAgent.print = true;
+            conveyorAgent.print = true;
+            cameraAgent.print = true;
+        }
 
 
     } // END main

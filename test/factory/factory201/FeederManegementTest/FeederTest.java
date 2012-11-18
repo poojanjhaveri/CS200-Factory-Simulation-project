@@ -56,7 +56,8 @@ public class FeederTest extends TestCase{
 						.containsString("Need parts event encountered"));
 	}
 	
-	public void testSendPartsToLane(){
+        /* Incoming parts request from leftLane */
+	public void testSendPartToLeftLane(){
 		feeder=new FeederAgent("Feeder1",1);
 		MockGantry gantry=new MockGantry("Gantry");
 		Part p=new Part(1);
@@ -73,7 +74,77 @@ public class FeederTest extends TestCase{
 		feeder.pickAndExecuteAnAction();
 		
 		assertTrue(
-				"Mock feeder should have received message here are parts. Event log: "
+				"Mock lane should have received message here are parts. Event log: "
+						+ leftLane.log.toString(), leftLane.log
+						.containsString("Received parts event encountered"));
+	
+	
+	}
+        
+        /* Send request through Right Lane */
+        public void testSendPartToRighttLane(){
+		feeder=new FeederAgent("Feeder1",1);
+		MockGantry gantry=new MockGantry("Gantry");
+		Part p=new Part(1);
+                List<Part> parts=new ArrayList<Part>();
+                for(int i=0;i<8;i++)
+                    parts.add(p);
+		MockLane leftLane=new MockLane("Left Lane");
+		MockLane rightLane=new MockLane("Right Lane");
+		feeder.setLeftLane(leftLane);
+		feeder.setRightLane(rightLane);
+		feeder.setGantry(gantry);
+		feeder.msgHereAreParts(parts);
+		feeder.msgNeedPart(p,rightLane);
+		feeder.pickAndExecuteAnAction();
+		
+		assertTrue(
+				"Mock lane should have received message here are parts. Event log: "
+						+ rightLane.log.toString(), rightLane.log
+						.containsString("Received parts event encountered"));
+	
+	
+	}
+        
+        
+        /* Send request through Right Lane */
+        public void testSendPartToBothLanes(){
+		feeder=new FeederAgent("Feeder1",1);
+		MockGantry gantry=new MockGantry("Gantry");
+		Part p=new Part(1);
+                Part p1=new Part(2);
+                List<Part> parts=new ArrayList<Part>();
+                List<Part> parts1=new ArrayList<Part>();
+
+                for(int i=0;i<8;i++)
+                    parts.add(p);
+                
+                for(int i=0;i<8;i++)
+                    parts1.add(p1);
+		MockLane leftLane=new MockLane("Left Lane");
+		MockLane rightLane=new MockLane("Right Lane");
+		
+                feeder.setLeftLane(leftLane);
+		feeder.setRightLane(rightLane);
+		feeder.setGantry(gantry);
+		
+                feeder.msgHereAreParts(parts);
+		feeder.msgHereAreParts(parts1);
+                
+                feeder.msgNeedPart(p1,leftLane);
+                feeder.msgNeedPart(p,rightLane);
+		
+                feeder.pickAndExecuteAnAction();
+		
+		assertTrue(
+				"Mock rightLane should have received message here are parts. Event log: "
+						+ rightLane.log.toString(), rightLane.log
+						.containsString("Received parts event encountered"));
+
+                feeder.pickAndExecuteAnAction();
+                
+		assertTrue(
+				"Mock leftLane should have received message here are parts. Event log: "
 						+ leftLane.log.toString(), leftLane.log
 						.containsString("Received parts event encountered"));
 	
