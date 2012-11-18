@@ -127,7 +127,7 @@ public class Server {
 		}
 	}
 
-	private void initializeManagers() { // Something by Dongyoung...?
+	private void initializeManagers() { // Something by Dongyoung...?  Dongyoung : Yeah
 		 serverLM = new LMServerMain();
 	}
 	
@@ -354,5 +354,4 @@ public class Server {
 	public LMServerMain getServerLM() { // Dongyoung's lane manager server...
 		return this.serverLM;
 	}
-
 }

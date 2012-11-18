@@ -115,16 +115,15 @@ public class HandleAManager implements Runnable {
 		this.server.setKitManagerClient(this);
 	    }
  else if(msg.contains(Message.IDENTIFY_FACTORYPRODUCTIONMANAGER)) {
+ 			p.println("SERVER HAS IDENTIFIED A FACTORYPRODUCTIONMANAGER");
+ 			this.id = 3;
             this.server.setFactoryProductionManagerToAll(this);
+            this.server.getServerLM().setFPM(this);
         }
         else if(msg.contains(Message.IDENTIFY_LANEMANAGER)) {
         	p.println("SERVER HAS IDENTIFIED A LANEMANAGER");
         	this.id = 2;
-        	this.server.getServerLM().setLM(this);
-        } else if(msg.contains(Message.IDENTIFY_FACTORYPRODUCTIONMANAGER)) {
-        	p.println("SERVER HAS IDENTIFIED A FACTORYPRODUCTIONMANAGER");
-        	this.id = 3;
-        	this.server.getServerLM().setFPM(this);
+        	this.server.getServerLM().setLM(this);        	
     	} else if (msg.contains(Message.IDENTIFY_GANTRYROBOTMANAGER)) {
             p.println("SERVER HAS IDENTIFIED A GANTRYROBOTMANAGER");
             this.id = 0;
@@ -136,6 +135,7 @@ public class HandleAManager implements Runnable {
             this.server.setCameraAgentClient(this);
             this.server.setConveyerAgentClient(this);
             this.server.setPartsAgentClient(this);
+            this.server.getServerLM().setKAM(this);
         } else if (msg.contains(Message.PULL_KITS_LIST)) {
             //TODO THIS IS AD HOC NEED TO RETRIEVE MASTER BLUEPRINTKITS FROM FACTORY STATE
             pw.println(Message.PUSH_KITS_LIST + ":" + this.server.getFactoryState().getBlueprintKits().serialize());
@@ -187,6 +187,9 @@ public class HandleAManager implements Runnable {
 		System.out.println("BEGINNING PRODUCTION CYCLE WOOOOOOT (size "+queue.size() + ")");
 		queue.get(0).debug();
 		
+	    }
+        else if( msg.contains( Message.PART_TO_NEST_FROM_LANE ) ){
+	    	server.getServerLM().getVerify().verify(msg);
 	    }
     }
 
