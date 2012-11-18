@@ -170,12 +170,22 @@ public class NestAgent extends Agent implements NestInterface {
         synchronized(requests){
          if (!requests.isEmpty())
                 for (Nest n: myNests){
+<<<<<<< HEAD
                     if (n.status == Nest.Status.readyForKit){
+=======
+                    //if (n.status == Nest.Status.readyForKit){
+>>>>>>> abd21c5cc50416ff14d09805c871d9191632f4ed
                     for (Part part: n.parts){
                         if(part.type == requests.get(0).type){
                 giveToKit(n);
                 return true;
+<<<<<<< HEAD
             }}}}}
+=======
+            }}}
+                
+        }
+>>>>>>> abd21c5cc50416ff14d09805c871d9191632f4ed
 
         return false;
     }
