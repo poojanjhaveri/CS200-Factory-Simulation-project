@@ -67,7 +67,7 @@ public class KitManager extends Manager  implements ActionListener {
          ArrayList<Part> partlist = new ArrayList();
           ArrayList<Part> updatepartlist = new ArrayList();
          
-          ArrayList<JButton> jbtnlist = new ArrayList();
+          
           JButton b1,b2,b3,b4,b5,b6,b7,b0;
           JButton ub1,ub2,ub3,ub4,ub5,ub6,ub7,ub0;
           
@@ -347,6 +347,16 @@ public class KitManager extends Manager  implements ActionListener {
             ub6 = new JButton();
             ub7 = new JButton();
             
+            ub0.setIcon(new ImageIcon("pics/parts/no.png"));
+            ub1.setIcon(new ImageIcon("pics/parts/no.png"));
+            ub2.setIcon(new ImageIcon("pics/parts/no.png"));
+            ub3.setIcon(new ImageIcon("pics/parts/no.png"));
+            ub4.setIcon(new ImageIcon("pics/parts/no.png"));
+            ub5.setIcon(new ImageIcon("pics/parts/no.png"));
+            ub6.setIcon(new ImageIcon("pics/parts/no.png"));
+            ub7.setIcon(new ImageIcon("pics/parts/no.png"));
+            
+            
             
             upartgrid.add(ub0);
             upartgrid.add(ub1);
@@ -529,14 +539,14 @@ public class KitManager extends Manager  implements ActionListener {
 	       this.bpkit.recreate(this.grabParameter(msg));
 	       System.out.println("GRABBED NEW KITS LIST FROM SERVER!: "+msg);
 		   this.bpkit.debug();
-               //    prepareMainPane();
+                   prepareMainPane();
 	   }
         if(msg.contains(Message.PUSH_PARTS_LIST))
         {
             this.bppart.recreate(this.grabParameter(msg));
             System.out.println("GRABBED NEW PARTS LIST FROM SERVER!" + msg);
             this.bppart.debug();
-          //  prepareMainPane();
+            prepareMainPane();
         }
     }        
         
@@ -836,18 +846,27 @@ public class KitManager extends Manager  implements ActionListener {
              
              public void actionPerformed(ActionEvent e) {
                  JComboBox cb = (JComboBox)e.getSource();
+                 
+                 ArrayList<JButton> jbtnlist = new ArrayList();
+                 jbtnlist.add(ub0);
+                 jbtnlist.add(ub1);
+                 jbtnlist.add(ub2);
+                 jbtnlist.add(ub3);
+                 jbtnlist.add(ub4);
+                 jbtnlist.add(ub5);
+                 jbtnlist.add(ub6);
+                 jbtnlist.add(ub7);
+                 
+                // System.out.println("akhbsdkabdsk "+p);
+               //  Integer p=bpkit.getKitAt(ucreate_combo.getSelectedIndex()).getSize();
+                 for(int s=0;s<8;s++)
+                 {
+               //      jbtnlist.get(s).setIcon(new ImageIcon(bpkit.getKitAt(ucreate_combo.getSelectedIndex()).getPart(s).getFilename()));
+                 }
+                 
                 
-                ub0.setIcon(new ImageIcon(bpkit.getKitAt(ucreate_combo.getSelectedIndex()).getPart(0).getFilename()));   
-                 ub1.setIcon(new ImageIcon(bpkit.getKitAt(ucreate_combo.getSelectedIndex()).getPart(1).getFilename()));   
-                  ub2.setIcon(new ImageIcon(bpkit.getKitAt(ucreate_combo.getSelectedIndex()).getPart(2).getFilename()));   
-                   ub3.setIcon(new ImageIcon(bpkit.getKitAt(ucreate_combo.getSelectedIndex()).getPart(3).getFilename()));   
-                    ub4.setIcon(new ImageIcon(bpkit.getKitAt(ucreate_combo.getSelectedIndex()).getPart(4).getFilename()));   
-                     ub5.setIcon(new ImageIcon(bpkit.getKitAt(ucreate_combo.getSelectedIndex()).getPart(5).getFilename()));   
-                      ub6.setIcon(new ImageIcon(bpkit.getKitAt(ucreate_combo.getSelectedIndex()).getPart(6).getFilename()));   
-                        ub7.setIcon(new ImageIcon(bpkit.getKitAt(ucreate_combo.getSelectedIndex()).getPart(7).getFilename()));   
                 
-             
-             }
        }
 
+}
 }
