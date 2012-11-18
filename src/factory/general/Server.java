@@ -86,7 +86,7 @@ public class Server {
 		
 		
         // TODO: uncomment when ready
-		prepareAllAgents(); // Prepare all agents; based on AgentMain.java
+//		prepareAllAgents(); // Prepare all agents; based on AgentMain.java
 
 		numClients = 0; // Initialize num clients is 0
 		start(portNumber); // Start listening for clients and making new HandleAManager instances
