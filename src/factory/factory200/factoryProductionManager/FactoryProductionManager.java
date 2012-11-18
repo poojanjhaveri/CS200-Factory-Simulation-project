@@ -42,7 +42,9 @@ public class FactoryProductionManager extends Manager implements ActionListener 
     private JScrollPane schedPane, outPane;
     private JTabbedPane tabs;
     
-    private JTextPane serverQueue;
+    private JTextPane serverQueueDisplay;
+    private ArrayList<String> serverQueue;
+    private String slot1, slot2;
     
     public GraphicsPanel gfx;
     
@@ -89,6 +91,10 @@ public class FactoryProductionManager extends Manager implements ActionListener 
         //Instantiate Graphics Panel
         gfx = new GraphicsPanel();
         gfx.setPreferredSize(new Dimension(1350, 700));
+        
+        //Instantiate ServerQueue
+        serverQueue = new ArrayList<String>();
+        serverQueueDisplay = new JTextPane();
     }
     
     private void instantiateStaticComponents()
