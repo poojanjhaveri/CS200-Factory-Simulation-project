@@ -29,8 +29,8 @@ class LMThreadTimer implements Runnable{
 
 	public class ServerTimer implements ActionListener{
 		public void actionPerformed(ActionEvent ae){
-			serverMain.getPartData().shakePartsFree();
-			serverMain.getPartData().laneVibrationController();
+			//serverMain.getPartData().shakePartsFree();
+			//serverMain.getPartData().laneVibrationController();
 			if(++feedingTiming == 50){
 				sendPartSignal.orderFeeding();
 				sendPartSignal.feederPartLowSensor_PurgeSwitch();
