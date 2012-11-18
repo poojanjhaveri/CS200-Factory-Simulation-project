@@ -276,10 +276,11 @@ public class FeederAgent extends Agent implements Feeder {
             parts.add(p.part);
         }
         
-        leftLane.msgHereAreParts(parts);
     	
-//        dosendPartToLeftLane(p);
-    	//animation.setDiverterSwitchLeft(feederNum-1);
+        dosendPartToLeftLane(p);
+        leftLane.msgHereAreParts(parts);
+
+        //animation.setDiverterSwitchLeft(feederNum-1);
     
         stateChanged();
     }
@@ -292,35 +293,55 @@ public class FeederAgent extends Agent implements Feeder {
         for(int i=0;i<p.quantity;i++)
             parts.add(p.part);
         
+    	dosendPartToRightLane(p);
         rightLane.msgHereAreParts(parts);
-//    	dosendPartToRightLane(p);
-    	//animation.setDiverterSwitchLeft(feederNum-1);
+
+        //animation.setDiverterSwitchLeft(feederNum-1);
     
         stateChanged();
     }
     
     private void dosendPartToLeftLane(myParts p){
-    	try {
+    /*	try {
 			Thread.sleep(7000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    	 this.client.sendMessage("Message");
+    */
+     //	 this.client.sendMessage("Message");
          LMServer.getForAgentFeeder().setDiverterSwitchLeft(feederNum);
          
-  //  	animation.setDiverterSwitchLeft(feederNum-1);
+         LMServer.getForAgentGantryRobot().putBin(p.part.type,p.quantity,feederNum);
+         //  	animation.setDiverterSwitchLeft(feederNum-1);
+    
+    try {
+			Thread.sleep(20000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
     
     private void dosendPartToRightLane(myParts p){
-    	try {
+    /*	try {
 			Thread.sleep(7000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    	
+    */	
+           LMServer.getForAgentFeeder().setDiverterSwitchRight(feederNum);
+         
+         LMServer.getForAgentGantryRobot().putBin(p.part.type,p.quantity,feederNum);
+         
 //    	animation.setDiverterSwitchRight(feederNum-1);
+    try {
+			Thread.sleep(20000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
 
@@ -357,8 +378,8 @@ public class FeederAgent extends Agent implements Feeder {
        LMServer.getForAgentLane().setSwitchOn(rightLane.getIndex());
        LMServer.getForAgentFeeder().setSwitchOn(feederNum);
        LMServer.getForAgentFeeder().setFeedPartsSwitchOn(feederNum);
-       LMServer.getForAgentFeeder().setDiverterSwitchLeft(feederNum);
-       LMServer.getForAgentGantryRobot().putBin(0, 8, feederNum);
+       //LMServer.getForAgentFeeder().setDiverterSwitchLeft(feederNum);
+
     }
     
     public void setAnimation(){
