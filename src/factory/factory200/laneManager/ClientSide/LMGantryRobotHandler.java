@@ -22,5 +22,8 @@ public class LMGantryRobotHandler{
 		else if( message.indexOf("&Purge&") != -1 ){
 			app.getGraphicsPanel().getAllBin().getBin(feederNum).purgeBin();
 		}
+		else if( message.indexOf("&Empty&") != -1 ){
+			app.getGraphicsPanel().getAllBin().getBin(feederNum).emptyBin();
+		}
 	}
 }

@@ -102,8 +102,8 @@ public class Part implements Serializable {
         //this.number=time()\;
         this.guipart = null;
         this.number = (int) (System.currentTimeMillis()/(long)1000);
-        this.type = number;
-        
+        this.type = Global.part_num; //to order the parts from 0-n
+        Global.part_num++;    
     }
     
     public Part(String n, String d, Integer num) {
@@ -111,7 +111,9 @@ public class Part implements Serializable {
         this.description = d;
         this.number = num;
         this.guipart = null;
-        this.type = number;
+        //this.type = number;
+        this.type = Global.part_num;
+        Global.part_num++;
     }
     public Part(String n, String d, String file) {
         this.name = n;
@@ -120,6 +122,8 @@ public class Part implements Serializable {
         this.guipart = null;
         this.number = (int)(System.currentTimeMillis()/(long)1000);
         this.type = number;
+        this.type = Global.part_num;
+        Global.part_num++;
     }
     public void setFilename(String in) {
         this.filename = in;
