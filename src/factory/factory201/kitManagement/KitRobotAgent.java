@@ -71,9 +71,8 @@ public class KitRobotAgent extends Agent implements KitRobot {
      */
     @Override
     public void msgKitIsFull(Kit kit) {
-//        print("msgKitIsFull: " + kitStand.get(1).name);
+        print("msgKitIsFull: " + kit.name);
         kit.status = Kit.Status.full;
-        kit.beingUsedByPartsAgent = false;
         stateChanged();
     }
 
@@ -109,14 +108,14 @@ public class KitRobotAgent extends Agent implements KitRobot {
             moveFullKitToInspection(kitStand.get(0));
             return true;
         }
-        if (emptyKitRequestsFromPartsAgent > 0) {
-            // if parts agent needs empty kit
-            giveEmptyKitToPartsAgent();
-            return true;
-        }
         if (kitStand.availability() > 0 && !requestedEmptyKit) {
             // if tempstand is empty
             requestEmptyKitFromConveyor();
+            return true;
+        }
+        if (emptyKitRequestsFromPartsAgent > 0) {
+            // if parts agent needs empty kit
+            giveEmptyKitToPartsAgent();
             return true;
         }
         return false;
@@ -135,6 +134,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
     private void moveFullKitToInspection(Kit kit) {
         print("Moving the full kit: [" + kitStand.get(1).name + "] to the inspection stand.");
         kitStand.moveFullKitToInspection(kit);
+        kit.beingUsedByPartsAgent = false;
         camera.msgKitIsFull(kitStand.get(2));
         stateChanged();
     }
@@ -146,8 +146,6 @@ public class KitRobotAgent extends Agent implements KitRobot {
             partsAgent.msgEmptyKitReady(kitStand.get(i));
             kitStand.get(i).beingUsedByPartsAgent = true;
             emptyKitRequestsFromPartsAgent--;
-        } else if(!requestedEmptyKit){
-            requestEmptyKitFromConveyor();
         }
         stateChanged();
     }

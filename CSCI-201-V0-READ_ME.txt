@@ -1,3 +1,5 @@
+*This is outdated - only for v0*
+
 Parts dumped into bins and fed down the lanes:
 	Run src/factory/factory200/laneManager/V0LaneBinGantry.java
 

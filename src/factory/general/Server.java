@@ -81,18 +81,26 @@ public class Server {
 	 * @param portNumber - the port number to create the server on.
 	 */
 	public Server(int portNumber) {
-            
         this.fstate = new FactoryState();
+<<<<<<< HEAD
         // TODO: uncomment when ready
 //		initializeManagers();
 	//	prepareAllAgents(); // Prepare all agents; based on AgentMain.java
+=======
+
+		initializeManagers();
+        // TODO: uncomment when ready
+//		prepareAllAgents(); // Prepare all agents; based on AgentMain.java
+		
+>>>>>>> 9f3be78d46b1ae57e499f998ceea1a66a798d015
 		numClients = 0; // Initialize num clients is 0
 		start(portNumber); // Start listening for clients and making new HandleAManager instances
 	}
-public FactoryState getFactoryState()
-{
-    return this.fstate;
-}
+	
+	public FactoryState getFactoryState() {
+		return this.fstate;
+	}
+	
 	/**
 	 * @brief Starts the server, listening for clients and making new HandleAManager instances (threads) appropriately
 	 * Contains the central loop. We break out of this loop by forcing System.exit(0) in HandleAManager.
@@ -138,6 +146,7 @@ public FactoryState getFactoryState()
 		startAgentThreads();
 		
 		startInteractionSequence();
+		
 		debugIfNecessaryForAgents();
 	}
 	
@@ -210,10 +219,6 @@ public FactoryState getFactoryState()
         // Alex
         cameraAgent.startThread();
         conveyorAgent.startThread();
-        
-        // *Change this!
-        conveyorAgent.generateKit(10); // * This generates 10 new kits, among other things if you pass string... *
-        
         kitRobotAgent.startThread();
 
         // Patrick
@@ -228,6 +233,10 @@ public FactoryState getFactoryState()
             }
             laneAgents[i].startThread();
         }
+        
+        // *Put this wherever the FPM sends the signal to create (generate) kits
+//        conveyorAgent.generateKit(10); // * This generates 10 new kits, among other things if you pass string... *
+        
 	}
 	
 	private void startInteractionSequence() {
@@ -240,6 +249,7 @@ public FactoryState getFactoryState()
 
 		// Officially start the agent interaction sequence!
 		//partsAgent.msgHereIsKit(kit); // The primary agent
+		// TODO: UNCOMMENT WHEN READY
 	}
 
 	private void debugIfNecessaryForAgents() {
@@ -302,12 +312,16 @@ public FactoryState getFactoryState()
 		this.partsAgent.setClient(in);
 	}
 	
+<<<<<<< HEAD
 	public LMServerMain getServerLM(){
 		return this.serverLM;
 	}
 
     public void setFactoryProductionManagerToAll(HandleAManager in)
     {
+=======
+    public void setFactoryProductionManagerToAll(HandleAManager in) {
+>>>>>>> 9f3be78d46b1ae57e499f998ceea1a66a798d015
 	nestAgent.setFactoryProductionManager(in);
 	partsAgent.setFactoryProductionManager(in);
     kitRobotAgent.setFactoryProductionManager(in);
@@ -320,4 +334,10 @@ public FactoryState getFactoryState()
     laneAgents[i].setFactoryProductionManager(in);
     }
 
+<<<<<<< HEAD
+=======
+	public LMServerMain getServerLM() {
+		return this.serverLM;
+	}
+>>>>>>> 9f3be78d46b1ae57e499f998ceea1a66a798d015
 }
