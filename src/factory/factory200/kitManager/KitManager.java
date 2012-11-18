@@ -37,8 +37,6 @@ import javax.swing.event.ChangeListener;
  * 
  */
 
-
-
 public class KitManager extends Manager  implements ActionListener {
 
 	/**
