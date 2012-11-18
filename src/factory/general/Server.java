@@ -28,7 +28,6 @@ import factory.factory201.partsManagement.PartsAgent;
  * @author David Zhang, YiWei Roy Zheng
  */
 public class Server {
-
 	/**
 	 * Instance fields
 	 */
@@ -48,9 +47,6 @@ public class Server {
     private static final int LANE = 8;
 
     // Fields for agent setup
-    private KitAssemblyManager KAM; // TODO: Need to remove KAM
-    private GantryRobotManager GRM; // TODO: Need to remove GRM
-    
 	private NestAgent nestAgent;
 	private PartsAgent partsAgent;
     private KitRobotAgent kitRobotAgent;
@@ -138,17 +134,12 @@ public class Server {
 		declareAgents();
 		connectAgentsAndManagers();
 		startAgentThreads();
-		
 		startInteractionSequence();
-		
 		debugIfNecessaryForAgents();
 	}
 	
 	private void declareAgents() {
 		/*========== Declare all agents and etc. ==========*/
-		// Misc - pass in the appropriate KAM and GRM
-//        KAM = new KitAssemblyManager(); // *
-//        GRM = new GantryRobotManager(); // *
 
         // Alex
         kitRobotAgent = new KitRobotAgent("Kit Robot");
@@ -227,7 +218,7 @@ public class Server {
             laneAgents[i].startThread();
         }
         
-        // *Put this wherever the FPM sends the signal to create (generate) kits
+        // TODO: *Put this wherever the FPM sends the signal to create (generate) kits
 //        conveyorAgent.generateKit(10); // * This generates 10 new kits, among other things if you pass string... *
         
 	}
