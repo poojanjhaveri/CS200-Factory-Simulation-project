@@ -382,7 +382,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 	    }
 	
 		//Lane Manager( pass 'msg' into Lane Manager Message Interpreter and take a proper action )
-	    gfx.verifyMessage(msg);
+//	    gfx.verifyMessage(msg); // TODO: Why nullpointer?
     }
     /**
      * @brief Controls Kit selection and Factory ON/OFF Controls Kit selection
