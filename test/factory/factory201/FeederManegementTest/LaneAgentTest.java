@@ -37,7 +37,7 @@ public void testneedParts(){
 	//1 is the lane index number
 
 	//this constructor intitializes the lane with 0 quantity of all the 8 parts in its list
-	lane=new LaneAgent("Lane1");
+	lane=new LaneAgent("Lane1",1);
 	MockFeeder feeder=new MockFeeder("Feeder");
 	//feeder=new FeederAgent(1);
 	MockGantry gantry=new MockGantry("Gantry");
@@ -58,7 +58,7 @@ public void testneedParts(){
 
 public void testsendPartsAfterRequest(){
 
-	lane=new LaneAgent("Lane1");
+	lane=new LaneAgent("Lane1",1);
 	MockFeeder feeder=new MockFeeder("Feeder");
 	MockNest nest=new MockNest("Nest");
 	//feeder=new FeederAgent(1);
@@ -84,7 +84,7 @@ public void testsendPartsAfterRequest(){
 
 public void testLaneInitializedWithNoParts(){
 
-	lane=new LaneAgent("Lane1");
+	lane=new LaneAgent("Lane1",1);
 	MockFeeder feeder=new MockFeeder("Feeder");
 	MockNest nest=new MockNest("Nest");
 	//feeder=new FeederAgent(1);
