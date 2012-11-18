@@ -27,19 +27,19 @@ import java.util.List;
  */
 public class CameraAgent extends Agent implements Camera {
 
-    private KitRobot kitRobotAgent;
+    private KitRobot kitRobot;
     private NestInterface nestAgent;
-    private List<Nest> nests;
-    private List<Kit> kits;
-    private Kit tempKit;
-    private List<Integer> kitInfo;
+    private List<Nest> nestList;
+    private List<Kit> kitList;
+    private Kit kitInfoFromPartsAgent;
+    private List<Integer> kitRqmts;
 
     public CameraAgent(String name) {
         super(name);
-        nests = Collections.synchronizedList(new ArrayList<Nest>());
-        kits = Collections.synchronizedList(new ArrayList<Kit>());
-        tempKit = null;
-        kitInfo = new ArrayList<Integer>();
+        nestList = Collections.synchronizedList(new ArrayList<Nest>());
+        kitList = Collections.synchronizedList(new ArrayList<Kit>());
+        kitInfoFromPartsAgent = null;
+        kitRqmts = new ArrayList<Integer>();
     }
 
     // ********** MESSAGES *********
@@ -52,8 +52,8 @@ public class CameraAgent extends Agent implements Camera {
     @Override
     public void msgNestIsFull(Nest nest) {
 //        print("Received msgNestIsFull that " + nest.nestNum + " is full.");
-        synchronized (nests) {
-            nests.add(nest);
+        synchronized (nestList) {
+            nestList.add(nest);
         }
         stateChanged();
     }
@@ -67,34 +67,34 @@ public class CameraAgent extends Agent implements Camera {
     @Override
     public void msgKitIsFull(Kit kit) {
 //        print("Received msgKitIsFull from Kit Robot Agent");
-        synchronized (kits) {
-            kits.add(kit);
+        synchronized (kitList) {
+            kitList.add(kit);
         }
         stateChanged();
     }
 
     @Override
     public void msgHereIsKitInfo(Kit kit) {
-        tempKit = kit;
+        kitInfoFromPartsAgent = kit;
     }
 
     // ********* SCHEDULER *********
     @Override
     public boolean pickAndExecuteAnAction() {
-        if (tempKit != null) {
-            configureKitInfo(tempKit);
+        if (kitInfoFromPartsAgent != null) {
+            configureKitInfo(kitInfoFromPartsAgent);
             return true;
         }
-        synchronized (kits) {
-            for (Kit k : kits) {
+        synchronized (kitList) {
+            for (Kit k : kitList) {
                 if (k.status == Kit.Status.full) {
                     inspectKit(k);
                     return true;
                 }
             }
         }
-        synchronized (nests) {
-            for (Nest n : nests) {
+        synchronized (nestList) {
+            for (Nest n : nestList) {
                 if (n.status == Nest.Status.gettingInspected) {
                     inspectNest(n);
                     return true;
@@ -115,23 +115,23 @@ public class CameraAgent extends Agent implements Camera {
         print("Inspecting kit: [" + kit.name + "].");
         boolean result = true;
 
-        if (kit.parts.size() != kitInfo.size()) {
+        if (kit.parts.size() != kitRqmts.size()) {
             result = false;
         } else {
-            List<Integer> kitRequirements = new ArrayList<Integer>(this.kitInfo);
+            List<Integer> list = new ArrayList<Integer>(this.kitRqmts);
             for (Part p : kit.parts) {
-                if(kitRequirements.contains(p.type)) {
-                    kitRequirements.remove(p.type);
+                if (list.contains(p.type)) {
+                    list.remove(p.type);
                 }
             }
-            if(kitRequirements.size() > 0) {
+            if (list.size() > 0) {
                 result = false;
             }
         }
 
         DoInspectKit(kit);
-        kitRobotAgent.msgKitInspected(true);
-        kits.remove(kit);
+        kitRobot.msgKitInspected(true);
+        kitList.remove(kit);
         stateChanged();
     }
 
@@ -153,21 +153,21 @@ public class CameraAgent extends Agent implements Camera {
         }
         DoInspectNest(nest);
         nestAgent.msgNestInspected(nest, true);
-        nests.remove(nest);
+        nestList.remove(nest);
         stateChanged();
     }
 
     private void configureKitInfo(Kit info) {
-        kitInfo.clear();
+        kitRqmts.clear();
         for (int i = 0; i < info.getSize(); i++) {
-            kitInfo.add(info.getPart(i).type);
+            kitRqmts.add(info.getPart(i).type);
         }
-        tempKit = null;
+        kitInfoFromPartsAgent = null;
     }
 
     // ************ MISC ***********
     public void setKitRobot(KitRobot agent) {
-        kitRobotAgent = agent;
+        kitRobot = agent;
     }
 
     public void setNestAgent(NestInterface agent) {
@@ -175,7 +175,7 @@ public class CameraAgent extends Agent implements Camera {
     }
 
     public void setAll(KitRobot kitRobot, NestInterface nestAgent) {
-        this.kitRobotAgent = kitRobot;
+        this.kitRobot = kitRobot;
         this.nestAgent = nestAgent;
     }
 
@@ -184,7 +184,7 @@ public class CameraAgent extends Agent implements Camera {
             this.client.sendMessage(Message.KAM_FLASH_KIT_CAMERA);
             this.fpm.sendMessage(Message.KAM_FLASH_KIT_CAMERA);
         } else {
-            print("[ERROR] - Kit Assembly Manager is not online.");
+//            print("[ERROR] - Kit Assembly Manager is not online.");
         }
     }
 
@@ -194,7 +194,7 @@ public class CameraAgent extends Agent implements Camera {
             this.fpm.sendMessage(Message.KAM_FLASH_NEST_CAMERA + ":" + nest.nestNum);
             this.fpm.sendMessage(Message.ALERT_FPM_KIT_INSPECTED);
         } else {
-            print("[ERROR] - Kit Assembly Manager is not online.");
+//            print("[ERROR] - Kit Assembly Manager is not online.");
         }
     }
 }

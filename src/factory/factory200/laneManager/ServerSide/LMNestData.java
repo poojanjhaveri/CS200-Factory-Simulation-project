@@ -15,9 +15,10 @@ public class LMNestData {
 	
 	public void setSwitchUp(){
 		// Signal To LM & FPM
-		signal = nestNum + "&Nest&" + "Switch Up";
+		signal = nestNum + "&Nest&Switch Up";
 		serverMain.sendToLM(signal);
 		serverMain.sendToFPM(signal);
+		serverMain.sendToKAM(signal);
 		
 		// Server Data Task
 		nestSwitch = true;
@@ -25,9 +26,10 @@ public class LMNestData {
 	
 	public void setSwitchDown(){
 		// Signal To LM  & FPM
-		signal = nestNum + "&Nest&" + "Switch Down";
+		signal = nestNum + "&Nest&Switch Down";
 		serverMain.sendToLM(signal);
 		serverMain.sendToFPM(signal);
+		serverMain.sendToKAM(signal);
 
 		// Server Data Task
 		nestSwitch = false;

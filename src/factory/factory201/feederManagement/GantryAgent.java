@@ -158,8 +158,9 @@ public class GantryAgent extends Agent implements Gantry {
     public void msgNeedPart(Part part,Feeder feeder) {
     	
         print("msgNeedPart from Feeder for type " + part.type);
-    	//System.out.println("part need message from feeder received");
-    	int count=0;
+    	
+        int count=0;
+        
         //increase count everytime myParts doesn't have that type of part
         for (myBin b : bins) {
             if (b.part.type != part.type)
@@ -177,11 +178,7 @@ public class GantryAgent extends Agent implements Gantry {
     	{
     		if(f.feeder==feeder){
     			
-    			//System.out.println("setting requestState for the feeder index  " + f.index);
-    			//System.out.println("Part type is " + part.type);
-    			
     			f.requested_part=part;
-    			
     			//System.out.println("requested type is " + f.requested_part.type);
     			f.requestState=true;
     			}
@@ -253,39 +250,30 @@ public class GantryAgent extends Agent implements Gantry {
         return;
     }
     private void doSupplyPart(myBin b,myFeeder f){
-   // 	print("go to bin command");
-//    	animation.goToBin(b.index-1);
-    	//while(animation.returnArrived()==false){;}
-    	print("about to pick up bin");
+   	
+     print("about to pick up bin");
   	//animation.ganbot.moveToBin(b.index);
     
      if(this.client == null)
          {
-         System.out.println("CRITICAL ERROR: CLIENT WAS NEVER CONNECTED.");
+         print("[ERROR] - Gantry Robot Manager is not online.");
          return;
          }
          this.client.sendMessage(Message.MOVE_GANTRY_TO_BIN+":"+b.index+1);
-         
-         
-     
-        //  	animation.pickUpBin(b.index-1);
-  
-        try {
+       
+         try {
 			Thread.sleep(10000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
         
-    	/*Kevin - Alex commented this out because it was causing compiler errors and we need to run the agent code
-        animation.ganbot.carryABin(b.index+1);*/
+    	//animation.ganbot.carryABin(b.index+1);*/
         //animation.ganbot.moveToFeeder(f.index);
-        /*
-         this.client.sendMessage(Message.GANTRY_CARRY_A_BIN"+":"+b.index+1); 
+        
          this.client.sendMessage(Message.MOVE_GANTRY_TO_FEEDER+":"+f.index);
-         */
-    	
-        //animation.goToFeeder(f.index-1);
+         
+    	//animation.goToFeeder(f.index-1);
     	
     	try {
 			Thread.sleep(10000);
@@ -294,10 +282,6 @@ public class GantryAgent extends Agent implements Gantry {
 			e.printStackTrace();
 		}
     	
-    	//while(animation.returnArrived()==false){;}
-        //animation1.fillInFeeder(f.index-1,b.index-1,8);
-        //animation1.dumpBinBoxIntoFeeder(f.index-1, b.index-1);
-    	//animation.ganbot.
     	
     }
     public void setFeeder(Feeder feeder,int index) {
