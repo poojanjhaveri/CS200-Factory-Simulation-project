@@ -87,9 +87,7 @@ public class Server {
 	public Server(int portNumber) {
         this.fstate = new FactoryState();
 		initializeManagers(); // Something by Dongyoung
-		
 		prepareAllAgents(); // Prepare all agents; based on AgentMain.java
-
 		numClients = 0; // Initialize num clients is 0
 		start(portNumber); // Start listening for clients and making new HandleAManager instances
 	}
@@ -112,7 +110,7 @@ public class Server {
 			System.exit(0);
 		}
 		
-		while (true) {
+		while(true){
 			// Continuously check for a new client for which to create a thread
 			try {
 				s = ss.accept(); // Wait for a client (program halts here until connection occurs)
@@ -129,7 +127,7 @@ public class Server {
 
 	private void initializeManagers() { // Something by Dongyoung...?  Dongyoung : Yeah
 		 serverLM = new LMServerMain();
-                 new Thread(serverLM).start();
+		 new Thread(serverLM).start();
 	}
 	
 	// Start Server-side Program(Lane Manager)
@@ -169,8 +167,6 @@ public class Server {
                 }
                 laneAgents[i] = new LaneAgent("Lane " + i,i);
             }
-            
-        
         }
 
         private void connectAgentsAndManagers() {
@@ -207,12 +203,9 @@ public class Server {
             }
             for (int i = 0; i < LANE; i++) {
                 if (i < FEEDER) {
-                    feederAgents[i].setServer(serverLM);
-                
-                }
-             
-            }
-            
+                    feederAgents[i].setServer(serverLM); 
+                }  
+            }   
         }
 
         private void startAgentThreads() {
