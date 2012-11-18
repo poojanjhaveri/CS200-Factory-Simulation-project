@@ -1,43 +1,29 @@
 package factory.factory200.laneManager.ServerSide;
 
-import factory.general.*;
-
 public class LMGantryRobotForAgent {
 	
-	private Server server;
 	private LMServerMain serverMain;
 	private String signal = "";
 	
-	public LMGantryRobotForAgent(Server server, LMServerMain serverMain){
-		this.server = server;
+	public LMGantryRobotForAgent(LMServerMain serverMain){
 		this.serverMain = serverMain;
 	}
 	
 	public void putBin(int binNum, int quantity, int feederNum){
 		int partNum = binNum;
 		
-		// Signal To Managers
+		// Signal To LM & FPM
 		signal = feederNum + "&Bin&Put&" + binNum;
-		
-		//----------------------------------------------------------------------------------For Test
-		server.signalToClient(signal);
-		//-----------------------------------------------------------------------------------------------
-		
-		// Send To FPM
+		serverMain.sendToLM(signal);
+		serverMain.sendToFPM(signal);
 		
 		// Server Data Task
 		serverMain.getPartData().addPartToFeeder(feederNum, partNum, quantity);
 	}
 	
 	public void purgeBin(int feederNum){
-		// Signal To Managers
-		signal = feederNum + "&Bin&Purge&";
-		
-		//----------------------------------------------------------------------------------For Test
-		server.signalToClient(signal);
-		//-------------------------------------------------------------------------------------------------
-		
-		// Send To FPM
-		
+		// Signal To LM & FPM
+		serverMain.sendToLM(signal);
+		serverMain.sendToFPM(signal);
 	}
 }

@@ -66,6 +66,9 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 
 	public FactoryProductionManager()
 	{
+		// Send Identification to Server
+		super.sendToServer(Message.IDENTIFY_FACTORYPRODUCTIONMANAGER);
+		
 		debug = false;
 		GridBagLayout gridbag = new GridBagLayout();
 		GridBagConstraints c = new GridBagConstraints();
@@ -370,6 +373,15 @@ public class FactoryProductionManager extends Manager implements ActionListener 
     public void processMessage(String msg)
     {
 	super.processMessage(msg);
+<<<<<<< HEAD
+	//if(msg.contains(Message.PUSH_KITS_LIST))
+	  //  {
+	//		this.kitsbp.recreate(this.grabParameter(msg));
+	//		System.out.println("GRABBED A NEW BLUEPRINTKITS FROM THE SERVER");
+	//		this.kitsbp.debug();
+	//    }
+	
+=======
 	if(msg.contains(Message.PUSH_KITS_LIST))
 	    {
 			this.kitsbp.recreate(this.grabParameter(msg));
@@ -378,6 +390,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 	    }
 
 	//DONGYOUNG: please run each manager's processMessage(msg) function here	
+>>>>>>> 79005eda696bf784f04bc85d92f16094211ae167
 		// Lane Manager
 	    //gfx.verifyMessage(msg);
     }

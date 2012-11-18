@@ -11,7 +11,7 @@ public class LMApplication extends JFrame{
 	
 	public LMApplication(){
 		setTitle("Lane Manager");
-		setSize(850,730);
+		setSize(850,720);
 		setLocation(0,0);
 		setVisible(true);
 		setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
