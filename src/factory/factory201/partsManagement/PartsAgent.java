@@ -100,7 +100,7 @@ public class PartsAgent extends Agent implements PartsInterface {
     }
         if (kit0!=null && kits!=0){
             
-            if (kit0NeedsParts.isEmpty() && kitZero) {
+            if (kit0NeedsParts.isEmpty()) {
                 giveKitToKitAgent(kit0);
                 return true;
             } 
@@ -116,7 +116,7 @@ public class PartsAgent extends Agent implements PartsInterface {
         
         if(kit1!=null && kits!=0){
             
-            if (kit1NeedsParts.isEmpty() && kitOne) {//or kit0.status==Kit.Status.full
+            if (kit1NeedsParts.isEmpty()) {//or kit0.status==Kit.Status.full
                 giveKitToKitAgent(kit1);
                 return true;
             }

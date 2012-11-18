@@ -53,20 +53,25 @@ public class HandleAManager implements Runnable {
             System.exit(0);
         }
 
-        // This thread loops forever to receive a client message and echo it back
+        // This thread loops while 'running' to receive a client message and echo it back
         while (running) {
             String message = null;
             try {
                 // Listen for interaction via protocol
                 message = br.readLine();
                 if (message == null) {
-                    throw new Exception("A manager class must do manager.sendToServer(Message.CLIENT_EXITED);");
+                	System.out.println("Message from client is null. A manager class should exit properly (i.e., by closing with the X in the corner)");
+                    throw new Exception();
                 }
                 processMessage(message);
                 p.println("Processed message in client thread");
-            } catch (Exception e) {
-                System.out.print("Client exited prematurely; shutting down");
+            } catch (NullPointerException e) {
+            	System.out.println("Nullpointer from HandleAManager. Shutting down. The agents may not have been initialized.");
+                e.printStackTrace();
                 System.exit(0);
+            } catch (Exception e) {
+            	e.printStackTrace();
+            	System.exit(0);
             }
         }
     }
@@ -109,12 +114,11 @@ public class HandleAManager implements Runnable {
                 System.out.println("Number of clients is 0; exiting Server");
                 System.exit(0);
             }
-        }else if(msg.contains(Message.IDENTIFY_KITMANAGER))
-	    {
-		System.out.println("SERVER FOUND A KIT MANAGER");
-		this.server.setKitManagerClient(this);
+        }else if(msg.contains(Message.IDENTIFY_KITMANAGER)) {
+        	System.out.println("SERVER FOUND A KIT MANAGER");
+        	this.server.setKitManagerClient(this);
 	    }
- else if(msg.contains(Message.IDENTIFY_FACTORYPRODUCTIONMANAGER)) {
+        else if (msg.contains(Message.IDENTIFY_FACTORYPRODUCTIONMANAGER)) {
  			p.println("SERVER HAS IDENTIFIED A FACTORYPRODUCTIONMANAGER");
  			this.id = 3;
             this.server.setFactoryProductionManagerToAll(this);
@@ -128,6 +132,7 @@ public class HandleAManager implements Runnable {
             p.println("SERVER HAS IDENTIFIED A GANTRYROBOTMANAGER");
             this.id = 0;
             this.server.setGantryAgentClient(this); // make sure client is initialized - SOLVE THIS BY INSTANTIATING AGENTS ON SERVER ALREADY
+            this.server.getServerLM().setGRM(this);
         } else if (msg.contains(Message.IDENTIFY_KITASSEMBLYMANAGER)) {
             p.println("SERVER HAS IDENTIFIED A KITASSEMBLYMANAGER");
             this.id = 1;

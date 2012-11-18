@@ -277,7 +277,7 @@ public class FeederAgent extends Agent implements Feeder {
         }
         
     	
-        dosendPartToLeftLane(p);
+       // dosendPartToLeftLane(p);
         leftLane.msgHereAreParts(parts);
 
         //animation.setDiverterSwitchLeft(feederNum-1);
@@ -293,7 +293,7 @@ public class FeederAgent extends Agent implements Feeder {
         for(int i=0;i<p.quantity;i++)
             parts.add(p.part);
         
-    	dosendPartToRightLane(p);
+    	//dosendPartToRightLane(p);
         rightLane.msgHereAreParts(parts);
 
         //animation.setDiverterSwitchLeft(feederNum-1);
@@ -310,7 +310,10 @@ public class FeederAgent extends Agent implements Feeder {
 		}
     */
      //	 this.client.sendMessage("Message");
-         LMServer.getForAgentFeeder().setDiverterSwitchLeft(feederNum);
+        
+        if(LMServer.getForAgentFeeder()==null)
+            return; 
+        LMServer.getForAgentFeeder().setDiverterSwitchLeft(feederNum);
          
          LMServer.getForAgentGantryRobot().putBin(p.part.type,p.quantity,feederNum);
          //  	animation.setDiverterSwitchLeft(feederNum-1);
@@ -331,7 +334,7 @@ public class FeederAgent extends Agent implements Feeder {
 			e.printStackTrace();
 		}
     */	
-           LMServer.getForAgentFeeder().setDiverterSwitchRight(feederNum);
+        LMServer.getForAgentFeeder().setDiverterSwitchRight(feederNum);
          
          LMServer.getForAgentGantryRobot().putBin(p.part.type,p.quantity,feederNum);
          
