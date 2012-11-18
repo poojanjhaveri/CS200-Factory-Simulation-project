@@ -84,12 +84,8 @@ public class Server {
             
         this.fstate = new FactoryState();
         // TODO: uncomment when ready
-<<<<<<< HEAD
 		initializeManagers();
 		prepareAllAgents(); // Prepare all agents; based on AgentMain.java
-=======
-//		prepareAllAgents(); // Prepare all agents; based on AgentMain.java
->>>>>>> 79005eda696bf784f04bc85d92f16094211ae167
 		numClients = 0; // Initialize num clients is 0
 		start(portNumber); // Start listening for clients and making new HandleAManager instances
 	}
@@ -305,12 +301,7 @@ public FactoryState getFactoryState()
 	public void setPartsAgentClient(HandleAManager in) {
 		this.partsAgent.setClient(in);
 	}
-<<<<<<< HEAD
 	
-	public LMServerMain getServerLM(){
-		return this.serverLM;
-	}
-=======
     public void setFactoryProductionManagerToAll(HandleAManager in)
     {
 	nestAgent.setFactoryProductionManager(in);
@@ -324,10 +315,8 @@ public FactoryState getFactoryState()
     for(int i = 0; i != 8; i++)
     laneAgents[i].setFactoryProductionManager(in);
     }
-	// here...
+
 	public LMServerMain getServerLM() {
 		return this.serverLM;
 	}
-
->>>>>>> 79005eda696bf784f04bc85d92f16094211ae167
 }
