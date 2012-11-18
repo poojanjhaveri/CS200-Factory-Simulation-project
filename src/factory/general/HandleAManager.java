@@ -65,7 +65,7 @@ public class HandleAManager implements Runnable {
                 processMessage(message);
                 p.println("Processed message in client thread");
             } catch (Exception e) {
-                p.print("Client exited prematurely; shutting down");
+                System.out.print("Client exited prematurely; shutting down");
                 System.exit(0);
             }
         }
