@@ -50,7 +50,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 
 	private boolean debug;
 	private BlueprintKits debugbp;
-    private BlueprintKits kitsbp;
+        private BlueprintKits kitsbp;
 	private final static String newline = "\n";
 	
 
