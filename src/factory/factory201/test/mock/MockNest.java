@@ -25,7 +25,7 @@ public class MockNest extends MockAgent implements NestInterface {
 
     @Override
     public void msgNestInspected(Nest n, boolean result) {
-        
+          log.add(new LoggedEvent("Nest Inspected"));
     }
 
     @Override
