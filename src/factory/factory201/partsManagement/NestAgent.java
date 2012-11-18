@@ -82,15 +82,15 @@ public class NestAgent extends Agent implements NestInterface {
                     break;
                 }
             }
-     }/*
+     }
         else{
             for (Nest n: myNests){
+                if(n.status==Nest.Status.readyForKit){
     		if(n.part.type == p.type){
-                    if(n.status!=Nest.Status.empty)
+                    
                 giveToKit(n);
-                    else
-                        print("EMPTY NEST ERROR!");
-                doPurge = false;}}}*/
+                   break;
+                }}}}
     	if (doPurge){
            /* for (Nest n: myNests){
                 if(n.status != Nest.Status.needPart) 
@@ -151,7 +151,6 @@ public class NestAgent extends Agent implements NestInterface {
                 }
 
             }
-        
 /*
         for (Nest n : myNests) {
             if (n.status == Nest.Status.readyForKit) {
@@ -207,10 +206,10 @@ public class NestAgent extends Agent implements NestInterface {
 
     
     private void giveToKit(Nest n){
-        requests.remove(n.parts.remove(0));
+        requests.remove(n.parts.get(0));
     	partsagent.msgHereIsPart(n.parts.remove(0));
         print("giving part " + n.part.getString() + " to kit now nest has " + n.parts.size());
-        n.status = Nest.Status.none;
+        //n.status = Nest.Status.none;
     	if (n.parts.size()<2)
     		n.status = Nest.Status.needPart;
         if (n.parts.isEmpty())
