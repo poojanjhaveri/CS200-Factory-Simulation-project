@@ -484,7 +484,6 @@ public class KitManager extends Manager  implements ActionListener {
             {
             Kit newkit = new Kit(kitname.getText(),"description");//this will be the kit that just got made
             
-            
 
             newkit.setParts(finalpartlist);
         
