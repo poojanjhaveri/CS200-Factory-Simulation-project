@@ -161,8 +161,7 @@ public class KitManager extends Manager  implements ActionListener {
             mainpanel.add(tabbedPane,BorderLayout.CENTER);
             
             
-            
-            
+
             
             
             
