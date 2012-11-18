@@ -34,7 +34,7 @@ public class PartsManager extends Manager implements ActionListener {
 
 
     BlueprintParts bp;///<contains list of parts
-
+    
     private JPanel contentPane;
     private JLabel lblPartsManager;
     private JTabbedPane tabbedPane;

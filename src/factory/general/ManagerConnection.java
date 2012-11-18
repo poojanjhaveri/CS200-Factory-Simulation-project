@@ -7,9 +7,6 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-import factory.general.Server;
-import factory.general.Printer;
-
 /**
  * A standard issue to all classes that extend Manager. All server interactions are done by this class. Runs on its own thread so nonblocking.
  * @brief connection to server from manager
@@ -95,6 +92,11 @@ public class ManagerConnection implements Runnable {
         try {
             String msg = in.readLine();
             this.mgr.processMessage(msg);
+        } catch (NullPointerException e) {
+        	System.out.println("A client has exited prematurely while other clients were still connected.");
+//        	System.out.println("Shutting down.");
+//        	System.exit(0);
+        	e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
         }

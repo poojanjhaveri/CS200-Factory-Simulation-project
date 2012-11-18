@@ -112,27 +112,26 @@ public class CameraAgent extends Agent implements Camera {
      * @param kit Kit being inspected by camera
      * @brief Inspects nests and returns result to kitRobot agent.
      */
-    public void inspectKit(Kit kit) {
+    private void inspectKit(Kit kit) {
         print("Inspecting kit: [" + kit.name + "].");
         boolean result = true;
-        
-        if(kit.parts.size() != kitInfo.size()) {
+
+        if (kit.parts.size() != kitInfo.size()) {
             result = false;
         } else {
             Stack<Part.Type> types = new Stack<Part.Type>();
-            for(Part.Type t : kitInfo) {
+            for (Part.Type t : kitInfo) {
                 types.add(t);
             }
-            
-            for(Part p : kit.parts) {
-                for(Part.Type t : types) {
-                    if(t == p.type) {
-                        
+
+            for (Part p : kit.parts) {
+                for (Part.Type t : types) {
+                    if (t == p.type) {
                     }
                 }
             }
         }
-        
+
         DoInspectKit(kit);
         kitRobotAgent.msgKitInspected(true);
         kits.remove(kit);
@@ -145,12 +144,12 @@ public class CameraAgent extends Agent implements Camera {
      * @param nest Nest being inspected by camera
      * @brief Inspects nests and returns result to nest agent.
      */
-    public void inspectNest(Nest nest) {
+    private void inspectNest(Nest nest) {
         print("Inspecting nest: [Nest " + nest.nestNum + "].");
         Part.Type type = nest.part.type;
         boolean result = true;
-        for(Part p : nest.parts) {
-            if(p.type != type) {
+        for (Part p : nest.parts) {
+            if (p.type != type) {
                 result = false;
                 break;
             }
@@ -161,7 +160,7 @@ public class CameraAgent extends Agent implements Camera {
         stateChanged();
     }
 
-    public void configureKitInfo(Kit info) {
+    private void configureKitInfo(Kit info) {
         kitInfo.clear();
         for (int i = 0; i < info.getSize(); i++) {
             kitInfo.add(info.getPart(i).type);
@@ -184,12 +183,20 @@ public class CameraAgent extends Agent implements Camera {
     }
 
     private void DoInspectKit(Kit kit) {
-//        KAM.flashKitCamera();
-//    	this.client.sendMessage(Message.KAM_FLASH_KIT_CAMERA);
+        if (this.client != null) {
+            this.client.sendMessage(Message.KAM_FLASH_KIT_CAMERA);
+            this.fpm.sendMessage(Message.KAM_FLASH_KIT_CAMERA);
+        } else {
+            print("[ERROR] - Kit Assembly Manager is not online.");
+        }
     }
 
     private void DoInspectNest(Nest nest) {
-//        KAM.flashNestCamera(nest.nestNum);
-//    	this.client.sendMessage(Message.KAM_FLASH_NEST_CAMERA+":"+nest.nestNum);
+        if (this.client != null) {
+            this.client.sendMessage(Message.KAM_FLASH_NEST_CAMERA + ":" + nest.nestNum);
+            this.fpm.sendMessage(Message.KAM_FLASH_NEST_CAMERA + ":" + nest.nestNum);
+        } else {
+            print("[ERROR] - Kit Assembly Manager is not online.");
+        }
     }
 }
