@@ -173,16 +173,20 @@ public class HandleAManager implements Runnable {
              Integer id = Integer.parseInt(this.grabParameter(msg));
              System.out.println("Undefining part " + id);
             this.server.getFactoryState().removeKitById(id);
-        }else if(msg.contains(Message.PUSH_PRODUCTION_QUEUE))
-	    {
+        }else if(msg.contains(Message.PUSH_PRODUCTION_QUEUE)) {
 		ArrayList<Kit> queue = new ArrayList<Kit>();
 		ArrayList<String> deserialized = Util.deserialize(this.grabParameter(msg));
-		for(int i = 0; i != deserialized.size(); i++)
-		    {
+		for(int i = 0; i != deserialized.size(); i++) {
 			queue.add(this.server.getFactoryState().getKitById(Integer.parseInt(deserialized.get(i))));
 			System.out.println(deserialized.get(i));
-		    }
-		//now what do i do with the queue?
+		}
+		
+		//now what do i do with the queue? THIS IS AD-HOC
+		//this.server.getPartsAgent().msgHereIsKit(queue.get(0));
+		this.server.getPartsAgent().msgHereIsKit(queue);
+		System.out.println("BEGINNING PRODUCTION CYCLE WOOOOOOT (size "+queue.size() + ")");
+		queue.get(0).debug();
+		
 	    }
     }
 

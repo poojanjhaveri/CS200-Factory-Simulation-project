@@ -209,7 +209,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 		add(tabs);
 
 		// Identify this manager
-		this.sendToServer(Message.PUSH_PRODUCTION_QUEUE+":"+1353202603);
+		this.sendToServer(Message.IDENTIFY_FACTORYPRODUCTIONMANAGER);
 	}
 	
     @Override

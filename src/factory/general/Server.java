@@ -273,6 +273,10 @@ public class Server {
 		return kitRobotAgent;
 	}
 	
+	public PartsAgent getPartsAgent() {
+		return this.partsAgent;
+	}	
+	
 	/**
 	 * @brief method to help debug
 	 */
