@@ -2,11 +2,15 @@ package factory.factory200.laneManager.ServerSide;
 
 import java.util.ArrayList;
 
+/**
+ * @brief Camera Functions for Agent
+ * @author Dongyoung Jung
+ */
 public class LMCameraForAgent {
 
 	private LMServerMain serverMain;
-	private LMCameraData newNestCamera;	///< Instance of class 'ServerLaneManagerThreadNestCamera'
-	private ArrayList<LMCameraData> nestCameras = new ArrayList<LMCameraData>();	///< ArrayList of cameras
+	private LMCameraData newNestCamera;
+	private ArrayList<LMCameraData> nestCameras = new ArrayList<LMCameraData>();
 
 	public LMCameraForAgent(LMServerMain serverMain){
 		this.serverMain = serverMain;

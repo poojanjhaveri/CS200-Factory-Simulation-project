@@ -3,11 +3,14 @@ package factory.factory200.laneManager.ClientSide;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
 
+/**
+ * @brief Part Drawings
+ * @author Dongyoung Jung
+ */
 public class LMDrawableAllPart {
 	
 	private LMApplication app;
 	private LMGraphicsPanel graphicsPanel; 
-	
 	private LMDrawablePart newPart;
 	private LMNestData newNestData;
 	private LMLaneData newLaneData;
@@ -59,10 +62,16 @@ public class LMDrawableAllPart {
 		nestDatas.get(laneNum).addPart( laneDatas.get(laneNum).removePart() );
 	}
 	
+	/**
+	 * Nest updates frequently parts' locations depending on the number of parts on nest.
+	 */
 	public void laneUpdate(){
 		for(int i=0 ; i<8 ; i++){  laneDatas.get(i).checkNestStatus( nestDatas.get(i).getSize() );  }
 	}
 	
+	/**
+	 * Nest updates frequently parts' locations.
+	 */
 	public void nestUpdate(){
 		for(int i=0 ; i<8 ; i++){  nestDatas.get(i).reorganize();  }
 	}

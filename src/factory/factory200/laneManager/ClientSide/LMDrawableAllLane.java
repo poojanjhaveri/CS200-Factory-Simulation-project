@@ -3,18 +3,22 @@ package factory.factory200.laneManager.ClientSide;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
 
+/**
+ * @brief Lane Drawings
+ * @author Dongyoung Jung
+ */
 public class LMDrawableAllLane {
 	
 	private LMDrawableLane newLane;
 	private ArrayList<LMDrawableLane> lanes = new ArrayList<LMDrawableLane>();
-	private final int laneX = 10;// DONE
-	private int laneY = 58;// DONE
+	private final int laneX = 10;
+	private int laneY = 58;
 	
 	public LMDrawableAllLane(){		
 		for(int i=0 ; i<8 ; i++){
 			newLane = new LMDrawableLane(laneX, laneY);
 			lanes.add(newLane);
-			laneY += 75;// DONE
+			laneY += 75;
 		}
 	}
 	

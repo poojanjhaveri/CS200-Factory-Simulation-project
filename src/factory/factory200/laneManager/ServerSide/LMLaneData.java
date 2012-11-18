@@ -1,19 +1,17 @@
 package factory.factory200.laneManager.ServerSide;
 
 /**
- * This class contains all data for lanes. Lane agent and lane manager use these data to process.
- * 
- * @brief Lane data
- *	@author Dongyoung Jung
+ * @brief Lane Signal Sends(Server Side)
+ * @author Dongyoung Jung
  */
 public class LMLaneData {
 
 	private LMServerMain serverMain;
-	private String signal = "";	///< Signal to Lane Manager
+	private String signal = "";
 	
-	private int laneNum;	///< Lane number
+	private int laneNum;
 	private int vibrationAmplitude;
-	private Boolean laneSwitch = false;	///< Feeder switched on : true, Feeder switched off : false
+	private Boolean laneSwitch = false;
 	
 	public LMLaneData( int laneNum, LMServerMain serverMain ){
 		this.laneNum = laneNum;

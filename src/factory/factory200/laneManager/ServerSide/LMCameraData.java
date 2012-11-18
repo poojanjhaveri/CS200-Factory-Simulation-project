@@ -1,10 +1,14 @@
 package factory.factory200.laneManager.ServerSide;
 
+/**
+ * @brief Camera Signal Sends(Server Side)
+ * @author Dongyoung Jung
+ */
 public class LMCameraData {
 	
 	private LMServerMain serverMain;
-	private String signal = "";	///< Signal to Lane Manager
-	private int nestCameraNum;	///< Number of nest that the camera is taken at
+	private String signal = "";
+	private int nestCameraNum;
 
 	public LMCameraData( int nestCameraNum, LMServerMain serverMain ){
 		this.nestCameraNum = nestCameraNum;

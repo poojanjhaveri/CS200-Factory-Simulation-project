@@ -1,9 +1,13 @@
 package factory.factory200.laneManager.ClientSide;
 
+/**
+ * @brief Server Signal Handler(Lane)
+ * @author Dongyoung Jung
+ */
 public class LMLaneHandler {
 	
-	private LMApplication app;	///< Instance of class 'LMApplication'
-	private int laneNum;	///< Lane number
+	private LMApplication app;
+	private int laneNum;
 
 	public LMLaneHandler(LMApplication app){
 		this.app = app;
@@ -45,10 +49,6 @@ public class LMLaneHandler {
 		else if( message.indexOf("Amplitude Strong") != -1 ){
 			// GUI Panel change
 			app.getGUIPanel().getGUILane().getGUILaneArray(laneNum).setLaneVibrationAmplitudeStrong();
-		}
-		
-		else if( message.indexOf("Shake Free") != -1 ){
-			
 		}
 	}
 }

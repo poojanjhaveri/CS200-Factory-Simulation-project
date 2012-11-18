@@ -3,6 +3,10 @@ package factory.factory200.laneManager.ClientSide;
 import java.awt.Graphics2D;
 import javax.swing.ImageIcon;
 
+/**
+ * @brief Bin Holder Drawings
+ * @author Dongyoung Jung
+ */
 public class LMDrawableBinHolder {
 
 	private int binHolderX, binHolderY;

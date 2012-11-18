@@ -3,6 +3,10 @@ package factory.factory200.laneManager.ClientSide;
 import java.awt.Graphics2D;
 import javax.swing.ImageIcon;
 
+/**
+ * @brief Bin Drawings
+ * @author Dongyoung Jung
+ */
 public class LMDrawableBin {
 
 	private int binX, binY;
@@ -38,7 +42,6 @@ public class LMDrawableBin {
 	public void purgeBin(){
 		binExist = false;
 	}
-	
 	
 	public void paint(LMGraphicsPanel panel, Graphics2D graphics){
 		if(binExist == true){

@@ -3,18 +3,22 @@ package factory.factory200.laneManager.ClientSide;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
 
+/**
+ * @brief Camera Drawings
+ * @author Dongyoung Jung
+ */
 public class LMDrawableAllCamera {
 	
 	private LMDrawableCamera newCamera;
 	private ArrayList<LMDrawableCamera> cameras = new ArrayList<LMDrawableCamera>();
-	private final int cameraX = 5;// DONE
-	private int cameraY = 80;// DONE
+	private final int cameraX = 5;
+	private int cameraY = 80;
 	
 	public LMDrawableAllCamera(){		
 		for(int i=0 ; i<4 ; i++){
 			newCamera = new LMDrawableCamera(cameraX, cameraY);
 			cameras.add(newCamera);
-			cameraY += 150;// DONE
+			cameraY += 150;
 		}
 	}
 	

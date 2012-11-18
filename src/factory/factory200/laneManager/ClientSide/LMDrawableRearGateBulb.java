@@ -3,6 +3,10 @@ package factory.factory200.laneManager.ClientSide;
 import java.awt.Graphics2D;
 import javax.swing.ImageIcon;
 
+/**
+ * @brief Rear Gate Bulb
+ * @author Dongyoung Jung
+ */
 public class LMDrawableRearGateBulb{
 
 	private int symbolX, symbolY;

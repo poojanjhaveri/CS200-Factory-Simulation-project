@@ -12,9 +12,7 @@ import javax.swing.JSlider;
 import javax.swing.border.TitledBorder;
 
 /**
- * Lane GUI : Switch On, Switch Off, Vibration Amplitude Strong, Vibration Amplitude Normal, Vibration Amplitude Weak
- * 
- * @brief Lane GUI
+ * @brief Lane GUI Panel
  * @author Dongyoung Jung
  */
 public class LMGUILanePanel extends JPanel{
@@ -29,10 +27,7 @@ public class LMGUILanePanel extends JPanel{
 	private TitledBorder vibrationAmplitudeTitle = new TitledBorder("Vibration Amplitude");
 	private JSlider vibrationAmplitudeSlider = new JSlider(0,2,0);
 	private Hashtable<Integer, JLabel> sliderLabels = new Hashtable<Integer, JLabel>();
-	
-	/**
-	 * @brief Constructor
-	 */
+
 	public LMGUILanePanel(){
 		// Layout Setting
 		setLayout(new FlowLayout(FlowLayout.CENTER,0,30));
@@ -52,13 +47,7 @@ public class LMGUILanePanel extends JPanel{
 		vibrationAmplitudeTitle.setTitleColor(Color.red);
 		add(vibrationAmplitudeSlider);
 	}
-	
-	/**
-	 * Server signal changes the switch settings.
-	 * 
-	 * @brief Switch Change
-	 * @param signal : Signal from server
-	 */
+
 	public void setLaneSwitch( Boolean signal ){
 		if( signal == true ){
 			onSwitch.setSelected(true);
@@ -67,24 +56,15 @@ public class LMGUILanePanel extends JPanel{
 			offSwitch.setSelected(true);
 		}
 	}
-	
-	/**
-	 * @brief Setter
-	 */
+
 	public void setLaneVibrationAmplitudeStrong(){
 		vibrationAmplitudeSlider.setValue(2);
 	}
-	
-	/**
-	 * @brief Setter
-	 */
+
 	public void setLaneVibrationAmplitudeNormal(){
 		vibrationAmplitudeSlider.setValue(1);
 	}
-	
-	/**
-	 * @brief Setter
-	 */
+
 	public void setLaneVibrationAmplitudeWeak(){
 		vibrationAmplitudeSlider.setValue(0);
 	}

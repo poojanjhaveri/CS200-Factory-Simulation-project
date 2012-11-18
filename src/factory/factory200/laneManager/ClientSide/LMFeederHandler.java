@@ -1,10 +1,7 @@
 package factory.factory200.laneManager.ClientSide;
 
 /**
- * The signal from server should be checked in class 'LaneManagerVerifySignalsFromServer'
- * Here, the signals get checked again and take an action to Graphics Panel or GUI Panel.
- * 
- * @brief Verifies signals from server and take an action
+ * @brief Server Signal Handler(Feeder)
  * @author Dongyoung Jung
  */
 public class LMFeederHandler {
@@ -14,10 +11,6 @@ public class LMFeederHandler {
 	private int partNum;	///< Part number
 	private int colorNum; ///< Color number for feeder
 	
-	/**
-	 * @brief Constructor
-	 * @param app : Instance of class 'LaneManagerApp'
-	 */
 	public LMFeederHandler(LMApplication app){
 		this.app = app;
 	}
@@ -47,7 +40,6 @@ public class LMFeederHandler {
 	public void verify(String message){		
 		feederNum =  message.charAt(0) - 48;
 				
-		// GUI & Graphic changes--------------------------------------------------------------------------------------------------------------
 		// Message : Feeder On
 		if( message.indexOf("Feeder Switch On") != -1 ){
 			// GUIPanel change
@@ -149,34 +141,5 @@ public class LMFeederHandler {
 			// GraphicsPanel change
 			app.getGraphicsPanel().getAllFeeder().getDiversionBulb(feederNum).setDivertToRight();
 		}
-		// ----------------------------------------------------------------------------------------------------------------------------------------------------
-		
-		// Action ----------------------------------------------------------------------------------------------------------------------------------------
-		// Message : Robot Dump Part Box
-		else if( message.indexOf("Dumped") != -1 ){
-			colorNum = message.charAt( message.length() - 1 ) - 48;
-			//app.getGraphicsPanel().getFeederArray(feederNum).setDumpedIntoFeeder(colorNum);
-		}
-		
-		// Message : Robot Dump Part Box ( LEFT LANE, Made For Testing )
-		else if( message.indexOf("Feed To Left") != -1 ){
-			// Part Number Assignment
-			partNum =  message.charAt( message.length() - 1 ) - 48;
-			//app.getGraphicsPanel().getFeederArray(feederNum).feedPartOntoLaneLeft( partNum );
-		}
-		
-		// Message : Robot Dump Part Box ( RIGHT LANE, Made For Testing )
-		else if( message.indexOf("Feed To Right") != -1 ){
-			// Part Number Assignment
-			partNum =  message.charAt( message.length() - 1 ) - 48;
-			//app.getGraphicsPanel().getFeederArray(feederNum).feedPartOntoLaneRight( partNum );
-		}
-		
-		// Message : Feeder Without Box
-		else if( message.indexOf("Feeder Without Box") != -1 ){
-			// Part Number Assignment
-			//app.getGraphicsPanel().getFeederArray(feederNum).setFeederWithoutBox();
-		}
-		// ----------------------------------------------------------------------------------------------------------------------------------------------------
 	}
 }
