@@ -102,7 +102,7 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
         for (int i = 0; i < 8; i++) {
             nest.get(i).setY(yNum + i * 75 -20);
         }
-
+/*
         //only for version 0
         ArrayList<Part> parts1 = new ArrayList<Part>();
         //ArrayList<GUIPart> guiParts3 = new ArrayList<GUIPart>();
@@ -254,7 +254,7 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
 
         nest.get(6).setParts(parts7);
 
-        nest.get(7).setParts(parts8);
+        nest.get(7).setParts(parts8);*/
 
         //need above code from server
 

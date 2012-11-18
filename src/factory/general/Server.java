@@ -111,8 +111,8 @@ public class Server {
 			System.exit(0);
 		}
 		
-		for(int i=0 ; i<1 ; i++){ // For Testing By Dongyoung, if want to need communicate n managers, change into for(int i=0 ; i<n ; i++)
-		//while(true){
+		//for(int i=0 ; i<2 ; i++){ // For Testing By Dongyoung, if want to need communicate n managers, change into for(int i=0 ; i<n ; i++)
+		while(true){
 			// Continuously check for a new client for which to create a thread
 			try {
 				s = ss.accept(); // Wait for a client (program halts here until connection occurs)
@@ -127,7 +127,7 @@ public class Server {
 		}
 		
 		//try{  Thread.sleep(1000);  } catch(Exception e){}   // For Testing By Dongyoung
-		prepareAllAgents(); // Prepare all agents; based on AgentMain.java      // For Testing By Dongyoung
+		//prepareAllAgents(); // Prepare all agents; based on AgentMain.java      // For Testing By Dongyoung
 	}
 
 	private void initializeManagers() { // Something by Dongyoung...?  Dongyoung : Yeah

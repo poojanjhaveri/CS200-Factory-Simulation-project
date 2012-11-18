@@ -33,6 +33,7 @@ public class GraphicsPanel extends JPanel{
 	public void timerAction(){
 		repaint();
 		laneManager.timerAction();
+                //add timer action for KAM! 
 	}
 	
 	public void verifyMessage(String msg){
