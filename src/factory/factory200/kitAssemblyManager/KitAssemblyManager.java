@@ -66,7 +66,10 @@ public class KitAssemblyManager extends Manager implements ActionListener {
             this.flashNestCamera(Integer.parseInt(this.grabParameter(msg)));
         } else if (msg.contains(Message.KAM_MOVE_FROM_0_TO_2)) {
             this.moveFrom0To2();
-        }
+        }else if(msg.contains(Message.KAM_ADD_KIT))
+	    {
+		this.doAddNewKit();//you need to make this function, deepa
+	    }
 
         //todo - let me know what functions agent will call so I can process them here
     }

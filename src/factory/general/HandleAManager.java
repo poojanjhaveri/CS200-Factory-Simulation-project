@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.ArrayList;
 
 /**
  * @brief handles each new thread for a client.
@@ -17,7 +18,6 @@ public class HandleAManager implements Runnable {
     private PrintWriter pw; // To speak to a client
     private BufferedReader br; // To listen to a client
     private Printer p = new Printer();
-    private FactoryState fstate;
     private Server server;
     /**
      * Used to identify a HandleAManager's connection.
@@ -31,7 +31,6 @@ public class HandleAManager implements Runnable {
         server = aServer;
         mySocket = s;
         id = -1;
-        this.fstate = new FactoryState();
     }
 
     public void debugMessage() {
@@ -110,7 +109,11 @@ public class HandleAManager implements Runnable {
                 System.out.println("Number of clients is 0; exiting Server");
                 System.exit(0);
             }
-        } else if(msg.contains(Message.IDENTIFY_LANEMANAGER)) {
+        } else if(msg.contains(Message.IDENTIFY_FACTORYPRODUCTIONMANAGER))
+        {
+            this.server.setFactoryProductionManagerToAll(this);
+        }
+        else if(msg.contains(Message.IDENTIFY_LANEMANAGER)) {
         	p.println("SERVER HAS IDENTIFIED A LANEMANAGER");
         	this.id = 2;
 //        	this.server.getServerLM().setClient(this); // NEED THIS, DONGYOUNG
@@ -127,29 +130,39 @@ public class HandleAManager implements Runnable {
             this.server.setPartsAgentClient(this);
         } else if (msg.contains(Message.PULL_KITS_LIST)) {
             //TODO THIS IS AD HOC NEED TO RETRIEVE MASTER BLUEPRINTKITS FROM FACTORY STATE
-            pw.println(Message.PUSH_KITS_LIST + ":" + fstate.getBlueprintKits().serialize());
+            pw.println(Message.PUSH_KITS_LIST + ":" + this.server.getFactoryState().getBlueprintKits().serialize());
         } else if (msg.contains(Message.PULL_PARTS_LIST)) {
             //TODO THIS IS AD HOC, NEED TO RETRIEVE MASTER BLUEPRINTPARTS FROM FACTORY STATE
-            pw.println(Message.PUSH_PARTS_LIST + ":" + fstate.getBlueprintParts().serialize());
+            pw.println(Message.PUSH_PARTS_LIST + ":" + this.server.getFactoryState().getBlueprintParts().serialize());
         } else if (msg.contains(Message.DEFINE_NEW_PART)) {
             Part p = Part.deserialize(this.grabParameter(msg));
-            fstate.getBlueprintParts().add(p);
-            fstate.getBlueprintParts().save();
+            this.server.getFactoryState().getBlueprintParts().add(p);
+            this.server.getFactoryState().getBlueprintParts().save();
             System.out.println("Defined new part: " + p.serialize());
         } else if (msg.contains(Message.DEFINE_NEW_KIT)) {
             Kit k = Kit.deserialize(this.grabParameter(msg));
-            fstate.getBlueprintKits().add(k);
-            fstate.getBlueprintKits().save();
+            this.server.getFactoryState().getBlueprintKits().add(k);
+            this.server.getFactoryState().getBlueprintKits().save();
             System.out.println("Defined new kit:" + k.serialize());
         } else if (msg.contains(Message.UNDEFINE_PART)) {
             Integer id = Integer.parseInt(this.grabParameter(msg));
             System.out.println("Undefining part " + id);
-            fstate.removePartById(id);
+            this.server.getFactoryState().removePartById(id);
         } else if (msg.contains(Message.UNDEFINE_KIT)) {
              Integer id = Integer.parseInt(this.grabParameter(msg));
              System.out.println("Undefining part " + id);
-            fstate.removeKitById(id);
-        }
+            this.server.getFactoryState().removeKitById(id);
+        }else if(msg.contains(Message.PUSH_PRODUCTION_QUEUE))
+	    {
+		ArrayList<Kit> queue = new ArrayList<Kit>();
+		ArrayList<String> deserialized = Util.deserialize(this.grabParameter(msg));
+		for(int i = 0; i != deserialized.size(); i++)
+		    {
+			queue.add(this.server.getFactoryState().getKitById(Integer.parseInt(deserialized.get(i))));
+			System.out.println(deserialized.get(i));
+		    }
+		//now what do i do with the queue?
+	    }
     }
 
     /**

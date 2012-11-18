@@ -4,12 +4,12 @@ import agent.Agent;
 import factory.factory201.interfaces.Conveyor;
 import factory.factory201.interfaces.KitRobot;
 import factory.general.Kit;
+import factory.general.Message;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.Timer;
-
 /**
  * @brief This class is the agent for the {@link Conveyor} which brings empty
  * {@link Kit}s into the kitting cell and takes complete kits out of the kitting
@@ -173,6 +173,11 @@ public class ConveyorAgent extends Agent implements Conveyor {
     }
 
     private void DoAddKit(Kit k) {
-        //Needs to be done
+	this.client.sendMessage(Message.KAM_ADD_KIT);
+
+    }
+    
+    private void DoRemoveKit(Kit k) {
+        this.client.sendMessage(Message.KAM_REMOVE_KIT);
     }
 }
