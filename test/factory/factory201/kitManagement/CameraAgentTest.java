@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package factory.factory201.kitManagement;
 
 import factory.factory201.test.mock.MockKitRobot;
@@ -12,8 +9,8 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 /**
- *
  * @author Alex Young <alexyoung1992@gmail.com>
+ * @version 1
  */
 public class CameraAgentTest {
     
