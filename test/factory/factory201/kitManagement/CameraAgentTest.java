@@ -27,10 +27,6 @@ public class CameraAgentTest {
         nestAgent = new MockNest("Mock Nest Agent");
     }
 
-    @Test
-    public void testComprehensiveNormalScenarioCamera() {
-        assertEquals(true, true);
-    }
     
     /* Check if on receiving msgKitFull, the Camera sends a message "Kit Inspected" */
     public void testInspectNest(){
