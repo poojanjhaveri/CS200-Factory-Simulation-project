@@ -43,9 +43,9 @@ public class Server {
     
 	/** Agents */
     // Fields just for "AgentMain" stuff (Agent preparation) 
-    private static final boolean PATRICK = false;
+    private static final boolean PATRICK = true;
     private static final boolean KEVIN = true;
-    private static final boolean ALEX = false;
+    private static final boolean ALEX = true;
     
     private static final int FEEDER = 4;
     private static final int LANE = 8;
@@ -143,7 +143,7 @@ public class Server {
             turnOffAgentPrintStatements();
             connectAgentsAndManagers();
             startAgentThreads();
-            startInteractionSequence();
+            //startInteractionSequence();
         }
 
         private void declareAgents() {
@@ -244,7 +244,9 @@ public class Server {
         	// THIS IS JUST EXAMPLE STUFF THAT 201 WAS DOING TO TEST
             Kit kit = new Kit("Test Kit"); // This is required for...
             for (int i = 1; i < 9; i++) {
-                kit.addPart(new Part("Part " + i, "p1")); // This is a kit that has actual parts...
+                
+                kit.addPart(this.fstate.getPartCheat().clone());
+                //kit.addPart(new Part("Part " + i, "p1")); // This is a kit that has actual parts...
             }
             List<Kit> kits = new ArrayList<Kit>();
             kits.add(kit);
@@ -365,4 +367,7 @@ public class Server {
 	public LMServerMain getServerLM() { // Dongyoung's lane manager server...
 		return this.serverLM;
 	}
+        public ConveyorAgent getConveyorAgent() {
+            return this.conveyorAgent;
+        }
 }

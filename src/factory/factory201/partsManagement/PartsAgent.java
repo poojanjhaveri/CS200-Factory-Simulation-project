@@ -276,7 +276,7 @@ public class PartsAgent extends Agent implements PartsInterface {
             this.client.sendMessage(Message.KAM_PARTS_MOVE_TO_NEST + ":" + nestNum);
         } else {
 
-//            print("[ERROR] - Kit Assembly Manager is not online.");
+            print("[ERROR] - Kit Assembly Manager is not online.");
 
         }
     }
@@ -287,7 +287,7 @@ public class PartsAgent extends Agent implements PartsInterface {
             this.fpm.sendMessage(Message.KAM_PARTS_PICK_PART + ":" + nestNum);
         } else {
 
-//            print("[ERROR] - Kit Assembly Manager is not online.");
+            print("[ERROR] - Kit Assembly Manager is not online.");
 
         }
     }
@@ -298,7 +298,7 @@ public class PartsAgent extends Agent implements PartsInterface {
             this.fpm.sendMessage(Message.KAM_PARTS_DROP_OFF_PARTS + ":" + kitNum);
         } else {
 
-           // print("[ERROR] - Kit Assembly Manager is not online.");
+            print("[ERROR] - Kit Assembly Manager is not online.");
 
         }}
     

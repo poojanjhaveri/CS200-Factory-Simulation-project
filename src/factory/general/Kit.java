@@ -154,4 +154,20 @@ public class Kit implements Serializable{
             System.out.println("TEST FAILED");
         }
     }
+    public List<Part> getParts()
+    {
+        return this.parts;
+    }
+    public static Kit deepClone(Kit in)
+    {
+        Kit k = new Kit(in.getName(),in.getDescription(),in.getNumber());
+        ArrayList<Part> dp = new ArrayList<Part>();
+        for(int i = 0; i != k.getSize(); i++)
+        {
+            dp.add(k.getPart(i).clone());
+        }
+        k.setParts(dp);
+        return k;
+        
+    }
 }
