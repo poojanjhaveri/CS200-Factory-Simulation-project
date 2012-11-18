@@ -9,6 +9,7 @@ import factory.factory200.laneManager.ServerSide.LMGantryRobotForAgent;
 import factory.factory200.laneManager.ServerSide.LMServerMain;
 import factory.general.Part;
 import factory.general.HandleAManager;
+import factory.general.Message;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -35,6 +36,7 @@ public class GantryAgent extends Agent implements Gantry {
     //private LMServerMain serverMain;
     //private LMGantryRobotForAgent animation;
     //private LMFeederForAgent animation1;
+    /* Just for Testing */
     private GantryRobotManager animation;
     //---------------------------------------------------------------------------
     
@@ -238,8 +240,8 @@ public class GantryAgent extends Agent implements Gantry {
 //    	animation.goToBin(b.index-1);
     	//while(animation.returnArrived()==false){;}
     	print("about to pick up bin");
-  	animation.ganbot.moveToBin(b.index);
-    /*
+  	//animation.ganbot.moveToBin(b.index);
+    
      if(this.client == null)
          {
          System.out.println("CRITICAL ERROR: CLIENT WAS NEVER CONNECTED.");
@@ -248,7 +250,7 @@ public class GantryAgent extends Agent implements Gantry {
          this.client.sendMessage(Message.MOVE_GANTRY_TO_BIN+":"+b.index+1);
          
          
-     */
+     
         //  	animation.pickUpBin(b.index-1);
   
         try {
@@ -260,7 +262,7 @@ public class GantryAgent extends Agent implements Gantry {
         
     	/*Kevin - Alex commented this out because it was causing compiler errors and we need to run the agent code
         animation.ganbot.carryABin(b.index+1);*/
-        animation.ganbot.moveToFeeder(f.index);
+        //animation.ganbot.moveToFeeder(f.index);
         /*
          this.client.sendMessage(Message.GANTRY_CARRY_A_BIN"+":"+b.index+1); 
          this.client.sendMessage(Message.MOVE_GANTRY_TO_FEEDER+":"+f.index);
@@ -286,6 +288,7 @@ public class GantryAgent extends Agent implements Gantry {
     myFeeders.add(new myFeeder(feeder,index));
     }
     
+    // Just for testing
     public void setGantryRobotManager(GantryRobotManager grm) {
         this.animation = grm;
     }

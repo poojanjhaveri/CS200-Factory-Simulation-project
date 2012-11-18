@@ -31,8 +31,6 @@ public class AgentMain {
     public static void main(String[] args) {
         /*========== Declare all agents and etc. ==========*/
 
-        // Misc - pass in the appropriate KAM and GRM
-
         // Alex
         KitRobotAgent kitRobotAgent = new KitRobotAgent("Kit Robot");
         CameraAgent cameraAgent = new CameraAgent("Camera");
@@ -95,9 +93,7 @@ public class AgentMain {
             nestAgent.getNest(i).setLane(laneAgents[i]);
         }
 
-        // Kevin
         for (int i = 0, j = 0; i < FEEDER; i++, j++) {
-
             feederAgents[i].setGantry(gantryAgent);
             feederAgents[i].setLeftLane(laneAgents[j]);
             feederAgents[i].setRightLane(laneAgents[++j]);
