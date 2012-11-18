@@ -45,7 +45,7 @@ public class KitManager extends Manager  implements ActionListener {
 	 * @param args
 	 */
           BlueprintKits bpkit;///<contains list of kits modifiable from server
-          BlueprintParts bppart;///<contains list of parts useable from server
+          static BlueprintParts bppart;///<contains list of parts useable from server
           JPanel mainpanel; // main panel of the JFrame 
           JTabbedPane tabbedPane; // panel for tabbed layout
           
@@ -456,11 +456,12 @@ public class KitManager extends Manager  implements ActionListener {
             {
             Kit newkit = new Kit(kitname.getText(),"description");//this will be the kit that just got made
             
+            /*
             for(int p=0;p<7;p++)
             {
                 System.out.println(partlist.get(p));
             }
-            
+            */
             
             
             newkit.setParts(partlist);
@@ -570,8 +571,8 @@ public class KitManager extends Manager  implements ActionListener {
                         }
                         else
                      {
-                          //    b0.setIcon(bppart.getPartAt(i).getGUIPart().getImage());
-                     b0.setIcon(new ImageIcon("pics/parts/part1.png"));
+                       b0.setIcon(new ImageIcon(bppart.getPartAt(i).getFilename()));
+                   //  b0.setIcon(new ImageIcon("pics/parts/part1.png"));
                      partlist.add(0, bppart.getPartAt(i));
                      }  
                    

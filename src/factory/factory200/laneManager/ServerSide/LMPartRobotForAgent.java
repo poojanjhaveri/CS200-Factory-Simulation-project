@@ -1,27 +1,19 @@
 package factory.factory200.laneManager.ServerSide;
 
-import factory.general.*;
-
 public class LMPartRobotForAgent {
 	
-	private Server server;
 	private LMServerMain serverMain;
 	private String signal = "";
 	
-	public LMPartRobotForAgent(Server server, LMServerMain serverMain){
-		this.server = server;
+	public LMPartRobotForAgent(LMServerMain serverMain){
 		this.serverMain = serverMain;
 	}
 	
 	public void takePartFromNest(int nestNum){
-		// Signal To Managers
+		// Signal To LM & FPM
 		signal = nestNum + "&PartRobot&";
-		
-		//----------------------------------------------------------------------------------For Test
-		server.signalToClient(signal);
-		//-----------------------------------------------------------------------------------------------
-		
-		// Send To FPM
+		serverMain.sendToLM(signal);
+		serverMain.sendToFPM(signal);
 		
 		// Server Data Task
 		serverMain.getPartData().partRobotTakeOne(nestNum);

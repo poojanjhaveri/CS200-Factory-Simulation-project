@@ -116,7 +116,11 @@ public class HandleAManager implements Runnable {
         else if(msg.contains(Message.IDENTIFY_LANEMANAGER)) {
         	p.println("SERVER HAS IDENTIFIED A LANEMANAGER");
         	this.id = 2;
-//        	this.server.getServerLM().setClient(this); // NEED THIS, DONGYOUNG
+        	this.server.getServerLM().setLM(this);
+        } else if(msg.contains(Message.IDENTIFY_FACTORYPRODUCTIONMANAGER)) {
+        	p.println("SERVER HAS IDENTIFIED A FACTORYPRODUCTIONMANAGER");
+        	this.id = 3;
+        	this.server.getServerLM().setFPM(this);
     	} else if (msg.contains(Message.IDENTIFY_GANTRYROBOTMANAGER)) {
             p.println("SERVER HAS IDENTIFIED A GANTRYROBOTMANAGER");
             this.id = 0;
