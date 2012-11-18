@@ -87,7 +87,7 @@ public class Server {
 	public Server(int portNumber) {
         this.fstate = new FactoryState();
 		initializeManagers(); // Something by Dongyoung
-		prepareAllAgents(); // Prepare all agents; based on AgentMain.java
+		//prepareAllAgents(); // Prepare all agents; based on AgentMain.java
 		numClients = 0; // Initialize num clients is 0
 		start(portNumber); // Start listening for clients and making new HandleAManager instances
 	}
@@ -110,8 +110,8 @@ public class Server {
 			System.exit(0);
 		}
 		
-		//for(int i=0 ; i<1 ; i++){ // For Testing By Dongyoung
-		while(true){
+		for(int i=0 ; i<1 ; i++){ // For Testing By Dongyoung, if want to need communicate n managers, change into for(int i=0 ; i<n ; i++)
+		//while(true){
 			// Continuously check for a new client for which to create a thread
 			try {
 				s = ss.accept(); // Wait for a client (program halts here until connection occurs)
@@ -124,8 +124,9 @@ public class Server {
 			}
 			System.out.println("A client has connected");
 		}
-		//try{  Thread.sleep(1000);  } catch(Exception e){}   // For Testing By Dongyoung
-		//prepareAllAgents(); // Prepare all agents; based on AgentMain.java      // For Testing By Dongyoung
+		
+		try{  Thread.sleep(1000);  } catch(Exception e){}   // For Testing By Dongyoung
+		prepareAllAgents(); // Prepare all agents; based on AgentMain.java      // For Testing By Dongyoung
 	}
 
 	private void initializeManagers() { // Something by Dongyoung...?  Dongyoung : Yeah

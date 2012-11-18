@@ -353,10 +353,12 @@ public class FeederAgent extends Agent implements Feeder {
     
    // setAnimation();
         
-        LMServer.getForAgentLane().setSwitchOn(leftLane.getIndex());
+       LMServer.getForAgentLane().setSwitchOn(leftLane.getIndex());
        LMServer.getForAgentLane().setSwitchOn(rightLane.getIndex());
-       LMServer.getForAgentFeeder().setFeedPartsSwitchOn(feederNum);
        LMServer.getForAgentFeeder().setSwitchOn(feederNum);
+       LMServer.getForAgentFeeder().setFeedPartsSwitchOn(feederNum);
+       LMServer.getForAgentFeeder().setDiverterSwitchLeft(feederNum);
+       LMServer.getForAgentGantryRobot().putBin(0, 8, feederNum);
     }
     
     public void setAnimation(){
