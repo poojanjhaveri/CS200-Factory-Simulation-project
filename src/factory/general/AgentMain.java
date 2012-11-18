@@ -21,9 +21,9 @@ import java.util.List;
  */
 public class AgentMain {
 
-    private static final boolean PATRICK = true;
-    private static final boolean KEVIN = false;
-    private static final boolean ALEX = true;
+    private static final boolean PATRICK = false;
+    private static final boolean KEVIN = true;
+    private static final boolean ALEX = false;
     
     private static final int FEEDER = 4;
     private static final int LANE = 8;
@@ -135,7 +135,9 @@ public class AgentMain {
         // * 
         Kit kit = new Kit("Test Kit");
         for (int i = 1; i < 9; i++) {
-            kit.addPart(new Part("Name", "Description")); // This is a kit that has actual parts...
+            //kit.addPart(new Part("Name", "Description")); // This is a kit that has actual parts...
+        //testing agents
+            kit.addPart(new Part(i));
         }
         conveyorAgent.generateKit(10);
 
@@ -162,11 +164,11 @@ public class AgentMain {
         if(KEVIN) {
             for (int i = 0; i < LANE; i++) {
                 if (i < FEEDER) {
-                    feederAgents[i].print = false;
+                    feederAgents[i].print = true;
                 }
-                laneAgents[i].print = false;
+                laneAgents[i].print = true;
             }
-            gantryAgent.print = false;
+            gantryAgent.print = true;
         }
         if(ALEX) {
             kitRobotAgent.print = true;

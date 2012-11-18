@@ -28,6 +28,10 @@ public class Part implements Serializable {
         this.size = size;
     }*/
 
+    //constructor for testing agent codes
+    public Part(int num){
+    this.type=num;
+    }
     public int getNestNum() {
         return this.nestNum;
     }

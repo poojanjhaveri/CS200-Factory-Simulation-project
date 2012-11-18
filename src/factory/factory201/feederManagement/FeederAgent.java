@@ -128,11 +128,13 @@ public class FeederAgent extends Agent implements Feeder {
         }
         }
         //add if part doesn't exist
-        if(count==parts.size())
-        {
-        parts.add(new myParts(part,0,part.type));
+        synchronized(parts){
+            if(count==parts.size())
+            {
+            parts.add(new myParts(part,0,part.type));
+            }
+
         }
-        
         
         for (myParts p : parts) {
             if (p.part.type == part.type) {
