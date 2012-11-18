@@ -1,12 +1,12 @@
 package factory.factory200.laneManager.ServerSide;
 
 import javax.swing.JFrame;
-import factory.general.Server;
+import factory.general.HandleAManager;
 
 public class LMServerMain extends JFrame implements Runnable{
 	
-	//private LMServer server;
-	private Server server;
+	private HandleAManager hacLM = null;
+	private HandleAManager hacFPM = null;
 	
 	private LMFeederForAgent agentFeeder; ///<Instance of class 'ServerForAgentFeeder'
 	private LMLaneForAgent agentLane;	///<Instance of class 'ServerForAgentLane'
@@ -19,20 +19,18 @@ public class LMServerMain extends JFrame implements Runnable{
 	private LMThreadTimer threadTimer;	///<Instance of class 'Thread_Timer'
 	private LMController controller;
 	
-	public LMServerMain(Server server){
-		this.server = server;
-	}
+	public LMServerMain(){}
 	
 	public void run(){
-		agentFeeder = new LMFeederForAgent(server, this); 
-		agentLane = new LMLaneForAgent(server, this);
-		agentNest = new LMNestForAgent(server, this);
-		agentNestCamera = new LMCameraForAgent(server, this);
-		agentGantryRobot = new LMGantryRobotForAgent(server, this); 
-		agentPartRobot = new LMPartRobotForAgent(server, this); 
-		partData = new LMPartData(server, this);
+		agentFeeder = new LMFeederForAgent(this); 
+		agentLane = new LMLaneForAgent(this);
+		agentNest = new LMNestForAgent(this);
+		agentNestCamera = new LMCameraForAgent(this);
+		agentGantryRobot = new LMGantryRobotForAgent(this); 
+		agentPartRobot = new LMPartRobotForAgent(this); 
+		partData = new LMPartData(this);
 		
-		threadTimer = new LMThreadTimer(server, this);		
+		threadTimer = new LMThreadTimer(this);		
 		new Thread(threadTimer).start();
 		threadTimer.timerStart();
 		
@@ -57,5 +55,35 @@ public class LMServerMain extends JFrame implements Runnable{
 	
 	public LMPartData getPartData(){
 		return partData;
+	}
+	
+	public void checkToStart(){
+		if( hacFPM != null && hacLM != null){
+			new Thread(this).start();
+		}
+	}
+	
+	public void setLM(HandleAManager newHandleAManager) {
+		hacLM = newHandleAManager;
+		checkToStart();
+	}
+	
+	public void setFPM(HandleAManager newHandleAManager) {
+		hacFPM = newHandleAManager;
+		checkToStart();
+	}
+	
+	public void sendToFPM(String signal){
+		if( hacFPM != null ){
+			System.out.println("To FPM : " + signal);
+			hacFPM.sendMessage(signal);
+		}
+	}
+	
+	public void sendToLM(String signal){
+		if( hacLM != null ){
+			System.out.println("To LM : " + signal);
+			hacLM.sendMessage(signal);
+		}
 	}
 }

@@ -4,22 +4,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
 
-import factory.general.Server;
-import factory.general.*;
-
 class LMThreadTimer implements Runnable{
 
-	private Server server;
 	private LMServerMain serverMain;
 	private LMSendPartSignal sendPartSignal;
 	private Timer timer;
 	private int feedingTiming;
-	private String signal = "&Timer&";
 
-	public LMThreadTimer(Server server, LMServerMain serverMain){
-		this.server = server;
+	public LMThreadTimer(LMServerMain serverMain){
 		this.serverMain = serverMain;
-		sendPartSignal = new LMSendPartSignal(server, serverMain);
+		sendPartSignal = new LMSendPartSignal(serverMain);
 		timer = new Timer(30, new ServerTimer());	
 	}
 		

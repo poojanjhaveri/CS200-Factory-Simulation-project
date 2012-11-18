@@ -1,11 +1,9 @@
 package factory.factory200.laneManager.ServerSide;
 
 import java.util.ArrayList;
-import factory.general.*;
 
 public class LMPartData {
 	
-	private Server server;
 	private LMServerMain serverMain;
 	
 	private LMPartDataInFeeder newFeeder;
@@ -18,10 +16,9 @@ public class LMPartData {
 	
 	private double shakePossibility;
 	private int randomChosenPart;
-	private String message = "";
+	private String signal = "";
 	
-	public LMPartData(Server server, LMServerMain serverMain){
-		this.server = server;
+	public LMPartData(LMServerMain serverMain){
 		this.serverMain = serverMain;
 		
 		for(int i=0 ; i<4 ; i++){
@@ -94,11 +91,11 @@ public class LMPartData {
 						lanes.get(i).removePart();
 						
 						// Part Removal In Client Side
-						message = i + "&Part&Shake&";
+						signal = i + "&Part&Shake&";
 						
-						//----------------------------------------------------------------------------------For Test
-						server.signalToClient(message);
-						//---------------------------------------------------------------------------------------------
+						// Send to LM & FPM
+						serverMain.sendToLM(signal);
+						serverMain.sendToFPM(signal);
 					}
 				}
 				else if( serverMain.getForAgentLane().getLane(i).getVibrationAmplitude() == 1 ){
@@ -107,12 +104,11 @@ public class LMPartData {
 						lanes.get(i).removePart();
 						
 						// Part Removal In Client Side
-						message = i + "&Part&Shake&";
+						signal = i + "&Part&Shake&";
 						
-						//----------------------------------------------------------------------------------For Test
-						server.signalToClient(message);
-						//------------------------------------------------------------------------------------------------
-						
+						// Send to LM & FPM
+						serverMain.sendToLM(signal);
+						serverMain.sendToFPM(signal);
 					}
 				}
 				else if( serverMain.getForAgentLane().getLane(i).getVibrationAmplitude() == 2 ){
@@ -121,12 +117,11 @@ public class LMPartData {
 						lanes.get(i).removePart();
 						
 						// Part Removal In Client Side
-						message = i + "&Part&Shake&";
+						signal = i + "&Part&Shake&";
 						
-						//----------------------------------------------------------------------------------For Test
-						server.signalToClient(message);
-						//-----------------------------------------------------------------------------------------------
-						
+						// Send to LM & FPM
+						serverMain.sendToLM(signal);
+						serverMain.sendToFPM(signal);
 					}
 				}
 			}

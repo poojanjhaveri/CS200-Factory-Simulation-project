@@ -8,7 +8,6 @@ import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
-
 public class LMControlPanel7 extends JPanel{
 	
 	LMServerMain serverMain;

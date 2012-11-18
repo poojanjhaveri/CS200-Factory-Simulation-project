@@ -1,7 +1,5 @@
 package factory.factory200.laneManager.ServerSide;
 
-import factory.general.*;
-
 /**
  * This class contains all data for feeders. Lane agent and lane manager use these data to process.
  * 
@@ -10,7 +8,6 @@ import factory.general.*;
  */
 public class LMFeederData {
 	
-	private Server server;
 	private LMServerMain serverMain;
 	private String signal = "";
 	
@@ -23,9 +20,8 @@ public class LMFeederData {
 	
 	private int feederNum;
 
-	public LMFeederData( int feederNum, Server server, LMServerMain serverMain ){		
+	public LMFeederData( int feederNum, LMServerMain serverMain ){		
 		this.feederNum = feederNum;
-		this.server = server;
 		this.serverMain = serverMain;
 	}
 
@@ -47,14 +43,10 @@ public class LMFeederData {
 	
 	// For Agent------------------------------------------------------------------------------------
 	public void setSwitchOn(){
-		// Send To Managers
-		signal = feederNum + "&Feeder&" + "Feeder Switch On";
-		
-		//----------------------------------------------------------------------------------For Test
-		server.signalToClient(signal);
-		//----------------------------------------------------------------------------------		
-		
-		// Send To FPM 
+		// Send To LM & FPM
+		signal = feederNum + "&Feeder&" + "Feeder Switch On";		
+		serverMain.sendToLM(signal);
+		serverMain.sendToFPM(signal);
 		
 		// Server Data Task
 		feederSwitch = true;
@@ -63,14 +55,10 @@ public class LMFeederData {
 
 	// For Agent------------------------------------------------------------------------------------
 	public void setSwitchOff(){
-		// Send To Managers
+		// Send To LM & FPM
 		signal = feederNum + "&Feeder&" + "Feeder Switch Off";
-		
-		//----------------------------------------------------------------------------------For Test
-		server.signalToClient(signal);
-		//----------------------------------------------------------------------------------
-		
-		// Send To FPM
+		serverMain.sendToLM(signal);
+		serverMain.sendToFPM(signal);
 		
 		// Server Data Task
 		feederSwitch = false;
@@ -78,28 +66,20 @@ public class LMFeederData {
 	//----------------------------------------------------------------------------------------------------
 
 	public void setPartLowSensorOn(){
-		// Send To Managers		
+		// Send To LM & FPM	
 		signal = feederNum + "&Feeder&" + "Part Low Sensor On";
-		
-		//----------------------------------------------------------------------------------For Test
-		server.signalToClient(signal);
-		//----------------------------------------------------------------------------------
-		
-		// Send To FPM
+		serverMain.sendToLM(signal);
+		serverMain.sendToFPM(signal);
 		
 		// Server Data Task
 		partLowSensor = true;
 	}
 	
 	public void setPartLowSensorOff(){
-		// Send To Managers		
+		// Send To LM & FPM
 		signal = feederNum + "&Feeder&" + "Part Low Sensor Off";
-		
-		//----------------------------------------------------------------------------------For Test
-		server.signalToClient(signal);
-		//----------------------------------------------------------------------------------
-		
-		// Send To FPM
+		serverMain.sendToLM(signal);
+		serverMain.sendToFPM(signal);
 		
 		// Server Data Task
 		partLowSensor = false;
@@ -107,14 +87,10 @@ public class LMFeederData {
 
 	// For Agent------------------------------------------------------------------------------------
 	public void setFeedPartsSwitchOn(){
-		// Send To Managers		
+		// Send To LM & FPM		
 		signal = feederNum + "&Feeder&" + "Feed Part Switch On";
-		
-		//----------------------------------------------------------------------------------For Test
-		server.signalToClient(signal);
-		//----------------------------------------------------------------------------------
-		
-		// Send To FPM
+		serverMain.sendToLM(signal);
+		serverMain.sendToFPM(signal);
 		
 		// Server Data Task
 		feedPartsSwitch = true;
@@ -123,14 +99,10 @@ public class LMFeederData {
 
 	// For Agent------------------------------------------------------------------------------------
 	public void setFeedPartsSwitchOff(){
-		// Send To Managers		
+		// Send To LM & FPM		
 		signal = feederNum + "&Feeder&" + "Feed Part Switch Off";
-		
-		//----------------------------------------------------------------------------------For Test
-		server.signalToClient(signal);
-		//----------------------------------------------------------------------------------
-		
-		// Send To FPM
+		serverMain.sendToLM(signal);
+		serverMain.sendToFPM(signal);
 		
 		// Server Data Task
 		feedPartsSwitch = false;
@@ -138,23 +110,17 @@ public class LMFeederData {
 	//----------------------------------------------------------------------------------------------------
 	
 	public void setPartFedCounterIncrease(){
+		// Send To LM
 		signal = feederNum + "&Feeder&" + "Part Fed Counter";
-		
-		//----------------------------------------------------------------------------------For Test
-		server.signalToClient(signal);
-		//----------------------------------------------------------------------------------
+		serverMain.sendToLM(signal);
 	}
 
 	// For Agent------------------------------------------------------------------------------------
 	public void setRearGateSwitchLower(){
-		// Send To Managers		
+		// Send To LM & FPM		
 		signal = feederNum + "&Feeder&" + "Rear Gate Lower";
-		
-		//----------------------------------------------------------------------------------For Test
-		server.signalToClient(signal);
-		//----------------------------------------------------------------------------------
-		
-		// Send To FPM
+		serverMain.sendToLM(signal);
+		serverMain.sendToFPM(signal);
 		
 		// Server Data Task
 		rearGateSwitch = true;
@@ -164,14 +130,10 @@ public class LMFeederData {
 	
 	// For Agent------------------------------------------------------------------------------------
 	public void setRearGateSwitchRaise(){
-		// Send To Managers		
+		// Send To LM & FPM		
 		signal = feederNum + "&Feeder&" + "Rear Gate Raise";
-		
-		//----------------------------------------------------------------------------------For Test
-		server.signalToClient(signal);
-		//----------------------------------------------------------------------------------
-		
-		// Send To FPM
+		serverMain.sendToLM(signal);
+		serverMain.sendToFPM(signal);
 		
 		// Server Data Task
 		rearGateSwitch = false;
@@ -180,14 +142,10 @@ public class LMFeederData {
 
 	// For Agent------------------------------------------------------------------------------------
 	public void setPurgeBinSwitchOn(){
-		// Send To Managers		
+		// Send To LM & FPM	
 		signal = feederNum + "&Feeder&" + "Purge On";
-		
-		//----------------------------------------------------------------------------------For Test
-		server.signalToClient(signal);
-		//----------------------------------------------------------------------------------
-		
-		// Send To FPM
+		serverMain.sendToLM(signal);
+		serverMain.sendToFPM(signal);
 		
 		// Server Data Task
 		purgeSwitch = true;
@@ -196,14 +154,10 @@ public class LMFeederData {
 
 	// For Agent------------------------------------------------------------------------------------
 	public void setPurgeBinSwitchOff(){
-		// Send To Managers		
+		// Send To LM & FPM		
 		signal = feederNum + "&Feeder&" + "Purge Off";
-		
-		//----------------------------------------------------------------------------------For Test
-		server.signalToClient(signal);
-		//----------------------------------------------------------------------------------
-		
-		// Send To FPM
+		serverMain.sendToLM(signal);
+		serverMain.sendToFPM(signal);
 		
 		// Server Data Task
 		purgeSwitch = false;
@@ -212,14 +166,10 @@ public class LMFeederData {
 
 	// For Agent------------------------------------------------------------------------------------
 	public void setDiverterSwitchLeft(){
-		// Send To Managers		
+		// Send To LM & FPM
 		signal = feederNum + "&Feeder&" + "Divert To Left";
-		
-		//----------------------------------------------------------------------------------For Test
-		server.signalToClient(signal);
-		//----------------------------------------------------------------------------------
-		
-		// Send To FPM
+		serverMain.sendToLM(signal);
+		serverMain.sendToFPM(signal);
 		
 		// Server Data Task
 		diversionSwitch = true;
@@ -228,14 +178,10 @@ public class LMFeederData {
 
 	// For Agent------------------------------------------------------------------------------------
 	public void setDiverterSwitchRight(){
-		// Send To Managers
+		// Send To LM & FPM
 		signal = feederNum + "&Feeder&" + "Divert To Right";
-		
-		//----------------------------------------------------------------------------------For Test
-		server.signalToClient(signal);
-		//----------------------------------------------------------------------------------
-		
-		// Send To FPM
+		serverMain.sendToLM(signal);
+		serverMain.sendToFPM(signal);
 		
 		// Server Data Task
 		diversionSwitch = false;

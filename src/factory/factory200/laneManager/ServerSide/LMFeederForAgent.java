@@ -1,30 +1,22 @@
 package factory.factory200.laneManager.ServerSide;
 
 import java.util.ArrayList;
-import factory.general.*;
 
 public class LMFeederForAgent {
 	
-	private Server server;
 	private LMServerMain serverMain;
 	private LMFeederData newFeeder;	///< Instance of 'ServerLaneManagerThreadFeeder'
 	private ArrayList<LMFeederData> feeders = new ArrayList<LMFeederData>();	///< ArrayList of feeders
 
-	public LMFeederForAgent(Server server, LMServerMain serverMain){
-		this.server = server;
+	public LMFeederForAgent(LMServerMain serverMain){
 		this.serverMain = serverMain;
 	
 		for(int i=0 ; i<4 ; i++){
-			newFeeder = new LMFeederData( i, server, serverMain );
+			newFeeder = new LMFeederData( i, serverMain );
 			feeders.add(newFeeder);
 		}
 	}
-	
-	public LMFeederData getFeeder(int feederNum){
-		return feeders.get(feederNum);
-	}
-	
-	//---------------------------------------------------------------------------------------For Agent
+
 	public void setSwitchOn( int feederNum ){
 		feeders.get( feederNum ).setSwitchOn();
 	}
@@ -77,4 +69,8 @@ public class LMFeederForAgent {
 	public void setDiverterSwitchRight( int feederNum ){
 		feeders.get( feederNum ).setDiverterSwitchRight();
 	}
+
+	public LMFeederData getFeeder(int feederNum){
+		return feeders.get(feederNum);
+	}	
 }
