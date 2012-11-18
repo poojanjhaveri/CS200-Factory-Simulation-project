@@ -29,61 +29,28 @@ public class CameraAgentTest {
         assertEquals(true, true);
     }
     
-    /**
-     * Test of msgNestIsFull method, of class CameraAgent.
-     */
-    @Test
-    public void testMsgNestIsFull() {
-        System.out.println("msgNestIsFull");
-        Nest nest = null;
-        CameraAgent instance = null;
-        instance.msgNestIsFull(nest);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of msgKitIsFull method, of class CameraAgent.
-     */
-    @Test
-    public void testMsgKitIsFull() {
-        System.out.println("msgKitIsFull");
-        Kit kit = null;
-        CameraAgent instance = null;
-        instance.msgKitIsFull(kit);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of msgHereIsKitInfo method, of class CameraAgent.
-     */
-    @Test
-    public void testMsgHereIsKitInfo() {
-        System.out.println("msgHereIsKitInfo");
-        Kit kit = null;
-        CameraAgent instance = null;
-        instance.msgHereIsKitInfo(kit);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    /* Check if on receiving msgKitFull, the Camera sends a message "Kit Inspected" */
+    public void testInspectNest(){
+        Kit kit=new Kit("TestKit");
+        kit.status=Kit.Status.full;
+        camera.msgKitIsFull(kit);
+        camera.pickAndExecuteAnAction();
+        assertTrue("Mock kitRobot should have received Nest Inspected. Event log: "
+						+ kitRobot.log.toString(), kitRobot.log
+						.containsString("Received msgKitInspected"));
+    
     }
     
-    public String getLogs() {
-        StringBuilder sb = new StringBuilder();
-        String newLine = System.getProperty("line.separator");
-        sb.append("-------Kit Robot Log-------");
-        sb.append(newLine);
-        sb.append(kitRobot.log.toString());
-        sb.append(newLine);
-        sb.append("-------End Kit Robot Log-------");
-
-        sb.append(newLine);
-
-        sb.append("-------Nest Agent Log-------");
-        sb.append(newLine);
-        sb.append(nestAgent.log.toString());
-        sb.append("-------End Nest Agent Log-------");
-
-        return sb.toString();
+    /* Check if on receiving message nest is full, it sends a status to Nest "Nest Inspected" */
+    public void testInspectKit(){
+        Nest nest=new Nest(1);
+        nest.status=Nest.Status.gettingInspected;
+        camera.msgNestIsFull(nest);
+        camera.pickAndExecuteAnAction();
+        assertTrue("Mock nestAgent should have received Nest Inspected. Event log: "
+						+ kitRobot.log.toString(), kitRobot.log
+						.containsString("Nest Inspected"));
+    
     }
+    
 }

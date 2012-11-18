@@ -65,7 +65,7 @@ public class HandleAManager implements Runnable {
                 processMessage(message);
                 p.println("Processed message in client thread");
             } catch (Exception e) {
-                p.print("Client exited prematurely; shutting down");
+                System.out.print("Client exited prematurely; shutting down");
                 System.exit(0);
             }
         }
@@ -109,7 +109,12 @@ public class HandleAManager implements Runnable {
                 System.out.println("Number of clients is 0; exiting Server");
                 System.exit(0);
             }
-        } else if(msg.contains(Message.IDENTIFY_FACTORYPRODUCTIONMANAGER)) {
+        }else if(msg.contains(Message.IDENTIFY_KITMANAGER))
+	    {
+		System.out.println("SERVER FOUND A KIT MANAGER");
+		this.server.setKitManagerClient(this);
+	    }
+ else if(msg.contains(Message.IDENTIFY_FACTORYPRODUCTIONMANAGER)) {
             this.server.setFactoryProductionManagerToAll(this);
         }
         else if(msg.contains(Message.IDENTIFY_LANEMANAGER)) {
@@ -142,20 +147,24 @@ public class HandleAManager implements Runnable {
             this.server.getFactoryState().getBlueprintParts().add(p);
             this.server.getFactoryState().getBlueprintParts().save();
             System.out.println("Defined new part: " + p.serialize());
-	    if (this.server.getKitRobotAgent().getClient() != null){
-	    	this.server.getKitRobotAgent().getClient().sendMessage(Message.PUSH_PARTS_LIST + ":" + this.server.getFactoryState().getBlueprintParts().serialize());
+	    if (this.server.getKitManagerClient() != null){
+	    	this.server.getKitManagerClient().sendMessage(Message.PUSH_PARTS_LIST + ":" + this.server.getFactoryState().getBlueprintParts().serialize());
 	    System.out.println("Pushed latest list to KitManager");
-	}
+	    }else{
+		System.out.println("Unable to push latest list to KitManager because it has not yet been connected.");
+	    }
         } else if (msg.contains(Message.DEFINE_NEW_KIT)) {
             Kit k = Kit.deserialize(this.grabParameter(msg));
             this.server.getFactoryState().getBlueprintKits().add(k);
             this.server.getFactoryState().getBlueprintKits().save();
             System.out.println("Defined new kit:" + k.serialize());
-	    if(this.server.getKitRobotAgent().getFactoryProductionManagerClient() != null)
+	    if(this.server.getFPMClient() != null)
 		{
-		    this.server.getKitRobotAgent().getFactoryProductionManagerClient().sendMessage(Message.PUSH_KITS_LIST + ":" + this.server.getFactoryState().getBlueprintKits().serialize());
+		    this.server.getFPMClient().sendMessage(Message.PUSH_KITS_LIST + ":" + this.server.getFactoryState().getBlueprintKits().serialize());
 		    System.out.println("Pushed latest kits to FPM");
-		}
+		}else{
+		System.out.println("Unable to push latest list to FactoryProductionManager because it has not yet been connected.");
+	    }
         } else if (msg.contains(Message.UNDEFINE_PART)) {
             Integer id = Integer.parseInt(this.grabParameter(msg));
             System.out.println("Undefining part " + id);
