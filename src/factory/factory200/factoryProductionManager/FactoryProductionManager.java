@@ -2,24 +2,13 @@ package factory.factory200.factoryProductionManager;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTabbedPane;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
+import javax.swing.*;
 
 import factory.general.BlueprintKits;
 import factory.general.Kit;
@@ -44,56 +33,62 @@ import factory.general.Util;
  *
  */
 public class FactoryProductionManager extends Manager implements ActionListener {
-	private JPanel basePanel, topPanel, botPanel, leftPanel, midPanel, rightPanel, blankPanel;
-	private JLabel selLabel, numLabel, consoleLabel, schedLabel;
-	private JComboBox selKit;
-	private JTextField numE;
-	private JButton queueue, start, stop, reset;
-	private JTextArea schedField, outField;
-	private JScrollPane schedPane, outPane;
-	private JTabbedPane tabs;
-        
-        public GraphicsPanel gfx;
-
-	private String nameToAdd;
-	private Kit kitToAdd;
-	private int qtyToAdd;
-	private int num;
-	private ArrayList<String> availableKits;
-	private ArrayList<Kit> selectedKits;
-
-        private boolean empty;
-        private boolean constructed;
-        private BlueprintKits kitsbp;
-        
-	private final static String newline = "\n";
-	
-        GridBagLayout gridbag;
-        GridBagConstraints c;
+    private JPanel basePanel, topPanel, botPanel, leftPanel, midPanel, rightPanel, blankPanel;
+    private JLabel selLabel, numLabel, consoleLabel, schedLabel;
+    private JComboBox selKit;
+    private JTextField numE;
+    private JButton queueue, start, stop, reset;
+    private JTextArea schedField, outField;
+    private JScrollPane schedPane, outPane;
+    private JTabbedPane tabs;
+    
+    private JTextPane serverQueue;
+    
+    public GraphicsPanel gfx;
+    
+    private String nameToAdd;
+    private Kit kitToAdd;
+    private int qtyToAdd;
+    private int num;
+    private ArrayList<String> availableKits;
+    private ArrayList<Kit> selectedKits;
+    
+    private boolean empty;
+    private boolean constructed;
+    private BlueprintKits kitsbp;
+    
+    private final static String newline = "\n";
+    
+    GridBagLayout gridbag;
+    GridBagConstraints c;
         
     public FactoryProductionManager()
     {
-            gfx = new GraphicsPanel();
-            gfx.setPreferredSize(new Dimension(1350, 700));
-            
-            //debug = false;
-            empty = false;
-            constructed = false;
-            
-            //Pull Blueprint from server
-            availableKits = new ArrayList<String>();
-            selKit = new JComboBox();
-            this.kitsbp = new BlueprintKits();
-            this.mcon.out(Message.PULL_KITS_LIST);
-            
-            instantiateStaticComponents();
-            
-            panelLayout();
-            
-            constructed = true;
-            
-            // Identify this manager
-            this.sendToServer(Message.IDENTIFY_FACTORYPRODUCTIONMANAGER);
+        empty = false;
+        constructed = false;
+        
+        instantiateDynamicComponents();
+        //Pull From Server
+        this.mcon.out(Message.PULL_KITS_LIST); 
+        instantiateStaticComponents();
+        panelLayout();
+        
+        constructed = true;
+        
+        // Identify this manager
+        this.sendToServer(Message.IDENTIFY_FACTORYPRODUCTIONMANAGER);
+    }
+    
+    private void instantiateDynamicComponents()
+    {
+        //Instantiate Parts Blueprint
+        availableKits = new ArrayList<String>();
+        selKit = new JComboBox();
+        this.kitsbp = new BlueprintKits();
+        
+        //Instantiate Graphics Panel
+        gfx = new GraphicsPanel();
+        gfx.setPreferredSize(new Dimension(1350, 700));
     }
     
     private void instantiateStaticComponents()
@@ -295,8 +290,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
                 }
             }
     }
-
-    //start the factory production queue with the current kit selection
+    
     private void selKitRoutine(Object source)
     {
         JComboBox cb = (JComboBox)source;
@@ -307,8 +301,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
             if(nameToAdd.equals(kitty.getName()))
                 kitToAdd = kitty;
     }
-
-
+    
     @Override
     public void processMessage(String msg)
     {
@@ -338,6 +331,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
         }
         System.out.println("Available kits size = " + availableKits.size());
         
+        selKit.removeAllItems();
         //Add strings to the combobox component
         for(String kitty : availableKits)
         {
@@ -347,8 +341,8 @@ public class FactoryProductionManager extends Manager implements ActionListener 
         //if the incoming kit list isn't empty, make the combo box now
         if(!empty)
         {
-            selKit.setSelectedItem(0);
             selKitRoutine(selKit);
+            selKit.setSelectedItem(0);
         }
         
         if(constructed)
