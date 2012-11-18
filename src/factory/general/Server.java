@@ -266,6 +266,10 @@ public class Server {
 		return numClients;
 	}
 
+	public KitRobotAgent getKitRobotAgent() {
+		return kitRobotAgent;
+	}
+	
 	/**
 	 * @brief method to help debug
 	 */

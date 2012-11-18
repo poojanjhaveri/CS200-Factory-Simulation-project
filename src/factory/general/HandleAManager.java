@@ -142,11 +142,20 @@ public class HandleAManager implements Runnable {
             this.server.getFactoryState().getBlueprintParts().add(p);
             this.server.getFactoryState().getBlueprintParts().save();
             System.out.println("Defined new part: " + p.serialize());
+	    if(this.server.getKitRobotAgent().getClient() != null){
+		thisi.server.getKitRobotAgent().getClient().sendMessage(Message.PUSH_PARTS_LIST + ":" + this.server.getFactoryState().getBlueprintParts().serialize());
+	    System.out.println("Pushed latest list to KitManager");
+	}
         } else if (msg.contains(Message.DEFINE_NEW_KIT)) {
             Kit k = Kit.deserialize(this.grabParameter(msg));
             this.server.getFactoryState().getBlueprintKits().add(k);
             this.server.getFactoryState().getBlueprintKits().save();
             System.out.println("Defined new kit:" + k.serialize());
+	    if(this.server.getKitRobotAgent().getFactoryProductionManagerClient() != null)
+		{
+		    this.server.getKitRobotAgent().getFactoryProductionManagerClient().sendMessage(Message.PUSH_KITS_LIST + ":" + this.server.getFactoryState().getBlueprintKits().serialize());
+		    System.out.println("Pushed latest kits to FPM");
+		}
         } else if (msg.contains(Message.UNDEFINE_PART)) {
             Integer id = Integer.parseInt(this.grabParameter(msg));
             System.out.println("Undefining part " + id);
