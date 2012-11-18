@@ -129,6 +129,7 @@ public class Server {
 
 	private void initializeManagers() { // Something by Dongyoung...?  Dongyoung : Yeah
 		 serverLM = new LMServerMain();
+                 new Thread(serverLM).start();
 	}
 	
 	// Start Server-side Program(Lane Manager)
@@ -166,8 +167,10 @@ public class Server {
                 if (i < FEEDER) {
                     feederAgents[i] = new FeederAgent("Feeder " + i, i);
                 }
-                laneAgents[i] = new LaneAgent("Lane " + i);
+                laneAgents[i] = new LaneAgent("Lane " + i,i);
             }
+            
+        
         }
 
         private void connectAgentsAndManagers() {
@@ -202,6 +205,14 @@ public class Server {
                 laneAgents[i + 1].setFeeder(feederAgents[i / 2]);
                 laneAgents[i + 1].setNest(nestAgent);
             }
+            for (int i = 0; i < LANE; i++) {
+                if (i < FEEDER) {
+                    feederAgents[i].setServer(serverLM);
+                
+                }
+             
+            }
+            
         }
 
         private void startAgentThreads() {

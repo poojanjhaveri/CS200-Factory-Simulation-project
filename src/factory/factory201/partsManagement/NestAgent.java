@@ -166,7 +166,6 @@ public class NestAgent extends Agent implements NestInterface {
                 return true;
             }
         }
-
         synchronized (requests) {
             if (!requests.isEmpty()) {
                 for (Nest n : myNests) {
@@ -181,9 +180,9 @@ public class NestAgent extends Agent implements NestInterface {
                 }
             }
         }
-
         return false;
     }
+ 
 
     
     

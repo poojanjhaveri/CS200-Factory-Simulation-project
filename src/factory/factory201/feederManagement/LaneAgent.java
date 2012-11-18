@@ -32,14 +32,15 @@ public class LaneAgent extends Agent implements Lane {
     boolean rightFull=false;
     int leftIndex; //left and right indices of the lane
     int rightIndex; // right index of the lane
-    
+    public int index;
     //---------------------------------------------------------------------------
     private LMServerMain serverMain;
     private LMLaneForAgent animation;
     //---------------------------------------------------------------------------
 
-    public LaneAgent(String name){
+    public LaneAgent(String name,int index){
     	super(name);
+        this.index=index;
     	//---------------------------------------------------------------------------
     	//this.serverMain = serverMain;
     	//this.animation = serverMain.getForAgentLane();
@@ -261,5 +262,8 @@ public class LaneAgent extends Agent implements Lane {
     public void setNest(NestInterface nest){
     	
     	this.nest=nest;
+    }
+    public int getIndex(){
+    return index;
     }
 }
