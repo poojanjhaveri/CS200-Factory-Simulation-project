@@ -134,7 +134,7 @@ public class CameraAgent extends Agent implements Camera {
         }
         
         DoInspectKit(kit);
-        kitRobotAgent.msgKitInspected(result);
+        kitRobotAgent.msgKitInspected(true);
         kits.remove(kit);
         stateChanged();
     }
@@ -156,7 +156,7 @@ public class CameraAgent extends Agent implements Camera {
             }
         }
         DoInspectNest(nest);
-        nestAgent.msgNestInspected(nest, result);
+        nestAgent.msgNestInspected(nest, true);
         nests.remove(nest);
         stateChanged();
     }

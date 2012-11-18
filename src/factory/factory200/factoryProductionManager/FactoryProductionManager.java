@@ -7,7 +7,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 import factory.general.BlueprintKits;
-
+import factory.general.Util;
 import factory.general.Kit;
 import factory.general.Manager;
 import factory.general.Message;
@@ -66,6 +66,9 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 
 	public FactoryProductionManager()
 	{
+		// Send Identification to Server
+		super.sendToServer(Message.IDENTIFY_FACTORYPRODUCTIONMANAGER);
+		
 		debug = false;
 		GridBagLayout gridbag = new GridBagLayout();
 		GridBagConstraints c = new GridBagConstraints();
@@ -220,7 +223,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
                 
 		add(tabs);
 
-		this.sendToServer(Message.IDENTIFY_FACTORYPRODUCTIONMANAGER);
+		//this.sendToServer(Message.IDENTIFY_FACTORYPRODUCTIONMANAGER);
 	}
 	
     @Override
@@ -319,13 +322,19 @@ public class FactoryProductionManager extends Manager implements ActionListener 
     void start() {
 		//add this when you change arraylist to kits
 		String msg = Message.PUSH_PRODUCTION_QUEUE+":";
-		for(int i = 0; i != this.selectedKits.size(); i++)
+		/*for(int i = 0; i != this.selectedKits.size(); i++)
 		{
 			msg = msg+this.selectedKits.get(i).getNumber();
 			if(i != this.selectedKits.size()-1)
 				msg=msg+",";
-				}
-		this.mcon.out(msg);
+		}*/
+		ArrayList<String> serialized = new ArrayList<String>();
+		for(int i = 0; i != this.selectedKits.size(); i++)
+		    {
+			serialized.add(this.selectedKits.get(i).getNumber()+"");
+		    }
+		msg = msg + Util.serialize(serialized);
+		this.sendToServer(msg);
     }
 
     /**
@@ -364,6 +373,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
     public void processMessage(String msg)
     {
 	super.processMessage(msg);
+
 	if(msg.contains(Message.PUSH_KITS_LIST))
 	    {
 			this.kitsbp.recreate(this.grabParameter(msg));
@@ -371,7 +381,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 			this.kitsbp.debug();
 	    }
 	
-		// Lane Manager
+		//Lane Manager( pass 'msg' into Lane Manager Message Interpreter and take a proper action )
 	    gfx.verifyMessage(msg);
     }
     /**

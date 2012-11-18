@@ -21,7 +21,10 @@ import java.util.List;
  */
 public class AgentMain {
 
-    private static final boolean TEST_MODE = false;
+    private static final boolean PATRICK = true;
+    private static final boolean KEVIN = true;
+    private static final boolean ALEX = false;
+    
     private static final int FEEDER = 4;
     private static final int LANE = 8;
 
@@ -119,6 +122,7 @@ public class AgentMain {
         for (int i = 1; i < 9; i++) {
             kit.addPart(new Part(i)); // This is a kit that has actual parts...
         }
+        conveyorAgent.generateKit(10);
 
         // Officially start the agent interaction sequence!
         List<Kit> kits = new ArrayList<Kit>();
@@ -135,7 +139,11 @@ public class AgentMain {
         
         /*========== Turn on or off debugging (print statements) ==========*/
         // Just for debugging; put 'false' to turn off print statements
-        if (TEST_MODE) {
+        if (PATRICK) {
+            nestAgent.print = false;
+//            partsAgent.print = false;
+        }
+        if(KEVIN) {
             for (int i = 0; i < LANE; i++) {
                 if (i < FEEDER) {
                     feederAgents[i].print = false;
@@ -143,10 +151,12 @@ public class AgentMain {
                 laneAgents[i].print = false;
             }
             gantryAgent.print = false;
-            nestAgent.print = false;
-            partsAgent.print = false;
+        }
+        if(ALEX) {
+            kitRobotAgent.print = false;
+            conveyorAgent.print = false;
+            cameraAgent.print = false;
         }
 
-        conveyorAgent.generateKit(10);
     } // END main
 } // END AgentMain

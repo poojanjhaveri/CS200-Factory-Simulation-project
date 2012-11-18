@@ -19,13 +19,15 @@ public class LMSignalFromServerVerification extends Manager{
 	private LMPartRobotHandler partRobotHandler;
 	private LMGantryRobotHandler gantryRobotHandler;
 	private LMTimerThread timer = new LMTimerThread(this);
-	private int feedingTiming;
 	
 	/**
 	 * @brief Constructor
 	 * @param laneManagerApp : Instance of class 'LaneManagerApp'
 	 */
 	public LMSignalFromServerVerification(LMApplication app){
+		// Send Identification to Server
+		super.sendToServer(Message.IDENTIFY_LANEMANAGER);
+		
 		this.app = app;
 		cameraHandler = new LMCameraHandler(app);
 		feederHandler = new LMFeederHandler(app);
@@ -40,7 +42,6 @@ public class LMSignalFromServerVerification extends Manager{
 	}
 	
 	public void timerAction(){
-		feedingTiming++;
 		app.getGraphicsPanel().getAllLane().laneMove();
 		app.getGraphicsPanel().getAllCamera().cameraShoot();
 		app.getGraphicsPanel().getAllPart().partMove();

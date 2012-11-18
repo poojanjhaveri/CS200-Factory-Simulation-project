@@ -1,11 +1,6 @@
 package factory.factory200.laneManager.ServerSide;
 
-import java.awt.Component;
 import java.awt.FlowLayout;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-
-import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 
 /**

@@ -67,9 +67,21 @@ public class BlueprintParts implements Blueprint, Serializable {
 		    }
 	    }
         this.save();
-    }    
+    }  
+    public Part getPartById(int id)
+    {
+        for(int i = this.parts.size()-1; i != -1; i--)
+	    {
+		if(this.parts.get(i).getNumber() == id)
+		    {
+			return this.parts.get(i);
+		    }
+	    }
+        System.out.println("CRITICAL ERROR: COULD NOT FIND PART BY ID " + id);
+        return null;
+    }
     public Part getPartAt(int i) {
-        return this.parts.get(i);
+        return parts.get(i);
     }
     
     public int getSize(){

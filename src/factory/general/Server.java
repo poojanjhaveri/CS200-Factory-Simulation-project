@@ -1,3 +1,4 @@
+
 package factory.general;
 
 import java.net.ServerSocket;
@@ -37,6 +38,9 @@ public class Server {
 	private Printer p = new Printer();
 	private int numClients; // accessible by Server and HandleAManager
 
+        
+    private FactoryState fstate;
+    
 	/** Agents */
     // Fields just for "AgentMain" stuff (Agent preparation) 
     private static final boolean TEST_MODE = true;
@@ -64,9 +68,6 @@ public class Server {
 	private Socket s = null;
 	private HandleAManager hac;
 
-	//For testing by Dongyoung
-	//private ArrayList<HandleAManager> managers = new ArrayList<HandleAManager>();
-	
 	public static void main(String[] args) {
 		Server server = new Server(PORT_NUMBER);
 		if (SHOULD_DEBUG) {
@@ -80,12 +81,20 @@ public class Server {
 	 * @param portNumber - the port number to create the server on.
 	 */
 	public Server(int portNumber) {
+        this.fstate = new FactoryState();
+
+		initializeManagers();
         // TODO: uncomment when ready
 //		prepareAllAgents(); // Prepare all agents; based on AgentMain.java
+		
 		numClients = 0; // Initialize num clients is 0
 		start(portNumber); // Start listening for clients and making new HandleAManager instances
 	}
-
+	
+	public FactoryState getFactoryState() {
+		return this.fstate;
+	}
+	
 	/**
 	 * @brief Starts the server, listening for clients and making new HandleAManager instances (threads) appropriately
 	 * Contains the central loop. We break out of this loop by forcing System.exit(0) in HandleAManager.
@@ -99,10 +108,8 @@ public class Server {
 			e.printStackTrace();
 			System.exit(0);
 		}
-
-		//for(int i=0 ; i<2 ; i++){ // Since I am testing with two clients By Dongyoung
 		
-		while(true){
+		while(true) {
 			// Continuously check for a new client for which to create a thread
 			try {
 				s = ss.accept(); // Wait for a client (program halts here until connection occurs)
@@ -110,18 +117,19 @@ public class Server {
 				p.println("num clients: " + numClients);
 				this.hac = new HandleAManager(s, this);
 				new Thread(hac).start(); // Create the thread
-				
-				//managers.add(hac);  // For Testing by Dongyoung
-				
 			} catch (Exception e) {
 				System.out.println("got an exception" + e.getMessage());
 			}
 			System.out.println("A client has connected");
 		}
-		//startLaneManagerThread(); // By Dongyoung
 	}
 
-
+	private void initializeManagers(){
+		 serverLM = new LMServerMain();
+	}
+	
+	// Start Server-side Program(Lane Manager)
+	
 	/*********** Agent Preparation Code **********/
 	/**
 	 * @brief prepares all agents; called when server constructor begins
@@ -132,6 +140,7 @@ public class Server {
 		startAgentThreads();
 		
 		startInteractionSequence();
+		
 		debugIfNecessaryForAgents();
 	}
 	
@@ -204,10 +213,6 @@ public class Server {
         // Alex
         cameraAgent.startThread();
         conveyorAgent.startThread();
-        
-        // *Change this!
-        conveyorAgent.generateKit(10); // * This generates 10 new kits, among other things if you pass string... *
-        
         kitRobotAgent.startThread();
 
         // Patrick
@@ -222,26 +227,11 @@ public class Server {
             }
             laneAgents[i].startThread();
         }
+        
+        // *Put this wherever the FPM sends the signal to create (generate) kits
+//        conveyorAgent.generateKit(10); // * This generates 10 new kits, among other things if you pass string... *
+        
 	}
-
-	//------------------------------------------------------------------------------------By Dongyoung
-	private void startLaneManagerThread() {
-	    LMServerMain serverLM = new LMServerMain(this);
-	    Thread threadLM = new Thread(serverLM);
-	    threadLM.start();
-	}
-	
-	public void signalToClient(String signal){
-		hac.sendMessage(signal);
-		
-		// For testing by Dongyoung
-		/*
-		for(int i=0 ; i<managers.size() ; i++){
-			managers.get(i).sendMessage(signal);
-		}
-		*/
-	}
-	//------------------------------------------------------------------------------------By Dongyoung
 	
 	private void startInteractionSequence() {
 		// Get kit from somewhere
@@ -253,6 +243,7 @@ public class Server {
 
 		// Officially start the agent interaction sequence!
 		//partsAgent.msgHereIsKit(kit); // The primary agent
+		// TODO: UNCOMMENT WHEN READY
 	}
 
 	private void debugIfNecessaryForAgents() {
@@ -314,8 +305,8 @@ public class Server {
 	public void setPartsAgentClient(HandleAManager in) {
 		this.partsAgent.setClient(in);
 	}
-    public void setFactoryProductionManagerToAll(HandleAManager in)
-    {
+	
+    public void setFactoryProductionManagerToAll(HandleAManager in) {
 	nestAgent.setFactoryProductionManager(in);
 	partsAgent.setFactoryProductionManager(in);
     kitRobotAgent.setFactoryProductionManager(in);
@@ -327,9 +318,8 @@ public class Server {
     for(int i = 0; i != 8; i++)
     laneAgents[i].setFactoryProductionManager(in);
     }
-	// here...
+
 	public LMServerMain getServerLM() {
 		return this.serverLM;
 	}
-
 }

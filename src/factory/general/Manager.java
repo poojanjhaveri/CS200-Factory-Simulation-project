@@ -18,7 +18,7 @@ import factory.general.Printer;
 /**
  * The Manager plays a pivotal role in server interaction by standardizing the
  * methods used to send up data to the Server (and eventually
- * FactoryProductionManager simulation GUI).
+ * FactoryProductionManager's simulation GUI).
  *
  * @brief used to standardize methods for all managers
  * @author David Zhang, YiWei Roy Zheng
