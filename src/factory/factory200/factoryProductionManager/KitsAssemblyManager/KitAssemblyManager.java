@@ -37,9 +37,11 @@ public class KitAssemblyManager extends JPanel implements ActionListener {
     /**
      * changes the panel based on what the user clicks
      */
-    /*public void processMessage(String msg) {
-        super.processMessage(msg);
-
+    public void processMessage(String msg) {
+//    	super.processMessage(msg);
+        if (msg == null)
+        	return;
+        
         if (msg.contains(Message.KAM_DROP_OFF_FULL_KIT)) {
             this.graphics.kitbot.dropOffFullKit();
         } else if (msg.contains(Message.KAM_MOVE_ACTIVE_KIT_TO_INSPECTION)) {
@@ -68,12 +70,16 @@ public class KitAssemblyManager extends JPanel implements ActionListener {
         } else if (msg.contains(Message.KAM_MOVE_FROM_0_TO_2)) {
             this.moveFrom0To2();
         }else if(msg.contains(Message.KAM_ADD_KIT))
-	    {
-		this.doAddEmptyKit();
-	    }
-
-        //todo - let me know what functions agent will call so I can process them here
-    }*/
+	{
+            this.doAddEmptyKit();
+	}
+        else if(msg.contains(Message.LM_ADD_PART)){
+            
+            int nest=msg.charAt(4)-48;
+            int partType=msg.charAt(6)-48;
+            this.doSetParts(nest, partType);
+        }
+    }
     
     public void doAddEmptyKit(){
         this.graphics.delivery.addKit();
@@ -270,4 +276,14 @@ public class KitAssemblyManager extends JPanel implements ActionListener {
         this.graphics.paint(panel, graphics);
     }
     
+    /**
+     * ad hoc addition, copy-paste from manager :/
+     * @brief standard way to grab parameter data via protocol Use this method
+     * in an if-statement in processMessage.
+     * @param msg - the message to grab a parameter from.
+     * @return the parameter from the received message
+     */
+    public String grabParameter(String msg) {
+        return msg.substring(msg.indexOf(":") + 1);
+    }    
 }

@@ -38,5 +38,6 @@ public class GraphicsPanel extends JPanel{
 	
 	public void verifyMessage(String msg){
 		laneManager.getServerVerify().verify(msg);
+//		this.kitsAssemblyManager
 	}
 }

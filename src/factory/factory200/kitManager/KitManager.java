@@ -86,7 +86,7 @@ public class KitManager extends Manager  implements ActionListener {
             this.update();  
             prepareMainPane();
             
-//            this.mcon.out(Message.PULL_PARTS_LIST);
+            this.mcon.out(Message.PULL_PARTS_LIST);
             this.sendToServer(Message.IDENTIFY_KITMANAGER);
          }
 	
