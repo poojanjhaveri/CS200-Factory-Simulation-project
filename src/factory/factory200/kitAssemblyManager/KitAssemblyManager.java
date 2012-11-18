@@ -66,10 +66,10 @@ public class KitAssemblyManager extends Manager implements ActionListener {
             this.flashNestCamera(Integer.parseInt(this.grabParameter(msg)));
         } else if (msg.contains(Message.KAM_MOVE_FROM_0_TO_2)) {
             this.moveFrom0To2();
-        }else if(msg.contains(Message.KAM_ADD_KIT))
-	    {
-		this.doAddNewKit();//you need to make this function, deepa
-	    }
+        }//else if(msg.contains(Message.KAM_ADD_KIT))
+	//    {
+	//	this.doAddNewKit();//you need to make this function, deepa
+	//    }
 
         //todo - let me know what functions agent will call so I can process them here
     }
@@ -146,7 +146,7 @@ public class KitAssemblyManager extends Manager implements ActionListener {
             //this.graphics.kitter.cheat();
             String choice = JOptionPane.showInputDialog("Please enter the nest number: ");
             Integer nest = Integer.parseInt(choice);
-            this.graphics.kitter.moveToNest(nest);
+            this.graphics.kitter.moveToNestCommand(nest);
             this.graphics.kitter.pickPartCommand(nest);
         }
         if (ae.getSource() == movePartRobotBack) {
@@ -192,8 +192,8 @@ public class KitAssemblyManager extends Manager implements ActionListener {
         this.add(graphics);
 
 
-        int x = 700;
-        this.setSize(700 + x, 700);
+        int x = 500;
+        this.setSize(500 + x, 700);
 
         this.graphics.setVisible(true);
 
