@@ -32,6 +32,10 @@ public class GUIBin{
 			part = new Part(num);
 			part.setGUIPart(guiPart);
 		}
+	
+	public void dumpPartOnFeeder(Integer x){
+		
+	}
 		    
 	public void setPartToNull(){
 		this.part=null;
