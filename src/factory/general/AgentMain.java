@@ -32,11 +32,8 @@ public class AgentMain {
         /*========== Declare all agents and etc. ==========*/
 
         // Misc - pass in the appropriate KAM and GRM
-<<<<<<< HEAD
 //        KitAssemblyManager KAM = new KitAssemblyManager(); // *
        // GantryRobotManager GRM = new GantryRobotManager(); // *
-=======
->>>>>>> d8d9000645502085149820e64262bca97d1300dc
 
         // Alex
         KitRobotAgent kitRobotAgent = new KitRobotAgent("Kit Robot");
@@ -100,11 +97,6 @@ public class AgentMain {
             nestAgent.getNest(i).setLane(laneAgents[i]);
         }
 
-        // Kevin
-<<<<<<< HEAD
-//        gantryAgent.setGantryRobotManager(GRM);
-=======
->>>>>>> d8d9000645502085149820e64262bca97d1300dc
         for (int i = 0, j = 0; i < FEEDER; i++, j++) {
 
             feederAgents[i].setGantry(gantryAgent);
