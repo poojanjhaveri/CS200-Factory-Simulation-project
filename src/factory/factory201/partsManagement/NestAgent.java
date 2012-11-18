@@ -166,6 +166,7 @@ public class NestAgent extends Agent implements NestInterface {
                 return true;
             }
         }
+<<<<<<< HEAD
         synchronized(requests){
          if (!requests.isEmpty())
                 for (Nest n: myNests){
@@ -175,6 +176,19 @@ public class NestAgent extends Agent implements NestInterface {
                 giveToKit(n);
                 return true;
             }}}}}
+=======
+        
+         if (!requests.isEmpty()) {
+             for (Nest n : myNests) {
+                 for (Part part : n.parts) {
+                     if (part.type == requests.get(0).type) {
+                         giveToKit(n);
+                         return true;
+                     }
+                 }
+             }
+        }
+>>>>>>> e3740d12791145cfb4ec874262bc3923429b71ff
         return false;
     }
 
