@@ -23,6 +23,7 @@ public class LMSendPartSignal {
 			// Purge Switch
 			if(serverMain.getPartData().getFeederPartSize(i) == 0 && serverMain.getForAgentFeeder().getFeeder(i).getWithBin() == true){
 				serverMain.getForAgentFeeder().setPurgeBinSwitchOn(i);
+				serverMain.getForAgentGantryRobot().emptyBin(i);
 			}
 			else if(serverMain.getPartData().getFeederPartSize(i) != 0){
 				serverMain.getForAgentFeeder().setPurgeBinSwitchOff(i);

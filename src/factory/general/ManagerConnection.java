@@ -88,16 +88,16 @@ public class ManagerConnection implements Runnable {
      * @brief listen for a message from the server
      */
     public void listenToServer() {
-        p.println("Listening to the server (ManagerConnection)...");
+//        p.println("Listening to the server (ManagerConnection)...");
         try {
             String msg = in.readLine();
             this.mgr.processMessage(msg);
         }  catch (NullPointerException e) {
         	e.printStackTrace();
         	
-        	System.out.println("A client has exited prematurely while other clients were still connected.");
-        	System.out.println("Shutting down.");
-//        	System.exit(0);
+//        	System.out.println("A client has exited prematurely while other clients were still connected.");
+//        	System.out.println("Shutting down.");
+        	System.exit(0);
         	
         } catch (Exception e) {
             e.printStackTrace();

@@ -135,6 +135,7 @@ public class AgentMain {
         // * 
         Kit kit = new Kit("Test Kit");
         for (int i = 1; i < 9; i++) {
+
             //kit.addPart(new Part("Name", "Description")); // This is a kit that has actual parts...
         //testing agents
             kit.addPart(new Part(i));
