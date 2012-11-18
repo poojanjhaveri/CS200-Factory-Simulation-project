@@ -66,7 +66,7 @@ public class KitManager extends Manager  implements ActionListener {
           
          ArrayList<Part> partlist = new ArrayList();
           ArrayList<Part> updatepartlist = new ArrayList();
-          ArrayList<Part> finalpartlist = new ArrayList();
+         
           ArrayList<JButton> jbtnlist = new ArrayList();
           JButton b1,b2,b3,b4,b5,b6,b7,b0;
           JButton ub1,ub2,ub3,ub4,ub5,ub6,ub7,ub0;
@@ -122,6 +122,7 @@ public class KitManager extends Manager  implements ActionListener {
         };
             nullpart = new Part("no","","pics/parts/no.png");    
            
+            partlist = new ArrayList();
             partlist.add(0,nullpart);
              partlist.add(1,nullpart);
               partlist.add(2,nullpart);
@@ -133,7 +134,7 @@ public class KitManager extends Manager  implements ActionListener {
                   
              
                    
-              System.out.println("partlist in preparepane is "+partlist.size());
+        //      System.out.println("partlist in preparepane is "+partlist.size());
                 
             
             mainpanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -199,7 +200,7 @@ public class KitManager extends Manager  implements ActionListener {
  
             c.gridx=1;
             c.gridy=1;
-            System.out.println("Size of part list is "+this.bppart.getSize());
+       //     System.out.println("Size of part list is "+this.bppart.getSize());
             
             
             create_combo = new JComboBox(); // parts list
@@ -319,7 +320,7 @@ public class KitManager extends Manager  implements ActionListener {
  
             c.gridx=1;
             c.gridy=1;
-            System.out.println("Size of part list is "+bppart.getSize());
+         //   System.out.println("Size of part list is "+bppart.getSize());
             
             ucreate_combo = new JComboBox(); // parts list
             ucreate_combo.addItem("No Part - ");
@@ -470,13 +471,14 @@ public class KitManager extends Manager  implements ActionListener {
 
         public void createKit()
         {
-            finalpartlist = new ArrayList();
-            for(int p=0;p<7;p++)
+            ArrayList<Part> finalpartlist = new ArrayList();
+            for(int p=0;p<8;p++)
             {
                 if(partlist.get(p).getFilename() != "pics/parts/no.png")
                 {
                     finalpartlist.add(partlist.get(p));
                 }
+                
             }
             System.out.println("Size of partprintlist "+partlist.size());
             System.out.println("Size of finalprintlist"+finalpartlist.size());
@@ -582,8 +584,7 @@ public class KitManager extends Manager  implements ActionListener {
                     
                  
                   Integer i = create_combo.getSelectedIndex();
-                  System.out.println("INteger selected is"+i);
-                  
+             
                   
                   
                  if( e.getSource() == b0)
@@ -596,8 +597,8 @@ public class KitManager extends Manager  implements ActionListener {
                      {
                        b0.setIcon(new ImageIcon(bppart.getPartAt(i-1).getFilename()));
                    //  b0.setIcon(new ImageIcon("pics/parts/part1.png"));
-                     partlist.add(0, bppart.getPartAt(i-1));
-                     System.out.println("partlist in preparepane is "+partlist.size());
+                    partlist.set(0, bppart.getPartAt(i-1));
+                    
                      }  
                    
                  }
@@ -612,8 +613,8 @@ public class KitManager extends Manager  implements ActionListener {
                         else
                      {
                     b1.setIcon(new ImageIcon(bppart.getPartAt(i-1).getFilename()));
-                     partlist.add(1, bppart.getPartAt(i-1));
-                      System.out.println("partlist in preparepane is "+partlist.size());
+                     partlist.set(1, bppart.getPartAt(i-1));
+               //       System.out.println("partlist in preparepane is "+partlist.size());
                      }
                      
                  }
@@ -628,7 +629,7 @@ public class KitManager extends Manager  implements ActionListener {
                      {
                      
                       b2.setIcon(new ImageIcon(bppart.getPartAt(i-1).getFilename()));
-                     partlist.add(2, bppart.getPartAt(i-1));
+                    partlist.set(2, bppart.getPartAt(i-1));
                      }
                     
                  }
@@ -642,7 +643,7 @@ public class KitManager extends Manager  implements ActionListener {
                         else
                      {
                       b3.setIcon(new ImageIcon(bppart.getPartAt(i-1).getFilename()));
-                     partlist.add(3, bppart.getPartAt(i-1));
+                    partlist.set(3, bppart.getPartAt(i-1));
                      }
                  }
                  if( e.getSource() == b4)
@@ -655,7 +656,7 @@ public class KitManager extends Manager  implements ActionListener {
                         else
                      {
                     b4.setIcon(new ImageIcon(bppart.getPartAt(i-1).getFilename()));
-                     partlist.add(4, bppart.getPartAt(i-1));
+                     partlist.set(4, bppart.getPartAt(i-1));
                      }
                  }
                  if( e.getSource() == b5)
@@ -668,7 +669,7 @@ public class KitManager extends Manager  implements ActionListener {
                         else
                      {
                       b5.setIcon(new ImageIcon(bppart.getPartAt(i-1).getFilename()));
-                     partlist.add(5, bppart.getPartAt(i-1));
+                    partlist.set(5, bppart.getPartAt(i-1));
                      }
                  }
                  if( e.getSource() == b6)
@@ -681,7 +682,7 @@ public class KitManager extends Manager  implements ActionListener {
                         else
                      {
                      b6.setIcon(new ImageIcon(bppart.getPartAt(i-1).getFilename()));
-                     partlist.add(6, bppart.getPartAt(i-1));
+                    partlist.set(6, bppart.getPartAt(i-1));
                      }
                  }
                  if( e.getSource() == b7)
@@ -694,7 +695,7 @@ public class KitManager extends Manager  implements ActionListener {
                         else
                      {
                      b7.setIcon(new ImageIcon(bppart.getPartAt(i-1).getFilename()));
-                     partlist.add(7, bppart.getPartAt(i-1));
+                     partlist.set(7, bppart.getPartAt(i-1));
                      }
                  }
                     
