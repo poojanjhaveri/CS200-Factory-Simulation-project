@@ -264,19 +264,19 @@ public class PartsAgent extends Agent implements PartsInterface {
     public void DoMoveToNest(int nestNum){
 
            // kam.getPartsRobot().moveToNestCommand(nestNum);
-
-//	    this.client.sendMessage(Message.KAM_PARTS_MOVE_TO_NEST+":"+nestNum);
+        this.fpm.sendMessage(Message.KAM_PARTS_MOVE_TO_NEST+":"+nestNum);
+	    this.client.sendMessage(Message.KAM_PARTS_MOVE_TO_NEST+":"+nestNum);
     }
     
     public void DoPickUpPart(int nestNum){
-     //this.client.sendMessage(KAM_PARTS_PICK_PART+":"+nestNum);
-     //this.fpm.sendMessage(KAM_PARTS_PICK_PART+":"+nestNum);
+     this.client.sendMessage(Message.KAM_PARTS_PICK_PART+":"+nestNum);
+     this.fpm.sendMessage(Message.KAM_PARTS_PICK_PART+":"+nestNum);
     }
 
     public void DoPutInKit(int kitNum){
     //  kam.getPartsRobot().dropOffParts(kitNum);  
-    //  this.client.sendMessage(Message.KAM_PARTS_DROP_OFF_PARTS+":"+kitNum);
-  //    this.fpm.sendMessage(Message.KAM_PARTS_DROP_OFF_PARTS+":"+kitNum);
+    this.client.sendMessage(Message.KAM_PARTS_DROP_OFF_PARTS+":"+kitNum);
+    this.fpm.sendMessage(Message.KAM_PARTS_DROP_OFF_PARTS+":"+kitNum);
     }
 
     @Override
