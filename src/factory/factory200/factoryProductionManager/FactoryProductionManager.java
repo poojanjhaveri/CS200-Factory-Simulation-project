@@ -327,7 +327,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 			msg = msg+this.selectedKits.get(i).getNumber();
 			if(i != this.selectedKits.size()-1)
 				msg=msg+",";
-				}*/
+		}*/
 		ArrayList<String> serialized = new ArrayList<String>();
 		for(int i = 0; i != this.selectedKits.size(); i++)
 		    {
@@ -373,26 +373,16 @@ public class FactoryProductionManager extends Manager implements ActionListener 
     public void processMessage(String msg)
     {
 	super.processMessage(msg);
-<<<<<<< HEAD
-	//if(msg.contains(Message.PUSH_KITS_LIST))
-	  //  {
-	//		this.kitsbp.recreate(this.grabParameter(msg));
-	//		System.out.println("GRABBED A NEW BLUEPRINTKITS FROM THE SERVER");
-	//		this.kitsbp.debug();
-	//    }
-	
-=======
+
 	if(msg.contains(Message.PUSH_KITS_LIST))
 	    {
 			this.kitsbp.recreate(this.grabParameter(msg));
 			System.out.println("GRABBED A NEW BLUEPRINTKITS FROM THE SERVER");
 			this.kitsbp.debug();
 	    }
-
-	//DONGYOUNG: please run each manager's processMessage(msg) function here	
->>>>>>> 79005eda696bf784f04bc85d92f16094211ae167
-		// Lane Manager
-	    //gfx.verifyMessage(msg);
+	
+		//Lane Manager( pass 'msg' into Lane Manager Message Interpreter and take a proper action )
+	    gfx.verifyMessage(msg);
     }
     /**
      * @brief Controls Kit selection and Factory ON/OFF Controls Kit selection
