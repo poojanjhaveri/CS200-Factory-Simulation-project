@@ -260,6 +260,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
                     {
 			if(selectedKits.size() > 0)
 			{
+                                //Print to console the list of kit names to push
 				outField.append("~~~~~~~~~~~~~" + newline);
 				for(Kit kitty : selectedKits)
 				{
@@ -343,13 +344,9 @@ public class FactoryProductionManager extends Manager implements ActionListener 
                 this.kitsbp.debug();
                 this.reconstructComboBox();
 	    }
-        if(constructed)
-        {
-            this.repaint();
-        }
 	
 		//Lane Manager( pass 'msg' into Lane Manager Message Interpreter and take a proper action )
-//	    gfx.verifyMessage(msg); // TODO: Why nullpointer?
+            gfx.verifyMessage(msg);
     }
     
     public void reconstructComboBox()
@@ -370,9 +367,15 @@ public class FactoryProductionManager extends Manager implements ActionListener 
                 selKit.addItem(kitty);
         }
         selKit.setSelectedItem(0);
+        
+        //if the incoming kit list isn't empty, make the combo box now
         if(!empty)
         {
             selKitRoutine(selKit);
+        }
+        if(constructed)
+        {
+            basePanel.updateUI();
         }
     }
 }
