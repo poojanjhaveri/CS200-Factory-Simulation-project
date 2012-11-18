@@ -134,6 +134,9 @@ public class Part implements Serializable {
     public void setGUIPart(GUIPart in) {
         this.guipart = in;
     }
+    public int getNum(){
+    	return this.number;
+    }
     public String serialize() {
     	//        return "("+this.name+","+this.description+","+this.number+","+this.filename+")";
     	ArrayList<String> arr = new ArrayList<String>();
