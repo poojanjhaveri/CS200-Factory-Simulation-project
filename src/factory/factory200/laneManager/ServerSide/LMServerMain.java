@@ -68,27 +68,17 @@ public class LMServerMain extends JFrame implements Runnable{
 		return signalVerify;
 	}
 	
-	public void checkToStart(){
-		if( hacLM != null ){// && hacFPM != null && hacKAM != null){
-			new Thread(this).start();
-		}
-	}
-	
 	public void setLM(HandleAManager newHandleAManager) {
 		hacLM = newHandleAManager;
-		checkToStart();
 	}
 	
 	public void setFPM(HandleAManager newHandleAManager) {
 		hacFPM = newHandleAManager;
-		checkToStart();
 	}
 	
 	public void setKAM(HandleAManager newHandleAManager) {
 		hacKAM = newHandleAManager;
-		checkToStart();
 	}
-	
 	
 	public void sendToFPM(String signal){
 		if( hacFPM != null ){
