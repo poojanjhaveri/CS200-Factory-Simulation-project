@@ -93,7 +93,6 @@ public class AgentMain {
             nestAgent.getNest(i).setLane(laneAgents[i]);
         }
 
-        // Kevin
         for (int i = 0, j = 0; i < FEEDER; i++, j++) {
             feederAgents[i].setGantry(gantryAgent);
             feederAgents[i].setLeftLane(laneAgents[j]);
