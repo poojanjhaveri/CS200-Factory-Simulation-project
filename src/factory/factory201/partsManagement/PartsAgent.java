@@ -120,6 +120,7 @@ public class PartsAgent extends Agent implements PartsInterface {
             pickUpPart1(inventory.remove(0));
             return true;
             }  
+            
            
             
              if (kit1NeedsParts.isEmpty()) {
@@ -155,6 +156,8 @@ public class PartsAgent extends Agent implements PartsInterface {
        /* if(kitInfo!=null && kitInfo!=k){
            nest.setNestPurge(k.parts); 
         }*/
+        DoGiveKitsInAction(k);
+        DoGiveKitsInQueue(newKit);
         this.kitInfo = k;
         print("New kit being started");
         camera.msgHereIsKitInfo(k);
@@ -289,11 +292,6 @@ public class PartsAgent extends Agent implements PartsInterface {
         this.nest = n;
     }
 
-    // Shouldn't need this anymore
-    // public void setKitAssemblyManager(KitAssemblyManager k) {
-    //     this.kam = k;
-    // }
-
     @Override
     public void msgNeedPart(Part partType) {
         throw new UnsupportedOperationException("Not supported yet.");
@@ -329,6 +327,13 @@ public class PartsAgent extends Agent implements PartsInterface {
             this.fpm.sendMessage(Message.KAM_PARTS_DROP_OFF_PARTS + ":" + kitNum);
         } else {
             print("[ERROR] - Kit Assembly Manager is not online.");
+        }}
+    
+    public void DoGiveKitsInAction(Kit k){
+        
         }
+    
+    public void DoGiveKitsInQueue(List<Kit> kits){
+        
     }
 }

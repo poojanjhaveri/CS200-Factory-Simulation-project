@@ -39,7 +39,7 @@ public class NestAgent extends Agent implements NestInterface {
     PartsInterface partsagent;
     Camera camera;
     private int nestNumber;
-
+    private List<Part> requests;
     //private List<Nest> nests = Collections.synchronizedList(new ArrayList<Nest>());
     enum Status {none, needPart, gettingPart, full, gettingInspected, readyForKit, purge};
     
@@ -48,6 +48,7 @@ public class NestAgent extends Agent implements NestInterface {
     this.myNests = Collections.synchronizedList(new ArrayList<Nest>());
     this.needParts = Collections.synchronizedList(new ArrayList<Part>());
     this.nests = Collections.synchronizedList(new ArrayList<Nest>());
+    this.requests = Collections.synchronizedList(new ArrayList<Part>());
     myNests.add(new Nest(0));
     myNests.add(new Nest(1));
     myNests.add(new Nest(2));
@@ -69,6 +70,7 @@ public class NestAgent extends Agent implements NestInterface {
   
     public void msgNeedPart(Part p) {
         boolean doPurge = true;
+        requests.add(p);
         synchronized(myNests){
     	if (!hasPart(p)){
             for (Nest n: myNests){
@@ -133,7 +135,7 @@ public class NestAgent extends Agent implements NestInterface {
     @Override
     public boolean pickAndExecuteAnAction() {
 
-
+           
             for (Nest n : myNests) {
                 if (n.status == Nest.Status.needPart) {
                     requestPart(n);
@@ -164,6 +166,14 @@ public class NestAgent extends Agent implements NestInterface {
                 return true;
             }
         }
+        
+         if (!requests.isEmpty())
+                for (Nest n: myNests){
+                    for (Part part: n.parts){
+                        if(part.type == requests.get(0).type){
+                giveToKit(n);
+                return true;
+            }}}
         return false;
     }
 
@@ -190,7 +200,7 @@ public class NestAgent extends Agent implements NestInterface {
 
     
     private void giveToKit(Nest n){
-        
+        requests.remove(n.parts.remove(0));
     	partsagent.msgHereIsPart(n.parts.remove(0));
         print("giving part " + n.part.getString() + " to kit now nest has " + n.parts.size());
         n.status = Nest.Status.none;
