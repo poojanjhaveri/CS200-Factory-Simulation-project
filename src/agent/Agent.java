@@ -164,12 +164,20 @@ A reference to the factory production manager
     public void setClient(HandleAManager i) {
     	this.client = i;
     }
+    
+    public HandleAManager getClient() {
+    	return this.client;
+    }
+    
     /**
 @brief sets the factory production manager client
 @author Roy YiWei Zheng
      */
-    public void setFactoryProductionManager(HandleAManager i)
-    {
-	this.fpm = i;
+    public void setFactoryProductionManagerClient(HandleAManager i) {
+    	this.fpm = i;
+    }
+    
+    public HandleAManager getFactoryProductionManagerClient() {
+    	return this.fpm;
     }
 }

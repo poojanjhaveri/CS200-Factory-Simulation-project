@@ -142,8 +142,8 @@ public class HandleAManager implements Runnable {
             this.server.getFactoryState().getBlueprintParts().add(p);
             this.server.getFactoryState().getBlueprintParts().save();
             System.out.println("Defined new part: " + p.serialize());
-	    if(this.server.getKitRobotAgent().getClient() != null){
-		thisi.server.getKitRobotAgent().getClient().sendMessage(Message.PUSH_PARTS_LIST + ":" + this.server.getFactoryState().getBlueprintParts().serialize());
+	    if (this.server.getKitRobotAgent().getClient() != null){
+	    	this.server.getKitRobotAgent().getClient().sendMessage(Message.PUSH_PARTS_LIST + ":" + this.server.getFactoryState().getBlueprintParts().serialize());
 	    System.out.println("Pushed latest list to KitManager");
 	}
         } else if (msg.contains(Message.DEFINE_NEW_KIT)) {
