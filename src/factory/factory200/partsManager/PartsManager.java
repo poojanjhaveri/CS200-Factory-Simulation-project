@@ -312,7 +312,7 @@ public class PartsManager extends Manager implements ActionListener {
 		if(s!=null)
 			lblSelectedImage2= new JLabel(new ImageIcon(s));
 		pnlImage.removeAll();
-		pnlImage.add(lblSelectedImage2);
+		pnlImage.add(lblSelectedImage2,BorderLayout.CENTER);
 	}
 	private void updateNewPartsImagePanel(){
 		String s= (String) cbImageFileName2.getSelectedItem();
@@ -320,7 +320,7 @@ public class PartsManager extends Manager implements ActionListener {
 		if(s!=null)
 			lblSelectedImage3= new JLabel(new ImageIcon(s));
 		pnlImage2.removeAll();
-		pnlImage2.add(lblSelectedImage3);
+		pnlImage2.add(lblSelectedImage3, BorderLayout.CENTER);
 	}
 	
 	/**
@@ -370,7 +370,6 @@ public class PartsManager extends Manager implements ActionListener {
 		bp.add(temp);
 
 		tfPartName2.setText("");
-		tfImageFileName2.setText("");
 		tfDescription2.setText("");
 		btnCreate.setSelected(false);//not working
 

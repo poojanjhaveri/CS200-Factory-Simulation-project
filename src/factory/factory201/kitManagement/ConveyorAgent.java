@@ -149,4 +149,6 @@ public class ConveyorAgent extends Agent implements Conveyor {
             print("[ERROR] - Kit Assembly Manager is not online.");
         }
     }
+    
+    public void testAddKit(Kit k){kitList.add(k);}
 }
