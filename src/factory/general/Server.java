@@ -43,9 +43,9 @@ public class Server {
     
 	/** Agents */
     // Fields just for "AgentMain" stuff (Agent preparation) 
-    private static final boolean PATRICK = true;
-    private static final boolean KEVIN = false;
-    private static final boolean ALEX = true;
+    private static final boolean PATRICK = false;
+    private static final boolean KEVIN = true;
+    private static final boolean ALEX = false;
     
     private static final int FEEDER = 4;
     private static final int LANE = 8;
@@ -129,6 +129,7 @@ public class Server {
 
 	private void initializeManagers() { // Something by Dongyoung...?  Dongyoung : Yeah
 		 serverLM = new LMServerMain();
+                 new Thread(serverLM).start();
 	}
 	
 	// Start Server-side Program(Lane Manager)
@@ -166,8 +167,10 @@ public class Server {
                 if (i < FEEDER) {
                     feederAgents[i] = new FeederAgent("Feeder " + i, i);
                 }
-                laneAgents[i] = new LaneAgent("Lane " + i);
+                laneAgents[i] = new LaneAgent("Lane " + i,i);
             }
+            
+        
         }
 
         private void connectAgentsAndManagers() {
@@ -202,6 +205,14 @@ public class Server {
                 laneAgents[i + 1].setFeeder(feederAgents[i / 2]);
                 laneAgents[i + 1].setNest(nestAgent);
             }
+            for (int i = 0; i < LANE; i++) {
+                if (i < FEEDER) {
+                    feederAgents[i].setServer(serverLM);
+                
+                }
+             
+            }
+            
         }
 
         private void startAgentThreads() {

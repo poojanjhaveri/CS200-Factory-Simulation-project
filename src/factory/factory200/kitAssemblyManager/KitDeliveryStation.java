@@ -90,6 +90,7 @@ public class KitDeliveryStation {
                this.getPlaceholder().get(i).getKit().updateParts();
                if(this.getPlaceholder().get(i).getKit().getParts().size() != 0){
                    this.getPlaceholder().get(i).getKit().setImage(new ImageIcon("pics/giftkit.png"));
+                   this.getPlaceholder().get(i).getKit().setFinished(true);
                    int size=this.getPlaceholder().get(i).getKit().getParts().size();
                    for(int k=0;k<size;k++){
                    this.getPlaceholder().get(i).getKit().getParts().remove(0);
