@@ -149,11 +149,15 @@ public class GUIGantryRobot extends GUIRobot{
 			else return false;
 	}
 	
-	public void supplyPartOnFeeder(){
-		//this.bin.setPartToNull();
+	public void supplyPartOnFeeder(Integer feederIndex){
+		this.bin.setPartToNull();
+		this.bin.setX(20);
+		this.bin.setY(50+feederIndex*150);
 	}
 	
     public void moveToDump() {
+    	this.bin.setX(this.cords.getX());
+    	this.bin.setY(this.cords.getY());
         this.moveTo(210,550);//,GantryRobotManager.DUMPY);
     }
     
@@ -205,13 +209,14 @@ public class GUIGantryRobot extends GUIRobot{
     	return bin;
     }
     
-    public void performOrder()
+    public Boolean performOrder()
     {
     	if(this.getOrder() > -1 && this.getOrder() < 8){
     		this.moveToBin(this.getOrder());
     		this.popOrder();
+    		return true;
     	}
-    	if(this.getOrder() < 16 && this.getOrder() > 7)
+    	/*if(this.getOrder() < 16 && this.getOrder() > 7)
 		{
 			this.pickUpBin(this.getOrder()-8);
 			this.popOrder();
@@ -219,36 +224,43 @@ public class GUIGantryRobot extends GUIRobot{
 		{
 			this.supplyPartOnFeeder();//this.gbot.getOrder()-21);
 			this.popOrder();
-		}
+		}*/
     	if(this.getOrder() > 15 && this.getOrder() < 20)
     	{
     		this.moveToFeeder(this.getOrder()-16);
     		this.popOrder();
+    		return true;
     	}
     	if(this.getOrder() == 25)
-    	{    		
+    	{    	
+    		System.out.println("Performing move order to the Dump");
     		this.moveToDump();
     		this.popOrder();
-    	}
-    	if(this.getOrder() == 26)
-    	{
-    		
-    		this.binPurged();
-    		this.popOrder();
+    		return true;
     	}
     	
+    	return false;
     	
     }
     public void moveToBinCommand(Integer index)
     {
     	this.orders.add(index);
+    	//this.orders.add(index+8);
+    }
+    
+    public void pickUpBinCommand(Integer index){
     	this.orders.add(index+8);
     }
     public void moveToFeederCommand(Integer index)
     {
     	this.orders.add(index+16);
+    	//this.orders.add(index+21);
+    }
+    
+    public void supplyPartOnFeederCommand(Integer index){
     	this.orders.add(index+21);
     }
+    
     public void purgeBinCommand()
     {
     	this.orders.add(25);
