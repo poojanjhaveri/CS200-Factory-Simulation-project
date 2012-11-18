@@ -64,8 +64,8 @@ public class KitManager extends Manager  implements ActionListener {
           JButton deletekitbutton;
           JButton updatekitbutton;
           
-         ArrayList<Part> partlist = new ArrayList();
-          ArrayList<Part> updatepartlist = new ArrayList();
+         ArrayList<Part> partlist = new ArrayList<Part>();
+          ArrayList<Part> updatepartlist = new ArrayList<Part>();
          
           
           JButton b1,b2,b3,b4,b5,b6,b7,b0;
