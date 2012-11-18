@@ -87,7 +87,7 @@ public class Server {
 	public Server(int portNumber) {
         this.fstate = new FactoryState();
 		initializeManagers(); // Something by Dongyoung
-		//prepareAllAgents(); // Prepare all agents; based on AgentMain.java
+		//prepareAllAgents(); // Prepare all agents; based on AgentMain.java; commented out by Dongyoung to test animation; included after connections accepted by server
 		numClients = 0; // Initialize num clients is 0
 		start(portNumber); // Start listening for clients and making new HandleAManager instances
 	}
@@ -101,7 +101,8 @@ public class Server {
 	 * Contains the central loop. We break out of this loop by forcing System.exit(0) in HandleAManager.
 	 */
 	private void start(int portNumber) {
-		System.out.println("Port number: " + portNumber);
+            int count=0; //hack to start the agents once after V1LaneManagerCompileClient.java is connected with server- by Kevin
+            System.out.println("Port number: " + portNumber);
 		try {
 			ss = new ServerSocket(portNumber);
 			System.out.println("Server started; waiting for clients");
