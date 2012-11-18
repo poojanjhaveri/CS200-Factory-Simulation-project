@@ -11,7 +11,6 @@ import factory.general.Part;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Stack;
 
 /**
  * Agent for the camera.
@@ -33,14 +32,14 @@ public class CameraAgent extends Agent implements Camera {
     private List<Nest> nests;
     private List<Kit> kits;
     private Kit tempKit;
-    private List<Part.Type> kitInfo;
+    private List<Integer> kitInfo;
 
     public CameraAgent(String name) {
         super(name);
         nests = Collections.synchronizedList(new ArrayList<Nest>());
         kits = Collections.synchronizedList(new ArrayList<Kit>());
         tempKit = null;
-        kitInfo = new ArrayList<Part.Type>();
+        kitInfo = new ArrayList<Integer>();
     }
 
     // ********** MESSAGES *********
@@ -119,16 +118,14 @@ public class CameraAgent extends Agent implements Camera {
         if (kit.parts.size() != kitInfo.size()) {
             result = false;
         } else {
-            Stack<Part.Type> types = new Stack<Part.Type>();
-            for (Part.Type t : kitInfo) {
-                types.add(t);
-            }
-
+            List<Integer> kitRequirements = new ArrayList<Integer>(this.kitInfo);
             for (Part p : kit.parts) {
-                for (Part.Type t : types) {
-                    if (t == p.type) {
-                    }
+                if(kitRequirements.contains(p.type)) {
+                    kitRequirements.remove(p.type);
                 }
+            }
+            if(kitRequirements.size() > 0) {
+                result = false;
             }
         }
 
@@ -146,7 +143,7 @@ public class CameraAgent extends Agent implements Camera {
      */
     private void inspectNest(Nest nest) {
         print("Inspecting nest: [Nest " + nest.nestNum + "].");
-        Part.Type type = nest.part.type;
+        Integer type = nest.part.type;
         boolean result = true;
         for (Part p : nest.parts) {
             if (p.type != type) {
@@ -195,6 +192,7 @@ public class CameraAgent extends Agent implements Camera {
         if (this.client != null) {
             this.client.sendMessage(Message.KAM_FLASH_NEST_CAMERA + ":" + nest.nestNum);
             this.fpm.sendMessage(Message.KAM_FLASH_NEST_CAMERA + ":" + nest.nestNum);
+            this.fpm.sendMessage(Message.ALERT_FPM_KIT_INSPECTED);
         } else {
             print("[ERROR] - Kit Assembly Manager is not online.");
         }

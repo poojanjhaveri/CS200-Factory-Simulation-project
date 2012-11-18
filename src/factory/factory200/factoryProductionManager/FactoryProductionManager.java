@@ -345,7 +345,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
                 this.reconstructComboBox();
 	    }
 	
-		//Lane Manager( pass 'msg' into Lane Manager Message Interpreter and take a proper action )
+            //Lane Manager( pass 'msg' into Lane Manager Message Interpreter and take a proper action )
             gfx.verifyMessage(msg);
     }
     
