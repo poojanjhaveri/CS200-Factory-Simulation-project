@@ -32,14 +32,15 @@ public class LaneAgent extends Agent implements Lane {
     boolean rightFull=false;
     int leftIndex; //left and right indices of the lane
     int rightIndex; // right index of the lane
-    
+    public int index;
     //---------------------------------------------------------------------------
     private LMServerMain serverMain;
     private LMLaneForAgent animation;
     //---------------------------------------------------------------------------
 
-    public LaneAgent(String name){
+    public LaneAgent(String name,int index){
     	super(name);
+        this.index=index;
     	//---------------------------------------------------------------------------
     	//this.serverMain = serverMain;
     	//this.animation = serverMain.getForAgentLane();
@@ -53,7 +54,7 @@ public class LaneAgent extends Agent implements Lane {
     	//animation.setSwitchOn(leftIndex-1);
     	//animation.setSwitchOn(rightIndex-1);
     	//---------------------------------------------------------------------------
-    	
+    	/*
     	Part p1=new Part(1);
     	Part p2=new Part(2);
     	Part p3=new Part(3);
@@ -74,7 +75,7 @@ public class LaneAgent extends Agent implements Lane {
      	parts.add(new myParts(p7,0,7));
      	parts.add(new myParts(p8,0,8));
      	//System.out.println("parts added to the list");
-    
+        */
     }
     public void msgRejectParts(int i) {
         throw new UnsupportedOperationException("Not yet implemented");
@@ -101,6 +102,20 @@ public class LaneAgent extends Agent implements Lane {
         
         print("Received msgNeedPart from Nest for type " + part.type);
         //requestedPart=false;
+        int count=0;
+        //increase count everytime myParts doesn't have that type of part
+        for (myParts p : parts) {
+            if (p.part.type != part.type)
+                count++;
+        }
+        
+        //add if part doesn't exist
+        if(count==parts.size())
+        {
+        parts.add(new myParts(part,0,part.type));
+        }
+        
+        
         for (myParts p : parts) {
             if (p.part.type == part.type) {
                 p.send = true;
@@ -135,7 +150,7 @@ public class LaneAgent extends Agent implements Lane {
             }
         }
         
-        //or generate a new part
+  /*      //or generate a new part
         if(part.get(0).type==Type.p1)
         	partIndex=1;
         if(part.get(0).type==Type.p2)
@@ -152,9 +167,11 @@ public class LaneAgent extends Agent implements Lane {
         	partIndex=7;
         if(part.get(0).type==Type.p8)
         	partIndex=8;
-
+*/
         //create a new type if the current list does not contain parts of this type.	
-        parts.add(new myParts(part.get(0),part.size(),partIndex));
+    //    parts.add(new myParts(part.get(0),part.size(),partIndex));
+        
+        parts.add(new myParts(part.get(0),part.size(),part.get(0).type));
         stateChanged();
         //stateChanged();
     }
@@ -229,7 +246,7 @@ public class LaneAgent extends Agent implements Lane {
         List<Part> parts = new ArrayList<Part>();
         
         for(int i=0;i<part.quantity;i++)
-            parts.add(new Part(part.partNum));
+            parts.add(part.part);
     	
        
         nest.msgHereAreParts(parts);
@@ -245,5 +262,8 @@ public class LaneAgent extends Agent implements Lane {
     public void setNest(NestInterface nest){
     	
     	this.nest=nest;
+    }
+    public int getIndex(){
+    return index;
     }
 }

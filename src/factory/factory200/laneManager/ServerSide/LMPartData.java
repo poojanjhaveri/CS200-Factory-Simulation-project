@@ -16,6 +16,7 @@ public class LMPartData {
 	
 	private double shakePossibility;
 	private int randomChosenPart;
+	private int laneNestNum;
 	private String signal = "";
 	
 	public LMPartData(LMServerMain serverMain){

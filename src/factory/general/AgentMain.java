@@ -48,7 +48,7 @@ public class AgentMain {
             if (i < FEEDER) {
                 feederAgents[i] = new FeederAgent("Feeder " + i, i);
             }
-            laneAgents[i] = new LaneAgent("Lane " + i);
+            laneAgents[i] = new LaneAgent("Lane " + i,i);
         }
 
         
@@ -135,7 +135,7 @@ public class AgentMain {
         // * 
         Kit kit = new Kit("Test Kit");
         for (int i = 1; i < 9; i++) {
-            kit.addPart(new Part(i)); // This is a kit that has actual parts...
+            kit.addPart(new Part("Name", "Description")); // This is a kit that has actual parts...
         }
         conveyorAgent.generateKit(10);
 
@@ -154,6 +154,25 @@ public class AgentMain {
 
         /*========== Turn on or off debugging (print statements) ==========*/
         // Just for debugging; put 'false' to turn off print statements
+
+        if (PATRICK) {
+            nestAgent.print = true;
+            partsAgent.print = true;
+        }
+        if(KEVIN) {
+            for (int i = 0; i < LANE; i++) {
+                if (i < FEEDER) {
+                    feederAgents[i].print = false;
+                }
+                laneAgents[i].print = false;
+            }
+            gantryAgent.print = false;
+        }
+        if(ALEX) {
+            kitRobotAgent.print = true;
+            conveyorAgent.print = true;
+            cameraAgent.print = true;
+        }
 
 
     } // END main

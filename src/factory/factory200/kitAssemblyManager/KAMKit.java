@@ -27,6 +27,7 @@ public class KAMKit {
     private int y;
     private ArrayList<Part> parts;
     Integer partsSize;
+    private boolean finished;
 
     public KAMKit() {
         kit = new ImageIcon("pics/KAMkit.png");
@@ -34,6 +35,7 @@ public class KAMKit {
         //parts=null;
         //kitNumber=i;
         partsSize=0;
+        //finished=false;
     }
 
     /**
@@ -153,5 +155,28 @@ public class KAMKit {
                 this.getParts().get(i).getGUIPart().getImage().paintIcon(j, g, this.getParts().get(i).getGUIPart().getX(), this.getParts().get(i).getGUIPart().getY());
             }
         }
+    }
+
+    /**
+     * @return the finished
+     */
+    public boolean isFinished() {
+        if(this==null){
+            finished=false;
+        }
+        else if(this.kit.getIconHeight()==90 && this.kit.getIconWidth()==40){
+            finished=true;
+        }
+        else
+            finished=false;
+        
+        return finished;
+    }
+
+    /**
+     * @param finished the finished to set
+     */
+    public void setFinished(boolean finished) {
+        this.finished = finished;
     }
 }
