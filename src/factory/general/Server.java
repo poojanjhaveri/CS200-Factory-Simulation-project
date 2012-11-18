@@ -87,9 +87,7 @@ public class Server {
 	public Server(int portNumber) {
         this.fstate = new FactoryState();
 		initializeManagers(); // Something by Dongyoung
-		
 		prepareAllAgents(); // Prepare all agents; based on AgentMain.java
-
 		numClients = 0; // Initialize num clients is 0
 		start(portNumber); // Start listening for clients and making new HandleAManager instances
 	}
@@ -112,7 +110,8 @@ public class Server {
 			System.exit(0);
 		}
 		
-		while (true) {
+		//for(int i=0 ; i<1 ; i++){ // For Testing By Dongyoung
+		while(true){
 			// Continuously check for a new client for which to create a thread
 			try {
 				s = ss.accept(); // Wait for a client (program halts here until connection occurs)
@@ -125,11 +124,13 @@ public class Server {
 			}
 			System.out.println("A client has connected");
 		}
+		//try{  Thread.sleep(1000);  } catch(Exception e){}   // For Testing By Dongyoung
+		//prepareAllAgents(); // Prepare all agents; based on AgentMain.java      // For Testing By Dongyoung
 	}
 
 	private void initializeManagers() { // Something by Dongyoung...?  Dongyoung : Yeah
 		 serverLM = new LMServerMain();
-                 new Thread(serverLM).start();
+		 new Thread(serverLM).start();
 	}
 	
 	// Start Server-side Program(Lane Manager)
@@ -169,8 +170,6 @@ public class Server {
                 }
                 laneAgents[i] = new LaneAgent("Lane " + i,i);
             }
-            
-        
         }
 
         private void connectAgentsAndManagers() {
@@ -207,12 +206,9 @@ public class Server {
             }
             for (int i = 0; i < LANE; i++) {
                 if (i < FEEDER) {
-                    feederAgents[i].setServer(serverLM);
-                
-                }
-             
-            }
-            
+                    feederAgents[i].setServer(serverLM); 
+                }  
+            }   
         }
 
         private void startAgentThreads() {
@@ -326,15 +322,19 @@ public class Server {
 	public void setCameraAgentClient(HandleAManager in) {
 		this.cameraAgent.setClient(in);
 	}
+	
 	public void setConveyerAgentClient(HandleAManager in) {
 		this.conveyorAgent.setClient(in);
 	}
+	
 	public void setKitRobotAgentClient(HandleAManager in) {
 		this.kitRobotAgent.setClient(in);
 	}
+	
 	public void setGantryAgentClient(HandleAManager in) {
 		this.gantryAgent.setClient(in);
 	}
+	
 	public void setPartsAgentClient(HandleAManager in) {
 		this.partsAgent.setClient(in);
 	}
@@ -342,15 +342,19 @@ public class Server {
 	public void setFPMClient(HandleAManager in) {
 		this.fpmclient = in;
 	}
+	
 	public HandleAManager getFPMClient() {
 		return this.fpmclient;
 	}
+	
 	public void setKitManagerClient(HandleAManager in) {
 		this.kitmanagerclient = in;
 	}
+	
 	public HandleAManager getKitManagerClient() {
 		return this.kitmanagerclient;
 	}
+	
 	public void setFactoryProductionManagerToAll(HandleAManager in) {
 		this.fpmclient = in;
 		partsAgent.setFactoryProductionManagerClient(in);
@@ -367,7 +371,8 @@ public class Server {
 	public LMServerMain getServerLM() { // Dongyoung's lane manager server...
 		return this.serverLM;
 	}
-        public ConveyorAgent getConveyorAgent() {
-            return this.conveyorAgent;
-        }
+	
+    public ConveyorAgent getConveyorAgent() {
+    	return this.conveyorAgent;
+    }
 }
