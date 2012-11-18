@@ -120,7 +120,7 @@ public class AgentMain {
         // * 
         Kit kit = new Kit("Test Kit");
         for (int i = 1; i < 9; i++) {
-            kit.addPart(new Part(i)); // This is a kit that has actual parts...
+            kit.addPart(new Part("Name", "Description")); // This is a kit that has actual parts...
         }
         conveyorAgent.generateKit(10);
 
@@ -140,8 +140,8 @@ public class AgentMain {
         /*========== Turn on or off debugging (print statements) ==========*/
         // Just for debugging; put 'false' to turn off print statements
         if (PATRICK) {
-            nestAgent.print = false;
-//            partsAgent.print = false;
+            nestAgent.print = true;
+            partsAgent.print = true;
         }
         if(KEVIN) {
             for (int i = 0; i < LANE; i++) {
@@ -153,9 +153,9 @@ public class AgentMain {
             gantryAgent.print = false;
         }
         if(ALEX) {
-            kitRobotAgent.print = false;
-            conveyorAgent.print = false;
-            cameraAgent.print = false;
+            kitRobotAgent.print = true;
+            conveyorAgent.print = true;
+            cameraAgent.print = true;
         }
 
     } // END main
