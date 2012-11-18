@@ -7,7 +7,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 import factory.general.BlueprintKits;
-
+import factory.general.Util;
 import factory.general.Kit;
 import factory.general.Manager;
 import factory.general.Message;
@@ -222,6 +222,8 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 		reset.addActionListener(this);
                 
 		add(tabs);
+
+		//this.sendToServer(Message.IDENTIFY_FACTORYPRODUCTIONMANAGER);
 	}
 	
     @Override
@@ -320,13 +322,19 @@ public class FactoryProductionManager extends Manager implements ActionListener 
     void start() {
 		//add this when you change arraylist to kits
 		String msg = Message.PUSH_PRODUCTION_QUEUE+":";
-		for(int i = 0; i != this.selectedKits.size(); i++)
+		/*for(int i = 0; i != this.selectedKits.size(); i++)
 		{
 			msg = msg+this.selectedKits.get(i).getNumber();
 			if(i != this.selectedKits.size()-1)
 				msg=msg+",";
-				}
-		this.mcon.out(msg);
+				}*/
+		ArrayList<String> serialized = new ArrayList<String>();
+		for(int i = 0; i != this.selectedKits.size(); i++)
+		    {
+			serialized.add(this.selectedKits.get(i).getNumber()+"");
+		    }
+		msg = msg + Util.serialize(serialized);
+		this.sendToServer(msg);
     }
 
     /**
@@ -365,6 +373,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
     public void processMessage(String msg)
     {
 	super.processMessage(msg);
+<<<<<<< HEAD
 	//if(msg.contains(Message.PUSH_KITS_LIST))
 	  //  {
 	//		this.kitsbp.recreate(this.grabParameter(msg));
@@ -372,8 +381,18 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 	//		this.kitsbp.debug();
 	//    }
 	
+=======
+	if(msg.contains(Message.PUSH_KITS_LIST))
+	    {
+			this.kitsbp.recreate(this.grabParameter(msg));
+			System.out.println("GRABBED A NEW BLUEPRINTKITS FROM THE SERVER");
+			this.kitsbp.debug();
+	    }
+
+	//DONGYOUNG: please run each manager's processMessage(msg) function here	
+>>>>>>> 79005eda696bf784f04bc85d92f16094211ae167
 		// Lane Manager
-	    gfx.verifyMessage(msg);
+	    //gfx.verifyMessage(msg);
     }
     /**
      * @brief Controls Kit selection and Factory ON/OFF Controls Kit selection

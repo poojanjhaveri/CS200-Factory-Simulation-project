@@ -38,6 +38,9 @@ public class Server {
 	private Printer p = new Printer();
 	private int numClients; // accessible by Server and HandleAManager
 
+        
+    private FactoryState fstate;
+    
 	/** Agents */
     // Fields just for "AgentMain" stuff (Agent preparation) 
     private static final boolean TEST_MODE = true;
@@ -78,13 +81,22 @@ public class Server {
 	 * @param portNumber - the port number to create the server on.
 	 */
 	public Server(int portNumber) {
+            
+        this.fstate = new FactoryState();
         // TODO: uncomment when ready
+<<<<<<< HEAD
 		initializeManagers();
 		prepareAllAgents(); // Prepare all agents; based on AgentMain.java
+=======
+//		prepareAllAgents(); // Prepare all agents; based on AgentMain.java
+>>>>>>> 79005eda696bf784f04bc85d92f16094211ae167
 		numClients = 0; // Initialize num clients is 0
 		start(portNumber); // Start listening for clients and making new HandleAManager instances
 	}
-
+public FactoryState getFactoryState()
+{
+    return this.fstate;
+}
 	/**
 	 * @brief Starts the server, listening for clients and making new HandleAManager instances (threads) appropriately
 	 * Contains the central loop. We break out of this loop by forcing System.exit(0) in HandleAManager.
@@ -293,8 +305,29 @@ public class Server {
 	public void setPartsAgentClient(HandleAManager in) {
 		this.partsAgent.setClient(in);
 	}
+<<<<<<< HEAD
 	
 	public LMServerMain getServerLM(){
 		return this.serverLM;
 	}
+=======
+    public void setFactoryProductionManagerToAll(HandleAManager in)
+    {
+	nestAgent.setFactoryProductionManager(in);
+	partsAgent.setFactoryProductionManager(in);
+    kitRobotAgent.setFactoryProductionManager(in);
+    cameraAgent.setFactoryProductionManager(in);
+    conveyorAgent.setFactoryProductionManager(in);
+    for(int i = 0; i != 4; i++)
+    feederAgents[i].setFactoryProductionManager(in);
+    gantryAgent.setFactoryProductionManager(in);
+    for(int i = 0; i != 8; i++)
+    laneAgents[i].setFactoryProductionManager(in);
+    }
+	// here...
+	public LMServerMain getServerLM() {
+		return this.serverLM;
+	}
+
+>>>>>>> 79005eda696bf784f04bc85d92f16094211ae167
 }

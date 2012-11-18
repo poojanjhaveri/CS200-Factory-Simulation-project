@@ -50,6 +50,8 @@ public class Message {
     public static final String KAM_PARTS_PICK_PART = "KAM_PARTS_PICK_PART";
     public static final String KAM_PARTS_DROP_OFF_PARTS = "KAM_PARTS_DROP_OFF_PARTS";
     public static final String KAM_MOVE_FROM_0_TO_2 = "KAM_MOVE_FROM_0_TO_2";
+    public static final String KAM_ADD_KIT = "KAM_ADD_KIT";///<places another empty kit onto the conveyor
+    public static final String KAM_REMOVE_KIT = "KAM_REMOVE_KIT";///<removes a kit off screen from conveyor
 
     //lanemanager section
     public static final String IDENTIFY_LANEMANAGER = "IDENTIFY_LANEMANAGER";
@@ -58,5 +60,6 @@ public class Message {
     public static final String IDENTIFY_FACTORYPRODUCTIONMANAGER = "IDENTIFY_PRODUCTIONMANAGER";
     
     //PULL_KITS_LIST is also used by FPM
+    public static final String IDENTIFY_FACTORYPRODUCTIONMANAGER = "IDENTIFY_FACTORYPRODUCTIONMANAGER"; 
     public static final String PUSH_PRODUCTION_QUEUE = "PUSH_PRODUCTION_QUEUE";///<sends the server a list of comma delimited kit IDs
 }

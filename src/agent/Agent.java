@@ -22,7 +22,11 @@ public abstract class Agent {
      * @author Roy YiWei Zheng
      */
     protected HandleAManager client;
-
+    /**
+@brief communication channel with factory production manager
+A reference to the factory production manager
+     */
+    protected HandleAManager fpm;
     
     protected Agent(String name) {
         this.name = name;
@@ -160,5 +164,12 @@ public abstract class Agent {
     public void setClient(HandleAManager i) {
     	this.client = i;
     }
-
+    /**
+@brief sets the factory production manager client
+@author Roy YiWei Zheng
+     */
+    public void setFactoryProductionManager(HandleAManager i)
+    {
+	this.fpm = i;
+    }
 }
