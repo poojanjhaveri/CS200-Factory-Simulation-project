@@ -308,11 +308,9 @@ public class PartsAgent extends Agent implements PartsInterface {
             this.fpm.sendMessage(Message.KAM_PARTS_MOVE_TO_NEST + ":" + nestNum);
             this.client.sendMessage(Message.KAM_PARTS_MOVE_TO_NEST + ":" + nestNum);
         } else {
-<<<<<<< HEAD
-         //   print("[ERROR] - Kit Assembly Manager is not online.");
-=======
+
 //            print("[ERROR] - Kit Assembly Manager is not online.");
->>>>>>> e3740d12791145cfb4ec874262bc3923429b71ff
+
         }
     }
 
@@ -321,11 +319,9 @@ public class PartsAgent extends Agent implements PartsInterface {
             this.client.sendMessage(Message.KAM_PARTS_PICK_PART + ":" + nestNum);
             this.fpm.sendMessage(Message.KAM_PARTS_PICK_PART + ":" + nestNum);
         } else {
-<<<<<<< HEAD
-         //   print("[ERROR] - Kit Assembly Manager is not online.");
-=======
+
 //            print("[ERROR] - Kit Assembly Manager is not online.");
->>>>>>> e3740d12791145cfb4ec874262bc3923429b71ff
+
         }
     }
 
@@ -334,11 +330,9 @@ public class PartsAgent extends Agent implements PartsInterface {
             this.client.sendMessage(Message.KAM_PARTS_DROP_OFF_PARTS + ":" + kitNum);
             this.fpm.sendMessage(Message.KAM_PARTS_DROP_OFF_PARTS + ":" + kitNum);
         } else {
-<<<<<<< HEAD
+
            // print("[ERROR] - Kit Assembly Manager is not online.");
-=======
-//            print("[ERROR] - Kit Assembly Manager is not online.");
->>>>>>> e3740d12791145cfb4ec874262bc3923429b71ff
+
         }}
     
     public void DoGiveKitsInAction(Kit k){
