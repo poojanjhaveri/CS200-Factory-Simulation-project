@@ -43,8 +43,8 @@ public class Server {
     
 	/** Agents */
     // Fields just for "AgentMain" stuff (Agent preparation) 
-    private static final boolean PATRICK = false;
-    private static final boolean KEVIN = false;
+    private static final boolean PATRICK = true;
+    private static final boolean KEVIN = true;
     private static final boolean ALEX = true;
     
     private static final int FEEDER = 4;
@@ -165,9 +165,18 @@ public class Server {
             for (int i = 0; i < LANE; i++) {
                 if (i < FEEDER) {
                     feederAgents[i] = new FeederAgent("Feeder " + i, i);
+                    //feederAgents[i].setServer(serverLM);
                 }
-                laneAgents[i] = new LaneAgent("Lane " + i);
+                laneAgents[i] = new LaneAgent("Lane " + i,i);
             }
+            for (int i = 0; i < LANE; i++) {
+                if (i < FEEDER) {
+                 //   feederAgents[i].setServer(serverLM);
+                ;
+                }
+             
+            }
+        
         }
 
         private void connectAgentsAndManagers() {
@@ -241,10 +250,10 @@ public class Server {
             kits.add(kit);
             
             // TODO: *Put this wherever the FPM sends the signal to create (generate) kits
-//            conveyorAgent.generateKit(10); // * This generates 10 new kits, among other things if you pass string... *
+            conveyorAgent.generateKit(10); // * This generates 10 new kits, among other things if you pass string... *
 
             // Officially start the agent interaction sequence!
-//            partsAgent.msgHereIsKit(kits);
+            partsAgent.msgHereIsKit(kits);
             //		 TODO: UNCOMMENT WHEN READY
         }
 

@@ -48,7 +48,7 @@ public class AgentMain {
             if (i < FEEDER) {
                 feederAgents[i] = new FeederAgent("Feeder " + i, i);
             }
-            laneAgents[i] = new LaneAgent("Lane " + i);
+            laneAgents[i] = new LaneAgent("Lane " + i,i);
         }
 
         

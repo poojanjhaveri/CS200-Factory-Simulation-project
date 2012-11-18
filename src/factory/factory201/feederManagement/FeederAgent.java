@@ -28,6 +28,7 @@ public class FeederAgent extends Agent implements Feeder {
     private Lane leftLane;
     private Lane rightLane;
     private Lane lane;
+    private LMServerMain LMServer;
     
     /*
      * THESE LEFT AND RIGHT COUNT VARIABLES WILL BE USED TO SET THE LEFT/RIGHT LANE ON.
@@ -50,8 +51,8 @@ public class FeederAgent extends Agent implements Feeder {
  
     public FeederAgent(String name,int index){
         super(name);
-     	
-    	//System.out.println("testing null pointer exception");
+       
+       //System.out.println("testing null pointer exception");
     	/*
         Part p1=new Part(1);
     	Part p2=new Part(2);
@@ -303,7 +304,9 @@ public class FeederAgent extends Agent implements Feeder {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    	
+    	 this.client.sendMessage("Message");
+         LMServer.getForAgentFeeder().setDiverterSwitchLeft(feederNum);
+         
   //  	animation.setDiverterSwitchLeft(feederNum-1);
     }
     
@@ -341,5 +344,20 @@ public class FeederAgent extends Agent implements Feeder {
     @Override //Unimplemented Method
     public void msgNeedPart(Part partType) {
         // TODO Auto-generated method stub
+    }
+    public void setServer(LMServerMain LMServer1){
+    this.LMServer=LMServer1;
+   // setAnimation();
+       LMServer.getForAgentLane().setSwitchOn(leftLane.getIndex());
+       LMServer.getForAgentLane().setSwitchOn(rightLane.getIndex());
+       LMServer.getForAgentFeeder().setFeedPartsSwitchOn(feederNum);
+       LMServer.getForAgentFeeder().setSwitchOn(feederNum);
+    }
+    
+    public void setAnimation(){
+       LMServer.getForAgentLane().setSwitchOn(leftLane.getIndex());
+       LMServer.getForAgentLane().setSwitchOn(rightLane.getIndex());
+       LMServer.getForAgentFeeder().setFeedPartsSwitchOn(feederNum);
+       LMServer.getForAgentFeeder().setSwitchOn(feederNum);
     }
 }
