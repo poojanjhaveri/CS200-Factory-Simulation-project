@@ -76,8 +76,7 @@ public class KitManager extends Manager  implements ActionListener {
           Kit tempkit;
     
 	
-         public KitManager()
-         {
+         public KitManager() {
              
             this.bpkit = new BlueprintKits();
             this.bppart = new BlueprintParts();
