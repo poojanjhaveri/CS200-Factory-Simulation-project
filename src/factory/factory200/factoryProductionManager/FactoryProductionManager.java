@@ -64,9 +64,10 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 	public ArrayList<String> availableKits;
 	public ArrayList<Kit> selectedKits;
 
-	private boolean debug;
+	//private boolean debug;
         private boolean empty;
-	private BlueprintKits debugbp;
+        private boolean constructed;
+	//private BlueprintKits debugbp;
         private BlueprintKits kitsbp;
 	private final static String newline = "\n";
 	
@@ -86,8 +87,9 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 		gfx = new GraphicsPanel();
 		gfx.setPreferredSize(new Dimension(1350, 700));
 		
-		debug = false;
+		//debug = false;
                 empty = false;
+                constructed = false;
 
 		//Pull Blueprint from server
                 availableKits = new ArrayList<String>();
@@ -211,6 +213,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 
 		// Identify this manager
 		this.sendToServer(Message.PUSH_PRODUCTION_QUEUE+":"+1353202603);
+                constructed = true;
 	}
 	
     @Override
@@ -340,6 +343,10 @@ public class FactoryProductionManager extends Manager implements ActionListener 
                 this.kitsbp.debug();
                 this.reconstructComboBox();
 	    }
+        if(constructed)
+        {
+            this.repaint();
+        }
 	
 		//Lane Manager( pass 'msg' into Lane Manager Message Interpreter and take a proper action )
 //	    gfx.verifyMessage(msg); // TODO: Why nullpointer?
