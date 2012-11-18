@@ -94,8 +94,9 @@ public class ManagerConnection implements Runnable {
             this.mgr.processMessage(msg);
         } catch (NullPointerException e) {
         	System.out.println("A client has exited prematurely while other clients were still connected.");
-        	System.out.println("Shutting down.");
-        	System.exit(0);
+//        	System.out.println("Shutting down.");
+//        	System.exit(0);
+        	e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
         }

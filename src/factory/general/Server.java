@@ -308,7 +308,7 @@ public class Server {
 		this.partsAgent.setClient(in);
 	}
 	
-    public void setFPMClient(HandlAManager in)
+    public void setFPMClient(HandleAManager in)
     {
 	this.fpmclient = in;
     }
