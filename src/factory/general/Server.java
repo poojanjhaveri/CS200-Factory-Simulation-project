@@ -65,6 +65,9 @@ public class Server {
 	private Socket s = null;
 	private HandleAManager hac;
 
+    private HandleAManager kitmanagerclient;///<connection to the kit manager
+    private HandleAManager fpmclient;///<connection to the fpm
+
 	public static void main(String[] args) {
 		Server server = new Server(PORT_NUMBER);
 		if (SHOULD_DEBUG) {
@@ -305,17 +308,33 @@ public class Server {
 		this.partsAgent.setClient(in);
 	}
 	
-
+    public void setFPMClient(HandlAManager in)
+    {
+	this.fpmclient = in;
+    }
+    public HandleAManager getFPMClient()
+    {
+	return this.fpmclient;
+    }
+    public void setKitManagerClient(HandleAManager in)
+    {
+	this.kitmanagerclient = in;
+    }
+    public HandleAManager getKitManagerClient()
+    {
+	return this.kitmanagerclient;
+    }
     public void setFactoryProductionManagerToAll(HandleAManager in) {
-	partsAgent.setFactoryProductionManager(in);
-    kitRobotAgent.setFactoryProductionManager(in);
-    cameraAgent.setFactoryProductionManager(in);
-    conveyorAgent.setFactoryProductionManager(in);
+	this.fpmclient = in;
+	partsAgent.setFactoryProductionManagerClient(in);
+    kitRobotAgent.setFactoryProductionManagerClient(in);
+    cameraAgent.setFactoryProductionManagerClient(in);
+    conveyorAgent.setFactoryProductionManagerClient(in);
     for(int i = 0; i != 4; i++)
-    feederAgents[i].setFactoryProductionManager(in);
-    gantryAgent.setFactoryProductionManager(in);
+    feederAgents[i].setFactoryProductionManagerClient(in);
+    gantryAgent.setFactoryProductionManagerClient(in);
     for(int i = 0; i != 8; i++)
-    laneAgents[i].setFactoryProductionManager(in);
+    laneAgents[i].setFactoryProductionManagerClient(in);
     }
 
 	public LMServerMain getServerLM() { // Dongyoung's lane manager server...
