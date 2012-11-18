@@ -2,11 +2,7 @@ package factory.factory201.test.mock;
 
 import factory.factory201.interfaces.KitRobot;
 import factory.factory201.partsManagement.PartsAgent;
-import factory.factory201.test.mock.EventLog;
-import factory.factory201.test.mock.LoggedEvent;
-import factory.factory201.test.mock.MockAgent;
 import factory.general.Kit;
-import factory.general.Part;
 
 /**
  * @author Alex Young
