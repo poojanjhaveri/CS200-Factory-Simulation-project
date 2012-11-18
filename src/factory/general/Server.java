@@ -44,7 +44,7 @@ public class Server {
 	/** Agents */
     // Fields just for "AgentMain" stuff (Agent preparation) 
     private static final boolean PATRICK = true;
-    private static final boolean KEVIN = false;
+    private static final boolean KEVIN = true;
     private static final boolean ALEX = true;
     
     private static final int FEEDER = 4;
@@ -233,7 +233,7 @@ public class Server {
         	// THIS IS JUST EXAMPLE STUFF THAT 201 WAS DOING TO TEST
             Kit kit = new Kit("Test Kit"); // This is required for...
             for (int i = 1; i < 9; i++) {
-                kit.addPart(new Part(i)); // This is a kit that has actual parts...
+                kit.addPart(new Part("New Part", "p1")); // This is a kit that has actual parts...
             }
             List<Kit> kits = new ArrayList<Kit>();
             kits.add(kit);

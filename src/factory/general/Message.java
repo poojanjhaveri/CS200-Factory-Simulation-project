@@ -60,4 +60,5 @@ public class Message {
     //PULL_KITS_LIST is also used by FPM
     public static final String IDENTIFY_FACTORYPRODUCTIONMANAGER = "IDENTIFY_FACTORYPRODUCTIONMANAGER"; 
     public static final String PUSH_PRODUCTION_QUEUE = "PUSH_PRODUCTION_QUEUE";///<sends the server a list of comma delimited kit IDs
+    public static final String ALERT_FPM_KIT_INSPECTED = "ALERT_FPM_KIT_INSPECTED";
 }
