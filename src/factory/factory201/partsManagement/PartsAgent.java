@@ -33,6 +33,8 @@ public class PartsAgent extends Agent implements PartsInterface {
     NestInterface nest;
     Camera camera;
     int kits=0;
+    boolean kitZero = false;
+    boolean kitOne = false;
     public List<Part> inventory, grips, kit0NeedsParts, kit1NeedsParts;
     public List<Kit> newKit;
     boolean emptyKitReady;
@@ -72,10 +74,12 @@ public class PartsAgent extends Agent implements PartsInterface {
 
         if(k.standNum==Kit.StandNum.zero){
             this.kit0 =k;
+            kitZero=true;
             kit0.status = Kit.Status.ready;
             }
             else{
             this.kit1=k;
+            kitOne=true;
             kit1.status = Kit.Status.ready;
             }
 
@@ -93,17 +97,12 @@ public class PartsAgent extends Agent implements PartsInterface {
             return true;
         } 
         
-        if (kit0!=null && kits!=0){
+        if (kit0!=null && kits!=0 && kitZero){
             if (!inventory.isEmpty() && kit0.status == Kit.Status.ready && grips.size() != 4) {
             pickUpPart(inventory.remove(0));
             return true;
             }
      
-            if (kit0.status == Kit.Status.full) {
-                print("giving kit to kitagent");
-                giveKitToKitAgent(kit0);
-                return true;
-            }
         
             if (kit0NeedsParts.isEmpty()) {
                 print("giving kit to kitagent");
@@ -112,18 +111,13 @@ public class PartsAgent extends Agent implements PartsInterface {
             }    
 }
         
-        if(kit1!=null && kits!=0){
+        if(kit1!=null && kits!=0 && kitOne){
            
             if (!inventory.isEmpty() && kit1.status == Kit.Status.ready && grips.size() != 4) {
             pickUpPart(inventory.remove(0));
             return true;
             }  
-            
-            if (kit1.status == Kit.Status.full) {
-                print("giving kit to kitagent");
-                giveKitToKitAgent(kit1);
-                return true;
-            }
+           
             
              if (kit1NeedsParts.isEmpty()) {
                 print("giving kit to kitagent");
@@ -139,11 +133,16 @@ public class PartsAgent extends Agent implements PartsInterface {
 //Actions
 
     private void giveKitToKitAgent(Kit k) {
-        print("giving kitrobot complete kit");
+        print("giving kitrobot complete kit #" + k.standNum);
 
         kitrobot.msgKitIsFull(k);
        // k.status = Kit.Status.empty;
         kits--;
+        if(k.standNum==Kit.StandNum.zero){
+            kit0=null;
+        }
+        else
+            kit1=null;
         /*if(newKit.isEmpty()){
             newKit.add(kitInfo);
             print("Adding kit of size "+ kitInfo.getSize() + " to newKit list");}*/
@@ -159,7 +158,7 @@ public class PartsAgent extends Agent implements PartsInterface {
         camera.msgHereIsKitInfo(k);
     	//kitNeedsParts.clear();
    
-        if(kit0NeedsParts.isEmpty()){
+        if(kit0==null){
         kitrobot.msgNeedEmptyKit();
     	this.kit0 = k;
         for(int i=0; i<k.parts.size(); i++){
@@ -215,8 +214,7 @@ public class PartsAgent extends Agent implements PartsInterface {
         DoPickUpPart(p.getNestNum());
          //**COMMENTED OUT FOR UNIT TEST
         if (grips.size() == 4 || kit0NeedsParts.isEmpty() || kit1NeedsParts.isEmpty()) {
-
-            putPartsInKit(kitNum);
+        putPartsInKit(kitNum);
         }
         stateChanged();
     }
@@ -225,10 +223,10 @@ public class PartsAgent extends Agent implements PartsInterface {
         for (Part p : grips) {
             print("putting part " + p.getString() + " in kit number "+ kitNum);
         }
-        try {
+      /*  try {
             Thread.sleep(3000);
         } catch (InterruptedException ex) {
-        }
+        }*/
         grips.clear();
         DoPutInKit(kitNum);
         //COMMENTED OUT FOR UNIT TEST
