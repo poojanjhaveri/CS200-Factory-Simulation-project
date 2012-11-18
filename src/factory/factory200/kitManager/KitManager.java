@@ -72,6 +72,8 @@ public class KitManager extends Manager  implements ActionListener {
           JButton ub1,ub2,ub3,ub4,ub5,ub6,ub7,ub0;
           
           Part nullpart;
+          String newkitname;
+          Kit tempkit;
     
 	
          public KitManager()
@@ -311,7 +313,7 @@ public class KitManager extends Manager  implements ActionListener {
             for(int j=0;j<this.bpkit.getSize();j++)
     		 update_kitcombo.addItem(this.bpkit.getKitAt(j).getName()); 
             uk_main.add(update_kitcombo,c);
-             update_kitcombo.addActionListener (new KitManager.updatekitclass());
+             update_kitcombo.addActionListener (new updatekitclass());
             c.gridx=0;
             c.gridy=1;
              uk_main.add(new JLabel("Select part:"),c);
@@ -536,13 +538,13 @@ public class KitManager extends Manager  implements ActionListener {
             ArrayList<Part> finalpartlist = new ArrayList();
             for(int p=0;p<8;p++)
             {
-                if(partlist.get(p).getFilename() != "pics/parts/no.png")
+                if(updatepartlist.get(p).getFilename() != "pics/parts/no.png")
                 {
                     finalpartlist.add(partlist.get(p));
                 }
                 
             }
-            System.out.println("Size of partprintlist "+partlist.size());
+            System.out.println("Size of partprintlist "+updatepartlist.size());
             System.out.println("Size of finalprintlist"+finalpartlist.size());
             
           
@@ -555,13 +557,18 @@ public class KitManager extends Manager  implements ActionListener {
             
             if(finalpartlist.size()>3)
             {
-            Kit newkit = new Kit((String)(update_kitcombo.getSelectedItem()),"description");//this will be the kit that just got made
-            
-
+      
+                
+            Kit newkit = new Kit(newkitname,"description");//this will be the kit that just got made
             newkit.setParts(finalpartlist);
+            
+           
+            this.sendToServer(Message.UNDEFINE_KIT+":"+tempkit.getNumber());
+            
+            
         
             String msg = Message.DEFINE_NEW_KIT+":"+newkit.serialize();
-            System.out.println("kit Created");
+            System.out.println("kit updated");
             System.out.println(msg);
             this.mcon.out(msg);
             
@@ -621,10 +628,7 @@ public class KitManager extends Manager  implements ActionListener {
          public void processtabchange()
          {
               Integer t = tabbedPane.getSelectedIndex();
-                if (t==2)
-                {
-                 //    updateComboBox();
-                }   
+                update();
              
          }
          
@@ -894,7 +898,7 @@ public class KitManager extends Manager  implements ActionListener {
              
              public void actionPerformed(ActionEvent e) {
                  JComboBox cb = (JComboBox)e.getSource();
-                 
+                 updatepartlist = new ArrayList();
                  ArrayList<JButton> jbtnlist = new ArrayList();
                  jbtnlist.add(ub0);
                  jbtnlist.add(ub1);
@@ -908,11 +912,21 @@ public class KitManager extends Manager  implements ActionListener {
                 
                  Integer p=(bpkit.getKitAt(cb.getSelectedIndex())).getSize();
                  
-                
+                 updatepartlist.add(nullpart);
+                 updatepartlist.add(nullpart);
+                 updatepartlist.add(nullpart);
+                 updatepartlist.add(nullpart);
+                 updatepartlist.add(nullpart);
+                 updatepartlist.add(nullpart);
+                 updatepartlist.add(nullpart);
+                 updatepartlist.add(nullpart);
+                 tempkit=(bpkit.getKitAt(cb.getSelectedIndex()));
+                newkitname=(bpkit.getKitAt(cb.getSelectedIndex())).getName();
                  
                  for(int s=0;s<p;s++)
                  {
                     jbtnlist.get(s).setIcon(new ImageIcon((bpkit.getKitAt(cb.getSelectedIndex())).getPart(s).getFilename()));
+                    updatepartlist.set(s, (bpkit.getKitAt(cb.getSelectedIndex())).getPart(s));
                  }
                  
                 
