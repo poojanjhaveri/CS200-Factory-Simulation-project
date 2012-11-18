@@ -65,6 +65,9 @@ public class Server {
 	private Socket s = null;
 	private HandleAManager hac;
 
+    private HandleAManager kitmanagerclient;///<connection to the kit manager
+    private HandleAManager fpmclient;///<connection to the fpm
+
 	public static void main(String[] args) {
 		Server server = new Server(PORT_NUMBER);
 		if (SHOULD_DEBUG) {
@@ -305,8 +308,24 @@ public class Server {
 		this.partsAgent.setClient(in);
 	}
 	
-
+    public void setFPMClient(HandlAManager in)
+    {
+	this.fpmclient = in;
+    }
+    public HandleAManager getFPMClient()
+    {
+	return this.fpmclient;
+    }
+    public void setKitManagerClient(HandleAManager in)
+    {
+	this.kitmanagerclient = in;
+    }
+    public HandleAManager getKitManagerClient()
+    {
+	return this.kitmanagerclient;
+    }
     public void setFactoryProductionManagerToAll(HandleAManager in) {
+	this.fpmclient = in;
 	partsAgent.setFactoryProductionManagerClient(in);
     kitRobotAgent.setFactoryProductionManagerClient(in);
     cameraAgent.setFactoryProductionManagerClient(in);
