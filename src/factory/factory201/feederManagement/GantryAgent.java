@@ -286,6 +286,7 @@ public class GantryAgent extends Agent implements Gantry {
     myFeeders.add(new myFeeder(feeder,index));
     }
     
+    // Just for testing
     public void setGantryRobotManager(GantryRobotManager grm) {
         this.animation = grm;
     }

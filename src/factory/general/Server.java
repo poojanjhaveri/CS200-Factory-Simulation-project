@@ -191,7 +191,6 @@ public class Server {
         }
 
         // Kevin
-        gantryAgent.setGantryRobotManager(GRM);
         for (int i = 0, j = 0; i < FEEDER; i++, j++) {
             feederAgents[i].setGantry(gantryAgent);
             feederAgents[i].setLeftLane(laneAgents[j]);
@@ -290,6 +289,11 @@ public class Server {
 		}
 	}    	
 
+	
+	/**
+	 * @brief These methods are called in HandleAManager when a client (manager) connects.
+	 * At that point, a message to IDENTIFY the client occurs. This is how agents get their client(s).
+	 */
 	public void setCameraAgentClient(HandleAManager in) {
 		this.cameraAgent.setClient(in);
 	}
@@ -319,7 +323,7 @@ public class Server {
     laneAgents[i].setFactoryProductionManager(in);
     }
 
-	public LMServerMain getServerLM() {
+	public LMServerMain getServerLM() { // Dongyoung's lane manager server...
 		return this.serverLM;
 	}
 
