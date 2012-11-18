@@ -56,8 +56,10 @@ public class Message {
 
     //lanemanager section
     public static final String IDENTIFY_LANEMANAGER = "IDENTIFY_LANEMANAGER";
+    public static final String PART_TO_NEST_FROM_LANE = "PART_TO_NEST_FROM_LANE";
 
     //PULL_KITS_LIST is also used by FPM
     public static final String IDENTIFY_FACTORYPRODUCTIONMANAGER = "IDENTIFY_FACTORYPRODUCTIONMANAGER"; 
     public static final String PUSH_PRODUCTION_QUEUE = "PUSH_PRODUCTION_QUEUE";///<sends the server a list of comma delimited kit IDs
+    public static final String ALERT_FPM_KIT_INSPECTED = "ALERT_FPM_KIT_INSPECTED";
 }

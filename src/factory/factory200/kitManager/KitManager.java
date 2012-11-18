@@ -64,8 +64,9 @@ public class KitManager extends Manager  implements ActionListener {
           JButton deletekitbutton;
           JButton updatekitbutton;
           
-          ArrayList<Part> partlist = new ArrayList();
+         ArrayList<Part> partlist = new ArrayList();
           ArrayList<Part> updatepartlist = new ArrayList();
+          ArrayList<Part> finalpartlist = new ArrayList();
           ArrayList<JButton> jbtnlist = new ArrayList();
           JButton b1,b2,b3,b4,b5,b6,b7,b0;
           JButton ub1,ub2,ub3,ub4,ub5,ub6,ub7,ub0;
@@ -119,7 +120,20 @@ public class KitManager extends Manager  implements ActionListener {
                 g.drawImage(img, 0, 0, null);
             } 
         };
-                
+            nullpart = new Part("no","","pics/parts/no.png");    
+           
+            partlist.add(0,nullpart);
+             partlist.add(1,nullpart);
+              partlist.add(2,nullpart);
+               partlist.add(3,nullpart);
+                partlist.add(4,nullpart);
+                 partlist.add(5,nullpart);
+                  partlist.add(6,nullpart);
+                  partlist.add(7,nullpart);
+                  
+             
+                   
+              System.out.println("partlist in preparepane is "+partlist.size());
                 
             
             mainpanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -205,6 +219,8 @@ public class KitManager extends Manager  implements ActionListener {
             JPanel partgrid = new JPanel();
             partgrid.setLayout(new GridLayout(2,4));
             
+            
+            
             b0 = new JButton();
             b1 = new JButton();
             b2 = new JButton();
@@ -213,6 +229,15 @@ public class KitManager extends Manager  implements ActionListener {
             b5 = new JButton();
             b6 = new JButton();
             b7 = new JButton();
+            
+            b0.setIcon(new ImageIcon("pics/parts/no.png"));
+            b1.setIcon(new ImageIcon("pics/parts/no.png"));
+            b2.setIcon(new ImageIcon("pics/parts/no.png"));
+            b3.setIcon(new ImageIcon("pics/parts/no.png"));
+            b4.setIcon(new ImageIcon("pics/parts/no.png"));
+            b5.setIcon(new ImageIcon("pics/parts/no.png"));
+            b6.setIcon(new ImageIcon("pics/parts/no.png"));
+            b7.setIcon(new ImageIcon("pics/parts/no.png"));
             
             
             partgrid.add(b0);
@@ -233,6 +258,7 @@ public class KitManager extends Manager  implements ActionListener {
             b6.addActionListener(new itembutton());
             b7.addActionListener(new itembutton());
            
+            
              
             
      //       b1.addActionListener(new partbutton());
@@ -351,8 +377,7 @@ public class KitManager extends Manager  implements ActionListener {
             uk_main.add(updatekitbutton,c);
             updatekit.add(uk_main);
             
-            
-            
+
             
             deletekit = new JPanel();
             
@@ -414,12 +439,12 @@ public class KitManager extends Manager  implements ActionListener {
             
             this.mcon.out(Message.PULL_PARTS_LIST);
             System.out.println("Updated kits list from the server");
-            
+                
 
             this.mcon.out(Message.PULL_KITS_LIST);
             System.out.println("Updates kits list from the server");
             
-     
+            
 
          }
         
@@ -445,18 +470,36 @@ public class KitManager extends Manager  implements ActionListener {
 
         public void createKit()
         {
-            if(partlist.size()>3 && !(kitname.getText().isEmpty()))
+            finalpartlist = new ArrayList();
+            for(int p=0;p<7;p++)
+            {
+                if(partlist.get(p).getFilename() != "pics/parts/no.png")
+                {
+                    finalpartlist.add(partlist.get(p));
+                }
+            }
+            System.out.println("Size of partprintlist "+partlist.size());
+            System.out.println("Size of finalprintlist"+finalpartlist.size());
+            
+            
+            if((kitname.getText().length() == 0))
+            {
+                JOptionPane.showMessageDialog(this, "Please enter valid kit name");
+                
+            }
+            if(finalpartlist.size()<=3)
+            {
+                JOptionPane.showMessageDialog(this, "Select atleast 4 parts");
+            }
+            
+            
+            
+            if(finalpartlist.size()>3 && !(kitname.getText().isEmpty()))
             {
             Kit newkit = new Kit(kitname.getText(),"description");//this will be the kit that just got made
             
-            /*
-            for(int p=0;p<7;p++)
-            {
-                System.out.println(partlist.get(p));
-            }
-            */
 
-            newkit.setParts(partlist);
+            newkit.setParts(finalpartlist);
         
             String msg = Message.DEFINE_NEW_KIT+":"+newkit.serialize();
             System.out.println("kit Created");
@@ -468,16 +511,6 @@ public class KitManager extends Manager  implements ActionListener {
             prepareMainPane();
             tabbedPane.setSelectedIndex(0);
             }
-            if((kitname.getText().isEmpty()))
-            {
-                JOptionPane.showMessageDialog(this, "Please enter valid kit name");
-                
-            }
-            if(partlist.size()<4)
-            {
-                JOptionPane.showMessageDialog(this, "Select atleast 4 parts");
-            }
-            
             
         }
 
@@ -494,12 +527,14 @@ public class KitManager extends Manager  implements ActionListener {
 	       this.bpkit.recreate(this.grabParameter(msg));
 	       System.out.println("GRABBED NEW KITS LIST FROM SERVER!: "+msg);
 		   this.bpkit.debug();
+               //    prepareMainPane();
 	   }
         if(msg.contains(Message.PUSH_PARTS_LIST))
         {
             this.bppart.recreate(this.grabParameter(msg));
             System.out.println("GRABBED NEW PARTS LIST FROM SERVER!" + msg);
             this.bppart.debug();
+          //  prepareMainPane();
         }
     }        
         
@@ -555,14 +590,14 @@ public class KitManager extends Manager  implements ActionListener {
                  {
                      if(i==0)
                      {
-                        b0.setIcon(new ImageIcon("pics/parts/no.png"));
-                      
+                        b0.setIcon(new ImageIcon("pics/parts/no.png"));              
                         }
                         else
                      {
                        b0.setIcon(new ImageIcon(bppart.getPartAt(i-1).getFilename()));
                    //  b0.setIcon(new ImageIcon("pics/parts/part1.png"));
                      partlist.add(0, bppart.getPartAt(i-1));
+                     System.out.println("partlist in preparepane is "+partlist.size());
                      }  
                    
                  }
@@ -578,6 +613,7 @@ public class KitManager extends Manager  implements ActionListener {
                      {
                     b1.setIcon(new ImageIcon(bppart.getPartAt(i-1).getFilename()));
                      partlist.add(1, bppart.getPartAt(i-1));
+                      System.out.println("partlist in preparepane is "+partlist.size());
                      }
                      
                  }
@@ -682,7 +718,7 @@ public class KitManager extends Manager  implements ActionListener {
                      if(i==0)
                      {
                         ub0.setIcon(new ImageIcon("pics/parts/no.png"));
-                      
+                        
                         }
                         else
                      {

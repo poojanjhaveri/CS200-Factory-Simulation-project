@@ -52,7 +52,8 @@ public class FeederAgent extends Agent implements Feeder {
         super(name);
      	
     	//System.out.println("testing null pointer exception");
-    	Part p1=new Part(1);
+    	/*
+        Part p1=new Part(1);
     	Part p2=new Part(2);
     	Part p3=new Part(3);
     	Part p4=new Part(4);
@@ -60,7 +61,8 @@ public class FeederAgent extends Agent implements Feeder {
     	Part p6=new Part(6);
     	Part p7=new Part(7);
     	Part p8=new Part(8);
-    	//System.out.println("All parts created");
+    	
+        //System.out.println("All parts created");
     	
     	//part type, quantity, index (quantity started with is 0
     	parts.add(new myParts(p1,0,1));
@@ -71,7 +73,8 @@ public class FeederAgent extends Agent implements Feeder {
      	parts.add(new myParts(p6,0,6));
      	parts.add(new myParts(p7,0,7));
      	parts.add(new myParts(p8,0,8));
-//     	System.out.println("parts added to the list");
+*/
+ //     	System.out.println("parts added to the list");
    
     	//---------------------------------------------------------------------------
     	//this.serverMain = serverMain;
@@ -115,6 +118,21 @@ public class FeederAgent extends Agent implements Feeder {
         /*
          * Search in the myParts list and see if the request can be fulfilled by checking with the quantity of each part
          */
+        int count=0;
+        //increase count everytime myParts doesn't have that type of part
+        synchronized(parts){
+        for (myParts p : parts) {
+            if (p.part.type != part.type)
+                count++;
+        }
+        }
+        //add if part doesn't exist
+        if(count==parts.size())
+        {
+        parts.add(new myParts(part,0,part.type));
+        }
+        
+        
         for (myParts p : parts) {
             if (p.part.type == part.type) {
         
@@ -141,6 +159,7 @@ public class FeederAgent extends Agent implements Feeder {
                 
 
             }
+        
         }
 
 
@@ -176,6 +195,7 @@ public class FeederAgent extends Agent implements Feeder {
         }
 
 //create a new type if the current list does not contain parts of this type.	
+        /*
         if(part.get(0).type==Type.p1)
         	partIndex=1;
         if(part.get(0).type==Type.p2)
@@ -192,7 +212,10 @@ public class FeederAgent extends Agent implements Feeder {
         	partIndex=7;
         if(part.get(0).type==Type.p8)
         	partIndex=8;
-        parts.add(new myParts(part.get(0),part.size(),partIndex));
+        
+        */
+        
+        parts.add(new myParts(part.get(0),part.size(),part.get(0).type));
         stateChanged();
     }
 
@@ -246,8 +269,9 @@ public class FeederAgent extends Agent implements Feeder {
         //create a list of parts to supply
         List<Part> parts = new ArrayList<Part>();
         
-        for(int i=0;i<p.quantity;i++)
-            parts.add(new Part(p.index));
+        for(int i=0;i<p.quantity;i++) {
+            parts.add(p.part);
+        }
         
         leftLane.msgHereAreParts(parts);
     	
@@ -263,7 +287,7 @@ public class FeederAgent extends Agent implements Feeder {
         List<Part> parts = new ArrayList<Part>();
         
         for(int i=0;i<p.quantity;i++)
-            parts.add(new Part(p.index));
+            parts.add(p.part);
         
         rightLane.msgHereAreParts(parts);
 //    	dosendPartToRightLane(p);

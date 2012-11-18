@@ -211,9 +211,10 @@ public class FactoryProductionManager extends Manager implements ActionListener 
                 
 		add(tabs);
 
+		constructed = true;
+		
 		// Identify this manager
-		this.sendToServer(Message.PUSH_PRODUCTION_QUEUE+":"+1353202603);
-                constructed = true;
+		this.sendToServer(Message.IDENTIFY_FACTORYPRODUCTIONMANAGER);
 	}
 	
     @Override
@@ -345,7 +346,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
                 this.reconstructComboBox();
 	    }
 	
-		//Lane Manager( pass 'msg' into Lane Manager Message Interpreter and take a proper action )
+            //Lane Manager( pass 'msg' into Lane Manager Message Interpreter and take a proper action )
             gfx.verifyMessage(msg);
     }
     

@@ -52,7 +52,8 @@ public class GantryAgent extends Agent implements Gantry {
     	//this.feeder=feeder;
     	
     	//System.out.println("name and feeder assigned");
-    	Part p1=new Part(1);
+    	/*
+        Part p1=new Part(1);
     	Part p2=new Part(2);
     	Part p3=new Part(3);
     	Part p4=new Part(4);
@@ -60,10 +61,11 @@ public class GantryAgent extends Agent implements Gantry {
     	Part p6=new Part(6);
     	Part p7=new Part(7);
     	Part p8=new Part(8);
-    	
+    	*/
     //	System.out.println("parts added");
     	//part 1 is in bin 1 
-    	bins.add(new myBin(p1,numOfBins,0));
+    /*
+        bins.add(new myBin(p1,numOfBins,0));
     	
     	//part 2 is in bin 2 
     	bins.add(new myBin(p2,numOfBins,1));
@@ -86,6 +88,7 @@ public class GantryAgent extends Agent implements Gantry {
     	//part 8 is in bin 8 
     	bins.add(new myBin(p8,numOfBins,7));
     //	System.out.println("bins added");
+    */
     }
 
     
@@ -156,7 +159,21 @@ public class GantryAgent extends Agent implements Gantry {
     	
         print("msgNeedPart from Feeder for type " + part.type);
     	//System.out.println("part need message from feeder received");
-    	for(myFeeder f: myFeeders)
+    	int count=0;
+        //increase count everytime myParts doesn't have that type of part
+        for (myBin b : bins) {
+            if (b.part.type != part.type)
+                count++;
+        }
+        
+        //add if part doesn't exist
+        if(count==bins.size())
+        {
+        bins.add(new myBin(part,8,part.type));
+        }
+        
+        
+        for(myFeeder f: myFeeders)
     	{
     		if(f.feeder==feeder){
     			
