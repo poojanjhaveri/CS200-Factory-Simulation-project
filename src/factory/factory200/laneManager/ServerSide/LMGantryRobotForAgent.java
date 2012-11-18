@@ -35,4 +35,12 @@ public class LMGantryRobotForAgent {
 		// Server Data Task
 		serverMain.getForAgentFeeder().getFeeder(feederNum).setWithBin(false);
 	}
+	
+	public void emptyBin(int feederNum){
+		// Signal To LM & FPM
+		signal = feederNum + "&Bin&Empty&";
+		serverMain.sendToLM(signal);
+		serverMain.sendToFPM(signal);
+		serverMain.sendToGRM(signal);
+	}
 }

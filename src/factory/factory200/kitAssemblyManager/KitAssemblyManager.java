@@ -1,6 +1,7 @@
 package factory.factory200.kitAssemblyManager;
 
 import factory.factory200.kitAssemblyManager.*;
+import factory.general.GUIPart;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import factory.general.Manager;
@@ -12,6 +13,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import factory.general.Message;
+import factory.general.Part;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 /**
@@ -67,11 +70,68 @@ public class KitAssemblyManager extends Manager implements ActionListener {
         } else if (msg.contains(Message.KAM_MOVE_FROM_0_TO_2)) {
             this.moveFrom0To2();
         }else if(msg.contains(Message.KAM_ADD_KIT))
-	    {
-		this.doAddEmptyKit();
-	    }
+	{
+            this.doAddEmptyKit();
+	}
+        else if(msg.contains(Message.LM_ADD_PART)){
+            
+            int nest=msg.charAt(4)-48;
+            int partType=msg.charAt(6)-48;
+            this.doSetParts(nest, partType);
+        }
 
         //todo - let me know what functions agent will call so I can process them here
+    }
+    
+    public void doSetParts(int n, int partType){
+        //create part based on part type given
+        Part temp = new Part(null, null);
+        ImageIcon tempPic=new ImageIcon();
+        if(partType==0){
+            tempPic=new ImageIcon("pics/parts/part1.png");
+        }
+        else if(partType==1){
+            tempPic=new ImageIcon("pics/parts/part2.png");
+        }
+        else if(partType==2){
+            tempPic=new ImageIcon("pics/parts/part3.png");
+        }
+        else if(partType==3){
+            tempPic=new ImageIcon("pics/parts/part4.png");
+        }
+        else if(partType==4){
+            tempPic=new ImageIcon("pics/parts/part5.png");
+        }
+        else if(partType==5){
+            tempPic=new ImageIcon("pics/parts/part6.png");
+        }
+        else if(partType==6){
+            tempPic=new ImageIcon("pics/parts/part7.png");
+        }
+        else if(partType==7){
+            tempPic=new ImageIcon("pics/parts/part8.png");
+        }
+        for(int i=0;i<this.graphics.nest.size();i++){
+            if(n==i){
+                int k=this.graphics.nest.get(i).getParts().size()-1;
+                if(this.graphics.nest.get(i).getParts().size()<=4){
+                GUIPart GUItemp = new GUIPart(this.graphics.nest.get(i).getX(), this.graphics.nest.get(i).getY() + 20*k, 0.0, tempPic);
+                temp.setGUIPart(GUItemp);
+                this.graphics.nest.get(i).getParts().add(temp);
+                }
+                else{
+                  GUIPart GUItemp = new GUIPart(this.graphics.nest.get(i).getX(), this.graphics.nest.get(i).getY() + 20*(k-4), 0.0, tempPic);
+                  temp.setGUIPart(GUItemp); 
+                  this.graphics.nest.get(i).getParts().add(temp);
+                }
+                this.graphics.nest.get(i).getParts().add(temp);
+                break;
+            }
+        }
+        
+        //temp.setGUIPart(GUItemp);
+        //parts1.add(temp);
+        //this.graphics.nest.get(nest).getParts().add(CHANGE);
     }
     
     public void doAddEmptyKit(){

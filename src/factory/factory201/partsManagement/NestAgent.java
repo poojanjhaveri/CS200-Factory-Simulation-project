@@ -4,6 +4,10 @@
  */
 package factory.factory201.partsManagement;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import agent.Agent;
 import factory.factory201.interfaces.Camera;
 import factory.factory201.interfaces.Lane;
@@ -11,9 +15,6 @@ import factory.factory201.interfaces.PartsInterface;
 import factory.factory201.interfaces.NestInterface;
 import factory.general.Nest;
 import factory.general.Part;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public class NestAgent extends Agent implements NestInterface {
 
