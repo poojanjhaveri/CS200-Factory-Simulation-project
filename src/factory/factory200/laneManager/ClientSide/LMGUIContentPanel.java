@@ -76,16 +76,10 @@ class LMGUIContentPanel extends JPanel{
 		add(button2);
 	}
 	
-	/**
-	 * @brief Counter Setter
-	 */
 	public void setCounter(){
 		counterLabel.setText("" + (++partsFedCounter) );
 	}
 	
-	/**
-	 * @brief Sensor Status Change
-	 */
 	public void setSensor( Boolean sensorStatus ){
 		if( sensorStatus == true ){
 			sensorLabel.setIcon(redSensorImage);

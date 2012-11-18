@@ -7,9 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
 /**
- * There are 4 feeders.
- * 
- * @brief Composition For Feeder Tab
+ * @brief Feeder GUI
  * @author Dongyoung Jung
  */
 public class LMGUIFeeder extends JPanel{
@@ -17,11 +15,7 @@ public class LMGUIFeeder extends JPanel{
 	private LMGUIFeederPanel feederPanel;
 	private ArrayList<LMGUIFeederPanel> feederPanels = new ArrayList<LMGUIFeederPanel>();
 	private JTabbedPane tab  = new JTabbedPane();
-	
-	/**
-	 * @brief Constructor
-	 * @param feederCount : Quantity of feeders
-	 */
+
 	public LMGUIFeeder(final int feederCount){
 		setPreferredSize(new Dimension(300,640));
 		setLayout(new BorderLayout());
@@ -35,12 +29,7 @@ public class LMGUIFeeder extends JPanel{
 		
 		add(tab, BorderLayout.CENTER);
 	}
-	
-	/**
-	 * @brief Getter
-	 * @param feederNum : Feeder number
-	 * @return Instance of class 'LaneManagerGUIFeederPanel'
-	 */
+
 	public LMGUIFeederPanel getGUIFeederArray(int feederNum){
 		return feederPanels.get(feederNum);
 	}

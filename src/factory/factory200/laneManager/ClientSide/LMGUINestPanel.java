@@ -6,9 +6,7 @@ import javax.swing.JRadioButton;
 import javax.swing.border.TitledBorder;
 
 /**
- * Nest GUI : Switch Up, Switch Down
- * 
- * @brief Nest GUI
+ * @brief Nest GUI Panel
  * @author Dongyoung Jung
  */
 public class LMGUINestPanel extends JPanel{
@@ -18,10 +16,7 @@ public class LMGUINestPanel extends JPanel{
 	private JRadioButton upSwitch = new JRadioButton("UP");
 	private JRadioButton downSwitch = new JRadioButton("DOWN");
 	private LMGUIContentPanel upDownSwitchPanel = new LMGUIContentPanel(downSwitch, upSwitch, upDownSwitchTitle);
-	
-	/**
-	 * @brief Constructor
-	 */
+
 	public LMGUINestPanel(){
 		// Layout Setting
 		setLayout(new FlowLayout(FlowLayout.CENTER,0,15));
@@ -29,13 +24,7 @@ public class LMGUINestPanel extends JPanel{
 		// Add GUI contents
 		add(upDownSwitchPanel);
 	}
-	
-	/**
-	 * Server signal changes the switch settings.
-	 * 
-	 * @brief Switch Change
-	 * @param signal : Signal from server
-	 */
+
 	public void setNestSwitch( Boolean signal ){
 		if( signal == true ){
 			upSwitch.setSelected(true);

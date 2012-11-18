@@ -3,6 +3,10 @@ package factory.factory200.laneManager.ClientSide;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
 
+/**
+ * @brief Lane Drawing
+ * @author Dongyoung Jung
+ */
 public class LMDrawableLane {
 	
 	private LMDrawableTrack newTrack;
@@ -10,8 +14,8 @@ public class LMDrawableLane {
 	private Boolean laneSwitch = false;
 	
 	public LMDrawableLane(int laneX, int laneY){		
-		for(int i=0 ; i<10 ; i++){// DONE
-			newTrack = new LMDrawableTrack(laneX+40*i, laneY);// DONE
+		for(int i=0 ; i<10 ; i++){
+			newTrack = new LMDrawableTrack(laneX+40*i, laneY);
 			tracks.add(newTrack);
 		}
 	}

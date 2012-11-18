@@ -3,10 +3,14 @@ package factory.factory200.laneManager.ClientSide;
 import java.awt.FlowLayout;
 import javax.swing.JFrame;
 
+/**
+ * @brief Main Frame
+ * @author Dongyoung Jung
+ */
 public class LMApplication extends JFrame{
 	
-	private LMGraphicsPanel panelGraphics;	///< Instance of class 'LaneManagerGraphicsPanel'
-	private LMGUIPanel panelGUI;	///< Instance of class 'LaneManagerGUIPanel'
+	private LMGraphicsPanel panelGraphics;
+	private LMGUIPanel panelGUI;
 	private LMSignalFromServerVerification verifyMessage;
 	
 	public LMApplication(){

@@ -60,6 +60,10 @@ public class LMServerMain extends JFrame implements Runnable{
 		return agentPartRobot;
 	}
 	
+	public LMGantryRobotForAgent getForAgentGantryRobot(){
+		return agentGantryRobot;
+	}
+	
 	public LMPartData getPartData(){
 		return partData;
 	}

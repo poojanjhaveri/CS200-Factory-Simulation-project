@@ -4,6 +4,10 @@ import java.awt.Graphics2D;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 
+/**
+ * @brief Feeder Drawings
+ * @author Dongyoung Jung
+ */
 public class LMDrawableAllFeeder extends JPanel{
 
 	private LMDrawableFeeder newFeeder;
@@ -22,21 +26,21 @@ public class LMDrawableAllFeeder extends JPanel{
 	private ArrayList<LMDrawableRearGateBulb> rearGateBulbs = new ArrayList<LMDrawableRearGateBulb>();
 	private ArrayList<LMDrawableBinHolder> binHolders = new ArrayList<LMDrawableBinHolder>();
 	
-	private final int feederX = 310;// DONE
-	private final int diversionBulbX = 320;// DONE
-	private final int feedingBulbX = 400;// DONE
-	private final int partLowBulbX = 400;// DONE
-	private final int purgingBulbX = 400;// DONE
-	private final int rearGateBulbX = 400;// DONE
-	private final int binHolderX = 440;// DONE
+	private final int feederX = 310;
+	private final int diversionBulbX = 320;
+	private final int feedingBulbX = 400;
+	private final int partLowBulbX = 400;
+	private final int purgingBulbX = 400;
+	private final int rearGateBulbX = 400;
+	private final int binHolderX = 440;
 	
-	private int feederY = 52;// DONE
-	private int diversionBulbY = 68;// DONE
-	private int feedingBulbY = 60;// DONE
-	private int partLowBulbY = 90;// DONE
-	private int purgingBulbY = 120;// DONE
-	private int rearGateBulbY = 150;// DONE
-	private int binHolderY = 65;// DONE
+	private int feederY = 52;
+	private int diversionBulbY = 68;
+	private int feedingBulbY = 60;
+	private int partLowBulbY = 90;
+	private int purgingBulbY = 120;
+	private int rearGateBulbY = 150;
+	private int binHolderY = 65;
 	
 	public LMDrawableAllFeeder(){
 		for(int i=0 ; i<4 ; i++){
@@ -56,13 +60,13 @@ public class LMDrawableAllFeeder extends JPanel{
 			rearGateBulbs.add(newRearGateBulb);
 			binHolders.add(newBinHolder);
 			
-			feederY += 150;// DONE
-			binHolderY += 150;// DONE
-			diversionBulbY += 150;// DONE
-			feedingBulbY += 150;// DONE
-			partLowBulbY += 150;// DONE
-			purgingBulbY += 150;// DONE
-			rearGateBulbY += 150;// DONE
+			feederY += 150;
+			binHolderY += 150;
+			diversionBulbY += 150;
+			feedingBulbY += 150;
+			partLowBulbY += 150;
+			purgingBulbY += 150;
+			rearGateBulbY += 150;
 		}
 	}
 
