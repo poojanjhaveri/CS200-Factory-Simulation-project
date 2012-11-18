@@ -17,12 +17,12 @@ public class PlaceHolder{
         private boolean show;
         private int number;
         private KAMKit kit;
+
         
         public PlaceHolder(){
             placeholder=new ImageIcon("pics/KAMplaceholder.png");
             //show=true;
             kit=new KAMKit();
-            
         }
         
         public KAMKit giveKit(){
@@ -116,4 +116,5 @@ public class PlaceHolder{
         public void setKit(KAMKit kit) {
             this.kit = kit;
         }
+
     }
