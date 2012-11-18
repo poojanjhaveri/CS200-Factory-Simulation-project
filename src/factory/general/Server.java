@@ -229,6 +229,8 @@ public class Server {
         private void startInteractionSequence() {
             // Get kit from somewhere
             // * 
+        	
+        	// THIS IS JUST EXAMPLE STUFF THAT 201 WAS DOING TO TEST
             Kit kit = new Kit("Test Kit"); // This is required for...
             for (int i = 1; i < 9; i++) {
                 kit.addPart(new Part(i)); // This is a kit that has actual parts...
@@ -237,11 +239,12 @@ public class Server {
             kits.add(kit);
             kits.add(kit);
             kits.add(kit);
+            
             // TODO: *Put this wherever the FPM sends the signal to create (generate) kits
-            conveyorAgent.generateKit(10); // * This generates 10 new kits, among other things if you pass string... *
+//            conveyorAgent.generateKit(10); // * This generates 10 new kits, among other things if you pass string... *
 
             // Officially start the agent interaction sequence!
-            partsAgent.msgHereIsKit(kits);
+//            partsAgent.msgHereIsKit(kits);
             //		 TODO: UNCOMMENT WHEN READY
         }
 
@@ -323,34 +326,30 @@ public class Server {
 		this.partsAgent.setClient(in);
 	}
 	
-    public void setFPMClient(HandleAManager in)
-    {
-	this.fpmclient = in;
-    }
-    public HandleAManager getFPMClient()
-    {
-	return this.fpmclient;
-    }
-    public void setKitManagerClient(HandleAManager in)
-    {
-	this.kitmanagerclient = in;
-    }
-    public HandleAManager getKitManagerClient()
-    {
-	return this.kitmanagerclient;
-    }
-    public void setFactoryProductionManagerToAll(HandleAManager in) {
-	this.fpmclient = in;
-	partsAgent.setFactoryProductionManagerClient(in);
-    kitRobotAgent.setFactoryProductionManagerClient(in);
-    cameraAgent.setFactoryProductionManagerClient(in);
-    conveyorAgent.setFactoryProductionManagerClient(in);
-    for(int i = 0; i != 4; i++)
-    feederAgents[i].setFactoryProductionManagerClient(in);
-    gantryAgent.setFactoryProductionManagerClient(in);
-    for(int i = 0; i != 8; i++)
-    laneAgents[i].setFactoryProductionManagerClient(in);
-    }
+	public void setFPMClient(HandleAManager in) {
+		this.fpmclient = in;
+	}
+	public HandleAManager getFPMClient() {
+		return this.fpmclient;
+	}
+	public void setKitManagerClient(HandleAManager in) {
+		this.kitmanagerclient = in;
+	}
+	public HandleAManager getKitManagerClient() {
+		return this.kitmanagerclient;
+	}
+	public void setFactoryProductionManagerToAll(HandleAManager in) {
+		this.fpmclient = in;
+		partsAgent.setFactoryProductionManagerClient(in);
+		kitRobotAgent.setFactoryProductionManagerClient(in);
+		cameraAgent.setFactoryProductionManagerClient(in);
+		conveyorAgent.setFactoryProductionManagerClient(in);
+		for(int i = 0; i != 4; i++)
+			feederAgents[i].setFactoryProductionManagerClient(in);
+		gantryAgent.setFactoryProductionManagerClient(in);
+		for(int i = 0; i != 8; i++)
+			laneAgents[i].setFactoryProductionManagerClient(in);
+	}
 
 	public LMServerMain getServerLM() { // Dongyoung's lane manager server...
 		return this.serverLM;
