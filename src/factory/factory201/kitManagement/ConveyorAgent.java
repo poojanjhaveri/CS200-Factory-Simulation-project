@@ -121,7 +121,7 @@ public class ConveyorAgent extends Agent implements Conveyor {
      * eventually be taken out of the kitting cell).
      */
     private void acceptVerifiedKit() {
-        print("Accepting a verified kit: [" + tempKit.name + "] from the kits robot");
+        print("Accepting a verified kit: [" + fullKits.get(0).name + "] from the kits robot");
         kits.add(fullKits.remove(0));
         stateChanged();
     }

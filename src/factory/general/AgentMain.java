@@ -14,16 +14,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @brief Example usage of all the agents working together.
- * Agents only depend on having instances of KitAssemblyManager and GantryRobotManager.
+ * @brief Example usage of all the agents working together. Agents only depend
+ * on having instances of KitAssemblyManager and GantryRobotManager.
  * @author Alex Young, David Zhang
  * @version 1
  */
 public class AgentMain {
 
     private static final boolean PATRICK = true;
-    private static final boolean KEVIN = true;
-    private static final boolean ALEX = false;
+    private static final boolean KEVIN = false;
+    private static final boolean ALEX = true;
     
     private static final int FEEDER = 4;
     private static final int LANE = 8;
@@ -32,8 +32,8 @@ public class AgentMain {
         /*========== Declare all agents and etc. ==========*/
 
         // Misc - pass in the appropriate KAM and GRM
-        KitAssemblyManager KAM = new KitAssemblyManager(); // *
-        GantryRobotManager GRM = new GantryRobotManager(); // *
+//        KitAssemblyManager KAM = new KitAssemblyManager(); // *
+       // GantryRobotManager GRM = new GantryRobotManager(); // *
 
         // Alex
         KitRobotAgent kitRobotAgent = new KitRobotAgent("Kit Robot");
@@ -55,6 +55,30 @@ public class AgentMain {
             laneAgents[i] = new LaneAgent("Lane " + i);
         }
 
+        
+        
+        
+        if (!PATRICK) {
+            nestAgent.print = false;
+            partsAgent.print = false;
+        }
+        if (!KEVIN) {
+            for (int i = 0; i < LANE; i++) {
+                if (i < FEEDER) {
+                    feederAgents[i].print = false;
+                }
+                laneAgents[i].print = false;
+            }
+            gantryAgent.print = false;
+        }
+        if (!ALEX) {
+            kitRobotAgent.print = false;
+            conveyorAgent.print = false;
+            cameraAgent.print = false;
+        }
+        
+        
+        
         /*========== Pass proper agents to everyone (connect agents and managers) ==========*/
 
         // Alex
@@ -73,10 +97,8 @@ public class AgentMain {
             nestAgent.getNest(i).setLane(laneAgents[i]);
         }
 
-        // Kevin
-        gantryAgent.setGantryRobotManager(GRM);
         for (int i = 0, j = 0; i < FEEDER; i++, j++) {
-            
+
             feederAgents[i].setGantry(gantryAgent);
             feederAgents[i].setLeftLane(laneAgents[j]);
             feederAgents[i].setRightLane(laneAgents[++j]);
@@ -114,8 +136,6 @@ public class AgentMain {
 
         /*========== Start Agent Interaction Sequence based on a Kit ==========*/
 
-        // Patrick
-
         // Get kit from somewhere
         // * 
         Kit kit = new Kit("Test Kit");
@@ -130,33 +150,16 @@ public class AgentMain {
         kits.add(kit);
         kits.add(kit);
         partsAgent.msgHereIsKit(kits); // The primary agent
-            // The message here tells the parts agent to start - 
-            // The parts agent requests parts from the nest, nest asks lanes, laneagent asks feederagent
-            // Feederagent asks GantryAgent, GantryAgent gets parts from bins, gives back to feederagent
-            // Eventually coming back to the PartsAgent who will put the parts into the empty kit, and the
-            // PartsAgent requests from the empty kit from kitrobot agent who then asks conveyor agent
-            // See Interaction Diagram for better description
-        
+        // The message here tells the parts agent to start - 
+        // The parts agent requests parts from the nest, nest asks lanes, laneagent asks feederagent
+        // Feederagent asks GantryAgent, GantryAgent gets parts from bins, gives back to feederagent
+        // Eventually coming back to the PartsAgent who will put the parts into the empty kit, and the
+        // PartsAgent requests from the empty kit from kitrobot agent who then asks conveyor agent
+        // See Interaction Diagram for better description
+
         /*========== Turn on or off debugging (print statements) ==========*/
         // Just for debugging; put 'false' to turn off print statements
-        if (PATRICK) {
-            nestAgent.print = false;
-//            partsAgent.print = false;
-        }
-        if(KEVIN) {
-            for (int i = 0; i < LANE; i++) {
-                if (i < FEEDER) {
-                    feederAgents[i].print = false;
-                }
-                laneAgents[i].print = false;
-            }
-            gantryAgent.print = false;
-        }
-        if(ALEX) {
-            kitRobotAgent.print = false;
-            conveyorAgent.print = false;
-            cameraAgent.print = false;
-        }
+
 
     } // END main
 } // END AgentMain

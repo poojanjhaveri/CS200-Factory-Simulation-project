@@ -36,18 +36,18 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
     public static final int KIT2Y = 150 + 10 + 250;
     //took into consideration kit stand positioning
     public static final int EMPTY_CONVEYERX = 25;
-    public static final int EMPTY_CONVEYERY = 300;
+    public static final int EMPTY_CONVEYERY = 375;
     public static final int FULL_CONVEYERX = 25;
-    public static final int FULL_CONVEYERY = 300;
-    public static final Integer LANE0Y = 75 / 2 + 0 * 75;///<y-coordinate of lane 0's nest
-    public static final Integer LANE1Y = 75 / 2 + 1 * 75;///<y-coordinate of lane 1's nest
-    public static final Integer LANE2Y = 75 / 2 + 2 * 75;///<y-coordinate of lane 2's nest
-    public static final Integer LANE3Y = 75 / 2 + 3 * 75;///<y-coordinate of lane 3's nest
-    public static final Integer LANE4Y = 75 / 2 + 4 * 75;///<y-coordinate of lane 4's nest
-    public static final Integer LANE5Y = 75 / 2 + 5 * 75;///<y-coordinate of lane 5's nest
-    public static final Integer LANE6Y = 75 / 2 + 6 * 75;///<y-coordinate of lane 6's nest
-    public static final Integer LANE7Y = 75 / 2 + 7 * 75;///<y-coordinate of lane 7's nest
-    public static final Integer RAILX = 75 / 2 + 8 * 75;///<fixed x-coordinate of the rail the parts robot traverses
+    public static final int FULL_CONVEYERY = 224; //375-(150);
+    public static final Integer LANE0Y = 75 / 2 + 0 * 75 -20;///<y-coordinate of lane 0's nest
+    public static final Integer LANE1Y = 75 / 2 + 1 * 75-20;///<y-coordinate of lane 1's nest
+    public static final Integer LANE2Y = 75 / 2 + 2 * 75-20;///<y-coordinate of lane 2's nest
+    public static final Integer LANE3Y = 75 / 2 + 3 * 75-20;///<y-coordinate of lane 3's nest
+    public static final Integer LANE4Y = 75 / 2 + 4 * 75-20;///<y-coordinate of lane 4's nest
+    public static final Integer LANE5Y = 75 / 2 + 5 * 75-20;///<y-coordinate of lane 5's nest
+    public static final Integer LANE6Y = 75 / 2 + 6 * 75-20;///<y-coordinate of lane 6's nest
+    public static final Integer LANE7Y = 75 / 2 + 7 * 75-20;///<y-coordinate of lane 7's nest
+    public static final Integer RAILX = (75 / 2 + 8 * 75)-150;///<fixed x-coordinate of the rail the parts robot traverses
     public static final Integer PARTS_ROBOT_KIT0X = KAMGraphicPanel.KITX + 20;
     public static final Integer PARTS_ROBOT_KIT0Y = KAMGraphicPanel.KIT0Y + 20;
     public static final Integer PARTS_ROBOT_KIT1X = KAMGraphicPanel.KITX + 20;
@@ -72,6 +72,7 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
     private ImageIcon backgroundImage = new ImageIcon("pics/background/part1");
 
     public KAMGraphicPanel() {
+        
         deliveryStation = true;
 
         stationRun = true;
@@ -87,19 +88,19 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
 
 
         //THIS NUMBER IS HARDCODED! should be from server => number of kits that should be made
-        emptyKits = 3;
+        emptyKits = 5;
         delivery = new KitDeliveryStation(emptyKits);
 
         nest = new ArrayList<KAMNest>();
 
         for (int i = 1; i <= 8; i++) {
             nest.add(new KAMNest());
-            nest.get(i - 1).setX(650);
+            nest.get(i - 1).setX(650-150);
         }
 
         int yNum = 75 / 2;
         for (int i = 0; i < 8; i++) {
-            nest.get(i).setY(yNum + i * 75);
+            nest.get(i).setY(yNum + i * 75 -20);
         }
 
         //only for version 0
@@ -283,17 +284,15 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
                     if (delivery.getPlaceholder().get(delivery.getNumEmptyKits() - 1).getY() > -150) {
                         for (int i = 0; i < delivery.getPlaceholder().size(); i++) {
                             //temp=delivery.getPlaceholder().get(i);
-                            int yPlace = delivery.getPlaceholder().get(i).getY() - 1;
-                            int number = i* 200;
-                            if (counter > number) {
-                                delivery.getPlaceholder().get(i).setY(yPlace);
-                                //if (delivery.getPlaceholder().get(i).isShow()) {
-                                //    delivery.getPlaceholder().get(i).getKit().updateParts();
-                                //}
-                            }
-                            if (yPlace == 300 && delivery.getPlaceholder().get(i).isShow()) {
+                            int yPlace = delivery.getPlaceholder().get(i).getY();
+                            int number = i* 150;
+                            
+                            if (yPlace == KAMGraphicPanel.EMPTY_CONVEYERY && delivery.getPlaceholder().get(i).isShow()) {
                                 stationRun = false;
                                 break;
+                            }
+                            if (counter > number) {
+                                delivery.getPlaceholder().get(i).setY(yPlace-1);
                             }
                         }
                         counter++;
@@ -311,10 +310,7 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
                     for (int i = 0; i < delivery.getPlaceholder().size(); i++) {
                         int yPlace = delivery.getPlaceholder().get(i).getY();
                         delivery.getPlaceholder().get(i).setY(yPlace);
-                        //if (delivery.getPlaceholder().get(i).isShow()) {
-                        //    delivery.getPlaceholder().get(i).getKit().updateParts();
-                        //}
-                        if (yPlace == 300 && !(delivery.getPlaceholder().get(i).isShow())) {
+                        if (yPlace==KAMGraphicPanel.EMPTY_CONVEYERY && !(delivery.getPlaceholder().get(i).isShow())) {
                             stationRun = true;
                             break;
                         }
@@ -327,17 +323,15 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
                     if (delivery.getPlaceholder().get(delivery.getNumEmptyKits() - 1).getY() > -150) {
                         for (int i = 0; i < delivery.getPlaceholder().size(); i++) {
                             //temp=delivery.getPlaceholder().get(i);
-                            int yPlace = delivery.getPlaceholder().get(i).getY() - 1;
-                            int number = i * 200;
-                            if (counter > number) {
-                                delivery.getPlaceholder().get(i).setY(yPlace);
-                                //if (delivery.getPlaceholder().get(i).isShow()) {
-                                //    delivery.getPlaceholder().get(i).getKit().updateParts();
-                                //}
-                            }
-                            if (yPlace == 300 && !(delivery.getPlaceholder().get(i).isShow())) {
+                            int yPlace = delivery.getPlaceholder().get(i).getY();
+                            int number = i * 150;
+                            
+                            if (yPlace == KAMGraphicPanel.FULL_CONVEYERY && !(delivery.getPlaceholder().get(i).isShow())) {
                                 stationRun = false;
                                 break;
+                            }
+                            if (counter > number) {
+                                delivery.getPlaceholder().get(i).setY(yPlace-1);
                             }
                         }
                         counter++;
@@ -355,10 +349,11 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
                     for (int i = 0; i < delivery.getPlaceholder().size(); i++) {
                         int yPlace = delivery.getPlaceholder().get(i).getY();
                         delivery.getPlaceholder().get(i).setY(yPlace);
+                        //System.out.println("placeholder "+i+": "+delivery.getPlaceholder().get(i).getY());
                         //if (delivery.getPlaceholder().get(i).isShow()) {
                         //    delivery.getPlaceholder().get(i).getKit().updateParts();
                         //}
-                        if (yPlace == 300 && (delivery.getPlaceholder().get(i).isShow())) {
+                        if (yPlace == KAMGraphicPanel.FULL_CONVEYERY && (delivery.getPlaceholder().get(i).isShow())) {
                             stationRun = true;
                             deliveryStation = true;
                             break;
@@ -447,10 +442,12 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
 
     public void paint(Graphics g) {
         Graphics2D g2 = (Graphics2D) g;
-        Rectangle2D.Double backgroundRectangle = new Rectangle2D.Double(0, 0, 700, 700);
-        g2.setColor(Color.GRAY.darker().darker());//dark dark green background
-        g2.fill(backgroundRectangle);
+        //Rectangle2D.Double backgroundRectangle = new Rectangle2D.Double(0, 0, 700, 700);
+        //g2.setColor(Color.GRAY.darker().darker());//dark dark green background
+        //g2.fill(backgroundRectangle);
         //backgroundImage.paintIcon(this, g2, 500, 500);
+        Image img = new ImageIcon("pics/background/part1.png").getImage();
+        g2.drawImage(img, 0, 0, null);
         paintNests(this, g2);
         kitstand.getKitStand().paintIcon(this, g2, kitstand.getX(), kitstand.getY());
         for (int i = 0; i < 3; i++) {
