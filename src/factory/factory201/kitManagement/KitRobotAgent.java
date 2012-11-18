@@ -140,7 +140,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
     }
 
     private void giveEmptyKitToPartsAgent() {
-        if(kitStand.availableToGive(1) || kitStand.availableToGive(0)) {
+        if (kitStand.availableToGive(1) || kitStand.availableToGive(0)) {
             int i = kitStand.availableToGive(1) ? 1 : 0;
             print("Notifying the parts agent that an empty kit: [" + kitStand.get(i).name + "] is ready.");
             partsAgent.msgEmptyKitReady(kitStand.get(i));
@@ -196,29 +196,61 @@ public class KitRobotAgent extends Agent implements KitRobot {
     }
 
     // DoXXX commands for 200 students' animation
-    
     public void DoMoveKitFromConveyorTo0() {
-//	this.client.sendMessage(Message.KAM_PICK_UP_EMPTY_KIT);
-//	this.fpm.sendMessage(Message.KAM_PICK_UP_EMPTY_KIT);
+        if (this.client != null) {
+            this.client.sendMessage(Message.KAM_PICK_UP_EMPTY_KIT);
+            this.fpm.sendMessage(Message.KAM_PICK_UP_EMPTY_KIT);
+        } else {
+            print("[ERROR] - Kit Assembly Manager is not online.");
+        }
+
     }
+
     public void DoMoveKitFromConveyorTo1() {
-//      this.client.sendMessage(Message.KAM_PICK_UP_EMPTY_KIT_TO_ACTIVE);
-//	this.fpm.sendMessage(Message.KAM_PICK_UP_EMPTY_KIT_TO_ACTIVE);
+        if (this.client != null) {
+
+            this.client.sendMessage(Message.KAM_PICK_UP_EMPTY_KIT_TO_ACTIVE);
+            this.fpm.sendMessage(Message.KAM_PICK_UP_EMPTY_KIT_TO_ACTIVE);
+        } else {
+            print("[ERROR] - Kit Assembly Manager is not online.");
+        }
     }
+
     public void DoMoveKitFrom0to1() {
-//	this.client.sendMessage(Message.KAM_MOVE_EMPTY_KIT_TO_ACTIVE);
-//	this.fpm.sendMessage(Message.KAM_MOVE_EMPTY_KIT_TO_ACTIVE);
+        if (this.client != null) {
+
+            this.client.sendMessage(Message.KAM_MOVE_EMPTY_KIT_TO_ACTIVE);
+            this.fpm.sendMessage(Message.KAM_MOVE_EMPTY_KIT_TO_ACTIVE);
+        } else {
+            print("[ERROR] - Kit Assembly Manager is not online.");
+        }
     }
+
     public void DoMoveKitFrom1to2() {
-//	this.client.sendMessage(Message.KAM_MOVE_ACTIVE_KIT_TO_INSPECTION);
-//	this.fpm.sendMessage(Message.KAM_MOVE_ACTIVE_KIT_TO_INSPECTION);
+        if (this.client != null) {
+            this.client.sendMessage(Message.KAM_MOVE_ACTIVE_KIT_TO_INSPECTION);
+            this.fpm.sendMessage(Message.KAM_MOVE_ACTIVE_KIT_TO_INSPECTION);
+        } else {
+            print("[ERROR] - Kit Assembly Manager is not online.");
+        }
+
     }
+
     public void DoMoveKitFrom0to2() {
-//	this.client.sendMessage(Message.KAM_MOVE_FROM_0_TO_2);
-//	this.fpm.sendMessage(Message.KAM_MOVE_FROM_0_TO_2);
+        if (this.client != null) {
+            this.client.sendMessage(Message.KAM_MOVE_FROM_0_TO_2);
+            this.fpm.sendMessage(Message.KAM_MOVE_FROM_0_TO_2);
+        } else {
+            print("[ERROR] - Kit Assembly Manager is not online.");
+        }
     }
+
     public void DoMoveKitFrom2ToConveyor(Kit k) {
-//	this.client.sendMessage(Message.KAM_DROP_OFF_FULL_KIT);
-//	this.fpm.sendMessage(Message.KAM_DROP_OFF_FULL_KIT);
-    } 
+        if (this.client != null) {
+            this.client.sendMessage(Message.KAM_DROP_OFF_FULL_KIT);
+            this.fpm.sendMessage(Message.KAM_DROP_OFF_FULL_KIT);
+        } else {
+            print("[ERROR] - Kit Assembly Manager is not online.");
+        }
+    }
 }

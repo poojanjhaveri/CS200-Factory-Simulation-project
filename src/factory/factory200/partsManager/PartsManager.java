@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -79,6 +80,7 @@ public class PartsManager extends Manager implements ActionListener {
     private JTextField tfDescription2;
     private JPanel pnlButton2;
     private JButton btnCreate;
+    private JLabel lblSelectedImage;
 
     private void prepareContentPane() {
         contentPane = new JPanel();
@@ -104,9 +106,12 @@ public class PartsManager extends Manager implements ActionListener {
                 comboBoxPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
                 
                         partComboBox = new JComboBox();
+                        partComboBox.addActionListener(this);
                         comboBoxPanel.add(partComboBox);
    
         managePartsImagePanel = new JPanel();
+        lblSelectedImage= new JLabel();
+        managePartsImagePanel.add(lblSelectedImage);
         pnlManageParts.add(managePartsImagePanel);  
 
         managePartsButtonPanel = new JPanel();
@@ -235,6 +240,9 @@ public class PartsManager extends Manager implements ActionListener {
         btnCreate = new JButton("Create");
         btnCreate.addActionListener(this);
         pnlButton2.add(btnCreate);
+        
+        updateComboBox();
+        updateManagePartsImagePanel();
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -246,7 +254,11 @@ public class PartsManager extends Manager implements ActionListener {
             updatePart(); // fill in below
         } else if (e.getSource() == btnCreate) {
         	createPart();
+        } else if (e.getSource()==partComboBox){
+        	//when partComboBox is clicked update managePartsImagePanel
+        	updateManagePartsImagePanel();
         }
+       this.repaint();
     }
 
     /**
@@ -264,6 +276,16 @@ public class PartsManager extends Manager implements ActionListener {
     		
     	}
     	return temp;
+    }
+    
+    private void updateManagePartsImagePanel(){
+     	Part temp= getCurrentPart();
+     	if(temp.getFilename()!=null)
+     		lblSelectedImage= new JLabel(new ImageIcon(temp.getFilename()));
+    	managePartsImagePanel.removeAll();
+    	managePartsImagePanel.add(lblSelectedImage);
+    	
+    	
     }
     
     /**
@@ -291,8 +313,8 @@ public class PartsManager extends Manager implements ActionListener {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 450, 300);
 
+		this.mcon.out(Message.PULL_PARTS_LIST);
         prepareContentPane();
-	//	this.mcon.out(Message.PULL_PARTS_LIST);
         this.update();
     }
 
@@ -301,11 +323,13 @@ public class PartsManager extends Manager implements ActionListener {
      */
     public void createPart() {
     	String name, file, d;
+    	int n;
     	Part temp;
     	
     	name=tfPartName2.getText();
     	file=tfImageFileName2.getText();
     	d=tfDescription2.getText();
+
     	
     	temp=new Part(name, d, file);
     	
@@ -331,6 +355,7 @@ public class PartsManager extends Manager implements ActionListener {
      */
     public void updatePart() {
     	
+
     	deletePart(getCurrentPart()); //delete current part
     	
     	//make a new part
@@ -363,6 +388,10 @@ public class PartsManager extends Manager implements ActionListener {
         this.mcon.out(s);
     	bp.removePart(pt);
     	updateComboBox();
+
+    	updateManagePartsImagePanel();
+    	this.repaint();
+
     }
     
     /**
@@ -400,9 +429,8 @@ public class PartsManager extends Manager implements ActionListener {
     	 tfPartName.setText(p.getName());
     	 tfImageFileName.setText(p.getFilename());
     	 tfDescription.setText(p.getDescription());
-    	 
-    	 
-     }
+    	 lblPartNumber.setText(p.getNumber()+"");
+     	}
     	 
      }
 
@@ -412,7 +440,8 @@ public class PartsManager extends Manager implements ActionListener {
      */
     
     private void updateComboBox(){
-    	 partComboBox.removeAllItems();
+     	managePartsImagePanel.removeAll();
+    	 partComboBox.removeAllItems(); 
     	 for(int i=0;i<bp.getSize();i++){
     		 partComboBox.addItem(bp.getPartAt(i).getName());     
     	
@@ -423,14 +452,26 @@ public class PartsManager extends Manager implements ActionListener {
 /*
  * TODO
  * 
- * -add images support
- * -make it pretty 
  * 
- *	-ROY:  Delete part from server
+ * -add images support. 
+ * >in pnlSelectedPart. image also displayed. partNumber as well
+ * >in pnlNewPart change file extension to JComboBox that displays images. 
+ * 
+ * 
+ * -Add christmas theme
+ *	
  *
  *
  * QUESTIONS
- * 
+ * -reading in all images from a file. 
+ * SOLUTION:
+ * final ImageFilter imageFilter = new ImageFilter();
+      final File dir = new File("some/dir");
+      for(final File imgFile : dir.listFies()) {
+          if(imageFilter.accept(imgFile)){
+              doSomethingWithImgFile(imgFile);
+          }
+      } 
  * 
  * BUGS
  * -make Create and update button unselected after click

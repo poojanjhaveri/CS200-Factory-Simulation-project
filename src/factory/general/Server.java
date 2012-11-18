@@ -18,6 +18,7 @@ import factory.factory201.kitManagement.ConveyorAgent;
 import factory.factory201.kitManagement.KitRobotAgent;
 import factory.factory201.partsManagement.NestAgent;
 import factory.factory201.partsManagement.PartsAgent;
+import java.util.List;
 
 /**
  * @brief This class is critical to the integration of GUI classes, agents, etc.
@@ -25,7 +26,7 @@ import factory.factory201.partsManagement.PartsAgent;
  * of agents and calls their methods appropriately based on received messages
  * from clients. So, this class runs a loop that constantly checks for new
  * clients and creates a new thread for each.
- * @author David Zhang, YiWei Roy Zheng
+ * @author David Zhang, YiWei Roy Zheng, Alex Young
  */
 public class Server {
 	/**
@@ -42,7 +43,10 @@ public class Server {
     
 	/** Agents */
     // Fields just for "AgentMain" stuff (Agent preparation) 
-    private static final boolean TEST_MODE = true;
+    private static final boolean PATRICK = true;
+    private static final boolean KEVIN = false;
+    private static final boolean ALEX = true;
+    
     private static final int FEEDER = 4;
     private static final int LANE = 8;
 
@@ -133,127 +137,134 @@ public class Server {
 	/**
 	 * @brief prepares all agents; called when server constructor begins
 	 */
-	private void prepareAllAgents() {
-		declareAgents();
-		connectAgentsAndManagers();
-		startAgentThreads();
-		startInteractionSequence();
-		debugIfNecessaryForAgents();
-	}
-	
-	private void declareAgents() {
-		/*========== Declare all agents and etc. ==========*/
+        private void prepareAllAgents() {
+            declareAgents();
+            connectAgentsAndManagers();
+            startAgentThreads();
+            startInteractionSequence();
+            turnOffAgentPrintStatements();
+        }
 
-        // Alex
-        kitRobotAgent = new KitRobotAgent("Kit Robot");
-        cameraAgent = new CameraAgent("Camera");
-        conveyorAgent = new ConveyorAgent("Conveyor");
+        private void declareAgents() {
+            /*========== Declare all agents and etc. ==========*/
 
-        // Patrick
-        partsAgent = new PartsAgent("Parts Agent");
-        nestAgent = new NestAgent("Nest Agent");
+            // Alex
+            kitRobotAgent = new KitRobotAgent("Kit Robot");
+            cameraAgent = new CameraAgent("Camera");
+            conveyorAgent = new ConveyorAgent("Conveyor");
 
-        // Kevin
-        feederAgents = new FeederAgent[FEEDER];
-        gantryAgent = new GantryAgent(8, "Gantry");
-        laneAgents = new LaneAgent[LANE];
-        
-        for (int i = 0; i < LANE; i++) {
-            if (i < FEEDER) {
-                feederAgents[i] = new FeederAgent("Feeder " + i, i);
+            // Patrick
+            partsAgent = new PartsAgent("Parts Agent");
+            nestAgent = new NestAgent("Nest Agent");
+
+            // Kevin
+            feederAgents = new FeederAgent[FEEDER];
+            gantryAgent = new GantryAgent(8, "Gantry");
+            laneAgents = new LaneAgent[LANE];
+
+            for (int i = 0; i < LANE; i++) {
+                if (i < FEEDER) {
+                    feederAgents[i] = new FeederAgent("Feeder " + i, i);
+                }
+                laneAgents[i] = new LaneAgent("Lane " + i);
             }
-            laneAgents[i] = new LaneAgent("Lane " + i);
-        }
-	}
-
-	private void connectAgentsAndManagers() {
-		/*========== Pass proper agents to everyone ==========*/
-		// Alex
-        kitRobotAgent.setAll(cameraAgent, conveyorAgent, partsAgent);
-        cameraAgent.setAll(kitRobotAgent, nestAgent);
-        conveyorAgent.setKitRobot(kitRobotAgent);
-
-        // Patrick
-        partsAgent.setCamera(cameraAgent);
-
-        partsAgent.setKitRobot(kitRobotAgent);
-        partsAgent.setNestInterface(nestAgent);
-        nestAgent.setCamera(cameraAgent);
-        nestAgent.setPartsAgent(partsAgent);
-        for (int i = 0; i < 8; i++) {
-            nestAgent.getNest(i).setLane(laneAgents[i]);
         }
 
-        // Kevin
-        for (int i = 0, j = 0; i < FEEDER; i++, j++) {
-            feederAgents[i].setGantry(gantryAgent);
-            feederAgents[i].setLeftLane(laneAgents[j]);
-            feederAgents[i].setRightLane(laneAgents[++j]);
-            gantryAgent.setFeeder(feederAgents[i], i);
-        }
+        private void connectAgentsAndManagers() {
+            /*========== Pass proper agents to everyone ==========*/
+            // Alex
+            kitRobotAgent.setAll(cameraAgent, conveyorAgent, partsAgent);
+            cameraAgent.setAll(kitRobotAgent, nestAgent);
+            conveyorAgent.setKitRobot(kitRobotAgent);
 
-        for (int i = 0; i < LANE; i += 2) {
-            laneAgents[i].setFeeder(feederAgents[i / 2]);
-            laneAgents[i].setNest(nestAgent);
-            laneAgents[i + 1].setFeeder(feederAgents[i / 2]);
-            laneAgents[i + 1].setNest(nestAgent);
-        }
-	}
+            // Patrick
+            partsAgent.setCamera(cameraAgent);
 
-	private void startAgentThreads() {
-		/*========== Start all of the threads ==========*/
-
-        // Alex
-        cameraAgent.startThread();
-        conveyorAgent.startThread();
-        kitRobotAgent.startThread();
-
-        // Patrick
-        partsAgent.startThread();
-        nestAgent.startThread();
-
-        // Kevin
-        gantryAgent.startThread();
-        for (int i = 0; i < LANE; i++) {
-            if (i < FEEDER) {
-                feederAgents[i].startThread();
+            partsAgent.setKitRobot(kitRobotAgent);
+            partsAgent.setNestInterface(nestAgent);
+            nestAgent.setCamera(cameraAgent);
+            nestAgent.setPartsAgent(partsAgent);
+            for (int i = 0; i < 8; i++) {
+                nestAgent.getNest(i).setLane(laneAgents[i]);
             }
-            laneAgents[i].startThread();
+
+            // Kevin
+            for (int i = 0, j = 0; i < FEEDER; i++, j++) {
+                feederAgents[i].setGantry(gantryAgent);
+                feederAgents[i].setLeftLane(laneAgents[j]);
+                feederAgents[i].setRightLane(laneAgents[++j]);
+                gantryAgent.setFeeder(feederAgents[i], i);
+            }
+
+            for (int i = 0; i < LANE; i += 2) {
+                laneAgents[i].setFeeder(feederAgents[i / 2]);
+                laneAgents[i].setNest(nestAgent);
+                laneAgents[i + 1].setFeeder(feederAgents[i / 2]);
+                laneAgents[i + 1].setNest(nestAgent);
+            }
         }
-        
-        // TODO: *Put this wherever the FPM sends the signal to create (generate) kits
-//        conveyorAgent.generateKit(10); // * This generates 10 new kits, among other things if you pass string... *
-        
-	}
-	
-	private void startInteractionSequence() {
-		// Get kit from somewhere
-		// * 
-		Kit kit = new Kit("Test Kit"); // This is required for...
-		for (int i = 1; i < 9; i++) {
-			kit.addPart(new Part(i)); // This is a kit that has actual parts...
-		}
 
-		// Officially start the agent interaction sequence!
-		//partsAgent.msgHereIsKit(kit); // The primary agent
-		// TODO: UNCOMMENT WHEN READY
-	}
+        private void startAgentThreads() {
+            /*========== Start all of the threads ==========*/
 
-	private void debugIfNecessaryForAgents() {
-		/*========== Turn on or off debugging (print statements) ==========*/
-		// Just for debugging; put 'true' to turn off print statements
-		if (!TEST_MODE) {
-			for (int i = 0; i < LANE; i++) {
-				if (i < FEEDER) {
-					feederAgents[i].print = false;
-				}
-				laneAgents[i].print = false;
-			}
-			gantryAgent.print = false;
-			nestAgent.print = false;
-			partsAgent.print = false;
-		}
-	}
+            // Alex
+            cameraAgent.startThread();
+            conveyorAgent.startThread();
+            kitRobotAgent.startThread();
+
+            // Patrick
+            partsAgent.startThread();
+            nestAgent.startThread();
+
+            // Kevin
+            gantryAgent.startThread();
+            for (int i = 0; i < LANE; i++) {
+                if (i < FEEDER) {
+                    feederAgents[i].startThread();
+                }
+                laneAgents[i].startThread();
+            }
+        }
+
+        private void startInteractionSequence() {
+            // Get kit from somewhere
+            // * 
+            Kit kit = new Kit("Test Kit"); // This is required for...
+            for (int i = 1; i < 9; i++) {
+                kit.addPart(new Part(i)); // This is a kit that has actual parts...
+            }
+            List<Kit> kits = new ArrayList<Kit>();
+            kits.add(kit);
+            kits.add(kit);
+            kits.add(kit);
+            // TODO: *Put this wherever the FPM sends the signal to create (generate) kits
+            conveyorAgent.generateKit(10); // * This generates 10 new kits, among other things if you pass string... *
+
+            // Officially start the agent interaction sequence!
+            partsAgent.msgHereIsKit(kits);
+            //		 TODO: UNCOMMENT WHEN READY
+        }
+
+        private void turnOffAgentPrintStatements() {
+            if (!PATRICK) {
+                nestAgent.print = false;
+                partsAgent.print = false;
+            }
+            if (!KEVIN) {
+                for (int i = 0; i < LANE; i++) {
+                    if (i < FEEDER) {
+                        feederAgents[i].print = false;
+                    }
+                    laneAgents[i].print = false;
+                }
+                gantryAgent.print = false;
+            }
+            if (!ALEX) {
+                kitRobotAgent.print = false;
+                conveyorAgent.print = false;
+                cameraAgent.print = false;
+            }
+        }
 
 	/** Methods used by HandleAManager, which has a pointer to the server*/
 	/**
