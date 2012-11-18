@@ -68,13 +68,13 @@ public class KitAssemblyManager extends Manager implements ActionListener {
             this.moveFrom0To2();
         }else if(msg.contains(Message.KAM_ADD_KIT))
 	    {
-		this.doAddNewKit();
+		this.doAddEmptyKit();
 	    }
 
         //todo - let me know what functions agent will call so I can process them here
     }
     
-    public void doAddNewKit(){
+    public void doAddEmptyKit(){
         this.graphics.delivery.addKit();
     }
 
