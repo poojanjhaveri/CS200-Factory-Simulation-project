@@ -53,21 +53,25 @@ public class HandleAManager implements Runnable {
             System.exit(0);
         }
 
-        // This thread loops forever to receive a client message and echo it back
+        // This thread loops while 'running' to receive a client message and echo it back
         while (running) {
             String message = null;
             try {
                 // Listen for interaction via protocol
                 message = br.readLine();
                 if (message == null) {
-                    throw new Exception("A manager class must do manager.sendToServer(Message.CLIENT_EXITED);");
+                	System.out.println("Message from client is null. A manager class should exit properly (i.e., by closing with the X in the corner)");
+                    throw new Exception();
                 }
                 processMessage(message);
                 p.println("Processed message in client thread");
-            } catch (Exception e) {
+            } catch (NullPointerException e) {
+            	System.out.println("Nullpointer from HandleAManager. Shutting down. The agents may not have been initialized.");
                 e.printStackTrace();
-                System.out.println("Client exited prematurely; shutting down");
                 System.exit(0);
+            } catch (Exception e) {
+            	e.printStackTrace();
+            	System.exit(0);
             }
         }
     }
