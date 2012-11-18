@@ -28,7 +28,6 @@ import factory.factory201.partsManagement.PartsAgent;
  * @author David Zhang, YiWei Roy Zheng
  */
 public class Server {
-
 	/**
 	 * Instance fields
 	 */
@@ -48,8 +47,6 @@ public class Server {
     private static final int LANE = 8;
 
     // Fields for agent setup
-    private KitAssemblyManager KAM; // *
-    private GantryRobotManager GRM; // *
 	private NestAgent nestAgent;
 	private PartsAgent partsAgent;
     private KitRobotAgent kitRobotAgent;
@@ -68,6 +65,9 @@ public class Server {
 	private Socket s = null;
 	private HandleAManager hac;
 
+    private HandleAManager kitmanagerclient;///<connection to the kit manager
+    private HandleAManager fpmclient;///<connection to the fpm
+
 	public static void main(String[] args) {
 		Server server = new Server(PORT_NUMBER);
 		if (SHOULD_DEBUG) {
@@ -82,11 +82,9 @@ public class Server {
 	 */
 	public Server(int portNumber) {
         this.fstate = new FactoryState();
-		initializeManagers();
+		initializeManagers(); // Something by Dongyoung
 		
-		
-        // TODO: uncomment when ready
-//		prepareAllAgents(); // Prepare all agents; based on AgentMain.java
+		prepareAllAgents(); // Prepare all agents; based on AgentMain.java
 
 		numClients = 0; // Initialize num clients is 0
 		start(portNumber); // Start listening for clients and making new HandleAManager instances
@@ -125,7 +123,7 @@ public class Server {
 		}
 	}
 
-	private void initializeManagers(){
+	private void initializeManagers() { // Something by Dongyoung...?
 		 serverLM = new LMServerMain();
 	}
 	
@@ -139,17 +137,12 @@ public class Server {
 		declareAgents();
 		connectAgentsAndManagers();
 		startAgentThreads();
-		
 		startInteractionSequence();
-		
 		debugIfNecessaryForAgents();
 	}
 	
 	private void declareAgents() {
 		/*========== Declare all agents and etc. ==========*/
-		// Misc - pass in the appropriate KAM and GRM
-//        KAM = new KitAssemblyManager(); // *
-//        GRM = new GantryRobotManager(); // *
 
         // Alex
         kitRobotAgent = new KitRobotAgent("Kit Robot");
@@ -192,7 +185,6 @@ public class Server {
         }
 
         // Kevin
-        gantryAgent.setGantryRobotManager(GRM);
         for (int i = 0, j = 0; i < FEEDER; i++, j++) {
             feederAgents[i].setGantry(gantryAgent);
             feederAgents[i].setLeftLane(laneAgents[j]);
@@ -229,7 +221,7 @@ public class Server {
             laneAgents[i].startThread();
         }
         
-        // *Put this wherever the FPM sends the signal to create (generate) kits
+        // TODO: *Put this wherever the FPM sends the signal to create (generate) kits
 //        conveyorAgent.generateKit(10); // * This generates 10 new kits, among other things if you pass string... *
         
 	}
@@ -277,6 +269,10 @@ public class Server {
 		return numClients;
 	}
 
+	public KitRobotAgent getKitRobotAgent() {
+		return kitRobotAgent;
+	}
+	
 	/**
 	 * @brief method to help debug
 	 */
@@ -291,6 +287,11 @@ public class Server {
 		}
 	}    	
 
+	
+	/**
+	 * @brief These methods are called in HandleAManager when a client (manager) connects.
+	 * At that point, a message to IDENTIFY the client occurs. This is how agents get their client(s).
+	 */
 	public void setCameraAgentClient(HandleAManager in) {
 		this.cameraAgent.setClient(in);
 	}
@@ -307,20 +308,36 @@ public class Server {
 		this.partsAgent.setClient(in);
 	}
 	
-
+    public void setFPMClient(HandlAManager in)
+    {
+	this.fpmclient = in;
+    }
+    public HandleAManager getFPMClient()
+    {
+	return this.fpmclient;
+    }
+    public void setKitManagerClient(HandleAManager in)
+    {
+	this.kitmanagerclient = in;
+    }
+    public HandleAManager getKitManagerClient()
+    {
+	return this.kitmanagerclient;
+    }
     public void setFactoryProductionManagerToAll(HandleAManager in) {
-	partsAgent.setFactoryProductionManager(in);
-    kitRobotAgent.setFactoryProductionManager(in);
-    cameraAgent.setFactoryProductionManager(in);
-    conveyorAgent.setFactoryProductionManager(in);
+	this.fpmclient = in;
+	partsAgent.setFactoryProductionManagerClient(in);
+    kitRobotAgent.setFactoryProductionManagerClient(in);
+    cameraAgent.setFactoryProductionManagerClient(in);
+    conveyorAgent.setFactoryProductionManagerClient(in);
     for(int i = 0; i != 4; i++)
-    feederAgents[i].setFactoryProductionManager(in);
-    gantryAgent.setFactoryProductionManager(in);
+    feederAgents[i].setFactoryProductionManagerClient(in);
+    gantryAgent.setFactoryProductionManagerClient(in);
     for(int i = 0; i != 8; i++)
-    laneAgents[i].setFactoryProductionManager(in);
+    laneAgents[i].setFactoryProductionManagerClient(in);
     }
 
-	public LMServerMain getServerLM() {
+	public LMServerMain getServerLM() { // Dongyoung's lane manager server...
 		return this.serverLM;
 	}
 

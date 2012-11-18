@@ -1,16 +1,32 @@
 package factory.factory200.factoryProductionManager;
 //import factory.agentGUI.*;
 
-import java.util.*;
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 import factory.general.BlueprintKits;
-import factory.general.Util;
 import factory.general.Kit;
 import factory.general.Manager;
 import factory.general.Message;
+import factory.general.Util;
 
 /**
  * Factory Production Manager selects active kit production routines, how many
@@ -67,10 +83,8 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 
 	public FactoryProductionManager()
 	{
-            	gfx = new GraphicsPanel();
+		gfx = new GraphicsPanel();
 		gfx.setPreferredSize(new Dimension(1350, 700));
-		// Send Identification to Server
-		super.sendToServer(Message.IDENTIFY_FACTORYPRODUCTIONMANAGER);
 		
 		debug = false;
                 empty = false;
@@ -195,7 +209,8 @@ public class FactoryProductionManager extends Manager implements ActionListener 
                 
 		add(tabs);
 
-		//this.sendToServer(Message.IDENTIFY_FACTORYPRODUCTIONMANAGER);
+		// Identify this manager
+		this.sendToServer(Message.PUSH_PRODUCTION_QUEUE+":"+1353202603);
 	}
 	
     @Override

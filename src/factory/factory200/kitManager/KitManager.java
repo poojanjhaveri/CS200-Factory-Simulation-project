@@ -37,8 +37,6 @@ import javax.swing.event.ChangeListener;
  * 
  */
 
-
-
 public class KitManager extends Manager  implements ActionListener {
 
 	/**
@@ -87,7 +85,7 @@ public class KitManager extends Manager  implements ActionListener {
             prepareMainPane();
             
 	//	this.mcon.out(Message.PULL_PARTS_LIST);
-              
+	    this.sendToServer(Message.IDENTIFY_KITMANAGER);
          }
 	
 	
