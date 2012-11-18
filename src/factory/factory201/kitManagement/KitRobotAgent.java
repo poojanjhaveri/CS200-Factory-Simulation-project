@@ -243,7 +243,6 @@ public class KitRobotAgent extends Agent implements KitRobot {
         } else {
             print("[ERROR] - Kit Assembly Manager is not online.");
         }
-
     }
 
     public void DoMoveKitFrom2ToConveyor(Kit k) {
@@ -253,6 +252,5 @@ public class KitRobotAgent extends Agent implements KitRobot {
         } else {
             print("[ERROR] - Kit Assembly Manager is not online.");
         }
-
     }
 }
