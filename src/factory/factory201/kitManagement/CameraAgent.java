@@ -143,7 +143,7 @@ public class CameraAgent extends Agent implements Camera {
      */
     private void inspectNest(Nest nest) {
         print("Inspecting nest: [Nest " + nest.nestNum + "].");
-        Part.Type type = nest.part.type;
+        Integer type = nest.part.type;
         boolean result = true;
         for (Part p : nest.parts) {
             if (p.type != type) {
@@ -192,6 +192,7 @@ public class CameraAgent extends Agent implements Camera {
         if (this.client != null) {
             this.client.sendMessage(Message.KAM_FLASH_NEST_CAMERA + ":" + nest.nestNum);
             this.fpm.sendMessage(Message.KAM_FLASH_NEST_CAMERA + ":" + nest.nestNum);
+            this.fpm.sendMessage(Message.ALERT_FPM_KIT_INSPECTED);
         } else {
             print("[ERROR] - Kit Assembly Manager is not online.");
         }

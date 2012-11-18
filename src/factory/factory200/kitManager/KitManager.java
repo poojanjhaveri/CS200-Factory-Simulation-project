@@ -66,6 +66,7 @@ public class KitManager extends Manager  implements ActionListener {
           
           ArrayList<Part> partlist = new ArrayList();
           ArrayList<Part> updatepartlist = new ArrayList();
+          ArrayList<Part> finalpartlist = new ArrayList();
           ArrayList<JButton> jbtnlist = new ArrayList();
           JButton b1,b2,b3,b4,b5,b6,b7,b0;
           JButton ub1,ub2,ub3,ub4,ub5,ub6,ub7,ub0;
@@ -119,7 +120,7 @@ public class KitManager extends Manager  implements ActionListener {
                 g.drawImage(img, 0, 0, null);
             } 
         };
-                
+            nullpart = new Part("no","","pics/parts/no.png");    
             partlist.removeAll(partlist);
             partlist.add(nullpart);
              partlist.add(nullpart);
@@ -128,7 +129,7 @@ public class KitManager extends Manager  implements ActionListener {
                 partlist.add(nullpart);
                  partlist.add(nullpart);
                   partlist.add(nullpart);
-                   partlist.add(nullpart);
+                    partlist.add(nullpart);
               
                 
             
@@ -466,18 +467,25 @@ public class KitManager extends Manager  implements ActionListener {
 
         public void createKit()
         {
-            if(partlist.size()>3 && !(kitname.getText().isEmpty()))
+            
+            for(int p=0;p<7;p++)
+            {
+                if(partlist.get(p).getFilename() != "pics/parts/no.png")
+                {
+                    finalpartlist.add(partlist.get(p));
+                }
+            }
+            
+            
+            
+            
+            
+            if(finalpartlist.size()>3 && !(kitname.getText().isEmpty()))
             {
             Kit newkit = new Kit(kitname.getText(),"description");//this will be the kit that just got made
             
-            /*
-            for(int p=0;p<7;p++)
-            {
-                System.out.println(partlist.get(p));
-            }
-            */
 
-            newkit.setParts(partlist);
+            newkit.setParts(finalpartlist);
         
             String msg = Message.DEFINE_NEW_KIT+":"+newkit.serialize();
             System.out.println("kit Created");
@@ -494,7 +502,7 @@ public class KitManager extends Manager  implements ActionListener {
                 JOptionPane.showMessageDialog(this, "Please enter valid kit name");
                 
             }
-            if(partlist.size()<4)
+            if(finalpartlist.size()<4)
             {
                 JOptionPane.showMessageDialog(this, "Select atleast 4 parts");
             }
