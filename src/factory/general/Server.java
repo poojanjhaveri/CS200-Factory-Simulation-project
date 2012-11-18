@@ -48,8 +48,9 @@ public class Server {
     private static final int LANE = 8;
 
     // Fields for agent setup
-    private KitAssemblyManager KAM; // *
-    private GantryRobotManager GRM; // *
+    private KitAssemblyManager KAM; // TODO: Need to remove KAM
+    private GantryRobotManager GRM; // TODO: Need to remove GRM
+    
 	private NestAgent nestAgent;
 	private PartsAgent partsAgent;
     private KitRobotAgent kitRobotAgent;
@@ -82,10 +83,8 @@ public class Server {
 	 */
 	public Server(int portNumber) {
         this.fstate = new FactoryState();
-		initializeManagers();
+		initializeManagers(); // Something by Dongyoung
 		
-		
-        // TODO: uncomment when ready
 		prepareAllAgents(); // Prepare all agents; based on AgentMain.java
 
 		numClients = 0; // Initialize num clients is 0
@@ -125,7 +124,7 @@ public class Server {
 		}
 	}
 
-	private void initializeManagers(){
+	private void initializeManagers() { // Something by Dongyoung...?
 		 serverLM = new LMServerMain();
 	}
 	
