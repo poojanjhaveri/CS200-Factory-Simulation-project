@@ -1,7 +1,5 @@
 package factory.factory200.laneManager.ServerSide;
 
-import factory.general.*;
-
 /**
  * This class contains all data for lanes. Lane agent and lane manager use these data to process.
  * 
@@ -10,7 +8,6 @@ import factory.general.*;
  */
 public class LMLaneData {
 
-	private Server server;
 	private LMServerMain serverMain;
 	private String signal = "";	///< Signal to Lane Manager
 	
@@ -18,9 +15,8 @@ public class LMLaneData {
 	private int vibrationAmplitude;
 	private Boolean laneSwitch = false;	///< Feeder switched on : true, Feeder switched off : false
 	
-	public LMLaneData( int laneNum, Server server, LMServerMain serverMain ){
+	public LMLaneData( int laneNum, LMServerMain serverMain ){
 		this.laneNum = laneNum;
-		this.server = server;
 		this.serverMain = serverMain;
 	}	
 	
@@ -29,64 +25,47 @@ public class LMLaneData {
 	}
 	
 	public void switchOn(){
-		// Signal To Managers
+		// Signal To LM & FPM
 		signal = laneNum + "&Lane&" + "Switch On";
-		
-		//----------------------------------------------------------------------------------For Test
-		server.signalToClient(signal);
-		//-----------------------------------------------------------------------------------------------
-		
-		// Send To FPM
+		serverMain.sendToLM(signal);
+		serverMain.sendToFPM(signal);
 		
 		// Server Data Task
 		laneSwitch = true;
 	}
 
 	public void switchOff(){
-		// Signal To Managers
+		// Signal To LM & FPM
 		signal = laneNum + "&Lane&" + "Switch Off";
-		
-		//----------------------------------------------------------------------------------For Test
-		server.signalToClient(signal);
-		//---------------------------------------------------------------------------------------------
-		
-		// Send To FPM
+		serverMain.sendToLM(signal);
+		serverMain.sendToFPM(signal);
 		
 		// Server Data Task
 		laneSwitch = false;
 	}
 	
 	public void setVibrationAmplitudeStrong(){
-		// Signal To Managers
+		// Signal To LM
 		signal = laneNum + "&Lane&" + "Amplitude Strong";
-		
-		//----------------------------------------------------------------------------------For Test
-		server.signalToClient(signal);
-		//-----------------------------------------------------------------------------------
+		serverMain.sendToLM(signal);
 		
 		// Server Data Task
 		vibrationAmplitude = 2;
 	}
 	
 	public void setVibrationAmplitudeNormal(){
-		// Signal To Managers
+		// Signal To LM
 		signal = laneNum + "&Lane&" + "Amplitude Normal";
-		
-		//----------------------------------------------------------------------------------For Test
-		server.signalToClient(signal);
-		//------------------------------------------------------------------------------------------------
+		serverMain.sendToLM(signal);
 		
 		// Server Data Task
 		vibrationAmplitude = 1;
 	}
 
 	public void setVibrationAmplitudeWeak(){
-		// Signal To Managers
+		// Signal To LM
 		signal = laneNum + "&Lane&" + "Amplitude Weak";
-		
-		//----------------------------------------------------------------------------------For Test
-		server.signalToClient(signal);
-		//----------------------------------------------------------------------------------
+		serverMain.sendToLM(signal);
 		
 		// Server Data Task
 		vibrationAmplitude = 0;

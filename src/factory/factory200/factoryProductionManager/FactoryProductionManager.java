@@ -50,7 +50,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 
 	private boolean debug;
 	private BlueprintKits debugbp;
-    private BlueprintKits kitsbp;
+        private BlueprintKits kitsbp;
 	private final static String newline = "\n";
 	
 
@@ -66,6 +66,9 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 
 	public FactoryProductionManager()
 	{
+		// Send Identification to Server
+		super.sendToServer(Message.IDENTIFY_FACTORYPRODUCTIONMANAGER);
+		
 		debug = false;
 		GridBagLayout gridbag = new GridBagLayout();
 		GridBagConstraints c = new GridBagConstraints();
@@ -76,6 +79,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 		availableKits = new ArrayList<String>();
 
 		//Populate Debug Blueprint if no Blueprint exists on server
+                /*
 		if(kitsbp.getKits().isEmpty())
 		{
 			debug = true;
@@ -85,6 +89,8 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 			tempKits.add(new Kit("Tres", "Three"));
 			debugbp = new BlueprintKits(tempKits);
 		}
+                 * 
+                 */
 
 		//Populate Combobox array with names of Blueprint Kits
 		if(!debug)
@@ -324,7 +330,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 			msg = msg+this.selectedKits.get(i).getNumber();
 			if(i != this.selectedKits.size()-1)
 				msg=msg+",";
-				}*/
+		}*/
 		ArrayList<String> serialized = new ArrayList<String>();
 		for(int i = 0; i != this.selectedKits.size(); i++)
 		    {
@@ -370,16 +376,16 @@ public class FactoryProductionManager extends Manager implements ActionListener 
     public void processMessage(String msg)
     {
 	super.processMessage(msg);
+
 	if(msg.contains(Message.PUSH_KITS_LIST))
 	    {
 			this.kitsbp.recreate(this.grabParameter(msg));
 			System.out.println("GRABBED A NEW BLUEPRINTKITS FROM THE SERVER");
 			this.kitsbp.debug();
 	    }
-
-	//DONGYOUNG: please run each manager's processMessage(msg) function here	
-		// Lane Manager
-	    //gfx.verifyMessage(msg);
+	
+		//Lane Manager( pass 'msg' into Lane Manager Message Interpreter and take a proper action )
+//	    gfx.verifyMessage(msg); // TODO: Why nullpointer?
     }
     /**
      * @brief Controls Kit selection and Factory ON/OFF Controls Kit selection

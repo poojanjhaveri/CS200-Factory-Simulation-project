@@ -44,8 +44,8 @@ public class KitManager extends Manager  implements ActionListener {
 	/**
 	 * @param args
 	 */
-          BlueprintKits bpkit;///<contains list of kits modifiable from server
-          BlueprintParts bppart;///<contains list of parts useable from server
+          static BlueprintKits bpkit;///<contains list of kits modifiable from server
+          static BlueprintParts bppart;///<contains list of parts useable from server
           JPanel mainpanel; // main panel of the JFrame 
           JTabbedPane tabbedPane; // panel for tabbed layout
           
@@ -287,12 +287,7 @@ public class KitManager extends Manager  implements ActionListener {
             for(int j=0;j<this.bpkit.getSize();j++)
     		 update_kitcombo.addItem(this.bpkit.getKitAt(j).getName()); 
             uk_main.add(update_kitcombo,c);
-             update_kitcombo.addActionListener (new ActionListener () {
-                public void actionPerformed(ActionEvent e) {
-                             updateinfoforkit();
-                         }
-}                   );
-                 
+             update_kitcombo.addActionListener (new updatekitclass());
             c.gridx=0;
             c.gridy=1;
              uk_main.add(new JLabel("Select part:"),c);
@@ -456,11 +451,12 @@ public class KitManager extends Manager  implements ActionListener {
             {
             Kit newkit = new Kit(kitname.getText(),"description");//this will be the kit that just got made
             
+            /*
             for(int p=0;p<7;p++)
             {
                 System.out.println(partlist.get(p));
             }
-            
+            */
             
             
             newkit.setParts(partlist);
@@ -530,22 +526,7 @@ public class KitManager extends Manager  implements ActionListener {
          }
          
          
-          public void updateinfoforkit()
-         {      System.out.println("Kit selected is "+this.bpkit.getKitAt(ucreate_combo.getSelectedIndex()).getName());
-             
-             System.out.println(bpkit.getKitAt(ucreate_combo.getSelectedIndex()).parts.size());
-            
-             ub0.setIcon(bpkit.getKitAt(ucreate_combo.getSelectedIndex()).getPart(0).getGUIPart().getImage());   
-             /*
-              ub1.setIcon(bpkit.getKitAt(ucreate_combo.getSelectedIndex()).parts.get(1).getGUIPart().getImage());   
-              ub2.setIcon(bpkit.getKitAt(ucreate_combo.getSelectedIndex()).parts.get(2).getGUIPart().getImage());   
-              ub3.setIcon(bpkit.getKitAt(ucreate_combo.getSelectedIndex()).parts.get(3).getGUIPart().getImage());   
-              ub4.setIcon(bpkit.getKitAt(ucreate_combo.getSelectedIndex()).parts.get(4).getGUIPart().getImage());   
-              ub5.setIcon(bpkit.getKitAt(ucreate_combo.getSelectedIndex()).parts.get(5).getGUIPart().getImage());   
-              ub6.setIcon(bpkit.getKitAt(ucreate_combo.getSelectedIndex()).parts.get(6).getGUIPart().getImage());   
-              ub7.setIcon(bpkit.getKitAt(ucreate_combo.getSelectedIndex()).parts.get(7).getGUIPart().getImage());   
-              */
-         }
+      
          
          
          
@@ -558,6 +539,7 @@ public class KitManager extends Manager  implements ActionListener {
                     
                  
                   Integer i = create_combo.getSelectedIndex();
+                  System.out.println("INteger selected is"+i);
                   
                   
                   
@@ -570,9 +552,9 @@ public class KitManager extends Manager  implements ActionListener {
                         }
                         else
                      {
-                          //    b0.setIcon(bppart.getPartAt(i).getGUIPart().getImage());
-                     b0.setIcon(new ImageIcon("pics/parts/part1.png"));
-                     partlist.add(0, bppart.getPartAt(i));
+                       b0.setIcon(new ImageIcon(bppart.getPartAt(i-1).getFilename()));
+                   //  b0.setIcon(new ImageIcon("pics/parts/part1.png"));
+                     partlist.add(0, bppart.getPartAt(i-1));
                      }  
                    
                  }
@@ -586,8 +568,8 @@ public class KitManager extends Manager  implements ActionListener {
                         }
                         else
                      {
-                     b1.setIcon(bppart.getPartAt(i).getGUIPart().getImage());
-                     partlist.add(1, bppart.getPartAt(i));
+                    b1.setIcon(new ImageIcon(bppart.getPartAt(i-1).getFilename()));
+                     partlist.add(1, bppart.getPartAt(i-1));
                      }
                      
                  }
@@ -601,8 +583,8 @@ public class KitManager extends Manager  implements ActionListener {
                         else
                      {
                      
-                     b2.setIcon(bppart.getPartAt(i).getGUIPart().getImage());
-                     partlist.add(2, bppart.getPartAt(i));
+                      b2.setIcon(new ImageIcon(bppart.getPartAt(i-1).getFilename()));
+                     partlist.add(2, bppart.getPartAt(i-1));
                      }
                     
                  }
@@ -615,8 +597,8 @@ public class KitManager extends Manager  implements ActionListener {
                         }
                         else
                      {
-                     b3.setIcon(bppart.getPartAt(i).getGUIPart().getImage());
-                     partlist.add(3, bppart.getPartAt(i));
+                      b3.setIcon(new ImageIcon(bppart.getPartAt(i-1).getFilename()));
+                     partlist.add(3, bppart.getPartAt(i-1));
                      }
                  }
                  if( e.getSource() == b4)
@@ -628,8 +610,8 @@ public class KitManager extends Manager  implements ActionListener {
                         }
                         else
                      {
-                     b4.setIcon(bppart.getPartAt(i).getGUIPart().getImage());
-                     partlist.add(4, bppart.getPartAt(i));
+                    b4.setIcon(new ImageIcon(bppart.getPartAt(i-1).getFilename()));
+                     partlist.add(4, bppart.getPartAt(i-1));
                      }
                  }
                  if( e.getSource() == b5)
@@ -641,8 +623,8 @@ public class KitManager extends Manager  implements ActionListener {
                         }
                         else
                      {
-                     b5.setIcon(bppart.getPartAt(i).getGUIPart().getImage());
-                     partlist.add(5, bppart.getPartAt(i));
+                      b5.setIcon(new ImageIcon(bppart.getPartAt(i-1).getFilename()));
+                     partlist.add(5, bppart.getPartAt(i-1));
                      }
                  }
                  if( e.getSource() == b6)
@@ -654,8 +636,8 @@ public class KitManager extends Manager  implements ActionListener {
                         }
                         else
                      {
-                     b6.setIcon(bppart.getPartAt(i).getGUIPart().getImage());
-                     partlist.add(6, bppart.getPartAt(i));
+                     b6.setIcon(new ImageIcon(bppart.getPartAt(i-1).getFilename()));
+                     partlist.add(6, bppart.getPartAt(i-1));
                      }
                  }
                  if( e.getSource() == b7)
@@ -667,8 +649,8 @@ public class KitManager extends Manager  implements ActionListener {
                         }
                         else
                      {
-                     b7.setIcon(bppart.getPartAt(i).getGUIPart().getImage());
-                     partlist.add(7, bppart.getPartAt(i));
+                     b7.setIcon(new ImageIcon(bppart.getPartAt(i-1).getFilename()));
+                     partlist.add(7, bppart.getPartAt(i-1));
                      }
                  }
                     
@@ -696,9 +678,9 @@ public class KitManager extends Manager  implements ActionListener {
                         }
                         else
                      {
-                          //    b0.setIcon(bppart.getPartAt(i).getGUIPart().getImage());
-                        ub0.setIcon(new ImageIcon("pics/parts/part1.png"));
-                        updatepartlist.add(0, bppart.getPartAt(i));
+                        ub0.setIcon(new ImageIcon(bppart.getPartAt(i-1).getFilename()));
+                       
+                        updatepartlist.add(0, bppart.getPartAt(i-1));
                      }  
                    
                  }
@@ -712,8 +694,8 @@ public class KitManager extends Manager  implements ActionListener {
                         }
                         else
                      {
-                     ub1.setIcon(bppart.getPartAt(i).getGUIPart().getImage());
-                     updatepartlist.add(1, bppart.getPartAt(i));
+                      ub1.setIcon(new ImageIcon(bppart.getPartAt(i-1).getFilename()));
+                     updatepartlist.add(1, bppart.getPartAt(i-1));
                      }
                      
                  }
@@ -727,8 +709,8 @@ public class KitManager extends Manager  implements ActionListener {
                         else
                      {
                      
-                     ub2.setIcon(bppart.getPartAt(i).getGUIPart().getImage());
-                    updatepartlist.add(2, bppart.getPartAt(i));
+                    ub2.setIcon(new ImageIcon(bppart.getPartAt(i-1).getFilename()));
+                    updatepartlist.add(2, bppart.getPartAt(i-1));
                      }
                     
                  }
@@ -741,8 +723,8 @@ public class KitManager extends Manager  implements ActionListener {
                         }
                         else
                      {
-                     ub3.setIcon(bppart.getPartAt(i).getGUIPart().getImage());
-                    updatepartlist.add(3, bppart.getPartAt(i));
+                    ub3.setIcon(new ImageIcon(bppart.getPartAt(i-1).getFilename()));
+                    updatepartlist.add(3, bppart.getPartAt(i-1));
                      }
                  }
                  if( e.getSource() == ub4)
@@ -754,8 +736,8 @@ public class KitManager extends Manager  implements ActionListener {
                         }
                         else
                      {
-                     ub4.setIcon(bppart.getPartAt(i).getGUIPart().getImage());
-                    updatepartlist.add(4, bppart.getPartAt(i));
+                     ub4.setIcon(new ImageIcon(bppart.getPartAt(i-1).getFilename()));
+                    updatepartlist.add(4, bppart.getPartAt(i-1));
                      }
                  }
                  if( e.getSource() == ub5)
@@ -767,8 +749,8 @@ public class KitManager extends Manager  implements ActionListener {
                      }
                         else
                      {
-                     ub5.setIcon(bppart.getPartAt(i).getGUIPart().getImage());
-                     updatepartlist.add(5, bppart.getPartAt(i));
+                     ub5.setIcon(new ImageIcon(bppart.getPartAt(i-1).getFilename()));
+                     updatepartlist.add(5, bppart.getPartAt(i-1));
                      }
                  }
                  if( e.getSource() == ub6)
@@ -780,8 +762,8 @@ public class KitManager extends Manager  implements ActionListener {
                         }
                         else
                      {
-                     ub6.setIcon(bppart.getPartAt(i).getGUIPart().getImage());
-                     updatepartlist.add(6, bppart.getPartAt(i));
+                   ub6.setIcon(new ImageIcon(bppart.getPartAt(i-1).getFilename()));
+                     updatepartlist.add(6, bppart.getPartAt(i-1));
                      }
                  }
                  if( e.getSource() == b7)
@@ -793,8 +775,8 @@ public class KitManager extends Manager  implements ActionListener {
                         }
                         else
                      {
-                     ub7.setIcon(bppart.getPartAt(i).getGUIPart().getImage());
-                     updatepartlist.add(7, bppart.getPartAt(i));
+                    ub7.setIcon(new ImageIcon(bppart.getPartAt(i-1).getFilename()));
+                     updatepartlist.add(7, bppart.getPartAt(i-1));
                      }
                  }
                     
@@ -804,6 +786,23 @@ public class KitManager extends Manager  implements ActionListener {
 
        
 
-         
+       public class updatekitclass implements ActionListener
+         {
+             
+             public void actionPerformed(ActionEvent e) {
+                 JComboBox cb = (JComboBox)e.getSource();
+                
+                ub0.setIcon(new ImageIcon(bpkit.getKitAt(ucreate_combo.getSelectedIndex()).getPart(0).getFilename()));   
+                 ub1.setIcon(new ImageIcon(bpkit.getKitAt(ucreate_combo.getSelectedIndex()).getPart(1).getFilename()));   
+                  ub2.setIcon(new ImageIcon(bpkit.getKitAt(ucreate_combo.getSelectedIndex()).getPart(2).getFilename()));   
+                   ub3.setIcon(new ImageIcon(bpkit.getKitAt(ucreate_combo.getSelectedIndex()).getPart(3).getFilename()));   
+                    ub4.setIcon(new ImageIcon(bpkit.getKitAt(ucreate_combo.getSelectedIndex()).getPart(4).getFilename()));   
+                     ub5.setIcon(new ImageIcon(bpkit.getKitAt(ucreate_combo.getSelectedIndex()).getPart(5).getFilename()));   
+                      ub6.setIcon(new ImageIcon(bpkit.getKitAt(ucreate_combo.getSelectedIndex()).getPart(6).getFilename()));   
+                        ub7.setIcon(new ImageIcon(bpkit.getKitAt(ucreate_combo.getSelectedIndex()).getPart(7).getFilename()));   
+                
+             
+             }
+       }
 
 }
