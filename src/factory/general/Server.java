@@ -83,8 +83,11 @@ public class Server {
 	public Server(int portNumber) {
         this.fstate = new FactoryState();
 		initializeManagers();
+		
+		
         // TODO: uncomment when ready
 		prepareAllAgents(); // Prepare all agents; based on AgentMain.java
+
 		numClients = 0; // Initialize num clients is 0
 		start(portNumber); // Start listening for clients and making new HandleAManager instances
 	}
@@ -304,8 +307,8 @@ public class Server {
 		this.partsAgent.setClient(in);
 	}
 	
+
     public void setFactoryProductionManagerToAll(HandleAManager in) {
-	nestAgent.setFactoryProductionManager(in);
 	partsAgent.setFactoryProductionManager(in);
     kitRobotAgent.setFactoryProductionManager(in);
     cameraAgent.setFactoryProductionManager(in);
@@ -320,4 +323,5 @@ public class Server {
 	public LMServerMain getServerLM() {
 		return this.serverLM;
 	}
+
 }
