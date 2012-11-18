@@ -9,7 +9,6 @@ import factory.general.*;
 public class KitStand {
 
     private KitRobotAgent agent;
-    
     /**
      * The kit stand has three stands 1. Temporary stand to hold an empty kit 2.
      * Kitting stand which will hold the kit into which parts are being put 3.
@@ -79,11 +78,11 @@ public class KitStand {
     public boolean isEmpty(int i) {
         return (kits[i] == null);
     }
-    
+
     public boolean contains(int i) {
         return (kits[i] != null);
     }
-    
+
     public boolean availableToGive(int i) {
         return (kits[i] != null && !kits[i].beingUsedByPartsAgent);
     }
@@ -108,7 +107,7 @@ public class KitStand {
      * the temporary stand it moves it into the kitting stand
      */
     public void moveFullKitToInspection(Kit kit) {
-        if(kit.equals(kits[1])) {
+        if (kit.equals(kits[1])) {
             kits[2] = kits[1];
             kits[1] = null;
             agent.DoMoveKitFrom1to2();
@@ -118,13 +117,13 @@ public class KitStand {
                 kits[0] = null;
                 agent.DoMoveKitFrom0to1();
             }
-        } else if(kit.equals(kits[0])) {
+        } else if (kit.equals(kits[0])) {
             kits[2] = kits[0];
             kits[0] = null;
             agent.DoMoveKitFrom0to2();
         }
         kits[2].standNum = Kit.StandNum.two;
-        
+
     }
 
     public boolean isEmpty() {

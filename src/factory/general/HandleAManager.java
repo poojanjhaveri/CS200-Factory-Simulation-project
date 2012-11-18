@@ -65,7 +65,7 @@ public class HandleAManager implements Runnable {
                 processMessage(message);
                 p.println("Processed message in client thread");
             } catch (Exception e) {
-                p.print("Client exited prematurely; shutting down");
+                System.out.print("Client exited prematurely; shutting down");
                 System.exit(0);
             }
         }
@@ -158,9 +158,9 @@ public class HandleAManager implements Runnable {
             this.server.getFactoryState().getBlueprintKits().add(k);
             this.server.getFactoryState().getBlueprintKits().save();
             System.out.println("Defined new kit:" + k.serialize());
-	    if(this.server.getFPMClient != null)
+	    if(this.server.getFPMClient() != null)
 		{
-		    this.getFPMClient().sendMessage(Message.PUSH_KITS_LIST + ":" + this.server.getFactoryState().getBlueprintKits().serialize());
+		    this.server.getFPMClient().sendMessage(Message.PUSH_KITS_LIST + ":" + this.server.getFactoryState().getBlueprintKits().serialize());
 		    System.out.println("Pushed latest kits to FPM");
 		}else{
 		System.out.println("Unable to push latest list to FactoryProductionManager because it has not yet been connected.");
