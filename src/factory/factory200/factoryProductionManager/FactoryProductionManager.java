@@ -64,9 +64,10 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 	public ArrayList<String> availableKits;
 	public ArrayList<Kit> selectedKits;
 
-	private boolean debug;
+	//private boolean debug;
         private boolean empty;
-	private BlueprintKits debugbp;
+        private boolean constructed;
+	//private BlueprintKits debugbp;
         private BlueprintKits kitsbp;
 	private final static String newline = "\n";
 	
@@ -86,16 +87,18 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 		gfx = new GraphicsPanel();
 		gfx.setPreferredSize(new Dimension(1350, 700));
 		
-		debug = false;
+		//debug = false;
                 empty = false;
-		GridBagLayout gridbag = new GridBagLayout();
-		GridBagConstraints c = new GridBagConstraints();
-		availableKits = new ArrayList<String>();
-                selKit = new JComboBox();
+                constructed = false;
+
 		//Pull Blueprint from server
+                availableKits = new ArrayList<String>();
+                selKit = new JComboBox();
                 this.kitsbp = new BlueprintKits();
 		this.mcon.out(Message.PULL_KITS_LIST);
 
+                GridBagLayout gridbag = new GridBagLayout();
+		GridBagConstraints c = new GridBagConstraints();
 		
 		selectedKits = new ArrayList<Kit>();
 		selLabel = new JLabel ("Select Kit");
@@ -210,6 +213,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 
 		// Identify this manager
 		this.sendToServer(Message.PUSH_PRODUCTION_QUEUE+":"+1353202603);
+                constructed = true;
 	}
 	
     @Override
@@ -256,6 +260,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
                     {
 			if(selectedKits.size() > 0)
 			{
+                                //Print to console the list of kit names to push
 				outField.append("~~~~~~~~~~~~~" + newline);
 				for(Kit kitty : selectedKits)
 				{
@@ -294,26 +299,15 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 		JComboBox cb = (JComboBox)source;
 		nameToAdd = (String)cb.getSelectedItem();
 		System.out.println("Name to add = " + nameToAdd);
-		if(!debug)
-		{
-			for(Kit kitty : kitsbp.getKits())
-			{
-				if(nameToAdd.equals(kitty.getName()))
-				{
-					kitToAdd = kitty;
-				}
-			}
-		}
-		else
-		{
-			for(Kit kitty : debugbp.getKits())
-			{
-				if(nameToAdd.equals(kitty.getName()))
-				{
-					kitToAdd = kitty;
-				}
-			}
-		}
+                
+                for(Kit kitty : kitsbp.getKits())
+                {
+                        if(nameToAdd.equals(kitty.getName()))
+                        {
+                                kitToAdd = kitty;
+                        }
+                }
+
 		System.out.println("NumE = " + numE.getText());
 	}
 
@@ -336,35 +330,6 @@ public class FactoryProductionManager extends Manager implements ActionListener 
     }
 
     /**
-     * stop the factory sim
-     */
-    void stop() {
-    }
-
-    /**
-     * once user clicks this menu item, set the GUI panels invisible and the
-     * graphic panel visible
-     */
-    void displayGraphics() {
-    }
-
-    /**
-     * once user clicks this menu item, set the NonNormative and FPMGraphics
-     * panels invisible and the FPMGUI panel visible
-     */
-    void displayFPMGUI() {
-    }
-
-    /**
-     * force to exit the program
-     */
-    void exit() {
-    }
-
-	public void paintGraphics(Graphics2D g2){
-		
-	}
-    /**
 @brief processes the serve'rs message
      */
     @Override
@@ -374,73 +339,43 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 
 	if(msg.contains(Message.PUSH_KITS_LIST))
 	    {
-			this.kitsbp.recreate(this.grabParameter(msg));
-			System.out.println("GRABBED A NEW BLUEPRINTKITS FROM THE SERVER");
-			this.kitsbp.debug();
-                        this.reconstructComboBox();
+                this.kitsbp.recreate(this.grabParameter(msg));
+                System.out.println("GRABBED A NEW BLUEPRINTKITS FROM THE SERVER");
+                this.kitsbp.debug();
+                this.reconstructComboBox();
 	    }
 	
-		//Lane Manager( pass 'msg' into Lane Manager Message Interpreter and take a proper action )
-//	    gfx.verifyMessage(msg); // TODO: Why nullpointer?
+            //Lane Manager( pass 'msg' into Lane Manager Message Interpreter and take a proper action )
+            gfx.verifyMessage(msg);
     }
     
     public void reconstructComboBox()
     {
-        System.out.println("Kitsbp size = " + kitsbp.getKits().size());
-        //Populate Debug Blueprint if no Blueprint exists on server
-        if(kitsbp.getKits().isEmpty())
-        {
-                debug = true;
-                ArrayList<Kit> tempKits = new ArrayList<Kit> ();
-                tempKits.add(new Kit("Uno", "One"));
-                tempKits.add(new Kit("Dos", "Two"));
-                tempKits.add(new Kit("Tres", "Three"));
-                debugbp = new BlueprintKits(tempKits);
-        }
+        System.out.println("Incoming number of kits = " + kitsbp.getKits().size());
 
         //Populate Combobox array with names of Blueprint Kits
-
         for(int i=0;i<kitsbp.getKits().size();i++)
         {
-                availableKits.add(kitsbp.getKits().get(i).getName());
+            //Populate string list of names of incoming kits
+            availableKits.add(kitsbp.getKits().get(i).getName());
         }
-
         System.out.println("Available kits size = " + availableKits.size());
+        
+        //Add strings to the combobox component
         for(String kitty : availableKits)
         {
                 selKit.addItem(kitty);
         }
-        //selKit.setSelectedItem(0);
+        selKit.setSelectedItem(0);
+        
+        //if the incoming kit list isn't empty, make the combo box now
         if(!empty)
         {
             selKitRoutine(selKit);
         }
+        if(constructed)
+        {
+            basePanel.updateUI();
+        }
     }
-    /**
-     * @brief Controls Kit selection and Factory ON/OFF Controls Kit selection
-     * and Factory ON/OFF <img src="../img/image08.jpg" />
-     * @author Matt Kane
-     */
-	public class PaintPanel extends JPanel {	
-
-		FactoryProductionManager myFPM;
-	
-		public PaintPanel(FactoryProductionManager mg) {
-			myFPM = mg;
-		}
-	
-
-        @Override
-	  	public void paintComponent(Graphics g) {
-			super.paintComponent(g);
-			Graphics2D g2 = (Graphics2D) g;
-	
-			myFPM.paintGraphics(g2);
-
-		/*
-		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-		*/
-		
-	}
-}
 }
