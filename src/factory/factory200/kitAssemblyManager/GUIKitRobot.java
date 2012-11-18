@@ -276,6 +276,10 @@ public void pickUpEmptyKitToActive()
             if (this.getX() <= KAMGraphicPanel.KITROBOT_INITIAL_X && this.getY() <= KAMGraphicPanel.KITROBOT_INITIAL_Y) {
                 angle *= -1;
             }
+            if(this.getY() > KAMGraphicPanel.KITROBOT_INITIAL_Y && this.getX() < KAMGraphicPanel.KITROBOT_INITIAL_X){
+                angle = angle + Math.toRadians(180);
+            }
+            
             // if(this.getX() == KAMGraphicPanel.KITROBOT_INITIAL_X && this.getY() == KAMGraphicPanel.KITROBOT_INITIAL_Y){
 
             if (this.getX() > KAMGraphicPanel.KITROBOT_INITIAL_X && this.getY() > KAMGraphicPanel.KITROBOT_INITIAL_Y) {
@@ -338,14 +342,14 @@ public void pickUpEmptyKitToActive()
          */
         Graphics2D g2d = (Graphics2D) g.create();
 
-        //this.base.paintIcon(panel,g2d,KAMGraphicPanel.KITROBOT_INITIAL_X-11,KAMGraphicPanel.KITROBOT_INITIAL_Y-11);
+        this.base.paintIcon(panel,g2d,KAMGraphicPanel.KITROBOT_INITIAL_X-11,KAMGraphicPanel.KITROBOT_INITIAL_Y-11);
 
 
         if (this.hasKit()) {
             //this.getKit().updateParts();
             this.getKit().paintMe(panel, g2d, this.getCoordinate().getX(), this.getCoordinate().getY());
         }
-        this.getImage().paintIcon(panel, g2d, this.getCoordinate().getX(), this.getCoordinate().getY());
+        this.getImage().paintIcon(panel, g2d, this.getCoordinate().getX()-2, this.getCoordinate().getY());
         g2d.dispose();
     }
 }
