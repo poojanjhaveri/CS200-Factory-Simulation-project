@@ -120,11 +120,12 @@ public class FeederAgent extends Agent implements Feeder {
          */
         int count=0;
         //increase count everytime myParts doesn't have that type of part
+        synchronized(parts){
         for (myParts p : parts) {
             if (p.part.type != part.type)
                 count++;
         }
-        
+        }
         //add if part doesn't exist
         if(count==parts.size())
         {

@@ -7,6 +7,7 @@ public class LMServerMain extends JFrame implements Runnable{
 	
 	private HandleAManager hacLM = null;
 	private HandleAManager hacFPM = null;
+	private HandleAManager hacKAM = null;
 	
 	private LMFeederForAgent agentFeeder; ///<Instance of class 'ServerForAgentFeeder'
 	private LMLaneForAgent agentLane;	///<Instance of class 'ServerForAgentLane'
@@ -16,6 +17,7 @@ public class LMServerMain extends JFrame implements Runnable{
 	private LMPartRobotForAgent agentPartRobot;
 	private LMPartData partData;
 	
+	private LMSignalFromAnimationVerification signalVerify;
 	private LMThreadTimer threadTimer;	///<Instance of class 'Thread_Timer'
 	private LMController controller;
 	
@@ -30,6 +32,7 @@ public class LMServerMain extends JFrame implements Runnable{
 		agentPartRobot = new LMPartRobotForAgent(this); 
 		partData = new LMPartData(this);
 		
+		signalVerify = new LMSignalFromAnimationVerification(this);
 		threadTimer = new LMThreadTimer(this);		
 		new Thread(threadTimer).start();
 		threadTimer.timerStart();
@@ -53,12 +56,20 @@ public class LMServerMain extends JFrame implements Runnable{
 		return agentNest;
 	}
 	
+	public LMPartRobotForAgent getForAgentPartRobot(){
+		return agentPartRobot;
+	}
+	
 	public LMPartData getPartData(){
 		return partData;
 	}
 	
+	public LMSignalFromAnimationVerification getVerify(){
+		return signalVerify;
+	}
+	
 	public void checkToStart(){
-		if( hacFPM != null && hacLM != null){
+		if( hacLM != null ){// && hacFPM != null && hacKAM != null){
 			new Thread(this).start();
 		}
 	}
@@ -73,17 +84,27 @@ public class LMServerMain extends JFrame implements Runnable{
 		checkToStart();
 	}
 	
+	public void setKAM(HandleAManager newHandleAManager) {
+		hacKAM = newHandleAManager;
+		checkToStart();
+	}
+	
+	
 	public void sendToFPM(String signal){
 		if( hacFPM != null ){
-			System.out.println("To FPM : " + signal);
 			hacFPM.sendMessage(signal);
 		}
 	}
 	
 	public void sendToLM(String signal){
 		if( hacLM != null ){
-			System.out.println("To LM : " + signal);
 			hacLM.sendMessage(signal);
+		}
+	}
+	
+	public void sendToKAM(String signal){
+		if( hacKAM != null ){
+			hacKAM.sendMessage(signal);
 		}
 	}
 }
