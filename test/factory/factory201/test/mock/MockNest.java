@@ -28,5 +28,10 @@ public class MockNest extends MockAgent implements NestInterface {
           log.add(new LoggedEvent("Nest Inspected"));
     }
 
+    @Override
+    public void setNestPurge(List<Part> parts) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
     
 }
