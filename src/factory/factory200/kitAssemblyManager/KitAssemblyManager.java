@@ -192,8 +192,8 @@ public class KitAssemblyManager extends Manager implements ActionListener {
         this.add(graphics);
 
 
-        int x = 500;
-        this.setSize(500 + x, 700);
+        int x = 550;
+        this.setSize(550+x, 700);
 
         this.graphics.setVisible(true);
 
@@ -203,7 +203,7 @@ public class KitAssemblyManager extends Manager implements ActionListener {
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        //this.mcon.out(Message.IDENTIFY_KITASSEMBLYMANAGER);
+        this.mcon.out(Message.IDENTIFY_KITASSEMBLYMANAGER);
     }
     //tester variables
     JButton partRobot;

@@ -129,6 +129,7 @@ public class Server {
 
 	private void initializeManagers() { // Something by Dongyoung...?  Dongyoung : Yeah
 		 serverLM = new LMServerMain();
+                 new Thread(serverLM).start();
 	}
 	
 	// Start Server-side Program(Lane Manager)
@@ -142,7 +143,7 @@ public class Server {
             turnOffAgentPrintStatements();
             connectAgentsAndManagers();
             startAgentThreads();
-            startInteractionSequence();
+            //startInteractionSequence();
         }
 
         private void declareAgents() {
@@ -165,17 +166,10 @@ public class Server {
             for (int i = 0; i < LANE; i++) {
                 if (i < FEEDER) {
                     feederAgents[i] = new FeederAgent("Feeder " + i, i);
-                    //feederAgents[i].setServer(serverLM);
                 }
                 laneAgents[i] = new LaneAgent("Lane " + i,i);
             }
-            for (int i = 0; i < LANE; i++) {
-                if (i < FEEDER) {
-                 //   feederAgents[i].setServer(serverLM);
-                ;
-                }
-             
-            }
+            
         
         }
 
@@ -211,6 +205,14 @@ public class Server {
                 laneAgents[i + 1].setFeeder(feederAgents[i / 2]);
                 laneAgents[i + 1].setNest(nestAgent);
             }
+            for (int i = 0; i < LANE; i++) {
+                if (i < FEEDER) {
+                    feederAgents[i].setServer(serverLM);
+                
+                }
+             
+            }
+            
         }
 
         private void startAgentThreads() {
@@ -242,7 +244,9 @@ public class Server {
         	// THIS IS JUST EXAMPLE STUFF THAT 201 WAS DOING TO TEST
             Kit kit = new Kit("Test Kit"); // This is required for...
             for (int i = 1; i < 9; i++) {
-                kit.addPart(new Part("Part " + i, "p1")); // This is a kit that has actual parts...
+                
+                kit.addPart(this.fstate.getPartCheat().clone());
+                //kit.addPart(new Part("Part " + i, "p1")); // This is a kit that has actual parts...
             }
             List<Kit> kits = new ArrayList<Kit>();
             kits.add(kit);
@@ -363,4 +367,7 @@ public class Server {
 	public LMServerMain getServerLM() { // Dongyoung's lane manager server...
 		return this.serverLM;
 	}
+        public ConveyorAgent getConveyorAgent() {
+            return this.conveyorAgent;
+        }
 }

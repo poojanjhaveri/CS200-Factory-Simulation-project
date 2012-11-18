@@ -346,9 +346,12 @@ public class FeederAgent extends Agent implements Feeder {
         // TODO Auto-generated method stub
     }
     public void setServer(LMServerMain LMServer1){
-    this.LMServer=LMServer1;
+//    System.out.println("leftindex is " + leftLane.getIndex());
+        this.LMServer=LMServer1;
+    
    // setAnimation();
-       LMServer.getForAgentLane().setSwitchOn(leftLane.getIndex());
+        
+        LMServer.getForAgentLane().setSwitchOn(leftLane.getIndex());
        LMServer.getForAgentLane().setSwitchOn(rightLane.getIndex());
        LMServer.getForAgentFeeder().setFeedPartsSwitchOn(feederNum);
        LMServer.getForAgentFeeder().setSwitchOn(feederNum);
