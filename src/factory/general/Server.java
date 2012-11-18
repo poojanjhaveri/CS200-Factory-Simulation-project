@@ -43,7 +43,7 @@ public class Server {
     
 	/** Agents */
     // Fields just for "AgentMain" stuff (Agent preparation) 
-    private static final boolean PATRICK = false;
+    private static final boolean PATRICK = true;
     private static final boolean KEVIN = false;
     private static final boolean ALEX = true;
     
@@ -233,7 +233,7 @@ public class Server {
         	// THIS IS JUST EXAMPLE STUFF THAT 201 WAS DOING TO TEST
             Kit kit = new Kit("Test Kit"); // This is required for...
             for (int i = 1; i < 9; i++) {
-                kit.addPart(new Part("New Part", "p1")); // This is a kit that has actual parts...
+                kit.addPart(new Part("Part " + i, "p1")); // This is a kit that has actual parts...
             }
             List<Kit> kits = new ArrayList<Kit>();
             kits.add(kit);
@@ -241,10 +241,10 @@ public class Server {
             kits.add(kit);
             
             // TODO: *Put this wherever the FPM sends the signal to create (generate) kits
-//            conveyorAgent.generateKit(10); // * This generates 10 new kits, among other things if you pass string... *
+            conveyorAgent.generateKit(10); // * This generates 10 new kits, among other things if you pass string... *
 
             // Officially start the agent interaction sequence!
-//            partsAgent.msgHereIsKit(kits);
+            partsAgent.msgHereIsKit(kits);
             //		 TODO: UNCOMMENT WHEN READY
         }
 

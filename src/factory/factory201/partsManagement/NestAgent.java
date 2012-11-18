@@ -167,13 +167,16 @@ public class NestAgent extends Agent implements NestInterface {
             }
         }
         
-         if (!requests.isEmpty())
-                for (Nest n: myNests){
-                    for (Part part: n.parts){
-                        if(part.type == requests.get(0).type){
-                giveToKit(n);
-                return true;
-            }}}
+         if (!requests.isEmpty()) {
+             for (Nest n : myNests) {
+                 for (Part part : n.parts) {
+                     if (part.type == requests.get(0).type) {
+                         giveToKit(n);
+                         return true;
+                     }
+                 }
+             }
+        }
         return false;
     }
 
