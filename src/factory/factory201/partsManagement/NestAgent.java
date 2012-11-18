@@ -5,11 +5,10 @@
 package factory.factory201.partsManagement;
 
 import agent.Agent;
-import factory.factory201.feederManagement.LaneAgent;
 import factory.factory201.interfaces.Camera;
 import factory.factory201.interfaces.Lane;
-import factory.factory201.interfaces.NestInterface;
 import factory.factory201.interfaces.PartsInterface;
+import factory.factory201.interfaces.NestInterface;
 import factory.general.Nest;
 import factory.general.Part;
 import java.util.ArrayList;
