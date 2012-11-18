@@ -8,6 +8,7 @@ import factory.general.Message;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import javax.swing.Timer;
 /**
@@ -34,7 +35,7 @@ public class ConveyorAgent extends Agent implements Conveyor {
     public ConveyorAgent(String name) {
         super(name);
 
-        kits = new ArrayList<Kit>();
+        kits = Collections.synchronizedList(new ArrayList<Kit>());
         fullKits = new ArrayList<Kit>();
         removeKits = new Timer(1000, new ActionListener() {
             @Override
@@ -101,13 +102,15 @@ public class ConveyorAgent extends Agent implements Conveyor {
      * kit.
      */
     private void giveEmptyKit() {
-        for (Kit k : kits) {
-            if (k.status == Kit.Status.empty) {
-                print("Notifying the kit robot that an empty kit: [" + k.name + "] is ready.");
-                kitRobotAgent.msgHereIsEmptyKit(k);
-                kitRobotNeedsKit--;
-                kits.remove(k);
-                break;
+        synchronized(kits) {
+            for (Kit k : kits) {
+                if (k.status == Kit.Status.empty) {
+                    print("Notifying the kit robot that an empty kit: [" + k.name + "] is ready.");
+                    kitRobotAgent.msgHereIsEmptyKit(k);
+                    kitRobotNeedsKit--;
+                    kits.remove(k);
+                    break;
+                }
             }
         }
         stateChanged();
@@ -173,11 +176,11 @@ public class ConveyorAgent extends Agent implements Conveyor {
     }
 
     private void DoAddKit(Kit k) {
-	this.client.sendMessage(Message.KAM_ADD_KIT);
+//	this.client.sendMessage(Message.KAM_ADD_KIT);
 
     }
     
     private void DoRemoveKit(Kit k) {
-        this.client.sendMessage(Message.KAM_REMOVE_KIT);
+//        this.client.sendMessage(Message.KAM_REMOVE_KIT);
     }
 }
