@@ -587,14 +587,14 @@ public class KitManager extends Manager  implements ActionListener {
 	       this.bpkit.recreate(this.grabParameter(msg));
 	       System.out.println("GRABBED NEW KITS LIST FROM SERVER!: "+msg);
 		   this.bpkit.debug();
-                   prepareMainPane();
+                //   prepareMainPane();
 	   }
         if(msg.contains(Message.PUSH_PARTS_LIST))
         {
             this.bppart.recreate(this.grabParameter(msg));
             System.out.println("GRABBED NEW PARTS LIST FROM SERVER!" + msg);
             this.bppart.debug();
-            prepareMainPane();
+          //  prepareMainPane();
         }
     }        
         
