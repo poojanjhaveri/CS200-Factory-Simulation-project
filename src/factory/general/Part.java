@@ -107,6 +107,7 @@ public class Part implements Serializable {
         this.description = d;
         this.number = num;
         this.guipart = null;
+        this.type = number;
     }
     public Part(String n, String d, String file) {
         this.name = n;
@@ -114,6 +115,7 @@ public class Part implements Serializable {
         this.filename = file;
         this.guipart = null;
         this.number = (int)(System.currentTimeMillis()/(long)1000);
+        this.type = number;
     }
     public void setFilename(String in) {
         this.filename = in;
@@ -169,5 +171,10 @@ public class Part implements Serializable {
     		System.out.println("Test passed");
     	} else
     		System.out.println("TEST FAILED");
+    }
+    public Part clone()
+    {
+        Part n = new Part(this.getName(),this.getDescription(),this.getNumber());
+        return n;
     }
 }

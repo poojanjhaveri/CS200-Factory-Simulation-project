@@ -203,7 +203,7 @@ public class KitAssemblyManager extends Manager implements ActionListener {
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        //this.mcon.out(Message.IDENTIFY_KITASSEMBLYMANAGER);
+        this.mcon.out(Message.IDENTIFY_KITASSEMBLYMANAGER);
     }
     //tester variables
     JButton partRobot;
