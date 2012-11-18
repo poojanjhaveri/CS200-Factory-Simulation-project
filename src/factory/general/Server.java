@@ -116,7 +116,7 @@ public class Server {
 			System.exit(0);
 		}
 		
-		for (int i=0 ; i<1 ; i++){ // For Testing By Dongyoung, if want to need communicate n managers, change into for(int i=0 ; i<n ; i++)
+		for (int i=0 ; i<2 ; i++){ // For Testing By Dongyoung, if want to need communicate n managers, change into for(int i=0 ; i<n ; i++)
 		//while(true){
 			// Continuously check for a new client for which to create a thread
 			try {
