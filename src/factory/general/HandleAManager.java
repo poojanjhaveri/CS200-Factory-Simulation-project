@@ -65,7 +65,8 @@ public class HandleAManager implements Runnable {
                 processMessage(message);
                 p.println("Processed message in client thread");
             } catch (Exception e) {
-                System.out.print("Client exited prematurely; shutting down");
+                e.printStackTrace();
+                System.out.println("Client exited prematurely; shutting down");
                 System.exit(0);
             }
         }
@@ -109,12 +110,11 @@ public class HandleAManager implements Runnable {
                 System.out.println("Number of clients is 0; exiting Server");
                 System.exit(0);
             }
-        }else if(msg.contains(Message.IDENTIFY_KITMANAGER))
-	    {
-		System.out.println("SERVER FOUND A KIT MANAGER");
-		this.server.setKitManagerClient(this);
+        }else if(msg.contains(Message.IDENTIFY_KITMANAGER)) {
+        	System.out.println("SERVER FOUND A KIT MANAGER");
+        	this.server.setKitManagerClient(this);
 	    }
- else if(msg.contains(Message.IDENTIFY_FACTORYPRODUCTIONMANAGER)) {
+        else if (msg.contains(Message.IDENTIFY_FACTORYPRODUCTIONMANAGER)) {
  			p.println("SERVER HAS IDENTIFIED A FACTORYPRODUCTIONMANAGER");
  			this.id = 3;
             this.server.setFactoryProductionManagerToAll(this);
