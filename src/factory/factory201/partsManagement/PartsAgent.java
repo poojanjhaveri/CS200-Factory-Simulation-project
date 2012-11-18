@@ -99,12 +99,12 @@ public class PartsAgent extends Agent implements PartsInterface {
         } 
         
         if (kit0!=null && kits!=0){
-        
-            if (!inventory.isEmpty() && kit0.status == Kit.Status.ready && grips.size() != 4) {
+            
+            if (!inventory.isEmpty() && kit0.status == Kit.Status.ready && grips.size() != 4 && kit0.status!=Kit.Status.full) {
             pickUpPart0(inventory.remove(0));
             return true;
+            
             }
-     
         
             if (kit0NeedsParts.isEmpty()) {
                 kitZero=false;
@@ -115,12 +115,13 @@ public class PartsAgent extends Agent implements PartsInterface {
 }
         
         if(kit1!=null && kits!=0){
-         
-            if (!inventory.isEmpty() && kit1.status == Kit.Status.ready && grips.size() != 4) {
-            pickUpPart1(inventory.remove(0));
-            return true;
-            }  
             
+            if (!inventory.isEmpty() && kit1.status == Kit.Status.ready && grips.size() != 4 && kit1.status!=Kit.Status.full) {
+            
+                pickUpPart1(inventory.remove(0));
+            return true;
+             
+            }
            
             
              if (kit1NeedsParts.isEmpty()) {
@@ -202,7 +203,8 @@ public class PartsAgent extends Agent implements PartsInterface {
        // print("picking up part " + p.getString());
         
         DoPickUpPart(p.getNestNum());
-      
+      if (kit0NeedsParts.isEmpty()){
+            kit0.status = Kit.Status.full;}
         if (grips.size() == 4 || kit0NeedsParts.isEmpty()) {
         putPartsInKit(0);
         }
@@ -221,49 +223,14 @@ public class PartsAgent extends Agent implements PartsInterface {
       //  print("picking up part " + p.getString());
         
         DoPickUpPart(p.getNestNum());
-      
+        if (kit1NeedsParts.isEmpty()){
+            kit1.status = Kit.Status.full;}
         if (grips.size() == 4 || kit1NeedsParts.isEmpty()) {
         putPartsInKit(1);
         }
         stateChanged();
     }
-/*
-    private void pickUpPart(Part p) {
-        grips.add(p);
-        boolean next = true;
-        int kitNum=-1000;
-        
-        for (Part part: kit0NeedsParts){
-            if (part.type == p.type){
-              kit0NeedsParts.remove(part);
-              
-              kitNum=0;
-              break;
-            }}
-        if(next){
-        for (Part part: kit1NeedsParts){
-            if (part.type == p.type){
-              kit1NeedsParts.remove(part);
-              print("REMOVING PART FROM KIT1NEEDSPARTS");
-              kitNum=1;
-              break;
-            }}}
-        
-        print("picking up part " + p.getString());
-        //kam.getKitStand().getKitPositions().get(1).setFilled(true);
-         DoMoveToNest(p.getNestNum());//**COMMENTED OUT FOR UNIT TEST
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException ex) {
-            print("stopped sleeping");
-        }
-        DoPickUpPart(p.getNestNum());
-      
-        if (grips.size() == 4 || kit0NeedsParts.isEmpty() || kit1NeedsParts.isEmpty()) {
-        putPartsInKit(kitNum);
-        }
-        stateChanged();
-    }*/
+
 
     private void putPartsInKit(int kitNum) {
         for (Part p : grips) {
