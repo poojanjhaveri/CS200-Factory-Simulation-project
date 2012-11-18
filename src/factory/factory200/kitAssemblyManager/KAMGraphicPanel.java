@@ -69,7 +69,7 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
     Timer timer;
     boolean stationRun;
     
-    private ImageIcon backgroundImage = new ImageIcon("pics/background/part1");
+    //private ImageIcon backgroundImage = new ImageIcon("pics/background/part1");
 
     public KAMGraphicPanel() {
         
