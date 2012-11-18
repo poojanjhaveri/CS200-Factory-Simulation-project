@@ -112,7 +112,7 @@ public class Server {
 			System.exit(0);
 		}
 		
-		while(true) {
+		while (true) {
 			// Continuously check for a new client for which to create a thread
 			try {
 				s = ss.accept(); // Wait for a client (program halts here until connection occurs)
