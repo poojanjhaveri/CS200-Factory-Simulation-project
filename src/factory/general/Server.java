@@ -32,7 +32,7 @@ public class Server {
 	/**
 	 * Instance fields
 	 */
-	public static final Integer PORT_NUMBER = 31415;
+	public static final Integer PORT_NUMBER = 31416;
 	public static final String HOST_NAME = "localhost";
 	private static boolean SHOULD_DEBUG = false;
 	private Printer p = new Printer();
@@ -42,10 +42,15 @@ public class Server {
     private FactoryState fstate;
     
 	/** Agents */
-    // Fields just for "AgentMain" stuff (Agent preparation) 
-    private static final boolean PATRICK = true;
-    private static final boolean KEVIN = true;
-    private static final boolean ALEX = true;
+
+
+
+    // Fields just for "AgentMain" stuff (Agent preparation)
+    // If true, print statements for this 201 person are on
+    private static final boolean PATRICK = false;
+    private static final boolean KEVIN = false;
+    private static final boolean ALEX = false;
+
     
     private static final int FEEDER = 4;
     private static final int LANE = 8;
@@ -88,8 +93,9 @@ public class Server {
         this.fstate = new FactoryState();
 		initializeManagers(); // Something by Dongyoung
 		
-		prepareAllAgents(); // Prepare all agents; based on AgentMain.java
-
+		prepareAllAgents(); // Prepare all agents; based on AgentMain.java; commented out by Dongyoung to test animation; included after connections accepted by server
+			// should happen AFTER initializeManagers(), according to Dongyoung
+		
 		numClients = 0; // Initialize num clients is 0
 		start(portNumber); // Start listening for clients and making new HandleAManager instances
 	}
@@ -112,7 +118,8 @@ public class Server {
 			System.exit(0);
 		}
 		
-		while (true) {
+		for (int i=0 ; i<1 ; i++){ // For Testing By Dongyoung, if want to need communicate n managers, change into for(int i=0 ; i<n ; i++)
+		//while(true){
 			// Continuously check for a new client for which to create a thread
 			try {
 				s = ss.accept(); // Wait for a client (program halts here until connection occurs)
@@ -125,11 +132,14 @@ public class Server {
 			}
 			System.out.println("A client has connected");
 		}
+		
+		//try{  Thread.sleep(1000);  } catch(Exception e){}   // For Testing By Dongyoung
+		//prepareAllAgents(); // Prepare all agents; based on AgentMain.java      // For Testing By Dongyoung
 	}
 
 	private void initializeManagers() { // Something by Dongyoung...?  Dongyoung : Yeah
 		 serverLM = new LMServerMain();
-                 new Thread(serverLM).start();
+		 new Thread(serverLM).start();
 	}
 	
 	// Start Server-side Program(Lane Manager)
@@ -143,7 +153,8 @@ public class Server {
             turnOffAgentPrintStatements();
             connectAgentsAndManagers();
             startAgentThreads();
-            //startInteractionSequence();
+            if (PATRICK && ALEX && KEVIN)
+            	startInteractionSequence();  // only for 201 testing of the animation- kevin
         }
 
         private void declareAgents() {
@@ -169,8 +180,6 @@ public class Server {
                 }
                 laneAgents[i] = new LaneAgent("Lane " + i,i);
             }
-            
-        
         }
 
         private void connectAgentsAndManagers() {
@@ -207,12 +216,9 @@ public class Server {
             }
             for (int i = 0; i < LANE; i++) {
                 if (i < FEEDER) {
-                    feederAgents[i].setServer(serverLM);
-                
-                }
-             
-            }
-            
+                    feederAgents[i].setServer(serverLM); 
+                }  
+            }   
         }
 
         private void startAgentThreads() {
@@ -237,16 +243,21 @@ public class Server {
             }
         }
 
+        /**
+         * @brief This is only a test mode for 201 to debug animation and agent interaction.
+         */
         private void startInteractionSequence() {
             // Get kit from somewhere
             // * 
         	
         	// THIS IS JUST EXAMPLE STUFF THAT 201 WAS DOING TO TEST
             Kit kit = new Kit("Test Kit"); // This is required for...
-            for (int i = 1; i < 9; i++) {
+            for (int i = 0; i < 8; i++) {
                 
-                kit.addPart(this.fstate.getPartCheat().clone());
+                //kit.addPart(this.fstate.getPartCheat().clone()); //uncomment this when ready- kevin
                 //kit.addPart(new Part("Part " + i, "p1")); // This is a kit that has actual parts...
+                
+                kit.addPart(new Part(i)); //testing- Kevin
             }
             List<Kit> kits = new ArrayList<Kit>();
             kits.add(kit);
@@ -258,7 +269,6 @@ public class Server {
 
             // Officially start the agent interaction sequence!
             partsAgent.msgHereIsKit(kits);
-            //		 TODO: UNCOMMENT WHEN READY
         }
 
         private void turnOffAgentPrintStatements() {
@@ -316,7 +326,7 @@ public class Server {
 		} catch (InterruptedException ex) {
 			Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
 		}
-	}    	
+	}	
 
 	
 	/**
@@ -326,15 +336,19 @@ public class Server {
 	public void setCameraAgentClient(HandleAManager in) {
 		this.cameraAgent.setClient(in);
 	}
+	
 	public void setConveyerAgentClient(HandleAManager in) {
 		this.conveyorAgent.setClient(in);
 	}
+	
 	public void setKitRobotAgentClient(HandleAManager in) {
 		this.kitRobotAgent.setClient(in);
 	}
+	
 	public void setGantryAgentClient(HandleAManager in) {
 		this.gantryAgent.setClient(in);
 	}
+	
 	public void setPartsAgentClient(HandleAManager in) {
 		this.partsAgent.setClient(in);
 	}
@@ -342,15 +356,19 @@ public class Server {
 	public void setFPMClient(HandleAManager in) {
 		this.fpmclient = in;
 	}
+	
 	public HandleAManager getFPMClient() {
 		return this.fpmclient;
 	}
+	
 	public void setKitManagerClient(HandleAManager in) {
 		this.kitmanagerclient = in;
 	}
+	
 	public HandleAManager getKitManagerClient() {
 		return this.kitmanagerclient;
 	}
+	
 	public void setFactoryProductionManagerToAll(HandleAManager in) {
 		this.fpmclient = in;
 		partsAgent.setFactoryProductionManagerClient(in);
@@ -367,7 +385,8 @@ public class Server {
 	public LMServerMain getServerLM() { // Dongyoung's lane manager server...
 		return this.serverLM;
 	}
-        public ConveyorAgent getConveyorAgent() {
-            return this.conveyorAgent;
-        }
+	
+    public ConveyorAgent getConveyorAgent() {
+    	return this.conveyorAgent;
+    }
 }

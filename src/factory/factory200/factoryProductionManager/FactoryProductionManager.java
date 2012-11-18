@@ -309,12 +309,13 @@ public class FactoryProductionManager extends Manager implements ActionListener 
     }
     
     @Override
-    public void processMessage(String msg)
-    {
-	super.processMessage(msg);
-
-	if(msg.contains(Message.PUSH_KITS_LIST))
-        {
+    public void processMessage(String msg) {
+    	super.processMessage(msg);
+    	if (msg == null) {
+    		return;
+    	}
+    	
+    	if (msg.contains(Message.PUSH_KITS_LIST)) {
             this.kitsbp.recreate(this.grabParameter(msg));
             System.out.println("GRABBED A NEW BLUEPRINTKITS FROM THE SERVER");
             this.kitsbp.debug();
@@ -381,7 +382,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
             FactoryProductionManager fpm = new FactoryProductionManager();
 
             fpm.setVisible(true);
-            fpm.setSize(1375,700);
+            fpm.setSize(1350,700); //CONSULT PEOPLE IN CHARGE OF GRAPHICS BEFORE CHANGING THIS SIZE! 
             fpm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             fpm.setResizable(false);
     }

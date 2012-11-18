@@ -2,13 +2,13 @@
 package factory.factory201.partsManagement;
 
 import factory.factory200.kitAssemblyManager.KitAssemblyManager;
-import factory.factory201.test.mock.MockKitRobot;
+//import factory.factory201.test.mock.MockKitRobot;
 import factory.factory201.feederManagement.LaneAgent;
 import factory.factory201.interfaces.KitRobot;
 import factory.factory201.kitManagement.CameraAgent;
 import factory.factory201.kitManagement.KitRobotAgent;
-import factory.factory201.test.mock.MockCamera;
-import factory.factory201.test.mock.MockLane;
+//import factory.factory201.test.mock.MockCamera;
+//import factory.factory201.test.mock.MockLane;
 
 /**
  * Just a class to demonstrate PartsAgent working.
@@ -19,7 +19,7 @@ public class PartsAgentMain{
         
     
     public void PartsAgentMain(){
-        MockLane lane;
+//        MockLane lane;
         KitAssemblyManager kam; 
         PartsAgent parts;
         KitRobot kitrobot;

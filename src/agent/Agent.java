@@ -23,8 +23,8 @@ public abstract class Agent {
      */
     protected HandleAManager client;
     /**
-@brief communication channel with factory production manager
-A reference to the factory production manager
+* @brief communication channel with factory production manager
+* A reference to the factory production manager
      */
     protected HandleAManager fpm;
     

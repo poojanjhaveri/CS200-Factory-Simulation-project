@@ -5,6 +5,10 @@ import java.awt.event.ActionListener;
 
 import javax.swing.Timer;
 
+/**
+ * @brief Timer in ServerSide(Lane Manager)
+ * @author Dongyoung Jung
+ */
 public class LMTimerThread implements Runnable{
 	
 	Timer timer;

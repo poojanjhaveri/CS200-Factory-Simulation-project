@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.net.SocketException;
 import java.net.UnknownHostException;
 
 /**
@@ -88,19 +89,23 @@ public class ManagerConnection implements Runnable {
      * @brief listen for a message from the server
      */
     public void listenToServer() {
-        p.println("Listening to the server (ManagerConnection)...");
+//        p.println("Listening to the server (ManagerConnection)...");
         try {
             String msg = in.readLine();
             this.mgr.processMessage(msg);
-        }  catch (NullPointerException e) {
+        } catch (NullPointerException e) {
         	e.printStackTrace();
-        	
-        	System.out.println("A client has exited prematurely while other clients were still connected.");
+        	System.out.println("Null pointer. A client may have exited prematurely while other clients were still connected.");
         	System.out.println("Shutting down.");
-//        	System.exit(0);
-        	
+        	System.exit(0);
+        } catch (SocketException e) {
+        	System.out.println("Socket exception. A client may have exited prematurely while other clients were still connected.");
+        	System.out.println("Shutting down.");
+        	System.exit(0);
         } catch (Exception e) {
             e.printStackTrace();
+            System.out.println("wtf?");
+            System.exit(0);
         }
     }
 }

@@ -1,5 +1,9 @@
 package factory.factory200.laneManager.ClientSide;
 
+/**
+ * @brief Server Signal Handler(Put Bin & Purge Bin)
+ * @author Dongyoung Jung
+ */
 public class LMGantryRobotHandler{
 	
 	private LMApplication app;	///< Instance of class 'LMApplication'
@@ -17,6 +21,9 @@ public class LMGantryRobotHandler{
 		}
 		else if( message.indexOf("&Purge&") != -1 ){
 			app.getGraphicsPanel().getAllBin().getBin(feederNum).purgeBin();
+		}
+		else if( message.indexOf("&Empty&") != -1 ){
+			app.getGraphicsPanel().getAllBin().getBin(feederNum).emptyBin();
 		}
 	}
 }

@@ -45,8 +45,13 @@ public class MockParts extends MockAgent implements PartsInterface {
     public void msgHereAreParts(List<Part> parts) {
     }
 
-    @Override
+   
     public void msgHereIsKit(Kit kit) {
         log.add(new LoggedEvent("got kit " + kit.name + " from nest"));
+    }
+
+    @Override
+    public void msgHereIsKit(List<Kit> kit) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

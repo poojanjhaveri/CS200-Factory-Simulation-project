@@ -37,4 +37,9 @@ public class MockLane extends MockAgent implements Lane{
             this.nest=n;
         }
 
+    @Override
+    public int getIndex() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
 }

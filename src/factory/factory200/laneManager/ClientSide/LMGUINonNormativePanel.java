@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 
 /**
- * This class contains Non-normative scenarios.
+ * This class contains Non-normative scenarios(For V2)
  * 
  * @brief Non-normative Scenarios
  * @author Dongyoung Jung
@@ -21,10 +21,7 @@ public class LMGUINonNormativePanel extends JPanel implements ActionListener{
 	private JButton button;
 	private TitledBorder buttonTitle;
 	private ArrayList<JButton> buttons = new ArrayList<JButton>();
-	
-	/**
-	 * @brief Constructor
-	 */
+
 	public LMGUINonNormativePanel(){
 		// JPanel setting
 		setPreferredSize(new Dimension(300,640));
@@ -42,13 +39,11 @@ public class LMGUINonNormativePanel extends JPanel implements ActionListener{
 		}
 	}
 	
-	/**
-	 * @brief actionPerformed
-	 */
 	public void actionPerformed(ActionEvent ae){
 		for(int i=0 ; i<buttons.size() ; i++){
 			if( ae.getSource() == buttons.get(i) ){
-				// Send Signal to server
+
+				// For V2
 				
 			}
 		}

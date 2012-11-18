@@ -3,6 +3,10 @@ package factory.factory200.laneManager.ClientSide;
 import java.awt.Graphics2D;
 import javax.swing.ImageIcon;
 
+/**
+ * @brief Part Drawing
+ * @author Dongyoung Jung
+ */
 public class LMDrawablePart {
 	
 	private LMApplication app;

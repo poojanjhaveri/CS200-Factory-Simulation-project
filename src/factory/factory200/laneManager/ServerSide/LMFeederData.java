@@ -1,10 +1,8 @@
 package factory.factory200.laneManager.ServerSide;
 
 /**
- * This class contains all data for feeders. Lane agent and lane manager use these data to process.
- * 
- * @brief Feeder data
- *	@author Dongyoung Jung
+ * @brief Feeder Signal Sends(Server Side)
+ * @author Dongyoung Jung
  */
 public class LMFeederData {
 	
@@ -17,6 +15,7 @@ public class LMFeederData {
 	private Boolean rearGateSwitch = false;
 	private Boolean diversionSwitch = false; // false : right, true : left
 	private Boolean purgeSwitch = false;
+	private Boolean withBin = false;
 	
 	private int feederNum;
 
@@ -39,6 +38,14 @@ public class LMFeederData {
 	
 	public Boolean getFeedingSwitch(){
 		return feedPartsSwitch;
+	}
+	
+	public Boolean getWithBin(){
+		return withBin;
+	}
+	
+	public void setWithBin(Boolean status){
+		withBin = status;
 	}
 	
 	// For Agent------------------------------------------------------------------------------------
