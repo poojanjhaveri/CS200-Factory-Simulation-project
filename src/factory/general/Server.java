@@ -82,17 +82,10 @@ public class Server {
 	 */
 	public Server(int portNumber) {
         this.fstate = new FactoryState();
-<<<<<<< HEAD
-        // TODO: uncomment when ready
-//		initializeManagers();
-	//	prepareAllAgents(); // Prepare all agents; based on AgentMain.java
-=======
 
 		initializeManagers();
         // TODO: uncomment when ready
 //		prepareAllAgents(); // Prepare all agents; based on AgentMain.java
-		
->>>>>>> 9f3be78d46b1ae57e499f998ceea1a66a798d015
 		numClients = 0; // Initialize num clients is 0
 		start(portNumber); // Start listening for clients and making new HandleAManager instances
 	}
@@ -312,17 +305,11 @@ public class Server {
 		this.partsAgent.setClient(in);
 	}
 	
-<<<<<<< HEAD
 	public LMServerMain getServerLM(){
 		return this.serverLM;
 	}
 
-    public void setFactoryProductionManagerToAll(HandleAManager in)
-    {
-=======
     public void setFactoryProductionManagerToAll(HandleAManager in) {
->>>>>>> 9f3be78d46b1ae57e499f998ceea1a66a798d015
-	nestAgent.setFactoryProductionManager(in);
 	partsAgent.setFactoryProductionManager(in);
     kitRobotAgent.setFactoryProductionManager(in);
     cameraAgent.setFactoryProductionManager(in);
@@ -334,10 +321,4 @@ public class Server {
     laneAgents[i].setFactoryProductionManager(in);
     }
 
-<<<<<<< HEAD
-=======
-	public LMServerMain getServerLM() {
-		return this.serverLM;
-	}
->>>>>>> 9f3be78d46b1ae57e499f998ceea1a66a798d015
 }
