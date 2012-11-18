@@ -177,12 +177,13 @@ public class HandleAManager implements Runnable {
 		ArrayList<Kit> queue = new ArrayList<Kit>();
 		ArrayList<String> deserialized = Util.deserialize(this.grabParameter(msg));
 		for(int i = 0; i != deserialized.size(); i++) {
-			queue.add(this.server.getFactoryState().getKitById(Integer.parseInt(deserialized.get(i))));
+			queue.add(Kit.deepClone(this.server.getFactoryState().getKitById(Integer.parseInt(deserialized.get(i)))));
 			System.out.println(deserialized.get(i));
 		}
 		
 		//now what do i do with the queue? THIS IS AD-HOC
 		//this.server.getPartsAgent().msgHereIsKit(queue.get(0));
+                this.server.getConveyorAgent().generateKit(queue.size()); // * This generates 10 new kits, among other things if you pass string... *
 		this.server.getPartsAgent().msgHereIsKit(queue);
 		System.out.println("BEGINNING PRODUCTION CYCLE WOOOOOOT (size "+queue.size() + ")");
 		queue.get(0).debug();

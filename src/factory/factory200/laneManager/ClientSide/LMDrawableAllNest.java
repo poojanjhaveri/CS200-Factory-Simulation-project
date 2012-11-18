@@ -3,18 +3,22 @@ package factory.factory200.laneManager.ClientSide;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
 
+/**
+ * @brief Nest Drawings
+ * @author Dongyoung Jung
+ */
 public class LMDrawableAllNest {
 	
 	private LMDrawableNest newNest;
 	private ArrayList<LMDrawableNest> nests = new ArrayList<LMDrawableNest>();
-	private final int nestX = 10;// DONE
-	private int nestY = 75/2;// DONE
+	private final int nestX = 10;
+	private int nestY = 75/2;
 	
 	public LMDrawableAllNest(){
 		for(int i=0 ; i<8 ; i++){
 			newNest = new LMDrawableNest(nestX, nestY);
 			nests.add(newNest);
-			nestY += 75;// DONE
+			nestY += 75;
 		}
 	}
 	

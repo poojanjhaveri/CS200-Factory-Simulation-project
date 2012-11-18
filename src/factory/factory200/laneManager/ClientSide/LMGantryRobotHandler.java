@@ -1,5 +1,9 @@
 package factory.factory200.laneManager.ClientSide;
 
+/**
+ * @brief Server Signal Handler(Put Bin & Purge Bin)
+ * @author Dongyoung Jung
+ */
 public class LMGantryRobotHandler{
 	
 	private LMApplication app;	///< Instance of class 'LMApplication'

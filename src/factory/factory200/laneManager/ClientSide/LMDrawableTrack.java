@@ -3,6 +3,10 @@ package factory.factory200.laneManager.ClientSide;
 import java.awt.Graphics2D;
 import javax.swing.ImageIcon;
 
+/**
+ * @brief Track on Lane Drawings
+ * @author Dongyoung Jung
+ */
 public class LMDrawableTrack {
 		
 	private static ImageIcon trackImage = new ImageIcon( LMDrawableTrack.class.getResource("./pics/oneTrack.png") );
@@ -17,10 +21,13 @@ public class LMDrawableTrack {
 		trackImage.paintIcon(panel, graphics, trackX, trackY);
 	}
 
+	/**
+	 * One track picture reaches the end of lane, it is painted from feeder again.
+	 */
 	public void trackMove(){
 		trackX-=2;
-		if(trackX == 8){// DONE
-			trackX = 310;// DONE
+		if(trackX == 8){
+			trackX = 310;
 		}
 	}
 }

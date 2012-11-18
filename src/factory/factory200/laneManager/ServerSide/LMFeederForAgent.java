@@ -2,11 +2,15 @@ package factory.factory200.laneManager.ServerSide;
 
 import java.util.ArrayList;
 
+/**
+ * @brief Feeder Functions for Agent
+ * @author Dongyoung Jung
+ */
 public class LMFeederForAgent {
 	
 	private LMServerMain serverMain;
-	private LMFeederData newFeeder;	///< Instance of 'ServerLaneManagerThreadFeeder'
-	private ArrayList<LMFeederData> feeders = new ArrayList<LMFeederData>();	///< ArrayList of feeders
+	private LMFeederData newFeeder;
+	private ArrayList<LMFeederData> feeders = new ArrayList<LMFeederData>();
 
 	public LMFeederForAgent(LMServerMain serverMain){
 		this.serverMain = serverMain;

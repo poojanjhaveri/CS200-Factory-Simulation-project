@@ -1,9 +1,13 @@
 package factory.factory200.laneManager.ClientSide;
 
+/**
+ * @brief Server Signal Handler(Nest)
+ * @author Dongyoung Jung
+ */
 public class LMNestHandler {
 	
-	private LMApplication app;	///< Instance of class 'LMApplication'
-	private int nestNum;	///< nest number
+	private LMApplication app;
+	private int nestNum;
 
 	public LMNestHandler(LMApplication app){
 		this.app = app;
@@ -21,10 +25,6 @@ public class LMNestHandler {
 			app.getGUIPanel().getGUINest().getGUINestArray(nestNum).setNestSwitch(false);
 			app.getGraphicsPanel().getAllNest().getNest(nestNum).nestDown();
 			app.getGraphicsPanel().getAllPart().nestDown(nestNum);
-		}
-
-		else if( message.indexOf("Robot Take Part") != -1 ){
-			
 		}
 	}
 }

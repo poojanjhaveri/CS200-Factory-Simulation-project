@@ -157,6 +157,7 @@ public class GantryAgent extends Agent implements Gantry {
 
     public void msgNeedPart(Part part,Feeder feeder) {
     	
+        
         print("msgNeedPart from Feeder for type " + part.type);
     	
         int count=0;
@@ -259,7 +260,7 @@ public class GantryAgent extends Agent implements Gantry {
          print("[ERROR] - Gantry Robot Manager is not online.");
          return;
          }
-         this.client.sendMessage(Message.MOVE_GANTRY_TO_BIN+":"+b.index+1);
+         this.client.sendMessage(Message.MOVE_GANTRY_TO_BIN+":"+b.index);
        
          try {
 			Thread.sleep(10000);

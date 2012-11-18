@@ -69,7 +69,7 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
     Timer timer;
     boolean stationRun;
     
-    private ImageIcon backgroundImage = new ImageIcon("pics/background/part1");
+    //private ImageIcon backgroundImage = new ImageIcon("pics/background/part1");
 
     public KAMGraphicPanel() {
         
@@ -88,7 +88,7 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
 
 
         //THIS NUMBER IS HARDCODED! should be from server => number of kits that should be made
-        emptyKits = 3;
+        emptyKits = 0;
         delivery = new KitDeliveryStation(emptyKits);
 
         nest = new ArrayList<KAMNest>();
@@ -298,20 +298,28 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
                     } else {
                         for (int i = 0; i <delivery.getPlaceholder().size(); i++) {
                             System.out.println(i+": "+delivery.getPlaceholder().get(i).getKit());
-                            if(delivery.getPlaceholder().get(i).getKit()==null || !(delivery.getPlaceholder().get(i).getKit().isFinished()))
+                            if(delivery.getPlaceholder().get(i).getKit()==null){
+                                delivery.getPlaceholder().get(i).setY(680);
+                            }
+                            else if(delivery.getPlaceholder().get(i).getKit().isFinished()){
+                                delivery.getPlaceholder().remove(i);
+                            }
+                            else
+                                delivery.getPlaceholder().get(i).setY(680);
+                            /*if(delivery.getPlaceholder().get(i).getKit()==null || !(delivery.getPlaceholder().get(i).getKit().isFinished()))
                             delivery.getPlaceholder().get(i).setY(680);
                             else{
                                 //delivery.setNumEmptyKits(delivery.getPlaceholder().size()-1);
                                 //delivery.getPlaceholder().add(delivery.getPlaceholder().get(i));
                                 delivery.getPlaceholder().remove(i);
                             }
-                            }
+                            }*/
                             
                         //while(delivery.getPlaceholder().get(delivery.getPlaceholder().size()).getKit().isFinished()){
                         //        delivery.getPlaceholder().remove(delivery.getPlaceholder().size());
                                 
                         //}
-                    
+                        }
                         counter = 0;
                     }
                 }
@@ -347,6 +355,15 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
                     } else {
                         for (int i = 0; i < delivery.getPlaceholder().size(); i++) {
                             System.out.println(i+": "+delivery.getPlaceholder().get(i).getKit());
+                            if(delivery.getPlaceholder().get(i).getKit()==null){
+                                delivery.getPlaceholder().get(i).setY(680);
+                            }
+                            else if(delivery.getPlaceholder().get(i).getKit().isFinished()){
+                                delivery.getPlaceholder().remove(i);
+                            }
+                            else
+                                delivery.getPlaceholder().get(i).setY(680);
+                            /*
                             if(delivery.getPlaceholder().get(i).getKit()==null || !delivery.getPlaceholder().get(i).getKit().isFinished()){
                             delivery.getPlaceholder().get(i).setY(680);
                             }
@@ -358,6 +375,7 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
                             }
                             
                             
+                        }*/
                         }
                         //while(delivery.getPlaceholder().get(delivery.getPlaceholder().size()).getKit().isFinished()){
                         //        delivery.getPlaceholder().remove(delivery.getPlaceholder().size());

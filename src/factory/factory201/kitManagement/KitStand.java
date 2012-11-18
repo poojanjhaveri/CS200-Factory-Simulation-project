@@ -9,28 +9,13 @@ import factory.general.*;
 public class KitStand {
 
     private KitRobotAgent agent;
-    /**
-     * The kit stand has three stands 1. Temporary stand to hold an empty kit 2.
-     * Kitting stand which will hold the kit into which parts are being put 3.
-     * Inspection stand where full kits are inspected
-     */
     private Kit[] kits = new Kit[3];
 
     public KitStand(KitRobotAgent agent) {
         kits[0] = kits[1] = kits[2] = null;
         this.agent = agent;
-//        Kit k = new Kit("Test");
-//        k.status = Kit.Status.full;
-//        kits[1] = k;
     }
 
-    /**
-     * When adding a kit to the kit stand, the kitting stand has first priority,
-     * then the temporary stand.
-     *
-     * @param kit Kit to be added to the kit stand
-     * @return True if the kit was successfully added, false otherwise
-     */
     public boolean addKit(Kit kit) {
         if (kits[1] == null) {
             kits[1] = kit;
@@ -47,22 +32,10 @@ public class KitStand {
         }
     }
 
-    /**
-     * Allows access to array of kits
-     *
-     * @param i Index
-     * @return Kit at given index
-     */
     public Kit get(int i) {
         return kits[i];
     }
 
-    /**
-     * Removes kit at index i and returns it
-     *
-     * @param i Index
-     * @return Kit that was removed
-     */
     public Kit remove(int i) {
         Kit k = kits[i];
         kits[i] = null;
@@ -70,11 +43,6 @@ public class KitStand {
         return k;
     }
 
-    /**
-     * Checks if the inspection stand is empty
-     *
-     * @return Self-explanatory
-     */
     public boolean isEmpty(int i) {
         return (kits[i] == null);
     }
@@ -87,11 +55,6 @@ public class KitStand {
         return (kits[i] != null && !kits[i].beingUsedByPartsAgent);
     }
 
-    /**
-     * Checks the availability of the kit stand
-     *
-     * @return Self-explanatory
-     */
     public int availability() {
         if (kits[1] == null) {
             return 2;
@@ -102,10 +65,6 @@ public class KitStand {
         }
     }
 
-    /**
-     * Moves the full kit to inspection stand and if there is an empty kit in
-     * the temporary stand it moves it into the kitting stand
-     */
     public void moveFullKitToInspection(Kit kit) {
         if (kit.equals(kits[1])) {
             kits[2] = kits[1];

@@ -66,12 +66,16 @@ public class KitAssemblyManager extends Manager implements ActionListener {
             this.flashNestCamera(Integer.parseInt(this.grabParameter(msg)));
         } else if (msg.contains(Message.KAM_MOVE_FROM_0_TO_2)) {
             this.moveFrom0To2();
-        }//else if(msg.contains(Message.KAM_ADD_KIT))
-	//    {
-	//	this.doAddNewKit();//you need to make this function, deepa
-	//    }
+        }else if(msg.contains(Message.KAM_ADD_KIT))
+	    {
+		this.doAddEmptyKit();
+	    }
 
         //todo - let me know what functions agent will call so I can process them here
+    }
+    
+    public void doAddEmptyKit(){
+        this.graphics.delivery.addKit();
     }
 
     public GUIPartRobot getPartsRobot() {
@@ -177,6 +181,9 @@ public class KitAssemblyManager extends Manager implements ActionListener {
         if (ae.getSource() == moveFrom0To2) {
             this.graphics.kitbot.moveFrom0To2();
         }
+        if(ae.getSource()==addKit){
+            this.graphics.delivery.addKit();
+        }
     }
 
     /**
@@ -203,7 +210,7 @@ public class KitAssemblyManager extends Manager implements ActionListener {
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        //this.mcon.out(Message.IDENTIFY_KITASSEMBLYMANAGER);
+        this.mcon.out(Message.IDENTIFY_KITASSEMBLYMANAGER); //won't this only be called once because it is in the constructor; shouldn't this be in the timer class?
     }
     //tester variables
     JButton partRobot;
@@ -216,10 +223,14 @@ public class KitAssemblyManager extends Manager implements ActionListener {
     JButton moveKit;
     JButton movePartRobotBack;
     JButton moveFrom0To2;
+    JButton addKit;
 
     public JPanel TestPanel() {
         JPanel tester = new JPanel();
         tester.setLayout(new BoxLayout(tester, BoxLayout.Y_AXIS));
+        addKit = new JButton("ADD KIT");
+        addKit.addActionListener(this);
+        tester.add(addKit);
         partRobot = new JButton("Move Part Robot (Kit Stand -> Nest)");
         partRobot.addActionListener(this);
         tester.add(partRobot);

@@ -13,7 +13,7 @@ import factory.factory200.factoryProductionManager.KitsAssemblyManager.*;
 public class GraphicsPanel extends JPanel{
 	
 	private GantryRobotManager gantryRobotManager = new GantryRobotManager();
-	private KitAssemblyManager kitsAssemblyManager = new KitAssemblyManager();
+	private KitAssemblyManager kitsAssemblyManager = new KitAssemblyManager(this);
 	private LMApplication laneManager = new LMApplication();
 	private ImageIcon backgroundImage = new ImageIcon( GraphicsPanel.class.getResource("background.png") );
 	private TimerThread timer = new TimerThread(this);

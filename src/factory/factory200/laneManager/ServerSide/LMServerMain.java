@@ -37,7 +37,7 @@ public class LMServerMain extends JFrame implements Runnable{
 		new Thread(threadTimer).start();
 		threadTimer.timerStart();
 		
-		controller = new LMController(agentFeeder, agentLane, agentNest, agentNestCamera, agentGantryRobot, agentPartRobot, this);
+		//controller = new LMController(agentFeeder, agentLane, agentNest, agentNestCamera, agentGantryRobot, agentPartRobot, this);
 	}
 
 	public LMLaneForAgent getForAgentLane(){
@@ -60,6 +60,10 @@ public class LMServerMain extends JFrame implements Runnable{
 		return agentPartRobot;
 	}
 	
+	public LMGantryRobotForAgent getForAgentGantryRobot(){
+		return agentGantryRobot;
+	}
+	
 	public LMPartData getPartData(){
 		return partData;
 	}
@@ -68,27 +72,17 @@ public class LMServerMain extends JFrame implements Runnable{
 		return signalVerify;
 	}
 	
-	public void checkToStart(){
-		if( hacLM != null ){// && hacFPM != null && hacKAM != null){
-			new Thread(this).start();
-		}
-	}
-	
 	public void setLM(HandleAManager newHandleAManager) {
 		hacLM = newHandleAManager;
-		checkToStart();
 	}
 	
 	public void setFPM(HandleAManager newHandleAManager) {
 		hacFPM = newHandleAManager;
-		checkToStart();
 	}
 	
 	public void setKAM(HandleAManager newHandleAManager) {
 		hacKAM = newHandleAManager;
-		checkToStart();
 	}
-	
 	
 	public void sendToFPM(String signal){
 		if( hacFPM != null ){
