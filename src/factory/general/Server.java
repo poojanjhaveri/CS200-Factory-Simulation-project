@@ -325,6 +325,7 @@ public class Server {
 	return this.kitmanagerclient;
     }
     public void setFactoryProductionManagerToAll(HandleAManager in) {
+	this.fpmclient = in;
 	partsAgent.setFactoryProductionManagerClient(in);
     kitRobotAgent.setFactoryProductionManagerClient(in);
     cameraAgent.setFactoryProductionManagerClient(in);
