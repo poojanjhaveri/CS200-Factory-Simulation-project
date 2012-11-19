@@ -19,7 +19,7 @@ import java.util.List;
  */
 public class AgentMain {
 
-    private static final boolean PATRICK = false;
+    private static final boolean PATRICK = true;
     private static final boolean KEVIN = false;
     private static final boolean ALEX = true;
     
@@ -52,24 +52,24 @@ public class AgentMain {
         
         
         
-        if (!PATRICK) {
-            nestAgent.print = false;
-            partsAgent.print = false;
-        }
-        if (!KEVIN) {
-            for (int i = 0; i < LANE; i++) {
-                if (i < FEEDER) {
-                    feederAgents[i].print = false;
-                }
-                laneAgents[i].print = false;
-            }
-            gantryAgent.print = false;
-        }
-        if (!ALEX) {
-            kitRobotAgent.print = false;
-            conveyorAgent.print = false;
-            cameraAgent.print = false;
-        }
+//        if (!PATRICK) {
+//            nestAgent.print = false;
+//            partsAgent.print = false;
+//        }
+//        if (!KEVIN) {
+//            for (int i = 0; i < LANE; i++) {
+//                if (i < FEEDER) {
+//                    feederAgents[i].print = false;
+//                }
+//                laneAgents[i].print = false;
+//            }
+//            gantryAgent.print = false;
+//        }
+//        if (!ALEX) {
+//            kitRobotAgent.print = false;
+//            conveyorAgent.print = false;
+//            cameraAgent.print = false;
+//        }
         
         
         
@@ -136,7 +136,7 @@ public class AgentMain {
 
             //kit.addPart(new Part("Name", "Description")); // This is a kit that has actual parts...
         //testing agents
-            kit.addPart(new Part(i));
+            kit.addPart(new Part("i", "i+1"));
         }
         conveyorAgent.generateKit(10);
 

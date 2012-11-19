@@ -162,126 +162,112 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 
 	private void panelLayout()
 	{
-		topPanel.add(new JPanel());
-		topPanel.add(schedLabel);
-		topPanel.add(new JPanel());
-		topPanel.add(new JPanel());
-		topPanel.add(new JPanel());
-		topPanel.add(new JPanel());
-		topPanel.add(new JPanel());
-		topPanel.add(new JPanel());
-		topPanel.add(new JPanel());
-		topPanel.add(new JPanel());
-		topPanel.add(new JPanel());
-		topPanel.add(consoleLabel);
-		topPanel.add(new JPanel());
-                
-		leftPanel.add(schedPane);
-		leftPanel.setPreferredSize(new Dimension(320, 600));
+            topPanel.add(Box.createHorizontalGlue());
+            topPanel.add(Box.createHorizontalStrut(10));
+            topPanel.add(schedLabel);
+            topPanel.add(Box.createHorizontalGlue());
+            topPanel.add(Box.createHorizontalStrut(700));
+            topPanel.add(consoleLabel);
+            topPanel.add(Box.createHorizontalGlue());
+            topPanel.add(Box.createHorizontalStrut(10));
 
-		c.fill = GridBagConstraints.VERTICAL;
-		c.weightx = 1.0;
-		c.ipadx = 10;
-		c.gridy = GridBagConstraints.RELATIVE;
-		c.gridx = 0;
+            leftPanel.add(schedPane);
+            leftPanel.setPreferredSize(new Dimension(320, 600));
 
-		gridbag.setConstraints(selLabel, c);
-		selPanel.add(selLabel);
-		gridbag.setConstraints(selKit, c);
-		selPanel.add(selKit);
+            c.fill = GridBagConstraints.VERTICAL;
+            c.weightx = 1.0;
+            c.ipadx = 10;
+            c.gridy = GridBagConstraints.RELATIVE;
+            c.gridx = 0;
 
-		c.gridx = 1;
-		c.gridy = 0;
-		c.ipadx = 0;
-		gridbag.setConstraints(numLabel, c);
-		selPanel.add(numLabel);
-                c.gridy = 1;
-                c.ipadx = 10;
-		gridbag.setConstraints(numE, c);
-		selPanel.add(numE);
-                
-                c.ipadx = 75;
-		c.gridx = 0;
-		c.gridy = GridBagConstraints.RELATIVE;
-		gridbag.setConstraints(selPanel, c);
-		midPanel.add(selPanel);
-                
-                c.ipadx = 8;
-                c.ipady = 16;
-                JPanel fill2 = new JPanel();
-		gridbag.setConstraints(fill2, c);
-		midPanel.add(fill2);
-                
-		gridbag.setConstraints(queueue, c);
-		midPanel.add(queueue);
-		c.gridy = GridBagConstraints.RELATIVE;
-                
-		JPanel fill1 = new JPanel();
-                fill1.setOpaque(false);
-		gridbag.setConstraints(fill1, c);
-		midPanel.add(fill1);
-                c.ipadx = 0;
-		gridbag.setConstraints(reset, c);
-		midPanel.add(reset);
-                
-                JPanel fill3 = new JPanel();
-		gridbag.setConstraints(fill3, c);
-		midPanel.add(fill3);
-		gridbag.setConstraints(start, c);
-		midPanel.add(start);
+            gridbag.setConstraints(selLabel, c);
+            selPanel.add(selLabel);
+            gridbag.setConstraints(selKit, c);
+            selPanel.add(selKit);
 
-		rightPanel.add(outPane);
-		rightPanel.setPreferredSize(new Dimension(320, 600));
+            c.gridx = 1;
+            c.gridy = 0;
+            c.ipadx = 0;
+            gridbag.setConstraints(numLabel, c);
+            selPanel.add(numLabel);
+            c.gridy = 1;
+            c.ipadx = 10;
+            gridbag.setConstraints(numE, c);
+            selPanel.add(numE);
 
-		c.gridx = 0;
-		c.ipady = 10;
-		c.ipadx = 0;
-		c.gridy = GridBagConstraints.RELATIVE;
-		gridbag.setConstraints(inProdLabel, c);
-		slotsPanel.add(inProdLabel);
-		c.ipady = 12;
-		c.ipadx = 120;
-		gridbag.setConstraints(inProdField, c);
-		slotsPanel.add(inProdField);
+            c.ipadx = 75;
+            c.gridx = 0;
+            c.gridy = 0;
+            gridbag.setConstraints(selPanel, c);
+            midPanel.add(selPanel);
 
-		c.gridx = 0;
-		c.ipadx = 75;
-		c.gridy = GridBagConstraints.RELATIVE;
-		gridbag.setConstraints(slotsPanel, c);
-		queuePanel.add(slotsPanel, c);
-		c.ipadx = 0;
-		gridbag.setConstraints(queueLabel, c);
-		queuePanel.add(queueLabel);
-		c.ipady = 180;
-		c.ipadx = 300;
-		gridbag.setConstraints(queuePane, c);
-		queuePanel.add(queuePane);
+            c.ipadx = 8;
+            c.ipady = 16;
+            c.gridy = 2;
+            gridbag.setConstraints(queueue, c);
+            midPanel.add(queueue);
+            
+            c.gridy = 4;
+            c.ipadx = 0;
+            gridbag.setConstraints(reset, c);
+            midPanel.add(reset);
 
-		c.ipady = 10;
-		c.ipadx = 75;
-		parentMidPanel.add(queuePanel);
-		parentMidPanel.add(midPanel);
+            c.gridy = 6;
+            gridbag.setConstraints(start, c);
+            midPanel.add(start);
 
-		botPanel.add(leftPanel);
-		botPanel.add(parentMidPanel);
-		botPanel.add(rightPanel);
+            rightPanel.add(outPane);
+            rightPanel.setPreferredSize(new Dimension(320, 600));
 
-		basePanel.add(topPanel, BorderLayout.NORTH);
-		basePanel.add(botPanel, BorderLayout.CENTER);
-		start.setPreferredSize(new Dimension(100, 30));
+            c.gridx = 0;
+            c.ipady = 10;
+            c.ipadx = 0;
+            c.gridy = GridBagConstraints.RELATIVE;
+            gridbag.setConstraints(inProdLabel, c);
+            slotsPanel.add(inProdLabel);
+            c.ipady = 12;
+            c.ipadx = 120;
+            gridbag.setConstraints(inProdField, c);
+            slotsPanel.add(inProdField);
 
-		basePanel.setSize(1350, 700);
-		tabs.addTab("Control GUI", basePanel);
-		tabs.addTab("Simulation", gfx);
-		gfx.repaint();
+            c.gridx = 0;
+            c.ipadx = 75;
+            c.gridy = GridBagConstraints.RELATIVE;
+            gridbag.setConstraints(slotsPanel, c);
+            queuePanel.add(slotsPanel, c);
+            c.ipadx = 0;
+            gridbag.setConstraints(queueLabel, c);
+            queuePanel.add(queueLabel);
+            c.ipady = 180;
+            c.ipadx = 300;
+            gridbag.setConstraints(queuePane, c);
+            queuePanel.add(queuePane);
 
-		selKit.addActionListener(this);
-		queueue.addActionListener(this);
-		start.addActionListener(this);
-		stop.addActionListener(this);
-		reset.addActionListener(this);
+            c.ipady = 10;
+            c.ipadx = 75;
+            parentMidPanel.add(queuePanel);
+            parentMidPanel.add(midPanel);
 
-		mainPanel.add(tabs, BorderLayout.CENTER);
+            botPanel.add(leftPanel);
+            botPanel.add(parentMidPanel);
+            botPanel.add(rightPanel);
+
+            basePanel.add(topPanel, BorderLayout.NORTH);
+            basePanel.add(botPanel, BorderLayout.CENTER);
+            start.setPreferredSize(new Dimension(100, 30));
+
+            basePanel.setSize(1350, 700);
+            tabs.addTab("Control GUI", basePanel);
+            tabs.addTab("Simulation", gfx);
+            gfx.repaint();
+
+            selKit.addActionListener(this);
+            queueue.addActionListener(this);
+            start.addActionListener(this);
+            stop.addActionListener(this);
+            reset.addActionListener(this);
+
+            mainPanel.add(tabs, BorderLayout.CENTER);
 	}
 
 	@Override
