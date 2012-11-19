@@ -188,7 +188,8 @@ public class HandleAManager implements Runnable {
 
         	this.server.getConveyorAgent().generateKit(queue.size()); // * This generates 10 new kits, among other things if you pass string... *
         	this.server.getPartsAgent().msgHereIsKit(queue);
-//        	this.server.startInteractionSequence();
+        //        System.out.println("kit name " + queue.get(0).);
+        //	this.server.startInteractionSequence();
         	System.out.println("BEGINNING PRODUCTION CYCLE WOOOOOOT (size "+queue.size() + ")");
                         	queue.get(0).debug();
 
