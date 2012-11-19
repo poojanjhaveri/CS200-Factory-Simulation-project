@@ -82,7 +82,17 @@ public class Kit implements Serializable{
     public void setParts(ArrayList<Part> p) {
         this.parts = p;
     }
-
+public Kit cloneSelf()
+{
+   Kit n = new Kit(this.getName(),this.getDescription(),this.getNumber());
+   ArrayList<Part> p = new ArrayList<Part>();
+   for(int i = 0; i != n.getSize(); i++)
+   {
+       p.add(n.getPart(i).clone());
+   }
+   n.setParts(p);
+   return n;
+}
     /**
     @brief string serializes a kit
      */
@@ -195,6 +205,11 @@ blah.debug();
     {
         Kit k = new Kit(in.getName(),in.getDescription(),in.getNumber());
         ArrayList<Part> dp = new ArrayList<Part>();
+        if( in.getSize() < 4)
+        {
+            System.out.println("SIZE OF KIT IS LESS THAN 4");
+            in.debug();
+        }
         for(int i = 0; i != in.getSize(); i++)
         {
             dp.add(in.getPart(i).clone());

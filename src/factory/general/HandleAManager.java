@@ -177,19 +177,22 @@ public class HandleAManager implements Runnable {
         	System.out.println("Undefining part " + id);
         	this.server.getFactoryState().removeKitById(id);
         }else if(msg.contains(Message.PUSH_PRODUCTION_QUEUE)) {
-        	
-        	// TODO: THIS IS TEMPORARY JUST FOR TESTING THE WHOLE THING INTEGRATED; CHANGE TO REMOVE startInteractionSequence
         	ArrayList<Kit> queue = new ArrayList<Kit>();
         	ArrayList<String> deserialized = Util.deserialize(this.grabParameter(msg));
-        	for(int i = 0; i != deserialized.size(); i++) {
+        	/*for(int i = 0; i != deserialized.size(); i++) {
         		queue.add(Kit.deepClone(this.server.getFactoryState().getKitById(Integer.parseInt(deserialized.get(i)))));
         		System.out.println(deserialized.get(i));
-        	}
-
-        	this.server.getConveyorAgent().generateKit(queue.size()); // * This generates 10 new kits, among other things if you pass string... *
-        	this.server.getPartsAgent().msgHereIsKit(queue);
-        	//this.server.startInteractionSequence();
-
+<<<<<<< HEAD
+        	}*/
+                for(int i = 0; i != deserialized.size(); i++){
+Kit single = this.server.getFactoryState().getKitById(Integer.parseInt(deserialized.get(i))).cloneSelf();
+                
+         queue.add(single);       
+        }
+        	//this.server.getConveyorAgent().generateKit(queue.size()); // * This generates 10 new kits, among other things if you pass string... *
+        	//this.server.getPartsAgent().msgHereIsKit(queue);
+        	this.server.startInteractionSequence();
+System.out.println(msg);
         	System.out.println("BEGINNING PRODUCTION CYCLE WOOOOOOT (size "+queue.size() + ")");
                         	queue.get(0).debug();
 
