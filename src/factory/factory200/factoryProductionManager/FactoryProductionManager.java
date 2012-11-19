@@ -15,6 +15,8 @@ import factory.general.Kit;
 import factory.general.Manager;
 import factory.general.Message;
 import factory.general.Util;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Factory Production Manager selects active kit production routines, how many
@@ -33,13 +35,13 @@ import factory.general.Util;
  *
  */
 public class FactoryProductionManager extends Manager implements ActionListener {
-    private JPanel basePanel, topPanel, botPanel, leftPanel, midPanel, rightPanel, blankPanel;
-    private JLabel selLabel, numLabel, consoleLabel, schedLabel;
+    private JPanel basePanel, topPanel,parentMidPanel, queuePanel, botPanel, leftPanel, midPanel, rightPanel, blankPanel;
+    private JLabel selLabel, queueLabel, numLabel, consoleLabel, schedLabel;
     private JComboBox selKit;
     private JTextField numE;
     private JButton queueue, start, stop, reset;
     private JTextArea schedField, outField;
-    private JScrollPane schedPane, outPane;
+    private JScrollPane schedPane, outPane, queuePane;
     private JTabbedPane tabs;
     
     private JTextPane serverQueueDisplay;
@@ -69,15 +71,18 @@ public class FactoryProductionManager extends Manager implements ActionListener 
         empty = false;
         constructed = false;
         
+        //Instantiate components that need to exist before the pull
         instantiateDynamicComponents();
         //Pull From Server
-        this.mcon.out(Message.PULL_KITS_LIST); 
+        this.sendToServer(Message.PULL_KITS_LIST); 
+        //Instantiate components that don't rely on server data
         instantiateStaticComponents();
+        //Set up JFrame
         panelLayout();
-        
+        //Signal to future pull reconstructions that the frame is complete
         constructed = true;
         
-        // Identify this manager
+        // Identify this manager to server
         this.sendToServer(Message.IDENTIFY_FACTORYPRODUCTIONMANAGER);
     }
     
@@ -107,10 +112,12 @@ public class FactoryProductionManager extends Manager implements ActionListener 
         numLabel = new JLabel ("Quantity");
         consoleLabel = new JLabel ("System Message");
         schedLabel = new JLabel ("Production Schedule");
+        queueLabel = new JLabel ("Server Production Queue");
         schedField = new JTextArea(30, 20);
         outField = new JTextArea(30, 20);
         schedPane = new JScrollPane(schedField);
         outPane = new JScrollPane(outField);
+        queuePane = new JScrollPane(serverQueueDisplay);
         schedField.setEditable(false);
         outField.setEditable(false);
 
@@ -131,6 +138,10 @@ public class FactoryProductionManager extends Manager implements ActionListener 
         topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.LINE_AXIS));
         botPanel = new JPanel();
         botPanel.setLayout(new BoxLayout(botPanel, BoxLayout.LINE_AXIS));
+        parentMidPanel = new JPanel();
+        parentMidPanel.setLayout(gridbag);
+        queuePanel = new JPanel();
+        queuePanel.setLayout(gridbag);
         leftPanel = new JPanel();
         midPanel = new JPanel();
         midPanel.setLayout(gridbag);
@@ -153,21 +164,21 @@ public class FactoryProductionManager extends Manager implements ActionListener 
         topPanel.add(new JPanel());
         topPanel.add(consoleLabel);
         topPanel.add(new JPanel());
-
+        
         leftPanel.add(schedPane);
         leftPanel.setPreferredSize(new Dimension(320, 600));
-
+        
         c.fill = GridBagConstraints.VERTICAL;
         c.weightx = 1.0;
         c.ipadx = 10;
         c.gridy = GridBagConstraints.RELATIVE;
         c.gridx = 0;
-
+        
         gridbag.setConstraints(selLabel, c);
         midPanel.add(selLabel);
         gridbag.setConstraints(selKit, c);
         midPanel.add(selKit);
-
+        
         c.gridx = 1;
         c.gridy = 2;
         gridbag.setConstraints(queueue, c);
@@ -188,37 +199,49 @@ public class FactoryProductionManager extends Manager implements ActionListener 
         //midPanel.add(stop);
         gridbag.setConstraints(reset, c);
         midPanel.add(reset);
-
+        
         c.gridx = 2;
         c.ipadx = 75;
         gridbag.setConstraints(numLabel, c);
         midPanel.add(numLabel);
         gridbag.setConstraints(numE, c);
         midPanel.add(numE);
-
+        
         rightPanel.add(outPane);
         rightPanel.setPreferredSize(new Dimension(320, 600));
-
+        
+        c.gridx = 0;
+        c.gridy = GridBagConstraints.RELATIVE;
+        gridbag.setConstraints(queueLabel, c);
+        queuePanel.add(queueLabel);
+        gridbag.setConstraints(queuePane, c);
+        queuePanel.add(queuePane);
+        
+        gridbag.setConstraints(queuePanel, c);
+        parentMidPanel.add(queuePanel);
+        gridbag.setConstraints(midPanel, c);
+        parentMidPanel.add(midPanel);
+        
         botPanel.add(leftPanel);
-        botPanel.add(midPanel);
+        botPanel.add(parentMidPanel);
         botPanel.add(rightPanel);
-
+        
         basePanel.add(topPanel, BorderLayout.NORTH);
         basePanel.add(botPanel, BorderLayout.CENTER);
         start.setPreferredSize(new Dimension(100, 30));
         basePanel.add(start, BorderLayout.SOUTH);
-
+        
         basePanel.setSize(1350, 700);
         tabs.addTab("Control GUI", basePanel);
         tabs.addTab("Simulation", gfx);
         gfx.repaint();
-
+        
         selKit.addActionListener(this);
         queueue.addActionListener(this);
         start.addActionListener(this);
         stop.addActionListener(this);
         reset.addActionListener(this);
-
+        
         add(tabs);
     }
     
@@ -354,6 +377,9 @@ public class FactoryProductionManager extends Manager implements ActionListener 
         
         if(constructed)
         {
+            queuePanel.remove(queuePane);
+            gridbag.setConstraints(queuePane,c);
+            queuePanel.add(queuePane);
             basePanel.updateUI();
         }
     }
