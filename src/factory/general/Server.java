@@ -30,7 +30,7 @@ public class Server {
 	/**
 	 * Instance fields
 	 */
-	public static final Integer PORT_NUMBER = 31416;
+	public static final Integer PORT_NUMBER = 31417;
 	public static final String HOST_NAME = "localhost";
 	private static boolean SHOULD_DEBUG = false;
 	private Printer p = new Printer();
@@ -45,8 +45,8 @@ public class Server {
 
     // Fields just for "AgentMain" stuff (Agent preparation)
     // If true, print statements for this 201 person are on
-    private static final boolean PATRICK = true;
-    private static final boolean KEVIN = true;
+    private static final boolean PATRICK = false;
+    private static final boolean KEVIN = false;
     private static final boolean ALEX = true;
 
     
@@ -96,7 +96,7 @@ public class Server {
         this.fstate = new FactoryState();
 		initializeManagers(); // Something by Dongyoung
 		
-		//prepareAllAgents(); // Prepare all agents; based on AgentMain.java; commented out by Dongyoung to test animation; included after connections accepted by server
+//		prepareAllAgents(); // Prepare all agents; based on AgentMain.java; commented out by Dongyoung to test animation; included after connections accepted by server
 			// should happen AFTER initializeManagers(), according to Dongyoung
 		
 		numClients = 0; // Initialize num clients is 0
@@ -120,9 +120,9 @@ public class Server {
 			e.printStackTrace();
 			System.exit(0);
 		}
-		
-		for (int i=0 ; i<1 ; i++){ // For Testing By Dongyoung, if want to need communicate n managers, change into for(int i=0 ; i<n ; i++)
-		//while(true){
+		//prepareAllAgents(); // Prepare all agents; based on AgentMain.java      // For Testing By Dongyoung
+//		for (int i=0 ; i<2 ; i++){ // For Testing By Dongyoung, if want to need communicate n managers, change into for(int i=0 ; i<n ; i++)
+		while(true){
 			// Continuously check for a new client for which to create a thread
 			try {
 				s = ss.accept(); // Wait for a client (program halts here until connection occurs)
@@ -135,13 +135,8 @@ public class Server {
 			}
 			System.out.println("A client has connected");
 		}
+
 		
-
-
-		//try{  Thread.sleep(1000);  } catch(Exception e){}   // For Testing By Dongyoung
-
-
-		prepareAllAgents(); // Prepare all agents; based on AgentMain.java      // For Testing By Dongyoung
 	}
 
 	private void initializeManagers() { // Something by Dongyoung...?  Dongyoung : Yeah
@@ -160,7 +155,7 @@ public class Server {
             turnOffAgentPrintStatements();
             connectAgentsAndManagers();
             startAgentThreads();
-            startInteractionSequence();
+//            startInteractionSequence(); // this should be commented out in our final product
         }
 
         private void declareAgents() {
@@ -253,7 +248,7 @@ public class Server {
          * @brief This is only a test for 201 to debug animation and agent interaction.
          */
         @SuppressWarnings("unused")
-		private void startInteractionSequence() {
+		public void startInteractionSequence() {
             // Get kit from somewhere
             // * 
         	
@@ -261,7 +256,7 @@ public class Server {
             Kit kit = new Kit("Test Kit"); // This is required for...
             for (int i = 0; i < 8; i++) {
                 
-                //kit.addPart(this.fstate.getPartCheat().clone()); //uncomment this when ready- kevin
+//                kit.addPart(this.fstate.getPartCheat().clone());
                 //kit.addPart(new Part("Part " + i, "p1")); // This is a kit that has actual parts...
                 
                 kit.addPart(new Part(i)); //testing- Kevin

@@ -5,25 +5,27 @@ import factory.factory200.gantryRobotManager.PurgeStation;
 import factory.general.GUIPart;
 import factory.general.Part;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.geom.*;
 import java.util.*;
 import javax.swing.*;
 import javax.swing.Timer;
 
+import factory.factory200.gantryRobotManager.*;
 
 public class GRMGraphicPanel{
     
     ArrayList<GUIBin> bins;
     ArrayList<Part> parts;
     ArrayList<GUIFeeder> feeders;
-        
+    Integer carriedBinIndex;
     GUIBin bin;
     Part newPart;
     GUIPart GUItemp;
 	GUIGantryRobot gbot;
 	PurgeStation ps;
 	public GRMGraphicPanel(){
-		
+		carriedBinIndex = 0;
 		gbot = new GUIGantryRobot();
 		bin = new GUIBin(450,0,0.0,"",0);
 		bins = new ArrayList<GUIBin>();
@@ -43,20 +45,82 @@ public class GRMGraphicPanel{
         }
 	}
 	
-	public void paint(GraphicsPanel panel, Graphics2D g) {
-        paintBinsWithParts(panel, g);
-        gbot.paintMe(panel,g);
-       
+	public void timerAction() {
+		// TODO Auto-generated method stub
+		if(!gbot.moving()){
+			if(!gbot.performOrder()){
+			if(this.gbot.getOrder() < 16 && this.gbot.getOrder() > 7)
+			{
+				this.gbot.pickUpBin(this.gbot.getOrder()-8);
+				this.gbot.popOrder();
+			}else if(this.gbot.getOrder() < 25 && this.gbot.getOrder() > 20)
+			{
+				this.gbot.supplyPartOnFeeder(this.gbot.getOrder()-21);//this.gbot.getOrder()-21);
+				this.gbot.popOrder();
+			}
+			else if(this.gbot.getOrder() == 26)
+	    	{
+	    		this.gbot.binPurged();	    		
+	    		this.gbot.popOrder();
+	    		Integer binIndex=this.getBinCarriedIndex();
+				this.binIsPurged(binIndex);
+	    	}
+			
+			}
+		}	
+		gbot.update();
+		//repaint();
 	}
 	
-	public void paintBinsWithParts(GraphicsPanel panel,Graphics2D g){	
+	private Integer getBinCarriedIndex() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void binIsCarried(Integer binIndex){
+		this.bins.get(binIndex).setFullStatus(false);
+		carriedBinIndex = binIndex;
+		//this.bins.g
+	}
+	
+	public void paint(GraphicsPanel graph, Graphics g) {
+        
+        Graphics2D g2 = (Graphics2D) g;
+        Image img = new ImageIcon("pics/background/mainbg.png").getImage();
+        g2.drawImage(img, -1350+500, 0, null);
+        //Rectangle2D.Double backgroundRectangle = new Rectangle2D.Double(0, 0, 500, 700);
+        //g2.setColor(Color.GRAY.darker().darker());//dark dark green background
+        //g2.fill(backgroundRectangle);
+        paintPurge(graph,g2);
+        paintBinsWithParts(graph, g2);
+        paintFeeders(graph,g2);
+	    gbot.paintMe(graph,g2);
+	}
+	
+	public void binIsPurged(Integer binIndex){
+		this.bins.get(binIndex).setFullStatus(true);
+	}
+	
+	public void paintPurge(JPanel j,Graphics2D g){
+		ps.getImage().paintIcon(j, g, 260, 600);
+	}
+	public void paintBinsWithParts(JPanel j,Graphics2D g){
+		
 		for (int i=0;i<8;i++){
 			if(bins.get(i).binIsFull()==true){
-				bins.get(i).getImage().paintIcon(panel, g, bins.get(i).getX(), bins.get(i).getY());
+				bins.get(i).getImage().paintIcon(j, g, bins.get(i).getX(), bins.get(i).getY());
+				parts.get(i).getGUIPart().getImage().paintIcon(j, g, parts.get(i).getGUIPart().getX(), parts.get(i).getGUIPart().getY());
 			}
-			parts.get(i).getGUIPart().getImage().paintIcon(panel, g, parts.get(i).getGUIPart().getX(), parts.get(i).getGUIPart().getY());
+			
 		}
-	}	
+		
+	}
+	
+	public void paintFeeders(JPanel j,Graphics2D g){
+		for(int i = 0;i<4;i++){
+			feeders.get(i).getImage().paintIcon(j, g, feeders.get(i).getX(), feeders.get(i).getY());
+		}
+	}
 		
 //		         boolean changed;
 		 //

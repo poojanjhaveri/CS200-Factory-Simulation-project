@@ -9,6 +9,7 @@ import factory.factory201.interfaces.Camera;
 import factory.factory201.interfaces.KitRobot;
 import factory.factory201.interfaces.NestInterface;
 import factory.factory201.interfaces.PartsInterface;
+import factory.general.BlueprintKits;
 import factory.general.Kit;
 import factory.general.Message;
 import factory.general.Part;
@@ -61,6 +62,7 @@ public class PartsAgent extends Agent implements PartsInterface {
         print("PartsAgent got message for new kits");
         for (Kit k: newKits){
         newKit.add(k);}
+        DoGiveKitsInQueue(newKit);
         stateChanged();
     }
 
@@ -76,10 +78,12 @@ public class PartsAgent extends Agent implements PartsInterface {
     public void msgEmptyKitReady(Kit k) {
 
         if(k.standNum==Kit.StandNum.zero){
+            kit0=k;
            kitZero=true;
            
           }
             else{
+            kit1=k;
             kitOne=true;
             
             }
@@ -129,7 +133,6 @@ public class PartsAgent extends Agent implements PartsInterface {
                 }}
           }
             }
-   
        return false;
     }
 //Actions
@@ -138,17 +141,19 @@ public class PartsAgent extends Agent implements PartsInterface {
         print("giving kitrobot complete kit #" + k.standNum);
         print("KIT0NEEDSPARTS SIZE: [" + kit0NeedsParts.size()+ "]");
         print("KIT1NEEDSPARTS SIZE: [" + kit1NeedsParts.size() + "]");
+        print("INVENTORY SIZE: [" + inventory.size() + "]");
         kits--;
         if(k.standNum==Kit.StandNum.zero){
             kit0Info = null;
             //kit0=null;
         }
         else{
-            kit1Info =null;
+            kit1Info = null;
             //kit1 = null;
         }
-            
+            print("KIT SIZE IS "+ k.parts.size());
         kitrobot.msgKitIsFull(k);
+        print("KIT SIZE IS " + k.parts.size());
         stateChanged();
     }
 
@@ -175,6 +180,7 @@ public class PartsAgent extends Agent implements PartsInterface {
         
         for (Part part: kit0NeedsParts){
             if (part.type == p.type){
+                kit0.parts.add(p);
               kit0NeedsParts.remove(part);
               break;
             }}
@@ -194,6 +200,7 @@ public class PartsAgent extends Agent implements PartsInterface {
         
         for (Part part: kit1NeedsParts){
             if (part.type == p.type){
+                kit1.parts.add(p);
               kit1NeedsParts.remove(part);
            //   print("REMOVING PART FROM KIT1NEEDSPARTS NEW SIZE IS " +  kit1NeedsParts.size());
                break;
@@ -212,7 +219,8 @@ public class PartsAgent extends Agent implements PartsInterface {
 
     private void setKit0(Kit k){
         kit0Info=k;
-           kit0=kit0Info;
+        print("kit0 size ["+ k.parts.size() + "]");
+          // kit0=kit0Info;
            kit0.status = Kit.Status.ready;
            kit0.standNum = Kit.StandNum.zero;
            for(int i=0; i<kit0Info.parts.size(); i++){
@@ -221,8 +229,9 @@ public class PartsAgent extends Agent implements PartsInterface {
     }
     
     private void setKit1(Kit k){
+        print("kit1 size ["+ k.parts.size() + "]");
      kit1Info=k;
-            kit1=kit1Info;
+           // kit1=kit1Info;
             kit1.status = Kit.Status.ready;
             kit1.standNum = Kit.StandNum.one;
             for(int i=0; i<kit1Info.parts.size(); i++){
@@ -299,10 +308,27 @@ public class PartsAgent extends Agent implements PartsInterface {
         }}
     
     public void DoGiveKitsInAction(Kit k){
-       // this.client.sendMessage(Message)
+
+
+        if (this.client != null) {
+
+            this.client.sendMessage(Message.KIT_IN_PRODUCTION+":"+k.getName());
         }
-    
-    public void DoGiveKitsInQueue(List<Kit> kits){
+        else{
+            print("[ERROR] - Kit Assembly Manager is not online.");
+        }
         
     }
+    
+    public void DoGiveKitsInQueue(List<Kit> kits){
+
+        if (this.client != null) {
+        BlueprintKits adhoc = new BlueprintKits((ArrayList)kits);
+        this.client.sendMessage(Message.GIVE_KITS_IN_QUEUE+":"+adhoc.serialize());
+
+    }
+        else{
+           print("[ERROR] - Kit Assembly Manager is not online."); 
+        }
+}
 }

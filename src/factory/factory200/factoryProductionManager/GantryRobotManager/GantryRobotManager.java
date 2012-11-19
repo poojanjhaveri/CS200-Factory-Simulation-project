@@ -63,6 +63,10 @@ public class GantryRobotManager{
 		graphics.paint(panel, g);
 		//System.out.println("printing");
 	}
+	
+	public GRMGraphicPanel getGraph(){
+		return graphics;
+	}
 
 	public void processMessage(String msg) {
 		//		   super.processMessage(msg);

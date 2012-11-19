@@ -68,7 +68,7 @@ public class CameraAgent extends Agent implements Camera {
     @Override
     public boolean pickAndExecuteAnAction() {
         if (kitInfoFromPartsAgent != null) {
-            configureKitInfo(kitInfoFromPartsAgent);
+            configureKitInfo();
             return true;
         }
         synchronized (kitList) {
@@ -92,8 +92,8 @@ public class CameraAgent extends Agent implements Camera {
 
     // ********** ACTIONS **********
 
-    private void inspectKit(Kit kit) {
-        print("Inspecting kit: [" + kit.name + "].");
+    public void inspectKit(Kit kit) {
+//        print("Inspecting kit: [" + kit.name + "].");
         boolean result = true;
 
         if (kit.parts.size() != kitRqmts.size()) {
@@ -112,12 +112,14 @@ public class CameraAgent extends Agent implements Camera {
 
         DoInspectKit(kit);
         kitRobot.msgKitInspected(result);
+        String strResult = result ? "NO ERROR" : "ERROR";
+        print("Inspected kit: [" + kit.name + "] with result: " + strResult + ".");
         kitList.remove(kit);
         stateChanged();
     }
 
     private void inspectNest(Nest nest) {
-        print("Inspecting nest: [Nest " + nest.nestNum + "].");
+//        print("Inspecting nest: [Nest " + nest.nestNum + "].");
         Integer type = nest.part.type;
         boolean result = true;
         for (Part p : nest.parts) {
@@ -127,15 +129,17 @@ public class CameraAgent extends Agent implements Camera {
             }
         }
         DoInspectNest(nest);
-        nestAgent.msgNestInspected(nest, result);
+        nestAgent.msgNestInspected(nest, result); 
+        String strResult = result ? "NO ERROR" : "ERROR";       
+        print("Inspecting nest: [Nest " + nest.nestNum + "] with result: " + strResult + ".");
         nestList.remove(nest);
         stateChanged();
     }
 
-    private void configureKitInfo(Kit info) {
+    private void configureKitInfo() {
         kitRqmts.clear();
-        for (int i = 0; i < info.getSize(); i++) {
-            kitRqmts.add(info.getPart(i).type);
+        for (int i = 0; i < kitInfoFromPartsAgent.getSize(); i++) {
+            kitRqmts.add(kitInfoFromPartsAgent.getPart(i).type);
         }
         kitInfoFromPartsAgent = null;
     }
@@ -159,7 +163,7 @@ public class CameraAgent extends Agent implements Camera {
             this.client.sendMessage(Message.KAM_FLASH_KIT_CAMERA);
             this.fpm.sendMessage(Message.KAM_FLASH_KIT_CAMERA);
         } else {
-            print("[ERROR] - Kit Assembly Manager is not online.");
+//            print("[ERROR] - Kit Assembly Manager is not online.");
         }
     }
 
@@ -169,7 +173,7 @@ public class CameraAgent extends Agent implements Camera {
             this.fpm.sendMessage(Message.KAM_FLASH_NEST_CAMERA + ":" + nest.nestNum);
             this.fpm.sendMessage(Message.ALERT_FPM_KIT_INSPECTED);
         } else {
-            print("[ERROR] - Kit Assembly Manager is not online.");
+//            print("[ERROR] - Kit Assembly Manager is not online.");
         }
     }
 }

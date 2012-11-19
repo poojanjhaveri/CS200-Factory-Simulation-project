@@ -11,7 +11,7 @@ public class LMLaneData {
 	
 	private int laneNum;
 	private int vibrationAmplitude;
-	private Boolean laneSwitch = false;
+	private Boolean laneSwitch = true;
 	
 	public LMLaneData( int laneNum, LMServerMain serverMain ){
 		this.laneNum = laneNum;

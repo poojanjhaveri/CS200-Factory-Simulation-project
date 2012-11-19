@@ -1,7 +1,5 @@
 package factory.general;
 
-import factory.factory200.gantryRobotManager.GantryRobotManager;
-import factory.factory200.kitAssemblyManager.KitAssemblyManager;
 import factory.factory201.feederManagement.FeederAgent;
 import factory.factory201.feederManagement.GantryAgent;
 import factory.factory201.feederManagement.LaneAgent;
@@ -21,8 +19,8 @@ import java.util.List;
  */
 public class AgentMain {
 
-    private static final boolean PATRICK = true;
-    private static final boolean KEVIN = true;
+    private static final boolean PATRICK = false;
+    private static final boolean KEVIN = false;
     private static final boolean ALEX = true;
     
     private static final int FEEDER = 4;
