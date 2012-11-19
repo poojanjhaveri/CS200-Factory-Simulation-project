@@ -9,6 +9,8 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import java.awt.*;
 
 import factory.general.BlueprintKits;
 import factory.general.Kit;
@@ -17,6 +19,7 @@ import factory.general.Message;
 import factory.general.Util;
 import java.util.HashSet;
 import java.util.Set;
+
 
 /**
  * Factory Production Manager selects active kit production routines, how many
@@ -35,16 +38,16 @@ import java.util.Set;
  *
  */
 public class FactoryProductionManager extends Manager implements ActionListener {
-    private JPanel basePanel, topPanel,parentMidPanel, queuePanel, botPanel, leftPanel, midPanel, rightPanel, blankPanel;
-    private JLabel selLabel, queueLabel, numLabel, consoleLabel, schedLabel;
+    private JPanel basePanel, topPanel,parentMidPanel, queuePanel, botPanel, 
+            selPanel, leftPanel, midPanel, rightPanel, botBotPanel, slotsPanel;
+    private JLabel selLabel, queueLabel, numLabel, consoleLabel, schedLabel, slot1Label, slot2Label;
     private JComboBox selKit;
     private JTextField numE;
     private JButton queueue, start, stop, reset;
-    private JTextArea schedField, outField;
+    private JTextArea schedField, outField, serverQueueDisplay, slot1Field, slot2Field;
     private JScrollPane schedPane, outPane, queuePane;
     private JTabbedPane tabs;
     
-    private JTextPane serverQueueDisplay;
     private ArrayList<String> serverQueue;
     private String slot1, slot2;
     
@@ -60,6 +63,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
     private boolean empty;
     private boolean constructed;
     private BlueprintKits kitsbp;
+    private Image bgimg;
     
     private final static String newline = "\n";
     
@@ -99,7 +103,14 @@ public class FactoryProductionManager extends Manager implements ActionListener 
         
         //Instantiate ServerQueue
         serverQueue = new ArrayList<String>();
-        serverQueueDisplay = new JTextPane();
+        serverQueueDisplay = new JTextArea(12, 20);
+        
+        slot1Field = new JTextArea(1, 20);
+        slot2Field = new JTextArea(1, 20);
+        
+        serverQueueDisplay.setEditable(false);
+        slot1Field.setEditable(false);
+        slot2Field.setEditable(false);
     }
     
     private void instantiateStaticComponents()
@@ -107,12 +118,15 @@ public class FactoryProductionManager extends Manager implements ActionListener 
         gridbag = new GridBagLayout();
         c = new GridBagConstraints();
         
+        bgimg = new ImageIcon("pics/background/mainbg.png").getImage();
         selectedKits = new ArrayList<Kit>();
         selLabel = new JLabel ("Select Kit");
         numLabel = new JLabel ("Quantity");
         consoleLabel = new JLabel ("System Message");
         schedLabel = new JLabel ("Production Schedule");
         queueLabel = new JLabel ("Server Production Queue");
+        slot1Label = new JLabel ("Slot 1");
+        slot2Label = new JLabel ("Slot 2");
         schedField = new JTextArea(30, 20);
         outField = new JTextArea(30, 20);
         schedPane = new JScrollPane(schedField);
@@ -128,7 +142,6 @@ public class FactoryProductionManager extends Manager implements ActionListener 
         stop = new JButton("Stop");
         reset = new JButton("Clear List");
 
-
         basePanel = new JPanel();
         basePanel.setLayout(new BorderLayout());
 
@@ -139,14 +152,16 @@ public class FactoryProductionManager extends Manager implements ActionListener 
         botPanel = new JPanel();
         botPanel.setLayout(new BoxLayout(botPanel, BoxLayout.LINE_AXIS));
         parentMidPanel = new JPanel();
-        parentMidPanel.setLayout(gridbag);
+        parentMidPanel.setLayout(new GridLayout(2,1));
         queuePanel = new JPanel();
         queuePanel.setLayout(gridbag);
         leftPanel = new JPanel();
         midPanel = new JPanel();
         midPanel.setLayout(gridbag);
         rightPanel = new JPanel();
-        blankPanel = new JPanel();
+        botBotPanel = new JPanel(gridbag);
+        selPanel = new JPanel(gridbag);
+        slotsPanel = new JPanel(gridbag);
     }
     
     private void panelLayout()
@@ -175,51 +190,75 @@ public class FactoryProductionManager extends Manager implements ActionListener 
         c.gridx = 0;
         
         gridbag.setConstraints(selLabel, c);
-        midPanel.add(selLabel);
+        selPanel.add(selLabel);
         gridbag.setConstraints(selKit, c);
-        midPanel.add(selKit);
+        selPanel.add(selKit);
         
         c.gridx = 1;
-        c.gridy = 2;
+        c.gridy = 1;
+        c.ipadx = 75;
+        gridbag.setConstraints(numLabel, c);
+        selPanel.add(numLabel);
+        gridbag.setConstraints(numE, c);
+        selPanel.add(numE);
+        
+        c.gridx = 0;
+        c.gridy = GridBagConstraints.RELATIVE;
+        gridbag.setConstraints(selPanel, c);
+        midPanel.add(selPanel);
         gridbag.setConstraints(queueue, c);
         midPanel.add(queueue);
         c.gridy = GridBagConstraints.RELATIVE;
         JPanel fill1 = new JPanel();
         gridbag.setConstraints(fill1, c);
         midPanel.add(fill1);
-        /*
-        gridbag.setConstraints(start, c);
-        midPanel.add(start);
-         * *
-         */
+
         JPanel fill2 = new JPanel();
         gridbag.setConstraints(fill2, c);
         midPanel.add(fill2);
-        //gridbag.setConstraints(stop, c);
-        //midPanel.add(stop);
         gridbag.setConstraints(reset, c);
         midPanel.add(reset);
-        
-        c.gridx = 2;
-        c.ipadx = 75;
-        gridbag.setConstraints(numLabel, c);
-        midPanel.add(numLabel);
-        gridbag.setConstraints(numE, c);
-        midPanel.add(numE);
         
         rightPanel.add(outPane);
         rightPanel.setPreferredSize(new Dimension(320, 600));
         
         c.gridx = 0;
+        c.ipady = 10;
+        c.ipadx = 0;
         c.gridy = GridBagConstraints.RELATIVE;
+        gridbag.setConstraints(slot1Label, c);
+        slotsPanel.add(slot1Label);
+        c.ipady = 14;
+        c.ipadx = 120;
+        gridbag.setConstraints(slot1Field, c);
+        slotsPanel.add(slot1Field);
+        c.gridx = 1;
+        c.ipady = 10;
+        c.ipadx = 0;
+        gridbag.setConstraints(slot2Label, c);
+        slotsPanel.add(slot2Label);
+        c.ipady = 14;
+        c.ipadx = 120;
+        gridbag.setConstraints(slot2Field, c);
+        slotsPanel.add(slot2Field);
+        
+        
+        c.gridx = 0;
+        c.ipadx = 75;
+        c.gridy = GridBagConstraints.RELATIVE;
+        gridbag.setConstraints(slotsPanel, c);
+        queuePanel.add(slotsPanel, c);
+        c.ipadx = 0;
         gridbag.setConstraints(queueLabel, c);
         queuePanel.add(queueLabel);
+        c.ipady = 180;
+        c.ipadx = 300;
         gridbag.setConstraints(queuePane, c);
         queuePanel.add(queuePane);
         
-        gridbag.setConstraints(queuePanel, c);
+        c.ipady = 10;
+        c.ipadx = 75;
         parentMidPanel.add(queuePanel);
-        gridbag.setConstraints(midPanel, c);
         parentMidPanel.add(midPanel);
         
         botPanel.add(leftPanel);
@@ -229,7 +268,11 @@ public class FactoryProductionManager extends Manager implements ActionListener 
         basePanel.add(topPanel, BorderLayout.NORTH);
         basePanel.add(botPanel, BorderLayout.CENTER);
         start.setPreferredSize(new Dimension(100, 30));
-        basePanel.add(start, BorderLayout.SOUTH);
+        
+        gridbag.setConstraints(start, c);
+        botBotPanel.add(start);
+        botBotPanel.add(new JPanel());
+        basePanel.add(botBotPanel, BorderLayout.SOUTH);
         
         basePanel.setSize(1350, 700);
         tabs.addTab("Control GUI", basePanel);
@@ -250,6 +293,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
     {
             if(ae.getSource() == selKit)
             {
+
                 if(!empty)
                 {
                     selKitRoutine(ae.getSource());
@@ -344,7 +388,16 @@ public class FactoryProductionManager extends Manager implements ActionListener 
             this.kitsbp.debug();
             this.reconstructComboBox();
         }
-	
+	if(msg.contains(Message.KIT_IN_PRODUCTION))
+        {
+            String kitname = this.grabParameter(msg);
+        }
+        if(msg.contains(Message.GIVE_KITS_IN_QUEUE))
+        {
+            BlueprintKits temp = new BlueprintKits();
+            temp.recreate(this.grabParameter(msg));
+            ArrayList<Kit> prodqueue = temp.getKits();
+        }
         //Lane Manager( pass 'msg' into Lane Manager Message Interpreter and take a proper action )
         gfx.verifyMessage(msg);
     }
@@ -380,7 +433,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
             queuePanel.remove(queuePane);
             gridbag.setConstraints(queuePane,c);
             queuePanel.add(queuePane);
-            basePanel.updateUI();
+            //basePanel.updateUI();
         }
     }
     
