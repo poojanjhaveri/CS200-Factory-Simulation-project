@@ -153,11 +153,7 @@ public class PartsAgent extends Agent implements PartsInterface {
         }
             print("KIT SIZE IS "+ k.parts.size());
         kitrobot.msgKitIsFull(k);
-<<<<<<< HEAD
         print("KIT SIZE IS " + k.parts.size());
-=======
-        print("KIT SIZE IS "+ k.parts.size());
->>>>>>> 5390a6b60cdb05fc252479b8748d2e818f9544ae
         stateChanged();
     }
 
@@ -204,11 +200,7 @@ public class PartsAgent extends Agent implements PartsInterface {
         
         for (Part part: kit1NeedsParts){
             if (part.type == p.type){
-<<<<<<< HEAD
                 kit1.parts.add(p);
-=======
-              kit1.parts.add(p);
->>>>>>> 5390a6b60cdb05fc252479b8748d2e818f9544ae
               kit1NeedsParts.remove(part);
            //   print("REMOVING PART FROM KIT1NEEDSPARTS NEW SIZE IS " +  kit1NeedsParts.size());
                break;
