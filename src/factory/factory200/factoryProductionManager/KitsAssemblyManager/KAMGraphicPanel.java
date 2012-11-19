@@ -40,9 +40,9 @@ public class KAMGraphicPanel {
     public static final int KIT2Y = 150 + 10 + 250;
     //took into consideration kit stand positioning
     public static final int EMPTY_CONVEYERX = 25;
-    public static final int EMPTY_CONVEYERY = 300;
+    public static final int EMPTY_CONVEYERY = 375;
     public static final int FULL_CONVEYERX = 25;
-    public static final int FULL_CONVEYERY = 300;
+    public static final int FULL_CONVEYERY = 224;
     public static final Integer LANE0Y = 75 / 2 + 0 * 75 -20;///<y-coordinate of lane 0's nest
     public static final Integer LANE1Y = 75 / 2 + 1 * 75-20;///<y-coordinate of lane 1's nest
     public static final Integer LANE2Y = 75 / 2 + 2 * 75-20;///<y-coordinate of lane 2's nest
