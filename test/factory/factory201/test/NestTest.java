@@ -3,16 +3,15 @@
  * and open the template in the editor.
  */
 package factory.factory201.test;
-import factory.factory201.test.mock.MockParts;
 import factory.factory201.partsManagement.NestAgent;
 import factory.factory201.test.mock.MockCamera;
 import factory.factory201.test.mock.MockLane;
+import factory.factory201.test.mock.MockParts;
 import factory.general.Nest;
 import factory.general.Part;
 import java.util.ArrayList;
 import java.util.List;
 import junit.framework.TestCase;
-import static org.junit.Assert.*;
 import org.junit.Test;
 
 

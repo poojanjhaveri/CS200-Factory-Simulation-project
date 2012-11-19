@@ -4,9 +4,6 @@
  */
 package factory.factory200.kitAssemblyManager;
 
-
-
-
 import factory.general.Part;
 import java.util.ArrayList;
 import javax.swing.*;
@@ -15,24 +12,22 @@ import javax.swing.*;
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Deepa
  */
-
 //temporary nest class until an actual nest class is made...
 public class KAMNest {
+
     private ImageIcon nest;
     //private int nestNumber;
     private int x;
     private int y;
     private ArrayList<Part> parts;
-    
-    
-    public KAMNest(){
-        nest=new ImageIcon("pics/KAMnest.png");
-        
+
+    public KAMNest() {
+        nest = new ImageIcon("pics/KAMnest.png");
+
         parts = new ArrayList<Part>();
     }
 
@@ -42,15 +37,17 @@ public class KAMNest {
     public ImageIcon getNest() {
         return nest;
     }
-    
-    public Part getPart(){
-        
-        if(this.parts.isEmpty())
+
+    public Part getPart() {
+
+        if (this.parts.isEmpty()) {
             System.out.println("ERROR: PART ROBOT ASKING FOR NULL PART!");
-        
-        Part temp=this.parts.get(0);
-        this.parts.remove(0);
-        return temp;
+            return null;
+        } else {
+            Part temp = this.parts.get(0);
+            this.parts.remove(0);
+            return temp;
+        }
     }
 
     /**
@@ -101,15 +98,16 @@ public class KAMNest {
     public void setParts(ArrayList<Part> parts) {
         this.parts = parts;
     }
+
     public void updateParts() {
         //System.out.println("parts size: "+parts.size());
-        if (this.parts.size() <= 4 && this.parts.size()>0) {
+        if (this.parts.size() <= 4 && this.parts.size() > 0) {
             for (int i = 0; i < this.parts.size(); i++) {
                 this.parts.get(i).getGUIPart().setX(this.getX());
                 this.parts.get(i).getGUIPart().setY(this.getY() + 18 * i);
             }
         }
-        if (this.parts.size() <= 8 && this.parts.size()>4) {
+        if (this.parts.size() <= 8 && this.parts.size() > 4) {
             for (int i = 0; i < 4; i++) {
                 this.parts.get(i).getGUIPart().setX(this.getX());
                 this.parts.get(i).getGUIPart().setY(this.getY() + 18 * i);

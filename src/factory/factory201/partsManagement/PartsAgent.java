@@ -58,6 +58,7 @@ public class PartsAgent extends Agent implements PartsInterface {
 
     // message from server
     //@Override
+    @Override
     public void msgHereIsKit(List<Kit> newKits) {
         print("PartsAgent got message for new kits");
         for (Kit k: newKits){
@@ -68,7 +69,7 @@ public class PartsAgent extends Agent implements PartsInterface {
 
     @Override
     public void msgHereIsPart(Part p) {
-        print("Got part " + p.getString() + "from nest");
+        print("Got part " + p.getInt() + "from nest");
         inventory.add(p);
         stateChanged();
     }
@@ -167,7 +168,8 @@ public class PartsAgent extends Agent implements PartsInterface {
         kitsStarted.add(k);
        
         for (int i = 0; i < k.getSize(); i++) {
-            nest.msgNeedPart(k.getPart(i));}
+            nest.msgNeedPart(k.getPart(i));
+        }
         
         kitrobot.msgNeedEmptyKit();//change to put empty kits in list when recieve the message back
     	
@@ -205,7 +207,7 @@ public class PartsAgent extends Agent implements PartsInterface {
            //   print("REMOVING PART FROM KIT1NEEDSPARTS NEW SIZE IS " +  kit1NeedsParts.size());
                break;
             }}
-      //  print("picking up part " + p.getString());
+      //  print("picking up part " + p.getInt());
         
         DoPickUpPart(p.getNestNum());
        
@@ -241,7 +243,7 @@ public class PartsAgent extends Agent implements PartsInterface {
 
     private void putPartsInKit(int kitNum) {
         for (Part p : grips) {
-            print("putting part " + p.getString() + " in kit number "+ kitNum);
+            print("putting part " + p.getInt() + " in kit number "+ kitNum);
         }
       /*  try {
             Thread.sleep(3000);
