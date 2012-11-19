@@ -179,7 +179,7 @@ public class PartsAgent extends Agent implements PartsInterface {
     
     private void pickUpPart0(Part p){
         grips.add(p);
-        
+        DoMoveToNest(p.getNestNum());
         for (Part part: kit0NeedsParts){
             if (part.type == p.type){
                 kit0.parts.add(p);
@@ -199,7 +199,7 @@ public class PartsAgent extends Agent implements PartsInterface {
     
      private void pickUpPart1(Part p){
         grips.add(p);
-        
+        DoMoveToNest(p.getNestNum());
         for (Part part: kit1NeedsParts){
             if (part.type == p.type){
                 kit1.parts.add(p);

@@ -79,6 +79,7 @@ public class NestAgent extends Agent implements NestInterface {
         Part p = kitParts.get(0);
         Nest n = myNests.get(laneIndex);
                 for (int i =0; i<kitParts.size(); i++){
+                    kitParts.get(i).setNestNum(laneIndex);
                     n.parts.add(kitParts.get(i));
                 }
                 if (n.parts.size()>=n.threshold) {
