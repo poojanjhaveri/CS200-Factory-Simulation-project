@@ -29,12 +29,12 @@ public class NestAgent extends Agent implements NestInterface {
     Lane lanes[] = {lane0, lane1, lane2, lane3, lane4, lane5, lane6, lane7};
     
     public List<Nest> myNests;
-    private List<Part> needParts;
+    public List<Part> needParts;
     private List<Nest> nests;
     PartsInterface partsagent;
     Camera camera;
     private int nestNumber;
-    private List<Part> requests;
+    public List<Part> requests;
 
     @Override
     public void msgHereAreParts(List<Part> parts) {
@@ -79,6 +79,7 @@ public class NestAgent extends Agent implements NestInterface {
         Part p = kitParts.get(0);
         Nest n = myNests.get(laneIndex);
                 for (int i =0; i<kitParts.size(); i++){
+                    kitParts.get(i).setNestNum(laneIndex);
                     n.parts.add(kitParts.get(i));
                 }
                 if (n.parts.size()>=n.threshold) {

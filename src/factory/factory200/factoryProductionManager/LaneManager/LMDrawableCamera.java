@@ -4,6 +4,10 @@ import java.awt.Graphics2D;
 import javax.swing.ImageIcon;
 import factory.factory200.factoryProductionManager.*;
 
+/**
+ * @brief Camera Drawing
+ * @author Dongyoung Jung
+ */
 public class LMDrawableCamera{
 
 	private int cameraX, cameraY;

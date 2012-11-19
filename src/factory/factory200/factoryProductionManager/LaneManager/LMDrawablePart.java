@@ -4,6 +4,10 @@ import java.awt.Graphics2D;
 import javax.swing.ImageIcon;
 import factory.factory200.factoryProductionManager.*;
 
+/**
+ * @brief Part Drawing
+ * @author Dongyoung Jung
+ */
 public class LMDrawablePart {
 	
 	private LMApplication app;

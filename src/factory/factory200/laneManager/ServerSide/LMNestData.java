@@ -1,11 +1,15 @@
 package factory.factory200.laneManager.ServerSide;
 
+/**
+ * @brief Nest Data
+ * @author Dongyoung Jung
+ */
 public class LMNestData {
 	
 	private LMServerMain serverMain;
 	private String signal = "";
 	
-	private int nestNum;	///< Nest number
+	private int nestNum;
 	private Boolean nestSwitch = true; // false : down, true : up
 	
 	public LMNestData( int nestNum, LMServerMain serverMain ){

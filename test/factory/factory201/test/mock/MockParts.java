@@ -7,6 +7,7 @@ package factory.factory201.test.mock;
 import factory.factory201.interfaces.PartsInterface;
 import factory.general.Kit;
 import factory.general.Part;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -41,8 +42,8 @@ public class MockParts extends MockAgent implements PartsInterface {
                 + "agent that empty kit: " + kit.name + " is ready."));
     }
 
-    @Override
-    public void msgHereAreParts(List<Part> parts) {
+    //@Override
+    public void msgHereAreParts(ArrayList<Part> parts) {
     }
 
    
@@ -51,7 +52,13 @@ public class MockParts extends MockAgent implements PartsInterface {
     }
 
     @Override
-    public void msgHereIsKit(List<Kit> kit) {
+    public void msgHereIsKit(ArrayList<Kit> kit) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
+
+    @Override
+    public void msgHereAreParts(List<Part> parts) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
 }

@@ -3,6 +3,10 @@ package factory.factory200.laneManager.ServerSide;
 import javax.swing.JFrame;
 import factory.general.HandleAManager;
 
+/**
+ * @brief Main in Server Side
+ * @author Dongyoung Jung
+ */
 public class LMServerMain extends JFrame implements Runnable{
 	
 	private HandleAManager hacLM = null;

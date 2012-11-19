@@ -1,5 +1,9 @@
 package factory.factory200.factoryProductionManager.LaneManager;
 
+/**
+ * @brief Put Bin, Purge Bin
+ * @author Dongyoung Jung
+ */
 public class LMGantryRobotHandler{
 	
 	private LMApplication app;	///< Instance of class 'LMApplication'
