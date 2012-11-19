@@ -74,12 +74,12 @@ public class KitRobotAgent extends Agent implements KitRobot {
             sendVerifiedKitToConveyor();
             return true;
         }
-        if (!kitStand.isEmpty(1) && kitStand.get(1).status == Kit.Status.full) {
+        if (!kitStand.isEmpty(1) && kitStand.get(1).status == Kit.Status.full && kitStand.isEmpty(2)) {
             // if kit is ready for inspection
             moveFullKitToInspection(kitStand.get(1));
             return true;
         }
-        if (!kitStand.isEmpty(0) && kitStand.get(0).status == Kit.Status.full) {
+        if (!kitStand.isEmpty(0) && kitStand.get(0).status == Kit.Status.full && kitStand.isEmpty(2)) {
             // if kit is ready for inspection
             moveFullKitToInspection(kitStand.get(0));
             return true;
@@ -95,7 +95,6 @@ public class KitRobotAgent extends Agent implements KitRobot {
             return true;
         }
         return false;
-
     }
 
     // ********** ACTIONS **********
