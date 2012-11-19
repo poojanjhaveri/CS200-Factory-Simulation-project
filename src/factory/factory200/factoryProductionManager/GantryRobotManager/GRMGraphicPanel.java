@@ -1,6 +1,7 @@
 package factory.factory200.factoryProductionManager.GantryRobotManager;
 
 import factory.factory200.factoryProductionManager.*;
+import factory.factory200.gantryRobotManager.PurgeStation;
 import factory.general.GUIPart;
 import factory.general.Part;
 import java.awt.*;
@@ -20,11 +21,11 @@ public class GRMGraphicPanel{
     Part newPart;
     GUIPart GUItemp;
 	GUIGantryRobot gbot;
-	
+	PurgeStation ps;
 	public GRMGraphicPanel(){
 		
 		gbot = new GUIGantryRobot();
-		bin = new GUIBin(450,0,0.0,"");
+		bin = new GUIBin(450,0,0.0,"",0);
 		bins = new ArrayList<GUIBin>();
 		parts = new ArrayList<Part>();
 		feeders = new ArrayList<GUIFeeder>();
@@ -33,7 +34,7 @@ public class GRMGraphicPanel{
 		///<Initialize all 8 bins, 8 parts within its bins
 		
         for (int i = 1; i < 9; i++) {
-           bin=new GUIBin(1350,(i*80-60),0.0, "pics/binBox"+i+".png");
+           bin=new GUIBin(1220,(i*80-60),0.0, "pics/binBox"+i+".png",i);
            bins.add(bin);
            GUItemp=new GUIPart(bins.get(i-1).getX()+15, bins.get(i-1).getY()+20, 0.0, new ImageIcon("pics/parts/part"+i+".png"));
            newPart = new Part(null,null);
@@ -45,6 +46,7 @@ public class GRMGraphicPanel{
 	public void paint(GraphicsPanel panel, Graphics2D g) {
         paintBinsWithParts(panel, g);
         gbot.paintMe(panel,g);
+       
 	}
 	
 	public void paintBinsWithParts(GraphicsPanel panel,Graphics2D g){	
