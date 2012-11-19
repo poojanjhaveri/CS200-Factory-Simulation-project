@@ -9,7 +9,9 @@ import factory.general.Kit;
 import factory.general.Message;
 
 /**
- * @brief This class is the agent for the Kit Robot which gets empty kits from
+ * Agent for the Kit Robot.
+ * 
+ * This class is the agent for the Kit Robot which gets empty kits from
  * the conveyor and puts it on a palette This class is the agent for the Kit
  * Robot which gets empty kits from the conveyor and puts it on a palette. It
  * also moves unverified kits onto the verification palette and once verified,
@@ -17,6 +19,7 @@ import factory.general.Message;
  *
  * @author Alex Young
  * @version 1
+ * @brief Agent for the Kit Robot
  */
 public class KitRobotAgent extends Agent implements KitRobot {
 
@@ -29,18 +32,11 @@ public class KitRobotAgent extends Agent implements KitRobot {
 
     public KitRobotAgent(String name) {
         super(name);
-
         kitStand = new KitStand(this);
         requestedKitFromConveyor = false;
         kitRequestsFromPartsAgent = 0;
     }
 
-    // ********** MESSAGES *********
-    /**
-     * Message called by PartsRobotAgent when it needs an empty kit.
-     *
-     * @brief Message called by PartsRobotAgent when it needs an empty kit.
-     */
     @Override
     public void msgNeedEmptyKit() {
         print("msgNeedEmptyKit");
@@ -48,13 +44,6 @@ public class KitRobotAgent extends Agent implements KitRobot {
         stateChanged();
     }
 
-    /**
-     * Message called by ConveyorAgent to give kit.
-     *
-     * @param kit Kit given by conveyor
-     * @param loc Location of kit for animation purposes
-     * @brief Message called by ConveyorAgent to give kit.
-     */
     @Override
     public void msgHereIsEmptyKit(Kit kit) {
 //        print("msgHereIsEmptyKit");
@@ -63,12 +52,6 @@ public class KitRobotAgent extends Agent implements KitRobot {
         stateChanged();
     }
 
-    /**
-     * Message called by PartsAgent when kit is complete.
-     *
-     * @param kit Kit that is complete
-     * @brief Message called by PartsAgent when kit is complete.
-     */
     @Override
     public void msgKitIsFull(Kit kit) {
         print("msgKitIsFull: " + kit.name);
@@ -76,13 +59,6 @@ public class KitRobotAgent extends Agent implements KitRobot {
         stateChanged();
     }
 
-    /**
-     * Message called by camera agent after kit inspection.
-     *
-     * @brief Message called by camera agent after kit inspection.
-     * @param kit Kit being inspected
-     * @param result Result of inspection
-     */
     @Override
     public void msgKitInspected(boolean result) {
 //        print("msgKitInspected");
@@ -158,32 +134,15 @@ public class KitRobotAgent extends Agent implements KitRobot {
     }
 
     // ************ MISC ***********
-    /**
-     * Sets the conveyor agent
-     *
-     * @param agent Conveyor Agent to be set
-     * @brief Sets the conveyor agent
-     */
+
     public void setConveyor(Conveyor agent) {
         conveyor = agent;
     }
 
-    /**
-     * Sets the camera agent
-     *
-     * @param agent Camera agent to be set
-     * @brief Sets the camera agent
-     */
     public void setCamera(Camera agent) {
         camera = agent;
     }
 
-    /**
-     * Sets the parts agent
-     *
-     * @param agent Parts agent to be set
-     * @brief Sets the parts agent
-     */
     public void setPartsAgent(PartsInterface agent) {
         partsAgent = agent;
     }
@@ -195,13 +154,12 @@ public class KitRobotAgent extends Agent implements KitRobot {
         this.partsAgent = partsAgent;
     }
 
-    // DoXXX commands for 200 students' animation
     public void DoMoveKitFromConveyorTo0() {
         if (this.client != null) {
             this.client.sendMessage(Message.KAM_PICK_UP_EMPTY_KIT);
             this.fpm.sendMessage(Message.KAM_PICK_UP_EMPTY_KIT);
         } else {
-//            print("[ERROR] - Kit Assembly Manager is not online.");
+            print("[ERROR] - Kit Assembly Manager is not online.");
         }
 
     }
@@ -212,7 +170,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
             this.client.sendMessage(Message.KAM_PICK_UP_EMPTY_KIT_TO_ACTIVE);
             this.fpm.sendMessage(Message.KAM_PICK_UP_EMPTY_KIT_TO_ACTIVE);
         } else {
-//            print("[ERROR] - Kit Assembly Manager is not online.");
+            print("[ERROR] - Kit Assembly Manager is not online.");
         }
     }
 

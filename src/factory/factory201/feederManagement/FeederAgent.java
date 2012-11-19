@@ -334,7 +334,7 @@ public class FeederAgent extends Agent implements Feeder {
 			e.printStackTrace();
 		}
     */	
-        LMServer.getForAgentFeeder().setDiverterSwitchRight(feederNum);
+          LMServer.getForAgentFeeder().setDiverterSwitchRight(feederNum);
          
          LMServer.getForAgentGantryRobot().putBin(p.part.type,p.quantity,feederNum);
          
@@ -390,5 +390,16 @@ public class FeederAgent extends Agent implements Feeder {
        LMServer.getForAgentLane().setSwitchOn(rightLane.getIndex());
        LMServer.getForAgentFeeder().setFeedPartsSwitchOn(feederNum);
        LMServer.getForAgentFeeder().setSwitchOn(feederNum);
+    }
+    public boolean isConnected(){
+    if(LMServer.getForAgentFeeder()==null)
+    return false;
+    else 
+        return true;
+    }
+    
+    public boolean hasClient(){
+    if(client!=null)return true;
+    else return false;
     }
 }
