@@ -433,7 +433,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
             queuePanel.remove(queuePane);
             gridbag.setConstraints(queuePane,c);
             queuePanel.add(queuePane);
-            //basePanel.updateUI();
+            basePanel.updateUI();
         }
     }
     
