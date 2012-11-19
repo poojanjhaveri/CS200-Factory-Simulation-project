@@ -38,7 +38,7 @@ import java.util.Set;
  *
  */
 public class FactoryProductionManager extends Manager implements ActionListener {
-    private JPanel basePanel, topPanel,parentMidPanel, queuePanel, botPanel, 
+    private JPanel basePanel, topPanel,parentMidPanel, queuePanel, botPanel, mainPanel, 
             selPanel, leftPanel, midPanel, rightPanel, botBotPanel, slotsPanel;
     private JLabel selLabel, queueLabel, numLabel, consoleLabel, schedLabel, inProdLabel;
     private JComboBox selKit;
@@ -113,6 +113,26 @@ public class FactoryProductionManager extends Manager implements ActionListener 
     
     private void instantiateStaticComponents()
     {
+        
+        mainPanel = new JPanel()
+        {     
+            public void paintComponent(Graphics g) 
+            {
+                Image img = new ImageIcon("pics/background/mainbg.png").getImage();
+                Dimension size = new Dimension(1350, 700);
+                setPreferredSize(size);
+                setMinimumSize(size);
+                setMaximumSize(size);
+                setSize(size);
+                setLayout(null);
+                
+                g.drawImage(img, 0, 0, null);
+            } 
+        };
+        
+        mainPanel.setLayout(new BorderLayout());
+        setContentPane(mainPanel);
+        
         gridbag = new GridBagLayout();
         c = new GridBagConstraints();
         
@@ -159,6 +179,20 @@ public class FactoryProductionManager extends Manager implements ActionListener 
         botBotPanel = new JPanel(gridbag);
         selPanel = new JPanel(gridbag);
         slotsPanel = new JPanel(gridbag);
+        
+        tabs.setOpaque(false);
+        topPanel.setOpaque(false);
+        botPanel.setOpaque(false);
+        parentMidPanel.setOpaque(false);
+        queuePanel.setOpaque(false);
+        leftPanel.setOpaque(false);
+        midPanel.setOpaque(false);
+        rightPanel.setOpaque(false);
+        botBotPanel.setOpaque(false);
+        selPanel.setOpaque(false);
+        slotsPanel.setOpaque(false);
+        basePanel.setOpaque(false);
+        gfx.setOpaque(false);
     }
     
     private void panelLayout()
@@ -263,7 +297,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
         
         basePanel.setSize(1350, 700);
         tabs.addTab("Control GUI", basePanel);
-        tabs.addTab("Simulation", gfx);
+        //tabs.addTab("Simulation", gfx);
         gfx.repaint();
         
         selKit.addActionListener(this);
@@ -272,7 +306,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
         stop.addActionListener(this);
         reset.addActionListener(this);
         
-        add(tabs);
+        mainPanel.add(tabs, BorderLayout.CENTER);
     }
     
     @Override
