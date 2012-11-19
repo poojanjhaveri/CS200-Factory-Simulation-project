@@ -13,7 +13,7 @@ public class TimerThread implements Runnable{
 	
 	public TimerThread(GraphicsPanel gfx){
 		this.gfx = gfx;
-		timer = new Timer(30, new TimerAction());
+		timer = new Timer(20, new TimerAction());
 	}
 	
 	public void run(){}

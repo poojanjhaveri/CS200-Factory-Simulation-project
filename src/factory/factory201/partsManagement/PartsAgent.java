@@ -9,6 +9,7 @@ import factory.factory201.interfaces.Camera;
 import factory.factory201.interfaces.KitRobot;
 import factory.factory201.interfaces.NestInterface;
 import factory.factory201.interfaces.PartsInterface;
+import factory.general.BlueprintKits;
 import factory.general.Kit;
 import factory.general.Message;
 import factory.general.Part;
@@ -29,7 +30,8 @@ public class PartsAgent extends Agent implements PartsInterface {
     KitRobot kitrobot;
     Kit kit0;
     Kit kit1;
-    Kit kitInfo;
+    Kit kit0Info;
+    Kit kit1Info;
     NestInterface nest;
     Camera camera;
     int kits=0;
@@ -38,6 +40,7 @@ public class PartsAgent extends Agent implements PartsInterface {
     public List<Part> inventory, grips, kit0NeedsParts, kit1NeedsParts;
     public List<Kit> newKit;
     boolean emptyKitReady;
+    public List<Kit> kitsStarted;
 
     public PartsAgent(String name) {
         super(name); 
@@ -48,6 +51,7 @@ public class PartsAgent extends Agent implements PartsInterface {
         this.kit0NeedsParts = Collections.synchronizedList(new ArrayList<Part>());
         this.kit1NeedsParts = Collections.synchronizedList(new ArrayList<Part>());
         this.newKit = Collections.synchronizedList(new ArrayList<Kit>());
+        this.kitsStarted = Collections.synchronizedList(new ArrayList<Kit>());
     }
     
 //Messages 
@@ -58,6 +62,7 @@ public class PartsAgent extends Agent implements PartsInterface {
         print("PartsAgent got message for new kits");
         for (Kit k: newKits){
         newKit.add(k);}
+        DoGiveKitsInQueue(newKit);
         stateChanged();
     }
 
@@ -73,15 +78,14 @@ public class PartsAgent extends Agent implements PartsInterface {
     public void msgEmptyKitReady(Kit k) {
 
         if(k.standNum==Kit.StandNum.zero){
-            this.kit0 =k;
-            kitZero=true;
-            kit0.status = Kit.Status.ready;
-            
-            }
+            kit0=k;
+           kitZero=true;
+           
+          }
             else{
-            this.kit1=k;
+            kit1=k;
             kitOne=true;
-            kit1.status = Kit.Status.ready;
+            
             }
 
         print("got an empty kit for stand #" + k.standNum);
@@ -91,46 +95,44 @@ public class PartsAgent extends Agent implements PartsInterface {
 
     @Override
     public boolean pickAndExecuteAnAction() {
-       synchronized(newKit){
+       
         if (!newKit.isEmpty() && kits!=2) {
             kits++;
             startNewKit(newKit.remove(0));
             return true;
         } 
-    }
-        if (kit0!=null && kits!=0){
-            
-            if (kit0NeedsParts.isEmpty()) {
-                giveKitToKitAgent(kit0);
-                return true;
-            } 
-            
-            if (!inventory.isEmpty() && kit0.status == Kit.Status.ready) {
-            pickUpPart0(inventory.remove(0));
-            return true;
-            
-            }
-        
-               
-}
-        
-        if(kit1!=null && kits!=0){
-            
-            if (kit1NeedsParts.isEmpty()) {//or kit0.status==Kit.Status.full
-                giveKitToKitAgent(kit1);
-                return true;
-            }
-            
-            if (!inventory.isEmpty() && kit1.status == Kit.Status.ready) {
-                pickUpPart1(inventory.remove(0));
-                return true;
-             
-            }
-           
-            
-        }
+    
        
-
+       if(kitZero && !kitsStarted.isEmpty()){
+           setKit0(kitsStarted.remove(0));
+           kitZero=false;
+           return true;
+       }
+       if(kitOne && !kitsStarted.isEmpty()){
+           setKit1(kitsStarted.remove(0));
+           kitOne=false;
+           return true;
+       }
+       
+       if(!kit0NeedsParts.isEmpty()){
+          if (!inventory.isEmpty()) {
+                for(Part p: kit0NeedsParts){
+                if(inventory.get(0).type==p.type){
+                   pickUpPart0(inventory.remove(0));
+            return true;
+                }}
+            }
+      }
+            
+       if(!kit1NeedsParts.isEmpty()){
+            if (!inventory.isEmpty()) {
+                for(Part p: kit1NeedsParts){
+                    if(inventory.get(0).type==p.type){
+                        pickUpPart1(inventory.remove(0));
+                    return true;
+                }}
+          }
+            }
        return false;
     }
 //Actions
@@ -139,18 +141,23 @@ public class PartsAgent extends Agent implements PartsInterface {
         print("giving kitrobot complete kit #" + k.standNum);
         print("KIT0NEEDSPARTS SIZE: [" + kit0NeedsParts.size()+ "]");
         print("KIT1NEEDSPARTS SIZE: [" + kit1NeedsParts.size() + "]");
+        print("INVENTORY SIZE: [" + inventory.size() + "]");
         kits--;
         if(k.standNum==Kit.StandNum.zero){
-            kitZero = false;
-            kit0=null;
+            kit0Info = null;
+            //kit0=null;
         }
         else{
-            kitOne = false;
-            kit1=null;
+            kit1Info = null;
+            //kit1 = null;
         }
-            
+            print("KIT SIZE IS "+ k.parts.size());
         kitrobot.msgKitIsFull(k);
+<<<<<<< HEAD
         print("KIT SIZE IS " + k.parts.size());
+=======
+        print("KIT SIZE IS "+ k.parts.size());
+>>>>>>> 5390a6b60cdb05fc252479b8748d2e818f9544ae
         stateChanged();
     }
 
@@ -158,35 +165,17 @@ public class PartsAgent extends Agent implements PartsInterface {
        
         DoGiveKitsInAction(k);
         DoGiveKitsInQueue(newKit);
-        this.kitInfo = k;
+        
         print("New kit being started");
         camera.msgHereIsKitInfo(k);
-    	//kitNeedsParts.clear();
-   
-        if(kit0==null){
-        kitrobot.msgNeedEmptyKit();
-    	
-        for(int i=0; i<k.parts.size(); i++){
-    		kit0NeedsParts.add(k.getPart(i));
-    	}
-        this.kit0 = k;
+        kitsStarted.add(k);
        
-    	for (int i = 0; i < k.getSize(); i++) {
-            nest.msgNeedPart(k.getPart(i));
-    	}
-    }
-        else{
-        kitrobot.msgNeedEmptyKit();
+        for (int i = 0; i < k.getSize(); i++) {
+            nest.msgNeedPart(k.getPart(i));}
+        
+        kitrobot.msgNeedEmptyKit();//change to put empty kits in list when recieve the message back
     	
-        for(int i=0; i<k.parts.size(); i++){
-    		kit1NeedsParts.add(k.getPart(i));
-    	}
-        this.kit1 = k;
-    	for (int i = 0; i < k.getSize(); i++) {
-            nest.msgNeedPart(k.getPart(i));
-    	}}
-      
-    	stateChanged();
+        stateChanged();
 
     }
     
@@ -201,11 +190,12 @@ public class PartsAgent extends Agent implements PartsInterface {
             }}
        
         DoPickUpPart(p.getNestNum());
-        //if (kit0NeedsParts.isEmpty()){
-          //  kit0.status = Kit.Status.full;}
+        
         if (grips.size() == 4 || kit0NeedsParts.isEmpty()) {
         putPartsInKit(0);
         }
+        if (kit0NeedsParts.isEmpty()){
+            giveKitToKitAgent(kit0);}
         stateChanged();
     }
     
@@ -214,7 +204,11 @@ public class PartsAgent extends Agent implements PartsInterface {
         
         for (Part part: kit1NeedsParts){
             if (part.type == p.type){
+<<<<<<< HEAD
                 kit1.parts.add(p);
+=======
+              kit1.parts.add(p);
+>>>>>>> 5390a6b60cdb05fc252479b8748d2e818f9544ae
               kit1NeedsParts.remove(part);
            //   print("REMOVING PART FROM KIT1NEEDSPARTS NEW SIZE IS " +  kit1NeedsParts.size());
                break;
@@ -222,14 +216,36 @@ public class PartsAgent extends Agent implements PartsInterface {
       //  print("picking up part " + p.getString());
         
         DoPickUpPart(p.getNestNum());
-       // if (kit1NeedsParts.isEmpty()){
-         //   kit1.status = Kit.Status.full;}
+       
         if (grips.size() == 4 || kit1NeedsParts.isEmpty()) {
         putPartsInKit(1);
         }
+        if (kit1NeedsParts.isEmpty()){
+            giveKitToKitAgent(kit1);}
         stateChanged();
     }
 
+    private void setKit0(Kit k){
+        kit0Info=k;
+        print("kit0 size ["+ k.parts.size() + "]");
+          // kit0=kit0Info;
+           kit0.status = Kit.Status.ready;
+           kit0.standNum = Kit.StandNum.zero;
+           for(int i=0; i<kit0Info.parts.size(); i++){
+    		kit0NeedsParts.add(kit0Info.getPart(i));
+    	}
+    }
+    
+    private void setKit1(Kit k){
+        print("kit1 size ["+ k.parts.size() + "]");
+     kit1Info=k;
+           // kit1=kit1Info;
+            kit1.status = Kit.Status.ready;
+            kit1.standNum = Kit.StandNum.one;
+            for(int i=0; i<kit1Info.parts.size(); i++){
+    		kit1NeedsParts.add(kit1Info.getPart(i));
+    	}   
+    }
 
     private void putPartsInKit(int kitNum) {
         for (Part p : grips) {
@@ -242,7 +258,7 @@ public class PartsAgent extends Agent implements PartsInterface {
         grips.clear();
         DoPutInKit(kitNum);
       
-       // stateChanged();
+        stateChanged();
     }
     
     public void setCamera(Camera c){
@@ -300,10 +316,27 @@ public class PartsAgent extends Agent implements PartsInterface {
         }}
     
     public void DoGiveKitsInAction(Kit k){
-        
+
+
+        if (this.client != null) {
+
+            this.client.sendMessage(Message.KIT_IN_PRODUCTION+":"+k.getName());
         }
-    
-    public void DoGiveKitsInQueue(List<Kit> kits){
+        else{
+            print("[ERROR] - Kit Assembly Manager is not online.");
+        }
         
     }
+    
+    public void DoGiveKitsInQueue(List<Kit> kits){
+
+        if (this.client != null) {
+        BlueprintKits adhoc = new BlueprintKits((ArrayList)kits);
+        this.client.sendMessage(Message.GIVE_KITS_IN_QUEUE+":"+adhoc.serialize());
+
+    }
+        else{
+           print("[ERROR] - Kit Assembly Manager is not online."); 
+        }
+}
 }
