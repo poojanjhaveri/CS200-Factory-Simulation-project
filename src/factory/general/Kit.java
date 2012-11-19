@@ -82,7 +82,17 @@ public class Kit implements Serializable{
     public void setParts(ArrayList<Part> p) {
         this.parts = p;
     }
-
+public Kit cloneSelf()
+{
+   Kit n = new Kit(this.getName(),this.getDescription(),this.getNumber());
+   ArrayList<Part> p = new ArrayList<Part>();
+   for(int i = 0; i != n.getSize(); i++)
+   {
+       p.add(n.getPart(i).clone());
+   }
+   n.setParts(p);
+   return n;
+}
     /**
     @brief string serializes a kit
      */
