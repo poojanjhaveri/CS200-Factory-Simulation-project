@@ -267,7 +267,7 @@ public class Server {
             kits.add(kit);
             kits.add(kit);
             kits.add(kit);
-            
+            kits.get(0).debug();
             // TODO: *Put this wherever the FPM sends the signal to create (generate) kits
         //    conveyorAgent.generateKit(10); // * This generates 10 new kits, among other things if you pass string... *
 
