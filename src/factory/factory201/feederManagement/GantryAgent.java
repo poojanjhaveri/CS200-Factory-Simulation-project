@@ -272,7 +272,7 @@ public class GantryAgent extends Agent implements Gantry {
      this.client.sendMessage(Message.MOVE_GANTRY_TO_BIN+":"+b.index);
        
          try {
-			Thread.sleep(9000);
+			Thread.sleep(6000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -283,7 +283,7 @@ public class GantryAgent extends Agent implements Gantry {
     	//animation.goToFeeder(f.index-1);
     	
     	try {
-			Thread.sleep(7000);
+			Thread.sleep(6000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -302,7 +302,7 @@ public class GantryAgent extends Agent implements Gantry {
     
         
          try {
-			Thread.sleep(7000);
+			Thread.sleep(6000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
