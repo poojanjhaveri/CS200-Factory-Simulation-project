@@ -86,8 +86,8 @@ public class KitManager extends Manager  implements ActionListener {
             this.update();  
             prepareMainPane();
             
-	//	this.mcon.out(Message.PULL_PARTS_LIST);
-	    this.sendToServer(Message.IDENTIFY_KITMANAGER);
+            this.mcon.out(Message.PULL_PARTS_LIST);
+            this.sendToServer(Message.IDENTIFY_KITMANAGER);
          }
 	
 	
@@ -455,13 +455,13 @@ public class KitManager extends Manager  implements ActionListener {
      */
         public void update() {
             
-            this.mcon.out(Message.PULL_PARTS_LIST);
-            System.out.println("Updated kits list from the server");
+            this.sendToServer(Message.PULL_PARTS_LIST);
+            System.out.println("Pulling parts list from the server");
                 
 
-            this.mcon.out(Message.PULL_KITS_LIST);
-            System.out.println("Updates kits list from the server");
-            updateComboBox();
+            this.sendToServer(Message.PULL_KITS_LIST);
+            System.out.println("Pulling kits list from the server");
+            
             
 
          }
@@ -521,7 +521,7 @@ public class KitManager extends Manager  implements ActionListener {
             }
             if(finalpartlist.size()<=3)
             {
-                JOptionPane.showMessageDialog(this, "Select atleast 4 parts");
+                JOptionPane.showMessageDialog(this, "Select at least 4 parts");
             }
             
             
@@ -608,15 +608,17 @@ public class KitManager extends Manager  implements ActionListener {
 	       KitManager.bpkit.recreate(this.grabParameter(msg));
 	       System.out.println("GRABBED NEW KITS LIST FROM SERVER!: "+msg);
 		   KitManager.bpkit.debug();
+           updateComboBox();
                 //   prepareMainPane();
-	   }
+	   }else
         if(msg.contains(Message.PUSH_PARTS_LIST))
         {
             KitManager.bppart.recreate(this.grabParameter(msg));
             System.out.println("GRABBED NEW PARTS LIST FROM SERVER!" + msg);
             KitManager.bppart.debug();
+            updateComboBox();
           //  prepareMainPane();
-        }
+        }else System.out.println("Obtained unknown message " + msg);
     }        
         
          /**

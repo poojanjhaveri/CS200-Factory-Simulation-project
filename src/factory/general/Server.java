@@ -47,9 +47,9 @@ public class Server {
 
     // Fields just for "AgentMain" stuff (Agent preparation)
     // If true, print statements for this 201 person are on
-    private static final boolean PATRICK = true;
-    private static final boolean KEVIN = true;
-    private static final boolean ALEX = true;
+    private static final boolean PATRICK = false;
+    private static final boolean KEVIN = false;
+    private static final boolean ALEX = false;
 
     
     private static final int FEEDER = 4;
