@@ -1,7 +1,9 @@
 package factory.factory200.partsManager;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
@@ -87,11 +89,26 @@ public class PartsManager extends Manager implements ActionListener {
 	private JLabel lblSelectedImage;
 	private JComboBox cbImageFileName2,cbImageFileName;
 	private JLabel lblSelectedImage2;
-
 	private JLabel lblSelectedImage3;
+	private boolean noPartSelected;
 
 	private void prepareContentPane() {
-		contentPane = new JPanel();
+		contentPane = new JPanel()
+		  {     
+	            public void paintComponent(Graphics g) 
+	            {
+	                Image img = new ImageIcon("pics/background/mainbg.png").getImage();
+	               // Dimension size = new Dimension(600, 400);
+	               Dimension size= getSize();
+	                setPreferredSize(size);
+	                setMinimumSize(size);
+	                setMaximumSize(size);
+	                setSize(size);
+	                getContentPane().setLayout(null);
+	                
+	                g.drawImage(img, 0, 0, null);
+	            } 
+	        };
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
@@ -100,29 +117,33 @@ public class PartsManager extends Manager implements ActionListener {
 		contentPane.add(lblPartsManager, BorderLayout.NORTH);
 
 		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-
-
+		tabbedPane.setOpaque(false);
 
 		contentPane.add(tabbedPane, BorderLayout.CENTER);
 
 		pnlManageParts = new JPanel();
 		tabbedPane.addTab("Manage Parts", null, pnlManageParts, null);
 		pnlManageParts.setLayout(new BoxLayout(pnlManageParts, BoxLayout.Y_AXIS));
+		pnlManageParts.setOpaque(false);
 
 		comboBoxPanel = new JPanel();
 		pnlManageParts.add(comboBoxPanel);
 		comboBoxPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		comboBoxPanel.setOpaque(false);
 
+		
 		partComboBox = new JComboBox();
 		partComboBox.addActionListener(this);
 		comboBoxPanel.add(partComboBox);
 
 		managePartsImagePanel = new JPanel();
+		managePartsImagePanel.setOpaque(false);
 		lblSelectedImage= new JLabel();
 		managePartsImagePanel.add(lblSelectedImage);
 		pnlManageParts.add(managePartsImagePanel);  
 
 		managePartsButtonPanel = new JPanel();
+		managePartsButtonPanel.setOpaque(false);
 		pnlManageParts.add(managePartsButtonPanel);
 
 		tabbedPane.addChangeListener(new ChangeListener() {
@@ -140,14 +161,17 @@ public class PartsManager extends Manager implements ActionListener {
 		btnDelete.addActionListener(this);
 
 		pnlSelectedPart = new JPanel();
+		pnlSelectedPart.setOpaque(false);
 		tabbedPane.addTab("Selected Part", null, pnlSelectedPart, null);
 		pnlSelectedPart.setLayout(new BoxLayout(pnlSelectedPart, BoxLayout.X_AXIS));
 
 		pnlForm = new JPanel();
+		pnlForm.setOpaque(false);
 		pnlSelectedPart.add(pnlForm);
 		pnlForm.setLayout(new BoxLayout(pnlForm, BoxLayout.Y_AXIS));
 
 		pnlPartName = new JPanel();
+		pnlPartName.setOpaque(false);
 		pnlForm.add(pnlPartName);
 
 		lblPartName = new JLabel("Part name");
@@ -158,6 +182,7 @@ public class PartsManager extends Manager implements ActionListener {
 		tfPartName.setColumns(10);
 
 		pnlImageFileName = new JPanel();
+		pnlImageFileName.setOpaque(false);
 		pnlForm.add(pnlImageFileName);
 
 		lblImageFileName = new JLabel("Image file name");
@@ -173,6 +198,7 @@ public class PartsManager extends Manager implements ActionListener {
 		pnlImageFileName.add(cbImageFileName);
 
 		pnlDescription = new JPanel();
+		pnlDescription.setOpaque(false);
 		pnlForm.add(pnlDescription);
 
 		lblDescription = new JLabel("Description");
@@ -183,6 +209,7 @@ public class PartsManager extends Manager implements ActionListener {
 		tfDescription.setColumns(10);
 
 		pnlNonform = new JPanel();
+		pnlNonform.setOpaque(false);
 		pnlSelectedPart.add(pnlNonform);
 		pnlNonform.setLayout(new BoxLayout(pnlNonform, BoxLayout.Y_AXIS));
 
@@ -191,10 +218,12 @@ public class PartsManager extends Manager implements ActionListener {
 		pnlNonform.add(lblPartNumber);
 
 		pnlImage = new JPanel();
+		pnlImage.setOpaque(false);
 		pnlImage.setLayout(new BorderLayout());
 		pnlNonform.add(pnlImage);
 
 		pnlButton = new JPanel();
+		pnlButton.setOpaque(false);
 		pnlNonform.add(pnlButton);
 		pnlButton.setLayout(new BoxLayout(pnlButton, BoxLayout.X_AXIS));
 
@@ -203,14 +232,17 @@ public class PartsManager extends Manager implements ActionListener {
 		btnUpdate.addActionListener(this);
 
 		pnlNewPart = new JPanel();
+		pnlNewPart.setOpaque(false);
 		tabbedPane.addTab("New Part", null, pnlNewPart, null);
 		pnlNewPart.setLayout(new BoxLayout(pnlNewPart, BoxLayout.X_AXIS));
 
 		pnlForm2 = new JPanel();
+		pnlForm2.setOpaque(false);
 		pnlNewPart.add(pnlForm2);
 		pnlForm2.setLayout(new BoxLayout(pnlForm2, BoxLayout.Y_AXIS));
 
 		pnlPartName2 = new JPanel();
+		pnlPartName2.setOpaque(false);
 		pnlForm2.add(pnlPartName2);
 
 		lblPartName2 = new JLabel("Part name:");
@@ -221,6 +253,7 @@ public class PartsManager extends Manager implements ActionListener {
 		tfPartName2.setColumns(10);
 
 		pnlImageFileName2 = new JPanel();
+		pnlImageFileName2.setOpaque(false);
 		pnlForm2.add(pnlImageFileName2);
 
 		lblImageFileName2 = new JLabel("Image File Name");
@@ -236,6 +269,7 @@ public class PartsManager extends Manager implements ActionListener {
 		
 
 		pnlDescription2 = new JPanel();
+		pnlDescription2.setOpaque(false);
 		pnlForm2.add(pnlDescription2);
 
 		lblDescription2 = new JLabel("Description");
@@ -246,14 +280,17 @@ public class PartsManager extends Manager implements ActionListener {
 		tfDescription2.setColumns(10);
 
 		pnlNonform2 = new JPanel();
+		pnlNonform2.setOpaque(false);
 		pnlNewPart.add(pnlNonform2);
 		pnlNonform2.setLayout(new BoxLayout(pnlNonform2, BoxLayout.Y_AXIS));
 
 		pnlImage2 = new JPanel();
+		pnlImage2.setOpaque(false);
 		pnlImage2.setLayout(new BorderLayout());
 		pnlNonform2.add(pnlImage2);
 
 		pnlButton2 = new JPanel();
+		pnlButton2.setOpaque(false);
 		pnlNonform2.add(pnlButton2);
 		pnlButton2.setLayout(new BoxLayout(pnlButton2, BoxLayout.X_AXIS));
 
@@ -265,9 +302,12 @@ public class PartsManager extends Manager implements ActionListener {
 		updateManagePartsImagePanel();
 		populateFileComboBoxes();
 		checkToDisableTabs();
+		partComboBox.addItem("-No Part Selected-");
+		noPartSelected=true;
 		
 		if(bp.getSize()==0)
 			tabbedPane.setSelectedIndex(NEW_PART_TAB_NUM);
+		
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -291,29 +331,38 @@ public class PartsManager extends Manager implements ActionListener {
 			updateNewPartsImagePanel();
 		} 
 		
+		checkToDisableTabs();
+		this.repaint();
 	}
 
-	// later - add bg
-//	public void paint(Graphics g) {
-//		Graphics2D g2 = (Graphics2D) g;
-//		Image img = new ImageIcon("pics/background/mainbg.png").getImage();
-//        g2.drawImage(img, 0, 0, null);
-//	}
+
 	
 	/**
 	 * @brief returns the current part
 	 * @return the current part
 	 */
 	private Part getCurrentPart() {
+		
+		int n=partComboBox.getSelectedIndex();
+		//temp code
+		System.out.println("Selected Index: "+n);
 		String s= (String) partComboBox.getSelectedItem();
-		Part temp= new Part(null,null);
-		for (int i=0;i<bp.getSize();i++) {
-			if (bp.getPartAt(i).getName().equals(s)) {
-				temp=bp.getPartAt(i);
-				break;
+		System.out.println("Selected Item: "+s);
+		if (n!=0){
+			Part temp= new Part(null,null);
+			for (int i=0;i<bp.getSize();i++) {
+				if (bp.getPartAt(i).getName().equals(s)) {
+					temp=bp.getPartAt(i);
+					break;
+				}
 			}
+			noPartSelected=false;
+			return temp;
+		}else{
+			Part temp=new Part(null,null);
+			noPartSelected=true;
+			return temp;
 		}
-		return temp;
 	}
 
 	private void updateManagePartsImagePanel(){
@@ -379,26 +428,41 @@ public class PartsManager extends Manager implements ActionListener {
 		String name, file, d;
 		Part temp;
 
+		try{
 		name=tfPartName2.getText();
+		if (name.equals(""))
+			throw new Exception();
+		}catch(Exception e){
+			//make  tfPartName2 become pink
+			tfPartName2.setBackground(Color.pink);
+			return;
+		}
 		file=(String)cbImageFileName2.getSelectedItem();
 		d=tfDescription2.getText();
 
-
-		temp=new Part(name, d, file);
-
-		bp.add(temp);
-
-		tfPartName2.setText("");
-		tfDescription2.setText("");
-		btnCreate.setSelected(false);//not working
-
-		/*added by Roy 11/12/12*/
-		//this will send the new part to the server
-		this.sendToServer(Message.DEFINE_NEW_PART+":"+temp.serialize());
-		System.out.println("Sent new part definition: "+temp.serialize());
-		/*end*/
 		
-		checkToDisableTabs();
+			temp=new Part(name, d, file);
+			//make  tfPartName2 become white
+			tfPartName2.setBackground(Color.white);
+			
+
+
+			bp.add(temp);
+
+			tfPartName2.setText("");
+			tfDescription2.setText("");
+			btnCreate.setSelected(false);//not working
+
+			/*added by Roy 11/12/12*/
+			//this will send the new part to the server
+			this.sendToServer(Message.DEFINE_NEW_PART+":"+temp.serialize());
+			System.out.println("Sent new part definition: "+temp.serialize());
+			/*end*/
+		
+			checkToDisableTabs();
+			
+			
+
 	}
 
 	/**
@@ -408,23 +472,25 @@ public class PartsManager extends Manager implements ActionListener {
 	 *
 	 */
 	public void updatePart() {
-		deletePart(getCurrentPart()); //delete current part
+		if(!noPartSelected){
+			deletePart(getCurrentPart()); //delete current part
 
-		//make a new part
-		String name, file, d;
-		Part temp;
-		name=tfPartName.getText();
-		file=(String)cbImageFileName.getSelectedItem();
-		d=tfDescription.getText();
+			//make a new part
+			String name, file, d;
+			Part temp;
+			name=tfPartName.getText();
+			file=(String)cbImageFileName.getSelectedItem();
+			d=tfDescription.getText();
 
-		temp=new Part(name, d, file);
+			temp=new Part(name, d, file);
 
-		bp.add(temp);
-		btnUpdate.setSelected(false);//not working
+			bp.add(temp);
+			btnUpdate.setSelected(false);//not working
 
-		//Since we're making a new part 
-		this.sendToServer(Message.DEFINE_NEW_PART+":"+temp.serialize());
-		System.out.println("Sent new part definition: "+temp.serialize());
+			//Since we're making a new part 
+			this.sendToServer(Message.DEFINE_NEW_PART+":"+temp.serialize());
+			System.out.println("Sent new part definition: "+temp.serialize());
+		}
 	}
 
 	/**
@@ -432,14 +498,15 @@ public class PartsManager extends Manager implements ActionListener {
 	 * the server
 	 */
 	public void deletePart(Part pt) {
-		String s = Message.UNDEFINE_PART+":"+pt.getNumber();
-		System.out.println("sending message " + s);
-		this.sendToServer(s);
-		bp.removePart(pt);
-		updatePartComboBox();
-		updateManagePartsImagePanel();
-		this.repaint();
-
+		if (!noPartSelected){
+			String s = Message.UNDEFINE_PART+":"+pt.getNumber();
+			System.out.println("sending message " + s);
+			this.sendToServer(s);
+			bp.removePart(pt);
+			updatePartComboBox();
+			updateManagePartsImagePanel();
+			this.repaint();
+			}
 		checkToDisableTabs();
 	}
 
@@ -481,6 +548,7 @@ public class PartsManager extends Manager implements ActionListener {
 		else if (c.equals(pnlNewPart)){
 			updateNewPartsImagePanel();
 		}
+		checkToDisableTabs();
 	}
 
 
@@ -491,6 +559,7 @@ public class PartsManager extends Manager implements ActionListener {
 	private void updatePartComboBox(){
 		managePartsImagePanel.removeAll();
 		partComboBox.removeAllItems(); 
+		partComboBox.addItem("-No Part Selected-");
 		for(int i=0;i<bp.getSize();i++){
 			partComboBox.addItem(bp.getPartAt(i).getName());     
 
@@ -522,7 +591,7 @@ public class PartsManager extends Manager implements ActionListener {
 
 	    public boolean accept(File file) {
 	        if(file != null) {
-	            if(file.isDirectory())
+	            if(file.isDirectory()||file.toString().equals("pics/parts/no.png"))
 	                return false;
 	            String extension = getExtension(file);
 	            if(extension != null && isSupported(extension))
@@ -550,7 +619,7 @@ public class PartsManager extends Manager implements ActionListener {
 	
 	
 	private void checkToDisableTabs(){
-		if (bp.getSize()==0)
+		if (noPartSelected)
 			tabbedPane.setEnabledAt(1, false);
 		else 
 			tabbedPane.setEnabledAt(1, true);
@@ -562,12 +631,11 @@ public class PartsManager extends Manager implements ActionListener {
 /*
  * TODO
  * 
- * -make sure part name is not null 
+ * -disable selected tab only when no parts selected
  * -display part description in pnlManageParts (by adding a new JPanel and JLabel)
  * -change part description to textArea instead of textfield
  * 
- * -Add christmas bg
- *	-fix code comments/ gardening
+ * -fix code comments/ gardening
  * -add test cases to wiki 
  *
  * QUESTIONS
