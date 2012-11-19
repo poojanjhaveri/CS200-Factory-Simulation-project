@@ -38,7 +38,7 @@ public class PartsAgent extends Agent implements PartsInterface {
     boolean kitZero = false;
     boolean kitOne = false;
     public List<Part> inventory, grips, kit0NeedsParts, kit1NeedsParts;
-    public List<Kit> newKit;
+    public ArrayList<Kit> newKit;
     boolean emptyKitReady;
     public List<Kit> kitsStarted;
 
@@ -50,7 +50,7 @@ public class PartsAgent extends Agent implements PartsInterface {
         this.grips = Collections.synchronizedList(new ArrayList<Part>());
         this.kit0NeedsParts = Collections.synchronizedList(new ArrayList<Part>());
         this.kit1NeedsParts = Collections.synchronizedList(new ArrayList<Part>());
-        this.newKit = Collections.synchronizedList(new ArrayList<Kit>());
+        this.newKit = (new ArrayList<Kit>());
         this.kitsStarted = Collections.synchronizedList(new ArrayList<Kit>());
     }
     
@@ -58,12 +58,12 @@ public class PartsAgent extends Agent implements PartsInterface {
 
     // message from server
     //@Override
-    @Override
-    public void msgHereIsKit(List<Kit> newKits) {
+    //@Override
+    public void msgHereIsKit(ArrayList<Kit> newKits) {
         print("PartsAgent got message for new kits");
         for (Kit k: newKits){
         newKit.add(k);}
-        DoGiveKitsInQueue(newKit);
+        //DoGiveKitsInQueue(newKit);
         stateChanged();
     }
 
@@ -161,7 +161,7 @@ public class PartsAgent extends Agent implements PartsInterface {
     private void startNewKit(Kit k) {
        
         DoGiveKitsInAction(k);
-        DoGiveKitsInQueue(newKit);
+       // DoGiveKitsInQueue(newKit);
         
         print("New kit being started");
         camera.msgHereIsKitInfo(k);
@@ -322,11 +322,11 @@ public class PartsAgent extends Agent implements PartsInterface {
         
     
     
-    public void DoGiveKitsInQueue(List<Kit> kits){
+    public void DoGiveKitsInQueue(ArrayList<Kit> kits1){
 
         if (this.client != null) {
-//        BlueprintKits adhoc = new BlueprintKits((ArrayList)kits);
- //       this.client.sendMessage(Message.GIVE_KITS_IN_QUEUE+":"+adhoc.serialize());
+        BlueprintKits adhoc = new BlueprintKits(kits1);
+        this.client.sendMessage(Message.GIVE_KITS_IN_QUEUE+":"+adhoc.serialize());
 
     }
         else{

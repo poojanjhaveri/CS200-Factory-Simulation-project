@@ -29,12 +29,12 @@ public class NestAgent extends Agent implements NestInterface {
     Lane lanes[] = {lane0, lane1, lane2, lane3, lane4, lane5, lane6, lane7};
     
     public List<Nest> myNests;
-    private List<Part> needParts;
+    public List<Part> needParts;
     private List<Nest> nests;
     PartsInterface partsagent;
     Camera camera;
     private int nestNumber;
-    private List<Part> requests;
+    public List<Part> requests;
 
     @Override
     public void msgHereAreParts(List<Part> parts) {

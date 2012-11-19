@@ -99,7 +99,7 @@ public void testfirstTest(){
     nest.msgNeedPart(new Part(7));
     nest.msgNeedPart(new Part(8));*/
     
-    assertTrue("Nest 0 should have status of needPart", nest.myNests.get(0).status == Nest.Status.needPart);
+    assertTrue("Nest 0 should have status of needPart", nest.requests.size()==1);
     
     nest.pickAndExecuteAnAction();
     assertTrue("Nest 0 status should be gettingPart", nest.myNests.get(0).status == Nest.Status.gettingPart);

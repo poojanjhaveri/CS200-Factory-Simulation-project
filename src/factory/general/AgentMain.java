@@ -141,7 +141,7 @@ public class AgentMain {
         conveyorAgent.generateKit(10);
 
         // Officially start the agent interaction sequence!
-        List<Kit> kits = new ArrayList<Kit>();
+        ArrayList<Kit> kits = new ArrayList<Kit>();
         kits.add(kit);
         kits.add(kit);
         kits.add(kit);
