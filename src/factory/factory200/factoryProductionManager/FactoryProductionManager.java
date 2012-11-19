@@ -297,7 +297,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
         
         basePanel.setSize(1350, 700);
         tabs.addTab("Control GUI", basePanel);
-        //tabs.addTab("Simulation", gfx);
+        tabs.addTab("Simulation", gfx);
         gfx.repaint();
         
         selKit.addActionListener(this);
