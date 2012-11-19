@@ -37,6 +37,9 @@ public class GUIBin{
 		
 	}
 		    
+	public void setFullStatus(Boolean status){
+		full=status;
+	}
 	public void setPartToNull(){
 		this.part=null;
 	}

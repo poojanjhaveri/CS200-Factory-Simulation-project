@@ -237,7 +237,7 @@ public class GantryAgent extends Agent implements Gantry {
     	//print("Sending message to feeder");
         print("sending message here are parts to " + f.index);
 
-    	doSupplyPart(b,f);
+    	//doSupplyPart(b,f);
 
 
         f.feeder.msgHereAreParts(parts);
@@ -255,12 +255,12 @@ public class GantryAgent extends Agent implements Gantry {
      print("about to pick up bin");
   	//animation.ganbot.moveToBin(b.index);
     
-     if(this.client == null)
+     while(this.client == null)
          {
          //print("[ERROR] - Gantry Robot Manager is not online.");
          //return;
             try {
-			Thread.sleep(7000);
+			Thread.sleep(1000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -268,7 +268,8 @@ public class GantryAgent extends Agent implements Gantry {
          
          }
      
-         this.client.sendMessage(Message.MOVE_GANTRY_TO_BIN+":"+b.index);
+         
+     this.client.sendMessage(Message.MOVE_GANTRY_TO_BIN+":"+b.index);
        
          try {
 			Thread.sleep(5000);
