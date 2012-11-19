@@ -3,6 +3,7 @@ package factory.factory200.factoryProductionManager.GantryRobotManager;
 import factory.factory200.factoryProductionManager.*;
 import factory.factory200.gantryRobotManager.PurgeStation;
 import factory.general.GUIPart;
+import factory.factory200.gantryRobotManager.*;
 import factory.general.Part;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -11,7 +12,6 @@ import java.util.*;
 import javax.swing.*;
 import javax.swing.Timer;
 
-import factory.factory200.gantryRobotManager.*;
 
 public class GRMGraphicPanel{
     
