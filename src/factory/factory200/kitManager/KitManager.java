@@ -972,7 +972,11 @@ public class KitManager extends Manager  implements ActionListener {
                  jbtnlist.add(ub6);
                  jbtnlist.add(ub7);
                  
+<<<<<<< HEAD
+                 /*
+=======
                  
+>>>>>>> 4c0bae77a2a31606c52a6db1a8c02c7477faeafa
             ub0.setIcon(new ImageIcon("pics/parts/no.png"));
             ub1.setIcon(new ImageIcon("pics/parts/no.png"));
             ub2.setIcon(new ImageIcon("pics/parts/no.png"));
@@ -981,7 +985,11 @@ public class KitManager extends Manager  implements ActionListener {
             ub5.setIcon(new ImageIcon("pics/parts/no.png"));
             ub6.setIcon(new ImageIcon("pics/parts/no.png"));
             ub7.setIcon(new ImageIcon("pics/parts/no.png"));
+<<<<<<< HEAD
+               */  
+=======
                 
+>>>>>>> 4c0bae77a2a31606c52a6db1a8c02c7477faeafa
                  
                 
                  Integer p=(bpkit.getKitAt(cb.getSelectedIndex())).getSize();
