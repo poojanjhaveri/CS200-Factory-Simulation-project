@@ -45,9 +45,9 @@ public class Server {
 
     // Fields just for "AgentMain" stuff (Agent preparation)
     // If true, print statements for this 201 person are on
-    private static final boolean PATRICK = false;
-    private static final boolean KEVIN = false;
-    private static final boolean ALEX = false;
+    private static final boolean PATRICK = true;
+    private static final boolean KEVIN = true;
+    private static final boolean ALEX = true;
 
     
     private static final int FEEDER = 4;
@@ -134,7 +134,7 @@ public class Server {
 		}
 		
 		//try{  Thread.sleep(1000);  } catch(Exception e){}   // For Testing By Dongyoung
-		//prepareAllAgents(); // Prepare all agents; based on AgentMain.java      // For Testing By Dongyoung
+		prepareAllAgents(); // Prepare all agents; based on AgentMain.java      // For Testing By Dongyoung
 	}
 
 	private void initializeManagers() { // Something by Dongyoung...?  Dongyoung : Yeah
