@@ -6,6 +6,7 @@ import java.awt.EventQueue;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -81,6 +82,10 @@ public class PartsManager extends Manager implements ActionListener {
 	private JPanel pnlButton2;
 	private JButton btnCreate;
 	private JLabel lblSelectedImage;
+	private JComboBox cbImageFileName2,cbImageFileName;
+	private JLabel lblSelectedImage2;
+
+	private JLabel lblSelectedImage3;
 
 	private void prepareContentPane() {
 		contentPane = new JPanel();
@@ -155,9 +160,14 @@ public class PartsManager extends Manager implements ActionListener {
 		lblImageFileName = new JLabel("Image file name");
 		pnlImageFileName.add(lblImageFileName);
 
-		tfImageFileName = new JTextField();
-		pnlImageFileName.add(tfImageFileName);
-		tfImageFileName.setColumns(10);
+		//tfImageFileName = new JTextField();
+		//pnlImageFileName.add(tfImageFileName);
+		//tfImageFileName.setColumns(10);
+		
+
+		cbImageFileName= new JComboBox();
+		cbImageFileName.addActionListener(this);
+		pnlImageFileName.add(cbImageFileName);
 
 		pnlDescription = new JPanel();
 		pnlForm.add(pnlDescription);
@@ -178,6 +188,7 @@ public class PartsManager extends Manager implements ActionListener {
 		pnlNonform.add(lblPartNumber);
 
 		pnlImage = new JPanel();
+		pnlImage.setLayout(new BorderLayout());
 		pnlNonform.add(pnlImage);
 
 		pnlButton = new JPanel();
@@ -212,9 +223,14 @@ public class PartsManager extends Manager implements ActionListener {
 		lblImageFileName2 = new JLabel("Image File Name");
 		pnlImageFileName2.add(lblImageFileName2);
 
-		tfImageFileName2 = new JTextField();
-		pnlImageFileName2.add(tfImageFileName2);
-		tfImageFileName2.setColumns(10);
+		//tfImageFileName2 = new JTextField();
+		//pnlImageFileName2.add(tfImageFileName2);
+		//tfImageFileName2.setColumns(10);
+		
+		cbImageFileName2= new JComboBox();
+		cbImageFileName2.addActionListener(this);
+		pnlImageFileName2.add(cbImageFileName2);
+		
 
 		pnlDescription2 = new JPanel();
 		pnlForm2.add(pnlDescription2);
@@ -231,6 +247,7 @@ public class PartsManager extends Manager implements ActionListener {
 		pnlNonform2.setLayout(new BoxLayout(pnlNonform2, BoxLayout.Y_AXIS));
 
 		pnlImage2 = new JPanel();
+		pnlImage2.setLayout(new BorderLayout());
 		pnlNonform2.add(pnlImage2);
 
 		pnlButton2 = new JPanel();
@@ -241,15 +258,23 @@ public class PartsManager extends Manager implements ActionListener {
 		btnCreate.addActionListener(this);
 		pnlButton2.add(btnCreate);
 
-		updateComboBox();
+		updatePartComboBox();
 		updateManagePartsImagePanel();
+		populateFileComboBoxes();
+		checkToDisableTabs();
+		
+		if(bp.getSize()==0)
+			tabbedPane.setSelectedIndex(NEW_PART_TAB_NUM);
 	}
 
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btnDelete) {
 			deletePart(getCurrentPart());
 		} else if (e.getSource() == btnView) {
+			//if no parts then disable Index 1 (selected part tab)
+			if(bp.getSize()!=0)
 			tabbedPane.setSelectedIndex(SELECTED_PART_TAB_NUM);
+		
 		} else if (e.getSource() == btnUpdate) {
 			updatePart(); // fill in below
 		} else if (e.getSource() == btnCreate) {
@@ -257,7 +282,12 @@ public class PartsManager extends Manager implements ActionListener {
 		} else if (e.getSource()==partComboBox){
 			//when partComboBox is clicked update managePartsImagePanel
 			updateManagePartsImagePanel();
-		}
+		} else if (e.getSource()==cbImageFileName){
+			updateSelectedPartsImagePanel();
+		} else if (e.getSource()==cbImageFileName2){
+			updateNewPartsImagePanel();
+		} 
+		
 		this.repaint();
 	}
 
@@ -279,12 +309,30 @@ public class PartsManager extends Manager implements ActionListener {
 
 	private void updateManagePartsImagePanel(){
 		Part temp= getCurrentPart();
-		if(temp.getFilename()!=null)
-			lblSelectedImage= new JLabel(new ImageIcon(temp.getFilename()));
 		managePartsImagePanel.removeAll();
-		managePartsImagePanel.add(lblSelectedImage);
-	}
 
+		if(temp.getFilename()!=null)
+			{lblSelectedImage= new JLabel(new ImageIcon(temp.getFilename()));
+			managePartsImagePanel.add(lblSelectedImage);
+			}
+	}
+	private void updateSelectedPartsImagePanel(){
+		String s= (String) cbImageFileName.getSelectedItem();
+
+		if(s!=null)
+			lblSelectedImage2= new JLabel(new ImageIcon(s));
+		pnlImage.removeAll();
+		pnlImage.add(lblSelectedImage2,BorderLayout.CENTER);
+	}
+	private void updateNewPartsImagePanel(){
+		String s= (String) cbImageFileName2.getSelectedItem();
+
+		if(s!=null)
+			lblSelectedImage3= new JLabel(new ImageIcon(s));
+		pnlImage2.removeAll();
+		pnlImage2.add(lblSelectedImage3, BorderLayout.CENTER);
+	}
+	
 	/**
 	 * Launch the application.
 	 */
@@ -320,11 +368,10 @@ public class PartsManager extends Manager implements ActionListener {
 	 */
 	public void createPart() {
 		String name, file, d;
-		int n;
 		Part temp;
 
 		name=tfPartName2.getText();
-		file=tfImageFileName2.getText();
+		file=(String)cbImageFileName2.getSelectedItem();
 		d=tfDescription2.getText();
 
 
@@ -333,7 +380,6 @@ public class PartsManager extends Manager implements ActionListener {
 		bp.add(temp);
 
 		tfPartName2.setText("");
-		tfImageFileName2.setText("");
 		tfDescription2.setText("");
 		btnCreate.setSelected(false);//not working
 
@@ -342,6 +388,8 @@ public class PartsManager extends Manager implements ActionListener {
 		this.sendToServer(Message.DEFINE_NEW_PART+":"+temp.serialize());
 		System.out.println("Sent new part definition: "+temp.serialize());
 		/*end*/
+		
+		checkToDisableTabs();
 	}
 
 	/**
@@ -357,7 +405,7 @@ public class PartsManager extends Manager implements ActionListener {
 		String name, file, d;
 		Part temp;
 		name=tfPartName.getText();
-		file=tfImageFileName.getText();
+		file=(String)cbImageFileName.getSelectedItem();
 		d=tfDescription.getText();
 
 		temp=new Part(name, d, file);
@@ -379,11 +427,11 @@ public class PartsManager extends Manager implements ActionListener {
 		System.out.println("sending message " + s);
 		this.sendToServer(s);
 		bp.removePart(pt);
-		updateComboBox();
-
+		updatePartComboBox();
 		updateManagePartsImagePanel();
 		this.repaint();
 
+		checkToDisableTabs();
 	}
 
 	/**
@@ -393,11 +441,6 @@ public class PartsManager extends Manager implements ActionListener {
 		this.sendToServer(Message.PULL_PARTS_LIST);
 		System.out.println("Local copy updated with server copy");
 	}
-
-	private void parseUpdate(String msg) {
-		//code to parse the serialized parts list
-	}
-
 
 	public void processMessage(String msg) {
 		super.processMessage(msg);
@@ -413,17 +456,22 @@ public class PartsManager extends Manager implements ActionListener {
 		Component c = tabbedPane.getSelectedComponent();
 		if (c.equals(pnlManageParts)){
 			//update the list of parts 
-			updateComboBox();   		 
+			updatePartComboBox();   	
+			updateManagePartsImagePanel();
 		}
 		else if (c.equals(pnlSelectedPart)){
 			Part p= getCurrentPart();
 
 			tfPartName.setText(p.getName());
-			tfImageFileName.setText(p.getFilename());
+			cbImageFileName.setSelectedItem(p.getFilename());
 			tfDescription.setText(p.getDescription());
 			lblPartNumber.setText(p.getNumber()+"");
+			updateSelectedPartsImagePanel();
+			
 		}
-
+		else if (c.equals(pnlNewPart)){
+			updateNewPartsImagePanel();
+		}
 	}
 
 
@@ -431,7 +479,7 @@ public class PartsManager extends Manager implements ActionListener {
 	 * @brief updates the list of parts every time the Manage parts tab is clicked
 	 */
 
-	private void updateComboBox(){
+	private void updatePartComboBox(){
 		managePartsImagePanel.removeAll();
 		partComboBox.removeAllItems(); 
 		for(int i=0;i<bp.getSize();i++){
@@ -439,34 +487,85 @@ public class PartsManager extends Manager implements ActionListener {
 
 		}
 	}
+	
+	private void populateFileComboBoxes(){
+		  final ImageFilter imageFilter = new ImageFilter();
+	      final File dir = new File("pics/parts");
+	      for(final File imgFile : dir.listFiles()) {
+	    
+	    	  if (imageFilter.accept(imgFile)){
+	    	  cbImageFileName.addItem(imgFile.toString());
+	    	  cbImageFileName2.addItem(imgFile.toString());
+	    	  }
+	          
+	      } 
+		
+		
+	}
+	
+	private class ImageFilter{
+		
+	    String GIF = "gif";
+	    String PNG = "png";
+	    String JPG = "jpg";
+	    String BMP = "bmp";
+	    String JPEG = "jpeg";
+
+	    public boolean accept(File file) {
+	        if(file != null) {
+	            if(file.isDirectory())
+	                return false;
+	            String extension = getExtension(file);
+	            if(extension != null && isSupported(extension))
+	                return true;
+	        }
+	        return false;
+	    }
+
+	    private String getExtension(File file) {
+	        if(file != null) {
+	            String filename = file.getName();
+	            int dot = filename.lastIndexOf('.');
+	            if(dot > 0 && dot < filename.length()-1)
+	                return filename.substring(dot+1).toLowerCase();
+	        }
+	        return null;
+	    }
+
+	    private boolean isSupported(String ext) {
+	        return ext.equalsIgnoreCase(GIF) || ext.equalsIgnoreCase(PNG) ||
+	                ext.equalsIgnoreCase(JPG) || ext.equalsIgnoreCase(BMP) ||
+	                ext.equalsIgnoreCase(JPEG);
+	    }
+	}
+	
+	
+	private void checkToDisableTabs(){
+		if (bp.getSize()==0)
+			tabbedPane.setEnabledAt(1, false);
+		else 
+			tabbedPane.setEnabledAt(1, true);
+		
+	}
+	
 }
 
 /*
  * TODO
  * 
+ * -make sure part name is not null 
+ * -display part description in pnlManageParts (by adding a new JPanel and JLabel)
+ * -change part description to textArea instead of textfield
  * 
- * -add images support. 
- * >in pnlSelectedPart. image also displayed. partNumber as well
- * >in pnlNewPart change file extension to JComboBox that displays images. 
- * 
- * 
- * -Add christmas theme
- *	
- *
+ * -Add christmas bg
+ *	-fix code comments/ gardening
+ * -add test cases to wiki 
  *
  * QUESTIONS
- * -reading in all images from a file. 
- * SOLUTION:
- * final ImageFilter imageFilter = new ImageFilter();
-      final File dir = new File("some/dir");
-      for(final File imgFile : dir.listFies()) {
-          if(imageFilter.accept(imgFile)){
-              doSomethingWithImgFile(imgFile);
-          }
-      } 
+ * -make Create and update button unselected after click
+ * 
  * 
  * BUGS
- * -make Create and update button unselected after click
  * -
  * 
  * 

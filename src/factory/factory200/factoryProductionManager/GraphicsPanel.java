@@ -25,18 +25,22 @@ public class GraphicsPanel extends JPanel{
 
 	public void paint(Graphics graphics){
 		backgroundImage.paintIcon(this, graphics, 0, 0);
-		gantryRobotManager.paint(this, (Graphics2D)graphics);
+		
 		kitsAssemblyManager.paint(this, (Graphics2D)graphics);
+		gantryRobotManager.paint(this, (Graphics2D)graphics);
 		laneManager.paint(this, (Graphics2D)graphics);
 	}
 	
 	public void timerAction(){
 		repaint();
 		laneManager.timerAction();
+                kitsAssemblyManager.getGraph().timerAction();
                 //add timer action for KAM! 
 	}
 	
 	public void verifyMessage(String msg){
 		laneManager.getServerVerify().verify(msg);
+		this.kitsAssemblyManager.processMessage(msg);
+		this.gantryRobotManager.processMessage(msg);
 	}
 }

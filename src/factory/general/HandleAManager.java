@@ -53,20 +53,25 @@ public class HandleAManager implements Runnable {
             System.exit(0);
         }
 
-        // This thread loops forever to receive a client message and echo it back
+        // This thread loops while 'running' to receive a client message and echo it back
         while (running) {
             String message = null;
             try {
                 // Listen for interaction via protocol
                 message = br.readLine();
                 if (message == null) {
-                    throw new Exception("A manager class must do manager.sendToServer(Message.CLIENT_EXITED);");
+                	System.out.println("Message from client is null. A manager class should exit properly (i.e., by closing with the X in the corner)");
+                    throw new Exception();
                 }
                 processMessage(message);
                 p.println("Processed message in client thread");
-            } catch (Exception e) {
-                System.out.print("Client exited prematurely; shutting down");
+            } catch (NullPointerException e) {
+            	System.out.println("Nullpointer from HandleAManager. Shutting down. The agents may not have been initialized.");
+                e.printStackTrace();
                 System.exit(0);
+            } catch (Exception e) {
+            	e.printStackTrace();
+            	System.exit(0);
             }
         }
     }
@@ -109,12 +114,11 @@ public class HandleAManager implements Runnable {
                 System.out.println("Number of clients is 0; exiting Server");
                 System.exit(0);
             }
-        }else if(msg.contains(Message.IDENTIFY_KITMANAGER))
-	    {
-		System.out.println("SERVER FOUND A KIT MANAGER");
-		this.server.setKitManagerClient(this);
+        }else if(msg.contains(Message.IDENTIFY_KITMANAGER)) {
+        	System.out.println("SERVER FOUND A KIT MANAGER");
+        	this.server.setKitManagerClient(this);
 	    }
- else if(msg.contains(Message.IDENTIFY_FACTORYPRODUCTIONMANAGER)) {
+        else if (msg.contains(Message.IDENTIFY_FACTORYPRODUCTIONMANAGER)) {
  			p.println("SERVER HAS IDENTIFIED A FACTORYPRODUCTIONMANAGER");
  			this.id = 3;
             this.server.setFactoryProductionManagerToAll(this);
@@ -138,10 +142,8 @@ public class HandleAManager implements Runnable {
             this.server.setPartsAgentClient(this);
             this.server.getServerLM().setKAM(this);
         } else if (msg.contains(Message.PULL_KITS_LIST)) {
-            //TODO THIS IS AD HOC NEED TO RETRIEVE MASTER BLUEPRINTKITS FROM FACTORY STATE
             pw.println(Message.PUSH_KITS_LIST + ":" + this.server.getFactoryState().getBlueprintKits().serialize());
         } else if (msg.contains(Message.PULL_PARTS_LIST)) {
-            //TODO THIS IS AD HOC, NEED TO RETRIEVE MASTER BLUEPRINTPARTS FROM FACTORY STATE
             pw.println(Message.PUSH_PARTS_LIST + ":" + this.server.getFactoryState().getBlueprintParts().serialize());
         } else if (msg.contains(Message.DEFINE_NEW_PART)) {
             Part p = Part.deserialize(this.grabParameter(msg));

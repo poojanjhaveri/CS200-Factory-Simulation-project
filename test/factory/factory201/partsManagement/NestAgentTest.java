@@ -105,7 +105,7 @@ public void testfirstTest(){
     assertTrue("Nest 0 status should be gettingPart", nest.myNests.get(0).status == Nest.Status.gettingPart);
     assertTrue("Lane should have gotten msgNeedPart" + getLogs(), lane0.log.containsString("msgNeedPart"));
     nest.msgHereAreParts(nestParts);
-    assertTrue("Nest parts array should contain 8 p1 parts", nest.myNests.get(0).parts.size()==8 && nest.myNests.get(0).parts.get(0).type==Part.Type.p1);
+    assertTrue("Nest parts array should contain 8 p1 parts", nest.myNests.get(0).parts.size()==8);
     nest.pickAndExecuteAnAction();
     assertTrue("Camera should have gotten msgRequestInspection from nest" + getLogs(), camera.log.containsString("msgNestIsFull"));
     nest.msgNestInspected(nest.myNests.get(0), true);

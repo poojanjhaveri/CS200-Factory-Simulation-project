@@ -10,12 +10,15 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * @brief This class is the agent for the {@link Conveyor} which brings empty
- * {@link Kit}s into the kitting cell and takes complete kits out of the kitting
+ * Agent for the conveyor.
+ * 
+ * This class is the agent for the Conveyor which brings empty
+ * Kits into the kitting cell and takes complete kits out of the kitting
  * cell.
  *
  * @author Alex Young
  * @version 1
+ * @brief Agent for the conveyor
  */
 public class ConveyorAgent extends Agent implements Conveyor {
 
@@ -25,7 +28,6 @@ public class ConveyorAgent extends Agent implements Conveyor {
 
     public ConveyorAgent(String name) {
         super(name);
-
         kitList = Collections.synchronizedList(new ArrayList<Kit>());
         kitRequestsFromKitRobot = 0;
     }
@@ -149,4 +151,6 @@ public class ConveyorAgent extends Agent implements Conveyor {
             print("[ERROR] - Kit Assembly Manager is not online.");
         }
     }
+    
+    public void testAddKit(Kit k){kitList.add(k);}
 }
