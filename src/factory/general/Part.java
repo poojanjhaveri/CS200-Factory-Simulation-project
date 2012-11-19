@@ -33,11 +33,11 @@ public class Part implements Serializable {
     this.type=num;
     }
     public int getNestNum() {
-        return this.nestNum;
+        return nestNum;
     }
 
     public void setNestNum(int n) {
-        this.nestNum = n;
+        nestNum = n;
     }
 
 
