@@ -1,9 +1,10 @@
 package factory.factory200.factoryProductionManager.GantryRobotManager;
 
 import factory.factory200.factoryProductionManager.*;
+import factory.factory200.gantryRobotManager.GUIBin;
+import factory.factory200.gantryRobotManager.GUIFeeder;
 import factory.factory200.gantryRobotManager.PurgeStation;
 import factory.general.GUIPart;
-import factory.factory200.gantryRobotManager.*;
 import factory.general.Part;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -28,8 +29,8 @@ public class GRMGraphicPanel{
 	public GRMGraphicPanel(){
 		carriedBinIndex = 0;
 		gbot = new GUIGantryRobot();
-                gbot.setX(1100);
-                gbot.setY(10);
+                //gbot.setX(1100);
+                //gbot.setY(10);
 		bin = new GUIBin(450,0,0.0,"",0);
 		bins = new ArrayList<GUIBin>();
 		parts = new ArrayList<Part>();
@@ -41,7 +42,7 @@ public class GRMGraphicPanel{
 		///<Initialize all 8 bins, 8 parts within its bins
 		
         for (int i = 1; i < 9; i++) {
-           bin=new GUIBin(1280,(i*80-70),0.0, "pics/binBox"+i+".png",i);
+           bin=new GUIBin(1280,(i*80-70),0.0, "pics/emptybox.png",i);
            bins.add(bin);
            GUItemp=new GUIPart(bins.get(i-1).getX()+15, bins.get(i-1).getY()+20, 0.0, new ImageIcon("pics/parts/part"+i+".png"));
            newPart = new Part(null,null);

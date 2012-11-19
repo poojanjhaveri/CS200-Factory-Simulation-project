@@ -4,7 +4,8 @@ package factory.factory200.factoryProductionManager.GantryRobotManager;
 /**
  * @author Yuting Liu
  */
-import factory.factory200.gantryRobotManager.*;
+
+import factory.factory200.gantryRobotManager.GUIBin;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.LinkedList;
