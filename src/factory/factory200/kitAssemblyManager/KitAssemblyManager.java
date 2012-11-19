@@ -33,6 +33,7 @@ import javax.swing.JPanel;
 public class KitAssemblyManager extends Manager implements ActionListener {
 
     KAMGraphicPanel graphics;
+    boolean test=false;
     //private KitAssemblyManagerDeliveryStation kamdelivery;///<keeps track of all of the objects listed above and paints the objects according to a timer
     //private KitAssemblyManagerGUIPanel gui;///<keeps track of the GUI components and allows the manager to pick which components will be broken
 
@@ -253,16 +254,22 @@ public class KitAssemblyManager extends Manager implements ActionListener {
      * objects
      */
     public KitAssemblyManager() {
+        
         this.graphics = new KAMGraphicPanel();
         //tester lines
         this.setLayout(new GridLayout(1, 2));
         this.graphics = new KAMGraphicPanel();
 
         this.add(graphics);
-
-
-        //int x = 550;
-        this.setSize(550, 700);
+        int x=0;
+        if(test==true){
+        x = 550;
+        this.add(TestPanel());
+        }
+        else if(test==false){
+          x=0;  
+        }
+        this.setSize(550+x, 700);
 
         this.graphics.setVisible(true);
 
