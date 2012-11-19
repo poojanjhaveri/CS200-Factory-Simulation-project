@@ -114,10 +114,10 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 		
 		mainPanel.setLayout(new BorderLayout());
 		setContentPane(mainPanel);
-
+                
 		gridbag = new GridBagLayout();
 		c = new GridBagConstraints();
-
+                
 		selectedKits = new ArrayList<Kit>();
 		selLabel = new JLabel ("Select Kit");
 		numLabel = new JLabel ("Quantity");
@@ -139,7 +139,22 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 		stop = new JButton("Stop");
 		reset = new JButton("Clear List");
 
-		basePanel = new JPanel();
+		basePanel = new JPanel()
+                {
+                     // Function to Set background image in the panel 
+                    public void paintComponent(Graphics g) 
+                    {
+                        Image img = new ImageIcon("pics/background/mainbg.png").getImage();
+                        Dimension size = new Dimension(600, 400);
+                        setPreferredSize(size);
+                        setMinimumSize(size);
+                        setMaximumSize(size);
+                        setSize(size);
+                        setLayout(null);
+
+                        g.drawImage(img, 0, 0, null);
+                    } 
+                };
 		basePanel.setLayout(new BorderLayout());
 
 		tabs = new JTabbedPane();
@@ -158,6 +173,17 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 		botBotPanel = new JPanel(gridbag);
 		selPanel = new JPanel(gridbag);
 		slotsPanel = new JPanel(gridbag);
+                
+                topPanel.setOpaque(false);
+                botPanel.setOpaque(false);
+                parentMidPanel.setOpaque(false);
+                queuePanel.setOpaque(false);
+                leftPanel.setOpaque(false);
+                midPanel.setOpaque(false);
+                rightPanel.setOpaque(false);
+                botBotPanel.setOpaque(false);
+                selPanel.setOpaque(false);
+                slotsPanel.setOpaque(false);
 	}
 
 	private void panelLayout()
