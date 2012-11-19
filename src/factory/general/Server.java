@@ -120,9 +120,9 @@ public class Server {
 			e.printStackTrace();
 			System.exit(0);
 		}
-			for (int i=0 ; i<2 ; i++){ // For Testing By Dongyoung, if want to need communicate n managers, change into for(int i=0 ; i<n ; i++)
-		//while(true){
-
+		prepareAllAgents(); // Prepare all agents; based on AgentMain.java      // For Testing By Dongyoung
+//		for (int i=0 ; i<2 ; i++){ // For Testing By Dongyoung, if want to need communicate n managers, change into for(int i=0 ; i<n ; i++)
+		while(true){
 			// Continuously check for a new client for which to create a thread
 			try {
 				s = ss.accept(); // Wait for a client (program halts here until connection occurs)
@@ -135,10 +135,6 @@ public class Server {
 			}
 			System.out.println("A client has connected");
 		}
-		
-	//	try{  Thread.sleep(1000);  } catch(Exception e){}   // For Testing By Dongyoung
-
-		prepareAllAgents(); // Prepare all agents; based on AgentMain.java      // For Testing By Dongyoung
 	}
 
 	private void initializeManagers() { // Something by Dongyoung...?  Dongyoung : Yeah
@@ -157,7 +153,7 @@ public class Server {
             turnOffAgentPrintStatements();
             connectAgentsAndManagers();
             startAgentThreads();
-            startInteractionSequence();
+//            startInteractionSequence(); // this should be commented out in our final product
         }
 
         private void declareAgents() {
@@ -250,7 +246,7 @@ public class Server {
          * @brief This is only a test for 201 to debug animation and agent interaction.
          */
         @SuppressWarnings("unused")
-		private void startInteractionSequence() {
+		public void startInteractionSequence() {
             // Get kit from somewhere
             // * 
         	
