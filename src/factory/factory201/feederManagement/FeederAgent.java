@@ -309,7 +309,6 @@ public class FeederAgent extends Agent implements Feeder {
          */
         //	 this.client.sendMessage("Message");
 
-        if (client != null) {
             if (LMServer.getForAgentFeeder() == null) {
                 return;
             }
@@ -324,9 +323,7 @@ public class FeederAgent extends Agent implements Feeder {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
-        } else {
-            print("Client = null");
-        }
+         
     }
 
     private void dosendPartToRightLane(myParts p) {
@@ -337,7 +334,10 @@ public class FeederAgent extends Agent implements Feeder {
          e.printStackTrace();
          }
          */
-        if (client != null) {
+        
+            if (LMServer.getForAgentFeeder() == null) {
+                return;
+            }
             LMServer.getForAgentFeeder().setDiverterSwitchRight(feederNum);
 
             LMServer.getForAgentGantryRobot().putBin(p.part.type, p.quantity, feederNum);
@@ -349,9 +349,7 @@ public class FeederAgent extends Agent implements Feeder {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
-        } else {
-            print("Client = null");
-        }
+         
     }
 
 

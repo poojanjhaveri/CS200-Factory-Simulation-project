@@ -109,7 +109,7 @@ public class KitAssemblyManager extends Manager implements ActionListener {
         for (int i = 0; i < this.graphics.nest.size(); i++) {
             if (n == i) {
                 int k = this.graphics.nest.get(i).getParts().size();
-                System.out.println("size: "+k);
+                //System.out.println("size: "+k);
                 if (k < 4) {
                     GUIPart GUItemp = new GUIPart(this.graphics.nest.get(i).getX(), this.graphics.nest.get(i).getY() + 18 * k, 0.0, tempPic);
                     temp.setGUIPart(GUItemp);
@@ -261,12 +261,12 @@ public class KitAssemblyManager extends Manager implements ActionListener {
         this.add(graphics);
 
 
-        int x = 550;
-        this.setSize(550 + x, 700);
+        //int x = 550;
+        this.setSize(550, 700);
 
         this.graphics.setVisible(true);
 
-        this.add(TestPanel());
+        //this.add(TestPanel());
         //change TEST to just graphicPanel (above)
 
         this.setVisible(true);

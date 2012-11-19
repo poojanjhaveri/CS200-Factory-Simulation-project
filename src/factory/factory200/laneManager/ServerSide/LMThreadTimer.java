@@ -4,6 +4,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
 
+/**
+ * @brief Timer in Server Side
+ * @author Dongyoung Jung
+ */
 class LMThreadTimer implements Runnable{
 
 	private LMServerMain serverMain;

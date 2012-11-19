@@ -29,12 +29,12 @@ public class NestAgent extends Agent implements NestInterface {
     Lane lanes[] = {lane0, lane1, lane2, lane3, lane4, lane5, lane6, lane7};
     
     public List<Nest> myNests;
-    private List<Part> needParts;
+    public List<Part> needParts;
     private List<Nest> nests;
     PartsInterface partsagent;
     Camera camera;
     private int nestNumber;
-    private List<Part> requests;
+    public List<Part> requests;
 
     @Override
     public void msgHereAreParts(List<Part> parts) {
@@ -79,12 +79,13 @@ public class NestAgent extends Agent implements NestInterface {
         Part p = kitParts.get(0);
         Nest n = myNests.get(laneIndex);
                 for (int i =0; i<kitParts.size(); i++){
+                    kitParts.get(i).setNestNum(laneIndex);
                     n.parts.add(kitParts.get(i));
                 }
                 if (n.parts.size()>=n.threshold) {
                     n.status = Nest.Status.full;     
                 }
-                print("adding " + kitParts.size() + " " + p.getString() + " to the nest " + n.nestNum);
+                print("adding " + kitParts.size() + " " + p.getInt() + " to the nest " + n.nestNum);
 
             
         
@@ -139,7 +140,7 @@ public class NestAgent extends Agent implements NestInterface {
                 if(n.status == Nest.Status.empty){  
                     n.setPart(needParts.remove(0));
                     n.status = Nest.Status.needPart;
-                    print("Part " + n.part.getString() + " is not taken by a nest, part is being assigned to the nest "+ n.nestNum);
+                    print("Part " + n.part.getInt() + " is not taken by a nest, part is being assigned to the nest "+ n.nestNum);
                     return true;
                 }
                 }
@@ -158,7 +159,7 @@ public class NestAgent extends Agent implements NestInterface {
                              n.setPart(needParts.remove(0));
                              purge(n);
                              n.status = Nest.Status.needPart;
-                             print("Part " + n.part.getString() + " is not taken by a nest, part is being assigned to the nest "+ n.nestNum);
+                             print("Part " + n.part.getInt() + " is not taken by a nest, part is being assigned to the nest "+ n.nestNum);
                         return true;
                 }}}}}//}
      
@@ -168,7 +169,7 @@ public class NestAgent extends Agent implements NestInterface {
     }
  
     private void requestPart(Nest n){
-        print("requesting " + n.part.getString());
+        print("requesting " + n.part.getInt());
     	n.status = Nest.Status.gettingPart;
         n.getLane().msgNeedPart(n.part);
     	stateChanged();
@@ -185,7 +186,7 @@ public class NestAgent extends Agent implements NestInterface {
     private void giveToKit(Nest n){
         requests.remove(0);
     	partsagent.msgHereIsPart(n.parts.remove(0));
-        print("giving part " + n.part.getString() + " to kit now nest has " + n.parts.size());
+        print("giving part " + n.part.getInt() + " to kit now nest has " + n.parts.size());
         if (n.parts.isEmpty())
                 n.status = Nest.Status.empty;
     	stateChanged();	

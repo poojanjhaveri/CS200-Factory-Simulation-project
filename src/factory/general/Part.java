@@ -44,8 +44,13 @@ public class Part implements Serializable {
     public int getSize() {
         return this.size;
     }
-    //@Override
-    public Integer getString() {
+    
+    /**
+     *
+     * @return
+     */
+    
+    public Integer getInt() {
         return type;
     }
     /* I am adding this constructor to test my agent codes (kevin) */

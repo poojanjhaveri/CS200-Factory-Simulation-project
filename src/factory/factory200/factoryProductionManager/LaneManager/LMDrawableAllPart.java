@@ -4,6 +4,10 @@ import java.awt.Graphics2D;
 import java.util.ArrayList;
 import factory.factory200.factoryProductionManager.*;
 
+/**
+ * @brief Part Drawings
+ * @author Dongyoung Jung
+ */
 public class LMDrawableAllPart {
 	
 	private LMApplication app;

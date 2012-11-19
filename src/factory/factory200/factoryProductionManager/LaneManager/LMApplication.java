@@ -3,6 +3,10 @@ package factory.factory200.factoryProductionManager.LaneManager;
 import java.awt.Graphics2D;
 import factory.factory200.factoryProductionManager.*;
 
+/**
+ * @brief Main for Lane Manager Part
+ * @author Dongyoung Jung
+ */
 public class LMApplication {
 
 	private LMDrawableAllFeeder paintAllFeeder;

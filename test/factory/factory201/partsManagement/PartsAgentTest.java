@@ -27,15 +27,16 @@ public class PartsAgentTest extends TestCase{
        public MockNest nest;
        public MockCamera camera;
        Kit kit;
-       List<Kit> kits = new ArrayList<Kit>();
-      // Part p = new Part(1);
-   @Override
+       ArrayList<Kit> kits;
+       Part p = new Part(1);
+       @Override
 	protected void setUp() throws Exception {
        
         kit = new Kit("Test Kit");
-        for (int i = 1; i < 9; i++) {
-            kit.addPart(new Part("i", "i"));
+        for (int i = 0; i < 8; i++) {
+            kit.addPart(new Part("i", "i+1"));
         }
+        kits = new ArrayList<Kit>();
         
         kits.add(kit);
         kits.add(kit);
@@ -61,10 +62,13 @@ public class PartsAgentTest extends TestCase{
 	protected void tearDown() throws Exception {
 
 	}
-@Test
-public void testfirstTest(){
+    /**
+     *
+     */
+    @Test
+public void testFirst(){
     parts.msgHereIsKit(kits);
-    assertTrue("Parts should have newKit size of 1 ", parts.newKit.size() == 3);
+    assertTrue("Parts should have newKit size of 3 ", parts.newKit.size() == 3);
     parts.pickAndExecuteAnAction();
     parts.pickAndExecuteAnAction();
     assertTrue("Camera should have gotten msgHereIsKitInfo" + getLogs(), camera.log.containsString("msgHereIsKitInfo"));

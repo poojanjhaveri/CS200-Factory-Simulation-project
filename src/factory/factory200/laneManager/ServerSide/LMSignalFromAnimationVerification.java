@@ -1,5 +1,9 @@
 package factory.factory200.laneManager.ServerSide;
 
+/**
+ * @brief Signal Interpreter from Clients
+ * @author Dongyoung Jung
+ */
 public class LMSignalFromAnimationVerification {
 	
 	private LMServerMain serverMain;
