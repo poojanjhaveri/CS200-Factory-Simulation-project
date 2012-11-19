@@ -44,7 +44,7 @@ public class Server {
 
     // Fields just for "AgentMain" stuff (Agent preparation)
     // If true, print statements for this 201 person are on
-    private static final boolean PATRICK = false;
+    private static final boolean PATRICK = true;
     private static final boolean KEVIN = false;
     private static final boolean ALEX = true;
 
@@ -254,7 +254,7 @@ public class Server {
             // * 
         	
         	// THIS IS JUST EXAMPLE STUFF THAT 201 WAS DOING TO TEST
-            Kit kit = new Kit("Test Kit","dsc"); // This is required for...
+            Kit kit = new Kit("Test Kit"); // This is required for...
             for (int i = 0; i < 8; i++) {
                 
 //                kit.addPart(this.fstate.getPartCheat().clone());
@@ -263,10 +263,11 @@ public class Server {
                 kit.addPart(new Part("lol","k","fame")); //testing- Kevin
             }
             ArrayList<Kit> kits = new ArrayList<Kit>();
+            for(int i=0;i<2;i++)
             kits.add(kit);
-            kits.add(kit);
-            kits.add(kit);
-            kits.get(0).debug();
+            //kits.add(kit);
+            //kits.add(kit);
+            //kits.get(0).debug();
             // TODO: *Put this wherever the FPM sends the signal to create (generate) kits
             conveyorAgent.generateKit(10); // * This generates 10 new kits, among other things if you pass string... *
 
