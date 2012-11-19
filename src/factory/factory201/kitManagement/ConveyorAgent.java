@@ -33,22 +33,13 @@ public class ConveyorAgent extends Agent implements Conveyor {
     }
 
     // ********** MESSAGES *********
-    /**
-     * This message is called by the {@link KitRobotAgent} when an empty
-     * {@link Kit} is required.
-     */
+
     @Override
     public void msgNeedEmptyKit() {
         kitRequestsFromKitRobot++;
         stateChanged();
     }
 
-    /**
-     * This message is called by the {@link KitRobotAgent} when a verified
-     * {@link Kit} is ready to be taken away.
-     *
-     * @param kit This is a verified and complete kit.
-     */
     @Override
     public void msgHereIsVerifiedKit(Kit kit) {
         print("Accepting a verified kit: [" + kit.name + "] from the kits robot");
@@ -59,11 +50,7 @@ public class ConveyorAgent extends Agent implements Conveyor {
     }
 
     // ********* SCHEDULER *********
-    /**
-     * Scheduler\
-     *
-     * @return Returns true if action
-     */
+
     @Override
     public boolean pickAndExecuteAnAction() {
         if (kitRequestsFromKitRobot > 0) {
@@ -74,10 +61,7 @@ public class ConveyorAgent extends Agent implements Conveyor {
     }
 
     // ********** ACTIONS **********
-    /**
-     * Tells the {@link KitRobotAgent} the location of the next available empty
-     * kit.
-     */
+
     private void giveEmptyKit() {
         synchronized (kitList) {
             for (Kit k : kitList) {
@@ -125,11 +109,6 @@ public class ConveyorAgent extends Agent implements Conveyor {
         }
     }
 
-    /**
-     * Sets the KitRobotAgent
-     *
-     * @param agent KitRobotAgent
-     */
     public void setKitRobot(KitRobot agent) {
         kitRobotAgent = agent;
     }
