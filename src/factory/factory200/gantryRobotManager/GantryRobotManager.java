@@ -91,7 +91,7 @@ public class GantryRobotManager extends Manager implements ActionListener {
         int x = 500;
         setSize(500 + x, 700);
         graphics.setVisible(true);
-        add(TestPanel());
+        //add(TestPanel());
         //change TEST to just graphicPanel (above)
 
         this.setVisible(true);
@@ -99,7 +99,7 @@ public class GantryRobotManager extends Manager implements ActionListener {
         this.sendToServer(Message.IDENTIFY_GANTRYROBOTMANAGER);
     }
     
-    JButton toFeeder;
+   /* toFeeder;
     JButton toBin;
     JButton purgeStation;
     JButton dumpPart;
@@ -128,7 +128,8 @@ public class GantryRobotManager extends Manager implements ActionListener {
         tester.add(purgeStation);
 
         return tester;
-    }
+    }*/
+    
      public void processMessage(String msg) {
 	   super.processMessage(msg);
 	   if(msg.contains(Message.MOVE_GANTRY_TO_BIN))
@@ -154,7 +155,7 @@ public class GantryRobotManager extends Manager implements ActionListener {
    
 	public void actionPerformed(ActionEvent ae) {
 		// TODO Auto-generated method stub		
-		if (ae.getSource() ==toFeeder){
+	/*	if (ae.getSource() ==toFeeder){
 			ganbot.moveToFeederCommand(0);		}		
 		if (ae.getSource() ==toBin){
 			ganbot.moveToBinCommand(1);		
@@ -170,6 +171,7 @@ public class GantryRobotManager extends Manager implements ActionListener {
 		if (ae.getSource() ==pickBin){
 			pickUpBin(1);		
 		}
+		*/
 }
 	
 	
@@ -199,22 +201,10 @@ public class GantryRobotManager extends Manager implements ActionListener {
 		   this.graphics.binIsCarried(binIndex);
 	   }
 	   public void purgeBin(){
-		 // Integer binIndex=this.graphics.getBinCarriedIndex();
-		 
-		  ganbot.purgeBinCommand();
-		  
+		 // Integer binIndex=this.graphics.getBinCarriedIndex();		 
+		  ganbot.purgeBinCommand();		  
 	   }
 
-	  
-	  /*public void doSupplyPart(int binNum, int feederNum){
-		ganbot= graphics.getGantryRobot();
-		
-		ganbot.moveToBin(binNum);
-		ganbot.carryABin(binNum);////////////////////////
-		ganbot.moveToFeeder(feederNum);
-		ganbot.moveToDump();
-	}
-	*/
 }
 
 

@@ -78,10 +78,12 @@ public class PartsAgent extends Agent implements PartsInterface {
     public void msgEmptyKitReady(Kit k) {
 
         if(k.standNum==Kit.StandNum.zero){
+            kit0=k;
            kitZero=true;
            
           }
             else{
+            kit1=k;
             kitOne=true;
             
             }
@@ -149,8 +151,9 @@ public class PartsAgent extends Agent implements PartsInterface {
             kit1Info = null;
             //kit1 = null;
         }
-            
+            print("KIT SIZE IS "+ k.parts.size());
         kitrobot.msgKitIsFull(k);
+        print("KIT SIZE IS " + k.parts.size());
         stateChanged();
     }
 
@@ -177,6 +180,7 @@ public class PartsAgent extends Agent implements PartsInterface {
         
         for (Part part: kit0NeedsParts){
             if (part.type == p.type){
+                kit0.parts.add(p);
               kit0NeedsParts.remove(part);
               break;
             }}
@@ -196,6 +200,7 @@ public class PartsAgent extends Agent implements PartsInterface {
         
         for (Part part: kit1NeedsParts){
             if (part.type == p.type){
+                kit1.parts.add(p);
               kit1NeedsParts.remove(part);
            //   print("REMOVING PART FROM KIT1NEEDSPARTS NEW SIZE IS " +  kit1NeedsParts.size());
                break;
@@ -214,7 +219,8 @@ public class PartsAgent extends Agent implements PartsInterface {
 
     private void setKit0(Kit k){
         kit0Info=k;
-           kit0=kit0Info;
+        print("kit0 size ["+ k.parts.size() + "]");
+          // kit0=kit0Info;
            kit0.status = Kit.Status.ready;
            kit0.standNum = Kit.StandNum.zero;
            for(int i=0; i<kit0Info.parts.size(); i++){
@@ -223,8 +229,9 @@ public class PartsAgent extends Agent implements PartsInterface {
     }
     
     private void setKit1(Kit k){
+        print("kit1 size ["+ k.parts.size() + "]");
      kit1Info=k;
-            kit1=kit1Info;
+           // kit1=kit1Info;
             kit1.status = Kit.Status.ready;
             kit1.standNum = Kit.StandNum.one;
             for(int i=0; i<kit1Info.parts.size(); i++){

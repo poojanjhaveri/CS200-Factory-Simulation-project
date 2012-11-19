@@ -44,7 +44,7 @@ public class GUIGantryRobot extends GUIRobot{
     Boolean hasbin;///<whether or not the robot is carrying a bin
     Integer moveto;///<where the gantry robot is heading towards
 
-    GUIGantryRobot() {
+    public GUIGantryRobot() {
 	super(GantryRobotManager.ROBOT_INITIAL_X,GantryRobotManager.ROBOT_INITIAL_Y,GUIGantryRobot.IMAGE_PATH);
 	this.extended = false;
 	this.hasbin = false;
