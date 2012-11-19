@@ -18,10 +18,6 @@ public class KitRobotAgentTest extends TestCase {
     private MockConveyor conveyor;
     private MockCamera camera;
     private MockParts partsMock;
-    
-    public KitRobotAgentTest() {
-        this.initalize();
-    }
 
     /**
      * Test of msgNeedEmptyKit method, of class KitRobotAgent.
@@ -37,8 +33,8 @@ public class KitRobotAgentTest extends TestCase {
         kitRobot.pickAndExecuteAnAction();
         assertTrue("Empty kit should be given after 1 scheduler call." +
                 getLogs(), partsMock.log.containsString("msgEmptyKitReady"));
-        assertTrue("Mock Parts Agent should have only received one message." +
-                getLogs(), partsMock.log.size() == 1);
+        assertTrue("Mock Parts Agent should have only received one message.",
+                partsMock.log.size() == 1);
         assertFalse("Calling the scheduler again should return false.",
                 kitRobot.pickAndExecuteAnAction());
     }
@@ -69,8 +65,8 @@ public class KitRobotAgentTest extends TestCase {
         kitRobot.pickAndExecuteAnAction();
         assertTrue("Camera should be notified after 1 scheduler call." +
                 getLogs(), camera.log.containsString("msgKitIsFull"));
-        assertTrue("Camera should have only received one message." +
-                getLogs(), camera.log.size() == 1);
+        assertTrue("Camera should have only received one message.",
+                camera.log.size() == 1);
         assertTrue("The scheduler should not return false.",
                 kitRobot.pickAndExecuteAnAction());
         kitRobot.getKitStand().addKit(k[2]);
@@ -96,152 +92,11 @@ public class KitRobotAgentTest extends TestCase {
         kitRobot.pickAndExecuteAnAction();
         assertTrue("Verified kit should be given after 1 scheduler call." +
                 getLogs(), conveyor.log.containsString("msgHereIsVerifiedKit"));
-        assertTrue("Conveyor should have only received one message." +
-                getLogs(), conveyor.log.size() == 1);
+        assertTrue("Conveyor should have only received one message.",
+                conveyor.log.size() == 1);
         assertTrue("Calling the scheduler again should not return false.",
                 kitRobot.pickAndExecuteAnAction());
     }
-
-//    /**
-//     * Test of pickAndExecuteAnAction method, of class KitRobotAgent.
-//     */
-//    @Test
-//    public void testPickAndExecuteAnAction() {
-//        System.out.println("pickAndExecuteAnAction");
-//        KitRobotAgent instance = null;
-//        boolean expResult = false;
-//        boolean result = instance.pickAndExecuteAnAction();
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
-//
-//    /**
-//     * Test of setConveyor method, of class KitRobotAgent.
-//     */
-//    @Test
-//    public void testSetConveyor() {
-//        System.out.println("setConveyor");
-//        Conveyor agent = null;
-//        KitRobotAgent instance = null;
-//        instance.setConveyor(agent);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
-//
-//    /**
-//     * Test of setCamera method, of class KitRobotAgent.
-//     */
-//    @Test
-//    public void testSetCamera() {
-//        System.out.println("setCamera");
-//        Camera agent = null;
-//        KitRobotAgent instance = null;
-//        instance.setCamera(agent);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
-//
-//    /**
-//     * Test of setPartsAgent method, of class KitRobotAgent.
-//     */
-//    @Test
-//    public void testSetPartsAgent() {
-//        System.out.println("setPartsAgent");
-//        PartsInterface agent = null;
-//        KitRobotAgent instance = null;
-//        instance.setPartsAgent(agent);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
-//
-//    /**
-//     * Test of setAll method, of class KitRobotAgent.
-//     */
-//    @Test
-//    public void testSetAll() {
-//        System.out.println("setAll");
-//        Camera camera = null;
-//        Conveyor conveyor = null;
-//        PartsInterface partsAgent = null;
-//        KitRobotAgent instance = null;
-//        instance.setAll(camera, conveyor, partsAgent);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
-//
-//    /**
-//     * Test of DoMoveKitFromConveyorTo0 method, of class KitRobotAgent.
-//     */
-//    @Test
-//    public void testDoMoveKitFromConveyorTo0() {
-//        System.out.println("DoMoveKitFromConveyorTo0");
-//        KitRobotAgent instance = null;
-//        instance.DoMoveKitFromConveyorTo0();
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
-//
-//    /**
-//     * Test of DoMoveKitFromConveyorTo1 method, of class KitRobotAgent.
-//     */
-//    @Test
-//    public void testDoMoveKitFromConveyorTo1() {
-//        System.out.println("DoMoveKitFromConveyorTo1");
-//        KitRobotAgent instance = null;
-//        instance.DoMoveKitFromConveyorTo1();
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
-//
-//    /**
-//     * Test of DoMoveKitFrom0to1 method, of class KitRobotAgent.
-//     */
-//    @Test
-//    public void testDoMoveKitFrom0to1() {
-//        System.out.println("DoMoveKitFrom0to1");
-//        KitRobotAgent instance = null;
-//        instance.DoMoveKitFrom0to1();
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
-//
-//    /**
-//     * Test of DoMoveKitFrom1to2 method, of class KitRobotAgent.
-//     */
-//    @Test
-//    public void testDoMoveKitFrom1to2() {
-//        System.out.println("DoMoveKitFrom1to2");
-//        KitRobotAgent instance = null;
-//        instance.DoMoveKitFrom1to2();
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
-//
-//    /**
-//     * Test of DoMoveKitFrom0to2 method, of class KitRobotAgent.
-//     */
-//    @Test
-//    public void testDoMoveKitFrom0to2() {
-//        System.out.println("DoMoveKitFrom0to2");
-//        KitRobotAgent instance = null;
-//        instance.DoMoveKitFrom0to2();
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
-//
-//    /**
-//     * Test of DoMoveKitFrom2ToConveyor method, of class KitRobotAgent.
-//     */
-//    @Test
-//    public void testDoMoveKitFrom2ToConveyor() {
-//        System.out.println("DoMoveKitFrom2ToConveyor");
-//        Kit k = null;
-//        KitRobotAgent instance = null;
-//        instance.DoMoveKitFrom2ToConveyor(k);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
     
     private void initalize() {
         kitRobot = new KitRobotAgent("Kit Robot Agent");
