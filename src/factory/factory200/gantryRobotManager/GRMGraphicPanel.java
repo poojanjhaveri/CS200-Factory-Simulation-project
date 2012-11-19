@@ -91,10 +91,13 @@ public class GRMGraphicPanel extends JPanel implements ActionListener {
 	
 	
 	public void paint(Graphics g) {
+            
         Graphics2D g2 = (Graphics2D) g;
-        Rectangle2D.Double backgroundRectangle = new Rectangle2D.Double(0, 0, 500, 700);
-        g2.setColor(Color.GRAY.darker().darker());//dark dark green background
-        g2.fill(backgroundRectangle);
+        Image img = new ImageIcon("pics/background/mainbg.png").getImage();
+        g2.drawImage(img, -1350+500, 0, null);
+        //Rectangle2D.Double backgroundRectangle = new Rectangle2D.Double(0, 0, 500, 700);
+        //g2.setColor(Color.GRAY.darker().darker());//dark dark green background
+        //g2.fill(backgroundRectangle);
         paintPurge(this,g2);
         paintBinsWithParts(this, g2);
         paintFeeders(this,g2);

@@ -101,4 +101,24 @@ public class KAMNest {
     public void setParts(ArrayList<Part> parts) {
         this.parts = parts;
     }
+    public void updateParts() {
+        //System.out.println("parts size: "+parts.size());
+        if (this.parts.size() <= 4 && this.parts.size()>0) {
+            for (int i = 0; i < this.parts.size(); i++) {
+                this.parts.get(i).getGUIPart().setX(this.getX());
+                this.parts.get(i).getGUIPart().setY(this.getY() + 18 * i);
+            }
+        }
+        if (this.parts.size() <= 8 && this.parts.size()>4) {
+            for (int i = 0; i < 4; i++) {
+                this.parts.get(i).getGUIPart().setX(this.getX());
+                this.parts.get(i).getGUIPart().setY(this.getY() + 18 * i);
+            }
+            for (int i = 4; i < parts.size(); i++) {
+                this.parts.get(i).getGUIPart().setX(this.getX() + 20);
+                this.parts.get(i).getGUIPart().setY(this.getY() + 18 * (i - 4));
+                //System.out.println("parts size: " + parts.size());
+            }
+        }
+    }
 }
