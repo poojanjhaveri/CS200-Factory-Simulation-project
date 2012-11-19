@@ -40,16 +40,16 @@ import java.util.Set;
 public class FactoryProductionManager extends Manager implements ActionListener {
     private JPanel basePanel, topPanel,parentMidPanel, queuePanel, botPanel, 
             selPanel, leftPanel, midPanel, rightPanel, botBotPanel, slotsPanel;
-    private JLabel selLabel, queueLabel, numLabel, consoleLabel, schedLabel, slot1Label, slot2Label;
+    private JLabel selLabel, queueLabel, numLabel, consoleLabel, schedLabel, inProdLabel;
     private JComboBox selKit;
     private JTextField numE;
     private JButton queueue, start, stop, reset;
-    private JTextArea schedField, outField, serverQueueDisplay, slot1Field, slot2Field;
+    private JTextArea schedField, outField, serverQueueDisplay, inProdField;
     private JScrollPane schedPane, outPane, queuePane;
     private JTabbedPane tabs;
     
     private ArrayList<String> serverQueue;
-    private String slot1, slot2;
+    private String inProduction;
     
     public GraphicsPanel gfx;
     
@@ -105,12 +105,10 @@ public class FactoryProductionManager extends Manager implements ActionListener 
         serverQueue = new ArrayList<String>();
         serverQueueDisplay = new JTextArea(12, 20);
         
-        slot1Field = new JTextArea(1, 20);
-        slot2Field = new JTextArea(1, 20);
+        inProdField = new JTextArea(1, 20);
         
         serverQueueDisplay.setEditable(false);
-        slot1Field.setEditable(false);
-        slot2Field.setEditable(false);
+        inProdField.setEditable(false);
     }
     
     private void instantiateStaticComponents()
@@ -125,8 +123,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
         consoleLabel = new JLabel ("System Message");
         schedLabel = new JLabel ("Production Schedule");
         queueLabel = new JLabel ("Server Production Queue");
-        slot1Label = new JLabel ("Slot 1");
-        slot2Label = new JLabel ("Slot 2");
+        inProdLabel = new JLabel ("In Production");
         schedField = new JTextArea(30, 20);
         outField = new JTextArea(30, 20);
         schedPane = new JScrollPane(schedField);
@@ -226,22 +223,12 @@ public class FactoryProductionManager extends Manager implements ActionListener 
         c.ipady = 10;
         c.ipadx = 0;
         c.gridy = GridBagConstraints.RELATIVE;
-        gridbag.setConstraints(slot1Label, c);
-        slotsPanel.add(slot1Label);
-        c.ipady = 14;
+        gridbag.setConstraints(inProdLabel, c);
+        slotsPanel.add(inProdLabel);
+        c.ipady = 12;
         c.ipadx = 120;
-        gridbag.setConstraints(slot1Field, c);
-        slotsPanel.add(slot1Field);
-        c.gridx = 1;
-        c.ipady = 10;
-        c.ipadx = 0;
-        gridbag.setConstraints(slot2Label, c);
-        slotsPanel.add(slot2Label);
-        c.ipady = 14;
-        c.ipadx = 120;
-        gridbag.setConstraints(slot2Field, c);
-        slotsPanel.add(slot2Field);
-        
+        gridbag.setConstraints(inProdField, c);
+        slotsPanel.add(inProdField);
         
         c.gridx = 0;
         c.ipadx = 75;
@@ -390,13 +377,17 @@ public class FactoryProductionManager extends Manager implements ActionListener 
         }
 	if(msg.contains(Message.KIT_IN_PRODUCTION))
         {
-            String kitname = this.grabParameter(msg);
+            inProduction = this.grabParameter(msg);
         }
         if(msg.contains(Message.GIVE_KITS_IN_QUEUE))
         {
             BlueprintKits temp = new BlueprintKits();
             temp.recreate(this.grabParameter(msg));
             ArrayList<Kit> prodqueue = temp.getKits();
+            for(Kit kitty : prodqueue)
+            {
+                serverQueue.add(kitty.getName());
+            }
         }
         //Lane Manager( pass 'msg' into Lane Manager Message Interpreter and take a proper action )
         gfx.verifyMessage(msg);
