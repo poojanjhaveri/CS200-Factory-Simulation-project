@@ -33,11 +33,11 @@ public class Part implements Serializable {
     this.type=num;
     }
     public int getNestNum() {
-        return this.nestNum;
+        return nestNum;
     }
 
     public void setNestNum(int n) {
-        this.nestNum = n;
+        nestNum = n;
     }
 
 
@@ -188,6 +188,8 @@ public class Part implements Serializable {
     public Part clone()
     {
         Part n = new Part(this.getName(),this.getDescription(),this.getNumber());
+        if(this.filename != null)
+        n.setFilename(this.filename);
         return n;
     }
 }

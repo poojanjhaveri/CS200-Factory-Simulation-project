@@ -145,6 +145,10 @@ public class KitRobotAgent extends Agent implements KitRobot {
     public void setPartsAgent(PartsInterface agent) {
         partsAgent = agent;
     }
+    
+    public KitStand getKitStand() {
+        return this.kitStand;
+    }
 
     public void setAll(Camera camera, Conveyor conveyor,
             PartsInterface partsAgent) {
