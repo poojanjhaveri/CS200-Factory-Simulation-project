@@ -52,8 +52,13 @@ run:
 	@sleep 4
 	@echo "BEGINNING ALL MANAGERS"
 	$(RUN) $(RUNPKG).partsManager.PartsManager &
+	@sleep 2
 	$(RUN) $(RUNPKG).kitManager.KitManager &
+	@sleep 2
 	$(RUN) $(RUNPKG).gantryRobotManager.GantryRobotManager &
+	@sleep 2
 	$(RUN) $(RUNPKG).laneManager.ClientSide.V1LaneManagerCompileClient &
+	@sleep
 	$(RUN) $(RUNPKG).kitAssemblyManager.KitAssemblyManager &
+	@sleep
 	$(RUN) $(RUNPKG).factoryProductionManager.FactoryProductionManager &
