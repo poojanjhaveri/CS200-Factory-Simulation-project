@@ -14,5 +14,9 @@ public class LMSignalFromAnimationVerification {
 			laneNestNum = message.charAt(0) - 48;
 			serverMain.getPartData().sendPartToNestFromLane(laneNestNum);
 		}
+		else if(message.indexOf("PART_TAKE_BY_PARTROBOT") != -1){
+			laneNestNum = message.charAt(0) - 48;
+			serverMain.getForAgentPartRobot().takePartFromNest(laneNestNum);
+		}
 	}
 }
