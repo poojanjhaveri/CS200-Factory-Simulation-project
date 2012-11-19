@@ -4,11 +4,10 @@ package factory.general;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import factory.factory200.gantryRobotManager.GantryRobotManager;
-import factory.factory200.kitAssemblyManager.KitAssemblyManager;
 import factory.factory200.laneManager.ServerSide.LMServerMain;
 import factory.factory201.feederManagement.FeederAgent;
 import factory.factory201.feederManagement.GantryAgent;
@@ -18,7 +17,6 @@ import factory.factory201.kitManagement.ConveyorAgent;
 import factory.factory201.kitManagement.KitRobotAgent;
 import factory.factory201.partsManagement.NestAgent;
 import factory.factory201.partsManagement.PartsAgent;
-import java.util.List;
 
 /**
  * @brief This class is critical to the integration of GUI classes, agents, etc.
@@ -243,9 +241,10 @@ public class Server {
         }
 
         /**
-         * @brief This is only a test mode for 201 to debug animation and agent interaction.
+         * @brief This is only a test for 201 to debug animation and agent interaction.
          */
-        private void startInteractionSequence() {
+        @SuppressWarnings("unused")
+		private void startInteractionSequence() {
             // Get kit from somewhere
             // * 
         	
