@@ -53,7 +53,6 @@ public class CameraAgent extends Agent implements Camera {
     @Override
     public void msgKitIsFull(Kit kit) {
 //        print("Received msgKitIsFull from Kit Robot Agent");
-        print("kit size: " + kit.parts.size());
         synchronized (kitList) {
             kitList.add(kit);
         }
@@ -99,9 +98,7 @@ public class CameraAgent extends Agent implements Camera {
 
         if (kit.parts.size() != kitRqmts.size()) {
             result = false;
-            print(kit.parts.size() + " " + kitRqmts.size());
         } else {
-            print("2");
             List<Integer> list = new ArrayList<Integer>(this.kitRqmts);
             for (Part p : kit.parts) {
                 if (list.contains(p.type)) {
@@ -141,7 +138,6 @@ public class CameraAgent extends Agent implements Camera {
 
     private void configureKitInfo() {
         kitRqmts.clear();
-        print("size: " + kitInfoFromPartsAgent.getSize());
         for (int i = 0; i < kitInfoFromPartsAgent.getSize(); i++) {
             kitRqmts.add(kitInfoFromPartsAgent.getPart(i).type);
         }
@@ -167,7 +163,7 @@ public class CameraAgent extends Agent implements Camera {
             this.client.sendMessage(Message.KAM_FLASH_KIT_CAMERA);
             this.fpm.sendMessage(Message.KAM_FLASH_KIT_CAMERA);
         } else {
-            print("[ERROR] - Kit Assembly Manager is not online.");
+//            print("[ERROR] - Kit Assembly Manager is not online.");
         }
     }
 
@@ -177,7 +173,7 @@ public class CameraAgent extends Agent implements Camera {
             this.fpm.sendMessage(Message.KAM_FLASH_NEST_CAMERA + ":" + nest.nestNum);
             this.fpm.sendMessage(Message.ALERT_FPM_KIT_INSPECTED);
         } else {
-            print("[ERROR] - Kit Assembly Manager is not online.");
+//            print("[ERROR] - Kit Assembly Manager is not online.");
         }
     }
 }
