@@ -29,12 +29,12 @@ public class PartsAgentTest extends TestCase{
        Kit kit;
        List<Kit> kits = new ArrayList<Kit>();
       // Part p = new Part(1);
-   @Override
+       @Override
 	protected void setUp() throws Exception {
        
         kit = new Kit("Test Kit");
-        for (int i = 1; i < 9; i++) {
-            kit.addPart(new Part("i", "i"));
+        for (int i = 0; i < 8; i++) {
+            kit.addPart(new Part(i));
         }
         
         kits.add(kit);
@@ -64,7 +64,7 @@ public class PartsAgentTest extends TestCase{
 @Test
 public void testfirstTest(){
     parts.msgHereIsKit(kits);
-    assertTrue("Parts should have newKit size of 1 ", parts.newKit.size() == 3);
+    assertTrue("Parts should have newKit size of 3 ", parts.newKit.size() == 3);
     parts.pickAndExecuteAnAction();
     parts.pickAndExecuteAnAction();
     assertTrue("Camera should have gotten msgHereIsKitInfo" + getLogs(), camera.log.containsString("msgHereIsKitInfo"));
