@@ -249,7 +249,7 @@ public class LaneAgent extends Agent implements Lane {
             parts.add(part.part);
     	
        
-        nest.msgHereAreParts(parts);
+        nest.msgHereAreParts(parts, index);
         
         stateChanged();
     }

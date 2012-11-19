@@ -82,6 +82,11 @@ public class Server {
 		}
 	}
 
+        public void playMahMusicLols()
+        {
+          
+        }
+        
 	/**
 	 * @brief Instances Server, prompting the user for a port number and
 	 * beginning the loop that checks for clients.
@@ -91,7 +96,7 @@ public class Server {
         this.fstate = new FactoryState();
 		initializeManagers(); // Something by Dongyoung
 		
-		//prepareAllAgents(); // Prepare all agents; based on AgentMain.java; commented out by Dongyoung to test animation; included after connections accepted by server
+//		prepareAllAgents(); // Prepare all agents; based on AgentMain.java; commented out by Dongyoung to test animation; included after connections accepted by server
 			// should happen AFTER initializeManagers(), according to Dongyoung
 		
 		numClients = 0; // Initialize num clients is 0
@@ -115,9 +120,9 @@ public class Server {
 			e.printStackTrace();
 			System.exit(0);
 		}
-		
-		for (int i=0 ; i<2 ; i++){ // For Testing By Dongyoung, if want to need communicate n managers, change into for(int i=0 ; i<n ; i++)
+			for (int i=0 ; i<2 ; i++){ // For Testing By Dongyoung, if want to need communicate n managers, change into for(int i=0 ; i<n ; i++)
 		//while(true){
+
 			// Continuously check for a new client for which to create a thread
 			try {
 				s = ss.accept(); // Wait for a client (program halts here until connection occurs)
@@ -132,6 +137,7 @@ public class Server {
 		}
 		
 	//	try{  Thread.sleep(1000);  } catch(Exception e){}   // For Testing By Dongyoung
+
 		prepareAllAgents(); // Prepare all agents; based on AgentMain.java      // For Testing By Dongyoung
 	}
 
