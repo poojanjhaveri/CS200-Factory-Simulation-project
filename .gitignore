@@ -25,5 +25,8 @@ target/
 *.data
 
 *.data
+<<<<<<< HEAD
+=======
 
 *.data
+>>>>>>> 4c0bae77a2a31606c52a6db1a8c02c7477faeafa

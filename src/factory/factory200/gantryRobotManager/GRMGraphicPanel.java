@@ -28,6 +28,7 @@ public class GRMGraphicPanel extends JPanel implements ActionListener {
     GUIFeeder feedertemp; 
     PurgeStation ps;
 	GUIGantryRobot gbot;
+	Integer carriedBinIndex;
     
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
@@ -42,12 +43,14 @@ public class GRMGraphicPanel extends JPanel implements ActionListener {
 				this.gbot.supplyPartOnFeeder(this.gbot.getOrder()-21);//this.gbot.getOrder()-21);
 				this.gbot.popOrder();
 			}
-	    	if(this.gbot.getOrder() == 26)
+			else if(this.gbot.getOrder() == 26)
 	    	{
-	    		this.gbot.binPurged();
-	    		System.out.println("Destroying held bin");
+	    		this.gbot.binPurged();	    		
 	    		this.gbot.popOrder();
+	    		Integer binIndex=this.getBinCarriedIndex();
+				this.binIsPurged(binIndex);
 	    	}
+			
 			}
 		}	
 		gbot.update();
@@ -56,6 +59,7 @@ public class GRMGraphicPanel extends JPanel implements ActionListener {
 
 	public GRMGraphicPanel(){
 		ps = new PurgeStation();
+		carriedBinIndex = 0;
 		gbot = new GUIGantryRobot();
 		bin = new GUIBin(450,0,0.0,"",0);
 		bins = new ArrayList<GUIBin>();
@@ -106,6 +110,15 @@ public class GRMGraphicPanel extends JPanel implements ActionListener {
 	
 	public void binIsCarried(Integer binIndex){
 		this.bins.get(binIndex).setFullStatus(false);
+		carriedBinIndex = binIndex;
+		//this.bins.g
+	}
+	
+	public Integer getBinCarriedIndex(){
+		return carriedBinIndex;
+	}
+	public void binIsPurged(Integer binIndex){
+		this.bins.get(binIndex).setFullStatus(true);
 	}
 	
 	public void paintPurge(JPanel j,Graphics2D g){
@@ -116,8 +129,9 @@ public class GRMGraphicPanel extends JPanel implements ActionListener {
 		for (int i=0;i<8;i++){
 			if(bins.get(i).binIsFull()==true){
 				bins.get(i).getImage().paintIcon(j, g, bins.get(i).getX(), bins.get(i).getY());
+				parts.get(i).getGUIPart().getImage().paintIcon(j, g, parts.get(i).getGUIPart().getX(), parts.get(i).getGUIPart().getY());
 			}
-			parts.get(i).getGUIPart().getImage().paintIcon(j, g, parts.get(i).getGUIPart().getX(), parts.get(i).getGUIPart().getY());
+			
 		}
 		
 	}
