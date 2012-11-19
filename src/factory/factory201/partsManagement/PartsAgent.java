@@ -323,8 +323,8 @@ public class PartsAgent extends Agent implements PartsInterface {
     public void DoGiveKitsInQueue(List<Kit> kits){
 
         if (this.client != null) {
-        BlueprintKits adhoc = new BlueprintKits((ArrayList)kits);
-        this.client.sendMessage(Message.GIVE_KITS_IN_QUEUE+":"+adhoc.serialize());
+//        BlueprintKits adhoc = new BlueprintKits((ArrayList)kits);
+ //       this.client.sendMessage(Message.GIVE_KITS_IN_QUEUE+":"+adhoc.serialize());
 
     }
         else{
