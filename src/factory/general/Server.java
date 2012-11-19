@@ -30,7 +30,7 @@ public class Server {
 	/**
 	 * Instance fields
 	 */
-	public static final Integer PORT_NUMBER = 31416;
+	public static final Integer PORT_NUMBER = 31417;
 	public static final String HOST_NAME = "localhost";
 	private static boolean SHOULD_DEBUG = false;
 	private Printer p = new Printer();
@@ -120,7 +120,7 @@ public class Server {
 			e.printStackTrace();
 			System.exit(0);
 		}
-		prepareAllAgents(); // Prepare all agents; based on AgentMain.java      // For Testing By Dongyoung
+		//prepareAllAgents(); // Prepare all agents; based on AgentMain.java      // For Testing By Dongyoung
 //		for (int i=0 ; i<2 ; i++){ // For Testing By Dongyoung, if want to need communicate n managers, change into for(int i=0 ; i<n ; i++)
 		while(true){
 			// Continuously check for a new client for which to create a thread
