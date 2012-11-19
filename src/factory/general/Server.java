@@ -254,15 +254,15 @@ public class Server {
             // * 
         	
         	// THIS IS JUST EXAMPLE STUFF THAT 201 WAS DOING TO TEST
-            Kit kit = new Kit("Test Kit"); // This is required for...
+            Kit kit = new Kit("Test Kit","dsc"); // This is required for...
             for (int i = 0; i < 8; i++) {
                 
 //                kit.addPart(this.fstate.getPartCheat().clone());
                 //kit.addPart(new Part("Part " + i, "p1")); // This is a kit that has actual parts...
                 
-                kit.addPart(new Part(i)); //testing- Kevin
+                kit.addPart(new Part("lol","k")); //testing- Kevin
             }
-            List<Kit> kits = new ArrayList<Kit>();
+            ArrayList<Kit> kits = new ArrayList<Kit>();
             kits.add(kit);
             kits.add(kit);
             kits.add(kit);
