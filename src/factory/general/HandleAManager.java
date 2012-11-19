@@ -198,6 +198,9 @@ public class HandleAManager implements Runnable {
         else if( msg.contains( Message.PART_TO_NEST_FROM_LANE ) ){
 	    	server.getServerLM().getVerify().verify(msg);
 	    }
+        else if( msg.contains( Message.PART_TAKE_BY_PARTROBOT ) ){
+        	server.getServerLM().getVerify().verify(msg);
+        }
     }
 
     /**
