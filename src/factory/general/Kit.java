@@ -42,7 +42,7 @@ public class Kit implements Serializable{
     }
 
     public int getSize() {
-        return parts.size();
+        return this.parts.size();
     }
 
     public Part getPart(int i) {
@@ -153,6 +153,39 @@ public class Kit implements Serializable{
         } else {
             System.out.println("TEST FAILED");
         }
+
+	System.out.println("Deep Clone Test");
+	Kit blah = new Kit("heykit","myscrip");
+	for(int i =0 ; i != 4; i++)
+	    {
+		blah.addPart(new Part("hey","non",311));
+		blah.getPart(i).setFilename("fname");
+	    }
+	System.out.println("BEFORE SIZE: "+blah.getSize());
+blah.debug();
+		Kit blah2 = Kit.deepClone(blah);
+	blah2.debug();
+	System.out.println("AFTER SIZE: " + blah2.getSize());
+	Boolean good = true;	
+	if(!blah.getName().equals(blah2.getName()))
+	    {
+		System.out.println("NAME DOES NOT MATCH");
+		good = false;
+	    }
+	if(!blah.getDescription().equals(blah2.getDescription()))
+	    {
+		System.out.println("DESCRIPTION DOESN TO MATCH");
+		good = false;
+	    }
+	if(blah.getSize() != blah2.getSize())
+	    {
+		System.out.println("PARTS SIZE DOES NOT MATCH");
+		good = false;
+	    }
+	if(good)
+	    {
+		System.out.println("Test passed");
+	    }else System.out.println("TEST FAILED");
     }
     public List<Part> getParts()
     {
@@ -162,9 +195,9 @@ public class Kit implements Serializable{
     {
         Kit k = new Kit(in.getName(),in.getDescription(),in.getNumber());
         ArrayList<Part> dp = new ArrayList<Part>();
-        for(int i = 0; i != k.getSize(); i++)
+        for(int i = 0; i != in.getSize(); i++)
         {
-            dp.add(k.getPart(i).clone());
+            dp.add(in.getPart(i).clone());
         }
         k.setParts(dp);
         return k;   
