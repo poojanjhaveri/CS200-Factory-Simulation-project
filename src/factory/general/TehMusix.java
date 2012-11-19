@@ -20,7 +20,7 @@ public class TehMusix {
     TehMusix(String filename) {
         try {
             
-          //  songPath = new URL(getCodeBase(), filename); // Get the Sound URL
+	    //            songPath = new URL(getCodeBase(), filename); // Get the Sound URL
             song = Applet.newAudioClip(songPath); // Load the Sound
         } catch (Exception e) {
         } // Satisfy the catch

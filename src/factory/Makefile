@@ -3,6 +3,7 @@ C201=factory201/feederManagement/*.java  factory201/partsManagement/*.java facto
 GENERAL=$(addprefix general/, $(G)) $(C201) 
 PARAM=-d .
 PKGENERAL=factory.general
+ALLPKG=?
 
 all:
 	javac $(PARAM) *.java factory200/*.java general/*.java
