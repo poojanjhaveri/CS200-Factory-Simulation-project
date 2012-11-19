@@ -199,22 +199,10 @@ public class GantryRobotManager extends Manager implements ActionListener {
 		   this.graphics.binIsCarried(binIndex);
 	   }
 	   public void purgeBin(){
-		 // Integer binIndex=this.graphics.getBinCarriedIndex();
-		 
-		  ganbot.purgeBinCommand();
-		  
+		 // Integer binIndex=this.graphics.getBinCarriedIndex();		 
+		  ganbot.purgeBinCommand();		  
 	   }
 
-	  
-	  /*public void doSupplyPart(int binNum, int feederNum){
-		ganbot= graphics.getGantryRobot();
-		
-		ganbot.moveToBin(binNum);
-		ganbot.carryABin(binNum);////////////////////////
-		ganbot.moveToFeeder(feederNum);
-		ganbot.moveToDump();
-	}
-	*/
 }
 
 

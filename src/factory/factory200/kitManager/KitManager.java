@@ -1020,6 +1020,7 @@ public class KitManager extends Manager  implements ActionListener {
             ub7.setIcon(new ImageIcon("pics/parts/no.png"));
                */  
 
+
                  Integer p=(bpkit.getKitAt(cb.getSelectedIndex())).getSize();
                  
                  updatepartlist.add(nullpart);
