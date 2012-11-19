@@ -179,7 +179,7 @@ public class GUIGantryRobot extends GUIRobot{
     public void moveToDump() {
     	this.bin.setX(this.cords.getX());
     	this.bin.setY(this.cords.getY());
-        this.moveTo(210,550);//,GantryRobotManager.DUMPY);
+        this.moveTo(1200,550);//,GantryRobotManager.DUMPY);
     }
     
     /*
