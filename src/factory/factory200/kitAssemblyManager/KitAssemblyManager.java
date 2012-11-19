@@ -261,12 +261,12 @@ public class KitAssemblyManager extends Manager implements ActionListener {
         this.add(graphics);
 
 
-        int x = 550;
-        this.setSize(550 + x, 700);
+        //int x = 550;
+        this.setSize(550, 700);
 
         this.graphics.setVisible(true);
 
-        this.add(TestPanel());
+        //this.add(TestPanel());
         //change TEST to just graphicPanel (above)
 
         this.setVisible(true);
