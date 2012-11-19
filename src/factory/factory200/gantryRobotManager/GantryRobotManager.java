@@ -148,7 +148,7 @@ public class GantryRobotManager extends Manager implements ActionListener {
 	   }
 	   
 	   else if(msg.contains(Message.MOVE_GANTRY_TO_DUMP)){
-		   this.ganbot.purgeBinCommand();
+		   purgeBin();//this.ganbot.purgeBinCommand();
 	   }
    }
     /**
@@ -200,11 +200,13 @@ public class GantryRobotManager extends Manager implements ActionListener {
 			
 		}
 		if (ae.getSource() ==purgeStation){
-			ganbot.purgeBinCommand();
+			this.purgeBin();//ganbot.purgeBinCommand();
 			}
 		
 		if (ae.getSource() ==dumpPart){
 			ganbot.supplyPartOnFeederCommand(0);
+		//Integer binIndex=this.graphics.getBinCarriedIndex();
+			//this.graphics.binIsPurged(binIndex);
 		}
 
 		if (ae.getSource() ==pickBin){
@@ -240,12 +242,10 @@ public class GantryRobotManager extends Manager implements ActionListener {
 		   this.graphics.binIsCarried(binIndex);
 	   }
 	   public void purgeBin(){
-		   /*ganbot.moveToDump(); ////It still does not successfully purge the bin unless you click it twice??
-		   if(ganbot.arrivedAtPurge()){
-			   ganbot.binPurged();
-			   ganbot.RobotInitialization();
-		   }*/
-		   ganbot.purgeBinCommand();
+		 // Integer binIndex=this.graphics.getBinCarriedIndex();
+		 
+		  ganbot.purgeBinCommand();
+		  
 	   }
 
 	  
