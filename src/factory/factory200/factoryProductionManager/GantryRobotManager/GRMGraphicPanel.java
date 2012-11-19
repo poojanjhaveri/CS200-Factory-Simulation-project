@@ -28,6 +28,8 @@ public class GRMGraphicPanel{
 	public GRMGraphicPanel(){
 		carriedBinIndex = 0;
 		gbot = new GUIGantryRobot();
+                gbot.setX(1100);
+                gbot.setY(10);
 		bin = new GUIBin(450,0,0.0,"",0);
 		bins = new ArrayList<GUIBin>();
 		parts = new ArrayList<Part>();
@@ -39,7 +41,7 @@ public class GRMGraphicPanel{
 		///<Initialize all 8 bins, 8 parts within its bins
 		
         for (int i = 1; i < 9; i++) {
-           bin=new GUIBin(1220,(i*80-60),0.0, "pics/binBox"+i+".png",i);
+           bin=new GUIBin(1280,(i*80-70),0.0, "pics/binBox"+i+".png",i);
            bins.add(bin);
            GUItemp=new GUIPart(bins.get(i-1).getX()+15, bins.get(i-1).getY()+20, 0.0, new ImageIcon("pics/parts/part"+i+".png"));
            newPart = new Part(null,null);
@@ -101,6 +103,7 @@ public class GRMGraphicPanel{
         paintPurge(graph,g2);
         paintBinsWithParts(graph, g2);
         //paintFeeders(graph,g2);
+        
 	    gbot.paintMe(graph,g2);
 	}
 	
@@ -109,7 +112,7 @@ public class GRMGraphicPanel{
 	}
 	
 	public void paintPurge(JPanel j,Graphics2D g){
-		ps.getImage().paintIcon(j, g, 260, 600);
+		ps.getImage().paintIcon(j, g, 1160, 600);
 	}
 	public void paintBinsWithParts(JPanel j,Graphics2D g){
 		

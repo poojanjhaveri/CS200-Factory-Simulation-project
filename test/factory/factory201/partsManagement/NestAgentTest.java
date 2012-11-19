@@ -90,27 +90,28 @@ public class NestAgentTest extends TestCase{
 	}
 @Test
 public void testfirstTest(){
+    assertTrue("Nest 0 status should be empty", nest.myNests.get(0).status == Nest.Status.empty);
     nest.msgNeedPart(p);
-    /*nest.msgNeedPart(new Part(2));
-    nest.msgNeedPart(new Part(3));
-    nest.msgNeedPart(new Part(4));
-    nest.msgNeedPart(new Part(5));
-    nest.msgNeedPart(new Part(6));
-    nest.msgNeedPart(new Part(7));
-    nest.msgNeedPart(new Part(8));*/
     
-    assertTrue("Nest 0 should have status of needPart", nest.requests.size()==1);
+    assertTrue("Requests size and NeedParts size should be 1", nest.requests.size()==1 && nest.needParts.size()==1);
     
     nest.pickAndExecuteAnAction();
-    assertTrue("Nest 0 status should be gettingPart", nest.myNests.get(0).status == Nest.Status.gettingPart);
+    
+    assertTrue("Nest 0 status should be needPart", nest.myNests.get(0).status == Nest.Status.needPart);
+    nest.pickAndExecuteAnAction();
     assertTrue("Lane should have gotten msgNeedPart" + getLogs(), lane0.log.containsString("msgNeedPart"));
-    nest.msgHereAreParts(nestParts);
+    assertTrue("nest 0 status should be gettingPart", nest.myNests.get(0).status == Nest.Status.gettingPart);
+    nest.msgHereAreParts(nestParts, 0);
     assertTrue("Nest parts array should contain 8 p1 parts", nest.myNests.get(0).parts.size()==8);
+    assertTrue("Nest 0 status should be full", nest.myNests.get(0).status == Nest.Status.full);
     nest.pickAndExecuteAnAction();
     assertTrue("Camera should have gotten msgRequestInspection from nest" + getLogs(), camera.log.containsString("msgNestIsFull"));
+    assertTrue("Nest 0 status should be full", nest.myNests.get(0).status == Nest.Status.gettingInspected);
     nest.msgNestInspected(nest.myNests.get(0), true);
+    assertTrue("Nest 0 status should be full", nest.myNests.get(0).status == Nest.Status.readyForKit);
     nest.pickAndExecuteAnAction();
     assertTrue("msgHereIsPart" + getLogs(), parts.log.containsString("msgHereIsPart"));
+    assertTrue("Requests size and NeedParts size should be 0", nest.requests.size()==0 && nest.needParts.size()==0);
     
     /* 
     nest.pickAndExecuteAnAction();

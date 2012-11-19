@@ -157,6 +157,10 @@ public class CameraAgent extends Agent implements Camera {
         this.kitRobot = kitRobot;
         this.nestAgent = nestAgent;
     }
+    
+    public List<Integer> getKitRqmts() {
+        return this.kitRqmts;
+    }
 
     private void DoInspectKit(Kit kit) {
         if (this.client != null) {
