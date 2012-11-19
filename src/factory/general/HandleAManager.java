@@ -179,20 +179,18 @@ public class HandleAManager implements Runnable {
         }else if(msg.contains(Message.PUSH_PRODUCTION_QUEUE)) {
         	
         	// TODO: THIS IS TEMPORARY JUST FOR TESTING THE WHOLE THING INTEGRATED; CHANGE TO REMOVE startInteractionSequence
-//        	ArrayList<Kit> queue = new ArrayList<Kit>();
-//        	ArrayList<String> deserialized = Util.deserialize(this.grabParameter(msg));
-//        	for(int i = 0; i != deserialized.size(); i++) {
-//        		queue.add(Kit.deepClone(this.server.getFactoryState().getKitById(Integer.parseInt(deserialized.get(i)))));
-//        		System.out.println(deserialized.get(i));
-//        	}
+        	ArrayList<Kit> queue = new ArrayList<Kit>();
+        	ArrayList<String> deserialized = Util.deserialize(this.grabParameter(msg));
+        	for(int i = 0; i != deserialized.size(); i++) {
+        		queue.add(Kit.deepClone(this.server.getFactoryState().getKitById(Integer.parseInt(deserialized.get(i)))));
+        		System.out.println(deserialized.get(i));
+        	}
 
-        	//now what do i do with the queue? THIS IS AD-HOC
-        	//this.server.getPartsAgent().msgHereIsKit(queue.get(0));
-//        	this.server.getConveyorAgent().generateKit(queue.size()); // * This generates 10 new kits, among other things if you pass string... *
-//        	this.server.getPartsAgent().msgHereIsKit(queue);
+        	//this.server.getConveyorAgent().generateKit(queue.size()); // * This generates 10 new kits, among other things if you pass string... *
+        	//this.server.getPartsAgent().msgHereIsKit(queue);
         	this.server.startInteractionSequence();
-//        	System.out.println("BEGINNING PRODUCTION CYCLE WOOOOOOT (size "+queue.size() + ")");
-//        	queue.get(0).debug();
+        	System.out.println("BEGINNING PRODUCTION CYCLE WOOOOOOT (size "+queue.size() + ")");
+                        	queue.get(0).debug();
 
         }
         else if( msg.contains( Message.PART_TO_NEST_FROM_LANE ) ){

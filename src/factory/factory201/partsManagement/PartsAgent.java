@@ -63,7 +63,7 @@ public class PartsAgent extends Agent implements PartsInterface {
         print("PartsAgent got message for new kits");
         for (Kit k: newKits){
         newKit.add(k);}
-        DoGiveKitsInQueue(newKit);
+        //DoGiveKitsInQueue(newKit);
         stateChanged();
     }
 
@@ -161,7 +161,7 @@ public class PartsAgent extends Agent implements PartsInterface {
     private void startNewKit(Kit k) {
        
         DoGiveKitsInAction(k);
-        DoGiveKitsInQueue(newKit);
+       // DoGiveKitsInQueue(newKit);
         
         print("New kit being started");
         camera.msgHereIsKitInfo(k);
@@ -179,7 +179,7 @@ public class PartsAgent extends Agent implements PartsInterface {
     
     private void pickUpPart0(Part p){
         grips.add(p);
-        
+        DoMoveToNest(p.getNestNum());
         for (Part part: kit0NeedsParts){
             if (part.type == p.type){
                 kit0.parts.add(p);
@@ -199,7 +199,7 @@ public class PartsAgent extends Agent implements PartsInterface {
     
      private void pickUpPart1(Part p){
         grips.add(p);
-        
+        DoMoveToNest(p.getNestNum());
         for (Part part: kit1NeedsParts){
             if (part.type == p.type){
                 kit1.parts.add(p);
@@ -282,7 +282,7 @@ public class PartsAgent extends Agent implements PartsInterface {
             this.fpm.sendMessage(Message.KAM_PARTS_MOVE_TO_NEST + ":" + nestNum);
             this.client.sendMessage(Message.KAM_PARTS_MOVE_TO_NEST + ":" + nestNum);
         } else {
-
+            print("DOMOVETONEST NUM ["+ nestNum+ "]");
             print("[ERROR] - Kit Assembly Manager is not online.");
 
         }
@@ -293,7 +293,7 @@ public class PartsAgent extends Agent implements PartsInterface {
             this.client.sendMessage(Message.KAM_PARTS_PICK_PART + ":" + nestNum);
             this.fpm.sendMessage(Message.KAM_PARTS_PICK_PART + ":" + nestNum);
         } else {
-
+            print("DOMOVETONEST NUM ["+ nestNum+ "]");
             print("[ERROR] - Kit Assembly Manager is not online.");
 
         }
@@ -304,7 +304,7 @@ public class PartsAgent extends Agent implements PartsInterface {
             this.client.sendMessage(Message.KAM_PARTS_DROP_OFF_PARTS + ":" + kitNum);
             this.fpm.sendMessage(Message.KAM_PARTS_DROP_OFF_PARTS + ":" + kitNum);
         } else {
-
+            print("DOMOVETONEST NUM ["+ kitNum+ "]");
             print("[ERROR] - Kit Assembly Manager is not online.");
 
         }}
@@ -312,7 +312,7 @@ public class PartsAgent extends Agent implements PartsInterface {
     public void DoGiveKitsInAction(Kit k){
         if (this.client != null) {
 
-            this.client.sendMessage(Message.KIT_IN_PRODUCTION+":"+k.getName());
+            this.fpm.sendMessage(Message.KIT_IN_PRODUCTION+":"+k.getName());
         }
         else{
             print("[ERROR] - Kit Assembly Manager is not online.");
@@ -324,9 +324,9 @@ public class PartsAgent extends Agent implements PartsInterface {
     
     public void DoGiveKitsInQueue(ArrayList<Kit> kits1){
 
-        if (this.client != null) {
+        if (this.fpm != null) {
         BlueprintKits adhoc = new BlueprintKits(kits1);
-        this.client.sendMessage(Message.GIVE_KITS_IN_QUEUE+":"+adhoc.serialize());
+        this.fpm.sendMessage(Message.GIVE_KITS_IN_QUEUE+":"+adhoc.serialize());
 
     }
         else{

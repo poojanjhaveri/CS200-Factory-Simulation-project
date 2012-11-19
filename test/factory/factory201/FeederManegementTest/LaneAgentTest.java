@@ -79,7 +79,7 @@ public void testsendPartsAfterRequest(){
 	assertTrue(
 			"Mock nest should have received message here are parts. Event log: "
 					+ nest.log.toString(), nest.log
-					.containsString("Received parts event encountered"));
+					.containsString("msgHereAreParts"));
 }
 
 public void testLaneInitializedWithNoParts(){

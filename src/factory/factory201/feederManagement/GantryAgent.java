@@ -30,6 +30,7 @@ public class GantryAgent extends Agent implements Gantry {
     //holds info about all the feeders that are assigned to the gantry
     private List<myFeeder> myFeeders = Collections.synchronizedList(new ArrayList<myFeeder>());
     private List<myBin> bins = Collections.synchronizedList(new ArrayList<myBin>());
+    private LMServerMain serverMain;
 
     Timer timer=new Timer();
     //---------------------------------------------------------------------------
@@ -270,7 +271,7 @@ public class GantryAgent extends Agent implements Gantry {
      
          
      this.client.sendMessage(Message.MOVE_GANTRY_TO_BIN+":"+b.index);
-       
+       this.fpm.sendMessage(Message.MOVE_GANTRY_TO_BIN+":"+b.index);
          try {
 			Thread.sleep(6000);
 		} catch (InterruptedException e) {
@@ -278,18 +279,21 @@ public class GantryAgent extends Agent implements Gantry {
 			e.printStackTrace();
 		}
          this.client.sendMessage(Message.GANTRY_CARRY_A_BIN + ":" + b.index);
+         this.fpm.sendMessage(Message.GANTRY_CARRY_A_BIN + ":" + b.index);
          this.client.sendMessage(Message.MOVE_GANTRY_TO_FEEDER+":"+f.index);
+         this.fpm.sendMessage(Message.MOVE_GANTRY_TO_FEEDER+":"+f.index);
          
     	//animation.goToFeeder(f.index-1);
     	
     	try {
 			Thread.sleep(6000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
+			// TODO Auto-generated ongocatch block
 			e.printStackTrace();
 		}
     	
     	this.client.sendMessage(Message.SUPPLY_PART_ON_FEEDER + ":" + f.index);
+        this.fpm.sendMessage(Message.SUPPLY_PART_ON_FEEDER + ":" + f.index);
         
             try {
 			Thread.sleep(2000);
@@ -297,8 +301,9 @@ public class GantryAgent extends Agent implements Gantry {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        
+            
         this.client.sendMessage(Message.MOVE_GANTRY_TO_DUMP);
+        this.fpm.sendMessage(Message.MOVE_GANTRY_TO_DUMP);
     
         
          try {
@@ -307,6 +312,9 @@ public class GantryAgent extends Agent implements Gantry {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+         
+         // By Dongyoung Jung
+         //serverMain.getForAgentGantryRobot().purgeBin(f.index);
     }
     public void setFeeder(Feeder feeder,int index) {
     //add feeders to the list
@@ -328,4 +336,6 @@ public class GantryAgent extends Agent implements Gantry {
 		// TODO Auto-generated method stub
 		
 	}
+        public void setServer(LMServerMain server)
+        {this.serverMain=server;}
 }

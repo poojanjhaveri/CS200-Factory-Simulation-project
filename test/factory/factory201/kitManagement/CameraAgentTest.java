@@ -11,55 +11,100 @@ import org.junit.Test;
 /**
  * @author Alex Young <alexyoung1992@gmail.com>
  * @version 1
+ * @brief Unit test for Camera Agent
  */
 public class CameraAgentTest extends TestCase {
 
     private CameraAgent camera;
     private MockKitRobot kitRobot;
-    private MockNest nestAgent;
+    private MockNest nestMock;
 
-    public CameraAgentTest() {
-        camera = new CameraAgent("Camera");
-        kitRobot = new MockKitRobot("Mock Kit Robot");
-        nestAgent = new MockNest("Mock Nest Agent");
-        camera.setKitRobot(kitRobot);
+    /**
+     * Test of msgNestIsFull method, of class CameraAgent.
+     */
+    @Test
+    public void testMsgNestIsFull() {
+        this.initialize();
+        
+        Nest n = new Nest(0);
+        n.part = new Part(0);
+        n.parts.add(new Part(0));
+        n.status = Nest.Status.gettingInspected;
+        
+        camera.msgNestIsFull(n);
+        camera.pickAndExecuteAnAction();
+        assertTrue("Nest should be inspected after 1 scheduler call." + 
+                getLogs(), nestMock.log.containsString("Nest Inspected"));
+        assertTrue("Mock Nest Agent should have only received one message.",
+                nestMock.log.size() == 1);
+        assertFalse("Calling the scheduler again should return false.",
+                camera.pickAndExecuteAnAction());
     }
 
-    /* Check if on receiving msgKitFull, the Camera sends a message "Kit Inspected" */
-//    @Test
-//    public void testInspectNest() {
-//        Nest nest = new Nest(1);
-//        nest.status = Nest.Status.gettingInspected;
-//        camera.msgNestIsFull(nest);
-//        camera.pickAndExecuteAnAction();
-//        assertTrue("Mock kitRobot should have received Nest Inspected. Event log: "
-//                + kitRobot.log.toString(), kitRobot.log
-//                .containsString("Received msgKitInspected"));
-//
-//    }
-
-    /* Check if on receiving message nest is full, it sends a status to Nest "Nest Inspected" */
+    /**
+     * Test of msgHereIsKitInfo method, of class CameraAgent.
+     */
     @Test
-    public void testInspectKit() {
-        Kit kit = new Kit("Test Kit");
+    public void testMsgHereIsKitInfo() {
+        this.initialize();
+        
+        Kit kitInfo = new Kit("Kit Info");
         for (int i = 0; i < 8; i++) {
-            kit.addPart(new Part(i));
+            kitInfo.addPart(new Part(i));
         }
-        camera.msgHereIsKitInfo(kit);
+        camera.msgHereIsKitInfo(kitInfo);
         camera.pickAndExecuteAnAction();
-        Kit kit2 = new Kit("Test Kit2");
+        assertTrue("Kit requirements should be full after 1 scheduler call.",
+                !camera.getKitRqmts().isEmpty());
+        assertFalse("Calling the scheduler again should return false.",
+                camera.pickAndExecuteAnAction());
+    }
+
+    /**
+     * Test of msgKitIsFull method, of class CameraAgent.
+     */
+    @Test
+    public void testMsgKitIsFull() {
+        this.initialize();
+        
+        Kit testKit = new Kit("Test Kit");
         for (int i = 7; i >= 0; i--) {
-            kit2.addPart(new Part(i));
+            testKit.addPart(new Part(i));
         }
-        kit2.status = Kit.Status.full;
-        camera.msgKitIsFull(kit2);
+        testKit.status = Kit.Status.full;
+        camera.msgKitIsFull(testKit);
         camera.pickAndExecuteAnAction();
-//        camera.inspectKit(kit);
-//        assertTrue("Mock nestAgent should have received Nest Inspected. Event log: "
-//                + kitRobot.log.toString(), kitRobot.log
-//                .containsString("Nest Inspected"));
-//        assertEquals(true, camera.TEST);
+        assertTrue("Kit should be inspected after 1 scheduler call."
+                + getLogs(), kitRobot.log.containsString("msgKitInspected"));
+        assertTrue("Mock Kit Robot should have only received one message.",
+                kitRobot.log.size() == 1);
+        assertFalse("Calling the scheduler again should return false.",
+                camera.pickAndExecuteAnAction());
+    }
 
+    private void initialize() {
+        camera = new CameraAgent("Camera");
+        kitRobot = new MockKitRobot("Mock Kit Robot");
+        nestMock = new MockNest("Mock Nest Agent");
+        camera.setAll(kitRobot, nestMock);
+    }
+    
+    private String getLogs() {
+        StringBuilder sb = new StringBuilder();
+        String newLine = System.getProperty("line.separator");
+        sb.append("-------Mock Kit Robot Log-------");
+        sb.append(newLine);
+        sb.append(kitRobot.log.toString());
+        sb.append(newLine);
+        sb.append("-------End Mock Kit Robot Log-------");
 
+        sb.append(newLine);
+
+        sb.append("-------Mock Nest Agent Log-------");
+        sb.append(newLine);
+        sb.append(nestMock.log.toString());
+        sb.append("-------End Mock Nest Agent Log-------");
+
+        return sb.toString();
     }
 }

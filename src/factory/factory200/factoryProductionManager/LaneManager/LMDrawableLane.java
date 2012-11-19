@@ -4,6 +4,10 @@ import java.awt.Graphics2D;
 import java.util.ArrayList;
 import factory.factory200.factoryProductionManager.*;
 
+/**
+ * @brief Lane Drawing
+ * @author Dongyoung Jung
+ */
 public class LMDrawableLane {
 	
 	private LMDrawableTrack newTrack;

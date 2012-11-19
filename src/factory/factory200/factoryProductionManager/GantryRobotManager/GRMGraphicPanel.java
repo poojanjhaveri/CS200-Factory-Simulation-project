@@ -1,9 +1,10 @@
 package factory.factory200.factoryProductionManager.GantryRobotManager;
 
 import factory.factory200.factoryProductionManager.*;
+import factory.factory200.gantryRobotManager.GUIBin;
+import factory.factory200.gantryRobotManager.GUIFeeder;
 import factory.factory200.gantryRobotManager.PurgeStation;
 import factory.general.GUIPart;
-import factory.factory200.gantryRobotManager.*;
 import factory.general.Part;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -24,24 +25,33 @@ public class GRMGraphicPanel{
     GUIPart GUItemp;
 	GUIGantryRobot gbot;
 	PurgeStation ps;
+        GUIFeeder feedertemp; 
 	public GRMGraphicPanel(){
 		carriedBinIndex = 0;
 		gbot = new GUIGantryRobot();
+                //gbot.setX(1100);
+                //gbot.setY(10);
 		bin = new GUIBin(450,0,0.0,"",0);
 		bins = new ArrayList<GUIBin>();
 		parts = new ArrayList<Part>();
 		feeders = new ArrayList<GUIFeeder>();
 		newPart = new Part(null,null);
+                ps=new PurgeStation();
+                feedertemp = new GUIFeeder((Integer)0,(Integer)0,(Double)0.0,"");
 		
 		///<Initialize all 8 bins, 8 parts within its bins
 		
         for (int i = 1; i < 9; i++) {
-           bin=new GUIBin(1220,(i*80-60),0.0, "pics/binBox"+i+".png",i);
+           bin=new GUIBin(1280,(i*80-70),0.0, "pics/emptybox.png",i);
            bins.add(bin);
            GUItemp=new GUIPart(bins.get(i-1).getX()+15, bins.get(i-1).getY()+20, 0.0, new ImageIcon("pics/parts/part"+i+".png"));
            newPart = new Part(null,null);
            newPart.setGUIPart(GUItemp);
            parts.add(newPart);
+        }
+        for(int i = 1;i<5; i++){
+        	feedertemp = new GUIFeeder(0,i*150-100,0.0,"pics/feeder"+i+".png");
+        	feeders.add(feedertemp);
         }
 	}
 	
@@ -86,14 +96,15 @@ public class GRMGraphicPanel{
 	public void paint(GraphicsPanel graph, Graphics g) {
         
         Graphics2D g2 = (Graphics2D) g;
-        Image img = new ImageIcon("pics/background/mainbg.png").getImage();
+        Image img = new ImageIcon("pics/background/part3.png").getImage();
         g2.drawImage(img, -1350+500, 0, null);
         //Rectangle2D.Double backgroundRectangle = new Rectangle2D.Double(0, 0, 500, 700);
         //g2.setColor(Color.GRAY.darker().darker());//dark dark green background
         //g2.fill(backgroundRectangle);
         paintPurge(graph,g2);
         paintBinsWithParts(graph, g2);
-        paintFeeders(graph,g2);
+        //paintFeeders(graph,g2);
+        
 	    gbot.paintMe(graph,g2);
 	}
 	
@@ -102,7 +113,7 @@ public class GRMGraphicPanel{
 	}
 	
 	public void paintPurge(JPanel j,Graphics2D g){
-		ps.getImage().paintIcon(j, g, 260, 600);
+		ps.getImage().paintIcon(j, g, 1160, 600);
 	}
 	public void paintBinsWithParts(JPanel j,Graphics2D g){
 		

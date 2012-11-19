@@ -4,6 +4,10 @@ import java.awt.Graphics2D;
 import javax.swing.ImageIcon;
 import factory.factory200.factoryProductionManager.*;
 
+/**
+ * @brief Feeder Drawing
+ * @author Dongyoung Jung
+ */
 public class LMDrawableFeeder{
 
 	private ImageIcon feederImage;

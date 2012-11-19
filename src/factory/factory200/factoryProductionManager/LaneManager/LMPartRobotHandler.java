@@ -1,8 +1,12 @@
 package factory.factory200.factoryProductionManager.LaneManager;
 
+/**
+ * @brief Take Bin from Nest Controller
+ * @author Dongyoung Jung 
+ */
 public class LMPartRobotHandler{
 	
-	private LMApplication app;	///< Instance of class 'LMApplication'
+	private LMApplication app;
 	private int nestNum;
 
 	public LMPartRobotHandler(LMApplication app){
