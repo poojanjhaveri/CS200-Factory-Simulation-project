@@ -13,7 +13,7 @@ all:
 run:
 	@echo "STARTING SERVER"
 	$(RUN) factory.general.Server &
-	php sleeper.php
+	@sleep 5
 	@echo "BEGINNING ALL MANAGERS"
 	$(RUN) $(RUNPKG).partsManager.PartsManager &
 	$(RUN) $(RUNPKG).kitManager.KitManager &
