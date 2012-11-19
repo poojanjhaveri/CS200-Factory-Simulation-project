@@ -163,7 +163,7 @@ public class CameraAgent extends Agent implements Camera {
             this.client.sendMessage(Message.KAM_FLASH_KIT_CAMERA);
             this.fpm.sendMessage(Message.KAM_FLASH_KIT_CAMERA);
         } else {
-//            print("[ERROR] - Kit Assembly Manager is not online.");
+            print("[ERROR] - Kit Assembly Manager is not online.");
         }
     }
 
@@ -173,7 +173,7 @@ public class CameraAgent extends Agent implements Camera {
             this.fpm.sendMessage(Message.KAM_FLASH_NEST_CAMERA + ":" + nest.nestNum);
             this.fpm.sendMessage(Message.ALERT_FPM_KIT_INSPECTED);
         } else {
-//            print("[ERROR] - Kit Assembly Manager is not online.");
+            print("[ERROR] - Kit Assembly Manager is not online.");
         }
     }
 }
