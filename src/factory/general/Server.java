@@ -47,9 +47,9 @@ public class Server {
 
     // Fields just for "AgentMain" stuff (Agent preparation)
     // If true, print statements for this 201 person are on
-    private static final boolean PATRICK = false;
-    private static final boolean KEVIN = false;
-    private static final boolean ALEX = false;
+    private static final boolean PATRICK = true;
+    private static final boolean KEVIN = true;
+    private static final boolean ALEX = true;
 
     
     private static final int FEEDER = 4;
@@ -93,7 +93,7 @@ public class Server {
         this.fstate = new FactoryState();
 		initializeManagers(); // Something by Dongyoung
 		
-		//prepareAllAgents(); // Prepare all agents; based on AgentMain.java; commented out by Dongyoung to test animation; included after connections accepted by server
+		prepareAllAgents(); // Prepare all agents; based on AgentMain.java; commented out by Dongyoung to test animation; included after connections accepted by server
 			// should happen AFTER initializeManagers(), according to Dongyoung
 		
 		numClients = 0; // Initialize num clients is 0
@@ -153,8 +153,8 @@ public class Server {
             turnOffAgentPrintStatements();
             connectAgentsAndManagers();
             startAgentThreads();
-            //if (PATRICK && ALEX && KEVIN)
-            	startInteractionSequence();  // only for 201 testing of the animation- kevin
+//            if (PATRICK && ALEX && KEVIN)
+//            	startInteractionSequence();  // only for 201 testing of the animation- kevin
         }
 
         private void declareAgents() {
