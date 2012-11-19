@@ -82,6 +82,11 @@ public class Server {
 		}
 	}
 
+        public void playMahMusicLols()
+        {
+          
+        }
+        
 	/**
 	 * @brief Instances Server, prompting the user for a port number and
 	 * beginning the loop that checks for clients.
