@@ -89,7 +89,7 @@ public class GantryRobotManager extends Manager implements ActionListener {
         add(graphics);
         ps = new PurgeStation();
         int x = 500;
-        setSize(500 + x, 700);
+        setSize(510,700);//+ x, 700);
         graphics.setVisible(true);
         //add(TestPanel());
         //change TEST to just graphicPanel (above)
