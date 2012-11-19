@@ -188,6 +188,8 @@ public class Part implements Serializable {
     public Part clone()
     {
         Part n = new Part(this.getName(),this.getDescription(),this.getNumber());
+        if(this.filename != null)
+        n.setFilename(this.filename);
         return n;
     }
 }
