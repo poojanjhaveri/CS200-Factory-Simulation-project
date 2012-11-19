@@ -20,6 +20,16 @@ public class LMFeederHandler {
 	 */
 	public LMFeederHandler(LMApplication app){
 		this.app = app;
+		
+		verify("0Feeder Switch On");
+		verify("1Feeder Switch On");
+		verify("2Feeder Switch On");
+		verify("3Feeder Switch On");
+		
+		verify("0Feed Part Switch On");
+		verify("1Feed Part Switch On");
+		verify("2Feed Part Switch On");
+		verify("3Feed Part Switch On");
 	}
 	
 	/**

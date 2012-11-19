@@ -18,7 +18,7 @@ public class GraphicsPanel extends JPanel{
 	private ImageIcon backgroundImage = new ImageIcon( GraphicsPanel.class.getResource("background.png") );
 	private TimerThread timer = new TimerThread(this);
 	
-	public GraphicsPanel(){
+	public GraphicsPanel() {
 		new Thread(timer).start();
 		timer.timerStart();
 	}
