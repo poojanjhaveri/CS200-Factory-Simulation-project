@@ -36,6 +36,7 @@ public class GraphicsPanel extends JPanel{
 		laneManager.timerAction();
                 kitsAssemblyManager.getGraph().timerAction();
                 //add timer action for KAM! 
+                gantryRobotManager.getGraph().timerAction();
 	}
 	
 	public void verifyMessage(String msg){
