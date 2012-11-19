@@ -261,7 +261,7 @@ public class Server {
 //                kit.addPart(this.fstate.getPartCheat().clone());
                 //kit.addPart(new Part("Part " + i, "p1")); // This is a kit that has actual parts...
                 
-                kit.addPart(new Part("lol","k")); //testing- Kevin
+                kit.addPart(new Part("lol","k","fame")); //testing- Kevin
             }
             ArrayList<Kit> kits = new ArrayList<Kit>();
             kits.add(kit);
@@ -269,10 +269,10 @@ public class Server {
             kits.add(kit);
             kits.get(0).debug();
             // TODO: *Put this wherever the FPM sends the signal to create (generate) kits
-        //    conveyorAgent.generateKit(10); // * This generates 10 new kits, among other things if you pass string... *
+            conveyorAgent.generateKit(10); // * This generates 10 new kits, among other things if you pass string... *
 
             // Officially start the agent interaction sequence!
-          //  partsAgent.msgHereIsKit(kits);
+            partsAgent.msgHereIsKit(kits);
         }
 
         private void turnOffAgentPrintStatements() {

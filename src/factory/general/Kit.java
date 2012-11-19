@@ -162,6 +162,11 @@ public class Kit implements Serializable{
     {
         Kit k = new Kit(in.getName(),in.getDescription(),in.getNumber());
         ArrayList<Part> dp = new ArrayList<Part>();
+        if( k.getSize() < 4)
+        {
+            System.out.println("SIZE OF KIT IS LESS THAN 4");
+            k.debug();
+        }
         for(int i = 0; i != k.getSize(); i++)
         {
             dp.add(k.getPart(i).clone());
