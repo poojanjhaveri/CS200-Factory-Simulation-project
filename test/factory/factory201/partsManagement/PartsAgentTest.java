@@ -3,14 +3,22 @@
  * and open the template in the editor.
  */
 package factory.factory201.partsManagement;
+import factory.factory201.interfaces.Camera;
+import factory.factory201.interfaces.KitRobot;
+import factory.factory201.interfaces.NestInterface;
 import factory.factory201.test.mock.MockCamera;
 import factory.factory201.test.mock.MockKitRobot;
 import factory.factory201.test.mock.MockNest;
+import factory.factory201.partsManagement.PartsAgent;
 import factory.general.Kit;
 import factory.general.Part;
 import java.util.ArrayList;
 import java.util.List;
 import junit.framework.TestCase;
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 
@@ -29,12 +37,20 @@ public class PartsAgentTest extends TestCase{
        Kit kit;
        ArrayList<Kit> kits;
        Part p = new Part(1);
-       @Override
-	protected void setUp() throws Exception {
-       
+
+    @BeforeClass
+    public static void setUpClass() throws Exception {
+    }
+
+    @AfterClass
+    public static void tearDownClass() throws Exception {
+    }
+
+    @Before
+    public void setUp() throws Exception {
         kit = new Kit("Test Kit");
         for (int i = 0; i < 8; i++) {
-            kit.addPart(new Part("i", "i+1"));
+            kit.addPart(new Part(i));
         }
         kits = new ArrayList<Kit>();
         
@@ -50,20 +66,17 @@ public class PartsAgentTest extends TestCase{
         parts.setKitRobot(kitrobot);
         parts.setNestInterface(nest);
         parts.setCamera(camera);
+    }
+
+    @After
+    public void tearDown() throws Exception {
+    }
        
-	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see junit.framework.TestCase#tearDown()
-	 */
-	@Override
-	protected void tearDown() throws Exception {
-
-	}
+	
+	
     /**
-     *
+     *testFirst
      */
     @Test
 public void testFirst(){
@@ -149,4 +162,186 @@ public String getLogs() {
 
 	}
 
+    /**
+     * Test of msgHereIsKit method, of class PartsAgent.
+     */
+    @Test
+    public void testMsgHereIsKit() {
+        System.out.println("msgHereIsKit");
+        ArrayList<Kit> newKits = null;
+        PartsAgent instance = null;
+        instance.msgHereIsKit(newKits);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of msgHereIsPart method, of class PartsAgent.
+     */
+    @Test
+    public void testMsgHereIsPart() {
+        System.out.println("msgHereIsPart");
+        Part p = null;
+        PartsAgent instance = null;
+        instance.msgHereIsPart(p);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of msgEmptyKitReady method, of class PartsAgent.
+     */
+    @Test
+    public void testMsgEmptyKitReady() {
+        System.out.println("msgEmptyKitReady");
+        Kit k = null;
+        PartsAgent instance = null;
+        instance.msgEmptyKitReady(k);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of pickAndExecuteAnAction method, of class PartsAgent.
+     */
+    @Test
+    public void testPickAndExecuteAnAction() {
+        System.out.println("pickAndExecuteAnAction");
+        PartsAgent instance = null;
+        boolean expResult = false;
+        boolean result = instance.pickAndExecuteAnAction();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of setCamera method, of class PartsAgent.
+     */
+    @Test
+    public void testSetCamera() {
+        System.out.println("setCamera");
+        Camera c = null;
+        PartsAgent instance = null;
+        instance.setCamera(c);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of setKitRobot method, of class PartsAgent.
+     */
+    @Test
+    public void testSetKitRobot() {
+        System.out.println("setKitRobot");
+        KitRobot k = null;
+        PartsAgent instance = null;
+        instance.setKitRobot(k);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of setNestInterface method, of class PartsAgent.
+     */
+    @Test
+    public void testSetNestInterface() {
+        System.out.println("setNestInterface");
+        NestInterface n = null;
+        PartsAgent instance = null;
+        instance.setNestInterface(n);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of msgNeedPart method, of class PartsAgent.
+     */
+    @Test
+    public void testMsgNeedPart() {
+        System.out.println("msgNeedPart");
+        Part partType = null;
+        PartsAgent instance = null;
+        instance.msgNeedPart(partType);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of msgHereAreParts method, of class PartsAgent.
+     */
+    @Test
+    public void testMsgHereAreParts() {
+        System.out.println("msgHereAreParts");
+        List<Part> parts = null;
+        PartsAgent instance = null;
+        instance.msgHereAreParts(parts);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of DoMoveToNest method, of class PartsAgent.
+     */
+    @Test
+    public void testDoMoveToNest() {
+        System.out.println("DoMoveToNest");
+        int nestNum = 0;
+        PartsAgent instance = null;
+        instance.DoMoveToNest(nestNum);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of DoPickUpPart method, of class PartsAgent.
+     */
+    @Test
+    public void testDoPickUpPart() {
+        System.out.println("DoPickUpPart");
+        int nestNum = 0;
+        PartsAgent instance = null;
+        instance.DoPickUpPart(nestNum);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of DoPutInKit method, of class PartsAgent.
+     */
+    @Test
+    public void testDoPutInKit() {
+        System.out.println("DoPutInKit");
+        int kitNum = 0;
+        PartsAgent instance = null;
+        instance.DoPutInKit(kitNum);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of DoGiveKitsInAction method, of class PartsAgent.
+     */
+    @Test
+    public void testDoGiveKitsInAction() {
+        System.out.println("DoGiveKitsInAction");
+        Kit k = null;
+        PartsAgent instance = null;
+        instance.DoGiveKitsInAction(k);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of DoGiveKitsInQueue method, of class PartsAgent.
+     */
+    @Test
+    public void testDoGiveKitsInQueue() {
+        System.out.println("DoGiveKitsInQueue");
+        ArrayList<Kit> kits1 = null;
+        PartsAgent instance = null;
+        instance.DoGiveKitsInQueue(kits1);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
 }
