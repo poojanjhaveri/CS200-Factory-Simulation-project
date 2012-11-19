@@ -43,12 +43,13 @@ import javax.swing.event.ChangeListener;
 public class KitManager extends Manager  implements ActionListener {
 
 	/**
-	 * @param args 
-         * 
-         * 
-         * 
+	 * @param bpkit -   object which deals with list of existing kits from server
+         * @param bppart -  object which deals with list of existing parts from server
+         * @param partlist -  arraylist which holds the parts for the kit in create panel
+         * @param updatepartlist -  arraylist which holds the parts for the kit in modify panel
+         * @param create_combo - JCombobox for parts - to select a part and then set it on the button when the button is clicking
 	 */
-          static BlueprintKits bpkit;///<contains list of kits modifiable from server
+          static BlueprintKits bpkit;///<contains list of kits seria from server
           static BlueprintParts bppart;///<contains list of parts useable from server
           JPanel mainpanel; // main panel of the JFrame 
           JTabbedPane tabbedPane; // panel for tabbed layout
@@ -624,6 +625,8 @@ public class KitManager extends Manager  implements ActionListener {
             ArrayList<Part> finalpartlist = new ArrayList();
             for(int py=0;py<8;py++)
             {
+                
+                // Check if there is a null part in the partlist so discard it if there is any
                 if(!"pics/parts/no.png".equals(updatepartlist.get(py).getFilename()))
                 {
                     finalpartlist.add(updatepartlist.get(py));
@@ -1025,7 +1028,7 @@ public class KitManager extends Manager  implements ActionListener {
                  jbtnlist.add(ub6);
                  jbtnlist.add(ub7);
                 
-                 /*
+                 
                  
             ub0.setIcon(new ImageIcon("pics/parts/no.png"));
             ub1.setIcon(new ImageIcon("pics/parts/no.png"));
@@ -1035,7 +1038,7 @@ public class KitManager extends Manager  implements ActionListener {
             ub5.setIcon(new ImageIcon("pics/parts/no.png"));
             ub6.setIcon(new ImageIcon("pics/parts/no.png"));
             ub7.setIcon(new ImageIcon("pics/parts/no.png"));
-               */  
+                 
 
 
                  Integer p=(bpkit.getKitAt(cb.getSelectedIndex())).getSize();

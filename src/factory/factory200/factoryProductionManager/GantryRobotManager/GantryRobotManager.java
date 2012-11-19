@@ -21,7 +21,7 @@ import java.awt.Graphics2D;
 public class GantryRobotManager{
    
     GRMGraphicPanel graphics;    
-    factory.factory200.gantryRobotManager.GUIGantryRobot ganbot;///<class which includes Gantry Robot Manager Methods
+    ///<class which includes Gantry Robot Manager Methods
     int purgeStationx;//x coordinate of purgeStation
     int purgeStationy;//y coordinate of purgeStation
 
@@ -57,7 +57,7 @@ public class GantryRobotManager{
     
     public GantryRobotManager() {
         graphics = new GRMGraphicPanel();
-    }
+         }
 	
 	public void paint(GraphicsPanel panel, Graphics2D g){
 		graphics.paint(panel, g);
@@ -72,7 +72,7 @@ public class GantryRobotManager{
 		//		   super.processMessage(msg);
 			   if(msg.contains(Message.MOVE_GANTRY_TO_BIN))
 			   {
-				   this.ganbot.moveToBinCommand(Integer.parseInt(this.grabParameter(msg)));
+				   this.graphics.gbot.moveToBinCommand(Integer.parseInt(this.grabParameter(msg)));
 			   }
 			   else if(msg.contains(Message.GANTRY_CARRY_A_BIN))
 			   {
@@ -80,10 +80,10 @@ public class GantryRobotManager{
 			   }
 			   else if(msg.contains(Message.MOVE_GANTRY_TO_FEEDER))
 			   {
-				   this.ganbot.moveToFeederCommand(Integer.parseInt(this.grabParameter(msg)));
+				   this.graphics.gbot.moveToFeederCommand(Integer.parseInt(this.grabParameter(msg)));
 			   }
 			   else if(msg.contains(Message.SUPPLY_PART_ON_FEEDER)){
-				   this.ganbot.supplyPartOnFeederCommand(Integer.parseInt(this.grabParameter(msg)));
+				   this.graphics.gbot.supplyPartOnFeederCommand(Integer.parseInt(this.grabParameter(msg)));
 			   }
 			   
 			   else if(msg.contains(Message.MOVE_GANTRY_TO_DUMP)){
@@ -110,7 +110,7 @@ public class GantryRobotManager{
 		   if(!ganbot.moving()){//arrivedAtBin(binIndex)){
 			   ganbot.pickUpBin(binIndex);
 		   }*/
-		  ganbot.moveToBinCommand(binIndex);
+		  this.graphics.gbot.moveToBinCommand(binIndex);
 	   }
 
 	   public void moveToFeeder(Integer feederIndex){
@@ -118,16 +118,16 @@ public class GantryRobotManager{
 		   if(ganbot.arrivedAtFeeder(feederIndex)){
 			   ganbot.supplyPartOnFeeder();
 		   }*/
-		   ganbot.moveToFeederCommand(feederIndex);
+		   this.graphics.gbot.moveToFeederCommand(feederIndex);
 	   }
 
 	   public void pickUpBin(Integer binIndex){
-		   ganbot.pickUpBin(binIndex);
+		   this.graphics.gbot.pickUpBin(binIndex);
 		   this.graphics.binIsCarried(binIndex);
 	   }
 	   public void purgeBin(){
 		 // Integer binIndex=this.graphics.getBinCarriedIndex();		 
-		  ganbot.purgeBinCommand();		  
+		  this.graphics.gbot.purgeBinCommand();		  
 	   }
 	   
 }
