@@ -1,3 +1,7 @@
+############################################
+#Linux compile file for CS factory project #
+#by Roy YiWei Zheng            v.1         #
+############################################
 SRC=src
 F200=$(SRC)/factory/factory200
 F201=$(SRC)/factory/factory201
@@ -40,7 +44,6 @@ all:
 	$(C) $(FLAG) $(ALLPKGDIR)
 
 allslow: $(ALLPKGCLASS)
-
 
 %.class: %.java
 	@echo -n "Compiling" $< "..."
