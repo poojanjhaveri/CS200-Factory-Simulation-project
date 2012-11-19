@@ -145,7 +145,7 @@ public class KitManager extends Manager  implements ActionListener {
             setContentPane(mainpanel);
 
             
-            JLabel kittitle = new JLabel("Kits Manager",JLabel.CENTER);
+            JLabel kittitle = new JLabel("Kit Manager",JLabel.CENTER);
             kittitle.setPreferredSize(new Dimension(200,50));
             kittitle.setFont(new Font("Verdana", Font.BOLD, 18));
             mainpanel.add(kittitle, BorderLayout.NORTH);
@@ -479,12 +479,13 @@ public class KitManager extends Manager  implements ActionListener {
      */
         public void update() {
             
-            this.sendToServer(Message.PULL_PARTS_LIST);
+            this.mcon.out(Message.PULL_PARTS_LIST);
+           // this.sendToServer(Message.PULL_PARTS_LIST);
             System.out.println("Pulling parts list from the server");
                 
 
-
-            this.sendToServer(Message.PULL_KITS_LIST);
+            this.mcon.out(Message.PULL_KITS_LIST);
+          //  this.sendToServer(Message.PULL_KITS_LIST);
             System.out.println("Pulling kits list from the server");
 
             
@@ -562,7 +563,7 @@ public class KitManager extends Manager  implements ActionListener {
             
 
             newkit.setParts(finalpartlist);
-        
+            bpkit.add(newkit);
             String msg = Message.DEFINE_NEW_KIT+":"+newkit.serialize();
             System.out.println("kit Created");
             System.out.println(msg);
@@ -570,6 +571,9 @@ public class KitManager extends Manager  implements ActionListener {
             
             update();
             
+            
+            
+        
             tabbedPane.setSelectedIndex(0);
             }
             
@@ -665,8 +669,6 @@ public class KitManager extends Manager  implements ActionListener {
             bpkit.removeKit(in);
             
            this.sendToServer(Message.UNDEFINE_KIT+":"+in.getNumber());
-            
-         
             update();
             
             tabbedPane.setSelectedIndex(2);
@@ -676,9 +678,21 @@ public class KitManager extends Manager  implements ActionListener {
          
          public void processtabchange()
          {
-            //  Integer t = tabbedPane.getSelectedIndex();
-           //     update();
-             
+             /*
+            int t=tabbedPane.getSelectedIndex();
+            if(t==1)
+            {
+                update();
+                tabbedPane.setSelectedIndex(1);
+            }
+            if(t==2)
+            {
+                update();
+            }
+            
+            */
+              
+              
          }
          
          
@@ -958,7 +972,7 @@ public class KitManager extends Manager  implements ActionListener {
                  jbtnlist.add(ub6);
                  jbtnlist.add(ub7);
                  
-                 /*
+                 
             ub0.setIcon(new ImageIcon("pics/parts/no.png"));
             ub1.setIcon(new ImageIcon("pics/parts/no.png"));
             ub2.setIcon(new ImageIcon("pics/parts/no.png"));
@@ -967,7 +981,7 @@ public class KitManager extends Manager  implements ActionListener {
             ub5.setIcon(new ImageIcon("pics/parts/no.png"));
             ub6.setIcon(new ImageIcon("pics/parts/no.png"));
             ub7.setIcon(new ImageIcon("pics/parts/no.png"));
-               */  
+                
                  
                 
                  Integer p=(bpkit.getKitAt(cb.getSelectedIndex())).getSize();
