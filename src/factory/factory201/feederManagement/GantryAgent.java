@@ -237,7 +237,7 @@ public class GantryAgent extends Agent implements Gantry {
     	//print("Sending message to feeder");
         print("sending message here are parts to " + f.index);
 
-    	//doSupplyPart(b,f);
+    	doSupplyPart(b,f);
 
 
         f.feeder.msgHereAreParts(parts);
@@ -255,35 +255,58 @@ public class GantryAgent extends Agent implements Gantry {
      print("about to pick up bin");
   	//animation.ganbot.moveToBin(b.index);
     
-     if(this.client == null)
+     while(this.client == null)
          {
-         print("[ERROR] - Gantry Robot Manager is not online.");
-         return;
-         }
-         this.client.sendMessage(Message.MOVE_GANTRY_TO_BIN+":"+b.index);
-       
-         try {
-			Thread.sleep(10000);
+         //print("[ERROR] - Gantry Robot Manager is not online.");
+         //return;
+            try {
+			Thread.sleep(1000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        
-    	//animation.ganbot.carryABin(b.index+1);*/
-        //animation.ganbot.moveToFeeder(f.index);
-        
+         
+         }
+     
+         
+     this.client.sendMessage(Message.MOVE_GANTRY_TO_BIN+":"+b.index);
+       
+         try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+         this.client.sendMessage(Message.GANTRY_CARRY_A_BIN + ":" + b.index);
          this.client.sendMessage(Message.MOVE_GANTRY_TO_FEEDER+":"+f.index);
          
     	//animation.goToFeeder(f.index-1);
     	
     	try {
-			Thread.sleep(10000);
+			Thread.sleep(7000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     	
-    	
+    	this.client.sendMessage(Message.SUPPLY_PART_ON_FEEDER + ":" + f.index);
+        
+            try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
+        this.client.sendMessage(Message.MOVE_GANTRY_TO_DUMP);
+    
+        
+         try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
     public void setFeeder(Feeder feeder,int index) {
     //add feeders to the list

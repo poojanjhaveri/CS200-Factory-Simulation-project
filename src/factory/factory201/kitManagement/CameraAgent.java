@@ -22,7 +22,6 @@ import java.util.List;
  *
  * @author Alex Young
  * @version 1
- *
  * @brief agent for the Camera
  */
 public class CameraAgent extends Agent implements Camera {
@@ -42,13 +41,6 @@ public class CameraAgent extends Agent implements Camera {
         kitRqmts = new ArrayList<Integer>();
     }
 
-    // ********** MESSAGES *********
-    /**
-     * Message called by NestAgent to inspect nest.
-     *
-     * @param nest Nest to be inspected
-     * @brief Message called by NestAgent to inspect nest.
-     */
     @Override
     public void msgNestIsFull(Nest nest) {
 //        print("Received msgNestIsFull that " + nest.nestNum + " is full.");
@@ -58,12 +50,6 @@ public class CameraAgent extends Agent implements Camera {
         stateChanged();
     }
 
-    /**
-     * Message called by KitRobotAgent to inspect kit.
-     *
-     * @param kit Kit to be inspected
-     * @brief Message called by KitRobotAgent to inspect kit.
-     */
     @Override
     public void msgKitIsFull(Kit kit) {
 //        print("Received msgKitIsFull from Kit Robot Agent");
@@ -105,12 +91,7 @@ public class CameraAgent extends Agent implements Camera {
     }
 
     // ********** ACTIONS **********
-    /**
-     * Inspects nests and returns result to kitRobot agent.
-     *
-     * @param kit Kit being inspected by camera
-     * @brief Inspects nests and returns result to kitRobot agent.
-     */
+
     private void inspectKit(Kit kit) {
         print("Inspecting kit: [" + kit.name + "].");
         boolean result = true;
@@ -130,17 +111,11 @@ public class CameraAgent extends Agent implements Camera {
         }
 
         DoInspectKit(kit);
-        kitRobot.msgKitInspected(true);
+        kitRobot.msgKitInspected(result);
         kitList.remove(kit);
         stateChanged();
     }
 
-    /**
-     * Inspects nests and returns result to nest agent.
-     *
-     * @param nest Nest being inspected by camera
-     * @brief Inspects nests and returns result to nest agent.
-     */
     private void inspectNest(Nest nest) {
         print("Inspecting nest: [Nest " + nest.nestNum + "].");
         Integer type = nest.part.type;
@@ -152,7 +127,7 @@ public class CameraAgent extends Agent implements Camera {
             }
         }
         DoInspectNest(nest);
-        nestAgent.msgNestInspected(nest, true);
+        nestAgent.msgNestInspected(nest, result);
         nestList.remove(nest);
         stateChanged();
     }

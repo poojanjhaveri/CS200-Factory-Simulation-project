@@ -9,7 +9,7 @@ import factory.general.Nest;
  * implement this interface (useful for unit testing).
  *
  * @author Alex Young
- * @version 0
+ * @version 1
  */
 public interface Camera {
     

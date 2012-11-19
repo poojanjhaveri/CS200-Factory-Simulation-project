@@ -4,11 +4,10 @@ package factory.general;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import factory.factory200.gantryRobotManager.GantryRobotManager;
-import factory.factory200.kitAssemblyManager.KitAssemblyManager;
 import factory.factory200.laneManager.ServerSide.LMServerMain;
 import factory.factory201.feederManagement.FeederAgent;
 import factory.factory201.feederManagement.GantryAgent;
@@ -18,7 +17,6 @@ import factory.factory201.kitManagement.ConveyorAgent;
 import factory.factory201.kitManagement.KitRobotAgent;
 import factory.factory201.partsManagement.NestAgent;
 import factory.factory201.partsManagement.PartsAgent;
-import java.util.List;
 
 /**
  * @brief This class is critical to the integration of GUI classes, agents, etc.
@@ -84,6 +82,11 @@ public class Server {
 		}
 	}
 
+        public void playMahMusicLols()
+        {
+          
+        }
+        
 	/**
 	 * @brief Instances Server, prompting the user for a port number and
 	 * beginning the loop that checks for clients.
@@ -93,7 +96,7 @@ public class Server {
         this.fstate = new FactoryState();
 		initializeManagers(); // Something by Dongyoung
 		
-		prepareAllAgents(); // Prepare all agents; based on AgentMain.java; commented out by Dongyoung to test animation; included after connections accepted by server
+//		prepareAllAgents(); // Prepare all agents; based on AgentMain.java; commented out by Dongyoung to test animation; included after connections accepted by server
 			// should happen AFTER initializeManagers(), according to Dongyoung
 		
 		numClients = 0; // Initialize num clients is 0
@@ -117,9 +120,9 @@ public class Server {
 			e.printStackTrace();
 			System.exit(0);
 		}
-		
-		for (int i=0 ; i<2 ; i++){ // For Testing By Dongyoung, if want to need communicate n managers, change into for(int i=0 ; i<n ; i++)
+			for (int i=0 ; i<2 ; i++){ // For Testing By Dongyoung, if want to need communicate n managers, change into for(int i=0 ; i<n ; i++)
 		//while(true){
+
 			// Continuously check for a new client for which to create a thread
 			try {
 				s = ss.accept(); // Wait for a client (program halts here until connection occurs)
@@ -133,7 +136,8 @@ public class Server {
 			System.out.println("A client has connected");
 		}
 		
-		//try{  Thread.sleep(1000);  } catch(Exception e){}   // For Testing By Dongyoung
+	//	try{  Thread.sleep(1000);  } catch(Exception e){}   // For Testing By Dongyoung
+
 		prepareAllAgents(); // Prepare all agents; based on AgentMain.java      // For Testing By Dongyoung
 	}
 
@@ -153,7 +157,7 @@ public class Server {
             turnOffAgentPrintStatements();
             connectAgentsAndManagers();
             startAgentThreads();
-//            startInteractionSequence();
+            startInteractionSequence();
         }
 
         private void declareAgents() {
@@ -243,9 +247,10 @@ public class Server {
         }
 
         /**
-         * @brief This is only a test mode for 201 to debug animation and agent interaction.
+         * @brief This is only a test for 201 to debug animation and agent interaction.
          */
-        private void startInteractionSequence() {
+        @SuppressWarnings("unused")
+		private void startInteractionSequence() {
             // Get kit from somewhere
             // * 
         	

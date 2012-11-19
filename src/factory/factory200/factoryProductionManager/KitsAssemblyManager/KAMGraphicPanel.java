@@ -40,9 +40,9 @@ public class KAMGraphicPanel {
     public static final int KIT2Y = 150 + 10 + 250;
     //took into consideration kit stand positioning
     public static final int EMPTY_CONVEYERX = 25;
-    public static final int EMPTY_CONVEYERY = 300;
+    public static final int EMPTY_CONVEYERY = 375;
     public static final int FULL_CONVEYERX = 25;
-    public static final int FULL_CONVEYERY = 300;
+    public static final int FULL_CONVEYERY = 224;
     public static final Integer LANE0Y = 75 / 2 + 0 * 75 -20;///<y-coordinate of lane 0's nest
     public static final Integer LANE1Y = 75 / 2 + 1 * 75-20;///<y-coordinate of lane 1's nest
     public static final Integer LANE2Y = 75 / 2 + 2 * 75-20;///<y-coordinate of lane 2's nest
@@ -141,7 +141,7 @@ public class KAMGraphicPanel {
                         counter++;
                     } else {
                         for (int i = 0; i <delivery.getPlaceholder().size(); i++) {
-                            System.out.println(i+": "+delivery.getPlaceholder().get(i).getKit());
+                            //System.out.println(i+": "+delivery.getPlaceholder().get(i).getKit());
                             if(delivery.getPlaceholder().get(i).getKit()==null){
                                 delivery.getPlaceholder().get(i).setY(680);
                             }
@@ -198,7 +198,7 @@ public class KAMGraphicPanel {
                         counter++;
                     } else {
                         for (int i = 0; i < delivery.getPlaceholder().size(); i++) {
-                            System.out.println(i+": "+delivery.getPlaceholder().get(i).getKit());
+                            //System.out.println(i+": "+delivery.getPlaceholder().get(i).getKit());
                             if(delivery.getPlaceholder().get(i).getKit()==null){
                                 delivery.getPlaceholder().get(i).setY(680);
                             }
@@ -347,14 +347,15 @@ public class KAMGraphicPanel {
             }
         }
         for (int i = 0; i < delivery.getPlaceholder().size(); i++) {
-            delivery.getPlaceholder().get(i).getPlaceholder().paintIcon(graph, g2, delivery.getPlaceholder().get(i).getX(), delivery.getPlaceholder().get(i).getY());
             if (delivery.getPlaceholder().get(i).isShow()) {
                 //delivery.getPlaceholder().get(i).getKit().getImage().paintIcon(j, g2, delivery.getPlaceholder().get(i).getX() + 10, delivery.getPlaceholder().get(i).getY() + 20);
-                delivery.getPlaceholder().get(i).getKit().setX(delivery.getPlaceholder().get(i).getX() + 10);
-                delivery.getPlaceholder().get(i).getKit().setY(delivery.getPlaceholder().get(i).getY() + 20);
+                delivery.getPlaceholder().get(i).getKit().setX(delivery.getPlaceholder().get(i).getX() + 55);
+                delivery.getPlaceholder().get(i).getKit().setY(delivery.getPlaceholder().get(i).getY() + 40);
                 delivery.getPlaceholder().get(i).getKit().paintMe(graph, g2, delivery.getPlaceholder().get(i).getKit().getX(), delivery.getPlaceholder().get(i).getKit().getY());
             }
-        }      
+            delivery.getPlaceholder().get(i).getPlaceholder().paintIcon(graph, g2, delivery.getPlaceholder().get(i).getX(), delivery.getPlaceholder().get(i).getY());
+            
+        }     
         kitbot.paintMe(graph, g2);
 
         if (camera.isVisible()) {
