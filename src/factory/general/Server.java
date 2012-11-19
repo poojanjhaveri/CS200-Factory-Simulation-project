@@ -153,8 +153,7 @@ public class Server {
             turnOffAgentPrintStatements();
             connectAgentsAndManagers();
             startAgentThreads();
-//            if (PATRICK && ALEX && KEVIN)
-//            	startInteractionSequence();  // only for 201 testing of the animation- kevin
+//            startInteractionSequence();
         }
 
         private void declareAgents() {
