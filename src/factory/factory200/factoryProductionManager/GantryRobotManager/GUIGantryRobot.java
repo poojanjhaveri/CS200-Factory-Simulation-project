@@ -74,19 +74,19 @@ public class GUIGantryRobot extends GUIRobot{
         {
         case 0:
 	    this.moveto = 0;
-            this.moveTo(GantryRobotManager.FEED0X,GantryRobotManager.FEED0Y+50);
+            this.moveTo(1000,50);//GantryRobotManager.FEED0X,GantryRobotManager.FEED0Y+50);
             break;
         case 1:
 	    this.moveto = 1;
-            this.moveTo(GantryRobotManager.FEED1X,GantryRobotManager.FEED1Y+50);
+            this.moveTo(1000,200);//GantryRobotManager.FEED1X,GantryRobotManager.FEED1Y+50);
             break;
         case 2:
 	    this.moveto = 2;
-            this.moveTo(GantryRobotManager.FEED2X,GantryRobotManager.FEED2Y+50);
+            this.moveTo(1000,350);//GantryRobotManager.FEED2X,GantryRobotManager.FEED2Y+50);
             break;
         case 3:
 	    this.moveto = 3;
-            this.moveTo(GantryRobotManager.FEED3X,GantryRobotManager.FEED3Y+50);
+            this.moveTo(1000,500);//GantryRobotManager.FEED3X,GantryRobotManager.FEED3Y+50);
             break;
         default:
             System.out.println("ERROR: Attempting to move GuiGantryRobot to nonexistent feeder " + i);
