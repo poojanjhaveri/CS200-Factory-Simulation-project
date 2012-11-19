@@ -302,7 +302,9 @@ public class PartsAgent extends Agent implements PartsInterface {
         }}
     
     public void DoGiveKitsInAction(Kit k){
+
         if (this.client != null) {
+
         this.client.sendMessage(Message.KIT_IN_PRODUCTION+":"+k.getName());
         }
         else{
@@ -312,9 +314,11 @@ public class PartsAgent extends Agent implements PartsInterface {
         }
     
     public void DoGiveKitsInQueue(List<Kit> kits){
+
         if (this.client != null) {
         BlueprintKits adhoc = new BlueprintKits((ArrayList)kits);
         this.client.sendMessage(Message.GIVE_KITS_IN_QUEUE+":"+adhoc.serialize());
+
     }
         else{
            print("[ERROR] - Kit Assembly Manager is not online."); 
