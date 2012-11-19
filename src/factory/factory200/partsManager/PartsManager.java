@@ -1,6 +1,7 @@
 package factory.factory200.partsManager;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.EventQueue;
 import java.awt.FlowLayout;
@@ -84,8 +85,8 @@ public class PartsManager extends Manager implements ActionListener {
 	private JLabel lblSelectedImage;
 	private JComboBox cbImageFileName2,cbImageFileName;
 	private JLabel lblSelectedImage2;
-
 	private JLabel lblSelectedImage3;
+	private boolean noPartSelected;
 
 	private void prepareContentPane() {
 		contentPane = new JPanel();
@@ -262,9 +263,11 @@ public class PartsManager extends Manager implements ActionListener {
 		updateManagePartsImagePanel();
 		populateFileComboBoxes();
 		checkToDisableTabs();
+		partComboBox.addItem("-No Part Selected-");
 		
 		if(bp.getSize()==0)
 			tabbedPane.setSelectedIndex(NEW_PART_TAB_NUM);
+		
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -296,15 +299,23 @@ public class PartsManager extends Manager implements ActionListener {
 	 * @return the current part
 	 */
 	private Part getCurrentPart() {
+		
+		int n=partComboBox.getSelectedIndex();
 		String s= (String) partComboBox.getSelectedItem();
-		Part temp= new Part(null,null);
-		for (int i=0;i<bp.getSize();i++) {
-			if (bp.getPartAt(i).getName().equals(s)) {
-				temp=bp.getPartAt(i);
-				break;
+		if (n!=0){
+			Part temp= new Part(null,null);
+			for (int i=0;i<bp.getSize();i++) {
+				if (bp.getPartAt(i).getName().equals(s)) {
+					temp=bp.getPartAt(i);
+					break;
+				}
 			}
+			return temp;
+		}else{
+			Part temp=new Part(null,null);
+			noPartSelected=true;
+			return temp;
 		}
-		return temp;
 	}
 
 	private void updateManagePartsImagePanel(){
@@ -370,26 +381,41 @@ public class PartsManager extends Manager implements ActionListener {
 		String name, file, d;
 		Part temp;
 
+		try{
 		name=tfPartName2.getText();
+		if (name.equals(""))
+			throw new Exception();
+		}catch(Exception e){
+			//make  tfPartName2 become pink
+			tfPartName2.setBackground(Color.pink);
+			return;
+		}
 		file=(String)cbImageFileName2.getSelectedItem();
 		d=tfDescription2.getText();
 
-
-		temp=new Part(name, d, file);
-
-		bp.add(temp);
-
-		tfPartName2.setText("");
-		tfDescription2.setText("");
-		btnCreate.setSelected(false);//not working
-
-		/*added by Roy 11/12/12*/
-		//this will send the new part to the server
-		this.sendToServer(Message.DEFINE_NEW_PART+":"+temp.serialize());
-		System.out.println("Sent new part definition: "+temp.serialize());
-		/*end*/
 		
-		checkToDisableTabs();
+			temp=new Part(name, d, file);
+			//make  tfPartName2 become white
+			tfPartName2.setBackground(Color.white);
+			
+
+
+			bp.add(temp);
+
+			tfPartName2.setText("");
+			tfDescription2.setText("");
+			btnCreate.setSelected(false);//not working
+
+			/*added by Roy 11/12/12*/
+			//this will send the new part to the server
+			this.sendToServer(Message.DEFINE_NEW_PART+":"+temp.serialize());
+			System.out.println("Sent new part definition: "+temp.serialize());
+			/*end*/
+		
+			checkToDisableTabs();
+			
+			
+
 	}
 
 	/**
@@ -423,15 +449,16 @@ public class PartsManager extends Manager implements ActionListener {
 	 * the server
 	 */
 	public void deletePart(Part pt) {
-		String s = Message.UNDEFINE_PART+":"+pt.getNumber();
-		System.out.println("sending message " + s);
-		this.sendToServer(s);
-		bp.removePart(pt);
-		updatePartComboBox();
-		updateManagePartsImagePanel();
-		this.repaint();
+		if (!noPartSelected){
+			String s = Message.UNDEFINE_PART+":"+pt.getNumber();
+			System.out.println("sending message " + s);
+			this.sendToServer(s);
+			bp.removePart(pt);
+			updatePartComboBox();
+			updateManagePartsImagePanel();
+			this.repaint();
 
-		checkToDisableTabs();
+			checkToDisableTabs();}
 	}
 
 	/**
@@ -513,7 +540,7 @@ public class PartsManager extends Manager implements ActionListener {
 
 	    public boolean accept(File file) {
 	        if(file != null) {
-	            if(file.isDirectory())
+	            if(file.isDirectory()||file.toString().equals("pics/parts/no.png"))
 	                return false;
 	            String extension = getExtension(file);
 	            if(extension != null && isSupported(extension))
@@ -553,12 +580,12 @@ public class PartsManager extends Manager implements ActionListener {
 /*
  * TODO
  * 
- * -make sure part name is not null 
+ * -if not part selected then "No part Selected"
  * -display part description in pnlManageParts (by adding a new JPanel and JLabel)
  * -change part description to textArea instead of textfield
  * 
  * -Add christmas bg
- *	-fix code comments/ gardening
+ * -fix code comments/ gardening
  * -add test cases to wiki 
  *
  * QUESTIONS
