@@ -111,20 +111,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 	private void instantiateStaticComponents() {
 
 		mainPanel = new JPanel();
-//		{     
-//			public void paintComponent(Graphics g) 
-//			{
-//				Image img = new ImageIcon("pics/background/mainbg.png").getImage();
-//				Dimension size = new Dimension(1350, 700);
-//				setPreferredSize(size);
-//				setMinimumSize(size);
-//				setMaximumSize(size);
-//				setSize(size);
-//				setLayout(null);
-//
-//				g.drawImage(img, 0, 0, null);
-//			} 
-//		};
+		
 
 		mainPanel.setLayout(new BorderLayout());
 		setContentPane(mainPanel);
@@ -156,7 +143,24 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 		stop = new JButton("Stop");
 		reset = new JButton("Clear List");
 
-		basePanel = new JPanel();
+		basePanel = new JPanel()
+                {
+                public void paintComponent(Graphics g) 
+			{
+                            /*
+				Image img = new ImageIcon("pics/background/mainbg.png").getImage();
+				Dimension size = new Dimension(1350, 700);
+				setPreferredSize(size);
+				setMinimumSize(size);
+				setMaximumSize(size);
+				setSize(size);
+				setLayout(null);
+
+				g.drawImage(img, 0, 0, null);
+                                * */
+			} };
+                
+                
 		basePanel.setLayout(new BorderLayout());
 
 		tabs = new JTabbedPane();
@@ -178,18 +182,20 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 
 		//		tabs.setOpaque(false);
 
-                /*
+                 tabs.setOpaque(false);
 		topPanel.setOpaque(false);
 		botPanel.setOpaque(false);
 		parentMidPanel.setOpaque(false);
+		
 		queuePanel.setOpaque(false);
+		
 		leftPanel.setOpaque(false);
 		midPanel.setOpaque(false);
+		
 		rightPanel.setOpaque(false);
 		botBotPanel.setOpaque(false);
 		selPanel.setOpaque(false);
 		slotsPanel.setOpaque(false);
-		basePanel.setOpaque(false);
 	//	gfx.setOpaque(false);*/
 	}
 
@@ -208,6 +214,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 		topPanel.add(new JPanel());
 		topPanel.add(consoleLabel);
 		topPanel.add(new JPanel());
+                
 
 		leftPanel.add(schedPane);
 		leftPanel.setPreferredSize(new Dimension(320, 600));
@@ -239,10 +246,12 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 		midPanel.add(queueue);
 		c.gridy = GridBagConstraints.RELATIVE;
 		JPanel fill1 = new JPanel();
+                fill1.setOpaque(false);
 		gridbag.setConstraints(fill1, c);
 		midPanel.add(fill1);
 
 		JPanel fill2 = new JPanel();
+                 fill2.setOpaque(false);
 		gridbag.setConstraints(fill2, c);
 		midPanel.add(fill2);
 		gridbag.setConstraints(reset, c);
