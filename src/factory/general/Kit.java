@@ -167,7 +167,6 @@ public class Kit implements Serializable{
             dp.add(k.getPart(i).clone());
         }
         k.setParts(dp);
-        return k;
-        
+        return k;   
     }
 }
