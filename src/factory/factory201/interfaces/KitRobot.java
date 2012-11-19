@@ -8,7 +8,7 @@ import factory.general.Kit;
  * and a MockKitRobot can implement this interface (useful for unit testing).
  *
  * @author Alex Young
- * @version 0
+ * @version 1
  */
 public interface KitRobot {
 

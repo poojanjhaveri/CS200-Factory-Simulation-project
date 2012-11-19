@@ -63,4 +63,8 @@ public class Message {
     public static final String IDENTIFY_FACTORYPRODUCTIONMANAGER = "IDENTIFY_FACTORYPRODUCTIONMANAGER"; 
     public static final String PUSH_PRODUCTION_QUEUE = "PUSH_PRODUCTION_QUEUE";///<sends the server a list of comma delimited kit IDs
     public static final String ALERT_FPM_KIT_INSPECTED = "ALERT_FPM_KIT_INSPECTED";
+	public static final String SUPPLY_PART_ON_FEEDER = "SUPPLY_PART_ON_FEEDER";
+	public static final String MOVE_GANTRY_TO_DUMP = "MOVE_GANTRY_TO_DUMP";
+    public static final String KIT_IN_PRODUCTION = "KIT_IN_PRODUCTION";
+    public static final String GIVE_KITS_IN_QUEUE = "GIVE_KITS_IN_QUEUE";
 }

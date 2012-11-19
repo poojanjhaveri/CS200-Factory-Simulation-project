@@ -188,6 +188,7 @@ public class PartsManager extends Manager implements ActionListener {
 		pnlNonform.add(lblPartNumber);
 
 		pnlImage = new JPanel();
+		pnlImage.setLayout(new BorderLayout());
 		pnlNonform.add(pnlImage);
 
 		pnlButton = new JPanel();
@@ -246,6 +247,7 @@ public class PartsManager extends Manager implements ActionListener {
 		pnlNonform2.setLayout(new BoxLayout(pnlNonform2, BoxLayout.Y_AXIS));
 
 		pnlImage2 = new JPanel();
+		pnlImage2.setLayout(new BorderLayout());
 		pnlNonform2.add(pnlImage2);
 
 		pnlButton2 = new JPanel();
@@ -259,14 +261,20 @@ public class PartsManager extends Manager implements ActionListener {
 		updatePartComboBox();
 		updateManagePartsImagePanel();
 		populateFileComboBoxes();
+		checkToDisableTabs();
 		
+		if(bp.getSize()==0)
+			tabbedPane.setSelectedIndex(NEW_PART_TAB_NUM);
 	}
 
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btnDelete) {
 			deletePart(getCurrentPart());
 		} else if (e.getSource() == btnView) {
+			//if no parts then disable Index 1 (selected part tab)
+			if(bp.getSize()!=0)
 			tabbedPane.setSelectedIndex(SELECTED_PART_TAB_NUM);
+		
 		} else if (e.getSource() == btnUpdate) {
 			updatePart(); // fill in below
 		} else if (e.getSource() == btnCreate) {
@@ -301,10 +309,12 @@ public class PartsManager extends Manager implements ActionListener {
 
 	private void updateManagePartsImagePanel(){
 		Part temp= getCurrentPart();
-		if(temp.getFilename()!=null)
-			lblSelectedImage= new JLabel(new ImageIcon(temp.getFilename()));
 		managePartsImagePanel.removeAll();
-		managePartsImagePanel.add(lblSelectedImage);
+
+		if(temp.getFilename()!=null)
+			{lblSelectedImage= new JLabel(new ImageIcon(temp.getFilename()));
+			managePartsImagePanel.add(lblSelectedImage);
+			}
 	}
 	private void updateSelectedPartsImagePanel(){
 		String s= (String) cbImageFileName.getSelectedItem();
@@ -312,7 +322,7 @@ public class PartsManager extends Manager implements ActionListener {
 		if(s!=null)
 			lblSelectedImage2= new JLabel(new ImageIcon(s));
 		pnlImage.removeAll();
-		pnlImage.add(lblSelectedImage2);
+		pnlImage.add(lblSelectedImage2,BorderLayout.CENTER);
 	}
 	private void updateNewPartsImagePanel(){
 		String s= (String) cbImageFileName2.getSelectedItem();
@@ -320,7 +330,7 @@ public class PartsManager extends Manager implements ActionListener {
 		if(s!=null)
 			lblSelectedImage3= new JLabel(new ImageIcon(s));
 		pnlImage2.removeAll();
-		pnlImage2.add(lblSelectedImage3);
+		pnlImage2.add(lblSelectedImage3, BorderLayout.CENTER);
 	}
 	
 	/**
@@ -370,7 +380,6 @@ public class PartsManager extends Manager implements ActionListener {
 		bp.add(temp);
 
 		tfPartName2.setText("");
-		tfImageFileName2.setText("");
 		tfDescription2.setText("");
 		btnCreate.setSelected(false);//not working
 
@@ -379,6 +388,8 @@ public class PartsManager extends Manager implements ActionListener {
 		this.sendToServer(Message.DEFINE_NEW_PART+":"+temp.serialize());
 		System.out.println("Sent new part definition: "+temp.serialize());
 		/*end*/
+		
+		checkToDisableTabs();
 	}
 
 	/**
@@ -420,6 +431,7 @@ public class PartsManager extends Manager implements ActionListener {
 		updateManagePartsImagePanel();
 		this.repaint();
 
+		checkToDisableTabs();
 	}
 
 	/**
@@ -527,24 +539,27 @@ public class PartsManager extends Manager implements ActionListener {
 	    }
 	}
 	
+	
+	private void checkToDisableTabs(){
+		if (bp.getSize()==0)
+			tabbedPane.setEnabledAt(1, false);
+		else 
+			tabbedPane.setEnabledAt(1, true);
+		
+	}
+	
 }
 
 /*
  * TODO
  * 
- * 
- * -add images support. 
- * >in pnlSelectedPart. make image appear 
- * >in pnlNewPart make image appear
- * 
- * 
- * -display part description in pnlManageParts
+ * -make sure part name is not null 
+ * -display part description in pnlManageParts (by adding a new JPanel and JLabel)
  * -change part description to textArea instead of textfield
- * -when you have no parts, selected part tab should be disabled
  * 
  * -Add christmas bg
  *	-fix code comments/ gardening
- *
+ * -add test cases to wiki 
  *
  * QUESTIONS
  * -make Create and update button unselected after click
