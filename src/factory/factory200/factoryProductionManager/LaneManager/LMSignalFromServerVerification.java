@@ -16,10 +16,6 @@ public class LMSignalFromServerVerification{
 	private LMPartRobotHandler partRobotHandler;
 	private LMGantryRobotHandler gantryRobotHandler;
 
-	/**
-	 * @brief Constructor
-	 * @param laneManagerApp : Instance of class 'LaneManagerApp'
-	 */
 	public LMSignalFromServerVerification(LMApplication app){
 		this.app = app;
 		cameraHandler = new LMCameraHandler(app);
@@ -44,6 +40,9 @@ public class LMSignalFromServerVerification{
 	 * "&Feeder&" : Message with feeders
 	 * "&Lane&" : Message with lanes
 	 * "&Nest&" : Message with nests
+	 * "&Part&" : Message with parts
+	 * "&PartRobot" : Message with Take Bin from Nest
+	 * "&Bin&" : Message with Bin(Gantry Robot)
 	 * 
 	 * @brief Message Checker ( From Server )
 	 * @param message : Message from server

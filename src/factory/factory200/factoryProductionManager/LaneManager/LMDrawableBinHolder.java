@@ -4,6 +4,10 @@ import java.awt.Graphics2D;
 import javax.swing.ImageIcon;
 import factory.factory200.factoryProductionManager.*;
 
+/**
+ * @brief Bin Holder Drawing
+ * @author Dongyoung Jung
+ */
 public class LMDrawableBinHolder {
 
 	private int binHolderX, binHolderY;

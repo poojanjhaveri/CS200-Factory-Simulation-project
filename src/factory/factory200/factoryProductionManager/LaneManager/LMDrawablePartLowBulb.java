@@ -4,6 +4,10 @@ import java.awt.Graphics2D;
 import javax.swing.ImageIcon;
 import factory.factory200.factoryProductionManager.*;
 
+/**
+ * @brief Part Low Bulb Display
+ * @author Dongyoung Jung
+ */
 public class LMDrawablePartLowBulb{
 
 	private int symbolX, symbolY;

@@ -2,6 +2,10 @@ package factory.factory200.factoryProductionManager.LaneManager;
 
 import java.util.ArrayList;
 
+/**
+ * @brief Lane Data
+ * @author Dongyoung Jung
+ */
 public class LMLaneData {
 	
 	private ArrayList<LMDrawablePart> parts = new ArrayList<LMDrawablePart>();
@@ -41,6 +45,10 @@ public class LMLaneData {
 		parts.remove(shakenPart);
 	}
 	
+	/**
+	 * @brief Nest Status Checker
+	 * @param nestSize : Quantity of Parts on Nest
+	 */
 	public void checkNestStatus(int nestSize){
 		for(int i=0 ; i<parts.size() ; i++){
 			if(nestSize != 8){

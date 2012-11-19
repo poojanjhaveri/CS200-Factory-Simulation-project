@@ -63,7 +63,7 @@ public class PartsAgent extends Agent implements PartsInterface {
         print("PartsAgent got message for new kits");
         for (Kit k: newKits){
         newKit.add(k);}
-        DoGiveKitsInQueue(newKit);
+        //DoGiveKitsInQueue(newKit);
         stateChanged();
     }
 
@@ -161,7 +161,7 @@ public class PartsAgent extends Agent implements PartsInterface {
     private void startNewKit(Kit k) {
        
         DoGiveKitsInAction(k);
-        DoGiveKitsInQueue(newKit);
+       // DoGiveKitsInQueue(newKit);
         
         print("New kit being started");
         camera.msgHereIsKitInfo(k);
