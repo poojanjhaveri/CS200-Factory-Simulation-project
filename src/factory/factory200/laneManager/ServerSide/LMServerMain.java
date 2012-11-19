@@ -10,16 +10,16 @@ public class LMServerMain extends JFrame implements Runnable{
 	private HandleAManager hacKAM = null;
 	private HandleAManager hacGRM = null;
 	
-	private LMFeederForAgent agentFeeder; ///<Instance of class 'ServerForAgentFeeder'
-	private LMLaneForAgent agentLane;	///<Instance of class 'ServerForAgentLane'
-	private LMNestForAgent agentNest;	///<Instance of class ServerForAgentNest
-	private LMCameraForAgent agentNestCamera;	///<Instance of class 'ServerForAgentNestCamera'
+	private LMFeederForAgent agentFeeder;
+	private LMLaneForAgent agentLane;
+	private LMNestForAgent agentNest;
+	private LMCameraForAgent agentNestCamera;
 	private LMGantryRobotForAgent agentGantryRobot;
 	private LMPartRobotForAgent agentPartRobot;
 	private LMPartData partData;
 	
 	private LMSignalFromAnimationVerification signalVerify;
-	private LMThreadTimer threadTimer;	///<Instance of class 'Thread_Timer'
+	private LMThreadTimer threadTimer;
 	private LMController controller;
 	
 	public LMServerMain(){}
