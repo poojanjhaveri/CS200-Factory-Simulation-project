@@ -7,12 +7,10 @@ import factory.factory201.test.mock.MockCamera;
 import factory.factory201.test.mock.MockKitRobot;
 import factory.factory201.test.mock.MockNest;
 import factory.general.Kit;
-import factory.general.Nest;
 import factory.general.Part;
 import java.util.ArrayList;
 import java.util.List;
 import junit.framework.TestCase;
-import static org.junit.Assert.*;
 import org.junit.Test;
 
 
@@ -42,6 +40,7 @@ public class PartsAgentTest extends TestCase{
         kits.add(kit);
         kits.add(kit);
         kits.add(kit);
+        
         
         nest = new MockNest("MockNest");
         parts = new PartsAgent("PartsAgent");
