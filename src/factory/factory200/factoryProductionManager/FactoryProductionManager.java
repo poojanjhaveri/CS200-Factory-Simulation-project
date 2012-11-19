@@ -386,7 +386,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
             ArrayList<Kit> prodqueue = temp.getKits();
             for(Kit kitty : prodqueue)
             {
-                serverQueue.add(kitty.getName());
+                serverQueueDisplay.append(kitty.getName() + newline);
             }
         }
         //Lane Manager( pass 'msg' into Lane Manager Message Interpreter and take a proper action )
