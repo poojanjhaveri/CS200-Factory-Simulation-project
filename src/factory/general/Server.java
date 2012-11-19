@@ -47,9 +47,9 @@ public class Server {
 
     // Fields just for "AgentMain" stuff (Agent preparation)
     // If true, print statements for this 201 person are on
-    private static final boolean PATRICK = false;
-    private static final boolean KEVIN = false;
-    private static final boolean ALEX = false;
+    private static final boolean PATRICK = true;
+    private static final boolean KEVIN = true;
+    private static final boolean ALEX = true;
 
     
     private static final int FEEDER = 4;
@@ -118,7 +118,7 @@ public class Server {
 			System.exit(0);
 		}
 		
-		for (int i=0 ; i<1 ; i++){ // For Testing By Dongyoung, if want to need communicate n managers, change into for(int i=0 ; i<n ; i++)
+		for (int i=0 ; i<2 ; i++){ // For Testing By Dongyoung, if want to need communicate n managers, change into for(int i=0 ; i<n ; i++)
 		//while(true){
 			// Continuously check for a new client for which to create a thread
 			try {
@@ -134,7 +134,7 @@ public class Server {
 		}
 		
 		//try{  Thread.sleep(1000);  } catch(Exception e){}   // For Testing By Dongyoung
-		//prepareAllAgents(); // Prepare all agents; based on AgentMain.java      // For Testing By Dongyoung
+		prepareAllAgents(); // Prepare all agents; based on AgentMain.java      // For Testing By Dongyoung
 	}
 
 	private void initializeManagers() { // Something by Dongyoung...?  Dongyoung : Yeah
@@ -153,8 +153,7 @@ public class Server {
             turnOffAgentPrintStatements();
             connectAgentsAndManagers();
             startAgentThreads();
-            if (PATRICK && ALEX && KEVIN)
-            	startInteractionSequence();  // only for 201 testing of the animation- kevin
+//            startInteractionSequence();
         }
 
         private void declareAgents() {

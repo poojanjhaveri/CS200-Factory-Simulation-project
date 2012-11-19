@@ -142,10 +142,8 @@ public class HandleAManager implements Runnable {
             this.server.setPartsAgentClient(this);
             this.server.getServerLM().setKAM(this);
         } else if (msg.contains(Message.PULL_KITS_LIST)) {
-            //TODO THIS IS AD HOC NEED TO RETRIEVE MASTER BLUEPRINTKITS FROM FACTORY STATE
             pw.println(Message.PUSH_KITS_LIST + ":" + this.server.getFactoryState().getBlueprintKits().serialize());
         } else if (msg.contains(Message.PULL_PARTS_LIST)) {
-            //TODO THIS IS AD HOC, NEED TO RETRIEVE MASTER BLUEPRINTPARTS FROM FACTORY STATE
             pw.println(Message.PUSH_PARTS_LIST + ":" + this.server.getFactoryState().getBlueprintParts().serialize());
         } else if (msg.contains(Message.DEFINE_NEW_PART)) {
             Part p = Part.deserialize(this.grabParameter(msg));
