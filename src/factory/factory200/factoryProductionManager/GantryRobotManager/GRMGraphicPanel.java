@@ -55,6 +55,9 @@ public class GRMGraphicPanel{
         }
 	}
 	
+	/*
+	 * timer actions called by every clock cycle
+	 */
 	public void timerAction() {
 		// TODO Auto-generated method stub
 		if(!gbot.moving()){
@@ -82,16 +85,24 @@ public class GRMGraphicPanel{
 		//repaint();
 	}
 	
+	/*
+	 * return carriedBinIndex
+	 */
+	
 	private Integer getBinCarriedIndex() {
 		// TODO Auto-generated method stub
-		return null;
+		return carriedBinIndex;
 	}
 
+	/*
+	 * set the bin invisible which is carried by the robot
+	 */
 	public void binIsCarried(Integer binIndex){
 		this.bins.get(binIndex).setFullStatus(false);
 		carriedBinIndex = binIndex;
 		//this.bins.g
 	}
+	
 	
 	public void paint(GraphicsPanel graph, Graphics g) {
         
@@ -112,6 +123,9 @@ public class GRMGraphicPanel{
 		this.bins.get(binIndex).setFullStatus(true);
 	}
 	
+	/*
+	 * paint purge station
+	 */
 	public void paintPurge(JPanel j,Graphics2D g){
 		ps.getImage().paintIcon(j, g, 1160, 600);
 	}

@@ -130,6 +130,9 @@ public class GantryRobotManager extends Manager implements ActionListener {
         return tester;
     }*/
     
+    /*
+     * process message sent by server
+     */
      public void processMessage(String msg) {
 	   super.processMessage(msg);
 	   if(msg.contains(Message.MOVE_GANTRY_TO_BIN))
@@ -153,6 +156,10 @@ public class GantryRobotManager extends Manager implements ActionListener {
 	   }
    }
    
+     /*
+      * default actionPerformed
+      * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+      */
 	public void actionPerformed(ActionEvent ae) {
 		// TODO Auto-generated method stub		
 	/*	if (ae.getSource() ==toFeeder){
