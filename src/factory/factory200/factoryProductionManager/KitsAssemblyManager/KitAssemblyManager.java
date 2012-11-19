@@ -77,6 +77,9 @@ public class KitAssemblyManager extends JPanel implements ActionListener {
 
         //todo - let me know what functions agent will call so I can process them here
     }*/
+    public KAMGraphicPanel getGraph(){
+        return this.graphics;
+    }
      public void doSetParts(int n, int partType) {
         //create part based on part type given
         Part temp = new Part(null, null);
