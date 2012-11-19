@@ -48,6 +48,6 @@ public class GraphicsPanel extends JPanel{
 		laneManager.getServerVerify().verify(msg);
 		this.kitsAssemblyManager.processMessage(msg);
 		this.gantryRobotManager.processMessage(msg);
-                System.out.println("GFX GOT MESSAGE: " + msg);
+                //System.out.println("GFX GOT MESSAGE: " + msg);
 	}
 }
