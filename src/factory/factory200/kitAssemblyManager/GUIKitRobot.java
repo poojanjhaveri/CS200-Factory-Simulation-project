@@ -74,13 +74,13 @@ public class GUIKitRobot extends GUIRobot {
     private void moveToKit(Integer l) {
         switch (l) {
             case 0:
-                moveTo(KAMGraphicPanel.KITX, KAMGraphicPanel.KIT0Y);
+                moveTo(KAMGraphicPanel.KITX, KAMGraphicPanel.KIT0Y+15);
                 break;
             case 1:
-                moveTo(KAMGraphicPanel.KITX, KAMGraphicPanel.KIT1Y);
+                moveTo(KAMGraphicPanel.KITX, KAMGraphicPanel.KIT1Y+15);
                 break;
             case 2:
-                moveTo(KAMGraphicPanel.KITX, KAMGraphicPanel.KIT2Y);
+                moveTo(KAMGraphicPanel.KITX, KAMGraphicPanel.KIT2Y+15);
                 break;
             default:
                 return;
@@ -96,7 +96,7 @@ public class GUIKitRobot extends GUIRobot {
     @brief moves to the position to drop off full kits
      */
     private void moveToFullConveyer() {
-        this.moveTo(KAMGraphicPanel.FULL_CONVEYERX, KAMGraphicPanel.FULL_CONVEYERY);
+        this.moveTo(KAMGraphicPanel.FULL_CONVEYERX+30, KAMGraphicPanel.FULL_CONVEYERY+50);
 
     }
 
@@ -104,7 +104,7 @@ public class GUIKitRobot extends GUIRobot {
     @brief    moves to the position on the  conveyer for empty kits
      */
     private void moveToEmptyConveyer() {
-        this.moveTo(KAMGraphicPanel.EMPTY_CONVEYERX, KAMGraphicPanel.EMPTY_CONVEYERY);
+        this.moveTo(KAMGraphicPanel.EMPTY_CONVEYERX+30, KAMGraphicPanel.EMPTY_CONVEYERY+50);
 
     }
 
@@ -347,7 +347,7 @@ public void pickUpEmptyKitToActive()
 
         if (this.hasKit()) {
             //this.getKit().updateParts();
-            this.getKit().paintMe(panel, g2d, this.getCoordinate().getX(), this.getCoordinate().getY());
+            this.getKit().paintMe(panel, g2d, this.getCoordinate().getX(), this.getCoordinate().getY()-30);
         }
         this.getImage().paintIcon(panel, g2d, this.getCoordinate().getX()-2, this.getCoordinate().getY());
         g2d.dispose();
