@@ -9,9 +9,9 @@ public class LMFeederData {
 	private LMServerMain serverMain;
 	private String signal = "";
 	
-	private Boolean feederSwitch = false;
+	private Boolean feederSwitch = true;
 	private Boolean partLowSensor = true;
-	private Boolean feedPartsSwitch = false;
+	private Boolean feedPartsSwitch = true;
 	private Boolean rearGateSwitch = false;
 	private Boolean diversionSwitch = false; // false : right, true : left
 	private Boolean purgeSwitch = false;

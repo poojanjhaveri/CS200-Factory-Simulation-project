@@ -28,6 +28,7 @@ public class GRMGraphicPanel extends JPanel implements ActionListener {
     GUIFeeder feedertemp; 
     PurgeStation ps;
 	GUIGantryRobot gbot;
+	Integer carriedBinIndex;
     
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
@@ -42,12 +43,14 @@ public class GRMGraphicPanel extends JPanel implements ActionListener {
 				this.gbot.supplyPartOnFeeder(this.gbot.getOrder()-21);//this.gbot.getOrder()-21);
 				this.gbot.popOrder();
 			}
-	    	if(this.gbot.getOrder() == 26)
+			else if(this.gbot.getOrder() == 26)
 	    	{
-	    		this.gbot.binPurged();
-	    		System.out.println("Destroying held bin");
+	    		this.gbot.binPurged();	    		
 	    		this.gbot.popOrder();
+	    		Integer binIndex=this.getBinCarriedIndex();
+				this.binIsPurged(binIndex);
 	    	}
+			
 			}
 		}	
 		gbot.update();
@@ -56,6 +59,7 @@ public class GRMGraphicPanel extends JPanel implements ActionListener {
 
 	public GRMGraphicPanel(){
 		ps = new PurgeStation();
+		carriedBinIndex = 0;
 		gbot = new GUIGantryRobot();
 		bin = new GUIBin(450,0,0.0,"",0);
 		bins = new ArrayList<GUIBin>();
@@ -66,7 +70,7 @@ public class GRMGraphicPanel extends JPanel implements ActionListener {
 		
 		///<Initialize all 8 bins, 8 parts within its bins
         for (int i = 1; i <= 8; i++) {
-           bin=new GUIBin(450,(i*80-50),0.0, "pics/binBox"+i+".png",i);
+           bin=new GUIBin(450,(i*80-50),0.0, "pics/emptybox.png",i-1);//"pics/binBox"+i+".png",i);
            bins.add(bin);
            GUItemp=new GUIPart(bins.get(i-1).getX()+15, bins.get(i-1).getY()+20, 0.0, new ImageIcon("pics/parts/part"+i+".png"));
            newPart = new Part(null,null);
@@ -104,6 +108,19 @@ public class GRMGraphicPanel extends JPanel implements ActionListener {
 	    gbot.paintMe(this,g2);
 	}
 	
+	public void binIsCarried(Integer binIndex){
+		this.bins.get(binIndex).setFullStatus(false);
+		carriedBinIndex = binIndex;
+		//this.bins.g
+	}
+	
+	public Integer getBinCarriedIndex(){
+		return carriedBinIndex;
+	}
+	public void binIsPurged(Integer binIndex){
+		this.bins.get(binIndex).setFullStatus(true);
+	}
+	
 	public void paintPurge(JPanel j,Graphics2D g){
 		ps.getImage().paintIcon(j, g, 260, 600);
 	}
@@ -112,8 +129,9 @@ public class GRMGraphicPanel extends JPanel implements ActionListener {
 		for (int i=0;i<8;i++){
 			if(bins.get(i).binIsFull()==true){
 				bins.get(i).getImage().paintIcon(j, g, bins.get(i).getX(), bins.get(i).getY());
+				parts.get(i).getGUIPart().getImage().paintIcon(j, g, parts.get(i).getGUIPart().getX(), parts.get(i).getGUIPart().getY());
 			}
-			parts.get(i).getGUIPart().getImage().paintIcon(j, g, parts.get(i).getGUIPart().getX(), parts.get(i).getGUIPart().getY());
+			
 		}
 		
 	}

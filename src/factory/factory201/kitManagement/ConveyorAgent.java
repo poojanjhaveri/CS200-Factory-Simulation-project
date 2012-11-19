@@ -10,12 +10,15 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * @brief This class is the agent for the {@link Conveyor} which brings empty
- * {@link Kit}s into the kitting cell and takes complete kits out of the kitting
+ * Agent for the conveyor.
+ * 
+ * This class is the agent for the Conveyor which brings empty
+ * Kits into the kitting cell and takes complete kits out of the kitting
  * cell.
  *
  * @author Alex Young
  * @version 1
+ * @brief Agent for the conveyor
  */
 public class ConveyorAgent extends Agent implements Conveyor {
 
@@ -25,28 +28,18 @@ public class ConveyorAgent extends Agent implements Conveyor {
 
     public ConveyorAgent(String name) {
         super(name);
-
         kitList = Collections.synchronizedList(new ArrayList<Kit>());
         kitRequestsFromKitRobot = 0;
     }
 
     // ********** MESSAGES *********
-    /**
-     * This message is called by the {@link KitRobotAgent} when an empty
-     * {@link Kit} is required.
-     */
+
     @Override
     public void msgNeedEmptyKit() {
         kitRequestsFromKitRobot++;
         stateChanged();
     }
 
-    /**
-     * This message is called by the {@link KitRobotAgent} when a verified
-     * {@link Kit} is ready to be taken away.
-     *
-     * @param kit This is a verified and complete kit.
-     */
     @Override
     public void msgHereIsVerifiedKit(Kit kit) {
         print("Accepting a verified kit: [" + kit.name + "] from the kits robot");
@@ -57,11 +50,7 @@ public class ConveyorAgent extends Agent implements Conveyor {
     }
 
     // ********* SCHEDULER *********
-    /**
-     * Scheduler\
-     *
-     * @return Returns true if action
-     */
+
     @Override
     public boolean pickAndExecuteAnAction() {
         if (kitRequestsFromKitRobot > 0) {
@@ -72,10 +61,7 @@ public class ConveyorAgent extends Agent implements Conveyor {
     }
 
     // ********** ACTIONS **********
-    /**
-     * Tells the {@link KitRobotAgent} the location of the next available empty
-     * kit.
-     */
+
     private void giveEmptyKit() {
         synchronized (kitList) {
             for (Kit k : kitList) {
@@ -123,11 +109,6 @@ public class ConveyorAgent extends Agent implements Conveyor {
         }
     }
 
-    /**
-     * Sets the KitRobotAgent
-     *
-     * @param agent KitRobotAgent
-     */
     public void setKitRobot(KitRobot agent) {
         kitRobotAgent = agent;
     }

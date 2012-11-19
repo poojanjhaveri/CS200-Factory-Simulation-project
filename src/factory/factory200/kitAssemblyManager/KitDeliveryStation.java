@@ -44,7 +44,7 @@ public class KitDeliveryStation {
     
     public void addKit(){
         numEmptyKits++;
-        int xStart=25-20;
+        int xStart=25-25;
         int yStart=680;
         PlaceHolder temp = new PlaceHolder();
         temp.setX(xStart);

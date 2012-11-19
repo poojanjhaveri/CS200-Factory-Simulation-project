@@ -34,7 +34,7 @@ public class LMGUIPanel extends JPanel{
 		tab.add("Lane", laneGUI);
 		tab.add("Nest", nestGUI);
 		tab.add("Non-normative", nonNormativeGUI);
-		add(tab, BorderLayout.CENTER);		
+		//add(tab, BorderLayout.CENTER);		
 	}
 	
 	public LMGUINest getGUINest(){

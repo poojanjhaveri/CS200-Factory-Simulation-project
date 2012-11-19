@@ -14,7 +14,7 @@ class LMThreadTimer implements Runnable{
 	public LMThreadTimer(LMServerMain serverMain){
 		this.serverMain = serverMain;
 		sendPartSignal = new LMSendPartSignal(serverMain);
-		timer = new Timer(30, new ServerTimer());	
+		timer = new Timer(20, new ServerTimer());	
 	}
 		
 	public void run(){}

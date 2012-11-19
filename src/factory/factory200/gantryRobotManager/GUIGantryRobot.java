@@ -44,7 +44,7 @@ public class GUIGantryRobot extends GUIRobot{
     Boolean hasbin;///<whether or not the robot is carrying a bin
     Integer moveto;///<where the gantry robot is heading towards
 
-    GUIGantryRobot() {
+    public GUIGantryRobot() {
 	super(GantryRobotManager.ROBOT_INITIAL_X,GantryRobotManager.ROBOT_INITIAL_Y,GUIGantryRobot.IMAGE_PATH);
 	this.extended = false;
 	this.hasbin = false;
@@ -59,7 +59,9 @@ public class GUIGantryRobot extends GUIRobot{
     
     ///<Once gantry robot gets to a bin, it picks up the bin 
     public void pickUpBin(Integer num){
-    	this.bin = new GUIBin(this.getX(),this.getY(),0.0,"pics/binBox"+(num+1)+".png",num+1);
+    	this.bin = new GUIBin(this.getX(),this.getY(),0.0, "pics/emptybox.png",num+1);
+    	//
+    	//"pics/binBox"+(num+1)+".png",num+1);
     }
     
     ///<moveToFeeder i which is assigned by agents in Server

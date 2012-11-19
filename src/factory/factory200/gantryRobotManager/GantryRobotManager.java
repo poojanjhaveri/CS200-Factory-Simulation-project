@@ -89,9 +89,9 @@ public class GantryRobotManager extends Manager implements ActionListener {
         add(graphics);
         ps = new PurgeStation();
         int x = 500;
-        setSize(500 + x, 700);
+        setSize(510,700);//+ x, 700);
         graphics.setVisible(true);
-        add(TestPanel());
+        //add(TestPanel());
         //change TEST to just graphicPanel (above)
 
         this.setVisible(true);
@@ -99,7 +99,7 @@ public class GantryRobotManager extends Manager implements ActionListener {
         this.sendToServer(Message.IDENTIFY_GANTRYROBOTMANAGER);
     }
     
-    JButton toFeeder;
+   /* toFeeder;
     JButton toBin;
     JButton purgeStation;
     JButton dumpPart;
@@ -128,7 +128,8 @@ public class GantryRobotManager extends Manager implements ActionListener {
         tester.add(purgeStation);
 
         return tester;
-    }
+    }*/
+    
      public void processMessage(String msg) {
 	   super.processMessage(msg);
 	   if(msg.contains(Message.MOVE_GANTRY_TO_BIN))
@@ -137,7 +138,7 @@ public class GantryRobotManager extends Manager implements ActionListener {
 	   }
 	   else if(msg.contains(Message.GANTRY_CARRY_A_BIN))
 	   {
-		   this.ganbot.pickUpBinCommand(Integer.parseInt(this.grabParameter(msg)));
+		   pickUpBin(Integer.parseInt(this.grabParameter(msg)));
 	   }
 	   else if(msg.contains(Message.MOVE_GANTRY_TO_FEEDER))
 	   {
@@ -148,68 +149,29 @@ public class GantryRobotManager extends Manager implements ActionListener {
 	   }
 	   
 	   else if(msg.contains(Message.MOVE_GANTRY_TO_DUMP)){
-		   this.ganbot.purgeBinCommand();
+		   purgeBin();//this.ganbot.purgeBinCommand();
 	   }
    }
-    /**
-     * @brief Inner class GUIGantryManager
-     */
-
-  /* public class GantryState {
-
-//        Feeder feeder;
-//        Bin bins;
-
-        /**
-         * update Feeder coordinate or status
-         */
-  //      public void updateFeeder() {
-  //      }
-
-        /**
-         *  Bins coordinates or status;
-         */
-  //      public void updateBins() {
-    //    }
-
-        /**
-         * update gantryRobot infomation
-         */
-      //  public void updateGantryRobot() {
-    //    }
-
-        /**
-         * update purgestation. move empty bin to (purgeStationx, purgeStationy)
-         */
-        //public void updatePurgeStation() {
-        //}
-    
-  
-
-//   }
+   
 	public void actionPerformed(ActionEvent ae) {
-		// TODO Auto-generated method stub
-	
-		
-		if (ae.getSource() ==toFeeder){
-			ganbot.moveToFeederCommand(0);
-		}
-		
+		// TODO Auto-generated method stub		
+	/*	if (ae.getSource() ==toFeeder){
+			ganbot.moveToFeederCommand(0);		}		
 		if (ae.getSource() ==toBin){
-			ganbot.moveToBinCommand(1);
-			
+			ganbot.moveToBinCommand(1);		
 		}
 		if (ae.getSource() ==purgeStation){
-			ganbot.purgeBinCommand();
-			}
-		
+			this.purgeBin();//ganbot.purgeBinCommand();
+			}		
 		if (ae.getSource() ==dumpPart){
 			ganbot.supplyPartOnFeederCommand(0);
+		//Integer binIndex=this.graphics.getBinCarriedIndex();
+			//this.graphics.binIsPurged(binIndex);
 		}
-
 		if (ae.getSource() ==pickBin){
-			ganbot.pickUpBin(1);
+			pickUpBin(1);		
 		}
+		*/
 }
 	
 	
@@ -234,25 +196,15 @@ public class GantryRobotManager extends Manager implements ActionListener {
 		   ganbot.moveToFeederCommand(feederIndex);
 	   }
 
+	   public void pickUpBin(Integer binIndex){
+		   ganbot.pickUpBin(binIndex);
+		   this.graphics.binIsCarried(binIndex);
+	   }
 	   public void purgeBin(){
-		   /*ganbot.moveToDump(); ////It still does not successfully purge the bin unless you click it twice??
-		   if(ganbot.arrivedAtPurge()){
-			   ganbot.binPurged();
-			   ganbot.RobotInitialization();
-		   }*/
-		   ganbot.purgeBinCommand();
+		 // Integer binIndex=this.graphics.getBinCarriedIndex();		 
+		  ganbot.purgeBinCommand();		  
 	   }
 
-	  
-	  /*public void doSupplyPart(int binNum, int feederNum){
-		ganbot= graphics.getGantryRobot();
-		
-		ganbot.moveToBin(binNum);
-		ganbot.carryABin(binNum);////////////////////////
-		ganbot.moveToFeeder(feederNum);
-		ganbot.moveToDump();
-	}
-	*/
 }
 
 

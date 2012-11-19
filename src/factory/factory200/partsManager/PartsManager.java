@@ -5,6 +5,9 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.EventQueue;
 import java.awt.FlowLayout;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -22,9 +25,9 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import factory.general.BlueprintParts;
 import factory.general.Manager;
 import factory.general.Message;
-import factory.general.BlueprintParts;
 import factory.general.Part;
 
 /**
@@ -291,9 +294,15 @@ public class PartsManager extends Manager implements ActionListener {
 			updateNewPartsImagePanel();
 		} 
 		
-		this.repaint();
 	}
 
+	// later - add bg
+//	public void paint(Graphics g) {
+//		Graphics2D g2 = (Graphics2D) g;
+//		Image img = new ImageIcon("pics/background/mainbg.png").getImage();
+//        g2.drawImage(img, 0, 0, null);
+//	}
+	
 	/**
 	 * @brief returns the current part
 	 * @return the current part

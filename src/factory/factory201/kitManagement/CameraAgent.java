@@ -22,7 +22,6 @@ import java.util.List;
  *
  * @author Alex Young
  * @version 1
- *
  * @brief agent for the Camera
  */
 public class CameraAgent extends Agent implements Camera {
@@ -42,13 +41,6 @@ public class CameraAgent extends Agent implements Camera {
         kitRqmts = new ArrayList<Integer>();
     }
 
-    // ********** MESSAGES *********
-    /**
-     * Message called by NestAgent to inspect nest.
-     *
-     * @param nest Nest to be inspected
-     * @brief Message called by NestAgent to inspect nest.
-     */
     @Override
     public void msgNestIsFull(Nest nest) {
 //        print("Received msgNestIsFull that " + nest.nestNum + " is full.");
@@ -58,12 +50,6 @@ public class CameraAgent extends Agent implements Camera {
         stateChanged();
     }
 
-    /**
-     * Message called by KitRobotAgent to inspect kit.
-     *
-     * @param kit Kit to be inspected
-     * @brief Message called by KitRobotAgent to inspect kit.
-     */
     @Override
     public void msgKitIsFull(Kit kit) {
 //        print("Received msgKitIsFull from Kit Robot Agent");
@@ -82,7 +68,7 @@ public class CameraAgent extends Agent implements Camera {
     @Override
     public boolean pickAndExecuteAnAction() {
         if (kitInfoFromPartsAgent != null) {
-            configureKitInfo(kitInfoFromPartsAgent);
+            configureKitInfo();
             return true;
         }
         synchronized (kitList) {
@@ -105,14 +91,9 @@ public class CameraAgent extends Agent implements Camera {
     }
 
     // ********** ACTIONS **********
-    /**
-     * Inspects nests and returns result to kitRobot agent.
-     *
-     * @param kit Kit being inspected by camera
-     * @brief Inspects nests and returns result to kitRobot agent.
-     */
-    private void inspectKit(Kit kit) {
-        print("Inspecting kit: [" + kit.name + "].");
+
+    public void inspectKit(Kit kit) {
+//        print("Inspecting kit: [" + kit.name + "].");
         boolean result = true;
 
         if (kit.parts.size() != kitRqmts.size()) {
@@ -130,19 +111,15 @@ public class CameraAgent extends Agent implements Camera {
         }
 
         DoInspectKit(kit);
-        kitRobot.msgKitInspected(true);
+        kitRobot.msgKitInspected(result);
+        String strResult = result ? "NO ERROR" : "ERROR";
+        print("Inspected kit: [" + kit.name + "] with result: " + strResult + ".");
         kitList.remove(kit);
         stateChanged();
     }
 
-    /**
-     * Inspects nests and returns result to nest agent.
-     *
-     * @param nest Nest being inspected by camera
-     * @brief Inspects nests and returns result to nest agent.
-     */
     private void inspectNest(Nest nest) {
-        print("Inspecting nest: [Nest " + nest.nestNum + "].");
+//        print("Inspecting nest: [Nest " + nest.nestNum + "].");
         Integer type = nest.part.type;
         boolean result = true;
         for (Part p : nest.parts) {
@@ -152,15 +129,17 @@ public class CameraAgent extends Agent implements Camera {
             }
         }
         DoInspectNest(nest);
-        nestAgent.msgNestInspected(nest, true);
+        nestAgent.msgNestInspected(nest, result); 
+        String strResult = result ? "NO ERROR" : "ERROR";       
+        print("Inspecting nest: [Nest " + nest.nestNum + "] with result: " + strResult + ".");
         nestList.remove(nest);
         stateChanged();
     }
 
-    private void configureKitInfo(Kit info) {
+    private void configureKitInfo() {
         kitRqmts.clear();
-        for (int i = 0; i < info.getSize(); i++) {
-            kitRqmts.add(info.getPart(i).type);
+        for (int i = 0; i < kitInfoFromPartsAgent.getSize(); i++) {
+            kitRqmts.add(kitInfoFromPartsAgent.getPart(i).type);
         }
         kitInfoFromPartsAgent = null;
     }

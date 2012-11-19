@@ -36,6 +36,11 @@ public class NestAgent extends Agent implements NestInterface {
     private int nestNumber;
     private List<Part> requests;
 
+    @Override
+    public void msgHereAreParts(List<Part> parts) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
     
     enum Status {none, needPart, gettingPart, full, gettingInspected, readyForKit, purge};
     
@@ -70,11 +75,9 @@ public class NestAgent extends Agent implements NestInterface {
         stateChanged();
     }
 
-    public void msgHereAreParts(List<Part> kitParts){
+    public void msgHereAreParts(List<Part> kitParts, int laneIndex){
         Part p = kitParts.get(0);
-        synchronized(myNests){
-        for (Nest n : myNests) {
-            if (n.part.type == p.type) {
+        Nest n = myNests.get(laneIndex);
                 for (int i =0; i<kitParts.size(); i++){
                     n.parts.add(kitParts.get(i));
                 }
@@ -83,8 +86,8 @@ public class NestAgent extends Agent implements NestInterface {
                 }
                 print("adding " + kitParts.size() + " " + p.getString() + " to the nest " + n.nestNum);
 
-            }
-        }}
+            
+        
         stateChanged();
     }
 
@@ -129,7 +132,7 @@ public class NestAgent extends Agent implements NestInterface {
                             giveToKit(n);
                             return true;
                 }}}}
-                
+        // synchronized(needParts){      
          if(!needParts.isEmpty()){
                 
                for (Nest n: myNests){
@@ -141,7 +144,7 @@ public class NestAgent extends Agent implements NestInterface {
                 }
                 }
             
-                synchronized(myNests){
+              //  synchronized(myNests){//gets stuck in look w/ this
                 for (Nest n: myNests){
                     if(n.status == Nest.Status.readyForKit) {
                         boolean next = true;
@@ -157,8 +160,8 @@ public class NestAgent extends Agent implements NestInterface {
                              n.status = Nest.Status.needPart;
                              print("Part " + n.part.getString() + " is not taken by a nest, part is being assigned to the nest "+ n.nestNum);
                         return true;
-                }}}}}}
-            
+                }}}}}//}
+     
 
 
         return false;
