@@ -50,14 +50,17 @@ public class LMSignalFromServerVerification extends Manager{
 	
 	/**
 	 * This function clarifies where the signal should go.
-	 * The way it does it to check a specific letter inside the 'msg' String.
+	 * The way it does it to check a specific letter inside the 'message' String.
 	 * "&Camera&" : Message with cameras ( Signal : camera number + "&Camera&" )
 	 * "&Feeder&" : Message with feeders
 	 * "&Lane&" : Message with lanes
 	 * "&Nest&" : Message with nests
+	 * "&Part&" : Message with parts
+	 * "&PartRobot" : Message with Take Bin from Nest
+	 * "&Bin&" : Message with Bin(Gantry Robot)
 	 * 
 	 * @brief Message Checker ( From Server )
-	 * @param msg : Message from server
+	 * @param message : Message from server
 	 */
 	public void processMessage(String msg){
 		super.processMessage(msg);

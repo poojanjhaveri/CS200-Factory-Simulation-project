@@ -1,8 +1,12 @@
 package factory.factory200.factoryProductionManager.LaneManager;
 
+/**
+ * @brief Part Handler
+ * @author Dongyoung Jung
+ */
 public class LMPartHandler {
 	
-	private LMApplication app;	///< Instance of class 'LMApplication'
+	private LMApplication app;
 	private int laneNum, partNum;
 	
 	public LMPartHandler(LMApplication app){

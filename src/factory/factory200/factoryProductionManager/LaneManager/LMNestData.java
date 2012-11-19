@@ -2,6 +2,10 @@ package factory.factory200.factoryProductionManager.LaneManager;
 
 import java.util.ArrayList;
 
+/**
+ * @brief Nest Data
+ * @author Dongyoung Jung
+ */
 public class LMNestData {
 	
 	private ArrayList<LMDrawablePart> parts = new ArrayList<LMDrawablePart>();
@@ -31,6 +35,9 @@ public class LMNestData {
 		parts.clear();
 	}
 	
+	/**
+	 * @brief Nest Parts Organizer
+	 */
 	public void reorganize(){
 		for(int i=0 ; i<parts.size() ; i++){
 			if( i % 2 == 0 ){

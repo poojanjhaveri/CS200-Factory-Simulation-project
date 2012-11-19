@@ -2,11 +2,15 @@ package factory.factory200.laneManager.ServerSide;
 
 import java.util.ArrayList;
 
+/**
+ * @brief Nest Functions for Agent
+ * @author Dongyoung Jung
+ */
 public class LMNestForAgent {
 	
 	private LMServerMain serverMain;
-	private LMNestData newNest;	///< Instance of class 'ServerLaneManagerThreadNest
-	private ArrayList<LMNestData> nests = new ArrayList<LMNestData>();	///< ArrayList of nests
+	private LMNestData newNest;
+	private ArrayList<LMNestData> nests = new ArrayList<LMNestData>();
 
 	public LMNestForAgent(LMServerMain serverMain){
 		this.serverMain = serverMain;
