@@ -103,8 +103,8 @@ public class ManagerConnection implements Runnable {
         	System.out.println("Shutting down.");
         	System.exit(0);
         } catch (Exception e) {
+            System.out.println("Exception from ManagerConnection.");
             e.printStackTrace();
-            System.out.println("wtf?");
             System.exit(0);
         }
     }
