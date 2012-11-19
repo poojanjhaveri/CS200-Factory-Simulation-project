@@ -75,17 +75,14 @@ public class LMServerMain extends JFrame implements Runnable{
 	
 	public void setLM(HandleAManager newHandleAManager) {
 		hacLM = newHandleAManager;
-		startLM();
 	}
 	
 	public void setFPM(HandleAManager newHandleAManager) {
 		hacFPM = newHandleAManager;
-		startLM();
 	}
 	
 	public void setKAM(HandleAManager newHandleAManager) {
 		hacKAM = newHandleAManager;
-		startLM();
 	}
 	
 	public void setGRM(HandleAManager newHandleAManager) {
@@ -114,20 +111,5 @@ public class LMServerMain extends JFrame implements Runnable{
 		if( hacGRM != null ){
 			hacGRM.sendMessage(signal);
 		}
-	}
-	
-	public void startLM(){
-		
-		// Lane On
-		for(int i=0 ; i<8 ; i++){
-			agentLane.setSwitchOn(i);
-		}
-		
-		// Feeder On & Purge On
-		for(int i=0 ; i<4 ; i++){
-			agentFeeder.setSwitchOn(i);
-			agentFeeder.setFeedPartsSwitchOn(i);
-		}
-		
 	}
 }
