@@ -5,6 +5,7 @@ import factory.general.*;
 /**
  * @author Alex Young
  * @version 1
+ * @brief Kit stand stores and controls kits for the kit robot
  */
 public class KitStand {
 
