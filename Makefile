@@ -9,15 +9,15 @@ RUNPKG=factory.factory200
 
 all:
 	javac -d . $(ALLPKG)
-
+	version -b
 run:
 	@echo "STARTING SERVER"
 	$(RUN) factory.general.Server &
-	php sleeper.php
+	@sleep 5
 	@echo "BEGINNING ALL MANAGERS"
 	$(RUN) $(RUNPKG).partsManager.PartsManager &
 	$(RUN) $(RUNPKG).kitManager.KitManager &
 	$(RUN) $(RUNPKG).gantryRobotManager.GantryRobotManager &
-	$(RUN) factory.factory200.laneManager.ClientSide.V1LaneManagerCompileClient &
-	$(RUN) factory.factory200.kitAssemblyManager.KitAssemblyManager &
-	$(RUN) factory.factory200.factoryProductionManager.FactoryProductionManager &
+	$(RUN) $(RUNPKG).laneManager.ClientSide.V1LaneManagerCompileClient &
+	$(RUN) $(RUNPKG).kitAssemblyManager.KitAssemblyManager &
+	$(RUN) $(RUNPKG).factoryProductionManager.FactoryProductionManager &

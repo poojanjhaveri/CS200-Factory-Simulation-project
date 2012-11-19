@@ -1,8 +1,8 @@
 package factory.factory200.gantryRobotManager;
 /**
  * Gantry Robot Manager takes care of movement of gantry robot, bins, purge
- * station and feeders. Instances are GUIGantryRobot,
- * GUIGantryManager,GRMGraphicPanel, GUIBin, GUIFeeder.
+ * station and feeders. Instances in this manager are GUIGantryRobot,
+ * GRMGraphicPanel, GUIBin, GUIFeeder, PurgeStation
  * GUIGantryManager extends JPanel with JButtons, JMenu and JLabels to do non-normative condition in V2.
  * GraphicGantryPanel extends Manager which shows animation of every process:
  * 1.Gantry robot move to bin(n)

@@ -3,6 +3,7 @@ package factory.factory200.factoryProductionManager.GantryRobotManager;
 import factory.factory200.factoryProductionManager.*;
 import factory.factory200.gantryRobotManager.PurgeStation;
 import factory.general.GUIPart;
+import factory.factory200.gantryRobotManager.*;
 import factory.general.Part;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -11,7 +12,6 @@ import java.util.*;
 import javax.swing.*;
 import javax.swing.Timer;
 
-import factory.factory200.gantryRobotManager.*;
 
 public class GRMGraphicPanel{
     
@@ -24,6 +24,7 @@ public class GRMGraphicPanel{
     GUIPart GUItemp;
 	GUIGantryRobot gbot;
 	PurgeStation ps;
+        GUIFeeder feedertemp; 
 	public GRMGraphicPanel(){
 		carriedBinIndex = 0;
 		gbot = new GUIGantryRobot();
@@ -32,6 +33,8 @@ public class GRMGraphicPanel{
 		parts = new ArrayList<Part>();
 		feeders = new ArrayList<GUIFeeder>();
 		newPart = new Part(null,null);
+                ps=new PurgeStation();
+                feedertemp = new GUIFeeder((Integer)0,(Integer)0,(Double)0.0,"");
 		
 		///<Initialize all 8 bins, 8 parts within its bins
 		
@@ -42,6 +45,10 @@ public class GRMGraphicPanel{
            newPart = new Part(null,null);
            newPart.setGUIPart(GUItemp);
            parts.add(newPart);
+        }
+        for(int i = 1;i<5; i++){
+        	feedertemp = new GUIFeeder(0,i*150-100,0.0,"pics/feeder"+i+".png");
+        	feeders.add(feedertemp);
         }
 	}
 	
@@ -86,14 +93,14 @@ public class GRMGraphicPanel{
 	public void paint(GraphicsPanel graph, Graphics g) {
         
         Graphics2D g2 = (Graphics2D) g;
-        Image img = new ImageIcon("pics/background/mainbg.png").getImage();
+        Image img = new ImageIcon("pics/background/part3.png").getImage();
         g2.drawImage(img, -1350+500, 0, null);
         //Rectangle2D.Double backgroundRectangle = new Rectangle2D.Double(0, 0, 500, 700);
         //g2.setColor(Color.GRAY.darker().darker());//dark dark green background
         //g2.fill(backgroundRectangle);
         paintPurge(graph,g2);
         paintBinsWithParts(graph, g2);
-        paintFeeders(graph,g2);
+        //paintFeeders(graph,g2);
 	    gbot.paintMe(graph,g2);
 	}
 	

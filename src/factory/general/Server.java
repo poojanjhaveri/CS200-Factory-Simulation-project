@@ -121,8 +121,9 @@ public class Server {
 			System.exit(0);
 		}
 		prepareAllAgents(); // Prepare all agents; based on AgentMain.java      // For Testing By Dongyoung
+		
 //		for (int i=0 ; i<2 ; i++){ // For Testing By Dongyoung, if want to need communicate n managers, change into for(int i=0 ; i<n ; i++)
-		while(true){
+		while (true) {
 			// Continuously check for a new client for which to create a thread
 			try {
 				s = ss.accept(); // Wait for a client (program halts here until connection occurs)
@@ -254,15 +255,15 @@ public class Server {
             // * 
         	
         	// THIS IS JUST EXAMPLE STUFF THAT 201 WAS DOING TO TEST
-            Kit kit = new Kit("Test Kit"); // This is required for...
+            Kit kit = new Kit("Test Kit","dsc"); // This is required for...
             for (int i = 0; i < 8; i++) {
                 
 //                kit.addPart(this.fstate.getPartCheat().clone());
                 //kit.addPart(new Part("Part " + i, "p1")); // This is a kit that has actual parts...
                 
-                kit.addPart(new Part(i)); //testing- Kevin
+                kit.addPart(new Part("lol","k")); //testing- Kevin
             }
-            List<Kit> kits = new ArrayList<Kit>();
+            ArrayList<Kit> kits = new ArrayList<Kit>();
             kits.add(kit);
             kits.add(kit);
             kits.add(kit);
