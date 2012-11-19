@@ -17,6 +17,7 @@ ALLPKGDIR= \
 	$(F200)/gantryRobotManager/*.java \
 	$(F200)/kitAssemblyManager/*.java \
 	$(F200)/kitManager/*.java \
+	$(F200)/partsManager/*.java \
 	$(LM)/ClientSide/*.java \
 	$(LM)/ServerSide/*.java \
 	$(F201)/feederManagement/*.java \
