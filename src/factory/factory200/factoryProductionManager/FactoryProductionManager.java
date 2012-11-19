@@ -111,20 +111,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 	private void instantiateStaticComponents() {
 
 		mainPanel = new JPanel();
-//		{     
-//			public void paintComponent(Graphics g) 
-//			{
-//				Image img = new ImageIcon("pics/background/mainbg.png").getImage();
-//				Dimension size = new Dimension(1350, 700);
-//				setPreferredSize(size);
-//				setMinimumSize(size);
-//				setMaximumSize(size);
-//				setSize(size);
-//				setLayout(null);
-//
-//				g.drawImage(img, 0, 0, null);
-//			} 
-//		};
+		
 
 		mainPanel.setLayout(new BorderLayout());
 		setContentPane(mainPanel);
@@ -138,7 +125,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 		selLabel = new JLabel ("Select Kit");
 		numLabel = new JLabel ("Quantity");
 		consoleLabel = new JLabel ("System Message");
-		schedLabel = new JLabel ("Production Schedule");
+		schedLabel = new JLabel ("Pending Queue");
 		queueLabel = new JLabel ("Server Production Queue");
 		inProdLabel = new JLabel ("In Production");
 		schedField = new JTextArea(30, 20);
@@ -149,14 +136,31 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 		schedField.setEditable(false);
 		outField.setEditable(false);
 
-		numE = new JTextField(5);
-		numE.setPreferredSize(new Dimension(5,8));
+		numE = new JTextField(3);
+		//numE.setPreferredSize(new Dimension(5,8));
 		queueue = new JButton("Add Kits");
 		start = new JButton("Start");
 		stop = new JButton("Stop");
 		reset = new JButton("Clear List");
 
-		basePanel = new JPanel();
+		basePanel = new JPanel()
+                {
+                public void paintComponent(Graphics g) 
+			{
+                            /*
+				Image img = new ImageIcon("pics/background/mainbg.png").getImage();
+				Dimension size = new Dimension(1350, 700);
+				setPreferredSize(size);
+				setMinimumSize(size);
+				setMaximumSize(size);
+				setSize(size);
+				setLayout(null);
+
+				g.drawImage(img, 0, 0, null);
+                                * */
+			} };
+                
+                
 		basePanel.setLayout(new BorderLayout());
 
 		tabs = new JTabbedPane();
@@ -178,18 +182,20 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 
 		//		tabs.setOpaque(false);
 
-                /*
+                 tabs.setOpaque(false);
 		topPanel.setOpaque(false);
 		botPanel.setOpaque(false);
 		parentMidPanel.setOpaque(false);
+		
 		queuePanel.setOpaque(false);
+		
 		leftPanel.setOpaque(false);
 		midPanel.setOpaque(false);
+		
 		rightPanel.setOpaque(false);
 		botBotPanel.setOpaque(false);
 		selPanel.setOpaque(false);
 		slotsPanel.setOpaque(false);
-		basePanel.setOpaque(false);
 	//	gfx.setOpaque(false);*/
 	}
 
@@ -208,6 +214,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 		topPanel.add(new JPanel());
 		topPanel.add(consoleLabel);
 		topPanel.add(new JPanel());
+                
 
 		leftPanel.add(schedPane);
 		leftPanel.setPreferredSize(new Dimension(320, 600));
@@ -224,29 +231,51 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 		selPanel.add(selKit);
 
 		c.gridx = 1;
-		c.gridy = 1;
-		c.ipadx = 75;
+		c.gridy = 0;
+		c.ipadx = 0;
 		gridbag.setConstraints(numLabel, c);
 		selPanel.add(numLabel);
+                c.gridy = 1;
+                c.ipadx = 10;
 		gridbag.setConstraints(numE, c);
 		selPanel.add(numE);
-
+                
+                c.ipadx = 75;
 		c.gridx = 0;
 		c.gridy = GridBagConstraints.RELATIVE;
 		gridbag.setConstraints(selPanel, c);
 		midPanel.add(selPanel);
+                
+                c.ipadx = 30;
+                c.ipady = 16;
+                JPanel fill2 = new JPanel();
+		gridbag.setConstraints(fill2, c);
+		midPanel.add(fill2);
+
 		gridbag.setConstraints(queueue, c);
 		midPanel.add(queueue);
 		c.gridy = GridBagConstraints.RELATIVE;
+                
 		JPanel fill1 = new JPanel();
+                fill1.setOpaque(false);
 		gridbag.setConstraints(fill1, c);
 		midPanel.add(fill1);
-
+                
+                /*
 		JPanel fill2 = new JPanel();
+                 fill2.setOpaque(false);
 		gridbag.setConstraints(fill2, c);
 		midPanel.add(fill2);
+                 * 
+                 */
 		gridbag.setConstraints(reset, c);
 		midPanel.add(reset);
+                
+                JPanel fill3 = new JPanel();
+		gridbag.setConstraints(fill3, c);
+		midPanel.add(fill3);
+		gridbag.setConstraints(start, c);
+		midPanel.add(start);
 
 		rightPanel.add(outPane);
 		rightPanel.setPreferredSize(new Dimension(320, 600));
@@ -287,11 +316,6 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 		basePanel.add(topPanel, BorderLayout.NORTH);
 		basePanel.add(botPanel, BorderLayout.CENTER);
 		start.setPreferredSize(new Dimension(100, 30));
-
-		gridbag.setConstraints(start, c);
-		botBotPanel.add(start);
-		botBotPanel.add(new JPanel());
-		basePanel.add(botBotPanel, BorderLayout.SOUTH);
 
 		basePanel.setSize(1350, 700);
 		tabs.addTab("Control GUI", basePanel);

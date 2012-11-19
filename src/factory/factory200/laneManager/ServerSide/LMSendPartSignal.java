@@ -1,5 +1,9 @@
 package factory.factory200.laneManager.ServerSide;
 
+/**
+ * @brief Signal related to Server Sender
+ * @author Dongyoung Jung
+ */
 public class LMSendPartSignal {
 	
 	private LMServerMain serverMain;

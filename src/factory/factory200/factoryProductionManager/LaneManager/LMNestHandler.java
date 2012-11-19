@@ -1,9 +1,13 @@
 package factory.factory200.factoryProductionManager.LaneManager;
 
+/**
+ * @brief Nest Handler
+ * @author Dongyoung Jung
+ */
 public class LMNestHandler {
 	
-	private LMApplication app;	///< Instance of class 'LMApplication'
-	private int nestNum;	///< nest number
+	private LMApplication app;
+	private int nestNum;
 
 	public LMNestHandler(LMApplication app){
 		this.app = app;
