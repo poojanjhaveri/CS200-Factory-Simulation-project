@@ -143,7 +143,7 @@ public class Server {
             turnOffAgentPrintStatements();
             connectAgentsAndManagers();
             startAgentThreads();
-            //startInteractionSequence();
+//            startInteractionSequence();
         }
 
         private void declareAgents() {
