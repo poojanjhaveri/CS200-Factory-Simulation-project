@@ -16,7 +16,7 @@ public class LMTimerThread implements Runnable{
 	
 	public LMTimerThread(LMSignalFromServerVerification serverVerification){
 		this.serverVerification = serverVerification;
-		timer = new Timer(30, new TimerAction());
+		timer = new Timer(10, new TimerAction());
 	}
 	
 	public void run(){}
