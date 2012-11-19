@@ -35,7 +35,7 @@ import javax.swing.SwingConstants;
 /**
  * <img src="../img/image02.png"/>
  * @brief JFrame that represents the parts manager
- * @author David Zhang, YiWei Roy Zheng, Jorge Rybar
+ * @author Jorge Rybar, David Zhang, YiWei Roy Zheng
  */
 
 public class PartsManager extends Manager implements ActionListener {
