@@ -30,11 +30,12 @@ import factory.general.BlueprintParts;
 import factory.general.Manager;
 import factory.general.Message;
 import factory.general.Part;
+import javax.swing.SwingConstants;
 
 /**
  * <img src="../img/image02.png"/>
  * @brief JFrame that represents the parts manager
- * @author David Zhang, YiWei Roy Zheng, Jorge Rybar
+ * @author Jorge Rybar, David Zhang, YiWei Roy Zheng
  */
 
 public class PartsManager extends Manager implements ActionListener {
@@ -48,7 +49,7 @@ public class PartsManager extends Manager implements ActionListener {
 	private JPanel pnlManageParts, comboBoxPanel;
 	private JComboBox partComboBox;
 	private JPanel managePartsImagePanel;
-	private JPanel managePartsButtonPanel;
+	private JPanel managePartsBottomPanel;
 	private JButton btnView;
 	private JButton btnDelete;
 	private JPanel pnlSelectedPart;
@@ -91,6 +92,8 @@ public class PartsManager extends Manager implements ActionListener {
 	private JLabel lblSelectedImage2;
 	private JLabel lblSelectedImage3;
 	private boolean noPartSelected;
+	private JPanel managePartsButtonPanel;
+	private JLabel lblShowDescription;
 
 	private void prepareContentPane() {
 		contentPane = new JPanel()
@@ -142,23 +145,32 @@ public class PartsManager extends Manager implements ActionListener {
 		managePartsImagePanel.add(lblSelectedImage);
 		pnlManageParts.add(managePartsImagePanel);  
 
-		managePartsButtonPanel = new JPanel();
-		managePartsButtonPanel.setOpaque(false);
-		pnlManageParts.add(managePartsButtonPanel);
+		managePartsBottomPanel = new JPanel();
+		managePartsBottomPanel.setOpaque(false);
+		pnlManageParts.add(managePartsBottomPanel);
 
 		tabbedPane.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent e) {
 				processTabChange();
 			}
 		});
-
-		btnView = new JButton("View");
-		managePartsButtonPanel.add(btnView);
-		btnView.addActionListener(this);
-
-		btnDelete = new JButton("Delete");
-		managePartsButtonPanel.add(btnDelete);
-		btnDelete.addActionListener(this);
+		managePartsBottomPanel.setLayout(new BorderLayout(0, 0));
+		
+		managePartsButtonPanel = new JPanel();
+		managePartsButtonPanel.setOpaque(false);
+		managePartsBottomPanel.add(managePartsButtonPanel, BorderLayout.SOUTH);
+		
+				btnView = new JButton("View");
+				managePartsButtonPanel.add(btnView);
+				
+						btnDelete = new JButton("Delete");
+						managePartsButtonPanel.add(btnDelete);
+						
+						lblShowDescription = new JLabel();
+						lblShowDescription.setHorizontalAlignment(SwingConstants.CENTER);
+						managePartsBottomPanel.add(lblShowDescription, BorderLayout.CENTER);
+						btnDelete.addActionListener(this);
+				btnView.addActionListener(this);
 
 		pnlSelectedPart = new JPanel();
 		pnlSelectedPart.setOpaque(false);
@@ -302,7 +314,6 @@ public class PartsManager extends Manager implements ActionListener {
 		updateManagePartsImagePanel();
 		populateFileComboBoxes();
 		checkToDisableTabs();
-		partComboBox.addItem("-No Part Selected-");
 		noPartSelected=true;
 		
 		if(bp.getSize()==0)
@@ -315,8 +326,8 @@ public class PartsManager extends Manager implements ActionListener {
 			deletePart(getCurrentPart());
 		} else if (e.getSource() == btnView) {
 			//if no parts then disable Index 1 (selected part tab)
-			if(bp.getSize()!=0)
-			tabbedPane.setSelectedIndex(SELECTED_PART_TAB_NUM);
+			if(!noPartSelected)
+				tabbedPane.setSelectedIndex(SELECTED_PART_TAB_NUM);
 		
 		} else if (e.getSource() == btnUpdate) {
 			updatePart(); // fill in below
@@ -325,6 +336,7 @@ public class PartsManager extends Manager implements ActionListener {
 		} else if (e.getSource()==partComboBox){
 			//when partComboBox is clicked update managePartsImagePanel
 			updateManagePartsImagePanel();
+			updateDescription();
 		} else if (e.getSource()==cbImageFileName){
 			updateSelectedPartsImagePanel();
 		} else if (e.getSource()==cbImageFileName2){
@@ -505,6 +517,7 @@ public class PartsManager extends Manager implements ActionListener {
 			bp.removePart(pt);
 			updatePartComboBox();
 			updateManagePartsImagePanel();
+			updateDescription();
 			this.repaint();
 			}
 		checkToDisableTabs();
@@ -520,7 +533,7 @@ public class PartsManager extends Manager implements ActionListener {
 
 	public void processMessage(String msg) {
 		super.processMessage(msg);
-		if(msg.contains( Message.PUSH_PARTS_LIST)) {
+		if (msg.contains( Message.PUSH_PARTS_LIST)) {
 
 			this.bp.recreate(this.grabParameter(msg));
 			System.out.println("GRABBED NEW PARTS LIST FROM SERVER!: "+msg);
@@ -534,6 +547,8 @@ public class PartsManager extends Manager implements ActionListener {
 			//update the list of parts 
 			updatePartComboBox();   	
 			updateManagePartsImagePanel();
+			updateDescription();
+			
 		}
 		else if (c.equals(pnlSelectedPart)){
 			Part p= getCurrentPart();
@@ -541,7 +556,7 @@ public class PartsManager extends Manager implements ActionListener {
 			tfPartName.setText(p.getName());
 			cbImageFileName.setSelectedItem(p.getFilename());
 			tfDescription.setText(p.getDescription());
-			lblPartNumber.setText(p.getNumber()+"");
+			lblPartNumber.setText("Part #"+p.getNumber()+"");
 			updateSelectedPartsImagePanel();
 			
 		}
@@ -556,6 +571,16 @@ public class PartsManager extends Manager implements ActionListener {
 	 * @brief updates the list of parts every time the Manage parts tab is clicked
 	 */
 
+	private void updateDescription(){
+		if(!noPartSelected){
+			Part temp=getCurrentPart();
+			String s= temp.getDescription();
+			lblShowDescription.setText(s);
+			this.repaint();
+		}
+		
+	}
+	
 	private void updatePartComboBox(){
 		managePartsImagePanel.removeAll();
 		partComboBox.removeAllItems(); 
@@ -631,19 +656,21 @@ public class PartsManager extends Manager implements ActionListener {
 /*
  * TODO
  * 
- * -disable selected tab only when no parts selected
  * -display part description in pnlManageParts (by adding a new JPanel and JLabel)
  * -change part description to textArea instead of textfield
  * 
  * -fix code comments/ gardening
  * -add test cases to wiki 
+ * > reads in any image files that are added to pics/parts, verifying their extensions
  *
  * QUESTIONS
  * -make Create and update button unselected after click
  * 
- * 
  * BUGS
- * -
+ * 
+ * EXTRAS
+ * -shade disabled tabs and buttons
+ * -make images be displayed IN the comboboxes
  * 
  * 
  */

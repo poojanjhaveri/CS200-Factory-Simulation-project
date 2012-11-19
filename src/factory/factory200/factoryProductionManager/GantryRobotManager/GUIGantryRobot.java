@@ -4,7 +4,8 @@ package factory.factory200.factoryProductionManager.GantryRobotManager;
 /**
  * @author Yuting Liu
  */
-import factory.factory200.gantryRobotManager.*;
+
+import factory.factory200.gantryRobotManager.GUIBin;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -67,25 +68,29 @@ public class GUIGantryRobot extends GUIRobot{
     	//"pics/binBox"+(num+1)+".png",num+1);
     }
     
+    /**
+     * moveTo assigned feeder
+     * @param index for feeder
+     */
     ///<moveToFeeder i which is assigned by agents in Server
     public void moveToFeeder(Integer i) {
         switch(i)
         {
         case 0:
 	    this.moveto = 0;
-            this.moveTo(GantryRobotManager.FEED0X,GantryRobotManager.FEED0Y+50);
+            this.moveTo(1000,50);//GantryRobotManager.FEED0X,GantryRobotManager.FEED0Y+50);
             break;
         case 1:
 	    this.moveto = 1;
-            this.moveTo(GantryRobotManager.FEED1X,GantryRobotManager.FEED1Y+50);
+            this.moveTo(1000,200);//GantryRobotManager.FEED1X,GantryRobotManager.FEED1Y+50);
             break;
         case 2:
 	    this.moveto = 2;
-            this.moveTo(GantryRobotManager.FEED2X,GantryRobotManager.FEED2Y+50);
+            this.moveTo(1000,350);//GantryRobotManager.FEED2X,GantryRobotManager.FEED2Y+50);
             break;
         case 3:
 	    this.moveto = 3;
-            this.moveTo(GantryRobotManager.FEED3X,GantryRobotManager.FEED3Y+50);
+            this.moveTo(1000,500);//GantryRobotManager.FEED3X,GantryRobotManager.FEED3Y+50);
             break;
         default:
             System.out.println("ERROR: Attempting to move GuiGantryRobot to nonexistent feeder " + i);
@@ -146,6 +151,11 @@ public class GUIGantryRobot extends GUIRobot{
 		
 	}	
 	
+	/**
+	 * check if the robot arrives at the bin
+	 * @param binNum
+	 * @return
+	 */
 	public boolean arrivedAtBin(Integer binNum){
 		
 			if(this.getCoordinate().getX() == 350 && this.getCoordinate().getY() == 30 + 80*binNum){
@@ -154,23 +164,34 @@ public class GUIGantryRobot extends GUIRobot{
 			else return false;
 	}
 	
+	/*
+	 * dumpt part on feeder i
+	 */
 	public void supplyPartOnFeeder(Integer feederIndex){
 		this.bin.setPartToNull();
 		this.bin.setX(20);
 		this.bin.setY(50+feederIndex*150);
 	}
 	
+	/*
+	 * dump the empty box
+	 */
     public void moveToDump() {
     	this.bin.setX(this.cords.getX());
     	this.bin.setY(this.cords.getY());
-        this.moveTo(210,550);//,GantryRobotManager.DUMPY);
+        this.moveTo(1200,550);//,GantryRobotManager.DUMPY);
     }
     
-    
+    /*
+     * Get the robot back to its original place
+     */
     public void RobotInitialization(){
     	this.moveTo(GantryRobotManager.ROBOT_INITIAL_X,GantryRobotManager.ROBOT_INITIAL_Y);
     }
     
+    /*
+     * check if the robot arrives at the purge
+     */
     public boolean arrivedAtPurge(){
     	if(this.getCoordinate().getX()==210 && this.getCoordinate().getY()==550){
     		return true;
@@ -247,6 +268,10 @@ public class GUIGantryRobot extends GUIRobot{
     	return false;
     	
     }
+    
+    /*
+     * be called to move bin
+     */
     public void moveToBinCommand(Integer index)
     {
     	this.orders.add(index);
@@ -262,6 +287,9 @@ public class GUIGantryRobot extends GUIRobot{
     	//this.orders.add(index+21);
     }
     
+    /*
+     * dump part on feeder
+     */
     public void supplyPartOnFeederCommand(Integer index){
     	this.orders.add(index+21);
     }

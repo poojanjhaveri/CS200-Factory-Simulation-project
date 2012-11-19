@@ -32,16 +32,22 @@ public class GraphicsPanel extends JPanel{
 	}
 	
 	public void timerAction(){
-		repaint();
+		
 		laneManager.timerAction();
                 kitsAssemblyManager.getGraph().timerAction();
                 //add timer action for KAM! 
                 gantryRobotManager.getGraph().timerAction();
+                repaint();
 	}
 	
 	public void verifyMessage(String msg){
+            if(msg==null)
+            {
+                System.out.println("Something has gone terribloy wrong");
+            }
 		laneManager.getServerVerify().verify(msg);
 		this.kitsAssemblyManager.processMessage(msg);
 		this.gantryRobotManager.processMessage(msg);
+                //System.out.println("GFX GOT MESSAGE: " + msg);
 	}
 }

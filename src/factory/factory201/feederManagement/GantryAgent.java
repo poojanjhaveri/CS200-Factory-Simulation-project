@@ -238,7 +238,7 @@ public class GantryAgent extends Agent implements Gantry {
     	//print("Sending message to feeder");
         print("sending message here are parts to " + f.index);
 
-    	doSupplyPart(b,f);
+    	//doSupplyPart(b,f);
 
 
         f.feeder.msgHereAreParts(parts);
@@ -271,7 +271,7 @@ public class GantryAgent extends Agent implements Gantry {
      
          
      this.client.sendMessage(Message.MOVE_GANTRY_TO_BIN+":"+b.index);
-       
+       this.fpm.sendMessage(Message.MOVE_GANTRY_TO_BIN+":"+b.index);
          try {
 			Thread.sleep(6000);
 		} catch (InterruptedException e) {
@@ -279,7 +279,9 @@ public class GantryAgent extends Agent implements Gantry {
 			e.printStackTrace();
 		}
          this.client.sendMessage(Message.GANTRY_CARRY_A_BIN + ":" + b.index);
+         this.fpm.sendMessage(Message.GANTRY_CARRY_A_BIN + ":" + b.index);
          this.client.sendMessage(Message.MOVE_GANTRY_TO_FEEDER+":"+f.index);
+         this.fpm.sendMessage(Message.MOVE_GANTRY_TO_FEEDER+":"+f.index);
          
     	//animation.goToFeeder(f.index-1);
     	
@@ -291,6 +293,7 @@ public class GantryAgent extends Agent implements Gantry {
 		}
     	
     	this.client.sendMessage(Message.SUPPLY_PART_ON_FEEDER + ":" + f.index);
+        this.fpm.sendMessage(Message.SUPPLY_PART_ON_FEEDER + ":" + f.index);
         
             try {
 			Thread.sleep(2000);
@@ -300,6 +303,7 @@ public class GantryAgent extends Agent implements Gantry {
 		}
             
         this.client.sendMessage(Message.MOVE_GANTRY_TO_DUMP);
+        this.fpm.sendMessage(Message.MOVE_GANTRY_TO_DUMP);
     
         
          try {
