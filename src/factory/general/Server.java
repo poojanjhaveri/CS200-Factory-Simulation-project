@@ -137,9 +137,6 @@ public class Server {
 		}
 
 		
-//		try{  Thread.sleep(1000);  } catch(Exception e){}   // For Testing By Dongyoung
-		prepareAllAgents(); // Prepare all agents; based on AgentMain.java      // For Testing By Dongyoung
-
 	}
 
 	private void initializeManagers() { // Something by Dongyoung...?  Dongyoung : Yeah
