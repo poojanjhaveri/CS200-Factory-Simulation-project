@@ -137,7 +137,7 @@ public class GantryRobotManager extends Manager implements ActionListener {
 	   }
 	   else if(msg.contains(Message.GANTRY_CARRY_A_BIN))
 	   {
-		   this.ganbot.pickUpBinCommand(Integer.parseInt(this.grabParameter(msg)));
+		   pickUpBin(Integer.parseInt(this.grabParameter(msg)));
 	   }
 	   else if(msg.contains(Message.MOVE_GANTRY_TO_FEEDER))
 	   {
@@ -208,7 +208,8 @@ public class GantryRobotManager extends Manager implements ActionListener {
 		}
 
 		if (ae.getSource() ==pickBin){
-			ganbot.pickUpBin(1);
+			pickUpBin(1);
+			
 		}
 }
 	
@@ -234,6 +235,10 @@ public class GantryRobotManager extends Manager implements ActionListener {
 		   ganbot.moveToFeederCommand(feederIndex);
 	   }
 
+	   public void pickUpBin(Integer binIndex){
+		   ganbot.pickUpBin(binIndex);
+		   this.graphics.binIsCarried(binIndex);
+	   }
 	   public void purgeBin(){
 		   /*ganbot.moveToDump(); ////It still does not successfully purge the bin unless you click it twice??
 		   if(ganbot.arrivedAtPurge()){

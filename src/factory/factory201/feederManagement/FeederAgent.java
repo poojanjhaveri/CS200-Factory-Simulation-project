@@ -391,4 +391,15 @@ public class FeederAgent extends Agent implements Feeder {
        LMServer.getForAgentFeeder().setFeedPartsSwitchOn(feederNum);
        LMServer.getForAgentFeeder().setSwitchOn(feederNum);
     }
+    public boolean isConnected(){
+    if(LMServer.getForAgentFeeder()==null)
+    return false;
+    else 
+        return true;
+    }
+    
+    public boolean hasClient(){
+    if(client!=null)return true;
+    else return false;
+    }
 }
