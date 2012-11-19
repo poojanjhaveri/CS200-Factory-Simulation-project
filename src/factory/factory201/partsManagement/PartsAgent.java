@@ -9,6 +9,7 @@ import factory.factory201.interfaces.Camera;
 import factory.factory201.interfaces.KitRobot;
 import factory.factory201.interfaces.NestInterface;
 import factory.factory201.interfaces.PartsInterface;
+import factory.general.BlueprintKits;
 import factory.general.Kit;
 import factory.general.Message;
 import factory.general.Part;
@@ -61,6 +62,7 @@ public class PartsAgent extends Agent implements PartsInterface {
         print("PartsAgent got message for new kits");
         for (Kit k: newKits){
         newKit.add(k);}
+        DoGiveKitsInQueue(newKit);
         stateChanged();
     }
 
@@ -138,13 +140,14 @@ public class PartsAgent extends Agent implements PartsInterface {
         print("giving kitrobot complete kit #" + k.standNum);
         print("KIT0NEEDSPARTS SIZE: [" + kit0NeedsParts.size()+ "]");
         print("KIT1NEEDSPARTS SIZE: [" + kit1NeedsParts.size() + "]");
+        print("INVENTORY SIZE: [" + inventory.size() + "]");
         kits--;
         if(k.standNum==Kit.StandNum.zero){
             kit0Info = null;
             //kit0=null;
         }
         else{
-            kit1Info =null;
+            kit1Info = null;
             //kit1 = null;
         }
             
@@ -299,10 +302,11 @@ public class PartsAgent extends Agent implements PartsInterface {
         }}
     
     public void DoGiveKitsInAction(Kit k){
-       // this.client.sendMessage(Message)
+        this.client.sendMessage(Message.KIT_IN_PRODUCTION+":"+k.getName());
         }
     
     public void DoGiveKitsInQueue(List<Kit> kits){
-        
+        BlueprintKits adhoc = new BlueprintKits((ArrayList)kits);
+        this.client.sendMessage(Message.GIVE_KITS_IN_QUEUE+":"+adhoc.serialize());
     }
 }
