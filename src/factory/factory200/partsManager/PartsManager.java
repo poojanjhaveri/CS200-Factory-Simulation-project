@@ -520,7 +520,7 @@ public class PartsManager extends Manager implements ActionListener {
 
 	public void processMessage(String msg) {
 		super.processMessage(msg);
-		if(msg.contains( Message.PUSH_PARTS_LIST)) {
+		if (msg.contains( Message.PUSH_PARTS_LIST)) {
 
 			this.bp.recreate(this.grabParameter(msg));
 			System.out.println("GRABBED NEW PARTS LIST FROM SERVER!: "+msg);
