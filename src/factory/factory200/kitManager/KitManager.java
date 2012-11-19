@@ -33,7 +33,9 @@ import javax.swing.event.ChangeListener;
 /*
  * 
  * @author : Poojan Jhaveri
- * @brief : KitManager containing the parts for production of kits
+ * @brief : KitManager containing the parts for production of kits. Creates, Modifies and Updates the kit.
+ * 
+ * 
  * 
  * 
  */
@@ -41,7 +43,10 @@ import javax.swing.event.ChangeListener;
 public class KitManager extends Manager  implements ActionListener {
 
 	/**
-	 * @param args
+	 * @param args 
+         * 
+         * 
+         * 
 	 */
           static BlueprintKits bpkit;///<contains list of kits modifiable from server
           static BlueprintParts bppart;///<contains list of parts useable from server
@@ -51,28 +56,40 @@ public class KitManager extends Manager  implements ActionListener {
           JPanel createkit; // create kit panel - allows user to create kit
           JPanel updatekit; // update kit panel - allows user to update existing kit
           JPanel deletekit2; // delete kit panel - allows user to delete existing kit
+          
+          // Panels for laying out nicely
           JPanel ck_main;
           JPanel uk_main;
           JPanel dk_main;
+          
+          // TextField to enter  kit name by the user while creating kit
           JTextField kitname;
+          
+          // JCombobox for showing parts from the server in create kit panel
           JComboBox create_combo;
+          
+          // JCombobox for showing parts from server in modifying kit panel
           JComboBox ucreate_combo;
+          
+          //JCombobox for showing kit list from the server in delete panel
+  
           JComboBox delete_combo;
           JComboBox update_kitcombo;
-          JComboBox update_partcombo;
+         
           
-          JButton createkitbutton;
-          JButton deletekitbutton;
-          JButton updatekitbutton;
+          JButton createkitbutton; // create kit button
+          JButton deletekitbutton; // delete kit button
+          JButton updatekitbutton;  // update kit button
           
-         ArrayList<Part> partlist = new ArrayList<Part>();
-          ArrayList<Part> updatepartlist = new ArrayList<Part>();
+         ArrayList<Part> partlist = new ArrayList<Part>();  // List to store parts of a kit
+         
+          ArrayList<Part> updatepartlist = new ArrayList<Part>();  // List to store parts of modified kit
          
           
           JButton b1,b2,b3,b4,b5,b6,b7,b0;
           JButton ub1,ub2,ub3,ub4,ub5,ub6,ub7,ub0;
           
-          Part nullpart;
+          Part nullpart; // null part for no part - ie if we have less than 8 parts at times
           String newkitname;
           Kit tempkit;
     
@@ -104,12 +121,17 @@ public class KitManager extends Manager  implements ActionListener {
         
         
 	
-	//Funtion to prepare entire layout for entire JFrame
+	 /**
+     * @brief Prepares the entire layout and all panels of the kit manager. It basically lays stuff out in proper place.
+     * It has tabbed panel and 3 panels - creating panel, modifying panel and deleting panel
+     */
 	
         private void prepareMainPane()
         {
             mainpanel = new JPanel()
             {     
+                
+             // Function to Set background image in the panel 
             public void paintComponent(Graphics g) 
             {
                 Image img = new ImageIcon("pics/background/mainbg.png").getImage();
@@ -457,6 +479,10 @@ public class KitManager extends Manager  implements ActionListener {
         }
         
         
+        /**
+     * @brief Action Listeners for the buttons - create kit, modify kit and update kit. Checks if there is a kit to delete or modify.
+     * 
+     */
           public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == createkitbutton) {
                 createKit();
@@ -492,7 +518,10 @@ public class KitManager extends Manager  implements ActionListener {
                 
         }
         
-          
+           /**
+     * @brief Returns the current kit from the delete combobox so that we have the kit at the selected index position
+     * 
+     */
        private Kit getCurrentKit() {
     	String s= (String) delete_combo.getSelectedItem();
     	Kit temp= new Kit(null,null);
@@ -510,7 +539,7 @@ public class KitManager extends Manager  implements ActionListener {
         
         
         /**
-     * @brief sends an update request which should result in the parts list and kit list being updated
+     * @brief Sends an update request which should result in the parts list and kit list being updated and getting it from the server
      */
         public void update() {
             
@@ -527,42 +556,12 @@ public class KitManager extends Manager  implements ActionListener {
          }
         
         
-        /**
-     * @brief updates the combo box to choose the kit to delete
-     */
-        
-        
-        private void updateComboBox(){
-            
-            /*
-              delete_combo = new JComboBox();
-               for(int i=0;i<bpkit.getSize();i++){
-    		 delete_combo.addItem(bpkit.getKitAt(i));  
-                 
-               }   
-               
 
-               
-                create_combo = new JComboBox();
-                create_combo.addItem("No Part - ");
-                for(int j=0;j<KitManager.bppart.getSize();j++){
-    		 create_combo.addItem(KitManager.bppart.getPartAt(j).getName()); 
-                } 
-              
-                
-                ucreate_combo = new JComboBox();
-                ucreate_combo.addItem("No Part - ");
-                for(int j=0;j<KitManager.bppart.getSize();j++){
-    		 ucreate_combo.addItem(KitManager.bppart.getPartAt(j).getName()); 
-                } 
-                */
-               
-             
-    	 }
     
         
         /**
-     * @brief Function to create kit when the Create kit button is pressed and then pass the new kit to the server so that the list gets updated
+     * @brief Function to Create kit when the Create kit button is pressed and then pass the new kit to the server so that the list gets updated.
+     * It gets the kit name and the parts in the kit. Also should check if the user entered the name and if there are 4-8 parts in the kit
      */
 
         public void createKit()
@@ -615,6 +614,11 @@ public class KitManager extends Manager  implements ActionListener {
         }
 
         
+        /**
+     * @brief Function to Update kit when the Update kit button is pressed and then pass the modified kit to the server so that the list gets updated.
+     * It should get the kit name from the combobox and show parts accordingly and then allow user to modify kit. There is no kitname change because thats similar to deleting a kit and adding new kit.
+     */
+        
             public void updateKit()
         {
             ArrayList<Part> finalpartlist = new ArrayList();
@@ -664,7 +668,7 @@ public class KitManager extends Manager  implements ActionListener {
         
         
         /**
-     * @brief Process messages sent using Manager Class ie processes that message
+     * @brief Process messages sent using Manager Class ie processes that message coming from the Server and set the kit and part list accordingly
      */
     
     public void processMessage(String msg)
@@ -695,7 +699,7 @@ public class KitManager extends Manager  implements ActionListener {
         
          /**
      * @brief deletes the kit with the specified kit name and sends data to
-     * the server and updates existing kits list
+     * the server and hence updates existing kits list
      */
         
          public void deleteKit(Kit in) {
@@ -735,7 +739,12 @@ public class KitManager extends Manager  implements ActionListener {
          
          
          
-         
+         /**
+     * @brief Class for the Action to be performed when the buttons for alloting parts in the kit in create panel is clicked.The button property seticon
+     * should be updated depending on the button clicked by getting the part selected from JComboBox. And accordingly the partlist arraylist for the kit should
+     * also be updated and parts should be added in
+     *
+     */
          
        public class itembutton implements ActionListener
          {
@@ -864,7 +873,12 @@ public class KitManager extends Manager  implements ActionListener {
                 }
          } 
 
-
+/**
+     * @brief Class for the Action to be performed when the buttons for alloting parts in the kit in update panel is clicked.The button seticon
+     * should be updated depending on the button clicked by getting the part selected from JComboBox. And accordingly the updatepartlist arraylist for the kit should
+     * also be updated and parts should be added in
+     *
+     */
        public class updateitembutton implements ActionListener
          {
              
@@ -991,7 +1005,10 @@ public class KitManager extends Manager  implements ActionListener {
          } 
 
        
-
+ /**
+     * @brief This is fired when the update panel is set. It should get information of the kit depending upon the kit selected from the combobox from the user.
+     *So it should get the parts of the selected kit and display it and then allow the user to modify parts in the kit
+     */
        public class updatekitclass implements ActionListener
          {
              
