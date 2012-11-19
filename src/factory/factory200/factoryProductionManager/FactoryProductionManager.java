@@ -158,7 +158,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
                 g.drawImage(img, 0, 0, null);
             } 
         };
-                 * */
+        */
         basePanel.setLayout(new BorderLayout());
 
         tabs = new JTabbedPane();
