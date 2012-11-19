@@ -51,6 +51,9 @@ public class GantryRobotManager{
 
     public static final Integer ROBOT_INITIAL_X = 1100;///<spawn x coordinate of gantrybot
     public static final Integer ROBOT_INITIAL_Y = 10;///<spawn y coordinate of gantrybot
+	public static final Integer ROBOT_VELOCITY_X = 1;
+	public static final Integer ROBOT_VELOCITY_Y = 1;
+	public static final Double ROBOT_TURN_RATE = 0.0;
     
     public GantryRobotManager() {
         graphics = new GRMGraphicPanel();
@@ -58,6 +61,7 @@ public class GantryRobotManager{
 	
 	public void paint(GraphicsPanel panel, Graphics2D g){
 		graphics.paint(panel, g);
+		//System.out.println("printing");
 	}
 
 	public void processMessage(String msg) {
@@ -93,4 +97,19 @@ public class GantryRobotManager{
     public String grabParameter(String msg) {
         return msg.substring(msg.indexOf(":") + 1);
     }
+    
+    public void moveToBin(Integer binIndex){
+		  
+		  ganbot.moveToBinCommand(binIndex);
+	   }
+
+	   public void moveToFeeder(Integer feederIndex){
+		  
+		   ganbot.moveToFeederCommand(feederIndex);
+	   }
+
+	   public void purgeBin(){
+		   
+		   ganbot.purgeBinCommand();
+	   }
 }
