@@ -10,12 +10,12 @@ import factory.general.Message;
  */
 public class LMSignalFromServerVerification extends Manager{
 	
-	private LMApplication app;	///< Instance of class 'LaneManagerApp'
-	private LMFeederHandler feederHandler;	///< Instance of class 'LaneManagerFeederHandler'
-	private LMLaneHandler laneHandler;	///< Instance of class 'LaneManagerLaneHandler'
-	private LMNestHandler nestHandler;	///< Instance of class 'LaneManagerNestHandler'
-	private LMCameraHandler cameraHandler;	///< Instance of class 'LaneManagerCameraHandler'
-	private LMPartHandler partHandler;	///< Instance of class 'LMPartHandler'
+	private LMApplication app;
+	private LMFeederHandler feederHandler;
+	private LMLaneHandler laneHandler;
+	private LMNestHandler nestHandler;
+	private LMCameraHandler cameraHandler;
+	private LMPartHandler partHandler;
 	private LMPartRobotHandler partRobotHandler;
 	private LMGantryRobotHandler gantryRobotHandler;
 	private LMTimerThread timer = new LMTimerThread(this);

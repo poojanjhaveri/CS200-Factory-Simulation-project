@@ -18,4 +18,9 @@ public class LMPartRobotForAgent {
 		// Server Data Task
 		serverMain.getPartData().partRobotTakeOne(nestNum);
 	}
+	
+	// For Part Agent
+	public int getPartQuantityOnNest(int nestNum){
+		return serverMain.getPartData().getNestPartSize(nestNum);
+	}
 }

@@ -10,13 +10,23 @@ public class LMSendPartSignal {
 		this.serverMain = serverMain;
 	}
 	
-	public void feederPartLowSensor(){
+	public void feederPartLowSensor_PurgeSwitch(){
 		for(int i=0 ; i<4 ; i++){
+			// Feeder Part Low Sensor
 			if(serverMain.getPartData().getFeederPartSize(i) <= 4){
 				serverMain.getForAgentFeeder().setPartLowSensorOn(i);
 			}
 			else if(serverMain.getPartData().getFeederPartSize(i) > 4){
 				serverMain.getForAgentFeeder().setPartLowSensorOff(i);
+			}
+			
+			// Purge Switch
+			if(serverMain.getPartData().getFeederPartSize(i) == 0 && serverMain.getForAgentFeeder().getFeeder(i).getWithBin() == true){
+				serverMain.getForAgentFeeder().setPurgeBinSwitchOn(i);
+				serverMain.getForAgentGantryRobot().emptyBin(i);
+			}
+			else if(serverMain.getPartData().getFeederPartSize(i) != 0){
+				serverMain.getForAgentFeeder().setPurgeBinSwitchOff(i);
 			}
 		}
 	}

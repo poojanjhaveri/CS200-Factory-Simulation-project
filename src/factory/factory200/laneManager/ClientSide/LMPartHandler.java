@@ -1,8 +1,12 @@
 package factory.factory200.laneManager.ClientSide;
 
+/**
+ * @brief Server Signal Handler(Part)
+ * @author Dongyoung Jung
+ */
 public class LMPartHandler {
 	
-	private LMApplication app;	///< Instance of class 'LMApplication'
+	private LMApplication app;
 	private int laneNum, partNum;
 	
 	public LMPartHandler(LMApplication app){

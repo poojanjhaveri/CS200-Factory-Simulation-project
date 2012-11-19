@@ -13,7 +13,7 @@ import factory.factory200.factoryProductionManager.KitsAssemblyManager.*;
 public class GraphicsPanel extends JPanel{
 	
 	private GantryRobotManager gantryRobotManager = new GantryRobotManager();
-	private KitAssemblyManager kitsAssemblyManager = new KitAssemblyManager();
+	private KitAssemblyManager kitsAssemblyManager = new KitAssemblyManager(this);
 	private LMApplication laneManager = new LMApplication();
 	private ImageIcon backgroundImage = new ImageIcon( GraphicsPanel.class.getResource("background.png") );
 	private TimerThread timer = new TimerThread(this);
@@ -33,9 +33,13 @@ public class GraphicsPanel extends JPanel{
 	public void timerAction(){
 		repaint();
 		laneManager.timerAction();
+                kitsAssemblyManager.getGraph().timerAction();
+                //add timer action for KAM! 
 	}
 	
 	public void verifyMessage(String msg){
 		laneManager.getServerVerify().verify(msg);
+		this.kitsAssemblyManager.processMessage(msg);
+		this.gantryRobotManager.processMessage(msg);
 	}
 }

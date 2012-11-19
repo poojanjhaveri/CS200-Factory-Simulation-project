@@ -20,45 +20,20 @@ public class ConveyorAgentTest extends TestCase {
         kitRobot = new MockKitRobot("Mock Kit Robot");
     }
 
-    @Test
-    public void testComprehensiveNormalScenarioConveyor() {
-        assertEquals(true, true);
-    }
     
-    /**
-     * Test of msgNeedEmptyKit method, of class ConveyorAgent.
-     */
-    @Test
     public void testMsgNeedEmptyKit() {
-        System.out.println("msgNeedEmptyKit");
-        ConveyorAgent instance = null;
-        instance.msgNeedEmptyKit();
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    //conveyor.generateKit(1);
+    conveyor.setKitRobot(kitRobot);
+    Kit k = new Kit("Kit " + 1);
+    System.out.println("kit status is " + k.status);
+    conveyor.testAddKit(k);
+    conveyor.msgNeedEmptyKit();
+    conveyor.pickAndExecuteAnAction();
+    assertTrue("Mock kitRobot should have received Nest Inspected. Event log: "
+						+ kitRobot.log.toString(), kitRobot.log
+						.containsString("Received msgHereIsEmptyKit"));
     }
 
-    /**
-     * Test of msgHereIsVerifiedKit method, of class ConveyorAgent.
-     */
-    @Test
-    public void testMsgHereIsVerifiedKit() {
-        System.out.println("msgHereIsVerifiedKit");
-        Kit kit = null;
-        ConveyorAgent instance = null;
-        instance.msgHereIsVerifiedKit(kit);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
     
-    public String getLogs() {
-        StringBuilder sb = new StringBuilder();
-        String newLine = System.getProperty("line.separator");
-        sb.append("-------Kit Robot Log-------");
-        sb.append(newLine);
-        sb.append(kitRobot.log.toString());
-        sb.append(newLine);
-        sb.append("-------End Kit Robot Log-------");
-
-        return sb.toString();
-    }
 }

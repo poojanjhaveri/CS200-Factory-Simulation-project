@@ -3,6 +3,10 @@ package factory.factory200.laneManager.ClientSide;
 import java.awt.Graphics2D;
 import javax.swing.ImageIcon;
 
+/**
+ * @brief Bulb Drawing
+ * @author Dongyoung Jung
+ */
 public class LMDrawableFeeder{
 
 	private ImageIcon feederImage;

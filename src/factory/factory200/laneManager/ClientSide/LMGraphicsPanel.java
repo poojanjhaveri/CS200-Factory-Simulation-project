@@ -6,6 +6,10 @@ import java.awt.Graphics2D;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
+/**
+ * @brief Graphics Panel
+ * @author Dongyoung Jung
+ */
 public class LMGraphicsPanel extends JPanel{
 		
 	private LMApplication app;

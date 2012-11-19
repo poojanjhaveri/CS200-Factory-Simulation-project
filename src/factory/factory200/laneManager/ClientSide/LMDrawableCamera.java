@@ -3,6 +3,10 @@ package factory.factory200.laneManager.ClientSide;
 import java.awt.Graphics2D;
 import javax.swing.ImageIcon;
 
+/**
+ * @brief Camera Drawings
+ * @author Dongyoung Jung
+ */
 public class LMDrawableCamera{
 
 	private int cameraX, cameraY;
@@ -25,6 +29,9 @@ public class LMDrawableCamera{
 		cameraSwitch = true;
 	}
 	
+	/**
+	 * When Camera Shoot, the pictures stays on animation for a certain time.
+	 */
 	public void cameraController(){
 		if( cameraSwitch == true ){
 			timer++;

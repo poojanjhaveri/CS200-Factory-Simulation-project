@@ -35,7 +35,7 @@ public class KAMKit {
         //parts=null;
         //kitNumber=i;
         partsSize=0;
-        //finished=false;
+        finished=false;
     }
 
     /**
@@ -161,7 +161,7 @@ public class KAMKit {
      * @return the finished
      */
     public boolean isFinished() {
-        if(this==null){
+        /*if(this==null){
             finished=false;
         }
         else if(this.kit.getIconHeight()==90 && this.kit.getIconWidth()==40){
@@ -169,7 +169,7 @@ public class KAMKit {
         }
         else
             finished=false;
-        
+        */
         return finished;
     }
 

@@ -40,7 +40,7 @@ import javax.swing.JPanel;
 public class GantryRobotManager extends Manager implements ActionListener {
    
     GRMGraphicPanel graphics;    
-    GantryState gs;
+ //   GantryState gs;
     GUIBin bin;
     public GUIGantryRobot ganbot; ///<class which includes Gantry Robot Manager Methods
     PurgeStation ps;
@@ -132,21 +132,29 @@ public class GantryRobotManager extends Manager implements ActionListener {
 	   super.processMessage(msg);
 	   if(msg.contains(Message.MOVE_GANTRY_TO_BIN))
 	   {
-		   this.gs.moveToBin(Integer.parseInt(this.grabParameter(msg)));
+		   this.ganbot.moveToBinCommand(Integer.parseInt(this.grabParameter(msg)));
 	   }
 	   else if(msg.contains(Message.GANTRY_CARRY_A_BIN))
 	   {
-		   this.gs.purgeBin();
-	   }else if(msg.contains(Message.MOVE_GANTRY_TO_FEEDER))
+		   this.ganbot.pickUpBinCommand(Integer.parseInt(this.grabParameter(msg)));
+	   }
+	   else if(msg.contains(Message.MOVE_GANTRY_TO_FEEDER))
 	   {
-		   this.gs.moveToFeeder(Integer.parseInt(this.grabParameter(msg)));
+		   this.ganbot.moveToFeederCommand(Integer.parseInt(this.grabParameter(msg)));
+	   }
+	   else if(msg.contains(Message.SUPPLY_PART_ON_FEEDER)){
+		   this.ganbot.supplyPartOnFeederCommand(Integer.parseInt(this.grabParameter(msg)));
+	   }
+	   
+	   else if(msg.contains(Message.MOVE_GANTRY_TO_DUMP)){
+		   this.ganbot.purgeBinCommand();
 	   }
    }
     /**
      * @brief Inner class GUIGantryManager
      */
 
-   public class GantryState {
+  /* public class GantryState {
 
 //        Feeder feeder;
 //        Bin bins;
@@ -154,84 +162,86 @@ public class GantryRobotManager extends Manager implements ActionListener {
         /**
          * update Feeder coordinate or status
          */
-        public void updateFeeder() {
-        }
+  //      public void updateFeeder() {
+  //      }
 
         /**
-         * update Bins coordinates or status;
+         *  Bins coordinates or status;
          */
-        public void updateBins() {
-        }
+  //      public void updateBins() {
+    //    }
 
         /**
          * update gantryRobot infomation
          */
-        public void updateGantryRobot() {
-        }
+      //  public void updateGantryRobot() {
+    //    }
 
         /**
          * update purgestation. move empty bin to (purgeStationx, purgeStationy)
          */
-        public void updatePurgeStation() {
-        }
+        //public void updatePurgeStation() {
+        //}
     
   
 
-   public void moveToBin(Integer binIndex){
-	   ganbot.moveToBin(binIndex);
-	   if(ganbot.arrivedAtBin(binIndex)){
-		   ganbot.pickUpBin(binIndex);
-	   }
-   }
-
-   public void moveToFeeder(Integer feederIndex){
-	   ganbot.moveToFeeder(feederIndex);
-	   if(ganbot.arrivedAtFeeder(feederIndex)){
-		   ganbot.supplyPartOnFeeder();
-	   }
-   }
-
-   public void purgeBin(){
-	   ganbot.moveToDump(); ////It still does not successfully purge the bin unless you click it twice??
-	   if(ganbot.arrivedAtPurge()){
-		   ganbot.binPurged();
-		   ganbot.RobotInitialization();
-	   }
-   }
-
-   }
+//   }
 	public void actionPerformed(ActionEvent ae) {
 		// TODO Auto-generated method stub
 	
 		
 		if (ae.getSource() ==toFeeder){
-			ganbot.moveToFeeder(2);
+			ganbot.moveToFeederCommand(0);
 		}
 		
 		if (ae.getSource() ==toBin){
-			ganbot.moveToBin(5);
+			ganbot.moveToBinCommand(1);
+			
 		}
 		if (ae.getSource() ==purgeStation){
-			ganbot.moveToDump(); ////It still does not successfully purge the bin unless you click it twice??
-			if(ganbot.arrivedAtPurge()){
-				ganbot.binPurged();
-				ganbot.RobotInitialization();
+			ganbot.purgeBinCommand();
 			}
-		}
+		
 		if (ae.getSource() ==dumpPart){
-			ganbot.supplyPartOnFeeder();
+			ganbot.supplyPartOnFeederCommand(0);
 		}
 
 		if (ae.getSource() ==pickBin){
-			ganbot.pickUpBin(5);
+			ganbot.pickUpBin(1);
 		}
-	}
+}
 	
 	
 	  public static void main(String[] args){
 	       GantryRobotManager mgr = new GantryRobotManager();   
 	      }
 	  
+
+	   public void moveToBin(Integer binIndex){
+		   /*ganbot.moveToBin(binIndex);
+		   if(!ganbot.moving()){//arrivedAtBin(binIndex)){
+			   ganbot.pickUpBin(binIndex);
+		   }*/
+		  ganbot.moveToBinCommand(binIndex);
+	   }
+
+	   public void moveToFeeder(Integer feederIndex){
+		   /*ganbot.moveToFeeder(feederIndex);
+		   if(ganbot.arrivedAtFeeder(feederIndex)){
+			   ganbot.supplyPartOnFeeder();
+		   }*/
+		   ganbot.moveToFeederCommand(feederIndex);
+	   }
+
+	   public void purgeBin(){
+		   /*ganbot.moveToDump(); ////It still does not successfully purge the bin unless you click it twice??
+		   if(ganbot.arrivedAtPurge()){
+			   ganbot.binPurged();
+			   ganbot.RobotInitialization();
+		   }*/
+		   ganbot.purgeBinCommand();
+	   }
+
 	  
 	  /*public void doSupplyPart(int binNum, int feederNum){
 		ganbot= graphics.getGantryRobot();

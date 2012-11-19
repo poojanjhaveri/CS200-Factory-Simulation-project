@@ -53,6 +53,7 @@ public class Message {
     public static final String KAM_MOVE_FROM_0_TO_2 = "KAM_MOVE_FROM_0_TO_2";
     public static final String KAM_ADD_KIT = "KAM_ADD_KIT";///<places another empty kit onto the conveyor
     public static final String KAM_REMOVE_KIT = "KAM_REMOVE_KIT";///<removes a kit off screen from conveyor
+    public static final String LM_ADD_PART="LMA_";
 
     //lanemanager section
     public static final String IDENTIFY_LANEMANAGER = "IDENTIFY_LANEMANAGER";
@@ -62,4 +63,6 @@ public class Message {
     public static final String IDENTIFY_FACTORYPRODUCTIONMANAGER = "IDENTIFY_FACTORYPRODUCTIONMANAGER"; 
     public static final String PUSH_PRODUCTION_QUEUE = "PUSH_PRODUCTION_QUEUE";///<sends the server a list of comma delimited kit IDs
     public static final String ALERT_FPM_KIT_INSPECTED = "ALERT_FPM_KIT_INSPECTED";
+	public static final String SUPPLY_PART_ON_FEEDER = "SUPPLY_PART_ON_FEEDER";
+	public static final String MOVE_GANTRY_TO_DUMP = "MOVE_GANTRY_TO_DUMP";
 }

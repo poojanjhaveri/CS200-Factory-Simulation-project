@@ -28,6 +28,10 @@ public class Part implements Serializable {
         this.size = size;
     }*/
 
+    //constructor for testing agent codes
+    public Part(int num){
+    this.type=num;
+    }
     public int getNestNum() {
         return this.nestNum;
     }
@@ -41,45 +45,45 @@ public class Part implements Serializable {
         return this.size;
     }
     //@Override
-    public String getString() {
-        return name;
+    public Integer getString() {
+        return type;
     }
     /* I am adding this constructor to test my agent codes (kevin) */
 /*
     public Part(int num) {
         if (num == 1) {
-            this.type = Type.p1;
+            this.type = 1;
             this.word = "p1";
         }
         if (num == 2) {
-            this.type = Type.p2;
+            this.type = 2;
             this.word = "p2";
         }
         if (num == 3) {
-            this.type = Type.p3;
+            this.type = 3;
             this.word = "p3";
         }
         if (num == 4) {
-            this.type = Type.p4;
+            this.type = 4;
             this.word = "p4";
         }
         if (num == 5) {
-            this.type = Type.p5;
+            this.type = 5;
             this.word = "p5";
         }
         if (num == 6) {
-            this.type = Type.p6;
+            this.type = 6;
             this.word = "p6";
         }
         if (num == 7) {
-            this.type = Type.p7;
+            this.type = 7;
             this.word = "p7";
         }
         if (num == 8) {
-            this.type = Type.p8;
+            this.type = 8;
             this.word = "p8";
         }
-    }*/
+    }
     /**
      * End CS 201 stuff
      */
@@ -98,8 +102,8 @@ public class Part implements Serializable {
         //this.number=time()\;
         this.guipart = null;
         this.number = (int) (System.currentTimeMillis()/(long)1000);
-        this.type = number;
-        
+        this.type = Global.part_num; //to order the parts from 0-n
+        Global.part_num++;    
     }
     
     public Part(String n, String d, Integer num) {
@@ -107,7 +111,9 @@ public class Part implements Serializable {
         this.description = d;
         this.number = num;
         this.guipart = null;
-        this.type = number;
+        //this.type = number;
+        this.type = Global.part_num;
+        Global.part_num++;
     }
     public Part(String n, String d, String file) {
         this.name = n;
@@ -116,6 +122,8 @@ public class Part implements Serializable {
         this.guipart = null;
         this.number = (int)(System.currentTimeMillis()/(long)1000);
         this.type = number;
+        this.type = Global.part_num;
+        Global.part_num++;
     }
     public void setFilename(String in) {
         this.filename = in;

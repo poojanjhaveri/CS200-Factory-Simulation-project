@@ -7,9 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
 /**
- * There are 8 nests, so two tabs with 4 nests for each are generated here.
- * 
- * @brief Composition For Nest Tab
+ * @brief Nest GUI
  * @author Dongyoung Jung
  */
 public class LMGUINest extends JPanel{
@@ -18,13 +16,7 @@ public class LMGUINest extends JPanel{
 	private ArrayList<LMGUINestPanel> nestPanels = new ArrayList<LMGUINestPanel>();
 	private JTabbedPane tab1  = new JTabbedPane();
 	private JTabbedPane tab2  = new JTabbedPane();
-	
-	/**
-	 * Each 4 nests make up one tab.
-	 * 
-	 * @brief Constructor
-	 * @param nestCount : Quantity of nest
-	 */
+
 	public LMGUINest(final int nestCount){
 		setPreferredSize(new Dimension(300,640));
 		setLayout(new GridLayout(2,1));
@@ -45,12 +37,7 @@ public class LMGUINest extends JPanel{
 		}
 		add(tab2);
 	}
-	
-	/**
-	 * @brief Getter
-	 * @param nestNum : nest number
-	 * @return Instance of class 'LaneManagerGUINestPanel'
-	 */
+
 	public LMGUINestPanel getGUINestArray(int nestNum){
 		return nestPanels.get(nestNum);
 	}

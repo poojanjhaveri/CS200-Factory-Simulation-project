@@ -8,6 +8,7 @@ public class LMServerMain extends JFrame implements Runnable{
 	private HandleAManager hacLM = null;
 	private HandleAManager hacFPM = null;
 	private HandleAManager hacKAM = null;
+	private HandleAManager hacGRM = null;
 	
 	private LMFeederForAgent agentFeeder; ///<Instance of class 'ServerForAgentFeeder'
 	private LMLaneForAgent agentLane;	///<Instance of class 'ServerForAgentLane'
@@ -60,6 +61,10 @@ public class LMServerMain extends JFrame implements Runnable{
 		return agentPartRobot;
 	}
 	
+	public LMGantryRobotForAgent getForAgentGantryRobot(){
+		return agentGantryRobot;
+	}
+	
 	public LMPartData getPartData(){
 		return partData;
 	}
@@ -68,27 +73,21 @@ public class LMServerMain extends JFrame implements Runnable{
 		return signalVerify;
 	}
 	
-	public void checkToStart(){
-		if( hacLM != null ){// && hacFPM != null && hacKAM != null){
-			new Thread(this).start();
-		}
-	}
-	
 	public void setLM(HandleAManager newHandleAManager) {
 		hacLM = newHandleAManager;
-		checkToStart();
 	}
 	
 	public void setFPM(HandleAManager newHandleAManager) {
 		hacFPM = newHandleAManager;
-		checkToStart();
 	}
 	
 	public void setKAM(HandleAManager newHandleAManager) {
 		hacKAM = newHandleAManager;
-		checkToStart();
 	}
 	
+	public void setGRM(HandleAManager newHandleAManager) {
+		hacGRM = newHandleAManager;
+	}
 	
 	public void sendToFPM(String signal){
 		if( hacFPM != null ){
@@ -105,6 +104,12 @@ public class LMServerMain extends JFrame implements Runnable{
 	public void sendToKAM(String signal){
 		if( hacKAM != null ){
 			hacKAM.sendMessage(signal);
+		}
+	}
+	
+	public void sendToGRM(String signal){
+		if( hacGRM != null ){
+			hacGRM.sendMessage(signal);
 		}
 	}
 }

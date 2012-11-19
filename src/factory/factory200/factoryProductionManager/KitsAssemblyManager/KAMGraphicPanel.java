@@ -12,6 +12,7 @@ package factory.factory200.factoryProductionManager.KitsAssemblyManager;
  *
  * @author Deepa
  */
+import factory.factory200.factoryProductionManager.GraphicsPanel;
 import factory.factory200.kitAssemblyManager.*;
 import factory.general.GUIPart;
 import factory.general.Part;
@@ -26,7 +27,7 @@ import javax.swing.Timer;
  *
  * @author Deepa Borkr, YiWei Roy Zheng
  */
-public class KAMGraphicPanel extends JPanel implements ActionListener {
+public class KAMGraphicPanel {
 
     public static final int KITROBOT_INITIAL_X = 175;///<kit robot default position (x)
     public static final int KITROBOT_INITIAL_Y = 325;///<kit robot default position (y)
@@ -71,8 +72,10 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
     boolean deliveryStation;
     Timer timer;
     boolean stationRun;
+    //JPanel panel;
 
-    public KAMGraphicPanel() {
+    public KAMGraphicPanel(JPanel panel) {
+        
         deliveryStation = true;
 
         stationRun = true;
@@ -88,7 +91,7 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
 
 
         //THIS NUMBER IS HARDCODED! should be from server => number of kits that should be made
-        emptyKits = 3;
+        emptyKits = 0;
         delivery = new KitDeliveryStation(emptyKits);
 
         nest = new ArrayList<KAMNest>();
@@ -103,269 +106,147 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
             nest.get(i).setY(yNum + i * 75 -20);
         }
 
-        //only for version 0
-        ArrayList<Part> parts1 = new ArrayList<Part>();
-        //ArrayList<GUIPart> guiParts3 = new ArrayList<GUIPart>();
-
-        for (int i = 0; i < 4; i++) {
-            Part temp = new Part(null, null);
-            GUIPart GUItemp = new GUIPart(nest.get(0).getX(), nest.get(0).getY() + 20 * i, 0.0, new ImageIcon("pics/parts/part1.png"));
-            temp.setGUIPart(GUItemp);
-            parts1.add(temp);
-        }
-
-        for (int i = 0; i < 4; i++) {
-            Part temp = new Part(null, null);
-            GUIPart GUItemp = new GUIPart(nest.get(0).getX() + 15, nest.get(0).getY() + 20 * i, 0.0, new ImageIcon("pics/parts/part1.png"));
-            temp.setGUIPart(GUItemp);
-            parts1.add(temp);
-        }
-
-        ArrayList<Part> parts2 = new ArrayList<Part>();
-        //ArrayList<GUIPart> guiParts3 = new ArrayList<GUIPart>();
-
-        for (int i = 0; i < 4; i++) {
-            Part temp = new Part(null, null);
-            GUIPart GUItemp = new GUIPart(nest.get(1).getX(), nest.get(1).getY() + 20 * i, 0.0, new ImageIcon("pics/parts/part2.png"));
-            temp.setGUIPart(GUItemp);
-            parts2.add(temp);
-        }
-
-        for (int i = 0; i < 4; i++) {
-            Part temp = new Part(null, null);
-            GUIPart GUItemp = new GUIPart(nest.get(1).getX() + 15, nest.get(1).getY() + 20 * i, 0.0, new ImageIcon("pics/parts/part2.png"));
-            temp.setGUIPart(GUItemp);
-            parts2.add(temp);
-        }
-
-        ArrayList<Part> parts3 = new ArrayList<Part>();
-        //ArrayList<GUIPart> guiParts3 = new ArrayList<GUIPart>();
-
-        for (int i = 0; i < 4; i++) {
-            Part temp = new Part(null, null);
-            GUIPart GUItemp = new GUIPart(nest.get(2).getX(), nest.get(2).getY() + 20 * i, 0.0, new ImageIcon("pics/parts/part3.png"));
-            temp.setGUIPart(GUItemp);
-            parts3.add(temp);
-        }
-
-        for (int i = 0; i < 4; i++) {
-            Part temp = new Part(null, null);
-            GUIPart GUItemp = new GUIPart(nest.get(2).getX() + 15, nest.get(2).getY() + 20 * i, 0.0, new ImageIcon("pics/parts/part3.png"));
-            temp.setGUIPart(GUItemp);
-            parts3.add(temp);
-        }
-
-        ArrayList<Part> parts4 = new ArrayList<Part>();
-        //ArrayList<GUIPart> guiParts4 = new ArrayList<GUIPart>();
-
-        for (int i = 0; i < 4; i++) {
-            Part temp = new Part(null, null);
-            GUIPart GUItemp = new GUIPart(nest.get(3).getX(), nest.get(3).getY() + 20 * i, 0.0, new ImageIcon("pics/parts/part4.png"));
-            temp.setGUIPart(GUItemp);
-            parts4.add(temp);
-        }
-
-        for (int i = 0; i < 4; i++) {
-            Part temp = new Part(null, null);
-            GUIPart GUItemp = new GUIPart(nest.get(3).getX() + 15, nest.get(3).getY() + 20 * i, 0.0, new ImageIcon("pics/parts/part4.png"));
-            temp.setGUIPart(GUItemp);
-            parts4.add(temp);
-        }
-
-        ArrayList<Part> parts5 = new ArrayList<Part>();
-        //ArrayList<GUIPart> guiParts4 = new ArrayList<GUIPart>();
-
-        for (int i = 0; i < 4; i++) {
-            Part temp = new Part(null, null);
-            GUIPart GUItemp = new GUIPart(nest.get(4).getX(), nest.get(4).getY() + 20 * i, 0.0, new ImageIcon("pics/parts/part5.png"));
-            temp.setGUIPart(GUItemp);
-            parts5.add(temp);
-        }
-
-        for (int i = 0; i < 4; i++) {
-            Part temp = new Part(null, null);
-            GUIPart GUItemp = new GUIPart(nest.get(4).getX() + 15, nest.get(4).getY() + 20 * i, 0.0, new ImageIcon("pics/parts/part5.png"));
-            temp.setGUIPart(GUItemp);
-            parts5.add(temp);
-        }
-
-        ArrayList<Part> parts6 = new ArrayList<Part>();
-        //ArrayList<GUIPart> guiParts4 = new ArrayList<GUIPart>();
-
-        for (int i = 0; i < 4; i++) {
-            Part temp = new Part(null, null);
-            GUIPart GUItemp = new GUIPart(nest.get(5).getX(), nest.get(5).getY() + 20 * i, 0.0, new ImageIcon("pics/parts/part6.png"));
-            temp.setGUIPart(GUItemp);
-            parts6.add(temp);
-        }
-
-        for (int i = 0; i < 4; i++) {
-            Part temp = new Part(null, null);
-            GUIPart GUItemp = new GUIPart(nest.get(5).getX() + 15, nest.get(5).getY() + 20 * i, 0.0, new ImageIcon("pics/parts/part6.png"));
-            temp.setGUIPart(GUItemp);
-            parts6.add(temp);
-        }
-
-        ArrayList<Part> parts7 = new ArrayList<Part>();
-        //ArrayList<GUIPart> guiParts4 = new ArrayList<GUIPart>();
-
-        for (int i = 0; i < 4; i++) {
-            Part temp = new Part(null, null);
-            GUIPart GUItemp = new GUIPart(nest.get(6).getX(), nest.get(6).getY() + 20 * i, 0.0, new ImageIcon("pics/parts/part7.png"));
-            temp.setGUIPart(GUItemp);
-            parts7.add(temp);
-        }
-
-        for (int i = 0; i < 4; i++) {
-            Part temp = new Part(null, null);
-            GUIPart GUItemp = new GUIPart(nest.get(6).getX() + 15, nest.get(6).getY() + 20 * i, 0.0, new ImageIcon("pics/parts/part7.png"));
-            temp.setGUIPart(GUItemp);
-            parts7.add(temp);
-        }
-
-        ArrayList<Part> parts8 = new ArrayList<Part>();
-        //ArrayList<GUIPart> guiParts4 = new ArrayList<GUIPart>();
-
-        for (int i = 0; i < 4; i++) {
-            Part temp = new Part(null, null);
-            GUIPart GUItemp = new GUIPart(nest.get(7).getX(), nest.get(7).getY() + 20 * i, 0.0, new ImageIcon("pics/parts/part8.png"));
-            temp.setGUIPart(GUItemp);
-            parts8.add(temp);
-        }
-
-        for (int i = 0; i < 4; i++) {
-            Part temp = new Part(null, null);
-            GUIPart GUItemp = new GUIPart(nest.get(7).getX() + 15, nest.get(7).getY() + 20 * i, 0.0, new ImageIcon("pics/parts/part8.png"));
-            temp.setGUIPart(GUItemp);
-            parts8.add(temp);
-        }
-
-        nest.get(0).setParts(parts1);
-
-        nest.get(1).setParts(parts2);
-
-        nest.get(2).setParts(parts3);
-
-        nest.get(3).setParts(parts4);
-
-        nest.get(4).setParts(parts5);
-
-        nest.get(5).setParts(parts6);
-
-        nest.get(6).setParts(parts7);
-
-        nest.get(7).setParts(parts8);
-
+        
         //need above code from server
 
         counter = 0;
         cameraCounter = 0;
-        timer = new Timer(20, new DeliveryTimer(this));
-        timer.start();
+        panel=new JPanel();
+        //timer = new Timer(20, new DeliveryTimer(panel));
+        //timer.start();
 
     }
 
-    public class DeliveryTimer implements ActionListener {
-
-        JPanel myPanel;
-
-        public DeliveryTimer(JPanel jp) {
-            myPanel = jp;
-        }
-
-        public void actionPerformed(ActionEvent ae) {
+    public void timerAction(){
             if (camera.isVisible()) {
                 cameraCounter++;
             }
-
+            int size=delivery.getPlaceholder().size();
             //PlaceHolder temp=new PlaceHolder();
-            if (deliveryStation == true) {
+            if (deliveryStation == true && delivery.getPlaceholder().size()>0){
                 if (stationRun == true) {
-                    if (delivery.getPlaceholder().get(delivery.getNumEmptyKits() - 1).getY() > -150) {
+                    if (delivery.getPlaceholder().get(delivery.getPlaceholder().size() - 1).getY() > -150) {
                         for (int i = 0; i < delivery.getPlaceholder().size(); i++) {
-                            //temp=delivery.getPlaceholder().get(i);
-                            int yPlace = delivery.getPlaceholder().get(i).getY() - 1;
-                            int number = i* 200;
-                            if (counter > number) {
-                                delivery.getPlaceholder().get(i).setY(yPlace);
-                                //if (delivery.getPlaceholder().get(i).isShow()) {
-                                //    delivery.getPlaceholder().get(i).getKit().updateParts();
-                                //}
-                            }
-                            if (yPlace == 300 && delivery.getPlaceholder().get(i).isShow()) {
+                            int yPlace = delivery.getPlaceholder().get(i).getY();
+                            int number = i* 150;
+                            
+                            if (yPlace == KAMGraphicPanel.EMPTY_CONVEYERY && delivery.getPlaceholder().get(i).isShow()) {
                                 stationRun = false;
                                 break;
+                            }
+                            if (counter > number) {
+                                delivery.getPlaceholder().get(i).setY(yPlace-1);
                             }
                         }
                         counter++;
                     } else {
-                        for (int i = 0; i < delivery.getNumEmptyKits(); i++) {
+                        for (int i = 0; i <delivery.getPlaceholder().size(); i++) {
+                            System.out.println(i+": "+delivery.getPlaceholder().get(i).getKit());
+                            if(delivery.getPlaceholder().get(i).getKit()==null){
+                                delivery.getPlaceholder().get(i).setY(680);
+                            }
+                            else if(delivery.getPlaceholder().get(i).getKit().isFinished()){
+                                delivery.getPlaceholder().remove(i);
+                            }
+                            else
+                                delivery.getPlaceholder().get(i).setY(680);
+                            /*if(delivery.getPlaceholder().get(i).getKit()==null || !(delivery.getPlaceholder().get(i).getKit().isFinished()))
                             delivery.getPlaceholder().get(i).setY(680);
-                            //if (delivery.getPlaceholder().get(i).isShow()) {
-                            //    delivery.getPlaceholder().get(i).getKit().updateParts();
-                            //}
-                            counter = 0;
+                            else{
+                                //delivery.setNumEmptyKits(delivery.getPlaceholder().size()-1);
+                                //delivery.getPlaceholder().add(delivery.getPlaceholder().get(i));
+                                delivery.getPlaceholder().remove(i);
+                            }
+                            }*/
+                            
+                        //while(delivery.getPlaceholder().get(delivery.getPlaceholder().size()).getKit().isFinished()){
+                        //        delivery.getPlaceholder().remove(delivery.getPlaceholder().size());
+                                
+                        //}
                         }
+                        counter = 0;
                     }
                 }
                 if (stationRun == false) {
                     for (int i = 0; i < delivery.getPlaceholder().size(); i++) {
                         int yPlace = delivery.getPlaceholder().get(i).getY();
                         delivery.getPlaceholder().get(i).setY(yPlace);
-                        //if (delivery.getPlaceholder().get(i).isShow()) {
-                        //    delivery.getPlaceholder().get(i).getKit().updateParts();
-                        //}
-                        if (yPlace == 300 && !(delivery.getPlaceholder().get(i).isShow())) {
+                        if (yPlace==KAMGraphicPanel.EMPTY_CONVEYERY && !(delivery.getPlaceholder().get(i).isShow())) {
                             stationRun = true;
                             break;
                         }
                     }
                 }
             }
-
-            if (deliveryStation == false) {
+            //size=delivery.getPlaceholder().size();
+            if (deliveryStation == false && delivery.getPlaceholder().size()>0) {
                 if (stationRun == true) {
-                    if (delivery.getPlaceholder().get(delivery.getNumEmptyKits() - 1).getY() > -150) {
+                    if (delivery.getPlaceholder().get(delivery.getPlaceholder().size() - 1).getY() > -150) {
                         for (int i = 0; i < delivery.getPlaceholder().size(); i++) {
                             //temp=delivery.getPlaceholder().get(i);
-                            int yPlace = delivery.getPlaceholder().get(i).getY() - 1;
-                            int number = i * 200;
-                            if (counter > number) {
-                                delivery.getPlaceholder().get(i).setY(yPlace);
-                                //if (delivery.getPlaceholder().get(i).isShow()) {
-                                //    delivery.getPlaceholder().get(i).getKit().updateParts();
-                                //}
-                            }
-                            if (yPlace == 300 && !(delivery.getPlaceholder().get(i).isShow())) {
+                            int yPlace = delivery.getPlaceholder().get(i).getY();
+                            int number = i * 150;
+                            
+                            if (yPlace == KAMGraphicPanel.FULL_CONVEYERY && !(delivery.getPlaceholder().get(i).isShow())) {
                                 stationRun = false;
                                 break;
+                            }
+                            if (counter > number) {
+                                delivery.getPlaceholder().get(i).setY(yPlace-1);
                             }
                         }
                         counter++;
                     } else {
-                        for (int i = 0; i < delivery.getNumEmptyKits(); i++) {
+                        for (int i = 0; i < delivery.getPlaceholder().size(); i++) {
+                            System.out.println(i+": "+delivery.getPlaceholder().get(i).getKit());
+                            if(delivery.getPlaceholder().get(i).getKit()==null){
+                                delivery.getPlaceholder().get(i).setY(680);
+                            }
+                            else if(delivery.getPlaceholder().get(i).getKit().isFinished()){
+                                delivery.getPlaceholder().remove(i);
+                            }
+                            else
+                                delivery.getPlaceholder().get(i).setY(680);
+                            /*
+                            if(delivery.getPlaceholder().get(i).getKit()==null || !delivery.getPlaceholder().get(i).getKit().isFinished()){
                             delivery.getPlaceholder().get(i).setY(680);
-                            //if (delivery.getPlaceholder().get(i).isShow()) {
-                            //    delivery.getPlaceholder().get(i).getKit().updateParts();
-                            //}
-                            counter = 0;
+                            }
+                            
+                            else{
+                                //delivery.setNumEmptyKits(delivery.getPlaceholder().size()-1);
+                                //delivery.getPlaceholder().add(delivery.getPlaceholder().get(i));
+                                delivery.getPlaceholder().remove(i);
+                            }
+                            
+                            
+                        }*/
                         }
+                        //while(delivery.getPlaceholder().get(delivery.getPlaceholder().size()).getKit().isFinished()){
+                        //        delivery.getPlaceholder().remove(delivery.getPlaceholder().size());
+                                
+                       
+                    //}
+                        counter = 0;
                     }
                 }
                 if (stationRun == false) {
                     for (int i = 0; i < delivery.getPlaceholder().size(); i++) {
                         int yPlace = delivery.getPlaceholder().get(i).getY();
                         delivery.getPlaceholder().get(i).setY(yPlace);
+                        //System.out.println("placeholder "+i+": "+delivery.getPlaceholder().get(i).getY());
                         //if (delivery.getPlaceholder().get(i).isShow()) {
                         //    delivery.getPlaceholder().get(i).getKit().updateParts();
                         //}
-                        if (yPlace == 300 && (delivery.getPlaceholder().get(i).isShow())) {
+                        if (yPlace == KAMGraphicPanel.FULL_CONVEYERY && (delivery.getPlaceholder().get(i).isShow())) {
                             stationRun = true;
                             deliveryStation = true;
                             break;
                         }
                     }
                 }
+            }
+            for(int i=0;i<nest.size();i++){
+                nest.get(i).updateParts();
             }
 
             if (!kitbot.moving()) {
@@ -441,17 +322,18 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
             }
             kitbot.update();
             kitter.update();
-            myPanel.repaint();
+            //myPanel.repaint();
 
         }
-    }
-
-    public void paint(JPanel graph, Graphics g) {
+    public void paint(GraphicsPanel graph, Graphics g) {
         Graphics2D g2 = (Graphics2D) g;
-        //Rectangle2D.Double backgroundRectangle = new Rectangle2D.Double(0, 0, 500, 700);
+        //Rectangle2D.Double backgroundRectangle = new Rectangle2D.Double(0, 0, 700, 700);
         //g2.setColor(Color.GRAY.darker().darker());//dark dark green background
         //g2.fill(backgroundRectangle);
-        paintNests(graph, g2);
+        //backgroundImage.paintIcon(this, g2, 500, 500);
+        Image img = new ImageIcon("pics/background/mainbg.png").getImage();
+        g2.drawImage(img, 0, 0, null);
+        //paintNests(this, g2);
         kitstand.getKitStand().paintIcon(graph, g2, kitstand.getX(), kitstand.getY());
         for (int i = 0; i < 3; i++) {
 
@@ -464,7 +346,7 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
 
             }
         }
-        for (int i = 0; i < delivery.getNumEmptyKits(); i++) {
+        for (int i = 0; i < delivery.getPlaceholder().size(); i++) {
             delivery.getPlaceholder().get(i).getPlaceholder().paintIcon(graph, g2, delivery.getPlaceholder().get(i).getX(), delivery.getPlaceholder().get(i).getY());
             if (delivery.getPlaceholder().get(i).isShow()) {
                 //delivery.getPlaceholder().get(i).getKit().getImage().paintIcon(j, g2, delivery.getPlaceholder().get(i).getX() + 10, delivery.getPlaceholder().get(i).getY() + 20);
@@ -472,14 +354,7 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
                 delivery.getPlaceholder().get(i).getKit().setY(delivery.getPlaceholder().get(i).getY() + 20);
                 delivery.getPlaceholder().get(i).getKit().paintMe(graph, g2, delivery.getPlaceholder().get(i).getKit().getX(), delivery.getPlaceholder().get(i).getKit().getY());
             }
-        }
-
-        //System.out.println(kitbot);
-//        if (kitbot.hasKit()) {
-//            kitbot.getKit().getImage().paintIcon(j, g2, kitbot.getCoordinate().getX(), kitbot.getCoordinate().getY());
-//        }
-//        kitbot.getImage().paintIcon(j, g2, kitbot.getCoordinate().getX(), kitbot.getCoordinate().getY());
-//        
+        }      
         kitbot.paintMe(graph, g2);
 
         if (camera.isVisible()) {
@@ -490,29 +365,24 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
             camera.setVisible(false);
             cameraCounter = 0;
         }
-//        kitter.getImage().paintIcon(j, g2, kitter.getCoordinate().getX(), kitter.getCoordinate().getY());
-//	LinkedList<Part> kitterparts= kitter.getPart();
-//	for(int i = 0; i != kitterparts.size(); i++)
-//	    {
-//		kitterparts.get(i).getGUIPart().getImage().paintIcon(j, g2, kitterparts.get(i).getGUIPart().getX(), kitterparts.get(i).getGUIPart().getY());
-//	    }
         kitter.paintMe(graph, g2);
 
-        for (int k = 0; k < this.nest.size(); k++) {
-            for (int i = 0; i < this.nest.get(k).getParts().size(); i++) {
+        //for (int k = 0; k < this.nest.size(); k++) {
+        //    for (int i = 0; i < this.nest.get(k).getParts().size(); i++) {
                 //System.out.println(j.nest.get(0).getParts().get(i).getGUIPart());
-                this.nest.get(k).getParts().get(i).getGUIPart().getImage().paintIcon(graph, g2, nest.get(k).getParts().get(i).getGUIPart().getX(), nest.get(k).getParts().get(i).getGUIPart().getY());
-            }
-        }
+        //        this.nest.get(k).getParts().get(i).getGUIPart().getImage().paintIcon(this, g2, nest.get(k).getParts().get(i).getGUIPart().getX(), nest.get(k).getParts().get(i).getGUIPart().getY());
+        //    }
+        //}
 
-    }
-
-    public void paintNests(JPanel j, Graphics2D g) {
-        for (int i = 1; i <= 8; i++) {
-            nest.get(i - 1).getNest().paintIcon(j, g, nest.get(i - 1).getX(), nest.get(i - 1).getY());
-        }
-    }
-
-    public void actionPerformed(ActionEvent ae) {
-    }
 }
+    }
+
+    
+
+    //public void paintNests(JPanel j, Graphics2D g) {
+    //    for (int i = 1; i <= 8; i++) {
+    //        nest.get(i - 1).getNest().paintIcon(j, g, nest.get(i - 1).getX(), nest.get(i - 1).getY());
+    //    }
+    //}
+
+   

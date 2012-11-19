@@ -5,11 +5,15 @@ import java.awt.Dimension;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
+/**
+ * @brief GUI Panel
+ * @author Dongyoung Jung
+ */
 public class LMGUIPanel extends JPanel{
 	
-	private final int feederCount = 4;	///< Fixed quantity of feeder
-	private final int laneCount = 8;	///< Fixed quantity of lane
-	private final int nestCount = 8;	///< Fixed quantity of nest
+	private final int feederCount = 4;
+	private final int laneCount = 8;
+	private final int nestCount = 8;
 	
 	private JTabbedPane tab  = new JTabbedPane();
 	private LMGUILane laneGUI;

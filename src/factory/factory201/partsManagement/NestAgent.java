@@ -4,18 +4,17 @@
  */
 package factory.factory201.partsManagement;
 
-import agent.Agent;
-import factory.factory201.feederManagement.LaneAgent;
-import factory.factory201.interfaces.Camera;
-import factory.factory201.interfaces.Lane;
-import factory.factory201.interfaces.NestInterface;
-import factory.factory201.interfaces.PartsInterface;
-import factory.factory201.test.mock.MockLane;
-import factory.general.Nest;
-import factory.general.Part;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import agent.Agent;
+import factory.factory201.interfaces.Camera;
+import factory.factory201.interfaces.Lane;
+import factory.factory201.interfaces.PartsInterface;
+import factory.factory201.interfaces.NestInterface;
+import factory.general.Nest;
+import factory.general.Part;
 
 public class NestAgent extends Agent implements NestInterface {
 
@@ -28,19 +27,16 @@ public class NestAgent extends Agent implements NestInterface {
     Lane lane6;
     Lane lane7;
     Lane lanes[] = {lane0, lane1, lane2, lane3, lane4, lane5, lane6, lane7};
-    //Kit kit;
     
-    MockLane lane;
-
     public List<Nest> myNests;
-    //private Map<Nest, LaneAgent> lanes = new HashMap<Nest, LaneAgent>();
     private List<Part> needParts;
     private List<Nest> nests;
     PartsInterface partsagent;
     Camera camera;
     private int nestNumber;
     private List<Part> requests;
-    //private List<Nest> nests = Collections.synchronizedList(new ArrayList<Nest>());
+
+    
     enum Status {none, needPart, gettingPart, full, gettingInspected, readyForKit, purge};
     
    public NestAgent(String name) {
@@ -69,41 +65,14 @@ public class NestAgent extends Agent implements NestInterface {
     
   
     public void msgNeedPart(Part p) {
-        boolean doPurge = true;
         requests.add(p);
-        synchronized(myNests){
-    	if (!hasPart(p)){
-            for (Nest n: myNests){
-                if(n.status == Nest.Status.empty){  
-                    n.setPart(p);
-                    n.status = Nest.Status.needPart;
-                    doPurge = false;
-                    print("Part " + p.getString() + " is not taken by a nest, part is being assigned to the nest "+ n.nestNum);
-                    break;
-                }
-            }
-     }
-        else{
-            for (Nest n: myNests){
-                if(n.status==Nest.Status.readyForKit){
-    		if(n.part.type == p.type){
-                    
-                giveToKit(n);
-                   break;
-                }}}}
-    	if (doPurge){
-           /* for (Nest n: myNests){
-                if(n.status != Nest.Status.needPart) 
-                    n.setPart(p);
-                    purge(n);}
-            */
-        }
-        }
+        needParts.add(p);
         stateChanged();
     }
 
     public void msgHereAreParts(List<Part> kitParts){
         Part p = kitParts.get(0);
+        synchronized(myNests){
         for (Nest n : myNests) {
             if (n.part.type == p.type) {
                 for (int i =0; i<kitParts.size(); i++){
@@ -115,7 +84,7 @@ public class NestAgent extends Agent implements NestInterface {
                 print("adding " + kitParts.size() + " " + p.getString() + " to the nest " + n.nestNum);
 
             }
-        }
+        }}
         stateChanged();
     }
 
@@ -125,8 +94,9 @@ public class NestAgent extends Agent implements NestInterface {
             n.status = Nest.Status.readyForKit;
             print("Nest inspected and verified");
         } else {
-            n.status = Nest.Status.purge;
-            print("Nest is not verified");
+           purge(n);
+            //n.status = Nest.Status.purge;
+            print("Nest is not verified, will be dumped");
         }
         stateChanged();
     }
@@ -141,7 +111,6 @@ public class NestAgent extends Agent implements NestInterface {
                     requestPart(n);
                     return true;
                 }
-
             }
 
             for (Nest n : myNests) {
@@ -149,55 +118,60 @@ public class NestAgent extends Agent implements NestInterface {
                     requestInspection(n);
                     return true;
                 }
-
             }
-/*
-        for (Nest n : myNests) {
-            if (n.status == Nest.Status.readyForKit) {
-                giveToKit(n);
-                return true;
-            }
-        }*/
-
-        for (Nest n : myNests) {
-            if (n.status == Nest.Status.purge) {
-                purge(n);
-                return true;
-            }
-        }
-        synchronized (requests) {
-            if (!requests.isEmpty()) {
-                for (Nest n : myNests) {
-                    if (n.status == Nest.Status.readyForKit) {
-                        for (Part part : n.parts) {
-                            if (part.type == requests.get(0).type) {
-                                giveToKit(n);
-                                return true;
-                            }
-                        }
-                    }
+     
+     if (!requests.isEmpty()){
+                
+                for (Nest n: myNests){
+                    if (n.status == Nest.Status.readyForKit){
+                        for (Part part: n.parts){
+                            if(part.type == requests.get(0).type){
+                            giveToKit(n);
+                            return true;
+                }}}}
+                
+         if(!needParts.isEmpty()){
+                
+               for (Nest n: myNests){
+                if(n.status == Nest.Status.empty){  
+                    n.setPart(needParts.remove(0));
+                    n.status = Nest.Status.needPart;
+                    print("Part " + n.part.getString() + " is not taken by a nest, part is being assigned to the nest "+ n.nestNum);
+                    return true;
                 }
-            }
-        }
+                }
+            
+                synchronized(myNests){
+                for (Nest n: myNests){
+                    if(n.status == Nest.Status.readyForKit) {
+                        boolean next = true;
+                        for (int i=0; i<requests.size(); i++){
+                            if (n.part.type == requests.get(i).type)
+                                next = false;
+                    }
+                            if (next){
+                        
+                             print("PURGE IS HAPPENING");
+                             n.setPart(needParts.remove(0));
+                             purge(n);
+                             n.status = Nest.Status.needPart;
+                             print("Part " + n.part.getString() + " is not taken by a nest, part is being assigned to the nest "+ n.nestNum);
+                        return true;
+                }}}}}}
+            
+
+
         return false;
     }
  
-
-    
-    
     private void requestPart(Nest n){
-       
-    print("requesting " + n.part.getString());
-    	
+        print("requesting " + n.part.getString());
     	n.status = Nest.Status.gettingPart;
-        //lanes[n.nestNum]
         n.getLane().msgNeedPart(n.part);
     	stateChanged();
-
-    }
+   }
 
     private void requestInspection(Nest n) {
-
         print("Requesting inspection for nest " + n.getNestNum());
         n.status = Nest.Status.gettingInspected;
         camera.msgNestIsFull(n);
@@ -206,61 +180,23 @@ public class NestAgent extends Agent implements NestInterface {
 
     
     private void giveToKit(Nest n){
-        requests.remove(n.parts.get(0));
+        requests.remove(0);
     	partsagent.msgHereIsPart(n.parts.remove(0));
         print("giving part " + n.part.getString() + " to kit now nest has " + n.parts.size());
-        //n.status = Nest.Status.none;
-    	if (n.parts.size()<2)
-    		n.status = Nest.Status.needPart;
         if (n.parts.isEmpty())
                 n.status = Nest.Status.empty;
     	stateChanged();	
     }
     
     private void purge(Nest n){
+    print("PURGING Nest "+ n.nestNum);
     n.parts.clear();
     //DoPurge();
     n.status = Nest.Status.empty;
     stateChanged();
     }
-    
-    public boolean hasPart(Part p){
-    	for (Nest n: myNests){
-    	for (Part part: n.parts){
-            if(part.type == p.type)
-    		return true;	}}
-    	return false;
-    }
-    
-    public void setNestPurge(List<Part> purgeParts){
-        
-        for (Nest n: myNests){
-            for (Part p: purgeParts){
-         if (n.part.type == p.type){
-             purgeParts.remove(p);
-             n.status = Nest.Status.hasPart;
-         }   
-        }
-        }
-        for (Part p: purgeParts){
-            for(Nest n: myNests){
-                if(n.status != Nest.Status.hasPart)
-                    //n.status = Nest.Status.purge;
-                    purge(n);
-                    n.setPart(p);
-            }
-        }
-    }
-    
-    public boolean emptyNest(){
-        for (Nest n: myNests){
-            if (n.status == Nest.Status.empty)
-                return true;
-        }
-        return false;
-    }
-    
-    public Nest getNest(int n){
+  
+   public Nest getNest(int n){
         return myNests.get(n);
     }
     
@@ -271,4 +207,5 @@ public class NestAgent extends Agent implements NestInterface {
     public void setPartsAgent(PartsInterface parts) {
         this.partsagent = parts;
     }
+    
 }
