@@ -1,3 +1,4 @@
+
 package factory.factory200.kitManager;
 
 import factory.general.BlueprintKits;
@@ -608,7 +609,7 @@ public class KitManager extends Manager  implements ActionListener {
 	       KitManager.bpkit.recreate(this.grabParameter(msg));
 	       System.out.println("GRABBED NEW KITS LIST FROM SERVER!: "+msg);
 		   KitManager.bpkit.debug();
-           updateComboBox();
+//           updateComboBox();
                 //   prepareMainPane();
 	   }else
         if(msg.contains(Message.PUSH_PARTS_LIST))
@@ -616,7 +617,7 @@ public class KitManager extends Manager  implements ActionListener {
             KitManager.bppart.recreate(this.grabParameter(msg));
             System.out.println("GRABBED NEW PARTS LIST FROM SERVER!" + msg);
             KitManager.bppart.debug();
-            updateComboBox();
+//            updateComboBox();
           //  prepareMainPane();
         }else System.out.println("Obtained unknown message " + msg);
     }        
