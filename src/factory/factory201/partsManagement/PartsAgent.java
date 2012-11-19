@@ -131,11 +131,6 @@ public class PartsAgent extends Agent implements PartsInterface {
                 }}
           }
             }
-<<<<<<< HEAD
-
-   
-=======
->>>>>>> 920eeafe465768d0e4bad411900f03ea95c03269
        return false;
     }
 //Actions
@@ -306,11 +301,6 @@ public class PartsAgent extends Agent implements PartsInterface {
         }}
     
     public void DoGiveKitsInAction(Kit k){
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 920eeafe465768d0e4bad411900f03ea95c03269
         if (this.client != null) {
 
             this.client.sendMessage(Message.KIT_IN_PRODUCTION+":"+k.getName());
@@ -318,13 +308,10 @@ public class PartsAgent extends Agent implements PartsInterface {
         else{
             print("[ERROR] - Kit Assembly Manager is not online.");
         }
-<<<<<<< HEAD
             
         }
-=======
         
-    }
->>>>>>> 920eeafe465768d0e4bad411900f03ea95c03269
+    
     
     public void DoGiveKitsInQueue(List<Kit> kits){
 
