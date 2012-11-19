@@ -59,7 +59,9 @@ public class GUIGantryRobot extends GUIRobot{
     
     ///<Once gantry robot gets to a bin, it picks up the bin 
     public void pickUpBin(Integer num){
-    	this.bin = new GUIBin(this.getX(),this.getY(),0.0,"pics/binBox"+(num+1)+".png",num+1);
+    	this.bin = new GUIBin(this.getX(),this.getY(),0.0, "pics/emptybox.png",num);
+    	//
+    	//"pics/binBox"+(num+1)+".png",num+1);
     }
     
     ///<moveToFeeder i which is assigned by agents in Server
