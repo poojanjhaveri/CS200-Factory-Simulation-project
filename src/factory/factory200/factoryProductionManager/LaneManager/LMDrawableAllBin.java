@@ -4,6 +4,10 @@ import java.awt.Graphics2D;
 import java.util.ArrayList;
 import factory.factory200.factoryProductionManager.*;
 
+/**
+ * @brief Bin Drawings
+ * @author Dongyoung Jung
+ */
 public class LMDrawableAllBin {
 
 	private LMDrawableBin newBin;

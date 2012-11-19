@@ -20,15 +20,24 @@ public class MockNest extends MockAgent implements NestInterface {
 
     @Override
     public void msgHereAreParts(List<Part> parts) {
+<<<<<<< HEAD
+        log.add(new LoggedEvent("Received parts event encountered" + parts.get(0).getString()));
+=======
       log.add(new LoggedEvent("Received parts event encountered "));   
+>>>>>>> 2e1040683a2315ee6dff2e9cc9333a094f233459
     }
 
     @Override
     public void msgNestInspected(Nest n, boolean result) {
-          log.add(new LoggedEvent("Nest Inspected"));
+        log.add(new LoggedEvent("Nest Inspected"));
     }
 /*
     @Override
+<<<<<<< HEAD
+    public void msgHereAreParts(List<Part> parts, int index) {
+        log.add(new LoggedEvent("Got msgHereAreParts from Lane" + index));
+    }
+=======
     public void msgHereAreParts(List<Part> parts, int index){
        log.add(new LoggedEvent("Got msgHereAreParts from Lane"+ index));
    }*/
@@ -40,4 +49,5 @@ public class MockNest extends MockAgent implements NestInterface {
     }
 
     
+>>>>>>> 2e1040683a2315ee6dff2e9cc9333a094f233459
 }

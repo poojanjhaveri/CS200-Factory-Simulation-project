@@ -1,5 +1,9 @@
 package factory.factory200.laneManager.ServerSide;
 
+/**
+ * @brief Take Bin from Nest(For Agent)
+ * @author Dongyoung Jung
+ */
 public class LMPartRobotForAgent {
 	
 	private LMServerMain serverMain;

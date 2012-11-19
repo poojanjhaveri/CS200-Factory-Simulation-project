@@ -5,6 +5,10 @@ import java.util.ArrayList;
 import javax.swing.JPanel;
 import factory.factory200.factoryProductionManager.*;
 
+/**
+ * @brief Feeder Drawings
+ * @author Dongyoung Jung
+ */
 public class LMDrawableAllFeeder extends JPanel{
 
 	private LMDrawableFeeder newFeeder;

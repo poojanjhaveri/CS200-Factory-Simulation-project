@@ -334,6 +334,10 @@ public class FeederAgent extends Agent implements Feeder {
          e.printStackTrace();
          }
          */
+        
+            if (LMServer.getForAgentFeeder() == null) {
+                return;
+            }
             LMServer.getForAgentFeeder().setDiverterSwitchRight(feederNum);
 
             LMServer.getForAgentGantryRobot().putBin(p.part.type, p.quantity, feederNum);
