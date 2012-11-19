@@ -38,7 +38,7 @@ public class PartsAgent extends Agent implements PartsInterface {
     boolean kitZero = false;
     boolean kitOne = false;
     public List<Part> inventory, grips, kit0NeedsParts, kit1NeedsParts;
-    public List<Kit> newKit;
+    public ArrayList<Kit> newKit;
     boolean emptyKitReady;
     public List<Kit> kitsStarted;
 
@@ -50,7 +50,7 @@ public class PartsAgent extends Agent implements PartsInterface {
         this.grips = Collections.synchronizedList(new ArrayList<Part>());
         this.kit0NeedsParts = Collections.synchronizedList(new ArrayList<Part>());
         this.kit1NeedsParts = Collections.synchronizedList(new ArrayList<Part>());
-        this.newKit = Collections.synchronizedList(new ArrayList<Kit>());
+        this.newKit = (new ArrayList<Kit>());
         this.kitsStarted = Collections.synchronizedList(new ArrayList<Kit>());
     }
     
@@ -58,7 +58,8 @@ public class PartsAgent extends Agent implements PartsInterface {
 
     // message from server
     //@Override
-    public void msgHereIsKit(List<Kit> newKits) {
+    //@Override
+    public void msgHereIsKit(ArrayList<Kit> newKits) {
         print("PartsAgent got message for new kits");
         for (Kit k: newKits){
         newKit.add(k);}
@@ -68,7 +69,7 @@ public class PartsAgent extends Agent implements PartsInterface {
 
     @Override
     public void msgHereIsPart(Part p) {
-        print("Got part " + p.getString() + "from nest");
+        print("Got part " + p.getInt() + "from nest");
         inventory.add(p);
         stateChanged();
     }
@@ -167,7 +168,8 @@ public class PartsAgent extends Agent implements PartsInterface {
         kitsStarted.add(k);
        
         for (int i = 0; i < k.getSize(); i++) {
-            nest.msgNeedPart(k.getPart(i));}
+            nest.msgNeedPart(k.getPart(i));
+        }
         
         kitrobot.msgNeedEmptyKit();//change to put empty kits in list when recieve the message back
     	
@@ -205,7 +207,7 @@ public class PartsAgent extends Agent implements PartsInterface {
            //   print("REMOVING PART FROM KIT1NEEDSPARTS NEW SIZE IS " +  kit1NeedsParts.size());
                break;
             }}
-      //  print("picking up part " + p.getString());
+      //  print("picking up part " + p.getInt());
         
         DoPickUpPart(p.getNestNum());
        
@@ -241,7 +243,7 @@ public class PartsAgent extends Agent implements PartsInterface {
 
     private void putPartsInKit(int kitNum) {
         for (Part p : grips) {
-            print("putting part " + p.getString() + " in kit number "+ kitNum);
+            print("putting part " + p.getInt() + " in kit number "+ kitNum);
         }
       /*  try {
             Thread.sleep(3000);
@@ -308,8 +310,6 @@ public class PartsAgent extends Agent implements PartsInterface {
         }}
     
     public void DoGiveKitsInAction(Kit k){
-
-
         if (this.client != null) {
 
             this.client.sendMessage(Message.KIT_IN_PRODUCTION+":"+k.getName());
@@ -317,13 +317,15 @@ public class PartsAgent extends Agent implements PartsInterface {
         else{
             print("[ERROR] - Kit Assembly Manager is not online.");
         }
+            
+        }
         
-    }
     
-    public void DoGiveKitsInQueue(List<Kit> kits){
+    
+    public void DoGiveKitsInQueue(ArrayList<Kit> kits1){
 
         if (this.client != null) {
-        BlueprintKits adhoc = new BlueprintKits((ArrayList)kits);
+        BlueprintKits adhoc = new BlueprintKits(kits1);
         this.client.sendMessage(Message.GIVE_KITS_IN_QUEUE+":"+adhoc.serialize());
 
     }

@@ -84,16 +84,22 @@ public class GRMGraphicPanel extends JPanel implements ActionListener {
         }
         
         ///<Set the timer
-        timer = new Timer(15, this);
+        timer = new Timer(12, this);
         timer.start();
         
 	}
 	
+	/**
+	 * getter for GUIGantryRobot
+	 * @return an instance of GUIGantryRobot
+	 */
 	public GUIGantryRobot getGantryRobot(){
 		return gbot;
 	}
 	
-	
+	/**
+	 * paint method with Graphics params
+	 */
 	public void paint(Graphics g) {
             
         Graphics2D g2 = (Graphics2D) g;
