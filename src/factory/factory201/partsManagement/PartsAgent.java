@@ -9,6 +9,7 @@ import factory.factory201.interfaces.Camera;
 import factory.factory201.interfaces.KitRobot;
 import factory.factory201.interfaces.NestInterface;
 import factory.factory201.interfaces.PartsInterface;
+import factory.general.BlueprintKits;
 import factory.general.Kit;
 import factory.general.Message;
 import factory.general.Part;
@@ -61,6 +62,7 @@ public class PartsAgent extends Agent implements PartsInterface {
         print("PartsAgent got message for new kits");
         for (Kit k: newKits){
         newKit.add(k);}
+        DoGiveKitsInQueue(newKit);
         stateChanged();
     }
 
@@ -117,6 +119,7 @@ public class PartsAgent extends Agent implements PartsInterface {
                    pickUpPart0(inventory.remove(0));
             return true;
                 }}
+<<<<<<< HEAD
             }
       }
             
@@ -129,6 +132,20 @@ public class PartsAgent extends Agent implements PartsInterface {
                 }}
           }
             }
+=======
+            }
+      }
+            
+       if(!kit1NeedsParts.isEmpty()){
+            if (!inventory.isEmpty()) {
+                for(Part p: kit1NeedsParts){
+                    if(inventory.get(0).type==p.type){
+                        pickUpPart1(inventory.remove(0));
+                    return true;
+                }}
+          }
+            }
+>>>>>>> 4c0bae77a2a31606c52a6db1a8c02c7477faeafa
    
        return false;
     }
@@ -138,13 +155,18 @@ public class PartsAgent extends Agent implements PartsInterface {
         print("giving kitrobot complete kit #" + k.standNum);
         print("KIT0NEEDSPARTS SIZE: [" + kit0NeedsParts.size()+ "]");
         print("KIT1NEEDSPARTS SIZE: [" + kit1NeedsParts.size() + "]");
+        print("INVENTORY SIZE: [" + inventory.size() + "]");
         kits--;
         if(k.standNum==Kit.StandNum.zero){
             kit0Info = null;
             //kit0=null;
         }
         else{
+<<<<<<< HEAD
             kit1Info =null;
+=======
+            kit1Info = null;
+>>>>>>> 4c0bae77a2a31606c52a6db1a8c02c7477faeafa
             //kit1 = null;
         }
             
@@ -299,10 +321,30 @@ public class PartsAgent extends Agent implements PartsInterface {
         }}
     
     public void DoGiveKitsInAction(Kit k){
+<<<<<<< HEAD
        // this.client.sendMessage(Message)
+=======
+
+        if (this.client != null) {
+
+        this.client.sendMessage(Message.KIT_IN_PRODUCTION+":"+k.getName());
+        }
+        else{
+            print("[ERROR] - Kit Assembly Manager is not online.");
+        }
+            
+>>>>>>> 4c0bae77a2a31606c52a6db1a8c02c7477faeafa
         }
     
     public void DoGiveKitsInQueue(List<Kit> kits){
-        
+
+        if (this.client != null) {
+        BlueprintKits adhoc = new BlueprintKits((ArrayList)kits);
+        this.client.sendMessage(Message.GIVE_KITS_IN_QUEUE+":"+adhoc.serialize());
+
     }
+        else{
+           print("[ERROR] - Kit Assembly Manager is not online."); 
+        }
+}
 }
