@@ -15,7 +15,6 @@ package factory.factory200.factoryProductionManager.GantryRobotManager;
 
 import factory.factory200.factoryProductionManager.*;
 import factory.general.Message;
-import factory.factory200.gantryRobotManager.*;
 
 import java.awt.Graphics2D;
 
@@ -90,6 +89,8 @@ public class GantryRobotManager{
 			   else if(msg.contains(Message.MOVE_GANTRY_TO_DUMP)){
 				   purgeBin();//this.ganbot.purgeBinCommand();
 			   }
+                           
+                               
 		   }
 	
 	
