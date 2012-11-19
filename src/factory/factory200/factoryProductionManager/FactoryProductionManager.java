@@ -377,10 +377,12 @@ public class FactoryProductionManager extends Manager implements ActionListener 
         }
 	if(msg.contains(Message.KIT_IN_PRODUCTION))
         {
-            inProduction = this.grabParameter(msg);
+            inProdField.setText("");
+            inProdField.append(this.grabParameter(msg));
         }
         if(msg.contains(Message.GIVE_KITS_IN_QUEUE))
         {
+            serverQueueDisplay.setText("");
             BlueprintKits temp = new BlueprintKits();
             temp.recreate(this.grabParameter(msg));
             ArrayList<Kit> prodqueue = temp.getKits();
