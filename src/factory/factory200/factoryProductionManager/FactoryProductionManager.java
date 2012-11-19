@@ -178,6 +178,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 
 		//		tabs.setOpaque(false);
 
+                /*
 		topPanel.setOpaque(false);
 		botPanel.setOpaque(false);
 		parentMidPanel.setOpaque(false);
@@ -189,7 +190,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 		selPanel.setOpaque(false);
 		slotsPanel.setOpaque(false);
 		basePanel.setOpaque(false);
-		gfx.setOpaque(false);
+	//	gfx.setOpaque(false);*/
 	}
 
 	private void panelLayout()

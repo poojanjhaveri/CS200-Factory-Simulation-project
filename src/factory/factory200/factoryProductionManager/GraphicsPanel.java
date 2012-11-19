@@ -15,7 +15,7 @@ public class GraphicsPanel extends JPanel{
 	private GantryRobotManager gantryRobotManager = new GantryRobotManager();
 	private KitAssemblyManager kitsAssemblyManager = new KitAssemblyManager(this);
 	private LMApplication laneManager = new LMApplication();
-	private ImageIcon backgroundImage = new ImageIcon( GraphicsPanel.class.getResource("background.png") );
+//	private ImageIcon backgroundImage = new ImageIcon( GraphicsPanel.class.getResource("background.png") );
 	private TimerThread timer = new TimerThread(this);
 	
 	public GraphicsPanel() {
@@ -24,7 +24,7 @@ public class GraphicsPanel extends JPanel{
 	}
 
 	public void paint(Graphics graphics){
-		backgroundImage.paintIcon(this, graphics, 0, 0);
+	//	backgroundImage.paintIcon(this, graphics, 0, 0);
 		
 		kitsAssemblyManager.paint(this, (Graphics2D)graphics);
 		gantryRobotManager.paint(this, (Graphics2D)graphics);
