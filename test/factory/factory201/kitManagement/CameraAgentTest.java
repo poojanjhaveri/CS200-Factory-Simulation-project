@@ -5,14 +5,14 @@ import factory.factory201.test.mock.MockKitRobot;
 import factory.factory201.test.mock.MockNest;
 import factory.general.Kit;
 import factory.general.Nest;
-import static org.junit.Assert.*;
+import junit.framework.TestCase;
 import org.junit.Test;
 
 /**
  * @author Alex Young <alexyoung1992@gmail.com>
  * @version 1
  */
-public class CameraAgentTest {
+public class CameraAgentTest extends TestCase {
     
     private CameraAgent camera;
     private MockKitRobot kitRobot;
@@ -26,6 +26,7 @@ public class CameraAgentTest {
 
     
     /* Check if on receiving msgKitFull, the Camera sends a message "Kit Inspected" */
+    @Test
     public void testInspectNest(){
         Kit kit=new Kit("TestKit");
         kit.status=Kit.Status.full;
@@ -38,6 +39,7 @@ public class CameraAgentTest {
     }
     
     /* Check if on receiving message nest is full, it sends a status to Nest "Nest Inspected" */
+    @Test
     public void testInspectKit(){
         Nest nest=new Nest(1);
         nest.status=Nest.Status.gettingInspected;
@@ -47,6 +49,7 @@ public class CameraAgentTest {
 						+ kitRobot.log.toString(), kitRobot.log
 						.containsString("Nest Inspected"));
     
+        
     }
     
 }
