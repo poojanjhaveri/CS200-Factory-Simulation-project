@@ -45,8 +45,8 @@ public class Server {
 
     // Fields just for "AgentMain" stuff (Agent preparation)
     // If true, print statements for this 201 person are on
-    private static final boolean PATRICK = true;
-    private static final boolean KEVIN = true;
+    private static final boolean PATRICK = false;
+    private static final boolean KEVIN = false;
     private static final boolean ALEX = true;
 
     
@@ -131,7 +131,7 @@ public class Server {
 			System.out.println("A client has connected");
 		}
 		
-		try{  Thread.sleep(1000);  } catch(Exception e){}   // For Testing By Dongyoung
+//		try{  Thread.sleep(1000);  } catch(Exception e){}   // For Testing By Dongyoung
 		prepareAllAgents(); // Prepare all agents; based on AgentMain.java      // For Testing By Dongyoung
 	}
 
@@ -252,7 +252,7 @@ public class Server {
             Kit kit = new Kit("Test Kit"); // This is required for...
             for (int i = 0; i < 8; i++) {
                 
-                //kit.addPart(this.fstate.getPartCheat().clone()); //uncomment this when ready- kevin
+//                kit.addPart(this.fstate.getPartCheat().clone());
                 //kit.addPart(new Part("Part " + i, "p1")); // This is a kit that has actual parts...
                 
                 kit.addPart(new Part(i)); //testing- Kevin
