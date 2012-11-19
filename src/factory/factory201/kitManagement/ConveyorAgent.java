@@ -90,6 +90,7 @@ public class ConveyorAgent extends Agent implements Conveyor {
     public void generateKit(String name) {
         Kit k = new Kit("Kit " + name);
         kitList.add(k);
+        DoAddKit(k);
     }
 
     public void removeKit(String name) {
@@ -113,19 +114,14 @@ public class ConveyorAgent extends Agent implements Conveyor {
         kitRobotAgent = agent;
     }
 
+    public List<Kit> getKitList() {
+        return this.kitList;
+    }
+    
     private void DoAddKit(Kit k) {
         if (this.client != null) {
             this.client.sendMessage(Message.KAM_ADD_KIT);
             this.fpm.sendMessage(Message.KAM_ADD_KIT);
-        } else {
-            print("[ERROR] - Kit Assembly Manager is not online.");
-        }
-    }
-
-    private void DoRemoveKit(Kit k) {
-        if (this.client != null) {
-            this.client.sendMessage(Message.KAM_REMOVE_KIT);
-            this.fpm.sendMessage(Message.KAM_REMOVE_KIT);
         } else {
             print("[ERROR] - Kit Assembly Manager is not online.");
         }

@@ -20,23 +20,16 @@ public class MockNest extends MockAgent implements NestInterface {
 
     @Override
     public void msgHereAreParts(List<Part> parts) {
-      log.add(new LoggedEvent("Received parts event encountered" + parts.get(0).getString()));   
+        log.add(new LoggedEvent("Received parts event encountered" + parts.get(0).getString()));
     }
 
     @Override
     public void msgNestInspected(Nest n, boolean result) {
-          log.add(new LoggedEvent("Nest Inspected"));
+        log.add(new LoggedEvent("Nest Inspected"));
     }
 
     @Override
-   public void msgHereAreParts(List<Part> parts, int index){
-       log.add(new LoggedEvent("Got msgHereAreParts from Lane"+ index));
-   }
-
-    
-   /* public void msgHereAreParts(List<Part> parts, int index) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }*/
-
-    
+    public void msgHereAreParts(List<Part> parts, int index) {
+        log.add(new LoggedEvent("Got msgHereAreParts from Lane" + index));
+    }
 }
