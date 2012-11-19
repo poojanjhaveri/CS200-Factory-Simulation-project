@@ -93,7 +93,7 @@ public class Server {
         this.fstate = new FactoryState();
 		initializeManagers(); // Something by Dongyoung
 		
-		prepareAllAgents(); // Prepare all agents; based on AgentMain.java; commented out by Dongyoung to test animation; included after connections accepted by server
+		//prepareAllAgents(); // Prepare all agents; based on AgentMain.java; commented out by Dongyoung to test animation; included after connections accepted by server
 			// should happen AFTER initializeManagers(), according to Dongyoung
 		
 		numClients = 0; // Initialize num clients is 0
@@ -153,7 +153,7 @@ public class Server {
             turnOffAgentPrintStatements();
             connectAgentsAndManagers();
             startAgentThreads();
-//            startInteractionSequence();
+            startInteractionSequence();
         }
 
         private void declareAgents() {
