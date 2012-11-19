@@ -9,7 +9,7 @@ RUNPKG=factory.factory200
 
 all:
 	javac -d . $(ALLPKG)
-
+	version -b
 run:
 	@echo "STARTING SERVER"
 	$(RUN) factory.general.Server &
