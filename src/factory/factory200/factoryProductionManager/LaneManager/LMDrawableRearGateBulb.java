@@ -4,6 +4,10 @@ import java.awt.Graphics2D;
 import javax.swing.ImageIcon;
 import factory.factory200.factoryProductionManager.*;
 
+/**
+ * @brief Rear Gate Bulb Drawings
+ * @author Dongyoung Jung
+ */
 public class LMDrawableRearGateBulb{
 
 	private int symbolX, symbolY;

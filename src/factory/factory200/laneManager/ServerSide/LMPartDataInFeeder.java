@@ -2,6 +2,10 @@ package factory.factory200.laneManager.ServerSide;
 
 import java.util.ArrayList;
 
+/**
+ * @brief Part Information in Feeder
+ * @author Dongyoung Jung
+ */
 public class LMPartDataInFeeder {
 
 	LMServerMain serverMain;
