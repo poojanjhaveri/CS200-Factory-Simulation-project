@@ -136,7 +136,11 @@ public class Server {
 			System.out.println("A client has connected");
 		}
 		
-		try{  Thread.sleep(1000);  } catch(Exception e){}   // For Testing By Dongyoung
+
+
+		//try{  Thread.sleep(1000);  } catch(Exception e){}   // For Testing By Dongyoung
+
+
 		prepareAllAgents(); // Prepare all agents; based on AgentMain.java      // For Testing By Dongyoung
 	}
 
