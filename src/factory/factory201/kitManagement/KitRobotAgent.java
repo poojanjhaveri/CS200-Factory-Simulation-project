@@ -69,9 +69,6 @@ public class KitRobotAgent extends Agent implements KitRobot {
     // ********* SCHEDULER *********
     @Override
     public boolean pickAndExecuteAnAction() {
-//        print("Kit Stand 0: " + kitStand.get(0) + "\n" +
-//              "           Kit Stand 1: " + kitStand.get(1) + "\n" +
-//              "           Kit Stand 2: " + kitStand.get(2));
         if (!kitStand.isEmpty(2) && kitStand.get(2).status == Kit.Status.verified) {
             //if kit is ready to leave cell
             sendVerifiedKitToConveyor();
@@ -98,7 +95,6 @@ public class KitRobotAgent extends Agent implements KitRobot {
             return true;
         }
         return false;
-
     }
 
     // ********** ACTIONS **********
@@ -162,7 +158,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
             this.client.sendMessage(Message.KAM_PICK_UP_EMPTY_KIT);
             this.fpm.sendMessage(Message.KAM_PICK_UP_EMPTY_KIT);
         } else {
-//            print("[ERROR] - Kit Assembly Manager is not online.");
+            print("[ERROR] - Kit Assembly Manager is not online.");
         }
 
     }
@@ -173,7 +169,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
             this.client.sendMessage(Message.KAM_PICK_UP_EMPTY_KIT_TO_ACTIVE);
             this.fpm.sendMessage(Message.KAM_PICK_UP_EMPTY_KIT_TO_ACTIVE);
         } else {
-//            print("[ERROR] - Kit Assembly Manager is not online.");
+            print("[ERROR] - Kit Assembly Manager is not online.");
         }
     }
 
@@ -183,7 +179,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
             this.client.sendMessage(Message.KAM_MOVE_EMPTY_KIT_TO_ACTIVE);
             this.fpm.sendMessage(Message.KAM_MOVE_EMPTY_KIT_TO_ACTIVE);
         } else {
-//            print("[ERROR] - Kit Assembly Manager is not online.");
+            print("[ERROR] - Kit Assembly Manager is not online.");
         }
     }
 
@@ -192,7 +188,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
             this.client.sendMessage(Message.KAM_MOVE_ACTIVE_KIT_TO_INSPECTION);
             this.fpm.sendMessage(Message.KAM_MOVE_ACTIVE_KIT_TO_INSPECTION);
         } else {
-//            print("[ERROR] - Kit Assembly Manager is not online.");
+            print("[ERROR] - Kit Assembly Manager is not online.");
         }
 
     }
@@ -202,7 +198,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
             this.client.sendMessage(Message.KAM_MOVE_FROM_0_TO_2);
             this.fpm.sendMessage(Message.KAM_MOVE_FROM_0_TO_2);
         } else {
-//            print("[ERROR] - Kit Assembly Manager is not online.");
+            print("[ERROR] - Kit Assembly Manager is not online.");
         }
     }
 
@@ -211,7 +207,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
             this.client.sendMessage(Message.KAM_DROP_OFF_FULL_KIT);
             this.fpm.sendMessage(Message.KAM_DROP_OFF_FULL_KIT);
         } else {
-//            print("[ERROR] - Kit Assembly Manager is not online.");
+            print("[ERROR] - Kit Assembly Manager is not online.");
         }
     }
 }
