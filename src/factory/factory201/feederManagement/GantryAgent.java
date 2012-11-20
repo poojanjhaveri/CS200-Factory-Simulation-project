@@ -170,14 +170,11 @@ public class GantryAgent extends Agent implements Gantry {
         }
         
         //add if part doesn't exist
-        
-        //synchronously add?!
-        synchronized(bins){
         if(count==bins.size())
         {
         bins.add(new myBin(part,8,part.type));
         }
-        }
+        
         
         for(myFeeder f: myFeeders)
     	{

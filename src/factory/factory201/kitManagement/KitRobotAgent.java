@@ -95,6 +95,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
     @Override
     public boolean pickAndExecuteAnAction() {
         print("testing location after two executions , 2 and 1 empty? " + kitStand.isEmpty(2) + kitStand.isEmpty(1));
+        print("request State is " + requestedKitFromConveyor);
         //if the stand is not empty at 2 and has been verified, send to conveyer.
         if (!kitStand.isEmpty(2) && kitStand.get(2).status == Kit.Status.verified) {
             //if kit is ready to leave cell
