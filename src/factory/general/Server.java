@@ -263,9 +263,10 @@ public class Server {
                 kit.addPart(new Part("lol","k","fame")); //testing- Kevin
             }
             ArrayList<Kit> kits = new ArrayList<Kit>();
+            for(int i=0;i<9;i++)
             kits.add(kit);
-            kits.add(kit);
-            kits.add(kit);
+            //kits.add(kit);
+            //kits.add(kit);
             kits.get(0).debug();
             // TODO: *Put this wherever the FPM sends the signal to create (generate) kits
             conveyorAgent.msgGenerateKit(10); // * This generates 10 new kits, among other things if you pass string... *
