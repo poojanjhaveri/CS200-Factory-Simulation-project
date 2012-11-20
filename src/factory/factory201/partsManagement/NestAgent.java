@@ -33,6 +33,10 @@ public class NestAgent extends Agent implements NestInterface {
     private List<Nest> nests;
     PartsInterface partsagent;
     Camera camera;
+    Camera cam1;
+    Camera cam2;
+    Camera cam3;
+    Camera cam4;
     private int nestNumber;
     public List<Part> requests;
 
@@ -182,7 +186,22 @@ public class NestAgent extends Agent implements NestInterface {
     private void requestInspection(Nest n) {
         print("Requesting inspection for nest " + n.getNestNum());
         n.status = Nest.Status.gettingInspected;
+        
+        /*
+        if(n.nestNum==0)
+        cam1.msgNestIsFull(n);
+        
+        if(n.nestNum==1)
+        cam2.msgNestIsFull(n);
+        
+        if(n.nestNum==2)
+        cam3.msgNestIsFull(n);
+        
+        if(n.nestNum==3)
+        cam4.msgNestIsFull(n);
+        */
         camera.msgNestIsFull(n);
+        
         stateChanged();
     }
 
@@ -201,6 +220,7 @@ public class NestAgent extends Agent implements NestInterface {
     n.parts.clear();
     //DoPurge();
     n.status = Nest.Status.empty;
+    //n.status = Nest.Status.needPart;
     stateChanged();
     }
   
@@ -210,6 +230,19 @@ public class NestAgent extends Agent implements NestInterface {
     
     public void setCamera(Camera c){
         this.camera = c;
+    }
+    
+    public void setCamera1(Camera c){
+        this.cam1 = c;
+    }
+    public void setCamera2(Camera c){
+        this.cam2 = c;
+    }
+    public void setCamera3(Camera c){
+        this.cam3 = c;
+    }
+    public void setCamera4(Camera c){
+        this.cam4 = c;
     }
 
     public void setPartsAgent(PartsInterface parts) {

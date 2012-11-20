@@ -10,15 +10,17 @@ import factory.factory201.interfaces.Feeder;
 import factory.factory201.test.mock.MockFeeder;
 import factory.general.Part;
 import java.util.List;
+import junit.framework.TestCase;
 
 
 /**
  *
  * @author Kevin
  */
-/*
-public class GantryAgentTest extends TestCase{
-    public GantryAgent gantry;
+
+
+public class GantryTest extends TestCase {
+public GantryAgent gantry;
 
 //TEST NEED PARTS MESSAGE FROM A FEEDER
 public void testneedParts(){
@@ -136,7 +138,4 @@ Part p2=new Part(1);
 	
 }
 
-  
 }
-* 
-*/

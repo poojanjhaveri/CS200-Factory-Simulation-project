@@ -57,6 +57,12 @@ public class Server {
 	private PartsAgent partsAgent;
     private KitRobotAgent kitRobotAgent;
     private CameraAgent cameraAgent;
+    
+    private CameraAgent cam1;
+    private CameraAgent cam2;
+    private CameraAgent cam3;
+    private CameraAgent cam4;
+    
     private ConveyorAgent conveyorAgent;
     private FeederAgent[] feederAgents;
     private GantryAgent gantryAgent;
@@ -164,6 +170,13 @@ public class Server {
             // Alex
             kitRobotAgent = new KitRobotAgent("Kit Robot");
             cameraAgent = new CameraAgent("Camera");
+            
+            //one camera for each nest
+            cam1=new CameraAgent("camera 1");
+            cam2=new CameraAgent("camera 1");
+            cam3=new CameraAgent("camera 1");
+            cam4=new CameraAgent("camera 1");
+            
             conveyorAgent = new ConveyorAgent("Conveyor");
 
             // Patrick
@@ -187,7 +200,14 @@ public class Server {
             /*========== Pass proper agents to everyone ==========*/
             // Alex
             kitRobotAgent.setAll(cameraAgent, conveyorAgent, partsAgent);
+            
             cameraAgent.setAll(kitRobotAgent, nestAgent);
+            
+            //set 4 cameras initialize them with the kitRobotAgent and nestAgent
+            cam1.setAll(kitRobotAgent, nestAgent);
+            cam2.setAll(kitRobotAgent, nestAgent);
+            cam3.setAll(kitRobotAgent, nestAgent);
+            cam4.setAll(kitRobotAgent, nestAgent);
             conveyorAgent.setKitRobot(kitRobotAgent);
 
             // Patrick
@@ -196,6 +216,10 @@ public class Server {
             partsAgent.setKitRobot(kitRobotAgent);
             partsAgent.setNestInterface(nestAgent);
             nestAgent.setCamera(cameraAgent);
+            nestAgent.setCamera1(cam1);
+            nestAgent.setCamera2(cam2);
+            nestAgent.setCamera3(cam3);
+            nestAgent.setCamera4(cam4);
             nestAgent.setPartsAgent(partsAgent);
             for (int i = 0; i < 8; i++) {
                 nestAgent.getNest(i).setLane(laneAgents[i]);
@@ -228,6 +252,11 @@ public class Server {
 
             // Alex
             cameraAgent.startThread();
+            //cam1.startThread();
+            //cam2.startThread();
+            //cam3.startThread();
+            //cam4.startThread();
+            
             conveyorAgent.startThread();
             kitRobotAgent.startThread();
 
@@ -339,6 +368,11 @@ public class Server {
 	 */
 	public void setCameraAgentClient(HandleAManager in) {
 		this.cameraAgent.setClient(in);
+                this.cam1.setClient(in);
+                this.cam2.setClient(in);
+                this.cam3.setClient(in);
+                this.cam4.setClient(in);
+                
 	}
 	
 	public void setConveyerAgentClient(HandleAManager in) {
