@@ -40,18 +40,19 @@ public class PartsAgent extends Agent implements PartsInterface {
     public List<Part> inventory, grips, kit0NeedsParts, kit1NeedsParts;
     public ArrayList<Kit> newKit;
     boolean emptyKitReady;
+    boolean requestState=false;
     public List<Kit> kitsStarted;
 
     public PartsAgent(String name) {
         super(name); 
         // Should these be creating NEW ArrayLists of things, or should they be getting the list
         // from somewhere else (i.e., the server)?
-        this.inventory = Collections.synchronizedList(new ArrayList<Part>());
-        this.grips = Collections.synchronizedList(new ArrayList<Part>());
-        this.kit0NeedsParts = Collections.synchronizedList(new ArrayList<Part>());
-        this.kit1NeedsParts = Collections.synchronizedList(new ArrayList<Part>());
-        this.newKit = (new ArrayList<Kit>());
-        this.kitsStarted = Collections.synchronizedList(new ArrayList<Kit>());
+        inventory = Collections.synchronizedList(new ArrayList<Part>());
+        grips = Collections.synchronizedList(new ArrayList<Part>());
+        kit0NeedsParts = Collections.synchronizedList(new ArrayList<Part>());
+        kit1NeedsParts = Collections.synchronizedList(new ArrayList<Part>());
+        newKit = (new ArrayList<Kit>());
+        kitsStarted = Collections.synchronizedList(new ArrayList<Kit>());
     }
     
 //Messages 
@@ -64,6 +65,7 @@ public class PartsAgent extends Agent implements PartsInterface {
         for (Kit k: newKits){
         newKit.add(k);}
         //DoGiveKitsInQueue(newKit);
+        requestState=false;
         stateChanged();
     }
 
@@ -100,6 +102,7 @@ public class PartsAgent extends Agent implements PartsInterface {
         if (!newKit.isEmpty() && kits!=2) {
             kits++;
             startNewKit(newKit.remove(0));
+            requestState=true;
             return true;
         } 
     
@@ -163,7 +166,7 @@ public class PartsAgent extends Agent implements PartsInterface {
         DoGiveKitsInAction(k);
        // DoGiveKitsInQueue(newKit);
         
-        print("New kit being started");
+        print("New kit being started" + k.getName());
         camera.msgHereIsKitInfo(k);
         kitsStarted.add(k);
        
@@ -171,8 +174,12 @@ public class PartsAgent extends Agent implements PartsInterface {
             nest.msgNeedPart(k.getPart(i));
         }
         
-        kitrobot.msgNeedEmptyKit();//change to put empty kits in list when recieve the message back
-    	
+        //if(requestState==true)
+        {
+            kitrobot.msgNeedEmptyKit();//change to put empty kits in list when recieve the message back
+            requestState=false;
+        }
+            
         stateChanged();
 
     }
@@ -281,6 +288,14 @@ public class PartsAgent extends Agent implements PartsInterface {
         if (this.client != null) {
             this.fpm.sendMessage(Message.KAM_PARTS_MOVE_TO_NEST + ":" + nestNum);
             this.client.sendMessage(Message.KAM_PARTS_MOVE_TO_NEST + ":" + nestNum);
+            //thread.sleep
+            try {
+            Thread.sleep(5000);
+            } catch (InterruptedException e) {
+         // TODO Auto-generated catch block
+         e.printStackTrace();
+         } 
+        
         } else {
             print("DOMOVETONEST NUM ["+ nestNum+ "]");
             print("[ERROR] - Kit Assembly Manager is not online.");
@@ -292,6 +307,12 @@ public class PartsAgent extends Agent implements PartsInterface {
         if (this.client != null) {
             this.client.sendMessage(Message.KAM_PARTS_PICK_PART + ":" + nestNum);
             this.fpm.sendMessage(Message.KAM_PARTS_PICK_PART + ":" + nestNum);
+        try {
+         Thread.sleep(1500);
+         } catch (InterruptedException e) {
+         // TODO Auto-generated catch block
+         e.printStackTrace();
+         }
         } else {
             print("DOMOVETONEST NUM ["+ nestNum+ "]");
             print("[ERROR] - Kit Assembly Manager is not online.");
@@ -303,6 +324,13 @@ public class PartsAgent extends Agent implements PartsInterface {
         if (this.client != null) {
             this.client.sendMessage(Message.KAM_PARTS_DROP_OFF_PARTS + ":" + kitNum);
             this.fpm.sendMessage(Message.KAM_PARTS_DROP_OFF_PARTS + ":" + kitNum);
+        try {
+         Thread.sleep(10000);
+         } catch (InterruptedException e) {
+         // TODO Auto-generated catch block
+         e.printStackTrace();
+         }
+        print("Test-Dropping off parts");
         } else {
             print("DOMOVETONEST NUM ["+ kitNum+ "]");
             print("[ERROR] - Kit Assembly Manager is not online.");
@@ -313,6 +341,12 @@ public class PartsAgent extends Agent implements PartsInterface {
         if (this.client != null) {
 
             this.fpm.sendMessage(Message.KIT_IN_PRODUCTION+":"+k.getName());
+        try {
+         Thread.sleep(5000);
+         } catch (InterruptedException e) {
+         // TODO Auto-generated catch block
+         e.printStackTrace();
+         }
         }
         else{
             print("[ERROR] - Kit Assembly Manager is not online.");
