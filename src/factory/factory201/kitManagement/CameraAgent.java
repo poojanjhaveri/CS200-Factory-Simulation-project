@@ -47,6 +47,7 @@ public class CameraAgent extends Agent implements Camera {
         //synchronized (nestList) {
             nestList.add(nest);
         //}
+    
         stateChanged();
     }
 

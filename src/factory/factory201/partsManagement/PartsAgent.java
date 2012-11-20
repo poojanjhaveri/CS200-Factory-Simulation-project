@@ -155,7 +155,7 @@ public class PartsAgent extends Agent implements PartsInterface {
             kit1Info = null;
             //kit1 = null;
         }
-            print("KIT SIZE IS "+ k.parts.size());
+        print("KIT SIZE IS "+ k.parts.size());
         kitrobot.msgKitIsFull(k);
         print("KIT SIZE IS " + k.parts.size());
         stateChanged();
@@ -191,14 +191,19 @@ public class PartsAgent extends Agent implements PartsInterface {
             if (part.type == p.type){
                 kit0.parts.add(p);
               kit0NeedsParts.remove(part);
-              break;
+              //break;
             }}
        
         DoPickUpPart(p.getNestNum());
         
+        for(int i=0;i<kit0NeedsParts.size();i++)
+        {
+        print("parts still present with partsrobot " + kit0NeedsParts.get(i));
+        }
         if (grips.size() == 4 || kit0NeedsParts.isEmpty()) {
         putPartsInKit(0);
         }
+        
         if (kit0NeedsParts.isEmpty()){
             giveKitToKitAgent(kit0);}
         stateChanged();
