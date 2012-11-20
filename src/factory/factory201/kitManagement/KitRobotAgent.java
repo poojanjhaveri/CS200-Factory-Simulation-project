@@ -21,25 +21,38 @@ import factory.general.Message;
  * @version 1
  * @brief Agent for the Kit Robot
  */
+
 public class KitRobotAgent extends Agent implements KitRobot {
 
     private Conveyor conveyor;
     private Camera camera;
     private PartsInterface partsAgent;
+    
+    //initialize the kitting stand
     private KitStand kitStand;
+    
+    //check for kit requests from the parts agent
     private int kitRequestsFromPartsAgent;
+    
+    //requested kit from conveyer?
     private boolean requestedKitFromConveyor;
 
+    
     public KitRobotAgent(String name) {
         super(name);
         kitStand = new KitStand(this);
+        //nothing requested
         requestedKitFromConveyor = false;
+        //initialize 0 requests
         kitRequestsFromPartsAgent = 0;
     }
 
+    
     @Override
     public void msgNeedEmptyKit() {
 //        print("msgNeedEmptyKit");
+        
+        //increment request count
         kitRequestsFromPartsAgent++;
         stateChanged();
     }
@@ -47,7 +60,13 @@ public class KitRobotAgent extends Agent implements KitRobot {
     @Override
     public void msgHereIsEmptyKit(Kit kit) {
 //        print("msgHereIsEmptyKit");
+        
+        //add the kit to the kitting stand
+        //make a synchronized addition so that it doesn't affect what happens in the actions
+        synchronized(kitStand){
         kitStand.addKit(kit);
+        }
+        //set to false after receiving the kit,
         requestedKitFromConveyor = false;
         stateChanged();
     }
@@ -55,6 +74,8 @@ public class KitRobotAgent extends Agent implements KitRobot {
     @Override
     public void msgKitIsFull(Kit kit) {
 //        print("msgKitIsFull: " + kit.name);
+        
+        //change kit status to indicate it has been full
         kit.status = Kit.Status.full;
         stateChanged();
     }
@@ -62,18 +83,25 @@ public class KitRobotAgent extends Agent implements KitRobot {
     @Override
     public void msgKitInspected(boolean result) {
 //        print("msgKitInspected");
+        
+        synchronized(kitStand){
         kitStand.get(2).status = result ? Kit.Status.verified : Kit.Status.error;
+    }        
         stateChanged();
     }
 
     // ********* SCHEDULER *********
     @Override
     public boolean pickAndExecuteAnAction() {
+        
+        //if the stand is not empty at 2 and has been verified, send to conveyer.
         if (!kitStand.isEmpty(2) && kitStand.get(2).status == Kit.Status.verified) {
             //if kit is ready to leave cell
             sendVerifiedKitToConveyor();
             return true;
         }
+        
+        //if no kit is being inspected and the one at 1 is full, move to inspection.
         if (!kitStand.isEmpty(1) && kitStand.get(1).status == Kit.Status.full && kitStand.isEmpty(2)) {
             // if kit is ready for inspection
             moveFullKitToInspection(kitStand.get(1));
@@ -84,22 +112,40 @@ public class KitRobotAgent extends Agent implements KitRobot {
             moveFullKitToInspection(kitStand.get(0));
             return true;
         }
+        /*
         if (kitStand.availability() > 0 && !requestedKitFromConveyor) {
             // if tempstand is empty
             requestEmptyKitFromConveyor();
             return true;
         }
-        if (kitRequestsFromPartsAgent > 0) {
+        */
+        //check for a kit availa
+        
+        if (kitRequestsFromPartsAgent > 0){
+            if((!kitStand.isEmpty(0)) && kitStand.get(0).status==Kit.Status.empty) {
             // if parts agent needs empty kit
-            giveEmptyKitToPartsAgent();
+            giveEmptyKitToPartsAgent(0);
+            kitRequestsFromPartsAgent--;
             return true;
+            }
+            else if((!kitStand.isEmpty(1)) && kitStand.get(1).status==Kit.Status.empty){
+            giveEmptyKitToPartsAgent(1);
+            kitRequestsFromPartsAgent--;
+            return true;
+            }
+            else if(requestedKitFromConveyor==false)
+                requestEmptyKitFromConveyor();
         }
         return false;
     }
 
     // ********** ACTIONS **********
     private void sendVerifiedKitToConveyor() {
-        Kit k = kitStand.remove(2);
+        Kit k;
+        //kitStand.remove might happen when kits are being added in the messages
+        synchronized(kitStand){
+         k=kitStand.remove(2);
+        }
         print("Sending verified kit: [" + k.name + "] to the conveyor.");
         DoMoveKitFrom2ToConveyor(k);
         conveyor.msgHereIsVerifiedKit(k);
@@ -110,24 +156,42 @@ public class KitRobotAgent extends Agent implements KitRobot {
         print("Moving the full kit: [" + kit.name + "] to the inspection stand.");
         kitStand.moveFullKitToInspection(kit);
         kit.beingUsedByPartsAgent = false;
+     //   moveKitToInspectionAndUpdateKittingStand(kit);
         camera.msgKitIsFull(kitStand.get(2));
         stateChanged();
     }
-
-    private void giveEmptyKitToPartsAgent() {
-        if (kitStand.availableToGive(1) || kitStand.availableToGive(0)) {
-            int i = kitStand.availableToGive(1) ? 1 : 0;
-            print("Notifying the parts agent that an empty kit: [" + kitStand.get(i).name + "] is ready.");
-            partsAgent.msgEmptyKitReady(kitStand.get(i));
-            kitStand.get(i).beingUsedByPartsAgent = true;
-            kitRequestsFromPartsAgent--;
-        }
+    
+    private void moveKitToInspectionAndUpdateKittingStand(Kit k){
+    if(k.standNum==Kit.StandNum.zero){
+        kitStand.setNull(0);
+        DoMoveKitFrom0to2();
+    }
+    if(k.standNum==Kit.StandNum.one){
+            kitStand.setNull(1);
+            DoMoveKitFrom1to2();
+    }
+    //update the kitStand
+    k.standNum=Kit.StandNum.two;
+    
+    }
+    
+    private void giveEmptyKitToPartsAgent(int num) {
+        //might not work because the kitStand maybe modified in messages (running in sender's thread). 
+       
+        //if (kitStand.availableToGive(1) || kitStand.availableToGive(0)) {
+         //   int i = kitStand.availableToGive(1) ? 1 : 0;
+            print("Notifying the parts agent that an empty kit: [" + kitStand.get(num).name + "] is ready.");
+            partsAgent.msgEmptyKitReady(kitStand.get(num));
+            kitStand.get(num).beingUsedByPartsAgent = true;
+  
+       // }
         stateChanged();
     }
 
     private void requestEmptyKitFromConveyor() {
         print("Requesting an empty kit from the conveyor.");
         conveyor.msgNeedEmptyKit();
+        
         requestedKitFromConveyor = true;
         stateChanged();
     }

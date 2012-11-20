@@ -40,6 +40,7 @@ public class PartsAgent extends Agent implements PartsInterface {
     public List<Part> inventory, grips, kit0NeedsParts, kit1NeedsParts;
     public ArrayList<Kit> newKit;
     boolean emptyKitReady;
+    boolean requestState=false;
     public List<Kit> kitsStarted;
 
     public PartsAgent(String name) {
@@ -64,6 +65,7 @@ public class PartsAgent extends Agent implements PartsInterface {
         for (Kit k: newKits){
         newKit.add(k);}
         //DoGiveKitsInQueue(newKit);
+        requestState=false;
         stateChanged();
     }
 
@@ -100,6 +102,7 @@ public class PartsAgent extends Agent implements PartsInterface {
         if (!newKit.isEmpty() && kits!=2) {
             kits++;
             startNewKit(newKit.remove(0));
+            requestState=true;
             return true;
         } 
     
@@ -163,7 +166,7 @@ public class PartsAgent extends Agent implements PartsInterface {
         DoGiveKitsInAction(k);
        // DoGiveKitsInQueue(newKit);
         
-        print("New kit being started");
+        print("New kit being started" + k.getName());
         camera.msgHereIsKitInfo(k);
         kitsStarted.add(k);
        
@@ -171,8 +174,12 @@ public class PartsAgent extends Agent implements PartsInterface {
             nest.msgNeedPart(k.getPart(i));
         }
         
-        kitrobot.msgNeedEmptyKit();//change to put empty kits in list when recieve the message back
-    	
+        //if(requestState==true)
+        {
+            kitrobot.msgNeedEmptyKit();//change to put empty kits in list when recieve the message back
+            requestState=false;
+        }
+            
         stateChanged();
 
     }
@@ -283,7 +290,7 @@ public class PartsAgent extends Agent implements PartsInterface {
             this.client.sendMessage(Message.KAM_PARTS_MOVE_TO_NEST + ":" + nestNum);
             //thread.sleep
             try {
-            Thread.sleep(7000);
+            Thread.sleep(5000);
             } catch (InterruptedException e) {
          // TODO Auto-generated catch block
          e.printStackTrace();
@@ -301,7 +308,7 @@ public class PartsAgent extends Agent implements PartsInterface {
             this.client.sendMessage(Message.KAM_PARTS_PICK_PART + ":" + nestNum);
             this.fpm.sendMessage(Message.KAM_PARTS_PICK_PART + ":" + nestNum);
         try {
-         Thread.sleep(2000);
+         Thread.sleep(1500);
          } catch (InterruptedException e) {
          // TODO Auto-generated catch block
          e.printStackTrace();

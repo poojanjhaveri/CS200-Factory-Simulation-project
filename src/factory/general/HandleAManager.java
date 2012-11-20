@@ -64,7 +64,7 @@ public class HandleAManager implements Runnable {
                     throw new Exception();
                 }
                 processMessage(message);
-                p.println("Processed message in client thread");
+             //   p.println("Processed message in client thread");
             } catch (NullPointerException e) {
             	System.out.println("Nullpointer from HandleAManager. Shutting down. The agents may not have been initialized.");
                 e.printStackTrace();
