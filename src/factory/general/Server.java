@@ -44,7 +44,7 @@ public class Server {
 
     // Fields just for "AgentMain" stuff (Agent preparation)
     // If true, print statements for this 201 person are on
-    private static final boolean PATRICK = false;
+    private static final boolean PATRICK = true;
     private static final boolean KEVIN = false;
     private static final boolean ALEX = true;
 
@@ -263,19 +263,20 @@ public class Server {
                 kit.addPart(new Part("lol","k","fame")); //testing- Kevin
             }
             ArrayList<Kit> kits = new ArrayList<Kit>();
+            for(int i=0;i<9;i++)
             kits.add(kit);
-            kits.add(kit);
-            kits.add(kit);
+            //kits.add(kit);
+            //kits.add(kit);
             kits.get(0).debug();
             // TODO: *Put this wherever the FPM sends the signal to create (generate) kits
-            conveyorAgent.generateKit(10); // * This generates 10 new kits, among other things if you pass string... *
+            conveyorAgent.msgGenerateKit(10); // * This generates 10 new kits, among other things if you pass string... *
 
             // Officially start the agent interaction sequence!
             partsAgent.msgHereIsKit(kits);
         }
 
         private void turnOffAgentPrintStatements() {
-            if (!PATRICK) {
+            if (PATRICK) {
                 nestAgent.print = false;
                 partsAgent.print = false;
             }
@@ -288,10 +289,10 @@ public class Server {
                 }
                 gantryAgent.print = false;
             }
-            if (!ALEX) {
-                kitRobotAgent.print = false;
-                conveyorAgent.print = false;
-                cameraAgent.print = false;
+            if (ALEX) {
+                kitRobotAgent.print = true;
+                conveyorAgent.print = true;
+                cameraAgent.print = true;
             }
         }
 
