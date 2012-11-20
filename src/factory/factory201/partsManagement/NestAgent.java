@@ -86,6 +86,8 @@ public class NestAgent extends Agent implements NestInterface {
                 if (n.parts.size()>=n.threshold) {
                     n.status = Nest.Status.full;     
                 }
+                else 
+                    n.status = Nest.Status.needPart;
                 print("adding " + kitParts.size() + " " + p.getInt() + " to the nest " + n.nestNum);
 
             
@@ -197,7 +199,7 @@ public class NestAgent extends Agent implements NestInterface {
     print("PURGING Nest "+ n.nestNum);
     n.parts.clear();
     //DoPurge();
-    n.status = Nest.Status.empty;
+    n.status = Nest.Status.needPart;
     stateChanged();
     }
   

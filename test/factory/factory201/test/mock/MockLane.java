@@ -1,14 +1,13 @@
 package factory.factory201.test.mock;
 
 import factory.factory201.interfaces.Lane;
-import factory.factory201.partsManagement.NestAgent;
 import factory.general.Part;
 import java.util.List;
 
 public class MockLane extends MockAgent implements Lane{
 
 	public EventLog log = new EventLog();
-	NestAgent nest;
+	
 	public MockLane(String name) {
 		super(name);
 		// TODO Auto-generated constructor stub
@@ -33,9 +32,7 @@ public class MockLane extends MockAgent implements Lane{
 						));		
 	
 	}
-        public void setNestAgent(NestAgent n){
-            this.nest=n;
-        }
+        
 
     @Override
     public int getIndex() {

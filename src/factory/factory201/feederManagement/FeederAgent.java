@@ -274,7 +274,7 @@ public class FeederAgent extends Agent implements Feeder {
         }
 
 
-        dosendPartToLeftLane(p);
+      //  dosendPartToLeftLane(p);
         leftLane.msgHereAreParts(_parts);
 
         //animation.setDiverterSwitchLeft(feederNum-1);
@@ -291,7 +291,7 @@ public class FeederAgent extends Agent implements Feeder {
             _parts.add(p.part);
         }
 
-        dosendPartToRightLane(p);
+      //  dosendPartToRightLane(p);
         rightLane.msgHereAreParts(_parts);
 
         //animation.setDiverterSwitchLeft(feederNum-1);

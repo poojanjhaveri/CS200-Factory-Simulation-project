@@ -12,7 +12,6 @@ import factory.general.Part;
 import java.util.ArrayList;
 import java.util.List;
 import junit.framework.TestCase;
-import org.junit.Test;
 
 
 
@@ -40,7 +39,7 @@ public class NestTest extends TestCase{
        public List<Part> nestParts;
        
 
-      @Test
+     // @Test
       public void testFirst(){
         lane0 = new MockLane("LANE0");
         Part p = new Part(1);

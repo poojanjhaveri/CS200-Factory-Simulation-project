@@ -4,23 +4,13 @@
  */
 package factory.factory201.FeederManegementTest;
 
-import factory.factory200.gantryRobotManager.GantryRobotManager;
 import factory.factory201.feederManagement.FeederAgent;
-import factory.factory201.feederManagement.GantryAgent;
-import factory.factory201.interfaces.Feeder;
-import factory.factory201.test.mock.MockFeeder;
 import factory.factory201.test.mock.MockGantry;
 import factory.factory201.test.mock.MockLane;
 import factory.general.Part;
 import java.util.ArrayList;
 import java.util.List;
 import junit.framework.TestCase;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *

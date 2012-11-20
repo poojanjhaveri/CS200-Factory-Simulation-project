@@ -26,10 +26,10 @@ import factory.general.Part;
  */
 public class PartsAgent extends Agent implements PartsInterface {
 
-    // KitAssemblyManager kam; // Should not have!
+    
     KitRobot kitrobot;
-    Kit kit0;
-    Kit kit1;
+    Kit kit0; //pointer for kitStandZero object
+    Kit kit1; //pointer for kitStandOne object
     Kit kit0Info;
     Kit kit1Info;
     NestInterface nest;
@@ -45,7 +45,7 @@ public class PartsAgent extends Agent implements PartsInterface {
     public PartsAgent(String name) {
         super(name); 
         // Should these be creating NEW ArrayLists of things, or should they be getting the list
-        // from somewhere else (i.e., the server)?
+        // from somewhere else (i.e., the server)?  <-NO
         inventory = Collections.synchronizedList(new ArrayList<Part>());
         grips = Collections.synchronizedList(new ArrayList<Part>());
         kit0NeedsParts = Collections.synchronizedList(new ArrayList<Part>());
@@ -157,7 +157,7 @@ public class PartsAgent extends Agent implements PartsInterface {
             kit1Info = null;
             //kit1 = null;
         }
-          //  print("KIT SIZE IS " + k.parts.size());
+            print("KIT SIZE IS " + k.parts.size());
         kitrobot.msgKitIsFull(k);
         
         stateChanged();
@@ -229,7 +229,7 @@ public class PartsAgent extends Agent implements PartsInterface {
         print("kit0 size ["+ k.parts.size() + "]");
           // kit0=kit0Info;
            kit0.status = Kit.Status.ready;
-           kit0.standNum = Kit.StandNum.zero;
+          // kit0.standNum = Kit.StandNum.zero;
            for(int i=0; i<kit0Info.parts.size(); i++){
     		kit0NeedsParts.add(kit0Info.getPart(i));
     	}
@@ -240,7 +240,7 @@ public class PartsAgent extends Agent implements PartsInterface {
         kit1Info=k;
            // kit1=kit1Info;
             kit1.status = Kit.Status.ready;
-            kit1.standNum = Kit.StandNum.one;
+           // kit1.standNum = Kit.StandNum.one;
             for(int i=0; i<kit1Info.parts.size(); i++){
     		kit1NeedsParts.add(kit1Info.getPart(i));
     	}   
