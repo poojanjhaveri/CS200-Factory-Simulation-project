@@ -263,9 +263,10 @@ public class Server {
                 kit.addPart(new Part("lol","k","fame")); //testing- Kevin
             }
             ArrayList<Kit> kits = new ArrayList<Kit>();
+            for(int i=0;i<9;i++)
             kits.add(kit);
-            kits.add(kit);
-            kits.add(kit);
+            //kits.add(kit);
+            //kits.add(kit);
             kits.get(0).debug();
             // TODO: *Put this wherever the FPM sends the signal to create (generate) kits
             conveyorAgent.msgGenerateKit(10); // * This generates 10 new kits, among other things if you pass string... *
@@ -277,7 +278,7 @@ public class Server {
         private void turnOffAgentPrintStatements() {
             if (PATRICK) {
                 nestAgent.print = false;
-                partsAgent.print = true;
+                partsAgent.print = false;
             }
             if (!KEVIN) {
                 for (int i = 0; i < LANE; i++) {
@@ -289,7 +290,7 @@ public class Server {
                 gantryAgent.print = false;
             }
             if (ALEX) {
-                kitRobotAgent.print = false;
+                kitRobotAgent.print = true;
                 conveyorAgent.print = true;
                 cameraAgent.print = true;
             }

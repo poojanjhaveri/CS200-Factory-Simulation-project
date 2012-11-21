@@ -193,7 +193,7 @@ public class GantryAgent extends Agent implements Gantry {
     @Override
     public boolean pickAndExecuteAnAction() {
     
-        synchronized(myFeeders){	
+        synchronized(bins){	
     	for(myFeeder f: myFeeders){
     		if(f.requestState==true){
     			for(myBin b: bins){

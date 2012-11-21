@@ -63,6 +63,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
         
         //add the kit to the kitting stand
         //make a synchronized addition so that it doesn't affect what happens in the actions
+        print("testing location after two executions receiving kit? , 2 and 1 empty? " + kitStand.isEmpty(2) + kitStand.isEmpty(1));
         synchronized(kitStand){
         kitStand.addKit(kit);
         }
@@ -93,10 +94,12 @@ public class KitRobotAgent extends Agent implements KitRobot {
     // ********* SCHEDULER *********
     @Override
     public boolean pickAndExecuteAnAction() {
-        
+        print("testing location after two executions , 2 and 1 empty? " + kitStand.isEmpty(2) + kitStand.isEmpty(1));
+        print("request State is " + requestedKitFromConveyor);
         //if the stand is not empty at 2 and has been verified, send to conveyer.
         if (!kitStand.isEmpty(2) && kitStand.get(2).status == Kit.Status.verified) {
             //if kit is ready to leave cell
+            print("sending verified kit to the conveyor");
             sendVerifiedKitToConveyor();
             return true;
         }
@@ -133,7 +136,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
             kitRequestsFromPartsAgent--;
             return true;
             }
-            else if(requestedKitFromConveyor==false)
+            else if(requestedKitFromConveyor==false && kitStand.isEmpty(1) && kitStand.isEmpty(2)&& kitStand.isEmpty(0))
                 requestEmptyKitFromConveyor();
         }
         return false;
