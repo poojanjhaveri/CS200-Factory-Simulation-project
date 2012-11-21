@@ -2,6 +2,14 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+/*
+ NOTE TO THE GRADER: PLEASE COMMENT OUT doSupplyPartsToLeftLane() and doSupplyPartsToRightLane() in FeederAgent.java
+ * to make tests work. This is because the tests won't work with the managers offline.
+ * PLEASE COMMENT OUT doSupplyParts() in gantry as well for the same reason.
+ 
+ */
+
+
 package factory.factory201.FeederManegementTest;
 
 import factory.factory200.gantryRobotManager.GantryRobotManager;
@@ -22,6 +30,8 @@ import static org.junit.Assert.*;
  *
  * @author Kevin
  */
+
+
 public class GantryAgentTest extends TestCase{
     public GantryAgent gantry;
 
