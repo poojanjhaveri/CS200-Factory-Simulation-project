@@ -44,55 +44,58 @@ public class CameraAgent extends Agent implements Camera {
     @Override
     public void msgNestIsFull(Nest nest) {
 //        print("Received msgNestIsFull that " + nest.nestNum + " is full.");
-        synchronized (nestList) {
+        //synchronized (nestList) {
             nestList.add(nest);
-        }
+        //}
+    
         stateChanged();
     }
 
     @Override
     public void msgKitIsFull(Kit kit) {
-//        print("Received msgKitIsFull from Kit Robot Agent");
-        synchronized (kitList) {
-            kitList.add(kit);
-        }
+        print("Received msgKitIsFull from Kit Robot Agent");
+        
+        kitList.add(kit);
+        
         stateChanged();
     }
 
     @Override
     public void msgHereIsKitInfo(Kit kit) {
         kitInfoFromPartsAgent = kit;
+    stateChanged();
     }
 
     // ********* SCHEDULER *********
     @Override
     public boolean pickAndExecuteAnAction() {
+    //print("myKit list size is " + kitList.size());
         if (kitInfoFromPartsAgent != null) {
             configureKitInfo();
             return true;
         }
-        synchronized (kitList) {
-            for (Kit k : kitList) {
+        
+        for (Kit k : kitList) {
                 if (k.status == Kit.Status.full) {
                     inspectKit(k);
                     return true;
                 }
             }
-        }
-        synchronized (nestList) {
+        
+        //synchronized (nestList) {
             for (Nest n : nestList) {
                 if (n.status == Nest.Status.gettingInspected) {
                     inspectNest(n);
                     return true;
                 }
             }
-        }
+        
         return false;
     }
 
     // ********** ACTIONS **********
 
-    public void inspectKit(Kit kit) {
+    private void inspectKit(Kit kit) {
 //        print("Inspecting kit: [" + kit.name + "].");
         boolean result = true;
 
@@ -111,6 +114,7 @@ public class CameraAgent extends Agent implements Camera {
         }
 
         DoInspectKit(kit);
+        print("sending msg to kitRobot");
         kitRobot.msgKitInspected(result);
         String strResult = result ? "NO ERROR" : "ERROR";
         print("Inspected kit: [" + kit.name + "] with result: " + strResult + ".");
@@ -142,6 +146,7 @@ public class CameraAgent extends Agent implements Camera {
             kitRqmts.add(kitInfoFromPartsAgent.getPart(i).type);
         }
         kitInfoFromPartsAgent = null;
+    //stateChanged();
     }
 
     // ************ MISC ***********
@@ -166,6 +171,12 @@ public class CameraAgent extends Agent implements Camera {
         if (this.client != null) {
             this.client.sendMessage(Message.KAM_FLASH_KIT_CAMERA);
             this.fpm.sendMessage(Message.KAM_FLASH_KIT_CAMERA);
+        try {
+         Thread.sleep(1000);
+         } catch (InterruptedException e) {
+         // TODO Auto-generated catch block
+         e.printStackTrace();
+         }
         } else {
             print("[ERROR] - Kit Assembly Manager is not online.");
         }
@@ -176,6 +187,13 @@ public class CameraAgent extends Agent implements Camera {
             this.client.sendMessage(Message.KAM_FLASH_NEST_CAMERA + ":" + nest.nestNum);
             this.fpm.sendMessage(Message.KAM_FLASH_NEST_CAMERA + ":" + nest.nestNum);
             this.fpm.sendMessage(Message.ALERT_FPM_KIT_INSPECTED);
+        try {
+         Thread.sleep(3000);
+         } catch (InterruptedException e) {
+         // TODO Auto-generated catch block
+         e.printStackTrace();
+         }
+        
         } else {
             print("[ERROR] - Kit Assembly Manager is not online.");
         }
