@@ -22,7 +22,7 @@ public class ConveyorAgentTest extends TestCase {
     public void testMsgNeedEmptyKit() {
         this.initialize();
         
-        conveyor.generateKit("Test Kit");
+        conveyor.msgGenerateKit(1);
         conveyor.msgNeedEmptyKit();
         conveyor.pickAndExecuteAnAction();
         assertTrue("Kit should be given after 1 scheduler call." +
