@@ -12,6 +12,7 @@ public class LMPartDataInFeeder {
 	
 	private LMPart newPart;
 	private ArrayList<LMPart> parts = new ArrayList<LMPart>();
+	private LMPart removablePart;
 	private int feederNum;
 	
 	public LMPartDataInFeeder(int feederNum, LMServerMain serverMain){
@@ -25,6 +26,7 @@ public class LMPartDataInFeeder {
 			for(int i=0 ; i<quantity ; i++){
 				newPart = new LMPart(partNum);
 				parts.add(newPart);
+				partLowSensor();
 			}
 		}
 	}
@@ -34,14 +36,38 @@ public class LMPartDataInFeeder {
 	}
 	
 	public LMPart getPartFromFeederToLane(){
-		return parts.remove(0);
+		removablePart = parts.remove(0);
+		partLowSensor();
+		purgeSensor();
+		return removablePart;
 	}
 	
 	public void rearGateOpen(){
 		parts.clear();
+		partLowSensor();
+		purgeSensor();
 	}
 	
 	public int getSize(){
 		return parts.size();
+	}
+	
+	public void partLowSensor(){
+		if(parts.size() <= 4){
+			serverMain.getForAgentFeeder().setPartLowSensorOn(feederNum);
+		}
+		else if(parts.size() > 4){
+			serverMain.getForAgentFeeder().setPartLowSensorOff(feederNum);
+		}
+	}
+	
+	public void purgeSensor(){
+		if(parts.size() == 0 && serverMain.getForAgentFeeder().getFeeder(feederNum).getWithBin() == true){
+			serverMain.getForAgentFeeder().setPurgeBinSwitchOn(feederNum);
+			serverMain.getForAgentGantryRobot().emptyBin(feederNum);
+		}
+		else if(parts.size() != 0){
+			serverMain.getForAgentFeeder().setPurgeBinSwitchOff(feederNum);
+		}
 	}
 }
