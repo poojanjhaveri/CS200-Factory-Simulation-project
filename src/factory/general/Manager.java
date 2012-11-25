@@ -22,7 +22,7 @@ public class Manager extends JFrame {
     // Connection fields
     protected ManagerConnection mcon;
     
-    // People who code managers: change this to true if you just want quick debugging / don't want to connect to the server
+    // People who code managers: change DEBUG to true if you just want quick debugging / don't want to connect to the server
     protected static final boolean DEBUG = false;
     private static final String DEBUG_NOTIFICATION = "Manager is in debug mode.";
     
