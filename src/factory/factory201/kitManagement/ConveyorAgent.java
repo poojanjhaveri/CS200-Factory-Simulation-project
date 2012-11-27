@@ -11,10 +11,9 @@ import java.util.List;
 
 /**
  * Agent for the conveyor.
- * 
- * This class is the agent for the Conveyor which brings empty
- * Kits into the kitting cell and takes complete kits out of the kitting
- * cell.
+ *
+ * This class is the agent for the Conveyor which brings empty Kits into the
+ * kitting cell and takes complete kits out of the kitting cell.
  *
  * @author Alex Young
  * @version 1
@@ -33,7 +32,6 @@ public class ConveyorAgent extends Agent implements Conveyor {
     }
 
     // ********** MESSAGES *********
-
     @Override
     public void msgNeedEmptyKit() {
         kitRequestsFromKitRobot++;
@@ -50,7 +48,6 @@ public class ConveyorAgent extends Agent implements Conveyor {
     }
 
     // ********* SCHEDULER *********
-
     @Override
     public boolean pickAndExecuteAnAction() {
         if (kitRequestsFromKitRobot > 0) {
@@ -61,7 +58,6 @@ public class ConveyorAgent extends Agent implements Conveyor {
     }
 
     // ********** ACTIONS **********
-
     private void giveEmptyKit() {
         synchronized (kitList) {
             for (Kit k : kitList) {
@@ -117,16 +113,18 @@ public class ConveyorAgent extends Agent implements Conveyor {
     public List<Kit> getKitList() {
         return this.kitList;
     }
-    
+
     private void DoAddKit(Kit k) {
         if (this.client != null) {
             this.client.sendMessage(Message.KAM_ADD_KIT);
             this.fpm.sendMessage(Message.KAM_ADD_KIT);
-         
+
         } else {
             print("[ERROR] - Kit Assembly Manager is not online.");
         }
     }
-    
-    public void testAddKit(Kit k){kitList.add(k);}
+
+    public void testAddKit(Kit k) {
+        kitList.add(k);
+    }
 }
