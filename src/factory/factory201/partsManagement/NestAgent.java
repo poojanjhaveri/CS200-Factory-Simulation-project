@@ -26,31 +26,25 @@ public class NestAgent extends Agent implements NestInterface {
     Lane lane5;
     Lane lane6;
     Lane lane7;
-    Lane lanes[] = {lane0, lane1, lane2, lane3, lane4, lane5, lane6, lane7};
+    Lane lanes[] = {lane0, lane1, lane2, lane3, lane4, lane5, lane6, lane7};//instances of lanes
     
-    public List<Nest> myNests;
-    public List<Part> needParts;
-    private List<Nest> nests;
+    public List<Part> requests;//parts that partsAgent requests, removed when part given back to partsagent
+    public List<Nest> myNests;//nests 0-7 that this agent controls
+    public List<Part> needParts;//the parts that have been requested, used to set an individual's nest part
     PartsInterface partsagent;
     Camera camera;
-    private int nestNumber;
-    public List<Part> requests;
 
     @Override
     public void msgHereAreParts(List<Part> parts) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    
-    enum Status {none, needPart, gettingPart, full, gettingInspected, readyForKit, purge};
-    
    public NestAgent(String name) {
     super(name);
-    myNests = Collections.synchronizedList(new ArrayList<Nest>());
+    myNests = Collections.synchronizedList(new ArrayList<Nest>());//initialize lists
     needParts = Collections.synchronizedList(new ArrayList<Part>());
-    nests = Collections.synchronizedList(new ArrayList<Nest>());
     requests = Collections.synchronizedList(new ArrayList<Part>());
-    myNests.add(new Nest(0));
+    myNests.add(new Nest(0));//initialize nests
     myNests.add(new Nest(1));
     myNests.add(new Nest(2));
     myNests.add(new Nest(3));
@@ -69,7 +63,7 @@ public class NestAgent extends Agent implements NestInterface {
 
     
   
-    public void msgNeedPart(Part p) {
+    public void msgNeedPart(Part p) {//called by partsAgent
         requests.add(p);
         needParts.add(p);
         stateChanged();
@@ -78,38 +72,32 @@ public class NestAgent extends Agent implements NestInterface {
     public void msgHereAreParts(List<Part> kitParts, int laneIndex){
         //requires syncrhonization: many msgs can come in to modify mynests.
         Part p = kitParts.get(0);
-        //Nest n = myNests.get(laneIndex);
-        
-        //issue- nest n is local to the function
-                for (int i =0; i<kitParts.size(); i++){
+                for (int i =0; i<kitParts.size(); i++){//add parts given from laneAgent to nests
                     kitParts.get(i).setNestNum(laneIndex);
                     myNests.get(laneIndex).parts.add(kitParts.get(i));
-                    myNests.get(laneIndex).parts.get(i).setNestNum(laneIndex);//COMMENT OUT IFNEEDED
+                    myNests.get(laneIndex).parts.get(i).setNestNum(laneIndex);
                 }
-                if (myNests.get(laneIndex).parts.size()>=myNests.get(laneIndex).threshold) {
+                if (myNests.get(laneIndex).parts.size()>=myNests.get(laneIndex).threshold) {//NEEDTO give parts back to lanes if too full?
                     myNests.get(laneIndex).status = Nest.Status.full;     
                 }
                 print("adding " + kitParts.size() + " " + p.getInt() + " to the nest " + myNests.get(laneIndex).nestNum);
 
-            
-        
         stateChanged();
     }
 
     @Override
-    public void msgNestInspected(Nest n, boolean result) {
+    public void msgNestInspected(Nest n, boolean result) {//NEEDTO change from boolean to setting individual parts?
         if (result) {
             n.status = Nest.Status.readyForKit;
             print("Nest inspected and verified");
         } else {
            purge(n);
-            //n.status = Nest.Status.purge;
-            print("Nest is not verified, will be dumped");
+           print("Nest is not verified, will be dumped");
         }
         stateChanged();
     }
+    
     //scheduler
-
     @Override
     public boolean pickAndExecuteAnAction() {
 
@@ -142,7 +130,7 @@ public class NestAgent extends Agent implements NestInterface {
                 
                for (Nest n: myNests){
                 if(n.status == Nest.Status.empty){  
-                    n.setPart(needParts.remove(0));
+                    n.setPart(needParts.remove(0));//assigns part to nest
                     n.status = Nest.Status.needPart;
                     print("Part " + n.part.getInt() + " is not taken by a nest, part is being assigned to the nest "+ n.nestNum);
                     return true;
@@ -155,9 +143,9 @@ public class NestAgent extends Agent implements NestInterface {
                         boolean next = true;
                         for (int i=0; i<requests.size(); i++){
                             if (n.part.type == requests.get(i).type)
-                                next = false;
+                                next = false;//flag next set false if the nest has a requested part
                     }
-                            if (next){
+                            if (next){//if nest doesn't have requested part purge and assign a needed part
                         
                              print("PURGE IS HAPPENING");
                              n.setPart(needParts.remove(0));
@@ -189,7 +177,7 @@ public class NestAgent extends Agent implements NestInterface {
     
     private void giveToKit(Nest n){
         requests.remove(0);
-    	partsagent.msgHereIsPart(n.parts.remove(0));
+    	partsagent.msgHereIsPart(n.parts.remove(0));//physically remove the part from the nest
         print("giving part " + n.part.getInt() + " to kit now nest has " + n.parts.size());
         if (n.parts.isEmpty())
                 n.status = Nest.Status.empty;
@@ -199,8 +187,8 @@ public class NestAgent extends Agent implements NestInterface {
     private void purge(Nest n){
     print("PURGING Nest "+ n.nestNum);
     n.parts.clear();
-    //DoPurge();
-    n.status = Nest.Status.empty;
+    //DoPurge();//NEEDTO implement this method
+    n.status = Nest.Status.needPart;
     stateChanged();
     }
   

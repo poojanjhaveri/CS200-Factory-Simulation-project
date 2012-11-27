@@ -94,8 +94,8 @@ public class CameraAgent extends Agent implements Camera {
     }
 
     // ********** ACTIONS **********
-
-    private void inspectKit(Kit kit) {
+    
+    public void inspectKit(Kit kit) {
 //        print("Inspecting kit: [" + kit.name + "].");
         boolean result = true;
 
@@ -133,8 +133,8 @@ public class CameraAgent extends Agent implements Camera {
             }
         }
         DoInspectNest(nest);
-        nestAgent.msgNestInspected(nest, result); 
-        String strResult = result ? "NO ERROR" : "ERROR";       
+        nestAgent.msgNestInspected(nest, result);
+        String strResult = result ? "NO ERROR" : "ERROR";
         print("Inspecting nest: [Nest " + nest.nestNum + "] with result: " + strResult + ".");
         nestList.remove(nest);
         stateChanged();
@@ -162,7 +162,7 @@ public class CameraAgent extends Agent implements Camera {
         this.kitRobot = kitRobot;
         this.nestAgent = nestAgent;
     }
-    
+
     public List<Integer> getKitRqmts() {
         return this.kitRqmts;
     }
