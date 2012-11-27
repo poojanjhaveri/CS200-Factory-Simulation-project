@@ -279,7 +279,7 @@ public class KitAssemblyManager extends Manager implements ActionListener {
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        this.mcon.out(Message.IDENTIFY_KITASSEMBLYMANAGER); //won't this only be called once because it is in the constructor; shouldn't this be in the timer class?
+        this.sendToServer(Message.IDENTIFY_KITASSEMBLYMANAGER); //won't this only be called once because it is in the constructor; shouldn't this be in the timer class?
     }
     //tester variables
     JButton partRobot;

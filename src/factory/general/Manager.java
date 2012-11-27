@@ -1,19 +1,9 @@
 package factory.general;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.net.Socket;
-import java.net.UnknownHostException;
-
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JFrame;
 
-import factory.general.Server;
-import factory.general.Message;
-import factory.general.Printer;
+import javax.swing.JFrame;
 
 /**
  * The Manager plays a pivotal role in server interaction by standardizing the
@@ -31,6 +21,10 @@ public class Manager extends JFrame {
      */
     // Connection fields
     protected ManagerConnection mcon;
+    
+    // People who code managers: change DEBUG to true if you just want quick debugging / don't want to connect to the server
+    protected static final boolean DEBUG = false;
+    private static final String DEBUG_NOTIFICATION = "Manager is in debug mode.";
     
     // Other fields
     public static Printer p = new Printer();
@@ -65,20 +59,21 @@ public class Manager extends JFrame {
      * so this is run at the beginning of the constructor for each manager.
      */
     public Manager() {
-        /** Set actions on exiting the entire application */
-        
-        // Force clients to tell the server that the client is exiting when the window closes
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            @Override
-            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
-                sendToServer(Message.CLIENT_EXITED);
-            }
-        });
-        
-        // On instantiation of a major, connect to the server
-        this.mcon = new ManagerConnection(this);
-        this.mcon.connect();
-        (new Thread(this.mcon)).start(); // create new thread with this connection
+    	if (!DEBUG) {
+	        /** Set actions on exiting the entire application */
+	        // Force clients to tell the server that the client is exiting when the window closes
+	        addWindowListener(new java.awt.event.WindowAdapter() {
+	            @Override
+	            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+	                sendToServer(Message.CLIENT_EXITED);
+	            }
+	        });
+	        
+	        /** On instantiation of a manager, connect to the server */
+	        this.mcon = new ManagerConnection(this);
+	        this.mcon.connect();
+	        (new Thread(this.mcon)).start(); // create new thread with this connection
+    	}
     }
 
     /**
@@ -87,10 +82,14 @@ public class Manager extends JFrame {
      * specific parameters.
      */
     public void sendToServer(String msg) {
-        try {
-            this.mcon.out(msg);
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (DEBUG) {
+        	System.out.println(DEBUG_NOTIFICATION);
+        } else {
+        	try {
+        		this.mcon.out(msg);
+        	} catch (Exception e) {
+        		e.printStackTrace();
+        	}
         }
     }
 
@@ -100,28 +99,32 @@ public class Manager extends JFrame {
      * the possibilities.
      */
     public void processMessage(String msg) {
-        if (msg == null) {
-//            System.out.println("CRITICAL ERROR: MANAGER HAS RECEIVED A NULL MESSAGE FROM THE SERVER!");
-            return;
-        }
-        // Decide action based on message from server
-        if (msg.contains(Message.TEST_CLIENT)) {
-            System.out.println("Client test passed.");
-        }
-        // Example:
-//		else if (msg.contains(Message.SELECTED_PLAYER_OK)) {
-//			String answer = grabParameter(msg); 
-//			p.println("Answer from server: "+answer);
-//			if (answer.equals("true")) {
-//				// If the chosen player is OK
-//				lblPlayerName.setText(existingPlayerPanels.get(chosenPlayerIndex).getName());
-//	            JOptionPane.showMessageDialog(this, "Player selected", "Notification", JOptionPane.PLAIN_MESSAGE);
-//			} else {
-//	            // If not OK
-//	            chosenPlayerIndex = 0; // reset. 0 is default.
-//	            JOptionPane.showMessageDialog(this, "Player currently in use by other user", "Notification", JOptionPane.PLAIN_MESSAGE);
-//			}
-//		}
+    	if (DEBUG) {
+    		System.out.println(DEBUG_NOTIFICATION);
+    	} else { 
+	        if (msg == null) {
+	//            System.out.println("CRITICAL ERROR: MANAGER HAS RECEIVED A NULL MESSAGE FROM THE SERVER!");
+	            return;
+	        }
+	        // Decide action based on message from server
+	        if (msg.contains(Message.TEST_CLIENT)) {
+	            System.out.println("Client test passed.");
+	        }
+	        // Example:
+	//		else if (msg.contains(Message.SELECTED_PLAYER_OK)) {
+	//			String answer = grabParameter(msg); 
+	//			p.println("Answer from server: "+answer);
+	//			if (answer.equals("true")) {
+	//				// If the chosen player is OK
+	//				lblPlayerName.setText(existingPlayerPanels.get(chosenPlayerIndex).getName());
+	//	            JOptionPane.showMessageDialog(this, "Player selected", "Notification", JOptionPane.PLAIN_MESSAGE);
+	//			} else {
+	//	            // If not OK
+	//	            chosenPlayerIndex = 0; // reset. 0 is default.
+	//	            JOptionPane.showMessageDialog(this, "Player currently in use by other user", "Notification", JOptionPane.PLAIN_MESSAGE);
+	//			}
+	//		}
+    	}
     }
 
     /**
@@ -131,6 +134,9 @@ public class Manager extends JFrame {
      * @return the parameter from the received message
      */
     public String grabParameter(String msg) {
+    	if (DEBUG) {
+    		System.out.println(DEBUG_NOTIFICATION);
+    	}
         return msg.substring(msg.indexOf(":") + 1);
     }
 }
