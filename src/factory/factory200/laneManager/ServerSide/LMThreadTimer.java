@@ -37,7 +37,6 @@ class LMThreadTimer implements Runnable{
 			//serverMain.getPartData().laneVibrationController();
 			if(++feedingTiming == 50){
 				sendPartSignal.orderFeeding();
-				sendPartSignal.feederPartLowSensor_PurgeSwitch();
 				feedingTiming = 0;
 			}
 		}

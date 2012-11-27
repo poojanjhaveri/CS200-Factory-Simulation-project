@@ -46,10 +46,10 @@ public class NestAgent extends Agent implements NestInterface {
     
    public NestAgent(String name) {
     super(name);
-    this.myNests = Collections.synchronizedList(new ArrayList<Nest>());
-    this.needParts = Collections.synchronizedList(new ArrayList<Part>());
-    this.nests = Collections.synchronizedList(new ArrayList<Nest>());
-    this.requests = Collections.synchronizedList(new ArrayList<Part>());
+    myNests = Collections.synchronizedList(new ArrayList<Nest>());
+    needParts = Collections.synchronizedList(new ArrayList<Part>());
+    nests = Collections.synchronizedList(new ArrayList<Nest>());
+    requests = Collections.synchronizedList(new ArrayList<Part>());
     myNests.add(new Nest(0));
     myNests.add(new Nest(1));
     myNests.add(new Nest(2));
@@ -76,17 +76,20 @@ public class NestAgent extends Agent implements NestInterface {
     }
 
     public void msgHereAreParts(List<Part> kitParts, int laneIndex){
+        //requires syncrhonization: many msgs can come in to modify mynests.
         Part p = kitParts.get(0);
-        Nest n = myNests.get(laneIndex);
+        //Nest n = myNests.get(laneIndex);
+        
+        //issue- nest n is local to the function
                 for (int i =0; i<kitParts.size(); i++){
                     kitParts.get(i).setNestNum(laneIndex);
-                    n.parts.add(kitParts.get(i));
-                    n.parts.get(i).setNestNum(laneIndex);//COMMENT OUT IFNEEDED
+                    myNests.get(laneIndex).parts.add(kitParts.get(i));
+                    myNests.get(laneIndex).parts.get(i).setNestNum(laneIndex);//COMMENT OUT IFNEEDED
                 }
-                if (n.parts.size()>=n.threshold) {
-                    n.status = Nest.Status.full;     
+                if (myNests.get(laneIndex).parts.size()>=myNests.get(laneIndex).threshold) {
+                    myNests.get(laneIndex).status = Nest.Status.full;     
                 }
-                print("adding " + kitParts.size() + " " + p.getInt() + " to the nest " + n.nestNum);
+                print("adding " + kitParts.size() + " " + p.getInt() + " to the nest " + myNests.get(laneIndex).nestNum);
 
             
         
