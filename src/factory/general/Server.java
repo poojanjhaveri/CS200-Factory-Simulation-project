@@ -216,10 +216,6 @@ public class Server {
             partsAgent.setKitRobot(kitRobotAgent);
             partsAgent.setNestInterface(nestAgent);
             nestAgent.setCamera(cameraAgent);
-            nestAgent.setCamera1(cam1);
-            nestAgent.setCamera2(cam2);
-            nestAgent.setCamera3(cam3);
-            nestAgent.setCamera4(cam4);
             nestAgent.setPartsAgent(partsAgent);
             for (int i = 0; i < 8; i++) {
                 nestAgent.getNest(i).setLane(laneAgents[i]);
