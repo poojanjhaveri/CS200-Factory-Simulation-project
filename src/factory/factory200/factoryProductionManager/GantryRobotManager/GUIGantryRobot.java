@@ -166,7 +166,7 @@ public class GUIGantryRobot extends GUIRobot{
 	 * dumpt part on feeder i
 	 */
 	public void supplyPartOnFeeder(Integer feederIndex){
-		this.bin.setPartToNull();
+		//this.bin.setPartToNull();
 		this.bin.setX(20);
 		this.bin.setY(50+feederIndex*150);
 	}

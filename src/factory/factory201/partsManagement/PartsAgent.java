@@ -62,9 +62,10 @@ public class PartsAgent extends Agent implements PartsInterface {
     }
     
     public void msgHereIsKit(ArrayList<Kit> newKits) {// message from server
-        print("PartsAgent got message for new kits");
+        //print("PartsAgent got message for new kits");
         for (Kit k: newKits){
-        newKit.add(k);}
+        newKit.add(k);
+        }
         DoGiveKitsInQueue(newKit);
         requestState=false;
         stateChanged();
@@ -104,8 +105,14 @@ public class PartsAgent extends Agent implements PartsInterface {
     @Override
     public boolean pickAndExecuteAnAction() {
        
-        if (!newKit.isEmpty() && kits!=2) {//if there are not already 2 kits being worked on by this agent and there are new kit requests
+        if (!newKit.isEmpty() && kits!=1) {//if there are not already 2 kits being worked on by this agent and there are new kit requests
             kits++;
+            
+            /* when this was called twice (for 2 kits), it added 2 kits to kitsStarted, one kit went to full completion
+             but the other kit took 9 parts to be full, because pickUpPart0 was being called an extra time in the second run
+             This prolly had something to do with the setKit0 call, which gets called an extra time because kitsStarted
+             takes into account 2 kits. Well anyways, changing kits!=2 to kits!=1 somehow fixed the problem.
+             */
             startNewKit(newKit.remove(0));
             requestState=true;
             return true;
@@ -124,11 +131,13 @@ public class PartsAgent extends Agent implements PartsInterface {
        }
        
        if(!kit0NeedsParts.isEmpty()){//if kit 0 needs parts
-          if (!inventory.isEmpty()) {//if the parts agent has parts to work with
+           
+           if (!inventory.isEmpty()) {//if the parts agent has parts to work with
                 for(Part p: kit0NeedsParts){
                 if(inventory.get(0).type==p.type){
-                   pickUpPart0(inventory.remove(0));//put the part in a grip if the kit needs it
-            return true;
+                    print("picking up part type " + p.type);
+                    pickUpPart0(inventory.remove(0));//put the part in a grip if the kit needs it
+                    return true;
                 }}
             }
       }
@@ -175,8 +184,10 @@ public class PartsAgent extends Agent implements PartsInterface {
         
         print("New kit being started" + k.getName());
         camera.msgHereIsKitInfo(k);//later used by the camera when inspecting the full kit
+        
+        synchronized(kitsStarted){
         kitsStarted.add(k);
-       
+        }
         for (int i = 0; i < k.getSize(); i++) {
             nest.msgNeedPart(k.getPart(i));
         }
@@ -300,7 +311,7 @@ public class PartsAgent extends Agent implements PartsInterface {
         if (this.client != null) {
             this.fpm.sendMessage(Message.KAM_PARTS_MOVE_TO_NEST + ":" + nestNum);
             this.client.sendMessage(Message.KAM_PARTS_MOVE_TO_NEST + ":" + nestNum);
-            s.acquireUninterruptibly();
+            //s.acquireUninterruptibly();
             try {
             Thread.sleep(5000);
             } catch (InterruptedException e) {
@@ -309,7 +320,7 @@ public class PartsAgent extends Agent implements PartsInterface {
          } 
         
         } else {
-            print("DOMOVETONEST NUM ["+ nestNum+ "]");
+            //print("DOMOVETONEST NUM ["+ nestNum+ "]");
             //print("[ERROR] - Kit Assembly Manager is not online.");
 
         }
@@ -319,7 +330,7 @@ public class PartsAgent extends Agent implements PartsInterface {
         if (this.client != null) {
             this.client.sendMessage(Message.KAM_PARTS_PICK_PART + ":" + nestNum);
             this.fpm.sendMessage(Message.KAM_PARTS_PICK_PART + ":" + nestNum);
-            s.acquireUninterruptibly();
+            //s.acquireUninterruptibly();
         try {
          Thread.sleep(1500);
          } catch (InterruptedException e) {
@@ -327,7 +338,7 @@ public class PartsAgent extends Agent implements PartsInterface {
          e.printStackTrace();
          }
         } else {
-            print("DOMOVETONEST NUM ["+ nestNum+ "]");
+           // print("DOMOVETONEST NUM ["+ nestNum+ "]");
            // print("[ERROR] - Kit Assembly Manager is not online.");
 
         }
@@ -337,7 +348,7 @@ public class PartsAgent extends Agent implements PartsInterface {
         if (this.client != null) {
             this.client.sendMessage(Message.KAM_PARTS_DROP_OFF_PARTS + ":" + kitNum);
             this.fpm.sendMessage(Message.KAM_PARTS_DROP_OFF_PARTS + ":" + kitNum);
-            s.acquireUninterruptibly();
+            //s.acquireUninterruptibly();
         try {
          Thread.sleep(10000);
          } catch (InterruptedException e) {
