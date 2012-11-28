@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "STARTING SERVER"
-java factory.general.Server &
+java -cp build/classes factory.general.Server &
 sleep 4
 echo "BEGINNING ALL MANAGERS"
 java -cp build/classes factory.factory200.partsManager.PartsManager &

@@ -293,6 +293,7 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
                         }
                         break;
 		case 50://thread releases
+                    System.out.println("Releasing thread...");
 		    kam.sendToServer(Message.KAM_FINISH_ANIMATION);
 		    break;
                     default:

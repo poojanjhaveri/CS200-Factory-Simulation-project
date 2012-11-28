@@ -49,6 +49,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
     }
 
     public void msgAnimationComplete() {
+        print("msgAnimationComplete");
         animation.release();
     }
 
@@ -276,11 +277,11 @@ public class KitRobotAgent extends Agent implements KitRobot {
         this.partsAgent = partsAgent;
     }
 
-    public void DoMoveKitFromConveyorTo0() {
+    public void DoMoveKitFromConveyorTo0() throws InterruptedException {
         if (this.client != null) {
             this.client.sendMessage(Message.KAM_PICK_UP_EMPTY_KIT);
             this.fpm.sendMessage(Message.KAM_PICK_UP_EMPTY_KIT);
-            this.animation.acquireUninterruptibly();
+            this.animation.acquire();
         } else {
             print("[ERROR] - Kit Assembly Manager is not online.");
         }
@@ -291,7 +292,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
         if (this.client != null) {
             this.client.sendMessage(Message.KAM_PICK_UP_EMPTY_KIT_TO_ACTIVE);
             this.fpm.sendMessage(Message.KAM_PICK_UP_EMPTY_KIT_TO_ACTIVE);
-            this.animation.acquireUninterruptibly();
+            this.animation.acquire();
         } else {
             print("[ERROR] - Kit Assembly Manager is not online.");
         }
