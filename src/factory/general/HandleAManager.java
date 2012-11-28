@@ -24,8 +24,8 @@ public class HandleAManager implements Runnable {
      * 0 - GantryRobotManager
      * 1 - KitAssemblyManager
      * 2 - LaneManager
-3 - FactoryProductionManager
-4 - KitManager
+    3 - FactoryProductionManager
+    4 - KitManager
      */
     Integer id;
 
@@ -95,7 +95,7 @@ public class HandleAManager implements Runnable {
     }
 
     /**
-@brief Processes generic messages sendable by all managers
+    @brief Processes generic messages sendable by all managers
      */
     private void processGenericMessage(String msg) {
         if (msg.contains(Message.TEST_SERVER)) {
@@ -110,11 +110,10 @@ public class HandleAManager implements Runnable {
             }
         }
     }
-    private void processIdentificationMessage(String msg)
-    {
+    private void processIdentificationMessage(String msg) {
         if(msg.contains(Message.IDENTIFY_KITMANAGER)) {
             System.out.println("SERVER FOUND A KIT MANAGER");
-	    this.id = 4;
+            this.id = 4;
             this.server.setKitManagerClient(this);
         } else if (msg.contains(Message.IDENTIFY_FACTORYPRODUCTIONMANAGER)) {
             p.println("SERVER HAS IDENTIFIED A FACTORYPRODUCTIONMANAGER");
@@ -151,10 +150,10 @@ public class HandleAManager implements Runnable {
             p.println("NULL MESSAGE RECEIVED ON THE SERVER.");
             return;
         }
-	if(this.id == -1)
-	this.processGenericMessage(msg);
-	
-	if (msg.contains(Message.PULL_KITS_LIST)) {
+        if(this.id == -1)
+            this.processGenericMessage(msg);
+
+        if (msg.contains(Message.PULL_KITS_LIST)) {
             pw.println(Message.PUSH_KITS_LIST + ":" + this.server.getFactoryState().getBlueprintKits().serialize());
         } else if (msg.contains(Message.PULL_PARTS_LIST)) {
             pw.println(Message.PUSH_PARTS_LIST + ":" + this.server.getFactoryState().getBlueprintParts().serialize());
