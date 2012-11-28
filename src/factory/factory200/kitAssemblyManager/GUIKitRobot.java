@@ -31,6 +31,9 @@ A queue of orders
 13 - move to kit3
 ...
 20 - move to default position
+...
+50 - finished animation
+
  *
  * @brief Robot that moves kits in the KitWorkingArea
  * @author YiWei Roy Zheng
@@ -116,6 +119,7 @@ public class GUIKitRobot extends GUIRobot {
         this.orders.add(0);//pick up empty kit from conveyer
         this.orders.add(11);//move to kit stand
         this.orders.add(4);//drop kit onto stand
+	this.orders.add(50);//release thread
     }
     /**
      * @brief moves the empty kit to the active position immediately
@@ -127,6 +131,7 @@ public void pickUpEmptyKitToActive()
     this.orders.add(0);//pick up empty kit
     this.orders.add(12);//move to ACTIVE kit position
     this.orders.add(5);//drop off the kit
+    this.orders.add(50);
 }
     /**
     @brief moves an empty kit to the active position
@@ -136,6 +141,7 @@ public void pickUpEmptyKitToActive()
         this.orders.add(1);//pick up the kit
         this.orders.add(12);//move to the active stand position
         this.orders.add(5);//drop the kit onto stand
+	this.orders.add(50);
     }
     public void moveFrom0To2()
     {
@@ -143,6 +149,7 @@ public void pickUpEmptyKitToActive()
         this.orders.add(1);
         this.orders.add(13);
         this.orders.add(6);
+	this.orders.add(50);
     }
 
     /**
@@ -153,6 +160,7 @@ public void pickUpEmptyKitToActive()
         this.orders.add(2);//pick up the kit
         this.orders.add(13);//move to the inspection stand position
         this.orders.add(6);//drop the kit onto stand
+	this.orders.add(50);
     }
 
     /**
@@ -163,6 +171,7 @@ public void pickUpEmptyKitToActive()
         this.orders.add(3);//pick up kit
         this.orders.add(9);//move to dropoff conveyer
         this.orders.add(7);//drop off kit
+	this.orders.add(50);
     }
 
     /**
