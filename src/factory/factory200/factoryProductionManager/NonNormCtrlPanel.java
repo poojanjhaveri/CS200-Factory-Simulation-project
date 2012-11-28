@@ -1,7 +1,5 @@
 package factory.factory200.factoryProductionManager;
 
-import java.awt.Dimension;
-import java.awt.EventQueue;
 import java.awt.FlowLayout;
 import java.awt.Font;
 
