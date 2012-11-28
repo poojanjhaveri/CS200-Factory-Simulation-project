@@ -49,7 +49,23 @@ public class GRMGraphicPanel extends JPanel implements ActionListener {
 	    		this.gbot.popOrder();
 	    		Integer binIndex=this.getBinCarriedIndex();
 				this.binIsPurged(binIndex);
-	    	}
+	    	}else if(this.gbot.getOrder() > 29 && this.gbot.getOrder() < 33)
+			    {
+				switch(this.gbot.getOrder())
+				    {
+				    case 30:
+					this.sendToServer(Message.GRM_FINISH_MOVE_TO_BIN);
+					break;
+				    case 31:
+					this.sendToServer(Message.GRM_FINISH_MOVE_TO_FEEDER);
+					break;
+				    case 32:
+					this.sendToServer(Message.GRM_FINISH_MOVE_TO_DUMP);
+					break;
+				    
+				    }
+				this.gbot.popOrder();
+			    }
 			
 			}
 		}	
