@@ -11,7 +11,10 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-
+/**
+ * Panel for non-normative controls; placed in FPM 
+ * @author David Zhang
+ */
 public class NonNormCtrlPanel extends JPanel {
 	// 3 broad non-normative cases: Kit Fails, Parts Missing, No Good Parts
 	private JPanel kitFailsPanel, kitFailsInnerPanel;
@@ -87,20 +90,18 @@ public class NonNormCtrlPanel extends JPanel {
 		noGoodPartPanel.add(btnLaunchNoGoodParts);
 	}
 	
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-
-			public void run() {
-				try {
-					NonNormCtrlPanel here = new NonNormCtrlPanel();
-					here.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	/**
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//
+//			public void run() {
+//				try {
+//					NonNormCtrlPanel here = new NonNormCtrlPanel();
+//					here.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 }
