@@ -292,8 +292,8 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
                         }
                         break;
 		case 50://thread releases
-                    System.out.println("Releasing thread...");
-		    kam.sendToServer(Message.KAM_FINISH_ANIMATION);
+                    System.out.println("Releasing KitRobotAgent thread...");
+		    kam.sendToServer(Message.KAM_FINISH_KITBOT_ANIMATION);
 		    kitbot.popOrder();
 		    break;
 		default:
@@ -327,6 +327,11 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
                         kitter.popOrder();
                         kitter.checkDefault();
                         break;
+		case 50:
+		    System.out.println("Releasing PartsRobotAgent thread...");
+		    kam.sendToServer(Message.KAM_FINISH_KITTER_ANIMATION);
+		    kitter.popOrder();
+		    break;
                     default:
                         kitter.performOrder();
                 }
