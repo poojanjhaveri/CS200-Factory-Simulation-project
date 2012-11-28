@@ -170,7 +170,7 @@ public class GantryAgent extends Agent implements Gantry {
     public void msgNeedPart(Part part,Feeder feeder) {
     	
         
-        print("msgNeedPart from Feeder for type " + part.type);
+        print("msgNeedPart from Feeder [ " + feeder.getIndex() + " ] ");
     	
         int count=0;
         
@@ -192,9 +192,9 @@ public class GantryAgent extends Agent implements Gantry {
     		if(f.feeder==feeder){
     			
     			f.requested_part=part;
-    			//System.out.println("requested type is " + f.requested_part.type);
     			f.requestState=true;
-    			}
+    			
+                }
     		
     	}
 
@@ -204,7 +204,6 @@ public class GantryAgent extends Agent implements Gantry {
     @Override
     public boolean pickAndExecuteAnAction() {
     
-        synchronized(bins){	
     	for(myFeeder f: myFeeders){
     		if(f.requestState==true){
     			for(myBin b: bins){
@@ -213,7 +212,7 @@ public class GantryAgent extends Agent implements Gantry {
     				if(b.part.type==f.requested_part.type){
     					//System.out.println("b.part==f.requested_part for index " + f.index);
     					if(b.quantity>1){
-    					print("I am supplying parts to feeder at index " + f.index );
+    					//print("I am supplying parts to feeder at index " + f.index );
     					f.requestState=false;
     					supplyPart(b,f);
                                         b.quantity=b.quantity-1;
@@ -224,7 +223,7 @@ public class GantryAgent extends Agent implements Gantry {
     			}
     		}
     	}
-    }
+    
     
     
         return false;
@@ -249,7 +248,7 @@ public class GantryAgent extends Agent implements Gantry {
     	//print("Sending message to feeder");
         print("sending message here are parts to " + f.index);
 
-    //	doSupplyPart(b,f);
+    	//doSupplyPart(b,f);
 
 
         f.feeder.msgHereAreParts(parts);

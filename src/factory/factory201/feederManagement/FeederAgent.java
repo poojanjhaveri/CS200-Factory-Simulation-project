@@ -83,6 +83,10 @@ public class FeederAgent extends Agent implements Feeder {
         //---------------------------------------------------------------------------
     }
 
+    public int getIndex() {
+     return feederNum;
+    }
+
     public enum SendTo {
 
         leftLane, rightLane, none
@@ -267,15 +271,15 @@ public class FeederAgent extends Agent implements Feeder {
         print("I am supplying parts to leftLane");
 
         //create a list of parts to supply
-        List<Part> _parts = new ArrayList<Part>();
+        List<Part> mparts = new ArrayList<Part>();
 
         for (int i = 0; i < p.quantity; i++) {
-            _parts.add(p.part);
+            mparts.add(p.part);
         }
 
 
         dosendPartToLeftLane(p);
-        leftLane.msgHereAreParts(_parts);
+        leftLane.msgHereAreParts(mparts);
 
         //animation.setDiverterSwitchLeft(feederNum-1);
 
@@ -285,14 +289,14 @@ public class FeederAgent extends Agent implements Feeder {
     private void sendPartToRightLane(myParts p) {
         print("I am supplying parts to rightLane");
         //create a list of parts to supply
-        List<Part> _parts = new ArrayList<Part>();
+        List<Part> mparts = new ArrayList<Part>();
 
         for (int i = 0; i < p.quantity; i++) {
-            _parts.add(p.part);
+            mparts.add(p.part);
         }
 
         dosendPartToRightLane(p);
-        rightLane.msgHereAreParts(_parts);
+        rightLane.msgHereAreParts(mparts);
 
         //animation.setDiverterSwitchLeft(feederNum-1);
 

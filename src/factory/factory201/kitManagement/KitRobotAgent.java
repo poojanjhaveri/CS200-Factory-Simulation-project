@@ -197,7 +197,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
        
         //if (kitStand.availableToGive(1) || kitStand.availableToGive(0)) {
          //   int i = kitStand.availableToGive(1) ? 1 : 0;
-            print("Notifying the parts agent that an empty kit: [" + kitStand.get(num).name + "] is ready.");
+            print("Notifying the parts agent that an empty kit: [" + kitStand.get(num).name + "] is ready. Num : " + num);
             partsAgent.msgEmptyKitReady(kitStand.get(num));
             kitStand.get(num).beingUsedByPartsAgent = true;
   
