@@ -44,7 +44,7 @@ public class Server {
 
     // Fields just for "AgentMain" stuff (Agent preparation)
     // If true, print statements for this 201 person are on
-    private static final boolean PATRICK = true;
+    private static final boolean PATRICK = false;
     private static final boolean KEVIN = false;
     private static final boolean ALEX = true;
 
@@ -301,7 +301,7 @@ public class Server {
         }
 
         private void turnOffAgentPrintStatements() {
-            if (PATRICK) {
+            if (!PATRICK) {
                 nestAgent.print = false;
                 partsAgent.print = false;
             }
@@ -316,8 +316,8 @@ public class Server {
             }
             if (ALEX) {
                 kitRobotAgent.print = true;
-                conveyorAgent.print = true;
-                cameraAgent.print = true;
+                conveyorAgent.print = false;
+                cameraAgent.print = false;
             }
         }
 
