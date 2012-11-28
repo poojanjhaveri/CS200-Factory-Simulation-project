@@ -25,7 +25,7 @@ public class LMGUILanePanel extends JPanel{
 	
 	// Vibration Amplitude Setting
 	private TitledBorder vibrationAmplitudeTitle = new TitledBorder("Vibration Amplitude");
-	private JSlider vibrationAmplitudeSlider = new JSlider(0,2,0);
+	private JSlider vibrationAmplitudeSlider = new JSlider(0,1,0);
 	private Hashtable<Integer, JLabel> sliderLabels = new Hashtable<Integer, JLabel>();
 
 	public LMGUILanePanel(){
@@ -36,9 +36,8 @@ public class LMGUILanePanel extends JPanel{
 		add(onOffSwitchPanel);
 		
 		// Add GUI contents
-		sliderLabels.put(new Integer(0), new JLabel("weak"));
-		sliderLabels.put(new Integer(1), new JLabel("normal"));
-		sliderLabels.put(new Integer(2), new JLabel("strong"));
+		sliderLabels.put(new Integer(0), new JLabel("normal"));
+		sliderLabels.put(new Integer(1), new JLabel("strong"));
 		vibrationAmplitudeSlider.setLabelTable(sliderLabels);
 		vibrationAmplitudeSlider.setPaintLabels(true);
 		vibrationAmplitudeSlider.setPreferredSize(new Dimension(250,100));
@@ -56,16 +55,12 @@ public class LMGUILanePanel extends JPanel{
 			offSwitch.setSelected(true);
 		}
 	}
-
+	
 	public void setLaneVibrationAmplitudeStrong(){
-		vibrationAmplitudeSlider.setValue(2);
-	}
-
-	public void setLaneVibrationAmplitudeNormal(){
 		vibrationAmplitudeSlider.setValue(1);
 	}
 
-	public void setLaneVibrationAmplitudeWeak(){
+	public void setLaneVibrationAmplitudeNormal(){
 		vibrationAmplitudeSlider.setValue(0);
 	}
 }
