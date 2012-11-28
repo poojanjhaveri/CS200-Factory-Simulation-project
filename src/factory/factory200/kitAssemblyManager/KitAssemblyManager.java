@@ -260,10 +260,10 @@ public class KitAssemblyManager extends Manager implements ActionListener {
      */
     public KitAssemblyManager() {
         
-        this.graphics = new KAMGraphicPanel();
+        this.graphics = new KAMGraphicPanel(this);
         //tester lines
         this.setLayout(new GridLayout(1, 2));
-        this.graphics = new KAMGraphicPanel();
+        this.graphics = new KAMGraphicPanel(this);
 
         this.add(graphics);
         int x=0;

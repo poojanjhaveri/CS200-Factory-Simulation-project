@@ -11,6 +11,7 @@ package factory.factory200.kitAssemblyManager;
 import factory.factory200.kitAssemblyManager.*;
 import factory.general.GUIPart;
 import factory.general.Manager;
+import factory.general.Message;
 import factory.general.Part;
 import java.awt.*;
 import java.awt.event.*;
@@ -69,9 +70,12 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
     Timer timer;
     boolean stationRun;
     
+    KitAssemblyManager kam;
+    
     //private ImageIcon backgroundImage = new ImageIcon("pics/background/part1");
 
-    public KAMGraphicPanel() {
+    public KAMGraphicPanel(KitAssemblyManager k) {
+        this.kam = k;
         
         deliveryStation = true;
 
@@ -289,7 +293,7 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
                         }
                         break;
 		case 50://thread releases
-		    this.kam.sendToServer(Message.KAM_FINISH_ANIMATION);
+		    kam.sendToServer(Message.KAM_FINISH_ANIMATION);
 		    break;
                     default:
                         kitbot.performOrder();

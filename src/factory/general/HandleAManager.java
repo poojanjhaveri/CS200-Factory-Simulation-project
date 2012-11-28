@@ -211,7 +211,7 @@ public class HandleAManager implements Runnable {
             server.getServerLM().getVerify().verify(msg);
         } else if( msg.contains( Message.PART_TAKE_BY_PARTROBOT ) ) {
             server.getServerLM().getVerify().verify(msg);
-        } else if(msg.contains(Message.GRM_FINISH_MOVE_TO_BIN) || msg.contains(Message.GRM_FINISH_MOVE_TO_FEEDER) || msg.contains(GRM_FINISH_MOVE_TO_DUMP)) {
+        } else if(msg.contains(Message.GRM_FINISH_MOVE_TO_BIN) || msg.contains(Message.GRM_FINISH_MOVE_TO_FEEDER) || msg.contains(Message.GRM_FINISH_MOVE_TO_DUMP)) {
             this.server.getGantry().msgAnimationComplete(msg);
         } else if(msg.contains(Message.KAM_FINISH_ANIMATION)) {
             this.server.getKitRobotAgent().msgAnimationComplete();
