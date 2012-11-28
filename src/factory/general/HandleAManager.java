@@ -150,9 +150,10 @@ public class HandleAManager implements Runnable {
             p.println("NULL MESSAGE RECEIVED ON THE SERVER.");
             return;
         }
-        if(this.id == -1)
+       
             this.processGenericMessage(msg);
-
+ if(this.id == -1)
+     this.processIdentificationMessage(msg);
         if (msg.contains(Message.PULL_KITS_LIST)) {
             pw.println(Message.PUSH_KITS_LIST + ":" + this.server.getFactoryState().getBlueprintKits().serialize());
         } else if (msg.contains(Message.PULL_PARTS_LIST)) {
@@ -200,9 +201,9 @@ public class HandleAManager implements Runnable {
 
                 queue.add(single);
             }
-            //this.server.getConveyorAgent().generateKit(queue.size()); // * This generates 10 new kits, among other things if you pass string... *
-            //this.server.getPartsAgent().msgHereIsKit(queue);
-            this.server.startInteractionSequence();
+            this.server.getConveyorAgent().msgGenerateKit(queue.size()); // * This generates 10 new kits, among other things if you pass string... *
+            this.server.getPartsAgent().msgHereIsKit(queue);
+           // this.server.startInteractionSequence();
             System.out.println(msg);
             System.out.println("BEGINNING PRODUCTION CYCLE WOOOOOOT (size "+queue.size() + ")");
             queue.get(0).debug();
@@ -211,8 +212,8 @@ public class HandleAManager implements Runnable {
             server.getServerLM().getVerify().verify(msg);
         } else if( msg.contains( Message.PART_TAKE_BY_PARTROBOT ) ) {
             server.getServerLM().getVerify().verify(msg);
-        } else if(msg.contains(Message.GRM_FINISH_MOVE_TO_BIN) || msg.contains(Message.GRM_FINISH_MOVE_TO_FEEDER) || msg.contains(GRM_FINISH_MOVE_TO_DUMP)) {
-            this.server.getKitRobotAgent().msgAnimationComplete();
+        } else if(msg.contains(Message.GRM_FINISH_MOVE_TO_BIN) || msg.contains(Message.GRM_FINISH_MOVE_TO_FEEDER) || msg.contains(Message.GRM_FINISH_MOVE_TO_DUMP)) {
+            this.server.getGantry().msgAnimationComplete(msg);
         }
     }
 

@@ -161,9 +161,10 @@ public class GantryAgent extends Agent implements Gantry {
         }
     }
 
-    public void msgAnimationComplete(){
+    public void msgAnimationComplete(String msg){
         
         //release the semaphore so that the animation can resume in the doSupplyPart().
+        System.out.println("semaphore released by " + msg);
         anim.release();
     }
     public void msgNeedPart(Part part,Feeder feeder) {
@@ -248,7 +249,7 @@ public class GantryAgent extends Agent implements Gantry {
     	//print("Sending message to feeder");
         print("sending message here are parts to " + f.index);
 
-    	//doSupplyPart(b,f);
+    //	doSupplyPart(b,f);
 
 
         f.feeder.msgHereAreParts(parts);
@@ -268,8 +269,6 @@ public class GantryAgent extends Agent implements Gantry {
      //sleep until a client comes in. 
      while(this.client == null)
          {
-         //print("[ERROR] - Gantry Robot Manager is not online.");
-         //return;
             try {
 			Thread.sleep(1000);
 		} catch (InterruptedException e) {
@@ -278,69 +277,36 @@ public class GantryAgent extends Agent implements Gantry {
 		}
          
          }
-     
-         
-       this.client.sendMessage(Message.MOVE_GANTRY_TO_BIN+":"+b.index);
-       this.fpm.sendMessage(Message.MOVE_GANTRY_TO_BIN+":"+b.index);
-         
-       //remove the thread.sleep after server calls to release the semaphore.
-       try {
-			Thread.sleep(6000);
-            } catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+        
         try {
             //try to acquire the semaphore which will be released after the gantry has moved down to the bin.
+            //anim.acquire();
+            
+            this.client.sendMessage(Message.MOVE_GANTRY_TO_BIN+":"+b.index);
+            this.fpm.sendMessage(Message.MOVE_GANTRY_TO_BIN+":"+b.index);
+                
             anim.acquire();
+            
             this.client.sendMessage(Message.GANTRY_CARRY_A_BIN + ":" + b.index);
             this.fpm.sendMessage(Message.GANTRY_CARRY_A_BIN + ":" + b.index);
+            
             this.client.sendMessage(Message.MOVE_GANTRY_TO_FEEDER+":"+f.index);
             this.fpm.sendMessage(Message.MOVE_GANTRY_TO_FEEDER+":"+f.index);
-            } catch (InterruptedException ex) {
-            Logger.getLogger(GantryAgent.class.getName()).log(Level.SEVERE, null, ex);
-        }
-         
-        try {
-			Thread.sleep(6000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated ongocatch block
-			e.printStackTrace();
-		}
-        
-        //ask for the semaphore to complete previously running animations.
-        try {
+            
             anim.acquire();
             this.client.sendMessage(Message.SUPPLY_PART_ON_FEEDER + ":" + f.index);
-            this.fpm.sendMessage(Message.SUPPLY_PART_ON_FEEDER + ":" + f.index);
-            } catch (InterruptedException ex) {
-            Logger.getLogger(GantryAgent.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-            try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-        try {
-            //after supply part animation has completed and the semaphore is available, move the gantry to dump.
-            anim.acquire();
+            this.fpm.sendMessage(Message.SUPPLY_PART_ON_FEEDER + ":" + f.index);    
             this.client.sendMessage(Message.MOVE_GANTRY_TO_DUMP);
             this.fpm.sendMessage(Message.MOVE_GANTRY_TO_DUMP);
+            
+            anim.acquire();
+         
+        
         } catch (InterruptedException ex) {
             Logger.getLogger(GantryAgent.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-    
-        
-         try {
-			Thread.sleep(6000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
          
+        
          // By Dongyoung Jung
          //serverMain.getForAgentGantryRobot().purgeBin(f.index);
     }
