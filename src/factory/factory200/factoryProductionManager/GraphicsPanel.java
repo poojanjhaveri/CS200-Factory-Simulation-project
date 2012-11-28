@@ -23,31 +23,30 @@ public class GraphicsPanel extends JPanel{
 		timer.timerStart();
 	}
 
-	public void paint(Graphics graphics){
+	public void paint(Graphics graphics) {
 	//	backgroundImage.paintIcon(this, graphics, 0, 0);
 		
-		kitsAssemblyManager.paint(this, (Graphics2D)graphics);
-		gantryRobotManager.paint(this, (Graphics2D)graphics);
-		laneManager.paint(this, (Graphics2D)graphics);
+		kitsAssemblyManager.paint(this, (Graphics2D) graphics);
+		gantryRobotManager.paint(this, (Graphics2D) graphics);
+		laneManager.paint(this, (Graphics2D) graphics);
 	}
 	
 	public void timerAction(){
-		
 		laneManager.timerAction();
-                kitsAssemblyManager.getGraph().timerAction();
-                //add timer action for KAM! 
-                gantryRobotManager.getGraph().timerAction();
-                repaint();
+		kitsAssemblyManager.getGraph().timerAction();
+		
+		//add timer action for KAM! 
+		gantryRobotManager.getGraph().timerAction();
+		repaint();
 	}
 	
 	public void verifyMessage(String msg){
-            if(msg==null)
-            {
-                System.out.println("Something has gone terribloy wrong");
-            }
+		if (msg == null) {
+			System.out.println("Something has gone terribly wrong");
+		}
 		laneManager.getServerVerify().verify(msg);
 		this.kitsAssemblyManager.processMessage(msg);
 		this.gantryRobotManager.processMessage(msg);
-                //System.out.println("GFX GOT MESSAGE: " + msg);
+        // System.out.println("GFX GOT MESSAGE: " + msg);
 	}
 }
