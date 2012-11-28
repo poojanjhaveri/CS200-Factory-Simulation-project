@@ -154,8 +154,9 @@ public class PartsAgent extends Agent implements PartsInterface {
         kits--;
         if(k.standNum==Kit.StandNum.zero){
             kit0Info = null;
-           // kit0.parts.clear();//remove if k.parts.size()==0
+  //          kit0.parts.clear();//remove if k.parts.size()==0
         }
+       
         else{
             kit1Info = null;
            // kit1.parts.clear();
