@@ -46,12 +46,18 @@ public class LMLaneHandler {
 		else if( message.indexOf("Amplitude Normal") != -1 ){
 			// GUI Panel change
 			app.getGUIPanel().getGUILane().getGUILaneArray(laneNum).setLaneVibrationAmplitudeNormal();
+			
+			// Track Setting
+			app.getGraphicsPanel().getAllLane().getLane(laneNum).setLaneVibrationAmplitudeNormal();
 		}
 		
 		// Message : Lane Vibration Amplitude Strong
 		else if( message.indexOf("Amplitude Strong") != -1 ){
 			// GUI Panel change
 			app.getGUIPanel().getGUILane().getGUILaneArray(laneNum).setLaneVibrationAmplitudeStrong();
+			
+			// Track Setting
+			app.getGraphicsPanel().getAllLane().getLane(laneNum).setLaneVibrationAmplitudeStrong();
 		}
 	}
 }

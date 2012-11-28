@@ -11,6 +11,8 @@ import javax.swing.JTabbedPane;
  */
 public class LMGUIPanel extends JPanel{
 	
+	private LMApplication app;
+	
 	private final int feederCount = 4;
 	private final int laneCount = 8;
 	private final int nestCount = 8;
@@ -21,11 +23,13 @@ public class LMGUIPanel extends JPanel{
 	private LMGUIFeeder feederGUI;
 	private LMGUINonNormativePanel nonNormativeGUI;
 
-	public LMGUIPanel(){
+	public LMGUIPanel(LMApplication app){
+		this.app = app;
+		
 		feederGUI = new LMGUIFeeder(feederCount);
 		laneGUI = new LMGUILane(laneCount);
 		nestGUI = new LMGUINest(nestCount);
-		nonNormativeGUI = new LMGUINonNormativePanel();
+		nonNormativeGUI = new LMGUINonNormativePanel(app);
 		
 		setPreferredSize(new Dimension(300,650));
 		setLayout(new BorderLayout());
