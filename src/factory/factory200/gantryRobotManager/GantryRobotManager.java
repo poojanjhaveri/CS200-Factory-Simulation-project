@@ -135,6 +135,7 @@ public class GantryRobotManager extends Manager implements ActionListener {
      */
      public void processMessage(String msg) {
 	   super.processMessage(msg);
+           System.out.println(msg);
 	   if(msg.contains(Message.MOVE_GANTRY_TO_BIN))
 	   {
 		   this.ganbot.moveToBinCommand(Integer.parseInt(this.grabParameter(msg)));

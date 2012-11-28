@@ -40,12 +40,10 @@ public class Server {
 
     /** Agents */
 
-
-
     // Fields just for "AgentMain" stuff (Agent preparation)
     // If true, print statements for this 201 person are on
-    private static final boolean PATRICK = true;
-    private static final boolean KEVIN = false;
+    private static final boolean PATRICK = false;
+    private static final boolean KEVIN = true;
     private static final boolean ALEX = true;
 
 
@@ -238,8 +236,9 @@ public class Server {
             if (i < FEEDER) {
                 feederAgents[i].setServer(serverLM);
             }
+            gantryAgent.setServer(serverLM);
+            cameraAgent.setServer(serverLM);
         }
-        gantryAgent.setServer(serverLM);
     }
 
     private void startAgentThreads() {
@@ -299,26 +298,26 @@ public class Server {
         partsAgent.msgHereIsKit(kits);
     }
 
-    private void turnOffAgentPrintStatements() {
-        if (PATRICK) {
-            nestAgent.print = false;
-            partsAgent.print = false;
-        }
-        if (!KEVIN) {
-            for (int i = 0; i < LANE; i++) {
-                if (i < FEEDER) {
-                    feederAgents[i].print = false;
-                }
-                laneAgents[i].print = false;
+        private void turnOffAgentPrintStatements() {
+            if (!PATRICK) {
+                nestAgent.print = false;
+                partsAgent.print = false;
             }
-            gantryAgent.print = false;
-        }
-        if (ALEX) {
-            kitRobotAgent.print = true;
-            conveyorAgent.print = true;
-            cameraAgent.print = true;
-        }
-    }
+            if (KEVIN) {
+                for (int i = 0; i < LANE; i++) {
+                    if (i < FEEDER) {
+                        feederAgents[i].print = true;
+                    }
+                    laneAgents[i].print = true;
+                }
+                gantryAgent.print = true;
+            }
+            if (ALEX) {
+                kitRobotAgent.print = true;
+                conveyorAgent.print = false;
+                cameraAgent.print = false;
+            }
+      }
 
     /** Methods used by HandleAManager, which has a pointer to the server*/
     /**
@@ -337,7 +336,9 @@ public class Server {
     public KitRobotAgent getKitRobotAgent() {
         return kitRobotAgent;
     }
-
+    public GantryAgent getGantry(){
+        return gantryAgent;
+    }
     public PartsAgent getPartsAgent() {
         return this.partsAgent;
     }

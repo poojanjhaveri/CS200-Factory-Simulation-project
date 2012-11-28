@@ -8,6 +8,7 @@ import factory.general.Message;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.Semaphore;
 
 /**
  * Agent for the conveyor.
@@ -24,16 +25,17 @@ public class ConveyorAgent extends Agent implements Conveyor {
     private KitRobot kitRobotAgent;
     private List<Kit> kitList = Collections.synchronizedList(new ArrayList<Kit>());
     private int kitRequestsFromKitRobot;
-    private boolean genKit=false;
+    private boolean genKit = false;
     private int num;
-    
+
     public ConveyorAgent(String name) {
         super(name);
-        
+
         kitRequestsFromKitRobot = 0;
     }
 
     // ********** MESSAGES *********
+
     @Override
     public void msgNeedEmptyKit() {
         print("received request for empty kit!!");
@@ -41,14 +43,14 @@ public class ConveyorAgent extends Agent implements Conveyor {
         //for every incremented value, scheduler is called.
         stateChanged();
     }
-    
-    public void msgGenerateKit(int number){
-    genKit=true;
-    num=number;
-    stateChanged();
-    //generateKit(num);
+
+    public void msgGenerateKit(int number) {
+        genKit = true;
+        num = number;
+        stateChanged();
+        //generateKit(num);
     }
-    
+
     @Override
     public void msgHereIsVerifiedKit(Kit kit) {
         print("Accepting a verified kit: [" + kit.name + "] from the kits robot");
@@ -57,18 +59,17 @@ public class ConveyorAgent extends Agent implements Conveyor {
         }
         stateChanged();
     }
-    
-    public void msgRemoveKit(){
-    
+
+    public void msgRemoveKit() {
     }
 
     // ********* SCHEDULER *********
     @Override
     public boolean pickAndExecuteAnAction() {
-        if(genKit==true){
-        generateKit(num);
-        genKit=false;
-        return true;
+        if (genKit == true) {
+            generateKit(num);
+            genKit = false;
+            return true;
         }
         if (kitRequestsFromKitRobot > 0) {
             print("kitRequest number is " + kitRequestsFromKitRobot);
@@ -81,16 +82,16 @@ public class ConveyorAgent extends Agent implements Conveyor {
 
     // ********** ACTIONS **********
     private void giveEmptyKit() {
-        
+
         for (Kit k : kitList) {
-                if (k.status == Kit.Status.empty) {
-                    print("Notifying the kit robot that an empty kit: [" + k.name + "] is ready.");
-                    kitRobotAgent.msgHereIsEmptyKit(k);
-                    kitList.remove(k);
-                    break;
-                }
+            if (k.status == Kit.Status.empty) {
+                print("Notifying the kit robot that an empty kit: [" + k.name + "] is ready.");
+                kitRobotAgent.msgHereIsEmptyKit(k);
+                kitList.remove(k);
+                break;
             }
-        
+        }
+
         stateChanged();
     }
 
@@ -102,10 +103,9 @@ public class ConveyorAgent extends Agent implements Conveyor {
             kitList.add(k);
             DoAddKit(k);
         }
-    stateChanged();
+        stateChanged();
     }
-    
-    
+
     private void generateKit(String name) {
         Kit k = new Kit("Kit " + name);
         kitList.add(k);
@@ -141,7 +141,6 @@ public class ConveyorAgent extends Agent implements Conveyor {
         if (this.client != null) {
             this.client.sendMessage(Message.KAM_ADD_KIT);
             this.fpm.sendMessage(Message.KAM_ADD_KIT);
-
         } else {
             print("[ERROR] - Kit Assembly Manager is not online.");
         }
