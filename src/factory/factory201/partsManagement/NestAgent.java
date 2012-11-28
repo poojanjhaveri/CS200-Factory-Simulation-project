@@ -15,6 +15,7 @@ import factory.factory201.interfaces.PartsInterface;
 import factory.factory201.interfaces.NestInterface;
 import factory.general.Nest;
 import factory.general.Part;
+import java.util.concurrent.Semaphore;
 
 public class NestAgent extends Agent implements NestInterface {
 
