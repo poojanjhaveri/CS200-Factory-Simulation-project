@@ -83,7 +83,7 @@ public class GantryRobotManager extends Manager implements ActionListener {
      * set graphic panel
      */
     public GantryRobotManager() {
-        graphics= new GRMGraphicPanel();        
+        graphics= new GRMGraphicPanel(this);        
         setLayout(new GridLayout(1, 2));  
         ganbot = graphics.getGantryRobot();
         add(graphics);
