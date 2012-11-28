@@ -146,12 +146,12 @@ public class KitRobotAgent extends Agent implements KitRobot {
 //            {
 //                requestEmptyKitFromConveyor();
 //            }
-//=======
-        if (kitStand.availability() > 0 && !requestedKitFromConveyor) {
-            // if tempstand is empty
-            requestEmptyKitFromConveyor();
-            return true;
-        }
+////=======
+//        if (kitStand.availability() > 0 && !requestedKitFromConveyor) {
+//            // if tempstand is empty
+//            requestEmptyKitFromConveyor();
+//            return true;
+//        }
 //        */
         
       //  print("kit statuses: 0 " + kitStand.isEmpty(0)+ ", 1 : " +kitStand.isEmpty(1) + ", 2 : " +kitStand.isEmpty(2));
@@ -277,63 +277,87 @@ public class KitRobotAgent extends Agent implements KitRobot {
         this.partsAgent = partsAgent;
     }
 
-    public void DoMoveKitFromConveyorTo0() throws InterruptedException {
+    public void DoMoveKitFromConveyorTo0(){
         if (this.client != null) {
             this.client.sendMessage(Message.KAM_PICK_UP_EMPTY_KIT);
             this.fpm.sendMessage(Message.KAM_PICK_UP_EMPTY_KIT);
-            this.animation.acquire();
+            try {
+                this.animation.acquire();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(KitRobotAgent.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else {
             print("[ERROR] - Kit Assembly Manager is not online.");
         }
 
     }
 
-    public void DoMoveKitFromConveyorTo1() {
+    public void DoMoveKitFromConveyorTo1(){
         if (this.client != null) {
             this.client.sendMessage(Message.KAM_PICK_UP_EMPTY_KIT_TO_ACTIVE);
             this.fpm.sendMessage(Message.KAM_PICK_UP_EMPTY_KIT_TO_ACTIVE);
-            this.animation.acquire();
+            try {
+                this.animation.acquire();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(KitRobotAgent.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else {
             print("[ERROR] - Kit Assembly Manager is not online.");
         }
     }
 
-    public void DoMoveKitFrom0to1() {
+    public void DoMoveKitFrom0to1(){
         if (this.client != null) {
             this.client.sendMessage(Message.KAM_MOVE_EMPTY_KIT_TO_ACTIVE);
             this.fpm.sendMessage(Message.KAM_MOVE_EMPTY_KIT_TO_ACTIVE);
-            this.animation.acquireUninterruptibly();
+            try {
+                this.animation.acquire();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(KitRobotAgent.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else {
             print("[ERROR] - Kit Assembly Manager is not online.");
         }
     }
 
-    public void DoMoveKitFrom1to2() {
+    public void DoMoveKitFrom1to2(){
         if (this.client != null) {
             this.client.sendMessage(Message.KAM_MOVE_ACTIVE_KIT_TO_INSPECTION);
             this.fpm.sendMessage(Message.KAM_MOVE_ACTIVE_KIT_TO_INSPECTION);
-            this.animation.acquireUninterruptibly();
+            try {
+                this.animation.acquire();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(KitRobotAgent.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else {
             print("[ERROR] - Kit Assembly Manager is not online.");
         }
 
     }
 
-    public void DoMoveKitFrom0to2() {
+    public void DoMoveKitFrom0to2(){
         if (this.client != null) {
             this.client.sendMessage(Message.KAM_MOVE_FROM_0_TO_2);
             this.fpm.sendMessage(Message.KAM_MOVE_FROM_0_TO_2);
-            this.animation.acquireUninterruptibly();
+            try {
+                this.animation.acquire();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(KitRobotAgent.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else {
             print("[ERROR] - Kit Assembly Manager is not online.");
         }
     }
 
-    public void DoMoveKitFrom2ToConveyor(Kit k) {
+    public void DoMoveKitFrom2ToConveyor(Kit k){
         if (this.client != null) {
             this.client.sendMessage(Message.KAM_DROP_OFF_FULL_KIT);
             this.fpm.sendMessage(Message.KAM_DROP_OFF_FULL_KIT);
-            this.animation.acquireUninterruptibly();
+            try {
+                this.animation.acquire();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(KitRobotAgent.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else {
             print("[ERROR] - Kit Assembly Manager is not online.");
         }

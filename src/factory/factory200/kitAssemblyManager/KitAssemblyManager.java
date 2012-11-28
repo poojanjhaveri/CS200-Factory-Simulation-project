@@ -41,6 +41,7 @@ public class KitAssemblyManager extends Manager implements ActionListener {
      * changes the panel based on what the user clicks
      */
     public void processMessage(String msg) {
+        System.out.println("KAM has received a message: " + msg);
         super.processMessage(msg);
         if (msg == null) {
             return;
