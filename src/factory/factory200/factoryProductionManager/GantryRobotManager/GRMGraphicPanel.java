@@ -111,9 +111,9 @@ public class GRMGraphicPanel{
 	    gbot.paintMe(graph,g2);
 	}
 	
-	//public void binIsPurged(Integer binIndex){
-	//	this.bins.get(binIndex).setFullStatus(true);
-	//}
+	public void binIsPurged(Integer binIndex){
+		this.bins.get(binIndex).setFullStatus(true);
+	}
 	
 	/*
 	 * paint purge station
