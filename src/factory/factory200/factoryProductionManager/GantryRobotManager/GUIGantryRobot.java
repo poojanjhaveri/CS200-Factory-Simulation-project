@@ -11,8 +11,6 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 import javax.swing.JPanel;
-
-import factory.factory200.kitAssemblyManager.KAMGraphicPanel;
 import factory.general.GUIRobot;
 import factory.general.MovingDrawable;
 import factory.general.Part;

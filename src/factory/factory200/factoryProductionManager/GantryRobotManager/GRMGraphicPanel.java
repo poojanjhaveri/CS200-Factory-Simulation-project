@@ -7,12 +7,8 @@ import factory.factory200.gantryRobotManager.PurgeStation;
 import factory.general.GUIPart;
 import factory.general.Part;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.geom.*;
 import java.util.*;
 import javax.swing.*;
-import javax.swing.Timer;
-
 
 public class GRMGraphicPanel{
     
@@ -29,8 +25,7 @@ public class GRMGraphicPanel{
 	public GRMGraphicPanel(){
 		carriedBinIndex = 0;
 		gbot = new GUIGantryRobot();
-                //gbot.setX(1100);
-                //gbot.setY(10);
+                
 		bin = new GUIBin(450,0,0.0,"",0);
 		bins = new ArrayList<GUIBin>();
 		parts = new ArrayList<Part>();
@@ -109,19 +104,16 @@ public class GRMGraphicPanel{
         Graphics2D g2 = (Graphics2D) g;
         Image img = new ImageIcon("pics/background/part3.png").getImage();
         g2.drawImage(img, -1350+500, 0, null);
-        //Rectangle2D.Double backgroundRectangle = new Rectangle2D.Double(0, 0, 500, 700);
-        //g2.setColor(Color.GRAY.darker().darker());//dark dark green background
-        //g2.fill(backgroundRectangle);
+        
         paintPurge(graph,g2);
         paintBinsWithParts(graph, g2);
-        //paintFeeders(graph,g2);
-        
+       
 	    gbot.paintMe(graph,g2);
 	}
 	
-	public void binIsPurged(Integer binIndex){
-		this.bins.get(binIndex).setFullStatus(true);
-	}
+	//public void binIsPurged(Integer binIndex){
+	//	this.bins.get(binIndex).setFullStatus(true);
+	//}
 	
 	/*
 	 * paint purge station
@@ -147,39 +139,5 @@ public class GRMGraphicPanel{
 		}
 	}
 		
-//		         boolean changed;
-		 //
-//		         public GraphicGantryPanel() {//set up a Timer	
-//		         }
-		 //
-//		         /**
-//		          * check if Server send any message or data back
-//		          */
-//		         public boolean checkServerMessage() {
-//		         }// 
-		 //
-//		         /**
-//		          * get all coordinates from GantryState class
-//		          */
-//		         public resetComponent() {
-//		         }
-		 //
-//		         ;//
-//		 		/**
-		 //paint all components: bins, purge station, feeders and the gantry robot
-//		 		 */
-//		 		public paint(Graphics g) {
-//		         }
-		 //
-//		         ;
-//		 		public actionPerformed() {
-//		             changed = checkServerMessage();
-		 //
-//		             if (changed) {
-//		                 resetComponents();//get information of recently changedd
-//		             }
-//		             repaint();
-//		         }
-//		     }
 
 }
