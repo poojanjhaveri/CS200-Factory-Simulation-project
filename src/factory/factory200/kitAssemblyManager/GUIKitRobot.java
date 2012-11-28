@@ -131,7 +131,7 @@ public void pickUpEmptyKitToActive()
     this.orders.add(0);//pick up empty kit
     this.orders.add(12);//move to ACTIVE kit position
     this.orders.add(5);//drop off the kit
-    this.orders.add(50);
+    this.orders.add(50);//release thread
 }
     /**
     @brief moves an empty kit to the active position
