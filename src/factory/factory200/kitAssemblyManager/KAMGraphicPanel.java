@@ -263,7 +263,6 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
                     case 0:
                         if (delivery.inPosition()) {
                             kitbot.giveKit(delivery.giveKit());
-
                             //System.out.println("Picking up kit");
                         }
                         break;
@@ -281,13 +280,13 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
                         //System.out.println(k);
                         kitstand.takeKit(kitbot.dropKit());
                         break;
-                    case 5:
+		case 5:
                         kitstand.takeKit(kitbot.dropKit());
                         break;
-                    case 6:
+		case 6:
                         kitstand.takeKit(kitbot.dropKit());
                         break;
-                    case 7://how to drop kit onto placeholder?
+		case 7://drop kit onto placeholder
                         if (delivery.inEmptyPostion()) {
                             delivery.takeKit(kitbot.dropKit());
                         }
@@ -295,8 +294,9 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
 		case 50://thread releases
                     System.out.println("Releasing thread...");
 		    kam.sendToServer(Message.KAM_FINISH_ANIMATION);
+		    kam.popOrder();
 		    break;
-                    default:
+		default:
                         kitbot.performOrder();
                         break;
                 }
