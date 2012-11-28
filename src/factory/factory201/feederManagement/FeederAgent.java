@@ -318,7 +318,7 @@ public class FeederAgent extends Agent implements Feeder {
             //  	animation.setDiverterSwitchLeft(feederNum-1);
 
             try {
-                Thread.sleep(15000);
+                Thread.sleep(20000);
             } catch (InterruptedException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
@@ -344,7 +344,7 @@ public class FeederAgent extends Agent implements Feeder {
 
 //    	animation.setDiverterSwitchRight(feederNum-1);
             try {
-                Thread.sleep(15000);
+                Thread.sleep(20000);
             } catch (InterruptedException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();

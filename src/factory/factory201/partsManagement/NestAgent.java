@@ -34,7 +34,6 @@ public class NestAgent extends Agent implements NestInterface {
     public List<Part> needParts;//the parts that have been requested, used to set an individual's nest part
     PartsInterface partsagent;
     Camera camera;
-
     @Override
     public void msgHereAreParts(List<Part> parts) {
         throw new UnsupportedOperationException("Not supported yet.");
@@ -171,7 +170,22 @@ public class NestAgent extends Agent implements NestInterface {
     private void requestInspection(Nest n) {
         print("Requesting inspection for nest " + n.getNestNum());
         n.status = Nest.Status.gettingInspected;
+        
+        /*
+        if(n.nestNum==0)
+        cam1.msgNestIsFull(n);
+        
+        if(n.nestNum==1)
+        cam2.msgNestIsFull(n);
+        
+        if(n.nestNum==2)
+        cam3.msgNestIsFull(n);
+        
+        if(n.nestNum==3)
+        cam4.msgNestIsFull(n);
+        */
         camera.msgNestIsFull(n);
+        
         stateChanged();
     }
 
@@ -188,6 +202,9 @@ public class NestAgent extends Agent implements NestInterface {
     private void purge(Nest n){
     print("PURGING Nest "+ n.nestNum);
     n.parts.clear();
+    //DoPurge();
+    n.status = Nest.Status.empty;
+    //n.status = Nest.Status.needPart;
     //DoPurge();//NEEDTO implement this method
     n.status = Nest.Status.needPart;
     stateChanged();
@@ -200,6 +217,7 @@ public class NestAgent extends Agent implements NestInterface {
     public void setCamera(Camera c){
         this.camera = c;
     }
+    
 
     public void setPartsAgent(PartsInterface parts) {
         this.partsagent = parts;

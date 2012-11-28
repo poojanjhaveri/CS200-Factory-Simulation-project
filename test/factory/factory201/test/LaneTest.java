@@ -4,10 +4,96 @@
  */
 package factory.factory201.test;
 
+import factory.factory201.feederManagement.LaneAgent;
+import factory.factory201.test.mock.MockFeeder;
+import factory.factory201.test.mock.MockGantry;
+import factory.factory201.test.mock.MockNest;
+import factory.general.Part;
+import java.util.ArrayList;
+import java.util.List;
+import junit.framework.TestCase;
+
 /**
  *
  * @author Kevin
  */
-public class LaneTest {
-    
+
+public class LaneTest extends TestCase{
+public LaneAgent lane;
+
+public void testneedParts(){
+
+	//1 is the lane index number
+
+	//this constructor intitializes the lane with 0 quantity of all the 8 parts in its list
+	lane=new LaneAgent("Lane",1);
+	MockFeeder feeder=new MockFeeder("Feeder");
+	//feeder=new FeederAgent(1);
+	MockGantry gantry=new MockGantry("Gantry");
+	Part p=new Part(1);
+	//MockLane leftLane=new MockLane("Left Lane");
+	//MockLane rightLane=new MockLane("Right Lane");
+
+	lane.setFeeder(feeder);
+	lane.msgNeedPart(p);
+	lane.pickAndExecuteAnAction();
+
+	assertTrue(
+			"Mock feeder should have received message here are parts. Event log: "
+					+ feeder.log.toString(), feeder.log
+					.containsString("Need parts from lane event encountered"));
+
+}
+
+public void testsendPartsAfterRequest(){
+
+	lane=new LaneAgent("Lane1",1);
+	MockFeeder feeder=new MockFeeder("Feeder");
+	MockNest nest=new MockNest("Nest");
+	//feeder=new FeederAgent(1);
+	MockGantry gantry=new MockGantry("Gantry");
+	Part p=new Part(1);
+	//MockLane leftLane=new MockLane("Left Lane");
+	//MockLane rightLane=new MockLane("Right Lane");
+        List<Part> parts=new ArrayList<Part>();
+                for(int i=0;i<12;i++)
+                    parts.add(p);
+	lane.setFeeder(feeder);
+	lane.setNest(nest);
+	//message sent by the nest
+	lane.msgNeedPart(p);
+	lane.msgHereAreParts(parts);
+	lane.pickAndExecuteAnAction();
+
+	assertTrue(
+			"Mock nest should have received message here are parts. Event log: "
+					+ nest.log.toString(), nest.log
+					.containsString("Received parts event encountered"));
+}
+
+public void testLaneInitializedWithNoParts(){
+
+	lane=new LaneAgent("Lane1",1);
+	MockFeeder feeder=new MockFeeder("Feeder");
+	MockNest nest=new MockNest("Nest");
+	//feeder=new FeederAgent(1);
+	MockGantry gantry=new MockGantry("Gantry");
+	Part p=new Part(1);
+	//MockLane leftLane=new MockLane("Left Lane");
+	//MockLane rightLane=new MockLane("Right Lane");
+
+	lane.setFeeder(feeder);
+	lane.setNest(nest);
+	//message sent by the nest
+	//lane.msgNeedPart(p);
+	//lane.msgHereAreParts(p,12);
+	System.out.println("before pick and execute");
+	lane.pickAndExecuteAnAction();
+
+	assertTrue(
+			"Mock feeder should have received message need parts. Event log: "
+					+ feeder.log.toString(), feeder.log
+					.containsString("Need parts from lane event encountered"));
+}
+
 }

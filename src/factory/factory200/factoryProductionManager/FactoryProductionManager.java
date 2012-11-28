@@ -55,7 +55,6 @@ public class FactoryProductionManager extends Manager implements ActionListener 
     private String nameToAdd;
     private Kit kitToAdd;
     private int qtyToAdd;
-    private int num;
     private ArrayList<String> availableKits;
     private ArrayList<Kit> selectedKits;
 

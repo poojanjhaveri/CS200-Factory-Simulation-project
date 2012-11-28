@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import factory.general.GUIPart;
+import factory.general.Message;
 import factory.general.Part;
 import java.awt.*;
 import java.awt.geom.*;
@@ -21,6 +22,7 @@ public class GRMGraphicPanel extends JPanel implements ActionListener {
     ArrayList<GUIFeeder> feeders;
     
     Timer timer;
+    GantryRobotManager grm;
     
     GUIBin bin;
     Part newPart;
@@ -49,7 +51,23 @@ public class GRMGraphicPanel extends JPanel implements ActionListener {
 	    		this.gbot.popOrder();
 	    		Integer binIndex=this.getBinCarriedIndex();
 				this.binIsPurged(binIndex);
-	    	}
+	    	}else if(this.gbot.getOrder() > 29 && this.gbot.getOrder() < 33)
+			    {
+				switch(this.gbot.getOrder())
+				    {
+				    case 30:
+					this.grm.sendToServer(Message.GRM_FINISH_MOVE_TO_BIN);
+					break;
+				    case 31:
+					this.grm.sendToServer(Message.GRM_FINISH_MOVE_TO_FEEDER);
+					break;
+				    case 32:
+					this.grm.sendToServer(Message.GRM_FINISH_MOVE_TO_DUMP);
+					break;
+				    
+				    }
+				this.gbot.popOrder();
+			    }
 			
 			}
 		}	
@@ -57,13 +75,14 @@ public class GRMGraphicPanel extends JPanel implements ActionListener {
 		repaint();
 	}
 
-	public GRMGraphicPanel(){
+	public GRMGraphicPanel(GantryRobotManager g){
 		ps = new PurgeStation();
 		carriedBinIndex = 0;
 		gbot = new GUIGantryRobot();
 		bin = new GUIBin(450,0,0.0,"",0);
 		bins = new ArrayList<GUIBin>();
 		parts = new ArrayList<Part>();
+		grm=g;
 		newPart = new Part(null,null);
 		feeders = new ArrayList<GUIFeeder>();	
 		feedertemp = new GUIFeeder((Integer)0,(Integer)0,(Double)0.0,"");

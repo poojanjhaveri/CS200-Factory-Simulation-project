@@ -15,6 +15,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.Semaphore;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * @brief agent for the Gantry This class is the agent for the Gantry. The
@@ -25,6 +28,8 @@ import java.util.TimerTask;
  */
 public class GantryAgent extends Agent implements Gantry {
 
+    //initialized with 0.
+    Semaphore anim=new Semaphore(0, true);;
     //private List<myParts> parts = Collections.synchronizedList(new ArrayList<myParts>());
     private Feeder feeder;
     //holds info about all the feeders that are assigned to the gantry
@@ -156,6 +161,11 @@ public class GantryAgent extends Agent implements Gantry {
         }
     }
 
+    public void msgAnimationComplete(){
+        
+        //release the semaphore so that the animation can resume in the doSupplyPart().
+        anim.release();
+    }
     public void msgNeedPart(Part part,Feeder feeder) {
     	
         
@@ -254,8 +264,8 @@ public class GantryAgent extends Agent implements Gantry {
     private void doSupplyPart(myBin b,myFeeder f){
    	
      print("about to pick up bin");
-  	//animation.ganbot.moveToBin(b.index);
-    
+     
+     //sleep until a client comes in. 
      while(this.client == null)
          {
          //print("[ERROR] - Gantry Robot Manager is not online.");
@@ -270,30 +280,42 @@ public class GantryAgent extends Agent implements Gantry {
          }
      
          
-     this.client.sendMessage(Message.MOVE_GANTRY_TO_BIN+":"+b.index);
+       this.client.sendMessage(Message.MOVE_GANTRY_TO_BIN+":"+b.index);
        this.fpm.sendMessage(Message.MOVE_GANTRY_TO_BIN+":"+b.index);
-         try {
+         
+       //remove the thread.sleep after server calls to release the semaphore.
+       try {
 			Thread.sleep(6000);
-		} catch (InterruptedException e) {
+            } catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-         this.client.sendMessage(Message.GANTRY_CARRY_A_BIN + ":" + b.index);
-         this.fpm.sendMessage(Message.GANTRY_CARRY_A_BIN + ":" + b.index);
-         this.client.sendMessage(Message.MOVE_GANTRY_TO_FEEDER+":"+f.index);
-         this.fpm.sendMessage(Message.MOVE_GANTRY_TO_FEEDER+":"+f.index);
+        try {
+            //try to acquire the semaphore which will be released after the gantry has moved down to the bin.
+            anim.acquire();
+            this.client.sendMessage(Message.GANTRY_CARRY_A_BIN + ":" + b.index);
+            this.fpm.sendMessage(Message.GANTRY_CARRY_A_BIN + ":" + b.index);
+            this.client.sendMessage(Message.MOVE_GANTRY_TO_FEEDER+":"+f.index);
+            this.fpm.sendMessage(Message.MOVE_GANTRY_TO_FEEDER+":"+f.index);
+            } catch (InterruptedException ex) {
+            Logger.getLogger(GantryAgent.class.getName()).log(Level.SEVERE, null, ex);
+        }
          
-    	//animation.goToFeeder(f.index-1);
-    	
-    	try {
+        try {
 			Thread.sleep(6000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated ongocatch block
 			e.printStackTrace();
 		}
-    	
-    	this.client.sendMessage(Message.SUPPLY_PART_ON_FEEDER + ":" + f.index);
-        this.fpm.sendMessage(Message.SUPPLY_PART_ON_FEEDER + ":" + f.index);
+        
+        //ask for the semaphore to complete previously running animations.
+        try {
+            anim.acquire();
+            this.client.sendMessage(Message.SUPPLY_PART_ON_FEEDER + ":" + f.index);
+            this.fpm.sendMessage(Message.SUPPLY_PART_ON_FEEDER + ":" + f.index);
+            } catch (InterruptedException ex) {
+            Logger.getLogger(GantryAgent.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
             try {
 			Thread.sleep(2000);
@@ -301,9 +323,15 @@ public class GantryAgent extends Agent implements Gantry {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-            
-        this.client.sendMessage(Message.MOVE_GANTRY_TO_DUMP);
-        this.fpm.sendMessage(Message.MOVE_GANTRY_TO_DUMP);
+        try {
+            //after supply part animation has completed and the semaphore is available, move the gantry to dump.
+            anim.acquire();
+            this.client.sendMessage(Message.MOVE_GANTRY_TO_DUMP);
+            this.fpm.sendMessage(Message.MOVE_GANTRY_TO_DUMP);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(GantryAgent.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     
         
          try {
