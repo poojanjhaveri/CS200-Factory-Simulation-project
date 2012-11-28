@@ -24,6 +24,8 @@ public class HandleAManager implements Runnable {
      * 0 - GantryRobotManager
      * 1 - KitAssemblyManager
      * 2 - LaneManager
+3 - FactoryProductionManager
+4 - KitManager
      */
     Integer id;
 
@@ -92,7 +94,9 @@ public class HandleAManager implements Runnable {
         this.pw.println(msg);
     }
 
-
+    /**
+@brief Processes generic messages sendable by all managers
+     */
     private void processGenericMessage(String msg) {
         if (msg.contains(Message.TEST_SERVER)) {
             System.out.println("Server test passed. Testing client...");
@@ -106,20 +110,11 @@ public class HandleAManager implements Runnable {
             }
         }
     }
-    /**
-     * @brief Processes a given message and executes the proper method from
-     * an agent.
-     * @param msg - the String message from a client
-     */
-    private void processMessage(String msg) {
-        if (msg == null) {
-            p.println("NULL MESSAGE RECEIVED ON THE SERVER.");
-            return;
-        }
-
-        // Decide action based on message from client
+    private void processIdentificationMessage(String msg)
+    {
         if(msg.contains(Message.IDENTIFY_KITMANAGER)) {
             System.out.println("SERVER FOUND A KIT MANAGER");
+	    this.id = 4;
             this.server.setKitManagerClient(this);
         } else if (msg.contains(Message.IDENTIFY_FACTORYPRODUCTIONMANAGER)) {
             p.println("SERVER HAS IDENTIFIED A FACTORYPRODUCTIONMANAGER");
@@ -143,7 +138,23 @@ public class HandleAManager implements Runnable {
             this.server.setConveyerAgentClient(this);
             this.server.setPartsAgentClient(this);
             this.server.getServerLM().setKAM(this);
-        } else if (msg.contains(Message.PULL_KITS_LIST)) {
+        }
+    }
+    /**
+     * @brief Processes a given message and executes the proper method from
+     * an agent.
+     * @param msg - the String message from a client
+     */
+    private void processMessage(String msg) {
+        // Decide action based on message from client
+        if (msg == null) {
+            p.println("NULL MESSAGE RECEIVED ON THE SERVER.");
+            return;
+        }
+	if(this.id == -1)
+	this.processGenericMessage(msg);
+	
+	if (msg.contains(Message.PULL_KITS_LIST)) {
             pw.println(Message.PUSH_KITS_LIST + ":" + this.server.getFactoryState().getBlueprintKits().serialize());
         } else if (msg.contains(Message.PULL_PARTS_LIST)) {
             pw.println(Message.PUSH_PARTS_LIST + ":" + this.server.getFactoryState().getBlueprintParts().serialize());
