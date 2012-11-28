@@ -13,6 +13,7 @@ import factory.general.BlueprintKits;
 import factory.general.Kit;
 import factory.general.Message;
 import factory.general.Part;
+import java.util.concurrent.Semaphore;
 
 /**
  * Factory PartsAgent gets kit information from server and obtains necessary
@@ -26,6 +27,7 @@ import factory.general.Part;
  */
 public class PartsAgent extends Agent implements PartsInterface {
 
+    Semaphore s = new Semaphore(0, true);
     Kit kit0;//pointer to kit on stand number 0
     Kit kit1;//pointer to kit on stand number 1
     Kit kit0Info;//information for kit on stand number 0
@@ -55,11 +57,15 @@ public class PartsAgent extends Agent implements PartsInterface {
     
 //Messages 
 
- public void msgHereIsKit(ArrayList<Kit> newKits) {// message from server
+    public void msgAnimationComplete(){
+        s.release();
+    }
+    
+    public void msgHereIsKit(ArrayList<Kit> newKits) {// message from server
         print("PartsAgent got message for new kits");
         for (Kit k: newKits){
         newKit.add(k);}
-        //DoGiveKitsInQueue(newKit);
+        DoGiveKitsInQueue(newKit);
         requestState=false;
         stateChanged();
     }
@@ -78,7 +84,7 @@ public class PartsAgent extends Agent implements PartsInterface {
         if(k.standNum==Kit.StandNum.zero){
             kit0=k;
             kit0.standNum = Kit.StandNum.zero;
-           kitZero=true;//means an empty kit is ready for kit stand 0
+            kitZero=true;//means an empty kit is ready for kit stand 0
         }
         else if(k.standNum==Kit.StandNum.one) {
             kit1=k;
@@ -88,8 +94,7 @@ public class PartsAgent extends Agent implements PartsInterface {
             
         else{
             print("ERROR IN MSGEMPTYKITREADY");
-            
-            }
+           }
 
         print("got an empty kit for stand #" + k.standNum);
         stateChanged();
@@ -149,11 +154,12 @@ public class PartsAgent extends Agent implements PartsInterface {
         kits--;
         if(k.standNum==Kit.StandNum.zero){
             kit0Info = null;
-            kit0.parts.clear();//remove if k.parts.size()==0
+  //          kit0.parts.clear();//remove if k.parts.size()==0
         }
+       
         else{
             kit1Info = null;
-            kit1.parts.clear();
+           // kit1.parts.clear();
         }
            
 
@@ -294,7 +300,7 @@ public class PartsAgent extends Agent implements PartsInterface {
         if (this.client != null) {
             this.fpm.sendMessage(Message.KAM_PARTS_MOVE_TO_NEST + ":" + nestNum);
             this.client.sendMessage(Message.KAM_PARTS_MOVE_TO_NEST + ":" + nestNum);
-            //thread.sleep
+            s.acquireUninterruptibly();
             try {
             Thread.sleep(5000);
             } catch (InterruptedException e) {
@@ -313,6 +319,7 @@ public class PartsAgent extends Agent implements PartsInterface {
         if (this.client != null) {
             this.client.sendMessage(Message.KAM_PARTS_PICK_PART + ":" + nestNum);
             this.fpm.sendMessage(Message.KAM_PARTS_PICK_PART + ":" + nestNum);
+            s.acquireUninterruptibly();
         try {
          Thread.sleep(1500);
          } catch (InterruptedException e) {
@@ -330,6 +337,7 @@ public class PartsAgent extends Agent implements PartsInterface {
         if (this.client != null) {
             this.client.sendMessage(Message.KAM_PARTS_DROP_OFF_PARTS + ":" + kitNum);
             this.fpm.sendMessage(Message.KAM_PARTS_DROP_OFF_PARTS + ":" + kitNum);
+            s.acquireUninterruptibly();
         try {
          Thread.sleep(10000);
          } catch (InterruptedException e) {

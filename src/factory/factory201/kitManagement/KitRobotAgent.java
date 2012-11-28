@@ -36,11 +36,13 @@ public class KitRobotAgent extends Agent implements KitRobot {
     //requested kit from conveyer?
     private boolean requestedKitFromConveyor;
     private Semaphore animation = new Semaphore(0, true);
-
+    private boolean firstRequest=false;
+    
     public KitRobotAgent(String name) {
         super(name);
         kitStand = new KitStand(this);
         //nothing requested
+        print("requested kit from conveyor is " + requestedKitFromConveyor);
         requestedKitFromConveyor = false;
         //initialize 0 requests
         kitRequestsFromPartsAgent = 0;
@@ -56,6 +58,8 @@ public class KitRobotAgent extends Agent implements KitRobot {
 
         //increment request count
         kitRequestsFromPartsAgent++;
+        firstRequest=true;
+        print("kit request count is " + kitRequestsFromPartsAgent);
         stateChanged();
     }
 
@@ -96,8 +100,8 @@ public class KitRobotAgent extends Agent implements KitRobot {
     // ********* SCHEDULER *********
     @Override
     public boolean pickAndExecuteAnAction() {
-        print("testing location after two executions , 2 and 1 empty? " + kitStand.isEmpty(2) + kitStand.isEmpty(1));
-        print("request State is " + requestedKitFromConveyor);
+        //print("testing location after two executions , 2 and 1 empty? " + kitStand.isEmpty(2) + kitStand.isEmpty(1));
+        //print("request State is " + requestedKitFromConveyor);
         //if the stand is not empty at 2 and has been verified, send to conveyer.
         if (!kitStand.isEmpty(2) && kitStand.get(2).status == Kit.Status.verified) {
             //if kit is ready to leave cell
@@ -118,28 +122,64 @@ public class KitRobotAgent extends Agent implements KitRobot {
             return true;
         }
         /*
-         if (kitStand.availability() > 0 && !requestedKitFromConveyor) {
-         // if tempstand is empty
-         requestEmptyKitFromConveyor();
-         return true;
-         }
-         */
-        //check for a kit availa
-
-        if (kitRequestsFromPartsAgent > 0) {
-            if ((!kitStand.isEmpty(0)) && kitStand.get(0).status == Kit.Status.empty) {
-                // if parts agent needs empty kit
-                giveEmptyKitToPartsAgent(0);
-                kitRequestsFromPartsAgent--;
-                return true;
-            } else if ((!kitStand.isEmpty(1)) && kitStand.get(1).status == Kit.Status.empty) {
-                giveEmptyKitToPartsAgent(1);
-                kitRequestsFromPartsAgent--;
-                return true;
-            } else if (!requestedKitFromConveyor && kitStand.isEmpty()) //kitStand.isEmpty()
-            {
+//<<<<<<< HEAD
+//         if (kitStand.availability() > 0 && !requestedKitFromConveyor) {
+//         // if tempstand is empty
+//         requestEmptyKitFromConveyor();
+//         return true;
+//         }
+//         */
+//        //check for a kit availa
+//
+//        if (kitRequestsFromPartsAgent > 0) {
+//            if ((!kitStand.isEmpty(0)) && kitStand.get(0).status == Kit.Status.empty) {
+//                // if parts agent needs empty kit
+//                giveEmptyKitToPartsAgent(0);
+//                kitRequestsFromPartsAgent--;
+//                return true;
+//            } else if ((!kitStand.isEmpty(1)) && kitStand.get(1).status == Kit.Status.empty) {
+//                giveEmptyKitToPartsAgent(1);
+//                kitRequestsFromPartsAgent--;
+//                return true;
+//            } else if (!requestedKitFromConveyor && kitStand.isEmpty()) //kitStand.isEmpty()
+//            {
+//                requestEmptyKitFromConveyor();
+//            }
+//=======
+        if (kitStand.availability() > 0 && !requestedKitFromConveyor) {
+            // if tempstand is empty
+            requestEmptyKitFromConveyor();
+            return true;
+        }
+//        */
+        
+      //  print("kit statuses: 0 " + kitStand.isEmpty(0)+ ", 1 : " +kitStand.isEmpty(1) + ", 2 : " +kitStand.isEmpty(2));
+      //  print("requested kit from conveyor is " + requestedKitFromConveyor);
+        
+        /* firstRequest is just to make sure that the request to conveyor isn't made until fpm runs */
+        if(firstRequest==true && requestedKitFromConveyor==false && (kitStand.isEmpty(1)|| kitStand.isEmpty(0)) && kitStand.isEmpty(2)){
+                print("testing request empty kit from conveyor");
                 requestEmptyKitFromConveyor();
+                return true;
             }
+        
+        if (kitRequestsFromPartsAgent > 0){
+            
+            
+            if((!kitStand.isEmpty(0)) && kitStand.get(0).status==Kit.Status.empty) {
+            // if parts agent needs empty kit
+            giveEmptyKitToPartsAgent(0);
+            kitRequestsFromPartsAgent--;
+            return true;
+            }
+            else if((!kitStand.isEmpty(1)) && kitStand.get(1).status==Kit.Status.empty){
+            giveEmptyKitToPartsAgent(1);
+            kitRequestsFromPartsAgent--;
+            return true;
+            }
+            
+            
+//>>>>>>> e6cacdb1cb3c6d9b78759bdb94241c7bbef4d0af
         }
         return false;
     }
@@ -194,6 +234,18 @@ public class KitRobotAgent extends Agent implements KitRobot {
 
     private void requestEmptyKitFromConveyor() {
         print("Requesting an empty kit from the conveyor.");
+        //wait for the client to come in before sending kit request to the conveyor
+        /*
+        while (this.client == null) {
+           try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+         
+        }
+        */
         conveyor.msgNeedEmptyKit();
 
         requestedKitFromConveyor = true;
