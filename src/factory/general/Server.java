@@ -241,6 +241,7 @@ public class Server {
                 }  
             }
             gantryAgent.setServer(serverLM);
+            cameraAgent.setServer(serverLM);
         }
 
         private void startAgentThreads() {
