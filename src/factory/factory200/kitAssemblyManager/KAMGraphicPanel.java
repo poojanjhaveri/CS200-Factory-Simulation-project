@@ -288,6 +288,9 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
                             delivery.takeKit(kitbot.dropKit());
                         }
                         break;
+		case 50://thread releases
+		    this.kam.sendToServer(Message.KAM_FINISH_ANIMATION);
+		    break;
                     default:
                         kitbot.performOrder();
                         break;
