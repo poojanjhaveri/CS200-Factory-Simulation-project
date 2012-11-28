@@ -150,10 +150,10 @@ public class HandleAManager implements Runnable {
             p.println("NULL MESSAGE RECEIVED ON THE SERVER.");
             return;
         }
-       
-            this.processGenericMessage(msg);
- if(this.id == -1)
-     this.processIdentificationMessage(msg);
+
+        this.processGenericMessage(msg);
+        if(this.id == -1)
+            this.processIdentificationMessage(msg);
         if (msg.contains(Message.PULL_KITS_LIST)) {
             pw.println(Message.PUSH_KITS_LIST + ":" + this.server.getFactoryState().getBlueprintKits().serialize());
         } else if (msg.contains(Message.PULL_PARTS_LIST)) {
@@ -194,15 +194,14 @@ public class HandleAManager implements Runnable {
             /*for(int i = 0; i != deserialized.size(); i++) {
             	queue.add(Kit.deepClone(this.server.getFactoryState().getKitById(Integer.parseInt(deserialized.get(i)))));
             	System.out.println(deserialized.get(i));
-            <<<<<<< HEAD
             }*/
             for(int i = 0; i != deserialized.size(); i++) {
                 Kit single = this.server.getFactoryState().getKitById(Integer.parseInt(deserialized.get(i))).cloneSelf();
 
                 queue.add(single);
             }
-           // this.server.getConveyorAgent().msgGenerateKit(queue.size()); // * This generates 10 new kits, among other things if you pass string... *
-           // this.server.getPartsAgent().msgHereIsKit(queue);
+            // this.server.getConveyorAgent().msgGenerateKit(queue.size()); // * This generates 10 new kits, among other things if you pass string... *
+            // this.server.getPartsAgent().msgHereIsKit(queue);
             this.server.startInteractionSequence();
             System.out.println(msg);
             System.out.println("BEGINNING PRODUCTION CYCLE WOOOOOOT (size "+queue.size() + ")");
@@ -214,6 +213,8 @@ public class HandleAManager implements Runnable {
             server.getServerLM().getVerify().verify(msg);
         } else if(msg.contains(Message.GRM_FINISH_MOVE_TO_BIN) || msg.contains(Message.GRM_FINISH_MOVE_TO_FEEDER) || msg.contains(Message.GRM_FINISH_MOVE_TO_DUMP)) {
             this.server.getGantry().msgAnimationComplete(msg);
+        } else if(msg.contains(Message.KAM_FINISH_ANIMATION)) {
+            this.server.getKitRobotAgent().msgAnimationComplete();
         }
     }
 

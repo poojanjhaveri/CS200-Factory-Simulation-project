@@ -41,6 +41,7 @@ public class KitAssemblyManager extends Manager implements ActionListener {
      * changes the panel based on what the user clicks
      */
     public void processMessage(String msg) {
+        System.out.println("KAM has received a message: " + msg);
         super.processMessage(msg);
         if (msg == null) {
             return;
@@ -48,15 +49,19 @@ public class KitAssemblyManager extends Manager implements ActionListener {
 
         if (msg.contains(Message.KAM_DROP_OFF_FULL_KIT)) {
             this.graphics.kitbot.dropOffFullKit();
+	    //needs release DONE
         } else if (msg.contains(Message.KAM_MOVE_ACTIVE_KIT_TO_INSPECTION)) {
             this.graphics.kitbot.moveActiveKitToInspection();
+	    //needs to release DONE
         } else if (msg.contains(Message.KAM_PICK_UP_EMPTY_KIT_TO_ACTIVE)) {
             this.graphics.kitbot.pickUpEmptyKitToActive();
+	    //needs to release DONE
         } else if (msg.contains(Message.KAM_PICK_UP_EMPTY_KIT)) {
             this.graphics.kitbot.pickUpEmptyKit();
+	    //needs to release DONE
         } else if (msg.contains(Message.KAM_MOVE_EMPTY_KIT_TO_ACTIVE)) {
             this.graphics.kitbot.moveEmptyKitToActive();
-
+	    //needs to release DONE
         } else if (msg.contains(Message.KAM_FLASH_KIT_CAMERA)) {
             this.flashKitCamera();
         } else if (msg.contains(Message.KAM_FLASH_NEST_CAMERA)) {
@@ -74,6 +79,7 @@ public class KitAssemblyManager extends Manager implements ActionListener {
             this.flashNestCamera(Integer.parseInt(this.grabParameter(msg)));
         } else if (msg.contains(Message.KAM_MOVE_FROM_0_TO_2)) {
             this.moveFrom0To2();
+	    //needs to release DONE
         } else if (msg.contains(Message.KAM_ADD_KIT)) {
             this.doAddEmptyKit();
         } else if (msg.contains(Message.LM_ADD_PART)) {
@@ -255,10 +261,10 @@ public class KitAssemblyManager extends Manager implements ActionListener {
      */
     public KitAssemblyManager() {
         
-        this.graphics = new KAMGraphicPanel();
+        this.graphics = new KAMGraphicPanel(this);
         //tester lines
         this.setLayout(new GridLayout(1, 2));
-        this.graphics = new KAMGraphicPanel();
+        this.graphics = new KAMGraphicPanel(this);
 
         this.add(graphics);
         int x=0;

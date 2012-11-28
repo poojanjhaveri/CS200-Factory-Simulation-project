@@ -1,6 +1,7 @@
 package factory.factory201.kitManagement;
 
 import agent.Agent;
+import factory.factory200.laneManager.ServerSide.LMServerMain;
 import factory.factory201.interfaces.Camera;
 import factory.factory201.interfaces.KitRobot;
 import factory.factory201.interfaces.NestInterface;
@@ -11,6 +12,7 @@ import factory.general.Part;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.Semaphore;
 
 /**
  * Agent for the camera.
@@ -32,6 +34,7 @@ public class CameraAgent extends Agent implements Camera {
     private List<Kit> kitList;
     private Kit kitInfoFromPartsAgent;
     private List<Integer> kitRqmts;
+    private LMServerMain LMServer;
 
     public CameraAgent(String name) {
         super(name);
@@ -40,61 +43,60 @@ public class CameraAgent extends Agent implements Camera {
         kitInfoFromPartsAgent = null;
         kitRqmts = new ArrayList<Integer>();
     }
-
+    
     @Override
     public void msgNestIsFull(Nest nest) {
 //        print("Received msgNestIsFull that " + nest.nestNum + " is full.");
         //synchronized (nestList) {
-            nestList.add(nest);
+        nestList.add(nest);
         //}
-    
+
         stateChanged();
     }
 
     @Override
     public void msgKitIsFull(Kit kit) {
         print("Received msgKitIsFull from Kit Robot Agent");
-        
+
         kitList.add(kit);
-        
+
         stateChanged();
     }
 
     @Override
     public void msgHereIsKitInfo(Kit kit) {
         kitInfoFromPartsAgent = kit;
-    stateChanged();
+        stateChanged();
     }
 
     // ********* SCHEDULER *********
     @Override
     public boolean pickAndExecuteAnAction() {
-    //print("myKit list size is " + kitList.size());
+        //print("myKit list size is " + kitList.size());
         if (kitInfoFromPartsAgent != null) {
             configureKitInfo();
             return true;
         }
-        
+
         for (Kit k : kitList) {
-                if (k.status == Kit.Status.full) {
-                    inspectKit(k);
-                    return true;
-                }
+            if (k.status == Kit.Status.full) {
+                inspectKit(k);
+                return true;
             }
-        
+        }
+
         //synchronized (nestList) {
-            for (Nest n : nestList) {
-                if (n.status == Nest.Status.gettingInspected) {
-                    inspectNest(n);
-                    return true;
-                }
+        for (Nest n : nestList) {
+            if (n.status == Nest.Status.gettingInspected) {
+                inspectNest(n);
+                return true;
             }
-        
+        }
+
         return false;
     }
 
     // ********** ACTIONS **********
-    
     public void inspectKit(Kit kit) {
 //        print("Inspecting kit: [" + kit.name + "].");
         boolean result = true;
@@ -146,7 +148,7 @@ public class CameraAgent extends Agent implements Camera {
             kitRqmts.add(kitInfoFromPartsAgent.getPart(i).type);
         }
         kitInfoFromPartsAgent = null;
-    //stateChanged();
+        //stateChanged();
     }
 
     // ************ MISC ***********
@@ -162,6 +164,11 @@ public class CameraAgent extends Agent implements Camera {
         this.kitRobot = kitRobot;
         this.nestAgent = nestAgent;
     }
+    
+    public void setServer(LMServerMain LMServer1) {
+//    System.out.println("leftindex is " + leftLane.getIndex());
+        this.LMServer = LMServer1;
+    }
 
     public List<Integer> getKitRqmts() {
         return this.kitRqmts;
@@ -171,12 +178,6 @@ public class CameraAgent extends Agent implements Camera {
         if (this.client != null) {
             this.client.sendMessage(Message.KAM_FLASH_KIT_CAMERA);
             this.fpm.sendMessage(Message.KAM_FLASH_KIT_CAMERA);
-        try {
-         Thread.sleep(1000);
-         } catch (InterruptedException e) {
-         // TODO Auto-generated catch block
-         e.printStackTrace();
-         }
         } else {
             print("[ERROR] - Kit Assembly Manager is not online.");
         }
@@ -187,13 +188,7 @@ public class CameraAgent extends Agent implements Camera {
             this.client.sendMessage(Message.KAM_FLASH_NEST_CAMERA + ":" + nest.nestNum);
             this.fpm.sendMessage(Message.KAM_FLASH_NEST_CAMERA + ":" + nest.nestNum);
             this.fpm.sendMessage(Message.ALERT_FPM_KIT_INSPECTED);
-        try {
-         Thread.sleep(3000);
-         } catch (InterruptedException e) {
-         // TODO Auto-generated catch block
-         e.printStackTrace();
-         }
-        
+            this.LMServer.getForAgentNestCamera().cameraShoot(nest.nestNum);
         } else {
             print("[ERROR] - Kit Assembly Manager is not online.");
         }

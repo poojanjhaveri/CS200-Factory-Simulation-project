@@ -236,8 +236,9 @@ public class Server {
             if (i < FEEDER) {
                 feederAgents[i].setServer(serverLM);
             }
+            gantryAgent.setServer(serverLM);
+            cameraAgent.setServer(serverLM);
         }
-        gantryAgent.setServer(serverLM);
     }
 
     private void startAgentThreads() {

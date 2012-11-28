@@ -53,7 +53,7 @@ public class LMFeederHandler {
 		// Message : Feeder On
 		if( message.indexOf("Feeder Switch On") != -1 ){
 			// GUIPanel change
-			//app.getGUIPanel().getGUIFeeder().getGUIFeederArray(feederNum).setFeederSwitchOn();
+			app.getGUIPanel().getGUIFeeder().getGUIFeederArray(feederNum).setFeederSwitchOn();
 			// GraphicsPanel change
 			app.getGraphicsPanel().getAllFeeder().getFeeder(feederNum).setSwitch(true);
 		}
@@ -61,7 +61,7 @@ public class LMFeederHandler {
 		// Message : Feeder Off
 		else if( message.indexOf("Feeder Switch Off") != -1 ){
 			// GUIPanel change
-			//app.getGUIPanel().getGUIFeeder().getGUIFeederArray(feederNum).setFeederSwitchOff();
+			app.getGUIPanel().getGUIFeeder().getGUIFeederArray(feederNum).setFeederSwitchOff();
 			// GraphicsPanel change
 			app.getGraphicsPanel().getAllFeeder().getFeeder(feederNum).setSwitch(false);
 		}
@@ -69,7 +69,7 @@ public class LMFeederHandler {
 		// Message : Part Low Sensor On
 		else if( message.indexOf("Part Low Sensor On") != -1 ){
 			// GUIPanel change
-			//app.getGUIPanel().getGUIFeeder().getGUIFeederArray(feederNum).setFeederPartLowSensor();
+			app.getGUIPanel().getGUIFeeder().getGUIFeederArray(feederNum).setFeederPartLowSensor();
 			// GraphicsPanel change
 			app.getGraphicsPanel().getAllFeeder().getPartLowBulb(feederNum).setSwitch(true);
 		}
@@ -77,7 +77,7 @@ public class LMFeederHandler {
 		// Message : Part Low Sensor Off
 		else if( message.indexOf("Part Low Sensor Off") != -1 ){
 			// GUIPanel change
-			//app.getGUIPanel().getGUIFeeder().getGUIFeederArray(feederNum).setFeederPartHighSensor();
+			app.getGUIPanel().getGUIFeeder().getGUIFeederArray(feederNum).setFeederPartHighSensor();
 			// GraphicsPanel change
 			app.getGraphicsPanel().getAllFeeder().getPartLowBulb(feederNum).setSwitch(false);
 		}
@@ -85,7 +85,7 @@ public class LMFeederHandler {
 		// Message : Feed Parts Switch On
 		else if( message.indexOf("Feed Part Switch On") != -1 ){
 			// GUIPanel change
-			//app.getGUIPanel().getGUIFeeder().getGUIFeederArray(feederNum).setFeederFeedPartsSwitchOn();
+			app.getGUIPanel().getGUIFeeder().getGUIFeederArray(feederNum).setFeederFeedPartsSwitchOn();
 			// GraphicsPanel change
 			app.getGraphicsPanel().getAllFeeder().getFeedingBulb(feederNum).setSwitch(true);
 		}
@@ -93,7 +93,7 @@ public class LMFeederHandler {
 		// Message : Feed Parts Switch Off
 		else if( message.indexOf("Feed Part Switch Off") != -1 ){
 			// GUIPanel change
-			//app.getGUIPanel().getGUIFeeder().getGUIFeederArray(feederNum).setFeederFeedPartsSwitchOff();
+			app.getGUIPanel().getGUIFeeder().getGUIFeederArray(feederNum).setFeederFeedPartsSwitchOff();
 			// GraphicsPanel change
 			app.getGraphicsPanel().getAllFeeder().getFeedingBulb(feederNum).setSwitch(false);
 		}
@@ -101,13 +101,13 @@ public class LMFeederHandler {
 		// Message : Part Fed Counter Setup
 		else if( message.indexOf("Part Fed Counter") != -1 ){
 			// GUIPanel change
-			//app.getGUIPanel().getGUIFeeder().getGUIFeederArray(feederNum).setPartFedCounterIncrease();
+			app.getGUIPanel().getGUIFeeder().getGUIFeederArray(feederNum).setPartFedCounterIncrease();
 		}
 		
 		// Message : Lowers Rear Gate
 		else if( message.indexOf("Rear Gate Lower") != -1 ){
 			// GUIPanel change
-			//app.getGUIPanel().getGUIFeeder().getGUIFeederArray(feederNum).setLowerRaiseRearGateSwitchOff();
+			app.getGUIPanel().getGUIFeeder().getGUIFeederArray(feederNum).setLowerRaiseRearGateSwitchOff();
 			// GraphicsPanel change
 			app.getGraphicsPanel().getAllFeeder().getRearGateBulb(feederNum).setSwitch(true);
 		}
@@ -115,7 +115,7 @@ public class LMFeederHandler {
 		// Message : Raises Rear Gate
 		else if( message.indexOf("Rear Gate Raise") != -1 ){
 			// GUIPanel change
-			//app.getGUIPanel().getGUIFeeder().getGUIFeederArray(feederNum).setLowerRaiseRearGateSwitchOn();
+			app.getGUIPanel().getGUIFeeder().getGUIFeederArray(feederNum).setLowerRaiseRearGateSwitchOn();
 			// GraphicsPanel change
 			app.getGraphicsPanel().getAllFeeder().getRearGateBulb(feederNum).setSwitch(false);
 		}
@@ -123,7 +123,7 @@ public class LMFeederHandler {
 		// Message : Purge Bin Switch On
 		else if( message.indexOf("Purge On") != -1 ){
 			// GUIPanel change
-			//app.getGUIPanel().getGUIFeeder().getGUIFeederArray(feederNum).setPurgeBinSwitchOn();	
+			app.getGUIPanel().getGUIFeeder().getGUIFeederArray(feederNum).setPurgeBinSwitchOn();	
 			// GraphicsPanel change
 			app.getGraphicsPanel().getAllFeeder().getPurgingBulb(feederNum).setSwitch(true);
 		}
@@ -131,7 +131,7 @@ public class LMFeederHandler {
 		// Message : Purge Bin Switch Off
 		else if( message.indexOf("Purge Off") != -1 ){
 			// GUIPanel change
-			//app.getGUIPanel().getGUIFeeder().getGUIFeederArray(feederNum).setPurgeBinSwitchOff();
+			app.getGUIPanel().getGUIFeeder().getGUIFeederArray(feederNum).setPurgeBinSwitchOff();
 			// GraphicsPanel change
 			app.getGraphicsPanel().getAllFeeder().getPurgingBulb(feederNum).setSwitch(false);
 		}
@@ -139,7 +139,7 @@ public class LMFeederHandler {
 		// Message : Divert To Left
 		else if( message.indexOf("Divert To Left") != -1 ){
 			// GUIPanel change
-			//app.getGUIPanel().getGUIFeeder().getGUIFeederArray(feederNum).setDivertToLeft();
+			app.getGUIPanel().getGUIFeeder().getGUIFeederArray(feederNum).setDivertToLeft();
 			// GraphicsPanel change
 			app.getGraphicsPanel().getAllFeeder().getDiversionBulb(feederNum).setDivertToLeft();
 		}
@@ -147,7 +147,7 @@ public class LMFeederHandler {
 		// Message : Divert To Right
 		else if( message.indexOf("Divert To Right") != -1 ){
 			// GUIPanel change
-			//app.getGUIPanel().getGUIFeeder().getGUIFeederArray(feederNum).setDivertToRight();
+			app.getGUIPanel().getGUIFeeder().getGUIFeederArray(feederNum).setDivertToRight();
 			// GraphicsPanel change
 			app.getGraphicsPanel().getAllFeeder().getDiversionBulb(feederNum).setDivertToRight();
 		}
