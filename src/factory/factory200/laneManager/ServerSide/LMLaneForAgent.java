@@ -33,16 +33,12 @@ public class LMLaneForAgent {
 	public void setSwitchOff( int laneNum ){
 		lanes.get( laneNum ).switchOff();
 	}
-
+	
 	public void setVibrationAmplitudeStrong( int laneNum ){
 		lanes.get( laneNum ).setVibrationAmplitudeStrong();
 	}
 
 	public void setVibrationAmplitudeNormal( int laneNum ){
 		lanes.get( laneNum ).setVibrationAmplitudeNormal();
-	}
-
-	public void setVibrationAmplitudeWeak( int laneNum ){
-		lanes.get( laneNum ).setVibrationAmplitudeWeak();
 	}
 }

@@ -20,7 +20,7 @@ public class Message {
     public static final String UPDATE_PART = "UPDATE_PART";
     public static final String UNDEFINE_PART = "UNDEFINE_PART";///<removes a part definition
 
-    //kitsmanager section
+    //kitmanager section
     public static final String IDENTIFY_KITMANAGER = "IDENTIFY_KITMANAGER";
     public static final String PULL_KITS_LIST = "PULL_KITS_LIST";///<simple request form kits to server asking for kits list
     public static final String PUSH_KITS_LIST = "PUSH_KITS_LIST";///<send serialized kits list over form server to kitsmanager
@@ -56,8 +56,10 @@ public class Message {
     public static final String KAM_ADD_KIT = "KAM_ADD_KIT";///<places another empty kit onto the conveyor
     public static final String KAM_REMOVE_KIT = "KAM_REMOVE_KIT";///<removes a kit off screen from conveyor
     public static final String LM_ADD_PART="LMA_";
-    public static final String KAM_FINISH_MOVE_TO_NEST = "KAM_FINISH_MOVE_TO_NEST";
-    public static final String KAM_FINISH_DROP_OFF_PARTS = "KAM_FINISH_DROP_OFF_PARTS";
+    public static final String KAM_FINISH_ANIMATION = "KAM_FINISH_ANIMATION";
+    //    public static final String KAM_FINISH_DROP_OFF_FULL_KIT = "KAM_FINISH_DROP_OFF_FULL_KIT";
+    //    public static final String KAM_FINISH_MOVE_TO_NEST = "KAM_FINISH_MOVE_TO_NEST";
+    //public static final String KAM_FINISH_DROP_OFF_PARTS = "KAM_FINISH_DROP_OFF_PARTS";
 
     //lanemanager section
     public static final String IDENTIFY_LANEMANAGER = "IDENTIFY_LANEMANAGER";

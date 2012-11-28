@@ -25,7 +25,6 @@ public class LMControlPanel2 extends JPanel implements ActionListener{
 	private JButton b1 = new JButton("Switch Off");
 	private JButton b2 = new JButton("Amplitude Strong");
 	private JButton b3 = new JButton("Amplitude Normal");
-	private JButton b4 = new JButton("Amplitude Weak");
 
 	public LMControlPanel2(LMLaneForAgent agentLane){		
 		this.agentLane = agentLane;
@@ -36,10 +35,9 @@ public class LMControlPanel2 extends JPanel implements ActionListener{
 		b1.addActionListener(this);
 		b2.addActionListener(this);
 		b3.addActionListener(this);
-		b4.addActionListener(this);
 		
 		add(laneNum);
-		add(b0);add(b1);add(b2);add(b3);add(b4);
+		add(b0);add(b1);add(b2);add(b3);
 
 		updateUI();
 	}
@@ -61,10 +59,6 @@ public class LMControlPanel2 extends JPanel implements ActionListener{
 		
 		else if( ae.getSource() == b3 ){
 			agentLane.setVibrationAmplitudeNormal( chosenLane );
-		}
-		
-		else if( ae.getSource() == b4 ){
-			agentLane.setVibrationAmplitudeWeak( chosenLane );
 		}
 	}	
 }

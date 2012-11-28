@@ -63,6 +63,10 @@ public class LMGUIFeederPanel extends JPanel{
 		add(lowerRaiseRearGateSwitchPanel);
 		add(purgeBinSwitchPanel);
 		add(diverterLeftRightSwitchPanel);
+		
+		setPurgeBinSwitchOff();
+		setLowerRaiseRearGateSwitchOff();
+		setDivertToRight();
 	}
 
 	public void setFeederSwitchOn(){
