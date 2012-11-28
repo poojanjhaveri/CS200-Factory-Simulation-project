@@ -188,7 +188,7 @@ public class CameraAgent extends Agent implements Camera {
             this.client.sendMessage(Message.KAM_FLASH_NEST_CAMERA + ":" + nest.nestNum);
             this.fpm.sendMessage(Message.KAM_FLASH_NEST_CAMERA + ":" + nest.nestNum);
             this.fpm.sendMessage(Message.ALERT_FPM_KIT_INSPECTED);
-            this.LMServer.getForAgentNestCamera().cameraShoot(nest.nestNum);
+//            this.LMServer.getForAgentNestCamera().cameraShoot(nest.nestNum);
         } else {
             print("[ERROR] - Kit Assembly Manager is not online.");
         }

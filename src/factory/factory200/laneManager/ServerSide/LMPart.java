@@ -6,7 +6,8 @@ package factory.factory200.laneManager.ServerSide;
  */
 public class LMPart {
 	
-	private int partNum;	///< Part number
+	private int partNum;
+	private boolean status;
 	
 	/**
 	 * @brief Assigns part number 
@@ -14,6 +15,7 @@ public class LMPart {
 	 */
 	public LMPart(int partNum){
 		this.partNum = partNum;
+		
 	}
 	
 	/**
@@ -22,5 +24,13 @@ public class LMPart {
 	 */
 	public int getPartNum(){
 		return partNum;
+	}
+	
+	/**
+	 * @brief Getter
+	 * @return Part Status(good or bad)
+	 */
+	public boolean getStatus(){
+		return status;
 	}
 }
