@@ -36,8 +36,10 @@ public class Message {
     public static final String MOVE_GANTRY_TO_PURGE = "MOVE_GANTRY_TO_PURGE"; // no params
     public static final String MOVE_GANTRY_TO_DUMP_PART = "GANTRY_TO_DUMP_PART"; // no params
     public static final String MOVE_GANTRY_TO_PICK_BIN = "MOVE_GANTRY_TO_PICK_BIN"; // takes in int for which bin
-
-
+    public static final String GRM_FINISH_MOVE_TO_BIN = "GRM_FINISH_MOVE_TO_BIN";
+    public static final String GRM_FINISH_MOVE_TO_FEEDER = "GRM_FINISH_MOVE_TO_FEEDER";
+    public static final String GRM_FINISH_MOVE_TO_DUMP = "GRM_FINISH_MOVE_TO_DUMP";
+			
     //kitassemblymanager section
     public static final String IDENTIFY_KITASSEMBLYMANAGER = "IDENTIFY_KITASSEMBLYMANAGER";
     public static final String KAM_DROP_OFF_FULL_KIT = "KAM_DROP_OFF_FULL_KIT";

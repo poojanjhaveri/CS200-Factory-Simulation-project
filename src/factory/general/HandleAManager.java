@@ -92,6 +92,21 @@ public class HandleAManager implements Runnable {
         this.pw.println(msg);
     }
 
+
+    private void processGenericMessage(String msg)
+    {
+   if (msg.contains(Message.TEST_SERVER)) {
+            System.out.println("Server test passed. Testing client...");
+            this.sendMessage(Message.TEST_CLIENT);
+        } else if (msg.contains(Message.CLIENT_EXITED)) { // This is how we exit the server
+            stopThread();
+            this.server.decrementNumClients();
+            if (server.getNumClients() == 0) {
+                System.out.println("Number of clients is 0; exiting Server");
+                System.exit(0);
+            }
+        }
+    }
     /**
      * @brief Processes a given message and executes the proper method from
      * an agent.
@@ -104,17 +119,7 @@ public class HandleAManager implements Runnable {
         }
         
         // Decide action based on message from client
-        if (msg.contains(Message.TEST_SERVER)) {
-            System.out.println("Server test passed. Testing client...");
-            this.sendMessage(Message.TEST_CLIENT);
-        } else if (msg.contains(Message.CLIENT_EXITED)) { // This is how we exit the server
-            stopThread();
-            this.server.decrementNumClients();
-            if (server.getNumClients() == 0) {
-                System.out.println("Number of clients is 0; exiting Server");
-                System.exit(0);
-            }
-        }else if(msg.contains(Message.IDENTIFY_KITMANAGER)) {
+     if(msg.contains(Message.IDENTIFY_KITMANAGER)) {
         	System.out.println("SERVER FOUND A KIT MANAGER");
         	this.server.setKitManagerClient(this);
 	    }
@@ -202,7 +207,9 @@ System.out.println(msg);
 	    }
         else if( msg.contains( Message.PART_TAKE_BY_PARTROBOT ) ){
         	server.getServerLM().getVerify().verify(msg);
-        }
+        }else if(msg.contains(Message.GRM_FINISH_MOVE_TO_BIN) || msg.contains(Message.GRM_FINISH_MOVE_TO_FEEDER) || msg.contains(GRM_FINISH_MOVE_TO_DUMP)){
+	    this.server.getKitRobotAgent().msgAnimationComplete();
+	}
     }
 
     /**

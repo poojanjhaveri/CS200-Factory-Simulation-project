@@ -343,6 +343,13 @@ public class Server {
 		return this.partsAgent;
 	}	
 	
+	public LMServerMain getServerLM() { // Dongyoung's lane manager server...
+		return this.serverLM;
+	}
+	
+    public ConveyorAgent getConveyorAgent() {
+    	return this.conveyorAgent;
+    }
 	/**
 	 * @brief method to help debug
 	 */
@@ -416,11 +423,4 @@ public class Server {
 			laneAgents[i].setFactoryProductionManagerClient(in);
 	}
 
-	public LMServerMain getServerLM() { // Dongyoung's lane manager server...
-		return this.serverLM;
-	}
-	
-    public ConveyorAgent getConveyorAgent() {
-    	return this.conveyorAgent;
-    }
 }
