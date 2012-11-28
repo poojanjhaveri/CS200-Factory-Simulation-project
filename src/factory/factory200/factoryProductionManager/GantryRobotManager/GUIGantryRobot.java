@@ -47,11 +47,11 @@ public class GUIGantryRobot extends GUIRobot{
     Integer moveto;///<where the gantry robot is heading towards
 
     public GUIGantryRobot() {
-	super(GantryRobotManager.ROBOT_INITIAL_X,GantryRobotManager.ROBOT_INITIAL_Y,GUIGantryRobot.IMAGE_PATH);
-	this.extended = false;
-	this.hasbin = false;
-	this.bin = null;
-	this.setConstants(GantryRobotManager.ROBOT_VELOCITY_X, GantryRobotManager.ROBOT_VELOCITY_Y, GantryRobotManager.ROBOT_TURN_RATE);
+    	super(GantryRobotManager.ROBOT_INITIAL_X,GantryRobotManager.ROBOT_INITIAL_Y,GUIGantryRobot.IMAGE_PATH);
+    	this.extended = false;
+    	this.hasbin = false;
+    	this.bin = null;
+    	this.setConstants(GantryRobotManager.ROBOT_VELOCITY_X, GantryRobotManager.ROBOT_VELOCITY_Y, GantryRobotManager.ROBOT_TURN_RATE);
     }
     /**
     @brief sets a new feeder destination for the gantry robot
