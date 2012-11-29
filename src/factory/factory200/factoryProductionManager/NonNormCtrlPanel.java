@@ -36,6 +36,9 @@ public class NonNormCtrlPanel extends JPanel {
 
 	private static Dimension BUTTON_DIMENSION = new Dimension(300,100);
 	private static Dimension TRI_CONTROLS_DIMENSION = new Dimension(100,100);
+	private static Dimension STATUS_PANEL_DIMENSION = new Dimension(300,100);
+	private static Dimension CONTROL_PANEL_DIMENSION = new Dimension(400,100);
+	
 	private JPanel kitFailsInnerPanel;
 	private JPanel partsMissingInnerPanel;
 	private JPanel noGoodPartsInnerPanel;
@@ -43,6 +46,10 @@ public class NonNormCtrlPanel extends JPanel {
 
 	public NonNormCtrlPanel() {
 		preparePanel();
+
+		// Change these as you please
+		controlPanel.setPreferredSize(CONTROL_PANEL_DIMENSION);
+		statusPanel.setPreferredSize(STATUS_PANEL_DIMENSION);
 		kitFailsPanel.setPreferredSize(TRI_CONTROLS_DIMENSION);
 		partsMissingPanel.setPreferredSize(TRI_CONTROLS_DIMENSION);
 		noGoodPartPanel.setPreferredSize(TRI_CONTROLS_DIMENSION);
