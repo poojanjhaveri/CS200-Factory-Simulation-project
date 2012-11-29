@@ -41,7 +41,6 @@ public class KitAssemblyManager extends Manager implements ActionListener {
      * changes the panel based on what the user clicks
      */
     public void processMessage(String msg) {
-        System.out.println("KAM has received a message: " + msg);
         super.processMessage(msg);
         if (msg == null) {
             return;
@@ -68,6 +67,7 @@ public class KitAssemblyManager extends Manager implements ActionListener {
             this.flashNestCamera(Integer.parseInt(this.grabParameter(msg)));
         } else if (msg.contains(Message.KAM_PARTS_MOVE_TO_NEST)) {
             this.getPartsRobot().moveToNestCommand(Integer.parseInt(this.grabParameter(msg)));
+            //needs to release DONE
         } else if (msg.contains(Message.KAM_PARTS_PICK_PART)) {
             this.getPartsRobot().pickPartCommand(Integer.parseInt(this.grabParameter(msg)));
             super.sendToServer(Integer.parseInt(this.grabParameter(msg))+"PART_TAKE_BY_PARTROBOT");
