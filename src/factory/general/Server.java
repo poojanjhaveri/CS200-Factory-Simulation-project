@@ -300,8 +300,8 @@ public class Server {
 
         private void turnOffAgentPrintStatements() {
             if (PATRICK) {
-                nestAgent.print = true;
-                partsAgent.print = false;
+                nestAgent.print = false;
+                partsAgent.print = true;
             }
             if (KEVIN) {
                 for (int i = 0; i < LANE; i++) {
@@ -313,9 +313,9 @@ public class Server {
                 gantryAgent.print = false;
             }
             if (ALEX) {
-                kitRobotAgent.print = false;
+                kitRobotAgent.print = true;
                 conveyorAgent.print = false;
-                cameraAgent.print = true;
+                cameraAgent.print = false;
             }
       }
 

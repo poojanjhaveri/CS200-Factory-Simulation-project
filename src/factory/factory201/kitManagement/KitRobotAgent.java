@@ -66,14 +66,15 @@ public class KitRobotAgent extends Agent implements KitRobot {
 
     @Override
     public void msgHereIsEmptyKit(Kit kit) {
-//        print("msgHereIsEmptyKit");
+        print("msgHereIsEmptyKit");
 
         //add the kit to the kitting stand
         //make a synchronized addition so that it doesn't affect what happens in the actions
-        print("testing location after two executions receiving kit? , 2 and 1 empty? " + kitStand.isEmpty(2) + kitStand.isEmpty(1));
+       // print("testing location after two executions receiving kit? , 2 and 1 empty? " + kitStand.isEmpty(2) + kitStand.isEmpty(1));
         synchronized (kitStand) {
             kitStand.addKit(kit);
         }
+        print("synchronized add complete " );
         //set to false after receiving the kit,
         requestedKitFromConveyor = false;
         stateChanged();
@@ -282,7 +283,10 @@ public class KitRobotAgent extends Agent implements KitRobot {
             this.client.sendMessage(Message.KAM_PICK_UP_EMPTY_KIT);
             this.fpm.sendMessage(Message.KAM_PICK_UP_EMPTY_KIT);
             try {
-                this.animation.acquire();
+                print("semaphore acquired ");
+               // this.animation.acquire();
+                Thread.sleep(3000);
+                print("semaphore released ");
             } catch (InterruptedException ex) {
                 Logger.getLogger(KitRobotAgent.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -297,7 +301,10 @@ public class KitRobotAgent extends Agent implements KitRobot {
             this.client.sendMessage(Message.KAM_PICK_UP_EMPTY_KIT_TO_ACTIVE);
             this.fpm.sendMessage(Message.KAM_PICK_UP_EMPTY_KIT_TO_ACTIVE);
             try {
-                this.animation.acquire();
+                print("semaphore acquired 1");
+                //this.animation.acquire();
+                Thread.sleep(3000);
+                print("semaphore released 1");            
             } catch (InterruptedException ex) {
                 Logger.getLogger(KitRobotAgent.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -311,7 +318,8 @@ public class KitRobotAgent extends Agent implements KitRobot {
             this.client.sendMessage(Message.KAM_MOVE_EMPTY_KIT_TO_ACTIVE);
             this.fpm.sendMessage(Message.KAM_MOVE_EMPTY_KIT_TO_ACTIVE);
             try {
-                this.animation.acquire();
+             //   this.animation.acquire();
+            Thread.sleep(3000);
             } catch (InterruptedException ex) {
                 Logger.getLogger(KitRobotAgent.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -325,7 +333,8 @@ public class KitRobotAgent extends Agent implements KitRobot {
             this.client.sendMessage(Message.KAM_MOVE_ACTIVE_KIT_TO_INSPECTION);
             this.fpm.sendMessage(Message.KAM_MOVE_ACTIVE_KIT_TO_INSPECTION);
             try {
-                this.animation.acquire();
+            //    this.animation.acquire();
+            Thread.sleep(3000);  //adding back coz the semaphore isn't being released by the animation
             } catch (InterruptedException ex) {
                 Logger.getLogger(KitRobotAgent.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -340,7 +349,8 @@ public class KitRobotAgent extends Agent implements KitRobot {
             this.client.sendMessage(Message.KAM_MOVE_FROM_0_TO_2);
             this.fpm.sendMessage(Message.KAM_MOVE_FROM_0_TO_2);
             try {
-                this.animation.acquire();
+              //  this.animation.acquire();
+                Thread.sleep(3000);
             } catch (InterruptedException ex) {
                 Logger.getLogger(KitRobotAgent.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -354,7 +364,8 @@ public class KitRobotAgent extends Agent implements KitRobot {
             this.client.sendMessage(Message.KAM_DROP_OFF_FULL_KIT);
             this.fpm.sendMessage(Message.KAM_DROP_OFF_FULL_KIT);
             try {
-                this.animation.acquire();
+             //   this.animation.acquire();
+            Thread.sleep(3000);
             } catch (InterruptedException ex) {
                 Logger.getLogger(KitRobotAgent.class.getName()).log(Level.SEVERE, null, ex);
             }
