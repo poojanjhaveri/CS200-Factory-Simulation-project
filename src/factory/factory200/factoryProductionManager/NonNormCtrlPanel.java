@@ -35,6 +35,7 @@ public class NonNormCtrlPanel extends JPanel {
 	private static String[] NO_GOOD_PART_OPTIONS = { "All parts are bad", "Parts piled up!", "Robot in the way", "Parts not stable"};
 
 	private static Dimension BUTTON_DIMENSION = new Dimension(300,100);
+	private static Dimension TRI_CONTROLS_DIMENSION = new Dimension(100,100);
 	private JPanel kitFailsInnerPanel;
 	private JPanel partsMissingInnerPanel;
 	private JPanel noGoodPartsInnerPanel;
@@ -42,14 +43,15 @@ public class NonNormCtrlPanel extends JPanel {
 
 	public NonNormCtrlPanel() {
 		preparePanel();
-//		kitFailsPanel.add(Box.createRigidArea(new Dimension(1, 0)));
+		kitFailsPanel.setPreferredSize(TRI_CONTROLS_DIMENSION);
+		partsMissingPanel.setPreferredSize(TRI_CONTROLS_DIMENSION);
+		noGoodPartPanel.setPreferredSize(TRI_CONTROLS_DIMENSION);
 	}
 
 	private void preparePanel() {
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
 		controlPanel = new JPanel();
-		controlPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
 		add(controlPanel);
 		controlPanel.setLayout(new BoxLayout(controlPanel, BoxLayout.X_AXIS));
 
@@ -58,7 +60,7 @@ public class NonNormCtrlPanel extends JPanel {
 		controlPanel.add(kitFailsPanel);
 		kitFailsPanel.setLayout(new BoxLayout(kitFailsPanel, BoxLayout.Y_AXIS));
 
-		kitFailsLabel = new JLabel("Bad Kit - Non normative");
+		kitFailsLabel = new JLabel("Bad Kit");
 		kitFailsLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 		kitFailsPanel.add(kitFailsLabel);
 		kitFailsLabel.setFont(new Font("Century", Font.PLAIN, 17));
@@ -78,7 +80,7 @@ public class NonNormCtrlPanel extends JPanel {
 		controlPanel.add(partsMissingPanel);
 		partsMissingPanel.setLayout(new BoxLayout(partsMissingPanel, BoxLayout.Y_AXIS));
 
-		partsMissingLabel = new JLabel("Missing Parts in Nest - Non normative");
+		partsMissingLabel = new JLabel("Missing Parts in Nest");
 		partsMissingLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 		partsMissingPanel.add(partsMissingLabel);
 		partsMissingLabel.setFont(new Font("Century", Font.PLAIN, 17));
@@ -98,7 +100,7 @@ public class NonNormCtrlPanel extends JPanel {
 		controlPanel.add(noGoodPartPanel);
 		noGoodPartPanel.setLayout(new BoxLayout(noGoodPartPanel, BoxLayout.Y_AXIS));
 
-		noGoodPartsLabel = new JLabel("No Good Parts in Nest - Non normative");
+		noGoodPartsLabel = new JLabel("No Good Parts in Nest");
 		noGoodPartsLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 		noGoodPartPanel.add(noGoodPartsLabel);
 		noGoodPartsLabel.setFont(new Font("Century", Font.PLAIN, 17));
@@ -121,7 +123,7 @@ public class NonNormCtrlPanel extends JPanel {
 		statusPanel.add(STATUS_LABEL);
 
 		currentStatusLabel = new JLabel("none");
-		currentStatusLabel.setFont(new Font("Impact", Font.ITALIC, 15));
+		currentStatusLabel.setFont(new Font("Arial Black", Font.ITALIC, 15));
 		statusPanel.add(currentStatusLabel);
 	}
 
