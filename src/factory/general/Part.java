@@ -53,6 +53,29 @@ public class Part implements Serializable {
     public Integer getInt() {
         return type;
     }
+    
+    public void setType(){
+    System.out.println("fileName is (??)" + filename);
+    if(filename.contains("part1.png"))
+        this.type=0; 
+    
+    if(filename.contains("part2.png"))
+        this.type=1;
+    
+    if(filename.contains("part3.png"))
+        this.type=2;
+    if(filename.contains("part4.png"))
+        this.type=3;
+    if(filename.contains("part5.png"))
+        this.type=4;
+    if(filename.contains("part6.png"))
+        this.type=5;
+    if(filename.contains("part7.png"))
+        this.type=6;
+    if(filename.contains("part8.png"))
+        this.type=7;
+    }
+    
     /* I am adding this constructor to test my agent codes (kevin) */
 /*
     public Part(int num) {
@@ -107,8 +130,8 @@ public class Part implements Serializable {
         //this.number=time()\;
         this.guipart = null;
         this.number = (int) (System.currentTimeMillis()/(long)1000);
-        this.type = Global.part_num; //to order the parts from 0-n
-        Global.part_num++;    
+        //setType();
+   
     }
     
     public Part(String n, String d, Integer num) {
@@ -117,18 +140,21 @@ public class Part implements Serializable {
         this.number = num;
         this.guipart = null;
         //this.type = number;
-        this.type = Global.part_num;
-        Global.part_num++;
+       // this.type = Global.part_num;
+       // Global.part_num++;
+      //   setType();
     }
+    
     public Part(String n, String d, String file) {
         this.name = n;
         this.description = d;
         this.filename = file;
         this.guipart = null;
         this.number = (int)(System.currentTimeMillis()/(long)1000);
-        this.type = number;
-        this.type = Global.part_num;
-        Global.part_num++;
+     //   this.type = number;
+    //    this.type = Global.part_num;
+     //   Global.part_num++;
+    //     setType();
     }
     public void setFilename(String in) {
         this.filename = in;

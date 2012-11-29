@@ -221,8 +221,8 @@ public class Server {
         // Kevin
         for (int i = 0, j = 0; i < FEEDER; i++, j++) {
             feederAgents[i].setGantry(gantryAgent);
-            feederAgents[i].setLeftLane(laneAgents[j]);
-            feederAgents[i].setRightLane(laneAgents[++j]);
+            feederAgents[i].setRightLane(laneAgents[j]);
+            feederAgents[i].setLeftLane(laneAgents[++j]);
             gantryAgent.setFeeder(feederAgents[i], i);
         }
 
@@ -300,20 +300,20 @@ public class Server {
 
         private void turnOffAgentPrintStatements() {
             if (PATRICK) {
-                nestAgent.print = false;
-                partsAgent.print = true;
+                nestAgent.print = true;
+                partsAgent.print = false;
             }
             if (KEVIN) {
                 for (int i = 0; i < LANE; i++) {
                     if (i < FEEDER) {
                         feederAgents[i].print = false;
                     }
-                    laneAgents[i].print = false;
+                    laneAgents[i].print = true;
                 }
-                gantryAgent.print = false;
+                gantryAgent.print = true;
             }
             if (ALEX) {
-                kitRobotAgent.print = true;
+                kitRobotAgent.print = false;
                 conveyorAgent.print = false;
                 cameraAgent.print = false;
             }
