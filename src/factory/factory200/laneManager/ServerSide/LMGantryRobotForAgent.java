@@ -17,26 +17,13 @@ public class LMGantryRobotForAgent {
 		int partNum = binNum;
 		
 		// Signal To LM & FPM
-		signal = "" + feederNum + binNum +  "&Bin&Put&" ;
+		signal = feederNum + "&Bin&Put&" + binNum;
 		serverMain.sendToLM(signal);
 		serverMain.sendToFPM(signal);
 		
 		// Server Data Task
 		serverMain.getForAgentFeeder().getFeeder(feederNum).setWithBin(true);
-		serverMain.getPartData().addPartToFeeder(feederNum, partNum, quantity, 1);
-	}
-	
-	public void putBadBin(int binNum, int quantity, int feederNum){
-		int partNum = binNum;
-		
-		// Signal To LM & FPM
-		signal = "" + feederNum + binNum +  "&Bin&Put&" ;
-		serverMain.sendToLM(signal);
-		serverMain.sendToFPM(signal);
-		
-		// Server Data Task
-		serverMain.getForAgentFeeder().getFeeder(feederNum).setWithBin(true);
-		serverMain.getPartData().addPartToFeeder(feederNum, partNum, quantity, 0);
+		serverMain.getPartData().addPartToFeeder(feederNum, partNum, quantity);
 	}
 	
 	public void purgeBin(int feederNum){
