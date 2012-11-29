@@ -36,15 +36,6 @@ public class LMLaneData {
 		return parts;
 	}
 	
-	public void shakePart(){
-		randomlyChosenPart = (int)( Math.random() * parts.size() );
-		parts.get(randomlyChosenPart).shake();
-	}
-	
-	public void removeShakenPart(LMDrawablePart shakenPart){
-		parts.remove(shakenPart);
-	}
-	
 	/**
 	 * @brief Nest Status Checker
 	 * @param nestSize : Quantity of Parts on Nest

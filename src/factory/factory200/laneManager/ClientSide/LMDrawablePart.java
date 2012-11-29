@@ -12,17 +12,26 @@ public class LMDrawablePart {
 	private LMApplication app;
 	
 	private LMDrawableAllPart getAllPart; 
-	private static ImageIcon part1 = new ImageIcon( LMDrawablePart.class.getResource("./pics/part1.png") );
-	private static ImageIcon part2 = new ImageIcon( LMDrawablePart.class.getResource("./pics/part2.png") );
-	private static ImageIcon part3 = new ImageIcon( LMDrawablePart.class.getResource("./pics/part3.png") );
-	private static ImageIcon part4 = new ImageIcon( LMDrawablePart.class.getResource("./pics/part4.png") );
-	private static ImageIcon part5 = new ImageIcon( LMDrawablePart.class.getResource("./pics/part5.png") );
-	private static ImageIcon part6 = new ImageIcon( LMDrawablePart.class.getResource("./pics/part6.png") );
-	private static ImageIcon part7 = new ImageIcon( LMDrawablePart.class.getResource("./pics/part7.png") );
-	private static ImageIcon part8 = new ImageIcon( LMDrawablePart.class.getResource("./pics/part8.png") );
+	private static ImageIcon goodpart1 = new ImageIcon( LMDrawablePart.class.getResource("./pics/part1.png") );
+	private static ImageIcon goodpart2 = new ImageIcon( LMDrawablePart.class.getResource("./pics/part2.png") );
+	private static ImageIcon goodpart3 = new ImageIcon( LMDrawablePart.class.getResource("./pics/part3.png") );
+	private static ImageIcon goodpart4 = new ImageIcon( LMDrawablePart.class.getResource("./pics/part4.png") );
+	private static ImageIcon goodpart5 = new ImageIcon( LMDrawablePart.class.getResource("./pics/part5.png") );
+	private static ImageIcon goodpart6 = new ImageIcon( LMDrawablePart.class.getResource("./pics/part6.png") );
+	private static ImageIcon goodpart7 = new ImageIcon( LMDrawablePart.class.getResource("./pics/part7.png") );
+	private static ImageIcon goodpart8 = new ImageIcon( LMDrawablePart.class.getResource("./pics/part8.png") );
+	private static ImageIcon badpart1 = new ImageIcon( LMDrawablePart.class.getResource("./pics/badpart1.png") );
+	private static ImageIcon badpart2 = new ImageIcon( LMDrawablePart.class.getResource("./pics/badpart2.png") );
+	private static ImageIcon badpart3 = new ImageIcon( LMDrawablePart.class.getResource("./pics/badpart3.png") );
+	private static ImageIcon badpart4 = new ImageIcon( LMDrawablePart.class.getResource("./pics/badpart4.png") );
+	private static ImageIcon badpart5 = new ImageIcon( LMDrawablePart.class.getResource("./pics/badpart5.png") );
+	private static ImageIcon badpart6 = new ImageIcon( LMDrawablePart.class.getResource("./pics/badpart6.png") );
+	private static ImageIcon badpart7 = new ImageIcon( LMDrawablePart.class.getResource("./pics/badpart7.png") );
+	private static ImageIcon badpart8 = new ImageIcon( LMDrawablePart.class.getResource("./pics/badpart8.png") );
 	private ImageIcon partImage;
 	private int laneNestNum;
 	private int partNum;
+	private int partStatus;
 	private String message = "";
 	
 	private int currentLocationX, currentLocationY;
@@ -35,7 +44,7 @@ public class LMDrawablePart {
 	private Boolean arrivedToNest = false;
 	private Boolean shaken = false;
 	
-	public LMDrawablePart(LMApplication app, LMDrawableAllPart getAllPart, int laneNestNum, int partNum, int currentLocationX, int currentLocationY, int endOfLaneX, int endOfLaneY){
+	public LMDrawablePart(LMApplication app, LMDrawableAllPart getAllPart, int laneNestNum, int partNum, int currentLocationX, int currentLocationY, int endOfLaneX, int endOfLaneY, int partStatus){
 		this.app = app;
 		this.getAllPart = getAllPart;
 		this.laneNestNum = laneNestNum;
@@ -44,15 +53,28 @@ public class LMDrawablePart {
 		this.destinationX = endOfLaneX;
 		this.destinationY = endOfLaneY;
 		this.partNum = partNum;
+		this.partStatus = partStatus;
 		
-		if(partNum == 0){  partImage = part1;  }
-		else if(partNum == 1){  partImage = part2;  }
-		else if(partNum == 2){  partImage = part3;  }
-		else if(partNum == 3){  partImage = part4;  }
-		else if(partNum == 4){  partImage = part5;  }
-		else if(partNum == 5){  partImage = part6;  }
-		else if(partNum == 6){  partImage = part7;  }
-		else if(partNum == 7){  partImage = part8;  }
+		if( partStatus == 0 ){
+			if(partNum == 0){  partImage = badpart1;  }
+			else if(partNum == 1){  partImage = badpart2;  }
+			else if(partNum == 2){  partImage = badpart3;  }
+			else if(partNum == 3){  partImage = badpart4;  }
+			else if(partNum == 4){  partImage = badpart5;  }
+			else if(partNum == 5){  partImage = badpart6;  }
+			else if(partNum == 6){  partImage = badpart7;  }
+			else if(partNum == 7){  partImage = badpart8;  }
+		}
+		else if( partStatus == 1 ){
+			if(partNum == 0){  partImage = goodpart1;  }
+			else if(partNum == 1){  partImage = goodpart2;  }
+			else if(partNum == 2){  partImage = goodpart3;  }
+			else if(partNum == 3){  partImage = goodpart4;  }
+			else if(partNum == 4){  partImage = goodpart5;  }
+			else if(partNum == 5){  partImage = goodpart6;  }
+			else if(partNum == 6){  partImage = goodpart7;  }
+			else if(partNum == 7){  partImage = goodpart8;  }
+		}
 	}
 	
 	public void paint(LMGraphicsPanel panel, Graphics2D graphics){
@@ -60,15 +82,12 @@ public class LMDrawablePart {
 	}
 	
 	public void partMove(){
-		if( currentLocationX < 53 & arrivedToNest == false ){// DONE
+		if( currentLocationX < 53 & arrivedToNest == false ){
 			if( availableToNest == true ){
 				arrivedToNest = true;
 				getAllPart.addPartFromLaneToNest(laneNestNum);
 				message = laneNestNum + "PART_TO_NEST_FROM_LANE";
-				
-				// FIXED ( Synchronization with 'Manager' Class )
 				app.getVerifyMessage().sendToServer(message);
-				//app.getClient().getThread().sendToFactory(message);
 			}
 		}
 		calculate();
@@ -93,18 +112,13 @@ public class LMDrawablePart {
 	public void checkDestination(){
 		if( Math.abs(destinationX - currentLocationX) < 2 && Math.abs(destinationY - currentLocationY) < 2 ){  
 			arrived = true;
-			if(shaken == true){
-				getAllPart.getLane(laneNestNum).removeShakenPart(this);
-			}
 		}
 		else{ arrived = false; }
 	}
 	
 	public void setDestination(int destinationX, int destinationY){
-		if( shaken  == false){
-			this.destinationX = destinationX;
-			this.destinationY = destinationY;
-		}
+		this.destinationX = destinationX;
+		this.destinationY = destinationY;
 	}
 	
 	public Boolean getArrived(){
@@ -113,10 +127,5 @@ public class LMDrawablePart {
 	
 	public void setAvailabilityToNest(Boolean availableToNest){
 		this.availableToNest = availableToNest;
-	}
-	
-	public void shake(){
-		setDestination(currentLocationX, currentLocationY + 30);
-		shaken = true;
 	}
 }

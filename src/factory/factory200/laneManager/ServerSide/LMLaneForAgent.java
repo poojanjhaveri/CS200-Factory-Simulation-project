@@ -25,7 +25,6 @@ public class LMLaneForAgent {
 		return lanes.get(laneNum);
 	}
 	
-	//---------------------------------------------------------------------------
 	public void setSwitchOn( int laneNum ){
 		lanes.get( laneNum ).switchOn();
 	}

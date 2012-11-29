@@ -27,7 +27,7 @@ public class LMLaneHandler {
 		
 		// GUI & Graphic changes--------------------------------------------------------------------------------------------------------------
 		// Message : Lane Switch On
-		if( message.indexOf("Switch On") != -1 ){
+		if( message.contains("Switch On") ){
 			// GUI Panel change
 			app.getGUIPanel().getGUILane().getGUILaneArray(laneNum).setLaneSwitch(true);
 			// Graphics Panel change
@@ -35,7 +35,7 @@ public class LMLaneHandler {
 		}
 		
 		// Message : Lane Switch Off
-		else if( message.indexOf("Switch Off") != -1 ){
+		else if( message.contains("Switch Off") ){
 			// GUI Panel change
 			app.getGUIPanel().getGUILane().getGUILaneArray(laneNum).setLaneSwitch(false);
 			// Graphics Panel change
@@ -43,7 +43,7 @@ public class LMLaneHandler {
 		}
 		
 		// Message : Lane Vibration Amplitude Normal
-		else if( message.indexOf("Amplitude Normal") != -1 ){
+		else if( message.contains("Amplitude Normal") ){
 			// GUI Panel change
 			app.getGUIPanel().getGUILane().getGUILaneArray(laneNum).setLaneVibrationAmplitudeNormal();
 			
@@ -52,7 +52,7 @@ public class LMLaneHandler {
 		}
 		
 		// Message : Lane Vibration Amplitude Strong
-		else if( message.indexOf("Amplitude Strong") != -1 ){
+		else if( message.contains("Amplitude Strong") ){
 			// GUI Panel change
 			app.getGUIPanel().getGUILane().getGUILaneArray(laneNum).setLaneVibrationAmplitudeStrong();
 			

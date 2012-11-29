@@ -231,12 +231,23 @@ if(msg.contains(Message.KAM_FINISH_KITBOT_ANIMATION)) {
             System.out.println("BEGINNING PRODUCTION CYCLE WOOOOOOT (size "+queue.size() + ")");
 	    System.out.println(":::::FPM production queue debug:::::");
             queue.get(0).debug();
-
+        } 
+        
+		// Lane Manager-----------------------------------------------------------------------------------
+        else if( msg.contains( Message.BAD_PART_INSERTION ) ) {
+        	server.getServerLM().getVerify().verify(msg);
+        } else if( msg.contains( Message.LANE_JAMMED ) ) {
+        	server.getServerLM().getVerify().verify(msg);
+        } else if( msg.contains( Message.PART_PILED ) ) {
+        	server.getServerLM().getVerify().verify(msg);       	
         } else if( msg.contains( Message.PART_TO_NEST_FROM_LANE ) ) {
             server.getServerLM().getVerify().verify(msg);
         } else if( msg.contains( Message.PART_TAKE_BY_PARTROBOT ) ) {
             server.getServerLM().getVerify().verify(msg);
-        } else if(msg.contains(Message.GRM_FINISH_MOVE_TO_BIN) || msg.contains(Message.GRM_FINISH_MOVE_TO_FEEDER) || msg.contains(Message.GRM_FINISH_MOVE_TO_DUMP)) {
+        }
+       //-----------------------------------------------------------------------------------------------------------     
+            
+        else if(msg.contains(Message.GRM_FINISH_MOVE_TO_BIN) || msg.contains(Message.GRM_FINISH_MOVE_TO_FEEDER) || msg.contains(Message.GRM_FINISH_MOVE_TO_DUMP)) {
             this.server.getGantry().msgAnimationComplete(msg);
         } 
     }

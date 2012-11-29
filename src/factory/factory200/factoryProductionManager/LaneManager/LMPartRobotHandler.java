@@ -14,7 +14,7 @@ public class LMPartRobotHandler{
 	}
 
 	public void verify(String message){
-		if(message.indexOf("&PartRobot&") != -1){
+		if( message.contains("&PartRobot&") ){
 			nestNum = message.charAt(0) - 48;
 			app.getAllPart().partRobotTakeOne(nestNum);
 		}

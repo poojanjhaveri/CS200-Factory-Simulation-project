@@ -53,8 +53,8 @@ public class LMDrawableAllPart {
 		nestUpdate();
 	}
 	
-	public void addPartFromFeederToLane(int laneNum, int partNum){
-		newPart = new LMDrawablePart(app, this, laneNum, partNum, 320, 65+75*laneNum, 50, 65+75*laneNum);// DONE
+	public void addPartFromFeederToLane(int laneNum, int partNum, int partStatus){
+		newPart = new LMDrawablePart(app, this, laneNum, partNum, 320, 65+75*laneNum, 50, 65+75*laneNum, partStatus);
 		laneDatas.get(laneNum).addPart(newPart);
 	}
 	
@@ -83,11 +83,7 @@ public class LMDrawableAllPart {
 	public void partRobotTakeOne(int nestNum){
 		nestDatas.get(nestNum).removePart();
 	}
-	
-	public void shakePart(int laneNum){
-		laneDatas.get(laneNum).shakePart();
-	}
-	
+
 	public LMLaneData getLane(int laneNum){
 		return laneDatas.get(laneNum);
 	}
