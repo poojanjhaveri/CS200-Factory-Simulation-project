@@ -219,7 +219,7 @@ blah.debug();
         }
         for(int i = 0; i != in.getSize(); i++)
         {
-            dp.add(in.getPart(i).clone());
+            dp.add(in.getPart(i));
         }
         k.setParts(dp);
         return k;   
