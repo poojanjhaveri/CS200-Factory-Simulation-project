@@ -303,7 +303,7 @@ public class Server {
 
         private void turnOffAgentPrintStatements() {
             if (PATRICK) {
-                nestAgent.print = true;
+                nestAgent.print = false;
                 partsAgent.print = false;
             }
             if (KEVIN) {
@@ -311,7 +311,7 @@ public class Server {
                     if (i < FEEDER) {
                         feederAgents[i].print = false;
                     }
-                    laneAgents[i].print = true;
+                    laneAgents[i].print = false;
                 }
                 gantryAgent.print = true;
             }
