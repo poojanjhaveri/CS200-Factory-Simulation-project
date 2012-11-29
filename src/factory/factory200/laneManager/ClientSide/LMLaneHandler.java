@@ -27,37 +27,37 @@ public class LMLaneHandler {
 		
 		// GUI & Graphic changes--------------------------------------------------------------------------------------------------------------
 		// Message : Lane Switch On
-		if( message.indexOf("Switch On") != -1 ){
+		if( message.contains("Switch On") ){
 			// GUI Panel change
-			//app.getGUIPanel().getGUILane().getGUILaneArray(laneNum).setLaneSwitch(true);
+			app.getGUIPanel().getGUILane().getGUILaneArray(laneNum).setLaneSwitch(true);
 			// Graphics Panel change
 			app.getGraphicsPanel().getAllLane().getLane(laneNum).setSwitch(true);
 		}
 		
 		// Message : Lane Switch Off
-		else if( message.indexOf("Switch Off") != -1 ){
+		else if( message.contains("Switch Off") ){
 			// GUI Panel change
-			//app.getGUIPanel().getGUILane().getGUILaneArray(laneNum).setLaneSwitch(false);
+			app.getGUIPanel().getGUILane().getGUILaneArray(laneNum).setLaneSwitch(false);
 			// Graphics Panel change
 			app.getGraphicsPanel().getAllLane().getLane(laneNum).setSwitch(false);
 		}
 		
-		// Message : Lane Vibration Amplitude Weak
-		else if( message.indexOf("Amplitude Weak") != -1 ){
-			// GUI Panel change
-			//app.getGUIPanel().getGUILane().getGUILaneArray(laneNum).setLaneVibrationAmplitudeWeak();
-		}
-		
 		// Message : Lane Vibration Amplitude Normal
-		else if( message.indexOf("Amplitude Normal") != -1 ){
+		else if( message.contains("Amplitude Normal") ){
 			// GUI Panel change
-			//app.getGUIPanel().getGUILane().getGUILaneArray(laneNum).setLaneVibrationAmplitudeNormal();
+			app.getGUIPanel().getGUILane().getGUILaneArray(laneNum).setLaneVibrationAmplitudeNormal();
+			
+			// Track Setting
+			app.getGraphicsPanel().getAllLane().getLane(laneNum).setLaneVibrationAmplitudeNormal();
 		}
 		
 		// Message : Lane Vibration Amplitude Strong
-		else if( message.indexOf("Amplitude Strong") != -1 ){
+		else if( message.contains("Amplitude Strong") ){
 			// GUI Panel change
-			//app.getGUIPanel().getGUILane().getGUILaneArray(laneNum).setLaneVibrationAmplitudeStrong();
+			app.getGUIPanel().getGUILane().getGUILaneArray(laneNum).setLaneVibrationAmplitudeStrong();
+			
+			// Track Setting
+			app.getGraphicsPanel().getAllLane().getLane(laneNum).setLaneVibrationAmplitudeStrong();
 		}
 	}
 }

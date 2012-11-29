@@ -23,7 +23,7 @@ public class LMDrawablePartLowBulb{
 		this.bulbX = bulbX;
 		this.bulbY = bulbY;
 		
-		setSwitch(false);
+		setSwitch(true);
 	}
 	 
 	public void paint(GraphicsPanel panel, Graphics2D graphics){

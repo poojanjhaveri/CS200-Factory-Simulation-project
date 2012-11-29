@@ -23,6 +23,8 @@ public class LMGUINestPanel extends JPanel{
 		
 		// Add GUI contents
 		add(upDownSwitchPanel);
+		
+		setNestSwitch(true);
 	}
 
 	public void setNestSwitch( Boolean signal ){

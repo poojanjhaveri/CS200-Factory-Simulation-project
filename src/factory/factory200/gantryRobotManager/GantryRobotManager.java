@@ -62,7 +62,7 @@ public class GantryRobotManager extends Manager implements ActionListener {
     public static final Integer DUMPX = 260;///<x-coordinate of dump 
     public static final Integer DUMPY = 700;///<y-coordinate of dump 
 
-    public static final Integer BIN_X = 450;///<x coordinate of all bin locations
+    public static final Integer BIN_X = 430;///<x coordinate of all bin locations
     public static final Integer BIN0Y = 30;///<y coordinate of bin0
     public static final Integer BIN1Y = 110;///<y coordinate of bin1
     public static final Integer BIN2Y = 190;///<y coordinate of bin2
@@ -83,7 +83,7 @@ public class GantryRobotManager extends Manager implements ActionListener {
      * set graphic panel
      */
     public GantryRobotManager() {
-        graphics= new GRMGraphicPanel();        
+        graphics= new GRMGraphicPanel(this);        
         setLayout(new GridLayout(1, 2));  
         ganbot = graphics.getGantryRobot();
         add(graphics);
@@ -135,6 +135,7 @@ public class GantryRobotManager extends Manager implements ActionListener {
      */
      public void processMessage(String msg) {
 	   super.processMessage(msg);
+           System.out.println(msg);
 	   if(msg.contains(Message.MOVE_GANTRY_TO_BIN))
 	   {
 		   this.ganbot.moveToBinCommand(Integer.parseInt(this.grabParameter(msg)));

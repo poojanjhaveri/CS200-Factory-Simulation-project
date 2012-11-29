@@ -59,77 +59,73 @@ public class LMFeederHandler {
 				
 		// GUI & Graphic changes--------------------------------------------------------------------------------------------------------------
 		// Message : Feeder On
-		if( message.indexOf("Feeder Switch On") != -1 ){
+		if( message.contains("Feeder Switch On") ){
 			// GraphicsPanel change
 			app.getAllFeeder().getFeeder(feederNum).setSwitch(true);
 		}
 		
 		// Message : Feeder Off
-		else if( message.indexOf("Feeder Switch Off") != -1 ){
+		else if( message.contains("Feeder Switch Off") ){
 			// GraphicsPanel change
 			app.getAllFeeder().getFeeder(feederNum).setSwitch(false);
 		}
 		
 		// Message : Part Low Sensor On
-		else if( message.indexOf("Part Low Sensor On") != -1 ){
+		else if( message.contains("Part Low Sensor On") ){
 			// GraphicsPanel change
 			app.getAllFeeder().getPartLowBulb(feederNum).setSwitch(true);
 		}
 		
 		// Message : Part Low Sensor Off
-		else if( message.indexOf("Part Low Sensor Off") != -1 ){
+		else if( message.contains("Part Low Sensor Off") ){
 			// GraphicsPanel change
 			app.getAllFeeder().getPartLowBulb(feederNum).setSwitch(false);
 		}
 		
 		// Message : Feed Parts Switch On
-		else if( message.indexOf("Feed Part Switch On") != -1 ){
+		else if( message.contains("Feed Part Switch On") ){
 			// GraphicsPanel change
 			app.getAllFeeder().getFeedingBulb(feederNum).setSwitch(true);
 		}
 		
 		// Message : Feed Parts Switch Off
-		else if( message.indexOf("Feed Part Switch Off") != -1 ){
+		else if( message.contains("Feed Part Switch Off") ){
 			// GraphicsPanel change
 			app.getAllFeeder().getFeedingBulb(feederNum).setSwitch(false);
 		}
 		
-		// Message : Part Fed Counter Setup
-		else if( message.indexOf("Part Fed Counter") != -1 ){
-		}
-		
 		// Message : Lowers Rear Gate
-		else if( message.indexOf("Rear Gate Lower") != -1 ){
+		else if( message.contains("Rear Gate Lower") ){
 			// GraphicsPanel change
 			app.getAllFeeder().getRearGateBulb(feederNum).setSwitch(true);
 		}
 		
 		// Message : Raises Rear Gate
-		else if( message.indexOf("Rear Gate Raise") != -1 ){
+		else if( message.contains("Rear Gate Raise") ){
 			// GraphicsPanel change
 			app.getAllFeeder().getRearGateBulb(feederNum).setSwitch(false);
 		}
 		
 		// Message : Purge Bin Switch On
-		else if( message.indexOf("Purge On") != -1 ){
+		else if( message.contains("Purge On") ){
 			// GraphicsPanel change
 			app.getAllFeeder().getPurgingBulb(feederNum).setSwitch(true);
 		}
 		
 		// Message : Purge Bin Switch Off
-		else if( message.indexOf("Purge Off") != -1 ){
+		else if( message.contains("Purge Off") ){
 			// GraphicsPanel change
 			app.getAllFeeder().getPurgingBulb(feederNum).setSwitch(false);
 		}
 		
 		// Message : Divert To Left
-		else if( message.indexOf("Divert To Left") != -1 ){
+		else if( message.contains("Divert To Left") ){
 			// GraphicsPanel change
 			app.getAllFeeder().getDiversionBulb(feederNum).setDivertToLeft();
 		}
 		
 		// Message : Divert To Right
-		else if( message.indexOf("Divert To Right") != -1 ){
+		else if( message.contains("Divert To Right") ){
 			// GraphicsPanel change
 			app.getAllFeeder().getDiversionBulb(feederNum).setDivertToRight();
 		}

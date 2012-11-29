@@ -11,6 +11,7 @@ package factory.factory200.kitAssemblyManager;
 import factory.factory200.kitAssemblyManager.*;
 import factory.general.GUIPart;
 import factory.general.Manager;
+import factory.general.Message;
 import factory.general.Part;
 import java.awt.*;
 import java.awt.event.*;
@@ -69,9 +70,12 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
     Timer timer;
     boolean stationRun;
     
+    KitAssemblyManager kam;
+    
     //private ImageIcon backgroundImage = new ImageIcon("pics/background/part1");
 
-    public KAMGraphicPanel() {
+    public KAMGraphicPanel(KitAssemblyManager k) {
+        this.kam = k;
         
         deliveryStation = true;
 
@@ -259,7 +263,6 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
                     case 0:
                         if (delivery.inPosition()) {
                             kitbot.giveKit(delivery.giveKit());
-
                             //System.out.println("Picking up kit");
                         }
                         break;
@@ -277,18 +280,23 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
                         //System.out.println(k);
                         kitstand.takeKit(kitbot.dropKit());
                         break;
-                    case 5:
+		case 5:
                         kitstand.takeKit(kitbot.dropKit());
                         break;
-                    case 6:
+		case 6:
                         kitstand.takeKit(kitbot.dropKit());
                         break;
-                    case 7://how to drop kit onto placeholder?
+		case 7://drop kit onto placeholder
                         if (delivery.inEmptyPostion()) {
                             delivery.takeKit(kitbot.dropKit());
                         }
                         break;
-                    default:
+		case 50://thread releases
+                    System.out.println("Releasing KitRobotAgent thread...");
+		    kam.sendToServer(Message.KAM_FINISH_KITBOT_ANIMATION);
+		    kitbot.popOrder();
+		    break;
+		default:
                         kitbot.performOrder();
                         break;
                 }
@@ -319,6 +327,11 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
                         kitter.popOrder();
                         kitter.checkDefault();
                         break;
+		case 50:
+		    System.out.println("Releasing PartsRobotAgent thread...");
+		    kam.sendToServer(Message.KAM_FINISH_KITTER_ANIMATION);
+		    kitter.popOrder();
+		    break;
                     default:
                         kitter.performOrder();
                 }

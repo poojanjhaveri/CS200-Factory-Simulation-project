@@ -40,6 +40,7 @@ public class LMController extends JFrame {
 		
 		setSize(500,750);
 		setVisible(true);
+		setResizable(false);
 		setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 		setLayout(layout);
 		

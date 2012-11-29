@@ -20,7 +20,7 @@ public class Message {
     public static final String UPDATE_PART = "UPDATE_PART";
     public static final String UNDEFINE_PART = "UNDEFINE_PART";///<removes a part definition
 
-    //kitsmanager section
+    //kitmanager section
     public static final String IDENTIFY_KITMANAGER = "IDENTIFY_KITMANAGER";
     public static final String PULL_KITS_LIST = "PULL_KITS_LIST";///<simple request form kits to server asking for kits list
     public static final String PUSH_KITS_LIST = "PUSH_KITS_LIST";///<send serialized kits list over form server to kitsmanager
@@ -36,7 +36,9 @@ public class Message {
     public static final String MOVE_GANTRY_TO_PURGE = "MOVE_GANTRY_TO_PURGE"; // no params
     public static final String MOVE_GANTRY_TO_DUMP_PART = "GANTRY_TO_DUMP_PART"; // no params
     public static final String MOVE_GANTRY_TO_PICK_BIN = "MOVE_GANTRY_TO_PICK_BIN"; // takes in int for which bin
-
+    public static final String GRM_FINISH_MOVE_TO_BIN = "GRM_FINISH_MOVE_TO_BIN";
+    public static final String GRM_FINISH_MOVE_TO_FEEDER = "GRM_FINISH_MOVE_TO_FEEDER";
+    public static final String GRM_FINISH_MOVE_TO_DUMP = "GRM_FINISH_MOVE_TO_DUMP";
 
     //kitassemblymanager section
     public static final String IDENTIFY_KITASSEMBLYMANAGER = "IDENTIFY_KITASSEMBLYMANAGER";
@@ -54,18 +56,26 @@ public class Message {
     public static final String KAM_ADD_KIT = "KAM_ADD_KIT";///<places another empty kit onto the conveyor
     public static final String KAM_REMOVE_KIT = "KAM_REMOVE_KIT";///<removes a kit off screen from conveyor
     public static final String LM_ADD_PART="LMA_";
+    public static final String KAM_FINISH_KITBOT_ANIMATION = "KAM_FINISH_KITBOT_ANIMATION";
+    public static final String KAM_FINISH_KITTER_ANIMATION = "KAM_FINISH_KITTER_ANIMATION";
+    //    public static final String KAM_FINISH_DROP_OFF_FULL_KIT = "KAM_FINISH_DROP_OFF_FULL_KIT";
+    //    public static final String KAM_FINISH_MOVE_TO_NEST = "KAM_FINISH_MOVE_TO_NEST";
+    //public static final String KAM_FINISH_DROP_OFF_PARTS = "KAM_FINISH_DROP_OFF_PARTS";
 
     //lanemanager section
     public static final String IDENTIFY_LANEMANAGER = "IDENTIFY_LANEMANAGER";
     public static final String PART_TO_NEST_FROM_LANE = "PART_TO_NEST_FROM_LANE";
     public static final String PART_TAKE_BY_PARTROBOT = "PART_TAKE_BY_PARTROBOT";
+    public static final String BAD_PART_INSERTION = "BAD_PART_INSERTION";
+    public static final String LANE_JAMMED = "LANE_JAMMED";
+    public static final String PART_PILED = "PART_PILED";
     
     //PULL_KITS_LIST is also used by FPM
-    public static final String IDENTIFY_FACTORYPRODUCTIONMANAGER = "IDENTIFY_FACTORYPRODUCTIONMANAGER"; 
+    public static final String IDENTIFY_FACTORYPRODUCTIONMANAGER = "IDENTIFY_FACTORYPRODUCTIONMANAGER";
     public static final String PUSH_PRODUCTION_QUEUE = "PUSH_PRODUCTION_QUEUE";///<sends the server a list of comma delimited kit IDs
     public static final String ALERT_FPM_KIT_INSPECTED = "ALERT_FPM_KIT_INSPECTED";
-	public static final String SUPPLY_PART_ON_FEEDER = "SUPPLY_PART_ON_FEEDER";
-	public static final String MOVE_GANTRY_TO_DUMP = "MOVE_GANTRY_TO_DUMP";
+    public static final String SUPPLY_PART_ON_FEEDER = "SUPPLY_PART_ON_FEEDER";
+    public static final String MOVE_GANTRY_TO_DUMP = "MOVE_GANTRY_TO_DUMP";
     public static final String KIT_IN_PRODUCTION = "KIT_IN_PRODUCTION";
     public static final String GIVE_KITS_IN_QUEUE = "GIVE_KITS_IN_QUEUE";
 }

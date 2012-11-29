@@ -13,6 +13,7 @@ import factory.general.BlueprintKits;
 import factory.general.Kit;
 import factory.general.Message;
 import factory.general.Part;
+import java.util.concurrent.Semaphore;
 
 /**
  * Factory PartsAgent gets kit information from server and obtains necessary
@@ -26,45 +27,50 @@ import factory.general.Part;
  */
 public class PartsAgent extends Agent implements PartsInterface {
 
-    // KitAssemblyManager kam; // Should not have!
-    KitRobot kitrobot;
-    Kit kit0;
-    Kit kit1;
-    Kit kit0Info;
-    Kit kit1Info;
-    NestInterface nest;
-    Camera camera;
-    int kits=0;
-    boolean kitZero = false;
-    boolean kitOne = false;
+    Semaphore s = new Semaphore(0, true);
+    Kit kit0;//pointer to kit on stand number 0
+    Kit kit1;//pointer to kit on stand number 1
+    Kit kit0Info;//information for kit on stand number 0
+    Kit kit1Info;//information for kit on stand number 1
+    int kits=0;//used to keep track of how many kits are being worked on
+    boolean kitZero = false;//used to tell if kit stand number 0 has an empty kit ready
+    boolean kitOne = false;//used to tell if kit stand number 1 has an empty kit ready
     public List<Part> inventory, grips, kit0NeedsParts, kit1NeedsParts;
     public ArrayList<Kit> newKit;
     boolean emptyKitReady;
     boolean requestState=false;
     public List<Kit> kitsStarted;
+    
+    KitRobot kitrobot;
+    NestInterface nest;
+    Camera camera;
 
     public PartsAgent(String name) {
         super(name); 
-        // Should these be creating NEW ArrayLists of things, or should they be getting the list
-        // from somewhere else (i.e., the server)?
-        inventory = Collections.synchronizedList(new ArrayList<Part>());
-        grips = Collections.synchronizedList(new ArrayList<Part>());
-        kit0NeedsParts = Collections.synchronizedList(new ArrayList<Part>());
-        kit1NeedsParts = Collections.synchronizedList(new ArrayList<Part>());
-        newKit = (new ArrayList<Kit>());
-        kitsStarted = Collections.synchronizedList(new ArrayList<Kit>());
+        inventory = Collections.synchronizedList(new ArrayList<Part>());//the parts that the nestAgent has given to the partsAgent to use
+        grips = Collections.synchronizedList(new ArrayList<Part>());//grips, max size of 4
+        kit0NeedsParts = Collections.synchronizedList(new ArrayList<Part>());//parts that kit0 needs to be completed
+        kit1NeedsParts = Collections.synchronizedList(new ArrayList<Part>());//parts that kit1 needs to be completed
+        newKit = (new ArrayList<Kit>());//kits given from server to work on
+        kitsStarted = Collections.synchronizedList(new ArrayList<Kit>()); //used to set all the kit pointers above (kit1, kit1info, kit1needsparts)
     }
     
 //Messages 
 
-    // message from server
-    //@Override
-    //@Override
-    public void msgHereIsKit(ArrayList<Kit> newKits) {
-        print("PartsAgent got message for new kits");
+    public void msgAnimationComplete(){
+        s.release();
+    }
+    
+    public void msgHereIsKit(ArrayList<Kit> newKits) {// message from server
+        //print("PartsAgent got message for new kits");
         for (Kit k: newKits){
-        newKit.add(k);}
-        //DoGiveKitsInQueue(newKit);
+        newKit.add(k);
+        }
+        
+        print("kit configuration specifies the following parts in kit  (size : " + newKits.size() + " ) ");
+        for(int i=0;i<newKit.get(0).parts.size();i++)
+            print(" [ " + newKit.get(0).getPart(i).type + " ] ");
+        DoGiveKitsInQueue(newKit);
         requestState=false;
         stateChanged();
     }
@@ -78,18 +84,22 @@ public class PartsAgent extends Agent implements PartsInterface {
 
     // msg from kit robot
     @Override
-    public void msgEmptyKitReady(Kit k) {
+    public void msgEmptyKitReady(Kit k) {//kitrobot will have put it on a stand number, this will set the pointers
 
         if(k.standNum==Kit.StandNum.zero){
             kit0=k;
-           kitZero=true;
-           
-          }
-            else{
+            kit0.standNum = Kit.StandNum.zero;
+            kitZero=true;//means an empty kit is ready for kit stand 0
+        }
+        else if(k.standNum==Kit.StandNum.one) {
             kit1=k;
+            kit1.standNum = Kit.StandNum.one;
             kitOne=true;
+        }
             
-            }
+        else{
+            print("ERROR IN MSGEMPTYKITREADY");
+           }
 
         print("got an empty kit for stand #" + k.standNum);
         stateChanged();
@@ -99,8 +109,14 @@ public class PartsAgent extends Agent implements PartsInterface {
     @Override
     public boolean pickAndExecuteAnAction() {
        
-        if (!newKit.isEmpty() && kits!=2) {
+        if (!newKit.isEmpty() && kits!=1) {//if there are not already 2 kits being worked on by this agent and there are new kit requests
             kits++;
+            
+            /* when this was called twice (for 2 kits), it added 2 kits to kitsStarted, one kit went to full completion
+             but the other kit took 9 parts to be full, because pickUpPart0 was being called an extra time in the second run
+             This prolly had something to do with the setKit0 call, which gets called an extra time because kitsStarted
+             takes into account 2 kits. Well anyways, changing kits!=2 to kits!=1 somehow fixed the problem.
+             */
             startNewKit(newKit.remove(0));
             requestState=true;
             return true;
@@ -108,8 +124,8 @@ public class PartsAgent extends Agent implements PartsInterface {
     
        
        if(kitZero && !kitsStarted.isEmpty()){
-           setKit0(kitsStarted.remove(0));
-           kitZero=false;
+           setKit0(kitsStarted.remove(0));//put all of this kit information into kit0 objects
+           kitZero=false;//empty kit is no longer ready on kit stand 0
            return true;
        }
        if(kitOne && !kitsStarted.isEmpty()){
@@ -118,12 +134,14 @@ public class PartsAgent extends Agent implements PartsInterface {
            return true;
        }
        
-       if(!kit0NeedsParts.isEmpty()){
-          if (!inventory.isEmpty()) {
+       if(!kit0NeedsParts.isEmpty()){//if kit 0 needs parts
+           
+           if (!inventory.isEmpty()) {//if the parts agent has parts to work with
                 for(Part p: kit0NeedsParts){
                 if(inventory.get(0).type==p.type){
-                   pickUpPart0(inventory.remove(0));
-            return true;
+                    print("picking up part type " + p.type);
+                    pickUpPart0(inventory.remove(0));//put the part in a grip if the kit needs it
+                    return true;
                 }}
             }
       }
@@ -149,13 +167,15 @@ public class PartsAgent extends Agent implements PartsInterface {
         kits--;
         if(k.standNum==Kit.StandNum.zero){
             kit0Info = null;
-            //kit0=null;
+  //          kit0.parts.clear();//remove if k.parts.size()==0
         }
+       
         else{
             kit1Info = null;
-            //kit1 = null;
+           // kit1.parts.clear();
         }
-        print("KIT SIZE IS "+ k.parts.size());
+           
+
         kitrobot.msgKitIsFull(k);
         print("KIT SIZE IS " + k.parts.size());
         stateChanged();
@@ -163,20 +183,22 @@ public class PartsAgent extends Agent implements PartsInterface {
 
     private void startNewKit(Kit k) {
        
-        DoGiveKitsInAction(k);
+        DoGiveKitsInAction(k);//giving the kit being worked on to Matt for gui display
        // DoGiveKitsInQueue(newKit);
         
         print("New kit being started" + k.getName());
-        camera.msgHereIsKitInfo(k);
+        camera.msgHereIsKitInfo(k);//later used by the camera when inspecting the full kit
+        
+        //synchronized(kitsStarted){
         kitsStarted.add(k);
-       
+        
         for (int i = 0; i < k.getSize(); i++) {
             nest.msgNeedPart(k.getPart(i));
         }
         
         //if(requestState==true)
         {
-            kitrobot.msgNeedEmptyKit();//change to put empty kits in list when recieve the message back
+            kitrobot.msgNeedEmptyKit();//requests an empty kit for the new kit that needs to be made
             requestState=false;
         }
             
@@ -184,23 +206,23 @@ public class PartsAgent extends Agent implements PartsInterface {
 
     }
     
-    private void pickUpPart0(Part p){
+    private void pickUpPart0(Part p){//pick up part being used for kit on stand number 0
         grips.add(p);
         DoMoveToNest(p.getNestNum());
         for (Part part: kit0NeedsParts){
             if (part.type == p.type){
-                kit0.parts.add(p);
-              kit0NeedsParts.remove(part);
-              //break;
+                kit0.parts.add(p);//adding part to kit0
+              kit0NeedsParts.remove(part);//kit0 no longer needs the part
+              break;
             }}
        
         DoPickUpPart(p.getNestNum());
-        
+        /*
         for(int i=0;i<kit0NeedsParts.size();i++)
         {
         print("parts still present with partsrobot " + kit0NeedsParts.get(i));
-        }
-        if (grips.size() == 4 || kit0NeedsParts.isEmpty()) {
+        }*/
+        if (grips.size() == 4 || kit0NeedsParts.isEmpty()) {//if the kit needs no more parts or the grips are full
         putPartsInKit(0);
         }
         
@@ -244,7 +266,7 @@ public class PartsAgent extends Agent implements PartsInterface {
     
     private void setKit1(Kit k){
         print("kit1 size ["+ k.parts.size() + "]");
-     kit1Info=k;
+        kit1Info=k;
            // kit1=kit1Info;
             kit1.status = Kit.Status.ready;
             kit1.standNum = Kit.StandNum.one;
@@ -293,7 +315,7 @@ public class PartsAgent extends Agent implements PartsInterface {
         if (this.client != null) {
             this.fpm.sendMessage(Message.KAM_PARTS_MOVE_TO_NEST + ":" + nestNum);
             this.client.sendMessage(Message.KAM_PARTS_MOVE_TO_NEST + ":" + nestNum);
-            //thread.sleep
+            //s.acquireUninterruptibly();
             try {
             Thread.sleep(5000);
             } catch (InterruptedException e) {
@@ -302,8 +324,8 @@ public class PartsAgent extends Agent implements PartsInterface {
          } 
         
         } else {
-            print("DOMOVETONEST NUM ["+ nestNum+ "]");
-            print("[ERROR] - Kit Assembly Manager is not online.");
+            //print("DOMOVETONEST NUM ["+ nestNum+ "]");
+            //print("[ERROR] - Kit Assembly Manager is not online.");
 
         }
     }
@@ -312,6 +334,7 @@ public class PartsAgent extends Agent implements PartsInterface {
         if (this.client != null) {
             this.client.sendMessage(Message.KAM_PARTS_PICK_PART + ":" + nestNum);
             this.fpm.sendMessage(Message.KAM_PARTS_PICK_PART + ":" + nestNum);
+            //s.acquireUninterruptibly();
         try {
          Thread.sleep(1500);
          } catch (InterruptedException e) {
@@ -319,8 +342,8 @@ public class PartsAgent extends Agent implements PartsInterface {
          e.printStackTrace();
          }
         } else {
-            print("DOMOVETONEST NUM ["+ nestNum+ "]");
-            print("[ERROR] - Kit Assembly Manager is not online.");
+           // print("DOMOVETONEST NUM ["+ nestNum+ "]");
+           // print("[ERROR] - Kit Assembly Manager is not online.");
 
         }
     }
@@ -329,6 +352,7 @@ public class PartsAgent extends Agent implements PartsInterface {
         if (this.client != null) {
             this.client.sendMessage(Message.KAM_PARTS_DROP_OFF_PARTS + ":" + kitNum);
             this.fpm.sendMessage(Message.KAM_PARTS_DROP_OFF_PARTS + ":" + kitNum);
+            //s.acquireUninterruptibly();
         try {
          Thread.sleep(10000);
          } catch (InterruptedException e) {
@@ -337,8 +361,8 @@ public class PartsAgent extends Agent implements PartsInterface {
          }
         print("Test-Dropping off parts");
         } else {
-            print("DOMOVETONEST NUM ["+ kitNum+ "]");
-            print("[ERROR] - Kit Assembly Manager is not online.");
+            print("DOMOVETOKIT NUM ["+ kitNum+ "]");
+           // print("[ERROR] - Kit Assembly Manager is not online.");
 
         }}
     

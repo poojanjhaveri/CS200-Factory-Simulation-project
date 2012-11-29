@@ -82,8 +82,13 @@ public class Kit implements Serializable{
     public void setParts(ArrayList<Part> p) {
         this.parts = p;
     }
+    /**
+       @brief this function blows don't use it
+@deprecated
+     */
 public Kit cloneSelf()
 {
+    System.out.println("CALLING Kit::cloneSelf() WHICH IS DEPRECATED. USE Kit::deepClone() INSTEAD!");
    Kit n = new Kit(this.getName(),this.getDescription(),this.getNumber());
    ArrayList<Part> p = new ArrayList<Part>();
    for(int i = 0; i != n.getSize(); i++)
@@ -118,11 +123,13 @@ public Kit cloneSelf()
         nk.setParts(p);
         return nk;
     }
-
+    /**
+@brief prints out relevant information about the kit
+    */
     public void debug() {
         System.out.println(this.getName() + " " + this.getDescription() + " " + this.getNumber());
         for (int i = 0; i != this.parts.size(); i++) {
-            System.out.println(this.parts.get(0).serialize());
+            System.out.println(this.parts.get(i).serialize());
         }
     }
 
@@ -212,7 +219,7 @@ blah.debug();
         }
         for(int i = 0; i != in.getSize(); i++)
         {
-            dp.add(in.getPart(i).clone());
+            dp.add(in.getPart(i));
         }
         k.setParts(dp);
         return k;   

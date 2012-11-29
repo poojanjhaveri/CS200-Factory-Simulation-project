@@ -15,6 +15,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.Semaphore;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * @brief agent for the Gantry This class is the agent for the Gantry. The
@@ -25,6 +28,8 @@ import java.util.TimerTask;
  */
 public class GantryAgent extends Agent implements Gantry {
 
+    //initialized with 0.
+    Semaphore anim=new Semaphore(0, true);;
     //private List<myParts> parts = Collections.synchronizedList(new ArrayList<myParts>());
     private Feeder feeder;
     //holds info about all the feeders that are assigned to the gantry
@@ -156,10 +161,16 @@ public class GantryAgent extends Agent implements Gantry {
         }
     }
 
+    public void msgAnimationComplete(String msg){
+        
+        //release the semaphore so that the animation can resume in the doSupplyPart().
+        System.out.println("semaphore released by " + msg);
+        anim.release();
+    }
     public void msgNeedPart(Part part,Feeder feeder) {
     	
         
-        print("msgNeedPart from Feeder for type " + part.type);
+        print("msgNeedPart from Feeder [ " + feeder.getIndex() + " ] ");
     	
         int count=0;
         
@@ -181,9 +192,9 @@ public class GantryAgent extends Agent implements Gantry {
     		if(f.feeder==feeder){
     			
     			f.requested_part=part;
-    			//System.out.println("requested type is " + f.requested_part.type);
     			f.requestState=true;
-    			}
+    			
+                }
     		
     	}
 
@@ -193,7 +204,6 @@ public class GantryAgent extends Agent implements Gantry {
     @Override
     public boolean pickAndExecuteAnAction() {
     
-        synchronized(bins){	
     	for(myFeeder f: myFeeders){
     		if(f.requestState==true){
     			for(myBin b: bins){
@@ -202,9 +212,10 @@ public class GantryAgent extends Agent implements Gantry {
     				if(b.part.type==f.requested_part.type){
     					//System.out.println("b.part==f.requested_part for index " + f.index);
     					if(b.quantity>1){
-    					print("I am supplying parts to feeder at index " + f.index );
+    					print("I am setting requestState for feeder [" + f.index + "] to false ");
     					f.requestState=false;
-    					supplyPart(b,f);
+    					
+                                        supplyPart(b,f);
                                         b.quantity=b.quantity-1;
     					return true;
     					}
@@ -213,7 +224,7 @@ public class GantryAgent extends Agent implements Gantry {
     			}
     		}
     	}
-    }
+    
     
     
         return false;
@@ -254,12 +265,10 @@ public class GantryAgent extends Agent implements Gantry {
     private void doSupplyPart(myBin b,myFeeder f){
    	
      print("about to pick up bin");
-  	//animation.ganbot.moveToBin(b.index);
-    
+     
+     //sleep until a client comes in. 
      while(this.client == null)
          {
-         //print("[ERROR] - Gantry Robot Manager is not online.");
-         //return;
             try {
 			Thread.sleep(1000);
 		} catch (InterruptedException e) {
@@ -268,51 +277,36 @@ public class GantryAgent extends Agent implements Gantry {
 		}
          
          }
-     
-         
-     this.client.sendMessage(Message.MOVE_GANTRY_TO_BIN+":"+b.index);
-       this.fpm.sendMessage(Message.MOVE_GANTRY_TO_BIN+":"+b.index);
-         try {
-			Thread.sleep(6000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-         this.client.sendMessage(Message.GANTRY_CARRY_A_BIN + ":" + b.index);
-         this.fpm.sendMessage(Message.GANTRY_CARRY_A_BIN + ":" + b.index);
-         this.client.sendMessage(Message.MOVE_GANTRY_TO_FEEDER+":"+f.index);
-         this.fpm.sendMessage(Message.MOVE_GANTRY_TO_FEEDER+":"+f.index);
-         
-    	//animation.goToFeeder(f.index-1);
-    	
-    	try {
-			Thread.sleep(6000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated ongocatch block
-			e.printStackTrace();
-		}
-    	
-    	this.client.sendMessage(Message.SUPPLY_PART_ON_FEEDER + ":" + f.index);
-        this.fpm.sendMessage(Message.SUPPLY_PART_ON_FEEDER + ":" + f.index);
         
-            try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+        try {
+            //try to acquire the semaphore which will be released after the gantry has moved down to the bin.
+            //anim.acquire();
             
-        this.client.sendMessage(Message.MOVE_GANTRY_TO_DUMP);
-        this.fpm.sendMessage(Message.MOVE_GANTRY_TO_DUMP);
-    
-        
-         try {
-			Thread.sleep(6000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+            this.client.sendMessage(Message.MOVE_GANTRY_TO_BIN+":"+b.index);
+            this.fpm.sendMessage(Message.MOVE_GANTRY_TO_BIN+":"+b.index);
+                
+            anim.acquire();
+            
+            this.client.sendMessage(Message.GANTRY_CARRY_A_BIN + ":" + b.index);
+            this.fpm.sendMessage(Message.GANTRY_CARRY_A_BIN + ":" + b.index);
+            
+            this.client.sendMessage(Message.MOVE_GANTRY_TO_FEEDER+":"+f.index);
+            this.fpm.sendMessage(Message.MOVE_GANTRY_TO_FEEDER+":"+f.index);
+            
+            anim.acquire();
+            this.client.sendMessage(Message.SUPPLY_PART_ON_FEEDER + ":" + f.index);
+            this.fpm.sendMessage(Message.SUPPLY_PART_ON_FEEDER + ":" + f.index);    
+            this.client.sendMessage(Message.MOVE_GANTRY_TO_DUMP);
+            this.fpm.sendMessage(Message.MOVE_GANTRY_TO_DUMP);
+            
+            anim.acquire();
          
+        
+        } catch (InterruptedException ex) {
+            Logger.getLogger(GantryAgent.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         
+        
          // By Dongyoung Jung
          //serverMain.getForAgentGantryRobot().purgeBin(f.index);
     }

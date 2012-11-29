@@ -1,8 +1,6 @@
 package factory.factory201.kitManagement;
 
 import factory.general.*;
-import java.util.ArrayList;
-import java.util.Collections;
 
 /**
  * @author Alex Young
@@ -13,13 +11,14 @@ public class KitStand {
 
     private KitRobotAgent agent;
     private Kit[] kits = new Kit[3];
-    //private kits = Collections.synchronizedList(new ArrayList<Kit>());
+
     public KitStand(KitRobotAgent agent) {
         kits[0] = kits[1] = kits[2] = null;
         this.agent = agent;
     }
 
     public boolean addKit(Kit kit) {
+       System.out.println("add kit testing " );
         if (kits[1] == null) {
             kits[1] = kit;
             kits[1].standNum = Kit.StandNum.one;

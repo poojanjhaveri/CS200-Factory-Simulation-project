@@ -16,13 +16,13 @@ public class LMNestHandler {
 	public void verify(String message){
 		nestNum =  message.charAt(0) - 48;
 				
-		if( message.indexOf("Switch Up") != -1 ){
-			//app.getGUIPanel().getGUINest().getGUINestArray(nestNum).setNestSwitch(true);
+		if( message.contains("Switch Up") ){
+			app.getGUIPanel().getGUINest().getGUINestArray(nestNum).setNestSwitch(true);
 			app.getGraphicsPanel().getAllNest().getNest(nestNum).nestUp();
 		}
 
-		else if( message.indexOf("Switch Down") != -1 ){																		
-			//app.getGUIPanel().getGUINest().getGUINestArray(nestNum).setNestSwitch(false);
+		else if( message.contains("Switch Down") ){																		
+			app.getGUIPanel().getGUINest().getGUINestArray(nestNum).setNestSwitch(false);
 			app.getGraphicsPanel().getAllNest().getNest(nestNum).nestDown();
 			app.getGraphicsPanel().getAllPart().nestDown(nestNum);
 		}

@@ -15,7 +15,7 @@ public class LMApplication extends JFrame{
 	
 	public LMApplication(){
 		setTitle("Lane Manager");
-		setSize(550,720);
+		setSize(870,720);
 		setLocation(0,0);
 		setVisible(true);
 		setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
@@ -23,7 +23,7 @@ public class LMApplication extends JFrame{
 		setResizable(false);
 
 		panelGraphics = new LMGraphicsPanel(this);
-		panelGUI = new LMGUIPanel();
+		panelGUI = new LMGUIPanel(this);
 		verifyMessage = new LMSignalFromServerVerification(this);
 		
 		add( panelGraphics );

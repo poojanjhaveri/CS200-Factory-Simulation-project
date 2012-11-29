@@ -22,21 +22,19 @@ public class GantryRobotManager{
    
     GRMGraphicPanel graphics;    
     ///<class which includes Gantry Robot Manager Methods
-    int purgeStationx;//x coordinate of purgeStation
-    int purgeStationy;//y coordinate of purgeStation
-
+   
 //    public void receiveFromServer();///<pull data from server
 //   GUIGantryManager gui;///<break the nonormative situations
     public static final Integer FEED0X = 1000;///<x-coordinate of feeder 0
-    public static final Integer FEED0Y = 50;///<y-coordinate of feeder 0
+    public static final Integer FEED0Y = 70;///<y-coordinate of feeder 0
     public static final Integer FEED1X = 1000;///<x-coordinate of feeder 1
-    public static final Integer FEED1Y = 200;///<y-coordinate of feeder 1
+    public static final Integer FEED1Y = 220;///<y-coordinate of feeder 1
     public static final Integer FEED2X = 1000;///<x-coordinate of feeder 2
-    public static final Integer FEED2Y = 350;///<y-coordinate of feeder 2
+    public static final Integer FEED2Y = 370;///<y-coordinate of feeder 2
     public static final Integer FEED3X = 1000;///<x-coordinate of feeder 3
-    public static final Integer FEED3Y = 500;///<y-coordinate of feeder 3
+    public static final Integer FEED3Y = 530;///<y-coordinate of feeder 3
 
-    public static final Integer DUMPX = 1260;///<x-coordinate of dump 
+    public static final Integer DUMPX = 1160;///<x-coordinate of dump 
     public static final Integer DUMPY = 600;///<y-coordinate of dump 
 
     public static final Integer BIN_X = 1280;///<x coordinate of all bin locations
@@ -57,7 +55,7 @@ public class GantryRobotManager{
     
     public GantryRobotManager() {
         graphics = new GRMGraphicPanel();
-         }
+     }
 	
 	public void paint(GraphicsPanel panel, Graphics2D g){
 		graphics.paint(panel, g);

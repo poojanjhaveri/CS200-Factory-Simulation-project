@@ -106,7 +106,7 @@ public class KitManager extends Manager  implements ActionListener {
             prepareMainPane();
             this.update();  
             
-            this.mcon.out(Message.PULL_PARTS_LIST);
+            this.sendToServer(Message.PULL_PARTS_LIST);
             this.sendToServer(Message.IDENTIFY_KITMANAGER);
          }
 	
@@ -544,12 +544,12 @@ public class KitManager extends Manager  implements ActionListener {
      */
         public void update() {
             
-            this.mcon.out(Message.PULL_PARTS_LIST);
+            this.sendToServer(Message.PULL_PARTS_LIST);
            // this.sendToServer(Message.PULL_PARTS_LIST);
             System.out.println("Pulling parts list from the server");
                 
 
-            this.mcon.out(Message.PULL_KITS_LIST);
+            this.sendToServer(Message.PULL_KITS_LIST);
           //  this.sendToServer(Message.PULL_KITS_LIST);
             System.out.println("Pulling kits list from the server");
 
@@ -602,7 +602,7 @@ public class KitManager extends Manager  implements ActionListener {
             String msg = Message.DEFINE_NEW_KIT+":"+newkit.serialize();
             System.out.println("kit Created");
             System.out.println(msg);
-            this.mcon.out(msg);
+            this.sendToServer(msg);
             
             update();
             
@@ -644,8 +644,7 @@ public class KitManager extends Manager  implements ActionListener {
             
             
             
-            if(finalpartlist.size()>3)
-            {
+            if(finalpartlist.size()>3) {
       
                 
             Kit newkit = new Kit(newkitname,"description");//this will be the kit that just got made
@@ -659,7 +658,7 @@ public class KitManager extends Manager  implements ActionListener {
             String msg = Message.DEFINE_NEW_KIT+":"+newkit.serialize();
             System.out.println("kit updated");
             System.out.println(msg);
-            this.mcon.out(msg);
+            this.sendToServer(msg);
             
             update();
           

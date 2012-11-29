@@ -24,6 +24,9 @@ import factory.general.Part;
  * 21-24 - drop off at feeder [#]
  * 25 -move to dump
  * 26 - purge bin
+30 - finish bin command
+31 - finish move to feeder command
+32 - finish move to dump
  * 
  * The gantry robot has basic bin movement and emptying capabilities. In
  * relation to the simulation GUI, the gantry robot has <ul> <li>arm extension
@@ -32,6 +35,7 @@ import factory.general.Part;
  * functionality.</li> </ul> <img src="../img/image03.png" alt="unused Gantry
  * robot with arms retracted"/>
 <img src="../img/image07.png" alt="Gantry robot in use and carring a bin"/>
+
  *
  * @brief shared Robot that manipulates part bins
  * @author YiWei Roy Zheng
@@ -247,6 +251,7 @@ public class GUIGantryRobot extends GUIRobot{
     public void moveToBinCommand(Integer index)
     {
     	this.orders.add(index);
+	this.orders.add(30);
     	//this.orders.add(index+8);
     }
     
@@ -256,6 +261,7 @@ public class GUIGantryRobot extends GUIRobot{
     public void moveToFeederCommand(Integer index)
     {
     	this.orders.add(index+16);
+	this.orders.add(31);
     	//this.orders.add(index+21);
     }
     
@@ -267,6 +273,7 @@ public class GUIGantryRobot extends GUIRobot{
     {
     	this.orders.add(25);
     	this.orders.add(26);
+	this.orders.add(32);
     }
     private void moveToDefault() {
         this.moveTo(GantryRobotManager.ROBOT_INITIAL_X, GantryRobotManager.ROBOT_INITIAL_Y);
@@ -290,9 +297,9 @@ public class GUIGantryRobot extends GUIRobot{
      public void paintMe(JPanel panel, Graphics2D g){
     	
     	if(this.bin != null){
-    		this.bin.getImage().paintIcon(panel, g, this.getCoordinate().getX()-30, this.getCoordinate().getY()-50);
+    		this.bin.getImage().paintIcon(panel, g, this.getCoordinate().getX()-10, this.getCoordinate().getY()-30);
     		if(this.bin.getPart()!=null){
-    			this.bin.getPart().getGUIPart().getImage().paintIcon(panel, g, this.getCoordinate().getX()-15,this.getCoordinate().getY()-35);
+    			this.bin.getPart().getGUIPart().getImage().paintIcon(panel, g, this.getCoordinate().getX()+5,this.getCoordinate().getY()-15);
     		}
         }
     		
