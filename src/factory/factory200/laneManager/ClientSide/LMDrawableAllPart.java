@@ -23,7 +23,7 @@ public class LMDrawableAllPart {
 		
 		for(int i=0 ; i<8 ; i++){
 			newNestData = new LMNestData(i);
-			newLaneData = new LMLaneData(i);
+			newLaneData = new LMLaneData(i,  this);
 			nestDatas.add(newNestData);
 			laneDatas.add(newLaneData);
 		}

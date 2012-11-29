@@ -33,6 +33,7 @@ public class LMDrawablePart {
 	private int laneNestNum;
 	private int partNum;
 	private int partStatus;
+	private int randomX, randomY;
 	private String message = "";
 	
 	private int currentLocationX, currentLocationY;
@@ -43,7 +44,7 @@ public class LMDrawablePart {
 	private Boolean arrived = false;
 	private Boolean availableToNest = true;
 	private Boolean arrivedToNest = false;
-	private Boolean shaken = false;
+	private Boolean nonNormative = false;
 	
 	public LMDrawablePart(LMApplication app, LMDrawableAllPart getAllPart, int laneNestNum, int partNum, int currentLocationX, int currentLocationY, int endOfLaneX, int endOfLaneY, int partStatus){
 		this.app = app;
@@ -118,6 +119,15 @@ public class LMDrawablePart {
 	public void setDestination(int destinationX, int destinationY){
 		this.destinationX = destinationX;
 		this.destinationY = destinationY;
+	}
+	
+	public void setDestinationNonNormative(){
+		if( nonNormative == false ){
+			randomX = (int)(Math.random() * 20) + 503;
+			randomY = (int)(Math.random() * 60) + 10 + 75*laneNestNum;
+			setDestination(randomX, randomY);
+			nonNormative = true;
+		}
 	}
 	
 	public Boolean getArrived(){

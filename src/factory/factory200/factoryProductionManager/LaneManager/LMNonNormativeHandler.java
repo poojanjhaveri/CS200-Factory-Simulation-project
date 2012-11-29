@@ -1,4 +1,4 @@
-package factory.factory200.laneManager.ClientSide;
+package factory.factory200.factoryProductionManager.LaneManager;
 
 /**
  * @brief Server Signal Handler(Nest)
@@ -20,7 +20,7 @@ public class LMNonNormativeHandler {
 			
 		}
 		else if( message.contains("&Piled&") ) {
-			app.getGraphicsPanel().getAllPart().getLane(nestLaneNum).switchNonNormativePartPiled(false);
+			app.getAllPart().getLane(nestLaneNum).switchNonNormativePartPiled(false);
 		}
 	}
 }

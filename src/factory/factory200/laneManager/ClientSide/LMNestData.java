@@ -9,7 +9,6 @@ import java.util.ArrayList;
 public class LMNestData {
 	
 	private ArrayList<LMDrawablePart> parts = new ArrayList<LMDrawablePart>();
-	private boolean nonNormativePartPiled = false;
 	private int nestNum;
 	
 	public LMNestData(int nestNum){
@@ -36,16 +35,12 @@ public class LMNestData {
 		parts.clear();
 	}
 	
-	public void switchNonNormativePartPiled(boolean switchNonNormative){
-		nonNormativePartPiled = switchNonNormative;
-	}
-	
 	/**
 	 * This keeps organizing the parts on nest.
 	 */
 	public void reorganize(){
-		if( nonNormativePartPiled == false ){
-			for(int i=0 ; i<parts.size() ; i++){
+		for(int i=0 ; i<parts.size() ; i++){
+			if( i < 8 ){
 				if( i % 2 == 0 ){
 					parts.get(i).setDestination(13, 35+10*i+75*nestNum);
 				}
@@ -53,17 +48,8 @@ public class LMNestData {
 					parts.get(i).setDestination(33, 35+10*(i-1)+75*nestNum);
 				}
 			}
-		}
-		else if( nonNormativePartPiled == true ){
-			for(int i=0 ; i<parts.size() ; i++){
-				/*
-				if( i % 2 == 0 ){
-					parts.get(i).setDestination(13, 35+10*i+75*nestNum);
-				}
-				else if( i % 2 == 1 ){
-					parts.get(i).setDestination(33, 35+10*(i-1)+75*nestNum);
-				}
-				*/
+			else if( i >= 8 ){
+				parts.get(i).setDestinationNonNormative();
 			}
 		}
 	}

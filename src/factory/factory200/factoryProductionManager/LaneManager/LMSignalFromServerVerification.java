@@ -15,6 +15,7 @@ public class LMSignalFromServerVerification{
 	private LMPartHandler partHandler;
 	private LMPartRobotHandler partRobotHandler;
 	private LMGantryRobotHandler gantryRobotHandler;
+	private LMNonNormativeHandler nonNormativeHandler;
 
 	public LMSignalFromServerVerification(LMApplication app){
 		this.app = app;
@@ -25,6 +26,7 @@ public class LMSignalFromServerVerification{
 		partHandler = new LMPartHandler(app);
 		partRobotHandler = new LMPartRobotHandler(app);
 		gantryRobotHandler = new LMGantryRobotHandler(app);
+		nonNormativeHandler = new LMNonNormativeHandler(app);
 	}
 	
 	public void timerAction(){
@@ -74,6 +76,10 @@ public class LMSignalFromServerVerification{
 		
 		else if( message.contains("&Bin&") ){
 			gantryRobotHandler.verify(message);
+		}
+		
+		else if( message.contains("&Non&") ){
+			nonNormativeHandler.verify(message);
 		}
 	}
 }
