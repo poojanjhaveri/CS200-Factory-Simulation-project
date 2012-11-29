@@ -431,7 +431,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
         if (msg.contains(Message.PUSH_KITS_LIST)) {
             this.kitsbp.recreate(this.grabParameter(msg));
             System.out.println("GRABBED A NEW BLUEPRINTKITS FROM THE SERVER");
-            this.kitsbp.debug();
+            //this.kitsbp.debug();
             this.reconstructComboBox();
         }
         if(msg.contains(Message.KIT_IN_PRODUCTION))
@@ -470,7 +470,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
         }
         System.out.println("Available kits size = " + availableKits.size());
 
-        selKit.removeAllItems();
+        //selKit.removeAllItems();
         //Add strings to the combobox component
         for(String kitty : availableKits)
         {
