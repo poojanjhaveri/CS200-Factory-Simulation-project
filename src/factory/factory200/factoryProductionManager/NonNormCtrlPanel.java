@@ -1,5 +1,6 @@
 package factory.factory200.factoryProductionManager;
 
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 
@@ -27,6 +28,8 @@ public class NonNormCtrlPanel extends JPanel {
 	private static String[] PARTS_MISSING_OPTIONS = { "Need to wait longer", "Lane jammed", "Feeder algorithm too slow"};
 	private static String[] NO_GOOD_PART_OPTIONS = { "All parts are bad", "Parts piled up!", "Robot in the way", "Parts not stable"};
 	
+	private static Dimension BUTTON_DIMENSION = new Dimension(300,200);
+	
 	public NonNormCtrlPanel() {
 		preparePanel();
 	}
@@ -50,6 +53,7 @@ public class NonNormCtrlPanel extends JPanel {
 		kitFailsInnerPanel.add(kitFailsComboBox);
 
 		btnLaunchKitFails = new JButton("Launch Bad Kit Scenario");
+		btnLaunchKitFails.setPreferredSize(BUTTON_DIMENSION);
 		kitFailsPanel.add(btnLaunchKitFails);
 
 		partsMissingPanel = new JPanel();
@@ -68,6 +72,7 @@ public class NonNormCtrlPanel extends JPanel {
 		partsMissingInnerPanel.add(partsMissingComboBox);
 
 		btnLaunchMissingParts = new JButton("Launch Missing Parts Scenario");
+		btnLaunchMissingParts.setPreferredSize(BUTTON_DIMENSION);
 		partsMissingPanel.add(btnLaunchMissingParts);
 
 		noGoodPartPanel = new JPanel();
@@ -85,6 +90,7 @@ public class NonNormCtrlPanel extends JPanel {
 		noGoodPartsInnerPanel.add(noGoodPartsComboBox);
 
 		btnLaunchNoGoodParts = new JButton("Launch No Good Parts Scenario");
+		btnLaunchNoGoodParts.setPreferredSize(BUTTON_DIMENSION);
 		noGoodPartPanel.add(btnLaunchNoGoodParts);
 	}
 	
