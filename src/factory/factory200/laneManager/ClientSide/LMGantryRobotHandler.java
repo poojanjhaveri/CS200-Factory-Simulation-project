@@ -16,7 +16,7 @@ public class LMGantryRobotHandler{
 	public void verify(String message){
 		feederNum = message.charAt(0) - 48;
 		if( message.indexOf("&Put&") != -1 ){
-			binNum = message.charAt( message.length()-1 ) - 48;
+			binNum = message.charAt(1) - 48;
 			app.getGraphicsPanel().getAllBin().getBin(feederNum).setBinImage(binNum);
 		}
 		else if( message.indexOf("&Purge&") != -1 ){

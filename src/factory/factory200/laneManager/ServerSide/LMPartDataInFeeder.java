@@ -20,11 +20,11 @@ public class LMPartDataInFeeder {
 		this.serverMain = serverMain;
 	}
 	
-	public void addPart(int partNum, int quantity){
+	public void addPart(int partNum, int quantity, int partStatus){ // 0 - bad, 1 - good
 		// When rear gate is open, no use putting parts into feeder
 		if( serverMain.getForAgentFeeder().getFeeder(feederNum).getRearGateSwitch() == false ){
 			for(int i=0 ; i<quantity ; i++){
-				newPart = new LMPart(partNum);
+				newPart = new LMPart(partNum, partStatus);
 				parts.add(newPart);
 				partLowSensor();
 			}
@@ -33,6 +33,10 @@ public class LMPartDataInFeeder {
 	
 	public int getFirstPartNum(){
 		return parts.get(0).getPartNum();
+	}
+	
+	public int getFirstPartStatus(){
+		return parts.get(0).getPartStatus();
 	}
 	
 	public LMPart getPartFromFeederToLane(){

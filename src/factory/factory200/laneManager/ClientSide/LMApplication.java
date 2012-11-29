@@ -23,7 +23,7 @@ public class LMApplication extends JFrame{
 		setResizable(false);
 
 		panelGraphics = new LMGraphicsPanel(this);
-		panelGUI = new LMGUIPanel();
+		panelGUI = new LMGUIPanel(this);
 		verifyMessage = new LMSignalFromServerVerification(this);
 		
 		add( panelGraphics );

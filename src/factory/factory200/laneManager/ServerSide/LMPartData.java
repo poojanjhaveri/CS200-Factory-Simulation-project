@@ -40,8 +40,8 @@ public class LMPartData {
 	}
 	
 	// Feeder : Dump Bin Box Into Feeder - DONE(By Gantry Robot)
-	public void addPartToFeeder(int feederNum, int partNum, int quantity){
-		feeders.get(feederNum).addPart(partNum, quantity);
+	public void addPartToFeeder(int feederNum, int partNum, int quantity, int partStatus){
+		feeders.get(feederNum).addPart(partNum, quantity, partStatus);
 	}
 	
 	public void addPartToLaneFromFeeder(int laneNum, int feederNum){
@@ -86,64 +86,7 @@ public class LMPartData {
 		return feeders.get(feederNum).getFirstPartNum();
 	}
 	
-	public void shakePartsFree(){
-		for(int i=0 ; i<8 ; i++){
-			shakePossibility = Math.random();
-			if( serverMain.getPartData().getLanePartSize(i) != 0 ){
-				if( serverMain.getForAgentLane().getLane(i).getVibrationAmplitude() == 0 ){
-					if( Math.random() < 0.001 ){
-						// Part Removal In Server Side
-						lanes.get(i).removePart();
-						
-						// Part Removal In Client Side
-						signal = i + "&Part&Shake&";
-						
-						// Send to LM & FPM
-						serverMain.sendToLM(signal);
-						serverMain.sendToFPM(signal);
-					}
-				}
-				else if( serverMain.getForAgentLane().getLane(i).getVibrationAmplitude() == 1 ){
-					if( Math.random() < 0.005 ){
-						// Part Removal In Server Side
-						lanes.get(i).removePart();
-						
-						// Part Removal In Client Side
-						signal = i + "&Part&Shake&";
-						
-						// Send to LM & FPM
-						serverMain.sendToLM(signal);
-						serverMain.sendToFPM(signal);
-					}
-				}
-				else if( serverMain.getForAgentLane().getLane(i).getVibrationAmplitude() == 2 ){
-					if( Math.random() < 0.01 ){
-						// Part Removal In Server Side
-						lanes.get(i).removePart();
-						
-						// Part Removal In Client Side
-						signal = i + "&Part&Shake&";
-						
-						// Send to LM & FPM
-						serverMain.sendToLM(signal);
-						serverMain.sendToFPM(signal);
-					}
-				}
-			}
-		}
-	}
-	
-	public void laneVibrationController(){
-		for( int i=0 ; i<8 ; i++){
-			if( lanes.get(i).getSize() < 7 ){
-				serverMain.getForAgentLane().getLane(i).setVibrationAmplitudeWeak();
-			}
-			else if( lanes.get(i).getSize() < 14 ){
-				serverMain.getForAgentLane().getLane(i).setVibrationAmplitudeNormal();
-			}
-			else if( lanes.get(i).getSize() >= 14 ){
-				serverMain.getForAgentLane().getLane(i).setVibrationAmplitudeStrong();
-			}
-		}
+	public int getFirstPartStatus(int feederNum){
+		return feeders.get(feederNum).getFirstPartStatus();
 	}
 }
