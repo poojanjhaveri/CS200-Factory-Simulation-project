@@ -464,6 +464,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
         for(int i=0;i<kitsbp.getKits().size();i++)
         {
             //Populate string list of names of incoming kits
+            System.out.println(kitsbp.getKits().get(i).getName());
             availableKits.add(kitsbp.getKits().get(i).getName());
             
         }
@@ -475,7 +476,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
         {
             selKit.addItem(kitty);
         }
-
+        System.out.println("Combobox size = " + selKit.getItemCount());
         //if the incoming kit list isn't empty, make the combo box now
         if(!empty)
         {
