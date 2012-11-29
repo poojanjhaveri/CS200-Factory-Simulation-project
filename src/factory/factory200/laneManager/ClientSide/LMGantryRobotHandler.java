@@ -15,14 +15,14 @@ public class LMGantryRobotHandler{
 
 	public void verify(String message){
 		feederNum = message.charAt(0) - 48;
-		if( message.indexOf("&Put&") != -1 ){
-			binNum = message.charAt( message.length()-1 ) - 48;
+		if( message.contains("&Put&") ){
+			binNum = message.charAt(1) - 48;
 			app.getGraphicsPanel().getAllBin().getBin(feederNum).setBinImage(binNum);
 		}
-		else if( message.indexOf("&Purge&") != -1 ){
+		else if( message.contains("&Purge&") ){
 			app.getGraphicsPanel().getAllBin().getBin(feederNum).purgeBin();
 		}
-		else if( message.indexOf("&Empty&") != -1 ){
+		else if( message.contains("&Empty&") ){
 			app.getGraphicsPanel().getAllBin().getBin(feederNum).emptyBin();
 		}
 	}

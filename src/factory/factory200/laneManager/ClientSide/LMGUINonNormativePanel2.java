@@ -22,6 +22,8 @@ public class LMGUINonNormativePanel2 extends JPanel implements ActionListener{
 	
 	private JButton button = new JButton("Lane Being Jammed");	
 	
+	private int laneNum;
+	
 	public LMGUINonNormativePanel2(LMApplication app){
 		this.app = app;
 		
@@ -39,7 +41,8 @@ public class LMGUINonNormativePanel2 extends JPanel implements ActionListener{
 	
 	public void actionPerformed(ActionEvent ae){
 		if( ae.getSource() == button ){
-			
+			laneNum = laneNumBox.getSelectedIndex();
+			app.getVerifyMessage().sendToServer( laneNum + "LANE_JAMMED" );
 		}
 	}
 }

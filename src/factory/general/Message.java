@@ -66,7 +66,10 @@ public class Message {
     public static final String IDENTIFY_LANEMANAGER = "IDENTIFY_LANEMANAGER";
     public static final String PART_TO_NEST_FROM_LANE = "PART_TO_NEST_FROM_LANE";
     public static final String PART_TAKE_BY_PARTROBOT = "PART_TAKE_BY_PARTROBOT";
-
+    public static final String BAD_PART_INSERTION = "BAD_PART_INSERTION";
+    public static final String LANE_JAMMED = "LANE_JAMMED";
+    public static final String PART_PILED = "PART_PILED";
+    
     //PULL_KITS_LIST is also used by FPM
     public static final String IDENTIFY_FACTORYPRODUCTIONMANAGER = "IDENTIFY_FACTORYPRODUCTIONMANAGER";
     public static final String PUSH_PRODUCTION_QUEUE = "PUSH_PRODUCTION_QUEUE";///<sends the server a list of comma delimited kit IDs

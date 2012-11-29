@@ -1,6 +1,8 @@
 package factory.factory200.laneManager.ServerSide;
 
 import javax.swing.JFrame;
+
+import factory.factory201.feederManagement.GantryAgent;
 import factory.general.HandleAManager;
 
 /**
@@ -25,6 +27,8 @@ public class LMServerMain extends JFrame implements Runnable{
 	private LMSignalFromAnimationVerification signalVerify;
 	private LMThreadTimer threadTimer;
 	private LMController controller;
+	
+	private GantryAgent gantryAgent;
 	
 	public LMServerMain(){}
 	
@@ -115,5 +119,13 @@ public class LMServerMain extends JFrame implements Runnable{
 		if( hacGRM != null ){
 			hacGRM.sendMessage(signal);
 		}
+	}
+	
+	public void setGantryAgent(GantryAgent gantryAgent){
+		this.gantryAgent = gantryAgent;
+	}
+	
+	public GantryAgent getGantryAgent(){
+		return gantryAgent;
 	}
 }

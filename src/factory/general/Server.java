@@ -191,6 +191,9 @@ public class Server {
             }
             laneAgents[i] = new LaneAgent("Lane " + i,i);
         }
+        
+        // By Dongyoung
+        serverLM.setGantryAgent(gantryAgent);
     }
 
     private void connectAgentsAndManagers() {
