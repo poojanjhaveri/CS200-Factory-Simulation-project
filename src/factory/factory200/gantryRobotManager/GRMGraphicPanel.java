@@ -103,7 +103,7 @@ public class GRMGraphicPanel extends JPanel implements ActionListener {
         }
         
         ///<Set the timer
-        timer = new Timer(12, this);
+        timer = new Timer(20, this);
         timer.start();
         
 	}
