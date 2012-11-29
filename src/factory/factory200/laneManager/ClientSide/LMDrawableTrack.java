@@ -11,14 +11,15 @@ public class LMDrawableTrack {
 		
 	private static ImageIcon trackImage = new ImageIcon( LMDrawableTrack.class.getResource("./pics/oneTrack.png") );
 	private int trackX, trackY;
+	private int vibrationAmplitude = 0;// 0 : Normal, 1 : Strong
 
 	public LMDrawableTrack(int trackX, int trackY){
 		this.trackX = trackX;
 		this.trackY = trackY;
 	}
 
-	public void paint(LMGraphicsPanel panel, Graphics2D graphics){
-		trackImage.paintIcon(panel, graphics, trackX, trackY);
+	public void paint(LMGraphicsPanel panel, Graphics2D graphics, int newTrackY){
+		trackImage.paintIcon(panel, graphics, trackX, newTrackY);
 	}
 
 	/**
