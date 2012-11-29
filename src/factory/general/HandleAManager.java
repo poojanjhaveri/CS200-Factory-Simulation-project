@@ -217,8 +217,9 @@ if(msg.contains(Message.KAM_FINISH_KITBOT_ANIMATION)) {
             for(int i = 0; i != deserialized.size(); i++) {
             	queue.add(Kit.deepClone(this.server.getFactoryState().getKitById(Integer.parseInt(deserialized.get(i)))));
             	System.out.println(deserialized.get(i));
-            }/*
-            for(int i = 0; i != deserialized.size(); i++) {
+            }
+            /*for(int i = 0; i != deserialized.size(); i++) {
+
                 Kit single = this.server.getFactoryState().getKitById(Integer.parseInt(deserialized.get(i))).cloneSelf();
 
                 queue.add(single);
