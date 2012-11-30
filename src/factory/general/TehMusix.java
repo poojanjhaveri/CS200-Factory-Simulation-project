@@ -1,3 +1,5 @@
+package factory.general;
+
 import javax.sound.sampled.*;
 import java.io.*;
 
@@ -12,7 +14,10 @@ import javax.sound.sampled.DataLine;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.SourceDataLine;
 
-
+/**
+@brief plays sounds
+@author YiWei Roy Zheng & Help from the Internet
+ */
 public class TehMusix implements Runnable{
 
     String filename;
@@ -32,7 +37,7 @@ public class TehMusix implements Runnable{
 	this.playSound();
     }
     /**
-     * 
+     * This function was taken from StackOverflow
      * @param filename the name of the file that is going to be played
      *
      */
@@ -48,22 +53,19 @@ public class TehMusix implements Runnable{
         }
 
         try {
-            audioStream = AudioSystem.getAudioInputStream(soundFile);
+            this.audioStream = AudioSystem.getAudioInputStream(soundFile);
         } catch (Exception e){
             e.printStackTrace();
            System.exit(1);
         }
 
-        audioFormat = audioStream.getFormat();
+        this.audioFormat = this.audioStream.getFormat();
 
         DataLine.Info info = new DataLine.Info(SourceDataLine.class, audioFormat);
         try {
             sourceLine = (SourceDataLine) AudioSystem.getLine(info);
             sourceLine.open(audioFormat);
-        } catch (LineUnavailableException e) {
-            e.printStackTrace();
-            System.exit(1);
-        } catch (Exception e) {
+        catch (Exception e) {
             e.printStackTrace();
             System.exit(1);
         }
@@ -79,11 +81,9 @@ public class TehMusix implements Runnable{
                 e.printStackTrace();
             }
             if (nBytesRead >= 0) {
-                @SuppressWarnings("unused")
                 int nBytesWritten = sourceLine.write(abData, 0, nBytesRead);
             }
         }
-
         sourceLine.drain();
         sourceLine.close();
     }
@@ -95,9 +95,9 @@ public class TehMusix implements Runnable{
 	    clip.open(AudioSystem.getAudioInputStream(new File(filename)));
 	    clip.start();
 	}
-    catch (Exception exc)
+    catch (Exception ex)
 	{
-	    exc.printStackTrace(System.out);
+	    ex.printStackTrace();
 	}
     }
     public static void main(String[] args)
