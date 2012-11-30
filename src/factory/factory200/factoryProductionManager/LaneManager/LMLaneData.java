@@ -24,10 +24,10 @@ public class LMLaneData {
 	}
 	
 	public void switchNonNormativePartPiled(boolean switchNonNormative){
-		if( switchNonNormative == true ){
+		if( switchNonNormative == false ){
 			maxSize = 8;
 		}
-		else if( switchNonNormative == false ){
+		else if( switchNonNormative == true ){
 			maxSize = 16;
 		}
 		allPartClass.laneUpdate();

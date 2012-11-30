@@ -22,14 +22,7 @@ public class LMPartDataInNest {
 			partNumInfos.add(0);
 		}
 	}
-	/*
-	public void addPart(int partNum, int quantity){
-		for(int i=0 ; i<quantity ; i++){
-			newPart = new LMPart(partNum);
-			parts.add(newPart);
-		}
-	}
-	*/
+
 	public void partRobotTakeOne(){
 		if(parts.size() != 0){
 			parts.remove(0);
@@ -52,6 +45,6 @@ public class LMPartDataInNest {
 		}
 		signal += nestNum + "_" + newPartFromLane.getPartNum();
 		serverMain.sendToKAM(signal);
-                serverMain.sendToFPM(signal);
+        serverMain.sendToFPM(signal);
 	}
 }
