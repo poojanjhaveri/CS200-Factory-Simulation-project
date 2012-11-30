@@ -42,12 +42,13 @@ public class KAMNest {
 
         if (this.parts.isEmpty()) {
             System.out.println("ERROR: PART ROBOT ASKING FOR NULL PART!");
+            return null;
           
-        } 
+        } else{
             Part temp = this.parts.get(0);
             this.parts.remove(0);
             return temp;
-       
+        }
     }
 
     /**

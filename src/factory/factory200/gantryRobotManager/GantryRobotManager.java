@@ -96,19 +96,15 @@ public class GantryRobotManager extends Manager implements ActionListener {
         
         this.tabbedPane = new JTabbedPane();
         tabbedPane.addTab("Animation", this.graphics);
-        //GUINonNormGAM nonGUI = new GUINonNormGAM();
+        GUINonNormGAM nonGUI = new GUINonNormGAM();
         
-        //tabbedPane.addTab("Non-normative", nonGUI);
+        tabbedPane.addTab("Non-normative", nonGUI);
         tabbedPane.setPreferredSize(new Dimension(600,800));
         this.add(tabbedPane);
         
         
-     //   this.add(graphics);
-        
-        
-        
-        
-        
+        //   this.add(graphics);
+
       //  add(graphics);
         ps = new PurgeStation();
         int x = 500;
