@@ -86,8 +86,8 @@ public class Server {
     }
 
     public void playMahMusicLols() {
-	TehMusix t = new TehMusix("bg.wav");
-	(new Thread(t)).start();
+    	TehMusix t = new TehMusix("bg.wav");
+    	(new Thread(t)).start();
     }
 
     /**
@@ -126,7 +126,7 @@ public class Server {
         }
         prepareAllAgents(); // Prepare all agents; based on AgentMain.java      // For Testing By Dongyoung
 
-//		for (int i=0 ; i<2 ; i++){ // For Testing By Dongyoung, if want to need communicate n managers, change into for(int i=0 ; i<n ; i++)
+//	    for (int i=0 ; i<2 ; i++){ // For Testing By Dongyoung, if want to need communicate n managers, change into for(int i=0 ; i<n ; i++)
         while (true) {
             // Continuously check for a new client for which to create a thread
             try {
@@ -193,7 +193,7 @@ public class Server {
         }
         
         // By Dongyoung
-        serverLM.setGantryAgent(gantryAgent);
+        serverLM.setFeederAgents(feederAgents);
     }
 
     private void connectAgentsAndManagers() {

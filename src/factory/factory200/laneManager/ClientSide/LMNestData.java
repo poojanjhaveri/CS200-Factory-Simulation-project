@@ -22,11 +22,7 @@ public class LMNestData {
 	public void removePart(){
 		if(parts.size() != 0){  parts.remove(0);  }
 	}
-	
-	public int getSize(){
-		return parts.size();
-	}
-	
+
 	public ArrayList<LMDrawablePart> getNestPartArray(){
 		return parts;
 	}

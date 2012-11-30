@@ -58,6 +58,9 @@ public class LMLaneHandler {
 			
 			// Track Setting
 			app.getGraphicsPanel().getAllLane().getLane(laneNum).setLaneVibrationAmplitudeStrong();
+			
+			// Jammed Lane Cancel
+			app.getGraphicsPanel().getAllPart().getLane(laneNum).switchJammedLane(false,-1);
 		}
 	}
 }

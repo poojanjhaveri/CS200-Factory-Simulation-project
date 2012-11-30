@@ -9,7 +9,6 @@ import java.util.ArrayList;
 public class LMPartDataInLane {
 
 	private LMServerMain serverMain;
-	private LMPart newPart;
 	private ArrayList<LMPart> parts = new ArrayList<LMPart>();
 	private int laneNum;
 	

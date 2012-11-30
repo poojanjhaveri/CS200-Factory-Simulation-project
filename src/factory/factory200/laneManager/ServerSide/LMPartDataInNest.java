@@ -55,14 +55,28 @@ public class LMPartDataInNest {
 		signal = "LMA_";
 		parts.add(newPartFromLane);
 		
-		if(parts.size() == 8){
-		//	serverMain.getGantryAgent().msgReleaseSemaphoreForFeeder("Nest"+nestNum);
 		//send message to proper feeder msgAnimationComplete();
-                }
+		if(parts.size() == 8){
+			if( nestNum == 0 || nestNum == 1 ){
+				serverMain.getFeederAgents()[0].msgAnimationComplete();
+			}
+			else if( nestNum == 2 || nestNum == 3 ){
+				serverMain.getFeederAgents()[1].msgAnimationComplete();
+			}
+			else if( nestNum == 4 || nestNum == 5 ){
+				serverMain.getFeederAgents()[2].msgAnimationComplete();
+			}
+			else if( nestNum == 6 || nestNum == 7 ){
+				serverMain.getFeederAgents()[3].msgAnimationComplete();
+			}
+        }
 		
+		// For KAM( Getting part from lane
+		// Good Part
 		if( newPartFromLane.getPartStatus() == 1 ){
 			signal += nestNum + "_" + newPartFromLane.getPartNum();
 		}
+		// Bad Part
 		else if( newPartFromLane.getPartStatus() == 0 ){
 			signal += nestNum + "_" + 8;
 		}

@@ -36,5 +36,21 @@ public class LMLaneHandler {
 			// Graphics Panel change
 			app.getAllLane().getLane(laneNum).setSwitch(false);
 		}
+		
+		// Message : Lane Vibration Amplitude Normal
+		else if( message.contains("Amplitude Normal") ){
+			// Track Setting
+			app.getAllLane().getLane(laneNum).setLaneVibrationAmplitudeNormal();
+			System.out.println("afdasf");
+		}
+		
+		// Message : Lane Vibration Amplitude Strong
+		else if( message.contains("Amplitude Strong") ){			
+			// Track Setting
+			app.getAllLane().getLane(laneNum).setLaneVibrationAmplitudeStrong();
+			
+			// Jammed Lane Cancel
+			app.getAllPart().getLane(laneNum).switchJammedLane(false, -1);
+		}
 	}
 }
