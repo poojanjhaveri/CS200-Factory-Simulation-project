@@ -71,7 +71,9 @@ public class GRMGraphicPanel extends JPanel implements ActionListener {
 			
 			}
 		}	
-		gbot.update();
+		if(this.gbot.getBreakState()==false){
+			gbot.update();
+		}
 		repaint();
 	}
 
