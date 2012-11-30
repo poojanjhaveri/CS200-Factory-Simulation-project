@@ -54,11 +54,12 @@ public class LMPartDataInNest {
 	public void addPartFromLane(LMPart newPartFromLane){
 		signal = "LMA_";
 		parts.add(newPartFromLane);
-		/*
+		
 		if(parts.size() == 8){
-		//	serverMain.getGantryAgent().msgAnimationComplete("Nest"+nestNum);
-		}
-		*/
+		//	serverMain.getGantryAgent().msgReleaseSemaphoreForFeeder("Nest"+nestNum);
+		//send message to proper feeder msgAnimationComplete();
+                }
+		
 		if( newPartFromLane.getPartStatus() == 1 ){
 			signal += nestNum + "_" + newPartFromLane.getPartNum();
 		}

@@ -10,6 +10,7 @@ import factory.general.Part;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.Semaphore;
 
 /**
  * @brief agent for the Feeder This class is the agent for the Feeder which does
@@ -35,6 +36,7 @@ public class FeederAgent extends Agent implements Feeder {
     private int rightCount = 0;
     private Gantry gantry;
     public int feederNum;
+    Semaphore anim=new Semaphore(0, true);
     boolean requestState = false;
     //--------------------------------------------------------------
     private LMServerMain serverMain;
@@ -110,6 +112,9 @@ public class FeederAgent extends Agent implements Feeder {
         }
     }
 
+    public void msgAnimationComplete(){
+    anim.release();
+    }
     @Override
     public void msgNeedPart(Part part, Lane lane) {
         //print("Received msgNeedPart from Lane: "+((LaneAgent) lane).getName()+" for type " + part.type);
@@ -322,12 +327,14 @@ public class FeederAgent extends Agent implements Feeder {
             //  	animation.setDiverterSwitchLeft(feederNum-1);
 
             try {
-                Thread.sleep(20000);
+                anim.acquire();
+                //Thread.sleep(20000);
             } catch (InterruptedException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
          
+    
     }
 
     private void dosendPartToRightLane(myParts p) {
@@ -348,7 +355,8 @@ public class FeederAgent extends Agent implements Feeder {
 
 //    	animation.setDiverterSwitchRight(feederNum-1);
             try {
-                Thread.sleep(20000);
+              anim.acquire();
+               // Thread.sleep(20000);
             } catch (InterruptedException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
