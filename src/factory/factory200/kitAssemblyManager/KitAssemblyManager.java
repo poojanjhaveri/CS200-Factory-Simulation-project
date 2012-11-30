@@ -140,6 +140,7 @@ public class KitAssemblyManager extends Manager implements ActionListener {
 
     public void doAddEmptyKit() {
         this.graphics.delivery.addKit();
+        
     }
 
     public GUIPartRobot getPartsRobot() {
