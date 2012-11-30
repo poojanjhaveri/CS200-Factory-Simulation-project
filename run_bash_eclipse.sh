@@ -1,6 +1,6 @@
 #!/bin/bash
 #################################
-# Factory run file 				#
+# Factory run file 		#
 # Roy Zheng, David Zhang 2012   #
 #################################
 
