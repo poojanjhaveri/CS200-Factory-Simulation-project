@@ -86,7 +86,8 @@ public class Server {
     }
 
     public void playMahMusicLols() {
-
+	TehMusix t = new TehMusix("bg.wav");
+	(new Thread(t)).start();
     }
 
     /**
@@ -95,6 +96,7 @@ public class Server {
      * @param portNumber - the port number to create the server on.
      */
     public Server(int portNumber) {
+	this.playMahMusicLols();
         this.fstate = new FactoryState();
         initializeManagers(); // Something by Dongyoung
 
@@ -137,11 +139,9 @@ public class Server {
                 System.out.println("got an exception" + e.getMessage());
             }
             System.out.println("A client has connected");
-        }
-
-
+        }     
     }
-
+   
     private void initializeManagers() { // Something by Dongyoung...?  Dongyoung : Yeah
         serverLM = new LMServerMain();
         new Thread(serverLM).start();
@@ -191,6 +191,9 @@ public class Server {
             }
             laneAgents[i] = new LaneAgent("Lane " + i,i);
         }
+        
+        // By Dongyoung
+        serverLM.setGantryAgent(gantryAgent);
     }
 
     private void connectAgentsAndManagers() {
@@ -221,8 +224,8 @@ public class Server {
         // Kevin
         for (int i = 0, j = 0; i < FEEDER; i++, j++) {
             feederAgents[i].setGantry(gantryAgent);
-            feederAgents[i].setLeftLane(laneAgents[j]);
-            feederAgents[i].setRightLane(laneAgents[++j]);
+            feederAgents[i].setRightLane(laneAgents[j]);
+            feederAgents[i].setLeftLane(laneAgents[++j]);
             gantryAgent.setFeeder(feederAgents[i], i);
         }
 
@@ -301,7 +304,7 @@ public class Server {
         private void turnOffAgentPrintStatements() {
             if (PATRICK) {
                 nestAgent.print = false;
-                partsAgent.print = true;
+                partsAgent.print = false;
             }
             if (KEVIN) {
                 for (int i = 0; i < LANE; i++) {
@@ -310,10 +313,10 @@ public class Server {
                     }
                     laneAgents[i].print = false;
                 }
-                gantryAgent.print = false;
+                gantryAgent.print = true;
             }
             if (ALEX) {
-                kitRobotAgent.print = true;
+                kitRobotAgent.print = false;
                 conveyorAgent.print = false;
                 cameraAgent.print = false;
             }

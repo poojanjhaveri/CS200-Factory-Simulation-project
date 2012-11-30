@@ -26,13 +26,13 @@ public class LMLaneHandler {
 		laneNum =  message.charAt(0) - 48;
 		
 		// Message : Lane Switch On
-		if( message.indexOf("Switch On") != -1 ){
+		if( message.contains("Switch On") ){
 			// Graphics Panel change
 			app.getAllLane().getLane(laneNum).setSwitch(true);
 		}
 		
 		// Message : Lane Switch Off
-		else if( message.indexOf("Switch Off") != -1 ){
+		else if( message.contains("Switch Off") ){
 			// Graphics Panel change
 			app.getAllLane().getLane(laneNum).setSwitch(false);
 		}

@@ -7,22 +7,18 @@ package factory.factory200.laneManager.ClientSide;
 public class LMPartHandler {
 	
 	private LMApplication app;
-	private int laneNum, partNum;
+	private int laneNum, partNum, partStatus;
 	
 	public LMPartHandler(LMApplication app){
 		this.app = app;
 	}
 
 	public void verify(String message){
-		if( message.indexOf("&Add&") != -1 ){
+		if( message.contains("&Add&") ){
 			laneNum = message.charAt(0) - 48;
 			partNum = message.charAt(1) - 48;
-			app.getGraphicsPanel().getAllPart().addPartFromFeederToLane(laneNum, partNum);
-		}
-		
-		else if( message.indexOf("&Shake&") != -1 ){
-			laneNum = message.charAt(0) - 48;
-			app.getGraphicsPanel().getAllPart().shakePart(laneNum);
+			partStatus = message.charAt(2) - 48;
+			app.getGraphicsPanel().getAllPart().addPartFromFeederToLane(laneNum, partNum, partStatus);
 		}
 	}
 }

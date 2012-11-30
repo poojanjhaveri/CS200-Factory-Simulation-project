@@ -180,14 +180,14 @@ public class NestAgent extends Agent implements NestInterface {
     }
  
     private void requestPart(Nest n){
-        print("requesting " + n.part.getInt());
+        print("requesting " + n.part.getInt() + "to lane " + n.getLane().getIndex());
     	n.status = Nest.Status.gettingPart;
         n.getLane().msgNeedPart(n.part);
     	stateChanged();
    }
 
     private void requestInspection(Nest n) {
-        print("Requesting inspection for nest " + n.getNestNum());
+        //print("Requesting inspection for nest " + n.getNestNum());
         n.status = Nest.Status.gettingInspected;
         
         /*
@@ -212,7 +212,7 @@ public class NestAgent extends Agent implements NestInterface {
     private void giveToKit(Nest n){
         requests.remove(0);
     	partsagent.msgHereIsPart(n.parts.remove(0));//physically remove the part from the nest
-        print("giving part " + n.part.getInt() + " to kit now nest has " + n.parts.size());
+        //print("giving part " + n.part.getInt() + " to kit now nest has " + n.parts.size());
         if (n.parts.isEmpty())
                 n.status = Nest.Status.empty;
     	stateChanged();	

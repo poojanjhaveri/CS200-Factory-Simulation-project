@@ -19,11 +19,11 @@ public class LMGUINonNormativePanel1 extends JPanel implements ActionListener{
 	private JComboBox partNumBox = new JComboBox(partList);
 	private JLabel label1 = new JLabel("Feeder Number");
 	private JLabel label2 = new JLabel("Part Number");
-	
 	private JPanel panel1 = new JPanel();
 	private JPanel panel2 = new JPanel(); 
+	private JButton button = new JButton("Bad Parts Insertion");
 	
-	private JButton button = new JButton("Bad Parts Insertion");	
+	private int feederNum, partNum, partQuantity;
 	
 	public LMGUINonNormativePanel1(LMApplication app){
 		this.app = app;
@@ -44,7 +44,9 @@ public class LMGUINonNormativePanel1 extends JPanel implements ActionListener{
 	
 	public void actionPerformed(ActionEvent ae){
 		if( ae.getSource() == button ){
-			
+			feederNum = feederNumBox.getSelectedIndex();
+			partNum = partNumBox.getSelectedIndex();
+			app.getVerifyMessage().sendToServer("" + feederNum + partNum + "BAD_PART_INSERTION");
 		}
 	}
 }

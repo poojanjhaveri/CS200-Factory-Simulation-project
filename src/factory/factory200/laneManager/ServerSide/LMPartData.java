@@ -40,8 +40,8 @@ public class LMPartData {
 	}
 	
 	// Feeder : Dump Bin Box Into Feeder - DONE(By Gantry Robot)
-	public void addPartToFeeder(int feederNum, int partNum, int quantity){
-		feeders.get(feederNum).addPart(partNum, quantity);
+	public void addPartToFeeder(int feederNum, int partNum, int quantity, int partStatus){
+		feeders.get(feederNum).addPart(partNum, quantity, partStatus);
 	}
 	
 	public void addPartToLaneFromFeeder(int laneNum, int feederNum){
@@ -84,5 +84,18 @@ public class LMPartData {
 	
 	public int getFirstPartNum(int feederNum){
 		return feeders.get(feederNum).getFirstPartNum();
+	}
+	
+	public int getFirstPartStatus(int feederNum){
+		return feeders.get(feederNum).getFirstPartStatus();
+	}
+	
+	public boolean checkAllBadParts(int nestNum){
+		
+		if( nests.get(nestNum).checkAllBadParts() == true ){
+			return true;
+		}
+		return false;
+		
 	}
 }

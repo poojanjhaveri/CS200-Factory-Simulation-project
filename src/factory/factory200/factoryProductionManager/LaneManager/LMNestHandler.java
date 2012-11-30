@@ -16,13 +16,15 @@ public class LMNestHandler {
 	public void verify(String message){
 		nestNum =  message.charAt(0) - 48;
 				
-		if( message.indexOf("Switch Up") != -1 ){
+		if( message.contains("Switch Up") ){
 			app.getAllNest().getNest(nestNum).nestUp();
+			app.getAllPart().getLane(nestNum).switchNonNormativePartPiled(false);
 		}
 
-		else if( message.indexOf("Switch Down") != -1 ){																		
+		else if( message.contains("Switch Down") ){														
 			app.getAllNest().getNest(nestNum).nestDown();
 			app.getAllPart().nestDown(nestNum);
+			app.getAllPart().getLane(nestNum).switchNonNormativePartPiled(false);
 		}
 	}
 }

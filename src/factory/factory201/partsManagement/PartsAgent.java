@@ -93,6 +93,10 @@ public class PartsAgent extends Agent implements PartsInterface {
         for (Kit k: newKits){
         newKit.add(k);
         }
+        
+        print("kit configuration specifies the following parts in kit  (size : " + newKits.size() + " ) ");
+        for(int i=0;i<newKit.get(0).parts.size();i++)
+            print(" [ " + newKit.get(0).getPart(i).type + " ] ");
         DoGiveKitsInQueue(newKit);
         requestState=false;
         stateChanged();

@@ -22,6 +22,8 @@ public class LMGUINonNormativePanel3 extends JPanel implements ActionListener{
 	
 	private JButton button = new JButton("Parts Being Piled");	
 	
+	private int nestNum;
+	
 	public LMGUINonNormativePanel3(LMApplication app){
 		this.app = app;
 		
@@ -39,7 +41,8 @@ public class LMGUINonNormativePanel3 extends JPanel implements ActionListener{
 	
 	public void actionPerformed(ActionEvent ae){
 		if( ae.getSource() == button ){
-			
+			nestNum = nestNumBox.getSelectedIndex();
+			app.getVerifyMessage().sendToServer( nestNum + "PART_PILED" );
 		}
 	}
 }

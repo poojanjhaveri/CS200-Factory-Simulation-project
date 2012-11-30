@@ -76,19 +76,19 @@ public class GUIGantryRobot extends GUIRobot{
         {
         case 0:
 	    this.moveto = 0;
-            this.moveTo(1000,50);//GantryRobotManager.FEED0X,GantryRobotManager.FEED0Y+50);
+            this.moveTo(GantryRobotManager.FEED0X,GantryRobotManager.FEED0Y+20);
             break;
         case 1:
 	    this.moveto = 1;
-            this.moveTo(1000,200);//GantryRobotManager.FEED1X,GantryRobotManager.FEED1Y+50);
+            this.moveTo(GantryRobotManager.FEED1X,GantryRobotManager.FEED1Y+20);
             break;
         case 2:
 	    this.moveto = 2;
-            this.moveTo(1000,350);//GantryRobotManager.FEED2X,GantryRobotManager.FEED2Y+50);
+            this.moveTo(GantryRobotManager.FEED2X,GantryRobotManager.FEED2Y+20);
             break;
         case 3:
 	    this.moveto = 3;
-            this.moveTo(1000,500);//GantryRobotManager.FEED3X,GantryRobotManager.FEED3Y+50);
+            this.moveTo(GantryRobotManager.FEED3X,GantryRobotManager.FEED3Y+20);
             break;
         default:
             System.out.println("ERROR: Attempting to move GuiGantryRobot to nonexistent feeder " + i);
@@ -166,7 +166,7 @@ public class GUIGantryRobot extends GUIRobot{
 	 * dumpt part on feeder i
 	 */
 	public void supplyPartOnFeeder(Integer feederIndex){
-		//this.bin.setPartToNull();
+		this.bin.setPartToNull();
 		this.bin.setX(20);
 		this.bin.setY(50+feederIndex*150);
 	}
@@ -177,7 +177,7 @@ public class GUIGantryRobot extends GUIRobot{
     public void moveToDump() {
     	this.bin.setX(this.cords.getX());
     	this.bin.setY(this.cords.getY());
-        this.moveTo(1200,550);//,GantryRobotManager.DUMPY);
+        this.moveTo(1180,540);//,GantryRobotManager.DUMPY);
     }
     
     /*
@@ -319,9 +319,9 @@ public class GUIGantryRobot extends GUIRobot{
      public void paintMe(JPanel panel, Graphics2D g){
     	
     	if(this.bin != null){
-    		this.bin.getImage().paintIcon(panel, g, this.getCoordinate().getX()-30, this.getCoordinate().getY()-50);
+    		this.bin.getImage().paintIcon(panel, g, this.getCoordinate().getX()-10, this.getCoordinate().getY()-30);
     		if(this.bin.getPart()!=null){
-    			this.bin.getPart().getGUIPart().getImage().paintIcon(panel, g, this.getCoordinate().getX()-15,this.getCoordinate().getY()-35);
+    			this.bin.getPart().getGUIPart().getImage().paintIcon(panel, g, this.getCoordinate().getX()+5,this.getCoordinate().getY()-15);
     		}
         }
     		

@@ -8,19 +8,46 @@ public class LMSignalFromAnimationVerification {
 	
 	private LMServerMain serverMain;
 	private int laneNestNum;
+	private int feederNum;
+	private int partNum;
 	
 	public LMSignalFromAnimationVerification(LMServerMain serverMain){
 		this.serverMain = serverMain;
 	}
 	
 	public void verify(String message){
-		if(message.indexOf("PART_TO_NEST_FROM_LANE") != -1){
+		if(message.contains("PART_TO_NEST_FROM_LANE") ){
 			laneNestNum = message.charAt(0) - 48;
 			serverMain.getPartData().sendPartToNestFromLane(laneNestNum);
 		}
-		else if(message.indexOf("PART_TAKE_BY_PARTROBOT") != -1){
+		else if(message.contains("PART_TAKE_BY_PARTROBOT") ){
 			laneNestNum = message.charAt(0) - 48;
 			serverMain.getForAgentPartRobot().takePartFromNest(laneNestNum);
+		}
+		// Non-normative Scenario 1
+		else if(message.contains("BAD_PART_INSERTION") ){
+			feederNum = message.charAt(0) - 48;
+			partNum = message.charAt(1) - 48;
+			serverMain.getForAgentGantryRobot().putBadBin(partNum, feederNum);
+		}
+		// Non-normative Scenario 2
+		else if(message.contains("LANE_JAMMED") ){
+			laneNestNum = message.charAt(0) - 48;
+			serverMain.sendToLM(laneNestNum + "&Non&Jammed&");
+			serverMain.sendToFPM(laneNestNum + "&Non&Jammed&");
+			
+			// Signal To Agent
+			
+		}
+		// Non-normative Scenario 3
+		else if(message.contains("PART_PILED") ) {
+			laneNestNum = message.charAt(0) - 48;
+			serverMain.sendToLM(laneNestNum + "&Non&Piled&");
+			serverMain.sendToFPM(laneNestNum + "&Non&Piled&");
+			serverMain.sendToKAM(laneNestNum + "&Non&Piled&");
+			
+			// Signal To Agent
+			
 		}
 	}
 }

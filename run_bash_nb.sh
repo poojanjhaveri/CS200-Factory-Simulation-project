@@ -1,4 +1,8 @@
 #!/bin/bash
+###################
+#Factory run file #
+#Roy Zheng 2012   #
+###################
 
 echo "STARTING SERVER"
 java -cp build/classes factory.general.Server &

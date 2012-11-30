@@ -25,6 +25,7 @@ import factory.factory200.gantryRobotManager.GUIGantryRobot;
 import factory.factory200.gantryRobotManager.GRMGraphicPanel;
 import factory.general.Manager;
 import factory.general.Message;
+import java.awt.Dimension;
 
 import java.awt.Graphics;
 import java.awt.GridLayout;
@@ -36,10 +37,14 @@ import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 
 public class GantryRobotManager extends Manager implements ActionListener {
    
-    GRMGraphicPanel graphics;    
+    GRMGraphicPanel graphics;  
+     JTabbedPane tabbedPane;
+     JButton breakGantryRobot;
+
  //   GantryState gs;
     GUIBin bin;
     public GUIGantryRobot ganbot; ///<class which includes Gantry Robot Manager Methods
@@ -62,7 +67,7 @@ public class GantryRobotManager extends Manager implements ActionListener {
     public static final Integer DUMPX = 260;///<x-coordinate of dump 
     public static final Integer DUMPY = 700;///<y-coordinate of dump 
 
-    public static final Integer BIN_X = 450;///<x coordinate of all bin locations
+    public static final Integer BIN_X = 400;///<x coordinate of all bin locations
     public static final Integer BIN0Y = 30;///<y coordinate of bin0
     public static final Integer BIN1Y = 110;///<y coordinate of bin1
     public static final Integer BIN2Y = 190;///<y coordinate of bin2
@@ -72,11 +77,11 @@ public class GantryRobotManager extends Manager implements ActionListener {
     public static final Integer BIN6Y = 510;///<y coordinate of bin6
     public static final Integer BIN7Y = 590;///<y coordinate of bin7
 
-    public static final Integer ROBOT_INITIAL_X = 300;///<spawn x coordinate of gantrybot
+    public static final Integer ROBOT_INITIAL_X = 150;///<spawn x coordinate of gantrybot
     public static final Integer ROBOT_INITIAL_Y = 10;///<spawn y coordinate of gantrybot
     
-    public static final Integer ROBOT_VELOCITY_X = 1;
-    public static final Integer ROBOT_VELOCITY_Y = 1;
+    public static final Integer ROBOT_VELOCITY_X = 2;
+    public static final Integer ROBOT_VELOCITY_Y = 2;
     public static final Double ROBOT_TURN_RATE = 0.0;
     
     /**
@@ -86,10 +91,24 @@ public class GantryRobotManager extends Manager implements ActionListener {
         graphics= new GRMGraphicPanel(this);        
         setLayout(new GridLayout(1, 2));  
         ganbot = graphics.getGantryRobot();
-        add(graphics);
+        
+         //@author : Poojan
+        
+        this.tabbedPane = new JTabbedPane();
+        tabbedPane.addTab("Animation", this.graphics);
+        GUINonNormGAM nonGUI = new GUINonNormGAM();
+        
+        tabbedPane.addTab("Non-normative", nonGUI);
+        tabbedPane.setPreferredSize(new Dimension(600,800));
+        this.add(tabbedPane);
+        
+        
+        //   this.add(graphics);
+
+      //  add(graphics);
         ps = new PurgeStation();
         int x = 500;
-        setSize(510,700);//+ x, 700);
+        setSize(480,750);//+ x, 700);
         graphics.setVisible(true);
         //add(TestPanel());
         //change TEST to just graphicPanel (above)
@@ -97,6 +116,8 @@ public class GantryRobotManager extends Manager implements ActionListener {
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.sendToServer(Message.IDENTIFY_GANTRYROBOTMANAGER);
+        
+        breakGantryRobot= new JButton();
     }
     
    /* toFeeder;
@@ -162,7 +183,10 @@ public class GantryRobotManager extends Manager implements ActionListener {
       * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
       */
 	public void actionPerformed(ActionEvent ae) {
-		// TODO Auto-generated method stub		
+		
+		if (ae.getSource()==breakGantryRobot){
+			this.graphics.gbot.setBreakState();
+		}
 	/*	if (ae.getSource() ==toFeeder){
 			ganbot.moveToFeederCommand(0);		}		
 		if (ae.getSource() ==toBin){

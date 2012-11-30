@@ -469,8 +469,12 @@ public class FactoryProductionManager extends Manager implements ActionListener 
             
         }
         System.out.println("Available kits size = " + availableKits.size());
-
-        //selKit.removeAllItems();
+        
+        for(int i=0; i<selKit.getItemCount(); i++)
+        {
+            selKit.removeItemAt(i);
+        }
+        System.out.println(selKit.getItemCount());
         //Add strings to the combobox component
         for(String kitty : availableKits)
         {

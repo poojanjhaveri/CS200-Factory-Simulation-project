@@ -10,10 +10,12 @@ public class LMLaneData {
 	
 	private ArrayList<LMDrawablePart> parts = new ArrayList<LMDrawablePart>();
 	private int laneNum;
-	private int randomlyChosenPart;
+	private int maxSize = 8;
+	private LMDrawableAllPart allPartClass;
 	
-	public LMLaneData(int laneNum){
+	public LMLaneData(int laneNum, LMDrawableAllPart allPartClass){
 		this.laneNum = laneNum;
+		this.allPartClass = allPartClass;
 	}
 	
 	public void addPart(LMDrawablePart newPart){
@@ -24,10 +26,6 @@ public class LMLaneData {
 		return parts.remove(0);
 	}
 	
-	public void removeShakePart(int partNum){
-		parts.remove(partNum);
-	}
-	
 	public int getSize(){
 		return parts.size();
 	}
@@ -35,31 +33,29 @@ public class LMLaneData {
 	public ArrayList<LMDrawablePart> getLanePartArray(){
 		return parts;
 	}
-	
-	/**
-	 * All shaken parts are decided randomly.
-	 */
-	public void shakePart(){
-		randomlyChosenPart = (int)( Math.random() * parts.size() );
-		parts.get(randomlyChosenPart).shake();
+
+	public void switchNonNormativePartPiled(boolean newSwitch){
+		if( newSwitch == false ){
+			maxSize = 8;
+		}
+		else if( newSwitch == true ){
+			maxSize = 16;
+		}
+		allPartClass.laneUpdate();
 	}
-	
-	public void removeShakenPart(LMDrawablePart shakenPart){
-		parts.remove(shakenPart);
-	}
-	
+
 	/**
-	 * This keeps checking depending on the number of parts on nest.
+	 * This keeps checking depending on the number of parts on nest(Normative)
 	 * @param nestSize
 	 */
 	public void checkNestStatus(int nestSize){
 		for(int i=0 ; i<parts.size() ; i++){
-			if(nestSize != 8){
+			if(nestSize < maxSize){
 				parts.get(i).setDestination(50, 65+75*laneNum);
 				parts.get(i).setAvailabilityToNest(true);
 			}
 			
-			if(nestSize == 8){
+			else if(nestSize == maxSize){
 				parts.get(i).setDestination(55 + 20*i, 65+75*laneNum);
 				parts.get(i).setAvailabilityToNest(false);
 			}

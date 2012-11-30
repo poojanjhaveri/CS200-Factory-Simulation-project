@@ -13,13 +13,13 @@ public class LMDrawableAllCamera {
 	private LMDrawableCamera newCamera;
 	private ArrayList<LMDrawableCamera> cameras = new ArrayList<LMDrawableCamera>();
 	private final int cameraX = 495;
-	private int cameraY = 55;
+	private int cameraY = 30;
 	
 	public LMDrawableAllCamera(){		
-		for(int i=0 ; i<4 ; i++){
+		for(int i=0 ; i<8 ; i++){
 			newCamera = new LMDrawableCamera(cameraX, cameraY);
 			cameras.add(newCamera);
-			cameraY += 150;
+			cameraY += 75;
 		}
 	}
 	
@@ -30,7 +30,7 @@ public class LMDrawableAllCamera {
 	}
 	
 	public void cameraShoot(){
-		for(int i=0 ; i<4 ; i++){
+		for(int i=0 ; i<8 ; i++){
 			cameras.get(i).cameraController();
 		}
 	}

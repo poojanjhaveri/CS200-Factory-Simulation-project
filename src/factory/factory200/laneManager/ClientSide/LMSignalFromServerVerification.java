@@ -18,6 +18,7 @@ public class LMSignalFromServerVerification extends Manager{
 	private LMPartHandler partHandler;
 	private LMPartRobotHandler partRobotHandler;
 	private LMGantryRobotHandler gantryRobotHandler;
+	private LMNonNormativeHandler nonNormativeHandler;
 	private LMTimerThread timer = new LMTimerThread(this);
 	
 	/**
@@ -36,6 +37,7 @@ public class LMSignalFromServerVerification extends Manager{
 		partHandler = new LMPartHandler(app);
 		partRobotHandler = new LMPartRobotHandler(app);
 		gantryRobotHandler = new LMGantryRobotHandler(app);
+		nonNormativeHandler = new LMNonNormativeHandler(app);
 		
 		new Thread(timer).start();
 		timer.timerStart();
@@ -65,32 +67,36 @@ public class LMSignalFromServerVerification extends Manager{
 	public void processMessage(String msg){
 		super.processMessage(msg);
 		
-		if( msg.indexOf("&Camera&") != -1 ){
+		if( msg.contains("&Camera&") ){
 			cameraHandler.cameraShoot(msg);
 		}
 		
-		else if( msg.indexOf("&Feeder&") != -1 ){
+		else if( msg.contains("&Feeder&") ){
 			feederHandler.verify(msg);
 		}
 		
-		else if( msg.indexOf("&Lane&") != -1 ){
+		else if( msg.contains("&Lane&") ){
 			laneHandler.verify(msg);
 		}
 		
-		else if( msg.indexOf("&Nest&") != -1 ){
+		else if( msg.contains("&Nest&") ){
 			nestHandler.verify(msg);
 		}
 		
-		else if( msg.indexOf("&Part&") != -1 ){
+		else if( msg.contains("&Part&") ){
 			partHandler.verify(msg);
 		}
 		
-		else if( msg.indexOf("&PartRobot&") != -1 ){
+		else if( msg.contains("&PartRobot&") ){
 			partRobotHandler.verify(msg);
 		}
 		
-		else if( msg.indexOf("&Bin&") != -1 ){
+		else if( msg.contains("&Bin&") ){
 			gantryRobotHandler.verify(msg);
+		}
+		
+		else if( msg.contains("&Non&") ){
+			nonNormativeHandler.verify(msg);
 		}
 	}
 }

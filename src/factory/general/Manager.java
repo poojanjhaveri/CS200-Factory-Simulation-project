@@ -16,6 +16,7 @@ import javax.swing.JFrame;
  */
 public class Manager extends JFrame {
 
+    public static final boolean VERBOSE = true;
     /**
      * Instance fields
      */
@@ -99,6 +100,10 @@ public class Manager extends JFrame {
      * the possibilities.
      */
     public void processMessage(String msg) {
+        if(Manager.VERBOSE)
+        {
+            System.out.println("Received message: " + msg);
+        }
     	if (DEBUG) {
     		System.out.println(DEBUG_NOTIFICATION);
     	} else { 

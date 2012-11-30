@@ -129,7 +129,7 @@ public Kit cloneSelf()
     public void debug() {
         System.out.println(this.getName() + " " + this.getDescription() + " " + this.getNumber());
         for (int i = 0; i != this.parts.size(); i++) {
-            System.out.println(this.parts.get(0).serialize());
+            System.out.println(this.parts.get(i).serialize());
         }
     }
 

@@ -44,13 +44,13 @@ public class GUIGantryRobot extends GUIRobot{
     public static final String IMAGE_PATH = "pics/robots/gantryrobot.png";
 
     GUIBin bin;///<null if no bin, otherwise contains the information on the bin
-    Boolean extended;///<whether or not the robot has arms extended
+    Boolean breakState;///<whether or not the robot has arms extended
     Boolean hasbin;///<whether or not the robot is carrying a bin
     Integer moveto;///<where the gantry robot is heading towards
 
     public GUIGantryRobot() {
 	super(GantryRobotManager.ROBOT_INITIAL_X,GantryRobotManager.ROBOT_INITIAL_Y,GUIGantryRobot.IMAGE_PATH);
-	this.extended = false;
+	this.breakState = false;
 	this.hasbin = false;
 	this.bin = null;
 	this.setConstants(GantryRobotManager.ROBOT_VELOCITY_X, GantryRobotManager.ROBOT_VELOCITY_Y, GantryRobotManager.ROBOT_TURN_RATE);
@@ -117,7 +117,22 @@ public class GUIGantryRobot extends GUIRobot{
 	    }
     }
     
+    /**
+     * return the breaking state of the robot
+     */
     
+    public boolean getBreakState(){
+    	return breakState;
+    }
+    
+    /**
+     * set boolean breakState by gantry Robot Manager
+     */
+    
+    public void setBreakState(boolean sentbyManager){
+    	breakState = sentbyManager;
+    	
+    }
     /**
     @brief Another moving statement which has binNumber b, and feeder number f to move
     */
@@ -127,7 +142,14 @@ public class GUIGantryRobot extends GUIRobot{
     	moveTo(GantryRobotManager.FEED1X,GantryRobotManager.FEED1Y);
     }
    
+    /**
+     * set breaking status of the gantry robot. The default value should be false until GRM break the robot
+     */
     
+    public void setBreakState(){
+//    	breakState= false;
+    	
+    }
     public void binPurged(){
     	this.bin = null;
     }
@@ -179,35 +201,7 @@ public class GUIGantryRobot extends GUIRobot{
     	else 
     		return false;
     }
-    /**
-    brief extends the arm
-    extends the arm
-    */
-    public void extend() {
-        this.extended = true;
-    }
-    
-    /**
-    @brief retracts the arm
-    retracts the arm
-    */
-    public void retract() {
-        this.extended = false;
-    }
-    
-    /**
-    @brief switches arm state
-    retracts if extended, extends if retracted
-     */
-    public void toggleArm()
-    {
-        this.extended = !this.extended;
-    }
-    
-    public boolean armExtended()
-    {
-        return this.extended;
-    }
+  
     /**
      * @return GUIBin objects in gantry robot 
      */
@@ -297,9 +291,9 @@ public class GUIGantryRobot extends GUIRobot{
      public void paintMe(JPanel panel, Graphics2D g){
     	
     	if(this.bin != null){
-    		this.bin.getImage().paintIcon(panel, g, this.getCoordinate().getX()-30, this.getCoordinate().getY()-50);
+    		this.bin.getImage().paintIcon(panel, g, this.getCoordinate().getX()-10, this.getCoordinate().getY()-30);
     		if(this.bin.getPart()!=null){
-    			this.bin.getPart().getGUIPart().getImage().paintIcon(panel, g, this.getCoordinate().getX()-15,this.getCoordinate().getY()-35);
+    			this.bin.getPart().getGUIPart().getImage().paintIcon(panel, g, this.getCoordinate().getX()+5,this.getCoordinate().getY()-15);
     		}
         }
     		
