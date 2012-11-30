@@ -2,26 +2,25 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package factory.factory200.kitAssemblyManager;
-
-
-import java.awt.*;
-import javax.swing.*;
+package factory.factory200.gantryRobotManager;
 
 /**
  *
  * @author Poojan Jhaveri
  * @brief : GUI class for non-normative scenario associated with KIT assembly manager
- * 
- * 
- * 
  */
-public class GUINonNormKAM  extends JPanel {
+
+import java.awt.*;
+import javax.swing.*;
+
+
+
+public class GUINonNormGAM extends JPanel {
     
     private JPanel mainpanel;
     
     
-    public GUINonNormKAM() {
+    public GUINonNormGAM() {
              
            preparemainpanel();
            this.add(mainpanel);
@@ -35,7 +34,7 @@ public class GUINonNormKAM  extends JPanel {
         mainpanel = new JPanel();
         JPanel basepanel = new JPanel();
         basepanel.setLayout(new BorderLayout());
-        basepanel.add(new JLabel("Kit Assembly Manager Non-Normative Scenario"),BorderLayout.NORTH);
+        basepanel.add(new JLabel("Gantry Robot Manager Non-Normative Scenario"),BorderLayout.NORTH);
         
         
         JPanel scenario = new JPanel(new GridBagLayout());
@@ -50,5 +49,8 @@ public class GUINonNormKAM  extends JPanel {
         basepanel.add(scenario);
         mainpanel.add(basepanel);
     }
+    
+    
+    
     
 }
