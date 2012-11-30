@@ -3,7 +3,7 @@ pause
 START java -cp build\classes factory.general.Server
 echo "Beginning managers"
 pause
-START java -cp build\classes factory.factory200.partManager.PartManager
+START java -cp build\classes factory.factory200.partsManager.PartsManager
 START java -cp build\classes factory.factory200.kitManager.KitManager
 START java -cp build\classes factory.factory200.gantryRobotManager.GantryRobotManager
 START java -cp build\classes factory.factory200.laneManager.ClientSide.V1LaneManagerCompileClient
