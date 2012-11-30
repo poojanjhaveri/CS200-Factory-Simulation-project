@@ -40,6 +40,7 @@ import javax.swing.JPanel;
 public class GantryRobotManager extends Manager implements ActionListener {
    
     GRMGraphicPanel graphics;    
+    JButton breakGantryRobot;
  //   GantryState gs;
     GUIBin bin;
     public GUIGantryRobot ganbot; ///<class which includes Gantry Robot Manager Methods
@@ -97,6 +98,8 @@ public class GantryRobotManager extends Manager implements ActionListener {
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.sendToServer(Message.IDENTIFY_GANTRYROBOTMANAGER);
+        
+        breakGantryRobot= new JButton();
     }
     
    /* toFeeder;
@@ -162,7 +165,10 @@ public class GantryRobotManager extends Manager implements ActionListener {
       * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
       */
 	public void actionPerformed(ActionEvent ae) {
-		// TODO Auto-generated method stub		
+		
+		if (ae.getSource()==breakGantryRobot){
+			this.graphics.gbot.setBreakState();
+		}
 	/*	if (ae.getSource() ==toFeeder){
 			ganbot.moveToFeederCommand(0);		}		
 		if (ae.getSource() ==toBin){
