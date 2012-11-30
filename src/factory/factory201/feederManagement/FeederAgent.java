@@ -113,7 +113,6 @@ public class FeederAgent extends Agent implements Feeder {
     }
 
     public void msgAnimationComplete(){
-    	System.out.println("Feeder " + feederNum + " checking for test by Dongyoung");
     anim.release();
     }
     @Override
