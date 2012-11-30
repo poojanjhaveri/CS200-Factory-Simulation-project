@@ -62,7 +62,7 @@ public class HandleAManager implements Runnable {
                 // Listen for interaction via protocol
                 message = br.readLine();
                 if (message == null) {
-                    System.out.println("Message from client is null. A manager class should exit properly (i.e., by closing with the X in the corner)");
+//                    System.out.println("Message from client is null. A manager class should exit properly (i.e., by closing with the X in the corner)");
                     throw new Exception();
                 }
                 processMessage(message);
@@ -72,7 +72,8 @@ public class HandleAManager implements Runnable {
                 e.printStackTrace();
                 System.exit(0);
             } catch (Exception e) {
-                e.printStackTrace();
+            	System.out.println("Exiting server");
+//                e.printStackTrace();
                 System.exit(0);
             }
         }

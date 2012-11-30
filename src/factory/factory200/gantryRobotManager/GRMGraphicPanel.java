@@ -89,7 +89,7 @@ public class GRMGraphicPanel extends JPanel implements ActionListener {
 		
 		///<Initialize all 8 bins, 8 parts within its bins
         for (int i = 1; i <= 8; i++) {
-           bin=new GUIBin(450,(i*80-50),0.0, "pics/emptybox.png",i-1);//"pics/binBox"+i+".png",i);
+           bin=new GUIBin(400,(i*80-50),0.0, "pics/emptybox.png",i-1);//"pics/binBox"+i+".png",i);
            bins.add(bin);
            GUItemp=new GUIPart(bins.get(i-1).getX()+15, bins.get(i-1).getY()+20, 0.0, new ImageIcon("pics/parts/part"+i+".png"));
            newPart = new Part(null,null);
