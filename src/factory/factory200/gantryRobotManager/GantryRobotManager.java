@@ -43,6 +43,8 @@ public class GantryRobotManager extends Manager implements ActionListener {
    
     GRMGraphicPanel graphics;  
      JTabbedPane tabbedPane;
+     JButton breakGantryRobot;
+
  //   GantryState gs;
     GUIBin bin;
     public GUIGantryRobot ganbot; ///<class which includes Gantry Robot Manager Methods
@@ -94,9 +96,9 @@ public class GantryRobotManager extends Manager implements ActionListener {
         
         this.tabbedPane = new JTabbedPane();
         tabbedPane.addTab("Animation", this.graphics);
-        GUINonNormGAM nonGUI = new GUINonNormGAM();
+        //GUINonNormGAM nonGUI = new GUINonNormGAM();
         
-        tabbedPane.addTab("Non-normative", nonGUI);
+        //tabbedPane.addTab("Non-normative", nonGUI);
         tabbedPane.setPreferredSize(new Dimension(600,800));
         this.add(tabbedPane);
         
@@ -118,6 +120,8 @@ public class GantryRobotManager extends Manager implements ActionListener {
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.sendToServer(Message.IDENTIFY_GANTRYROBOTMANAGER);
+        
+        breakGantryRobot= new JButton();
     }
     
    /* toFeeder;
@@ -183,7 +187,10 @@ public class GantryRobotManager extends Manager implements ActionListener {
       * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
       */
 	public void actionPerformed(ActionEvent ae) {
-		// TODO Auto-generated method stub		
+		
+		if (ae.getSource()==breakGantryRobot){
+			this.graphics.gbot.setBreakState();
+		}
 	/*	if (ae.getSource() ==toFeeder){
 			ganbot.moveToFeederCommand(0);		}		
 		if (ae.getSource() ==toBin){
