@@ -6,7 +6,7 @@
 
 echo "Beginning server"
 pause
-START java -cp build\classes factory.general.Server
+START java -bin factory.general.Server
 echo "Beginning managers"
 pause
 START java -cp bin factory.factory200.partsManager.PartsManager

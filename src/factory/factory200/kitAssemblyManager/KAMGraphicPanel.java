@@ -58,7 +58,7 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
     public static final Integer PARTSROBOTINITIALX = 400;///<x coordinate for parts robot to spawn in
     public static final Integer PARTSROBOTINITIALY = 350;///<y coordinate for parts robot to spawn in
 
-    private Boolean unstable;///<whether or not the nest is stable
+    public Boolean unstable;///<whether or not the nest is stable
 
 //WHY ARE DEY PUBLIC WHY NO PRIVATE GAAARRRRRRRR. lol jk its fine.
 
@@ -80,6 +80,7 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
     //private ImageIcon backgroundImage = new ImageIcon("pics/background/part1");
 
     public KAMGraphicPanel(KitAssemblyManager k) {
+    	this.unstable = false;
         this.kam = k;
         
         deliveryStation = true;
@@ -396,12 +397,16 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
         for (int k = 0; k < this.nest.size(); k++) {
             for (int i = 0; i < this.nest.get(k).getParts().size(); i++) {
                 //System.out.println(j.nest.get(0).getParts().get(i).getGUIPart());
-		int offsetx = rand.nextInt(5);
-		int offsety = rand.nextInt(5);
+		int offsetx = 0;
+		int offsety = 0;
+		if(this.unstable){
+		rand.nextInt(5);
+		rand.nextInt(5);
 		if(rand.nextInt(2) == 0)
 		    offsetx = -1*offsetx;
 		if(rand.nextInt(2) == 0)
 		    offsety = -1*offsety;
+		}
                 this.nest.get(k).getParts().get(i).getGUIPart().getImage().paintIcon(this, g2, nest.get(k).getParts().get(i).getGUIPart().getX()+offsetx, nest.get(k).getParts().get(i).getGUIPart().getY()+offsety);
             }
         }

@@ -201,8 +201,8 @@ public class KitAssemblyManager extends Manager implements ActionListener {
 
     public void actionPerformed(ActionEvent ae) {
     	
-    	if(ae.getSource() == this.nonnorm)
-    		this.graphics.unstabilize = true;
+    	if(ae.getSource() == this.nonnorm.getStabilityButton())
+    		this.graphics.unstable = !this.graphics.unstable;
     	//if(ae.getSource()==){
     		
     	//}
