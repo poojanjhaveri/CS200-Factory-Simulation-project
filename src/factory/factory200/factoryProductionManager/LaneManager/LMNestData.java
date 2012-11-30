@@ -40,11 +40,16 @@ public class LMNestData {
 	 */
 	public void reorganize(){
 		for(int i=0 ; i<parts.size() ; i++){
-			if( i % 2 == 0 ){
-				parts.get(i).setDestination(503, 10+10*i+75*nestNum);
+			if( i < 8 ){
+				if( i % 2 == 0 ){
+					parts.get(i).setDestination(503, 10+10*i+75*nestNum);
+				}
+				else if( i % 2 == 1 ){
+					parts.get(i).setDestination(523, 10+10*(i-1)+75*nestNum);
+				}
 			}
-			else if( i % 2 == 1 ){
-				parts.get(i).setDestination(523, 10+10*(i-1)+75*nestNum);
+			else if( i >= 8 ){
+				parts.get(i).setDestinationNonNormative();
 			}
 		}	
 	}

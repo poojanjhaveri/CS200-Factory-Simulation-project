@@ -212,9 +212,10 @@ public class GantryAgent extends Agent implements Gantry {
     				if(b.part.type==f.requested_part.type){
     					//System.out.println("b.part==f.requested_part for index " + f.index);
     					if(b.quantity>1){
-    					//print("I am supplying parts to feeder at index " + f.index );
+    					print("I am setting requestState for feeder [" + f.index + "] to false ");
     					f.requestState=false;
-    					supplyPart(b,f);
+    					
+                                        supplyPart(b,f);
                                         b.quantity=b.quantity-1;
     					return true;
     					}

@@ -416,8 +416,8 @@ public class FactoryProductionManager extends Manager implements ActionListener 
             System.out.println("Name to add = " + nameToAdd);
 
             for(Kit kitty : kitsbp.getKits())
-                    if(nameToAdd.equals(kitty.getName()))
-                            kitToAdd = kitty;
+                if(nameToAdd.equals(kitty.getName()))
+                    kitToAdd = kitty;
     }
 
     //Deserialize messages from server
@@ -431,7 +431,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
         if (msg.contains(Message.PUSH_KITS_LIST)) {
             this.kitsbp.recreate(this.grabParameter(msg));
             System.out.println("GRABBED A NEW BLUEPRINTKITS FROM THE SERVER");
-            this.kitsbp.debug();
+            //this.kitsbp.debug();
             this.reconstructComboBox();
         }
         if(msg.contains(Message.KIT_IN_PRODUCTION))
@@ -458,27 +458,31 @@ public class FactoryProductionManager extends Manager implements ActionListener 
     public void reconstructComboBox()
     {
         System.out.println("Incoming number of kits = " + kitsbp.getKits().size());
-
+        
+        availableKits.clear();
         //Populate Combobox array with names of Blueprint Kits
         for(int i=0;i<kitsbp.getKits().size();i++)
         {
             //Populate string list of names of incoming kits
+            System.out.println(kitsbp.getKits().get(i).getName());
             availableKits.add(kitsbp.getKits().get(i).getName());
+            
         }
         System.out.println("Available kits size = " + availableKits.size());
 
-        selKit.removeAllItems();
+        //selKit.removeAllItems();
         //Add strings to the combobox component
         for(String kitty : availableKits)
         {
             selKit.addItem(kitty);
         }
-
+        System.out.println("Combobox size = " + selKit.getItemCount());
         //if the incoming kit list isn't empty, make the combo box now
         if(!empty)
         {
-            selKitRoutine(selKit);
             selKit.setSelectedItem(0);
+            System.out.println("Name to add? = " + (String)selKit.getSelectedItem());
+            selKitRoutine(selKit);
         }
 
         if(constructed)

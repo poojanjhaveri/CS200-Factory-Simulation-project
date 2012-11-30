@@ -297,9 +297,9 @@ public class GUIGantryRobot extends GUIRobot{
      public void paintMe(JPanel panel, Graphics2D g){
     	
     	if(this.bin != null){
-    		this.bin.getImage().paintIcon(panel, g, this.getCoordinate().getX()-30, this.getCoordinate().getY()-50);
+    		this.bin.getImage().paintIcon(panel, g, this.getCoordinate().getX()-10, this.getCoordinate().getY()-30);
     		if(this.bin.getPart()!=null){
-    			this.bin.getPart().getGUIPart().getImage().paintIcon(panel, g, this.getCoordinate().getX()-15,this.getCoordinate().getY()-35);
+    			this.bin.getPart().getGUIPart().getImage().paintIcon(panel, g, this.getCoordinate().getX()+5,this.getCoordinate().getY()-15);
     		}
         }
     		

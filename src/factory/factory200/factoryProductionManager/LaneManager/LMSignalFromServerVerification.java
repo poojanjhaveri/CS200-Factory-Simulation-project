@@ -15,6 +15,7 @@ public class LMSignalFromServerVerification{
 	private LMPartHandler partHandler;
 	private LMPartRobotHandler partRobotHandler;
 	private LMGantryRobotHandler gantryRobotHandler;
+	private LMNonNormativeHandler nonNormativeHandler;
 
 	public LMSignalFromServerVerification(LMApplication app){
 		this.app = app;
@@ -25,6 +26,7 @@ public class LMSignalFromServerVerification{
 		partHandler = new LMPartHandler(app);
 		partRobotHandler = new LMPartRobotHandler(app);
 		gantryRobotHandler = new LMGantryRobotHandler(app);
+		nonNormativeHandler = new LMNonNormativeHandler(app);
 	}
 	
 	public void timerAction(){
@@ -48,32 +50,36 @@ public class LMSignalFromServerVerification{
 	 * @param message : Message from server
 	 */
 	public void verify(String message){		
-		if( message.indexOf("&Camera&") != -1 ){
+		if( message.contains("&Camera&") ){
 			cameraHandler.cameraShoot(message);
 		}
 		
-		else if( message.indexOf("&Feeder&") != -1 ){
+		else if( message.contains("&Feeder&") ){
 			feederHandler.verify(message);
 		}
 		
-		else if( message.indexOf("&Lane&") != -1 ){
+		else if( message.contains("&Lane&") ){
 			laneHandler.verify(message);
 		}
 		
-		else if( message.indexOf("&Nest&") != -1 ){
+		else if( message.contains("&Nest&") ){
 			nestHandler.verify(message);
 		}
 		
-		else if( message.indexOf("&Part&") != -1 ){
+		else if( message.contains("&Part&") ){
 			partHandler.verify(message);
 		}
 		
-		else if( message.indexOf("&PartRobot&") != -1 ){
+		else if( message.contains("&PartRobot&") ){
 			partRobotHandler.verify(message);
 		}
 		
-		else if( message.indexOf("&Bin&") != -1 ){
+		else if( message.contains("&Bin&") ){
 			gantryRobotHandler.verify(message);
+		}
+		
+		else if( message.contains("&Non&") ){
+			nonNormativeHandler.verify(message);
 		}
 	}
 }

@@ -113,7 +113,7 @@ public class FeederAgent extends Agent implements Feeder {
     @Override
     public void msgNeedPart(Part part, Lane lane) {
         //print("Received msgNeedPart from Lane: "+((LaneAgent) lane).getName()+" for type " + part.type);
-        print("Received msgNeedPart for part type " + part.type);
+        //print("Received msgNeedPart for part type " + part.type);
         /*
          * Search in the myParts list and see if the request can be fulfilled by checking with the quantity of each part
          */

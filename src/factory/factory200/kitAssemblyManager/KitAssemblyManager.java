@@ -16,6 +16,7 @@ import factory.general.Message;
 import factory.general.Part;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 
 /**
  * This class keeps track of everything that will be visible to the Kit Assembly
@@ -34,6 +35,7 @@ public class KitAssemblyManager extends Manager implements ActionListener {
 
     KAMGraphicPanel graphics;
     boolean test=false;
+    JTabbedPane tabbedPane;
     //private KitAssemblyManagerDeliveryStation kamdelivery;///<keeps track of all of the objects listed above and paints the objects according to a timer
     //private KitAssemblyManagerGUIPanel gui;///<keeps track of the GUI components and allows the manager to pick which components will be broken
 
@@ -261,12 +263,25 @@ public class KitAssemblyManager extends Manager implements ActionListener {
      */
     public KitAssemblyManager() {
         
+        
         this.graphics = new KAMGraphicPanel(this);
         //tester lines
         this.setLayout(new GridLayout(1, 2));
         this.graphics = new KAMGraphicPanel(this);
-
-        this.add(graphics);
+        
+        //@author : Poojan
+        
+        this.tabbedPane = new JTabbedPane();
+        tabbedPane.addTab("Animation", this.graphics);
+        GUINonNormKAM nonGUI = new GUINonNormKAM();
+        
+        tabbedPane.addTab("Non-normative", nonGUI);
+        this.add(tabbedPane);
+        
+     //   this.add(graphics);
+        
+        
+        
         int x=0;
         if(test==true){
         x = 550;

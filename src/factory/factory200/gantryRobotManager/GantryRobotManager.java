@@ -25,6 +25,7 @@ import factory.factory200.gantryRobotManager.GUIGantryRobot;
 import factory.factory200.gantryRobotManager.GRMGraphicPanel;
 import factory.general.Manager;
 import factory.general.Message;
+import java.awt.Dimension;
 
 import java.awt.Graphics;
 import java.awt.GridLayout;
@@ -36,10 +37,12 @@ import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 
 public class GantryRobotManager extends Manager implements ActionListener {
    
-    GRMGraphicPanel graphics;    
+    GRMGraphicPanel graphics;  
+     JTabbedPane tabbedPane;
  //   GantryState gs;
     GUIBin bin;
     public GUIGantryRobot ganbot; ///<class which includes Gantry Robot Manager Methods
@@ -62,7 +65,7 @@ public class GantryRobotManager extends Manager implements ActionListener {
     public static final Integer DUMPX = 260;///<x-coordinate of dump 
     public static final Integer DUMPY = 700;///<y-coordinate of dump 
 
-    public static final Integer BIN_X = 450;///<x coordinate of all bin locations
+    public static final Integer BIN_X = 430;///<x coordinate of all bin locations
     public static final Integer BIN0Y = 30;///<y coordinate of bin0
     public static final Integer BIN1Y = 110;///<y coordinate of bin1
     public static final Integer BIN2Y = 190;///<y coordinate of bin2
@@ -86,10 +89,28 @@ public class GantryRobotManager extends Manager implements ActionListener {
         graphics= new GRMGraphicPanel(this);        
         setLayout(new GridLayout(1, 2));  
         ganbot = graphics.getGantryRobot();
-        add(graphics);
+        
+         //@author : Poojan
+        
+        this.tabbedPane = new JTabbedPane();
+        tabbedPane.addTab("Animation", this.graphics);
+        GUINonNormGAM nonGUI = new GUINonNormGAM();
+        
+        tabbedPane.addTab("Non-normative", nonGUI);
+        tabbedPane.setPreferredSize(new Dimension(600,800));
+        this.add(tabbedPane);
+        
+        
+     //   this.add(graphics);
+        
+        
+        
+        
+        
+      //  add(graphics);
         ps = new PurgeStation();
         int x = 500;
-        setSize(510,700);//+ x, 700);
+        setSize(530,750);//+ x, 700);
         graphics.setVisible(true);
         //add(TestPanel());
         //change TEST to just graphicPanel (above)

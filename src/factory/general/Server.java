@@ -191,6 +191,9 @@ public class Server {
             }
             laneAgents[i] = new LaneAgent("Lane " + i,i);
         }
+        
+        // By Dongyoung
+        serverLM.setGantryAgent(gantryAgent);
     }
 
     private void connectAgentsAndManagers() {
@@ -221,8 +224,8 @@ public class Server {
         // Kevin
         for (int i = 0, j = 0; i < FEEDER; i++, j++) {
             feederAgents[i].setGantry(gantryAgent);
-            feederAgents[i].setLeftLane(laneAgents[j]);
-            feederAgents[i].setRightLane(laneAgents[++j]);
+            feederAgents[i].setRightLane(laneAgents[j]);
+            feederAgents[i].setLeftLane(laneAgents[++j]);
             gantryAgent.setFeeder(feederAgents[i], i);
         }
 
@@ -300,7 +303,7 @@ public class Server {
 
         private void turnOffAgentPrintStatements() {
             if (PATRICK) {
-                nestAgent.print = true;
+                nestAgent.print = false;
                 partsAgent.print = false;
             }
             if (KEVIN) {
@@ -310,12 +313,12 @@ public class Server {
                     }
                     laneAgents[i].print = false;
                 }
-                gantryAgent.print = false;
+                gantryAgent.print = true;
             }
             if (ALEX) {
                 kitRobotAgent.print = false;
                 conveyorAgent.print = false;
-                cameraAgent.print = true;
+                cameraAgent.print = false;
             }
       }
 
