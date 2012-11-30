@@ -49,8 +49,8 @@ public class GantryRobotManager{
 
     public static final Integer ROBOT_INITIAL_X = 1100;///<spawn x coordinate of gantrybot
     public static final Integer ROBOT_INITIAL_Y = 10;///<spawn y coordinate of gantrybot
-	public static final Integer ROBOT_VELOCITY_X = 1;
-	public static final Integer ROBOT_VELOCITY_Y = 1;
+	public static final Integer ROBOT_VELOCITY_X = 2;
+	public static final Integer ROBOT_VELOCITY_Y = 2;
 	public static final Double ROBOT_TURN_RATE = 0.0;
     
     public GantryRobotManager() {
