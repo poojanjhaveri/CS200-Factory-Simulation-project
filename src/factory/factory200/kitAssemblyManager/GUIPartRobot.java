@@ -109,6 +109,9 @@ public class GUIPartRobot extends GUIRobot {
     }
 
     public LinkedList<Part> removePart() {
+        if(this.parts.size()==0){
+            System.out.println("ATTEMPTING TO RETRIEVE PART FROM EMPTY KITTER");
+        }
         return this.parts.giveAll();
     }
 

@@ -615,7 +615,7 @@ public class PartsManager extends Manager implements ActionListener {
 
 	    public boolean accept(File file) {
 	        if(file != null) {
-	            if(file.isDirectory()||file.toString().equals("pics/parts/no.png"))
+	            if(file.isDirectory()||file.toString().equals("pics/parts/no.png")||file.toString().equals("pics/parts/badpart.png"))
 	                return false;
 	            String extension = getExtension(file);
 	            if(extension != null && isSupported(extension))

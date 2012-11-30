@@ -15,7 +15,7 @@ public class LMCameraForAgent {
 	public LMCameraForAgent(LMServerMain serverMain){
 		this.serverMain = serverMain;
 
-		for(int i=0 ; i<4 ; i++){
+		for(int i=0 ; i<8 ; i++){
 			newNestCamera = new LMCameraData( i, serverMain );
 			nestCameras.add(newNestCamera);
 		}

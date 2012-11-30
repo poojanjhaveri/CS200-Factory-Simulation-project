@@ -26,10 +26,6 @@ public class LMLaneData {
 		return parts.remove(0);
 	}
 	
-	public void removeShakePart(int partNum){
-		parts.remove(partNum);
-	}
-	
 	public int getSize(){
 		return parts.size();
 	}
@@ -37,19 +33,19 @@ public class LMLaneData {
 	public ArrayList<LMDrawablePart> getLanePartArray(){
 		return parts;
 	}
-	
-	public void switchNonNormativePartPiled(boolean switchNonNormative){
-		if( switchNonNormative == true ){
+
+	public void switchNonNormativePartPiled(boolean newSwitch){
+		if( newSwitch == false ){
 			maxSize = 8;
 		}
-		else if( switchNonNormative == false ){
+		else if( newSwitch == true ){
 			maxSize = 16;
 		}
 		allPartClass.laneUpdate();
 	}
-	
+
 	/**
-	 * This keeps checking depending on the number of parts on nest.
+	 * This keeps checking depending on the number of parts on nest(Normative)
 	 * @param nestSize
 	 */
 	public void checkNestStatus(int nestSize){

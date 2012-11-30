@@ -284,8 +284,8 @@ public class KitRobotAgent extends Agent implements KitRobot {
             this.fpm.sendMessage(Message.KAM_PICK_UP_EMPTY_KIT);
             try {
                 print("semaphore acquired ");
-               // this.animation.acquire();
-                Thread.sleep(3000);
+                this.animation.acquire();
+//                Thread.sleep(3000);
                 print("semaphore released ");
             } catch (InterruptedException ex) {
                 Logger.getLogger(KitRobotAgent.class.getName()).log(Level.SEVERE, null, ex);
@@ -302,8 +302,8 @@ public class KitRobotAgent extends Agent implements KitRobot {
             this.fpm.sendMessage(Message.KAM_PICK_UP_EMPTY_KIT_TO_ACTIVE);
             try {
                 print("semaphore acquired 1");
-                //this.animation.acquire();
-                Thread.sleep(3000);
+                this.animation.acquire();
+//                Thread.sleep(3000);
                 print("semaphore released 1");            
             } catch (InterruptedException ex) {
                 Logger.getLogger(KitRobotAgent.class.getName()).log(Level.SEVERE, null, ex);
@@ -318,8 +318,9 @@ public class KitRobotAgent extends Agent implements KitRobot {
             this.client.sendMessage(Message.KAM_MOVE_EMPTY_KIT_TO_ACTIVE);
             this.fpm.sendMessage(Message.KAM_MOVE_EMPTY_KIT_TO_ACTIVE);
             try {
-             //   this.animation.acquire();
-            Thread.sleep(3000);
+                this.animation.acquire();
+//            Thread.sleep(3000);
+                print("semaphore released 1"); 
             } catch (InterruptedException ex) {
                 Logger.getLogger(KitRobotAgent.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -333,8 +334,8 @@ public class KitRobotAgent extends Agent implements KitRobot {
             this.client.sendMessage(Message.KAM_MOVE_ACTIVE_KIT_TO_INSPECTION);
             this.fpm.sendMessage(Message.KAM_MOVE_ACTIVE_KIT_TO_INSPECTION);
             try {
-            //    this.animation.acquire();
-            Thread.sleep(3000);  //adding back coz the semaphore isn't being released by the animation
+                this.animation.acquire();
+//            Thread.sleep(3000);  //adding back coz the semaphore isn't being released by the animation
             } catch (InterruptedException ex) {
                 Logger.getLogger(KitRobotAgent.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -349,8 +350,8 @@ public class KitRobotAgent extends Agent implements KitRobot {
             this.client.sendMessage(Message.KAM_MOVE_FROM_0_TO_2);
             this.fpm.sendMessage(Message.KAM_MOVE_FROM_0_TO_2);
             try {
-              //  this.animation.acquire();
-                Thread.sleep(3000);
+                this.animation.acquire();
+//                Thread.sleep(3000);
             } catch (InterruptedException ex) {
                 Logger.getLogger(KitRobotAgent.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -364,8 +365,8 @@ public class KitRobotAgent extends Agent implements KitRobot {
             this.client.sendMessage(Message.KAM_DROP_OFF_FULL_KIT);
             this.fpm.sendMessage(Message.KAM_DROP_OFF_FULL_KIT);
             try {
-             //   this.animation.acquire();
-            Thread.sleep(3000);
+                this.animation.acquire();
+//            Thread.sleep(3000);
             } catch (InterruptedException ex) {
                 Logger.getLogger(KitRobotAgent.class.getName()).log(Level.SEVERE, null, ex);
             }

@@ -333,7 +333,7 @@ public class KAMGraphicPanel {
         //backgroundImage.paintIcon(this, g2, 500, 500);
         Image img = new ImageIcon("pics/background/mainbg.png").getImage();
         g2.drawImage(img, 0, 0, null);
-        //paintNests(this, g2);
+        paintNests(graph, g2);
         kitstand.getKitStand().paintIcon(graph, g2, kitstand.getX(), kitstand.getY());
         for (int i = 0; i < 3; i++) {
 
@@ -368,22 +368,23 @@ public class KAMGraphicPanel {
         }
         kitter.paintMe(graph, g2);
 
-        //for (int k = 0; k < this.nest.size(); k++) {
-        //    for (int i = 0; i < this.nest.get(k).getParts().size(); i++) {
+        for (int k = 0; k < this.nest.size(); k++) {
+            for (int i = 0; i < this.nest.get(k).getParts().size(); i++) {
                 //System.out.println(j.nest.get(0).getParts().get(i).getGUIPart());
-        //        this.nest.get(k).getParts().get(i).getGUIPart().getImage().paintIcon(this, g2, nest.get(k).getParts().get(i).getGUIPart().getX(), nest.get(k).getParts().get(i).getGUIPart().getY());
-        //    }
-        //}
+                this.nest.get(k).getParts().get(i).getGUIPart().getImage().paintIcon(graph, g2, nest.get(k).getParts().get(i).getGUIPart().getX(), nest.get(k).getParts().get(i).getGUIPart().getY());
+            }
+        }
 
+}
+    public void paintNests(JPanel j, Graphics2D g) {
+        for (int i = 1; i <= 8; i++) {
+            nest.get(i - 1).getNest().paintIcon(j, g, nest.get(i - 1).getX(), nest.get(i - 1).getY());
+        }
 }
     }
 
     
 
-    //public void paintNests(JPanel j, Graphics2D g) {
-    //    for (int i = 1; i <= 8; i++) {
-    //        nest.get(i - 1).getNest().paintIcon(j, g, nest.get(i - 1).getX(), nest.get(i - 1).getY());
-    //    }
-    //}
+    
 
    

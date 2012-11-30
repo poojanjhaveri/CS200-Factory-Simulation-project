@@ -18,11 +18,13 @@ public class LMNestHandler {
 				
 		if( message.contains("Switch Up") ){
 			app.getAllNest().getNest(nestNum).nestUp();
+			app.getAllPart().getLane(nestNum).switchNonNormativePartPiled(false);
 		}
 
-		else if( message.contains("Switch Down") ){																		
+		else if( message.contains("Switch Down") ){														
 			app.getAllNest().getNest(nestNum).nestDown();
 			app.getAllPart().nestDown(nestNum);
+			app.getAllPart().getLane(nestNum).switchNonNormativePartPiled(false);
 		}
 	}
 }

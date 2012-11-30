@@ -1,3 +1,9 @@
+::::::::::::::::::::
+::Factory run file::
+::Roy Zheng 2012  ::
+::::::::::::::::::::
+
+
 echo "Beginning server"
 pause
 START java -cp build\classes factory.general.Server

@@ -55,7 +55,7 @@ run:
 	$(RUN) factory.general.Server &
 	@sleep 4
 	@echo "BEGINNING ALL MANAGERS"
-	$(RUN) $(RUNPKG).partManager.PartManager &
+	$(RUN) $(RUNPKG).partsManager.PartsManager &
 	@sleep 2
 	$(RUN) $(RUNPKG).kitManager.KitManager &
 	@sleep 2
