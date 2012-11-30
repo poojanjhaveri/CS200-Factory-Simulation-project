@@ -12,6 +12,7 @@ public class LMPartDataInNest {
 	private LMPart newPart;
 	private ArrayList<LMPart> parts = new ArrayList<LMPart>();
 	private int nestNum;
+	private int badPartQuantity;
 	private String signal = "";
 	private ArrayList<Integer> partNumInfos = new ArrayList<Integer>();
 	
@@ -22,14 +23,20 @@ public class LMPartDataInNest {
 			partNumInfos.add(0);
 		}
 	}
-	/*
-	public void addPart(int partNum, int quantity){
-		for(int i=0 ; i<quantity ; i++){
-			newPart = new LMPart(partNum);
-			parts.add(newPart);
+	
+	public boolean checkAllBadParts(){
+		badPartQuantity = 0;
+		for( int i=0 ; i<parts.size() ; i++ ){
+			if( parts.get(i).getPartStatus() == 0 ){
+				badPartQuantity++;
+			}
 		}
+		if( badPartQuantity == 8 ){
+			return true;
+		}
+		return false;
 	}
-	*/
+
 	public void partRobotTakeOne(){
 		if(parts.size() != 0){
 			parts.remove(0);
@@ -47,11 +54,18 @@ public class LMPartDataInNest {
 	public void addPartFromLane(LMPart newPartFromLane){
 		signal = "LMA_";
 		parts.add(newPartFromLane);
+		/*
 		if(parts.size() == 8){
 		//	serverMain.getGantryAgent().msgAnimationComplete("Nest"+nestNum);
 		}
-		signal += nestNum + "_" + newPartFromLane.getPartNum();
+		*/
+		if( newPartFromLane.getPartStatus() == 1 ){
+			signal += nestNum + "_" + newPartFromLane.getPartNum();
+		}
+		else if( newPartFromLane.getPartStatus() == 0 ){
+			signal += nestNum + "_" + 8;
+		}
 		serverMain.sendToKAM(signal);
-                serverMain.sendToFPM(signal);
+        serverMain.sendToFPM(signal);
 	}
 }

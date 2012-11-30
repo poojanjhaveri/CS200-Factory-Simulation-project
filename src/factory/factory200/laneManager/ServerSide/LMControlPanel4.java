@@ -11,7 +11,7 @@ import javax.swing.border.TitledBorder;
 public class LMControlPanel4 extends JPanel implements ActionListener{
 	
 	private LMCameraForAgent agentNestCamera;
-	private Integer[] cameraList = { 1, 2, 3, 4 };
+	private Integer[] cameraList = { 1, 2, 3, 4, 5, 6, 7, 8 };
 	private JComboBox cameraNum = new JComboBox(cameraList);
 	private TitledBorder border = new TitledBorder("Camera");
 	private JButton button = new JButton("Camera Shoot");
@@ -31,7 +31,7 @@ public class LMControlPanel4 extends JPanel implements ActionListener{
 	 * @brief Signal To Server( In V0, it is platform )
 	 */
 	public void actionPerformed(ActionEvent ae){
-		chosenCamera = cameraList[ cameraNum.getSelectedIndex() ] - 1;
+		chosenCamera = cameraNum.getSelectedIndex();
 		
 		if(ae.getSource() == button){
 			agentNestCamera.cameraShoot( chosenCamera );

@@ -86,7 +86,8 @@ public class Server {
     }
 
     public void playMahMusicLols() {
-
+	TehMusix t = new TehMusix("bg.wav");
+	(new Thread(t)).start();
     }
 
     /**
@@ -95,6 +96,7 @@ public class Server {
      * @param portNumber - the port number to create the server on.
      */
     public Server(int portNumber) {
+	this.playMahMusicLols();
         this.fstate = new FactoryState();
         initializeManagers(); // Something by Dongyoung
 
@@ -137,11 +139,9 @@ public class Server {
                 System.out.println("got an exception" + e.getMessage());
             }
             System.out.println("A client has connected");
-        }
-
-
+        }     
     }
-
+   
     private void initializeManagers() { // Something by Dongyoung...?  Dongyoung : Yeah
         serverLM = new LMServerMain();
         new Thread(serverLM).start();

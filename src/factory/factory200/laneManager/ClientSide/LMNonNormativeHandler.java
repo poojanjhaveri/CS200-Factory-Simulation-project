@@ -15,12 +15,12 @@ public class LMNonNormativeHandler {
 
 	public void verify(String message){
 		nestLaneNum = message.charAt(0) - 48;
-		System.out.println("message : " + message);
+		
 		if( message.contains("&Jammed&") ){
 			
 		}
 		else if( message.contains("&Piled&") ) {
-			app.getGraphicsPanel().getAllPart().getLane(nestLaneNum).switchNonNormativePartPiled(false);
+			app.getGraphicsPanel().getAllPart().getLane(nestLaneNum).switchNonNormativePartPiled(true);
 		}
 	}
 }

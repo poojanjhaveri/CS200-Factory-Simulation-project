@@ -19,12 +19,14 @@ public class LMNestHandler {
 		if( message.contains("Switch Up") ){
 			app.getGUIPanel().getGUINest().getGUINestArray(nestNum).setNestSwitch(true);
 			app.getGraphicsPanel().getAllNest().getNest(nestNum).nestUp();
+			app.getGraphicsPanel().getAllPart().getLane(nestNum).switchNonNormativePartPiled(false);
 		}
 
 		else if( message.contains("Switch Down") ){																		
 			app.getGUIPanel().getGUINest().getGUINestArray(nestNum).setNestSwitch(false);
 			app.getGraphicsPanel().getAllNest().getNest(nestNum).nestDown();
 			app.getGraphicsPanel().getAllPart().nestDown(nestNum);
+			app.getGraphicsPanel().getAllPart().getLane(nestNum).switchNonNormativePartPiled(false);
 		}
 	}
 }
