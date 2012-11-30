@@ -62,7 +62,7 @@ public class HandleAManager implements Runnable {
                 // Listen for interaction via protocol
                 message = br.readLine();
                 if (message == null) {
-                    System.out.println("Message from client is null. A manager class should exit properly (i.e., by closing with the X in the corner)");
+//                    System.out.println("Message from client is null. A manager class should exit properly (i.e., by closing with the X in the corner)");
                     throw new Exception();
                 }
                 processMessage(message);
@@ -72,7 +72,8 @@ public class HandleAManager implements Runnable {
                 e.printStackTrace();
                 System.exit(0);
             } catch (Exception e) {
-                e.printStackTrace();
+            	System.out.println("Exiting server");
+//                e.printStackTrace();
                 System.exit(0);
             }
         }
@@ -139,6 +140,28 @@ public class HandleAManager implements Runnable {
             this.server.getServerLM().setKAM(this);
         }
     }
+
+
+    public void pushToFPM()
+    {
+            if(this.server.getFPMClient() != null) {
+                this.server.getFPMClient().sendMessage(Message.PUSH_KITS_LIST + ":" + this.server.getFactoryState().getBlueprintKits().serialize());
+                System.out.println("Pushed latest kits to FPM");
+            } else {
+                System.out.println("Unable to push latest list to FactoryProductionManager because it has not yet been connected.");
+            }
+
+    }
+    public void pushToKitManager()
+    {
+            if (this.server.getKitManagerClient() != null) {
+                this.server.getKitManagerClient().sendMessage(Message.PUSH_PARTS_LIST + ":" + this.server.getFactoryState().getBlueprintParts().serialize());
+                System.out.println("Pushed latest list to KitManager");
+            } else {
+                System.out.println("Unable to push latest list to KitManager because it has not yet been connected.");
+            }
+    }
+
     /**
 @brief handles the messages for the KitAssemblyManager only
     */
@@ -186,31 +209,23 @@ if(msg.contains(Message.KAM_FINISH_KITBOT_ANIMATION)) {
             this.server.getFactoryState().getBlueprintParts().add(p);
             this.server.getFactoryState().getBlueprintParts().save();
             System.out.println("Defined new part: " + p.serialize());
-            if (this.server.getKitManagerClient() != null) {
-                this.server.getKitManagerClient().sendMessage(Message.PUSH_PARTS_LIST + ":" + this.server.getFactoryState().getBlueprintParts().serialize());
-                System.out.println("Pushed latest list to KitManager");
-            } else {
-                System.out.println("Unable to push latest list to KitManager because it has not yet been connected.");
-            }
+	    this.pushToKitManager();
         } else if (msg.contains(Message.DEFINE_NEW_KIT)) {
             Kit k = Kit.deserialize(this.grabParameter(msg));
             this.server.getFactoryState().getBlueprintKits().add(k);
             this.server.getFactoryState().getBlueprintKits().save();
             System.out.println("Defined new kit:" + k.serialize());
-            if(this.server.getFPMClient() != null) {
-                this.server.getFPMClient().sendMessage(Message.PUSH_KITS_LIST + ":" + this.server.getFactoryState().getBlueprintKits().serialize());
-                System.out.println("Pushed latest kits to FPM");
-            } else {
-                System.out.println("Unable to push latest list to FactoryProductionManager because it has not yet been connected.");
-            }
+	    this.pushToFPM();
         } else if (msg.contains(Message.UNDEFINE_PART)) {
             Integer id = Integer.parseInt(this.grabParameter(msg));
             System.out.println("Undefining part " + id);
             this.server.getFactoryState().removePartById(id);
+	    this.pushToKitManager();
         } else if (msg.contains(Message.UNDEFINE_KIT)) {
             Integer id = Integer.parseInt(this.grabParameter(msg));
             System.out.println("Undefining part " + id);
             this.server.getFactoryState().removeKitById(id);
+	    this.pushToFPM();
         } else if(msg.contains(Message.PUSH_PRODUCTION_QUEUE)) {
             ArrayList<Kit> queue = new ArrayList<Kit>();
             ArrayList<String> deserialized = Util.deserialize(this.grabParameter(msg));
@@ -255,7 +270,11 @@ if(msg.contains(Message.KAM_FINISH_KITBOT_ANIMATION)) {
             
         else if(msg.contains(Message.GRM_FINISH_MOVE_TO_BIN) || msg.contains(Message.GRM_FINISH_MOVE_TO_FEEDER) || msg.contains(Message.GRM_FINISH_MOVE_TO_DUMP)) {
             this.server.getGantry().msgAnimationComplete(msg);
-        } 
+        }
+        
+        if(id==1) {
+            this.processKAM(msg);
+        }
     }
 
     /**
