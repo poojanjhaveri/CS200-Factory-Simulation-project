@@ -7,7 +7,7 @@ package factory.factory200.gantryRobotManager;
 /**
  *
  * @author Poojan Jhaveri
- * @brief : GUI class for non-normative scenario associated with KIT assembly manager
+ * @brief : GUI class for non-normative scenario associated with Gantry Robot manager
  */
 
 import java.awt.*;
@@ -22,7 +22,6 @@ public class GUINonNormGAM extends JPanel {
     private JPanel mainpanel;
     private JButton freeze1;
     private JButton undo1;
-    
     
     public GUINonNormGAM() {
              
