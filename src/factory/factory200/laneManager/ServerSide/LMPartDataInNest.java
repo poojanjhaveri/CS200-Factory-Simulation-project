@@ -52,5 +52,6 @@ public class LMPartDataInNest {
 		}
 		signal += nestNum + "_" + newPartFromLane.getPartNum();
 		serverMain.sendToKAM(signal);
+                serverMain.sendToFPM(signal);
 	}
 }
