@@ -97,7 +97,7 @@ public class ConveyorAgent extends Agent implements Conveyor {
 
     // ************ MISC ***********
     private void generateKit(int num) {
-        num--;
+//        num--;
         for (int i = 0; i < num; i++) {
             Kit k = new Kit("Kit " + i);
             kitList.add(k);
