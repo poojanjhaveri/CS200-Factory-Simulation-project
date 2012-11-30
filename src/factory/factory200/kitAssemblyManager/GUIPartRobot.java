@@ -142,6 +142,7 @@ public class GUIPartRobot extends GUIRobot {
 
     public void moveToNestCommand(Integer i) {
         this.orders.add(i + 10);
+        this.orders.add(50);
     }
 
     public void dropOffParts(Integer i) {
@@ -152,6 +153,7 @@ public class GUIPartRobot extends GUIRobot {
             this.orders.add(19);
         }
         dropPartCommand(i);
+        this.orders.add(50);
     }
 
     /**

@@ -2,6 +2,7 @@ package factory.factory200.laneManager.ServerSide;
 
 import javax.swing.JFrame;
 
+import factory.factory201.feederManagement.FeederAgent;
 import factory.factory201.feederManagement.GantryAgent;
 import factory.general.HandleAManager;
 
@@ -28,7 +29,11 @@ public class LMServerMain extends JFrame implements Runnable{
 	private LMThreadTimer threadTimer;
 	private LMController controller;
 	
-	private GantryAgent gantryAgent;
+	private FeederAgent[] feederAgents;
+	
+	private NonNormativeFix1 nonNormativeFix1;
+	private NonNormativeFix2 nonNormativeFix2;
+	private NonNormativeFix3 nonNormativeFix3;
 	
 	public LMServerMain(){}
 	
@@ -46,7 +51,29 @@ public class LMServerMain extends JFrame implements Runnable{
 		new Thread(threadTimer).start();
 		threadTimer.timerStart();
 		
+		nonNormativeFix1 = new NonNormativeFix1(this);
+		nonNormativeFix2 = new NonNormativeFix2(this);
+		nonNormativeFix3 = new NonNormativeFix3(this);
+		
 		//controller = new LMController(agentFeeder, agentLane, agentNest, agentNestCamera, agentGantryRobot, agentPartRobot, this);
+	}
+	
+	public void checkFixItRunning(){
+		nonNormativeFix1.run();
+		nonNormativeFix2.run();
+		nonNormativeFix3.run();
+	}
+	
+	public void problemHappened(int nonNormativeScenarioNum){
+		if( nonNormativeScenarioNum == 1 ){
+			nonNormativeFix1.start();
+		}
+		else if( nonNormativeScenarioNum == 2 ){
+			nonNormativeFix2.start();
+		}
+		else if( nonNormativeScenarioNum == 3 ){
+			nonNormativeFix3.start();
+		}
 	}
 
 	public LMLaneForAgent getForAgentLane(){
@@ -121,11 +148,11 @@ public class LMServerMain extends JFrame implements Runnable{
 		}
 	}
 	
-	public void setGantryAgent(GantryAgent gantryAgent){
-		this.gantryAgent = gantryAgent;
+	public void setFeederAgents(FeederAgent[] feederAgents){
+		this.feederAgents = feederAgents;
 	}
 	
-	public GantryAgent getGantryAgent(){
-		return gantryAgent;
+	public FeederAgent[] getFeederAgents(){
+		return feederAgents;
 	}
 }

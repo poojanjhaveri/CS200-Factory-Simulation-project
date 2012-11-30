@@ -35,10 +35,11 @@ public class PartsAgent extends Agent implements PartsInterface {
     int kits=0;//used to keep track of how many kits are being worked on
     boolean kitZero = false;//used to tell if kit stand number 0 has an empty kit ready
     boolean kitOne = false;//used to tell if kit stand number 1 has an empty kit ready
-    public List<Part> inventory, grips, kit0NeedsParts, kit1NeedsParts;
+    public List<Part> inventory, grips, kit0NeedsParts, kit1NeedsParts, missingParts;
     public ArrayList<Kit> newKit;
     boolean emptyKitReady;
     boolean requestState=false;
+    boolean dropPart=false;
     public List<Kit> kitsStarted;
     
     KitRobot kitrobot;
@@ -47,6 +48,7 @@ public class PartsAgent extends Agent implements PartsInterface {
 
     public PartsAgent(String name) {
         super(name); 
+        missingParts = Collections.synchronizedList(new ArrayList<Part>()); //parts that partsagent dropped - NonNorm
         inventory = Collections.synchronizedList(new ArrayList<Part>());//the parts that the nestAgent has given to the partsAgent to use
         grips = Collections.synchronizedList(new ArrayList<Part>());//grips, max size of 4
         kit0NeedsParts = Collections.synchronizedList(new ArrayList<Part>());//parts that kit0 needs to be completed
@@ -59,6 +61,31 @@ public class PartsAgent extends Agent implements PartsInterface {
 
     public void msgAnimationComplete(){
         s.release();
+    }
+    
+    
+    public void msgPartsMissing(List<Part> missingPs, Kit k){//if the parts robot dropped a part
+        if(k.standNum==Kit.StandNum.zero){
+            kit0=k;
+            kit0.standNum = Kit.StandNum.zero;
+            for(Part p: missingPs){
+                nest.msgNeedPart(p);
+                kit0NeedsParts.add(p);
+            }
+                
+        }
+        else if(k.standNum==Kit.StandNum.one) {
+            kit1=k;
+            kit1.standNum = Kit.StandNum.one;
+            for(Part p: missingPs){
+                nest.msgNeedPart(p);
+                kit1NeedsParts.add(p);
+            }
+        }
+        else
+            print("ERROR IN MSGPARTSMISSING");
+        stateChanged();
+        
     }
     
     public void msgHereIsKit(ArrayList<Kit> newKits) {// message from server
@@ -334,7 +361,7 @@ public class PartsAgent extends Agent implements PartsInterface {
         if (this.client != null) {
             this.client.sendMessage(Message.KAM_PARTS_PICK_PART + ":" + nestNum);
             this.fpm.sendMessage(Message.KAM_PARTS_PICK_PART + ":" + nestNum);
-            //s.acquireUninterruptibly();
+            //s.acquireUninterruptibly();//do not acquire!!!!
         try {
          Thread.sleep(1500);
          } catch (InterruptedException e) {
@@ -396,4 +423,9 @@ public class PartsAgent extends Agent implements PartsInterface {
            print("[ERROR] - Kit Assembly Manager is not online."); 
         }
 }
+    //BEGIN NON-NORM animation
+    
+    public void DoDropPart(){
+        
+    }
 }

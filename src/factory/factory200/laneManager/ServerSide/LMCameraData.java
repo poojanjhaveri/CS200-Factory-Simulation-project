@@ -20,5 +20,10 @@ public class LMCameraData {
 		signal = nestCameraNum + "&Camera&" + "Shoot";
 		serverMain.sendToLM(signal);
 		serverMain.sendToFPM(signal);
+		
+		// Signal to Agent
+		if( serverMain.getPartData().checkAllBadParts(nestCameraNum) == true ){
+			
+		}
 	}
 }

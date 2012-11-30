@@ -29,7 +29,7 @@ import java.util.logging.Logger;
 public class GantryAgent extends Agent implements Gantry {
 
     //initialized with 0.
-    Semaphore anim=new Semaphore(0, true);;
+    Semaphore anim=new Semaphore(0, true);
     //private List<myParts> parts = Collections.synchronizedList(new ArrayList<myParts>());
     private Feeder feeder;
     //holds info about all the feeders that are assigned to the gantry
@@ -167,6 +167,8 @@ public class GantryAgent extends Agent implements Gantry {
         System.out.println("semaphore released by " + msg);
         anim.release();
     }
+    
+    
     public void msgNeedPart(Part part,Feeder feeder) {
     	
         
@@ -249,7 +251,7 @@ public class GantryAgent extends Agent implements Gantry {
     	//print("Sending message to feeder");
         print("sending message here are parts to " + f.index);
 
-    	doSupplyPart(b,f);
+    	//doSupplyPart(b,f);
 
 
         f.feeder.msgHereAreParts(parts);

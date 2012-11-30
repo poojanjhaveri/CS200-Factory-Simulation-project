@@ -21,14 +21,8 @@ public class LMDrawablePart {
 	private static ImageIcon goodpart6 = new ImageIcon( LMDrawablePart.class.getResource("./pics/part6.png") );
 	private static ImageIcon goodpart7 = new ImageIcon( LMDrawablePart.class.getResource("./pics/part7.png") );
 	private static ImageIcon goodpart8 = new ImageIcon( LMDrawablePart.class.getResource("./pics/part8.png") );
-	private static ImageIcon badpart1 = new ImageIcon( LMDrawablePart.class.getResource("./pics/badpart1.png") );
-	private static ImageIcon badpart2 = new ImageIcon( LMDrawablePart.class.getResource("./pics/badpart2.png") );
-	private static ImageIcon badpart3 = new ImageIcon( LMDrawablePart.class.getResource("./pics/badpart3.png") );
-	private static ImageIcon badpart4 = new ImageIcon( LMDrawablePart.class.getResource("./pics/badpart4.png") );
-	private static ImageIcon badpart5 = new ImageIcon( LMDrawablePart.class.getResource("./pics/badpart5.png") );
-	private static ImageIcon badpart6 = new ImageIcon( LMDrawablePart.class.getResource("./pics/badpart6.png") );
-	private static ImageIcon badpart7 = new ImageIcon( LMDrawablePart.class.getResource("./pics/badpart7.png") );
-	private static ImageIcon badpart8 = new ImageIcon( LMDrawablePart.class.getResource("./pics/badpart8.png") );
+	private static ImageIcon badpart = new ImageIcon( LMDrawablePart.class.getResource("./pics/badpart.png") );
+	
 	private ImageIcon partImage;
 	private int laneNestNum;
 	private int partNum;
@@ -58,14 +52,7 @@ public class LMDrawablePart {
 		this.partStatus = partStatus;
 		
 		if( partStatus == 0 ){
-			if(partNum == 0){  partImage = badpart1;  }
-			else if(partNum == 1){  partImage = badpart2;  }
-			else if(partNum == 2){  partImage = badpart3;  }
-			else if(partNum == 3){  partImage = badpart4;  }
-			else if(partNum == 4){  partImage = badpart5;  }
-			else if(partNum == 5){  partImage = badpart6;  }
-			else if(partNum == 6){  partImage = badpart7;  }
-			else if(partNum == 7){  partImage = badpart8;  }
+			partImage = badpart;
 		}
 		else if( partStatus == 1 ){
 			if(partNum == 0){  partImage = goodpart1;  }
@@ -107,6 +94,10 @@ public class LMDrawablePart {
 			currentLocationX += incrementalX;
 			currentLocationY += incrementalY;
 		}
+	}
+	
+	public int getX(){
+		return currentLocationX;
 	}
 	
 	public void checkDestination(){

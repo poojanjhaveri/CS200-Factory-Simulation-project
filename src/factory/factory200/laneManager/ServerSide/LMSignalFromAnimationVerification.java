@@ -10,6 +10,7 @@ public class LMSignalFromAnimationVerification {
 	private int laneNestNum;
 	private int feederNum;
 	private int partNum;
+	private int randomPartNum;
 	
 	public LMSignalFromAnimationVerification(LMServerMain serverMain){
 		this.serverMain = serverMain;
@@ -33,8 +34,12 @@ public class LMSignalFromAnimationVerification {
 		// Non-normative Scenario 2
 		else if(message.contains("LANE_JAMMED") ){
 			laneNestNum = message.charAt(0) - 48;
-			serverMain.sendToLM(laneNestNum + "&Non&Jammed&");
-			serverMain.sendToFPM(laneNestNum + "&Non&Jammed&");
+			randomPartNum = message.charAt(1) - 48;
+			serverMain.sendToLM("" + laneNestNum + randomPartNum + "&Non&Jammed&");
+			serverMain.sendToFPM("" + laneNestNum + randomPartNum + "&Non&Jammed&");
+			
+			// Signal To Agent
+			serverMain.problemHappened(2);
 		}
 		// Non-normative Scenario 3
 		else if(message.contains("PART_PILED") ) {
@@ -42,6 +47,9 @@ public class LMSignalFromAnimationVerification {
 			serverMain.sendToLM(laneNestNum + "&Non&Piled&");
 			serverMain.sendToFPM(laneNestNum + "&Non&Piled&");
 			serverMain.sendToKAM(laneNestNum + "&Non&Piled&");
+			
+			// Signal To Agent
+			serverMain.problemHappened(3);
 		}
 	}
 }

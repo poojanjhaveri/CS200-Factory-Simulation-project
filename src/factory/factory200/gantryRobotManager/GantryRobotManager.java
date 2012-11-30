@@ -67,7 +67,7 @@ public class GantryRobotManager extends Manager implements ActionListener {
     public static final Integer DUMPX = 260;///<x-coordinate of dump 
     public static final Integer DUMPY = 700;///<y-coordinate of dump 
 
-    public static final Integer BIN_X = 400;///<x coordinate of all bin locations
+    public static final Integer BIN_X = 420;///<x coordinate of all bin locations
     public static final Integer BIN0Y = 30;///<y coordinate of bin0
     public static final Integer BIN1Y = 110;///<y coordinate of bin1
     public static final Integer BIN2Y = 190;///<y coordinate of bin2
@@ -96,19 +96,15 @@ public class GantryRobotManager extends Manager implements ActionListener {
         
         this.tabbedPane = new JTabbedPane();
         tabbedPane.addTab("Animation", this.graphics);
-        //GUINonNormGAM nonGUI = new GUINonNormGAM();
+        GUINonNormGAM nonGUI = new GUINonNormGAM();
         
-        //tabbedPane.addTab("Non-normative", nonGUI);
+        tabbedPane.addTab("Non-normative", nonGUI);
         tabbedPane.setPreferredSize(new Dimension(600,800));
         this.add(tabbedPane);
         
         
-     //   this.add(graphics);
-        
-        
-        
-        
-        
+        //   this.add(graphics);
+
       //  add(graphics);
         ps = new PurgeStation();
         int x = 500;

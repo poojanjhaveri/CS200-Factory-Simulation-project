@@ -13,6 +13,7 @@ import factory.factory201.interfaces.Camera;
 import factory.factory201.interfaces.Lane;
 import factory.factory201.interfaces.PartsInterface;
 import factory.factory201.interfaces.NestInterface;
+import factory.general.Message;
 import factory.general.Nest;
 import factory.general.Part;
 import java.util.concurrent.Semaphore;
@@ -32,6 +33,7 @@ public class NestAgent extends Agent implements NestInterface {
     public List<Part> requests;//parts that partsAgent requests, removed when part given back to partsagent
     public List<Nest> myNests;//nests 0-7 that this agent controls
     public List<Part> needParts;//the parts that have been requested, used to set an individual's nest part
+    boolean requestEarlyInspection=false;
     PartsInterface partsagent;
     Camera camera;
     @Override
@@ -61,13 +63,17 @@ public class NestAgent extends Agent implements NestInterface {
      * @param p This is a part
      */
 
-    
+    public void msgRequestEarlyInspection(){
+       requestEarlyInspection=true;
+       stateChanged();
+    }
   
     public void msgNeedPart(Part p) {//called by partsAgent
         requests.add(p);
         needParts.add(p);
         stateChanged();
     }
+    
 
     public void msgHereAreParts(List<Part> kitParts, int laneIndex){
         //requires syncrhonization: many msgs can come in to modify mynests.
@@ -90,9 +96,14 @@ public class NestAgent extends Agent implements NestInterface {
         if (result) {
             n.status = Nest.Status.readyForKit;
             print("Nest inspected and verified");
-        } else {
+        } else  if (!result && !requestEarlyInspection){
            purge(n);
            print("Nest is not verified, will be dumped");
+        } else if (!result && requestEarlyInspection){
+            requestEarlyInspection=false;
+            print("Nest " + n.nestNum + " has not been verified and needs to wait for more parts");
+            if (n.status!=Nest.Status.full)
+            n.status = Nest.Status.gettingPart;
         }
         stateChanged();
     }
@@ -101,7 +112,15 @@ public class NestAgent extends Agent implements NestInterface {
     @Override
     public boolean pickAndExecuteAnAction() {
 
-           
+        if(requestEarlyInspection){
+            for (Nest n: myNests){
+                if (n.status == Nest.Status.needPart)
+                    requestInspection(n);
+                    print("Nest [" + n.nestNum + "] has requested early inspection NONNORM");
+                    return true;
+            }
+        }   
+        
             for (Nest n : myNests) {
                 if (n.status == Nest.Status.needPart) {
                     requestPart(n);
@@ -202,9 +221,6 @@ public class NestAgent extends Agent implements NestInterface {
     private void purge(Nest n){
     print("PURGING Nest "+ n.nestNum);
     n.parts.clear();
-    //DoPurge();
-    n.status = Nest.Status.empty;
-    //n.status = Nest.Status.needPart;
     //DoPurge();//NEEDTO implement this method
     n.status = Nest.Status.needPart;
     stateChanged();
@@ -218,6 +234,13 @@ public class NestAgent extends Agent implements NestInterface {
         this.camera = c;
     }
     
+    public void DoPurge(int nestNum){
+        if (this.client != null) {
+           // this.client.sendMessage(Message.PURGE_NEST + ":" + nestNum);
+            //this.fpm.sendMessage(Message.PURGE_NEST + ":" + nestNum);
+        }
+        
+    }
 
     public void setPartsAgent(PartsInterface parts) {
         this.partsagent = parts;
