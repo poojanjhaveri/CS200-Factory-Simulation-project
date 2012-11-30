@@ -11,5 +11,5 @@ import javax.swing.JPanel;
  * @author Deepa
  */
 public class KAMGUIPanel extends JPanel {
-    ArrayList<JButton> buttons;
+    
 }
