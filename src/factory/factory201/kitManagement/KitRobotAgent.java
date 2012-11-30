@@ -286,7 +286,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
                 print("semaphore acquired ");
                 this.animation.acquire();
 //                Thread.sleep(3000);
-//                print("semaphore released ");
+                print("semaphore released ");
             } catch (InterruptedException ex) {
                 Logger.getLogger(KitRobotAgent.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -304,7 +304,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
                 print("semaphore acquired 1");
                 this.animation.acquire();
 //                Thread.sleep(3000);
-//                print("semaphore released 1");            
+                print("semaphore released 1");            
             } catch (InterruptedException ex) {
                 Logger.getLogger(KitRobotAgent.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -320,6 +320,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
             try {
                 this.animation.acquire();
 //            Thread.sleep(3000);
+                print("semaphore released 1"); 
             } catch (InterruptedException ex) {
                 Logger.getLogger(KitRobotAgent.class.getName()).log(Level.SEVERE, null, ex);
             }
