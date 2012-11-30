@@ -139,11 +139,9 @@ public class Server {
                 System.out.println("got an exception" + e.getMessage());
             }
             System.out.println("A client has connected");
-        }
-
-
+        }     
     }
-
+   
     private void initializeManagers() { // Something by Dongyoung...?  Dongyoung : Yeah
         serverLM = new LMServerMain();
         new Thread(serverLM).start();

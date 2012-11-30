@@ -65,6 +65,7 @@ public class TehMusix implements Runnable{
         try {
             sourceLine = (SourceDataLine) AudioSystem.getLine(info);
             sourceLine.open(audioFormat);
+        }
         catch (Exception e) {
             e.printStackTrace();
             System.exit(1);

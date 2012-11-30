@@ -89,4 +89,13 @@ public class LMPartData {
 	public int getFirstPartStatus(int feederNum){
 		return feeders.get(feederNum).getFirstPartStatus();
 	}
+	
+	public boolean checkAllBadParts(int nestNum){
+		
+		if( nests.get(nestNum).checkAllBadParts() == true ){
+			return true;
+		}
+		return false;
+		
+	}
 }
