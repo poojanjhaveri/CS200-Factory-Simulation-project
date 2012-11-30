@@ -48,7 +48,7 @@ public class LMPartDataInNest {
 		signal = "LMA_";
 		parts.add(newPartFromLane);
 		if(parts.size() == 8){
-			serverMain.getGantryAgent().msgAnimationComplete("Nest"+nestNum);
+		//	serverMain.getGantryAgent().msgAnimationComplete("Nest"+nestNum);
 		}
 		signal += nestNum + "_" + newPartFromLane.getPartNum();
 		serverMain.sendToKAM(signal);
