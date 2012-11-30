@@ -57,7 +57,7 @@ public class GUINonNormKAM  extends JPanel {
         c.gridx=0;
         c.gridy=0;
         droppart1 = new JButton("Drop a Part");
-        droppart1.addActionListener(new freezebutton());
+        droppart1.addActionListener(new droppartbutton());
         droppart1.setPreferredSize(new Dimension(150,50));
         scenario.add(droppart1);
         
@@ -74,7 +74,7 @@ public class GUINonNormKAM  extends JPanel {
         mainpanel.add(basepanel,BorderLayout.CENTER);
     }
     
-    public class freezebutton implements ActionListener
+    public class droppartbutton implements ActionListener
          {
     
          public void actionPerformed(ActionEvent e) {
