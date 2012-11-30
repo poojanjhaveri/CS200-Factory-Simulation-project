@@ -55,7 +55,7 @@ public class LMServerMain extends JFrame implements Runnable{
 		nonNormativeFix2 = new NonNormativeFix2(this);
 		nonNormativeFix3 = new NonNormativeFix3(this);
 		
-		controller = new LMController(agentFeeder, agentLane, agentNest, agentNestCamera, agentGantryRobot, agentPartRobot, this);
+		//controller = new LMController(agentFeeder, agentLane, agentNest, agentNestCamera, agentGantryRobot, agentPartRobot, this);
 	}
 	
 	public void checkFixItRunning(){
