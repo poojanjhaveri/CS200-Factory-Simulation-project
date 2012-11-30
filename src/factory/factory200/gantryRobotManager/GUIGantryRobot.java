@@ -127,7 +127,14 @@ public class GUIGantryRobot extends GUIRobot{
     	moveTo(GantryRobotManager.FEED1X,GantryRobotManager.FEED1Y);
     }
    
+    /**
+     * set breaking status of the gantry robot. The default value should be false until GRM break the robot
+     */
     
+    public void setBreakState(){
+//    	breakState= false;
+    	
+    }
     public void binPurged(){
     	this.bin = null;
     }
