@@ -142,7 +142,7 @@ public class Server {
         }     
     }
    
-    private void initializeManagers() { // Something by Dongyoung...?  Dongyoung : Yeah
+    private void initializeManagers() { //by Dongyoung
         serverLM = new LMServerMain();
         new Thread(serverLM).start();
     }
