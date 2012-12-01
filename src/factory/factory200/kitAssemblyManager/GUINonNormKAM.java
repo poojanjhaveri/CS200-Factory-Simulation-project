@@ -13,7 +13,7 @@ import javax.swing.*;
 
 /**
  *
- * @author Poojan Jhaveri
+ * @author Poojan Jhaveri, Yuting Liu
  * @brief : GUI class for non-normative scenario associated with KIT assembly manager
  * 
  * 
@@ -55,37 +55,40 @@ public class GUINonNormKAM  extends JPanel {
          c.ipady=10;
          c.ipadx=10;
         
-        
+        c.fill =GridBagConstraints.HORIZONTAL;
         c.gridx=0;
         c.gridy=0;
         droppart1 = new JButton("Drop a Part");
         droppart1.addActionListener(new droppartbutton());
         droppart1.setPreferredSize(new Dimension(150,50));
-        scenario.add(droppart1);
+        scenario.add(droppart1,c);
         
+        c.fill =GridBagConstraints.HORIZONTAL;
         c.gridx=1;
         c.gridy=0;
         undo1 = new JButton("Revert Back");
         //undo1.setEnabled(false);
         undo1.setPreferredSize(new Dimension(150,50));
         undo1.addActionListener(new undobutton());
-        scenario.add(undo1);
+        scenario.add(undo1,c);
         
+        c.fill =GridBagConstraints.HORIZONTAL;
         c.gridx=0;
         c.gridy=1;
         this.unstabilize = new JButton("Toggle nest stability");
         //this.unstabilize.setEnabled(false);
         this.unstabilize.setPreferredSize(new Dimension(150,50));
         this.unstabilize.addActionListener(this.kam);
-        scenario.add(this.unstabilize);
+        scenario.add(this.unstabilize,c);
         
-	c.gridx=1;
+        c.fill =GridBagConstraints.HORIZONTAL;
+        c.gridx=1;
         c.gridy=1;
-        this.unstabilize = new JButton("Toggle nest piling");
+        this.piled = new JButton("Toggle nest piling");
         //this.unstabilize.setEnabled(false);
-        this.unstabilize.setPreferredSize(new Dimension(150,50));
-        this.unstabilize.addActionListener(this.kam);
-        scenario.add(this.unstabilize);
+        this.piled.setPreferredSize(new Dimension(150,50));
+        this.piled.addActionListener(this.kam);
+        scenario.add(this.piled,c);
         
 
         basepanel.add(scenario);
