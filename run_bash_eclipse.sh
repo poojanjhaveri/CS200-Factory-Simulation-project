@@ -1,8 +1,9 @@
 #!/bin/bash
-#################################
-# Factory run file 		#
-# Roy Zheng, David Zhang 2012   #
-#################################
+#########################
+# Factory run file		#
+# Roy Zheng 2012		#
+# For Mac on Eclipse 	#
+#########################
 
 echo "STARTING SERVER"
 java -cp bin factory.general.Server &

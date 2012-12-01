@@ -29,22 +29,34 @@ public class GUINonNormKAM  extends JPanel {
     JButton piled;
     ArrayList<JButton> unstables;
     ArrayList<JButton> piles;
+    ArrayList<Boolean> unstableColor;
+    ArrayList<Boolean> piledColor;
     JButton unstabilize;    
     ActionListener kam;
     
     public GUINonNormKAM(ActionListener in) {
              this.kam = in;
+
+           this.piledColor = new ArrayList<Boolean>();
+           this.unstableColor = new ArrayList<Boolean>();
+
+           for(int i = 0 ; i != 8; i++)
+           {
+           	this.piledColor.add(false);
+           	this.unstableColor.add(false);
+           }
+
            preparemainpanel();
-           this.add(mainpanel);
-           
          }
 
  
-    private void preparemainpanel()
+    public void preparemainpanel()
     {
     	unstables= new ArrayList<JButton>();
         piles = new ArrayList<JButton>();
         mainpanel = new JPanel();
+        
+        
         JPanel basepanel = new JPanel();
         basepanel.setLayout(new BorderLayout());
         
@@ -57,17 +69,17 @@ public class GUINonNormKAM  extends JPanel {
         JPanel scenario = new JPanel(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         
-         c.ipady=5;
-         c.ipadx=5;
+         c.ipady=10;
+         c.ipadx=10;
         
         c.fill =GridBagConstraints.HORIZONTAL;
-        c.gridx=0;
+        c.gridx=2;
         c.gridy=0;
         droppart = new JButton("Drop a Part");
         droppart.setBackground(Color.GREEN);
         droppart.setOpaque(true);
         droppart.addActionListener(new droppartbutton());
-        droppart.setPreferredSize(new Dimension(150,50));
+        droppart.setPreferredSize(new Dimension(100,50));
         scenario.add(droppart,c);
         
         for (int j=0;j<2;j++){
@@ -76,9 +88,14 @@ public class GUINonNormKAM  extends JPanel {
         		c.gridx=i;
         		c.gridy=j+1;
         		this.unstabilize = new JButton("Toggle stability "+(j*4+i));
-        		this.unstabilize.setBackground(Color.GREEN);
+        		if(!this.unstableColor.get(j*4+i)){
+        			this.unstabilize.setBackground(Color.GREEN);
+        		}
+        		else{
+        			this.unstabilize.setBackground(Color.RED);
+        		}
         		this.unstabilize.setOpaque(true);
-        		this.unstabilize.setPreferredSize(new Dimension(150,50));
+        		this.unstabilize.setPreferredSize(new Dimension(100,50));
         		this.unstabilize.addActionListener(this.kam);
         		scenario.add(unstabilize,c);        	
         		unstables.add(unstabilize);
@@ -91,9 +108,12 @@ public class GUINonNormKAM  extends JPanel {
         		c.gridx=i;
         		c.gridy=j+3;
         		this.piled = new JButton("Toggle piling"+(j*4+i));
+        		if(!this.piledColor.get(j*4+i))
         		this.piled.setBackground(Color.GREEN);
+        		else
+        			this.piled.setBackground(Color.RED);
         		this.piled.setOpaque(true);
-        		this.piled.setPreferredSize(new Dimension(150,50));
+        		this.piled.setPreferredSize(new Dimension(100,50));
         		this.piled.addActionListener(this.kam);
         		piles.add(piled);
         		scenario.add(this.piled,c);
@@ -104,6 +124,9 @@ public class GUINonNormKAM  extends JPanel {
 
         basepanel.add(scenario);
         mainpanel.add(basepanel,BorderLayout.CENTER);
+
+        this.add(mainpanel);
+        revalidate();
     }
     public JButton getPilingButton(int i)
     {
@@ -142,6 +165,13 @@ public class GUINonNormKAM  extends JPanel {
     
        }    
     
+    public void toggleStabilizeColor(int i ){
+    	this.unstableColor.set(i, !this.unstableColor.get(i));
+    }
+    
+    public void togglePiledColor(int i){
+    	this.piledColor.set(i,!this.piledColor.get(i));
+    }
 }
     
 
