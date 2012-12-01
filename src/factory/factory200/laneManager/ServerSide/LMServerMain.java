@@ -3,7 +3,7 @@ package factory.factory200.laneManager.ServerSide;
 import javax.swing.JFrame;
 
 import factory.factory201.feederManagement.FeederAgent;
-import factory.factory201.feederManagement.GantryAgent;
+import factory.factory201.partsManagement.NestAgent;
 import factory.general.HandleAManager;
 
 /**
@@ -30,6 +30,7 @@ public class LMServerMain extends JFrame implements Runnable{
 	private LMController controller;
 	
 	private FeederAgent[] feederAgents;
+	private NestAgent nestAgent;
 	
 	private NonNormativeFix1 nonNormativeFix1;
 	private NonNormativeFix2 nonNormativeFix2;
@@ -150,6 +151,10 @@ public class LMServerMain extends JFrame implements Runnable{
 	
 	public void setFeederAgents(FeederAgent[] feederAgents){
 		this.feederAgents = feederAgents;
+	}
+	
+	public void setNestAgents(NestAgent nestAgent){
+		this.nestAgent = nestAgent;
 	}
 	
 	public FeederAgent[] getFeederAgents(){

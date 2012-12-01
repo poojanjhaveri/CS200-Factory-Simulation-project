@@ -193,6 +193,7 @@ public class Server {
         }
         
         // By Dongyoung
+        serverLM.setNestAgents(nestAgent);
         serverLM.setFeederAgents(feederAgents);
     }
 
@@ -241,6 +242,7 @@ public class Server {
             }
             gantryAgent.setServer(serverLM);
             cameraAgent.setServer(serverLM);
+            nestAgent.setServer(serverLM);
         }
     }
 

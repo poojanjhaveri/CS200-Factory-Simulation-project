@@ -9,6 +9,7 @@ import java.util.Collections;
 import java.util.List;
 
 import agent.Agent;
+import factory.factory200.laneManager.ServerSide.LMServerMain;
 import factory.factory201.interfaces.Camera;
 import factory.factory201.interfaces.Lane;
 import factory.factory201.interfaces.PartsInterface;
@@ -34,6 +35,7 @@ public class NestAgent extends Agent implements NestInterface {
     public List<Nest> myNests;//nests 0-7 that this agent controls
     public List<Part> needParts;//the parts that have been requested, used to set an individual's nest part
     boolean requestEarlyInspection=false;
+    private LMServerMain serverLM;
     PartsInterface partsagent;
     Camera camera;
     @Override
@@ -66,6 +68,10 @@ public class NestAgent extends Agent implements NestInterface {
     public void msgRequestEarlyInspection(){
        requestEarlyInspection=true;
        stateChanged();
+    }
+    
+    public void msgPileUpParts(int n){
+        //pileUpParts=true;
     }
   
     public void msgNeedPart(Part p) {//called by partsAgent
@@ -238,10 +244,14 @@ public class NestAgent extends Agent implements NestInterface {
         if (this.client != null) {
            // this.client.sendMessage(Message.PURGE_NEST + ":" + nestNum);
             //this.fpm.sendMessage(Message.PURGE_NEST + ":" + nestNum);
+            
         }
         
     }
 
+    public void setServer(LMServerMain lms){
+        this.serverLM = lms;
+    }
     public void setPartsAgent(PartsInterface parts) {
         this.partsagent = parts;
     }
