@@ -78,21 +78,18 @@ public class CameraAgent extends Agent implements Camera {
             configureKitInfo();
             return true;
         }
-
         for (Kit k : kitList) {
             if (k.status == Kit.Status.full) {
                 inspectKit(k);
                 return true;
             }
         }
-
         for (Nest n : nestList) {
             if (n.status == Nest.Status.gettingInspected) {
                 inspectNest(n);
                 return true;
             }
         }
-
         return false;
     }
 

@@ -31,7 +31,6 @@ public class KitRobotAgent extends Agent implements KitRobot {
     private int kitRequestsFromPartsAgent;
     private boolean requestedKitFromConveyor;
     private Semaphore animation = new Semaphore(0, true);
-    private boolean firstRequest = false;
     private boolean factoryRunning = false;
 
     public KitRobotAgent(String name) {
@@ -41,20 +40,10 @@ public class KitRobotAgent extends Agent implements KitRobot {
         kitRequestsFromPartsAgent = 0;
     }
 
-    // ********** MESSAGES *********
-    public void msgStartFactory() {
-        factoryRunning = true;
-    }
-
-    public void msgAnimationComplete() {
-        print("msgAnimationComplete");
-        animation.release();
-    }
-
+    // ********** AGENT MESSAGES *********
     @Override
     public void msgNeedEmptyKit() {
         kitRequestsFromPartsAgent++;
-        firstRequest = true;
         stateChanged();
     }
 
@@ -79,6 +68,17 @@ public class KitRobotAgent extends Agent implements KitRobot {
             kitStand.get(2).status = result ? Kit.Status.verified : Kit.Status.error;
         }
         stateChanged();
+    }
+
+    // ********** MISC. MESSAGES *********
+    public void msgStartFactory() {
+        factoryRunning = true;
+        stateChanged();
+    }
+
+    public void msgAnimationComplete() {
+        print("msgAnimationComplete");
+        animation.release();
     }
 
     // ********* SCHEDULER *********
