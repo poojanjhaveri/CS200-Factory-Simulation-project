@@ -332,6 +332,11 @@ public class Server {
     public ConveyorAgent getConveyorAgent() {
         return this.conveyorAgent;
     }
+    public NestAgent getNestAgent()
+    {
+        return this.nestAgent;
+    
+    }
     /**
      * @brief method to help debug
      */

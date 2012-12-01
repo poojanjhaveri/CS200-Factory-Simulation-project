@@ -27,6 +27,7 @@ public class GUINonNormKAM  extends JPanel {
     JButton droppart;
     JButton earlyflash;///<flash camera early
     JButton piled;
+    //JButton earlyCameraFlash;
     ArrayList<JButton> unstables;
     ArrayList<JButton> piles;
     public ArrayList<Boolean> unstableColor;
@@ -86,6 +87,14 @@ public class GUINonNormKAM  extends JPanel {
         droppart.addActionListener(new droppartbutton());
         droppart.setPreferredSize(new Dimension(100,50));
         scenario.add(droppart,c);
+        
+        c.fill =GridBagConstraints.HORIZONTAL;
+        c.gridx=1;
+        c.gridy=0;
+        earlyflash = new JButton("Early Camera Flash");
+        earlyflash.addActionListener(this.kam);
+        earlyflash.setPreferredSize(new Dimension(100,50));
+        scenario.add(earlyflash,c);
         
         for (int j=0;j<2;j++){
         	for (int i=0;i<4;i++){
