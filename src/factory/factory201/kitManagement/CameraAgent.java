@@ -58,7 +58,7 @@ public class CameraAgent extends Agent implements Camera {
     
     // added by Kevin
     public void msgPartsShaking(int nestNum){
-    System.out.println("parts shaking hit" );
+    print("parts shaking hit" );
         nestErrors.put(nestNum, Result.Is.unstableParts);
     }
     
@@ -157,16 +157,14 @@ public class CameraAgent extends Agent implements Camera {
         DoInspectNest(nest);
         Result.Is is = result ? Result.Is.verified : Result.Is.badParts;
          
-        /* @kevin- check for nest errors and look for unstable parts if any, set the result to unstable */
-        for(int i=0;i<nestErrors.size();i++){
-        if(nestErrors.get(i).equals(Result.Is.unstableParts))
-            {
-            System.out.println("unstable parts have been detected. ");
-             is= Result.Is.unstableParts;
-            }
-        nestErrors.remove(i);
-        }
-        
+        /* @kevin- check for nest errors and look for unstable parts if any, set the result*/
+ 
+       if(nestErrors.containsKey(nest.nestNum)){
+       //print("Yes!! it contains the key!! ");
+       is=nestErrors.get(nest.nestNum);
+       nestErrors.remove(nest.nestNum);
+       }
+           
         
         nestAgent.msgNestInspected(nest, new Result(is));
         String strResult = result ? "NO ERROR" : "ERROR";
