@@ -393,6 +393,9 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
 
 	Random rand = new Random();//random numgen
         for (int k = 0; k < this.nest.size(); k++) {
+	    if(this.partsRobotInWay(k)){
+		System.out.println("Parts robot is in the way of nest " + k);
+	    }
             for (int i = 0; i < this.nest.get(k).getParts().size(); i++) {
                 //System.out.println(j.nest.get(0).getParts().get(i).getGUIPart());
 		int offsetx = 0;
