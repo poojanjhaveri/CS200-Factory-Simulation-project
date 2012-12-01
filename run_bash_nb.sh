@@ -1,8 +1,9 @@
 #!/bin/bash
-###################
-#Factory run file #
-#Roy Zheng 2012   #
-###################
+#####################
+#Factory run file 	#
+#Roy Zheng 2012   	#
+#For Mac on NetBeans#
+#####################
 
 echo "STARTING SERVER"
 java -cp build/classes factory.general.Server &

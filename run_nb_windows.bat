@@ -1,7 +1,8 @@
-::::::::::::::::::::
-::Factory run file::
-::Roy Zheng 2012  ::
-::::::::::::::::::::
+::::::::::::::::::::::::::::::
+::Factory run file			::
+::Roy Zheng 2012  			::
+::For Windows on NetBeans	::
+::::::::::::::::::::::::::::::
 
 echo "Beginning server"
 pause
