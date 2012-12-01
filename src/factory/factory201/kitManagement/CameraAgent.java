@@ -9,6 +9,7 @@ import factory.general.Kit;
 import factory.general.Message;
 import factory.general.Nest;
 import factory.general.Part;
+import factory.general.Result;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -129,11 +130,12 @@ public class CameraAgent extends Agent implements Camera {
             }
         }
         try {
-            Thread.sleep(1000); // For Dongyung
+            Thread.sleep(2000); // For Dongyung
         } catch (InterruptedException ex) {
         }
         DoInspectNest(nest);
-        nestAgent.msgNestInspected(nest, result);
+        Result.Is is = result ? Result.Is.verified : Result.Is.badParts;
+        nestAgent.msgNestInspected(nest, new Result(is));
         String strResult = result ? "NO ERROR" : "ERROR";
         print("Inspecting nest: [Nest " + nest.nestNum + "] with result: " + strResult + ".");
         nestList.remove(nest);

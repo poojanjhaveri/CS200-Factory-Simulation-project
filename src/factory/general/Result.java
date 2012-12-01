@@ -9,8 +9,14 @@ package factory.general;
  * @author polarpatbear
  */
 public class Result {
-  
-  
-    public enum Is { badParts, piledParts, robotInTheWay, unstableParts, partsMissing, verified };
-      public Is is;
+
+    public enum Is {
+
+        badParts, piledParts, robotInTheWay, unstableParts, partsMissing, verified
+    };
+    public Is is;
+    
+    public Result(Is is) {
+        this.is = is;
+    }
 }
