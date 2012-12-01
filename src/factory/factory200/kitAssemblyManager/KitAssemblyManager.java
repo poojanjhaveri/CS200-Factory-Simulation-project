@@ -54,6 +54,8 @@ public class KitAssemblyManager extends Manager implements ActionListener {
             this.graphics.deliveryStation = false;
             this.graphics.stationRun = true;
             this.graphics.kitbot.dropOffFullKit();
+            //this.graphics.deliveryStation = true;
+            //this.graphics.stationRun = false;
 	    //needs release DONE
         } else if (msg.contains(Message.KAM_MOVE_ACTIVE_KIT_TO_INSPECTION)) {
             this.graphics.kitbot.moveActiveKitToInspection();
@@ -205,13 +207,22 @@ public class KitAssemblyManager extends Manager implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent ae) {
-    	
+    /*	
 	for(int i = 0; i != 8; i++){
-	if(ae.getSource() == this.nonnorm.getPilingButton(i))
+	if(ae.getSource() == this.nonnorm.getPilingButton(i)){
 	    this.graphics.togglePiled(i);
-    	if(ae.getSource() == this.nonnorm.getStabilityButton(i))
-	    this.graphics.toggleUnstable(i);
+	    this.nonnorm.togglePiledColor(i);
+	    this.nonnorm.removeAll();
+	    this.nonnorm.preparemainpanel();
 	}
+    	if(ae.getSource() == this.nonnorm.getStabilityButton(i)){
+	    this.graphics.toggleUnstable(i);
+	    this.nonnorm.toggleStabilizeColor(i);
+	    this.nonnorm.removeAll();
+	    this.nonnorm.preparemainpanel();
+    	}
+	}
+	*/
     	//if(ae.getSource()==){
     		
     	//}
