@@ -281,7 +281,10 @@ public class KAMGraphicPanel {
                         break;
                     case 7://how to drop kit onto placeholder?
                         if (delivery.inEmptyPostion()) {
+                            
                             delivery.takeKit(kitbot.dropKit());
+                            deliveryStation=true;
+                            stationRun=false;
                         }
                         break;
                     default:
