@@ -10,13 +10,13 @@ package factory.general;
  */
 public class Result {
 
-    public enum Is {
+    public enum NestError {
 
         badParts, piledParts, robotInTheWay, unstableParts, partsMissing, verified
     };
-    public Is is;
+    public NestError nestError;
     
-    public Result(Is is) {
-        this.is = is;
+    public Result(NestError nestError) {
+        this.nestError = nestError;
     }
 }
