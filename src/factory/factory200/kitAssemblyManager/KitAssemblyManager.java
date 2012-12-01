@@ -62,6 +62,8 @@ public class KitAssemblyManager extends Manager implements ActionListener {
             this.graphics.kitbot.pickUpEmptyKitToActive();
             //needs to release DONE
         } else if (msg.contains(Message.KAM_PICK_UP_EMPTY_KIT)) {
+            //this.graphics.deliveryStation = true;
+            //this.graphics.stationRun = true;
             this.graphics.kitbot.pickUpEmptyKit();
             //needs to release DONE
         } else if (msg.contains(Message.KAM_MOVE_EMPTY_KIT_TO_ACTIVE)) {
