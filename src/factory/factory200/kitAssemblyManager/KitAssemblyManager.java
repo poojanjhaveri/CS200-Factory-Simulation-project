@@ -108,8 +108,14 @@ public class KitAssemblyManager extends Manager implements ActionListener {
             this.nonnorm.togglePiledColor(i);
             this.nonnorm.removeAll();
             this.nonnorm.preparemainpanel();
-
-        }
+        }else if(msg.contains(Message.NEST_DOWN))
+	    {
+		this.nestDown(Integer.parseInt(this.grabParameter(msg)));
+	    }
+	else if(msg.contains(Message.NEST_UP))
+	    {
+		this.nestUp(Integer.parseInt(this.grabParameter(msg)));
+	    }
         //todo - let me know what functions agent will call so I can process them here
     }
 
