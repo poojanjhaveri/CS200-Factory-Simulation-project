@@ -13,7 +13,7 @@ import javax.swing.*;
  * and open the template in the editor.
  */
 /**
- *
+ * @brief a drawable nest in the kit assembly area
  * @author Deepa
  */
 //temporary nest class until an actual nest class is made...

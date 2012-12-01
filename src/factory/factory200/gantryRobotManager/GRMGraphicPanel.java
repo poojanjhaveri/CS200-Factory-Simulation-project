@@ -1,7 +1,5 @@
 package factory.factory200.gantryRobotManager;
-/**
- * @author Yuting Liu
- */
+
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -18,7 +16,10 @@ import factory.general.Global;
 import factory.general.Message;
 import factory.general.Part;
 
-
+/**
+ * @brief GRM animations are drawn here
+ * @author Yuting Liu
+ */
 public class GRMGraphicPanel extends JPanel implements ActionListener {
     
     ArrayList<GUIBin> bins;

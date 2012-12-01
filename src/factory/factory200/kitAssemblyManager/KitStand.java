@@ -12,7 +12,7 @@ import javax.swing.*;
  */
 
 /**
- *
+ * @brief the kit stand that holds active kits
  * @author Deepa
  */
 public class KitStand {

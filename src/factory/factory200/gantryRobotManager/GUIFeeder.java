@@ -4,6 +4,7 @@ import javax.swing.ImageIcon;
 
 import factory.general.Drawable;
 /**
+ * @brief a drawable feeder
  * @author Yuting L
  *
  */
