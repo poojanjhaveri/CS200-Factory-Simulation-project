@@ -94,7 +94,25 @@ public class KitAssemblyManager extends Manager implements ActionListener {
             int nest = msg.charAt(4) - 48;
             int partType = msg.charAt(6) - 48;
             this.doSetParts(nest, partType);
-        }
+        }else if(msg.contains(Message.KAM_ACTION_STABILIZE_NEST))
+	    {
+Integer i = Integer.parseInt(this.grabParameter(msg));
+
+	    this.graphics.toggleUnstable(i);
+	    this.nonnorm.toggleStabilizeColor(i);
+	    this.nonnorm.removeAll();
+	    this.nonnorm.preparemainpanel();
+		}
+	    }else if(msg.contains(Message.KAM_ACTION_UNPILE_NEST))
+	    {
+Integer i = Integer.parseInt(this.grabParameter(msg));
+		this.graphics.togglePiled(i);
+		this.nonnorm.togglePiledColor(i);
+		this.nonnorm.removeAll();
+		this.nonnorm.preparemainpanel();
+	
+	    }
+
 
         //todo - let me know what functions agent will call so I can process them here
     }
@@ -206,10 +224,10 @@ public class KitAssemblyManager extends Manager implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent ae) {
-    /*	
+    
 	for(int i = 0; i != 8; i++){
 	if(ae.getSource() == this.nonnorm.getPilingButton(i)){
-	    if(!this.graphics.piledColor.get(i))
+	    if(!this.nonnorm.piledColor.get(i))
 	    {
 	    this.sendToServer(Message.KAM_NEST_PILED+":"+i);
 	    }
@@ -219,7 +237,7 @@ public class KitAssemblyManager extends Manager implements ActionListener {
 	    this.nonnorm.preparemainpanel();
 	}
     	if(ae.getSource() == this.nonnorm.getStabilityButton(i)){
-	if(!this.graphics.unstableColor.get(i)){
+	if(!this.nonnorm.unstableColor.get(i)){
 this.sendToServer(Message.KAM_NEST_UNSTABLE+":"+i);
 }
 	    this.graphics.toggleUnstable(i);
@@ -228,7 +246,10 @@ this.sendToServer(Message.KAM_NEST_UNSTABLE+":"+i);
 	    this.nonnorm.preparemainpanel();
     	}
 	}
-	*/
+	if(ae.getSource() == this.nonnorm.getDropPartButton())
+	    {
+		this.sendToServer(Message.KAM_BAD_KIT);
+	    }
     	//if(ae.getSource()==){
     		
     	//}

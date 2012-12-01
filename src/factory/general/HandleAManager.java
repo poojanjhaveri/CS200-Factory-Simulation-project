@@ -140,9 +140,9 @@ public class HandleAManager implements Runnable {
             this.server.setConveyerAgentClient(this);
             this.server.setPartsAgentClient(this);
             this.server.getServerLM().setKAM(this);
+	    this.server.setNestAgentClient(this);
         }
     }
-
 
     public void pushToFPM()
     {
@@ -287,8 +287,12 @@ public class HandleAManager implements Runnable {
             } //-----------------------------------------------------------------------------------------------------------     
 	    else if(msg.contains(Message.KAM_NEST_PILED)){
 		//handle nest piled nonnorm
+	        
 	    }else if(msg.contains(Message.KAM_NEST_UNSTABLE)){
 		//handle unstable nonnorm
+		this.server.getCameraAgent().msgPartsShaking(Integer.parseInt(this.grabParameter(msg)));
+	    }else if(msg.contains(Message.KAM_BAD_KIT)){
+		//handle bad kit nonnorm NOTE: bad kit == DROPPED != INSPECTED!!!!
 	    }
 
     }

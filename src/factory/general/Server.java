@@ -374,6 +374,10 @@ public class Server {
     public void setFPMClient(HandleAManager in) {
         this.fpmclient = in;
     }
+    public void setNestAgentClient(HandleAManager in)
+    {
+	this.nestAgent.setClient(in);
+    }
 
     public HandleAManager getFPMClient() {
         return this.fpmclient;
@@ -385,6 +389,10 @@ public class Server {
 
     public HandleAManager getKitManagerClient() {
         return this.kitmanagerclient;
+    }
+    
+    public CameraAgent getCameraAgent(){
+    return this.cameraAgent;
     }
 
     public void setFactoryProductionManagerToAll(HandleAManager in) {
