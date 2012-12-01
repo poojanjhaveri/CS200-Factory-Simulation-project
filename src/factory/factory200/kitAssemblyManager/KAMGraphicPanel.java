@@ -300,9 +300,10 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
                         break;
 		case 7://drop kit onto placeholder
                         if (delivery.inEmptyPostion()) {
-                            delivery.takeKit(kitbot.dropKit());
                             deliveryStation=true;
-                            stationRun=false;
+                            stationRun=true;
+                            delivery.takeKit(kitbot.dropKit());
+                            
                         }
                         break;
 		case 50://thread releases
