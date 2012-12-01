@@ -38,8 +38,7 @@ public class LMSignalFromAnimationVerification {
 			laneNestNum = message.charAt(0) - 48;
 			
 			// Tell the agent that clicked the button
-			System.out.println("Clicked jammed animation!!!");
-			//serverMain.getFeederAgents()[laneNestNum / 2].msgLaneJammed(laneNestNum);
+			serverMain.getFeederAgents()[laneNestNum / 2].msgLaneJammed(laneNestNum);
 		}
 		
 		// Non-normative Scenario 3
