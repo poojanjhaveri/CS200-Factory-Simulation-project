@@ -8,6 +8,7 @@
 *.settings
 *~
 *.orig
+*.db
 
 nbproject/
 bin/
