@@ -64,8 +64,8 @@ public class FactoryProductionManager extends Manager implements ActionListener 
     private ArrayList<String> availableKits;
     private ArrayList<Kit> selectedKits;
 
-    private boolean empty;
-    private boolean constructed;
+    private boolean kitListFromServerIsEmpty; // true if kit list from server is empty
+    private boolean constructed; // variable to determine if this class's constructor has finished; used for real time updates
     private BlueprintKits kitsbp;
     //	private Image bgimg;
 
@@ -75,7 +75,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
     GridBagConstraints c;
 
     public FactoryProductionManager() {
-        empty = false;
+        kitListFromServerIsEmpty = false;
         constructed = false;
 
         //Instantiate components that need to exist before the pull
@@ -325,7 +325,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
         if(ae.getSource() == selKit)
         {
 
-            if(!empty)
+            if(!kitListFromServerIsEmpty)
             {
                 p.println("Action listener called " + selKit.getItemCount());
                 selKitRoutine(ae.getSource());
@@ -335,7 +335,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
         //Add selection to pending queue
         if(ae.getSource() == queueue)
         {
-            if(!empty)
+            if(!kitListFromServerIsEmpty)
             {
                 if(!numE.getText().equals(""))
                 {
@@ -363,7 +363,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
         //Commit list, start simulation
         if(ae.getSource() == start)
         {
-            if(!empty)
+            if(!kitListFromServerIsEmpty)
             {
                 if(selectedKits.size() > 0)
                 {
@@ -388,7 +388,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
         //Clear pending queue
         if(ae.getSource() == reset)
         {
-            if(!empty)
+            if(!kitListFromServerIsEmpty)
             {
                 if(selectedKits.size() > 0)
                 {
@@ -415,9 +415,8 @@ public class FactoryProductionManager extends Manager implements ActionListener 
         }
     }
     
-        //Functionality for JComboBox usage
-    private void setComboBoxSelection()
-    {
+    //Functionality for JComboBox usage
+    private void setComboBoxSelection() {
             nameToAdd = (String)selKit.getSelectedItem();
             p.println("Name to add = " + nameToAdd);
 
@@ -459,9 +458,8 @@ public class FactoryProductionManager extends Manager implements ActionListener 
         gfx.verifyMessage(msg);
     }
 
-    //Finalize creation of dynamic components, follows server pull thread
-    public void reconstructComboBox()
-    {
+    // Finalize creation of dynamic components; follows server pull thread
+    public void reconstructComboBox() {
         p.println("Incoming number of kits = " + kitsbp.getKits().size());
         
         availableKits.clear();
@@ -478,21 +476,21 @@ public class FactoryProductionManager extends Manager implements ActionListener 
         for(int i=0; i<selKit.getItemCount(); i++) {
             selKit.removeItemAt(0);
         }
-        p.println(selKit.getItemCount());
+        p.println("Just removed all kits: new count: "+selKit.getItemCount());
         
         //Add strings to the combobox component
         for(String kitty : availableKits) {
             selKit.addItem(kitty);
         }
-        p.println("Combobox size = " + selKit.getItemCount());
+        p.println("Just added string to combo box: new size: " + selKit.getItemCount());
         //if the incoming kit list isn't empty, make the combo box now
-        if(!empty) {
+        if (!kitListFromServerIsEmpty) {
             selKit.setSelectedItem(0);
             p.println("Name to add? = " + (String)selKit.getSelectedItem());
             setComboBoxSelection();
         }
 
-        if(constructed) {
+        if (constructed) { // call only if the constructor has already finished
             queuePanel.remove(queuePane);
             gridbag.setConstraints(queuePane,c);
             queuePanel.add(queuePane);
