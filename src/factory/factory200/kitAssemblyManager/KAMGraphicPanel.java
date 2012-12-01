@@ -71,7 +71,7 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
     int emptyKits;
     int counter;
     int cameraCounter;
-    boolean deliveryStation;
+    public boolean deliveryStation;
     Timer timer;
     boolean stationRun;
     
@@ -300,7 +300,10 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
                         break;
 		case 7://drop kit onto placeholder
                         if (delivery.inEmptyPostion()) {
+                            //deliveryStation=true;
+                            //stationRun=true;
                             delivery.takeKit(kitbot.dropKit());
+                            
                         }
                         break;
 		case 50://thread releases
