@@ -98,7 +98,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
                 return true;
             }
         }
-        if (factoryRunning && !requestedKitFromConveyor && kitStand.availability() > 0) { //kit stand has empty spot
+        if (factoryRunning && !requestedKitFromConveyor && (kitStand.isEmpty(0) || kitStand.isEmpty(1)) && kitStand.isEmpty(2)) { //kit stand has empty spot
             requestEmptyKitFromConveyor();
             return true;
         }
