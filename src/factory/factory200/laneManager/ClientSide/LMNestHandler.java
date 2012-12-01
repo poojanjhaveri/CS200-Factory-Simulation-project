@@ -25,7 +25,7 @@ public class LMNestHandler {
 			app.getGUIPanel().getGUINest().getGUINestArray(nestNum).setNestSwitch(false);
 			app.getGraphicsPanel().getAllNest().getNest(nestNum).nestDown();
 			app.getGraphicsPanel().getAllPart().nestDown(nestNum);
-			app.getGraphicsPanel().getAllPart().getLane(nestNum).switchPartPiled(false);
+			app.getGraphicsPanel().getAllPart().getNest(nestNum).switchPartPiled(false);
 		}
 	}
 }

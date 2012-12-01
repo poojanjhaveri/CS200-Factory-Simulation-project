@@ -1,6 +1,6 @@
 package factory.factory200.laneManager.ClientSide;
 
-import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.border.TitledBorder;
@@ -18,12 +18,8 @@ public class LMGUINestPanel extends JPanel{
 	private LMGUIContentPanel upDownSwitchPanel = new LMGUIContentPanel(downSwitch, upSwitch, upDownSwitchTitle);
 
 	public LMGUINestPanel(){
-		// Layout Setting
-		setLayout(new FlowLayout(FlowLayout.CENTER,0,15));
-		
-		// Add GUI contents
+		setLayout(new GridLayout(1,2));
 		add(upDownSwitchPanel);
-		
 		setNestSwitch(true);
 	}
 

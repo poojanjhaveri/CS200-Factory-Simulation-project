@@ -68,16 +68,12 @@ public class LMFeederHandler {
 		
 		// Message : Part Low Sensor On
 		else if( message.contains("Part Low Sensor On") ){
-			// GUIPanel change
-			app.getGUIPanel().getGUIFeeder().getGUIFeederArray(feederNum).setFeederPartLowSensor();
 			// GraphicsPanel change
 			app.getGraphicsPanel().getAllFeeder().getPartLowBulb(feederNum).setSwitch(true);
 		}
 		
 		// Message : Part Low Sensor Off
 		else if( message.contains("Part Low Sensor Off") ){
-			// GUIPanel change
-			app.getGUIPanel().getGUIFeeder().getGUIFeederArray(feederNum).setFeederPartHighSensor();
 			// GraphicsPanel change
 			app.getGraphicsPanel().getAllFeeder().getPartLowBulb(feederNum).setSwitch(false);
 		}
@@ -106,32 +102,24 @@ public class LMFeederHandler {
 		
 		// Message : Lowers Rear Gate
 		else if( message.contains("Rear Gate Lower") ){
-			// GUIPanel change
-			app.getGUIPanel().getGUIFeeder().getGUIFeederArray(feederNum).setLowerRaiseRearGateSwitchOff();
 			// GraphicsPanel change
 			app.getGraphicsPanel().getAllFeeder().getRearGateBulb(feederNum).setSwitch(true);
 		}
 		
 		// Message : Raises Rear Gate
 		else if( message.contains("Rear Gate Raise") ){
-			// GUIPanel change
-			app.getGUIPanel().getGUIFeeder().getGUIFeederArray(feederNum).setLowerRaiseRearGateSwitchOn();
 			// GraphicsPanel change
 			app.getGraphicsPanel().getAllFeeder().getRearGateBulb(feederNum).setSwitch(false);
 		}
 		
 		// Message : Purge Bin Switch On
 		else if( message.contains("Purge On") ){
-			// GUIPanel change
-			app.getGUIPanel().getGUIFeeder().getGUIFeederArray(feederNum).setPurgeBinSwitchOn();	
 			// GraphicsPanel change
 			app.getGraphicsPanel().getAllFeeder().getPurgingBulb(feederNum).setSwitch(true);
 		}
 		
 		// Message : Purge Bin Switch Off
 		else if( message.contains("Purge Off") ){
-			// GUIPanel change
-			app.getGUIPanel().getGUIFeeder().getGUIFeederArray(feederNum).setPurgeBinSwitchOff();
 			// GraphicsPanel change
 			app.getGraphicsPanel().getAllFeeder().getPurgingBulb(feederNum).setSwitch(false);
 		}

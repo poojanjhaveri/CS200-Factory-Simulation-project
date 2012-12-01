@@ -75,6 +75,8 @@ public class Message {
     public static final String BAD_PART_INSERTION = "BAD_PART_INSERTION";
     public static final String LANE_JAMMED = "LANE_JAMMED";
     public static final String PART_PILED = "PART_PILED";
+    public static final String PART_TOGGLING = "PART_TOGGLING";
+    public static final String PART_UNTOGGLING = "PART_UNTOGGLING";
     
     //PULL_KITS_LIST is also used by FPM
     public static final String IDENTIFY_FACTORYPRODUCTIONMANAGER = "IDENTIFY_FACTORYPRODUCTIONMANAGER";

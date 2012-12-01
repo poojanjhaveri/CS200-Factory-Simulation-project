@@ -35,7 +35,6 @@ class LMThreadTimer implements Runnable{
 
 	public class ServerTimer implements ActionListener{
 		public void actionPerformed(ActionEvent ae){
-			serverMain.getNonNormative().timerAction();
 			if(++feedingTiming == 50){
 				sendPartSignal.orderFeeding();
 				feedingTiming = 0;

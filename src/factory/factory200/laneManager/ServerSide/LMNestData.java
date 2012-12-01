@@ -38,6 +38,7 @@ public class LMNestData {
 
 		// Server Data Task
 		nestSwitch = false;
+		serverMain.getForAgentNestCamera().stopPiledPart(nestNum);
 		serverMain.getPartData().nestDown(nestNum);
 		serverMain.getForAgentLane().setSwitchOff(nestNum);
 	}

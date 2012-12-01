@@ -11,7 +11,6 @@ import factory.factory200.factoryProductionManager.*;
 public class LMDrawableAllPart {
 	
 	private LMApplication app;
-	
 	private LMDrawablePart newPart;
 	private LMNestData newNestData;
 	private LMLaneData newLaneData;
@@ -23,7 +22,7 @@ public class LMDrawableAllPart {
 		
 		for(int i=0 ; i<8 ; i++){
 			newNestData = new LMNestData(i);
-			newLaneData = new LMLaneData(i, this);
+			newLaneData = new LMLaneData(i, app);
 			nestDatas.add(newNestData);
 			laneDatas.add(newLaneData);
 		}
@@ -86,5 +85,9 @@ public class LMDrawableAllPart {
 	
 	public LMLaneData getLane(int laneNum){
 		return laneDatas.get(laneNum);
+	}
+	
+	public LMNestData getNest(int nestNum){
+		return nestDatas.get(nestNum);
 	}
 }
