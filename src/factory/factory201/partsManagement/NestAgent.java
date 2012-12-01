@@ -129,7 +129,18 @@ public class NestAgent extends Agent implements NestInterface {
         }
         /* added by Kevin- if the parts are unstable, set the shaking to true*/
         else  if (result.is == Result.Is.unstableParts){
-           n.shaking=true;
+           //n.shaking=true;
+              for (Nest n1: myNests){
+                if (n1.nestNum==n.nestNum)
+                {   //stabilize once and then wait for nest to be full again (or request new inspection. )
+                    System.out.println("nest is shaking, need to stabilize");
+                    n1.shaking=true;
+                    // stabilizeNest(n1.nestNum);
+                    //n.shaking=false;
+                   // return true;
+                }
+            }
+              
            System.out.println("Result received is that parts are unstable");
         }
         
@@ -220,16 +231,22 @@ public class NestAgent extends Agent implements NestInterface {
         return false;
     }
     
-    private void stabilizeNest(int nestNumber){
-    print("about to stabilize the nest ");
-      timer.schedule(new TimerTask(){
-    	    public void run(){		    
-    		//function to the animation to stabilize the nest 
-    	    }
-    	}, 5000);  
-   
+    private void stabilizeNest(int nestN){
+        int i=nestN;
+      try {
+         Thread.sleep(3000);
+         } catch (InterruptedException ex) {
+         }
+    //    print("about to stabilize the nest ");
+        System.out.println("sending message to stabilize nest at " + nestN);
+    client.sendMessage(Message.KAM_ACTION_STABILIZE_NEST+":"+nestN);
+            try {
+         Thread.sleep(1000);
+         } catch (InterruptedException ex) {
+         }
     }
- 
+    private void stabilize(int nestN){
+    }
     private void requestPart(Nest n){
         print("requesting " + n.part.getInt() + "to lane " + n.getLane().getIndex());
     	n.status = Nest.Status.gettingPart;

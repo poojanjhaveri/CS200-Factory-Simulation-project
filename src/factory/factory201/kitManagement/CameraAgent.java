@@ -164,6 +164,7 @@ public class CameraAgent extends Agent implements Camera {
             System.out.println("unstable parts have been detected. ");
              is= Result.Is.unstableParts;
             }
+        nestErrors.remove(i);
         }
         
         
