@@ -43,7 +43,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
     // ********** AGENT MESSAGES *********
     @Override
     public void msgNeedEmptyKit() {
-        print("kit request received");
+        //print("kit request received");
         kitRequestsFromPartsAgent++;
         stateChanged();
     }
@@ -78,7 +78,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
     }
 
     public void msgAnimationComplete() {
-        print("msgAnimationComplete");
+        //print("msgAnimationComplete");
         animation.release();
     }
 
@@ -103,9 +103,9 @@ public class KitRobotAgent extends Agent implements KitRobot {
             requestEmptyKitFromConveyor();
             return true;
         }
-        print("kit requests is " + kitRequestsFromPartsAgent);
+        //print("kit requests is " + kitRequestsFromPartsAgent);
         if (kitRequestsFromPartsAgent > 0) { //parts agent has requested at least one kit
-            print("need to give empty kit to the parts agent");
+          //  print("need to give empty kit to the parts agent");
             if ((!kitStand.isEmpty(1)) && kitStand.get(1).status == Kit.Status.empty) { //there is an empty kit on [1]
                 giveEmptyKitToPartsAgent(1);
                 kitRequestsFromPartsAgent--;
@@ -175,10 +175,10 @@ public class KitRobotAgent extends Agent implements KitRobot {
             this.client.sendMessage(Message.KAM_PICK_UP_EMPTY_KIT);
             this.fpm.sendMessage(Message.KAM_PICK_UP_EMPTY_KIT);
             try {
-                print("semaphore acquired ");
+          //      print("semaphore acquired ");
                 this.animation.acquire();
 //                Thread.sleep(3000);
-                print("semaphore released ");
+            //    print("semaphore released ");
             } catch (InterruptedException ex) {
             }
         } else {
@@ -192,10 +192,10 @@ public class KitRobotAgent extends Agent implements KitRobot {
             this.client.sendMessage(Message.KAM_PICK_UP_EMPTY_KIT_TO_ACTIVE);
             this.fpm.sendMessage(Message.KAM_PICK_UP_EMPTY_KIT_TO_ACTIVE);
             try {
-                print("semaphore acquired 1");
+              //  print("semaphore acquired 1");
                 this.animation.acquire();
 //                Thread.sleep(3000);
-                print("semaphore released 1");
+                //print("semaphore released 1");
             } catch (InterruptedException ex) {
             }
         } else {
@@ -210,7 +210,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
             try {
                 this.animation.acquire();
 //            Thread.sleep(3000);
-                print("semaphore released 1");
+                //print("semaphore released 1");
             } catch (InterruptedException ex) {
             }
         } else {

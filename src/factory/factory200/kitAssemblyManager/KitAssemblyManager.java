@@ -117,6 +117,8 @@ public class KitAssemblyManager extends Manager implements ActionListener {
             tempPic = new ImageIcon("pics/parts/part7.png");
         } else if (partType == 7) {
             tempPic = new ImageIcon("pics/parts/part8.png");
+        } else if (partType==8){ //ADD IN BAD PART LOGIC!!!!
+            tempPic = new ImageIcon("pics/parts/badpart.png"); //ADD IN MORE TO THIS FUNCTION? is signal sent to parts agent?
         }
         for (int i = 0; i < this.graphics.nest.size(); i++) {
             if (n == i) {

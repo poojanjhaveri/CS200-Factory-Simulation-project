@@ -91,11 +91,9 @@ public class LMPartData {
 	}
 	
 	public boolean checkAllBadParts(int nestNum){
-		
 		if( nests.get(nestNum).checkAllBadParts() == true ){
 			return true;
 		}
 		return false;
-		
 	}
 }

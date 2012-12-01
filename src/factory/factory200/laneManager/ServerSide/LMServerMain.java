@@ -3,7 +3,7 @@ package factory.factory200.laneManager.ServerSide;
 import javax.swing.JFrame;
 
 import factory.factory201.feederManagement.FeederAgent;
-import factory.factory201.partsManagement.NestAgent;
+import factory.factory201.kitManagement.CameraAgent;
 import factory.general.HandleAManager;
 
 /**
@@ -30,11 +30,9 @@ public class LMServerMain extends JFrame implements Runnable{
 	private LMController controller;
 	
 	private FeederAgent[] feederAgents;
-	private NestAgent nestAgent;
+	private CameraAgent cameraAgent;
 	
-	private NonNormativeFix1 nonNormativeFix1;
-	private NonNormativeFix2 nonNormativeFix2;
-	private NonNormativeFix3 nonNormativeFix3;
+	private NonNormative nonNormative;
 	
 	public LMServerMain(){}
 	
@@ -52,29 +50,8 @@ public class LMServerMain extends JFrame implements Runnable{
 		new Thread(threadTimer).start();
 		threadTimer.timerStart();
 		
-		nonNormativeFix1 = new NonNormativeFix1(this);
-		nonNormativeFix2 = new NonNormativeFix2(this);
-		nonNormativeFix3 = new NonNormativeFix3(this);
-		
+		nonNormative = new NonNormative(this);
 		//controller = new LMController(agentFeeder, agentLane, agentNest, agentNestCamera, agentGantryRobot, agentPartRobot, this);
-	}
-	
-	public void checkFixItRunning(){
-		nonNormativeFix1.run();
-		nonNormativeFix2.run();
-		nonNormativeFix3.run();
-	}
-	
-	public void problemHappened(int nonNormativeScenarioNum){
-		if( nonNormativeScenarioNum == 1 ){
-			nonNormativeFix1.start();
-		}
-		else if( nonNormativeScenarioNum == 2 ){
-			nonNormativeFix2.start();
-		}
-		else if( nonNormativeScenarioNum == 3 ){
-			nonNormativeFix3.start();
-		}
 	}
 
 	public LMLaneForAgent getForAgentLane(){
@@ -149,15 +126,23 @@ public class LMServerMain extends JFrame implements Runnable{
 		}
 	}
 	
+	public NonNormative getNonNormative(){
+		return nonNormative;
+	}
+
 	public void setFeederAgents(FeederAgent[] feederAgents){
 		this.feederAgents = feederAgents;
 	}
 	
-	public void setNestAgents(NestAgent nestAgent){
-		this.nestAgent = nestAgent;
+	public void setCameraAgents(CameraAgent cameraAgent){
+		this.cameraAgent = cameraAgent;
 	}
 	
 	public FeederAgent[] getFeederAgents(){
 		return feederAgents;
+	}
+	
+	public CameraAgent getCameraAgent(){
+		return cameraAgent;
 	}
 }

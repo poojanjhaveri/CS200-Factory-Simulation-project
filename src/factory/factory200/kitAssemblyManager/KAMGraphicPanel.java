@@ -401,8 +401,8 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
 		if(rand.nextInt(2) == 0)
 		    offsety = -1*offsety;
 		}
-		if(this.piled && k > 3){
-		   offsetx -= 5;
+		if(this.piled && i > 3){
+		   offsetx -= 10;
 		}
                 this.nest.get(k).getParts().get(i).getGUIPart().getImage().paintIcon(this, g2, nest.get(k).getParts().get(i).getGUIPart().getX()+offsetx, nest.get(k).getParts().get(i).getGUIPart().getY()+offsety);
             }
