@@ -25,7 +25,7 @@ public class GUINonNormKAM  extends JPanel {
     
     private JPanel mainpanel;
     JButton droppart;
-   
+    JButton earlyflash;///<flash camera early
     JButton piled;
     ArrayList<JButton> unstables;
     ArrayList<JButton> piles;
@@ -142,7 +142,10 @@ public class GUINonNormKAM  extends JPanel {
     	return this.unstables.get(i);
     	//return this.unstabilize;
     }
-    
+    public JButton getEarlyFlashButton()
+    {
+	return this.earlyflash;
+    }
     public class droppartbutton implements ActionListener
          {
     
