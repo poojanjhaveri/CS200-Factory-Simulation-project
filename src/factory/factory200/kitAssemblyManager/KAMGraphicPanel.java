@@ -57,6 +57,11 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
     public static final Integer PARTSROBOT_VELOCITYY = 2;
     public static final Integer PARTSROBOTINITIALX = 400;///<x coordinate for parts robot to spawn in
     public static final Integer PARTSROBOTINITIALY = 350;///<y coordinate for parts robot to spawn in
+
+    public Boolean unstable;///<whether or not the nest is stable
+
+//WHY ARE DEY PUBLIC WHY NO PRIVATE GAAARRRRRRRR. lol jk its fine.
+
     public GUIPartRobot kitter;///<declares an object that keeps track of the parts robot animation and graphics
     public GUIKitRobot kitbot;///<declares an object that keeps track of the kit robot animation and graphics
     public KitStand kitstand;///<declares an object that keeps track of what is happening with the kit stand
@@ -75,6 +80,7 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
     //private ImageIcon backgroundImage = new ImageIcon("pics/background/part1");
 
     public KAMGraphicPanel(KitAssemblyManager k) {
+    	this.unstable = false;
         this.kam = k;
         
         deliveryStation = true;
@@ -385,15 +391,26 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
             camera.setVisible(false);
             cameraCounter = 0;
         }
-        kitter.paintMe(this, g2);
+        
 
+	Random rand = new Random();//random numgen
         for (int k = 0; k < this.nest.size(); k++) {
             for (int i = 0; i < this.nest.get(k).getParts().size(); i++) {
                 //System.out.println(j.nest.get(0).getParts().get(i).getGUIPart());
-                this.nest.get(k).getParts().get(i).getGUIPart().getImage().paintIcon(this, g2, nest.get(k).getParts().get(i).getGUIPart().getX(), nest.get(k).getParts().get(i).getGUIPart().getY());
+		int offsetx = 0;
+		int offsety = 0;
+		if(this.unstable){
+		offsetx = rand.nextInt(5);
+		offsety = rand.nextInt(5);
+		if(rand.nextInt(2) == 0)
+		    offsetx = -1*offsetx;
+		if(rand.nextInt(2) == 0)
+		    offsety = -1*offsety;
+		}
+                this.nest.get(k).getParts().get(i).getGUIPart().getImage().paintIcon(this, g2, nest.get(k).getParts().get(i).getGUIPart().getX()+offsetx, nest.get(k).getParts().get(i).getGUIPart().getY()+offsety);
             }
         }
-
+        kitter.paintMe(this, g2);
     }
 
     public void paintNests(JPanel j, Graphics2D g) {

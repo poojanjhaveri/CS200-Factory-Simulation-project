@@ -4,10 +4,12 @@
  */
 package factory.factory200.kitAssemblyManager;
 
+import javax.swing.JPanel;
+
 /**
  *
  * @author Deepa
  */
-public class KAMGUIPanel {
+public class KAMGUIPanel extends JPanel {
     
 }

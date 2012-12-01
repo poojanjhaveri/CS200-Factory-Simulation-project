@@ -24,10 +24,11 @@ public class GUINonNormKAM  extends JPanel {
     private JPanel mainpanel;
     JButton droppart1;
     JButton undo1;
+    JButton unstabilize;
+    ActionListener kam;
     
-    
-    public GUINonNormKAM() {
-             
+    public GUINonNormKAM(ActionListener in) {
+             this.kam = in;
            preparemainpanel();
            this.add(mainpanel);
         
@@ -64,14 +65,26 @@ public class GUINonNormKAM  extends JPanel {
         c.gridx=1;
         c.gridy=0;
         undo1 = new JButton("Revert Back");
-        undo1.setEnabled(false);
+        //undo1.setEnabled(false);
         undo1.setPreferredSize(new Dimension(150,50));
         undo1.addActionListener(new undobutton());
         scenario.add(undo1);
         
+        c.gridx=1;
+        c.gridy=0;
+        this.unstabilize = new JButton("Toggle nest stability");
+        //this.unstabilize.setEnabled(false);
+        this.unstabilize.setPreferredSize(new Dimension(150,50));
+        this.unstabilize.addActionListener(this.kam);
+        scenario.add(this.unstabilize);
         
         basepanel.add(scenario);
         mainpanel.add(basepanel,BorderLayout.CENTER);
+    }
+    public JButton getStabilityButton()
+    {
+    	return this.unstabilize;
+    	//return this.unstabilize;
     }
     
     public class droppartbutton implements ActionListener

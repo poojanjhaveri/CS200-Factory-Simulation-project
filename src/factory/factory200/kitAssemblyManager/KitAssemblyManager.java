@@ -36,6 +36,7 @@ public class KitAssemblyManager extends Manager implements ActionListener {
     KAMGraphicPanel graphics;
     boolean test=false;
     JTabbedPane tabbedPane;
+    GUINonNormKAM nonnorm;
     //private KitAssemblyManagerDeliveryStation kamdelivery;///<keeps track of all of the objects listed above and paints the objects according to a timer
     //private KitAssemblyManagerGUIPanel gui;///<keeps track of the GUI components and allows the manager to pick which components will be broken
 
@@ -199,6 +200,12 @@ public class KitAssemblyManager extends Manager implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent ae) {
+    	
+    	if(ae.getSource() == this.nonnorm.getStabilityButton())
+    		this.graphics.unstable = !this.graphics.unstable;
+    	//if(ae.getSource()==){
+    		
+    	//}
         if (ae.getSource() == cameraKitStand) {
             this.flashKitCamera();
         }
@@ -274,9 +281,9 @@ public class KitAssemblyManager extends Manager implements ActionListener {
         
         this.tabbedPane = new JTabbedPane();
         tabbedPane.addTab("Animation", this.graphics);
-        GUINonNormKAM nonGUI = new GUINonNormKAM();
+        this.nonnorm = new GUINonNormKAM(this);
         
-        tabbedPane.addTab("Non-normative", nonGUI);
+        tabbedPane.addTab("Non-normative", nonnorm);
         this.add(tabbedPane);
         
      //   this.add(graphics);
