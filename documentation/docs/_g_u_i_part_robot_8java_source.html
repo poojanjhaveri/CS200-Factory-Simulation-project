@@ -20,9 +20,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="kitrobot.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Factory Project
-   &#160;<span id="projectnumber">0.1.0</span>
+   &#160;<span id="projectnumber">0.4.0</span>
    </div>
    <div id="projectbrief">team 1 joint cs200/cs201</div>
   </td>
@@ -172,112 +173,122 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    }</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;</div>
 <div class="line"><a name="l00111"></a><span class="lineno"><a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#ac6a762e68875d6993b1f22871b45ee51">  111</a></span>&#160;    <span class="keyword">public</span> LinkedList&lt;Part&gt; <a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#ac6a762e68875d6993b1f22871b45ee51">removePart</a>() {</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <span class="keywordflow">return</span> this.<a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#afbb9207952cdc77899659844904d97fa" title="current parts on the GUIPartRobot, en route to the Kit">parts</a>.<a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_parts_robot_inventory.html#a8f5ab794335bf4342e5bb76e66207883">giveAll</a>();</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    }</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
-<div class="line"><a name="l00115"></a><span class="lineno"><a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#a78f657887f6df20364df7324b903b315">  115</a></span>&#160;    <span class="keyword">public</span> LinkedList&lt;Part&gt; <a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#a78f657887f6df20364df7324b903b315">getPart</a>() {</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        <span class="keywordflow">return</span> this.<a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#afbb9207952cdc77899659844904d97fa" title="current parts on the GUIPartRobot, en route to the Kit">parts</a>.<a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_parts_robot_inventory.html#ac14c8f69252427e6ae93377153a7acb0">getAll</a>();</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    }</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;</div>
-<div class="line"><a name="l00119"></a><span class="lineno"><a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#a55f0fa6725c1d07af7e34111a4f9e8c2">  119</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#a55f0fa6725c1d07af7e34111a4f9e8c2">pickPartCommand</a>(Integer i) {</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        this.<a class="code" href="classfactory_1_1general_1_1_g_u_i_robot.html#a380270c0c5b71018e2ef64e94857cb3c" title="a queue of orders for the robot">orders</a>.add(i);</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    }</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;</div>
-<div class="line"><a name="l00123"></a><span class="lineno"><a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#ada9c0a5fa2c09f9265ce091de22b6850">  123</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#ada9c0a5fa2c09f9265ce091de22b6850">dropPartCommand</a>(Integer kit) {</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        <span class="keywordflow">if</span>(kit == 0)</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        this.<a class="code" href="classfactory_1_1general_1_1_g_u_i_robot.html#a380270c0c5b71018e2ef64e94857cb3c" title="a queue of orders for the robot">orders</a>.add(9);</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span>(kit == 1)</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            this.<a class="code" href="classfactory_1_1general_1_1_g_u_i_robot.html#a380270c0c5b71018e2ef64e94857cb3c" title="a queue of orders for the robot">orders</a>.add(8);</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        <span class="keywordflow">else</span> System.out.println(<span class="stringliteral">&quot;Invalid attempt to drop part off in kit &quot;</span> +kit);</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    }</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;</div>
-<div class="line"><a name="l00131"></a><span class="lineno"><a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#af9f0a9a78c2258cacb90295133762131">  131</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#af9f0a9a78c2258cacb90295133762131">cheat</a>() {</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        <a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#a2bdab2ad3b0fbe561ae8c05359554985">moveToNestCommand</a>(0);</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        <a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#a55f0fa6725c1d07af7e34111a4f9e8c2">pickPartCommand</a>(0);</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        <a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#a55f0fa6725c1d07af7e34111a4f9e8c2">pickPartCommand</a>(0);</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        <a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#a55f0fa6725c1d07af7e34111a4f9e8c2">pickPartCommand</a>(0);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <span class="keywordflow">if</span>(this.<a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#afbb9207952cdc77899659844904d97fa" title="current parts on the GUIPartRobot, en route to the Kit">parts</a>.<a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_parts_robot_inventory.html#a5507f8ac5d127bc4b2451aca99a83fe4">size</a>()==0){</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            System.out.println(<span class="stringliteral">&quot;ATTEMPTING TO RETRIEVE PART FROM EMPTY KITTER&quot;</span>);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        }</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <span class="keywordflow">return</span> this.<a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#afbb9207952cdc77899659844904d97fa" title="current parts on the GUIPartRobot, en route to the Kit">parts</a>.<a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_parts_robot_inventory.html#a8f5ab794335bf4342e5bb76e66207883">giveAll</a>();</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    }</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;</div>
+<div class="line"><a name="l00118"></a><span class="lineno"><a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#a78f657887f6df20364df7324b903b315">  118</a></span>&#160;    <span class="keyword">public</span> LinkedList&lt;Part&gt; <a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#a78f657887f6df20364df7324b903b315">getPart</a>() {</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <span class="keywordflow">return</span> this.<a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#afbb9207952cdc77899659844904d97fa" title="current parts on the GUIPartRobot, en route to the Kit">parts</a>.<a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_parts_robot_inventory.html#ac14c8f69252427e6ae93377153a7acb0">getAll</a>();</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    }</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;</div>
+<div class="line"><a name="l00122"></a><span class="lineno"><a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#a55f0fa6725c1d07af7e34111a4f9e8c2">  122</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#a55f0fa6725c1d07af7e34111a4f9e8c2">pickPartCommand</a>(Integer i) {</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        this.<a class="code" href="classfactory_1_1general_1_1_g_u_i_robot.html#a380270c0c5b71018e2ef64e94857cb3c" title="a queue of orders for the robot">orders</a>.add(i);</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    }</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;</div>
+<div class="line"><a name="l00126"></a><span class="lineno"><a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#ada9c0a5fa2c09f9265ce091de22b6850">  126</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#ada9c0a5fa2c09f9265ce091de22b6850">dropPartCommand</a>(Integer kit) {</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        <span class="keywordflow">if</span>(kit == 0)</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        this.<a class="code" href="classfactory_1_1general_1_1_g_u_i_robot.html#a380270c0c5b71018e2ef64e94857cb3c" title="a queue of orders for the robot">orders</a>.add(9);</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span>(kit == 1)</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            this.<a class="code" href="classfactory_1_1general_1_1_g_u_i_robot.html#a380270c0c5b71018e2ef64e94857cb3c" title="a queue of orders for the robot">orders</a>.add(8);</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        <span class="keywordflow">else</span> System.out.println(<span class="stringliteral">&quot;Invalid attempt to drop part off in kit &quot;</span> +kit);</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    }</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
+<div class="line"><a name="l00134"></a><span class="lineno"><a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#af9f0a9a78c2258cacb90295133762131">  134</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#af9f0a9a78c2258cacb90295133762131">cheat</a>() {</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        <a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#a2bdab2ad3b0fbe561ae8c05359554985">moveToNestCommand</a>(0);</div>
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        <a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#a55f0fa6725c1d07af7e34111a4f9e8c2">pickPartCommand</a>(0);</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        <a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#ac936536bfc3f4a39f637cbbd05d72a51">dropOffParts</a>(1);</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    }</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;</div>
-<div class="line"><a name="l00140"></a><span class="lineno"><a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#a2bdab2ad3b0fbe561ae8c05359554985">  140</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#a2bdab2ad3b0fbe561ae8c05359554985">moveToNestCommand</a>(Integer i) {</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        this.<a class="code" href="classfactory_1_1general_1_1_g_u_i_robot.html#a380270c0c5b71018e2ef64e94857cb3c" title="a queue of orders for the robot">orders</a>.add(i + 10);</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    }</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;</div>
-<div class="line"><a name="l00144"></a><span class="lineno"><a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#ac936536bfc3f4a39f637cbbd05d72a51">  144</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#ac936536bfc3f4a39f637cbbd05d72a51">dropOffParts</a>(Integer i) {</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        <span class="keywordflow">if</span>(i==0){</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        this.<a class="code" href="classfactory_1_1general_1_1_g_u_i_robot.html#a380270c0c5b71018e2ef64e94857cb3c" title="a queue of orders for the robot">orders</a>.add(18);</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        }</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span>(i==1){</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;            this.<a class="code" href="classfactory_1_1general_1_1_g_u_i_robot.html#a380270c0c5b71018e2ef64e94857cb3c" title="a queue of orders for the robot">orders</a>.add(19);</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        }</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        <a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#ada9c0a5fa2c09f9265ce091de22b6850">dropPartCommand</a>(i);</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    }</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;</div>
-<div class="line"><a name="l00157"></a><span class="lineno"><a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#af39fd75906c941b1417217823e6f7b3b">  157</a></span>&#160;    <span class="keyword">public</span> Boolean <a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#af39fd75906c941b1417217823e6f7b3b" title="pops the order and performs it">performOrder</a>() {</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        <span class="comment">//System.out.println(&quot;PERFORMING ORDER&quot;);</span></div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        Integer i = this.<a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#ad91b64e226a1c1634d7ff01793839fc8">popOrder</a>();</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        <span class="keywordflow">switch</span> (i) {</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;            <span class="keywordflow">case</span> 10:</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;               </div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;            <span class="keywordflow">case</span> 11:</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;               </div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;            <span class="keywordflow">case</span> 12:</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;               </div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;            <span class="keywordflow">case</span> 13:</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;               </div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;            <span class="keywordflow">case</span> 14:</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;              </div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;            <span class="keywordflow">case</span> 15:</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;              </div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;            <span class="keywordflow">case</span> 16:</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;              </div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;            <span class="keywordflow">case</span> 17:</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                this.<a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#a3500c90be50dcc5d2d47d889bcd0443b">moveToNest</a>(i - 10);</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;            <span class="keywordflow">case</span> 18:</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                this.<a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#a95e415f76aaa9778606c85db7549bb1b" title="moves the parts robot to the dropoff site for parts">moveToKit0</a>();</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;            <span class="keywordflow">case</span> 19:</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                this.<a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#af34b1e18d1b51f9c25d8f80da2ddba80">moveToKit1</a>();</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;            <span class="keywordflow">case</span> 20:</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;                this.<a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#a636228cb9f0c629c12a84359672fab45">moveToDefault</a>();</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;                <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;            <span class="keywordflow">default</span>:</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        }</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    }</div>
-<div class="line"><a name="l00192"></a><span class="lineno"><a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#aa60440f32a88fdf82e33c9640841c153">  192</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#aa60440f32a88fdf82e33c9640841c153">checkDefault</a>()</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    {</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        <span class="keywordflow">if</span>(this.<a class="code" href="classfactory_1_1general_1_1_g_u_i_robot.html#a380270c0c5b71018e2ef64e94857cb3c" title="a queue of orders for the robot">orders</a>.size() == 0){</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;            </div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;          this.<a class="code" href="classfactory_1_1general_1_1_g_u_i_robot.html#a380270c0c5b71018e2ef64e94857cb3c" title="a queue of orders for the robot">orders</a>.add(20);</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        }</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    }</div>
-<div class="line"><a name="l00199"></a><span class="lineno"><a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#ad91b64e226a1c1634d7ff01793839fc8">  199</a></span>&#160;    <span class="keyword">public</span> Integer <a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#ad91b64e226a1c1634d7ff01793839fc8">popOrder</a>() {</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        <span class="keywordflow">return</span> super.popOrder();</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        <a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#a55f0fa6725c1d07af7e34111a4f9e8c2">pickPartCommand</a>(0);</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        <a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#a55f0fa6725c1d07af7e34111a4f9e8c2">pickPartCommand</a>(0);</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        <a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#a55f0fa6725c1d07af7e34111a4f9e8c2">pickPartCommand</a>(0);</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        <a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#ac936536bfc3f4a39f637cbbd05d72a51">dropOffParts</a>(1);</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    }</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;</div>
+<div class="line"><a name="l00143"></a><span class="lineno"><a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#a2bdab2ad3b0fbe561ae8c05359554985">  143</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#a2bdab2ad3b0fbe561ae8c05359554985">moveToNestCommand</a>(Integer i) {</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        this.<a class="code" href="classfactory_1_1general_1_1_g_u_i_robot.html#a380270c0c5b71018e2ef64e94857cb3c" title="a queue of orders for the robot">orders</a>.add(i + 10);</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        this.<a class="code" href="classfactory_1_1general_1_1_g_u_i_robot.html#a380270c0c5b71018e2ef64e94857cb3c" title="a queue of orders for the robot">orders</a>.add(50);</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    }</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;</div>
+<div class="line"><a name="l00148"></a><span class="lineno"><a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#ac936536bfc3f4a39f637cbbd05d72a51">  148</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#ac936536bfc3f4a39f637cbbd05d72a51">dropOffParts</a>(Integer i) {</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        <span class="keywordflow">if</span>(i==0){</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        this.<a class="code" href="classfactory_1_1general_1_1_g_u_i_robot.html#a380270c0c5b71018e2ef64e94857cb3c" title="a queue of orders for the robot">orders</a>.add(18);</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        }</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span>(i==1){</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;            this.<a class="code" href="classfactory_1_1general_1_1_g_u_i_robot.html#a380270c0c5b71018e2ef64e94857cb3c" title="a queue of orders for the robot">orders</a>.add(19);</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        }</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        <a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#ada9c0a5fa2c09f9265ce091de22b6850">dropPartCommand</a>(i);</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        this.<a class="code" href="classfactory_1_1general_1_1_g_u_i_robot.html#a380270c0c5b71018e2ef64e94857cb3c" title="a queue of orders for the robot">orders</a>.add(50);</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    }</div>
+<div class="line"><a name="l00158"></a><span class="lineno"><a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#a8103aeb8593855d8f5958e11869fbaf4">  158</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#a8103aeb8593855d8f5958e11869fbaf4">dropPartOnGround</a>()</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    {</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <span class="keywordflow">if</span>(this.<a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#afbb9207952cdc77899659844904d97fa" title="current parts on the GUIPartRobot, en route to the Kit">parts</a>.<a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_parts_robot_inventory.html#a5507f8ac5d127bc4b2451aca99a83fe4">size</a>() != 0)</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        this.<a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#afbb9207952cdc77899659844904d97fa" title="current parts on the GUIPartRobot, en route to the Kit">parts</a>.<a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_parts_robot_inventory.html#ac14c8f69252427e6ae93377153a7acb0">getAll</a>().remove(this.<a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#afbb9207952cdc77899659844904d97fa" title="current parts on the GUIPartRobot, en route to the Kit">parts</a>.<a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_parts_robot_inventory.html#a5507f8ac5d127bc4b2451aca99a83fe4">size</a>()-1);</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    }</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;</div>
+<div class="line"><a name="l00167"></a><span class="lineno"><a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#af39fd75906c941b1417217823e6f7b3b">  167</a></span>&#160;    <span class="keyword">public</span> Boolean <a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#af39fd75906c941b1417217823e6f7b3b" title="pops the order and performs it">performOrder</a>() {</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        <span class="comment">//System.out.println(&quot;PERFORMING ORDER&quot;);</span></div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        Integer i = this.<a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#ad91b64e226a1c1634d7ff01793839fc8">popOrder</a>();</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        <span class="keywordflow">switch</span> (i) {</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;            <span class="keywordflow">case</span> 10:</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;               </div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;            <span class="keywordflow">case</span> 11:</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;               </div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;            <span class="keywordflow">case</span> 12:</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;               </div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;            <span class="keywordflow">case</span> 13:</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;               </div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;            <span class="keywordflow">case</span> 14:</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;              </div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;            <span class="keywordflow">case</span> 15:</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;              </div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;            <span class="keywordflow">case</span> 16:</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;              </div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;            <span class="keywordflow">case</span> 17:</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;                this.<a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#a3500c90be50dcc5d2d47d889bcd0443b">moveToNest</a>(i - 10);</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;            <span class="keywordflow">case</span> 18:</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;                this.<a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#a95e415f76aaa9778606c85db7549bb1b" title="moves the parts robot to the dropoff site for parts">moveToKit0</a>();</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;            <span class="keywordflow">case</span> 19:</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                this.<a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#af34b1e18d1b51f9c25d8f80da2ddba80">moveToKit1</a>();</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;            <span class="keywordflow">case</span> 20:</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                this.<a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#a636228cb9f0c629c12a84359672fab45">moveToDefault</a>();</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;            <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        }</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    }</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;</div>
-<div class="line"><a name="l00203"></a><span class="lineno"><a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#a636228cb9f0c629c12a84359672fab45">  203</a></span>&#160;    <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#a636228cb9f0c629c12a84359672fab45">moveToDefault</a>() {</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;        this.<a class="code" href="classfactory_1_1general_1_1_moving_drawable.html#a38c1e5d2da6aacbe5940e57e229a29ab" title="sets the destination of movement for the drawable">moveTo</a>(<a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_k_a_m_graphic_panel.html">KAMGraphicPanel</a>.<a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_k_a_m_graphic_panel.html#a34144b22a014d07ef1b7912563a9d962" title="x coordinate for parts robot to spawn in">PARTSROBOTINITIALX</a>, <a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_k_a_m_graphic_panel.html">KAMGraphicPanel</a>.<a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_k_a_m_graphic_panel.html#ab559a8eadeecd7f9af9773f5ebfd0e8d" title="y coordinate for parts robot to spawn in">PARTSROBOTINITIALY</a>);</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    }</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;</div>
-<div class="line"><a name="l00207"></a><span class="lineno"><a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#a15538ed0d28689b6a34cb930dce96d74">  207</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#a15538ed0d28689b6a34cb930dce96d74">paintMe</a>(JPanel panel, Graphics2D g) {</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        Graphics2D g2d = (Graphics2D) g.create();</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        this.<a class="code" href="classfactory_1_1general_1_1_drawable.html#a7126f3e430706d3afe9af40b7aaedf0d">getImage</a>().paintIcon(panel, g2d, this.<a class="code" href="classfactory_1_1general_1_1_drawable.html#a0f5929254642adfe081528e591d4fcea">getCoordinate</a>().<a class="code" href="classfactory_1_1general_1_1_drawable.html#a535d970c59d86f56658834655382c8c1">getX</a>(), this.<a class="code" href="classfactory_1_1general_1_1_drawable.html#a0f5929254642adfe081528e591d4fcea">getCoordinate</a>().<a class="code" href="classfactory_1_1general_1_1_drawable.html#aea48f4bcd34731756b1fd6777f9f44b3">getY</a>());</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        LinkedList&lt;Part&gt; kitterparts = this.<a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#a78f657887f6df20364df7324b903b315">getPart</a>();</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i != kitterparts.size(); i++) {</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;            kitterparts.get(i).getGUIPart().getImage().paintIcon(panel, g2d, kitterparts.get(i).getGUIPart().getX(), kitterparts.get(i).getGUIPart().getY());</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;        }</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;        g2d.dispose();</div>
+<div class="line"><a name="l00202"></a><span class="lineno"><a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#aa60440f32a88fdf82e33c9640841c153">  202</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#aa60440f32a88fdf82e33c9640841c153">checkDefault</a>()</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    {</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;        <span class="keywordflow">if</span>(this.<a class="code" href="classfactory_1_1general_1_1_g_u_i_robot.html#a380270c0c5b71018e2ef64e94857cb3c" title="a queue of orders for the robot">orders</a>.size() == 0){</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;            </div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;          this.<a class="code" href="classfactory_1_1general_1_1_g_u_i_robot.html#a380270c0c5b71018e2ef64e94857cb3c" title="a queue of orders for the robot">orders</a>.add(20);</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        }</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    }</div>
+<div class="line"><a name="l00209"></a><span class="lineno"><a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#ad91b64e226a1c1634d7ff01793839fc8">  209</a></span>&#160;    <span class="keyword">public</span> Integer <a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#ad91b64e226a1c1634d7ff01793839fc8">popOrder</a>() {</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        <span class="keywordflow">return</span> super.popOrder();</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    }</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;</div>
+<div class="line"><a name="l00213"></a><span class="lineno"><a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#a636228cb9f0c629c12a84359672fab45">  213</a></span>&#160;    <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#a636228cb9f0c629c12a84359672fab45">moveToDefault</a>() {</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;        this.<a class="code" href="classfactory_1_1general_1_1_moving_drawable.html#a38c1e5d2da6aacbe5940e57e229a29ab" title="sets the destination of movement for the drawable">moveTo</a>(<a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_k_a_m_graphic_panel.html">KAMGraphicPanel</a>.<a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_k_a_m_graphic_panel.html#a34144b22a014d07ef1b7912563a9d962" title="x coordinate for parts robot to spawn in">PARTSROBOTINITIALX</a>, <a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_k_a_m_graphic_panel.html">KAMGraphicPanel</a>.<a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_k_a_m_graphic_panel.html#ab559a8eadeecd7f9af9773f5ebfd0e8d" title="y coordinate for parts robot to spawn in">PARTSROBOTINITIALY</a>);</div>
 <div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    }</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;}</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;</div>
+<div class="line"><a name="l00217"></a><span class="lineno"><a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#a15538ed0d28689b6a34cb930dce96d74">  217</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#a15538ed0d28689b6a34cb930dce96d74">paintMe</a>(JPanel panel, Graphics2D g) {</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;        Graphics2D g2d = (Graphics2D) g.create();</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;        this.<a class="code" href="classfactory_1_1general_1_1_drawable.html#a7126f3e430706d3afe9af40b7aaedf0d">getImage</a>().paintIcon(panel, g2d, this.<a class="code" href="classfactory_1_1general_1_1_drawable.html#a0f5929254642adfe081528e591d4fcea">getCoordinate</a>().<a class="code" href="classfactory_1_1general_1_1_drawable.html#a535d970c59d86f56658834655382c8c1">getX</a>(), this.<a class="code" href="classfactory_1_1general_1_1_drawable.html#a0f5929254642adfe081528e591d4fcea">getCoordinate</a>().<a class="code" href="classfactory_1_1general_1_1_drawable.html#aea48f4bcd34731756b1fd6777f9f44b3">getY</a>());</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        LinkedList&lt;Part&gt; kitterparts = this.<a class="code" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#a78f657887f6df20364df7324b903b315">getPart</a>();</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i != kitterparts.size(); i++) {</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;            kitterparts.get(i).getGUIPart().getImage().paintIcon(panel, g2d, kitterparts.get(i).getGUIPart().getX(), kitterparts.get(i).getGUIPart().getY());</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;        }</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        g2d.dispose();</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    }</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 17 2012 01:36:58 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Dec 1 2012 12:34:06 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

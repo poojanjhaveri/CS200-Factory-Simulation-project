@@ -20,9 +20,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="kitrobot.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Factory Project
-   &#160;<span id="projectnumber">0.1.0</span>
+   &#160;<span id="projectnumber">0.4.0</span>
    </div>
    <div id="projectbrief">team 1 joint cs200/cs201</div>
   </td>
@@ -92,6 +93,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="#pac-attribs">Package Attributes</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="classfactory_1_1factory200_1_1factory_production_manager_1_1_gantry_robot_manager_1_1_g_u_i_gantry_robot-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">factory.factory200.factoryProductionManager.GantryRobotManager.GUIGantryRobot Class Reference</div>  </div>
@@ -106,6 +108,7 @@ Inheritance diagram for factory.factory200.factoryProductionManager.GantryRobotM
  <div class="center">
   <img src="classfactory_1_1factory200_1_1factory_production_manager_1_1_gantry_robot_manager_1_1_g_u_i_gantry_robot.png" usemap="#factory.factory200.factoryProductionManager.GantryRobotManager.GUIGantryRobot_map" alt=""/>
   <map id="factory.factory200.factoryProductionManager.GantryRobotManager.GUIGantryRobot_map" name="factory.factory200.factoryProductionManager.GantryRobotManager.GUIGantryRobot_map">
+<area href="classfactory_1_1general_1_1_g_u_i_robot.html" title="a Robotic device that manipulates its surroundings" alt="factory.general.GUIRobot" shape="rect" coords="0,112,492,136"/>
 <area href="classfactory_1_1general_1_1_moving_drawable.html" title="any drawable that is capable of movement" alt="factory.general.MovingDrawable" shape="rect" coords="0,56,492,80"/>
 <area href="classfactory_1_1general_1_1_drawable.html" title="anything drawable onto the FactoryProductionManager Frame." alt="factory.general.Drawable" shape="rect" coords="0,0,492,24"/>
 </map>
@@ -115,16 +118,32 @@ Inheritance diagram for factory.factory200.factoryProductionManager.GantryRobotM
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a8c0bc78e53abf5cc4442ec16615a87ed"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_gantry_robot_manager_1_1_g_u_i_gantry_robot.html#a8c0bc78e53abf5cc4442ec16615a87ed">GUIGantryRobot</a> ()</td></tr>
 <tr class="separator:a8c0bc78e53abf5cc4442ec16615a87ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a55b4b66e182bdcf135e9a8639877f3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_gantry_robot_manager_1_1_g_u_i_gantry_robot.html#a1a55b4b66e182bdcf135e9a8639877f3">pickUpBin</a> (Integer num)</td></tr>
+<tr class="memdesc:a1a55b4b66e182bdcf135e9a8639877f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">sets a new feeder destination for the gantry robot sets a new feeder destination coordinate for gantry robot, the passed Integer specifies which feeder to head to  <a href="#a1a55b4b66e182bdcf135e9a8639877f3"></a><br/></td></tr>
+<tr class="separator:a1a55b4b66e182bdcf135e9a8639877f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1741b6b3038e3a0930a563eeb4e7447c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_gantry_robot_manager_1_1_g_u_i_gantry_robot.html#a1741b6b3038e3a0930a563eeb4e7447c">moveToFeeder</a> (Integer i)</td></tr>
-<tr class="memdesc:a1741b6b3038e3a0930a563eeb4e7447c"><td class="mdescLeft">&#160;</td><td class="mdescRight">sets a new feeder destination for the gantry robot sets a new feeder destination coordinate for gantry robot, the passed Integer specifies which feeder to head to  <a href="#a1741b6b3038e3a0930a563eeb4e7447c"></a><br/></td></tr>
+<tr class="memdesc:a1741b6b3038e3a0930a563eeb4e7447c"><td class="mdescLeft">&#160;</td><td class="mdescRight">&lt;moveToFeeder i which is assigned by agents in Server  <a href="#a1741b6b3038e3a0930a563eeb4e7447c"></a><br/></td></tr>
 <tr class="separator:a1741b6b3038e3a0930a563eeb4e7447c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a78d484439be90700b9b80dc2c7d746f0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_gantry_robot_manager_1_1_g_u_i_gantry_robot.html#a78d484439be90700b9b80dc2c7d746f0">moveToBin</a> (Integer i)</td></tr>
 <tr class="separator:a78d484439be90700b9b80dc2c7d746f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3a99ce67ceff4dd636d0ad2cb80b2237"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_gantry_robot_manager_1_1_g_u_i_gantry_robot.html#a3a99ce67ceff4dd636d0ad2cb80b2237">moveBinToFeeder</a> (Integer b, Integer f)</td></tr>
+<tr class="memdesc:a3a99ce67ceff4dd636d0ad2cb80b2237"><td class="mdescLeft">&#160;</td><td class="mdescRight">Another moving statement which has binNumber b, and feeder number f to move.  <a href="#a3a99ce67ceff4dd636d0ad2cb80b2237"></a><br/></td></tr>
 <tr class="separator:a3a99ce67ceff4dd636d0ad2cb80b2237"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a228a1cca480d2e72f939f4596b70f2f2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_gantry_robot_manager_1_1_g_u_i_gantry_robot.html#a228a1cca480d2e72f939f4596b70f2f2">binPurged</a> ()</td></tr>
+<tr class="separator:a228a1cca480d2e72f939f4596b70f2f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c4cbcd70226a0a4614fc595c590b0f4"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_gantry_robot_manager_1_1_g_u_i_gantry_robot.html#a0c4cbcd70226a0a4614fc595c590b0f4">arrivedAtFeeder</a> (Integer feederNum)</td></tr>
+<tr class="memdesc:a0c4cbcd70226a0a4614fc595c590b0f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">sets the new destination to the bin dump site sets the new destination to the bin dump site  <a href="#a0c4cbcd70226a0a4614fc595c590b0f4"></a><br/></td></tr>
+<tr class="separator:a0c4cbcd70226a0a4614fc595c590b0f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2b3d0ee0e0c37ab4516e9efa8a400f4"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_gantry_robot_manager_1_1_g_u_i_gantry_robot.html#ab2b3d0ee0e0c37ab4516e9efa8a400f4">arrivedAtBin</a> (Integer binNum)</td></tr>
+<tr class="separator:ab2b3d0ee0e0c37ab4516e9efa8a400f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29f5c66f0df16ed0cfed7a6a2d430b13"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_gantry_robot_manager_1_1_g_u_i_gantry_robot.html#a29f5c66f0df16ed0cfed7a6a2d430b13">supplyPartOnFeeder</a> (Integer feederIndex)</td></tr>
+<tr class="separator:a29f5c66f0df16ed0cfed7a6a2d430b13"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afd92250db30921ba9362f89054e7381d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_gantry_robot_manager_1_1_g_u_i_gantry_robot.html#afd92250db30921ba9362f89054e7381d">moveToDump</a> ()</td></tr>
-<tr class="memdesc:afd92250db30921ba9362f89054e7381d"><td class="mdescLeft">&#160;</td><td class="mdescRight">sets the new destination to the bin dump site sets the new destination to the bin dump site  <a href="#afd92250db30921ba9362f89054e7381d"></a><br/></td></tr>
 <tr class="separator:afd92250db30921ba9362f89054e7381d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66799dd3babb089863d2533410188c2e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_gantry_robot_manager_1_1_g_u_i_gantry_robot.html#a66799dd3babb089863d2533410188c2e">RobotInitialization</a> ()</td></tr>
+<tr class="separator:a66799dd3babb089863d2533410188c2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae29747d227f5fd82a3b2242da660d2e9"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_gantry_robot_manager_1_1_g_u_i_gantry_robot.html#ae29747d227f5fd82a3b2242da660d2e9">arrivedAtPurge</a> ()</td></tr>
+<tr class="separator:ae29747d227f5fd82a3b2242da660d2e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a18deb306fb3da705c17a2b70bbdb896d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_gantry_robot_manager_1_1_g_u_i_gantry_robot.html#a18deb306fb3da705c17a2b70bbdb896d">extend</a> ()</td></tr>
 <tr class="separator:a18deb306fb3da705c17a2b70bbdb896d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8706b81a033ba50dcb33062c75e5a5cc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_gantry_robot_manager_1_1_g_u_i_gantry_robot.html#a8706b81a033ba50dcb33062c75e5a5cc">retract</a> ()</td></tr>
@@ -135,8 +154,36 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ab04c7b8f3047aa0df9d22713e570ce56"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a95840abd265aebbc9b1d1250dfbec995"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_gantry_robot_manager_1_1_g_u_i_gantry_robot.html#a95840abd265aebbc9b1d1250dfbec995">armExtended</a> ()</td></tr>
 <tr class="separator:a95840abd265aebbc9b1d1250dfbec995"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5e493d4cd15bca45e0e52ef3bd4607ca"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_gantry_robot_manager_1_1_g_u_i_gantry_robot.html#a5e493d4cd15bca45e0e52ef3bd4607ca">paintMe</a> (<a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_graphics_panel.html">GraphicsPanel</a> panel, Graphics2D g)</td></tr>
-<tr class="separator:a5e493d4cd15bca45e0e52ef3bd4607ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0650c945a43c9729e9885ab78794504"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classfactory_1_1factory200_1_1gantry_robot_manager_1_1_g_u_i_bin.html">GUIBin</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_gantry_robot_manager_1_1_g_u_i_gantry_robot.html#ae0650c945a43c9729e9885ab78794504">getBin</a> ()</td></tr>
+<tr class="separator:ae0650c945a43c9729e9885ab78794504"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a042558f0d3d7270ccf1c698b1471e987"><td class="memItemLeft" align="right" valign="top">Boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_gantry_robot_manager_1_1_g_u_i_gantry_robot.html#a042558f0d3d7270ccf1c698b1471e987">performOrder</a> ()</td></tr>
+<tr class="separator:a042558f0d3d7270ccf1c698b1471e987"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e0c3a371a156e6accd96b7266a5d1c6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_gantry_robot_manager_1_1_g_u_i_gantry_robot.html#a0e0c3a371a156e6accd96b7266a5d1c6">moveToBinCommand</a> (Integer index)</td></tr>
+<tr class="separator:a0e0c3a371a156e6accd96b7266a5d1c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0bd216e151a5aff09d91532ccc42024c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_gantry_robot_manager_1_1_g_u_i_gantry_robot.html#a0bd216e151a5aff09d91532ccc42024c">pickUpBinCommand</a> (Integer index)</td></tr>
+<tr class="separator:a0bd216e151a5aff09d91532ccc42024c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a083e1e41ad52c0252aba3b35b1f07fe9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_gantry_robot_manager_1_1_g_u_i_gantry_robot.html#a083e1e41ad52c0252aba3b35b1f07fe9">moveToFeederCommand</a> (Integer index)</td></tr>
+<tr class="separator:a083e1e41ad52c0252aba3b35b1f07fe9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ea30a753daff759852b458ce59d97db"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_gantry_robot_manager_1_1_g_u_i_gantry_robot.html#a1ea30a753daff759852b458ce59d97db">supplyPartOnFeederCommand</a> (Integer index)</td></tr>
+<tr class="separator:a1ea30a753daff759852b458ce59d97db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21a4e737683222f1c8c57838885d11e8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_gantry_robot_manager_1_1_g_u_i_gantry_robot.html#a21a4e737683222f1c8c57838885d11e8">purgeBinCommand</a> ()</td></tr>
+<tr class="separator:a21a4e737683222f1c8c57838885d11e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a766b07f203895741e3bc878512e687aa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_gantry_robot_manager_1_1_g_u_i_gantry_robot.html#a766b07f203895741e3bc878512e687aa">checkDefault</a> ()</td></tr>
+<tr class="separator:a766b07f203895741e3bc878512e687aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad34fcdca61f396b470b06e96f7b80ab0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_gantry_robot_manager_1_1_g_u_i_gantry_robot.html#ad34fcdca61f396b470b06e96f7b80ab0">paintMe</a> (JPanel panel, Graphics2D g)</td></tr>
+<tr class="separator:ad34fcdca61f396b470b06e96f7b80ab0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classfactory_1_1general_1_1_g_u_i_robot"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classfactory_1_1general_1_1_g_u_i_robot')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classfactory_1_1general_1_1_g_u_i_robot.html">factory.general.GUIRobot</a></td></tr>
+<tr class="memitem:af90aeff6d38b29678749a434bca117a5 inherit pub_methods_classfactory_1_1general_1_1_g_u_i_robot"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_g_u_i_robot.html#af90aeff6d38b29678749a434bca117a5">GUIRobot</a> (Integer x, Integer y, String i)</td></tr>
+<tr class="separator:af90aeff6d38b29678749a434bca117a5 inherit pub_methods_classfactory_1_1general_1_1_g_u_i_robot"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8491bd9d45cff1060cc7c2bd62c5e92d inherit pub_methods_classfactory_1_1general_1_1_g_u_i_robot"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_g_u_i_robot.html#a8491bd9d45cff1060cc7c2bd62c5e92d">update</a> ()</td></tr>
+<tr class="separator:a8491bd9d45cff1060cc7c2bd62c5e92d inherit pub_methods_classfactory_1_1general_1_1_g_u_i_robot"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7bad0fdc85857184cc6b6dff958c1304 inherit pub_methods_classfactory_1_1general_1_1_g_u_i_robot"><td class="memItemLeft" align="right" valign="top">Boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_g_u_i_robot.html#a7bad0fdc85857184cc6b6dff958c1304">bad</a> ()</td></tr>
+<tr class="memdesc:a7bad0fdc85857184cc6b6dff958c1304 inherit pub_methods_classfactory_1_1general_1_1_g_u_i_robot"><td class="mdescLeft">&#160;</td><td class="mdescRight">if something went wrong  <a href="#a7bad0fdc85857184cc6b6dff958c1304"></a><br/></td></tr>
+<tr class="separator:a7bad0fdc85857184cc6b6dff958c1304 inherit pub_methods_classfactory_1_1general_1_1_g_u_i_robot"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad381d07d1843e200481bf9b10bae640f inherit pub_methods_classfactory_1_1general_1_1_g_u_i_robot"><td class="memItemLeft" align="right" valign="top">Integer&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_g_u_i_robot.html#ad381d07d1843e200481bf9b10bae640f">getOrder</a> ()</td></tr>
+<tr class="separator:ad381d07d1843e200481bf9b10bae640f inherit pub_methods_classfactory_1_1general_1_1_g_u_i_robot"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaeaa9f19af74f7241e46540eaf61ce04 inherit pub_methods_classfactory_1_1general_1_1_g_u_i_robot"><td class="memItemLeft" align="right" valign="top">Integer&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_g_u_i_robot.html#aaeaa9f19af74f7241e46540eaf61ce04">popOrder</a> ()</td></tr>
+<tr class="separator:aaeaa9f19af74f7241e46540eaf61ce04 inherit pub_methods_classfactory_1_1general_1_1_g_u_i_robot"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classfactory_1_1general_1_1_moving_drawable"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classfactory_1_1general_1_1_moving_drawable')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classfactory_1_1general_1_1_moving_drawable.html">factory.general.MovingDrawable</a></td></tr>
 <tr class="memitem:a9215d4d47d47c1932717aaecae484cce inherit pub_methods_classfactory_1_1general_1_1_moving_drawable"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_moving_drawable.html#a9215d4d47d47c1932717aaecae484cce">MovingDrawable</a> (Integer x, Integer y, Double a, String i)</td></tr>
 <tr class="separator:a9215d4d47d47c1932717aaecae484cce inherit pub_methods_classfactory_1_1general_1_1_moving_drawable"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -191,7 +238,7 @@ Static Public Attributes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pac-attribs"></a>
 Package Attributes</h2></td></tr>
-<tr class="memitem:af86a5a214f75db7f2db86f0570ca31a2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_gantry_robot_manager_1_1_g_u_i_bin.html">GUIBin</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_gantry_robot_manager_1_1_g_u_i_gantry_robot.html#af86a5a214f75db7f2db86f0570ca31a2">bin</a></td></tr>
+<tr class="memitem:af86a5a214f75db7f2db86f0570ca31a2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classfactory_1_1factory200_1_1gantry_robot_manager_1_1_g_u_i_bin.html">GUIBin</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_gantry_robot_manager_1_1_g_u_i_gantry_robot.html#af86a5a214f75db7f2db86f0570ca31a2">bin</a></td></tr>
 <tr class="memdesc:af86a5a214f75db7f2db86f0570ca31a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">null if no bin, otherwise contains the information on the bin  <a href="#af86a5a214f75db7f2db86f0570ca31a2"></a><br/></td></tr>
 <tr class="separator:af86a5a214f75db7f2db86f0570ca31a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ace65b1abeb365053150d03c18a8e943a"><td class="memItemLeft" align="right" valign="top">Boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_gantry_robot_manager_1_1_g_u_i_gantry_robot.html#ace65b1abeb365053150d03c18a8e943a">extended</a></td></tr>
@@ -203,22 +250,33 @@ Package Attributes</h2></td></tr>
 <tr class="memitem:a518331522cf01bc1bffac7e51f27acf9"><td class="memItemLeft" align="right" valign="top">Integer&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_gantry_robot_manager_1_1_g_u_i_gantry_robot.html#a518331522cf01bc1bffac7e51f27acf9">moveto</a></td></tr>
 <tr class="memdesc:a518331522cf01bc1bffac7e51f27acf9"><td class="mdescLeft">&#160;</td><td class="mdescRight">where the gantry robot is heading towards  <a href="#a518331522cf01bc1bffac7e51f27acf9"></a><br/></td></tr>
 <tr class="separator:a518331522cf01bc1bffac7e51f27acf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pac_attribs_classfactory_1_1general_1_1_g_u_i_robot"><td colspan="2" onclick="javascript:toggleInherit('pac_attribs_classfactory_1_1general_1_1_g_u_i_robot')"><img src="closed.png" alt="-"/>&#160;Package Attributes inherited from <a class="el" href="classfactory_1_1general_1_1_g_u_i_robot.html">factory.general.GUIRobot</a></td></tr>
+<tr class="memitem:a1f83413a2d6ee622faa9d854ab81e0cd inherit pac_attribs_classfactory_1_1general_1_1_g_u_i_robot"><td class="memItemLeft" align="right" valign="top">Boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_g_u_i_robot.html#a1f83413a2d6ee622faa9d854ab81e0cd">busy</a></td></tr>
+<tr class="memdesc:a1f83413a2d6ee622faa9d854ab81e0cd inherit pac_attribs_classfactory_1_1general_1_1_g_u_i_robot"><td class="mdescLeft">&#160;</td><td class="mdescRight">whether or not the Robot has orders  <a href="#a1f83413a2d6ee622faa9d854ab81e0cd"></a><br/></td></tr>
+<tr class="separator:a1f83413a2d6ee622faa9d854ab81e0cd inherit pac_attribs_classfactory_1_1general_1_1_g_u_i_robot"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac32ba3d35283e8f9ede989e4694b4edd inherit pac_attribs_classfactory_1_1general_1_1_g_u_i_robot"><td class="memItemLeft" align="right" valign="top">Boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_g_u_i_robot.html#ac32ba3d35283e8f9ede989e4694b4edd">flag</a></td></tr>
+<tr class="memdesc:ac32ba3d35283e8f9ede989e4694b4edd inherit pac_attribs_classfactory_1_1general_1_1_g_u_i_robot"><td class="mdescLeft">&#160;</td><td class="mdescRight">if this is ever set to true something is wrong  <a href="#ac32ba3d35283e8f9ede989e4694b4edd"></a><br/></td></tr>
+<tr class="separator:ac32ba3d35283e8f9ede989e4694b4edd inherit pac_attribs_classfactory_1_1general_1_1_g_u_i_robot"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a45cc4e886df6f614a7c05a4e3c07ce95"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_gantry_robot_manager_1_1_g_u_i_gantry_robot.html#a45cc4e886df6f614a7c05a4e3c07ce95">moveToDefault</a> ()</td></tr>
+<tr class="separator:a45cc4e886df6f614a7c05a4e3c07ce95"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pub_static_methods_classfactory_1_1general_1_1_moving_drawable"><td colspan="2" onclick="javascript:toggleInherit('pub_static_methods_classfactory_1_1general_1_1_moving_drawable')"><img src="closed.png" alt="-"/>&#160;Static Public Member Functions inherited from <a class="el" href="classfactory_1_1general_1_1_moving_drawable.html">factory.general.MovingDrawable</a></td></tr>
 <tr class="memitem:aab4d2d93932dd327b117617f8399b8b1 inherit pub_static_methods_classfactory_1_1general_1_1_moving_drawable"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_moving_drawable.html#aab4d2d93932dd327b117617f8399b8b1">main</a> (String args[])</td></tr>
 <tr class="separator:aab4d2d93932dd327b117617f8399b8b1 inherit pub_static_methods_classfactory_1_1general_1_1_moving_drawable"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pro_attribs_classfactory_1_1general_1_1_moving_drawable"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classfactory_1_1general_1_1_moving_drawable')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classfactory_1_1general_1_1_moving_drawable.html">factory.general.MovingDrawable</a></td></tr>
-<tr class="memitem:aa095970de7f28335c45982ed0732c33d inherit pro_attribs_classfactory_1_1general_1_1_moving_drawable"><td class="memItemLeft" align="right" valign="top">Integer&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_moving_drawable.html#aa095970de7f28335c45982ed0732c33d">moveToX</a></td></tr>
-<tr class="memdesc:aa095970de7f28335c45982ed0732c33d inherit pro_attribs_classfactory_1_1general_1_1_moving_drawable"><td class="mdescLeft">&#160;</td><td class="mdescRight">where <a class="el" href="classfactory_1_1general_1_1_drawable.html" title="anything drawable onto the FactoryProductionManager Frame.">Drawable</a> is heading in x-coordinate  <a href="#aa095970de7f28335c45982ed0732c33d"></a><br/></td></tr>
-<tr class="separator:aa095970de7f28335c45982ed0732c33d inherit pro_attribs_classfactory_1_1general_1_1_moving_drawable"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab3ea8e5e5ed5e0c8d8a4cebd3d7b9345 inherit pro_attribs_classfactory_1_1general_1_1_moving_drawable"><td class="memItemLeft" align="right" valign="top">Integer&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_moving_drawable.html#ab3ea8e5e5ed5e0c8d8a4cebd3d7b9345">moveToY</a></td></tr>
-<tr class="memdesc:ab3ea8e5e5ed5e0c8d8a4cebd3d7b9345 inherit pro_attribs_classfactory_1_1general_1_1_moving_drawable"><td class="mdescLeft">&#160;</td><td class="mdescRight">where <a class="el" href="classfactory_1_1general_1_1_drawable.html" title="anything drawable onto the FactoryProductionManager Frame.">Drawable</a> is heading in y-coordinate  <a href="#ab3ea8e5e5ed5e0c8d8a4cebd3d7b9345"></a><br/></td></tr>
-<tr class="separator:ab3ea8e5e5ed5e0c8d8a4cebd3d7b9345 inherit pro_attribs_classfactory_1_1general_1_1_moving_drawable"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_attribs_classfactory_1_1general_1_1_g_u_i_robot"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classfactory_1_1general_1_1_g_u_i_robot')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classfactory_1_1general_1_1_g_u_i_robot.html">factory.general.GUIRobot</a></td></tr>
+<tr class="memitem:a380270c0c5b71018e2ef64e94857cb3c inherit pro_attribs_classfactory_1_1general_1_1_g_u_i_robot"><td class="memItemLeft" align="right" valign="top">LinkedList&lt; Integer &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_g_u_i_robot.html#a380270c0c5b71018e2ef64e94857cb3c">orders</a></td></tr>
+<tr class="memdesc:a380270c0c5b71018e2ef64e94857cb3c inherit pro_attribs_classfactory_1_1general_1_1_g_u_i_robot"><td class="mdescLeft">&#160;</td><td class="mdescRight">a queue of orders for the robot  <a href="#a380270c0c5b71018e2ef64e94857cb3c"></a><br/></td></tr>
+<tr class="separator:a380270c0c5b71018e2ef64e94857cb3c inherit pro_attribs_classfactory_1_1general_1_1_g_u_i_robot"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>shared Robot that manipulates part bins </p>
+<p>Orders identification 0-7 - go to bin [#] 8-15 - pick up bin [#] 16-19 - move to feeder [#]</p>
+<p>20 - move to default 21-24 - drop off at feeder [#] 25 -move to dump 26 - purge bin</p>
 <p>The gantry robot has basic bin movement and emptying capabilities. In relation to the simulation GUI, the gantry robot has </p>
 <ul>
 <li>
@@ -239,7 +297,7 @@ bin opening (dumping) functionality. </li>
 </div>
 <dl class="section author"><dt>Author</dt><dd>YiWei Roy Zheng </dd></dl>
 
-<p>Definition at line <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html#l00019">19</a> of file <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html">GUIGantryRobot.java</a>.</p>
+<p>Definition at line <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html#l00041">41</a> of file <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html">GUIGantryRobot.java</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a8c0bc78e53abf5cc4442ec16615a87ed"></a>
 <div class="memitem">
@@ -262,7 +320,7 @@ bin opening (dumping) functionality. </li>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html#l00027">27</a> of file <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html">GUIGantryRobot.java</a>.</p>
+<p>Definition at line <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html#l00049">49</a> of file <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html">GUIGantryRobot.java</a>.</p>
 
 </div>
 </div>
@@ -288,7 +346,144 @@ bin opening (dumping) functionality. </li>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html#l00124">124</a> of file <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html">GUIGantryRobot.java</a>.</p>
+<p>Definition at line <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html#l00225">225</a> of file <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html">GUIGantryRobot.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab2b3d0ee0e0c37ab4516e9efa8a400f4"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">boolean factory.factory200.factoryProductionManager.GantryRobotManager.GUIGantryRobot.arrivedAtBin </td>
+          <td>(</td>
+          <td class="paramtype">Integer&#160;</td>
+          <td class="paramname"><em>binNum</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>check if the robot arrives at the bin </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">binNum</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+<p>Definition at line <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html#l00157">157</a> of file <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html">GUIGantryRobot.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a0c4cbcd70226a0a4614fc595c590b0f4"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">boolean factory.factory200.factoryProductionManager.GantryRobotManager.GUIGantryRobot.arrivedAtFeeder </td>
+          <td>(</td>
+          <td class="paramtype">Integer&#160;</td>
+          <td class="paramname"><em>feederNum</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>sets the new destination to the bin dump site sets the new destination to the bin dump site </p>
+
+<p>Definition at line <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html#l00142">142</a> of file <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html">GUIGantryRobot.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae29747d227f5fd82a3b2242da660d2e9"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">boolean factory.factory200.factoryProductionManager.GantryRobotManager.GUIGantryRobot.arrivedAtPurge </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html#l00193">193</a> of file <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html">GUIGantryRobot.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a228a1cca480d2e72f939f4596b70f2f2"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void factory.factory200.factoryProductionManager.GantryRobotManager.GUIGantryRobot.binPurged </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html#l00133">133</a> of file <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html">GUIGantryRobot.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a766b07f203895741e3bc878512e687aa"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void factory.factory200.factoryProductionManager.GantryRobotManager.GUIGantryRobot.checkDefault </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html#l00304">304</a> of file <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html">GUIGantryRobot.java</a>.</p>
 
 </div>
 </div>
@@ -314,7 +509,33 @@ bin opening (dumping) functionality. </li>
 </div><div class="memdoc">
 <p>brief extends the arm extends the arm </p>
 
-<p>Definition at line <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html#l00103">103</a> of file <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html">GUIGantryRobot.java</a>.</p>
+<p>Definition at line <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html#l00204">204</a> of file <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html">GUIGantryRobot.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae0650c945a43c9729e9885ab78794504"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classfactory_1_1factory200_1_1gantry_robot_manager_1_1_g_u_i_bin.html">GUIBin</a> factory.factory200.factoryProductionManager.GantryRobotManager.GUIGantryRobot.getBin </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>GUIBin objects in gantry robot </dd></dl>
+
+<p>Definition at line <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html#l00232">232</a> of file <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html">GUIGantryRobot.java</a>.</p>
 
 </div>
 </div>
@@ -350,7 +571,9 @@ bin opening (dumping) functionality. </li>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html#l00086">86</a> of file <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html">GUIGantryRobot.java</a>.</p>
+<p>Another moving statement which has binNumber b, and feeder number f to move. </p>
+
+<p>Definition at line <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html#l00127">127</a> of file <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html">GUIGantryRobot.java</a>.</p>
 
 </div>
 </div>
@@ -376,7 +599,58 @@ bin opening (dumping) functionality. </li>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html#l00063">63</a> of file <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html">GUIGantryRobot.java</a>.</p>
+<p>Definition at line <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html#l00099">99</a> of file <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html">GUIGantryRobot.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a0e0c3a371a156e6accd96b7266a5d1c6"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void factory.factory200.factoryProductionManager.GantryRobotManager.GUIGantryRobot.moveToBinCommand </td>
+          <td>(</td>
+          <td class="paramtype">Integer&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html#l00273">273</a> of file <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html">GUIGantryRobot.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a45cc4e886df6f614a7c05a4e3c07ce95"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void factory.factory200.factoryProductionManager.GantryRobotManager.GUIGantryRobot.moveToDefault </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html#l00300">300</a> of file <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html">GUIGantryRobot.java</a>.</p>
 
 </div>
 </div>
@@ -401,9 +675,7 @@ bin opening (dumping) functionality. </li>
 </table>
 </div><div class="memdoc">
 
-<p>sets the new destination to the bin dump site sets the new destination to the bin dump site </p>
-
-<p>Definition at line <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html#l00095">95</a> of file <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html">GUIGantryRobot.java</a>.</p>
+<p>Definition at line <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html#l00177">177</a> of file <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html">GUIGantryRobot.java</a>.</p>
 
 </div>
 </div>
@@ -429,19 +701,46 @@ bin opening (dumping) functionality. </li>
 </table>
 </div><div class="memdoc">
 
-<p>sets a new feeder destination for the gantry robot sets a new feeder destination coordinate for gantry robot, the passed Integer specifies which feeder to head to </p>
+<p>&lt;moveToFeeder i which is assigned by agents in Server </p>
+<p>moveTo assigned feeder </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">i</td><td>feeder number </td></tr>
+    <tr><td class="paramname">index</td><td>for feedermoveToBin i which is assigned by agents in Server </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html#l00039">39</a> of file <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html">GUIGantryRobot.java</a>.</p>
+<p>Definition at line <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html#l00074">74</a> of file <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html">GUIGantryRobot.java</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a5e493d4cd15bca45e0e52ef3bd4607ca"></a>
+<a class="anchor" id="a083e1e41ad52c0252aba3b35b1f07fe9"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void factory.factory200.factoryProductionManager.GantryRobotManager.GUIGantryRobot.moveToFeederCommand </td>
+          <td>(</td>
+          <td class="paramtype">Integer&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html#l00282">282</a> of file <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html">GUIGantryRobot.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ad34fcdca61f396b470b06e96f7b80ab0"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -451,7 +750,7 @@ bin opening (dumping) functionality. </li>
         <tr>
           <td class="memname">void factory.factory200.factoryProductionManager.GantryRobotManager.GUIGantryRobot.paintMe </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_graphics_panel.html">GraphicsPanel</a>&#160;</td>
+          <td class="paramtype">JPanel&#160;</td>
           <td class="paramname"><em>panel</em>, </td>
         </tr>
         <tr>
@@ -472,8 +771,126 @@ bin opening (dumping) functionality. </li>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>paint function </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">panel</td><td></td></tr>
+    <tr><td class="paramname">g</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Definition at line <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html#l00129">129</a> of file <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html">GUIGantryRobot.java</a>.</p>
+<p>Definition at line <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html#l00319">319</a> of file <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html">GUIGantryRobot.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a042558f0d3d7270ccf1c698b1471e987"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Boolean factory.factory200.factoryProductionManager.GantryRobotManager.GUIGantryRobot.performOrder </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html#l00236">236</a> of file <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html">GUIGantryRobot.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a1a55b4b66e182bdcf135e9a8639877f3"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void factory.factory200.factoryProductionManager.GantryRobotManager.GUIGantryRobot.pickUpBin </td>
+          <td>(</td>
+          <td class="paramtype">Integer&#160;</td>
+          <td class="paramname"><em>num</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>sets a new feeder destination for the gantry robot sets a new feeder destination coordinate for gantry robot, the passed Integer specifies which feeder to head to </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>feeder number&lt;Once gantry robot gets to a bin, it picks up the bin </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html#l00063">63</a> of file <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html">GUIGantryRobot.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a0bd216e151a5aff09d91532ccc42024c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void factory.factory200.factoryProductionManager.GantryRobotManager.GUIGantryRobot.pickUpBinCommand </td>
+          <td>(</td>
+          <td class="paramtype">Integer&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html#l00279">279</a> of file <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html">GUIGantryRobot.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a21a4e737683222f1c8c57838885d11e8"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void factory.factory200.factoryProductionManager.GantryRobotManager.GUIGantryRobot.purgeBinCommand </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html#l00295">295</a> of file <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html">GUIGantryRobot.java</a>.</p>
 
 </div>
 </div>
@@ -500,7 +917,84 @@ bin opening (dumping) functionality. </li>
 
 <p>retracts the arm retracts the arm </p>
 
-<p>Definition at line <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html#l00111">111</a> of file <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html">GUIGantryRobot.java</a>.</p>
+<p>Definition at line <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html#l00212">212</a> of file <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html">GUIGantryRobot.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a66799dd3babb089863d2533410188c2e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void factory.factory200.factoryProductionManager.GantryRobotManager.GUIGantryRobot.RobotInitialization </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html#l00186">186</a> of file <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html">GUIGantryRobot.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a29f5c66f0df16ed0cfed7a6a2d430b13"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void factory.factory200.factoryProductionManager.GantryRobotManager.GUIGantryRobot.supplyPartOnFeeder </td>
+          <td>(</td>
+          <td class="paramtype">Integer&#160;</td>
+          <td class="paramname"><em>feederIndex</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html#l00168">168</a> of file <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html">GUIGantryRobot.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a1ea30a753daff759852b458ce59d97db"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void factory.factory200.factoryProductionManager.GantryRobotManager.GUIGantryRobot.supplyPartOnFeederCommand </td>
+          <td>(</td>
+          <td class="paramtype">Integer&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html#l00291">291</a> of file <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html">GUIGantryRobot.java</a>.</p>
 
 </div>
 </div>
@@ -527,7 +1021,7 @@ bin opening (dumping) functionality. </li>
 
 <p>switches arm state retracts if extended, extends if retracted </p>
 
-<p>Definition at line <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html#l00119">119</a> of file <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html">GUIGantryRobot.java</a>.</p>
+<p>Definition at line <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html#l00220">220</a> of file <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html">GUIGantryRobot.java</a>.</p>
 
 </div>
 </div>
@@ -540,7 +1034,7 @@ bin opening (dumping) functionality. </li>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_gantry_robot_manager_1_1_g_u_i_bin.html">GUIBin</a> factory.factory200.factoryProductionManager.GantryRobotManager.GUIGantryRobot.bin</td>
+          <td class="memname"><a class="el" href="classfactory_1_1factory200_1_1gantry_robot_manager_1_1_g_u_i_bin.html">GUIBin</a> factory.factory200.factoryProductionManager.GantryRobotManager.GUIGantryRobot.bin</td>
         </tr>
       </table>
   </td>
@@ -552,7 +1046,7 @@ bin opening (dumping) functionality. </li>
 
 <p>null if no bin, otherwise contains the information on the bin </p>
 
-<p>Definition at line <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html#l00022">22</a> of file <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html">GUIGantryRobot.java</a>.</p>
+<p>Definition at line <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html#l00044">44</a> of file <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html">GUIGantryRobot.java</a>.</p>
 
 </div>
 </div>
@@ -576,7 +1070,7 @@ bin opening (dumping) functionality. </li>
 
 <p>whether or not the robot has arms extended </p>
 
-<p>Definition at line <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html#l00023">23</a> of file <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html">GUIGantryRobot.java</a>.</p>
+<p>Definition at line <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html#l00045">45</a> of file <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html">GUIGantryRobot.java</a>.</p>
 
 </div>
 </div>
@@ -600,7 +1094,7 @@ bin opening (dumping) functionality. </li>
 
 <p>whether or not the robot is carrying a bin </p>
 
-<p>Definition at line <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html#l00024">24</a> of file <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html">GUIGantryRobot.java</a>.</p>
+<p>Definition at line <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html#l00046">46</a> of file <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html">GUIGantryRobot.java</a>.</p>
 
 </div>
 </div>
@@ -622,7 +1116,7 @@ bin opening (dumping) functionality. </li>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html#l00020">20</a> of file <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html">GUIGantryRobot.java</a>.</p>
+<p>Definition at line <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html#l00042">42</a> of file <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html">GUIGantryRobot.java</a>.</p>
 
 </div>
 </div>
@@ -646,7 +1140,7 @@ bin opening (dumping) functionality. </li>
 
 <p>where the gantry robot is heading towards </p>
 
-<p>Definition at line <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html#l00025">25</a> of file <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html">GUIGantryRobot.java</a>.</p>
+<p>Definition at line <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html#l00047">47</a> of file <a class="el" href="factory_production_manager_2_gantry_robot_manager_2_g_u_i_gantry_robot_8java_source.html">GUIGantryRobot.java</a>.</p>
 
 </div>
 </div>
@@ -656,7 +1150,7 @@ bin opening (dumping) functionality. </li>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 17 2012 01:37:02 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Dec 1 2012 12:34:10 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

@@ -20,9 +20,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="kitrobot.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Factory Project
-   &#160;<span id="projectnumber">0.1.0</span>
+   &#160;<span id="projectnumber">0.4.0</span>
    </div>
    <div id="projectbrief">team 1 joint cs200/cs201</div>
   </td>
@@ -112,54 +113,55 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00030"></a><span class="lineno"><a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_client_side_1_1_l_m_g_u_i_content_panel.html#a40bbfe08386e454687f05addc0d96e34">   30</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_client_side_1_1_l_m_g_u_i_content_panel.html#a40bbfe08386e454687f05addc0d96e34">partsFedCounter</a> = 0;</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    </div>
 <div class="line"><a name="l00036"></a><span class="lineno"><a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_client_side_1_1_l_m_g_u_i_content_panel.html#a3a7406f4f9edd579c598ff398021ced3">   36</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_client_side_1_1_l_m_g_u_i_content_panel.html#a3a7406f4f9edd579c598ff398021ced3" title="Constructor ( No specific parameters : Part Low Sensor )">LMGUIContentPanel</a>(TitledBorder border){</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        setPreferredSize(<span class="keyword">new</span> Dimension(250,70));</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        setLayout(<span class="keyword">new</span> BorderLayout());</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        border.setTitleColor(Color.red);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        setBorder(border);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_client_side_1_1_l_m_g_u_i_content_panel.html#af02a3aefe2e2fb77b782ea7909f6f127">sensorLabel</a> = <span class="keyword">new</span> JLabel(<span class="stringliteral">&quot;&quot;</span>, JLabel.CENTER);</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_client_side_1_1_l_m_g_u_i_content_panel.html#af02a3aefe2e2fb77b782ea7909f6f127">sensorLabel</a>.setIcon(<a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_client_side_1_1_l_m_g_u_i_content_panel.html#a308c29c4533c9ede868e682c0a772562">redSensorImage</a>);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        add(<a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_client_side_1_1_l_m_g_u_i_content_panel.html#af02a3aefe2e2fb77b782ea7909f6f127">sensorLabel</a>);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    }</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    </div>
-<div class="line"><a name="l00052"></a><span class="lineno"><a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_client_side_1_1_l_m_g_u_i_content_panel.html#a9168547a0ef016f74a1566d530e224bd">   52</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_client_side_1_1_l_m_g_u_i_content_panel.html#a9168547a0ef016f74a1566d530e224bd" title="Constructor ( One Integer : Part Fed Counter )">LMGUIContentPanel</a>(<span class="keywordtype">int</span> counter, TitledBorder border){</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        setPreferredSize(<span class="keyword">new</span> Dimension(250,70));</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        setLayout(<span class="keyword">new</span> BorderLayout());</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        border.setTitleColor(Color.red);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        setBorder(border);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_client_side_1_1_l_m_g_u_i_content_panel.html#aabd35399059cb745b2ea2637ac4e5ff5">counterLabel</a> = <span class="keyword">new</span> JLabel(<span class="stringliteral">&quot;&quot;</span> + counter, JLabel.CENTER);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        add(<a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_client_side_1_1_l_m_g_u_i_content_panel.html#aabd35399059cb745b2ea2637ac4e5ff5">counterLabel</a>);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    }</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    </div>
-<div class="line"><a name="l00068"></a><span class="lineno"><a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_client_side_1_1_l_m_g_u_i_content_panel.html#a387c6db58782dc95535c890aa11cbfc3">   68</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_client_side_1_1_l_m_g_u_i_content_panel.html#a387c6db58782dc95535c890aa11cbfc3" title="Constructor ( Two JRadioButtons : Most of cases )">LMGUIContentPanel</a>(JRadioButton button1, JRadioButton button2, TitledBorder border){      </div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        setPreferredSize(<span class="keyword">new</span> Dimension(250,70));</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        setLayout(<span class="keyword">new</span> FlowLayout(FlowLayout.CENTER, 30, 8));</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        border.setTitleColor(Color.red);</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        setBorder(border);</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_client_side_1_1_l_m_g_u_i_content_panel.html#ac03a85dccef76dd2f51a4412567bed44">buttonGroup</a>.add(button1);</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_client_side_1_1_l_m_g_u_i_content_panel.html#ac03a85dccef76dd2f51a4412567bed44">buttonGroup</a>.add(button2);</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        add(button1);</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        add(button2);</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    }</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    </div>
-<div class="line"><a name="l00082"></a><span class="lineno"><a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_client_side_1_1_l_m_g_u_i_content_panel.html#a60624c7d0e20815b243c86b37bebd8bb">   82</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_client_side_1_1_l_m_g_u_i_content_panel.html#a60624c7d0e20815b243c86b37bebd8bb" title="Counter Setter.">setCounter</a>(){</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_client_side_1_1_l_m_g_u_i_content_panel.html#aabd35399059cb745b2ea2637ac4e5ff5">counterLabel</a>.setText(<span class="stringliteral">&quot;&quot;</span> + (++<a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_client_side_1_1_l_m_g_u_i_content_panel.html#a40bbfe08386e454687f05addc0d96e34">partsFedCounter</a>) );</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    }</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    </div>
-<div class="line"><a name="l00089"></a><span class="lineno"><a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_client_side_1_1_l_m_g_u_i_content_panel.html#aece506c9e16761bd19f72bc356a23a6c">   89</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_client_side_1_1_l_m_g_u_i_content_panel.html#aece506c9e16761bd19f72bc356a23a6c" title="Sensor Status Change.">setSensor</a>( Boolean sensorStatus ){</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="keywordflow">if</span>( sensorStatus == <span class="keyword">true</span> ){</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            <a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_client_side_1_1_l_m_g_u_i_content_panel.html#af02a3aefe2e2fb77b782ea7909f6f127">sensorLabel</a>.setIcon(<a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_client_side_1_1_l_m_g_u_i_content_panel.html#a308c29c4533c9ede868e682c0a772562">redSensorImage</a>);</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        }</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span>( sensorStatus == <span class="keyword">false</span> ){</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            <a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_client_side_1_1_l_m_g_u_i_content_panel.html#af02a3aefe2e2fb77b782ea7909f6f127">sensorLabel</a>.setIcon(<a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_client_side_1_1_l_m_g_u_i_content_panel.html#a3cb5c5855236af99f2b34b016154c998">whiteSensorImage</a>);</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        }</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    }</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;}</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        setLayout(<span class="keyword">new</span> BorderLayout());</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        border.setTitleColor(Color.red);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        setBorder(border);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_client_side_1_1_l_m_g_u_i_content_panel.html#af02a3aefe2e2fb77b782ea7909f6f127">sensorLabel</a> = <span class="keyword">new</span> JLabel(<span class="stringliteral">&quot;&quot;</span>, JLabel.CENTER);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_client_side_1_1_l_m_g_u_i_content_panel.html#af02a3aefe2e2fb77b782ea7909f6f127">sensorLabel</a>.setIcon(<a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_client_side_1_1_l_m_g_u_i_content_panel.html#a308c29c4533c9ede868e682c0a772562">redSensorImage</a>);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        add(<a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_client_side_1_1_l_m_g_u_i_content_panel.html#af02a3aefe2e2fb77b782ea7909f6f127">sensorLabel</a>);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    }</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    </div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_client_side_1_1_l_m_g_u_i_content_panel.html#a9168547a0ef016f74a1566d530e224bd">   51</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_client_side_1_1_l_m_g_u_i_content_panel.html#a9168547a0ef016f74a1566d530e224bd" title="Constructor ( One Integer : Part Fed Counter )">LMGUIContentPanel</a>(<span class="keywordtype">int</span> counter, TitledBorder border){</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        setPreferredSize(<span class="keyword">new</span> Dimension(250,70));</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        setLayout(<span class="keyword">new</span> BorderLayout());</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        border.setTitleColor(Color.red);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        setBorder(border);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_client_side_1_1_l_m_g_u_i_content_panel.html#aabd35399059cb745b2ea2637ac4e5ff5">counterLabel</a> = <span class="keyword">new</span> JLabel(<span class="stringliteral">&quot;&quot;</span> + counter, JLabel.CENTER);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        add(<a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_client_side_1_1_l_m_g_u_i_content_panel.html#aabd35399059cb745b2ea2637ac4e5ff5">counterLabel</a>);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    }</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    </div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_client_side_1_1_l_m_g_u_i_content_panel.html#a387c6db58782dc95535c890aa11cbfc3">   67</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_client_side_1_1_l_m_g_u_i_content_panel.html#a387c6db58782dc95535c890aa11cbfc3" title="Constructor ( Two JRadioButtons : Most of cases )">LMGUIContentPanel</a>(JRadioButton button1, JRadioButton button2, TitledBorder border){      </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        setPreferredSize(<span class="keyword">new</span> Dimension(250,70));</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        setLayout(<span class="keyword">new</span> FlowLayout(FlowLayout.CENTER, 30, 8));</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        border.setTitleColor(Color.red);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        setBorder(border);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_client_side_1_1_l_m_g_u_i_content_panel.html#ac03a85dccef76dd2f51a4412567bed44">buttonGroup</a>.add(button1);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_client_side_1_1_l_m_g_u_i_content_panel.html#ac03a85dccef76dd2f51a4412567bed44">buttonGroup</a>.add(button2);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        button1.setEnabled(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        button2.setEnabled(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        add(button1);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        add(button2);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    }</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    </div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_client_side_1_1_l_m_g_u_i_content_panel.html#a60624c7d0e20815b243c86b37bebd8bb">   80</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_client_side_1_1_l_m_g_u_i_content_panel.html#a60624c7d0e20815b243c86b37bebd8bb">setCounter</a>(){</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_client_side_1_1_l_m_g_u_i_content_panel.html#aabd35399059cb745b2ea2637ac4e5ff5">counterLabel</a>.setText(<span class="stringliteral">&quot;&quot;</span> + (++<a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_client_side_1_1_l_m_g_u_i_content_panel.html#a40bbfe08386e454687f05addc0d96e34">partsFedCounter</a>) );</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    }</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    </div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_client_side_1_1_l_m_g_u_i_content_panel.html#aece506c9e16761bd19f72bc356a23a6c">   84</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_client_side_1_1_l_m_g_u_i_content_panel.html#aece506c9e16761bd19f72bc356a23a6c">setSensor</a>( Boolean sensorStatus ){</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="keywordflow">if</span>( sensorStatus == <span class="keyword">true</span> ){</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            <a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_client_side_1_1_l_m_g_u_i_content_panel.html#af02a3aefe2e2fb77b782ea7909f6f127">sensorLabel</a>.setIcon(<a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_client_side_1_1_l_m_g_u_i_content_panel.html#a308c29c4533c9ede868e682c0a772562">redSensorImage</a>);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        }</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span>( sensorStatus == <span class="keyword">false</span> ){</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            <a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_client_side_1_1_l_m_g_u_i_content_panel.html#af02a3aefe2e2fb77b782ea7909f6f127">sensorLabel</a>.setIcon(<a class="code" href="classfactory_1_1factory200_1_1lane_manager_1_1_client_side_1_1_l_m_g_u_i_content_panel.html#a3cb5c5855236af99f2b34b016154c998">whiteSensorImage</a>);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        }</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    }</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 17 2012 01:36:58 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Dec 1 2012 12:34:07 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

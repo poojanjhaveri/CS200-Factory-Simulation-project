@@ -20,9 +20,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="kitrobot.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Factory Project
-   &#160;<span id="projectnumber">0.1.0</span>
+   &#160;<span id="projectnumber">0.4.0</span>
    </div>
    <div id="projectbrief">team 1 joint cs200/cs201</div>
   </td>
@@ -127,18 +128,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>DAY
 : <a class="el" href="interfaceagent_1_1_constants.html#a5065cf312bbb53e6ee5103df173fb399">agent.Constants</a>
 </li>
-<li>debug
-: <a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_factory_production_manager.html#a4ddef95936fa24349b80e5f6c7d7d073">factory.factory200.factoryProductionManager.FactoryProductionManager</a>
-, <a class="el" href="classfactory_1_1general_1_1_blueprint_parts.html#a0f935941419ae46ff37916a9839f9f40">factory.general.BlueprintParts</a>
+<li>debug()
+: <a class="el" href="classfactory_1_1general_1_1_blueprint_kits.html#ab4d8221a7a6e9ab682ddd4bed54b8ea2">factory.general.BlueprintKits</a>
 , <a class="el" href="classfactory_1_1general_1_1_kit.html#a4d5299f16a3fd009cbb58d6bc5cf07d5">factory.general.Kit</a>
-, <a class="el" href="classfactory_1_1general_1_1_blueprint_kits.html#ab4d8221a7a6e9ab682ddd4bed54b8ea2">factory.general.BlueprintKits</a>
 , <a class="el" href="classfactory_1_1general_1_1_server.html#a09a55bfa71a382d3e70ae1c5bae85508">factory.general.Server</a>
+, <a class="el" href="classfactory_1_1general_1_1_blueprint_parts.html#a0f935941419ae46ff37916a9839f9f40">factory.general.BlueprintParts</a>
 </li>
-<li>debugbp
-: <a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_factory_production_manager.html#af079d4eded9fe71dab58ef8b9657ce95">factory.factory200.factoryProductionManager.FactoryProductionManager</a>
+<li>DEBUG
+: <a class="el" href="classfactory_1_1general_1_1_manager.html#ade4a039384b3c8552ffbe237c0d251a0">factory.general.Manager</a>
 </li>
-<li>debugIfNecessaryForAgents()
-: <a class="el" href="classfactory_1_1general_1_1_server.html#a73ebfd9e9b5b6596cabd9538be5b8f94">factory.general.Server</a>
+<li>DEBUG_NOTIFICATION
+: <a class="el" href="classfactory_1_1general_1_1_manager.html#ad32ff64d19f5e86719fc76227bd44a84">factory.general.Manager</a>
 </li>
 <li>debugMessage()
 : <a class="el" href="classfactory_1_1general_1_1_handle_a_manager.html#af72ca7289246a5b0401032db24fe6437">factory.general.HandleAManager</a>
@@ -148,6 +148,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </li>
 <li>decrementNumClients()
 : <a class="el" href="classfactory_1_1general_1_1_server.html#a3786f88a07666d5c3f6acd4705a3f0b5">factory.general.Server</a>
+</li>
+<li>deepClone()
+: <a class="el" href="classfactory_1_1general_1_1_kit.html#a67790e5ed0e77440633f36268af0b426">factory.general.Kit</a>
 </li>
 <li>DEFAULT_ENCODING
 : <a class="el" href="interfaceagent_1_1_constants.html#a7b834fb3b4e190e1f2895bae357f8564">agent.Constants</a>
@@ -161,11 +164,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>delete_combo
 : <a class="el" href="classfactory_1_1factory200_1_1kit_manager_1_1_kit_manager.html#a4f079ff015fc52fd52e0a38f25132dd1">factory.factory200.kitManager.KitManager</a>
 </li>
-<li>deletekit
-: <a class="el" href="classfactory_1_1factory200_1_1kit_manager_1_1_kit_manager.html#acf7d781484d7b131134c59b16fff6dd1">factory.factory200.kitManager.KitManager</a>
-</li>
 <li>deleteKit()
 : <a class="el" href="classfactory_1_1factory200_1_1kit_manager_1_1_kit_manager.html#a452ab51c10f4689a4c3fa133b7a8a8c4">factory.factory200.kitManager.KitManager</a>
+</li>
+<li>deletekit2
+: <a class="el" href="classfactory_1_1factory200_1_1kit_manager_1_1_kit_manager.html#ae7533721182aff141f6e3e7f933d49f9">factory.factory200.kitManager.KitManager</a>
 </li>
 <li>deletekitbutton
 : <a class="el" href="classfactory_1_1factory200_1_1kit_manager_1_1_kit_manager.html#a9851585ebd7ea16b1270c4fab20d35c4">factory.factory200.kitManager.KitManager</a>
@@ -182,19 +185,18 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 , <a class="el" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_k_a_m_graphic_panel.html#ab405c233dd9319bf87515b918438dff3">factory.factory200.kitAssemblyManager.KAMGraphicPanel</a>
 </li>
 <li>DeliveryTimer()
-: <a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_kits_assembly_manager_1_1_k_a_m_graphic_panel_1_1_delivery_timer.html#a6c5323cea63abb781b24edf06c423cfd">factory.factory200.factoryProductionManager.KitsAssemblyManager.KAMGraphicPanel.DeliveryTimer</a>
-, <a class="el" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_k_a_m_graphic_panel_1_1_delivery_timer.html#a41e78f6e3afc5b9bdf5e20e644668b81">factory.factory200.kitAssemblyManager.KAMGraphicPanel.DeliveryTimer</a>
+: <a class="el" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_k_a_m_graphic_panel_1_1_delivery_timer.html#a41e78f6e3afc5b9bdf5e20e644668b81">factory.factory200.kitAssemblyManager.KAMGraphicPanel.DeliveryTimer</a>
 </li>
 <li>description
 : <a class="el" href="classfactory_1_1general_1_1_kit.html#ae593429c8371dc8830d5450f2e5ea284">factory.general.Kit</a>
 , <a class="el" href="classfactory_1_1general_1_1_part.html#a730035da9c269d99f0501677e588da91">factory.general.Part</a>
 </li>
 <li>deserialize()
-: <a class="el" href="classfactory_1_1general_1_1_util.html#a99bf479b61edcd92ed6e5f57d4703e4e">factory.general.Util</a>
-, <a class="el" href="classfactory_1_1general_1_1_blueprint_kits.html#a474245bed214cb03cd54ba30640334a5">factory.general.BlueprintKits</a>
+: <a class="el" href="classfactory_1_1general_1_1_blueprint_kits.html#a474245bed214cb03cd54ba30640334a5">factory.general.BlueprintKits</a>
 , <a class="el" href="classfactory_1_1general_1_1_blueprint_parts.html#aa4873cad8bd88bd0824c4ce24d20caf7">factory.general.BlueprintParts</a>
 , <a class="el" href="classfactory_1_1general_1_1_kit.html#ad19a2da7e55377083f86edef2c444f73">factory.general.Kit</a>
 , <a class="el" href="classfactory_1_1general_1_1_part.html#af8f61fd0bc9a9c27f285fa12a9f420e3">factory.general.Part</a>
+, <a class="el" href="classfactory_1_1general_1_1_util.html#a99bf479b61edcd92ed6e5f57d4703e4e">factory.general.Util</a>
 </li>
 <li>destinationX
 : <a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_lane_manager_1_1_l_m_drawable_part.html#a0cd5749cb3dbd1ae270c5baf5c8cf446">factory.factory200.factoryProductionManager.LaneManager.LMDrawablePart</a>
@@ -203,12 +205,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>destinationY
 : <a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_lane_manager_1_1_l_m_drawable_part.html#a8fbd7e8b7ce78e7f0982380c811d4875">factory.factory200.factoryProductionManager.LaneManager.LMDrawablePart</a>
 , <a class="el" href="classfactory_1_1factory200_1_1lane_manager_1_1_client_side_1_1_l_m_drawable_part.html#a57e24af17769d105bdc062b380b524fd">factory.factory200.laneManager.ClientSide.LMDrawablePart</a>
-</li>
-<li>displayFPMGUI()
-: <a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_factory_production_manager.html#ae8b5689df79ec9bdbc5e33bbd1ff281d">factory.factory200.factoryProductionManager.FactoryProductionManager</a>
-</li>
-<li>displayGraphics()
-: <a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_factory_production_manager.html#a81becb397d0c70e176374faa2ac43c6b">factory.factory200.factoryProductionManager.FactoryProductionManager</a>
 </li>
 <li>diversion
 : <a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_lane_manager_1_1_l_m_drawable_diversion_bulb.html#a5b957f95aefe2b97052a99e8f6a34132">factory.factory200.factoryProductionManager.LaneManager.LMDrawableDiversionBulb</a>
@@ -245,8 +241,21 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>Do()
 : <a class="el" href="classagent_1_1_agent.html#a3e56bf2c3ab7224d8d628cae2b6aa784">agent.Agent</a>
 </li>
+<li>doAddEmptyKit()
+: <a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_kits_assembly_manager_1_1_kit_assembly_manager.html#ada566a42d289c74a62267911271654f3">factory.factory200.factoryProductionManager.KitsAssemblyManager.KitAssemblyManager</a>
+, <a class="el" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_kit_assembly_manager.html#a8b14120c7ddead0f695a4e2c9e1c046a">factory.factory200.kitAssemblyManager.KitAssemblyManager</a>
+</li>
 <li>DoAddKit()
 : <a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html#a3b838bc9f9c446e48cc82883a6815345">factory.factory201.kitManagement.ConveyorAgent</a>
+</li>
+<li>DoDropPart()
+: <a class="el" href="classfactory_1_1factory201_1_1parts_management_1_1_parts_agent.html#a512f8db6d364f8eb3fc96403025c2726">factory.factory201.partsManagement.PartsAgent</a>
+</li>
+<li>DoGiveKitsInAction()
+: <a class="el" href="classfactory_1_1factory201_1_1parts_management_1_1_parts_agent.html#a7fe811f86a8e38b984ff8337c706a31d">factory.factory201.partsManagement.PartsAgent</a>
+</li>
+<li>DoGiveKitsInQueue()
+: <a class="el" href="classfactory_1_1factory201_1_1parts_management_1_1_parts_agent.html#a60423e0880ad7c83e52b75bc9d67c312">factory.factory201.partsManagement.PartsAgent</a>
 </li>
 <li>DoInspectKit()
 : <a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_camera_agent.html#aeb17dd5c115b05be5ca766b35b07a5de">factory.factory201.kitManagement.CameraAgent</a>
@@ -278,6 +287,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>DoPickUpPart()
 : <a class="el" href="classfactory_1_1factory201_1_1parts_management_1_1_parts_agent.html#a4fcb165d2673a09831f4392d2a5f9b5a">factory.factory201.partsManagement.PartsAgent</a>
 </li>
+<li>DoPurge()
+: <a class="el" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a95cd3255f475f6921f41a24d30c835bf">factory.factory201.partsManagement.NestAgent</a>
+</li>
 <li>DoPutInKit()
 : <a class="el" href="classfactory_1_1factory201_1_1parts_management_1_1_parts_agent.html#aa87f814fbc6198b4812c89b1bd9eeb4e">factory.factory201.partsManagement.PartsAgent</a>
 </li>
@@ -286,6 +298,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </li>
 <li>dosendPartToRightLane()
 : <a class="el" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#a7c60e0a7cf25657bddc203d14599e822">factory.factory201.feederManagement.FeederAgent</a>
+</li>
+<li>doSetParts()
+: <a class="el" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_kit_assembly_manager.html#a301e0b804b3cfcbd2905492eb71d1af6">factory.factory200.kitAssemblyManager.KitAssemblyManager</a>
+, <a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_kits_assembly_manager_1_1_kit_assembly_manager.html#ae079150a8070cb375de289d436aad525">factory.factory200.factoryProductionManager.KitsAssemblyManager.KitAssemblyManager</a>
 </li>
 <li>doSupplyPart()
 : <a class="el" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent.html#ab880b323712092b25ee37f1fba486cfe">factory.factory201.feederManagement.GantryAgent</a>
@@ -309,20 +325,34 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>dropOffParts()
 : <a class="el" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#ac936536bfc3f4a39f637cbbd05d72a51">factory.factory200.kitAssemblyManager.GUIPartRobot</a>
 </li>
+<li>dropPart
+: <a class="el" href="classfactory_1_1factory201_1_1parts_management_1_1_parts_agent.html#aae991ecfecb53d8f201e5b0f5e95e70b">factory.factory201.partsManagement.PartsAgent</a>
+</li>
+<li>droppart
+: <a class="el" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_non_norm_k_a_m.html#a46ca1c4739d9ccac5375d42386206fd3">factory.factory200.kitAssemblyManager.GUINonNormKAM</a>
+</li>
 <li>dropPartCommand()
 : <a class="el" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#ada9c0a5fa2c09f9265ce091de22b6850">factory.factory200.kitAssemblyManager.GUIPartRobot</a>
 </li>
+<li>dropPartOnGround()
+: <a class="el" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_part_robot.html#a8103aeb8593855d8f5958e11869fbaf4">factory.factory200.kitAssemblyManager.GUIPartRobot</a>
+</li>
+<li>dumpPartOnFeeder()
+: <a class="el" href="classfactory_1_1factory200_1_1gantry_robot_manager_1_1_g_u_i_bin.html#ab25d5972bb8348d9fcea44a3abb3f90d">factory.factory200.gantryRobotManager.GUIBin</a>
+</li>
 <li>DUMPX
 : <a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_gantry_robot_manager_1_1_gantry_robot_manager.html#a1cdd2efe5d9811d18476294ba414ef98">factory.factory200.factoryProductionManager.GantryRobotManager.GantryRobotManager</a>
+, <a class="el" href="classfactory_1_1factory200_1_1gantry_robot_manager_1_1_gantry_robot_manager.html#a9270cb81a9c82f83bcc2c5d02279f7fe">factory.factory200.gantryRobotManager.GantryRobotManager</a>
 </li>
 <li>DUMPY
-: <a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_gantry_robot_manager_1_1_gantry_robot_manager.html#ace4aa3b59f66f63375b5a8d19258f7c7">factory.factory200.factoryProductionManager.GantryRobotManager.GantryRobotManager</a>
+: <a class="el" href="classfactory_1_1factory200_1_1gantry_robot_manager_1_1_gantry_robot_manager.html#aad59ffbc292fb160f42e94fa37fe8068">factory.factory200.gantryRobotManager.GantryRobotManager</a>
+, <a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_gantry_robot_manager_1_1_gantry_robot_manager.html#ace4aa3b59f66f63375b5a8d19258f7c7">factory.factory200.factoryProductionManager.GantryRobotManager.GantryRobotManager</a>
 </li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 17 2012 01:37:10 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Dec 1 2012 12:34:18 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

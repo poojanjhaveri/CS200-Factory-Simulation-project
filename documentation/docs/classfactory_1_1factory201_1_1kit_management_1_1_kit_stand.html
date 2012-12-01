@@ -20,9 +20,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="kitrobot.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Factory Project
-   &#160;<span id="projectnumber">0.1.0</span>
+   &#160;<span id="projectnumber">0.4.0</span>
    </div>
    <div id="projectbrief">team 1 joint cs200/cs201</div>
   </td>
@@ -96,6 +97,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">factory.factory201.kitManagement.KitStand Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Kit stand stores and controls kits for the kit robot.  
+ <a href="classfactory_1_1factory201_1_1kit_management_1_1_kit_stand.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -119,6 +123,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a43b75005d4e99a10ef4f8ad45229555c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a03cc15103f625bd844762ddf7c255e9d"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_kit_stand.html#a03cc15103f625bd844762ddf7c255e9d">isEmpty</a> ()</td></tr>
 <tr class="separator:a03cc15103f625bd844762ddf7c255e9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a531336fc1e7db8084192a24dd463c21d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_kit_stand.html#a531336fc1e7db8084192a24dd463c21d">setNull</a> (int index)</td></tr>
+<tr class="separator:a531336fc1e7db8084192a24dd463c21d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -128,10 +134,11 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a8a0cedf9498580d91e2ddc515f534c72"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><dl class="section author"><dt>Author</dt><dd>Alex Young </dd></dl>
+<div class="textblock"><p>Kit stand stores and controls kits for the kit robot. </p>
+<dl class="section author"><dt>Author</dt><dd>Alex Young </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>1 </dd></dl>
 
-<p>Definition at line <a class="el" href="factory201_2kit_management_2_kit_stand_8java_source.html#l00009">9</a> of file <a class="el" href="factory201_2kit_management_2_kit_stand_8java_source.html">KitStand.java</a>.</p>
+<p>Definition at line <a class="el" href="factory201_2kit_management_2_kit_stand_8java_source.html#l00010">10</a> of file <a class="el" href="factory201_2kit_management_2_kit_stand_8java_source.html">KitStand.java</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a9addb9a6358b333bb538fee2439ef2ae"></a>
 <div class="memitem">
@@ -155,7 +162,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="factory201_2kit_management_2_kit_stand_8java_source.html#l00020">20</a> of file <a class="el" href="factory201_2kit_management_2_kit_stand_8java_source.html">KitStand.java</a>.</p>
+<p>Definition at line <a class="el" href="factory201_2kit_management_2_kit_stand_8java_source.html#l00015">15</a> of file <a class="el" href="factory201_2kit_management_2_kit_stand_8java_source.html">KitStand.java</a>.</p>
 
 </div>
 </div>
@@ -181,16 +188,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>When adding a kit to the kit stand, the kitting stand has first priority, then the temporary stand.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">kit</td><td>Kit to be added to the kit stand </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>True if the kit was successfully added, false otherwise </dd></dl>
 
-<p>Definition at line <a class="el" href="factory201_2kit_management_2_kit_stand_8java_source.html#l00035">35</a> of file <a class="el" href="factory201_2kit_management_2_kit_stand_8java_source.html">KitStand.java</a>.</p>
+<p>Definition at line <a class="el" href="factory201_2kit_management_2_kit_stand_8java_source.html#l00020">20</a> of file <a class="el" href="factory201_2kit_management_2_kit_stand_8java_source.html">KitStand.java</a>.</p>
 
 </div>
 </div>
@@ -214,10 +213,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Checks the availability of the kit stand</p>
-<dl class="section return"><dt>Returns</dt><dd>Self-explanatory </dd></dl>
 
-<p>Definition at line <a class="el" href="factory201_2kit_management_2_kit_stand_8java_source.html#l00096">96</a> of file <a class="el" href="factory201_2kit_management_2_kit_stand_8java_source.html">KitStand.java</a>.</p>
+<p>Definition at line <a class="el" href="factory201_2kit_management_2_kit_stand_8java_source.html#l00059">59</a> of file <a class="el" href="factory201_2kit_management_2_kit_stand_8java_source.html">KitStand.java</a>.</p>
 
 </div>
 </div>
@@ -243,7 +240,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="factory201_2kit_management_2_kit_stand_8java_source.html#l00087">87</a> of file <a class="el" href="factory201_2kit_management_2_kit_stand_8java_source.html">KitStand.java</a>.</p>
+<p>Definition at line <a class="el" href="factory201_2kit_management_2_kit_stand_8java_source.html#l00055">55</a> of file <a class="el" href="factory201_2kit_management_2_kit_stand_8java_source.html">KitStand.java</a>.</p>
 
 </div>
 </div>
@@ -269,7 +266,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="factory201_2kit_management_2_kit_stand_8java_source.html#l00083">83</a> of file <a class="el" href="factory201_2kit_management_2_kit_stand_8java_source.html">KitStand.java</a>.</p>
+<p>Definition at line <a class="el" href="factory201_2kit_management_2_kit_stand_8java_source.html#l00051">51</a> of file <a class="el" href="factory201_2kit_management_2_kit_stand_8java_source.html">KitStand.java</a>.</p>
 
 </div>
 </div>
@@ -294,16 +291,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Allows access to array of kits</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">i</td><td>Index </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Kit at given index </dd></dl>
 
-<p>Definition at line <a class="el" href="factory201_2kit_management_2_kit_stand_8java_source.html#l00057">57</a> of file <a class="el" href="factory201_2kit_management_2_kit_stand_8java_source.html">KitStand.java</a>.</p>
+<p>Definition at line <a class="el" href="factory201_2kit_management_2_kit_stand_8java_source.html#l00036">36</a> of file <a class="el" href="factory201_2kit_management_2_kit_stand_8java_source.html">KitStand.java</a>.</p>
 
 </div>
 </div>
@@ -328,10 +317,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Checks if the inspection stand is empty</p>
-<dl class="section return"><dt>Returns</dt><dd>Self-explanatory </dd></dl>
 
-<p>Definition at line <a class="el" href="factory201_2kit_management_2_kit_stand_8java_source.html#l00079">79</a> of file <a class="el" href="factory201_2kit_management_2_kit_stand_8java_source.html">KitStand.java</a>.</p>
+<p>Definition at line <a class="el" href="factory201_2kit_management_2_kit_stand_8java_source.html#l00047">47</a> of file <a class="el" href="factory201_2kit_management_2_kit_stand_8java_source.html">KitStand.java</a>.</p>
 
 </div>
 </div>
@@ -356,7 +343,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="factory201_2kit_management_2_kit_stand_8java_source.html#l00130">130</a> of file <a class="el" href="factory201_2kit_management_2_kit_stand_8java_source.html">KitStand.java</a>.</p>
+<p>Definition at line <a class="el" href="factory201_2kit_management_2_kit_stand_8java_source.html#l00089">89</a> of file <a class="el" href="factory201_2kit_management_2_kit_stand_8java_source.html">KitStand.java</a>.</p>
 
 </div>
 </div>
@@ -381,9 +368,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Moves the full kit to inspection stand and if there is an empty kit in the temporary stand it moves it into the kitting stand </p>
 
-<p>Definition at line <a class="el" href="factory201_2kit_management_2_kit_stand_8java_source.html#l00110">110</a> of file <a class="el" href="factory201_2kit_management_2_kit_stand_8java_source.html">KitStand.java</a>.</p>
+<p>Definition at line <a class="el" href="factory201_2kit_management_2_kit_stand_8java_source.html#l00069">69</a> of file <a class="el" href="factory201_2kit_management_2_kit_stand_8java_source.html">KitStand.java</a>.</p>
 
 </div>
 </div>
@@ -408,16 +394,34 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Removes kit at index i and returns it</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">i</td><td>Index </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Kit that was removed </dd></dl>
 
-<p>Definition at line <a class="el" href="factory201_2kit_management_2_kit_stand_8java_source.html#l00067">67</a> of file <a class="el" href="factory201_2kit_management_2_kit_stand_8java_source.html">KitStand.java</a>.</p>
+<p>Definition at line <a class="el" href="factory201_2kit_management_2_kit_stand_8java_source.html#l00040">40</a> of file <a class="el" href="factory201_2kit_management_2_kit_stand_8java_source.html">KitStand.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a531336fc1e7db8084192a24dd463c21d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void factory.factory201.kitManagement.KitStand.setNull </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="factory201_2kit_management_2_kit_stand_8java_source.html#l00093">93</a> of file <a class="el" href="factory201_2kit_management_2_kit_stand_8java_source.html">KitStand.java</a>.</p>
 
 </div>
 </div>
@@ -440,7 +444,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="factory201_2kit_management_2_kit_stand_8java_source.html#l00011">11</a> of file <a class="el" href="factory201_2kit_management_2_kit_stand_8java_source.html">KitStand.java</a>.</p>
+<p>Definition at line <a class="el" href="factory201_2kit_management_2_kit_stand_8java_source.html#l00012">12</a> of file <a class="el" href="factory201_2kit_management_2_kit_stand_8java_source.html">KitStand.java</a>.</p>
 
 </div>
 </div>
@@ -461,9 +465,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>The kit stand has three stands 1. Temporary stand to hold an empty kit 2. Kitting stand which will hold the kit into which parts are being put 3. Inspection stand where full kits are inspected </p>
 
-<p>Definition at line <a class="el" href="factory201_2kit_management_2_kit_stand_8java_source.html#l00018">18</a> of file <a class="el" href="factory201_2kit_management_2_kit_stand_8java_source.html">KitStand.java</a>.</p>
+<p>Definition at line <a class="el" href="factory201_2kit_management_2_kit_stand_8java_source.html#l00013">13</a> of file <a class="el" href="factory201_2kit_management_2_kit_stand_8java_source.html">KitStand.java</a>.</p>
 
 </div>
 </div>
@@ -473,7 +476,7 @@ Private Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 17 2012 01:37:08 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Dec 1 2012 12:34:16 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>
