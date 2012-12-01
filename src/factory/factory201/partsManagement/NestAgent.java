@@ -187,12 +187,14 @@ public class NestAgent extends Agent implements NestInterface {
                 }
             }
 
-        //NEXT HIGHEST PRIORITY WILL BE TO UNPILE A NEST IF IT IS PILED UP 
+        //NEXT HIGHEST PRIORITY WILL BE TO UNPILE/PURGE A NEST IF IT IS PILED UP 
         for (Nest n: myNests){
                 if (n.piled==true)
                 {   //stabilize once and then wait for nest to be full again (or request new inspection. )
                     print("nest is shaking, need to stabilize");
-                    unPileNest(n.nestNum);
+                    // replace the unpile with the purge nest function.
+                    purge(n);
+                    //unPileNest(n.nestNum);
                     print("nest # " + n.nestNum + "set to false ");
                     //set the shaking variable to false after you send the signal to the client to stabilize
                     n.piled=false;
@@ -348,7 +350,7 @@ public class NestAgent extends Agent implements NestInterface {
     private void purge(Nest n){
     print("PURGING Nest "+ n.nestNum);
     n.parts.clear();
-    //DoPurge();//NEEDTO implement this method
+    DoPurge(n.nestNum);//NEEDTO implement this method
     n.status = Nest.Status.needPart;
     stateChanged();
     }
@@ -372,6 +374,11 @@ public class NestAgent extends Agent implements NestInterface {
             serverLM.getForAgentNest().setSwitchUp(nestNum);
            // this.client.sendMessage(Message.PURGE_NEST + ":" + nestNum);
             //this.fpm.sendMessage(Message.PURGE_NEST + ":" + nestNum);
+        try {
+         Thread.sleep(1000);
+         } catch (InterruptedException e) {
+         e.printStackTrace();
+         }
         }
         
     }

@@ -364,7 +364,7 @@ public class FeederAgent extends Agent implements Feeder {
     	    public void run(){		    
             LMServer.getForAgentLane().setVibrationAmplitudeNormal(leftLane.getIndex());
             }
-            },5000);
+            },1800);
             
             //set jammed lane to false
             leftLane.setJammed(false);
@@ -418,7 +418,7 @@ public class FeederAgent extends Agent implements Feeder {
     	    public void run(){		    
             LMServer.getForAgentLane().setVibrationAmplitudeNormal(rightLane.getIndex());
             }
-            },5000);
+            },1800);
             
             //set jammed lane to false
             rightLane.setJammed(false);
