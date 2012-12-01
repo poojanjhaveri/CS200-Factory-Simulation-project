@@ -24,7 +24,7 @@ public class NonNormativeLane{
 			System.out.println("Help! Agent! Lane " + laneNum + " is JAMMED!!!");
 
 			// Send signal to Lane Agent
-			
+			serverMain.getFeederAgents()[laneNum / 2].msgLaneJammed(laneNum);
 			
 			// Reset
 			jammedLaneTimer = 0;
