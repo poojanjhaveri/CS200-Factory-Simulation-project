@@ -348,7 +348,7 @@ public class FeederAgent extends Agent implements Feeder {
            if(leftLane.getJammed()==true){
             print("leftLane is jammed!!");
             //start jammed lane animation
-            LMServer.getForAgentLane().startJammedLaneAnimation(feederNum);
+            LMServer.getForAgentLane().startJammedLaneAnimation(leftLane.getIndex());
             LMServer.getForAgentFeeder().setDiverterSwitchLeft(feederNum);
             LMServer.getForAgentGantryRobot().putBin(p.part.type, p.quantity, feederNum);
             
@@ -364,7 +364,7 @@ public class FeederAgent extends Agent implements Feeder {
     	    public void run(){		    
             LMServer.getForAgentLane().setVibrationAmplitudeNormal(leftLane.getIndex());
             }
-            },1500);
+            },5000);
             
             //set jammed lane to false
             leftLane.setJammed(false);
@@ -402,8 +402,8 @@ public class FeederAgent extends Agent implements Feeder {
         if(rightLane.getJammed()==true){
             print("rightLane is jammed!!");            
             //start jammed lane animation
-            LMServer.getForAgentLane().startJammedLaneAnimation(feederNum);
-            LMServer.getForAgentFeeder().setDiverterSwitchLeft(feederNum);
+            LMServer.getForAgentLane().startJammedLaneAnimation(rightLane.getIndex());
+            LMServer.getForAgentFeeder().setDiverterSwitchRight(feederNum);
             LMServer.getForAgentGantryRobot().putBin(p.part.type, p.quantity, feederNum);
             
             //start strong vibration amplitude after 5 seconds
@@ -418,7 +418,7 @@ public class FeederAgent extends Agent implements Feeder {
     	    public void run(){		    
             LMServer.getForAgentLane().setVibrationAmplitudeNormal(rightLane.getIndex());
             }
-            },1500);
+            },5000);
             
             //set jammed lane to false
             rightLane.setJammed(false);
@@ -426,7 +426,7 @@ public class FeederAgent extends Agent implements Feeder {
            }
            
            else{
-            LMServer.getForAgentFeeder().setDiverterSwitchLeft(feederNum);
+            LMServer.getForAgentFeeder().setDiverterSwitchRight(feederNum);
             LMServer.getForAgentGantryRobot().putBin(p.part.type, p.quantity, feederNum);
             }
 
