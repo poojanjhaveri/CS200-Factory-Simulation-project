@@ -118,7 +118,8 @@ public class NestAgent extends Agent implements NestInterface {
             n.status = Nest.Status.readyForKit;
             print("Nest inspected and verified");
         } else  if (result.is == Result.Is.partsMissing && !requestEarlyInspection){
-           purge(n);
+            //do not call action from messages- kevin 
+            purge(n);
            print("Nest is not verified, will be dumped");
         } else if (result.is == Result.Is.partsMissing && requestEarlyInspection){
             requestEarlyInspection=false;
@@ -126,23 +127,31 @@ public class NestAgent extends Agent implements NestInterface {
             if (n.status!=Nest.Status.full)
             n.status = Nest.Status.gettingPart;
         }
+        /* added by Kevin- if the parts are unstable, set the shaking to true*/
+        else  if (result.is == Result.Is.unstableParts){
+           n.shaking=true;
+           System.out.println("Result received is that parts are unstable");
+        }
+        
         stateChanged();
     }
     
     //scheduler
     @Override
     public boolean pickAndExecuteAnAction() {
-/*
+
         //PRIORITIZE STABILIZING A SHAKING NEST
         for (Nest n: myNests){
                 if (n.shaking==true)
-                {   stabilizeNest(n.nestNum);
+                {   //stabilize once and then wait for nest to be full again (or request new inspection. )
+                    System.out.println("nest is shaking, need to stabilize");
+                    stabilizeNest(n.nestNum);
                     n.shaking=false;
                     return true;
                 }
             }
-  change this 
-  */
+//  change this 
+  
         if(requestEarlyInspection){
             for (Nest n: myNests){
                 if (n.status == Nest.Status.needPart)
