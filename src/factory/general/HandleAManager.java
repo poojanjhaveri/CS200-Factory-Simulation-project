@@ -140,9 +140,9 @@ public class HandleAManager implements Runnable {
             this.server.setConveyerAgentClient(this);
             this.server.setPartsAgentClient(this);
             this.server.getServerLM().setKAM(this);
+	    this.server.setNestAgentClient(this);
         }
     }
-
 
     public void pushToFPM()
     {
@@ -252,7 +252,6 @@ public class HandleAManager implements Runnable {
                 queue.get(i).getPart(j).setType();
             }
             /*for(int i = 0; i != deserialized.size(); i++) {
->>>>>>> ff7bb7db8a2ce15b30ab071408360e05df7878b8
 
                 for (int i = 0; i < queue.size(); i++) {
                     for (int j = 0; j < queue.get(i).parts.size(); j++) {
@@ -265,13 +264,15 @@ public class HandleAManager implements Runnable {
 
                  queue.add(single);
                  }*/
-                this.server.getConveyorAgent().msgGenerateKit(queue.size()); // * This generates 10 new kits, among other things if you pass string... *
-                this.server.getPartsAgent().msgHereIsKit(queue);
+                this.server.getConveyorAgent().msgGenerateKits(queue.size()); // * This generates 10 new kits, among other things if you pass string... *
+                this.server.getPartsAgent().msgHereIsKit(queue); // Only being once. TODO: need to be sent each time a new kit config comes in 
                 //this.server.startInteractionSequence();
                 System.out.println(msg);
                 System.out.println("BEGINNING PRODUCTION CYCLE WOOOOOOT (size " + queue.size() + ")");
                 System.out.println(":::::FPM production queue debug:::::");
                 queue.get(0).debug();
+
+		this.server.getKitRobotAgent().msgStartFactory();
             } // Lane Manager-----------------------------------------------------------------------------------
             else if (msg.contains(Message.BAD_PART_INSERTION)) {
                 server.getServerLM().getVerify().verify(msg);
@@ -283,11 +284,21 @@ public class HandleAManager implements Runnable {
                 server.getServerLM().getVerify().verify(msg);
             } else if (msg.contains(Message.PART_TAKE_BY_PARTROBOT)) {
                 server.getServerLM().getVerify().verify(msg);
+            } else if (msg.contains(Message.PART_TOGGLING)) {
+            	server.getServerLM().getVerify().verify(msg);
+            } else if (msg.contains(Message.PART_UNTOGGLING)) {
+            	server.getServerLM().getVerify().verify(msg);
             } //-----------------------------------------------------------------------------------------------------------     
+	    else if(msg.contains(Message.KAM_NEST_PILED)){
+		//handle nest piled nonnorm
+                this.server.getCameraAgent().msgPartsPiledUp(Integer.parseInt(this.grabParameter(msg)));
+	    }else if(msg.contains(Message.KAM_NEST_UNSTABLE)){
+		//handle unstable nonnorm
+		this.server.getCameraAgent().msgPartsShaking(Integer.parseInt(this.grabParameter(msg)));
+	    }else if(msg.contains(Message.KAM_BAD_KIT)){
+		//handle bad kit nonnorm NOTE: bad kit == DROPPED != INSPECTED!!!!
+	    }
 
-        else if(msg.contains(Message.GRM_FINISH_MOVE_TO_BIN) || msg.contains(Message.GRM_FINISH_MOVE_TO_FEEDER) || msg.contains(Message.GRM_FINISH_MOVE_TO_DUMP)) {
-            this.server.getGantry().msgAnimationComplete(msg);
-        }
     }
 
     /**

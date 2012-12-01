@@ -2,7 +2,8 @@ package factory.factory200.laneManager.ServerSide;
 
 import javax.swing.JFrame;
 
-import factory.factory201.feederManagement.GantryAgent;
+import factory.factory201.feederManagement.FeederAgent;
+import factory.factory201.kitManagement.CameraAgent;
 import factory.general.HandleAManager;
 
 /**
@@ -28,7 +29,8 @@ public class LMServerMain extends JFrame implements Runnable{
 	private LMThreadTimer threadTimer;
 	private LMController controller;
 	
-	private GantryAgent gantryAgent;
+	private FeederAgent[] feederAgents;
+	private CameraAgent cameraAgent;
 	
 	public LMServerMain(){}
 	
@@ -120,12 +122,20 @@ public class LMServerMain extends JFrame implements Runnable{
 			hacGRM.sendMessage(signal);
 		}
 	}
-	
-	public void setGantryAgent(GantryAgent gantryAgent){
-		this.gantryAgent = gantryAgent;
+
+	public void setFeederAgents(FeederAgent[] feederAgents){
+		this.feederAgents = feederAgents;
 	}
 	
-	public GantryAgent getGantryAgent(){
-		return gantryAgent;
+	public void setCameraAgents(CameraAgent cameraAgent){
+		this.cameraAgent = cameraAgent;
+	}
+	
+	public FeederAgent[] getFeederAgents(){
+		return feederAgents;
+	}
+	
+	public CameraAgent getCameraAgent(){
+		return cameraAgent;
 	}
 }

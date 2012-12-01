@@ -120,4 +120,22 @@ public class KAMNest {
             }
         }
     }
+    //fijsod DO THESE TWO METHODS
+    public void nestUp(){
+        this.setNest(new ImageIcon("pics/KAMnest.png"));
+        
+    }
+    
+    public void nestDown(){
+        /*int size=this.getPlaceholder().get(i).getKit().getParts().size();
+        for(int k=0;k<size;k++){
+           this.getPlaceholder().get(i).getKit().getParts().remove(0);
+        }*/
+        this.setNest(new ImageIcon("pics/nestDown.png"));
+        int size=this.getParts().size();
+        for (int k=0; k<size; k++){
+            this.getParts().remove(0);
+        }
+        
+    }
 }

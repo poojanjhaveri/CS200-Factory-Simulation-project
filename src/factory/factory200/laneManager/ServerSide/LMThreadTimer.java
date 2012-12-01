@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
 
+import factory.general.Global;
+
 /**
  * @brief Timer in Server Side
  * @author Dongyoung Jung
@@ -18,7 +20,7 @@ class LMThreadTimer implements Runnable{
 	public LMThreadTimer(LMServerMain serverMain){
 		this.serverMain = serverMain;
 		sendPartSignal = new LMSendPartSignal(serverMain);
-		timer = new Timer(20, new ServerTimer());	
+		timer = new Timer(Global.STANDARD_TIMER_SPEED, new ServerTimer());	
 	}
 		
 	public void run(){}

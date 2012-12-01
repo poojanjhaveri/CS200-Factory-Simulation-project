@@ -58,6 +58,12 @@ public class Message {
     public static final String LM_ADD_PART="LMA_";
     public static final String KAM_FINISH_KITBOT_ANIMATION = "KAM_FINISH_KITBOT_ANIMATION";
     public static final String KAM_FINISH_KITTER_ANIMATION = "KAM_FINISH_KITTER_ANIMATION";
+    public static final String KAM_NEST_STABLE = "KAM_NEST_STABLE";
+    public static final String KAM_NEST_UNSTABLE = "KAM_NEST_UNSTABLE";
+    public static final String KAM_NEST_PILED = "KAM_NEST_PILED";
+    public static final String KAM_BAD_KIT = "KAM_BAD_KIT";///<a part was dropped
+    public static final String KAM_ACTION_STABILIZE_NEST = "KAM_ACTION_STABILIZE_NEST";
+    public static final String KAM_ACTION_UNPILE_NEST = "KAM_ACTION_UNPILE_NEST";
     //    public static final String KAM_FINISH_DROP_OFF_FULL_KIT = "KAM_FINISH_DROP_OFF_FULL_KIT";
     //    public static final String KAM_FINISH_MOVE_TO_NEST = "KAM_FINISH_MOVE_TO_NEST";
     //public static final String KAM_FINISH_DROP_OFF_PARTS = "KAM_FINISH_DROP_OFF_PARTS";
@@ -69,6 +75,8 @@ public class Message {
     public static final String BAD_PART_INSERTION = "BAD_PART_INSERTION";
     public static final String LANE_JAMMED = "LANE_JAMMED";
     public static final String PART_PILED = "PART_PILED";
+    public static final String PART_TOGGLING = "PART_TOGGLING";
+    public static final String PART_UNTOGGLING = "PART_UNTOGGLING";
     
     //PULL_KITS_LIST is also used by FPM
     public static final String IDENTIFY_FACTORYPRODUCTIONMANAGER = "IDENTIFY_FACTORYPRODUCTIONMANAGER";

@@ -96,6 +96,10 @@ public class LMDrawablePart {
 		}
 	}
 	
+	public int getX(){
+		return currentLocationX;
+	}
+	
 	public void checkDestination(){
 		if( Math.abs(destinationX - currentLocationX) < 2 && Math.abs(destinationY - currentLocationY) < 2 ){  
 			arrived = true;

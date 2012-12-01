@@ -11,6 +11,7 @@ public class LMLaneForAgent {
 	private LMServerMain serverMain;
 	private LMLaneData newLane;
 	private ArrayList<LMLaneData> lanes = new ArrayList<LMLaneData>();
+	private String signal = "";
 
 	public LMLaneForAgent(LMServerMain serverMain){
 		this.serverMain = serverMain;
@@ -39,5 +40,11 @@ public class LMLaneForAgent {
 
 	public void setVibrationAmplitudeNormal( int laneNum ){
 		lanes.get( laneNum ).setVibrationAmplitudeNormal();
+	}
+	
+	public void startJammedLaneAnimation( int laneNum ){
+		signal = laneNum + "&Non&Jammed&";
+		serverMain.sendToFPM(signal);
+		serverMain.sendToLM(signal);
 	}
 }

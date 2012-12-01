@@ -13,16 +13,16 @@ import javax.swing.JPanel;
 public class LMGUINonNormativePanel2 extends JPanel implements ActionListener{
 
 	private LMApplication app;
-	
+
 	private Integer[] laneList = { 1, 2, 3, 4, 5, 6, 7, 8 };
 	private JComboBox laneNumBox = new JComboBox(laneList);
 	private JLabel label = new JLabel("Lane Number");
 	
 	private JPanel panel = new JPanel(); 
-	
 	private JButton button = new JButton("Lane Being Jammed");	
 	
 	private int laneNum;
+	private int randomPartNum;
 	
 	public LMGUINonNormativePanel2(LMApplication app){
 		this.app = app;
@@ -42,7 +42,7 @@ public class LMGUINonNormativePanel2 extends JPanel implements ActionListener{
 	public void actionPerformed(ActionEvent ae){
 		if( ae.getSource() == button ){
 			laneNum = laneNumBox.getSelectedIndex();
-			app.getVerifyMessage().sendToServer( laneNum + "LANE_JAMMED" );
+			app.getVerifyMessage().sendToServer( "" + laneNum + "LANE_JAMMED");
 		}
 	}
 }

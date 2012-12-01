@@ -44,13 +44,13 @@ public class GUIGantryRobot extends GUIRobot{
     public static final String IMAGE_PATH = "pics/robots/gantryrobot.png";
 
     GUIBin bin;///<null if no bin, otherwise contains the information on the bin
-    Boolean extended;///<whether or not the robot has arms extended
+    Boolean breakState;///<whether or not the robot has arms extended
     Boolean hasbin;///<whether or not the robot is carrying a bin
     Integer moveto;///<where the gantry robot is heading towards
 
     public GUIGantryRobot() {
 	super(GantryRobotManager.ROBOT_INITIAL_X,GantryRobotManager.ROBOT_INITIAL_Y,GUIGantryRobot.IMAGE_PATH);
-	this.extended = false;
+	this.breakState = false;
 	this.hasbin = false;
 	this.bin = null;
 	this.setConstants(GantryRobotManager.ROBOT_VELOCITY_X, GantryRobotManager.ROBOT_VELOCITY_Y, GantryRobotManager.ROBOT_TURN_RATE);
@@ -117,7 +117,22 @@ public class GUIGantryRobot extends GUIRobot{
 	    }
     }
     
+    /**
+     * return the breaking state of the robot
+     */
     
+    public boolean getBreakState(){
+    	return breakState;
+    }
+    
+    /**
+     * set boolean breakState by gantry Robot Manager
+     */
+    
+    public void setBreakState(boolean sentbyManager){
+    	breakState = sentbyManager;
+    	
+    }
     /**
     @brief Another moving statement which has binNumber b, and feeder number f to move
     */
@@ -186,35 +201,7 @@ public class GUIGantryRobot extends GUIRobot{
     	else 
     		return false;
     }
-    /**
-    brief extends the arm
-    extends the arm
-    */
-    public void extend() {
-        this.extended = true;
-    }
-    
-    /**
-    @brief retracts the arm
-    retracts the arm
-    */
-    public void retract() {
-        this.extended = false;
-    }
-    
-    /**
-    @brief switches arm state
-    retracts if extended, extends if retracted
-     */
-    public void toggleArm()
-    {
-        this.extended = !this.extended;
-    }
-    
-    public boolean armExtended()
-    {
-        return this.extended;
-    }
+  
     /**
      * @return GUIBin objects in gantry robot 
      */

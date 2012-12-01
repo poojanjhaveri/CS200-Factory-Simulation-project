@@ -2,17 +2,21 @@ package factory.factory200.gantryRobotManager;
 /**
  * @author Yuting Liu
  */
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
+import javax.swing.ImageIcon;
+import javax.swing.JPanel;
+import javax.swing.Timer;
 
 import factory.general.GUIPart;
+import factory.general.Global;
 import factory.general.Message;
 import factory.general.Part;
-import java.awt.*;
-import java.awt.geom.*;
-import java.util.*;
-import javax.swing.*;
-import javax.swing.Timer;
 
 
 public class GRMGraphicPanel extends JPanel implements ActionListener {
@@ -71,7 +75,9 @@ public class GRMGraphicPanel extends JPanel implements ActionListener {
 			
 			}
 		}	
-		gbot.update();
+		if(this.gbot.getBreakState()==false){
+			gbot.update();
+		}
 		repaint();
 	}
 
@@ -103,7 +109,7 @@ public class GRMGraphicPanel extends JPanel implements ActionListener {
         }
         
         ///<Set the timer
-        timer = new Timer(20, this);
+        timer = new Timer(Global.STANDARD_TIMER_SPEED, this);
         timer.start();
         
 	}

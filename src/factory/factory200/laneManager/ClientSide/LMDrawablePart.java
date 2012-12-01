@@ -121,12 +121,7 @@ public class LMDrawablePart {
 	public Boolean getArrived(){
 		return arrived;
 	}
-	
-	public void test(){
-		System.out.println("CurrentLocation X : " + currentLocationX);
-		System.out.println("CurrentLocation Y : " + currentLocationY);
-	}
-	
+
 	public int getX(){
 		return currentLocationX;
 	}

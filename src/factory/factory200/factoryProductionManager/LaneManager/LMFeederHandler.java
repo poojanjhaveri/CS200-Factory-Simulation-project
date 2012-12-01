@@ -11,8 +11,6 @@ public class LMFeederHandler {
 	
 	private LMApplication app;	///< Instance of class 'LaneManagerApp'
 	private int feederNum;	///< Feeder number
-	private int partNum;	///< Part number
-	private int colorNum; ///< Color number for feeder
 	
 	/**
 	 * @brief Constructor
@@ -57,76 +55,51 @@ public class LMFeederHandler {
 	public void verify(String message){		
 		feederNum =  message.charAt(0) - 48;
 				
-		// GUI & Graphic changes--------------------------------------------------------------------------------------------------------------
-		// Message : Feeder On
 		if( message.contains("Feeder Switch On") ){
-			// GraphicsPanel change
 			app.getAllFeeder().getFeeder(feederNum).setSwitch(true);
 		}
 		
-		// Message : Feeder Off
 		else if( message.contains("Feeder Switch Off") ){
-			// GraphicsPanel change
 			app.getAllFeeder().getFeeder(feederNum).setSwitch(false);
 		}
 		
-		// Message : Part Low Sensor On
 		else if( message.contains("Part Low Sensor On") ){
-			// GraphicsPanel change
 			app.getAllFeeder().getPartLowBulb(feederNum).setSwitch(true);
 		}
 		
-		// Message : Part Low Sensor Off
 		else if( message.contains("Part Low Sensor Off") ){
-			// GraphicsPanel change
 			app.getAllFeeder().getPartLowBulb(feederNum).setSwitch(false);
 		}
 		
-		// Message : Feed Parts Switch On
 		else if( message.contains("Feed Part Switch On") ){
-			// GraphicsPanel change
 			app.getAllFeeder().getFeedingBulb(feederNum).setSwitch(true);
 		}
 		
-		// Message : Feed Parts Switch Off
 		else if( message.contains("Feed Part Switch Off") ){
-			// GraphicsPanel change
 			app.getAllFeeder().getFeedingBulb(feederNum).setSwitch(false);
 		}
 		
-		// Message : Lowers Rear Gate
 		else if( message.contains("Rear Gate Lower") ){
-			// GraphicsPanel change
 			app.getAllFeeder().getRearGateBulb(feederNum).setSwitch(true);
 		}
-		
-		// Message : Raises Rear Gate
+	
 		else if( message.contains("Rear Gate Raise") ){
-			// GraphicsPanel change
 			app.getAllFeeder().getRearGateBulb(feederNum).setSwitch(false);
 		}
 		
-		// Message : Purge Bin Switch On
 		else if( message.contains("Purge On") ){
-			// GraphicsPanel change
 			app.getAllFeeder().getPurgingBulb(feederNum).setSwitch(true);
 		}
 		
-		// Message : Purge Bin Switch Off
 		else if( message.contains("Purge Off") ){
-			// GraphicsPanel change
 			app.getAllFeeder().getPurgingBulb(feederNum).setSwitch(false);
 		}
 		
-		// Message : Divert To Left
 		else if( message.contains("Divert To Left") ){
-			// GraphicsPanel change
 			app.getAllFeeder().getDiversionBulb(feederNum).setDivertToLeft();
 		}
 		
-		// Message : Divert To Right
 		else if( message.contains("Divert To Right") ){
-			// GraphicsPanel change
 			app.getAllFeeder().getDiversionBulb(feederNum).setDivertToRight();
 		}
 	}

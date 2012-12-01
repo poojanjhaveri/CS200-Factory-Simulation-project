@@ -56,11 +56,6 @@ public class Server {
     private KitRobotAgent kitRobotAgent;
     private CameraAgent cameraAgent;
 
-    private CameraAgent cam1;
-    private CameraAgent cam2;
-    private CameraAgent cam3;
-    private CameraAgent cam4;
-
     private ConveyorAgent conveyorAgent;
     private FeederAgent[] feederAgents;
     private GantryAgent gantryAgent;
@@ -86,8 +81,8 @@ public class Server {
     }
 
     public void playMahMusicLols() {
-	TehMusix t = new TehMusix("bg.wav");
-	(new Thread(t)).start();
+    	TehMusix t = new TehMusix("bg.wav");
+    	(new Thread(t)).start();
     }
 
     /**
@@ -126,7 +121,7 @@ public class Server {
         }
         prepareAllAgents(); // Prepare all agents; based on AgentMain.java      // For Testing By Dongyoung
 
-//		for (int i=0 ; i<2 ; i++){ // For Testing By Dongyoung, if want to need communicate n managers, change into for(int i=0 ; i<n ; i++)
+//	    for (int i=0 ; i<2 ; i++){ // For Testing By Dongyoung, if want to need communicate n managers, change into for(int i=0 ; i<n ; i++)
         while (true) {
             // Continuously check for a new client for which to create a thread
             try {
@@ -139,12 +134,10 @@ public class Server {
                 System.out.println("got an exception" + e.getMessage());
             }
             System.out.println("A client has connected");
-        }
-
-
+        }     
     }
-
-    private void initializeManagers() { // Something by Dongyoung...?  Dongyoung : Yeah
+   
+    private void initializeManagers() { //by Dongyoung
         serverLM = new LMServerMain();
         new Thread(serverLM).start();
     }
@@ -169,13 +162,6 @@ public class Server {
         // Alex
         kitRobotAgent = new KitRobotAgent("Kit Robot");
         cameraAgent = new CameraAgent("Camera");
-
-        //one camera for each nest
-        cam1=new CameraAgent("camera 1");
-        cam2=new CameraAgent("camera 1");
-        cam3=new CameraAgent("camera 1");
-        cam4=new CameraAgent("camera 1");
-
         conveyorAgent = new ConveyorAgent("Conveyor");
 
         // Patrick
@@ -195,7 +181,8 @@ public class Server {
         }
         
         // By Dongyoung
-        serverLM.setGantryAgent(gantryAgent);
+        serverLM.setCameraAgents(cameraAgent);
+        serverLM.setFeederAgents(feederAgents);
     }
 
     private void connectAgentsAndManagers() {
@@ -204,12 +191,6 @@ public class Server {
         kitRobotAgent.setAll(cameraAgent, conveyorAgent, partsAgent);
 
         cameraAgent.setAll(kitRobotAgent, nestAgent);
-
-        //set 4 cameras initialize them with the kitRobotAgent and nestAgent
-        cam1.setAll(kitRobotAgent, nestAgent);
-        cam2.setAll(kitRobotAgent, nestAgent);
-        cam3.setAll(kitRobotAgent, nestAgent);
-        cam4.setAll(kitRobotAgent, nestAgent);
         conveyorAgent.setKitRobot(kitRobotAgent);
 
         // Patrick
@@ -243,6 +224,7 @@ public class Server {
             }
             gantryAgent.setServer(serverLM);
             cameraAgent.setServer(serverLM);
+            nestAgent.setServer(serverLM);
         }
     }
 
@@ -251,11 +233,6 @@ public class Server {
 
         // Alex
         cameraAgent.startThread();
-        //cam1.startThread();
-        //cam2.startThread();
-        //cam3.startThread();
-        //cam4.startThread();
-
         conveyorAgent.startThread();
         kitRobotAgent.startThread();
 
@@ -297,7 +274,7 @@ public class Server {
         //kits.add(kit);
         kits.get(0).debug();
         // TODO: *Put this wherever the FPM sends the signal to create (generate) kits
-        conveyorAgent.msgGenerateKit(10); // * This generates 10 new kits, among other things if you pass string... *
+        conveyorAgent.msgGenerateKits(10); // * This generates 10 new kits, among other things if you pass string... *
 
         // Officially start the agent interaction sequence!
         partsAgent.msgHereIsKit(kits);
@@ -311,11 +288,11 @@ public class Server {
             if (KEVIN) {
                 for (int i = 0; i < LANE; i++) {
                     if (i < FEEDER) {
-                        feederAgents[i].print = false;
+                        feederAgents[i].print = true;
                     }
                     laneAgents[i].print = false;
                 }
-                gantryAgent.print = true;
+                gantryAgent.print = false;
             }
             if (ALEX) {
                 kitRobotAgent.print = false;
@@ -376,11 +353,6 @@ public class Server {
      */
     public void setCameraAgentClient(HandleAManager in) {
         this.cameraAgent.setClient(in);
-        this.cam1.setClient(in);
-        this.cam2.setClient(in);
-        this.cam3.setClient(in);
-        this.cam4.setClient(in);
-
     }
 
     public void setConveyerAgentClient(HandleAManager in) {
@@ -402,6 +374,10 @@ public class Server {
     public void setFPMClient(HandleAManager in) {
         this.fpmclient = in;
     }
+    public void setNestAgentClient(HandleAManager in)
+    {
+	this.nestAgent.setClient(in);
+    }
 
     public HandleAManager getFPMClient() {
         return this.fpmclient;
@@ -413,6 +389,10 @@ public class Server {
 
     public HandleAManager getKitManagerClient() {
         return this.kitmanagerclient;
+    }
+    
+    public CameraAgent getCameraAgent(){
+    return this.cameraAgent;
     }
 
     public void setFactoryProductionManagerToAll(HandleAManager in) {

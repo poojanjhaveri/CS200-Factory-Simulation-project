@@ -46,12 +46,18 @@ public class KitAssemblyManager extends JPanel implements ActionListener {
         	return;
         
         if (msg.contains(Message.KAM_DROP_OFF_FULL_KIT)) {
-            this.graphics.kitbot.dropOffFullKit();
+            this.graphics.deliveryStation = false;
+        this.graphics.stationRun = true;
+        this.graphics.kitbot.dropOffFullKit();
+        //this.graphics.deliveryStation = true;
+        //this.graphics.stationRun = false;
         } else if (msg.contains(Message.KAM_MOVE_ACTIVE_KIT_TO_INSPECTION)) {
             this.graphics.kitbot.moveActiveKitToInspection();
         } else if (msg.contains(Message.KAM_PICK_UP_EMPTY_KIT_TO_ACTIVE)) {
             this.graphics.kitbot.pickUpEmptyKitToActive();
         } else if (msg.contains(Message.KAM_PICK_UP_EMPTY_KIT)) {
+            //this.graphics.deliveryStation = true;
+            //this.graphics.stationRun = true;
             this.graphics.kitbot.pickUpEmptyKit();
         } else if (msg.contains(Message.KAM_MOVE_EMPTY_KIT_TO_ACTIVE)) {
             this.graphics.kitbot.moveEmptyKitToActive();

@@ -18,8 +18,8 @@ public class LMDrawableTrack {
 		this.trackY = trackY;
 	}
 
-	public void paint(GraphicsPanel panel, Graphics2D graphics){
-		trackImage.paintIcon(panel, graphics, trackX, trackY);
+	public void paint(GraphicsPanel panel, Graphics2D graphics, int newTrackY){
+		trackImage.paintIcon(panel, graphics, trackX, newTrackY);
 	}
 
 	public void trackMove(){

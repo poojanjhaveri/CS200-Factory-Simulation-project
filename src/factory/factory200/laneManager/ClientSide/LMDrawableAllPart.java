@@ -9,21 +9,19 @@ import java.util.ArrayList;
  */
 public class LMDrawableAllPart {
 	
-	private LMApplication app;
-	private LMGraphicsPanel graphicsPanel; 
+	private LMApplication app; 
 	private LMDrawablePart newPart;
 	private LMNestData newNestData;
 	private LMLaneData newLaneData;
 	private ArrayList<LMNestData> nestDatas = new ArrayList<LMNestData>();
 	private ArrayList<LMLaneData> laneDatas = new ArrayList<LMLaneData>();
 	
-	public LMDrawableAllPart(LMApplication app, LMGraphicsPanel graphicsPanel){
-		this.graphicsPanel = graphicsPanel;
+	public LMDrawableAllPart(LMApplication app){
 		this.app = app;
 		
 		for(int i=0 ; i<8 ; i++){
 			newNestData = new LMNestData(i);
-			newLaneData = new LMLaneData(i,  this);
+			newLaneData = new LMLaneData(i,  app);
 			nestDatas.add(newNestData);
 			laneDatas.add(newLaneData);
 		}
@@ -31,10 +29,13 @@ public class LMDrawableAllPart {
 
 	public void paint(LMGraphicsPanel panel, Graphics2D graphics){
 		for(int i=0 ; i<8 ; i++){
-			for(int j=0 ; j<laneDatas.get(i).getSize() ; j++){
+			for(int j=0 ; j<laneDatas.get(i).getLanePartArray().size() ; j++){
 				laneDatas.get(i).getLanePartArray().get(j).paint(panel, graphics);
 			}
-			for(int j=0 ; j<nestDatas.get(i).getSize() ; j++){
+			for(int j=0 ; j<laneDatas.get(i).getLanePartArrayNonNormative().size(); j++){
+				laneDatas.get(i).getLanePartArrayNonNormative().get(j).paint(panel, graphics);
+			}
+			for(int j=0 ; j<nestDatas.get(i).getNestPartArray().size() ; j++){
 				nestDatas.get(i).getNestPartArray().get(j).paint(panel, graphics);
 			}
 		}			
@@ -42,10 +43,13 @@ public class LMDrawableAllPart {
 
 	public void partMove(){
 		for(int i=0 ; i<8 ; i++){
-			for(int j=0 ; j<laneDatas.get(i).getSize() ; j++){
+			for(int j=0 ; j<laneDatas.get(i).getLanePartArray().size() ; j++){
 				laneDatas.get(i).getLanePartArray().get(j).partMove();
 			}
-			for(int j=0 ; j<nestDatas.get(i).getSize() ; j++){
+			for(int j=0 ; j<laneDatas.get(i).getLanePartArrayNonNormative().size() ; j++){
+				laneDatas.get(i).getLanePartArrayNonNormative().get(j).partMove();
+			}
+			for(int j=0 ; j<nestDatas.get(i).getNestPartArray().size() ; j++){
 				nestDatas.get(i).getNestPartArray().get(j).partMove();
 			}
 		}		
@@ -59,19 +63,13 @@ public class LMDrawableAllPart {
 	}
 	
 	public void addPartFromLaneToNest(int laneNum){
-		nestDatas.get(laneNum).addPart( laneDatas.get(laneNum).removePart() );
+		nestDatas.get(laneNum).addPart( laneDatas.get(laneNum).getLanePartArray().remove(0) );
 	}
 	
-	/**
-	 * Nest updates frequently parts' locations depending on the number of parts on nest.
-	 */
 	public void laneUpdate(){
-		for(int i=0 ; i<8 ; i++){  laneDatas.get(i).checkNestStatus( nestDatas.get(i).getSize() );  }
+		for(int i=0 ; i<8 ; i++){  laneDatas.get(i).checkNestStatus( nestDatas.get(i).getNestPartArray().size() );  }
 	}
-	
-	/**
-	 * Nest updates frequently parts' locations.
-	 */
+
 	public void nestUpdate(){
 		for(int i=0 ; i<8 ; i++){  nestDatas.get(i).reorganize();  }
 	}
@@ -86,5 +84,9 @@ public class LMDrawableAllPart {
 
 	public LMLaneData getLane(int laneNum){
 		return laneDatas.get(laneNum);
+	}
+	
+	public LMNestData getNest(int nestNum){
+		return nestDatas.get(nestNum);
 	}
 }

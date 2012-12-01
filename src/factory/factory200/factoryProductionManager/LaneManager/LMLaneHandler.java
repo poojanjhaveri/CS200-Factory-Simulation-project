@@ -25,16 +25,22 @@ public class LMLaneHandler {
 	public void verify(String message){
 		laneNum =  message.charAt(0) - 48;
 		
-		// Message : Lane Switch On
 		if( message.contains("Switch On") ){
-			// Graphics Panel change
 			app.getAllLane().getLane(laneNum).setSwitch(true);
 		}
 		
-		// Message : Lane Switch Off
 		else if( message.contains("Switch Off") ){
-			// Graphics Panel change
 			app.getAllLane().getLane(laneNum).setSwitch(false);
+		}
+		
+		else if( message.contains("Amplitude Normal") ){
+			app.getAllLane().getLane(laneNum).setLaneVibrationAmplitudeNormal();
+		}
+		
+		else if( message.contains("Amplitude Strong") ){			
+			app.getAllLane().getLane(laneNum).setLaneVibrationAmplitudeStrong();
+			// Jammed Lane Cancel
+			app.getAllPart().getLane(laneNum).switchJammedLane(false);
 		}
 	}
 }

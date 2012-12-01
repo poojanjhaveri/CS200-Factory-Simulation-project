@@ -20,7 +20,9 @@ public class LMGUINonNormativePanel3 extends JPanel implements ActionListener{
 	
 	private JPanel panel = new JPanel(); 
 	
-	private JButton button = new JButton("Parts Being Piled");	
+	private JButton button1 = new JButton("Parts Being Piled");	
+	private JButton button2 = new JButton("Toggling Parts");
+	private JButton button3 = new JButton("Undo Toggling Parts");
 	
 	private int nestNum;
 	
@@ -35,14 +37,24 @@ public class LMGUINonNormativePanel3 extends JPanel implements ActionListener{
 		panel.setPreferredSize(new Dimension(270,40));
 		add(panel);
 		
-		button.addActionListener(this);
-		add(button);
+		button1.addActionListener(this);
+		button2.addActionListener(this);
+		add(button1);
+		add(button2);
 	}
 	
 	public void actionPerformed(ActionEvent ae){
-		if( ae.getSource() == button ){
+		if( ae.getSource() == button1 ){
 			nestNum = nestNumBox.getSelectedIndex();
 			app.getVerifyMessage().sendToServer( nestNum + "PART_PILED" );
+		}
+		else if( ae.getSource() == button2 ){
+			nestNum = nestNumBox.getSelectedIndex();
+			app.getVerifyMessage().sendToServer( nestNum + "PART_TOGGLING" );
+		}
+		else if( ae.getSource() == button3 ){
+			nestNum = nestNumBox.getSelectedIndex();
+			app.getVerifyMessage().sendToServer( nestNum + "PART_UNTOGGLING" );
 		}
 	}
 }

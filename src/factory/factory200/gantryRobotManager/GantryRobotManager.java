@@ -20,24 +20,17 @@ package factory.factory200.gantryRobotManager;
  * @author Yuting Liu
  */
 
-import factory.factory200.gantryRobotManager.GUIBin;
-import factory.factory200.gantryRobotManager.GUIGantryRobot;
-import factory.factory200.gantryRobotManager.GRMGraphicPanel;
-import factory.general.Manager;
-import factory.general.Message;
 import java.awt.Dimension;
-
-import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.BoxLayout;
-import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
+
+import factory.general.Manager;
+import factory.general.Message;
 
 public class GantryRobotManager extends Manager implements ActionListener {
    
@@ -67,7 +60,7 @@ public class GantryRobotManager extends Manager implements ActionListener {
     public static final Integer DUMPX = 260;///<x-coordinate of dump 
     public static final Integer DUMPY = 700;///<y-coordinate of dump 
 
-    public static final Integer BIN_X = 400;///<x coordinate of all bin locations
+    public static final Integer BIN_X = 420;///<x coordinate of all bin locations
     public static final Integer BIN0Y = 30;///<y coordinate of bin0
     public static final Integer BIN1Y = 110;///<y coordinate of bin1
     public static final Integer BIN2Y = 190;///<y coordinate of bin2
@@ -156,7 +149,7 @@ public class GantryRobotManager extends Manager implements ActionListener {
      */
      public void processMessage(String msg) {
 	   super.processMessage(msg);
-           System.out.println(msg);
+          // System.out.println(msg);
 	   if(msg.contains(Message.MOVE_GANTRY_TO_BIN))
 	   {
 		   this.ganbot.moveToBinCommand(Integer.parseInt(this.grabParameter(msg)));

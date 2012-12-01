@@ -10,6 +10,9 @@ import factory.general.Part;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.concurrent.Semaphore;
 
 /**
  * @brief agent for the Feeder This class is the agent for the Feeder which does
@@ -21,6 +24,7 @@ import java.util.List;
  */
 public class FeederAgent extends Agent implements Feeder {
 
+    Timer timer = new Timer();
     private List<myParts> parts = Collections.synchronizedList(new ArrayList<myParts>());
     private Lane leftLane;
     private Lane rightLane;
@@ -35,6 +39,8 @@ public class FeederAgent extends Agent implements Feeder {
     private int rightCount = 0;
     private Gantry gantry;
     public int feederNum;
+    Semaphore anim=new Semaphore(0, true);
+    Semaphore laneJammed=new Semaphore(0, true);
     boolean requestState = false;
     //--------------------------------------------------------------
     private LMServerMain serverMain;
@@ -110,6 +116,28 @@ public class FeederAgent extends Agent implements Feeder {
         }
     }
 
+    public void msgAnimationComplete(){
+    anim.release();
+    }
+    
+    public void msgLaneJammed(int laneNum){
+           // System.out.println("checking Left laneNum " + leftLane.getIndex() + " = " + laneNum );
+            
+            
+           // System.out.println("checking Right laneNum " + rightLane.getIndex() + " = " + laneNum );
+            
+         
+        if(leftLane.getIndex()==laneNum) {
+        //    System.out.println("leftLane has been jammed");
+            leftLane.setJammed(true);
+            print("getJammed is " + leftLane.getJammed());
+        }
+    if(rightLane.getIndex()==laneNum) {
+            rightLane.setJammed(true);
+        }
+    
+        
+    }
     @Override
     public void msgNeedPart(Part part, Lane lane) {
         //print("Received msgNeedPart from Lane: "+((LaneAgent) lane).getName()+" for type " + part.type);
@@ -261,14 +289,14 @@ public class FeederAgent extends Agent implements Feeder {
 
     private void needPart(myParts p) {
 
-        print("sending need part message to gantry from " + feederNum);
+   //     print("sending need part message to gantry from " + feederNum);
         gantry.msgNeedPart(p.part, this);
         stateChanged();
     }
 
     private void sendPartToLeftLane(myParts p) {
 
-        print("I am supplying parts to leftLane");
+     //   print("I am supplying parts to leftLane");
 
         //create a list of parts to supply
         List<Part> mparts = new ArrayList<Part>();
@@ -287,7 +315,7 @@ public class FeederAgent extends Agent implements Feeder {
     }
 
     private void sendPartToRightLane(myParts p) {
-        print("I am supplying parts to rightLane");
+      //  print("I am supplying parts to rightLane");
         //create a list of parts to supply
         List<Part> mparts = new ArrayList<Part>();
 
@@ -316,18 +344,47 @@ public class FeederAgent extends Agent implements Feeder {
             if (LMServer.getForAgentFeeder() == null) {
                 return;
             }
+        
+           if(leftLane.getJammed()==true){
+            print("leftLane is jammed!!");
+            //start jammed lane animation
+            LMServer.getForAgentLane().startJammedLaneAnimation(leftLane.getIndex());
             LMServer.getForAgentFeeder().setDiverterSwitchLeft(feederNum);
-
             LMServer.getForAgentGantryRobot().putBin(p.part.type, p.quantity, feederNum);
-            //  	animation.setDiverterSwitchLeft(feederNum-1);
-
+            
+            //start strong vibration amplitude after 5 seconds
+            timer.schedule(new TimerTask(){
+    	    public void run(){		    
+            LMServer.getForAgentLane().setVibrationAmplitudeStrong(leftLane.getIndex());
+            }
+            },5000);
+            
+            //revert back to normal amplitude in 1.5 seconds
+            timer.schedule(new TimerTask(){
+    	    public void run(){		    
+            LMServer.getForAgentLane().setVibrationAmplitudeNormal(leftLane.getIndex());
+            }
+            },3000);
+            
+            //set jammed lane to false
+            leftLane.setJammed(false);
+            
+           }
+           
+           else{
+            LMServer.getForAgentFeeder().setDiverterSwitchLeft(feederNum);
+            LMServer.getForAgentGantryRobot().putBin(p.part.type, p.quantity, feederNum);
+            }
+                
             try {
-                Thread.sleep(20000);
+                anim.acquire();
+                //Thread.sleep(20000);
             } catch (InterruptedException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
          
+    
     }
 
     private void dosendPartToRightLane(myParts p) {
@@ -342,13 +399,40 @@ public class FeederAgent extends Agent implements Feeder {
             if (LMServer.getForAgentFeeder() == null) {
                 return;
             }
+        if(rightLane.getJammed()==true){
+            print("rightLane is jammed!!");            
+            //start jammed lane animation
+            LMServer.getForAgentLane().startJammedLaneAnimation(rightLane.getIndex());
             LMServer.getForAgentFeeder().setDiverterSwitchRight(feederNum);
-
             LMServer.getForAgentGantryRobot().putBin(p.part.type, p.quantity, feederNum);
+            
+            //start strong vibration amplitude after 5 seconds
+            timer.schedule(new TimerTask(){
+    	    public void run(){		    
+            LMServer.getForAgentLane().setVibrationAmplitudeStrong(rightLane.getIndex());
+            }
+            },5000);
+            
+            //revert back to normal amplitude in 1.5 seconds
+            timer.schedule(new TimerTask(){
+    	    public void run(){		    
+            LMServer.getForAgentLane().setVibrationAmplitudeNormal(rightLane.getIndex());
+            }
+            },3000);
+            
+            //set jammed lane to false
+            rightLane.setJammed(false);
+            
+           }
+           
+           else{
+            LMServer.getForAgentFeeder().setDiverterSwitchRight(feederNum);
+            LMServer.getForAgentGantryRobot().putBin(p.part.type, p.quantity, feederNum);
+            }
 
-//    	animation.setDiverterSwitchRight(feederNum-1);
-            try {
-                Thread.sleep(20000);
+        try {
+              anim.acquire();
+               // Thread.sleep(20000);
             } catch (InterruptedException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();

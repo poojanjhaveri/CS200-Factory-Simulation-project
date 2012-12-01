@@ -20,28 +20,51 @@ public class LMSignalFromAnimationVerification {
 			laneNestNum = message.charAt(0) - 48;
 			serverMain.getPartData().sendPartToNestFromLane(laneNestNum);
 		}
+		
 		else if(message.contains("PART_TAKE_BY_PARTROBOT") ){
 			laneNestNum = message.charAt(0) - 48;
 			serverMain.getForAgentPartRobot().takePartFromNest(laneNestNum);
 		}
+		
 		// Non-normative Scenario 1
 		else if(message.contains("BAD_PART_INSERTION") ){
 			feederNum = message.charAt(0) - 48;
 			partNum = message.charAt(1) - 48;
 			serverMain.getForAgentGantryRobot().putBadBin(partNum, feederNum);
 		}
+		
 		// Non-normative Scenario 2
 		else if(message.contains("LANE_JAMMED") ){
 			laneNestNum = message.charAt(0) - 48;
-			serverMain.sendToLM(laneNestNum + "&Non&Jammed&");
-			serverMain.sendToFPM(laneNestNum + "&Non&Jammed&");
+			
+			// Tell the agent that clicked the button
+			serverMain.getFeederAgents()[laneNestNum / 2].msgLaneJammed(laneNestNum);
 		}
+		
 		// Non-normative Scenario 3
 		else if(message.contains("PART_PILED") ) {
 			laneNestNum = message.charAt(0) - 48;
 			serverMain.sendToLM(laneNestNum + "&Non&Piled&");
 			serverMain.sendToFPM(laneNestNum + "&Non&Piled&");
 			serverMain.sendToKAM(laneNestNum + "&Non&Piled&");
+			
+			// Setup the camera setup
+			serverMain.getForAgentNestCamera().startPiledPart(laneNestNum);
+		}
+		
+		// Non-normative Scenario 4
+		else if(message.contains("PART_TOGGLING") ){
+			laneNestNum = message.charAt(0) - 48;
+			serverMain.sendToLM(laneNestNum + "&Non&Toggling&");
+			serverMain.sendToFPM(laneNestNum + "&Non&Toggling&");
+			serverMain.sendToKAM(laneNestNum + "&Non&Toggling&");
+		}
+		
+		else if(message.contains("PART_UNTOGGLING")) {
+			laneNestNum = message.charAt(0) - 48;
+			serverMain.sendToLM(laneNestNum + "&Non&UnToggling&");
+			serverMain.sendToFPM(laneNestNum + "&Non&UnToggling&");
+			serverMain.sendToKAM(laneNestNum + "&Non&UnToggling&");
 		}
 	}
 }

@@ -8,7 +8,7 @@ public class LMNonNormativeHandler {
 	
 	private LMApplication app;
 	private int nestLaneNum;
-
+	
 	public LMNonNormativeHandler(LMApplication app){
 		this.app = app;
 	}
@@ -17,10 +17,16 @@ public class LMNonNormativeHandler {
 		nestLaneNum = message.charAt(0) - 48;
 		
 		if( message.contains("&Jammed&") ){
-			
+			app.getGraphicsPanel().getAllPart().getLane(nestLaneNum).switchJammedLane(true);
 		}
 		else if( message.contains("&Piled&") ) {
-			app.getGraphicsPanel().getAllPart().getLane(nestLaneNum).switchNonNormativePartPiled(true);
+			app.getGraphicsPanel().getAllPart().getNest(nestLaneNum).switchPartPiled(true);
+		}
+		else if( message.contains("&Toggling&") ) {
+			
+		}
+		else if( message.contains("&UnToggling&") ) {
+			
 		}
 	}
 }

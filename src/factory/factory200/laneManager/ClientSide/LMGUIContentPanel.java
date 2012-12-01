@@ -34,7 +34,6 @@ class LMGUIContentPanel extends JPanel{
 	 * @param border : TitledBorder 
 	 */
 	public LMGUIContentPanel(TitledBorder border){
-		setPreferredSize(new Dimension(250,70));
 		setLayout(new BorderLayout());
 		border.setTitleColor(Color.red);
 		setBorder(border);
@@ -72,6 +71,8 @@ class LMGUIContentPanel extends JPanel{
 		setBorder(border);
 		buttonGroup.add(button1);
 		buttonGroup.add(button2);
+		button1.setEnabled(false);
+		button2.setEnabled(false);
 		add(button1);
 		add(button2);
 	}
