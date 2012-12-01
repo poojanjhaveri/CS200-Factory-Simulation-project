@@ -42,15 +42,16 @@ public class KitAssemblyManager extends JPanel implements ActionListener {
      */
     public void processMessage(String msg) {
 //    	super.processMessage(msg);
-        if (msg == null)
-        	return;
-        
+        if (msg == null) {
+            return;
+        }
+
         if (msg.contains(Message.KAM_DROP_OFF_FULL_KIT)) {
             this.graphics.deliveryStation = false;
-        this.graphics.stationRun = true;
-        this.graphics.kitbot.dropOffFullKit();
-        //this.graphics.deliveryStation = true;
-        //this.graphics.stationRun = false;
+            this.graphics.stationRun = true;
+            this.graphics.kitbot.dropOffFullKit();
+            //this.graphics.deliveryStation = true;
+            //this.graphics.stationRun = false;
         } else if (msg.contains(Message.KAM_MOVE_ACTIVE_KIT_TO_INSPECTION)) {
             this.graphics.kitbot.moveActiveKitToInspection();
         } else if (msg.contains(Message.KAM_PICK_UP_EMPTY_KIT_TO_ACTIVE)) {
@@ -79,27 +80,35 @@ public class KitAssemblyManager extends JPanel implements ActionListener {
             this.flashNestCamera(Integer.parseInt(this.grabParameter(msg)));
         } else if (msg.contains(Message.KAM_MOVE_FROM_0_TO_2)) {
             this.moveFrom0To2();
-        }else if(msg.contains(Message.KAM_ADD_KIT))
-
-	    {
-		this.doAddEmptyKit();
-	    }
-         else if (msg.contains(Message.LM_ADD_PART)) {
+        } else if (msg.contains(Message.KAM_ADD_KIT)) {
+            this.doAddEmptyKit();
+        } else if (msg.contains(Message.LM_ADD_PART)) {
 
             int nest = msg.charAt(4) - 48;
             int partType = msg.charAt(6) - 48;
             this.doSetParts(nest, partType);
+        } else if (msg.contains(Message.NEST_DOWN)) {
+            this.nestDown(Integer.parseInt(this.grabParameter(msg)));
+        } else if (msg.contains(Message.NEST_UP)) {
+            this.nestUp(Integer.parseInt(this.grabParameter(msg)));
         }
     }
 
-        //todo - let me know what functions agent will call so I can process them here
+    //todo - let me know what functions agent will call so I can process them here
+    public void nestUp(int n) {
+        this.graphics.nest.get(n).nestUp();
+    }
 
+    public void nestDown(int n) {
+        this.graphics.nest.get(n).nestDown();
+    }
 
-    public KAMGraphicPanel getGraph(){
+    public KAMGraphicPanel getGraph() {
         return this.graphics;
 
     }
-     public void doSetParts(int n, int partType) {
+
+    public void doSetParts(int n, int partType) {
         //create part based on part type given
         Part temp = new Part(null, null);
         ImageIcon tempPic = new ImageIcon();
@@ -128,8 +137,8 @@ public class KitAssemblyManager extends JPanel implements ActionListener {
                     GUIPart GUItemp = new GUIPart(this.graphics.nest.get(i).getX(), this.graphics.nest.get(i).getY() + 18 * k, 0.0, tempPic);
                     temp.setGUIPart(GUItemp);
                     this.graphics.nest.get(i).getParts().add(temp);
-                } else if(k>=4 && k<=8){
-                    GUIPart GUItemp = new GUIPart(this.graphics.nest.get(i).getX()+20, this.graphics.nest.get(i).getY() + 18 * (k - 4), 0.0, tempPic);
+                } else if (k >= 4 && k <= 8) {
+                    GUIPart GUItemp = new GUIPart(this.graphics.nest.get(i).getX() + 20, this.graphics.nest.get(i).getY() + 18 * (k - 4), 0.0, tempPic);
                     temp.setGUIPart(GUItemp);
                     this.graphics.nest.get(i).getParts().add(temp);
                 }
@@ -137,8 +146,9 @@ public class KitAssemblyManager extends JPanel implements ActionListener {
                 break;
             }
         }
-     }
-    public void doAddEmptyKit(){
+    }
+
+    public void doAddEmptyKit() {
         this.graphics.delivery.addKit();
     }
 
@@ -245,7 +255,7 @@ public class KitAssemblyManager extends JPanel implements ActionListener {
         if (ae.getSource() == moveFrom0To2) {
             this.graphics.kitbot.moveFrom0To2();
         }
-        if(ae.getSource()==addKit){
+        if (ae.getSource() == addKit) {
             this.graphics.delivery.addKit();
         }
     }
@@ -329,12 +339,14 @@ public class KitAssemblyManager extends JPanel implements ActionListener {
 
         return tester;
     }
-    public void paint(GraphicsPanel panel, Graphics2D graphics){
+
+    public void paint(GraphicsPanel panel, Graphics2D graphics) {
         this.graphics.paint(panel, graphics);
     }
-    
+
     /**
      * ad hoc addition, copy-paste from manager :/
+     *
      * @brief standard way to grab parameter data via protocol Use this method
      * in an if-statement in processMessage.
      * @param msg - the message to grab a parameter from.
@@ -342,5 +354,5 @@ public class KitAssemblyManager extends JPanel implements ActionListener {
      */
     public String grabParameter(String msg) {
         return msg.substring(msg.indexOf(":") + 1);
-    }    
+    }
 }
