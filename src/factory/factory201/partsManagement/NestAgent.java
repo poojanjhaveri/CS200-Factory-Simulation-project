@@ -18,10 +18,12 @@ import factory.general.Message;
 import factory.general.Nest;
 import factory.general.Part;
 import factory.general.Result;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.Semaphore;
 
 public class NestAgent extends Agent implements NestInterface {
-
+    Timer timer = new Timer();
     Lane lane0;
     Lane lane1;
     Lane lane2;
@@ -86,6 +88,13 @@ public class NestAgent extends Agent implements NestInterface {
         stateChanged();
     }
     
+    public void msgPartsShaking(int nestNum){
+    for (Nest n: myNests){
+                if (n.nestNum==nestNum)
+                    n.shaking=true;
+         }
+    stateChanged();
+    }
 
     public void msgHereAreParts(List<Part> kitParts, int laneIndex){
         //requires syncrhonization: many msgs can come in to modify mynests.
@@ -123,7 +132,17 @@ public class NestAgent extends Agent implements NestInterface {
     //scheduler
     @Override
     public boolean pickAndExecuteAnAction() {
-
+/*
+        //PRIORITIZE STABILIZING A SHAKING NEST
+        for (Nest n: myNests){
+                if (n.shaking==true)
+                {   stabilizeNest(n.nestNum);
+                    n.shaking=false;
+                    return true;
+                }
+            }
+  change this 
+  */
         if(requestEarlyInspection){
             for (Nest n: myNests){
                 if (n.status == Nest.Status.needPart)
@@ -190,6 +209,16 @@ public class NestAgent extends Agent implements NestInterface {
 
 
         return false;
+    }
+    
+    private void stabilizeNest(int nestNumber){
+    print("about to stabilize the nest ");
+      timer.schedule(new TimerTask(){
+    	    public void run(){		    
+    		//function to the animation to stabilize the nest 
+    	    }
+    	}, 5000);  
+   
     }
  
     private void requestPart(Nest n){

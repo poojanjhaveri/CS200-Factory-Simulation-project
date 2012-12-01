@@ -121,9 +121,16 @@ public class FeederAgent extends Agent implements Feeder {
     }
     
     public void msgLaneJammed(int laneNum){
-    System.out.println("received msgLaneJammed msg " );
+           // System.out.println("checking Left laneNum " + leftLane.getIndex() + " = " + laneNum );
+            
+            
+           // System.out.println("checking Right laneNum " + rightLane.getIndex() + " = " + laneNum );
+            
+            
         if(leftLane.getIndex()==laneNum) {
+            System.out.println("leftLane has been jammed");
             leftLane.setJammed(true);
+            System.out.println("getJammed is " + leftLane.getJammed());
         }
     if(rightLane.getIndex()==laneNum) {
             rightLane.setJammed(true);
@@ -341,14 +348,16 @@ public class FeederAgent extends Agent implements Feeder {
 
             LMServer.getForAgentGantryRobot().putBin(p.part.type, p.quantity, feederNum);
             //  	animation.setDiverterSwitchLeft(feederNum-1);
-            if(leftLane.getJammed()==true){
+            //System.out.println("jam status is " + leftLane.getJammed());
+            //if(leftLane.getJammed()==false){
             //server function to set it jammed.
+            {System.out.println("setting strong vibration amplitude");
             LMServer.getForAgentLane().setVibrationAmplitudeStrong(leftLane.getIndex());
             timer.schedule(new TimerTask(){
     	    public void run(){		    
             LMServer.getForAgentLane().setVibrationAmplitudeNormal(leftLane.getIndex());
             }
-            },2000);
+            },7000);
             leftLane.setJammed(false);
             }
             try {

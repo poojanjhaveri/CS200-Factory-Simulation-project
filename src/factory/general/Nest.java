@@ -23,7 +23,7 @@ public class Nest {
     public Part part;
     public int howMany = 0;
     public Lane lane;
-        
+    public boolean shaking=false;
         public Nest (int nestNumber){
         	
         	//this.threshold = 10/p.getSize();
