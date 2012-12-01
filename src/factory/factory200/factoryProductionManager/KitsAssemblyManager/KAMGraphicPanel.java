@@ -130,7 +130,7 @@ public class KAMGraphicPanel {
                         int yPlace = delivery.getPlaceholder().get(i).getY();
                         int number = i * 150;
 
-                        if (yPlace == KAMGraphicPanel.EMPTY_CONVEYERY && delivery.getPlaceholder().get(i).isShow()) {
+                        if (yPlace == KAMGraphicPanel.EMPTY_CONVEYERY && delivery.getPlaceholder().get(i).isShow() && !(delivery.getPlaceholder().get(i).getKit().isFinished())) {
                             stationRun = false;
                             break;
                         }
@@ -149,19 +149,7 @@ public class KAMGraphicPanel {
                         } else {
                             delivery.getPlaceholder().get(i).setY(680);
                         }
-                        /*if(delivery.getPlaceholder().get(i).getKit()==null || !(delivery.getPlaceholder().get(i).getKit().isFinished()))
-                         delivery.getPlaceholder().get(i).setY(680);
-                         else{
-                         //delivery.setNumEmptyKits(delivery.getPlaceholder().size()-1);
-                         //delivery.getPlaceholder().add(delivery.getPlaceholder().get(i));
-                         delivery.getPlaceholder().remove(i);
-                         }
-                         }*/
-
-                        //while(delivery.getPlaceholder().get(delivery.getPlaceholder().size()).getKit().isFinished()){
-                        //        delivery.getPlaceholder().remove(delivery.getPlaceholder().size());
-
-                        //}
+                        
                     }
                     counter = 0;
                 }
@@ -205,25 +193,9 @@ public class KAMGraphicPanel {
                         } else {
                             delivery.getPlaceholder().get(i).setY(680);
                         }
-                        /*
-                         if(delivery.getPlaceholder().get(i).getKit()==null || !delivery.getPlaceholder().get(i).getKit().isFinished()){
-                         delivery.getPlaceholder().get(i).setY(680);
-                         }
-                            
-                         else{
-                         //delivery.setNumEmptyKits(delivery.getPlaceholder().size()-1);
-                         //delivery.getPlaceholder().add(delivery.getPlaceholder().get(i));
-                         delivery.getPlaceholder().remove(i);
-                         }
-                            
-                            
-                         }*/
+                        
                     }
-                    //while(delivery.getPlaceholder().get(delivery.getPlaceholder().size()).getKit().isFinished()){
-                    //        delivery.getPlaceholder().remove(delivery.getPlaceholder().size());
-
-
-                    //}
+                 
                     counter = 0;
                 }
             }
@@ -231,10 +203,7 @@ public class KAMGraphicPanel {
                 for (int i = 0; i < delivery.getPlaceholder().size(); i++) {
                     int yPlace = delivery.getPlaceholder().get(i).getY();
                     delivery.getPlaceholder().get(i).setY(yPlace);
-                    //System.out.println("placeholder "+i+": "+delivery.getPlaceholder().get(i).getY());
-                    //if (delivery.getPlaceholder().get(i).isShow()) {
-                    //    delivery.getPlaceholder().get(i).getKit().updateParts();
-                    //}
+                  
                     if (yPlace == KAMGraphicPanel.FULL_CONVEYERY && (delivery.getPlaceholder().get(i).isShow())) {
                         stationRun = true;
                         deliveryStation = true;
