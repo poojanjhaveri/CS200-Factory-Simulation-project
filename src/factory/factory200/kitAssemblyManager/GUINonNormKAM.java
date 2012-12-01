@@ -29,8 +29,8 @@ public class GUINonNormKAM  extends JPanel {
     JButton piled;
     ArrayList<JButton> unstables;
     ArrayList<JButton> piles;
-    ArrayList<Boolean> unstableColor;
-    ArrayList<Boolean> piledColor;
+    public ArrayList<Boolean> unstableColor;
+    public ArrayList<Boolean> piledColor;
     JButton unstabilize;    
     ActionListener kam;
     
