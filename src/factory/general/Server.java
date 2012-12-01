@@ -292,10 +292,10 @@ public class Server {
                     }
                     laneAgents[i].print = false;
                 }
-                gantryAgent.print = true;
+                gantryAgent.print = false;
             }
             if (ALEX) {
-                kitRobotAgent.print = false;
+                kitRobotAgent.print = true;
                 conveyorAgent.print = false;
                 cameraAgent.print = false;
             }
