@@ -139,9 +139,6 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
         }
 
         public void actionPerformed(ActionEvent ae) {
-            if (camera.isVisible()) {
-                cameraCounter++;
-            }
             int size=delivery.getPlaceholder().size();
             //PlaceHolder temp=new PlaceHolder();
             if (deliveryStation == true && delivery.getPlaceholder().size()>0){
@@ -392,10 +389,11 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
         }
         kitter.paintMe(this, g2);
         if (camera.isVisible()) {
+            cameraCounter++;
             camera.getCamera().paintIcon(this, g2, camera.getX(), camera.getY());
 
         }
-        if (camera.isVisible() && cameraCounter == 20) {
+        if (camera.isVisible() && cameraCounter >= 20) {
             camera.setVisible(false);
             cameraCounter = 0;
         }
