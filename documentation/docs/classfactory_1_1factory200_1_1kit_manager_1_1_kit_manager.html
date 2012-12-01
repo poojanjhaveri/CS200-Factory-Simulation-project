@@ -20,9 +20,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="kitrobot.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Factory Project
-   &#160;<span id="projectnumber">0.1.0</span>
+   &#160;<span id="projectnumber">0.4.0</span>
    </div>
    <div id="projectbrief">team 1 joint cs200/cs201</div>
   </td>
@@ -93,6 +94,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pac-attribs">Package Attributes</a> &#124;
+<a href="#pac-static-attribs">Static Package Attributes</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="classfactory_1_1factory200_1_1kit_manager_1_1_kit_manager-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -112,6 +114,13 @@ Inheritance diagram for factory.factory200.kitManager.KitManager:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1kit_manager_1_1_kit_manager_1_1itembutton.html">itembutton</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class for the Action to be performed when the buttons for alloting parts in the kit in create panel is clicked.The button property seticon should be updated depending on the button clicked by getting the part selected from JComboBox. And accordingly the partlist arraylist for the kit should also be updated and parts should be added in.  <a href="classfactory_1_1factory200_1_1kit_manager_1_1_kit_manager_1_1itembutton.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1kit_manager_1_1_kit_manager_1_1updateitembutton.html">updateitembutton</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class for the Action to be performed when the buttons for alloting parts in the kit in update panel is clicked.The button seticon should be updated depending on the button clicked by getting the part selected from JComboBox. And accordingly the updatepartlist arraylist for the kit should also be updated and parts should be added in.  <a href="classfactory_1_1factory200_1_1kit_manager_1_1_kit_manager_1_1updateitembutton.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1kit_manager_1_1_kit_manager_1_1updatekitclass.html">updatekitclass</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is fired when the update panel is set. It should get information of the kit depending upon the kit selected from the combobox from the user. *So it should get the parts of the selected kit and display it and then allow the user to modify parts in the kit.  <a href="classfactory_1_1factory200_1_1kit_manager_1_1_kit_manager_1_1updatekitclass.html#details">More...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -119,18 +128,22 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a9cf403ef5b923039eb9a0f64f17e365d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1kit_manager_1_1_kit_manager.html#a9cf403ef5b923039eb9a0f64f17e365d">KitManager</a> ()</td></tr>
 <tr class="separator:a9cf403ef5b923039eb9a0f64f17e365d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a81f1af15257237721f3b546eb075642c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1kit_manager_1_1_kit_manager.html#a81f1af15257237721f3b546eb075642c">actionPerformed</a> (ActionEvent e)</td></tr>
+<tr class="memdesc:a81f1af15257237721f3b546eb075642c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Action Listeners for the buttons - create kit, modify kit and update kit. Checks if there is a kit to delete or modify.  <a href="#a81f1af15257237721f3b546eb075642c"></a><br/></td></tr>
 <tr class="separator:a81f1af15257237721f3b546eb075642c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae717f68ce467921c80c83f59f5e1fa1c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1kit_manager_1_1_kit_manager.html#ae717f68ce467921c80c83f59f5e1fa1c">update</a> ()</td></tr>
-<tr class="memdesc:ae717f68ce467921c80c83f59f5e1fa1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">sends an update request which should result in the parts list and kit list being updated  <a href="#ae717f68ce467921c80c83f59f5e1fa1c"></a><br/></td></tr>
+<tr class="memdesc:ae717f68ce467921c80c83f59f5e1fa1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends an update request which should result in the parts list and kit list being updated and getting it from the server.  <a href="#ae717f68ce467921c80c83f59f5e1fa1c"></a><br/></td></tr>
 <tr class="separator:ae717f68ce467921c80c83f59f5e1fa1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0f48fc66507e7006cd7f674bcbd8efbc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1kit_manager_1_1_kit_manager.html#a0f48fc66507e7006cd7f674bcbd8efbc">createKit</a> ()</td></tr>
-<tr class="memdesc:a0f48fc66507e7006cd7f674bcbd8efbc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to create kit when the Create kit button is pressed and then pass the new kit to the server so that the list gets updated.  <a href="#a0f48fc66507e7006cd7f674bcbd8efbc"></a><br/></td></tr>
+<tr class="memdesc:a0f48fc66507e7006cd7f674bcbd8efbc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to Create kit when the Create kit button is pressed and then pass the new kit to the server so that the list gets updated. It gets the kit name and the parts in the kit. Also should check if the user entered the name and if there are 4-8 parts in the kit.  <a href="#a0f48fc66507e7006cd7f674bcbd8efbc"></a><br/></td></tr>
 <tr class="separator:a0f48fc66507e7006cd7f674bcbd8efbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb55a197eab9725f375a98db9091fd9e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1kit_manager_1_1_kit_manager.html#acb55a197eab9725f375a98db9091fd9e">updateKit</a> ()</td></tr>
+<tr class="memdesc:acb55a197eab9725f375a98db9091fd9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to Update kit when the Update kit button is pressed and then pass the modified kit to the server so that the list gets updated. It should get the kit name from the combobox and show parts accordingly and then allow user to modify kit. There is no kitname change because thats similar to deleting a kit and adding new kit.  <a href="#acb55a197eab9725f375a98db9091fd9e"></a><br/></td></tr>
+<tr class="separator:acb55a197eab9725f375a98db9091fd9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab6a0d6fb9d8d6b90abb856d5f253c2a0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1kit_manager_1_1_kit_manager.html#ab6a0d6fb9d8d6b90abb856d5f253c2a0">processMessage</a> (String msg)</td></tr>
-<tr class="memdesc:ab6a0d6fb9d8d6b90abb856d5f253c2a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Process messages sent using Manager Class ie processes that message.  <a href="#ab6a0d6fb9d8d6b90abb856d5f253c2a0"></a><br/></td></tr>
+<tr class="memdesc:ab6a0d6fb9d8d6b90abb856d5f253c2a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Process messages sent using Manager Class ie processes that message coming from the Server and set the kit and part list accordingly.  <a href="#ab6a0d6fb9d8d6b90abb856d5f253c2a0"></a><br/></td></tr>
 <tr class="separator:ab6a0d6fb9d8d6b90abb856d5f253c2a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a452ab51c10f4689a4c3fa133b7a8a8c4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1kit_manager_1_1_kit_manager.html#a452ab51c10f4689a4c3fa133b7a8a8c4">deleteKit</a> (<a class="el" href="classfactory_1_1general_1_1_kit.html">Kit</a> in)</td></tr>
-<tr class="memdesc:a452ab51c10f4689a4c3fa133b7a8a8c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">deletes the kit with the specified kit name and sends data to the server and updates existing kits list  <a href="#a452ab51c10f4689a4c3fa133b7a8a8c4"></a><br/></td></tr>
+<tr class="memdesc:a452ab51c10f4689a4c3fa133b7a8a8c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">deletes the kit with the specified kit name and sends data to the server and hence updates existing kits list  <a href="#a452ab51c10f4689a4c3fa133b7a8a8c4"></a><br/></td></tr>
 <tr class="separator:a452ab51c10f4689a4c3fa133b7a8a8c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad9259819f77a41a833b2525915465fdf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1kit_manager_1_1_kit_manager.html#ad9259819f77a41a833b2525915465fdf">processtabchange</a> ()</td></tr>
 <tr class="separator:ad9259819f77a41a833b2525915465fdf"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -159,12 +172,6 @@ Static Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pac-attribs"></a>
 Package Attributes</h2></td></tr>
-<tr class="memitem:a18d1d994995a4f8e714a557e691ccbf9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classfactory_1_1general_1_1_blueprint_kits.html">BlueprintKits</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1kit_manager_1_1_kit_manager.html#a18d1d994995a4f8e714a557e691ccbf9">bpkit</a></td></tr>
-<tr class="memdesc:a18d1d994995a4f8e714a557e691ccbf9"><td class="mdescLeft">&#160;</td><td class="mdescRight">contains list of kits modifiable from server  <a href="#a18d1d994995a4f8e714a557e691ccbf9"></a><br/></td></tr>
-<tr class="separator:a18d1d994995a4f8e714a557e691ccbf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a61342c0718b6eb2ec978be17cfa4e675"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classfactory_1_1general_1_1_blueprint_parts.html">BlueprintParts</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1kit_manager_1_1_kit_manager.html#a61342c0718b6eb2ec978be17cfa4e675">bppart</a></td></tr>
-<tr class="memdesc:a61342c0718b6eb2ec978be17cfa4e675"><td class="mdescLeft">&#160;</td><td class="mdescRight">contains list of parts useable from server  <a href="#a61342c0718b6eb2ec978be17cfa4e675"></a><br/></td></tr>
-<tr class="separator:a61342c0718b6eb2ec978be17cfa4e675"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a55d5e733955865c0218cfd3667f3b85f"><td class="memItemLeft" align="right" valign="top">JPanel&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1kit_manager_1_1_kit_manager.html#a55d5e733955865c0218cfd3667f3b85f">mainpanel</a></td></tr>
 <tr class="separator:a55d5e733955865c0218cfd3667f3b85f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af6ec6ec167e24df560d4b0fd6d721964"><td class="memItemLeft" align="right" valign="top">JTabbedPane&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1kit_manager_1_1_kit_manager.html#af6ec6ec167e24df560d4b0fd6d721964">tabbedPane</a></td></tr>
@@ -173,8 +180,8 @@ Package Attributes</h2></td></tr>
 <tr class="separator:acf059daca00de8195d69dc49624665da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe0ebfd09f1994fb1e1361a51dfd8557"><td class="memItemLeft" align="right" valign="top">JPanel&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1kit_manager_1_1_kit_manager.html#afe0ebfd09f1994fb1e1361a51dfd8557">updatekit</a></td></tr>
 <tr class="separator:afe0ebfd09f1994fb1e1361a51dfd8557"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acf7d781484d7b131134c59b16fff6dd1"><td class="memItemLeft" align="right" valign="top">JPanel&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1kit_manager_1_1_kit_manager.html#acf7d781484d7b131134c59b16fff6dd1">deletekit</a></td></tr>
-<tr class="separator:acf7d781484d7b131134c59b16fff6dd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7533721182aff141f6e3e7f933d49f9"><td class="memItemLeft" align="right" valign="top">JPanel&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1kit_manager_1_1_kit_manager.html#ae7533721182aff141f6e3e7f933d49f9">deletekit2</a></td></tr>
+<tr class="separator:ae7533721182aff141f6e3e7f933d49f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3f40916bb45b156544bac2395062c5fe"><td class="memItemLeft" align="right" valign="top">JPanel&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1kit_manager_1_1_kit_manager.html#a3f40916bb45b156544bac2395062c5fe">ck_main</a></td></tr>
 <tr class="separator:a3f40916bb45b156544bac2395062c5fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acbabf6019c45c7d438c6f932a96f86fe"><td class="memItemLeft" align="right" valign="top">JPanel&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1kit_manager_1_1_kit_manager.html#acbabf6019c45c7d438c6f932a96f86fe">uk_main</a></td></tr>
@@ -185,22 +192,22 @@ Package Attributes</h2></td></tr>
 <tr class="separator:af0d808a717342ec6d2b63a3142b08d78"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0e06f1915a329f23cca49c0d5843717b"><td class="memItemLeft" align="right" valign="top">JComboBox&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1kit_manager_1_1_kit_manager.html#a0e06f1915a329f23cca49c0d5843717b">create_combo</a></td></tr>
 <tr class="separator:a0e06f1915a329f23cca49c0d5843717b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91ea9eaf2227496210a67512ad180e18"><td class="memItemLeft" align="right" valign="top">JComboBox&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1kit_manager_1_1_kit_manager.html#a91ea9eaf2227496210a67512ad180e18">ucreate_combo</a></td></tr>
+<tr class="separator:a91ea9eaf2227496210a67512ad180e18"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4f079ff015fc52fd52e0a38f25132dd1"><td class="memItemLeft" align="right" valign="top">JComboBox&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1kit_manager_1_1_kit_manager.html#a4f079ff015fc52fd52e0a38f25132dd1">delete_combo</a></td></tr>
 <tr class="separator:a4f079ff015fc52fd52e0a38f25132dd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaab62663a7a1dd07588d6a177ff7d13b"><td class="memItemLeft" align="right" valign="top">JComboBox&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1kit_manager_1_1_kit_manager.html#aaab62663a7a1dd07588d6a177ff7d13b">update_kitcombo</a></td></tr>
 <tr class="separator:aaab62663a7a1dd07588d6a177ff7d13b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a36de32fbc221062bdbf6d65497ef61d2"><td class="memItemLeft" align="right" valign="top">JComboBox&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1kit_manager_1_1_kit_manager.html#a36de32fbc221062bdbf6d65497ef61d2">update_partcombo</a></td></tr>
-<tr class="separator:a36de32fbc221062bdbf6d65497ef61d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a939b697f421e4bb80fd0c77c06f2d181"><td class="memItemLeft" align="right" valign="top">JButton&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1kit_manager_1_1_kit_manager.html#a939b697f421e4bb80fd0c77c06f2d181">createkitbutton</a></td></tr>
 <tr class="separator:a939b697f421e4bb80fd0c77c06f2d181"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9851585ebd7ea16b1270c4fab20d35c4"><td class="memItemLeft" align="right" valign="top">JButton&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1kit_manager_1_1_kit_manager.html#a9851585ebd7ea16b1270c4fab20d35c4">deletekitbutton</a></td></tr>
 <tr class="separator:a9851585ebd7ea16b1270c4fab20d35c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a887e3217ee654426286194c00016550d"><td class="memItemLeft" align="right" valign="top">JButton&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1kit_manager_1_1_kit_manager.html#a887e3217ee654426286194c00016550d">updatekitbutton</a></td></tr>
 <tr class="separator:a887e3217ee654426286194c00016550d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a419df0219fd40c5267e6b6cdccca29b3"><td class="memItemLeft" align="right" valign="top">ArrayList&lt; <a class="el" href="classfactory_1_1general_1_1_part.html">Part</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1kit_manager_1_1_kit_manager.html#a419df0219fd40c5267e6b6cdccca29b3">partlist</a> = new ArrayList()</td></tr>
+<tr class="memitem:a419df0219fd40c5267e6b6cdccca29b3"><td class="memItemLeft" align="right" valign="top">ArrayList&lt; <a class="el" href="classfactory_1_1general_1_1_part.html">Part</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1kit_manager_1_1_kit_manager.html#a419df0219fd40c5267e6b6cdccca29b3">partlist</a> = new ArrayList&lt;<a class="el" href="classfactory_1_1general_1_1_part.html">Part</a>&gt;()</td></tr>
 <tr class="separator:a419df0219fd40c5267e6b6cdccca29b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acd9908c985ed54686d8655b4e389212c"><td class="memItemLeft" align="right" valign="top">ArrayList&lt; JButton &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1kit_manager_1_1_kit_manager.html#acd9908c985ed54686d8655b4e389212c">jbtnlist</a> = new ArrayList()</td></tr>
-<tr class="separator:acd9908c985ed54686d8655b4e389212c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8043c2949de58a99bbb81046ec5c933"><td class="memItemLeft" align="right" valign="top">ArrayList&lt; <a class="el" href="classfactory_1_1general_1_1_part.html">Part</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1kit_manager_1_1_kit_manager.html#aa8043c2949de58a99bbb81046ec5c933">updatepartlist</a> = new ArrayList&lt;<a class="el" href="classfactory_1_1general_1_1_part.html">Part</a>&gt;()</td></tr>
+<tr class="separator:aa8043c2949de58a99bbb81046ec5c933"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a231a2af43a067eef82aa3dbd9355a30a"><td class="memItemLeft" align="right" valign="top">JButton&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1kit_manager_1_1_kit_manager.html#a231a2af43a067eef82aa3dbd9355a30a">b1</a></td></tr>
 <tr class="separator:a231a2af43a067eef82aa3dbd9355a30a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afcec7e8994432e66d60dc7f05cf1fab9"><td class="memItemLeft" align="right" valign="top">JButton&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1kit_manager_1_1_kit_manager.html#afcec7e8994432e66d60dc7f05cf1fab9">b2</a></td></tr>
@@ -233,29 +240,48 @@ Package Attributes</h2></td></tr>
 <tr class="separator:ae03d127a7d7f8ac471f5e584f641e43e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9cdd1c482d1c90c0be30e1e260c96bdc"><td class="memItemLeft" align="right" valign="top">JButton&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1kit_manager_1_1_kit_manager.html#a9cdd1c482d1c90c0be30e1e260c96bdc">ub0</a></td></tr>
 <tr class="separator:a9cdd1c482d1c90c0be30e1e260c96bdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3da0b56b6f9471dfa3ceb0749bf86be"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classfactory_1_1general_1_1_part.html">Part</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1kit_manager_1_1_kit_manager.html#ae3da0b56b6f9471dfa3ceb0749bf86be">nullpart</a></td></tr>
+<tr class="separator:ae3da0b56b6f9471dfa3ceb0749bf86be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abcb231b59e3f92fdc77dd2ca2f8865bd"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1kit_manager_1_1_kit_manager.html#abcb231b59e3f92fdc77dd2ca2f8865bd">newkitname</a></td></tr>
+<tr class="separator:abcb231b59e3f92fdc77dd2ca2f8865bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aebbabd726714edd915f2471b8a1ef696"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classfactory_1_1general_1_1_kit.html">Kit</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1kit_manager_1_1_kit_manager.html#aebbabd726714edd915f2471b8a1ef696">tempkit</a></td></tr>
+<tr class="separator:aebbabd726714edd915f2471b8a1ef696"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pac-static-attribs"></a>
+Static Package Attributes</h2></td></tr>
+<tr class="memitem:a18d1d994995a4f8e714a557e691ccbf9"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classfactory_1_1general_1_1_blueprint_kits.html">BlueprintKits</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1kit_manager_1_1_kit_manager.html#a18d1d994995a4f8e714a557e691ccbf9">bpkit</a></td></tr>
+<tr class="memdesc:a18d1d994995a4f8e714a557e691ccbf9"><td class="mdescLeft">&#160;</td><td class="mdescRight">contains list of kits seria from server  <a href="#a18d1d994995a4f8e714a557e691ccbf9"></a><br/></td></tr>
+<tr class="separator:a18d1d994995a4f8e714a557e691ccbf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61342c0718b6eb2ec978be17cfa4e675"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classfactory_1_1general_1_1_blueprint_parts.html">BlueprintParts</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1kit_manager_1_1_kit_manager.html#a61342c0718b6eb2ec978be17cfa4e675">bppart</a></td></tr>
+<tr class="memdesc:a61342c0718b6eb2ec978be17cfa4e675"><td class="mdescLeft">&#160;</td><td class="mdescRight">contains list of parts useable from server  <a href="#a61342c0718b6eb2ec978be17cfa4e675"></a><br/></td></tr>
+<tr class="separator:a61342c0718b6eb2ec978be17cfa4e675"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a657079e031442f2a7b8d413c6bd478d3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1kit_manager_1_1_kit_manager.html#a657079e031442f2a7b8d413c6bd478d3">prepareMainPane</a> ()</td></tr>
+<tr class="memdesc:a657079e031442f2a7b8d413c6bd478d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prepares the entire layout and all panels of the kit manager. It basically lays stuff out in proper place. It has tabbed panel and 3 panels - creating panel, modifying panel and deleting panel.  <a href="#a657079e031442f2a7b8d413c6bd478d3"></a><br/></td></tr>
 <tr class="separator:a657079e031442f2a7b8d413c6bd478d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aec187f89e7f4616a68e19221a1bac002"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classfactory_1_1general_1_1_kit.html">Kit</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1kit_manager_1_1_kit_manager.html#aec187f89e7f4616a68e19221a1bac002">getCurrentKit</a> ()</td></tr>
+<tr class="memdesc:aec187f89e7f4616a68e19221a1bac002"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the current kit from the delete combobox so that we have the kit at the selected index position.  <a href="#aec187f89e7f4616a68e19221a1bac002"></a><br/></td></tr>
 <tr class="separator:aec187f89e7f4616a68e19221a1bac002"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a17e92c4ce29eab982c30b0477cf6c45b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1kit_manager_1_1_kit_manager.html#a17e92c4ce29eab982c30b0477cf6c45b">updateComboBox</a> ()</td></tr>
-<tr class="memdesc:a17e92c4ce29eab982c30b0477cf6c45b"><td class="mdescLeft">&#160;</td><td class="mdescRight">updates the combo box to choose the kit to delete  <a href="#a17e92c4ce29eab982c30b0477cf6c45b"></a><br/></td></tr>
-<tr class="separator:a17e92c4ce29eab982c30b0477cf6c45b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pub_static_attribs_classfactory_1_1general_1_1_manager"><td colspan="2" onclick="javascript:toggleInherit('pub_static_attribs_classfactory_1_1general_1_1_manager')"><img src="closed.png" alt="-"/>&#160;Static Public Attributes inherited from <a class="el" href="classfactory_1_1general_1_1_manager.html">factory.general.Manager</a></td></tr>
+<tr class="memitem:ade5616df8f895d863a97e33e694eeaa4 inherit pub_static_attribs_classfactory_1_1general_1_1_manager"><td class="memItemLeft" align="right" valign="top">static final boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_manager.html#ade5616df8f895d863a97e33e694eeaa4">VERBOSE</a> = true</td></tr>
+<tr class="separator:ade5616df8f895d863a97e33e694eeaa4 inherit pub_static_attribs_classfactory_1_1general_1_1_manager"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa7ec65dc54c81087b06dc116f33521a5 inherit pub_static_attribs_classfactory_1_1general_1_1_manager"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classfactory_1_1general_1_1_printer.html">Printer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_manager.html#aa7ec65dc54c81087b06dc116f33521a5">p</a> = new <a class="el" href="classfactory_1_1general_1_1_printer.html">Printer</a>()</td></tr>
 <tr class="separator:aa7ec65dc54c81087b06dc116f33521a5 inherit pub_static_attribs_classfactory_1_1general_1_1_manager"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_classfactory_1_1general_1_1_manager"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classfactory_1_1general_1_1_manager')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classfactory_1_1general_1_1_manager.html">factory.general.Manager</a></td></tr>
 <tr class="memitem:ac19ccd02c9fb3a0d507e478a4f54d998 inherit pro_attribs_classfactory_1_1general_1_1_manager"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classfactory_1_1general_1_1_manager_connection.html">ManagerConnection</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_manager.html#ac19ccd02c9fb3a0d507e478a4f54d998">mcon</a></td></tr>
 <tr class="separator:ac19ccd02c9fb3a0d507e478a4f54d998 inherit pro_attribs_classfactory_1_1general_1_1_manager"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_static_attribs_classfactory_1_1general_1_1_manager"><td colspan="2" onclick="javascript:toggleInherit('pro_static_attribs_classfactory_1_1general_1_1_manager')"><img src="closed.png" alt="-"/>&#160;Static Protected Attributes inherited from <a class="el" href="classfactory_1_1general_1_1_manager.html">factory.general.Manager</a></td></tr>
+<tr class="memitem:ade4a039384b3c8552ffbe237c0d251a0 inherit pro_static_attribs_classfactory_1_1general_1_1_manager"><td class="memItemLeft" align="right" valign="top">static final boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_manager.html#ade4a039384b3c8552ffbe237c0d251a0">DEBUG</a> = false</td></tr>
+<tr class="separator:ade4a039384b3c8552ffbe237c0d251a0 inherit pro_static_attribs_classfactory_1_1general_1_1_manager"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00042">42</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
+<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00043">43</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a9cf403ef5b923039eb9a0f64f17e365d"></a>
 <div class="memitem">
@@ -278,7 +304,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00074">74</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
+<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00098">98</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
 
 </div>
 </div>
@@ -305,7 +331,9 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00373">373</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
+<p>Action Listeners for the buttons - create kit, modify kit and update kit. Checks if there is a kit to delete or modify. </p>
+
+<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00487">487</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
 
 </div>
 </div>
@@ -330,9 +358,9 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Function to create kit when the Create kit button is pressed and then pass the new kit to the server so that the list gets updated. </p>
+<p>Function to Create kit when the Create kit button is pressed and then pass the new kit to the server so that the list gets updated. It gets the kit name and the parts in the kit. Also should check if the user entered the name and if there are 4-8 parts in the kit. </p>
 
-<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00439">439</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
+<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00568">568</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
 
 </div>
 </div>
@@ -358,9 +386,9 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>deletes the kit with the specified kit name and sends data to the server and updates existing kits list </p>
+<p>deletes the kit with the specified kit name and sends data to the server and hence updates existing kits list </p>
 
-<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00482">482</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
+<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00707">707</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
 
 </div>
 </div>
@@ -385,7 +413,9 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00387">387</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
+<p>Returns the current kit from the delete combobox so that we have the kit at the selected index position. </p>
+
+<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00526">526</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
 
 </div>
 </div>
@@ -411,7 +441,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00090">90</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
+<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00114">114</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
 
 </div>
 </div>
@@ -436,7 +466,9 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00103">103</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
+<p>Prepares the entire layout and all panels of the kit manager. It basically lays stuff out in proper place. It has tabbed panel and 3 panels - creating panel, modifying panel and deleting panel. </p>
+
+<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00130">130</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
 
 </div>
 </div>
@@ -462,9 +494,9 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Process messages sent using Manager Class ie processes that message. </p>
+<p>Process messages sent using Manager Class ie processes that message coming from the Server and set the kit and part list accordingly. </p>
 
-<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00460">460</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
+<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00676">676</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
 
 </div>
 </div>
@@ -489,7 +521,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00497">497</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
+<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00720">720</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
 
 </div>
 </div>
@@ -514,13 +546,13 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>sends an update request which should result in the parts list and kit list being updated </p>
+<p>Sends an update request which should result in the parts list and kit list being updated and getting it from the server. </p>
 
-<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00406">406</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
+<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00545">545</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a17e92c4ce29eab982c30b0477cf6c45b"></a>
+<a class="anchor" id="acb55a197eab9725f375a98db9091fd9e"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -528,7 +560,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void factory.factory200.kitManager.KitManager.updateComboBox </td>
+          <td class="memname">void factory.factory200.kitManager.KitManager.updateKit </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -536,14 +568,14 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>updates the combo box to choose the kit to delete </p>
+<p>Function to Update kit when the Update kit button is pressed and then pass the modified kit to the server so that the list gets updated. It should get the kit name from the combobox and show parts accordingly and then allow user to modify kit. There is no kitname change because thats similar to deleting a kit and adding new kit. </p>
 
-<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00425">425</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
+<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00623">623</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
 
 </div>
 </div>
@@ -566,7 +598,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00070">70</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
+<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00090">90</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
 
 </div>
 </div>
@@ -588,7 +620,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00070">70</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
+<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00090">90</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
 
 </div>
 </div>
@@ -610,7 +642,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00070">70</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
+<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00090">90</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
 
 </div>
 </div>
@@ -632,7 +664,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00070">70</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
+<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00090">90</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
 
 </div>
 </div>
@@ -654,7 +686,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00070">70</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
+<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00090">90</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
 
 </div>
 </div>
@@ -676,7 +708,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00070">70</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
+<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00090">90</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
 
 </div>
 </div>
@@ -698,7 +730,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00070">70</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
+<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00090">90</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
 
 </div>
 </div>
@@ -720,7 +752,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00070">70</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
+<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00090">90</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
 
 </div>
 </div>
@@ -737,20 +769,24 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">package</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">package</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>contains list of kits modifiable from server </p>
+<p>contains list of kits seria from server </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">args</td><td></td></tr>
+    <tr><td class="paramname">bpkit</td><td>- object which deals with list of existing kits from server </td></tr>
+    <tr><td class="paramname">bppart</td><td>- object which deals with list of existing parts from server </td></tr>
+    <tr><td class="paramname">partlist</td><td>- arraylist which holds the parts for the kit in create panel </td></tr>
+    <tr><td class="paramname">updatepartlist</td><td>- arraylist which holds the parts for the kit in modify panel </td></tr>
+    <tr><td class="paramname">create_combo</td><td>- JCombobox for parts - to select a part and then set it on the button when the button is clicking </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00047">47</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
+<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00052">52</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
 
 </div>
 </div>
@@ -767,14 +803,14 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">package</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">package</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p>contains list of parts useable from server </p>
 
-<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00048">48</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
+<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00053">53</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
 
 </div>
 </div>
@@ -796,7 +832,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00055">55</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
+<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00062">62</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
 
 </div>
 </div>
@@ -818,7 +854,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00059">59</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
+<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00070">70</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
 
 </div>
 </div>
@@ -840,7 +876,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00052">52</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
+<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00057">57</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
 
 </div>
 </div>
@@ -862,7 +898,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00064">64</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
+<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00081">81</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
 
 </div>
 </div>
@@ -884,11 +920,11 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00060">60</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
+<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00077">77</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="acf7d781484d7b131134c59b16fff6dd1"></a>
+<a class="anchor" id="ae7533721182aff141f6e3e7f933d49f9"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -896,7 +932,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">JPanel factory.factory200.kitManager.KitManager.deletekit</td>
+          <td class="memname">JPanel factory.factory200.kitManager.KitManager.deletekit2</td>
         </tr>
       </table>
   </td>
@@ -906,7 +942,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00054">54</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
+<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00059">59</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
 
 </div>
 </div>
@@ -928,7 +964,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00065">65</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
+<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00082">82</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
 
 </div>
 </div>
@@ -950,29 +986,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00057">57</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="acd9908c985ed54686d8655b4e389212c"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">ArrayList&lt;JButton&gt; factory.factory200.kitManager.KitManager.jbtnlist = new ArrayList()</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00069">69</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
+<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00064">64</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
 
 </div>
 </div>
@@ -994,7 +1008,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00058">58</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
+<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00067">67</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
 
 </div>
 </div>
@@ -1016,7 +1030,51 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00049">49</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
+<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00054">54</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="abcb231b59e3f92fdc77dd2ca2f8865bd"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">String factory.factory200.kitManager.KitManager.newkitname</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">package</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00094">94</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae3da0b56b6f9471dfa3ceb0749bf86be"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classfactory_1_1general_1_1_part.html">Part</a> factory.factory200.kitManager.KitManager.nullpart</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">package</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00093">93</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
 
 </div>
 </div>
@@ -1028,7 +1086,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">ArrayList&lt;<a class="el" href="classfactory_1_1general_1_1_part.html">Part</a>&gt; factory.factory200.kitManager.KitManager.partlist = new ArrayList()</td>
+          <td class="memname">ArrayList&lt;<a class="el" href="classfactory_1_1general_1_1_part.html">Part</a>&gt; factory.factory200.kitManager.KitManager.partlist = new ArrayList&lt;<a class="el" href="classfactory_1_1general_1_1_part.html">Part</a>&gt;()</td>
         </tr>
       </table>
   </td>
@@ -1038,7 +1096,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00068">68</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
+<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00085">85</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
 
 </div>
 </div>
@@ -1060,7 +1118,29 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00050">50</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
+<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00055">55</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aebbabd726714edd915f2471b8a1ef696"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classfactory_1_1general_1_1_kit.html">Kit</a> factory.factory200.kitManager.KitManager.tempkit</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">package</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00095">95</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
 
 </div>
 </div>
@@ -1082,7 +1162,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00071">71</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
+<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00091">91</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
 
 </div>
 </div>
@@ -1104,7 +1184,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00071">71</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
+<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00091">91</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
 
 </div>
 </div>
@@ -1126,7 +1206,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00071">71</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
+<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00091">91</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
 
 </div>
 </div>
@@ -1148,7 +1228,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00071">71</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
+<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00091">91</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
 
 </div>
 </div>
@@ -1170,7 +1250,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00071">71</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
+<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00091">91</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
 
 </div>
 </div>
@@ -1192,7 +1272,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00071">71</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
+<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00091">91</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
 
 </div>
 </div>
@@ -1214,7 +1294,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00071">71</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
+<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00091">91</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
 
 </div>
 </div>
@@ -1236,7 +1316,29 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00071">71</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
+<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00091">91</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a91ea9eaf2227496210a67512ad180e18"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">JComboBox factory.factory200.kitManager.KitManager.ucreate_combo</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">package</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00073">73</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
 
 </div>
 </div>
@@ -1258,7 +1360,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00056">56</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
+<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00063">63</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
 
 </div>
 </div>
@@ -1280,29 +1382,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00061">61</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a36de32fbc221062bdbf6d65497ef61d2"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">JComboBox factory.factory200.kitManager.KitManager.update_partcombo</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00062">62</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
+<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00078">78</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
 
 </div>
 </div>
@@ -1324,7 +1404,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00053">53</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
+<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00058">58</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
 
 </div>
 </div>
@@ -1346,7 +1426,29 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00066">66</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
+<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00083">83</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aa8043c2949de58a99bbb81046ec5c933"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ArrayList&lt;<a class="el" href="classfactory_1_1general_1_1_part.html">Part</a>&gt; factory.factory200.kitManager.KitManager.updatepartlist = new ArrayList&lt;<a class="el" href="classfactory_1_1general_1_1_part.html">Part</a>&gt;()</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">package</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_kit_manager_8java_source.html#l00087">87</a> of file <a class="el" href="_kit_manager_8java_source.html">KitManager.java</a>.</p>
 
 </div>
 </div>
@@ -1356,7 +1458,7 @@ Additional Inherited Members</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 17 2012 01:37:04 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Dec 1 2012 12:34:12 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>
