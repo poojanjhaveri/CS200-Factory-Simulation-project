@@ -90,6 +90,7 @@ public class PartsAgent extends Agent implements PartsInterface {
     
     public void msgHereIsKit(ArrayList<Kit> newKits) {// message from server
         //print("PartsAgent got message for new kits");
+        newKit.clear();
         for (Kit k: newKits){
         newKit.add(k);
         }
