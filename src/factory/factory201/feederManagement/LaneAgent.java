@@ -25,6 +25,7 @@ public class LaneAgent extends Agent implements Lane {
     private List<myParts> parts = Collections.synchronizedList(new ArrayList<myParts>());
     private NestInterface nest;
     private Feeder feeder;
+    boolean jammed=false;
     boolean requestedPart=false;
     int laneNum;
     int askCount=0;
@@ -79,6 +80,16 @@ public class LaneAgent extends Agent implements Lane {
     }
     public void msgRejectParts(int i) {
         throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    @Override
+    public void setJammed(boolean j) {
+        this.jammed=j;
+    }
+
+    @Override
+    public boolean getJammed() {
+        return this.jammed;
     }
 
     private class myParts {
