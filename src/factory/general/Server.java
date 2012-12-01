@@ -181,7 +181,7 @@ public class Server {
         }
         
         // By Dongyoung
-        serverLM.setNestAgents(nestAgent);
+        serverLM.setCameraAgents(cameraAgent);
         serverLM.setFeederAgents(feederAgents);
     }
 
