@@ -94,7 +94,25 @@ public class KitAssemblyManager extends Manager implements ActionListener {
             int nest = msg.charAt(4) - 48;
             int partType = msg.charAt(6) - 48;
             this.doSetParts(nest, partType);
-        }
+        }else if(msg.contains(Message.KAM_ACTION_STABILIZE_NEST))
+	    {
+Integer i = Integer.parseInt(this.grabParameter(msg));
+
+	    this.graphics.toggleUnstable(i);
+	    this.nonnorm.toggleStabilizeColor(i);
+	    this.nonnorm.removeAll();
+	    this.nonnorm.preparemainpanel();
+		}
+	    }else if(msg.contains(Message.KAM_ACTION_UNPILE_NEST))
+	    {
+Integer i = Integer.parseInt(this.grabParameter(msg));
+		this.graphics.togglePiled(i);
+		this.nonnorm.togglePiledColor(i);
+		this.nonnorm.removeAll();
+		this.nonnorm.preparemainpanel();
+	
+	    }
+
 
         //todo - let me know what functions agent will call so I can process them here
     }
