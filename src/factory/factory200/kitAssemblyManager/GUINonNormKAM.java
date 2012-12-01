@@ -93,7 +93,7 @@ public class GUINonNormKAM  extends JPanel {
     }
     public JButton getPilingButton()
     {
-	return this pile;
+	return this.piled;
     }
     public JButton getStabilityButton()
     {
