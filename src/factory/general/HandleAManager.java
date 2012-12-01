@@ -288,7 +288,6 @@ public class HandleAManager implements Runnable {
         else if(msg.contains(Message.GRM_FINISH_MOVE_TO_BIN) || msg.contains(Message.GRM_FINISH_MOVE_TO_FEEDER) || msg.contains(Message.GRM_FINISH_MOVE_TO_DUMP)) {
             this.server.getGantry().msgAnimationComplete(msg);
         }
-
     }
 
     /**
