@@ -37,7 +37,7 @@ public class CameraAgent extends Agent implements Camera {
     private List<Kit> kitList;
     private Kit kitInfoFromPartsAgent;
     private List<Integer> kitRqmts;
-    private Map<Integer, Result.NestError> nestErrors;
+    private Map<Integer, Result.Is> nestErrors;
 
     public CameraAgent(String name) {
         super(name);
@@ -45,15 +45,15 @@ public class CameraAgent extends Agent implements Camera {
         kitList = Collections.synchronizedList(new ArrayList<Kit>());
         kitInfoFromPartsAgent = null;
         kitRqmts = new ArrayList<Integer>();
-        nestErrors = new HashMap<Integer, Result.NestError>();
+        nestErrors = new HashMap<Integer, Result.Is>();
     }
 
     public void msgAllPartsBad(int nestNum) {
-        nestErrors.put(nestNum, Result.NestError.badParts);
+        nestErrors.put(nestNum, Result.Is.badParts);
     }
 
     public void msgPartsPiledUp(int nestNum) {
-        nestErrors.put(nestNum, Result.NestError.piledParts);
+        nestErrors.put(nestNum, Result.Is.piledParts);
     }
 
     @Override
@@ -146,7 +146,7 @@ public class CameraAgent extends Agent implements Camera {
         } catch (InterruptedException ex) {
         }
         DoInspectNest(nest);
-        Result.NestError is = result ? Result.NestError.verified : Result.NestError.badParts;
+        Result.Is is = result ? Result.Is.verified : Result.Is.badParts;
         nestAgent.msgNestInspected(nest, new Result(is));
         String strResult = result ? "NO ERROR" : "ERROR";
         print("Inspecting nest: [Nest " + nest.nestNum + "] with result: " + strResult + ".");

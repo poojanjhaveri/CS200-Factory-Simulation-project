@@ -64,7 +64,7 @@ public class NestAgent extends Agent implements NestInterface {
     /**
      * This message checks if the part
      *
-     * @param p This nestError a part
+     * @param p This is a part
      */
 
     public void msgRequestEarlyInspection(){
@@ -105,13 +105,13 @@ public class NestAgent extends Agent implements NestInterface {
 
     @Override
     public void msgNestInspected(Nest n, Result result) {//NEEDTO change from boolean to setting individual parts?
-        if (result.nestError == Result.NestError.verified) {
+        if (result.is == Result.Is.verified) {
             n.status = Nest.Status.readyForKit;
             print("Nest inspected and verified");
-        } else  if (result.nestError == Result.NestError.partsMissing && !requestEarlyInspection){
+        } else  if (result.is == Result.Is.partsMissing && !requestEarlyInspection){
            purge(n);
            print("Nest is not verified, will be dumped");
-        } else if (result.nestError == Result.NestError.partsMissing && requestEarlyInspection){
+        } else if (result.is == Result.Is.partsMissing && requestEarlyInspection){
             requestEarlyInspection=false;
             print("Nest " + n.nestNum + " has not been verified and needs to wait for more parts");
             if (n.status!=Nest.Status.full)
