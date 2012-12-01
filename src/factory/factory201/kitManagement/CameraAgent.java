@@ -55,7 +55,12 @@ public class CameraAgent extends Agent implements Camera {
     public void msgPartsPiledUp(int nestNum) {
         nestErrors.put(nestNum, Result.Is.piledParts);
     }
-
+    
+    // added by Kevin
+    public void msgPartsShaking(int nestNum){
+          nestErrors.put(nestNum, Result.Is.unstableParts);
+    }
+    
     @Override
     public void msgNestIsFull(Nest nest) {
         synchronized (nestList) {

@@ -43,11 +43,11 @@ public class LMLaneData {
 	
 	public void setVibrationAmplitudeStrong(){
 		// Signal To LM
-		for(int i=0 ; i<serverMain.getPartData().getLanePartSize(laneNum) ; i++){
+	//	for(int i=0 ; i<serverMain.getPartData().getLanePartSize(laneNum) ; i++){
 			signal = laneNum + "&Lane&" + "Amplitude Strong";
 			serverMain.sendToLM(signal);
 			serverMain.sendToFPM(signal);
-		}
+	//	}
 	}
 	
 	public void setVibrationAmplitudeNormal(){

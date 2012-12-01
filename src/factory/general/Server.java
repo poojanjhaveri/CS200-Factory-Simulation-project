@@ -295,7 +295,7 @@ public class Server {
                 gantryAgent.print = false;
             }
             if (ALEX) {
-                kitRobotAgent.print = true;
+                kitRobotAgent.print = false;
                 conveyorAgent.print = false;
                 cameraAgent.print = false;
             }
