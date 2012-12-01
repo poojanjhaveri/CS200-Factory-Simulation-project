@@ -5,6 +5,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.Timer;
 
+import factory.general.Global;
+
 /**
  * @brief Timer in ServerSide(Lane Manager)
  * @author Dongyoung Jung
@@ -16,7 +18,7 @@ public class LMTimerThread implements Runnable{
 	
 	public LMTimerThread(LMSignalFromServerVerification serverVerification){
 		this.serverVerification = serverVerification;
-		timer = new Timer(20, new TimerAction());
+		timer = new Timer(Global.STANDARD_TIMER_SPEED, new TimerAction());
 	}
 	
 	public void run(){}

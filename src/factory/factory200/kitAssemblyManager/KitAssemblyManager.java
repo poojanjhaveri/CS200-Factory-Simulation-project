@@ -111,6 +111,12 @@ public class KitAssemblyManager extends Manager implements ActionListener {
         //todo - let me know what functions agent will call so I can process them here
     }
 
+    public void nestUp(int n){ 
+        this.graphics.nest.get(n).nestUp();
+    }
+    public void nestDown(int n){
+        this.graphics.nest.get(n).nestDown();
+    }
     public void doSetParts(int n, int partType) {
         //create part based on part type given
         Part temp = new Part(null, null);

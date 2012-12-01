@@ -1,10 +1,14 @@
 package factory.factory200.factoryProductionManager;
 
-//@author Dongyoung Jung
+/**
+ * @author Dongyoung Jung
+ */
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
+
+import factory.general.Global;
 
 public class TimerThread implements Runnable{
 	
@@ -13,7 +17,7 @@ public class TimerThread implements Runnable{
 	
 	public TimerThread(GraphicsPanel gfx){
 		this.gfx = gfx;
-		timer = new Timer(20, new TimerAction());
+		timer = new Timer(Global.STANDARD_TIMER_SPEED, new TimerAction());
 	}
 	
 	public void run(){}
