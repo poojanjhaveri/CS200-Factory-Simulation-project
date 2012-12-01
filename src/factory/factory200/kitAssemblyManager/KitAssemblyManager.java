@@ -252,9 +252,6 @@ public class KitAssemblyManager extends Manager implements ActionListener {
         if (ae.getSource() == this.nonnorm.getDropPartButton()) {
             this.sendToServer(Message.KAM_BAD_KIT);
         }
-        //if(ae.getSource()==){
-
-        //}
         if (ae.getSource() == cameraKitStand) {
             this.flashKitCamera();
         }
