@@ -14,7 +14,7 @@ java -cp build/classes factory.factory200.kitManager.KitManager &
 sleep 1
 java -cp build/classes factory.factory200.gantryRobotManager.GantryRobotManager &
 sleep 1
-java -cp build/classes factory.factory200.laneManager.ClientSide.V1LaneManagerCompileClient &
+java -cp build/classes factory.factory200.laneManager.ClientSide.V2LaneManager &
 sleep 1
 java -cp build/classes factory.factory200.kitAssemblyManager.KitAssemblyManager &
 sleep 1
