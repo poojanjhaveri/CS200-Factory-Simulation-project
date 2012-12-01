@@ -53,9 +53,6 @@ public class FactoryProductionManager extends Manager implements ActionListener 
     private JTextArea schedField, outField, serverQueueDisplay, inProdField;
     private JScrollPane schedPane, outPane, queuePane;
     private JTabbedPane tabs;
-
-    // Non-normative components
-    private NonNormCtrlPanel nonNormCtrlPanel;
     
     private ArrayList<String> serverQueue;
     private String inProduction;
@@ -325,11 +322,6 @@ public class FactoryProductionManager extends Manager implements ActionListener 
         reset.addActionListener(this);
 
         mainPanel.add(tabs, BorderLayout.CENTER);
-    }
-
-    private void prepareNonNormCtrlPanel() {
-    	nonNormCtrlPanel = new NonNormCtrlPanel();
-    	
     }
     
     @Override
