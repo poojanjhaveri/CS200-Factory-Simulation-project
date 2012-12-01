@@ -291,7 +291,7 @@ public class HandleAManager implements Runnable {
             } //-----------------------------------------------------------------------------------------------------------     
 	    else if(msg.contains(Message.KAM_NEST_PILED)){
 		//handle nest piled nonnorm
-	        
+                this.server.getCameraAgent().msgPartsPiledUp(Integer.parseInt(this.grabParameter(msg)));
 	    }else if(msg.contains(Message.KAM_NEST_UNSTABLE)){
 		//handle unstable nonnorm
 		this.server.getCameraAgent().msgPartsShaking(Integer.parseInt(this.grabParameter(msg)));
