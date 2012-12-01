@@ -206,10 +206,12 @@ public class KitAssemblyManager extends Manager implements ActionListener {
 
     public void actionPerformed(ActionEvent ae) {
     	
-	if(ae.getSource() == this.nonnorm.getPilingButton())
-	    this.graphics.piled = !this.graphics.piled;
-    	if(ae.getSource() == this.nonnorm.getStabilityButton())
-	    this.graphics.toggleUnstable();
+	for(int i = 0; i != 8; i++){
+	if(ae.getSource() == this.nonnorm.getPilingButton(i))
+	    this.graphics.togglePiled(i);
+    	if(ae.getSource() == this.nonnorm.getStabilityButton(i))
+	    this.graphics.toggleUnstable(i);
+	}
     	//if(ae.getSource()==){
     		
     	//}
