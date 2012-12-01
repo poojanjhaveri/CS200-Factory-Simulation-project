@@ -157,6 +157,7 @@ public class NestAgent extends Agent implements NestInterface {
                 {   //stabilize once and then wait for nest to be full again (or request new inspection. )
                     System.out.println("nest is shaking, need to stabilize");
                     stabilizeNest(n.nestNum);
+                    System.out.println("nest # " + n.nestNum + "set to false ");
                     n.shaking=false;
                     return true;
                 }
