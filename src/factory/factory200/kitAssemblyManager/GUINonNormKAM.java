@@ -22,10 +22,13 @@ import javax.swing.*;
 public class GUINonNormKAM  extends JPanel {
     
     private JPanel mainpanel;
-    JButton droppart1;
-    JButton undo1;
+    JButton droppart;
+    JButton undoDroppart;
     JButton piled;
-    JButton unstabilize;
+   
+    JButton unstabilize; 
+    JButton undoUnstabilize;
+    JButton undoPiled;
     ActionListener kam;
     
     public GUINonNormKAM(ActionListener in) {
@@ -58,19 +61,19 @@ public class GUINonNormKAM  extends JPanel {
         c.fill =GridBagConstraints.HORIZONTAL;
         c.gridx=0;
         c.gridy=0;
-        droppart1 = new JButton("Drop a Part");
-        droppart1.addActionListener(new droppartbutton());
-        droppart1.setPreferredSize(new Dimension(150,50));
-        scenario.add(droppart1,c);
+        droppart = new JButton("Drop a Part");
+        droppart.addActionListener(new droppartbutton());
+        droppart.setPreferredSize(new Dimension(150,50));
+        scenario.add(droppart,c);
         
         c.fill =GridBagConstraints.HORIZONTAL;
         c.gridx=1;
         c.gridy=0;
-        undo1 = new JButton("Revert Back");
+        undoDroppart = new JButton("Revert Back");
         //undo1.setEnabled(false);
-        undo1.setPreferredSize(new Dimension(150,50));
-        undo1.addActionListener(new undobutton());
-        scenario.add(undo1,c);
+        undoDroppart.setPreferredSize(new Dimension(150,50));
+        undoDroppart.addActionListener(new undobutton());
+        scenario.add(undoDroppart,c);
         
         c.fill =GridBagConstraints.HORIZONTAL;
         c.gridx=0;
@@ -84,12 +87,29 @@ public class GUINonNormKAM  extends JPanel {
         c.fill =GridBagConstraints.HORIZONTAL;
         c.gridx=1;
         c.gridy=1;
+        this.undoUnstabilize = new JButton("UnToggle nest stability");
+        //this.unstabilize.setEnabled(false);
+        this.undoUnstabilize.setPreferredSize(new Dimension(150,50));
+        this.undoUnstabilize.addActionListener(this.kam);
+        scenario.add(this.undoUnstabilize,c);
+        
+        c.fill =GridBagConstraints.HORIZONTAL;
+        c.gridx=0;
+        c.gridy=2;
         this.piled = new JButton("Toggle nest piling");
         //this.unstabilize.setEnabled(false);
         this.piled.setPreferredSize(new Dimension(150,50));
         this.piled.addActionListener(this.kam);
         scenario.add(this.piled,c);
         
+        c.fill =GridBagConstraints.HORIZONTAL;
+        c.gridx=1;
+        c.gridy=2;
+        this.undoPiled = new JButton("Toggle nest piling");
+        //this.unstabilize.setEnabled(false);
+        this.undoPiled.setPreferredSize(new Dimension(150,50));
+        this.undoPiled.addActionListener(this.kam);
+        scenario.add(this.undoPiled,c);        
 
         basepanel.add(scenario);
         mainpanel.add(basepanel,BorderLayout.CENTER);
@@ -109,9 +129,9 @@ public class GUINonNormKAM  extends JPanel {
     
          public void actionPerformed(ActionEvent e) {
              
-             droppart1.setEnabled(false);
+             droppart.setEnabled(false);
              System.out.println("KAM drop part");
-             undo1.setEnabled(true);
+             undoDroppart.setEnabled(true);
             
             
             }
@@ -124,9 +144,9 @@ public class GUINonNormKAM  extends JPanel {
     
          public void actionPerformed(ActionEvent e) {
              
-             undo1.setEnabled(false);
+             undoDroppart.setEnabled(false);
              System.out.println("Undo drop part condition");
-             droppart1.setEnabled(true);
+             droppart.setEnabled(true);
             
             
             }

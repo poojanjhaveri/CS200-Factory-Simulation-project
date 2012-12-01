@@ -40,7 +40,7 @@ public class ConveyorAgent extends Agent implements Conveyor {
         stateChanged();
     }
 
-    public void msgGenerateKit(int numKits) {
+    public void msgGenerateKits(int numKits) {
         generateKits = numKits;
         stateChanged();
     }
