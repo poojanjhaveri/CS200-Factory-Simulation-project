@@ -1,23 +1,22 @@
 
 package factory.factory200.kitAssemblyManager;
 
-import factory.factory200.kitAssemblyManager.*;
-import factory.general.GUIPart;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import factory.general.Manager;
-import java.awt.Button;
-import java.awt.Graphics2D;
-import java.awt.GridLayout;
+
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import factory.general.Message;
-import factory.general.Part;
-import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
+
+import factory.general.GUIPart;
+import factory.general.Manager;
+import factory.general.Message;
+import factory.general.Part;
 
 /**
  * This class keeps track of everything that will be visible to the Kit Assembly
@@ -207,22 +206,32 @@ public class KitAssemblyManager extends Manager implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent ae) {
-    /*	
+    
 	for(int i = 0; i != 8; i++){
 	if(ae.getSource() == this.nonnorm.getPilingButton(i)){
+	    if(!this.graphics.piledColor.get(i))
+	    {
+	    this.sendToServer(Message.KAM_NEST_PILED+":"+i);
+	    }
 	    this.graphics.togglePiled(i);
 	    this.nonnorm.togglePiledColor(i);
 	    this.nonnorm.removeAll();
 	    this.nonnorm.preparemainpanel();
 	}
     	if(ae.getSource() == this.nonnorm.getStabilityButton(i)){
+	if(!this.graphics.unstableColor.get(i)){
+this.sendToServer(Message.KAM_NEST_UNSTABLE+":"+i);
+}
 	    this.graphics.toggleUnstable(i);
 	    this.nonnorm.toggleStabilizeColor(i);
 	    this.nonnorm.removeAll();
 	    this.nonnorm.preparemainpanel();
     	}
 	}
-	*/
+	if(ae.getSource() == this.nonnorm.getDropPartButton())
+	    {
+		this.sendToServer(Message.KAM_BAD_KIT);
+	    }
     	//if(ae.getSource()==){
     		
     	//}

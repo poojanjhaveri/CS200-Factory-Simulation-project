@@ -20,24 +20,17 @@ package factory.factory200.gantryRobotManager;
  * @author Yuting Liu
  */
 
-import factory.factory200.gantryRobotManager.GUIBin;
-import factory.factory200.gantryRobotManager.GUIGantryRobot;
-import factory.factory200.gantryRobotManager.GRMGraphicPanel;
-import factory.general.Manager;
-import factory.general.Message;
 import java.awt.Dimension;
-
-import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.BoxLayout;
-import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
+
+import factory.general.Manager;
+import factory.general.Message;
 
 public class GantryRobotManager extends Manager implements ActionListener {
    
