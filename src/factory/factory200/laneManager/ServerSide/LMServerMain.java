@@ -32,8 +32,6 @@ public class LMServerMain extends JFrame implements Runnable{
 	private FeederAgent[] feederAgents;
 	private CameraAgent cameraAgent;
 	
-	private NonNormative nonNormative;
-	
 	public LMServerMain(){}
 	
 	public void run(){
@@ -50,7 +48,6 @@ public class LMServerMain extends JFrame implements Runnable{
 		new Thread(threadTimer).start();
 		threadTimer.timerStart();
 		
-		nonNormative = new NonNormative(this);
 		//controller = new LMController(agentFeeder, agentLane, agentNest, agentNestCamera, agentGantryRobot, agentPartRobot, this);
 	}
 
@@ -124,10 +121,6 @@ public class LMServerMain extends JFrame implements Runnable{
 		if( hacGRM != null ){
 			hacGRM.sendMessage(signal);
 		}
-	}
-	
-	public NonNormative getNonNormative(){
-		return nonNormative;
 	}
 
 	public void setFeederAgents(FeederAgent[] feederAgents){

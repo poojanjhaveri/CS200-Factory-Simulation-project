@@ -13,7 +13,7 @@ import javax.swing.*;
  * and open the template in the editor.
  */
 /**
- *
+ * @brief a drawable nest in the kit assembly area
  * @author Deepa
  */
 //temporary nest class until an actual nest class is made...
@@ -131,8 +131,11 @@ public class KAMNest {
         for(int k=0;k<size;k++){
            this.getPlaceholder().get(i).getKit().getParts().remove(0);
         }*/
+        this.setNest(new ImageIcon("pics/nestDown.png"));
         int size=this.getParts().size();
-        //for (int k=0; k<size; )
+        for (int k=0; k<size; k++){
+            this.getParts().remove(0);
+        }
         
     }
 }

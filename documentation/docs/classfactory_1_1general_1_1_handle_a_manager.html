@@ -20,9 +20,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="kitrobot.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Factory Project
-   &#160;<span id="projectnumber">0.1.0</span>
+   &#160;<span id="projectnumber">0.4.0</span>
    </div>
    <div id="projectbrief">team 1 joint cs200/cs201</div>
   </td>
@@ -123,6 +124,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a9281168a86cc1e06780a5b382dab60aa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_handle_a_manager.html#a9281168a86cc1e06780a5b382dab60aa">sendMessage</a> (String msg)</td></tr>
 <tr class="memdesc:a9281168a86cc1e06780a5b382dab60aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">sends a message to the client  <a href="#a9281168a86cc1e06780a5b382dab60aa"></a><br/></td></tr>
 <tr class="separator:a9281168a86cc1e06780a5b382dab60aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f8e7b4a45cb5232746fe3e3ef9ff6c1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_handle_a_manager.html#a5f8e7b4a45cb5232746fe3e3ef9ff6c1">pushToFPM</a> ()</td></tr>
+<tr class="separator:a5f8e7b4a45cb5232746fe3e3ef9ff6c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ab9568bb9912331511413f12ae24874"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_handle_a_manager.html#a6ab9568bb9912331511413f12ae24874">pushToKitManager</a> ()</td></tr>
+<tr class="separator:a6ab9568bb9912331511413f12ae24874"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pac-attribs"></a>
 Package Attributes</h2></td></tr>
@@ -131,6 +136,20 @@ Package Attributes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
+<tr class="memitem:a3db6f856f9e3bcae42dbc24315779d5b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_handle_a_manager.html#a3db6f856f9e3bcae42dbc24315779d5b">processGenericMessage</a> (String msg)</td></tr>
+<tr class="memdesc:a3db6f856f9e3bcae42dbc24315779d5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes generic messages sendable by all managers.  <a href="#a3db6f856f9e3bcae42dbc24315779d5b"></a><br/></td></tr>
+<tr class="separator:a3db6f856f9e3bcae42dbc24315779d5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0f6447e2d22407bb1eb94deaa66698b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_handle_a_manager.html#ab0f6447e2d22407bb1eb94deaa66698b">processIdentificationMessage</a> (String msg)</td></tr>
+<tr class="separator:ab0f6447e2d22407bb1eb94deaa66698b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a084a1c3e898f52feb03c96d693a0ee78"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_handle_a_manager.html#a084a1c3e898f52feb03c96d693a0ee78">processKAM</a> (String msg)</td></tr>
+<tr class="memdesc:a084a1c3e898f52feb03c96d693a0ee78"><td class="mdescLeft">&#160;</td><td class="mdescRight">handles the messages for the KitAssemblyManager only  <a href="#a084a1c3e898f52feb03c96d693a0ee78"></a><br/></td></tr>
+<tr class="separator:a084a1c3e898f52feb03c96d693a0ee78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4657380b55ab88b43d125e439cfaf9c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_handle_a_manager.html#aa4657380b55ab88b43d125e439cfaf9c">processGRM</a> (String msg)</td></tr>
+<tr class="memdesc:aa4657380b55ab88b43d125e439cfaf9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">handles the messages for the GantryRobotManager only  <a href="#aa4657380b55ab88b43d125e439cfaf9c"></a><br/></td></tr>
+<tr class="separator:aa4657380b55ab88b43d125e439cfaf9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53d19e79fd14d9353b85af72f0cec348"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_handle_a_manager.html#a53d19e79fd14d9353b85af72f0cec348">processFPM</a> (String msg)</td></tr>
+<tr class="memdesc:a53d19e79fd14d9353b85af72f0cec348"><td class="mdescLeft">&#160;</td><td class="mdescRight">handles the messages for the FactoryProductionManager only  <a href="#a53d19e79fd14d9353b85af72f0cec348"></a><br/></td></tr>
+<tr class="separator:a53d19e79fd14d9353b85af72f0cec348"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad232287d11098eff681dccb0560cc207"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_handle_a_manager.html#ad232287d11098eff681dccb0560cc207">processMessage</a> (String msg)</td></tr>
 <tr class="memdesc:ad232287d11098eff681dccb0560cc207"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes a given message and executes the proper method from an agent.  <a href="#ad232287d11098eff681dccb0560cc207"></a><br/></td></tr>
 <tr class="separator:ad232287d11098eff681dccb0560cc207"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -153,15 +172,13 @@ Private Attributes</h2></td></tr>
 <tr class="separator:ae3700e60e25e0374d660095164067bfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeeac02e45ff57a0fb449ccbfc2b43755"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classfactory_1_1general_1_1_printer.html">Printer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_handle_a_manager.html#aeeac02e45ff57a0fb449ccbfc2b43755">p</a> = new <a class="el" href="classfactory_1_1general_1_1_printer.html">Printer</a>()</td></tr>
 <tr class="separator:aeeac02e45ff57a0fb449ccbfc2b43755"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6bd0a0d0daaa0338b6148701702ec8c3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classfactory_1_1general_1_1_factory_state.html">FactoryState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_handle_a_manager.html#a6bd0a0d0daaa0338b6148701702ec8c3">fstate</a></td></tr>
-<tr class="separator:a6bd0a0d0daaa0338b6148701702ec8c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0d857d6b9a19f3621b48eab7f7c2170f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classfactory_1_1general_1_1_server.html">Server</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1general_1_1_handle_a_manager.html#a0d857d6b9a19f3621b48eab7f7c2170f">server</a></td></tr>
 <tr class="separator:a0d857d6b9a19f3621b48eab7f7c2170f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>handles each new thread for a client. Creates Socket, PrintWriter, etc.; has key methods for sending messages back and forth </p>
 
-<p>Definition at line <a class="el" href="_handle_a_manager_8java_source.html#l00012">12</a> of file <a class="el" href="_handle_a_manager_8java_source.html">HandleAManager.java</a>.</p>
+<p>Definition at line <a class="el" href="_handle_a_manager_8java_source.html#l00013">13</a> of file <a class="el" href="_handle_a_manager_8java_source.html">HandleAManager.java</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a8cc0ac6a0f0cab584f611859902adcfb"></a>
 <div class="memitem">
@@ -195,7 +212,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_handle_a_manager_8java_source.html#l00030">30</a> of file <a class="el" href="_handle_a_manager_8java_source.html">HandleAManager.java</a>.</p>
+<p>Definition at line <a class="el" href="_handle_a_manager_8java_source.html#l00032">32</a> of file <a class="el" href="_handle_a_manager_8java_source.html">HandleAManager.java</a>.</p>
 
 </div>
 </div>
@@ -221,7 +238,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_handle_a_manager_8java_source.html#l00037">37</a> of file <a class="el" href="_handle_a_manager_8java_source.html">HandleAManager.java</a>.</p>
+<p>Definition at line <a class="el" href="_handle_a_manager_8java_source.html#l00038">38</a> of file <a class="el" href="_handle_a_manager_8java_source.html">HandleAManager.java</a>.</p>
 
 </div>
 </div>
@@ -246,7 +263,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_handle_a_manager_8java_source.html#l00075">75</a> of file <a class="el" href="_handle_a_manager_8java_source.html">HandleAManager.java</a>.</p>
+<p>Definition at line <a class="el" href="_handle_a_manager_8java_source.html#l00083">83</a> of file <a class="el" href="_handle_a_manager_8java_source.html">HandleAManager.java</a>.</p>
 
 </div>
 </div>
@@ -281,7 +298,145 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>message status string </dd></dl>
 
-<p>Definition at line <a class="el" href="_handle_a_manager_8java_source.html#l00156">156</a> of file <a class="el" href="_handle_a_manager_8java_source.html">HandleAManager.java</a>.</p>
+<p>Definition at line <a class="el" href="_handle_a_manager_8java_source.html#l00309">309</a> of file <a class="el" href="_handle_a_manager_8java_source.html">HandleAManager.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a53d19e79fd14d9353b85af72f0cec348"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void factory.general.HandleAManager.processFPM </td>
+          <td>(</td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>msg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>handles the messages for the FactoryProductionManager only </p>
+
+<p>Definition at line <a class="el" href="_handle_a_manager_8java_source.html#l00190">190</a> of file <a class="el" href="_handle_a_manager_8java_source.html">HandleAManager.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a3db6f856f9e3bcae42dbc24315779d5b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void factory.general.HandleAManager.processGenericMessage </td>
+          <td>(</td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>msg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Processes generic messages sendable by all managers. </p>
+
+<p>Definition at line <a class="el" href="_handle_a_manager_8java_source.html#l00102">102</a> of file <a class="el" href="_handle_a_manager_8java_source.html">HandleAManager.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aa4657380b55ab88b43d125e439cfaf9c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void factory.general.HandleAManager.processGRM </td>
+          <td>(</td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>msg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>handles the messages for the GantryRobotManager only </p>
+
+<p>Definition at line <a class="el" href="_handle_a_manager_8java_source.html#l00181">181</a> of file <a class="el" href="_handle_a_manager_8java_source.html">HandleAManager.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab0f6447e2d22407bb1eb94deaa66698b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void factory.general.HandleAManager.processIdentificationMessage </td>
+          <td>(</td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>msg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_handle_a_manager_8java_source.html#l00116">116</a> of file <a class="el" href="_handle_a_manager_8java_source.html">HandleAManager.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a084a1c3e898f52feb03c96d693a0ee78"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void factory.general.HandleAManager.processKAM </td>
+          <td>(</td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>msg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>handles the messages for the KitAssemblyManager only </p>
+
+<p>Definition at line <a class="el" href="_handle_a_manager_8java_source.html#l00170">170</a> of file <a class="el" href="_handle_a_manager_8java_source.html">HandleAManager.java</a>.</p>
 
 </div>
 </div>
@@ -315,7 +470,57 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_handle_a_manager_8java_source.html#l00096">96</a> of file <a class="el" href="_handle_a_manager_8java_source.html">HandleAManager.java</a>.</p>
+<p>Definition at line <a class="el" href="_handle_a_manager_8java_source.html#l00198">198</a> of file <a class="el" href="_handle_a_manager_8java_source.html">HandleAManager.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a5f8e7b4a45cb5232746fe3e3ef9ff6c1"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void factory.general.HandleAManager.pushToFPM </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_handle_a_manager_8java_source.html#l00147">147</a> of file <a class="el" href="_handle_a_manager_8java_source.html">HandleAManager.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a6ab9568bb9912331511413f12ae24874"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void factory.general.HandleAManager.pushToKitManager </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_handle_a_manager_8java_source.html#l00157">157</a> of file <a class="el" href="_handle_a_manager_8java_source.html">HandleAManager.java</a>.</p>
 
 </div>
 </div>
@@ -340,7 +545,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_handle_a_manager_8java_source.html#l00047">47</a> of file <a class="el" href="_handle_a_manager_8java_source.html">HandleAManager.java</a>.</p>
+<p>Definition at line <a class="el" href="_handle_a_manager_8java_source.html#l00049">49</a> of file <a class="el" href="_handle_a_manager_8java_source.html">HandleAManager.java</a>.</p>
 
 </div>
 </div>
@@ -374,7 +579,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_handle_a_manager_8java_source.html#l00083">83</a> of file <a class="el" href="_handle_a_manager_8java_source.html">HandleAManager.java</a>.</p>
+<p>Definition at line <a class="el" href="_handle_a_manager_8java_source.html#l00091">91</a> of file <a class="el" href="_handle_a_manager_8java_source.html">HandleAManager.java</a>.</p>
 
 </div>
 </div>
@@ -401,7 +606,7 @@ Private Attributes</h2></td></tr>
 
 <p>Stops the loop of the server, letting the server turn off. This stops the entire program. </p>
 
-<p>Definition at line <a class="el" href="_handle_a_manager_8java_source.html#l00164">164</a> of file <a class="el" href="_handle_a_manager_8java_source.html">HandleAManager.java</a>.</p>
+<p>Definition at line <a class="el" href="_handle_a_manager_8java_source.html#l00317">317</a> of file <a class="el" href="_handle_a_manager_8java_source.html">HandleAManager.java</a>.</p>
 
 </div>
 </div>
@@ -424,29 +629,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_handle_a_manager_8java_source.html#l00018">18</a> of file <a class="el" href="_handle_a_manager_8java_source.html">HandleAManager.java</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a6bd0a0d0daaa0338b6148701702ec8c3"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classfactory_1_1general_1_1_factory_state.html">FactoryState</a> factory.general.HandleAManager.fstate</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="_handle_a_manager_8java_source.html#l00020">20</a> of file <a class="el" href="_handle_a_manager_8java_source.html">HandleAManager.java</a>.</p>
+<p>Definition at line <a class="el" href="_handle_a_manager_8java_source.html#l00019">19</a> of file <a class="el" href="_handle_a_manager_8java_source.html">HandleAManager.java</a>.</p>
 
 </div>
 </div>
@@ -467,9 +650,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Used to identify a <a class="el" href="classfactory_1_1general_1_1_handle_a_manager.html" title="handles each new thread for a client. Creates Socket, PrintWriter, etc.; has key methods for sending ...">HandleAManager</a>'s connection. 0 - GantryRobotManager 1 - KitAssemblyManager 2 - LaneManager </p>
+<p>Used to identify a <a class="el" href="classfactory_1_1general_1_1_handle_a_manager.html" title="handles each new thread for a client. Creates Socket, PrintWriter, etc.; has key methods for sending ...">HandleAManager</a>'s connection. 0 - GantryRobotManager 1 - KitAssemblyManager 2 - LaneManager 3 - FactoryProductionManager 4 - KitManager </p>
 
-<p>Definition at line <a class="el" href="_handle_a_manager_8java_source.html#l00028">28</a> of file <a class="el" href="_handle_a_manager_8java_source.html">HandleAManager.java</a>.</p>
+<p>Definition at line <a class="el" href="_handle_a_manager_8java_source.html#l00030">30</a> of file <a class="el" href="_handle_a_manager_8java_source.html">HandleAManager.java</a>.</p>
 
 </div>
 </div>
@@ -491,7 +674,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_handle_a_manager_8java_source.html#l00016">16</a> of file <a class="el" href="_handle_a_manager_8java_source.html">HandleAManager.java</a>.</p>
+<p>Definition at line <a class="el" href="_handle_a_manager_8java_source.html#l00017">17</a> of file <a class="el" href="_handle_a_manager_8java_source.html">HandleAManager.java</a>.</p>
 
 </div>
 </div>
@@ -513,7 +696,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_handle_a_manager_8java_source.html#l00019">19</a> of file <a class="el" href="_handle_a_manager_8java_source.html">HandleAManager.java</a>.</p>
+<p>Definition at line <a class="el" href="_handle_a_manager_8java_source.html#l00020">20</a> of file <a class="el" href="_handle_a_manager_8java_source.html">HandleAManager.java</a>.</p>
 
 </div>
 </div>
@@ -535,7 +718,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_handle_a_manager_8java_source.html#l00017">17</a> of file <a class="el" href="_handle_a_manager_8java_source.html">HandleAManager.java</a>.</p>
+<p>Definition at line <a class="el" href="_handle_a_manager_8java_source.html#l00018">18</a> of file <a class="el" href="_handle_a_manager_8java_source.html">HandleAManager.java</a>.</p>
 
 </div>
 </div>
@@ -557,7 +740,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_handle_a_manager_8java_source.html#l00014">14</a> of file <a class="el" href="_handle_a_manager_8java_source.html">HandleAManager.java</a>.</p>
+<p>Definition at line <a class="el" href="_handle_a_manager_8java_source.html#l00015">15</a> of file <a class="el" href="_handle_a_manager_8java_source.html">HandleAManager.java</a>.</p>
 
 </div>
 </div>
@@ -589,7 +772,7 @@ Private Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 17 2012 01:37:09 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Dec 1 2012 12:34:17 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

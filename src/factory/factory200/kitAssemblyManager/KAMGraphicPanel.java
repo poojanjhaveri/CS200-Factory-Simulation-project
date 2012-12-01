@@ -10,6 +10,7 @@ package factory.factory200.kitAssemblyManager;
  */
 import factory.factory200.kitAssemblyManager.*;
 import factory.general.GUIPart;
+import factory.general.Global;
 import factory.general.Manager;
 import factory.general.Message;
 import factory.general.Part;
@@ -124,7 +125,7 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
 
         counter = 0;
         cameraCounter = 0;
-        timer = new Timer(20, new DeliveryTimer(this));
+        timer = new Timer(Global.STANDARD_TIMER_SPEED, new DeliveryTimer(this));
         timer.start();
 
     }
@@ -150,7 +151,7 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
                             int yPlace = delivery.getPlaceholder().get(i).getY();
                             int number = i* 150;
                             
-                            if (yPlace == KAMGraphicPanel.EMPTY_CONVEYERY && delivery.getPlaceholder().get(i).isShow()) {
+                            if (yPlace == KAMGraphicPanel.EMPTY_CONVEYERY && delivery.getPlaceholder().get(i).isShow() && !(delivery.getPlaceholder().get(i).getKit().isFinished())) {
                                 stationRun = false;
                                 break;
                             }
@@ -170,19 +171,7 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
                             }
                             else
                                 delivery.getPlaceholder().get(i).setY(680);
-                            /*if(delivery.getPlaceholder().get(i).getKit()==null || !(delivery.getPlaceholder().get(i).getKit().isFinished()))
-                            delivery.getPlaceholder().get(i).setY(680);
-                            else{
-                                //delivery.setNumEmptyKits(delivery.getPlaceholder().size()-1);
-                                //delivery.getPlaceholder().add(delivery.getPlaceholder().get(i));
-                                delivery.getPlaceholder().remove(i);
-                            }
-                            }*/
-                            
-                        //while(delivery.getPlaceholder().get(delivery.getPlaceholder().size()).getKit().isFinished()){
-                        //        delivery.getPlaceholder().remove(delivery.getPlaceholder().size());
-                                
-                        //}
+                           
                         }
                         counter = 0;
                     }
@@ -227,25 +216,9 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
                             }
                             else
                                 delivery.getPlaceholder().get(i).setY(680);
-                            /*
-                            if(delivery.getPlaceholder().get(i).getKit()==null || !delivery.getPlaceholder().get(i).getKit().isFinished()){
-                            delivery.getPlaceholder().get(i).setY(680);
-                            }
                             
-                            else{
-                                //delivery.setNumEmptyKits(delivery.getPlaceholder().size()-1);
-                                //delivery.getPlaceholder().add(delivery.getPlaceholder().get(i));
-                                delivery.getPlaceholder().remove(i);
-                            }
-                            
-                            
-                        }*/
                         }
-                        //while(delivery.getPlaceholder().get(delivery.getPlaceholder().size()).getKit().isFinished()){
-                        //        delivery.getPlaceholder().remove(delivery.getPlaceholder().size());
-                                
-                       
-                    //}
+                        
                         counter = 0;
                     }
                 }
@@ -253,10 +226,7 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
                     for (int i = 0; i < delivery.getPlaceholder().size(); i++) {
                         int yPlace = delivery.getPlaceholder().get(i).getY();
                         delivery.getPlaceholder().get(i).setY(yPlace);
-                        //System.out.println("placeholder "+i+": "+delivery.getPlaceholder().get(i).getY());
-                        //if (delivery.getPlaceholder().get(i).isShow()) {
-                        //    delivery.getPlaceholder().get(i).getKit().updateParts();
-                        //}
+                        
                         if (yPlace == KAMGraphicPanel.FULL_CONVEYERY && (delivery.getPlaceholder().get(i).isShow())) {
                             stationRun = true;
                             deliveryStation = true;

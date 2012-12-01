@@ -6,9 +6,22 @@ package factory.general;
 
 /**
  *
- * @author Kevin
- * Global data to be used to assign part type every time constructor is called
+ * @author David
+ * Global data, mainly for Timer times
  */
 public class Global {
-    public static int part_num=0;
+	// Main speed across timers
+	// changing this could cause inconsistencies in speed for Dongyoung's LaneManager.
+	// default should be 20
+    public static final int STANDARD_TIMER_SPEED = 20; 
 }
+
+// Old Global class, as created by Kevin
+///**
+//*
+//* @author Kevin
+//* Global data to be used to assign part type every time constructor is called
+//*/
+//public class Global {
+//   public static int part_num=0;
+//}

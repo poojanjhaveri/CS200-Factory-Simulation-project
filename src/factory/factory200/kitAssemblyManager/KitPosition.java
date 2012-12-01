@@ -8,7 +8,7 @@ import factory.general.Part;
 import java.util.ArrayList;
 
 /**
- *
+ * @brief a position to hold a kit
  * @author Deepa
  */
 public class KitPosition {

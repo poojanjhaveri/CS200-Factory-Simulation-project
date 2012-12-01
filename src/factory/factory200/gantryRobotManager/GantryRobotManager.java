@@ -1,4 +1,17 @@
 package factory.factory200.gantryRobotManager;
+
+
+import java.awt.Dimension;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JTabbedPane;
+
+import factory.general.Manager;
+import factory.general.Message;
 /**
  * Gantry Robot Manager takes care of movement of gantry robot, bins, purge
  * station and feeders. Instances in this manager are GUIGantryRobot,
@@ -19,19 +32,6 @@ package factory.factory200.gantryRobotManager;
  * @brief GantryRobotManger takes care of movement of gantry robot, bins, purge station, feeders.
  * @author Yuting Liu
  */
-
-import java.awt.Dimension;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JTabbedPane;
-
-import factory.general.Manager;
-import factory.general.Message;
-
 public class GantryRobotManager extends Manager implements ActionListener {
    
     GRMGraphicPanel graphics;  

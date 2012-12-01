@@ -28,4 +28,8 @@ public class LMCameraForAgent {
 	public void startPiledPart( int nestNum ){
 		nestCameras.get( nestNum ).startPiledPart();
 	}
+	
+	public void stopPiledPart( int nestNum ){
+		nestCameras.get( nestNum ).stopPiledPart();
+	}
 }

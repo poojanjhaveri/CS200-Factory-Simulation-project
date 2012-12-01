@@ -20,9 +20,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="kitrobot.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Factory Project
-   &#160;<span id="projectnumber">0.1.0</span>
+   &#160;<span id="projectnumber">0.4.0</span>
    </div>
    <div id="projectbrief">team 1 joint cs200/cs201</div>
   </td>
@@ -99,155 +100,217 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
 <div class="line"><a name="l00016"></a><span class="lineno"><a class="code" href="enumfactory_1_1general_1_1_part_1_1_type.html">   16</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">enum</span> <a class="code" href="enumfactory_1_1general_1_1_part_1_1_type.html">Type</a> {</div>
 <div class="line"><a name="l00017"></a><span class="lineno"><a class="code" href="enumfactory_1_1general_1_1_part_1_1_type.html#a136b76c0555abb6ee8a8694bff52e36b">   17</a></span>&#160;    p1, p2, p3, p4, p5, p6, p7, p8</div>
-<div class="line"><a name="l00018"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_part.html#ae6ca4e50a810529fc635ec76f029ab6b">   18</a></span>&#160;    };</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keyword">public</span> Type <a class="code" href="classfactory_1_1general_1_1_part.html#ae6ca4e50a810529fc635ec76f029ab6b">type</a>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_part.html#aa659e4e9a83939f84012b4e6fafa212e">   18</a></span>&#160;    };</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keyword">public</span> Integer <a class="code" href="classfactory_1_1general_1_1_part.html#aa659e4e9a83939f84012b4e6fafa212e">type</a>;</div>
 <div class="line"><a name="l00020"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_part.html#a41c59119c348fd3b321c1127affddafb">   20</a></span>&#160;    <span class="keyword">private</span> <span class="keywordtype">boolean</span> <a class="code" href="classfactory_1_1general_1_1_part.html#a41c59119c348fd3b321c1127affddafb">inKit</a>;</div>
 <div class="line"><a name="l00021"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_part.html#a1ab14da095e3c859f3d2fa39a2d8cfc7">   21</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">int</span> <a class="code" href="classfactory_1_1general_1_1_part.html#a1ab14da095e3c859f3d2fa39a2d8cfc7">size</a>;</div>
 <div class="line"><a name="l00022"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_part.html#a2a96e14b64bdc0cfc9577cd4ebde062a">   22</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">int</span> <a class="code" href="classfactory_1_1general_1_1_part.html#a2a96e14b64bdc0cfc9577cd4ebde062a">nestNum</a>;</div>
 <div class="line"><a name="l00023"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_part.html#a889eed898485907e217f668cf53dd4a1">   23</a></span>&#160;    <span class="keyword">public</span> String <a class="code" href="classfactory_1_1general_1_1_part.html#a889eed898485907e217f668cf53dd4a1">word</a>;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    </div>
-<div class="line"><a name="l00025"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_part.html#a45eee94346837b655c5c75d39463b95d">   25</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classfactory_1_1general_1_1_part.html#a45eee94346837b655c5c75d39463b95d">Part</a>(<a class="code" href="enumfactory_1_1general_1_1_part_1_1_type.html">Type</a> t, <span class="keywordtype">boolean</span> inkit, <span class="keywordtype">int</span> <a class="code" href="classfactory_1_1general_1_1_part.html#a1ab14da095e3c859f3d2fa39a2d8cfc7">size</a>) {</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        this.<a class="code" href="classfactory_1_1general_1_1_part.html#ae6ca4e50a810529fc635ec76f029ab6b">type</a> = t;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        this.<a class="code" href="classfactory_1_1general_1_1_part.html#a41c59119c348fd3b321c1127affddafb">inKit</a> = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        this.size = <a class="code" href="classfactory_1_1general_1_1_part.html#a1ab14da095e3c859f3d2fa39a2d8cfc7">size</a>;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    }</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="comment">/*</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">    public Part(Type t, boolean inkit, int size) {</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">        this.type = t;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">        this.inKit = false;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">        this.size = size;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">    }*/</span></div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
-<div class="line"><a name="l00031"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_part.html#a749e220c457fae3bbd12848569479219">   31</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">int</span> <a class="code" href="classfactory_1_1general_1_1_part.html#a749e220c457fae3bbd12848569479219">getNestNum</a>() {</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keywordflow">return</span> this.<a class="code" href="classfactory_1_1general_1_1_part.html#a2a96e14b64bdc0cfc9577cd4ebde062a">nestNum</a>;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    }</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
-<div class="line"><a name="l00035"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_part.html#ab79f2606e921e1c451b7aa7d5b61b2bb">   35</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1general_1_1_part.html#ab79f2606e921e1c451b7aa7d5b61b2bb">setNestNum</a>(<span class="keywordtype">int</span> n) {</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        this.<a class="code" href="classfactory_1_1general_1_1_part.html#a2a96e14b64bdc0cfc9577cd4ebde062a">nestNum</a> = n;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="comment">//constructor for testing agent codes</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_part.html#ac98c2be1900cd9f46deabe17f6f6bb9c">   32</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classfactory_1_1general_1_1_part.html#ac98c2be1900cd9f46deabe17f6f6bb9c">Part</a>(<span class="keywordtype">int</span> num){</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    this.<a class="code" href="classfactory_1_1general_1_1_part.html#aa659e4e9a83939f84012b4e6fafa212e">type</a>=num;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    }</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_part.html#a749e220c457fae3bbd12848569479219">   35</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">int</span> <a class="code" href="classfactory_1_1general_1_1_part.html#a749e220c457fae3bbd12848569479219">getNestNum</a>() {</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classfactory_1_1general_1_1_part.html#a2a96e14b64bdc0cfc9577cd4ebde062a">nestNum</a>;</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    }</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_part.html#aab954de7ae06acc0bb27c505b4a3f04a">   40</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">int</span> <a class="code" href="classfactory_1_1general_1_1_part.html#aab954de7ae06acc0bb27c505b4a3f04a">getSize</a>() {</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keywordflow">return</span> this.<a class="code" href="classfactory_1_1general_1_1_part.html#a1ab14da095e3c859f3d2fa39a2d8cfc7">size</a>;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    }</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="comment">//@Override</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_part.html#a464a6bd0ab3a24c08d0751eacac1278e">   44</a></span>&#160;    <span class="keyword">public</span> String <a class="code" href="classfactory_1_1general_1_1_part.html#a464a6bd0ab3a24c08d0751eacac1278e">getString</a>() {</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classfactory_1_1general_1_1_part.html#a889eed898485907e217f668cf53dd4a1">word</a>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_part.html#ab79f2606e921e1c451b7aa7d5b61b2bb">   39</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1general_1_1_part.html#ab79f2606e921e1c451b7aa7d5b61b2bb">setNestNum</a>(<span class="keywordtype">int</span> n) {</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <a class="code" href="classfactory_1_1general_1_1_part.html#a2a96e14b64bdc0cfc9577cd4ebde062a">nestNum</a> = n;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    }</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_part.html#aab954de7ae06acc0bb27c505b4a3f04a">   44</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">int</span> <a class="code" href="classfactory_1_1general_1_1_part.html#aab954de7ae06acc0bb27c505b4a3f04a">getSize</a>() {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keywordflow">return</span> this.<a class="code" href="classfactory_1_1general_1_1_part.html#a1ab14da095e3c859f3d2fa39a2d8cfc7">size</a>;</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    }</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="comment">/* I am adding this constructor to test my agent codes (kevin) */</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
-<div class="line"><a name="l00049"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_part.html#ac98c2be1900cd9f46deabe17f6f6bb9c">   49</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classfactory_1_1general_1_1_part.html#ac98c2be1900cd9f46deabe17f6f6bb9c">Part</a>(<span class="keywordtype">int</span> num) {</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keywordflow">if</span> (num == 1) {</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            this.<a class="code" href="classfactory_1_1general_1_1_part.html#ae6ca4e50a810529fc635ec76f029ab6b">type</a> = <a class="code" href="enumfactory_1_1general_1_1_part_1_1_type.html">Type</a>.<a class="code" href="enumfactory_1_1general_1_1_part_1_1_type.html#a2225690b18a1c598b6ad3b7748fdd19e">p1</a>;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            this.<a class="code" href="classfactory_1_1general_1_1_part.html#a889eed898485907e217f668cf53dd4a1">word</a> = <span class="stringliteral">&quot;p1&quot;</span>;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        }</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keywordflow">if</span> (num == 2) {</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            this.<a class="code" href="classfactory_1_1general_1_1_part.html#ae6ca4e50a810529fc635ec76f029ab6b">type</a> = <a class="code" href="enumfactory_1_1general_1_1_part_1_1_type.html">Type</a>.<a class="code" href="enumfactory_1_1general_1_1_part_1_1_type.html#ac26acb079497c997e8c8c825d51fdf40">p2</a>;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            this.<a class="code" href="classfactory_1_1general_1_1_part.html#a889eed898485907e217f668cf53dd4a1">word</a> = <span class="stringliteral">&quot;p2&quot;</span>;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        }</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keywordflow">if</span> (num == 3) {</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            this.<a class="code" href="classfactory_1_1general_1_1_part.html#ae6ca4e50a810529fc635ec76f029ab6b">type</a> = <a class="code" href="enumfactory_1_1general_1_1_part_1_1_type.html">Type</a>.<a class="code" href="enumfactory_1_1general_1_1_part_1_1_type.html#a183d257755e671d64515c2448c2779cc">p3</a>;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            this.<a class="code" href="classfactory_1_1general_1_1_part.html#a889eed898485907e217f668cf53dd4a1">word</a> = <span class="stringliteral">&quot;p3&quot;</span>;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        }</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordflow">if</span> (num == 4) {</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            this.<a class="code" href="classfactory_1_1general_1_1_part.html#ae6ca4e50a810529fc635ec76f029ab6b">type</a> = <a class="code" href="enumfactory_1_1general_1_1_part_1_1_type.html">Type</a>.<a class="code" href="enumfactory_1_1general_1_1_part_1_1_type.html#ade7ce41fe15881d4e66df43e2912b2f9">p4</a>;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            this.<a class="code" href="classfactory_1_1general_1_1_part.html#a889eed898485907e217f668cf53dd4a1">word</a> = <span class="stringliteral">&quot;p4&quot;</span>;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        }</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordflow">if</span> (num == 5) {</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            this.<a class="code" href="classfactory_1_1general_1_1_part.html#ae6ca4e50a810529fc635ec76f029ab6b">type</a> = <a class="code" href="enumfactory_1_1general_1_1_part_1_1_type.html">Type</a>.<a class="code" href="enumfactory_1_1general_1_1_part_1_1_type.html#afa503ea6c9c5f030c308613f0222296d">p5</a>;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            this.<a class="code" href="classfactory_1_1general_1_1_part.html#a889eed898485907e217f668cf53dd4a1">word</a> = <span class="stringliteral">&quot;p5&quot;</span>;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        }</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keywordflow">if</span> (num == 6) {</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            this.<a class="code" href="classfactory_1_1general_1_1_part.html#ae6ca4e50a810529fc635ec76f029ab6b">type</a> = <a class="code" href="enumfactory_1_1general_1_1_part_1_1_type.html">Type</a>.<a class="code" href="enumfactory_1_1general_1_1_part_1_1_type.html#a11237a3975aa86720ced9e5db13cce3f">p6</a>;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            this.<a class="code" href="classfactory_1_1general_1_1_part.html#a889eed898485907e217f668cf53dd4a1">word</a> = <span class="stringliteral">&quot;p6&quot;</span>;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        }</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordflow">if</span> (num == 7) {</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            this.<a class="code" href="classfactory_1_1general_1_1_part.html#ae6ca4e50a810529fc635ec76f029ab6b">type</a> = <a class="code" href="enumfactory_1_1general_1_1_part_1_1_type.html">Type</a>.<a class="code" href="enumfactory_1_1general_1_1_part_1_1_type.html#aaf6bd46d1927df5144c69e59ae551716">p7</a>;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            this.<a class="code" href="classfactory_1_1general_1_1_part.html#a889eed898485907e217f668cf53dd4a1">word</a> = <span class="stringliteral">&quot;p7&quot;</span>;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        }</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="keywordflow">if</span> (num == 8) {</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            this.<a class="code" href="classfactory_1_1general_1_1_part.html#ae6ca4e50a810529fc635ec76f029ab6b">type</a> = <a class="code" href="enumfactory_1_1general_1_1_part_1_1_type.html">Type</a>.<a class="code" href="enumfactory_1_1general_1_1_part_1_1_type.html#a136b76c0555abb6ee8a8694bff52e36b">p8</a>;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            this.<a class="code" href="classfactory_1_1general_1_1_part.html#a889eed898485907e217f668cf53dd4a1">word</a> = <span class="stringliteral">&quot;p8&quot;</span>;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        }</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    }</div>
-<div class="line"><a name="l00089"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_part.html#a1539ff4fbc5e2d3ed66f255dc423cd6d">   89</a></span>&#160;    <span class="keyword">private</span> String <a class="code" href="classfactory_1_1general_1_1_part.html#a1539ff4fbc5e2d3ed66f255dc423cd6d">name</a>;</div>
-<div class="line"><a name="l00090"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_part.html#a730035da9c269d99f0501677e588da91">   90</a></span>&#160;    <span class="keyword">private</span> String <a class="code" href="classfactory_1_1general_1_1_part.html#a730035da9c269d99f0501677e588da91">description</a>;</div>
-<div class="line"><a name="l00091"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_part.html#aa5888b5122c99b006489f1bf8dd5a6db">   91</a></span>&#160;    Integer <a class="code" href="classfactory_1_1general_1_1_part.html#aa5888b5122c99b006489f1bf8dd5a6db" title="the part number, like an ID; useful for comparing">number</a>;</div>
-<div class="line"><a name="l00092"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_part.html#ac92c9e5d5e3590513465837e892c6f39">   92</a></span>&#160;    <a class="code" href="classfactory_1_1general_1_1_g_u_i_part.html">GUIPart</a> <a class="code" href="classfactory_1_1general_1_1_part.html#ac92c9e5d5e3590513465837e892c6f39" title="gui representation of this part">guipart</a>;</div>
-<div class="line"><a name="l00093"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_part.html#ad93fa8bef5836b04c3f119bffb721705">   93</a></span>&#160;    <span class="keyword">private</span> String <a class="code" href="classfactory_1_1general_1_1_part.html#ad93fa8bef5836b04c3f119bffb721705">filename</a>;<span class="comment">//lives in guipart</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
-<div class="line"><a name="l00095"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_part.html#a8b1a3ba75a1154b764799607be0f639a">   95</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classfactory_1_1general_1_1_part.html#a8b1a3ba75a1154b764799607be0f639a">Part</a>(String n, String d) {</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        this.<a class="code" href="classfactory_1_1general_1_1_part.html#a1539ff4fbc5e2d3ed66f255dc423cd6d">name</a> = n;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        this.<a class="code" href="classfactory_1_1general_1_1_part.html#a730035da9c269d99f0501677e588da91">description</a> = d;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <span class="comment">//this.number=time()\;</span></div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        this.<a class="code" href="classfactory_1_1general_1_1_part.html#ac92c9e5d5e3590513465837e892c6f39" title="gui representation of this part">guipart</a> = null;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        this.<a class="code" href="classfactory_1_1general_1_1_part.html#aa5888b5122c99b006489f1bf8dd5a6db" title="the part number, like an ID; useful for comparing">number</a> = (int) (System.currentTimeMillis()/(long)1000);</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    }</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    </div>
-<div class="line"><a name="l00103"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_part.html#af27df1dbd571b28dc36df2acdb775801">  103</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classfactory_1_1general_1_1_part.html#af27df1dbd571b28dc36df2acdb775801">Part</a>(String n, String d, Integer num) {</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        this.<a class="code" href="classfactory_1_1general_1_1_part.html#a1539ff4fbc5e2d3ed66f255dc423cd6d">name</a> = n;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        this.<a class="code" href="classfactory_1_1general_1_1_part.html#a730035da9c269d99f0501677e588da91">description</a> = d;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        this.<a class="code" href="classfactory_1_1general_1_1_part.html#aa5888b5122c99b006489f1bf8dd5a6db" title="the part number, like an ID; useful for comparing">number</a> = num;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        this.<a class="code" href="classfactory_1_1general_1_1_part.html#ac92c9e5d5e3590513465837e892c6f39" title="gui representation of this part">guipart</a> = null;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    }</div>
-<div class="line"><a name="l00109"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_part.html#ac71414d34ae179f3474f95450dd44497">  109</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classfactory_1_1general_1_1_part.html#ac71414d34ae179f3474f95450dd44497">Part</a>(String n, String d, String file) {</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        this.<a class="code" href="classfactory_1_1general_1_1_part.html#a1539ff4fbc5e2d3ed66f255dc423cd6d">name</a> = n;</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        this.<a class="code" href="classfactory_1_1general_1_1_part.html#a730035da9c269d99f0501677e588da91">description</a> = d;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        this.<a class="code" href="classfactory_1_1general_1_1_part.html#ad93fa8bef5836b04c3f119bffb721705">filename</a> = file;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        this.<a class="code" href="classfactory_1_1general_1_1_part.html#ac92c9e5d5e3590513465837e892c6f39" title="gui representation of this part">guipart</a> = null;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        this.<a class="code" href="classfactory_1_1general_1_1_part.html#aa5888b5122c99b006489f1bf8dd5a6db" title="the part number, like an ID; useful for comparing">number</a> = (int)(System.currentTimeMillis()/(long)1000);</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    }</div>
-<div class="line"><a name="l00116"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_part.html#a59bf269f855a37d77d36a14788bcf0b6">  116</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1general_1_1_part.html#a59bf269f855a37d77d36a14788bcf0b6">setFilename</a>(String in) {</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        this.<a class="code" href="classfactory_1_1general_1_1_part.html#ad93fa8bef5836b04c3f119bffb721705">filename</a> = in;</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    }</div>
-<div class="line"><a name="l00119"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_part.html#ad1f514c4269e0b94d6f389abd47ea882">  119</a></span>&#160;    <span class="keyword">public</span> String <a class="code" href="classfactory_1_1general_1_1_part.html#ad1f514c4269e0b94d6f389abd47ea882">getName</a>() {</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        <span class="keywordflow">return</span> this.<a class="code" href="classfactory_1_1general_1_1_part.html#a1539ff4fbc5e2d3ed66f255dc423cd6d">name</a>;</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    }</div>
-<div class="line"><a name="l00122"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_part.html#aaac178d067a7356941f044213395e833">  122</a></span>&#160;    <span class="keyword">public</span> Integer <a class="code" href="classfactory_1_1general_1_1_part.html#aaac178d067a7356941f044213395e833">getNumber</a>() {</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classfactory_1_1general_1_1_part.html#aa5888b5122c99b006489f1bf8dd5a6db" title="the part number, like an ID; useful for comparing">number</a>;</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    }</div>
-<div class="line"><a name="l00125"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_part.html#a10283e98b232ceb3dd10736caf3858e3">  125</a></span>&#160;    <span class="keyword">public</span> String <a class="code" href="classfactory_1_1general_1_1_part.html#a10283e98b232ceb3dd10736caf3858e3">getFilename</a>() {</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        <span class="keywordflow">return</span> this.<a class="code" href="classfactory_1_1general_1_1_part.html#ad93fa8bef5836b04c3f119bffb721705">filename</a>;</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    }</div>
-<div class="line"><a name="l00128"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_part.html#ac24953b0311917cbdefb611c11d4bbf8">  128</a></span>&#160;    <span class="keyword">public</span> String <a class="code" href="classfactory_1_1general_1_1_part.html#ac24953b0311917cbdefb611c11d4bbf8">getDescription</a>() {</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        <span class="keywordflow">return</span> this.<a class="code" href="classfactory_1_1general_1_1_part.html#a730035da9c269d99f0501677e588da91">description</a>;</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    }</div>
-<div class="line"><a name="l00131"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_part.html#adc0dba783949078d50acd9b9bf7ed4d1">  131</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classfactory_1_1general_1_1_g_u_i_part.html">GUIPart</a> <a class="code" href="classfactory_1_1general_1_1_part.html#adc0dba783949078d50acd9b9bf7ed4d1">getGUIPart</a>() {</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        <span class="keywordflow">return</span> this.<a class="code" href="classfactory_1_1general_1_1_part.html#ac92c9e5d5e3590513465837e892c6f39" title="gui representation of this part">guipart</a>;</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    }</div>
-<div class="line"><a name="l00134"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_part.html#aae0a00c1d56abc22a2203d6e6a18b441">  134</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1general_1_1_part.html#aae0a00c1d56abc22a2203d6e6a18b441">setGUIPart</a>(<a class="code" href="classfactory_1_1general_1_1_g_u_i_part.html">GUIPart</a> in) {</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        this.<a class="code" href="classfactory_1_1general_1_1_part.html#ac92c9e5d5e3590513465837e892c6f39" title="gui representation of this part">guipart</a> = in;</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    }</div>
-<div class="line"><a name="l00137"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_part.html#a5165e3804d8d51232b194f84c257c5aa">  137</a></span>&#160;    <span class="keyword">public</span> String <a class="code" href="classfactory_1_1general_1_1_part.html#a5165e3804d8d51232b194f84c257c5aa">serialize</a>() {</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        <span class="comment">//        return &quot;(&quot;+this.name+&quot;,&quot;+this.description+&quot;,&quot;+this.number+&quot;,&quot;+this.filename+&quot;)&quot;;</span></div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        ArrayList&lt;String&gt; arr = <span class="keyword">new</span> ArrayList&lt;String&gt;();</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        arr.add(this.<a class="code" href="classfactory_1_1general_1_1_part.html#a1539ff4fbc5e2d3ed66f255dc423cd6d">name</a>);</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        arr.add(this.<a class="code" href="classfactory_1_1general_1_1_part.html#a730035da9c269d99f0501677e588da91">description</a>);</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        arr.add(this.<a class="code" href="classfactory_1_1general_1_1_part.html#aa5888b5122c99b006489f1bf8dd5a6db" title="the part number, like an ID; useful for comparing">number</a>+<span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        arr.add(this.<a class="code" href="classfactory_1_1general_1_1_part.html#ad93fa8bef5836b04c3f119bffb721705">filename</a>);</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classfactory_1_1general_1_1_util.html" title="utility functions go here">Util</a>.<a class="code" href="classfactory_1_1general_1_1_util.html#a5b02db000430d7df2552635ba475f647">serialize</a>(arr);</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    }</div>
-<div class="line"><a name="l00146"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_part.html#af8f61fd0bc9a9c27f285fa12a9f420e3">  146</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="classfactory_1_1general_1_1_part.html" title="digital representation of a part">Part</a> <a class="code" href="classfactory_1_1general_1_1_part.html#af8f61fd0bc9a9c27f285fa12a9f420e3">deserialize</a>(String des) {</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        <span class="comment">//   ArrayList&lt;String&gt; arr = Util.stringExplode(&quot;,&quot;,des);        </span></div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        ArrayList&lt;String&gt; arr = <a class="code" href="classfactory_1_1general_1_1_util.html" title="utility functions go here">Util</a>.<a class="code" href="classfactory_1_1general_1_1_util.html#a99bf479b61edcd92ed6e5f57d4703e4e">deserialize</a>(des);</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        <span class="keywordflow">if</span>(arr.size() != 4)</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            System.out.println(<span class="stringliteral">&quot;BAD PART DESERIALIZATION. ARRAY IS &quot;</span>+arr+<span class="stringliteral">&quot;; SERIALIZED STRING IS &quot;</span>+des);</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        <a class="code" href="classfactory_1_1general_1_1_part.html" title="digital representation of a part">Part</a> toreturn = <span class="keyword">new</span> <a class="code" href="classfactory_1_1general_1_1_part.html#a45eee94346837b655c5c75d39463b95d">Part</a>(arr.get(0),arr.get(1),Integer.parseInt(arr.get(2)));</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        toreturn.<a class="code" href="classfactory_1_1general_1_1_part.html#a59bf269f855a37d77d36a14788bcf0b6">setFilename</a>(arr.get(3));</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        <span class="keywordflow">return</span> toreturn;</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    }</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;</div>
-<div class="line"><a name="l00156"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_part.html#a55044cdbbd357ae79b58753eea20c2a1">  156</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1general_1_1_part.html#a55044cdbbd357ae79b58753eea20c2a1">main</a>(String[] args) {</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        <a class="code" href="classfactory_1_1general_1_1_part.html" title="digital representation of a part">Part</a> p = <span class="keyword">new</span> <a class="code" href="classfactory_1_1general_1_1_part.html#a45eee94346837b655c5c75d39463b95d">Part</a>(<span class="stringliteral">&quot;part1&quot;</span>,<span class="stringliteral">&quot;mydescriptipn&quot;</span>,<span class="stringliteral">&quot;test.png&quot;</span>);</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        String s = p.<a class="code" href="classfactory_1_1general_1_1_part.html#a5165e3804d8d51232b194f84c257c5aa">serialize</a>();</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        System.out.println(<span class="stringliteral">&quot;Serialized part:\n&quot;</span> + s);</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        <a class="code" href="classfactory_1_1general_1_1_part.html" title="digital representation of a part">Part</a> p2 = <a class="code" href="classfactory_1_1general_1_1_part.html" title="digital representation of a part">Part</a>.<a class="code" href="classfactory_1_1general_1_1_part.html#af8f61fd0bc9a9c27f285fa12a9f420e3">deserialize</a>(s);</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        String s2 = p2.<a class="code" href="classfactory_1_1general_1_1_part.html#a5165e3804d8d51232b194f84c257c5aa">serialize</a>();</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        System.out.println(<span class="stringliteral">&quot;Deserialized serialized part:\n&quot;</span> + s2);</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        <span class="keywordflow">if</span> (s.equals(s2)) {</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;            System.out.println(<span class="stringliteral">&quot;Test passed&quot;</span>);</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        } <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;            System.out.println(<span class="stringliteral">&quot;TEST FAILED&quot;</span>);</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    }</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;}</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    </div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_part.html#a2413621be9dc7998c81c0f9bbb76e9e3">   53</a></span>&#160;    <span class="keyword">public</span> Integer <a class="code" href="classfactory_1_1general_1_1_part.html#a2413621be9dc7998c81c0f9bbb76e9e3">getInt</a>() {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classfactory_1_1general_1_1_part.html#aa659e4e9a83939f84012b4e6fafa212e">type</a>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    }</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    </div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_part.html#a3b688ad6e824783504addf840338692d">   57</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1general_1_1_part.html#a3b688ad6e824783504addf840338692d">setType</a>(){</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    System.out.println(<span class="stringliteral">&quot;fileName is (??)&quot;</span> + <a class="code" href="classfactory_1_1general_1_1_part.html#ad93fa8bef5836b04c3f119bffb721705">filename</a>);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordflow">if</span>(<a class="code" href="classfactory_1_1general_1_1_part.html#ad93fa8bef5836b04c3f119bffb721705">filename</a>.contains(<span class="stringliteral">&quot;part1.png&quot;</span>))</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        this.<a class="code" href="classfactory_1_1general_1_1_part.html#aa659e4e9a83939f84012b4e6fafa212e">type</a>=0; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordflow">if</span>(<a class="code" href="classfactory_1_1general_1_1_part.html#ad93fa8bef5836b04c3f119bffb721705">filename</a>.contains(<span class="stringliteral">&quot;part2.png&quot;</span>))</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        this.<a class="code" href="classfactory_1_1general_1_1_part.html#aa659e4e9a83939f84012b4e6fafa212e">type</a>=1;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">if</span>(<a class="code" href="classfactory_1_1general_1_1_part.html#ad93fa8bef5836b04c3f119bffb721705">filename</a>.contains(<span class="stringliteral">&quot;part3.png&quot;</span>))</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        this.<a class="code" href="classfactory_1_1general_1_1_part.html#aa659e4e9a83939f84012b4e6fafa212e">type</a>=2;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordflow">if</span>(<a class="code" href="classfactory_1_1general_1_1_part.html#ad93fa8bef5836b04c3f119bffb721705">filename</a>.contains(<span class="stringliteral">&quot;part4.png&quot;</span>))</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        this.<a class="code" href="classfactory_1_1general_1_1_part.html#aa659e4e9a83939f84012b4e6fafa212e">type</a>=3;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordflow">if</span>(<a class="code" href="classfactory_1_1general_1_1_part.html#ad93fa8bef5836b04c3f119bffb721705">filename</a>.contains(<span class="stringliteral">&quot;part5.png&quot;</span>))</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        this.<a class="code" href="classfactory_1_1general_1_1_part.html#aa659e4e9a83939f84012b4e6fafa212e">type</a>=4;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordflow">if</span>(<a class="code" href="classfactory_1_1general_1_1_part.html#ad93fa8bef5836b04c3f119bffb721705">filename</a>.contains(<span class="stringliteral">&quot;part6.png&quot;</span>))</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        this.<a class="code" href="classfactory_1_1general_1_1_part.html#aa659e4e9a83939f84012b4e6fafa212e">type</a>=5;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordflow">if</span>(<a class="code" href="classfactory_1_1general_1_1_part.html#ad93fa8bef5836b04c3f119bffb721705">filename</a>.contains(<span class="stringliteral">&quot;part7.png&quot;</span>))</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        this.<a class="code" href="classfactory_1_1general_1_1_part.html#aa659e4e9a83939f84012b4e6fafa212e">type</a>=6;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordflow">if</span>(<a class="code" href="classfactory_1_1general_1_1_part.html#ad93fa8bef5836b04c3f119bffb721705">filename</a>.contains(<span class="stringliteral">&quot;part8.png&quot;</span>))</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        this.<a class="code" href="classfactory_1_1general_1_1_part.html#aa659e4e9a83939f84012b4e6fafa212e">type</a>=7;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    }</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="comment">/* I am adding this constructor to test my agent codes (kevin) */</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment">    public Part(int num) {</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment">        if (num == 1) {</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment">            this.type = 1;</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">            this.word = &quot;p1&quot;;</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">        }</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment">        if (num == 2) {</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment">            this.type = 2;</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment">            this.word = &quot;p2&quot;;</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="comment">        }</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment">        if (num == 3) {</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="comment">            this.type = 3;</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="comment">            this.word = &quot;p3&quot;;</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="comment">        }</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment">        if (num == 4) {</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="comment">            this.type = 4;</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="comment">            this.word = &quot;p4&quot;;</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="comment">        }</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="comment">        if (num == 5) {</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="comment">            this.type = 5;</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="comment">            this.word = &quot;p5&quot;;</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="comment">        }</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="comment">        if (num == 6) {</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="comment">            this.type = 6;</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="comment">            this.word = &quot;p6&quot;;</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="comment">        }</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="comment">        if (num == 7) {</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="comment">            this.type = 7;</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="comment">            this.word = &quot;p7&quot;;</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="comment">        }</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="comment">        if (num == 8) {</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="comment">            this.type = 8;</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="comment">            this.word = &quot;p8&quot;;</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="comment">        }</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="comment">    }</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_part.html#a1539ff4fbc5e2d3ed66f255dc423cd6d">  121</a></span>&#160;<span class="comment">    private String name;</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_part.html#a730035da9c269d99f0501677e588da91">  122</a></span>&#160;<span class="comment">    private String description;</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_part.html#aa5888b5122c99b006489f1bf8dd5a6db">  123</a></span>&#160;<span class="comment">    Integer number;///&lt; the part number, like an ID; useful for comparing</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_part.html#ac92c9e5d5e3590513465837e892c6f39">  124</a></span>&#160;<span class="comment">    GUIPart guipart;///&lt;gui representation of this part</span></div>
+<div class="line"><a name="l00125"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_part.html#ad93fa8bef5836b04c3f119bffb721705">  125</a></span>&#160;<span class="comment">    private String filename;//lives in guipart</span></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00127"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_part.html#a8b1a3ba75a1154b764799607be0f639a">  127</a></span>&#160;<span class="comment">    public Part(String n, String d) {</span></div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="comment">        this.name = n;</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="comment">        this.description = d;</span></div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="comment">        //this.number=time()\;</span></div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="comment">        this.guipart = null;</span></div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="comment">        this.number = (int) (System.currentTimeMillis()/(long)1000);</span></div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="comment">        //setType();</span></div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="comment">   </span></div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="comment">    }</span></div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="comment">    </span></div>
+<div class="line"><a name="l00137"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_part.html#af27df1dbd571b28dc36df2acdb775801">  137</a></span>&#160;<span class="comment">    public Part(String n, String d, Integer num) {</span></div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="comment">        this.name = n;</span></div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="comment">        this.description = d;</span></div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;<span class="comment">        this.number = num;</span></div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;<span class="comment">        this.guipart = null;</span></div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;<span class="comment">        //this.type = number;</span></div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="comment">       // this.type = Global.part_num;</span></div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;<span class="comment">       // Global.part_num++;</span></div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="comment">      //   setType();</span></div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;<span class="comment">    }</span></div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="comment">    </span></div>
+<div class="line"><a name="l00148"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_part.html#ac71414d34ae179f3474f95450dd44497">  148</a></span>&#160;<span class="comment">    public Part(String n, String d, String file) {</span></div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="comment">        this.name = n;</span></div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="comment">        this.description = d;</span></div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="comment">        this.filename = file;</span></div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="comment">        this.guipart = null;</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;<span class="comment">        this.number = (int)(System.currentTimeMillis()/(long)1000);</span></div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="comment">     //   this.type = number;</span></div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;<span class="comment">    //    this.type = Global.part_num;</span></div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="comment">     //   Global.part_num++;</span></div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;<span class="comment">    //     setType();</span></div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="comment">    }</span></div>
+<div class="line"><a name="l00159"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_part.html#a59bf269f855a37d77d36a14788bcf0b6">  159</a></span>&#160;<span class="comment">    public void setFilename(String in) {</span></div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="comment">        this.filename = in;</span></div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="comment">    }</span></div>
+<div class="line"><a name="l00162"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_part.html#ad1f514c4269e0b94d6f389abd47ea882">  162</a></span>&#160;<span class="comment">    public String getName() {</span></div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="comment">        return this.name;</span></div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="comment">    }</span></div>
+<div class="line"><a name="l00165"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_part.html#aaac178d067a7356941f044213395e833">  165</a></span>&#160;<span class="comment">    public Integer getNumber() {</span></div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="comment">        return number;</span></div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="comment">    }</span></div>
+<div class="line"><a name="l00168"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_part.html#a10283e98b232ceb3dd10736caf3858e3">  168</a></span>&#160;<span class="comment">    public String getFilename() {</span></div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;<span class="comment">        return this.filename;</span></div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;<span class="comment">    }</span></div>
+<div class="line"><a name="l00171"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_part.html#ac24953b0311917cbdefb611c11d4bbf8">  171</a></span>&#160;<span class="comment">    public String getDescription() {</span></div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<span class="comment">        return this.description;</span></div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;<span class="comment">    }</span></div>
+<div class="line"><a name="l00174"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_part.html#adc0dba783949078d50acd9b9bf7ed4d1">  174</a></span>&#160;<span class="comment">    public GUIPart getGUIPart() {</span></div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;<span class="comment">        return this.guipart;</span></div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<span class="comment">    }</span></div>
+<div class="line"><a name="l00177"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_part.html#aae0a00c1d56abc22a2203d6e6a18b441">  177</a></span>&#160;<span class="comment">    public void setGUIPart(GUIPart in) {</span></div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<span class="comment">        this.guipart = in;</span></div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="comment">    }</span></div>
+<div class="line"><a name="l00180"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_part.html#a6d015d81f36f940df6e201af27102f8f">  180</a></span>&#160;<span class="comment">    public int getNum(){</span></div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<span class="comment">        return this.number;</span></div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;<span class="comment">    }</span></div>
+<div class="line"><a name="l00183"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_part.html#a5165e3804d8d51232b194f84c257c5aa">  183</a></span>&#160;<span class="comment">    public String serialize() {</span></div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;<span class="comment">        //        return &quot;(&quot;+this.name+&quot;,&quot;+this.description+&quot;,&quot;+this.number+&quot;,&quot;+this.filename+&quot;)&quot;;</span></div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;<span class="comment">        ArrayList&lt;String&gt; arr = new ArrayList&lt;String&gt;();</span></div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;<span class="comment">        arr.add(this.name);</span></div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;<span class="comment">        arr.add(this.description);</span></div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;<span class="comment">        arr.add(this.number+&quot;&quot;);</span></div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;<span class="comment">        arr.add(this.filename);</span></div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;<span class="comment">        return Util.serialize(arr);</span></div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;<span class="comment">    }</span></div>
+<div class="line"><a name="l00192"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_part.html#af8f61fd0bc9a9c27f285fa12a9f420e3">  192</a></span>&#160;<span class="comment">    public static Part deserialize(String des) {</span></div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;<span class="comment">        //   ArrayList&lt;String&gt; arr = Util.stringExplode(&quot;,&quot;,des);        </span></div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;<span class="comment">        ArrayList&lt;String&gt; arr = Util.deserialize(des);</span></div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;<span class="comment">        if(arr.size() != 4)</span></div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;<span class="comment">            System.out.println(&quot;BAD PART DESERIALIZATION. ARRAY IS &quot;+arr+&quot;; SERIALIZED STRING IS &quot;+des);</span></div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;<span class="comment">        Part toreturn = new Part(arr.get(0),arr.get(1),Integer.parseInt(arr.get(2)));</span></div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;<span class="comment">        toreturn.setFilename(arr.get(3));</span></div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;<span class="comment">        return toreturn;</span></div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;<span class="comment">    }</span></div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00202"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_part.html#a55044cdbbd357ae79b58753eea20c2a1">  202</a></span>&#160;<span class="comment">    public static void main(String[] args) {</span></div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;<span class="comment">        Part p = new Part(&quot;part1&quot;,&quot;mydescriptipn&quot;,&quot;test.png&quot;);</span></div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;<span class="comment">        String s = p.serialize();</span></div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;<span class="comment">        System.out.println(&quot;Serialized part:\n&quot; + s);</span></div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;<span class="comment">        Part p2 = Part.deserialize(s);</span></div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;<span class="comment">        String s2 = p2.serialize();</span></div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;<span class="comment">        System.out.println(&quot;Deserialized serialized part:\n&quot; + s2);</span></div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;<span class="comment">        if (s.equals(s2)) {</span></div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;<span class="comment">            System.out.println(&quot;Test passed&quot;);</span></div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;<span class="comment">        } else</span></div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;<span class="comment">            System.out.println(&quot;TEST FAILED&quot;);</span></div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;<span class="comment">    }</span></div>
+<div class="line"><a name="l00214"></a><span class="lineno"><a class="code" href="classfactory_1_1general_1_1_part.html#aa245e15ed87f216d26d9d3e67a5c62eb">  214</a></span>&#160;<span class="comment">    public Part clone()</span></div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;<span class="comment">    {</span></div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;<span class="comment">        if(this.getName() == null)</span></div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;<span class="comment">        {</span></div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;<span class="comment">            System.out.println(&quot;ATTEMPTING TO CLONE A PART WILL NULL NAME&quot;);</span></div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;<span class="comment">            </span></div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;<span class="comment">        }</span></div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;<span class="comment">        if(this.getDescription() == null)</span></div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;<span class="comment">        {</span></div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;<span class="comment">            System.out.println(&quot;ATTEMPTING OT PRINT A PART WITH NULL DESCp&quot;);</span></div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;<span class="comment">            </span></div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;<span class="comment">        }</span></div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;<span class="comment">        if(this.getNumber() == null)</span></div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;<span class="comment">        {</span></div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;<span class="comment">            System.out.println(&quot;ATTEMPTING OT PRINT A PART WITH NULL NUM&quot;);</span></div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;<span class="comment">        }</span></div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;<span class="comment">        Part n = new Part(this.getName(),this.getDescription(),this.getNumber());</span></div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;<span class="comment">        if(this.filename != null)</span></div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;<span class="comment">        n.setFilename(this.filename);</span></div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;<span class="comment">        return n;</span></div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;<span class="comment">    }</span></div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;<span class="comment">}</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 17 2012 01:36:59 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Dec 1 2012 12:34:08 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

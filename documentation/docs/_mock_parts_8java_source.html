@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>Factory Project: src/factory/factory201/test/mock/MockParts.java Source File</title>
+<title>Factory Project: test/factory/factory201/test/mock/MockParts.java Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -20,9 +20,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="kitrobot.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Factory Project
-   &#160;<span id="projectnumber">0.1.0</span>
+   &#160;<span id="projectnumber">0.4.0</span>
    </div>
    <div id="projectbrief">team 1 joint cs200/cs201</div>
   </td>
@@ -81,7 +82,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_339115f1b781ea71218b7406990eb67d.html">factory</a></li><li class="navelem"><a class="el" href="dir_83378976ba2ece7b6d274bfe9b80a044.html">factory201</a></li><li class="navelem"><a class="el" href="dir_1b1ea8c3b73df68a684d9b2eb4b86928.html">test</a></li><li class="navelem"><a class="el" href="dir_3ae5ad0cfcc8ad76320e490c5251b6ab.html">mock</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_13e138d54eb8818da29c3992edef070a.html">test</a></li><li class="navelem"><a class="el" href="dir_020386da8277bd593d0b25e9afe1e10a.html">factory</a></li><li class="navelem"><a class="el" href="dir_2df3f94e87cbde06b79d222ef66f924a.html">factory201</a></li><li class="navelem"><a class="el" href="dir_99ed9201b06761b0b8c9e638ddc16e91.html">test</a></li><li class="navelem"><a class="el" href="dir_9fd5dc0b2b8c4c28a60bfc509760c967.html">mock</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -98,49 +99,61 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">import</span> factory.factory201.interfaces.PartsInterface;</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">import</span> factory.general.Kit;</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">import</span> factory.general.Part;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">import</span> java.util.List;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
-<div class="line"><a name="l00016"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_parts.html">   16</a></span>&#160;<span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_parts.html">MockParts</a> <span class="keyword">extends</span> <a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_agent.html">MockAgent</a> implements <a class="code" href="interfacefactory_1_1factory201_1_1interfaces_1_1_parts_interface.html">PartsInterface</a> {</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
-<div class="line"><a name="l00018"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_parts.html#a380438a07e1c6311d2268c17987bbbf9">   18</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_event_log.html">EventLog</a> <a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_parts.html#a380438a07e1c6311d2268c17987bbbf9">log</a> = <span class="keyword">new</span> <a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_event_log.html">EventLog</a>();</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    </div>
-<div class="line"><a name="l00022"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_parts.html#a4c26cd03cf0a972e4138761d7298d414">   22</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_parts.html#a4c26cd03cf0a972e4138761d7298d414">MockParts</a>(String <a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_agent.html#ad7f261be75d72bfec29edb2d8631c6ca">name</a>) {</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        super(name);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    }</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    @Override</div>
-<div class="line"><a name="l00028"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_parts.html#adff84c2a9dd324f28bf7b6b8cdd7330d">   28</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_parts.html#adff84c2a9dd324f28bf7b6b8cdd7330d">msgNeedPart</a>(<a class="code" href="classfactory_1_1general_1_1_part.html" title="digital representation of a part">Part</a> partType) {</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="comment">//Not used</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    }</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    @Override</div>
-<div class="line"><a name="l00033"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_parts.html#a0b4f18d2e28b9d06babc390a1a505ade">   33</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_parts.html#a0b4f18d2e28b9d06babc390a1a505ade">msgHereIsPart</a>(<a class="code" href="classfactory_1_1general_1_1_part.html" title="digital representation of a part">Part</a> part) {</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_parts.html#a380438a07e1c6311d2268c17987bbbf9">log</a>.<a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_event_log.html#a65a7e73fb40ee02aba2ae3d2d666f390">add</a>(<span class="keyword">new</span> <a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_logged_event.html">LoggedEvent</a>(<span class="stringliteral">&quot;Received msgHereIsPart from nest agent and &quot;</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                + <span class="stringliteral">&quot;received part of type: &quot;</span> + part.<a class="code" href="classfactory_1_1general_1_1_part.html#ae6ca4e50a810529fc635ec76f029ab6b">type</a>));</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    }</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    @Override</div>
-<div class="line"><a name="l00039"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_parts.html#ae87aa913dc5f0e1ed4f6fc99681cc721">   39</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_parts.html#ae87aa913dc5f0e1ed4f6fc99681cc721">msgEmptyKitReady</a>(<a class="code" href="classfactory_1_1general_1_1_kit.html" title="Kit Object.">Kit</a> kit) {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_parts.html#a380438a07e1c6311d2268c17987bbbf9">log</a>.<a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_event_log.html#a65a7e73fb40ee02aba2ae3d2d666f390">add</a>(<span class="keyword">new</span> <a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_logged_event.html">LoggedEvent</a>(<span class="stringliteral">&quot;Received msgEmptyKitReady from kit robot &quot;</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                + <span class="stringliteral">&quot;agent that empty kit: &quot;</span> + kit.<a class="code" href="classfactory_1_1general_1_1_kit.html#a1dab9573de79f42227b62b58caa15060">name</a> + <span class="stringliteral">&quot; is ready.&quot;</span>));</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    }</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    @Override</div>
-<div class="line"><a name="l00045"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_parts.html#a5140747c76daf82b47f6bb2d99b5ab70">   45</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_parts.html#a5140747c76daf82b47f6bb2d99b5ab70">msgHereAreParts</a>(List&lt;Part&gt; parts) {</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    }</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    @Override</div>
-<div class="line"><a name="l00049"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_parts.html#a46ca1ec6f62016d9c17d621c73caabc9">   49</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_parts.html#a46ca1ec6f62016d9c17d621c73caabc9">msgHereIsKit</a>(<a class="code" href="classfactory_1_1general_1_1_kit.html" title="Kit Object.">Kit</a> kit) {</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_parts.html#a380438a07e1c6311d2268c17987bbbf9">log</a>.<a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_event_log.html#a65a7e73fb40ee02aba2ae3d2d666f390">add</a>(<span class="keyword">new</span> <a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_logged_event.html">LoggedEvent</a>(<span class="stringliteral">&quot;got kit &quot;</span> + kit.<a class="code" href="classfactory_1_1general_1_1_kit.html#a1dab9573de79f42227b62b58caa15060">name</a> + <span class="stringliteral">&quot; from nest&quot;</span>));</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    }</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">import</span> java.util.ArrayList;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">import</span> java.util.List;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_parts.html">   17</a></span>&#160;<span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_parts.html">MockParts</a> <span class="keyword">extends</span> <a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_agent.html">MockAgent</a> implements <a class="code" href="interfacefactory_1_1factory201_1_1interfaces_1_1_parts_interface.html">PartsInterface</a> {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_parts.html#a380438a07e1c6311d2268c17987bbbf9">   19</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_event_log.html">EventLog</a> <a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_parts.html#a380438a07e1c6311d2268c17987bbbf9">log</a> = <span class="keyword">new</span> <a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_event_log.html">EventLog</a>();</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    </div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_parts.html#a4c26cd03cf0a972e4138761d7298d414">   23</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_parts.html#a4c26cd03cf0a972e4138761d7298d414">MockParts</a>(String <a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_agent.html#ad7f261be75d72bfec29edb2d8631c6ca">name</a>) {</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        super(name);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    }</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    @Override</div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_parts.html#adff84c2a9dd324f28bf7b6b8cdd7330d">   29</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_parts.html#adff84c2a9dd324f28bf7b6b8cdd7330d">msgNeedPart</a>(<a class="code" href="classfactory_1_1general_1_1_part.html" title="digital representation of a part">Part</a> partType) {</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="comment">//Not used</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    }</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    @Override</div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_parts.html#a0b4f18d2e28b9d06babc390a1a505ade">   34</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_parts.html#a0b4f18d2e28b9d06babc390a1a505ade">msgHereIsPart</a>(<a class="code" href="classfactory_1_1general_1_1_part.html" title="digital representation of a part">Part</a> part) {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_parts.html#a380438a07e1c6311d2268c17987bbbf9">log</a>.<a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_event_log.html#a65a7e73fb40ee02aba2ae3d2d666f390">add</a>(<span class="keyword">new</span> <a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_logged_event.html">LoggedEvent</a>(<span class="stringliteral">&quot;Received msgHereIsPart from nest agent and &quot;</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                + <span class="stringliteral">&quot;received part of type: &quot;</span> + part.<a class="code" href="classfactory_1_1general_1_1_part.html#aa659e4e9a83939f84012b4e6fafa212e">type</a>));</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    }</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    @Override</div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_parts.html#ae87aa913dc5f0e1ed4f6fc99681cc721">   40</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_parts.html#ae87aa913dc5f0e1ed4f6fc99681cc721">msgEmptyKitReady</a>(<a class="code" href="classfactory_1_1general_1_1_kit.html" title="Kit Object.">Kit</a> kit) {</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_parts.html#a380438a07e1c6311d2268c17987bbbf9">log</a>.<a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_event_log.html#a65a7e73fb40ee02aba2ae3d2d666f390">add</a>(<span class="keyword">new</span> <a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_logged_event.html">LoggedEvent</a>(<span class="stringliteral">&quot;Received msgEmptyKitReady from kit robot &quot;</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                + <span class="stringliteral">&quot;agent that empty kit: &quot;</span> + kit.<a class="code" href="classfactory_1_1general_1_1_kit.html#a1dab9573de79f42227b62b58caa15060">name</a> + <span class="stringliteral">&quot; is ready.&quot;</span>));</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    }</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="comment">//@Override</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_parts.html#a0a4f206c2051f55b4d009ca9fb875d7a">   46</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_parts.html#a0a4f206c2051f55b4d009ca9fb875d7a">msgHereAreParts</a>(ArrayList&lt;Part&gt; parts) {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    }</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;   </div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_parts.html#a46ca1ec6f62016d9c17d621c73caabc9">   50</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_parts.html#a46ca1ec6f62016d9c17d621c73caabc9">msgHereIsKit</a>(<a class="code" href="classfactory_1_1general_1_1_kit.html" title="Kit Object.">Kit</a> kit) {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_parts.html#a380438a07e1c6311d2268c17987bbbf9">log</a>.<a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_event_log.html#a65a7e73fb40ee02aba2ae3d2d666f390">add</a>(<span class="keyword">new</span> <a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_logged_event.html">LoggedEvent</a>(<span class="stringliteral">&quot;got kit &quot;</span> + kit.<a class="code" href="classfactory_1_1general_1_1_kit.html#a1dab9573de79f42227b62b58caa15060">name</a> + <span class="stringliteral">&quot; from nest&quot;</span>));</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    }</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    @Override</div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_parts.html#a2a7b54dd1fab91e0b3e37e45015e4cda">   55</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_parts.html#a2a7b54dd1fab91e0b3e37e45015e4cda">msgHereIsKit</a>(ArrayList&lt;Kit&gt; kit) {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keywordflow">throw</span> <span class="keyword">new</span> UnsupportedOperationException(<span class="stringliteral">&quot;Not supported yet.&quot;</span>);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    }</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    @Override</div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_parts.html#a5140747c76daf82b47f6bb2d99b5ab70">   60</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_parts.html#a5140747c76daf82b47f6bb2d99b5ab70">msgHereAreParts</a>(List&lt;Part&gt; parts) {</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordflow">throw</span> <span class="keyword">new</span> UnsupportedOperationException(<span class="stringliteral">&quot;Not supported yet.&quot;</span>);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    }</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 17 2012 01:36:59 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Dec 1 2012 12:34:08 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

@@ -288,7 +288,7 @@ public class Server {
             if (KEVIN) {
                 for (int i = 0; i < LANE; i++) {
                     if (i < FEEDER) {
-                        feederAgents[i].print = false;
+                        feederAgents[i].print = true;
                     }
                     laneAgents[i].print = false;
                 }

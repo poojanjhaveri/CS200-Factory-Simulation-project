@@ -20,9 +20,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="kitrobot.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Factory Project
-   &#160;<span id="projectnumber">0.1.0</span>
+   &#160;<span id="projectnumber">0.4.0</span>
    </div>
    <div id="projectbrief">team 1 joint cs200/cs201</div>
   </td>
@@ -118,8 +119,12 @@ Private Attributes</h2></td></tr>
 <tr class="separator:ab1ea18cb74f58491c1de36da43ef4a65"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac8aae6ef73191d08c304645645021892"><td class="memItemLeft" align="right" valign="top">Integer[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1lane_manager_1_1_server_side_1_1_l_m_control_panel5.html#ac8aae6ef73191d08c304645645021892">feederList</a> = { 1, 2, 3, 4 }</td></tr>
 <tr class="separator:ac8aae6ef73191d08c304645645021892"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac46cd351b0d42294bb59784f1058ec6d"><td class="memItemLeft" align="right" valign="top">String[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1lane_manager_1_1_server_side_1_1_l_m_control_panel5.html#ac46cd351b0d42294bb59784f1058ec6d">statusList</a> = { &quot;GOOD&quot;, &quot;BAD&quot; }</td></tr>
+<tr class="separator:ac46cd351b0d42294bb59784f1058ec6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af1787f1f67275a9f35cddb9d90258bdc"><td class="memItemLeft" align="right" valign="top">JComboBox&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1lane_manager_1_1_server_side_1_1_l_m_control_panel5.html#af1787f1f67275a9f35cddb9d90258bdc">feederNum</a> = new JComboBox(<a class="el" href="classfactory_1_1factory200_1_1lane_manager_1_1_server_side_1_1_l_m_control_panel5.html#ac8aae6ef73191d08c304645645021892">feederList</a>)</td></tr>
 <tr class="separator:af1787f1f67275a9f35cddb9d90258bdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a48338bc44a97798d321941caabecb2"><td class="memItemLeft" align="right" valign="top">JComboBox&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1lane_manager_1_1_server_side_1_1_l_m_control_panel5.html#a1a48338bc44a97798d321941caabecb2">partStatus</a> = new JComboBox(<a class="el" href="classfactory_1_1factory200_1_1lane_manager_1_1_server_side_1_1_l_m_control_panel5.html#ac46cd351b0d42294bb59784f1058ec6d">statusList</a>)</td></tr>
+<tr class="separator:a1a48338bc44a97798d321941caabecb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2e038c504c4ff9e66169b51365a5a6d6"><td class="memItemLeft" align="right" valign="top">TitledBorder&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1lane_manager_1_1_server_side_1_1_l_m_control_panel5.html#a2e038c504c4ff9e66169b51365a5a6d6">border</a> = new TitledBorder(&quot;Gantry Robot&quot;)</td></tr>
 <tr class="separator:a2e038c504c4ff9e66169b51365a5a6d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a816388be9e5231dd8ea83bd352c9337d"><td class="memItemLeft" align="right" valign="top">JButton&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1lane_manager_1_1_server_side_1_1_l_m_control_panel5.html#a816388be9e5231dd8ea83bd352c9337d">button1</a> = new JButton(&quot;Put Bin&quot;)</td></tr>
@@ -130,9 +135,9 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a3b28048295aacada7b930a35486038ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa3f575dd6aff391e6b17b3531fb35acb"><td class="memItemLeft" align="right" valign="top">JTextField&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1lane_manager_1_1_server_side_1_1_l_m_control_panel5.html#aa3f575dd6aff391e6b17b3531fb35acb">quantityInput</a> = new JTextField(3)</td></tr>
 <tr class="separator:aa3f575dd6aff391e6b17b3531fb35acb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a483d5d9ffe3dde1cfbe2852c14a893aa"><td class="memItemLeft" align="right" valign="top">JLabel&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1lane_manager_1_1_server_side_1_1_l_m_control_panel5.html#a483d5d9ffe3dde1cfbe2852c14a893aa">label1</a> = new JLabel(&quot;Bin Number&quot;)</td></tr>
+<tr class="memitem:a483d5d9ffe3dde1cfbe2852c14a893aa"><td class="memItemLeft" align="right" valign="top">JLabel&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1lane_manager_1_1_server_side_1_1_l_m_control_panel5.html#a483d5d9ffe3dde1cfbe2852c14a893aa">label1</a> = new JLabel(&quot;Part&quot;)</td></tr>
 <tr class="separator:a483d5d9ffe3dde1cfbe2852c14a893aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a13f12aad42d6938e13745205d5054ab6"><td class="memItemLeft" align="right" valign="top">JLabel&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1lane_manager_1_1_server_side_1_1_l_m_control_panel5.html#a13f12aad42d6938e13745205d5054ab6">label2</a> = new JLabel(&quot;Part Quantity&quot;)</td></tr>
+<tr class="memitem:a13f12aad42d6938e13745205d5054ab6"><td class="memItemLeft" align="right" valign="top">JLabel&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1lane_manager_1_1_server_side_1_1_l_m_control_panel5.html#a13f12aad42d6938e13745205d5054ab6">label2</a> = new JLabel(&quot;Quantity&quot;)</td></tr>
 <tr class="separator:a13f12aad42d6938e13745205d5054ab6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6d95b23a299e63cff1559d964201732c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory200_1_1lane_manager_1_1_server_side_1_1_l_m_control_panel5.html#a6d95b23a299e63cff1559d964201732c">chosenFeeder</a></td></tr>
 <tr class="separator:a6d95b23a299e63cff1559d964201732c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -163,7 +168,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_l_m_control_panel5_8java_source.html#l00027">27</a> of file <a class="el" href="_l_m_control_panel5_8java_source.html">LMControlPanel5.java</a>.</p>
+<p>Definition at line <a class="el" href="_l_m_control_panel5_8java_source.html#l00029">29</a> of file <a class="el" href="_l_m_control_panel5_8java_source.html">LMControlPanel5.java</a>.</p>
 
 </div>
 </div>
@@ -190,7 +195,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_l_m_control_panel5_8java_source.html#l00043">43</a> of file <a class="el" href="_l_m_control_panel5_8java_source.html">LMControlPanel5.java</a>.</p>
+<p>Definition at line <a class="el" href="_l_m_control_panel5_8java_source.html#l00046">46</a> of file <a class="el" href="_l_m_control_panel5_8java_source.html">LMControlPanel5.java</a>.</p>
 
 </div>
 </div>
@@ -235,7 +240,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_l_m_control_panel5_8java_source.html#l00021">21</a> of file <a class="el" href="_l_m_control_panel5_8java_source.html">LMControlPanel5.java</a>.</p>
+<p>Definition at line <a class="el" href="_l_m_control_panel5_8java_source.html#l00023">23</a> of file <a class="el" href="_l_m_control_panel5_8java_source.html">LMControlPanel5.java</a>.</p>
 
 </div>
 </div>
@@ -257,7 +262,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_l_m_control_panel5_8java_source.html#l00018">18</a> of file <a class="el" href="_l_m_control_panel5_8java_source.html">LMControlPanel5.java</a>.</p>
+<p>Definition at line <a class="el" href="_l_m_control_panel5_8java_source.html#l00020">20</a> of file <a class="el" href="_l_m_control_panel5_8java_source.html">LMControlPanel5.java</a>.</p>
 
 </div>
 </div>
@@ -279,7 +284,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_l_m_control_panel5_8java_source.html#l00019">19</a> of file <a class="el" href="_l_m_control_panel5_8java_source.html">LMControlPanel5.java</a>.</p>
+<p>Definition at line <a class="el" href="_l_m_control_panel5_8java_source.html#l00021">21</a> of file <a class="el" href="_l_m_control_panel5_8java_source.html">LMControlPanel5.java</a>.</p>
 
 </div>
 </div>
@@ -301,7 +306,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_l_m_control_panel5_8java_source.html#l00020">20</a> of file <a class="el" href="_l_m_control_panel5_8java_source.html">LMControlPanel5.java</a>.</p>
+<p>Definition at line <a class="el" href="_l_m_control_panel5_8java_source.html#l00022">22</a> of file <a class="el" href="_l_m_control_panel5_8java_source.html">LMControlPanel5.java</a>.</p>
 
 </div>
 </div>
@@ -323,7 +328,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_l_m_control_panel5_8java_source.html#l00025">25</a> of file <a class="el" href="_l_m_control_panel5_8java_source.html">LMControlPanel5.java</a>.</p>
+<p>Definition at line <a class="el" href="_l_m_control_panel5_8java_source.html#l00027">27</a> of file <a class="el" href="_l_m_control_panel5_8java_source.html">LMControlPanel5.java</a>.</p>
 
 </div>
 </div>
@@ -367,7 +372,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_l_m_control_panel5_8java_source.html#l00017">17</a> of file <a class="el" href="_l_m_control_panel5_8java_source.html">LMControlPanel5.java</a>.</p>
+<p>Definition at line <a class="el" href="_l_m_control_panel5_8java_source.html#l00018">18</a> of file <a class="el" href="_l_m_control_panel5_8java_source.html">LMControlPanel5.java</a>.</p>
 
 </div>
 </div>
@@ -379,7 +384,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">JLabel factory.factory200.laneManager.ServerSide.LMControlPanel5.label1 = new JLabel(&quot;Bin Number&quot;)</td>
+          <td class="memname">JLabel factory.factory200.laneManager.ServerSide.LMControlPanel5.label1 = new JLabel(&quot;Part&quot;)</td>
         </tr>
       </table>
   </td>
@@ -389,7 +394,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_l_m_control_panel5_8java_source.html#l00023">23</a> of file <a class="el" href="_l_m_control_panel5_8java_source.html">LMControlPanel5.java</a>.</p>
+<p>Definition at line <a class="el" href="_l_m_control_panel5_8java_source.html#l00025">25</a> of file <a class="el" href="_l_m_control_panel5_8java_source.html">LMControlPanel5.java</a>.</p>
 
 </div>
 </div>
@@ -401,7 +406,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">JLabel factory.factory200.laneManager.ServerSide.LMControlPanel5.label2 = new JLabel(&quot;Part Quantity&quot;)</td>
+          <td class="memname">JLabel factory.factory200.laneManager.ServerSide.LMControlPanel5.label2 = new JLabel(&quot;Quantity&quot;)</td>
         </tr>
       </table>
   </td>
@@ -411,7 +416,29 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_l_m_control_panel5_8java_source.html#l00024">24</a> of file <a class="el" href="_l_m_control_panel5_8java_source.html">LMControlPanel5.java</a>.</p>
+<p>Definition at line <a class="el" href="_l_m_control_panel5_8java_source.html#l00026">26</a> of file <a class="el" href="_l_m_control_panel5_8java_source.html">LMControlPanel5.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a1a48338bc44a97798d321941caabecb2"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">JComboBox factory.factory200.laneManager.ServerSide.LMControlPanel5.partStatus = new JComboBox(<a class="el" href="classfactory_1_1factory200_1_1lane_manager_1_1_server_side_1_1_l_m_control_panel5.html#ac46cd351b0d42294bb59784f1058ec6d">statusList</a>)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_l_m_control_panel5_8java_source.html#l00019">19</a> of file <a class="el" href="_l_m_control_panel5_8java_source.html">LMControlPanel5.java</a>.</p>
 
 </div>
 </div>
@@ -433,7 +460,29 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_l_m_control_panel5_8java_source.html#l00022">22</a> of file <a class="el" href="_l_m_control_panel5_8java_source.html">LMControlPanel5.java</a>.</p>
+<p>Definition at line <a class="el" href="_l_m_control_panel5_8java_source.html#l00024">24</a> of file <a class="el" href="_l_m_control_panel5_8java_source.html">LMControlPanel5.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac46cd351b0d42294bb59784f1058ec6d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">String [] factory.factory200.laneManager.ServerSide.LMControlPanel5.statusList = { &quot;GOOD&quot;, &quot;BAD&quot; }</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_l_m_control_panel5_8java_source.html#l00017">17</a> of file <a class="el" href="_l_m_control_panel5_8java_source.html">LMControlPanel5.java</a>.</p>
 
 </div>
 </div>
@@ -443,7 +492,7 @@ Private Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 17 2012 01:37:06 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Dec 1 2012 12:34:14 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>
