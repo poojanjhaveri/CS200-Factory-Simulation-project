@@ -12,7 +12,6 @@ import factory.general.Part;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.concurrent.Semaphore;
 
 /**
  * Agent for the camera.
@@ -43,6 +42,16 @@ public class CameraAgent extends Agent implements Camera {
         kitInfoFromPartsAgent = null;
         kitRqmts = new ArrayList<Integer>();
     }
+
+    public void msgAllPartsBad(int nestNum) {
+        // do
+    }
+    
+    public void msgPartsPiledUp(int nestNum) {
+        // do
+    }
+    
+    
     
     @Override
     public void msgNestIsFull(Nest nest) {
@@ -164,7 +173,7 @@ public class CameraAgent extends Agent implements Camera {
         this.kitRobot = kitRobot;
         this.nestAgent = nestAgent;
     }
-    
+
     public void setServer(LMServerMain LMServer1) {
 //    System.out.println("leftindex is " + leftLane.getIndex());
         this.LMServer = LMServer1;

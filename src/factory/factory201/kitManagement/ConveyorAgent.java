@@ -8,7 +8,6 @@ import factory.general.Message;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.concurrent.Semaphore;
 
 /**
  * Agent for the conveyor.
@@ -35,7 +34,6 @@ public class ConveyorAgent extends Agent implements Conveyor {
     }
 
     // ********** MESSAGES *********
-
     @Override
     public void msgNeedEmptyKit() {
         print("received request for empty kit!!");
