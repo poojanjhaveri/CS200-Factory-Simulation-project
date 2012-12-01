@@ -24,4 +24,8 @@ public class LMCameraForAgent {
 	public void cameraShoot( int nestCameraNum ){
 		nestCameras.get( nestCameraNum ).cameraShoot();
 	}
+	
+	public void startPiledPart( int nestNum ){
+		nestCameras.get( nestNum ).startPiledPart();
+	}
 }
