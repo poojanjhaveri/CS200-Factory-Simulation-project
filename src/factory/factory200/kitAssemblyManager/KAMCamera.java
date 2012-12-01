@@ -84,5 +84,4 @@ public class KAMCamera {
         this.y = y;
     }
     
-    
 }
