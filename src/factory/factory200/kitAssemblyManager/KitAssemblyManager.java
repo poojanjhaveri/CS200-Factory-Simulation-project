@@ -253,6 +253,9 @@ this.sendToServer(Message.KAM_NEST_UNSTABLE+":"+i);
     	//if(ae.getSource()==){
     		
     	//}
+	if(ae.getSource() == this.nonnorm.getEarlyFlashButton()){
+
+	}
         if (ae.getSource() == cameraKitStand) {
             this.flashKitCamera();
         }
