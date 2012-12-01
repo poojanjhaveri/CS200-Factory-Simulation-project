@@ -9,10 +9,12 @@ import factory.general.Kit;
 import factory.general.Message;
 import factory.general.Nest;
 import factory.general.Part;
+import factory.general.Result;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
-import java.util.concurrent.Semaphore;
+import java.util.Map;
 
 /**
  * Agent for the camera.
@@ -30,11 +32,12 @@ public class CameraAgent extends Agent implements Camera {
 
     private KitRobot kitRobot;
     private NestInterface nestAgent;
+    private LMServerMain LMServer;
     private List<Nest> nestList;
     private List<Kit> kitList;
     private Kit kitInfoFromPartsAgent;
     private List<Integer> kitRqmts;
-    private LMServerMain LMServer;
+    private Map<Integer, Result.Is> nestErrors;
 
     public CameraAgent(String name) {
         super(name);
@@ -42,24 +45,30 @@ public class CameraAgent extends Agent implements Camera {
         kitList = Collections.synchronizedList(new ArrayList<Kit>());
         kitInfoFromPartsAgent = null;
         kitRqmts = new ArrayList<Integer>();
+        nestErrors = new HashMap<Integer, Result.Is>();
     }
-    
+
+    public void msgAllPartsBad(int nestNum) {
+        nestErrors.put(nestNum, Result.Is.badParts);
+    }
+
+    public void msgPartsPiledUp(int nestNum) {
+        nestErrors.put(nestNum, Result.Is.piledParts);
+    }
+
     @Override
     public void msgNestIsFull(Nest nest) {
-//        print("Received msgNestIsFull that " + nest.nestNum + " is full.");
-        //synchronized (nestList) {
-        nestList.add(nest);
-        //}
-
+        synchronized (nestList) {
+            nestList.add(nest);
+        }
         stateChanged();
     }
 
     @Override
     public void msgKitIsFull(Kit kit) {
-        print("Received msgKitIsFull from Kit Robot Agent");
-
-        kitList.add(kit);
-
+        synchronized (kitList) {
+            kitList.add(kit);
+        }
         stateChanged();
     }
 
@@ -72,33 +81,31 @@ public class CameraAgent extends Agent implements Camera {
     // ********* SCHEDULER *********
     @Override
     public boolean pickAndExecuteAnAction() {
-        //print("myKit list size is " + kitList.size());
         if (kitInfoFromPartsAgent != null) {
             configureKitInfo();
             return true;
         }
-
-        for (Kit k : kitList) {
-            if (k.status == Kit.Status.full) {
-                inspectKit(k);
-                return true;
+        synchronized (kitList) {
+            for (Kit k : kitList) {
+                if (k.status == Kit.Status.full) {
+                    inspectKit(k);
+                    return true;
+                }
             }
         }
-
-        //synchronized (nestList) {
-        for (Nest n : nestList) {
-            if (n.status == Nest.Status.gettingInspected) {
-                inspectNest(n);
-                return true;
+        synchronized (nestList) {
+            for (Nest n : nestList) {
+                if (n.status == Nest.Status.gettingInspected) {
+                    inspectNest(n);
+                    return true;
+                }
             }
         }
-
         return false;
     }
 
     // ********** ACTIONS **********
     public void inspectKit(Kit kit) {
-//        print("Inspecting kit: [" + kit.name + "].");
         boolean result = true;
 
         if (kit.parts.size() != kitRqmts.size()) {
@@ -116,16 +123,16 @@ public class CameraAgent extends Agent implements Camera {
         }
 
         DoInspectKit(kit);
-        print("sending msg to kitRobot");
         kitRobot.msgKitInspected(result);
         String strResult = result ? "NO ERROR" : "ERROR";
         print("Inspected kit: [" + kit.name + "] with result: " + strResult + ".");
-        kitList.remove(kit);
+        synchronized (kitList) {
+            kitList.remove(kit);
+        }
         stateChanged();
     }
 
     private void inspectNest(Nest nest) {
-//        print("Inspecting nest: [Nest " + nest.nestNum + "].");
         Integer type = nest.part.type;
         boolean result = true;
         for (Part p : nest.parts) {
@@ -134,11 +141,18 @@ public class CameraAgent extends Agent implements Camera {
                 break;
             }
         }
+        try {
+            Thread.sleep(2000); // For Dongyung
+        } catch (InterruptedException ex) {
+        }
         DoInspectNest(nest);
-        nestAgent.msgNestInspected(nest, result);
+        Result.Is is = result ? Result.Is.verified : Result.Is.badParts;
+        nestAgent.msgNestInspected(nest, new Result(is));
         String strResult = result ? "NO ERROR" : "ERROR";
         print("Inspecting nest: [Nest " + nest.nestNum + "] with result: " + strResult + ".");
-        nestList.remove(nest);
+        synchronized (nestList) {
+            nestList.remove(nest);
+        }
         stateChanged();
     }
 
@@ -148,26 +162,17 @@ public class CameraAgent extends Agent implements Camera {
             kitRqmts.add(kitInfoFromPartsAgent.getPart(i).type);
         }
         kitInfoFromPartsAgent = null;
-        //stateChanged();
+        stateChanged();
     }
 
     // ************ MISC ***********
-    public void setKitRobot(KitRobot agent) {
-        kitRobot = agent;
-    }
-
-    public void setNestAgent(NestInterface agent) {
-        nestAgent = agent;
-    }
-
     public void setAll(KitRobot kitRobot, NestInterface nestAgent) {
         this.kitRobot = kitRobot;
         this.nestAgent = nestAgent;
     }
-    
-    public void setServer(LMServerMain LMServer1) {
-//    System.out.println("leftindex is " + leftLane.getIndex());
-        this.LMServer = LMServer1;
+
+    public void setServer(LMServerMain LMServer) {
+        this.LMServer = LMServer;
     }
 
     public List<Integer> getKitRqmts() {

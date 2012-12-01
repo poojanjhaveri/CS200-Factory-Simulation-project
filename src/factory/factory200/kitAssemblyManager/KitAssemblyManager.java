@@ -34,8 +34,9 @@ import javax.swing.JTabbedPane;
 public class KitAssemblyManager extends Manager implements ActionListener {
 
     KAMGraphicPanel graphics;
-    boolean test=false;
+    boolean test=true;
     JTabbedPane tabbedPane;
+    GUINonNormKAM nonnorm;
     //private KitAssemblyManagerDeliveryStation kamdelivery;///<keeps track of all of the objects listed above and paints the objects according to a timer
     //private KitAssemblyManagerGUIPanel gui;///<keeps track of the GUI components and allows the manager to pick which components will be broken
 
@@ -49,6 +50,8 @@ public class KitAssemblyManager extends Manager implements ActionListener {
         }
 
         if (msg.contains(Message.KAM_DROP_OFF_FULL_KIT)) {
+            this.graphics.deliveryStation = false;
+            this.graphics.stationRun = true;
             this.graphics.kitbot.dropOffFullKit();
 	    //needs release DONE
         } else if (msg.contains(Message.KAM_MOVE_ACTIVE_KIT_TO_INSPECTION)) {
@@ -199,6 +202,16 @@ public class KitAssemblyManager extends Manager implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent ae) {
+    	
+	for(int i = 0; i != 8; i++){
+	if(ae.getSource() == this.nonnorm.getPilingButton(i))
+	    this.graphics.togglePiled(i);
+    	if(ae.getSource() == this.nonnorm.getStabilityButton(i))
+	    this.graphics.toggleUnstable(i);
+	}
+    	//if(ae.getSource()==){
+    		
+    	//}
         if (ae.getSource() == cameraKitStand) {
             this.flashKitCamera();
         }
@@ -274,9 +287,9 @@ public class KitAssemblyManager extends Manager implements ActionListener {
         
         this.tabbedPane = new JTabbedPane();
         tabbedPane.addTab("Animation", this.graphics);
-        GUINonNormKAM nonGUI = new GUINonNormKAM();
+        this.nonnorm = new GUINonNormKAM(this);
         
-        tabbedPane.addTab("Non-normative", nonGUI);
+        tabbedPane.addTab("Non-normative", nonnorm);
         this.add(tabbedPane);
         
      //   this.add(graphics);

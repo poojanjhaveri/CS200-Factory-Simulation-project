@@ -1,12 +1,12 @@
 #!/bin/bash
 #################################
-# Factory run file 				#
+# Factory run file 		#
 # Roy Zheng, David Zhang 2012   #
 #################################
 
 echo "STARTING SERVER"
 java -cp bin factory.general.Server &
-sleep 4
+sleep 5
 echo "BEGINNING ALL MANAGERS"
 java -cp bin factory.factory200.partsManager.PartsManager &
 sleep 1

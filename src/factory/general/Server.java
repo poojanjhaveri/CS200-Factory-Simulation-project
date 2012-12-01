@@ -56,11 +56,6 @@ public class Server {
     private KitRobotAgent kitRobotAgent;
     private CameraAgent cameraAgent;
 
-    private CameraAgent cam1;
-    private CameraAgent cam2;
-    private CameraAgent cam3;
-    private CameraAgent cam4;
-
     private ConveyorAgent conveyorAgent;
     private FeederAgent[] feederAgents;
     private GantryAgent gantryAgent;
@@ -167,13 +162,6 @@ public class Server {
         // Alex
         kitRobotAgent = new KitRobotAgent("Kit Robot");
         cameraAgent = new CameraAgent("Camera");
-
-        //one camera for each nest
-        cam1=new CameraAgent("camera 1");
-        cam2=new CameraAgent("camera 1");
-        cam3=new CameraAgent("camera 1");
-        cam4=new CameraAgent("camera 1");
-
         conveyorAgent = new ConveyorAgent("Conveyor");
 
         // Patrick
@@ -193,6 +181,7 @@ public class Server {
         }
         
         // By Dongyoung
+        serverLM.setCameraAgents(cameraAgent);
         serverLM.setFeederAgents(feederAgents);
     }
 
@@ -202,12 +191,6 @@ public class Server {
         kitRobotAgent.setAll(cameraAgent, conveyorAgent, partsAgent);
 
         cameraAgent.setAll(kitRobotAgent, nestAgent);
-
-        //set 4 cameras initialize them with the kitRobotAgent and nestAgent
-        cam1.setAll(kitRobotAgent, nestAgent);
-        cam2.setAll(kitRobotAgent, nestAgent);
-        cam3.setAll(kitRobotAgent, nestAgent);
-        cam4.setAll(kitRobotAgent, nestAgent);
         conveyorAgent.setKitRobot(kitRobotAgent);
 
         // Patrick
@@ -241,6 +224,7 @@ public class Server {
             }
             gantryAgent.setServer(serverLM);
             cameraAgent.setServer(serverLM);
+            nestAgent.setServer(serverLM);
         }
     }
 
@@ -249,11 +233,6 @@ public class Server {
 
         // Alex
         cameraAgent.startThread();
-        //cam1.startThread();
-        //cam2.startThread();
-        //cam3.startThread();
-        //cam4.startThread();
-
         conveyorAgent.startThread();
         kitRobotAgent.startThread();
 
@@ -295,7 +274,7 @@ public class Server {
         //kits.add(kit);
         kits.get(0).debug();
         // TODO: *Put this wherever the FPM sends the signal to create (generate) kits
-        conveyorAgent.msgGenerateKit(10); // * This generates 10 new kits, among other things if you pass string... *
+        conveyorAgent.msgGenerateKits(10); // * This generates 10 new kits, among other things if you pass string... *
 
         // Officially start the agent interaction sequence!
         partsAgent.msgHereIsKit(kits);
@@ -313,10 +292,10 @@ public class Server {
                     }
                     laneAgents[i].print = false;
                 }
-                gantryAgent.print = true;
+                gantryAgent.print = false;
             }
             if (ALEX) {
-                kitRobotAgent.print = false;
+                kitRobotAgent.print = true;
                 conveyorAgent.print = false;
                 cameraAgent.print = false;
             }
@@ -374,11 +353,6 @@ public class Server {
      */
     public void setCameraAgentClient(HandleAManager in) {
         this.cameraAgent.setClient(in);
-        this.cam1.setClient(in);
-        this.cam2.setClient(in);
-        this.cam3.setClient(in);
-        this.cam4.setClient(in);
-
     }
 
     public void setConveyerAgentClient(HandleAManager in) {

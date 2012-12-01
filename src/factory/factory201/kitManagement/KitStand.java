@@ -18,7 +18,7 @@ public class KitStand {
     }
 
     public boolean addKit(Kit kit) {
-       System.out.println("add kit testing " );
+        System.out.println("add kit testing ");
         if (kits[1] == null) {
             kits[1] = kit;
             kits[1].standNum = Kit.StandNum.one;
@@ -90,6 +90,8 @@ public class KitStand {
     public boolean isEmpty() {
         return (kits[0] == null && kits[1] == null && kits[2] == null);
     }
-    
-    public void setNull(int index){kits[index]=null;}
+
+    public void setNull(int index) {
+        kits[index] = null;
+    }
 }

@@ -9,6 +9,7 @@ import java.util.Collections;
 import java.util.List;
 
 import agent.Agent;
+import factory.factory200.laneManager.ServerSide.LMServerMain;
 import factory.factory201.interfaces.Camera;
 import factory.factory201.interfaces.Lane;
 import factory.factory201.interfaces.PartsInterface;
@@ -16,6 +17,7 @@ import factory.factory201.interfaces.NestInterface;
 import factory.general.Message;
 import factory.general.Nest;
 import factory.general.Part;
+import factory.general.Result;
 import java.util.concurrent.Semaphore;
 
 public class NestAgent extends Agent implements NestInterface {
@@ -34,6 +36,8 @@ public class NestAgent extends Agent implements NestInterface {
     public List<Nest> myNests;//nests 0-7 that this agent controls
     public List<Part> needParts;//the parts that have been requested, used to set an individual's nest part
     boolean requestEarlyInspection=false;
+    private LMServerMain serverLM;
+   // Result result;
     PartsInterface partsagent;
     Camera camera;
     @Override
@@ -67,6 +71,14 @@ public class NestAgent extends Agent implements NestInterface {
        requestEarlyInspection=true;
        stateChanged();
     }
+    
+    public void msgPileUpParts(int n){
+        DoPurge(n);
+    }
+    
+    public void msgAllPartsBad(int n){
+        
+    }
   
     public void msgNeedPart(Part p) {//called by partsAgent
         requests.add(p);
@@ -92,14 +104,14 @@ public class NestAgent extends Agent implements NestInterface {
     }
 
     @Override
-    public void msgNestInspected(Nest n, boolean result) {//NEEDTO change from boolean to setting individual parts?
-        if (result) {
+    public void msgNestInspected(Nest n, Result result) {//NEEDTO change from boolean to setting individual parts?
+        if (result.is == Result.Is.verified) {
             n.status = Nest.Status.readyForKit;
             print("Nest inspected and verified");
-        } else  if (!result && !requestEarlyInspection){
+        } else  if (result.is == Result.Is.partsMissing && !requestEarlyInspection){
            purge(n);
            print("Nest is not verified, will be dumped");
-        } else if (!result && requestEarlyInspection){
+        } else if (result.is == Result.Is.partsMissing && requestEarlyInspection){
             requestEarlyInspection=false;
             print("Nest " + n.nestNum + " has not been verified and needs to wait for more parts");
             if (n.status!=Nest.Status.full)
@@ -116,6 +128,7 @@ public class NestAgent extends Agent implements NestInterface {
             for (Nest n: myNests){
                 if (n.status == Nest.Status.needPart)
                     requestInspection(n);
+                    requestEarlyInspection=false;
                     print("Nest [" + n.nestNum + "] has requested early inspection NONNORM");
                     return true;
             }
@@ -236,12 +249,22 @@ public class NestAgent extends Agent implements NestInterface {
     
     public void DoPurge(int nestNum){
         if (this.client != null) {
+            serverLM.getForAgentNest().setSwitchDown(nestNum);
+            try {
+         Thread.sleep(1000);
+         } catch (InterruptedException e) {
+         e.printStackTrace();
+         }
+            serverLM.getForAgentNest().setSwitchUp(nestNum);
            // this.client.sendMessage(Message.PURGE_NEST + ":" + nestNum);
             //this.fpm.sendMessage(Message.PURGE_NEST + ":" + nestNum);
         }
         
     }
 
+    public void setServer(LMServerMain lms){
+        this.serverLM = lms;
+    }
     public void setPartsAgent(PartsInterface parts) {
         this.partsagent = parts;
     }

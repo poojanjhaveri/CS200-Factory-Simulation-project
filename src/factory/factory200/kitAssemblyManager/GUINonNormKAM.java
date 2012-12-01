@@ -9,11 +9,13 @@ import factory.factory200.gantryRobotManager.GUINonNormGAM;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
 import javax.swing.*;
 
 /**
  *
- * @author Poojan Jhaveri
+ * @author Poojan Jhaveri, Yuting Liu
  * @brief : GUI class for non-normative scenario associated with KIT assembly manager
  * 
  * 
@@ -22,21 +24,26 @@ import javax.swing.*;
 public class GUINonNormKAM  extends JPanel {
     
     private JPanel mainpanel;
-    JButton droppart1;
-    JButton undo1;
+    JButton droppart;
+   
+    JButton piled;
+    ArrayList<JButton> unstables;
+    ArrayList<JButton> piles;
+    JButton unstabilize;    
+    ActionListener kam;
     
-    
-    public GUINonNormKAM() {
-             
+    public GUINonNormKAM(ActionListener in) {
+             this.kam = in;
            preparemainpanel();
            this.add(mainpanel);
-        
-            
+           
          }
 
  
     private void preparemainpanel()
     {
+    	unstables= new ArrayList<JButton>();
+        piles = new ArrayList<JButton>();
         mainpanel = new JPanel();
         JPanel basepanel = new JPanel();
         basepanel.setLayout(new BorderLayout());
@@ -53,25 +60,53 @@ public class GUINonNormKAM  extends JPanel {
          c.ipady=10;
          c.ipadx=10;
         
-        
+        c.fill =GridBagConstraints.HORIZONTAL;
         c.gridx=0;
         c.gridy=0;
-        droppart1 = new JButton("Drop a Part");
-        droppart1.addActionListener(new droppartbutton());
-        droppart1.setPreferredSize(new Dimension(150,50));
-        scenario.add(droppart1);
+        droppart = new JButton("Drop a Part");
+        droppart.addActionListener(new droppartbutton());
+        droppart.setPreferredSize(new Dimension(150,50));
+        scenario.add(droppart,c);
         
-        c.gridx=1;
-        c.gridy=0;
-        undo1 = new JButton("Revert Back");
-        undo1.setEnabled(false);
-        undo1.setPreferredSize(new Dimension(150,50));
-        undo1.addActionListener(new undobutton());
-        scenario.add(undo1);
+        for (int i=0;i<8;i++){
+        	c.fill =GridBagConstraints.HORIZONTAL;
+        	c.gridx=0;
+        	c.gridy=i+1;
+        	this.unstabilize = new JButton("Toggle nest stability for 0");
+        //this.unstabilize.setEnabled(false);
+        	this.unstabilize.setPreferredSize(new Dimension(150,50));
+        	this.unstabilize.addActionListener(this.kam);
+        	scenario.add(unstabilize,c);
+        	
+        	unstables.add(unstabilize);
+        	
+        }
+               
+        for(int i=0;i<8;i++){
+        	c.fill =GridBagConstraints.HORIZONTAL;
+        	c.gridx=2;
+        	c.gridy=i+1;
+        	this.piled = new JButton("Toggle nest piling");
+        	//this.unstabilize.setEnabled(false);
+        	this.piled.setPreferredSize(new Dimension(150,50));
+        	this.piled.addActionListener(this.kam);
+        	piles.add(piled);
+        	scenario.add(this.piled,c);
+        }
         
-        
+       
+
         basepanel.add(scenario);
         mainpanel.add(basepanel,BorderLayout.CENTER);
+    }
+    public JButton getPilingButton(int i)
+    {
+	return this.piles.get(i);
+    }
+    public JButton getStabilityButton(int i)
+    {
+    	return this.unstables.get(i);
+    	//return this.unstabilize;
     }
     
     public class droppartbutton implements ActionListener
@@ -79,9 +114,9 @@ public class GUINonNormKAM  extends JPanel {
     
          public void actionPerformed(ActionEvent e) {
              
-             droppart1.setEnabled(false);
+             droppart.setEnabled(false);
              System.out.println("KAM drop part");
-             undo1.setEnabled(true);
+           
             
             
             }
@@ -94,9 +129,9 @@ public class GUINonNormKAM  extends JPanel {
     
          public void actionPerformed(ActionEvent e) {
              
-             undo1.setEnabled(false);
+             
              System.out.println("Undo drop part condition");
-             droppart1.setEnabled(true);
+             droppart.setEnabled(true);
             
             
             }

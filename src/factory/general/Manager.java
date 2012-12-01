@@ -83,6 +83,8 @@ public class Manager extends JFrame {
      * specific parameters.
      */
     public void sendToServer(String msg) {
+    	if(VERBOSE)
+    		System.out.println("Sending message to Server: " + msg);
         if (DEBUG) {
         	System.out.println(DEBUG_NOTIFICATION);
         } else {

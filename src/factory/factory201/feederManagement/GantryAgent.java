@@ -164,7 +164,7 @@ public class GantryAgent extends Agent implements Gantry {
     public void msgAnimationComplete(String msg){
         
         //release the semaphore so that the animation can resume in the doSupplyPart().
-        System.out.println("semaphore released by " + msg);
+    //    System.out.println("semaphore released by " + msg);
         anim.release();
     }
     
@@ -251,7 +251,9 @@ public class GantryAgent extends Agent implements Gantry {
     	//print("Sending message to feeder");
         print("sending message here are parts to " + f.index);
 
-    	//doSupplyPart(b,f);
+
+    	doSupplyPart(b,f);
+
 
 
         f.feeder.msgHereAreParts(parts);

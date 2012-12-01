@@ -120,4 +120,12 @@ public class KAMNest {
             }
         }
     }
+    //fijsod DO THESE TWO METHODS
+    public void nestUp(){
+        
+    }
+    
+    public void nestDown(){
+        
+    }
 }

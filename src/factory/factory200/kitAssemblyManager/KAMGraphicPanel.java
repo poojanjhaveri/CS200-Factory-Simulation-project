@@ -57,6 +57,11 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
     public static final Integer PARTSROBOT_VELOCITYY = 2;
     public static final Integer PARTSROBOTINITIALX = 400;///<x coordinate for parts robot to spawn in
     public static final Integer PARTSROBOTINITIALY = 350;///<y coordinate for parts robot to spawn in
+
+    public ArrayList<Boolean> unstable;///<whether or not the nest is stable
+    public ArrayList<Boolean> piled;///<whether or not the nest has piled up
+//WHY ARE DEY PUBLIC WHY NO PRIVATE GAAARRRRRRRR. lol jk its fine.
+
     public GUIPartRobot kitter;///<declares an object that keeps track of the parts robot animation and graphics
     public GUIKitRobot kitbot;///<declares an object that keeps track of the kit robot animation and graphics
     public KitStand kitstand;///<declares an object that keeps track of what is happening with the kit stand
@@ -75,6 +80,13 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
     //private ImageIcon backgroundImage = new ImageIcon("pics/background/part1");
 
     public KAMGraphicPanel(KitAssemblyManager k) {
+    	this.unstable = new ArrayList<Boolean>();
+	this.piled = new ArrayList<Boolean>();
+	for(int i = 0 ; i!= 8; i++){
+	    this.unstable.add(false);
+	    this.piled.add(false);
+	}
+	
         this.kam = k;
         
         deliveryStation = true;
@@ -340,7 +352,6 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
             kitbot.update();
             kitter.update();
             myPanel.repaint();
-
         }
     }
 
@@ -377,6 +388,33 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
         }      
         kitbot.paintMe(this, g2);
 
+        
+        
+
+	Random rand = new Random();//random numgen
+        for (int k = 0; k < this.nest.size(); k++) {
+            for (int i = 0; i < this.nest.get(k).getParts().size(); i++) {
+                //System.out.println(j.nest.get(0).getParts().get(i).getGUIPart());
+		int offsetx = 0;
+		int offsety = 0;
+		if(this.unstable.get(k)){
+		offsetx = rand.nextInt(5);
+		offsety = rand.nextInt(5);
+		if(rand.nextInt(2) == 0)
+		    offsetx = -1*offsetx;
+		if(rand.nextInt(2) == 0)
+		    offsety = -1*offsety;
+		}
+		if(this.piled.get(k) && i < 4){
+		    offsetx += 4;
+		}
+		if(this.piled.get(k) && i > 3){
+		    offsetx -= 4;
+		}
+                this.nest.get(k).getParts().get(i).getGUIPart().getImage().paintIcon(this, g2, nest.get(k).getParts().get(i).getGUIPart().getX()+offsetx, nest.get(k).getParts().get(i).getGUIPart().getY()+offsety);
+            }
+        }
+        kitter.paintMe(this, g2);
         if (camera.isVisible()) {
             camera.getCamera().paintIcon(this, g2, camera.getX(), camera.getY());
 
@@ -385,15 +423,6 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
             camera.setVisible(false);
             cameraCounter = 0;
         }
-        kitter.paintMe(this, g2);
-
-        for (int k = 0; k < this.nest.size(); k++) {
-            for (int i = 0; i < this.nest.get(k).getParts().size(); i++) {
-                //System.out.println(j.nest.get(0).getParts().get(i).getGUIPart());
-                this.nest.get(k).getParts().get(i).getGUIPart().getImage().paintIcon(this, g2, nest.get(k).getParts().get(i).getGUIPart().getX(), nest.get(k).getParts().get(i).getGUIPart().getY());
-            }
-        }
-
     }
 
     public void paintNests(JPanel j, Graphics2D g) {
@@ -401,7 +430,14 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
             nest.get(i - 1).getNest().paintIcon(j, g, nest.get(i - 1).getX(), nest.get(i - 1).getY());
         }
     }
-
+    public void toggleUnstable(Integer i)
+    {
+	this.unstable.set(i,!this.unstable.get(i));
+    }
+    public void togglePiled(Integer i)
+    {
+	this.piled.set(i,!this.piled.get(i));
+    }
     public void actionPerformed(ActionEvent ae) {
     }
 }

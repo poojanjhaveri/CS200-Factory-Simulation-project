@@ -10,6 +10,8 @@ import factory.general.Part;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.Semaphore;
 
 /**
@@ -22,6 +24,7 @@ import java.util.concurrent.Semaphore;
  */
 public class FeederAgent extends Agent implements Feeder {
 
+    Timer timer = new Timer();
     private List<myParts> parts = Collections.synchronizedList(new ArrayList<myParts>());
     private Lane leftLane;
     private Lane rightLane;
@@ -37,6 +40,7 @@ public class FeederAgent extends Agent implements Feeder {
     private Gantry gantry;
     public int feederNum;
     Semaphore anim=new Semaphore(0, true);
+    Semaphore laneJammed=new Semaphore(0, true);
     boolean requestState = false;
     //--------------------------------------------------------------
     private LMServerMain serverMain;
@@ -114,6 +118,18 @@ public class FeederAgent extends Agent implements Feeder {
 
     public void msgAnimationComplete(){
     anim.release();
+    }
+    
+    public void msgLaneJammed(int laneNum){
+    System.out.println("received msgLaneJammed msg " );
+        if(leftLane.getIndex()==laneNum) {
+            leftLane.setJammed(true);
+        }
+    if(rightLane.getIndex()==laneNum) {
+            rightLane.setJammed(true);
+        }
+    
+        
     }
     @Override
     public void msgNeedPart(Part part, Lane lane) {
@@ -325,7 +341,16 @@ public class FeederAgent extends Agent implements Feeder {
 
             LMServer.getForAgentGantryRobot().putBin(p.part.type, p.quantity, feederNum);
             //  	animation.setDiverterSwitchLeft(feederNum-1);
-
+            if(leftLane.getJammed()==true){
+            //server function to set it jammed.
+            LMServer.getForAgentLane().setVibrationAmplitudeStrong(leftLane.getIndex());
+            timer.schedule(new TimerTask(){
+    	    public void run(){		    
+            LMServer.getForAgentLane().setVibrationAmplitudeNormal(leftLane.getIndex());
+            }
+            },2000);
+            leftLane.setJammed(false);
+            }
             try {
                 anim.acquire();
                 //Thread.sleep(20000);
