@@ -386,6 +386,10 @@ public class Server {
     public HandleAManager getKitManagerClient() {
         return this.kitmanagerclient;
     }
+    
+    public CameraAgent getCameraAgent(){
+    return this.cameraAgent;
+    }
 
     public void setFactoryProductionManagerToAll(HandleAManager in) {
         this.fpmclient = in;

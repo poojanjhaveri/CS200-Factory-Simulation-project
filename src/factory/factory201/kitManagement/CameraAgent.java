@@ -58,7 +58,8 @@ public class CameraAgent extends Agent implements Camera {
     
     // added by Kevin
     public void msgPartsShaking(int nestNum){
-          nestErrors.put(nestNum, Result.Is.unstableParts);
+    System.out.println("parts shaking hit" );
+        nestErrors.put(nestNum, Result.Is.unstableParts);
     }
     
     @Override
