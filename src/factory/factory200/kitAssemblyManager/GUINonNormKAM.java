@@ -25,7 +25,7 @@ public class GUINonNormKAM  extends JPanel {
     
     private JPanel mainpanel;
     JButton droppart;
-   
+    JButton earlyflash;///<flash camera early
     JButton piled;
     ArrayList<JButton> unstables;
     ArrayList<JButton> piles;
@@ -78,7 +78,7 @@ public class GUINonNormKAM  extends JPanel {
          c.ipadx=10;
         
         c.fill =GridBagConstraints.HORIZONTAL;
-        c.gridx=2;
+        c.gridx=0;
         c.gridy=0;
         droppart = new JButton("Drop a Part");
         droppart.setBackground(Color.GREEN);
@@ -90,8 +90,8 @@ public class GUINonNormKAM  extends JPanel {
         for (int j=0;j<2;j++){
         	for (int i=0;i<4;i++){
         		c.fill =GridBagConstraints.HORIZONTAL;
-        		c.gridx=i;
-        		c.gridy=j+1;
+        		c.gridx=1;
+        		c.gridy=j*4+i+1;
         		this.unstabilize = new JButton("Toggle stability "+(j*4+i));
         		if(!this.unstableColor.get(j*4+i)){
         			this.unstabilize.setBackground(Color.GREEN);
@@ -110,8 +110,8 @@ public class GUINonNormKAM  extends JPanel {
         for(int j=0;j<2;j++){
         	for(int i=0;i<4;i++){
         		c.fill =GridBagConstraints.HORIZONTAL;
-        		c.gridx=i;
-        		c.gridy=j+3;
+        		c.gridx=0;
+        		c.gridy=j*4+i+1;
         		this.piled = new JButton("Toggle piling"+(j*4+i));
         		if(!this.piledColor.get(j*4+i))
         		this.piled.setBackground(Color.GREEN);
@@ -142,7 +142,10 @@ public class GUINonNormKAM  extends JPanel {
     	return this.unstables.get(i);
     	//return this.unstabilize;
     }
-    
+    public JButton getEarlyFlashButton()
+    {
+	return this.earlyflash;
+    }
     public class droppartbutton implements ActionListener
          {
     

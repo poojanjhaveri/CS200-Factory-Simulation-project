@@ -327,6 +327,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 
             if(!empty)
             {
+                System.out.println("Action listener called " + selKit.getItemCount());
                 selKitRoutine(ae.getSource());
             }
         }
@@ -402,8 +403,22 @@ public class FactoryProductionManager extends Manager implements ActionListener 
     //Functionality for JComboBox usage
     private void selKitRoutine(Object source)
     {
+        if(selKit.getItemCount() == kitsbp.getKits().size())
+        {
             JComboBox cb = (JComboBox)source;
             nameToAdd = (String)cb.getSelectedItem();
+            System.out.println("Name to add = " + nameToAdd);
+
+            for(Kit kitty : kitsbp.getKits())
+                if(nameToAdd.equals(kitty.getName()))
+                    kitToAdd = kitty;
+        }
+    }
+    
+        //Functionality for JComboBox usage
+    private void setComboBoxSelection()
+    {
+            nameToAdd = (String)selKit.getSelectedItem();
             System.out.println("Name to add = " + nameToAdd);
 
             for(Kit kitty : kitsbp.getKits())
@@ -460,10 +475,12 @@ public class FactoryProductionManager extends Manager implements ActionListener 
         }
         System.out.println("Available kits size = " + availableKits.size());
         
-        for(int i=0; i<selKit.getItemCount(); i++)
+        int size = selKit.getItemCount();
+        for(int i=0; i<size; i++)
         {
-            selKit.removeItemAt(i);
+            selKit.removeItemAt(0);
         }
+        
         System.out.println(selKit.getItemCount());
         //Add strings to the combobox component
         for(String kitty : availableKits)
@@ -476,7 +493,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
         {
             selKit.setSelectedItem(0);
             System.out.println("Name to add? = " + (String)selKit.getSelectedItem());
-            selKitRoutine(selKit);
+            setComboBoxSelection();
         }
 
         if(constructed)

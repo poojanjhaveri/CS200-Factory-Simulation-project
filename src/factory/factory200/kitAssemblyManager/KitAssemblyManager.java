@@ -228,7 +228,6 @@ public class KitAssemblyManager extends Manager implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent ae) {
-
         for (int i = 0; i != 8; i++) {
             if (ae.getSource() == this.nonnorm.getPilingButton(i)) {
                 if (!this.nonnorm.piledColor.get(i)) {
@@ -252,6 +251,10 @@ public class KitAssemblyManager extends Manager implements ActionListener {
         if (ae.getSource() == this.nonnorm.getDropPartButton()) {
             this.sendToServer(Message.KAM_BAD_KIT);
         }
+	if(ae.getSource() == this.nonnorm.getEarlyFlashButton()){
+	    this.sendToServer(Message.EARLY_CAMERA_FLASH);
+	}
+
         if (ae.getSource() == cameraKitStand) {
             this.flashKitCamera();
         }

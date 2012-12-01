@@ -64,6 +64,7 @@ public class Message {
     public static final String KAM_BAD_KIT = "KAM_BAD_KIT";///<a part was dropped
     public static final String KAM_ACTION_STABILIZE_NEST = "KAM_ACTION_STABILIZE_NEST";
     public static final String KAM_ACTION_UNPILE_NEST = "KAM_ACTION_UNPILE_NEST";
+    public static final String EARLY_CAMERA_FLASH = "EARLY_CAMERA_FLASH";
     //    public static final String KAM_FINISH_DROP_OFF_FULL_KIT = "KAM_FINISH_DROP_OFF_FULL_KIT";
     //    public static final String KAM_FINISH_MOVE_TO_NEST = "KAM_FINISH_MOVE_TO_NEST";
     //public static final String KAM_FINISH_DROP_OFF_PARTS = "KAM_FINISH_DROP_OFF_PARTS";
