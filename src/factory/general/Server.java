@@ -274,7 +274,7 @@ public class Server {
         //kits.add(kit);
         kits.get(0).debug();
         // TODO: *Put this wherever the FPM sends the signal to create (generate) kits
-        conveyorAgent.msgGenerateKit(10); // * This generates 10 new kits, among other things if you pass string... *
+        conveyorAgent.msgGenerateKits(10); // * This generates 10 new kits, among other things if you pass string... *
 
         // Officially start the agent interaction sequence!
         partsAgent.msgHereIsKit(kits);
@@ -292,10 +292,10 @@ public class Server {
                     }
                     laneAgents[i].print = false;
                 }
-                gantryAgent.print = true;
+                gantryAgent.print = false;
             }
             if (ALEX) {
-                kitRobotAgent.print = false;
+                kitRobotAgent.print = true;
                 conveyorAgent.print = false;
                 cameraAgent.print = false;
             }

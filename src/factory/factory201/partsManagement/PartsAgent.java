@@ -87,9 +87,11 @@ public class PartsAgent extends Agent implements PartsInterface {
     }
 
     public void msgHereIsKit(ArrayList<Kit> newKits) {// message from server
-        //print("PartsAgent got message for new kits");
-        for (Kit k : newKits) {
-            newKit.add(k);
+       
+        newKit.clear();
+        for (Kit k: newKits){
+        newKit.add(k);
+
         }
 
         print("kit configuration specifies the following parts in kit  (size : " + newKits.size() + " ) ");
@@ -132,6 +134,7 @@ public class PartsAgent extends Agent implements PartsInterface {
     @Override
     public boolean pickAndExecuteAnAction() {
 
+        print("newKit size is : " + newKit.size() + ", kits : " + kits);
         if (!newKit.isEmpty() && kits != 1) {//if there are not already 2 kits being worked on by this agent and there are new kit requests
             kits++;
 
@@ -140,6 +143,7 @@ public class PartsAgent extends Agent implements PartsInterface {
              This prolly had something to do with the setKit0 call, which gets called an extra time because kitsStarted
              takes into account 2 kits. Well anyways, changing kits!=2 to kits!=1 somehow fixed the problem.
              */
+            print("startNewKit being called");
             startNewKit(newKit.remove(0));
             requestState = true;
             return true;
@@ -344,7 +348,7 @@ public class PartsAgent extends Agent implements PartsInterface {
             this.client.sendMessage(Message.KAM_PARTS_MOVE_TO_NEST + ":" + nestNum);
             try {
                 s.acquire();
-                Thread.sleep(5000);
+          //      Thread.sleep(5000);
             } catch (InterruptedException ex) {
             }
         } else {
@@ -353,15 +357,11 @@ public class PartsAgent extends Agent implements PartsInterface {
         }
     }
 
-    public void DoPickUpPart(int nestNum) {
+    public void DoPickUpPart(int nestNum) {//does not need an acquire
         if (this.client != null) {
             this.client.sendMessage(Message.KAM_PARTS_PICK_PART + ":" + nestNum);
             this.fpm.sendMessage(Message.KAM_PARTS_PICK_PART + ":" + nestNum);
-try {
-                s.acquire();
-                Thread.sleep(5000);
-            } catch (InterruptedException ex) {
-            }
+
 
         } else {
             // print("DOMOVETONEST NUM ["+ nestNum+ "]");
@@ -375,7 +375,7 @@ try {
             this.fpm.sendMessage(Message.KAM_PARTS_DROP_OFF_PARTS + ":" + kitNum);
             try {
                 s.acquire();
-                Thread.sleep(5000);
+              //  Thread.sleep(5000);
             } catch (InterruptedException ex) {
             }
         } else {
@@ -388,11 +388,11 @@ try {
     public void DoGiveKitsInAction(Kit k) {
         if (this.client != null) {
             this.fpm.sendMessage(Message.KIT_IN_PRODUCTION + ":" + k.getName());
-            try {
-                s.acquire();
-                Thread.sleep(5000);
+            /*try {
+             //   s.acquire();
+             //   Thread.sleep(5000);
             } catch (InterruptedException ex) {
-            }
+            }*/
         } else {
             print("[ERROR] - Kit Assembly Manager is not online.");
         }

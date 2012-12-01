@@ -50,6 +50,8 @@ public class KitAssemblyManager extends Manager implements ActionListener {
         }
 
         if (msg.contains(Message.KAM_DROP_OFF_FULL_KIT)) {
+            this.graphics.deliveryStation = false;
+            this.graphics.stationRun = true;
             this.graphics.kitbot.dropOffFullKit();
 	    //needs release DONE
         } else if (msg.contains(Message.KAM_MOVE_ACTIVE_KIT_TO_INSPECTION)) {

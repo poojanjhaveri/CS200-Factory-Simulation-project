@@ -384,14 +384,7 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
         }      
         kitbot.paintMe(this, g2);
 
-        if (camera.isVisible()) {
-            camera.getCamera().paintIcon(this, g2, camera.getX(), camera.getY());
-
-        }
-        if (camera.isVisible() && cameraCounter == 20) {
-            camera.setVisible(false);
-            cameraCounter = 0;
-        }
+        
         
 
 	Random rand = new Random();//random numgen
@@ -415,6 +408,14 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
             }
         }
         kitter.paintMe(this, g2);
+        if (camera.isVisible()) {
+            camera.getCamera().paintIcon(this, g2, camera.getX(), camera.getY());
+
+        }
+        if (camera.isVisible() && cameraCounter == 20) {
+            camera.setVisible(false);
+            cameraCounter = 0;
+        }
     }
 
     public void paintNests(JPanel j, Graphics2D g) {
