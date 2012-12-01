@@ -265,7 +265,7 @@ public class HandleAManager implements Runnable {
                  queue.add(single);
                  }*/
                 this.server.getConveyorAgent().msgGenerateKits(queue.size()); // * This generates 10 new kits, among other things if you pass string... *
-                this.server.getPartsAgent().msgHereIsKit(queue); // Only being once. TODO: need to be sent each time a new kit config comes in 
+                this.server.getPartsAgent().msgHereIsKit(queue); // Only being called once. TODO: need to be sent each time a new kit config comes in 
                 //this.server.startInteractionSequence();
                 System.out.println(msg);
                 System.out.println("BEGINNING PRODUCTION CYCLE WOOOOOOT (size " + queue.size() + ")");
