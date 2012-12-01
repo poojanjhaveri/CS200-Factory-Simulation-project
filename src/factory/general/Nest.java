@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  *
- * @author Alex
+ * @author Alex, Kevin
  */
 public class Nest {
    
@@ -18,6 +18,7 @@ public class Nest {
     public int nestNum;
     public Status status;
     public List<Part> parts = new ArrayList<Part>();
+    public boolean piled=false;
     public enum Status {none, empty, needPart, gettingPart, hasPart, full, gettingInspected, readyForKit, purge};
     public int threshold = 8;
     public Part part;

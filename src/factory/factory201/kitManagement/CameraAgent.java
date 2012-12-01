@@ -53,6 +53,7 @@ public class CameraAgent extends Agent implements Camera {
     }
 
     public void msgPartsPiledUp(int nestNum) {
+    print("parts piled up hit");
         nestErrors.put(nestNum, Result.Is.piledParts);
     }
     

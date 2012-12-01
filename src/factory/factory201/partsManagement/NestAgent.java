@@ -127,6 +127,7 @@ public class NestAgent extends Agent implements NestInterface {
             if (n.status!=Nest.Status.full)
             n.status = Nest.Status.gettingPart;
         }
+        
         /* added by Kevin- if the parts are unstable, set the shaking to true*/
         else  if (result.is == Result.Is.unstableParts){
               for (Nest n1: myNests){
@@ -137,6 +138,25 @@ public class NestAgent extends Agent implements NestInterface {
                     
                     /*
                      * it will prioritize stabilizing the nest, after it is stabilized, since the status will still be full
+                     *   it will ask for re inspection! 
+                    */
+                    
+                    n1.status=Nest.Status.full;
+                }
+            }
+              
+           print("Result received is that parts are unstable");
+        }
+        
+        else  if (result.is == Result.Is.piledParts){
+              for (Nest n1: myNests){
+                if (n1.nestNum==n.nestNum)
+                {   
+                    print("nest is piled up, need to unpile");
+                    n1.piled=true;
+                    
+                    /*
+                     * it will prioritize unpiling the nest, after it is unpiled, since the status will still be full
                      *   it will ask for re inspection! 
                     */
                     
@@ -167,8 +187,19 @@ public class NestAgent extends Agent implements NestInterface {
                 }
             }
 
-        //  change this 
-  
+        //NEXT HIGHEST PRIORITY WILL BE TO UNPILE A NEST IF IT IS PILED UP 
+        for (Nest n: myNests){
+                if (n.piled==true)
+                {   //stabilize once and then wait for nest to be full again (or request new inspection. )
+                    print("nest is shaking, need to stabilize");
+                    unPileNest(n.nestNum);
+                    print("nest # " + n.nestNum + "set to false ");
+                    //set the shaking variable to false after you send the signal to the client to stabilize
+                    n.piled=false;
+                    return true;
+                }
+            }
+        
         if(requestEarlyInspection){
             for (Nest n: myNests){
                 if (n.status == Nest.Status.needPart)
@@ -238,7 +269,25 @@ public class NestAgent extends Agent implements NestInterface {
     }
     
     private void stabilizeNest(int nestN){
-        int i=nestN;
+     
+        //wait for 3 seconds before it needs to stabilize the nest (no need to use semaphores and make things complicated here)
+        try {
+         Thread.sleep(3000);
+         } catch (InterruptedException ex) {
+         }
+        
+        //send message to the animation to stabilize the nest!
+        print("sending message to stabilize nest at " + nestN);
+        client.sendMessage(Message.KAM_ACTION_STABILIZE_NEST+":"+nestN);
+        
+        //wait for a second to resume normal nest functions.
+        try {
+         Thread.sleep(1000);
+         } catch (InterruptedException ex) {
+         }
+    }
+    
+     private void unPileNest(int nestN){
         
         //wait for 3 seconds before it needs to stabilize the nest (no need to use semaphores and make things complicated here)
         try {
@@ -246,8 +295,9 @@ public class NestAgent extends Agent implements NestInterface {
          } catch (InterruptedException ex) {
          }
         
-        print("sending message to stabilize nest at " + nestN);
-        client.sendMessage(Message.KAM_ACTION_STABILIZE_NEST+":"+nestN);
+        //send message to the animation to stabilize the nest!
+        print("sending message to unpile nest at " + nestN);
+        client.sendMessage(Message.KAM_ACTION_UNPILE_NEST+":"+nestN);
         
         //wait for a second to resume normal nest functions.
         try {
