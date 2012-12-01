@@ -34,6 +34,7 @@ public class ConveyorAgent extends Agent implements Conveyor {
     }
 
     // ********** MESSAGES *********
+    
     @Override
     public void msgNeedEmptyKit() {
         print("received request for empty kit!!");

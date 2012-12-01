@@ -32,12 +32,18 @@ public class KitRobotAgent extends Agent implements KitRobot {
     private boolean requestedKitFromConveyor;
     private Semaphore animation = new Semaphore(0, true);
     private boolean firstRequest = false;
+    private boolean factoryRunning = false;
 
     public KitRobotAgent(String name) {
         super(name);
         kitStand = new KitStand(this);
         requestedKitFromConveyor = false;
         kitRequestsFromPartsAgent = 0;
+    }
+
+    // ********** MESSAGES *********
+    public void msgStartFactory() {
+        factoryRunning = true;
     }
 
     public void msgAnimationComplete() {
@@ -78,31 +84,31 @@ public class KitRobotAgent extends Agent implements KitRobot {
     // ********* SCHEDULER *********
     @Override
     public boolean pickAndExecuteAnAction() {
-        if (!kitStand.isEmpty(2) && kitStand.get(2).status == Kit.Status.verified) {
-            print("sending verified kit to the conveyor");
+        if (!kitStand.isEmpty(2) && kitStand.get(2).status == Kit.Status.verified) { //there is a verified kit waiting on [2]
             sendVerifiedKitToConveyor();
             return true;
         }
-        if (!kitStand.isEmpty(1) && kitStand.get(1).status == Kit.Status.full && kitStand.isEmpty(2)) {
-            moveFullKitToInspection(kitStand.get(1));
-            return true;
+        if (kitStand.isEmpty(2)) { //[2] is empty
+            if (!kitStand.isEmpty(1) && kitStand.get(1).status == Kit.Status.full) { //there is a full kit on [1]
+                moveFullKitToInspection(kitStand.get(1));
+                return true;
+            }
+            if (!kitStand.isEmpty(0) && kitStand.get(0).status == Kit.Status.full) { //there is a full kit on [0]
+                moveFullKitToInspection(kitStand.get(0));
+                return true;
+            }
         }
-        if (!kitStand.isEmpty(0) && kitStand.get(0).status == Kit.Status.full && kitStand.isEmpty(2)) {
-            moveFullKitToInspection(kitStand.get(0));
-            return true;
-        }
-        if (firstRequest == true && requestedKitFromConveyor == false && (kitStand.isEmpty(1) || kitStand.isEmpty(0)) && kitStand.isEmpty(2)) {
-            print("testing request empty kit from conveyor");
+        if (factoryRunning && !requestedKitFromConveyor && kitStand.availability() > 0) { //kit stand has empty spot
             requestEmptyKitFromConveyor();
             return true;
         }
-        if (kitRequestsFromPartsAgent > 0) {
-            if ((!kitStand.isEmpty(0)) && kitStand.get(0).status == Kit.Status.empty) {
-                giveEmptyKitToPartsAgent(0);
+        if (kitRequestsFromPartsAgent > 0) { //parts agent has requested at least one kit
+            if ((!kitStand.isEmpty(1)) && kitStand.get(1).status == Kit.Status.empty) { //there is an empty kit on [1]
+                giveEmptyKitToPartsAgent(1);
                 kitRequestsFromPartsAgent--;
                 return true;
-            } else if ((!kitStand.isEmpty(1)) && kitStand.get(1).status == Kit.Status.empty) {
-                giveEmptyKitToPartsAgent(1);
+            } else if ((!kitStand.isEmpty(0)) && kitStand.get(0).status == Kit.Status.empty) { //there is an empty kit on [0]
+                giveEmptyKitToPartsAgent(0);
                 kitRequestsFromPartsAgent--;
                 return true;
             }
