@@ -34,6 +34,11 @@ public class GUINonNormKAM  extends JPanel {
     JButton unstabilize;    
     ActionListener kam;
     
+    public JButton getDropPartButton()
+    {
+        return this.droppart;
+    }
+    
     public GUINonNormKAM(ActionListener in) {
              this.kam = in;
 

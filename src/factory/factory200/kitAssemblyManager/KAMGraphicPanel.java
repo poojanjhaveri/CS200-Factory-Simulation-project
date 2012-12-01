@@ -75,7 +75,7 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
     Timer timer;
     boolean stationRun;
     
-    KitAssemblyManager kam;
+    public KitAssemblyManager kam;
     
     //private ImageIcon backgroundImage = new ImageIcon("pics/background/part1");
 

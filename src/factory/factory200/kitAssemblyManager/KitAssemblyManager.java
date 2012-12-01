@@ -227,7 +227,7 @@ Integer i = Integer.parseInt(this.grabParameter(msg));
     
 	for(int i = 0; i != 8; i++){
 	if(ae.getSource() == this.nonnorm.getPilingButton(i)){
-	    if(!this.graphics.piledColor.get(i))
+	    if(!this.nonnorm.piledColor.get(i))
 	    {
 	    this.sendToServer(Message.KAM_NEST_PILED+":"+i);
 	    }
@@ -237,7 +237,7 @@ Integer i = Integer.parseInt(this.grabParameter(msg));
 	    this.nonnorm.preparemainpanel();
 	}
     	if(ae.getSource() == this.nonnorm.getStabilityButton(i)){
-	if(!this.graphics.unstableColor.get(i)){
+	if(!this.nonnorm.unstableColor.get(i)){
 this.sendToServer(Message.KAM_NEST_UNSTABLE+":"+i);
 }
 	    this.graphics.toggleUnstable(i);

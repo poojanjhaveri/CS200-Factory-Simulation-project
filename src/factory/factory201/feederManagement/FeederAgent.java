@@ -351,7 +351,9 @@ public class FeederAgent extends Agent implements Feeder {
             //System.out.println("jam status is " + leftLane.getJammed());
             //if(leftLane.getJammed()==false){
             //server function to set it jammed.
-            {System.out.println("setting strong vibration amplitude");
+            {
+        //LmServer/get.setJammedAnimation(){}    
+        System.out.println("setting strong vibration amplitude");
             LMServer.getForAgentLane().setVibrationAmplitudeStrong(leftLane.getIndex());
             timer.schedule(new TimerTask(){
     	    public void run(){		    
