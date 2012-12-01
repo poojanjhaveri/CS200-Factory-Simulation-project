@@ -201,6 +201,8 @@ public class KitAssemblyManager extends Manager implements ActionListener {
 
     public void actionPerformed(ActionEvent ae) {
     	
+	if(ae.getSource() == this.nonnorm.getPilingButton())
+	    this.graphics.piled = !this.graphics.piled;
     	if(ae.getSource() == this.nonnorm.getStabilityButton())
     		this.graphics.unstable = !this.graphics.unstable;
     	//if(ae.getSource()==){

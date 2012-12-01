@@ -24,6 +24,7 @@ public class GUINonNormKAM  extends JPanel {
     private JPanel mainpanel;
     JButton droppart1;
     JButton undo1;
+    JButton piled;
     JButton unstabilize;
     ActionListener kam;
     
@@ -70,16 +71,29 @@ public class GUINonNormKAM  extends JPanel {
         undo1.addActionListener(new undobutton());
         scenario.add(undo1);
         
-        c.gridx=1;
-        c.gridy=0;
+        c.gridx=0;
+        c.gridy=1;
         this.unstabilize = new JButton("Toggle nest stability");
         //this.unstabilize.setEnabled(false);
         this.unstabilize.setPreferredSize(new Dimension(150,50));
         this.unstabilize.addActionListener(this.kam);
         scenario.add(this.unstabilize);
         
+	c.gridx=1;
+        c.gridy=1;
+        this.unstabilize = new JButton("Toggle nest piling");
+        //this.unstabilize.setEnabled(false);
+        this.unstabilize.setPreferredSize(new Dimension(150,50));
+        this.unstabilize.addActionListener(this.kam);
+        scenario.add(this.unstabilize);
+        
+
         basepanel.add(scenario);
         mainpanel.add(basepanel,BorderLayout.CENTER);
+    }
+    public JButton getPilingButton()
+    {
+	return this.piled;
     }
     public JButton getStabilityButton()
     {

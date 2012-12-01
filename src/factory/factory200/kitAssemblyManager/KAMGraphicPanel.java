@@ -59,7 +59,7 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
     public static final Integer PARTSROBOTINITIALY = 350;///<y coordinate for parts robot to spawn in
 
     public Boolean unstable;///<whether or not the nest is stable
-
+    public Boolean piled;///<whether or not the nest has piled up
 //WHY ARE DEY PUBLIC WHY NO PRIVATE GAAARRRRRRRR. lol jk its fine.
 
     public GUIPartRobot kitter;///<declares an object that keeps track of the parts robot animation and graphics
@@ -81,6 +81,7 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
 
     public KAMGraphicPanel(KitAssemblyManager k) {
     	this.unstable = false;
+	this.piled = false;
         this.kam = k;
         
         deliveryStation = true;
@@ -391,7 +392,7 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
             camera.setVisible(false);
             cameraCounter = 0;
         }
-        kitter.paintMe(this, g2);
+        
 
 	Random rand = new Random();//random numgen
         for (int k = 0; k < this.nest.size(); k++) {
@@ -400,17 +401,20 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
 		int offsetx = 0;
 		int offsety = 0;
 		if(this.unstable){
-		rand.nextInt(5);
-		rand.nextInt(5);
+		offsetx = rand.nextInt(5);
+		offsety = rand.nextInt(5);
 		if(rand.nextInt(2) == 0)
 		    offsetx = -1*offsetx;
 		if(rand.nextInt(2) == 0)
 		    offsety = -1*offsety;
 		}
+		if(this.piled && k > 3){
+		   offsetx -= 5;
+		}
                 this.nest.get(k).getParts().get(i).getGUIPart().getImage().paintIcon(this, g2, nest.get(k).getParts().get(i).getGUIPart().getX()+offsetx, nest.get(k).getParts().get(i).getGUIPart().getY()+offsety);
             }
         }
-
+        kitter.paintMe(this, g2);
     }
 
     public void paintNests(JPanel j, Graphics2D g) {
