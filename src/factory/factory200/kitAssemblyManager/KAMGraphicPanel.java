@@ -423,7 +423,10 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
             nest.get(i - 1).getNest().paintIcon(j, g, nest.get(i - 1).getX(), nest.get(i - 1).getY());
         }
     }
-
+    public void toggleUnstable()
+    {
+	this.unstable = !this.unstable;
+    }
     public void actionPerformed(ActionEvent ae) {
     }
 }

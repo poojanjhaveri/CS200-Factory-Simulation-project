@@ -308,7 +308,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 
         // New tab for non-normative scenarios
         prepareNonNormCtrlPanel();
-        tabs.addTab("Non-normative Controls", nonNormCtrlPanel);
+    //    tabs.addTab("Non-normative Controls", nonNormCtrlPanel);
         
         //Register ActionListeners
         selKit.addActionListener(this);

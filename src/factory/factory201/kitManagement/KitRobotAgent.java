@@ -43,6 +43,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
     // ********** AGENT MESSAGES *********
     @Override
     public void msgNeedEmptyKit() {
+        print("kit request received");
         kitRequestsFromPartsAgent++;
         stateChanged();
     }
@@ -98,11 +99,13 @@ public class KitRobotAgent extends Agent implements KitRobot {
                 return true;
             }
         }
-        if (factoryRunning && !requestedKitFromConveyor && kitStand.availability() > 0) { //kit stand has empty spot
+        if (factoryRunning && !requestedKitFromConveyor && (kitStand.isEmpty(0) || kitStand.isEmpty(1)) && kitStand.isEmpty(2)) { //kit stand has empty spot
             requestEmptyKitFromConveyor();
             return true;
         }
+        print("kit requests is " + kitRequestsFromPartsAgent);
         if (kitRequestsFromPartsAgent > 0) { //parts agent has requested at least one kit
+            print("need to give empty kit to the parts agent");
             if ((!kitStand.isEmpty(1)) && kitStand.get(1).status == Kit.Status.empty) { //there is an empty kit on [1]
                 giveEmptyKitToPartsAgent(1);
                 kitRequestsFromPartsAgent--;
