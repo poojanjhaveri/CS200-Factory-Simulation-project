@@ -142,7 +142,10 @@ public class GUINonNormKAM  extends JPanel {
     	return this.unstables.get(i);
     	//return this.unstabilize;
     }
-    
+    public JButton getEarlyFlashButton()
+    {
+	return this.earlyflash;
+    }
     public class droppartbutton implements ActionListener
          {
     

@@ -252,7 +252,7 @@ public class KitAssemblyManager extends Manager implements ActionListener {
             this.sendToServer(Message.KAM_BAD_KIT);
         }
 	if(ae.getSource() == this.nonnorm.getEarlyFlashButton()){
-
+	    this.sendToServer(Message.EARLY_CAMERA_FLASH);
 	}
 
         if (ae.getSource() == cameraKitStand) {
