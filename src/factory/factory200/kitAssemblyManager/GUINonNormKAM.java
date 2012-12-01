@@ -57,41 +57,47 @@ public class GUINonNormKAM  extends JPanel {
         JPanel scenario = new JPanel(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         
-         c.ipady=10;
-         c.ipadx=10;
+         c.ipady=5;
+         c.ipadx=5;
         
         c.fill =GridBagConstraints.HORIZONTAL;
         c.gridx=0;
         c.gridy=0;
         droppart = new JButton("Drop a Part");
+        droppart.setBackground(Color.GREEN);
+        droppart.setOpaque(true);
         droppart.addActionListener(new droppartbutton());
         droppart.setPreferredSize(new Dimension(150,50));
         scenario.add(droppart,c);
         
-        for (int i=0;i<8;i++){
-        	c.fill =GridBagConstraints.HORIZONTAL;
-        	c.gridx=0;
-        	c.gridy=i+1;
-        	this.unstabilize = new JButton("Toggle nest stability for 0");
-        //this.unstabilize.setEnabled(false);
-        	this.unstabilize.setPreferredSize(new Dimension(150,50));
-        	this.unstabilize.addActionListener(this.kam);
-        	scenario.add(unstabilize,c);
-        	
-        	unstables.add(unstabilize);
-        	
+        for (int j=0;j<2;j++){
+        	for (int i=0;i<4;i++){
+        		c.fill =GridBagConstraints.HORIZONTAL;
+        		c.gridx=i;
+        		c.gridy=j+1;
+        		this.unstabilize = new JButton("Toggle stability "+(j*4+i));
+        		this.unstabilize.setBackground(Color.GREEN);
+        		this.unstabilize.setOpaque(true);
+        		this.unstabilize.setPreferredSize(new Dimension(150,50));
+        		this.unstabilize.addActionListener(this.kam);
+        		scenario.add(unstabilize,c);        	
+        		unstables.add(unstabilize);
+        	}
         }
-               
-        for(int i=0;i<8;i++){
-        	c.fill =GridBagConstraints.HORIZONTAL;
-        	c.gridx=2;
-        	c.gridy=i+1;
-        	this.piled = new JButton("Toggle nest piling");
-        	//this.unstabilize.setEnabled(false);
-        	this.piled.setPreferredSize(new Dimension(150,50));
-        	this.piled.addActionListener(this.kam);
-        	piles.add(piled);
-        	scenario.add(this.piled,c);
+              
+        for(int j=0;j<2;j++){
+        	for(int i=0;i<4;i++){
+        		c.fill =GridBagConstraints.HORIZONTAL;
+        		c.gridx=i;
+        		c.gridy=j+3;
+        		this.piled = new JButton("Toggle piling"+(j*4+i));
+        		this.piled.setBackground(Color.GREEN);
+        		this.piled.setOpaque(true);
+        		this.piled.setPreferredSize(new Dimension(150,50));
+        		this.piled.addActionListener(this.kam);
+        		piles.add(piled);
+        		scenario.add(this.piled,c);
+        	}
         }
         
        
@@ -117,8 +123,6 @@ public class GUINonNormKAM  extends JPanel {
              droppart.setEnabled(false);
              System.out.println("KAM drop part");
            
-            
-            
             }
     
        }
@@ -136,10 +140,7 @@ public class GUINonNormKAM  extends JPanel {
             
             }
     
-       }
-    
-    
-    
+       }    
     
 }
     
