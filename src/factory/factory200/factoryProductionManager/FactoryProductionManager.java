@@ -54,8 +54,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
     private JScrollPane schedPane, outPane, queuePane;
     private JTabbedPane tabs;
     
-    private ArrayList<String> serverQueue;
-    private String inProduction;
+    private ArrayList<Kit> prodQueue; // used for queue of kits
 
     public GraphicsPanel gfx;
 
@@ -106,7 +105,6 @@ public class FactoryProductionManager extends Manager implements ActionListener 
         gfx.setPreferredSize(new Dimension(1350, 700));
 
         //Instantiate ServerQueue
-        serverQueue = new ArrayList<String>();
         serverQueueDisplay = new JTextArea(12, 20);
 
         inProdField = new JTextArea(1, 20);
@@ -343,9 +341,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
                     try {
                         Integer.parseInt(numE.getText());
                         qtyToAdd = Integer.parseInt(numE.getText());
-                        for(int i=0;i<qtyToAdd;i++)
-                        {
-
+                        for(int i=0;i<qtyToAdd;i++) {
                             System.out.println("Name = " + nameToAdd);
                             selectedKits.add(kitToAdd);
                             schedField.append(nameToAdd + newline);
@@ -428,20 +424,19 @@ public class FactoryProductionManager extends Manager implements ActionListener 
             System.out.println("GRABBED A NEW BLUEPRINTKITS FROM THE SERVER");
             //this.kitsbp.debug();
             this.reconstructComboBox();
-        }
-        if(msg.contains(Message.KIT_IN_PRODUCTION))
-        {
+        } else if(msg.contains(Message.KIT_IN_PRODUCTION)) { // DoGiveKitsInAction() in PartsAgent
+        	// Update the in-production textfield to show the kit in production (the kit "in action")
             inProdField.setText("");
             inProdField.append(this.grabParameter(msg));
-        }
-        if(msg.contains(Message.GIVE_KITS_IN_QUEUE))
-        {
+            
+        	// Remove the kit that is now in action from the queue (kit should no longer be in the queue if it is in action)
+            
+        } else if(msg.contains(Message.GIVE_KITS_IN_QUEUE)) {
             serverQueueDisplay.setText("");
             BlueprintKits temp = new BlueprintKits();
-            temp.recreate(this.grabParameter(msg));
-            ArrayList<Kit> prodqueue = temp.getKits();
-            for(Kit kitty : prodqueue)
-            {
+            temp.recreate(this.grabParameter(msg)); // grabs the arraylist of kits sent to him
+            prodQueue = temp.getKits();
+            for (Kit kitty : prodQueue) {
                 serverQueueDisplay.append(kitty.getName() + newline);
             }
         }
