@@ -113,12 +113,14 @@ public class KitAssemblyManager extends Manager implements ActionListener {
         //todo - let me know what functions agent will call so I can process them here
     }
 
-    public void nestUp(int n){ 
+    public void nestUp(int n) {
         this.graphics.nest.get(n).nestUp();
     }
-    public void nestDown(int n){
+
+    public void nestDown(int n) {
         this.graphics.nest.get(n).nestDown();
     }
+
     public void doSetParts(int n, int partType) {
         //create part based on part type given
         Part temp = new Part(null, null);
@@ -277,6 +279,16 @@ public class KitAssemblyManager extends Manager implements ActionListener {
             Integer kit = Integer.parseInt(choice);
             this.graphics.kitter.dropOffParts(kit);
         }
+        if (ae.getSource() == nestUp) {
+            String choice = JOptionPane.showInputDialog("Please enter the nest number (0-7): ");
+            Integer kit = Integer.parseInt(choice);
+            nestUp(kit);
+        }
+        if (ae.getSource() == nestDown) {
+            String choice = JOptionPane.showInputDialog("Please enter the nest number (0-7): ");
+            Integer kit = Integer.parseInt(choice);
+            nestDown(kit);
+        }
         if (ae.getSource() == kitRobotKitStand) {
             this.graphics.kitbot.moveActiveKitToInspection();
         }
@@ -369,10 +381,18 @@ public class KitAssemblyManager extends Manager implements ActionListener {
     JButton moveFrom0To2;
     JButton addKit;
     JButton addPart;
+    JButton nestUp;
+    JButton nestDown;
 
     public JPanel TestPanel() {
         JPanel tester = new JPanel();
         tester.setLayout(new BoxLayout(tester, BoxLayout.Y_AXIS));
+        nestUp = new JButton("NEST UP");
+        nestUp.addActionListener(this);
+        tester.add(nestUp);
+        nestDown = new JButton("NEST DOWN");
+        nestDown.addActionListener(this);
+        tester.add(nestDown);
         addPart = new JButton("ADD PART");
         addPart.addActionListener(this);
         tester.add(addPart);
