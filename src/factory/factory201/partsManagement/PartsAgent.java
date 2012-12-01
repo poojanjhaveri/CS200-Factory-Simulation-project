@@ -342,9 +342,10 @@ public class PartsAgent extends Agent implements PartsInterface {
         if (this.client != null) {
             this.fpm.sendMessage(Message.KAM_PARTS_MOVE_TO_NEST + ":" + nestNum);
             this.client.sendMessage(Message.KAM_PARTS_MOVE_TO_NEST + ":" + nestNum);
-            //s.acquireUninterruptibly();
+            
             try {
-            Thread.sleep(5000);
+         //   Thread.sleep(5000);
+            	s.acquire();
             } catch (InterruptedException e) {
          // TODO Auto-generated catch block
          e.printStackTrace();
@@ -362,12 +363,14 @@ public class PartsAgent extends Agent implements PartsInterface {
             this.client.sendMessage(Message.KAM_PARTS_PICK_PART + ":" + nestNum);
             this.fpm.sendMessage(Message.KAM_PARTS_PICK_PART + ":" + nestNum);
             //s.acquireUninterruptibly();//do not acquire!!!!
-        try {
-         Thread.sleep(1500);
+       /* try {
+        	//s.acquire();
+         //Thread.sleep(1500);
          } catch (InterruptedException e) {
          // TODO Auto-generated catch block
          e.printStackTrace();
          }
+        */
         } else {
            // print("DOMOVETONEST NUM ["+ nestNum+ "]");
            // print("[ERROR] - Kit Assembly Manager is not online.");
@@ -381,7 +384,8 @@ public class PartsAgent extends Agent implements PartsInterface {
             this.fpm.sendMessage(Message.KAM_PARTS_DROP_OFF_PARTS + ":" + kitNum);
             //s.acquireUninterruptibly();
         try {
-         Thread.sleep(10000);
+        	s.acquire();
+        	//Thread.sleep(10000);
          } catch (InterruptedException e) {
          // TODO Auto-generated catch block
          e.printStackTrace();
@@ -397,12 +401,12 @@ public class PartsAgent extends Agent implements PartsInterface {
         if (this.client != null) {
 
             this.fpm.sendMessage(Message.KIT_IN_PRODUCTION+":"+k.getName());
-        try {
+        /*try {
          Thread.sleep(5000);
          } catch (InterruptedException e) {
          // TODO Auto-generated catch block
          e.printStackTrace();
-         }
+         }*/
         }
         else{
             print("[ERROR] - Kit Assembly Manager is not online.");

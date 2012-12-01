@@ -391,7 +391,7 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
             camera.setVisible(false);
             cameraCounter = 0;
         }
-        kitter.paintMe(this, g2);
+        
 
 	Random rand = new Random();//random numgen
         for (int k = 0; k < this.nest.size(); k++) {
@@ -400,8 +400,8 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
 		int offsetx = 0;
 		int offsety = 0;
 		if(this.unstable){
-		rand.nextInt(5);
-		rand.nextInt(5);
+		offsetx = rand.nextInt(5);
+		offsety = rand.nextInt(5);
 		if(rand.nextInt(2) == 0)
 		    offsetx = -1*offsetx;
 		if(rand.nextInt(2) == 0)
@@ -410,7 +410,7 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
                 this.nest.get(k).getParts().get(i).getGUIPart().getImage().paintIcon(this, g2, nest.get(k).getParts().get(i).getGUIPart().getX()+offsetx, nest.get(k).getParts().get(i).getGUIPart().getY()+offsety);
             }
         }
-
+        kitter.paintMe(this, g2);
     }
 
     public void paintNests(JPanel j, Graphics2D g) {
