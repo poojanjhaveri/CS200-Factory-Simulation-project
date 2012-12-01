@@ -205,13 +205,22 @@ public class KitAssemblyManager extends Manager implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent ae) {
-    	
+    /*	
 	for(int i = 0; i != 8; i++){
-	if(ae.getSource() == this.nonnorm.getPilingButton(i))
+	if(ae.getSource() == this.nonnorm.getPilingButton(i)){
 	    this.graphics.togglePiled(i);
-    	if(ae.getSource() == this.nonnorm.getStabilityButton(i))
-	    this.graphics.toggleUnstable(i);
+	    this.nonnorm.togglePiledColor(i);
+	    this.nonnorm.removeAll();
+	    this.nonnorm.preparemainpanel();
 	}
+    	if(ae.getSource() == this.nonnorm.getStabilityButton(i)){
+	    this.graphics.toggleUnstable(i);
+	    this.nonnorm.toggleStabilizeColor(i);
+	    this.nonnorm.removeAll();
+	    this.nonnorm.preparemainpanel();
+    	}
+	}
+	*/
     	//if(ae.getSource()==){
     		
     	//}
