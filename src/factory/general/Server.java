@@ -282,7 +282,7 @@ public class Server {
 
         private void turnOffAgentPrintStatements() {
             if (PATRICK) {
-                nestAgent.print = false;
+                nestAgent.print = true;
                 partsAgent.print = false;
             }
             if (KEVIN) {
@@ -297,7 +297,7 @@ public class Server {
             if (ALEX) {
                 kitRobotAgent.print = false;
                 conveyorAgent.print = false;
-                cameraAgent.print = false;
+                cameraAgent.print = true;
             }
       }
 
