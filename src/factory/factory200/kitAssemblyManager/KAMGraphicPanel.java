@@ -445,40 +445,40 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
     }
     public boolean partsRobotInWay(int nestnum)
     {
-	if(this.kitter.getX() < RAILX-5)
+	if(this.kitter.getX() < RAILX-16)
 	    return false;
 	switch(nestnum)
 	    {
 	    case 0:
-		if(this.kitter.getY() < LANE0Y+ 5 && this.kitter.getY() > LANE0Y-5)
+		if(this.kitter.getY() < LANE0Y+ 15 && this.kitter.getY() > LANE0Y-15)
 		    return true;
 		break;
 	    case 1:
-		if(this.kitter.getY() == LANE1Y+ 5 && this.kitter.getY() > LANE1Y-5)
+		if(this.kitter.getY() == LANE1Y+ 15 && this.kitter.getY() > LANE1Y-15)
 		    return true;
 		break;
 	    case 2:
-		if(this.kitter.getY() == LANE2Y+ 5 && this.kitter.getY() > LANE2Y-5)
+		if(this.kitter.getY() == LANE2Y+ 15 && this.kitter.getY() > LANE2Y-15)
 		    return true;
 		break;
 	    case 3:
-		if(this.kitter.getY() == LANE3Y+ 5 && this.kitter.getY() > LANE3Y-5)
+		if(this.kitter.getY() == LANE3Y+ 15 && this.kitter.getY() > LANE3Y-15)
 		    return true;
 		break;
 	    case 4:
-		if(this.kitter.getY() == LANE4Y+ 5 && this.kitter.getY() > LANE4Y-5)
+		if(this.kitter.getY() == LANE4Y+ 15 && this.kitter.getY() > LANE4Y-15)
 		    return true;
 		break;
 	    case 5:
-		if(this.kitter.getY() == LANE5Y+ 5 && this.kitter.getY() > LANE5Y-5)
+		if(this.kitter.getY() == LANE5Y+ 15 && this.kitter.getY() > LANE5Y-15)
 		    return true;
 		break;
 	    case 6:
-		if(this.kitter.getY() == LANE6Y+ 5 && this.kitter.getY() > LANE6Y-5)
+		if(this.kitter.getY() == LANE6Y+ 5 && this.kitter.getY() > LANE6Y-15)
 		    return true;
 		break;
 	    case 7:
-		if(this.kitter.getY() == LANE7Y+ 5 && this.kitter.getY() > LANE7Y-5)
+		if(this.kitter.getY() == LANE7Y+ 15 && this.kitter.getY() > LANE7Y-15)
 		    return true;
 		break;
 	    }
