@@ -34,7 +34,7 @@ import javax.swing.JTabbedPane;
 public class KitAssemblyManager extends Manager implements ActionListener {
 
     KAMGraphicPanel graphics;
-    boolean test=false;
+    boolean test=true;
     JTabbedPane tabbedPane;
     GUINonNormKAM nonnorm;
     //private KitAssemblyManagerDeliveryStation kamdelivery;///<keeps track of all of the objects listed above and paints the objects according to a timer
