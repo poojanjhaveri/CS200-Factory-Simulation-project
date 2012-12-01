@@ -9,6 +9,8 @@ import factory.factory200.gantryRobotManager.GUINonNormGAM;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
 import javax.swing.*;
 
 /**
@@ -23,25 +25,25 @@ public class GUINonNormKAM  extends JPanel {
     
     private JPanel mainpanel;
     JButton droppart;
-    JButton undoDroppart;
-    JButton piled;
    
-    JButton unstabilize; 
-    JButton undoUnstabilize;
-    JButton undoPiled;
+    JButton piled;
+    ArrayList<JButton> unstables;
+    ArrayList<JButton> piles;
+    JButton unstabilize;    
     ActionListener kam;
     
     public GUINonNormKAM(ActionListener in) {
              this.kam = in;
            preparemainpanel();
            this.add(mainpanel);
-        
-            
+           
          }
 
  
     private void preparemainpanel()
     {
+    	unstables= new ArrayList<JButton>();
+        piles = new ArrayList<JButton>();
         mainpanel = new JPanel();
         JPanel basepanel = new JPanel();
         basepanel.setLayout(new BorderLayout());
@@ -66,61 +68,44 @@ public class GUINonNormKAM  extends JPanel {
         droppart.setPreferredSize(new Dimension(150,50));
         scenario.add(droppart,c);
         
-        c.fill =GridBagConstraints.HORIZONTAL;
-        c.gridx=1;
-        c.gridy=0;
-        undoDroppart = new JButton("Revert Back");
-        //undo1.setEnabled(false);
-        undoDroppart.setPreferredSize(new Dimension(150,50));
-        undoDroppart.addActionListener(new undobutton());
-        scenario.add(undoDroppart,c);
-        
-        c.fill =GridBagConstraints.HORIZONTAL;
-        c.gridx=0;
-        c.gridy=1;
-        this.unstabilize = new JButton("Toggle nest stability");
+        for (int i=0;i<8;i++){
+        	c.fill =GridBagConstraints.HORIZONTAL;
+        	c.gridx=0;
+        	c.gridy=i+1;
+        	this.unstabilize = new JButton("Toggle nest stability for 0");
         //this.unstabilize.setEnabled(false);
-        this.unstabilize.setPreferredSize(new Dimension(150,50));
-        this.unstabilize.addActionListener(this.kam);
-        scenario.add(this.unstabilize,c);
+        	this.unstabilize.setPreferredSize(new Dimension(150,50));
+        	this.unstabilize.addActionListener(this.kam);
+        	scenario.add(unstabilize,c);
+        	
+        	unstables.add(unstabilize);
+        	
+        }
+               
+        for(int i=0;i<8;i++){
+        	c.fill =GridBagConstraints.HORIZONTAL;
+        	c.gridx=2;
+        	c.gridy=i+1;
+        	this.piled = new JButton("Toggle nest piling");
+        	//this.unstabilize.setEnabled(false);
+        	this.piled.setPreferredSize(new Dimension(150,50));
+        	this.piled.addActionListener(this.kam);
+        	piles.add(piled);
+        	scenario.add(this.piled,c);
+        }
         
-        c.fill =GridBagConstraints.HORIZONTAL;
-        c.gridx=1;
-        c.gridy=1;
-        this.undoUnstabilize = new JButton("UnToggle nest stability");
-        //this.unstabilize.setEnabled(false);
-        this.undoUnstabilize.setPreferredSize(new Dimension(150,50));
-        this.undoUnstabilize.addActionListener(this.kam);
-        scenario.add(this.undoUnstabilize,c);
-        
-        c.fill =GridBagConstraints.HORIZONTAL;
-        c.gridx=0;
-        c.gridy=2;
-        this.piled = new JButton("Toggle nest piling");
-        //this.unstabilize.setEnabled(false);
-        this.piled.setPreferredSize(new Dimension(150,50));
-        this.piled.addActionListener(this.kam);
-        scenario.add(this.piled,c);
-        
-        c.fill =GridBagConstraints.HORIZONTAL;
-        c.gridx=1;
-        c.gridy=2;
-        this.undoPiled = new JButton("Toggle nest piling");
-        //this.unstabilize.setEnabled(false);
-        this.undoPiled.setPreferredSize(new Dimension(150,50));
-        this.undoPiled.addActionListener(this.kam);
-        scenario.add(this.undoPiled,c);        
+       
 
         basepanel.add(scenario);
         mainpanel.add(basepanel,BorderLayout.CENTER);
     }
-    public JButton getPilingButton()
+    public JButton getPilingButton(int i)
     {
-	return this.piled;
+	return this.piles.get(i);
     }
-    public JButton getStabilityButton()
+    public JButton getStabilityButton(int i)
     {
-    	return this.unstabilize;
+    	return this.unstables.get(i);
     	//return this.unstabilize;
     }
     
@@ -131,7 +116,7 @@ public class GUINonNormKAM  extends JPanel {
              
              droppart.setEnabled(false);
              System.out.println("KAM drop part");
-             undoDroppart.setEnabled(true);
+           
             
             
             }
@@ -144,7 +129,7 @@ public class GUINonNormKAM  extends JPanel {
     
          public void actionPerformed(ActionEvent e) {
              
-             undoDroppart.setEnabled(false);
+             
              System.out.println("Undo drop part condition");
              droppart.setEnabled(true);
             
