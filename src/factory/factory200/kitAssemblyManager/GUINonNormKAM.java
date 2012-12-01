@@ -36,14 +36,14 @@ public class GUINonNormKAM  extends JPanel {
              this.kam = in;
            preparemainpanel();
            this.add(mainpanel);
-           unstables= new ArrayList<JButton>();
-           piles = new ArrayList<JButton>();
-            
+           
          }
 
  
     private void preparemainpanel()
     {
+    	unstables= new ArrayList<JButton>();
+        piles = new ArrayList<JButton>();
         mainpanel = new JPanel();
         JPanel basepanel = new JPanel();
         basepanel.setLayout(new BorderLayout());
@@ -76,14 +76,16 @@ public class GUINonNormKAM  extends JPanel {
         //this.unstabilize.setEnabled(false);
         	this.unstabilize.setPreferredSize(new Dimension(150,50));
         	this.unstabilize.addActionListener(this.kam);
-        	unstables.add(unstabilize);
         	scenario.add(unstabilize,c);
+        	
+        	unstables.add(unstabilize);
+        	
         }
                
         for(int i=0;i<8;i++){
         	c.fill =GridBagConstraints.HORIZONTAL;
-        	c.gridx=i+1;
-        	c.gridy=2;
+        	c.gridx=2;
+        	c.gridy=i+1;
         	this.piled = new JButton("Toggle nest piling");
         	//this.unstabilize.setEnabled(false);
         	this.piled.setPreferredSize(new Dimension(150,50));
