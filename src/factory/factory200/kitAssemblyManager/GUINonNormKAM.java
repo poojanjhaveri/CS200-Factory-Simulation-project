@@ -82,10 +82,10 @@ public class GUINonNormKAM  extends JPanel {
         c.gridx=0;
         c.gridy=0;
         droppart = new JButton("Drop a Part");
-        droppart.setBackground(Color.GREEN);
-        droppart.setOpaque(true);
+        //droppart.setBackground(Color.GREEN);
+        //droppart.setOpaque(true);
         droppart.addActionListener(new droppartbutton());
-        droppart.setPreferredSize(new Dimension(100,50));
+        droppart.setPreferredSize(new Dimension(100,45));
         scenario.add(droppart,c);
         
         c.fill =GridBagConstraints.HORIZONTAL;
@@ -93,12 +93,13 @@ public class GUINonNormKAM  extends JPanel {
         c.gridy=0;
         earlyflash = new JButton("Early Camera Flash");
         earlyflash.addActionListener(this.kam);
-        earlyflash.setPreferredSize(new Dimension(100,50));
+        earlyflash.setPreferredSize(new Dimension(120,43));
         scenario.add(earlyflash,c);
         
         for (int j=0;j<2;j++){
         	for (int i=0;i<4;i++){
         		c.fill =GridBagConstraints.HORIZONTAL;
+        		c.insets=new Insets(4,0,0,0);
         		c.gridx=1;
         		c.gridy=j*4+i+1;
         		this.unstabilize = new JButton("Toggle stability "+(j*4+i));
@@ -109,7 +110,7 @@ public class GUINonNormKAM  extends JPanel {
         			this.unstabilize.setBackground(Color.RED);
         		}
         		this.unstabilize.setOpaque(true);
-        		this.unstabilize.setPreferredSize(new Dimension(100,50));
+        		this.unstabilize.setPreferredSize(new Dimension(120,43));
         		this.unstabilize.addActionListener(this.kam);
         		scenario.add(unstabilize,c);        	
         		unstables.add(unstabilize);
@@ -119,6 +120,7 @@ public class GUINonNormKAM  extends JPanel {
         for(int j=0;j<2;j++){
         	for(int i=0;i<4;i++){
         		c.fill =GridBagConstraints.HORIZONTAL;
+        		c.insets=new Insets(5,0,0,0);
         		c.gridx=0;
         		c.gridy=j*4+i+1;
         		this.piled = new JButton("Toggle piling"+(j*4+i));
@@ -127,7 +129,7 @@ public class GUINonNormKAM  extends JPanel {
         		else
         			this.piled.setBackground(Color.RED);
         		this.piled.setOpaque(true);
-        		this.piled.setPreferredSize(new Dimension(100,50));
+        		this.piled.setPreferredSize(new Dimension(120,45));
         		this.piled.addActionListener(this.kam);
         		piles.add(piled);
         		scenario.add(this.piled,c);
