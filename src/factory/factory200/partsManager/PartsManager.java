@@ -602,6 +602,15 @@ public class PartsManager extends Manager implements ActionListener {
 	    	  cbImageFileName2.addItem(imgFile.toString());
 	    	  }*/
             
+            cbImageFileName.addItem("pics/parts/part1.png");
+            cbImageFileName.addItem("pics/parts/part2.png");
+            cbImageFileName.addItem("pics/parts/part3.png");
+            cbImageFileName.addItem("pics/parts/part4.png");
+            cbImageFileName.addItem("pics/parts/part5.png");
+            cbImageFileName.addItem("pics/parts/part6.png");
+            cbImageFileName.addItem("pics/parts/part7.png");
+            cbImageFileName.addItem("pics/parts/part8.png");
+            
             cbImageFileName2.addItem("pics/parts/part1.png");
             cbImageFileName2.addItem("pics/parts/part2.png");
             cbImageFileName2.addItem("pics/parts/part3.png");
@@ -610,6 +619,7 @@ public class PartsManager extends Manager implements ActionListener {
             cbImageFileName2.addItem("pics/parts/part6.png");
             cbImageFileName2.addItem("pics/parts/part7.png");
             cbImageFileName2.addItem("pics/parts/part8.png");
+            
 	          
 	      //} 
 		
