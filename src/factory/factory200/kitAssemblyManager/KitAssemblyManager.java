@@ -1,23 +1,22 @@
 
 package factory.factory200.kitAssemblyManager;
 
-import factory.factory200.kitAssemblyManager.*;
-import factory.general.GUIPart;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import factory.general.Manager;
-import java.awt.Button;
-import java.awt.Graphics2D;
-import java.awt.GridLayout;
+
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import factory.general.Message;
-import factory.general.Part;
-import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
+
+import factory.general.GUIPart;
+import factory.general.Manager;
+import factory.general.Message;
+import factory.general.Part;
 
 /**
  * This class keeps track of everything that will be visible to the Kit Assembly
