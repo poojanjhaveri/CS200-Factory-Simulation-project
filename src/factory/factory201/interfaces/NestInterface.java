@@ -2,6 +2,7 @@ package factory.factory201.interfaces;
 
 import factory.general.Nest;
 import factory.general.Part;
+import factory.general.Result;
 import java.util.List;
 
 public interface NestInterface extends FactoryBase {
@@ -12,6 +13,6 @@ public interface NestInterface extends FactoryBase {
     
     public void msgHereAreParts(List<Part> kitParts, int laneIndex);
     
-    public void msgNestInspected(Nest n, boolean result);
+    public void msgNestInspected(Nest n, Result result);
     
 }
