@@ -1,3 +1,4 @@
+
 package factory.factory200.kitAssemblyManager;
 
 import factory.factory200.kitAssemblyManager.*;
@@ -117,6 +118,8 @@ public class KitAssemblyManager extends Manager implements ActionListener {
             tempPic = new ImageIcon("pics/parts/part7.png");
         } else if (partType == 7) {
             tempPic = new ImageIcon("pics/parts/part8.png");
+        } else if (partType==8){ //ADD IN BAD PART LOGIC!!!!
+            tempPic = new ImageIcon("pics/parts/badpart.png"); //ADD IN MORE TO THIS FUNCTION? is signal sent to parts agent?
         }
         for (int i = 0; i < this.graphics.nest.size(); i++) {
             if (n == i) {
@@ -203,12 +206,10 @@ public class KitAssemblyManager extends Manager implements ActionListener {
 
     public void actionPerformed(ActionEvent ae) {
     	
-	for(int i = 0; i != 8; i++){
-	if(ae.getSource() == this.nonnorm.getPilingButton(i))
-	    this.graphics.togglePiled(i);
-    	if(ae.getSource() == this.nonnorm.getStabilityButton(i))
-	    this.graphics.toggleUnstable(i);
-	}
+	if(ae.getSource() == this.nonnorm.getPilingButton())
+	    this.graphics.piled = !this.graphics.piled;
+    	if(ae.getSource() == this.nonnorm.getStabilityButton())
+	    this.graphics.toggleUnstable();
     	//if(ae.getSource()==){
     		
     	//}
