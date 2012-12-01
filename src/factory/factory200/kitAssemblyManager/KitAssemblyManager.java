@@ -207,7 +207,7 @@ public class KitAssemblyManager extends Manager implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent ae) {
-    /*	
+    
 	for(int i = 0; i != 8; i++){
 	if(ae.getSource() == this.nonnorm.getPilingButton(i)){
 	    if(!this.graphics.piledColor.get(i))
@@ -229,7 +229,10 @@ this.sendToServer(Message.KAM_NEST_UNSTABLE+":"+i);
 	    this.nonnorm.preparemainpanel();
     	}
 	}
-	*/
+	if(ae.getSource() == this.nonnorm.getDropPartButton())
+	    {
+		this.sendToServer(Message.KAM_BAD_KIT);
+	    }
     	//if(ae.getSource()==){
     		
     	//}

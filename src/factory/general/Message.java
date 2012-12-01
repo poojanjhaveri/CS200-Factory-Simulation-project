@@ -61,6 +61,7 @@ public class Message {
     public static final String KAM_NEST_STABLE = "KAM_NEST_STABLE";
     public static final String KAM_NEST_UNSTABLE = "KAM_NEST_UNSTABLE";
     public static final String KAM_NEST_PILED = "KAM_NEST_PILED";
+    public static final String KAM_BAD_KIT = "KAM_BAD_KIT";///<a part was dropped
     //    public static final String KAM_FINISH_DROP_OFF_FULL_KIT = "KAM_FINISH_DROP_OFF_FULL_KIT";
     //    public static final String KAM_FINISH_MOVE_TO_NEST = "KAM_FINISH_MOVE_TO_NEST";
     //public static final String KAM_FINISH_DROP_OFF_PARTS = "KAM_FINISH_DROP_OFF_PARTS";

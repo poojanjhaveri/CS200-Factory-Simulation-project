@@ -289,6 +289,8 @@ public class HandleAManager implements Runnable {
 		//handle nest piled nonnorm
 	    }else if(msg.contains(Message.KAM_NEST_UNSTABLE)){
 		//handle unstable nonnorm
+	    }else if(msg.contains(Message.KAM_BAD_KIT)){
+		//handle bad kit nonnorm NOTE: bad kit == DROPPED != INSPECTED!!!!
 	    }
 
     }
