@@ -374,6 +374,10 @@ public class Server {
     public void setFPMClient(HandleAManager in) {
         this.fpmclient = in;
     }
+    public void setNestAgentClient(HandleAManager in)
+    {
+	this.nestAgent.setClient(in);
+    }
 
     public HandleAManager getFPMClient() {
         return this.fpmclient;

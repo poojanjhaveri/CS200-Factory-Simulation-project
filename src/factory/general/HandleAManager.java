@@ -140,9 +140,9 @@ public class HandleAManager implements Runnable {
             this.server.setConveyerAgentClient(this);
             this.server.setPartsAgentClient(this);
             this.server.getServerLM().setKAM(this);
+	    this.server.setNestAgentClient(this);
         }
     }
-
 
     public void pushToFPM()
     {
