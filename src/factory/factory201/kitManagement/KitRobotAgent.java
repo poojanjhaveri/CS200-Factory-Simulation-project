@@ -43,7 +43,8 @@ public class KitRobotAgent extends Agent implements KitRobot {
 
     // ********** MESSAGES *********
     public void msgStartFactory() {
-        factoryRunning = true;
+    factoryRunning = true;
+    stateChanged();
     }
 
     public void msgAnimationComplete() {
