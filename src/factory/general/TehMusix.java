@@ -5,6 +5,8 @@ import java.io.*;
 
    import java.io.File;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 import javax.sound.sampled.AudioFormat;
@@ -105,6 +107,5 @@ public class TehMusix implements Runnable{
     {
 	TehMusix s = new TehMusix("bg.wav");
 	(new Thread(s)).start();
-		//MakeSound.play("bg.wav");
     }
 }

@@ -6,8 +6,8 @@ package factory.factory200.gantryRobotManager;
 
 /**
  *
- * @author Poojan Jhaveri
- * @brief : GUI class for non-normative scenario associated with Gantry Robot manager
+ * @author Poojan Jhaveri, Yuting Liu, Roy YiWei Zheng
+ * @brief GUI class for non-normative scenario associated with Gantry Robot manager
  */
 
 import java.awt.*;

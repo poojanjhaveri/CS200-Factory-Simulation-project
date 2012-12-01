@@ -20,9 +20,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="kitrobot.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Factory Project
-   &#160;<span id="projectnumber">0.1.0</span>
+   &#160;<span id="projectnumber">0.4.0</span>
    </div>
    <div id="projectbrief">team 1 joint cs200/cs201</div>
   </td>
@@ -125,14 +126,29 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <h3><a class="anchor" id="index_k"></a>- k -</h3><ul>
 <li>kam
-: <a class="el" href="classfactory_1_1factory201_1_1parts_management_1_1_parts_agent.html#a3a455babe9102053717bb589611ec9d4">factory.factory201.partsManagement.PartsAgent</a>
+: <a class="el" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_non_norm_k_a_m.html#aa2d9d1e6a94e9e874bdf15ec911f39c3">factory.factory200.kitAssemblyManager.GUINonNormKAM</a>
+, <a class="el" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_k_a_m_graphic_panel.html#acb63790a0883addc2e19d60b76d2c01c">factory.factory200.kitAssemblyManager.KAMGraphicPanel</a>
 </li>
-<li>KAM
-: <a class="el" href="classfactory_1_1general_1_1_server.html#ace19937650bc77487367f714b2bc7e20">factory.general.Server</a>
-, <a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_comprehensive_kit_robot_agent_test.html#af68cdc20f04fbed766fb3be9249fcbf3">factory.factory201.kitManagement.ComprehensiveKitRobotAgentTest</a>
+<li>KAM_ACTION_STABILIZE_NEST
+: <a class="el" href="classfactory_1_1general_1_1_message.html#a42c608f947cb6db1bcd0d620f9e1a3bb">factory.general.Message</a>
+</li>
+<li>KAM_ACTION_UNPILE_NEST
+: <a class="el" href="classfactory_1_1general_1_1_message.html#a8015ad9d60962fedf3330ef0c23f6a34">factory.general.Message</a>
+</li>
+<li>KAM_ADD_KIT
+: <a class="el" href="classfactory_1_1general_1_1_message.html#aab9535dd0ccba5d35c4424f71cf5f64b">factory.general.Message</a>
+</li>
+<li>KAM_BAD_KIT
+: <a class="el" href="classfactory_1_1general_1_1_message.html#ae99aba40e798c73411cb6b9718a9bd04">factory.general.Message</a>
 </li>
 <li>KAM_DROP_OFF_FULL_KIT
 : <a class="el" href="classfactory_1_1general_1_1_message.html#af02c5f0ace2f6ae0589bcf2dd5ee7554">factory.general.Message</a>
+</li>
+<li>KAM_FINISH_KITBOT_ANIMATION
+: <a class="el" href="classfactory_1_1general_1_1_message.html#a7ba519d8746516777cfd5f660f06865d">factory.general.Message</a>
+</li>
+<li>KAM_FINISH_KITTER_ANIMATION
+: <a class="el" href="classfactory_1_1general_1_1_message.html#a77458506def564e3cb6087a20d09737e">factory.general.Message</a>
 </li>
 <li>KAM_FLASH_KIT_CAMERA
 : <a class="el" href="classfactory_1_1general_1_1_message.html#aed88d86dabc0aaba6ada2f6420b2bacd">factory.general.Message</a>
@@ -149,6 +165,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>KAM_MOVE_FROM_0_TO_2
 : <a class="el" href="classfactory_1_1general_1_1_message.html#a0ebaca9375dfd45d7212ee0ae214f56a">factory.general.Message</a>
 </li>
+<li>KAM_NEST_PILED
+: <a class="el" href="classfactory_1_1general_1_1_message.html#a2f979ed6b527551c2896952ffb8ac305">factory.general.Message</a>
+</li>
+<li>KAM_NEST_STABLE
+: <a class="el" href="classfactory_1_1general_1_1_message.html#a0527b7968c311ad6b9ee1072a0bacb0d">factory.general.Message</a>
+</li>
+<li>KAM_NEST_UNSTABLE
+: <a class="el" href="classfactory_1_1general_1_1_message.html#a5f637da7cd4a434514d988ead98a7cb7">factory.general.Message</a>
+</li>
 <li>KAM_PARTS_DROP_OFF_PARTS
 : <a class="el" href="classfactory_1_1general_1_1_message.html#ad4f61f7c14201af14c7525f5d1434727">factory.general.Message</a>
 </li>
@@ -164,6 +189,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>KAM_PICK_UP_EMPTY_KIT_TO_ACTIVE
 : <a class="el" href="classfactory_1_1general_1_1_message.html#a21bf5d9e6dd1118d846d6d44a61cdd7b">factory.general.Message</a>
 </li>
+<li>KAM_REMOVE_KIT
+: <a class="el" href="classfactory_1_1general_1_1_message.html#ac3a4d709dbecc7e5761c0c2e4c02e6e5">factory.general.Message</a>
+</li>
 <li>KAMCamera()
 : <a class="el" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_k_a_m_camera.html#a6c1c1e0bc76e5b75575c2a50a1d6d17e">factory.factory200.kitAssemblyManager.KAMCamera</a>
 </li>
@@ -172,8 +200,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 , <a class="el" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_kit_assembly_manager.html#ac150add7e7da62ee9cd8768574da9283">factory.factory200.kitAssemblyManager.KitAssemblyManager</a>
 </li>
 <li>KAMGraphicPanel()
-: <a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_kits_assembly_manager_1_1_k_a_m_graphic_panel.html#a5b1f17e951a2bbbbf3162deb3f282b02">factory.factory200.factoryProductionManager.KitsAssemblyManager.KAMGraphicPanel</a>
-, <a class="el" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_k_a_m_graphic_panel.html#a83320fd7d7923cbc511fc02ea2266b57">factory.factory200.kitAssemblyManager.KAMGraphicPanel</a>
+: <a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_kits_assembly_manager_1_1_k_a_m_graphic_panel.html#a7425917ed2da817998a031804d14c871">factory.factory200.factoryProductionManager.KitsAssemblyManager.KAMGraphicPanel</a>
+, <a class="el" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_k_a_m_graphic_panel.html#af00d569e608d97e19d8f6da670d38652">factory.factory200.kitAssemblyManager.KAMGraphicPanel</a>
 </li>
 <li>KAMKit()
 : <a class="el" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_k_a_m_kit.html#a34ad40153aa6a2865f9f95fca6dd9034">factory.factory200.kitAssemblyManager.KAMKit</a>
@@ -181,12 +209,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>KAMNest()
 : <a class="el" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_k_a_m_nest.html#a806172bb23d81eb3bf568814d41f1158">factory.factory200.kitAssemblyManager.KAMNest</a>
 </li>
+<li>KEVIN
+: <a class="el" href="classfactory_1_1general_1_1_server.html#aba3b1ca47c06a429b4522e982065ebd0">factory.general.Server</a>
+, <a class="el" href="classfactory_1_1general_1_1_agent_main.html#ac4e83198a241fa66cc0f2f00f02a2cdb">factory.general.AgentMain</a>
+</li>
 <li>kit
 : <a class="el" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_g_u_i_kit_robot.html#a7504a889cafc5e27f447c601d2302848">factory.factory200.kitAssemblyManager.GUIKitRobot</a>
 , <a class="el" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_k_a_m_kit.html#ae0ff1ad9ab9825360231292c1bac4043">factory.factory200.kitAssemblyManager.KAMKit</a>
 , <a class="el" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_kit_position.html#a51809c640bfaba2acc18005710055b3b">factory.factory200.kitAssemblyManager.KitPosition</a>
 , <a class="el" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_place_holder.html#a2d26346d02c9ce5af5f6e1edb5bdff29">factory.factory200.kitAssemblyManager.PlaceHolder</a>
-, <a class="el" href="classfactory_1_1factory201_1_1test_1_1mock_1_1_mock_kit_robot.html#a9381e0c38b6a90341498bb31c1f7eb3d">factory.factory201.test.mock.MockKitRobot</a>
 , <a class="el" href="classfactory_1_1factory201_1_1parts_management_1_1_parts_agent_test.html#a58df238345e8cd32a2bba705d3aae5ec">factory.factory201.partsManagement.PartsAgentTest</a>
 </li>
 <li>Kit()
@@ -194,6 +225,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </li>
 <li>kit0
 : <a class="el" href="classfactory_1_1factory201_1_1parts_management_1_1_parts_agent.html#ac2f0cfc00a134bdd562ebc6f2ab9529b">factory.factory201.partsManagement.PartsAgent</a>
+, <a class="el" href="classfactory_1_1factory201_1_1parts_management_1_1_parts_agent_test.html#aedde0b59fe4d12d4baf56cc256d5f96b">factory.factory201.partsManagement.PartsAgentTest</a>
+</li>
+<li>kit0Info
+: <a class="el" href="classfactory_1_1factory201_1_1parts_management_1_1_parts_agent.html#a030e2f6fccf3aa4d6b526352f91cb380">factory.factory201.partsManagement.PartsAgent</a>
 </li>
 <li>kit0NeedsParts
 : <a class="el" href="classfactory_1_1factory201_1_1parts_management_1_1_parts_agent.html#adda55efef93f3f1c66771d13571afc6d">factory.factory201.partsManagement.PartsAgent</a>
@@ -204,6 +239,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </li>
 <li>kit1
 : <a class="el" href="classfactory_1_1factory201_1_1parts_management_1_1_parts_agent.html#a9236ba013ae311dc3e6620a6ed4d3e56">factory.factory201.partsManagement.PartsAgent</a>
+, <a class="el" href="classfactory_1_1factory201_1_1parts_management_1_1_parts_agent_test.html#af0cf3081ce89395987b80ad2be6812bf">factory.factory201.partsManagement.PartsAgentTest</a>
+</li>
+<li>kit1Info
+: <a class="el" href="classfactory_1_1factory201_1_1parts_management_1_1_parts_agent.html#a1e3f4cda2b4b2dc5844cfc594b7300b2">factory.factory201.partsManagement.PartsAgent</a>
 </li>
 <li>kit1NeedsParts
 : <a class="el" href="classfactory_1_1factory201_1_1parts_management_1_1_parts_agent.html#a7b4df9ab49efb00bec970199fd67d393">factory.factory201.partsManagement.PartsAgent</a>
@@ -216,8 +255,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 : <a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_kits_assembly_manager_1_1_k_a_m_graphic_panel.html#ab4849f83608cfa0ad60bd3c5fdd9a4e1">factory.factory200.factoryProductionManager.KitsAssemblyManager.KAMGraphicPanel</a>
 , <a class="el" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_k_a_m_graphic_panel.html#a80658a290e33608e135d3c5598ca86d6">factory.factory200.kitAssemblyManager.KAMGraphicPanel</a>
 </li>
+<li>KIT_FAILS_OPTIONS
+: <a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_non_norm_ctrl_panel.html#a1a38707cc58c15832feb798ce19c4555">factory.factory200.factoryProductionManager.NonNormCtrlPanel</a>
+</li>
+<li>KIT_IN_PRODUCTION
+: <a class="el" href="classfactory_1_1general_1_1_message.html#a6a3358a3b03bd8a5e8fc02607ace0453">factory.general.Message</a>
+</li>
 <li>KitAssemblyManager()
-: <a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_kits_assembly_manager_1_1_kit_assembly_manager.html#af33e8cdd53c51b68739f68d38843c08c">factory.factory200.factoryProductionManager.KitsAssemblyManager.KitAssemblyManager</a>
+: <a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_kits_assembly_manager_1_1_kit_assembly_manager.html#ab5554675d4e8949f26d2c7af7e48bf15">factory.factory200.factoryProductionManager.KitsAssemblyManager.KitAssemblyManager</a>
 , <a class="el" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_kit_assembly_manager.html#a029f17a271b1909c3e47f72a8f794b7f">factory.factory200.kitAssemblyManager.KitAssemblyManager</a>
 </li>
 <li>kitbot
@@ -227,12 +272,30 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>KitDeliveryStation()
 : <a class="el" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_kit_delivery_station.html#a0cf4721924f4f845acee3217e17abe1d">factory.factory200.kitAssemblyManager.KitDeliveryStation</a>
 </li>
-<li>kitInfo
-: <a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_camera_agent.html#a979dbe2e3d92b58a23dc52e77f28c2d9">factory.factory201.kitManagement.CameraAgent</a>
-, <a class="el" href="classfactory_1_1factory201_1_1parts_management_1_1_parts_agent.html#a53149315ab237d6e6d262e7941a29b15">factory.factory201.partsManagement.PartsAgent</a>
+<li>kitFailsComboBox
+: <a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_non_norm_ctrl_panel.html#a3d772816f65134135fc82bf3a59bdaae">factory.factory200.factoryProductionManager.NonNormCtrlPanel</a>
+</li>
+<li>kitFailsInnerPanel
+: <a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_non_norm_ctrl_panel.html#aa2f7b3ac7af25680a445aa8979e54a3d">factory.factory200.factoryProductionManager.NonNormCtrlPanel</a>
+</li>
+<li>kitFailsLabel
+: <a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_non_norm_ctrl_panel.html#a863c54cfca64f49c8a999d7d32596fb2">factory.factory200.factoryProductionManager.NonNormCtrlPanel</a>
+</li>
+<li>kitFailsPanel
+: <a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_non_norm_ctrl_panel.html#aad0235db927b8421c9fabcfc770cb18a">factory.factory200.factoryProductionManager.NonNormCtrlPanel</a>
+</li>
+<li>kitInfoFromPartsAgent
+: <a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_camera_agent.html#a4981870f96331e206964efd4f12d436c">factory.factory201.kitManagement.CameraAgent</a>
+</li>
+<li>kitList
+: <a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_camera_agent.html#acc62406f4b95797d480f68bfe727a138">factory.factory201.kitManagement.CameraAgent</a>
+, <a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html#a5506b590d3edb79b2d0a960f30c08323">factory.factory201.kitManagement.ConveyorAgent</a>
 </li>
 <li>KitManager()
 : <a class="el" href="classfactory_1_1factory200_1_1kit_manager_1_1_kit_manager.html#a9cf403ef5b923039eb9a0f64f17e365d">factory.factory200.kitManager.KitManager</a>
+</li>
+<li>kitmanagerclient
+: <a class="el" href="classfactory_1_1general_1_1_server.html#a30d4a816a068d6246a6595faf3ebeb70">factory.general.Server</a>
 </li>
 <li>kitname
 : <a class="el" href="classfactory_1_1factory200_1_1kit_manager_1_1_kit_manager.html#af0d808a717342ec6d2b63a3142b08d78">factory.factory200.kitManager.KitManager</a>
@@ -240,14 +303,26 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>kitNeedsParts
 : <a class="el" href="classfactory_1_1general_1_1_kit.html#a892758c2a76b921336f1e23e3e37e5cf">factory.general.Kit</a>
 </li>
+<li>kitOne
+: <a class="el" href="classfactory_1_1factory201_1_1parts_management_1_1_parts_agent.html#a2db31576a88eaf33818f92622782bc6f">factory.factory201.partsManagement.PartsAgent</a>
+</li>
 <li>KitPosition()
 : <a class="el" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_kit_position.html#a51265759bd4b946658c46631a7e91950">factory.factory200.kitAssemblyManager.KitPosition</a>
 </li>
 <li>kitPositions
 : <a class="el" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_kit_stand.html#a9a540c35c59a62be42d270f26007ad05">factory.factory200.kitAssemblyManager.KitStand</a>
 </li>
+<li>kitRequestsFromKitRobot
+: <a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html#ac1066f3aed3de054a483eb9a9970d834">factory.factory201.kitManagement.ConveyorAgent</a>
+</li>
+<li>kitRequestsFromPartsAgent
+: <a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_kit_robot_agent.html#a476517fed2f51eda7f1e1e8f45674eab">factory.factory201.kitManagement.KitRobotAgent</a>
+</li>
 <li>kitRobot
-: <a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_comprehensive_kit_robot_agent_test.html#a8b5beeb73fb5e4c99ff2ed88c096cfff">factory.factory201.kitManagement.ComprehensiveKitRobotAgentTest</a>
+: <a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_camera_agent_test.html#a7dba473ad12835244eb85e52e838cfb7">factory.factory201.kitManagement.CameraAgentTest</a>
+, <a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_camera_agent.html#ab3909df09ff95999e88b297643ddfe14">factory.factory201.kitManagement.CameraAgent</a>
+, <a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent_test.html#a976a19b2dd77aa633e6da1f53686b433">factory.factory201.kitManagement.ConveyorAgentTest</a>
+, <a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_kit_robot_agent_test.html#a47e18f6ba8918e8e7c571bac01de82ea">factory.factory201.kitManagement.KitRobotAgentTest</a>
 </li>
 <li>kitrobot
 : <a class="el" href="classfactory_1_1factory201_1_1parts_management_1_1_parts_agent.html#ab49f00544fa16933909a0b533e5195f3">factory.factory201.partsManagement.PartsAgent</a>
@@ -258,50 +333,54 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 , <a class="el" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_k_a_m_graphic_panel.html#a16dfb475a51388a1573a24e55e8d3bfb">factory.factory200.kitAssemblyManager.KAMGraphicPanel</a>
 </li>
 <li>KITROBOT_INITIAL_Y
-: <a class="el" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_k_a_m_graphic_panel.html#ab4d9bce91e5adeb436cb1e69665bb9a0">factory.factory200.kitAssemblyManager.KAMGraphicPanel</a>
-, <a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_kits_assembly_manager_1_1_k_a_m_graphic_panel.html#af3602c60d211d5de918175e3675dda94">factory.factory200.factoryProductionManager.KitsAssemblyManager.KAMGraphicPanel</a>
+: <a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_kits_assembly_manager_1_1_k_a_m_graphic_panel.html#af3602c60d211d5de918175e3675dda94">factory.factory200.factoryProductionManager.KitsAssemblyManager.KAMGraphicPanel</a>
+, <a class="el" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_k_a_m_graphic_panel.html#ab4d9bce91e5adeb436cb1e69665bb9a0">factory.factory200.kitAssemblyManager.KAMGraphicPanel</a>
 </li>
 <li>KITROBOT_ROTATION_SPEED
-: <a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_kits_assembly_manager_1_1_k_a_m_graphic_panel.html#a20d8632056335403d4cfcec0a6486466">factory.factory200.factoryProductionManager.KitsAssemblyManager.KAMGraphicPanel</a>
-, <a class="el" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_k_a_m_graphic_panel.html#afede2134c52cc6d7897565a7a604108e">factory.factory200.kitAssemblyManager.KAMGraphicPanel</a>
+: <a class="el" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_k_a_m_graphic_panel.html#afede2134c52cc6d7897565a7a604108e">factory.factory200.kitAssemblyManager.KAMGraphicPanel</a>
+, <a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_kits_assembly_manager_1_1_k_a_m_graphic_panel.html#a20d8632056335403d4cfcec0a6486466">factory.factory200.factoryProductionManager.KitsAssemblyManager.KAMGraphicPanel</a>
 </li>
 <li>KITROBOT_VELOCITYX
-: <a class="el" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_k_a_m_graphic_panel.html#a695d84670bba2811312e24877fc12452">factory.factory200.kitAssemblyManager.KAMGraphicPanel</a>
-, <a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_kits_assembly_manager_1_1_k_a_m_graphic_panel.html#abc6be2bd6a7e526dd776b902da2196fe">factory.factory200.factoryProductionManager.KitsAssemblyManager.KAMGraphicPanel</a>
+: <a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_kits_assembly_manager_1_1_k_a_m_graphic_panel.html#abc6be2bd6a7e526dd776b902da2196fe">factory.factory200.factoryProductionManager.KitsAssemblyManager.KAMGraphicPanel</a>
+, <a class="el" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_k_a_m_graphic_panel.html#a695d84670bba2811312e24877fc12452">factory.factory200.kitAssemblyManager.KAMGraphicPanel</a>
 </li>
 <li>KITROBOT_VELOCITYY
-: <a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_kits_assembly_manager_1_1_k_a_m_graphic_panel.html#a306e06f5f71fd89f2e55f0b63f9e2e4f">factory.factory200.factoryProductionManager.KitsAssemblyManager.KAMGraphicPanel</a>
-, <a class="el" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_k_a_m_graphic_panel.html#a06b4da3dca5596c11a94c276fa8bc3fa">factory.factory200.kitAssemblyManager.KAMGraphicPanel</a>
+: <a class="el" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_k_a_m_graphic_panel.html#a06b4da3dca5596c11a94c276fa8bc3fa">factory.factory200.kitAssemblyManager.KAMGraphicPanel</a>
+, <a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_kits_assembly_manager_1_1_k_a_m_graphic_panel.html#a306e06f5f71fd89f2e55f0b63f9e2e4f">factory.factory200.factoryProductionManager.KitsAssemblyManager.KAMGraphicPanel</a>
 </li>
 <li>kitRobotAgent
-: <a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_camera_agent.html#ab3b7a3692a3f6bdd9b2f1eac862942df">factory.factory201.kitManagement.CameraAgent</a>
-, <a class="el" href="classfactory_1_1general_1_1_server.html#aaadbb3568a00cf6d9fe46dbf2c69d4a1">factory.general.Server</a>
-, <a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html#a62a83c7cf04543917afe4741e52479d6">factory.factory201.kitManagement.ConveyorAgent</a>
+: <a class="el" href="classfactory_1_1general_1_1_server.html#aaadbb3568a00cf6d9fe46dbf2c69d4a1">factory.general.Server</a>
 </li>
 <li>KitRobotAgent()
 : <a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_kit_robot_agent.html#af7cb2ee5683f26b15753d81130b36970">factory.factory201.kitManagement.KitRobotAgent</a>
+</li>
+<li>kitRobotAgent
+: <a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html#a62a83c7cf04543917afe4741e52479d6">factory.factory201.kitManagement.ConveyorAgent</a>
 </li>
 <li>kitRobotEmpty
 : <a class="el" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_kit_assembly_manager.html#a5b3603496a2fdd208826f9a82dbb7e6b">factory.factory200.kitAssemblyManager.KitAssemblyManager</a>
 , <a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_kits_assembly_manager_1_1_kit_assembly_manager.html#a081aa53875518d80536b9a16b188217e">factory.factory200.factoryProductionManager.KitsAssemblyManager.KitAssemblyManager</a>
 </li>
 <li>kitRobotEmpty0
-: <a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_kits_assembly_manager_1_1_kit_assembly_manager.html#af3313d004c8ea8cef282de9a6dcea1b0">factory.factory200.factoryProductionManager.KitsAssemblyManager.KitAssemblyManager</a>
-, <a class="el" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_kit_assembly_manager.html#a513ced9376ac214681c219dc0aa39b50">factory.factory200.kitAssemblyManager.KitAssemblyManager</a>
+: <a class="el" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_kit_assembly_manager.html#a513ced9376ac214681c219dc0aa39b50">factory.factory200.kitAssemblyManager.KitAssemblyManager</a>
+, <a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_kits_assembly_manager_1_1_kit_assembly_manager.html#af3313d004c8ea8cef282de9a6dcea1b0">factory.factory200.factoryProductionManager.KitsAssemblyManager.KitAssemblyManager</a>
 </li>
 <li>kitRobotFull
-: <a class="el" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_kit_assembly_manager.html#a892d53d6daa2066835e4fd38b8ba12d2">factory.factory200.kitAssemblyManager.KitAssemblyManager</a>
-, <a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_kits_assembly_manager_1_1_kit_assembly_manager.html#a7671180d9510bcc3a672ed4b744fd9c1">factory.factory200.factoryProductionManager.KitsAssemblyManager.KitAssemblyManager</a>
+: <a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_kits_assembly_manager_1_1_kit_assembly_manager.html#a7671180d9510bcc3a672ed4b744fd9c1">factory.factory200.factoryProductionManager.KitsAssemblyManager.KitAssemblyManager</a>
+, <a class="el" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_kit_assembly_manager.html#a892d53d6daa2066835e4fd38b8ba12d2">factory.factory200.kitAssemblyManager.KitAssemblyManager</a>
 </li>
 <li>kitRobotKitStand
-: <a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_kits_assembly_manager_1_1_kit_assembly_manager.html#aa16c2ed117b715d67d03304ec8a41c24">factory.factory200.factoryProductionManager.KitsAssemblyManager.KitAssemblyManager</a>
-, <a class="el" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_kit_assembly_manager.html#a8e590c20d19ea56006518815e882e133">factory.factory200.kitAssemblyManager.KitAssemblyManager</a>
+: <a class="el" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_kit_assembly_manager.html#a8e590c20d19ea56006518815e882e133">factory.factory200.kitAssemblyManager.KitAssemblyManager</a>
+, <a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_kits_assembly_manager_1_1_kit_assembly_manager.html#aa16c2ed117b715d67d03304ec8a41c24">factory.factory200.factoryProductionManager.KitsAssemblyManager.KitAssemblyManager</a>
+</li>
+<li>kitRqmts
+: <a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_camera_agent.html#a34429178f89517dabb540a468e184ea4">factory.factory201.kitManagement.CameraAgent</a>
 </li>
 <li>kits
-: <a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_kit_stand.html#a8a0cedf9498580d91e2ddc515f534c72">factory.factory201.kitManagement.KitStand</a>
+: <a class="el" href="classfactory_1_1factory201_1_1parts_management_1_1_parts_agent_test.html#a2aff70e0c0f1f23f22e8a5394080809a">factory.factory201.partsManagement.PartsAgentTest</a>
+, <a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_kit_stand.html#a8a0cedf9498580d91e2ddc515f534c72">factory.factory201.kitManagement.KitStand</a>
+, <a class="el" href="classfactory_1_1factory201_1_1parts_management_1_1_parts_agent.html#ae838589ea4d7ddc3d1dd006796529340">factory.factory201.partsManagement.PartsAgent</a>
 , <a class="el" href="classfactory_1_1general_1_1_blueprint_kits.html#ad5a94846c3a7c103785bb713d1327c95">factory.general.BlueprintKits</a>
-, <a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_camera_agent.html#a289f3b9cbd597f96d3553eaf232aff66">factory.factory201.kitManagement.CameraAgent</a>
-, <a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html#ae7f872ed64d66231d8c57cf743d2a5fe">factory.factory201.kitManagement.ConveyorAgent</a>
 </li>
 <li>kitsAssemblyManager
 : <a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_graphics_panel.html#aa929e7d6a01637b06b33f8c5855e1fe3">factory.factory200.factoryProductionManager.GraphicsPanel</a>
@@ -309,21 +388,26 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>kitsbp
 : <a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_factory_production_manager.html#ab3367f2e27e5831ac6f4ef5dd625d232">factory.factory200.factoryProductionManager.FactoryProductionManager</a>
 </li>
+<li>kitsStarted
+: <a class="el" href="classfactory_1_1factory201_1_1parts_management_1_1_parts_agent.html#a13aae74fec71397a8ad0ec8d1164814c">factory.factory201.partsManagement.PartsAgent</a>
+</li>
+<li>KitStand()
+: <a class="el" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_kit_stand.html#a8b5bba8c9c0d26d5c601790d4d73a975">factory.factory200.kitAssemblyManager.KitStand</a>
+</li>
 <li>kitStand
 : <a class="el" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_kit_stand.html#aa68846426e7e15f2baf7345a069f1370">factory.factory200.kitAssemblyManager.KitStand</a>
-</li>
-<li>kitstand
-: <a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_kits_assembly_manager_1_1_k_a_m_graphic_panel.html#a31af0750253d49653a93bd17d73012fe">factory.factory200.factoryProductionManager.KitsAssemblyManager.KAMGraphicPanel</a>
-, <a class="el" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_k_a_m_graphic_panel.html#a78b39a051a49d3e704a7b89be4b0a991">factory.factory200.kitAssemblyManager.KAMGraphicPanel</a>
 </li>
 <li>KitStand()
 : <a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_kit_stand.html#a9addb9a6358b333bb538fee2439ef2ae">factory.factory201.kitManagement.KitStand</a>
 </li>
+<li>kitstand
+: <a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_kits_assembly_manager_1_1_k_a_m_graphic_panel.html#a31af0750253d49653a93bd17d73012fe">factory.factory200.factoryProductionManager.KitsAssemblyManager.KAMGraphicPanel</a>
+</li>
 <li>kitStand
 : <a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_kit_robot_agent.html#a9244157a6cffa0535f9ea56d5b88fef7">factory.factory201.kitManagement.KitRobotAgent</a>
 </li>
-<li>KitStand()
-: <a class="el" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_kit_stand.html#a8b5bba8c9c0d26d5c601790d4d73a975">factory.factory200.kitAssemblyManager.KitStand</a>
+<li>kitstand
+: <a class="el" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_k_a_m_graphic_panel.html#a78b39a051a49d3e704a7b89be4b0a991">factory.factory200.kitAssemblyManager.KAMGraphicPanel</a>
 </li>
 <li>kitter
 : <a class="el" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_k_a_m_graphic_panel.html#a3dd7ccaa6345022df2eae50f3c37b7bd">factory.factory200.kitAssemblyManager.KAMGraphicPanel</a>
@@ -336,11 +420,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 : <a class="el" href="classfactory_1_1factory200_1_1kit_assembly_manager_1_1_k_a_m_graphic_panel.html#a953fd8b415a09fa489c50f7251c337ae">factory.factory200.kitAssemblyManager.KAMGraphicPanel</a>
 , <a class="el" href="classfactory_1_1factory200_1_1factory_production_manager_1_1_kits_assembly_manager_1_1_k_a_m_graphic_panel.html#ac40ac53a991dfe48e71e8c4ebf1cca32">factory.factory200.factoryProductionManager.KitsAssemblyManager.KAMGraphicPanel</a>
 </li>
+<li>kitZero
+: <a class="el" href="classfactory_1_1factory201_1_1parts_management_1_1_parts_agent.html#ab8687f28c69816bfa4221e840de4fa77">factory.factory201.partsManagement.PartsAgent</a>
+</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 17 2012 01:37:10 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Dec 1 2012 12:34:18 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>
