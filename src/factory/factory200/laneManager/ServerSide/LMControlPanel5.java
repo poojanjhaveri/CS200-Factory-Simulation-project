@@ -44,7 +44,7 @@ public class LMControlPanel5 extends JPanel implements ActionListener{
 	}
 
 	public void actionPerformed(ActionEvent ae){
-		chosenFeeder = feederList[ feederNum.getSelectedIndex() ] - 1;
+		chosenFeeder = feederNum.getSelectedIndex();
 				
 		if(ae.getSource() == button1){
 			if( partStatus.getSelectedIndex() == 1 ){

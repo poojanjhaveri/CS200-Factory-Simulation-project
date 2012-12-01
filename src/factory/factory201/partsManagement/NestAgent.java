@@ -116,7 +116,7 @@ public class NestAgent extends Agent implements NestInterface {
     public void msgNestInspected(Nest n, Result result) {//NEEDTO change from boolean to setting individual parts?
         if (result.is == Result.Is.verified) {
             n.status = Nest.Status.readyForKit;
-            print("Nest inspected and verified");
+            System.out.print("Nest inspected and verified");
         } else  if (result.is == Result.Is.partsMissing && !requestEarlyInspection){
             //do not call action from messages- kevin 
             purge(n);
@@ -127,21 +127,44 @@ public class NestAgent extends Agent implements NestInterface {
             if (n.status!=Nest.Status.full)
             n.status = Nest.Status.gettingPart;
         }
+        
         /* added by Kevin- if the parts are unstable, set the shaking to true*/
         else  if (result.is == Result.Is.unstableParts){
-           //n.shaking=true;
               for (Nest n1: myNests){
                 if (n1.nestNum==n.nestNum)
-                {   //stabilize once and then wait for nest to be full again (or request new inspection. )
-                    System.out.println("nest is shaking, need to stabilize");
+                {   
+                    print("nest is shaking, need to stabilize");
                     n1.shaking=true;
-                    // stabilizeNest(n1.nestNum);
-                    //n.shaking=false;
-                   // return true;
+                    
+                    /*
+                     * it will prioritize stabilizing the nest, after it is stabilized, since the status will still be full
+                     *   it will ask for re inspection! 
+                    */
+                    
+                    n1.status=Nest.Status.full;
                 }
             }
               
-           System.out.println("Result received is that parts are unstable");
+           print("Result received is that parts are unstable");
+        }
+        
+        else  if (result.is == Result.Is.piledParts){
+              for (Nest n1: myNests){
+                if (n1.nestNum==n.nestNum)
+                {   
+                    print("nest is piled up, need to unpile");
+                    n1.piled=true;
+                    
+                    /*
+                     * it will prioritize unpiling the nest, after it is unpiled, since the status will still be full
+                     *   it will ask for re inspection! 
+                    */
+                    
+                    n1.status=Nest.Status.full;
+                }
+            }
+              
+           print("Result received is that parts are unstable");
         }
         
         stateChanged();
@@ -155,15 +178,30 @@ public class NestAgent extends Agent implements NestInterface {
         for (Nest n: myNests){
                 if (n.shaking==true)
                 {   //stabilize once and then wait for nest to be full again (or request new inspection. )
-                    System.out.println("nest is shaking, need to stabilize");
+                    print("nest is shaking, need to stabilize");
                     stabilizeNest(n.nestNum);
-                    System.out.println("nest # " + n.nestNum + "set to false ");
+                    print("nest # " + n.nestNum + "set to false ");
+                    //set the shaking variable to false after you send the signal to the client to stabilize
                     n.shaking=false;
                     return true;
                 }
             }
-//  change this 
-  
+
+        //NEXT HIGHEST PRIORITY WILL BE TO UNPILE/PURGE A NEST IF IT IS PILED UP 
+        for (Nest n: myNests){
+                if (n.piled==true)
+                {   //stabilize once and then wait for nest to be full again (or request new inspection. )
+                    print("nest is shaking, need to stabilize");
+                    // replace the unpile with the purge nest function.
+                    purge(n);
+                    //unPileNest(n.nestNum);
+                    print("nest # " + n.nestNum + "set to false ");
+                    //set the shaking variable to false after you send the signal to the client to stabilize
+                    n.piled=false;
+                    return true;
+                }
+            }
+        
         if(requestEarlyInspection){
             for (Nest n: myNests){
                 if (n.status == Nest.Status.needPart)
@@ -204,7 +242,7 @@ public class NestAgent extends Agent implements NestInterface {
                 if(n.status == Nest.Status.empty){  
                     n.setPart(needParts.remove(0));//assigns part to nest
                     n.status = Nest.Status.needPart;
-                    print("Part " + n.part.getInt() + " is not taken by a nest, part is being assigned to the nest "+ n.nestNum);
+                  //  print("Part " + n.part.getInt() + " is not taken by a nest, part is being assigned to the nest "+ n.nestNum);
                     return true;
                 }
                 }
@@ -223,7 +261,7 @@ public class NestAgent extends Agent implements NestInterface {
                              n.setPart(needParts.remove(0));
                              purge(n);
                              n.status = Nest.Status.needPart;
-                             print("Part " + n.part.getInt() + " is not taken by a nest, part is being assigned to the nest "+ n.nestNum);
+                    //         print("Part " + n.part.getInt() + " is not taken by a nest, part is being assigned to the nest "+ n.nestNum);
                         return true;
                 }}}}}//}
      
@@ -233,23 +271,45 @@ public class NestAgent extends Agent implements NestInterface {
     }
     
     private void stabilizeNest(int nestN){
-        int i=nestN;
-      try {
+     
+        //wait for 3 seconds before it needs to stabilize the nest (no need to use semaphores and make things complicated here)
+        try {
          Thread.sleep(3000);
          } catch (InterruptedException ex) {
          }
-    //    print("about to stabilize the nest ");
-        System.out.println("sending message to stabilize nest at " + nestN);
-    client.sendMessage(Message.KAM_ACTION_STABILIZE_NEST+":"+nestN);
-            try {
+        
+        //send message to the animation to stabilize the nest!
+        print("sending message to stabilize nest at " + nestN);
+        client.sendMessage(Message.KAM_ACTION_STABILIZE_NEST+":"+nestN);
+        
+        //wait for a second to resume normal nest functions.
+        try {
          Thread.sleep(1000);
          } catch (InterruptedException ex) {
          }
     }
-    private void stabilize(int nestN){
+    
+     private void unPileNest(int nestN){
+        
+        //wait for 3 seconds before it needs to stabilize the nest (no need to use semaphores and make things complicated here)
+        try {
+         Thread.sleep(3000);
+         } catch (InterruptedException ex) {
+         }
+        
+        //send message to the animation to stabilize the nest!
+        print("sending message to unpile nest at " + nestN);
+        client.sendMessage(Message.KAM_ACTION_UNPILE_NEST+":"+nestN);
+        
+        //wait for a second to resume normal nest functions.
+        try {
+         Thread.sleep(1000);
+         } catch (InterruptedException ex) {
+         }
     }
+
     private void requestPart(Nest n){
-        print("requesting " + n.part.getInt() + "to lane " + n.getLane().getIndex());
+    //    print("requesting " + n.part.getInt() + "to lane " + n.getLane().getIndex());
     	n.status = Nest.Status.gettingPart;
         n.getLane().msgNeedPart(n.part);
     	stateChanged();
@@ -290,7 +350,7 @@ public class NestAgent extends Agent implements NestInterface {
     private void purge(Nest n){
     print("PURGING Nest "+ n.nestNum);
     n.parts.clear();
-    //DoPurge();//NEEDTO implement this method
+    DoPurge(n.nestNum);//NEEDTO implement this method
     n.status = Nest.Status.needPart;
     stateChanged();
     }
@@ -314,6 +374,11 @@ public class NestAgent extends Agent implements NestInterface {
             serverLM.getForAgentNest().setSwitchUp(nestNum);
            // this.client.sendMessage(Message.PURGE_NEST + ":" + nestNum);
             //this.fpm.sendMessage(Message.PURGE_NEST + ":" + nestNum);
+        try {
+         Thread.sleep(1000);
+         } catch (InterruptedException e) {
+         e.printStackTrace();
+         }
         }
         
     }

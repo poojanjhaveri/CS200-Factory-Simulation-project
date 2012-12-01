@@ -12,16 +12,22 @@ package factory.factory200.factoryProductionManager.KitsAssemblyManager;
  *
  * @author Deepa
  */
-import factory.factory200.factoryProductionManager.GraphicsPanel;
-import factory.factory200.kitAssemblyManager.*;
-import factory.general.GUIPart;
-import factory.general.Part;
-import java.awt.*;
-import java.awt.event.*;
-import java.awt.geom.*;
-import java.util.*;
-import javax.swing.*;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.util.ArrayList;
+
+import javax.swing.ImageIcon;
+import javax.swing.JPanel;
 import javax.swing.Timer;
+
+import factory.factory200.factoryProductionManager.GraphicsPanel;
+import factory.factory200.kitAssemblyManager.GUIKitRobot;
+import factory.factory200.kitAssemblyManager.GUIPartRobot;
+import factory.factory200.kitAssemblyManager.KAMCamera;
+import factory.factory200.kitAssemblyManager.KAMNest;
+import factory.factory200.kitAssemblyManager.KitDeliveryStation;
+import factory.factory200.kitAssemblyManager.KitStand;
 
 /**
  *
@@ -112,7 +118,7 @@ public class KAMGraphicPanel {
         counter = 0;
         cameraCounter = 0;
         panel = new JPanel();
-        //timer = new Timer(20, new DeliveryTimer(panel));
+        //timer = new Timer(Global.STANDARD_TIMER_SPEED, new DeliveryTimer(panel));
         //timer.start();
 
     }

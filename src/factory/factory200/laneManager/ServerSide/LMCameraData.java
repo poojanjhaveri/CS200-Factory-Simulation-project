@@ -24,17 +24,23 @@ public class LMCameraData {
 		
 		// Non-normative Scenario 1 : Signal to Agent(Bad Parts)
 		if( serverMain.getPartData().checkAllBadParts(nestCameraNum) == true ){
-			serverMain.getNonNormative().getNonNormativeNests().get(nestCameraNum).startBadPart();
+			System.out.println("BAD PARTS ON NEST " + nestCameraNum );
+			serverMain.getCameraAgent().msgAllPartsBad(nestCameraNum);
 		}
 		
 		// Non-normative Scenario 3 : Signal to Agent(Piled Parts)
 		if( PiledPart == true ){
-			serverMain.getNonNormative().getNonNormativeNests().get(nestCameraNum).startPiledPart();
+			System.out.println("PARTS PILED UP " + nestCameraNum );
+			serverMain.getCameraAgent().msgPartsPiledUp(nestCameraNum);
 			PiledPart = false;
 		}
 	}
 	
 	public void startPiledPart(){
 		PiledPart = true;
+	}
+	
+	public void stopPiledPart(){
+		PiledPart = false;
 	}
 }

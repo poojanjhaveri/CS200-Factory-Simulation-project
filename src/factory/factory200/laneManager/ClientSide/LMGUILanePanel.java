@@ -2,9 +2,8 @@ package factory.factory200.laneManager.ClientSide;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.util.Hashtable;
-
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
@@ -24,24 +23,19 @@ public class LMGUILanePanel extends JPanel{
 	private LMGUIContentPanel onOffSwitchPanel = new LMGUIContentPanel(onSwitch, offSwitch, onOffSwitchTitle);
 	
 	// Vibration Amplitude Setting
-	private TitledBorder vibrationAmplitudeTitle = new TitledBorder("Vibration Amplitude");
+	private TitledBorder vibrationAmplitudeTitle = new TitledBorder("Vibration");
 	private JSlider vibrationAmplitudeSlider = new JSlider(0,1,0);
 	private Hashtable<Integer, JLabel> sliderLabels = new Hashtable<Integer, JLabel>();
 
 	public LMGUILanePanel(){
-		// Layout Setting
-		setLayout(new FlowLayout(FlowLayout.CENTER,0,30));
-
-		// Add GUI contents
+		setLayout(new GridLayout(2,1));
 		add(onOffSwitchPanel);
-		
-		// Add GUI contents
 		sliderLabels.put(new Integer(0), new JLabel("normal"));
 		sliderLabels.put(new Integer(1), new JLabel("strong"));
 		vibrationAmplitudeSlider.setLabelTable(sliderLabels);
 		vibrationAmplitudeSlider.setPaintLabels(true);
 		vibrationAmplitudeSlider.setPreferredSize(new Dimension(250,100));
-		vibrationAmplitudeSlider.setEnabled(true);
+		vibrationAmplitudeSlider.setEnabled(false);
 		vibrationAmplitudeSlider.setBorder(vibrationAmplitudeTitle);
 		vibrationAmplitudeTitle.setTitleColor(Color.red);
 		add(vibrationAmplitudeSlider);

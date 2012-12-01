@@ -28,7 +28,7 @@ public class LMControlPanel6 extends JPanel implements ActionListener{
 	}
 
 	public void actionPerformed(ActionEvent ae){
-		chosenNest = nestList[ nestNum.getSelectedIndex() ] - 1;
+		chosenNest = nestNum.getSelectedIndex();
 		
 		if(ae.getSource() == button){
 			agentPartRobot.takePartFromNest( chosenNest );

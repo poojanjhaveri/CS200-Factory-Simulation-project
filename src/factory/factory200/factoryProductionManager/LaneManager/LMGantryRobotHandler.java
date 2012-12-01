@@ -6,7 +6,7 @@ package factory.factory200.factoryProductionManager.LaneManager;
  */
 public class LMGantryRobotHandler{
 	
-	private LMApplication app;	///< Instance of class 'LMApplication'
+	private LMApplication app;
 	private int feederNum, binNum;
 
 	public LMGantryRobotHandler(LMApplication app){

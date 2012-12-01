@@ -42,7 +42,7 @@ public class LMControlPanel3 extends JPanel implements ActionListener{
 	 * @brief Signal To Server( In V0, it is platform )
 	 */
 	public void actionPerformed(ActionEvent ae){
-		chosenNest = nestList[ nestNum.getSelectedIndex() ] - 1;
+		chosenNest = nestNum.getSelectedIndex();
 		
 		if(ae.getSource() == b0){
 			agentNest.setSwitchUp( chosenNest );

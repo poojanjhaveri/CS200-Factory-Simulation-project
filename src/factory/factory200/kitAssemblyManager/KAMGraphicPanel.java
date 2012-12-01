@@ -10,6 +10,7 @@ package factory.factory200.kitAssemblyManager;
  */
 import factory.factory200.kitAssemblyManager.*;
 import factory.general.GUIPart;
+import factory.general.Global;
 import factory.general.Manager;
 import factory.general.Message;
 import factory.general.Part;
@@ -124,7 +125,7 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
 
         counter = 0;
         cameraCounter = 0;
-        timer = new Timer(20, new DeliveryTimer(this));
+        timer = new Timer(Global.STANDARD_TIMER_SPEED, new DeliveryTimer(this));
         timer.start();
 
     }

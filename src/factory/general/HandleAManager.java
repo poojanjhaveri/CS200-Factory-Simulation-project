@@ -284,10 +284,14 @@ public class HandleAManager implements Runnable {
                 server.getServerLM().getVerify().verify(msg);
             } else if (msg.contains(Message.PART_TAKE_BY_PARTROBOT)) {
                 server.getServerLM().getVerify().verify(msg);
+            } else if (msg.contains(Message.PART_TOGGLING)) {
+            	server.getServerLM().getVerify().verify(msg);
+            } else if (msg.contains(Message.PART_UNTOGGLING)) {
+            	server.getServerLM().getVerify().verify(msg);
             } //-----------------------------------------------------------------------------------------------------------     
 	    else if(msg.contains(Message.KAM_NEST_PILED)){
 		//handle nest piled nonnorm
-	        
+                this.server.getCameraAgent().msgPartsPiledUp(Integer.parseInt(this.grabParameter(msg)));
 	    }else if(msg.contains(Message.KAM_NEST_UNSTABLE)){
 		//handle unstable nonnorm
 		this.server.getCameraAgent().msgPartsShaking(Integer.parseInt(this.grabParameter(msg)));
