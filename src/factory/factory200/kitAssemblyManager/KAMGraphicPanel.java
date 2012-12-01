@@ -393,6 +393,9 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
 
 	Random rand = new Random();//random numgen
         for (int k = 0; k < this.nest.size(); k++) {
+	    if(this.partsRobotInWay(k)){
+		System.out.println("Parts robot is in the way of nest " + k);
+	    }
             for (int i = 0; i < this.nest.get(k).getParts().size(); i++) {
                 //System.out.println(j.nest.get(0).getParts().get(i).getGUIPart());
 		int offsetx = 0;
@@ -440,4 +443,46 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
     }
     public void actionPerformed(ActionEvent ae) {
     }
+    public boolean partsRobotInWay(int nestnum)
+    {
+	if(this.kitter.getX() < RAILX-5)
+	    return false;
+	switch(nestnum)
+	    {
+	    case 0:
+		if(this.kitter.getY() < LANE0Y+ 5 && this.kitter.getY() > LANE0Y-5)
+		    return true;
+		break;
+	    case 1:
+		if(this.kitter.getY() == LANE1Y+ 5 && this.kitter.getY() > LANE1Y-5)
+		    return true;
+		break;
+	    case 2:
+		if(this.kitter.getY() == LANE2Y+ 5 && this.kitter.getY() > LANE2Y-5)
+		    return true;
+		break;
+	    case 3:
+		if(this.kitter.getY() == LANE3Y+ 5 && this.kitter.getY() > LANE3Y-5)
+		    return true;
+		break;
+	    case 4:
+		if(this.kitter.getY() == LANE4Y+ 5 && this.kitter.getY() > LANE4Y-5)
+		    return true;
+		break;
+	    case 5:
+		if(this.kitter.getY() == LANE5Y+ 5 && this.kitter.getY() > LANE5Y-5)
+		    return true;
+		break;
+	    case 6:
+		if(this.kitter.getY() == LANE6Y+ 5 && this.kitter.getY() > LANE6Y-5)
+		    return true;
+		break;
+	    case 7:
+		if(this.kitter.getY() == LANE7Y+ 5 && this.kitter.getY() > LANE7Y-5)
+		    return true;
+		break;
+	    }
+	return false;
+    }
+
 }
