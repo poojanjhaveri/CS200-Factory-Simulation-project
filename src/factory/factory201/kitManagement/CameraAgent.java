@@ -55,20 +55,13 @@ public class CameraAgent extends Agent implements Camera {
     
     @Override
     public void msgNestIsFull(Nest nest) {
-//        print("Received msgNestIsFull that " + nest.nestNum + " is full.");
-        //synchronized (nestList) {
         nestList.add(nest);
-        //}
-
         stateChanged();
     }
 
     @Override
     public void msgKitIsFull(Kit kit) {
-        print("Received msgKitIsFull from Kit Robot Agent");
-
         kitList.add(kit);
-
         stateChanged();
     }
 
@@ -81,7 +74,6 @@ public class CameraAgent extends Agent implements Camera {
     // ********* SCHEDULER *********
     @Override
     public boolean pickAndExecuteAnAction() {
-        //print("myKit list size is " + kitList.size());
         if (kitInfoFromPartsAgent != null) {
             configureKitInfo();
             return true;
@@ -94,7 +86,6 @@ public class CameraAgent extends Agent implements Camera {
             }
         }
 
-        //synchronized (nestList) {
         for (Nest n : nestList) {
             if (n.status == Nest.Status.gettingInspected) {
                 inspectNest(n);
@@ -107,7 +98,6 @@ public class CameraAgent extends Agent implements Camera {
 
     // ********** ACTIONS **********
     public void inspectKit(Kit kit) {
-//        print("Inspecting kit: [" + kit.name + "].");
         boolean result = true;
 
         if (kit.parts.size() != kitRqmts.size()) {
@@ -125,7 +115,6 @@ public class CameraAgent extends Agent implements Camera {
         }
 
         DoInspectKit(kit);
-        print("sending msg to kitRobot");
         kitRobot.msgKitInspected(result);
         String strResult = result ? "NO ERROR" : "ERROR";
         print("Inspected kit: [" + kit.name + "] with result: " + strResult + ".");
@@ -134,7 +123,6 @@ public class CameraAgent extends Agent implements Camera {
     }
 
     private void inspectNest(Nest nest) {
-//        print("Inspecting nest: [Nest " + nest.nestNum + "].");
         Integer type = nest.part.type;
         boolean result = true;
         for (Part p : nest.parts) {
@@ -142,6 +130,10 @@ public class CameraAgent extends Agent implements Camera {
                 result = false;
                 break;
             }
+        }
+        try {
+            Thread.sleep(1000); // For Dongyung
+        } catch (InterruptedException ex) {
         }
         DoInspectNest(nest);
         nestAgent.msgNestInspected(nest, result);
@@ -157,7 +149,7 @@ public class CameraAgent extends Agent implements Camera {
             kitRqmts.add(kitInfoFromPartsAgent.getPart(i).type);
         }
         kitInfoFromPartsAgent = null;
-        //stateChanged();
+        stateChanged();
     }
 
     // ************ MISC ***********
@@ -175,7 +167,6 @@ public class CameraAgent extends Agent implements Camera {
     }
 
     public void setServer(LMServerMain LMServer1) {
-//    System.out.println("leftindex is " + leftLane.getIndex());
         this.LMServer = LMServer1;
     }
 
