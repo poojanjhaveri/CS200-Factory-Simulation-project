@@ -335,14 +335,14 @@ public class KAMGraphicPanel {
         }
         kitbot.paintMe(graph, g2);
 
-        //if (camera.isVisible()) {
-        //    camera.getCamera().paintIcon(graph, g2, camera.getX(), camera.getY());
+        if (camera.isVisible()) {
+            camera.getCamera().paintIcon(graph, g2, camera.getX(), camera.getY());
 
-        //}
-        //if (camera.isVisible() && cameraCounter == 20) {
-        //    camera.setVisible(false);
-        //    cameraCounter = 0;
-        //}
+        }
+        if (camera.isVisible() && cameraCounter == 20) {
+            camera.setVisible(false);
+            cameraCounter = 0;
+        }
         kitter.paintMe(graph, g2);
 
         //for (int k = 0; k < this.nest.size(); k++) {
