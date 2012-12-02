@@ -48,10 +48,9 @@ public class LMSignalFromAnimationVerification {
 			feederNum = message.charAt(0) - 48;
 			
 			// Tell the agent that clicked the button
-			//serverMain.getFeederAgents()[feederNum].msgCorrectYourAlgorithm();
-			
-			// Feeding stop
-			//serverMain.getForAgentFeeder().setFeedPartsSwitchOff(feederNum);
+			serverMain.getNestAgent().msgWrongFeederAlgorithm( 2*feederNum+1 );
+			serverMain.getFeederAgents()[feederNum].msgFeederFault();
+			serverMain.getCameraAgent().msgWrongFeederAlgorithm( serverMain.getFeederAgents()[feederNum], 2*feederNum+1 );			
 		}
 	}
 }

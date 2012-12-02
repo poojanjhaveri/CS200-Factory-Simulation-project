@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 
 import factory.factory201.feederManagement.FeederAgent;
 import factory.factory201.kitManagement.CameraAgent;
+import factory.factory201.partsManagement.NestAgent;
 import factory.general.HandleAManager;
 
 /**
@@ -31,6 +32,7 @@ public class LMServerMain extends JFrame implements Runnable{
 	
 	private FeederAgent[] feederAgents;
 	private CameraAgent cameraAgent;
+	private NestAgent nestAgent;
 	
 	public LMServerMain(){}
 	
@@ -131,11 +133,19 @@ public class LMServerMain extends JFrame implements Runnable{
 		this.cameraAgent = cameraAgent;
 	}
 	
+	public void setNestAgent(NestAgent nestAgent){
+		this.nestAgent = nestAgent;
+	}
+	
 	public FeederAgent[] getFeederAgents(){
 		return feederAgents;
 	}
 	
 	public CameraAgent getCameraAgent(){
 		return cameraAgent;
+	}
+	
+	public NestAgent getNestAgent(){
+		return nestAgent;
 	}
 }

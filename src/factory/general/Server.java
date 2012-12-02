@@ -182,6 +182,7 @@ public class Server {
         // By Dongyoung
         serverLM.setCameraAgents(cameraAgent);
         serverLM.setFeederAgents(feederAgents);
+        serverLM.setNestAgent(nestAgent);
     }
 
     private void connectAgentsAndManagers() {
@@ -396,7 +397,7 @@ public class Server {
     }
     
     public CameraAgent getCameraAgent(){
-    return this.cameraAgent;
+    	return this.cameraAgent;
     }
 
     public void setFactoryProductionManagerToAll(HandleAManager in) {
