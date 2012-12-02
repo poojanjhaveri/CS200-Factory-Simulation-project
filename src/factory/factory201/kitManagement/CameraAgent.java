@@ -218,4 +218,8 @@ public class CameraAgent extends Agent implements Camera {
             print("[ERROR] - Kit Assembly Manager is not online.");
         }
     }
+    public void partsRobotDroppedPart(Part missingPart)
+    {
+	//the part missingPart WAS JUST DROPPED from the kit you can write the logic here
+    }
 }
