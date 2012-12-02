@@ -87,6 +87,13 @@ public class GantryRobotManager{
 			   else if(msg.contains(Message.MOVE_GANTRY_TO_DUMP)){
 				   purgeBin();//this.ganbot.purgeBinCommand();
 			   }
+			   else if(msg.contains(Message.FREEZE_GANTRY_ROBOT))
+		       {
+			   this.graphics.gbot.setBreakState(true);
+		       }else if(msg.contains(Message.UNFREEZE_GANTRY_ROBOT))
+		       {
+		    	   this.graphics.gbot.setBreakState(false);
+		       }
                            
                                
 		   }
