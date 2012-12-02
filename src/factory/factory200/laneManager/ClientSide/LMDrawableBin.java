@@ -21,7 +21,7 @@ public class LMDrawableBin {
 	private static ImageIcon bin8Image = new ImageIcon( LMDrawableBin.class.getResource("./pics/binBox8.png") );
 	private static ImageIcon emptyBinImage = new ImageIcon( LMDrawableBin.class.getResource("./pics/emptybox.png") );
 	
-	private boolean binExist = false;
+	private Boolean binExist = false;
 		
 	public LMDrawableBin(int binX, int binY){
 		this.binX = binX;

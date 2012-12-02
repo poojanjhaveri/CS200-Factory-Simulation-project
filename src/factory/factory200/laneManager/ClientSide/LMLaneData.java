@@ -12,7 +12,7 @@ public class LMLaneData {
 	private ArrayList<LMDrawablePart> parts = new ArrayList<LMDrawablePart>();
 	private ArrayList<LMDrawablePart> jammedLaneParts = new ArrayList<LMDrawablePart>();
 	private int laneNum;
-	private boolean jammedLane = false;
+	private Boolean jammedLane = false;
 	
 	public LMLaneData(int laneNum, LMApplication app){
 		this.laneNum = laneNum;
@@ -36,7 +36,7 @@ public class LMLaneData {
 		return jammedLaneParts;
 	}
 
-	public void switchJammedLane(boolean jammedLaneSwitch){
+	public void switchJammedLane(Boolean jammedLaneSwitch){
 		jammedLane = jammedLaneSwitch;
 		if( jammedLaneSwitch == true ){
 			for( int i = parts.size()-1 ; i >= 0 ; i-- ){

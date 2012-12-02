@@ -30,7 +30,7 @@ public class LMDrawablePurgingBulb{
 		purgingBulbImage.paintIcon(panel, graphics, bulbX, bulbY);
 	}
 	
-	public void setSwitch(boolean switchBulb){
+	public void setSwitch(Boolean switchBulb){
 		if(switchBulb == true){
 			purgingBulbImage = bulbOnImage;
 		}

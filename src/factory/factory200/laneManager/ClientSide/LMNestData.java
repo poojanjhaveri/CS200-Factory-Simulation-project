@@ -10,8 +10,8 @@ public class LMNestData {
 	
 	private ArrayList<LMDrawablePart> parts = new ArrayList<LMDrawablePart>();
 	private int nestNum;
-	private boolean partPiled = false;
-	private boolean toggling = false;
+	private Boolean partPiled = false;
+	private Boolean toggling = false;
 	
 	public LMNestData(int nestNum){
 		this.nestNum = nestNum;
@@ -33,11 +33,11 @@ public class LMNestData {
 		parts.clear();
 	}
 	
-	public void switchPartPiled(boolean partPiled){
+	public void switchPartPiled(Boolean partPiled){
 		this.partPiled = partPiled;
 	}
 	
-	public void switchToggling(boolean toggling){
+	public void switchToggling(Boolean toggling){
 		this.toggling = toggling;
 	}
 	
