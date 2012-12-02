@@ -294,6 +294,8 @@ public class NestAgent extends Agent implements NestInterface {
         //send message to the animation to stabilize the nest!
         print("sending message to stabilize nest at " + nestN);
         client.sendMessage(Message.KAM_ACTION_STABILIZE_NEST+":"+nestN);
+		serverLM.sendToLM(nestN + "&Non&UnToggling&");
+		serverLM.sendToFPM(nestN + "&Non&UnToggling&");
         
         //wait for a second to resume normal nest functions.
         try {
