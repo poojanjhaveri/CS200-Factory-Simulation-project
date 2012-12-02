@@ -162,6 +162,10 @@ public class Part implements Serializable {
     public String getName() {
         return this.name;
     }
+    public void setName(String s)
+    {
+	this.name = s;
+    }
     public Integer getNumber() {
         return number;
     }
@@ -170,6 +174,10 @@ public class Part implements Serializable {
     }
     public String getDescription() {
         return this.description;
+    }
+    public void setDescription(String s)
+    {
+	this.description = s;
     }
     public GUIPart getGUIPart() {
         return this.guipart;
