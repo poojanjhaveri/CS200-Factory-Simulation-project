@@ -119,8 +119,14 @@ public class KitAssemblyManager extends Manager implements ActionListener {
 	else if(msg.contains(Message.NEST_UP))
 	    {
 		this.nestUp(Integer.parseInt(this.grabParameter(msg)));
-	    }
+
+	    
         
+
+	    }else if(msg.contains(Message.KAM_MOVE_FROM_2_TO_0)){
+                this.moveFrom2To0();
+            }
+
         //todo - let me know what functions agent will call so I can process them here
     }
     //THIS METHOD MOVES KIT FROM POSITION 2 TO 0!!
