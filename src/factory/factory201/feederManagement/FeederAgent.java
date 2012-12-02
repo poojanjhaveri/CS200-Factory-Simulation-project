@@ -376,6 +376,8 @@ public class FeederAgent extends Agent implements Feeder {
             try {
                 print("trying to acquire camera semaphore");
                 camera.acquire();
+                //after the camera notifies to change the algorithm, take 5 seconds to change it.
+                Thread.sleep(5000);
                 print("acquire success!!");
             } catch (InterruptedException ex) {
                 Logger.getLogger(FeederAgent.class.getName()).log(Level.SEVERE, null, ex);

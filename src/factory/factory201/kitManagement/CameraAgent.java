@@ -68,6 +68,7 @@ public class CameraAgent extends Agent implements Camera {
 
     // ********* MISC. MESSAGES *********
     public void msgWrongFeederAlgorithm(FeederAgent feeder, int nestNum) {
+        print("wrong Feeder Algorithm Hit!! for nest " + nestNum);
         nestErrors.put(nestNum, Result.Is.partsMissing);
 //        otherErrors.add(Result.Is.partsMissing);
 //        nonNorm[2] = true;
@@ -197,7 +198,9 @@ public class CameraAgent extends Agent implements Camera {
         Result.Is is;
         if (nestErrors.containsKey(nest.nestNum)) {
             is = nestErrors.get(nest.nestNum);
+        print("removing the error " + nestErrors.get(nest.nestNum));
             nestErrors.remove(nest.nestNum);
+        print("after removing the error " + nestErrors.get(nest.nestNum));
         } else if(nest.parts.isEmpty()) {
             is = Result.Is.partsMissing;
         } else if (!otherErrors.isEmpty()) {
