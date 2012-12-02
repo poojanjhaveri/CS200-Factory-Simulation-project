@@ -2,6 +2,7 @@ package factory.factory201.kitManagement;
 
 import agent.Agent;
 import factory.factory200.laneManager.ServerSide.LMServerMain;
+import factory.factory201.feederManagement.FeederAgent;
 import factory.factory201.interfaces.Camera;
 import factory.factory201.interfaces.KitRobot;
 import factory.factory201.interfaces.NestInterface;
@@ -25,22 +26,23 @@ import java.util.Map;
  * the FCS.
  *
  * @author Alex Young
- * @version 1
+ * @version 2
  * @brief agent for the Camera
  */
 public class CameraAgent extends Agent implements Camera {
 
     private KitRobot kitRobot;
     private NestInterface nestAgent;
+    private FeederAgent feeder;
     private LMServerMain LMServer;
     private List<Nest> nestList;
     private List<Kit> kitList;
 //    private Kit kitInfoFromPartsAgent;
     private List<Integer> kitRqmts;
     private Map<Integer, Result.Is> nestErrors;
-    private Map<String, Integer> kitErrors;
+    private List<Result.Is> otherErrors;
+//    private Map<String, Integer> kitErrors;
     private boolean partsDropped;
-    private boolean partsAgentIsInTheWay;
     private List<Part> missingParts;
 
     public CameraAgent(String name) {
@@ -50,13 +52,16 @@ public class CameraAgent extends Agent implements Camera {
 //        kitInfoFromPartsAgent = null;
         kitRqmts = new ArrayList<Integer>();
         nestErrors = new HashMap<Integer, Result.Is>();
+        otherErrors = new ArrayList<Result.Is>();
         partsDropped = false;
-        partsAgentIsInTheWay = false;
+        feeder = null;
     }
 
-    //Non-normative messages
-    public void msgWrongFeederAlgorithm(int nestNum) {
-        
+    // ********* MISC. MESSAGES *********
+    public void msgWrongFeederAlgorithm(FeederAgent feeder, int nestNum) {
+        otherErrors.add(Result.Is.partsMissing);
+//        nonNorm[2] = true;
+        this.feeder = feeder;
     }
     
     public void msgPartsDroppedFromKit(List<Part> missingParts) {
@@ -73,17 +78,17 @@ public class CameraAgent extends Agent implements Camera {
         nestErrors.put(nestNum, Result.Is.piledParts);
     }
 
-    // added by Kevin
     public void msgPartsShaking(int nestNum) {
         print("parts shaking hit");
         nestErrors.put(nestNum, Result.Is.unstableParts);
     }
 
     public void msgPartsAgentIsInTheWay() {
-        partsAgentIsInTheWay = true;
+        otherErrors.add(Result.Is.robotInTheWay);
+//        nonNorm[1] = true;
     }
 
-    //Agent Messages
+    // ********* AGENT MESSAGES *********
     @Override
     public void msgNestIsFull(Nest nest) {
         synchronized (nestList) {
@@ -139,6 +144,8 @@ public class CameraAgent extends Agent implements Camera {
             DoInspectKit(kit);
             kitRobot.msgKitInspectedError(missingParts);
             strResult = "Parts missing";
+            partsDropped = false;
+            missingParts = null;
         } //        boolean result = true;
         //            if (kit.parts.size() != kitRqmts.size()) {
         //                result = false;
@@ -180,9 +187,10 @@ public class CameraAgent extends Agent implements Camera {
         if (nestErrors.containsKey(nest.nestNum)) {
             is = nestErrors.get(nest.nestNum);
             nestErrors.remove(nest.nestNum);
-        } else if (partsAgentIsInTheWay) {
-            is = Result.Is.robotInTheWay;
-
+        } else if(nest.parts.isEmpty()) {
+            is = Result.Is.partsMissing;
+        } else if (!otherErrors.isEmpty()) {
+            is = otherErrors.remove(0);
         } else {
             is = Result.Is.verified;
         }
@@ -192,6 +200,10 @@ public class CameraAgent extends Agent implements Camera {
         }
         DoInspectNest(nest);
         nestAgent.msgNestInspected(nest, new Result(is));
+        if(feeder != null) {
+            feeder.msgCorrectYourAlgorithm();
+            feeder = null;
+        }
 //        String strResult = result ? "NO ERROR" : "ERROR";
         print("Inspecting nest: [Nest " + nest.nestNum + "] with result: " + is + ".");
         synchronized (nestList) {

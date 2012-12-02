@@ -26,6 +26,7 @@ import factory.general.Kit;
 import factory.general.Manager;
 import factory.general.Message;
 import factory.general.Util;
+import javax.swing.ImageIcon;
 
 
 /**
@@ -61,6 +62,9 @@ public class FactoryProductionManager extends Manager implements ActionListener 
     private JTabbedPane tabs;
     
     JPanel nonnorm;
+    JPanel mparts;
+    
+    JButton nonnormupdate;
     
     private ArrayList<Kit> prodQueue; // used for queue of kits
 
@@ -77,6 +81,9 @@ public class FactoryProductionManager extends Manager implements ActionListener 
     private boolean kitListFromServerIsEmpty; // true if kit list from server is empty
     private boolean constructed; // variable to determine if this class's constructor has finished; used for real time updates
     private BlueprintKits kitsbp;
+    
+     ArrayList<JButton> nonnormpart;
+    
     
     
     JLabel  kitnorname;
@@ -580,21 +587,63 @@ public class FactoryProductionManager extends Manager implements ActionListener 
     
     public void preparenonnorm()
     {
-            JPanel mparts = new JPanel();
+            mparts = new JPanel();
             mparts.setLayout(new GridBagLayout());
             GridBagConstraints c = new GridBagConstraints();
             
-            kitnorname = new JLabel("");
-            mparts.add(kitnorname);
-            nonnorm.add(mparts);
+            c.gridx=0;
+            c.gridy=0;
+            c.gridwidth=2;
             
-        
+            kitnorname = new JLabel("");
+            mparts.add(kitnorname,c);
+            nonnormupdate = new JButton("Update this kit ");
+            nonnormupdate.setEnabled(false);
+            
+        //    mparts.add(nonnormupdate);
+              nonnormpart = new ArrayList();
+            nonnorm.add(mparts);
+
     }
     
     private void updatenonnorm()
     {
+         nonnormupdate.setEnabled(true);
         kitnorname.setText(this.selectedKits.get(this.selectedKits.size()-1).getName());
-        System.out.println(kitnorname.getText());
+        GridBagConstraints c = new GridBagConstraints();
+        
+        for(int i=0;i<this.selectedKits.get(this.selectedKits.size()-1).getSize();i++)
+        {
+           c.gridx=0;
+           c.gridy=i+1;
+           JButton b1 = new JButton("Remove Part" + i);
+           nonnormpart.add(new JButton("Remove Part" + i+1));
+           nonnormpart.get(i).addActionListener(new updatebuttonnorm());
+         nonnormpart.get(i).setIcon(new ImageIcon(this.selectedKits.get(this.selectedKits.size()-1).getPart(i).getFilename()));
+           mparts.add(nonnormpart.get(i),c);
+           
+        }
+        
     }
     
+    
+     public class updatebuttonnorm implements ActionListener
+         {
+    
+         public void actionPerformed(ActionEvent ae) {
+             
+             
+             for(int k=0;k<nonnormpart.size();k++)
+             {
+             if(ae.getSource()==nonnormpart.get(k))
+             {
+                 System.out.println("Button  is pressed "+k);
+                 
+             }
+             }
+             
+    
+       }
+    
+     }
 }
