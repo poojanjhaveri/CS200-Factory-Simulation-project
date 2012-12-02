@@ -63,7 +63,6 @@ public class Server {
 
     // Dongyoung's
     private LMServerMain serverLM;
-    private Thread threadLM;
 
     /** Connection fields */
     private ServerSocket ss = null;
