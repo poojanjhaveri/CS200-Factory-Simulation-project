@@ -34,7 +34,11 @@ public class GUINonNormKAM  extends JPanel {
     public ArrayList<Boolean> piledColor;
     JButton unstabilize;    
     ActionListener kam;
-    
+
+    public JButton getRobotInWayButton()
+    {
+	return this.robotIn;
+    }    
     public JButton getDropPartButton()
     {
         return this.droppart;
