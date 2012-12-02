@@ -281,13 +281,13 @@ public class Server {
 
         private void turnOffAgentPrintStatements() {
             if (PATRICK) {
-                nestAgent.print = true;
-                partsAgent.print = true;
+                nestAgent.print = false;
+                partsAgent.print = false;
             }
             if (KEVIN) {
                 for (int i = 0; i < LANE; i++) {
                     if (i < FEEDER) {
-                        feederAgents[i].print = true;
+                        feederAgents[i].print = false;
                     }
                     laneAgents[i].print = false;
                 }
@@ -295,8 +295,8 @@ public class Server {
             }
             if (ALEX) {
                 kitRobotAgent.print = true;
-                conveyorAgent.print = true;
-                cameraAgent.print = false;
+                conveyorAgent.print = false;
+                cameraAgent.print = true;
             }
       }
 

@@ -39,10 +39,8 @@ public class LMGUINonNormativePanel3 extends JPanel implements ActionListener{
 		
 		button1.addActionListener(this);
 		button2.addActionListener(this);
-		button3.addActionListener(this);
 		add(button1);
 		add(button2);
-		add(button3);
 	}
 	
 	public void actionPerformed(ActionEvent ae){

@@ -14,12 +14,16 @@ public class LMGUINonNormativePanel1 extends JPanel implements ActionListener{
 	private LMApplication app;
 	
 	private Integer[] feederList = { 1, 2, 3, 4 };
+	private Integer[] partList = { 1, 2, 3, 4, 5, 6, 7, 8 };
 	private JComboBox feederNumBox = new JComboBox(feederList);
+	private JComboBox partNumBox = new JComboBox(partList);
 	private JLabel label1 = new JLabel("Feeder Number");
+	private JLabel label2 = new JLabel("Part Number");
 	private JPanel panel1 = new JPanel();
+	private JPanel panel2 = new JPanel(); 
 	private JButton button = new JButton("Bad Parts Insertion");
 	
-	private int feederNum, partNum;
+	private int feederNum, partNum, partQuantity;
 	
 	public LMGUINonNormativePanel1(LMApplication app){
 		this.app = app;
@@ -29,6 +33,8 @@ public class LMGUINonNormativePanel1 extends JPanel implements ActionListener{
 		
 		panel1.add(label1);
 		panel1.add(feederNumBox);
+		panel1.add(label2);
+		panel1.add(partNumBox);
 		panel1.setPreferredSize(new Dimension(270,40));
 		add(panel1);
 		
@@ -39,7 +45,7 @@ public class LMGUINonNormativePanel1 extends JPanel implements ActionListener{
 	public void actionPerformed(ActionEvent ae){
 		if( ae.getSource() == button ){
 			feederNum = feederNumBox.getSelectedIndex();
-			partNum = 0;
+			partNum = partNumBox.getSelectedIndex();
 			app.getVerifyMessage().sendToServer("" + feederNum + partNum + "BAD_PART_INSERTION");
 		}
 	}
