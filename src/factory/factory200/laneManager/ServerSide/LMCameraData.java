@@ -25,7 +25,7 @@ public class LMCameraData {
 		// Non-normative Scenario : Signal to Agent(Bad Parts)
 		if( serverMain.getPartData().checkAllBadParts(nestCameraNum) == true ){
 			System.out.println("BAD PARTS ON NEST " + nestCameraNum );
-			//serverMain.getCameraAgent().msgAllPartsBad(nestCameraNum);
+			serverMain.getCameraAgent().msgAllPartsBad(nestCameraNum);
 		}
 	}
 }
