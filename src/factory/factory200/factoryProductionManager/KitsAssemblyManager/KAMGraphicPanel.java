@@ -310,7 +310,7 @@ public class KAMGraphicPanel {
         //backgroundImage.paintIcon(this, g2, 500, 500);
         Image img = new ImageIcon("pics/background/mainbg.png").getImage();
         g2.drawImage(img, 0, 0, null);
-        paintNests(graph, g2);
+        //paintNests(graph, g2);
         kitstand.getKitStand().paintIcon(graph, g2, kitstand.getX(), kitstand.getY());
         for (int i = 0; i < 3; i++) {
 
@@ -335,22 +335,22 @@ public class KAMGraphicPanel {
         }
         kitbot.paintMe(graph, g2);
 
-        if (camera.isVisible()) {
-            camera.getCamera().paintIcon(graph, g2, camera.getX(), camera.getY());
+        //if (camera.isVisible()) {
+        //    camera.getCamera().paintIcon(graph, g2, camera.getX(), camera.getY());
 
-        }
-        if (camera.isVisible() && cameraCounter == 20) {
-            camera.setVisible(false);
-            cameraCounter = 0;
-        }
+        //}
+        //if (camera.isVisible() && cameraCounter == 20) {
+        //    camera.setVisible(false);
+        //    cameraCounter = 0;
+        //}
         kitter.paintMe(graph, g2);
 
-        for (int k = 0; k < this.nest.size(); k++) {
-            for (int i = 0; i < this.nest.get(k).getParts().size(); i++) {
-                //System.out.println(j.nest.get(0).getParts().get(i).getGUIPart());
-                this.nest.get(k).getParts().get(i).getGUIPart().getImage().paintIcon(graph, g2, nest.get(k).getParts().get(i).getGUIPart().getX(), nest.get(k).getParts().get(i).getGUIPart().getY());
-            }
-        }
+        //for (int k = 0; k < this.nest.size(); k++) {
+        //    for (int i = 0; i < this.nest.get(k).getParts().size(); i++) {
+        //        //System.out.println(j.nest.get(0).getParts().get(i).getGUIPart());
+        //        this.nest.get(k).getParts().get(i).getGUIPart().getImage().paintIcon(graph, g2, nest.get(k).getParts().get(i).getGUIPart().getX(), nest.get(k).getParts().get(i).getGUIPart().getY());
+        //    }
+        //}
 
     }
 
