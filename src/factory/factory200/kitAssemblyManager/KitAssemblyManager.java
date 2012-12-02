@@ -1,5 +1,6 @@
 package factory.factory200.kitAssemblyManager;
 
+import factory.general.BlueprintParts;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -456,5 +457,14 @@ if(p != null){
 
     public static void main(String[] args) {
         KitAssemblyManager mgr = new KitAssemblyManager();
+        
+
     }
 }
+
+/*
+ * TO SEND ARRAYLIST
+ ArrayList = array;
+BlueprintParts p = new BlueprintParts(array);
+this.sendToServer(Message.KAM_BAD_KIT+":"+p.serialize());
+ */
