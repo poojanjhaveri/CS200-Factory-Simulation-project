@@ -158,7 +158,7 @@ public class GUINonNormKAM  extends JPanel {
         droppart = new JButton("Drop Part");
         //droppart.setBackground(Color.GREEN);
         //droppart.setOpaque(true);
-        droppart.addActionListener(new GUINonNormKAM.droppartbutton());
+        droppart.addActionListener(this.kam);
         droppart.setPreferredSize(new Dimension(100,45));
         scenario.add(droppart,c);
         
