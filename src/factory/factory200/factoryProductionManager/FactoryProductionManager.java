@@ -45,6 +45,12 @@ import factory.general.Util;
  *
  */
 public class FactoryProductionManager extends Manager implements ActionListener {
+	/**
+	 * To avoid unexpected InvalidClassExceptions during deserialization
+	 * we explicitly specify a UID, instead of relying on the compiler to generate one
+	 */
+	private static final long serialVersionUID = 5L;
+	
     private JPanel basePanel, topPanel,parentMidPanel, queuePanel, botPanel, mainPanel, selPanel, leftPanel, midPanel, rightPanel, botBotPanel, slotsPanel;
     private JLabel selLabel, queueLabel, numLabel, consoleLabel, schedLabel, inProdLabel;
     private JComboBox selKit;
