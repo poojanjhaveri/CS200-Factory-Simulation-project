@@ -587,12 +587,18 @@ public class FactoryProductionManager extends Manager implements ActionListener 
     
     public void preparenonnorm()
     {
+        
             mparts = new JPanel();
             mparts.setLayout(new GridBagLayout());
             GridBagConstraints c = new GridBagConstraints();
             
-            c.gridx=0;
-            c.gridy=0;
+            c.gridx=1;
+            c.gridy=1;
+            mparts.add(new JLabel("Remove Part Panel"),c);
+            
+            
+            c.gridx=1;
+            c.gridy=1;
             c.gridwidth=2;
             
             kitnorname = new JLabel("");
@@ -602,24 +608,28 @@ public class FactoryProductionManager extends Manager implements ActionListener 
             
         //    mparts.add(nonnormupdate);
               nonnormpart = new ArrayList();
-            nonnorm.add(mparts);
+              nonnorm.add(mparts);
+            
 
     }
     
     private void updatenonnorm()
     {
-         nonnormupdate.setEnabled(true);
+        nonnorm.remove(mparts);
+         preparenonnorm();
+        nonnormupdate.setEnabled(true);
         kitnorname.setText(this.selectedKits.get(this.selectedKits.size()-1).getName());
         GridBagConstraints c = new GridBagConstraints();
         
         for(int i=0;i<this.selectedKits.get(this.selectedKits.size()-1).getSize();i++)
         {
            c.gridx=0;
-           c.gridy=i+1;
+           c.gridy=i+3;
            JButton b1 = new JButton("Remove Part" + i);
-           nonnormpart.add(new JButton("Remove Part" + i+1));
+           
+           nonnormpart.add(new JButton("Remove Part" + (i+1)));
            nonnormpart.get(i).addActionListener(new updatebuttonnorm());
-         nonnormpart.get(i).setIcon(new ImageIcon(this.selectedKits.get(this.selectedKits.size()-1).getPart(i).getFilename()));
+           nonnormpart.get(i).setIcon(new ImageIcon(this.selectedKits.get(this.selectedKits.size()-1).getPart(i).getFilename()));
            mparts.add(nonnormpart.get(i),c);
            
         }
