@@ -120,9 +120,20 @@ public class FeederAgent extends Agent implements Feeder {
         }
     }
 
+    // By Dongyoung
+    public void msgAddBadParts(){
+    	
+    	System.out.println("BAD PARTS OCCURRED!!! : " + super.getName() );
+    	// You will still need the binNum to show that what kind of bin the Gantry Robot dump into feeder.
+    	// But parts coming from lane are bad.
+    	//Use this : LMServer.getForAgentGantryRobot().putBadBin(binNum, quantity, feederNum);
+    	
+    }
+    
     public void msgCorrectYourAlgorithm(){
     
     }
+    
     public void msgAnimationComplete(){
     anim.release();
     }

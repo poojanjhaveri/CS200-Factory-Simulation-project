@@ -48,7 +48,7 @@ public class LMControlPanel5 extends JPanel implements ActionListener{
 				
 		if(ae.getSource() == button1){
 			if( partStatus.getSelectedIndex() == 1 ){
-				agentGantryRobot.putBadBin(Integer.parseInt(binInput.getText()), chosenFeeder);
+				agentGantryRobot.putBadBin(Integer.parseInt(binInput.getText()), Integer.parseInt(quantityInput.getText()), chosenFeeder);
 			}
 			else if( partStatus.getSelectedIndex() == 0 ){
 				agentGantryRobot.putBin(Integer.parseInt(binInput.getText()), Integer.parseInt(quantityInput.getText()), chosenFeeder);

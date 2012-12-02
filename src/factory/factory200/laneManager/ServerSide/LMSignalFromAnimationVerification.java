@@ -29,8 +29,9 @@ public class LMSignalFromAnimationVerification {
 		// Non-normative Scenario 1
 		else if(message.contains("BAD_PART_INSERTION") ){
 			feederNum = message.charAt(0) - 48;
-			partNum = message.charAt(1) - 48;
-			serverMain.getForAgentGantryRobot().putBadBin(partNum, feederNum);
+			
+			// Tell the agent that clicked the button
+			serverMain.getFeederAgents()[feederNum].msgAddBadParts();
 		}
 		
 		// Non-normative Scenario 2
