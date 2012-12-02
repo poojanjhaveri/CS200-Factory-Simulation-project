@@ -133,7 +133,7 @@ public class FeederAgent extends Agent implements Feeder {
     }
     
     public void msgCorrectYourAlgorithm(){
-    
+    camera.release();
     }
     
     public void msgAnimationComplete(){
