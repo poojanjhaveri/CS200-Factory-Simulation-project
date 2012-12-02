@@ -23,7 +23,7 @@ public class LMGUINestPanel extends JPanel{
 		setNestSwitch(true);
 	}
 
-	public void setNestSwitch( Boolean signal ){
+	public void setNestSwitch( boolean signal ){
 		if( signal == true ){
 			upSwitch.setSelected(true);
 		}

@@ -75,7 +75,7 @@ public class KitRobotAgentTest extends TestCase {
     }
 
     /**
-     * Test of msgKitInspected method, of class KitRobotAgent.
+     * Test of msgKitInspectedNoError method, of class KitRobotAgent.
      */
     @Test
     public void testMsgKitInspected() {
