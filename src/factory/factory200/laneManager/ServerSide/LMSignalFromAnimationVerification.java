@@ -31,6 +31,7 @@ public class LMSignalFromAnimationVerification {
 			feederNum = message.charAt(0) - 48;
 			
 			// Tell the agent that clicked the button
+                        serverMain.getCameraAgent().msgAllPartsBad(2*feederNum+1);
 			serverMain.getFeederAgents()[feederNum].msgAddBadParts();
 		}
 		

@@ -79,6 +79,7 @@ public class CameraAgent extends Agent implements Camera {
     }
 
     public void msgAllPartsBad(int nestNum) {
+       print("Bad Parts Scenario Hit");
         nestErrors.put(nestNum, Result.Is.badParts);
     }
 
@@ -207,7 +208,12 @@ public class CameraAgent extends Agent implements Camera {
             Thread.sleep(2000); // For Dongyung
         } catch (InterruptedException ex) {
         }
+        
+        synchronized (nestList) {
+            nestList.remove(nest);
+        }
         DoInspectNest(nest);
+    
         nestAgent.msgNestInspected(nest, new Result(is));
         if(feeder != null) {
             feeder.msgCorrectYourAlgorithm();
@@ -215,9 +221,7 @@ public class CameraAgent extends Agent implements Camera {
         }
 //        String strResult = result ? "NO ERROR" : "ERROR";
         print("Inspecting nest: [Nest " + nest.nestNum + "] with result: " + is + ".");
-        synchronized (nestList) {
-            nestList.remove(nest);
-        }
+    
         stateChanged();
     }
 

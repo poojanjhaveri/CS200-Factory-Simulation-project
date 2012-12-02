@@ -33,6 +33,7 @@ public class FeederAgent extends Agent implements Feeder {
     private Lane lane;
     private LMServerMain LMServer;
     boolean feederFaulty=false;
+    boolean isBadParts=false;
     /*
      * THESE LEFT AND RIGHT COUNT VARIABLES WILL BE USED TO SET THE LEFT/RIGHT LANE ON.
      * STARTS WITH LEFTLANE==RIGHTLANE, THE PROGRAM CHOSES SENDTOLEFTLANE(). SO LEFTLANE IS INCREMENTED
@@ -127,7 +128,8 @@ public class FeederAgent extends Agent implements Feeder {
     	// You will still need the binNum to show that what kind of bin the Gantry Robot dump into feeder.
     	// But parts coming from lane are bad.
     	//Use this : LMServer.getForAgentGantryRobot().putBadBin(binNum, quantity, feederNum);
-    	
+    isBadParts=true;	
+    
     }
     
     public void msgCorrectYourAlgorithm(){
@@ -389,8 +391,13 @@ public class FeederAgent extends Agent implements Feeder {
             //start jammed lane animation
             LMServer.getForAgentLane().startJammedLaneAnimation(leftLane.getIndex());
             LMServer.getForAgentFeeder().setDiverterSwitchLeft(feederNum);
+            if(isBadParts)
+            {
+            LMServer.getForAgentGantryRobot().putBadBin(p.part.type, p.quantity, feederNum);
+            }
+            else
             LMServer.getForAgentGantryRobot().putBin(p.part.type, p.quantity, feederNum);
-            
+            isBadParts=false;
             //start strong vibration amplitude after 5 seconds
             timer.schedule(new TimerTask(){
     	    public void run(){		    
@@ -413,8 +420,14 @@ public class FeederAgent extends Agent implements Feeder {
            
            else{
             LMServer.getForAgentFeeder().setDiverterSwitchLeft(feederNum);
-            LMServer.getForAgentGantryRobot().putBin(p.part.type, p.quantity, feederNum);
+            if(isBadParts)
+            {
+            LMServer.getForAgentGantryRobot().putBadBin(p.part.type, p.quantity, feederNum);
             }
+            else
+            LMServer.getForAgentGantryRobot().putBin(p.part.type, p.quantity, feederNum);
+            isBadParts=false;
+           }
                 
             try {
                 anim.acquire();
