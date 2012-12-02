@@ -55,6 +55,10 @@ public class CameraAgent extends Agent implements Camera {
     }
 
     //Non-normative messages
+    public void msgWrongFeederAlgorithm(int nestNum) {
+        
+    }
+    
     public void msgPartsDroppedFromKit(List<Part> missingParts) {
         partsDropped = true;
         this.missingParts = missingParts;
