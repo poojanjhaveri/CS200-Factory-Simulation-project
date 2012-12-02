@@ -141,6 +141,7 @@ public class FeederAgent extends Agent implements Feeder {
     }
     
     public void msgFeederFault(){
+    print("feeder faulty HIT!!");
     this.feederFaulty=true;
     }
     
@@ -329,27 +330,12 @@ public class FeederAgent extends Agent implements Feeder {
             mparts.add(p.part);
         }
 
-
-        if(feederFaulty){
-            try {
-                /* Feeder is faulty ? */
-                   //leftLane.msgHereAreParts(mparts);
-                   
-                   camera.acquire();
-                   dosendPartToLeftLane(p);
-                   leftLane.msgHereAreParts(mparts);
-                }
-            catch (InterruptedException ex) {
-                Logger.getLogger(FeederAgent.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        
-        else{
+        //else{
         //if the feeder is not faulty
         dosendPartToLeftLane(p);
         leftLane.msgHereAreParts(mparts);
             
-        }
+        
         //animation.setDiverterSwitchLeft(feederNum-1);
 
         stateChanged();
@@ -386,6 +372,15 @@ public class FeederAgent extends Agent implements Feeder {
                 return;
             }
         
+           if(feederFaulty){
+            try {
+                print("trying to acquire camera semaphore");
+                camera.acquire();
+                print("acquire success!!");
+            } catch (InterruptedException ex) {
+                Logger.getLogger(FeederAgent.class.getName()).log(Level.SEVERE, null, ex);
+            }
+           }
            if(leftLane.getJammed()==true){
             print("leftLane is jammed!!");
             //start jammed lane animation
