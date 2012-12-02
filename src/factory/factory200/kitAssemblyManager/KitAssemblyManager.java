@@ -39,7 +39,7 @@ public class KitAssemblyManager extends Manager implements ActionListener {
 	private static final long serialVersionUID = 4L;
 	
     KAMGraphicPanel graphics;
-    boolean test = true;
+    boolean test = false;
     JTabbedPane tabbedPane;
     GUINonNormKAM nonnorm;
     //private KitAssemblyManagerDeliveryStation kamdelivery;///<keeps track of all of the objects listed above and paints the objects according to a timer
