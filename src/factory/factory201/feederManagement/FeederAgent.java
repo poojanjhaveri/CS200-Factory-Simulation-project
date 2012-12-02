@@ -27,6 +27,7 @@ import java.util.logging.Logger;
 public class FeederAgent extends Agent implements Feeder {
 
     Timer timer = new Timer();
+    
     private List<myParts> parts = Collections.synchronizedList(new ArrayList<myParts>());
     private Lane leftLane;
     private Lane rightLane;
@@ -45,6 +46,7 @@ public class FeederAgent extends Agent implements Feeder {
     public int feederNum;
     Semaphore anim=new Semaphore(0, true);
     Semaphore laneJammed=new Semaphore(0, true);
+    Semaphore amplitude=new Semaphore(0, true);
     Semaphore camera=new Semaphore(0, true);
     boolean requestState = false;
     //--------------------------------------------------------------
@@ -395,20 +397,23 @@ public class FeederAgent extends Agent implements Feeder {
             else
             LMServer.getForAgentGantryRobot().putBin(p.part.type, p.quantity, feederNum);
             isBadParts=false;
-            //start strong vibration amplitude after 5 seconds
-            timer.schedule(new TimerTask(){
-    	    public void run(){		    
-            LMServer.getForAgentLane().setVibrationAmplitudeStrong(leftLane.getIndex());
+            try {
+                //start strong vibration amplitude after 5 seconds
+                Thread.sleep(5000);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(FeederAgent.class.getName()).log(Level.SEVERE, null, ex);
             }
-            },5000);
             
-            //revert back to normal amplitude in 1.5 seconds
-            timer.schedule(new TimerTask(){
-    	    public void run(){		    
-            System.out.println("calling set normal");
-            LMServer.getForAgentLane().setVibrationAmplitudeNormal(leftLane.getIndex());
+            LMServer.getForAgentLane().setVibrationAmplitudeStrong(leftLane.getIndex());
+            
+            try {
+                //start normal vibration amplitude after 3 seconds
+                Thread.sleep(3000);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(FeederAgent.class.getName()).log(Level.SEVERE, null, ex);
             }
-            },3000);
+            LMServer.getForAgentLane().setVibrationAmplitudeNormal(leftLane.getIndex());
+           
             
             //set jammed lane to false
             leftLane.setJammed(false);
@@ -458,18 +463,23 @@ public class FeederAgent extends Agent implements Feeder {
             LMServer.getForAgentGantryRobot().putBin(p.part.type, p.quantity, feederNum);
             
             //start strong vibration amplitude after 5 seconds
-            timer.schedule(new TimerTask(){
-    	    public void run(){		    
-            LMServer.getForAgentLane().setVibrationAmplitudeStrong(rightLane.getIndex());
+            try {
+                //start strong vibration amplitude after 5 seconds
+                Thread.sleep(5000);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(FeederAgent.class.getName()).log(Level.SEVERE, null, ex);
             }
-            },5000);
             
-            //revert back to normal amplitude in 1.5 seconds
-            timer.schedule(new TimerTask(){
-    	    public void run(){		    
-            LMServer.getForAgentLane().setVibrationAmplitudeNormal(rightLane.getIndex());
+            LMServer.getForAgentLane().setVibrationAmplitudeStrong(rightLane.getIndex());
+            
+            try {
+                //start normal vibration amplitude after 5 seconds
+                Thread.sleep(3000);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(FeederAgent.class.getName()).log(Level.SEVERE, null, ex);
             }
-            },3000);
+            LMServer.getForAgentLane().setVibrationAmplitudeNormal(rightLane.getIndex());
+            
             
             //set jammed lane to false
             rightLane.setJammed(false);
