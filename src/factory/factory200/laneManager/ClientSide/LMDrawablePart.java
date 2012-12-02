@@ -24,9 +24,9 @@ public class LMDrawablePart {
 
 	private ImageIcon partImage;
 	private int laneNestNum;
+	private int partNum;
+	private int partStatus;
 	private int randomX, randomY;
-	private int positionInNestX, positionInNestY;
-	private int randomVar;
 	private String message = "";
 	
 	private int currentLocationX, currentLocationY;
@@ -34,11 +34,10 @@ public class LMDrawablePart {
 	private double incrementalX, incrementalY;
 	private double gapXSquared, gapYSquared;
 	private double divisor;
-	private boolean arrived = false;
-	private boolean availableToNest = true;
-	private boolean arrivedToNest = false;
-	private boolean nonNormativePiled = false;
-	private boolean nonNormativeToggling = false;
+	private Boolean arrived = false;
+	private Boolean availableToNest = true;
+	private Boolean arrivedToNest = false;
+	private Boolean nonNormative = false;
 	
 	public LMDrawablePart(LMApplication app, LMDrawableAllPart getAllPart, int laneNestNum, int partNum, int currentLocationX, int currentLocationY, int endOfLaneX, int endOfLaneY, int partStatus){
 		this.app = app;
@@ -48,6 +47,8 @@ public class LMDrawablePart {
 		this.currentLocationY = currentLocationY;
 		this.destinationX = endOfLaneX;
 		this.destinationY = endOfLaneY;
+		this.partNum = partNum;
+		this.partStatus = partStatus;
 		
 		if( partStatus == 0 ){
 			partImage = badpart;
@@ -65,9 +66,6 @@ public class LMDrawablePart {
 	}
 	
 	public void paint(LMGraphicsPanel panel, Graphics2D graphics){
-		if( nonNormativeToggling == true ){
-			setDestinationToggling();
-		}	
 		partImage.paintIcon(panel, graphics, currentLocationX, currentLocationY);
 	}
 	
@@ -76,18 +74,12 @@ public class LMDrawablePart {
 			if( availableToNest == true ){
 				arrivedToNest = true;
 				getAllPart.addPartFromLaneToNest(laneNestNum);
-				app.getGraphicsPanel().getAllPart().getNest(laneNestNum).reorganizeToggling();
 				message = laneNestNum + "PART_TO_NEST_FROM_LANE";
 				app.getVerifyMessage().sendToServer(message);
 			}
 		}
 		calculate();
 		checkDestination();
-	}
-	
-	public void setPositionInNest(int newX, int newY){
-		positionInNestX = newX;
-		positionInNestY = newY;
 	}
 	
 	public void calculate(){
@@ -106,7 +98,7 @@ public class LMDrawablePart {
 	}
 		
 	public void checkDestination(){
-		if( Math.abs(destinationX - currentLocationX) < 2 && Math.abs(destinationY - currentLocationY) < 2 ){
+		if( Math.abs(destinationX - currentLocationX) < 2 && Math.abs(destinationY - currentLocationY) < 2 ){  
 			arrived = true;
 		}
 		else{ arrived = false; }
@@ -117,33 +109,13 @@ public class LMDrawablePart {
 		this.destinationY = destinationY;
 	}
 	
-	public void setDestinationPiled(){
-		if( nonNormativePiled == false ){
+	public void setDestinationNonNormative(){
+		if( nonNormative == false ){
 			randomX = (int)(Math.random() * 20) + 13;
 			randomY = (int)(Math.random() * 60) + 35 + 75*laneNestNum;
 			setDestination(randomX, randomY);
-			nonNormativePiled = true;
+			nonNormative = true;
 		}
-	}
-	
-	public void setDestinationToggling(){
-		randomVar = (int)(Math.random() * 8);
-		if( randomVar < 1 ){  currentLocationX = positionInNestX - 2; currentLocationY = positionInNestY - 2; }
-		else if( randomVar < 2 ){  currentLocationX = positionInNestX - 2; currentLocationY = positionInNestY + 2; }
-		else if( randomVar < 3 ){  currentLocationX = positionInNestX - 2; currentLocationY = positionInNestY; }
-		else if( randomVar < 4 ){  currentLocationX = positionInNestX + 2; currentLocationY = positionInNestY - 2; }
-		else if( randomVar < 5 ){  currentLocationX = positionInNestX + 2; currentLocationY = positionInNestY + 2; }
-		else if( randomVar < 6 ){  currentLocationX = positionInNestX + 2; currentLocationY = positionInNestY; }
-		else if( randomVar < 7 ){  currentLocationX = positionInNestX; currentLocationY = positionInNestY + 2; }
-		else if( randomVar <= 8 ){  currentLocationX = positionInNestX; currentLocationY = positionInNestY - 2; }
-	}
-	
-	public void togglingSetup(){
-		nonNormativeToggling = true;
-	}
-	
-	public void stopToggling(){
-		nonNormativeToggling = false;
 	}
 	
 	public Boolean getArrived(){
@@ -154,7 +126,7 @@ public class LMDrawablePart {
 		return currentLocationX;
 	}
 	
-	public void setAvailabilityToNest(boolean availableToNest){
+	public void setAvailabilityToNest(Boolean availableToNest){
 		this.availableToNest = availableToNest;
 	}
 }

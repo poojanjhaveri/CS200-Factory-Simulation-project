@@ -30,7 +30,7 @@ public class LMGantryRobotForAgent {
 		int partNum = binNum;
 		
 		// Signal To LM & FPM
-		signal = "" + feederNum + "&Bin&Put&" ;
+		signal = "" + feederNum + binNum +  "&Bin&Put&" ;
 		serverMain.sendToLM(signal);
 		serverMain.sendToFPM(signal);
 		

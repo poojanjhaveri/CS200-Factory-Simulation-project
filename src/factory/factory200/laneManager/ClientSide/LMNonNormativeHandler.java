@@ -23,10 +23,10 @@ public class LMNonNormativeHandler {
 			app.getGraphicsPanel().getAllPart().getNest(nestLaneNum).switchPartPiled(true);
 		}
 		else if( message.contains("&Toggling&") ) {
-			app.getGraphicsPanel().getAllPart().getNest(nestLaneNum).switchToggling(true);
+			
 		}
 		else if( message.contains("&UnToggling&") ) {
-			app.getGraphicsPanel().getAllPart().getNest(nestLaneNum).switchToggling(false);
+			
 		}
 	}
 }
