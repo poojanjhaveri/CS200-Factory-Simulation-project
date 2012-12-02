@@ -27,6 +27,7 @@ public class GUINonNormKAM  extends JPanel {
     JButton droppart;
     JButton earlyflash;///<flash camera early
     JButton piled;
+    JButton robotIn;
     //JButton earlyCameraFlash;
     ArrayList<JButton> unstables;
     ArrayList<JButton> piles;
@@ -169,6 +170,14 @@ public class GUINonNormKAM  extends JPanel {
         earlyflash.addActionListener(this.kam);
         earlyflash.setPreferredSize(new Dimension(120,43));
         scenario.add(earlyflash,c);
+        
+        c.fill =GridBagConstraints.HORIZONTAL;
+        c.gridx=1;
+        c.gridy=9;
+        robotIn = new JButton("Parts Robot in Way");
+        robotIn.addActionListener(this.kam);
+        robotIn.setPreferredSize(new Dimension(120,43));
+        scenario.add(robotIn,c);
         
        
 
