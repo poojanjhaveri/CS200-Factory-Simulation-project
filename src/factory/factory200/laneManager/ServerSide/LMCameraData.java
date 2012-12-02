@@ -8,7 +8,6 @@ public class LMCameraData {
 	
 	private LMServerMain serverMain;
 	private String signal = "";
-	//private boolean PiledPart = false;
 	private int nestCameraNum;
 
 	public LMCameraData( int nestCameraNum, LMServerMain serverMain ){
@@ -21,11 +20,5 @@ public class LMCameraData {
 		signal = nestCameraNum + "&Camera&" + "Shoot";
 		serverMain.sendToLM(signal);
 		serverMain.sendToFPM(signal);
-		
-		// Non-normative Scenario : Signal to Agent(Bad Parts)
-		if( serverMain.getPartData().checkAllBadParts(nestCameraNum) == true ){
-			System.out.println("BAD PARTS ON NEST " + nestCameraNum );
-			serverMain.getCameraAgent().msgAllPartsBad(nestCameraNum);
-		}
 	}
 }

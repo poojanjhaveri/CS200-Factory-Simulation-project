@@ -31,7 +31,7 @@ public class LMSignalFromAnimationVerification {
 			feederNum = message.charAt(0) - 48;
 			
 			// Tell the agent that clicked the button
-                        serverMain.getCameraAgent().msgAllPartsBad(2*feederNum+1);
+            serverMain.getCameraAgent().msgAllPartsBad(2*feederNum+1);
 			serverMain.getFeederAgents()[feederNum].msgAddBadParts();
 		}
 		
@@ -41,6 +41,17 @@ public class LMSignalFromAnimationVerification {
 			
 			// Tell the agent that clicked the button
 			serverMain.getFeederAgents()[laneNestNum / 2].msgLaneJammed(laneNestNum);
+		}
+		
+		// Non-normative Scenario 3
+		else if(message.contains("FEEDER_NOT_WORKING") ){
+			feederNum = message.charAt(0) - 48;
+			
+			// Tell the agent that clicked the button
+			//serverMain.getFeederAgents()[feederNum].msgCorrectYourAlgorithm();
+			
+			// Feeding stop
+			//serverMain.getForAgentFeeder().setFeedPartsSwitchOff(feederNum);
 		}
 	}
 }
