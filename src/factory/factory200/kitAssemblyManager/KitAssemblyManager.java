@@ -119,7 +119,9 @@ public class KitAssemblyManager extends Manager implements ActionListener {
 	else if(msg.contains(Message.NEST_UP))
 	    {
 		this.nestUp(Integer.parseInt(this.grabParameter(msg)));
-	    }
+	    }else if(msg.contains(Message.KAM_MOVE_FROM_2_TO_0)){
+                //deepa, add here
+            }
         //todo - let me know what functions agent will call so I can process them here
     }
 
