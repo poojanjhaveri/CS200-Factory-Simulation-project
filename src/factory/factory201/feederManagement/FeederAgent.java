@@ -390,6 +390,7 @@ public class FeederAgent extends Agent implements Feeder {
             //revert back to normal amplitude in 1.5 seconds
             timer.schedule(new TimerTask(){
     	    public void run(){		    
+            System.out.println("calling set normal");
             LMServer.getForAgentLane().setVibrationAmplitudeNormal(leftLane.getIndex());
             }
             },3000);
