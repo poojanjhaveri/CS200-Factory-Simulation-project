@@ -256,10 +256,14 @@ public class KitAssemblyManager extends Manager implements ActionListener {
         }
         if (ae.getSource() == this.nonnorm.getDropPartButton()) {
 
-Part p =	    this.graphics.kitter.dropPartOnGround();
-if(p != null)
-    this.sendToServer(Message.KAM_BAD_KIT+":"+p.serialize());
 
+//DROP A PART HERE FOO
+Part p =	    this.graphics.kitter.dropPartOnGround();
+if(p != null){
+    p.debug();
+    System.out.println(p.serialize());
+    this.sendToServer(Message.KAM_BAD_KIT+":"+p.serialize());
+}
         }
 	if(ae.getSource() == this.nonnorm.getEarlyFlashButton()){
 	    this.sendToServer(Message.EARLY_CAMERA_FLASH);

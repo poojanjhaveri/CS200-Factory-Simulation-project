@@ -1,10 +1,6 @@
 //PLEASE DO NOT FORMAT MY CODE IN ANYTHING OTHER THAN ASTYLE
 package factory.factory200.factoryProductionManager.GantryRobotManager;
 
-/**
- * @author Yuting Liu
- */
-
 import factory.factory200.gantryRobotManager.GUIBin;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
@@ -36,19 +32,19 @@ import factory.general.Part;
 <img src="../img/image07.png" alt="Gantry robot in use and carring a bin"/>
  *
  * @brief shared Robot that manipulates part bins
- * @author YiWei Roy Zheng
+ * @author YiWei Roy Zheng, Yuting
  */
 public class GUIGantryRobot extends GUIRobot{
     public static final String IMAGE_PATH = "pics/robots/gantryrobot.png";
 
     GUIBin bin;///<null if no bin, otherwise contains the information on the bin
-    Boolean extended;///<whether or not the robot has arms extended
+    Boolean breakState;///<whether or not the robot has arms breakState
     Boolean hasbin;///<whether or not the robot is carrying a bin
     Integer moveto;///<where the gantry robot is heading towards
 
     public GUIGantryRobot() {
     	super(GantryRobotManager.ROBOT_INITIAL_X,GantryRobotManager.ROBOT_INITIAL_Y,GUIGantryRobot.IMAGE_PATH);
-    	this.extended = false;
+    	this.breakState = false;
     	this.hasbin = false;
     	this.bin = null;
     	this.setConstants(GantryRobotManager.ROBOT_VELOCITY_X, GantryRobotManager.ROBOT_VELOCITY_Y, GantryRobotManager.ROBOT_TURN_RATE);
@@ -59,6 +55,9 @@ public class GUIGantryRobot extends GUIRobot{
     @param i feeder number
     */
     
+    public Boolean getBreakState(){
+    	return this.breakState;
+    }
     ///<Once gantry robot gets to a bin, it picks up the bin 
     public void pickUpBin(Integer num){
     	this.bin = new GUIBin(this.getX(),this.getY(),0.0, "pics/emptybox.png",num+1);
@@ -66,6 +65,9 @@ public class GUIGantryRobot extends GUIRobot{
     	//"pics/binBox"+(num+1)+".png",num+1);
     }
     
+    public void setBreakState(Boolean sendFromServer){
+    	breakState=sendFromServer;
+    }
     /**
      * moveTo assigned feeder
      * @param index for feeder
@@ -202,7 +204,7 @@ public class GUIGantryRobot extends GUIRobot{
     extends the arm
     */
     public void extend() {
-        this.extended = true;
+        this.breakState = true;
     }
     
     /**
@@ -210,21 +212,7 @@ public class GUIGantryRobot extends GUIRobot{
     retracts the arm
     */
     public void retract() {
-        this.extended = false;
-    }
-    
-    /**
-    @brief switches arm state
-    retracts if extended, extends if retracted
-     */
-    public void toggleArm()
-    {
-        this.extended = !this.extended;
-    }
-    
-    public boolean armExtended()
-    {
-        return this.extended;
+        this.breakState = false;
     }
     /**
      * @return GUIBin objects in gantry robot 

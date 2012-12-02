@@ -65,12 +65,12 @@ public class GUINonNormKAM  extends JPanel {
             public void paintComponent(Graphics g) 
             {
                 Image img = new ImageIcon("pics/background/mainbg.png").getImage();
-                Dimension size = new Dimension(550, 700);
+           /*     Dimension size = new Dimension(550, 700);
                 setPreferredSize(size);
                 setMinimumSize(size);
                 setMaximumSize(size);
                 setSize(size);
-                setLayout(null);
+                setLayout(null);*/
                 
                 g.drawImage(img, 0, 0, null);
             } 
@@ -158,7 +158,7 @@ public class GUINonNormKAM  extends JPanel {
         droppart = new JButton("Drop Part");
         //droppart.setBackground(Color.GREEN);
         //droppart.setOpaque(true);
-        droppart.addActionListener(new GUINonNormKAM.droppartbutton());
+        droppart.addActionListener(this.kam);
         droppart.setPreferredSize(new Dimension(100,45));
         scenario.add(droppart,c);
         

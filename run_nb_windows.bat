@@ -16,4 +16,3 @@ START java -cp build\classes factory.factory200.laneManager.ClientSide.V2LaneMan
 START java -cp build\classes factory.factory200.kitAssemblyManager.KitAssemblyManager
 START java -cp build\classes factory.factory200.factoryProductionManager.FactoryProductionManager
 echo "All managers opened"
-pause
