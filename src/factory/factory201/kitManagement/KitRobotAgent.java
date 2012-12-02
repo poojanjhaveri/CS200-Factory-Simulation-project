@@ -34,6 +34,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
     private boolean requestedKitFromConveyor;
     private Semaphore animation = new Semaphore(0, true);
     private boolean factoryRunning = false;
+    private boolean msgTest=false;
 
     public KitRobotAgent(String name) {
         super(name);
@@ -75,10 +76,12 @@ public class KitRobotAgent extends Agent implements KitRobot {
 
     @Override
     public void msgKitInspectedError(List<Part> missingParts) {
+        print("ASDFGHJKLASDFGHJKL");
         synchronized (kitStand) {
             kitStand.get(2).status = Kit.Status.error;
             kitStand.get(2).missingParts = missingParts;
         }
+        msgTest = true;
         stateChanged();
     }
 
@@ -116,7 +119,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
                 return true;
             }
         }
-        if (factoryRunning && !requestedKitFromConveyor && (kitStand.isEmpty(0) || kitStand.isEmpty(1)) && kitStand.isEmpty(2)) { //kit stand has empty spot
+        if (!msgTest && factoryRunning && !requestedKitFromConveyor && (kitStand.isEmpty(0) || kitStand.isEmpty(1)) && kitStand.isEmpty(2)) { //kit stand has empty spot
             requestEmptyKitFromConveyor();
             return true;
         }
@@ -138,14 +141,21 @@ public class KitRobotAgent extends Agent implements KitRobot {
 
     // ********** ACTIONS **********
     private void sendInspectedKitWithErrorBack() {
+        DoMoveKitFrom2to0();
         Kit k;
         synchronized (kitStand) {
             k = kitStand.remove(2);
         }
         kitStand.addKit(k);
+//        if(kitStand.get(0).equals(k)) {
+//            print("EQUALSEQUALSEQUALSEQUALSEQUALSEQUALS");
+//        } else {
+//            print("NOTEQUALSNOTEQUALSNOTEQUALSNOTEQUALS");
+//        }
         print("Moving the kit [" + k.name + "] with parts missing back to the kit stand");
-        DoMoveKitFrom2to0();
         partsAgent.msgPartsMissing(k.missingParts, k);
+        msgTest = false;
+        stateChanged();
     }
 
     private void sendVerifiedKitToConveyor() {
