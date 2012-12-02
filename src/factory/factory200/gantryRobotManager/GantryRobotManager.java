@@ -33,6 +33,12 @@ import factory.general.Message;
  * @author Yuting Liu
  */
 public class GantryRobotManager extends Manager implements ActionListener {
+	
+	/**
+	 * To avoid unexpected InvalidClassExceptions during deserialization
+	 * we explicitly specify a UID, instead of relying on the compiler to generate one
+	 */
+	private static final long serialVersionUID = 3L;
    
     GRMGraphicPanel graphics;  
      JTabbedPane tabbedPane;

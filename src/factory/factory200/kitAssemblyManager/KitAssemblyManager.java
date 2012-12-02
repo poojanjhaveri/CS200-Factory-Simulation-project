@@ -31,7 +31,12 @@ import factory.general.Part;
  * @author Deepa Borkar, YiWei Roy Zheng
  */
 public class KitAssemblyManager extends Manager implements ActionListener {
-
+	/**
+	 * To avoid unexpected InvalidClassExceptions during deserialization
+	 * we explicitly specify a UID, instead of relying on the compiler to generate one
+	 */
+	private static final long serialVersionUID = 4L;
+	
     KAMGraphicPanel graphics;
     boolean test = false;
     JTabbedPane tabbedPane;

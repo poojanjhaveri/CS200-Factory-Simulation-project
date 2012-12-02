@@ -43,6 +43,12 @@ import javax.swing.event.ChangeListener;
 public class KitManager extends Manager  implements ActionListener {
 
 	/**
+	 * To avoid unexpected InvalidClassExceptions during deserialization
+	 * we explicitly specify a UID, instead of relying on the compiler to generate one
+	 */
+	private static final long serialVersionUID = 2L;
+	
+	/**
 	 * @param bpkit -   object which deals with list of existing kits from server
          * @param bppart -  object which deals with list of existing parts from server
          * @param partlist -  arraylist which holds the parts for the kit in create panel
