@@ -34,11 +34,11 @@ public class LMDrawablePart {
 	private double incrementalX, incrementalY;
 	private double gapXSquared, gapYSquared;
 	private double divisor;
-	private boolean arrived = false;
-	private boolean availableToNest = true;
-	private boolean arrivedToNest = false;
-	private boolean nonNormativePiled = false;
-	private boolean nonNormativeToggling = false;
+	private Boolean arrived = false;
+	private Boolean availableToNest = true;
+	private Boolean arrivedToNest = false;
+	private Boolean nonNormativePiled = false;
+	private Boolean nonNormativeToggling = false;
 	
 	public LMDrawablePart(LMApplication app, LMDrawableAllPart getAllPart, int laneNestNum, int partNum, int currentLocationX, int currentLocationY, int endOfLaneX, int endOfLaneY, int partStatus){
 		this.app = app;
@@ -144,7 +144,7 @@ public class LMDrawablePart {
 		nonNormativeToggling = false;
 	}
 	
-	public boolean getArrived(){
+	public Boolean getArrived(){
 		return arrived;
 	}
 	
@@ -152,7 +152,7 @@ public class LMDrawablePart {
 		return currentLocationX;
 	}
 	
-	public void setAvailabilityToNest(boolean availableToNest){
+	public void setAvailabilityToNest(Boolean availableToNest){
 		this.availableToNest = availableToNest;
 	}
 }
