@@ -587,35 +587,50 @@ public class FactoryProductionManager extends Manager implements ActionListener 
     
     public void preparenonnorm()
     {
+        
             mparts = new JPanel();
             mparts.setLayout(new GridBagLayout());
             GridBagConstraints c = new GridBagConstraints();
             
+            c.gridx=1;
+            c.gridy=1;
+            mparts.add(new JLabel("Remove Part Panel"),c);
+            
+            
+            c.gridx=1;
+            c.gridy=1;
+            c.gridwidth=2;
+            
             kitnorname = new JLabel("");
-            mparts.add(kitnorname);
+            mparts.add(kitnorname,c);
             nonnormupdate = new JButton("Update this kit ");
             nonnormupdate.setEnabled(false);
             
         //    mparts.add(nonnormupdate);
+              nonnormpart = new ArrayList();
+              nonnorm.add(mparts);
             
-            nonnorm.add(mparts);
 
     }
     
     private void updatenonnorm()
     {
-         nonnormupdate.setEnabled(true);
+        nonnorm.remove(mparts);
+         preparenonnorm();
+        nonnormupdate.setEnabled(true);
         kitnorname.setText(this.selectedKits.get(this.selectedKits.size()-1).getName());
         GridBagConstraints c = new GridBagConstraints();
         
         for(int i=0;i<this.selectedKits.get(this.selectedKits.size()-1).getSize();i++)
         {
-           c.gridx=1;
-           c.gridy=i+1;
-           JButton b1 = new JButton("Remove Part");
-           b1.addActionListener(new updatebuttonnorm());
-           b1.setIcon(new ImageIcon(this.selectedKits.get(this.selectedKits.size()-1).getPart(i).getFilename()));
-           mparts.add(b1,c);
+           c.gridx=0;
+           c.gridy=i+3;
+           JButton b1 = new JButton("Remove Part" + i);
+           
+           nonnormpart.add(new JButton("Remove Part" + (i+1)));
+           nonnormpart.get(i).addActionListener(new updatebuttonnorm());
+           nonnormpart.get(i).setIcon(new ImageIcon(this.selectedKits.get(this.selectedKits.size()-1).getPart(i).getFilename()));
+           mparts.add(nonnormpart.get(i),c);
            
         }
         
@@ -625,12 +640,20 @@ public class FactoryProductionManager extends Manager implements ActionListener 
      public class updatebuttonnorm implements ActionListener
          {
     
-         public void actionPerformed(ActionEvent e) {
+         public void actionPerformed(ActionEvent ae) {
              
              
-           
-            }
+             for(int k=0;k<nonnormpart.size();k++)
+             {
+             if(ae.getSource()==nonnormpart.get(k))
+             {
+                 System.out.println("Button  is pressed "+k);
+                 
+             }
+             }
+             
     
        }
     
+     }
 }
