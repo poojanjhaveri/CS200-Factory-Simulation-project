@@ -377,6 +377,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
                     }
                     start();
                     outField.append("Starting Factory Simulation" + newline);
+                    reset();
                 }
                 else
                 {
@@ -389,18 +390,10 @@ public class FactoryProductionManager extends Manager implements ActionListener 
         //Clear pending queue
         if(ae.getSource() == reset)
         {
-            if(!kitListFromServerIsEmpty)
-            {
-                if(selectedKits.size() > 0)
-                {
-                    //Message to console
-                    selectedKits.clear();
-                    schedField.setText("");
-                }
-            }
+            reset();
         }
     }
-
+    
     //Functionality for JComboBox usage
     private void selKitRoutine(Object source) {
         if(selKit.getItemCount() == kitsbp.getKits().size()) {
@@ -511,7 +504,21 @@ public class FactoryProductionManager extends Manager implements ActionListener 
         
         p.println("--end reconstruct--");
     }
-
+    
+    //Clear pending queue display list and selected kits container
+    private void reset()
+    {
+        if(!kitListFromServerIsEmpty)
+        {
+            if(selectedKits.size() > 0)
+            {
+                //Message to console
+                selectedKits.clear();
+                schedField.setText("");
+            }
+        }
+    }
+    
     //Commit list, push to server
     void start() 
     {
