@@ -339,7 +339,7 @@ public class KAMGraphicPanel {
             camera.getCamera().paintIcon(graph, g2, camera.getX(), camera.getY());
 
         }
-        if (camera.isVisible() && cameraCounter == 20) {
+        if (camera.isVisible() && cameraCounter >= 20) {
             camera.setVisible(false);
             cameraCounter = 0;
         }

@@ -60,6 +60,7 @@ public class Message {
     public static final String LM_ADD_PART="LMA_";
     public static final String KAM_FINISH_KITBOT_ANIMATION = "KAM_FINISH_KITBOT_ANIMATION";
     public static final String KAM_FINISH_KITTER_ANIMATION = "KAM_FINISH_KITTER_ANIMATION";
+    public static final String KAM_MOVE_FROM_2_TO_0 = "KAM_MOVE_FROM_2_TO_0";
     public static final String KAM_NEST_STABLE = "KAM_NEST_STABLE";
     public static final String KAM_NEST_UNSTABLE = "KAM_NEST_UNSTABLE";
     public static final String KAM_NEST_PILED = "KAM_NEST_PILED";

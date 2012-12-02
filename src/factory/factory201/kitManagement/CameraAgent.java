@@ -35,17 +35,27 @@ public class CameraAgent extends Agent implements Camera {
     private LMServerMain LMServer;
     private List<Nest> nestList;
     private List<Kit> kitList;
-    private Kit kitInfoFromPartsAgent;
+//    private Kit kitInfoFromPartsAgent;
     private List<Integer> kitRqmts;
     private Map<Integer, Result.Is> nestErrors;
+    private Map<String, Integer> kitErrors;
+    private boolean partsDropped;
+    private List<Part> missingParts;
 
     public CameraAgent(String name) {
         super(name);
         nestList = Collections.synchronizedList(new ArrayList<Nest>());
         kitList = Collections.synchronizedList(new ArrayList<Kit>());
-        kitInfoFromPartsAgent = null;
+//        kitInfoFromPartsAgent = null;
         kitRqmts = new ArrayList<Integer>();
         nestErrors = new HashMap<Integer, Result.Is>();
+        partsDropped = false;
+    }
+
+    //Non-normative messages
+    public void msgPartsDroppedFromKit(List<Part> missingParts) {
+        partsDropped = true;
+        this.missingParts = missingParts;
     }
 
     public void msgAllPartsBad(int nestNum) {
@@ -53,16 +63,17 @@ public class CameraAgent extends Agent implements Camera {
     }
 
     public void msgPartsPiledUp(int nestNum) {
-    print("parts piled up hit");
+        print("parts piled up hit");
         nestErrors.put(nestNum, Result.Is.piledParts);
     }
-    
+
     // added by Kevin
-    public void msgPartsShaking(int nestNum){
-    print("parts shaking hit" );
+    public void msgPartsShaking(int nestNum) {
+        print("parts shaking hit");
         nestErrors.put(nestNum, Result.Is.unstableParts);
     }
-    
+
+    //Agent Messages
     @Override
     public void msgNestIsFull(Nest nest) {
         synchronized (nestList) {
@@ -81,17 +92,17 @@ public class CameraAgent extends Agent implements Camera {
 
     @Override
     public void msgHereIsKitInfo(Kit kit) {
-        kitInfoFromPartsAgent = kit;
-        stateChanged();
+//        kitInfoFromPartsAgent = kit;
+//        stateChanged();
     }
 
     // ********* SCHEDULER *********
     @Override
     public boolean pickAndExecuteAnAction() {
-        if (kitInfoFromPartsAgent != null) {
-            configureKitInfo();
-            return true;
-        }
+//        if (kitInfoFromPartsAgent != null) {
+//            configureKitInfo();
+//            return true;
+//        }
         synchronized (kitList) {
             for (Kit k : kitList) {
                 if (k.status == Kit.Status.full) {
@@ -113,25 +124,31 @@ public class CameraAgent extends Agent implements Camera {
 
     // ********** ACTIONS **********
     public void inspectKit(Kit kit) {
-        boolean result = true;
-
-        if (kit.parts.size() != kitRqmts.size()) {
-            result = false;
-        } else {
-            List<Integer> list = new ArrayList<Integer>(this.kitRqmts);
-            for (Part p : kit.parts) {
-                if (list.contains(p.type)) {
-                    list.remove(p.type);
-                }
-            }
-            if (list.size() > 0) {
-                result = false;
-            }
+        String strResult;
+        if (partsDropped) {
+            DoInspectKit(kit);
+            kitRobot.msgKitInspectedError(missingParts);
+            strResult = "Parts missing";
+        } //        boolean result = true;
+        //            if (kit.parts.size() != kitRqmts.size()) {
+        //                result = false;
+        //            } else {
+        //                List<Integer> list = new ArrayList<Integer>(this.kitRqmts);
+        //                for (Part p : kit.parts) {
+        //                    if (list.contains(p.type)) {
+        //                        list.remove(p.type);
+        //                    }
+        //                }
+        //                if (list.size() > 0) {
+        //                    result = false;
+        //                }
+        //            }
+        else {
+            DoInspectKit(kit);
+            kitRobot.msgKitInspectedNoError();
+            strResult = "No error";
         }
 
-        DoInspectKit(kit);
-        kitRobot.msgKitInspected(0);
-        String strResult = result ? "NO ERROR" : "ERROR";
         print("Inspected kit: [" + kit.name + "] with result: " + strResult + ".");
         synchronized (kitList) {
             kitList.remove(kit);
@@ -140,51 +157,44 @@ public class CameraAgent extends Agent implements Camera {
     }
 
     private void inspectNest(Nest nest) {
-        Integer type = nest.part.type;
-        boolean result = true;
-        for (Part p : nest.parts) {
-            if (p.type != type) {
-                result = false;
-                break;
-            }
+//        Integer type = nest.part.type;
+//        boolean result = true;
+//        for (Part p : nest.parts) {
+//            if (p.type != type) {
+//                result = false;
+//                break;
+//            }
+//        }
+
+        Result.Is is;
+        if (nestErrors.containsKey(nest.nestNum)) {
+            is = nestErrors.get(nest.nestNum);
+            nestErrors.remove(nest.nestNum);
+        } else {
+            is = Result.Is.verified;
         }
         try {
             Thread.sleep(2000); // For Dongyung
         } catch (InterruptedException ex) {
         }
-        
-       
-        
         DoInspectNest(nest);
-        Result.Is is = result ? Result.Is.verified : Result.Is.badParts;
-         
-        /* @kevin- check for nest errors and look for unstable parts if any, set the result*/
- 
-       if(nestErrors.containsKey(nest.nestNum)){
-       //print("Yes!! it contains the key!! ");
-       is=nestErrors.get(nest.nestNum);
-       nestErrors.remove(nest.nestNum);
-       }
-           
-        
         nestAgent.msgNestInspected(nest, new Result(is));
-        String strResult = result ? "NO ERROR" : "ERROR";
-        print("Inspecting nest: [Nest " + nest.nestNum + "] with result: " + strResult + ".");
+//        String strResult = result ? "NO ERROR" : "ERROR";
+        print("Inspecting nest: [Nest " + nest.nestNum + "] with result: " + is + ".");
         synchronized (nestList) {
             nestList.remove(nest);
         }
         stateChanged();
     }
 
-    private void configureKitInfo() {
-        kitRqmts.clear();
-        for (int i = 0; i < kitInfoFromPartsAgent.getSize(); i++) {
-            kitRqmts.add(kitInfoFromPartsAgent.getPart(i).type);
-        }
-        kitInfoFromPartsAgent = null;
-        stateChanged();
-    }
-
+//    private void configureKitInfo() {
+//        kitRqmts.clear();
+//        for (int i = 0; i < kitInfoFromPartsAgent.getSize(); i++) {
+//            kitRqmts.add(kitInfoFromPartsAgent.getPart(i).type);
+//        }
+//        kitInfoFromPartsAgent = null;
+//        stateChanged();
+//    }
     // ************ MISC ***********
     public void setAll(KitRobot kitRobot, NestInterface nestAgent) {
         this.kitRobot = kitRobot;
@@ -217,9 +227,5 @@ public class CameraAgent extends Agent implements Camera {
         } else {
             print("[ERROR] - Kit Assembly Manager is not online.");
         }
-    }
-    public void partsRobotDroppedPart(Part missingPart)
-    {
-	//the part missingPart WAS JUST DROPPED from the kit you can write the logic here
     }
 }

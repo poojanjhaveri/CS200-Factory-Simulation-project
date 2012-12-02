@@ -10,7 +10,8 @@ public class LMNestData {
 	
 	private ArrayList<LMDrawablePart> parts = new ArrayList<LMDrawablePart>();
 	private int nestNum;
-	private boolean switchPartPiled = false;
+	private Boolean partPiled = false;
+	private Boolean toggling = false;
 	
 	public LMNestData(int nestNum){
 		this.nestNum = nestNum;
@@ -32,15 +33,31 @@ public class LMNestData {
 		parts.clear();
 	}
 	
-	public void switchPartPiled(boolean switchPartPiled){
-		this.switchPartPiled = switchPartPiled;
+	public void switchPartPiled(Boolean partPiled){
+		this.partPiled = partPiled;
 	}
 	
+	public void switchToggling(Boolean toggling){
+		this.toggling = toggling;
+	}
+	
+	public void reorganizeToggling(){
+		for(int i=0 ; i<parts.size() ; i++){
+			if( i < 8 ){
+				if( i % 2 == 0 ){
+					parts.get(i).setPositionInNest(503, 10+10*i+75*nestNum);
+				}
+				else if( i % 2 == 1 ){
+					parts.get(i).setPositionInNest(523, 10+10*(i-1)+75*nestNum);
+				}
+			}
+		}
+	}
 	/**
 	 * @brief Nest Parts Organizer
 	 */
 	public void reorganize(){
-		if( switchPartPiled == false ){
+		if( partPiled == false && toggling == false ){
 			for(int i=0 ; i<parts.size() ; i++){
 				if( i < 8 ){
 					if( i % 2 == 0 ){
@@ -52,9 +69,21 @@ public class LMNestData {
 				}
 			}	
 		}
-		else if( switchPartPiled == true ){
+		
+		else if( partPiled == true ){
 			for(int i=0 ; i<parts.size() ; i++){
-				parts.get(i).setDestinationNonNormative();
+				parts.get(i).setDestinationNonPiled();
+			}
+		}
+		
+		if( toggling == true ){
+			for(int i=0 ; i<parts.size() ; i++){
+				parts.get(i).togglingSetup();
+			}
+		}
+		else if( toggling == false ){
+			for(int i=0 ; i<parts.size() ; i++){
+				parts.get(i).stopToggling();
 			}
 		}
 	}

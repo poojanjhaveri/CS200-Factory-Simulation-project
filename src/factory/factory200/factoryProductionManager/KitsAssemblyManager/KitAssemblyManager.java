@@ -91,8 +91,13 @@ public class KitAssemblyManager extends JPanel implements ActionListener {
         } else if (msg.contains(Message.NEST_UP)) {
             this.nestUp(Integer.parseInt(this.grabParameter(msg)));
         }
+        else if(msg.contains(Message.KAM_MOVE_FROM_2_TO_0)){
+                this.moveFrom2To0();
+            }
     }
-
+public void moveFrom2To0(){
+        this.graphics.kitbot.moveFrom2To0();
+    }
     //todo - let me know what functions agent will call so I can process them here
     public void nestUp(int n) {
         this.graphics.nest.get(n).nestUp();
