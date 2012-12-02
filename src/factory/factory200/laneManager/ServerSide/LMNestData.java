@@ -10,7 +10,7 @@ public class LMNestData {
 	private String signal = "";
 	
 	private int nestNum;
-	private boolean nestSwitch = true; // false : down, true : up
+	private Boolean nestSwitch = true; // false : down, true : up
 	
 	public LMNestData( int nestNum, LMServerMain serverMain ){
 		this.nestNum = nestNum;

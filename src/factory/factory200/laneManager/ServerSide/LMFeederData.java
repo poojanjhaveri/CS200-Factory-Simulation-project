@@ -9,13 +9,13 @@ public class LMFeederData {
 	private LMServerMain serverMain;
 	private String signal = "";
 	
-	private boolean feederSwitch = true;
-	private boolean partLowSensor = true;
-	private boolean feedPartsSwitch = true;
-	private boolean rearGateSwitch = false;
-	private boolean diversionSwitch = false; // false : right, true : left
-	private boolean purgeSwitch = false;
-	private boolean withBin = false;
+	private Boolean feederSwitch = true;
+	private Boolean partLowSensor = true;
+	private Boolean feedPartsSwitch = true;
+	private Boolean rearGateSwitch = false;
+	private Boolean diversionSwitch = false; // false : right, true : left
+	private Boolean purgeSwitch = false;
+	private Boolean withBin = false;
 	
 	private int feederNum;
 
@@ -24,27 +24,27 @@ public class LMFeederData {
 		this.serverMain = serverMain;
 	}
 
-	public boolean getDiversion(){
+	public Boolean getDiversion(){
 		return diversionSwitch;
 	}
 	
-	public boolean getRearGateSwitch(){
+	public Boolean getRearGateSwitch(){
 		return rearGateSwitch;
 	}
 	
-	public boolean getFeederSwitch(){
+	public Boolean getFeederSwitch(){
 		return feederSwitch;
 	}
 	
-	public boolean getFeedingSwitch(){
+	public Boolean getFeedingSwitch(){
 		return feedPartsSwitch;
 	}
 	
-	public boolean getWithBin(){
+	public Boolean getWithBin(){
 		return withBin;
 	}
 	
-	public void setWithBin(boolean status){
+	public void setWithBin(Boolean status){
 		withBin = status;
 	}
 	

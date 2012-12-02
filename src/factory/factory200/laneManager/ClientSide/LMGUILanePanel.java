@@ -41,7 +41,7 @@ public class LMGUILanePanel extends JPanel{
 		add(vibrationAmplitudeSlider);
 	}
 
-	public void setLaneSwitch( boolean signal ){
+	public void setLaneSwitch( Boolean signal ){
 		if( signal == true ){
 			onSwitch.setSelected(true);
 		}

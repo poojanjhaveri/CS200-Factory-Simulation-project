@@ -81,7 +81,7 @@ class LMGUIContentPanel extends JPanel{
 		counterLabel.setText("" + (++partsFedCounter) );
 	}
 	
-	public void setSensor( boolean sensorStatus ){
+	public void setSensor( Boolean sensorStatus ){
 		if( sensorStatus == true ){
 			sensorLabel.setIcon(redSensorImage);
 		}
