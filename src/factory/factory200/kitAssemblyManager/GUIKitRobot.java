@@ -151,6 +151,15 @@ public void pickUpEmptyKitToActive()
         this.orders.add(6);
 	this.orders.add(50);
     }
+    public void moveFrom2To0()
+    {
+        this.orders.add(13);
+        this.orders.add(3);
+        this.orders.add(11);
+        this.orders.add(4);
+	this.orders.add(50);
+
+    }
 
     /**
     @brief moves the active kit to the camera inspection stand

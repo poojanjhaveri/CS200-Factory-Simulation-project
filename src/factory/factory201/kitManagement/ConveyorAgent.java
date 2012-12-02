@@ -25,12 +25,14 @@ public class ConveyorAgent extends Agent implements Conveyor {
     private List<Kit> kitList;
     private int kitRequestsFromKitRobot;
     private int generateKits;
+    private int kitCount;
 
     public ConveyorAgent(String name) {
         super(name);
         kitList = Collections.synchronizedList(new ArrayList<Kit>());
         kitRequestsFromKitRobot = 0;
         generateKits = 0;
+        kitCount = 0;
     }
 
     // ********** MESSAGES *********
@@ -83,8 +85,8 @@ public class ConveyorAgent extends Agent implements Conveyor {
     }
 
     private void generateKits() {
-        for (int i = 0; i < generateKits; i++) {
-            Kit k = new Kit("Kit " + i);
+        for (int i = 0; i < generateKits; i++, kitCount++) {
+            Kit k = new Kit("Kit " + kitCount);
             kitList.add(k);
             print("Generating a new empty kit: [" + k.name + "] is ready.");
             DoAddKit(k);

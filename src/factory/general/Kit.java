@@ -28,7 +28,8 @@ public class Kit implements Serializable{
     public List<Part> parts = new ArrayList<Part>();
     public int kitNeedsParts;
     public boolean beingUsedByPartsAgent; // for Alex
-
+    public List<Part> missingParts;
+    
     public Kit(String name) {
         this.name = name;
         this.status = Status.empty;

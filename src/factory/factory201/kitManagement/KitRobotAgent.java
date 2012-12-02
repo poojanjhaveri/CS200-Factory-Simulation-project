@@ -7,6 +7,8 @@ import factory.factory201.interfaces.KitRobot;
 import factory.factory201.interfaces.PartsInterface;
 import factory.general.Kit;
 import factory.general.Message;
+import factory.general.Part;
+import java.util.List;
 import java.util.concurrent.Semaphore;
 
 /**
@@ -64,9 +66,18 @@ public class KitRobotAgent extends Agent implements KitRobot {
     }
 
     @Override
-    public void msgKitInspected(int result) {
+    public void msgKitInspectedNoError() {
         synchronized (kitStand) {
-            kitStand.get(2).status = (result == 0) ? Kit.Status.verified : Kit.Status.error;
+            kitStand.get(2).status = Kit.Status.verified;
+        }
+        stateChanged();
+    }
+    
+    @Override
+    public void msgKitInspectedError(List<Part> missingParts) {
+        synchronized (kitStand) {
+            kitStand.get(2).status = Kit.Status.error;
+            kitStand.get(2).missingParts = missingParts;
         }
         stateChanged();
     }
@@ -85,9 +96,15 @@ public class KitRobotAgent extends Agent implements KitRobot {
     // ********* SCHEDULER *********
     @Override
     public boolean pickAndExecuteAnAction() {
-        if (!kitStand.isEmpty(2) && kitStand.get(2).status == Kit.Status.verified) { //there is a verified kit waiting on [2]
-            sendVerifiedKitToConveyor();
-            return true;
+        if (!kitStand.isEmpty(2)) { // there is a kit being inspected on [2]
+            if (kitStand.get(2).status == Kit.Status.verified) { // kit is verified
+                sendVerifiedKitToConveyor();
+                return true;
+            }
+            if (kitStand.get(2).status == Kit.Status.error) { // kit has error
+                sendInspectedKitWithErrorBack();
+                return true;
+            }
         }
         if (kitStand.isEmpty(2)) { //[2] is empty
             if (!kitStand.isEmpty(1) && kitStand.get(1).status == Kit.Status.full) { //there is a full kit on [1]
@@ -105,7 +122,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
         }
         //print("kit requests is " + kitRequestsFromPartsAgent);
         if (kitRequestsFromPartsAgent > 0) { //parts agent has requested at least one kit
-          //  print("need to give empty kit to the parts agent");
+            //  print("need to give empty kit to the parts agent");
             if ((!kitStand.isEmpty(1)) && kitStand.get(1).status == Kit.Status.empty) { //there is an empty kit on [1]
                 giveEmptyKitToPartsAgent(1);
                 kitRequestsFromPartsAgent--;
@@ -120,6 +137,17 @@ public class KitRobotAgent extends Agent implements KitRobot {
     }
 
     // ********** ACTIONS **********
+    private void sendInspectedKitWithErrorBack() {
+        Kit k;
+        synchronized (kitStand) {
+            k = kitStand.remove(2);
+        }
+        kitStand.addKit(k);
+        print("Moving the kit [" + k.name + "] with parts missing back to the kit stand");
+        DoMoveKitFrom2to0();
+        partsAgent.msgPartsMissing(k.missingParts, k);
+    }
+    
     private void sendVerifiedKitToConveyor() {
         Kit k;
         synchronized (kitStand) {
@@ -175,10 +203,10 @@ public class KitRobotAgent extends Agent implements KitRobot {
             this.client.sendMessage(Message.KAM_PICK_UP_EMPTY_KIT);
             this.fpm.sendMessage(Message.KAM_PICK_UP_EMPTY_KIT);
             try {
-          //      print("semaphore acquired ");
+                //      print("semaphore acquired ");
                 this.animation.acquire();
 //                Thread.sleep(3000);
-            //    print("semaphore released ");
+                //    print("semaphore released ");
             } catch (InterruptedException ex) {
             }
         } else {
@@ -192,7 +220,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
             this.client.sendMessage(Message.KAM_PICK_UP_EMPTY_KIT_TO_ACTIVE);
             this.fpm.sendMessage(Message.KAM_PICK_UP_EMPTY_KIT_TO_ACTIVE);
             try {
-              //  print("semaphore acquired 1");
+                //  print("semaphore acquired 1");
                 this.animation.acquire();
 //                Thread.sleep(3000);
                 //print("semaphore released 1");
@@ -259,5 +287,8 @@ public class KitRobotAgent extends Agent implements KitRobot {
         } else {
             print("[ERROR] - Kit Assembly Manager is not online.");
         }
+    }
+
+    public void DoMoveKitFrom2to0() {
     }
 }
