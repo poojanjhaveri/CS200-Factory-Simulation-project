@@ -1,5 +1,6 @@
 package factory.factory200.kitAssemblyManager;
 
+import factory.general.BlueprintParts;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -96,7 +97,6 @@ public class KitAssemblyManager extends Manager implements ActionListener {
         } else if (msg.contains(Message.KAM_ADD_KIT)) {
             this.doAddEmptyKit();
         } else if (msg.contains(Message.LM_ADD_PART)) {
-
             int nest = msg.charAt(4) - 48;
             int partType = msg.charAt(6) - 48;
             this.doSetParts(nest, partType);
@@ -120,7 +120,9 @@ public class KitAssemblyManager extends Manager implements ActionListener {
 	else if(msg.contains(Message.NEST_UP))
 	    {
 		this.nestUp(Integer.parseInt(this.grabParameter(msg)));
-	    }
+	    }else if(msg.contains(Message.KAM_MOVE_FROM_2_TO_0)){
+                //deepa, add here
+            }
         //todo - let me know what functions agent will call so I can process them here
     }
 
@@ -455,5 +457,14 @@ if(p != null){
 
     public static void main(String[] args) {
         KitAssemblyManager mgr = new KitAssemblyManager();
+        
+
     }
 }
+
+/*
+ * TO SEND ARRAYLIST
+ ArrayList = array;
+BlueprintParts p = new BlueprintParts(array);
+this.sendToServer(Message.KAM_BAD_KIT+":"+p.serialize());
+ */
