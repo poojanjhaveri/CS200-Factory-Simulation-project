@@ -12,7 +12,7 @@ public class Result {
 
     public enum Is {
 
-        badParts, piledParts, robotInTheWay, unstableParts, partsMissing, verified, wrongFeederAlogrithm
+        badParts, piledParts, robotInTheWay, unstableParts, partsMissing, verified
     };
     public Is is;
 

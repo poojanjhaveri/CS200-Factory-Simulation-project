@@ -26,7 +26,7 @@ import java.util.Map;
  * the FCS.
  *
  * @author Alex Young
- * @version 1
+ * @version 2
  * @brief agent for the Camera
  */
 public class CameraAgent extends Agent implements Camera {
@@ -54,7 +54,7 @@ public class CameraAgent extends Agent implements Camera {
         nonNorm[0] = nonNorm[1] = nonNorm[2] = false;
     }
 
-    //Non-normative messages
+    // ********* MISC. MESSAGES *********
     public void msgWrongFeederAlgorithm(FeederAgent feeder, int nestNum) {
         nonNorm[2] = true;
         this.feeder = feeder;
@@ -74,7 +74,6 @@ public class CameraAgent extends Agent implements Camera {
         nestErrors.put(nestNum, Result.Is.piledParts);
     }
 
-    // added by Kevin
     public void msgPartsShaking(int nestNum) {
         print("parts shaking hit");
         nestErrors.put(nestNum, Result.Is.unstableParts);
@@ -84,7 +83,7 @@ public class CameraAgent extends Agent implements Camera {
         nonNorm[1] = true;
     }
 
-    //Agent Messages
+    // ********* AGENT MESSAGES *********
     @Override
     public void msgNestIsFull(Nest nest) {
         synchronized (nestList) {
