@@ -169,6 +169,13 @@ public class GantryRobotManager extends Manager implements ActionListener {
 	   else if(msg.contains(Message.MOVE_GANTRY_TO_DUMP)){
 		   purgeBin();//this.ganbot.purgeBinCommand();
 	   }
+	   else if(msg.contains(Message.FREEZE_GANTRY_ROBOT))
+	       {
+
+	       }else if(msg.contains(Message.UNFREEZE_GANTRY_ROBOT))
+	       {
+
+	       }
    }
    
      /*

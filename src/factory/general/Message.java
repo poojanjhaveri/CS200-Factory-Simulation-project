@@ -39,6 +39,8 @@ public class Message {
     public static final String GRM_FINISH_MOVE_TO_BIN = "GRM_FINISH_MOVE_TO_BIN";
     public static final String GRM_FINISH_MOVE_TO_FEEDER = "GRM_FINISH_MOVE_TO_FEEDER";
     public static final String GRM_FINISH_MOVE_TO_DUMP = "GRM_FINISH_MOVE_TO_DUMP";
+    public static final String FREEZE_GANTRY_ROBOT = "FREEZE_GANTRY_ROBOT";
+    public static final String UNFREEZE_GANTRY_ROBOT = "UNFREEZE_GANTRY_ROBOT";
 
     //kitassemblymanager section
     public static final String IDENTIFY_KITASSEMBLYMANAGER = "IDENTIFY_KITASSEMBLYMANAGER";
@@ -67,6 +69,7 @@ public class Message {
     public static final String EARLY_CAMERA_FLASH = "EARLY_CAMERA_FLASH";
     public static final String NEST_UP = "NEST_UP";
     public static final String NEST_DOWN = "NEST_DOWN";
+   
     //    public static final String KAM_FINISH_DROP_OFF_FULL_KIT = "KAM_FINISH_DROP_OFF_FULL_KIT";
     //    public static final String KAM_FINISH_MOVE_TO_NEST = "KAM_FINISH_MOVE_TO_NEST";
     //public static final String KAM_FINISH_DROP_OFF_PARTS = "KAM_FINISH_DROP_OFF_PARTS";
