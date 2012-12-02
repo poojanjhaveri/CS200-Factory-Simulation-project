@@ -271,10 +271,6 @@ public class KitAssemblyManager extends Manager implements ActionListener {
                 this.nonnorm.preparemainpanel();
             }
 	}
-	 if(ae.getSource() == this.nonnorm.getRobotInWayButton())
-	     {
-		 this.graphics.beginRobotInWayAction();
-	     }
         else if (ae.getSource() == this.nonnorm.getDropPartButton()) {
 
 
