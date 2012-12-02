@@ -51,7 +51,10 @@ public class CameraAgent extends Agent implements Camera {
 //        kitInfoFromPartsAgent = null;
         kitRqmts = new ArrayList<Integer>();
         nestErrors = new HashMap<Integer, Result.Is>();
-        nonNorm[0] = nonNorm[1] = nonNorm[2] = false;
+        nonNorm = new boolean[3];
+        nonNorm[0] = false;
+        nonNorm[1] = false;
+        nonNorm[2] = false;
     }
 
     // ********* MISC. MESSAGES *********
