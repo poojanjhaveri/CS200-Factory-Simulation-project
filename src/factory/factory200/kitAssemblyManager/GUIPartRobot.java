@@ -155,10 +155,14 @@ public class GUIPartRobot extends GUIRobot {
         dropPartCommand(i);
         this.orders.add(50);
     }
-    public void dropPartOnGround()
+    public Part dropPartOnGround()
     {
-	if(this.parts.size() != 0)
+	Part p = null;
+	if(this.parts.size() != 0){
+	    p = this.parts.getAll().get(this.parts.size()-1);
 	    this.parts.getAll().remove(this.parts.size()-1);
+	}
+	return p;
     }
 
     /**
