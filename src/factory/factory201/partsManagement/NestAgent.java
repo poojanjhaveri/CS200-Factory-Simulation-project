@@ -37,7 +37,7 @@ public class NestAgent extends Agent implements NestInterface {
     public List<Part> requests;//parts that partsAgent requests, removed when part given back to partsagent
     public List<Nest> myNests;//nests 0-7 that this agent controls
     public List<Part> needParts;//the parts that have been requested, used to set an individual's nest part
-    public List<Nest> purgeNests;
+    public List<Nest> purgeNests, inspectEarly;
     boolean requestEarlyInspection=false;
     private LMServerMain serverLM;
    // Result result;
@@ -54,6 +54,7 @@ public class NestAgent extends Agent implements NestInterface {
     needParts = Collections.synchronizedList(new ArrayList<Part>());
     requests = Collections.synchronizedList(new ArrayList<Part>());
     purgeNests = Collections.synchronizedList(new ArrayList<Nest>());
+    inspectEarly = Collections.synchronizedList(new ArrayList<Nest>());
     myNests.add(new Nest(0));//initialize nests
     myNests.add(new Nest(1));
     myNests.add(new Nest(2));
@@ -74,6 +75,14 @@ public class NestAgent extends Agent implements NestInterface {
     public void msgRequestEarlyInspection(){//called for both feeder algorithm and early inspection
        requestEarlyInspection=true;
        stateChanged();
+    }
+    
+    public void msgWrongFeederAlgorithm(int n){
+        for (Nest n1: myNests){
+            if (n1.nestNum == n){
+                inspectEarly.add(n1);
+        }}
+        stateChanged();
     }
     
     
@@ -132,11 +141,11 @@ public class NestAgent extends Agent implements NestInterface {
             print("Got a message that nest [" + n.nestNum + "] has bad parts, is going to purge");
             purgeNests.add(n);
         }
-        else if (result.is == Result.Is.robotInTheWay){
+        else if (result.is == Result.Is.robotInTheWay){//NEEDTO FINISH
             
             print("Accepted that parts robot was in the way will ask later for inspection");
             //tell to move in front of nest
-           
+            n.status = Nest.Status.full;
         }
         
         /* added by Kevin- if the parts are unstable, set the shaking to true*/
@@ -189,6 +198,11 @@ public class NestAgent extends Agent implements NestInterface {
             }
         if (!purgeNests.isEmpty()){
             purge(purgeNests.remove(0));
+            return true;
+        }
+        
+        if (!inspectEarly.isEmpty()){
+            requestInspection(inspectEarly.remove(0));
             return true;
         }
        /* //NEXT HIGHEST PRIORITY WILL BE TO UNPILE/PURGE A NEST IF IT IS PILED UP 
