@@ -60,19 +60,39 @@ public class GUINonNormKAM  extends JPanel {
     {
     	unstables= new ArrayList<JButton>();
         piles = new ArrayList<JButton>();
-        mainpanel = new JPanel();
+        mainpanel = new JPanel()
+        {
+            public void paintComponent(Graphics g) 
+            {
+                Image img = new ImageIcon("pics/background/mainbg.png").getImage();
+                Dimension size = new Dimension(550, 700);
+                setPreferredSize(size);
+                setMinimumSize(size);
+                setMaximumSize(size);
+                setSize(size);
+                setLayout(null);
+                
+                g.drawImage(img, 0, 0, null);
+            } 
+            
+            
+            
+        };
         
         
         JPanel basepanel = new JPanel();
+        basepanel.setOpaque(false);
         basepanel.setLayout(new BorderLayout());
         
         JLabel p1 = new JLabel("Kit Assembly Manager Non-Normative Scenario",JLabel.CENTER);
         p1.setFont(new Font("Verdana", Font.BOLD, 16));
         p1.setPreferredSize(new Dimension(500,100));
+        p1.setOpaque(false);
         basepanel.add(p1,BorderLayout.NORTH);
         
         
         JPanel scenario = new JPanel(new GridBagLayout());
+        scenario.setOpaque(false);
         GridBagConstraints c = new GridBagConstraints();
         
          c.ipady=10;
@@ -96,7 +116,7 @@ public class GUINonNormKAM  extends JPanel {
         		else{
         	//		this.unstabilize.setBackground(Color.RED);
         		}
-        		this.unstabilize.setOpaque(true);
+        		this.unstabilize.setOpaque(false);
         		this.unstabilize.setPreferredSize(new Dimension(120,43));
         		this.unstabilize.addActionListener(this.kam);
         		scenario.add(unstabilize,c);        	
@@ -176,7 +196,7 @@ public class GUINonNormKAM  extends JPanel {
     
          public void actionPerformed(ActionEvent e) {
              
-             droppart.setEnabled(false);
+        
              System.out.println("KAM drop part");
            
             }
