@@ -53,6 +53,7 @@ public class NestAgent extends Agent implements NestInterface {
     myNests = Collections.synchronizedList(new ArrayList<Nest>());//initialize lists
     needParts = Collections.synchronizedList(new ArrayList<Part>());
     requests = Collections.synchronizedList(new ArrayList<Part>());
+    purgeNests = Collections.synchronizedList(new ArrayList<Nest>());
     myNests.add(new Nest(0));//initialize nests
     myNests.add(new Nest(1));
     myNests.add(new Nest(2));
@@ -70,10 +71,11 @@ public class NestAgent extends Agent implements NestInterface {
      * @param p This is a part
      */
 
-    public void msgRequestEarlyInspection(){
+    public void msgRequestEarlyInspection(){//called for both feeder algorithm and early inspection
        requestEarlyInspection=true;
        stateChanged();
     }
+    
     
     public void msgPileUpParts(int n){
         DoPurge(n);
@@ -119,6 +121,7 @@ public class NestAgent extends Agent implements NestInterface {
             n.status = Nest.Status.readyForKit;
             System.out.print("Nest inspected and verified");
         } 
+        
         else if (result.is == Result.Is.partsMissing){
            
             print("Nest [" + n.nestNum + "] has not been verified and needs to wait for more parts");

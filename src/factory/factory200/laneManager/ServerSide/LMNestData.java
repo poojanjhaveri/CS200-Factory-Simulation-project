@@ -22,8 +22,7 @@ public class LMNestData {
 		signal = nestNum + "&Nest&Switch Up";
 		serverMain.sendToLM(signal);
 		serverMain.sendToFPM(signal);
-		serverMain.sendToKAM(signal);
-		
+				
 		// Server Data Task
 		nestSwitch = true;
 	}
@@ -33,11 +32,13 @@ public class LMNestData {
 		signal = nestNum + "&Nest&Switch Down";
 		serverMain.sendToLM(signal);
 		serverMain.sendToFPM(signal);
-		serverMain.sendToKAM(signal);
 
+		// Cancel Piling
+		serverMain.sendToLM(nestNum + "&Non&UnToggling&");
+		serverMain.sendToFPM(nestNum + "&Non&UnToggling&");
+		
 		// Server Data Task
 		nestSwitch = false;
-		serverMain.getForAgentNestCamera().stopPiledPart(nestNum);
 		serverMain.getPartData().nestDown(nestNum);
 	}
 }

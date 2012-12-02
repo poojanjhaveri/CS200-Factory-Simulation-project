@@ -22,7 +22,6 @@ public class LMGUINonNormativePanel2 extends JPanel implements ActionListener{
 	private JButton button = new JButton("Lane Being Jammed");	
 	
 	private int laneNum;
-	private int randomPartNum;
 	
 	public LMGUINonNormativePanel2(LMApplication app){
 		this.app = app;

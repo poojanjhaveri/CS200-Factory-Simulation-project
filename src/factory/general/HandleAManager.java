@@ -272,35 +272,49 @@ public class HandleAManager implements Runnable {
                 queue.get(0).debug();
 
 		this.server.getKitRobotAgent().msgStartFactory();
-            } // Lane Manager-----------------------------------------------------------------------------------
-            else if (msg.contains(Message.BAD_PART_INSERTION)) {
-                server.getServerLM().getVerify().verify(msg);
-            } else if (msg.contains(Message.LANE_JAMMED)) {
-                server.getServerLM().getVerify().verify(msg);
-            } else if (msg.contains(Message.PART_PILED)) {
-                server.getServerLM().getVerify().verify(msg);
-            } else if (msg.contains(Message.PART_TO_NEST_FROM_LANE)) {
-                server.getServerLM().getVerify().verify(msg);
-            } else if (msg.contains(Message.PART_TAKE_BY_PARTROBOT)) {
-                server.getServerLM().getVerify().verify(msg);
-            } else if (msg.contains(Message.PART_TOGGLING)) {
-            	server.getServerLM().getVerify().verify(msg);
-            } else if (msg.contains(Message.PART_UNTOGGLING)) {
-            	server.getServerLM().getVerify().verify(msg);
-            } //-----------------------------------------------------------------------------------------------------------     
+		
+        } // Lane Manager-----------------------------------------------------------------------------------
+        else if (msg.contains(Message.BAD_PART_INSERTION)) {
+        	server.getServerLM().getVerify().verify(msg);
+        } else if (msg.contains(Message.LANE_JAMMED)) {
+        	server.getServerLM().getVerify().verify(msg);
+        } else if (msg.contains(Message.PART_PILED)) {
+        	server.getServerLM().getVerify().verify(msg);
+        } else if (msg.contains(Message.PART_TO_NEST_FROM_LANE)) {
+            server.getServerLM().getVerify().verify(msg);
+        } else if (msg.contains(Message.PART_TAKE_BY_PARTROBOT)) {
+            server.getServerLM().getVerify().verify(msg);
+        } else if (msg.contains(Message.PART_TOGGLING)) {
+         	server.getServerLM().getVerify().verify(msg);
+        } else if (msg.contains(Message.PART_UNTOGGLING)) {
+         	server.getServerLM().getVerify().verify(msg);
+        } //-----------------------------------------------------------------------------------------------------------
+	
 	    else if(msg.contains(Message.KAM_NEST_PILED)){
-		//handle nest piled nonnorm
-                this.server.getCameraAgent().msgPartsPiledUp(Integer.parseInt(this.grabParameter(msg)));
+	    	
+	    	//handle nest piled nonnorm
+            this.server.getCameraAgent().msgPartsPiledUp(Integer.parseInt(this.grabParameter(msg)));
+            
+            //To Lane Manager
+            this.server.getServerLM().sendToFPM( Integer.parseInt(this.grabParameter(msg)) + "&Non&Piled&" );
+            this.server.getServerLM().sendToLM( Integer.parseInt(this.grabParameter(msg)) + "&Non&Piled&" );
+            
 	    }else if(msg.contains(Message.KAM_NEST_UNSTABLE)){
-		//handle unstable nonnorm
-		this.server.getCameraAgent().msgPartsShaking(Integer.parseInt(this.grabParameter(msg)));
+	    	
+	    	//handle unstable nonnorm
+	    	this.server.getCameraAgent().msgPartsShaking(Integer.parseInt(this.grabParameter(msg)));
+	    	
+	    	//To Lane Manager
+	    	this.server.getServerLM().sendToFPM(Integer.parseInt( this.grabParameter(msg)) + "&Non&Toggling&" );
+	    	this.server.getServerLM().sendToLM(Integer.parseInt( this.grabParameter(msg)) + "&Non&Toggling&" );
+	    	
 	    }else if(msg.contains(Message.KAM_BAD_KIT)){
-		//handle bad kit nonnorm NOTE: bad kit == DROPPED != INSPECTED!!!!
-                BlueprintParts temp = new BlueprintParts();
-                temp.recreate(this.grabParameter(msg));
-		this.server.getCameraAgent().msgPartsDroppedFromKit(temp.getParts());
+	    	//handle bad kit nonnorm NOTE: bad kit == DROPPED != INSPECTED!!!!
+	    	BlueprintParts temp = new BlueprintParts();
+	    	temp.recreate(this.grabParameter(msg));
+	    	this.server.getCameraAgent().msgPartsDroppedFromKit(temp.getParts());
 	    }else if(msg.contains(Message.EARLY_CAMERA_FLASH)){
-		this.server.getNestAgent().msgRequestEarlyInspection();
+	    	this.server.getNestAgent().msgRequestEarlyInspection();
 	    }
 
     }

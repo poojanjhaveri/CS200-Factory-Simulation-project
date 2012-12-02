@@ -13,6 +13,8 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.Semaphore;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * @brief agent for the Feeder This class is the agent for the Feeder which does
@@ -30,6 +32,7 @@ public class FeederAgent extends Agent implements Feeder {
     private Lane rightLane;
     private Lane lane;
     private LMServerMain LMServer;
+    boolean feederFaulty=false;
     /*
      * THESE LEFT AND RIGHT COUNT VARIABLES WILL BE USED TO SET THE LEFT/RIGHT LANE ON.
      * STARTS WITH LEFTLANE==RIGHTLANE, THE PROGRAM CHOSES SENDTOLEFTLANE(). SO LEFTLANE IS INCREMENTED
@@ -41,6 +44,7 @@ public class FeederAgent extends Agent implements Feeder {
     public int feederNum;
     Semaphore anim=new Semaphore(0, true);
     Semaphore laneJammed=new Semaphore(0, true);
+    Semaphore camera=new Semaphore(0, true);
     boolean requestState = false;
     //--------------------------------------------------------------
     private LMServerMain serverMain;
@@ -115,9 +119,16 @@ public class FeederAgent extends Agent implements Feeder {
 
         }
     }
+
+    public void msgCorrectYourAlgorithm(){
     
+    }
     public void msgAnimationComplete(){
     anim.release();
+    }
+    
+    public void msgFeederFault(){
+    this.feederFaulty=true;
     }
     
     public void msgLaneJammed(int laneNum){
@@ -306,9 +317,24 @@ public class FeederAgent extends Agent implements Feeder {
         }
 
 
+        if(feederFaulty){
+            try {
+                /* Feeder is faulty ? */
+                   //leftLane.msgHereAreParts(mparts);
+                   
+                   camera.acquire();
+                   dosendPartToLeftLane(p);
+                   leftLane.msgHereAreParts(mparts);
+                }
+            catch (InterruptedException ex) {
+                Logger.getLogger(FeederAgent.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        else{
         dosendPartToLeftLane(p);
         leftLane.msgHereAreParts(mparts);
-
+            
+        }
         //animation.setDiverterSwitchLeft(feederNum-1);
 
         stateChanged();
@@ -340,7 +366,7 @@ public class FeederAgent extends Agent implements Feeder {
          }
          */
         //	 this.client.sendMessage("Message");
-
+     
             if (LMServer.getForAgentFeeder() == null) {
                 return;
             }
@@ -384,6 +410,7 @@ public class FeederAgent extends Agent implements Feeder {
                 e.printStackTrace();
             }
          
+    
     
     }
 
