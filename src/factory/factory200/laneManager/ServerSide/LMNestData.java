@@ -32,10 +32,6 @@ public class LMNestData {
 		signal = nestNum + "&Nest&Switch Down";
 		serverMain.sendToLM(signal);
 		serverMain.sendToFPM(signal);
-
-		// Cancel Piling
-		serverMain.sendToLM(nestNum + "&Non&UnToggling&");
-		serverMain.sendToFPM(nestNum + "&Non&UnToggling&");
 		
 		// Server Data Task
 		nestSwitch = false;
