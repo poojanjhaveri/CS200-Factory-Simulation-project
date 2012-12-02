@@ -1,3 +1,4 @@
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -36,6 +37,11 @@ public class GUINonNormKAM  extends JPanel {
     JButton unstabilize;    
     ActionListener kam;
     
+
+	public JButton getRobotInWayButton()
+    {
+	return this.robotIn;
+    }
     public JButton getDropPartButton()
     {
         return this.droppart;

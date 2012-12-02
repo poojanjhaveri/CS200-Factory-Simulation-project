@@ -29,6 +29,9 @@ Orders
 18 - move to kit0
 19 - move to kit1
 20 - move to default
+21-28 - flash camera nest 0-7
+49 - wait for one turn
+
  * @brief Robot that creates kits using parts from the lane nests
  * @author YiWei Roy Zheng
  * @version 0.5
@@ -233,4 +236,15 @@ public class GUIPartRobot extends GUIRobot {
         }
         g2d.dispose();
     }
+    public void blockNestNonNorm(int nest)
+    {
+	this.orders.add(nest+10);//move to nest
+	this.orders.add(21+nest);//flash camera
+	this.orders.add(49);//pause
+	this.orders.add(20);//move to default
+	for(int i = 0; i != 100; i++)
+	    this.orders.add(49);//pause
+	this.orders.add(21+nest);//flash again
+    }
+
 }

@@ -1,3 +1,4 @@
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -75,12 +76,15 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
     public boolean deliveryStation;
     Timer timer;
     boolean stationRun;
+
+    boolean partsrobotinwayaction;///<causes non norm parts robot in way to begin
     
     public KitAssemblyManager kam;
     
     //private ImageIcon backgroundImage = new ImageIcon("pics/background/part1");
 
     public KAMGraphicPanel(KitAssemblyManager k) {
+	this.partsrobotinwayaction = false;
     	this.unstable = new ArrayList<Boolean>();
 	this.piled = new ArrayList<Boolean>();
 	for(int i = 0 ; i!= 8; i++){
@@ -139,6 +143,16 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
         }
 
         public void actionPerformed(ActionEvent ae) {
+	    /*bad code to do nonnorm parts robot in way*/
+	    if(partsrobotinwayaction)
+		{
+		    int nestnum = getFullNestNumber();
+		    if(nestnum != -1){
+		    partsrobotinwayaction = false;
+		    kitter.blockNestNonNorm(nestnum);
+		    }
+		}
+
             int size=delivery.getPlaceholder().size();
             //PlaceHolder temp=new PlaceHolder();
             if (deliveryStation == true && delivery.getPlaceholder().size()>0){
@@ -309,6 +323,19 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
                         kitter.popOrder();
                         kitter.checkDefault();
                         break;
+		case 21:
+		case 22:
+		case 23:
+		case 24:
+		case 25:
+		case 26:
+		case 27:
+		case 28:
+		    kam.flashNestCamera(order-21);
+		    kitter.popOrder();
+		case 49://this is the pause order
+		    kitter.popOrder();
+		    break;
 		case 50:
 		    System.out.println("Releasing PartsRobotAgent thread...");
 		    kam.sendToServer(Message.KAM_FINISH_KITTER_ANIMATION);
@@ -324,8 +351,7 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
             myPanel.repaint();
         }
     }
-    
-    public Integer getFullNestNumber(){
+public Integer getFullNestNumber(){
             int num=-1;
             for(int i=0;i<this.nest.size();i++){
                 if(nest.get(i).isFull()){
@@ -464,6 +490,10 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
 		break;
 	    }
 	return false;
+    }
+    public void beginRobotInWayAction()
+    {
+	this.partsrobotinwayaction = true;
     }
 
 }
