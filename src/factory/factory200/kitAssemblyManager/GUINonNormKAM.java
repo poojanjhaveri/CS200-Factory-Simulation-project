@@ -65,12 +65,12 @@ public class GUINonNormKAM  extends JPanel {
             public void paintComponent(Graphics g) 
             {
                 Image img = new ImageIcon("pics/background/mainbg.png").getImage();
-                Dimension size = new Dimension(550, 700);
+           /*     Dimension size = new Dimension(550, 700);
                 setPreferredSize(size);
                 setMinimumSize(size);
                 setMaximumSize(size);
                 setSize(size);
-                setLayout(null);
+                setLayout(null);*/
                 
                 g.drawImage(img, 0, 0, null);
             } 
