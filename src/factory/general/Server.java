@@ -281,8 +281,8 @@ public class Server {
 
         private void turnOffAgentPrintStatements() {
             if (PATRICK) {
-                nestAgent.print = false;
-                partsAgent.print = false;
+                nestAgent.print = true;
+                partsAgent.print = true;
             }
             if (KEVIN) {
                 for (int i = 0; i < LANE; i++) {
