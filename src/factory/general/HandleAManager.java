@@ -208,8 +208,7 @@ public class HandleAManager implements Runnable {
             this.processGRM(msg);
         }else if(this.id == 1){
             this.processKAM(msg);
-        }else if(this.id == 3)
-        {
+        }else if(this.id == 3) {
             this.processFPM(msg);
         }
 	if (msg.contains(Message.PULL_KITS_LIST)) {

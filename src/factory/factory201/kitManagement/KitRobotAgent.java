@@ -64,9 +64,9 @@ public class KitRobotAgent extends Agent implements KitRobot {
     }
 
     @Override
-    public void msgKitInspected(boolean result) {
+    public void msgKitInspected(int result) {
         synchronized (kitStand) {
-            kitStand.get(2).status = result ? Kit.Status.verified : Kit.Status.error;
+            kitStand.get(2).status = (result == 0) ? Kit.Status.verified : Kit.Status.error;
         }
         stateChanged();
     }
