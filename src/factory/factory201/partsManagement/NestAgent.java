@@ -383,6 +383,7 @@ public class NestAgent extends Agent implements NestInterface {
         if (this.client != null) {
             serverLM.getForAgentNest().setSwitchDown(nestNum);
             this.client.sendMessage(Message.NEST_DOWN+":"+nestNum);
+            this.fpm.sendMessage(Message.NEST_DOWN+":"+nestNum);
             try {
          Thread.sleep(1000);
          } catch (InterruptedException e) {
@@ -390,7 +391,8 @@ public class NestAgent extends Agent implements NestInterface {
          }
             serverLM.getForAgentNest().setSwitchUp(nestNum);
             this.client.sendMessage(Message.NEST_UP+":"+nestNum);
-        try {
+         this.fpm.sendMessage(Message.NEST_UP+":"+nestNum);
+            try {
          Thread.sleep(1000);
          } catch (InterruptedException e) {
          e.printStackTrace();
