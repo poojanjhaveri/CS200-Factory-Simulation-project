@@ -13,6 +13,8 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.Semaphore;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * @brief agent for the Feeder This class is the agent for the Feeder which does
@@ -42,6 +44,7 @@ public class FeederAgent extends Agent implements Feeder {
     public int feederNum;
     Semaphore anim=new Semaphore(0, true);
     Semaphore laneJammed=new Semaphore(0, true);
+    Semaphore camera=new Semaphore(0, true);
     boolean requestState = false;
     //--------------------------------------------------------------
     private LMServerMain serverMain;
@@ -117,6 +120,9 @@ public class FeederAgent extends Agent implements Feeder {
         }
     }
 
+    public void msgCorrectYourAlgorithm(){
+    
+    }
     public void msgAnimationComplete(){
     anim.release();
     }
@@ -312,10 +318,17 @@ public class FeederAgent extends Agent implements Feeder {
 
 
         if(feederFaulty){
-         /* Feeder is faulty ? */
-            //leftLane.msgHereAreParts(mparts);
-            dosendPartToLeftLane(p);
-            leftLane.msgHereAreParts(mparts);
+            try {
+                /* Feeder is faulty ? */
+                   //leftLane.msgHereAreParts(mparts);
+                   
+                   camera.acquire();
+                   dosendPartToLeftLane(p);
+                   leftLane.msgHereAreParts(mparts);
+                }
+            catch (InterruptedException ex) {
+                Logger.getLogger(FeederAgent.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         else{
         dosendPartToLeftLane(p);
