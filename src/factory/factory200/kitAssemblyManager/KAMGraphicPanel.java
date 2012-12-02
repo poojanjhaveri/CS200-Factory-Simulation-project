@@ -324,7 +324,17 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
             myPanel.repaint();
         }
     }
-
+    
+    public Integer getFullNestNumber(){
+            int num=-1;
+            for(int i=0;i<this.nest.size();i++){
+                if(nest.get(i).isFull()){
+                    num=i;
+                    break;
+                }
+            }
+            return num;
+    }
     public void paint(Graphics g) {
         Graphics2D g2 = (Graphics2D) g;
         //Rectangle2D.Double backgroundRectangle = new Rectangle2D.Double(0, 0, 700, 700);
