@@ -3,6 +3,8 @@ package factory.factory200.factoryProductionManager;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -45,16 +47,23 @@ public class NonNormCtrlPanel extends JPanel {
 
 
 	public NonNormCtrlPanel() {
-		preparePanel();
-
-		// Change these as you please
-		controlPanel.setPreferredSize(CONTROL_PANEL_DIMENSION);
-		statusPanel.setPreferredSize(STATUS_PANEL_DIMENSION);
-		kitFailsPanel.setPreferredSize(TRI_CONTROLS_DIMENSION);
-		partsMissingPanel.setPreferredSize(TRI_CONTROLS_DIMENSION);
-		noGoodPartPanel.setPreferredSize(TRI_CONTROLS_DIMENSION);
+		
+            
+            JPanel mparts = new JPanel();
+            mparts.setLayout(new GridBagLayout());
+            GridBagConstraints c = new GridBagConstraints();
+            
+            
+            JLabel name = new JLabel();
+            mparts.add(name);
+            this.add(mparts);
+            
+		
 	}
 
+        
+        
+        /*
 	private void preparePanel() {
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
@@ -132,7 +141,9 @@ public class NonNormCtrlPanel extends JPanel {
 		currentStatusLabel = new JLabel("none");
 		currentStatusLabel.setFont(new Font("Arial Black", Font.ITALIC, 15));
 		statusPanel.add(currentStatusLabel);
-	}
+	} 
+        
+        */
 
 	//	/**
 	//	public static void main(String[] args) {

@@ -40,6 +40,7 @@ public class CameraAgent extends Agent implements Camera {
     private Map<Integer, Result.Is> nestErrors;
     private Map<String, Integer> kitErrors;
     private boolean partsDropped;
+    private boolean partsAgentIsInTheWay;
     private List<Part> missingParts;
 
     public CameraAgent(String name) {
@@ -50,9 +51,14 @@ public class CameraAgent extends Agent implements Camera {
         kitRqmts = new ArrayList<Integer>();
         nestErrors = new HashMap<Integer, Result.Is>();
         partsDropped = false;
+        partsAgentIsInTheWay = false;
     }
 
     //Non-normative messages
+    public void msgWrongFeederAlgorithm(int nestNum) {
+        
+    }
+    
     public void msgPartsDroppedFromKit(List<Part> missingParts) {
         partsDropped = true;
         this.missingParts = missingParts;
@@ -71,6 +77,10 @@ public class CameraAgent extends Agent implements Camera {
     public void msgPartsShaking(int nestNum) {
         print("parts shaking hit");
         nestErrors.put(nestNum, Result.Is.unstableParts);
+    }
+
+    public void msgPartsAgentIsInTheWay() {
+        partsAgentIsInTheWay = true;
     }
 
     //Agent Messages
@@ -170,6 +180,9 @@ public class CameraAgent extends Agent implements Camera {
         if (nestErrors.containsKey(nest.nestNum)) {
             is = nestErrors.get(nest.nestNum);
             nestErrors.remove(nest.nestNum);
+        } else if (partsAgentIsInTheWay) {
+            is = Result.Is.robotInTheWay;
+
         } else {
             is = Result.Is.verified;
         }
