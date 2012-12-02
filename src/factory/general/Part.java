@@ -180,6 +180,10 @@ public class Part implements Serializable {
     public int getNum(){
     	return this.number;
     }
+    public void debug()
+    {
+    	System.out.println("Name:" + name + "\nNumber: " + this.number + "\nFilename:" + this.filename);
+    }
     public String serialize() {
     	//        return "("+this.name+","+this.description+","+this.number+","+this.filename+")";
     	ArrayList<String> arr = new ArrayList<String>();
