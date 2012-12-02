@@ -39,7 +39,7 @@ public class KitAssemblyManager extends Manager implements ActionListener {
 	private static final long serialVersionUID = 4L;
 	
     KAMGraphicPanel graphics;
-    boolean test = false;
+    boolean test = true;
     JTabbedPane tabbedPane;
     GUINonNormKAM nonnorm;
     //private KitAssemblyManagerDeliveryStation kamdelivery;///<keeps track of all of the objects listed above and paints the objects according to a timer
@@ -120,10 +120,19 @@ public class KitAssemblyManager extends Manager implements ActionListener {
 	else if(msg.contains(Message.NEST_UP))
 	    {
 		this.nestUp(Integer.parseInt(this.grabParameter(msg)));
+
+	    
+        
+
 	    }else if(msg.contains(Message.KAM_MOVE_FROM_2_TO_0)){
-                //deepa, add here
+                this.moveFrom2To0();
             }
+
         //todo - let me know what functions agent will call so I can process them here
+    }
+    //THIS METHOD MOVES KIT FROM POSITION 2 TO 0!!
+    public void moveFrom2To0(){
+        this.graphics.kitbot.moveFrom2To0();
     }
 
     public void nestUp(int n) {
@@ -336,6 +345,9 @@ if(p != null){
         if (ae.getSource() == addKit) {
             this.graphics.delivery.addKit();
         }
+        if (ae.getSource() == moveBack) {
+            this.moveFrom2To0();
+        }
         if (ae.getSource() == addPart) {
             String choice = JOptionPane.showInputDialog("Please enter the nest number (0-7): ");
             Integer n = Integer.parseInt(choice);
@@ -404,10 +416,14 @@ if(p != null){
     JButton addPart;
     JButton nestUp;
     JButton nestDown;
+    JButton moveBack;
 
     public JPanel TestPanel() {
         JPanel tester = new JPanel();
         tester.setLayout(new BoxLayout(tester, BoxLayout.Y_AXIS));
+        moveBack = new JButton("MOVE BACK!!");
+        moveBack.addActionListener(this);
+        tester.add(moveBack);
         nestUp = new JButton("NEST UP");
         nestUp.addActionListener(this);
         tester.add(nestUp);
