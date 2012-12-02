@@ -212,11 +212,11 @@ public class PartsAgent extends Agent implements PartsInterface {
     private void startNewKit(Kit k) {
 
         DoGiveKitsInAction(k);//giving the kit being worked on to Matt for gui display
-        // DoGiveKitsInQueue(newKit);
+        DoGiveKitsInQueue(newKit);
 
         print("New kit being started" + k.getName());
         camera.msgHereIsKitInfo(k);//later used by the camera when inspecting the full kit
-
+        
         //synchronized(kitsStarted){
         kitsStarted.add(k);
 

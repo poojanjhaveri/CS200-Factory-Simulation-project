@@ -45,6 +45,12 @@ import factory.general.Util;
  *
  */
 public class FactoryProductionManager extends Manager implements ActionListener {
+	/**
+	 * To avoid unexpected InvalidClassExceptions during deserialization
+	 * we explicitly specify a UID, instead of relying on the compiler to generate one
+	 */
+	private static final long serialVersionUID = 5L;
+	
     private JPanel basePanel, topPanel,parentMidPanel, queuePanel, botPanel, mainPanel, selPanel, leftPanel, midPanel, rightPanel, botBotPanel, slotsPanel;
     private JLabel selLabel, queueLabel, numLabel, consoleLabel, schedLabel, inProdLabel;
     private JComboBox selKit;
@@ -61,6 +67,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
     private String nameToAdd; // name of currently selected kit in combo box, selKit
     private Kit kitToAdd; // currently selected kit in the combo box (selKit); clicking 'add kit' adds this kit to selectedKits and puts its name on the pending queue text area
     private int qtyToAdd;
+    private int serverQueueSize;
     private ArrayList<String> availableKits; // strings in the combobox selKit; generally, availableKits.get(i) refers to selKit.getItemAt(i)
     private ArrayList<Kit> selectedKits; // stores the selected kits before the kits are added to production queue
     		// so say you select kit1 with the combo box and put 20 in the text field; we end up with 20 of kit1 in selectedKits
@@ -107,6 +114,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 
         //Instantiate ServerQueue
         serverQueueDisplay = new JTextArea(12, 20);
+        serverQueueSize = 0;
 
         inProdField = new JTextArea(1, 20);
 
@@ -376,7 +384,12 @@ public class FactoryProductionManager extends Manager implements ActionListener 
                         outField.append(kitty.getName() + newline);
                     }
                     start();
-                    outField.append("Starting Factory Simulation" + newline);
+                    
+                    //Set System output based on Factory run condition
+                    if(serverQueueSize == 0 && inProdField.getText().equals(""))
+                        outField.append("Starting Factory Simulation" + newline);
+                    else
+                        outField.append("Appending Production Queue" + newline);
                     reset();
                 }
                 else
@@ -440,11 +453,13 @@ public class FactoryProductionManager extends Manager implements ActionListener 
             // TODO: @parse22 handle this (read the comments around) 
         } else if(msg.contains(Message.GIVE_KITS_IN_QUEUE)) {
             serverQueueDisplay.setText("");
+            serverQueueSize = 0;
             BlueprintKits temp = new BlueprintKits();
             temp.recreate(this.grabParameter(msg)); // grabs the arraylist of kits sent to him
             prodQueue = temp.getKits();
             for (Kit kitty : prodQueue) {
                 serverQueueDisplay.append(kitty.getName() + newline);
+                serverQueueSize++;
             }
         }
         //Lane Manager( pass 'msg' into Lane Manager Message Interpreter and take a proper action )
@@ -524,12 +539,6 @@ public class FactoryProductionManager extends Manager implements ActionListener 
     {
         //add this when you change arraylist to kits
         String msg = Message.PUSH_PRODUCTION_QUEUE+":";
-        /*for(int i = 0; i != this.selectedKits.size(); i++)
-        {
-            msg = msg+this.selectedKits.get(i).getNumber();
-            if(i != this.selectedKits.size()-1)
-                    msg=msg+",";
-        }*/
         ArrayList<String> serialized = new ArrayList<String>();
         for(int i = 0; i != this.selectedKits.size(); i++)
         {
