@@ -16,7 +16,7 @@ import java.util.List;
  * kitting cell and takes complete kits out of the kitting cell.
  *
  * @author Alex Young
- * @version 1
+ * @version 2
  * @brief Agent for the conveyor
  */
 public class ConveyorAgent extends Agent implements Conveyor {

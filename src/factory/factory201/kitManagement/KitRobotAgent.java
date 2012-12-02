@@ -21,7 +21,7 @@ import java.util.concurrent.Semaphore;
  * the complete kit onto the conveyor.
  *
  * @author Alex Young
- * @version 1
+ * @version 2
  * @brief Agent for the Kit Robot
  */
 public class KitRobotAgent extends Agent implements KitRobot {
