@@ -144,6 +144,8 @@ public class CameraAgent extends Agent implements Camera {
             DoInspectKit(kit);
             kitRobot.msgKitInspectedError(missingParts);
             strResult = "Parts missing";
+            partsDropped = false;
+            missingParts = null;
         } //        boolean result = true;
         //            if (kit.parts.size() != kitRqmts.size()) {
         //                result = false;
