@@ -91,6 +91,7 @@ public class KitDeliveryStation {
            int yPlace=this.getPlaceholder().get(i).getY();
            if(yPlace==KAMGraphicPanel.FULL_CONVEYERY && !(this.getPlaceholder().get(i).isShow())){
                this.getPlaceholder().get(i).setKit(kit);
+               
                this.getPlaceholder().get(i).getKit().updateParts();
                if(this.getPlaceholder().get(i).getKit().getParts().size() != 0){
                    this.getPlaceholder().get(i).getKit().setImage(new ImageIcon("pics/giftkit.png"));

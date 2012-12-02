@@ -4,21 +4,28 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-import java.awt.*;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 import factory.general.BlueprintKits;
 import factory.general.Kit;
 import factory.general.Manager;
 import factory.general.Message;
 import factory.general.Util;
-import java.util.HashSet;
-import java.util.Set;
 
 
 /**
@@ -38,6 +45,12 @@ import java.util.Set;
  *
  */
 public class FactoryProductionManager extends Manager implements ActionListener {
+	/**
+	 * To avoid unexpected InvalidClassExceptions during deserialization
+	 * we explicitly specify a UID, instead of relying on the compiler to generate one
+	 */
+	private static final long serialVersionUID = 5L;
+	
     private JPanel basePanel, topPanel,parentMidPanel, queuePanel, botPanel, mainPanel, selPanel, leftPanel, midPanel, rightPanel, botBotPanel, slotsPanel;
     private JLabel selLabel, queueLabel, numLabel, consoleLabel, schedLabel, inProdLabel;
     private JComboBox selKit;
@@ -46,23 +59,20 @@ public class FactoryProductionManager extends Manager implements ActionListener 
     private JTextArea schedField, outField, serverQueueDisplay, inProdField;
     private JScrollPane schedPane, outPane, queuePane;
     private JTabbedPane tabs;
-
-    // Non-normative components
-    private NonNormCtrlPanel nonNormCtrlPanel;
     
-    private ArrayList<String> serverQueue;
-    private String inProduction;
+    private ArrayList<Kit> prodQueue; // used for queue of kits
 
     public GraphicsPanel gfx;
 
-    private String nameToAdd;
-    private Kit kitToAdd;
+    private String nameToAdd; // name of currently selected kit in combo box, selKit
+    private Kit kitToAdd; // currently selected kit in the combo box (selKit); clicking 'add kit' adds this kit to selectedKits and puts its name on the pending queue text area
     private int qtyToAdd;
-    private ArrayList<String> availableKits;
-    private ArrayList<Kit> selectedKits;
+    private ArrayList<String> availableKits; // strings in the combobox selKit; generally, availableKits.get(i) refers to selKit.getItemAt(i)
+    private ArrayList<Kit> selectedKits; // stores the selected kits before the kits are added to production queue
+    		// so say you select kit1 with the combo box and put 20 in the text field; we end up with 20 of kit1 in selectedKits
 
-    private boolean empty;
-    private boolean constructed;
+    private boolean kitListFromServerIsEmpty; // true if kit list from server is empty
+    private boolean constructed; // variable to determine if this class's constructor has finished; used for real time updates
     private BlueprintKits kitsbp;
     //	private Image bgimg;
 
@@ -72,7 +82,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
     GridBagConstraints c;
 
     public FactoryProductionManager() {
-        empty = false;
+        kitListFromServerIsEmpty = false;
         constructed = false;
 
         //Instantiate components that need to exist before the pull
@@ -102,7 +112,6 @@ public class FactoryProductionManager extends Manager implements ActionListener 
         gfx.setPreferredSize(new Dimension(1350, 700));
 
         //Instantiate ServerQueue
-        serverQueue = new ArrayList<String>();
         serverQueueDisplay = new JTextArea(12, 20);
 
         inProdField = new JTextArea(1, 20);
@@ -306,10 +315,6 @@ public class FactoryProductionManager extends Manager implements ActionListener 
         tabs.addTab("Simulation", gfx);
         gfx.repaint();
 
-        // New tab for non-normative scenarios
-        prepareNonNormCtrlPanel();
-    //    tabs.addTab("Non-normative Controls", nonNormCtrlPanel);
-        
         //Register ActionListeners
         selKit.addActionListener(this);
         queueue.addActionListener(this);
@@ -319,11 +324,6 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 
         mainPanel.add(tabs, BorderLayout.CENTER);
     }
-
-    private void prepareNonNormCtrlPanel() {
-    	nonNormCtrlPanel = new NonNormCtrlPanel();
-    	
-    }
     
     @Override
     public void actionPerformed(ActionEvent ae)
@@ -332,8 +332,9 @@ public class FactoryProductionManager extends Manager implements ActionListener 
         if(ae.getSource() == selKit)
         {
 
-            if(!empty)
+            if(!kitListFromServerIsEmpty)
             {
+                p.println("Action listener called " + selKit.getItemCount());
                 selKitRoutine(ae.getSource());
             }
         }
@@ -341,17 +342,15 @@ public class FactoryProductionManager extends Manager implements ActionListener 
         //Add selection to pending queue
         if(ae.getSource() == queueue)
         {
-            if(!empty)
+            if(!kitListFromServerIsEmpty)
             {
                 if(!numE.getText().equals(""))
                 {
                     try {
                         Integer.parseInt(numE.getText());
                         qtyToAdd = Integer.parseInt(numE.getText());
-                        for(int i=0;i<qtyToAdd;i++)
-                        {
-
-                            System.out.println("Name = " + nameToAdd);
+                        for(int i=0;i<qtyToAdd;i++) {
+                            p.println("Name = " + nameToAdd);
                             selectedKits.add(kitToAdd);
                             schedField.append(nameToAdd + newline);
                         }
@@ -371,7 +370,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
         //Commit list, start simulation
         if(ae.getSource() == start)
         {
-            if(!empty)
+            if(!kitListFromServerIsEmpty)
             {
                 if(selectedKits.size() > 0)
                 {
@@ -379,11 +378,12 @@ public class FactoryProductionManager extends Manager implements ActionListener 
                     outField.append("~~~~~~~~~~~~~" + newline);
                     for(Kit kitty : selectedKits)
                     {
-                        System.out.println("Kitty name = " + kitty.getName());
+                        p.println("Kitty name = " + kitty.getName());
                         outField.append(kitty.getName() + newline);
                     }
                     start();
                     outField.append("Starting Factory Simulation" + newline);
+                    reset();
                 }
                 else
                 {
@@ -396,28 +396,32 @@ public class FactoryProductionManager extends Manager implements ActionListener 
         //Clear pending queue
         if(ae.getSource() == reset)
         {
-            if(!empty)
-            {
-                if(selectedKits.size() > 0)
-                {
-                    //Message to console
-                    selectedKits.clear();
-                    schedField.setText("");
-                }
-            }
+            reset();
         }
     }
-
+    
     //Functionality for JComboBox usage
-    private void selKitRoutine(Object source)
-    {
+    private void selKitRoutine(Object source) {
+        if(selKit.getItemCount() == kitsbp.getKits().size()) {
             JComboBox cb = (JComboBox)source;
             nameToAdd = (String)cb.getSelectedItem();
-            System.out.println("Name to add = " + nameToAdd);
+            p.println("Name to add = " + nameToAdd);
 
             for(Kit kitty : kitsbp.getKits())
                 if(nameToAdd.equals(kitty.getName()))
                     kitToAdd = kitty;
+        }
+    }
+    
+    // Functionality for JComboBox usage
+    // Set the combo box item that is selected in selKit 
+    private void setComboBoxSelection() {
+    	nameToAdd = (String) selKit.getSelectedItem(); // get the name of the selected item from the combo box
+    	p.println("Name to add = " + nameToAdd);
+
+    	for(Kit kitty : kitsbp.getKits())
+    		if(nameToAdd.equals(kitty.getName()))
+    			kitToAdd = kitty;
     }
 
     //Deserialize messages from server
@@ -430,23 +434,22 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 
         if (msg.contains(Message.PUSH_KITS_LIST)) {
             this.kitsbp.recreate(this.grabParameter(msg));
-            System.out.println("GRABBED A NEW BLUEPRINTKITS FROM THE SERVER");
+            p.println("GRABBED A NEW BLUEPRINTKITS FROM THE SERVER");
             //this.kitsbp.debug();
             this.reconstructComboBox();
-        }
-        if(msg.contains(Message.KIT_IN_PRODUCTION))
-        {
+        } else if(msg.contains(Message.KIT_IN_PRODUCTION)) { // DoGiveKitsInAction() in PartsAgent
+        	// Update the in-production textfield to show the kit in production (the kit "in action")
             inProdField.setText("");
             inProdField.append(this.grabParameter(msg));
-        }
-        if(msg.contains(Message.GIVE_KITS_IN_QUEUE))
-        {
+            
+        	// Remove the kit that is now in action from the queue (kit should no longer be in the queue if it is in action)
+            // TODO: @parse22 handle this (read the comments around) 
+        } else if(msg.contains(Message.GIVE_KITS_IN_QUEUE)) {
             serverQueueDisplay.setText("");
             BlueprintKits temp = new BlueprintKits();
-            temp.recreate(this.grabParameter(msg));
-            ArrayList<Kit> prodqueue = temp.getKits();
-            for(Kit kitty : prodqueue)
-            {
+            temp.recreate(this.grabParameter(msg)); // grabs the arraylist of kits sent to him
+            prodQueue = temp.getKits();
+            for (Kit kitty : prodQueue) {
                 serverQueueDisplay.append(kitty.getName() + newline);
             }
         }
@@ -454,50 +457,74 @@ public class FactoryProductionManager extends Manager implements ActionListener 
         gfx.verifyMessage(msg);
     }
 
-    //Finalize creation of dynamic components, follows server pull thread
-    public void reconstructComboBox()
-    {
-        System.out.println("Incoming number of kits = " + kitsbp.getKits().size());
+    // Finalize creation of dynamic components; follows server pull thread
+    // post condition: availableKits.get(i) refers to selKit.getItemAt(i), and both are properly populated
+    public void reconstructComboBox() {
+    	p.println("Incoming number of kits = " + kitsbp.getKits().size());
+    	p.println("----reconstructComboBox(): Printing available kits----");
+        for (String kit : availableKits)
+        	p.println(kit);
         
         availableKits.clear();
-        //Populate Combobox array with names of Blueprint Kits
-        for(int i=0;i<kitsbp.getKits().size();i++)
-        {
+
+        // Populate Combobox array with names of Blueprint Kits
+        for(int i=0;i<kitsbp.getKits().size();i++) {
             //Populate string list of names of incoming kits
-            System.out.println(kitsbp.getKits().get(i).getName());
+            p.println(kitsbp.getKits().get(i).getName());
             availableKits.add(kitsbp.getKits().get(i).getName());
-            
         }
-        System.out.println("Available kits size = " + availableKits.size());
+        p.println("---New list of kits in available kits (size = " + availableKits.size()+")---");
+        for (String kit : availableKits)
+        	p.println(kit);
         
-        for(int i=0; i<selKit.getItemCount(); i++)
-        {
-            selKit.removeItemAt(i);
+        // Clears each item in selKit
+//        selKit.removeAllItems(); // mysteriously doesn't work according to Matt!
+        int size = selKit.getItemCount(); // need constant store of selKit's original item count
+        for (int i=0; i<size; i++) {
+            selKit.removeItemAt(0);
         }
-        System.out.println(selKit.getItemCount());
-        //Add strings to the combobox component
-        for(String kitty : availableKits)
-        {
+        p.println("--Just removed all kits: new size of combo box: "+selKit.getItemCount());
+        
+        // Add strings to the combobox component
+        for (String kitty : availableKits) {
             selKit.addItem(kitty);
         }
-        System.out.println("Combobox size = " + selKit.getItemCount());
-        //if the incoming kit list isn't empty, make the combo box now
-        if(!empty)
-        {
+        p.println("Just added each string from available Kits to combo box: new size: " + selKit.getItemCount() + " should equal " + availableKits.size());
+
+        // if the incoming kit list isn't empty, make the combo box now
+        if (!kitListFromServerIsEmpty) {
             selKit.setSelectedItem(0);
-            System.out.println("Name to add? = " + (String)selKit.getSelectedItem());
-            selKitRoutine(selKit);
+            p.println("Name to add = " + (String)selKit.getSelectedItem());
+            setComboBoxSelection();
         }
 
-        if(constructed)
-        {
+        if (constructed) { // call only if the constructor has already finished
             queuePanel.remove(queuePane);
             gridbag.setConstraints(queuePane,c);
             queuePanel.add(queuePane);
             basePanel.updateUI();
         }
+        p.println("--Final available kits list--");
+        for (String kit : availableKits)
+        	p.println(kit);
+        
+        p.println("--end reconstruct--");
     }
-
+    
+    //Clear pending queue display list and selected kits container
+    private void reset()
+    {
+        if(!kitListFromServerIsEmpty)
+        {
+            if(selectedKits.size() > 0)
+            {
+                //Message to console
+                selectedKits.clear();
+                schedField.setText("");
+            }
+        }
+    }
+    
     //Commit list, push to server
     void start() 
     {

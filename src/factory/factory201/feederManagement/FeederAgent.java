@@ -121,9 +121,16 @@ public class FeederAgent extends Agent implements Feeder {
     }
     
     public void msgLaneJammed(int laneNum){
-    System.out.println("received msgLaneJammed msg " );
+           // System.out.println("checking Left laneNum " + leftLane.getIndex() + " = " + laneNum );
+            
+            
+           // System.out.println("checking Right laneNum " + rightLane.getIndex() + " = " + laneNum );
+            
+         
         if(leftLane.getIndex()==laneNum) {
+        //    System.out.println("leftLane has been jammed");
             leftLane.setJammed(true);
+            print("getJammed is " + leftLane.getJammed());
         }
     if(rightLane.getIndex()==laneNum) {
             rightLane.setJammed(true);
@@ -282,14 +289,14 @@ public class FeederAgent extends Agent implements Feeder {
 
     private void needPart(myParts p) {
 
-        print("sending need part message to gantry from " + feederNum);
+   //     print("sending need part message to gantry from " + feederNum);
         gantry.msgNeedPart(p.part, this);
         stateChanged();
     }
 
     private void sendPartToLeftLane(myParts p) {
 
-        print("I am supplying parts to leftLane");
+     //   print("I am supplying parts to leftLane");
 
         //create a list of parts to supply
         List<Part> mparts = new ArrayList<Part>();
@@ -308,7 +315,7 @@ public class FeederAgent extends Agent implements Feeder {
     }
 
     private void sendPartToRightLane(myParts p) {
-        print("I am supplying parts to rightLane");
+      //  print("I am supplying parts to rightLane");
         //create a list of parts to supply
         List<Part> mparts = new ArrayList<Part>();
 
@@ -337,20 +344,38 @@ public class FeederAgent extends Agent implements Feeder {
             if (LMServer.getForAgentFeeder() == null) {
                 return;
             }
+        
+           if(leftLane.getJammed()==true){
+            print("leftLane is jammed!!");
+            //start jammed lane animation
+            LMServer.getForAgentLane().startJammedLaneAnimation(leftLane.getIndex());
             LMServer.getForAgentFeeder().setDiverterSwitchLeft(feederNum);
-
             LMServer.getForAgentGantryRobot().putBin(p.part.type, p.quantity, feederNum);
-            //  	animation.setDiverterSwitchLeft(feederNum-1);
-            if(leftLane.getJammed()==true){
-            //server function to set it jammed.
+            
+            //start strong vibration amplitude after 5 seconds
+            timer.schedule(new TimerTask(){
+    	    public void run(){		    
             LMServer.getForAgentLane().setVibrationAmplitudeStrong(leftLane.getIndex());
+            }
+            },5000);
+            
+            //revert back to normal amplitude in 1.5 seconds
             timer.schedule(new TimerTask(){
     	    public void run(){		    
             LMServer.getForAgentLane().setVibrationAmplitudeNormal(leftLane.getIndex());
             }
-            },2000);
+            },3000);
+            
+            //set jammed lane to false
             leftLane.setJammed(false);
+            
+           }
+           
+           else{
+            LMServer.getForAgentFeeder().setDiverterSwitchLeft(feederNum);
+            LMServer.getForAgentGantryRobot().putBin(p.part.type, p.quantity, feederNum);
             }
+                
             try {
                 anim.acquire();
                 //Thread.sleep(20000);
@@ -374,12 +399,38 @@ public class FeederAgent extends Agent implements Feeder {
             if (LMServer.getForAgentFeeder() == null) {
                 return;
             }
+        if(rightLane.getJammed()==true){
+            print("rightLane is jammed!!");            
+            //start jammed lane animation
+            LMServer.getForAgentLane().startJammedLaneAnimation(rightLane.getIndex());
             LMServer.getForAgentFeeder().setDiverterSwitchRight(feederNum);
-
             LMServer.getForAgentGantryRobot().putBin(p.part.type, p.quantity, feederNum);
+            
+            //start strong vibration amplitude after 5 seconds
+            timer.schedule(new TimerTask(){
+    	    public void run(){		    
+            LMServer.getForAgentLane().setVibrationAmplitudeStrong(rightLane.getIndex());
+            }
+            },5000);
+            
+            //revert back to normal amplitude in 1.5 seconds
+            timer.schedule(new TimerTask(){
+    	    public void run(){		    
+            LMServer.getForAgentLane().setVibrationAmplitudeNormal(rightLane.getIndex());
+            }
+            },3000);
+            
+            //set jammed lane to false
+            rightLane.setJammed(false);
+            
+           }
+           
+           else{
+            LMServer.getForAgentFeeder().setDiverterSwitchRight(feederNum);
+            LMServer.getForAgentGantryRobot().putBin(p.part.type, p.quantity, feederNum);
+            }
 
-//    	animation.setDiverterSwitchRight(feederNum-1);
-            try {
+        try {
               anim.acquire();
                // Thread.sleep(20000);
             } catch (InterruptedException e) {

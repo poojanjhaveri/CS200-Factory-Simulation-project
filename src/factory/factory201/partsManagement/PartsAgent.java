@@ -86,12 +86,13 @@ public class PartsAgent extends Agent implements PartsInterface {
 
     }
 
+    // Important method that starts a sequence of making kits based on the ArrayList of Kits 
     public void msgHereIsKit(ArrayList<Kit> newKits) {// message from server
-       
-        newKit.clear();
+    	// If newKit.clear() is uncommented, then it will not finish the current queue of kits and immediately start on the second queue of kits
+    	// What we want: appending the new queue to the current queue! So we should comment newKit.clear() out.
+//        newKit.clear();
         for (Kit k: newKits){
         newKit.add(k);
-
         }
 
         print("kit configuration specifies the following parts in kit  (size : " + newKits.size() + " ) ");
@@ -134,7 +135,7 @@ public class PartsAgent extends Agent implements PartsInterface {
     @Override
     public boolean pickAndExecuteAnAction() {
 
-        print("newKit size is : " + newKit.size() + ", kits : " + kits);
+     //   print("newKit size is : " + newKit.size() + ", kits : " + kits);
         if (!newKit.isEmpty() && kits != 1) {//if there are not already 2 kits being worked on by this agent and there are new kit requests
             kits++;
 

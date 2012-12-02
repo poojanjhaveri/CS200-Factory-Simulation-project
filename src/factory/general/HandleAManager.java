@@ -140,9 +140,9 @@ public class HandleAManager implements Runnable {
             this.server.setConveyerAgentClient(this);
             this.server.setPartsAgentClient(this);
             this.server.getServerLM().setKAM(this);
+	    this.server.setNestAgentClient(this);
         }
     }
-
 
     public void pushToFPM()
     {
@@ -208,8 +208,7 @@ public class HandleAManager implements Runnable {
             this.processGRM(msg);
         }else if(this.id == 1){
             this.processKAM(msg);
-        }else if(this.id == 3)
-        {
+        }else if(this.id == 3) {
             this.processFPM(msg);
         }
 	if (msg.contains(Message.PULL_KITS_LIST)) {
@@ -265,7 +264,7 @@ public class HandleAManager implements Runnable {
                  queue.add(single);
                  }*/
                 this.server.getConveyorAgent().msgGenerateKits(queue.size()); // * This generates 10 new kits, among other things if you pass string... *
-                this.server.getPartsAgent().msgHereIsKit(queue);
+                this.server.getPartsAgent().msgHereIsKit(queue); // Only being called once. TODO: need to be sent each time a new kit config comes in 
                 //this.server.startInteractionSequence();
                 System.out.println(msg);
                 System.out.println("BEGINNING PRODUCTION CYCLE WOOOOOOT (size " + queue.size() + ")");
@@ -284,8 +283,23 @@ public class HandleAManager implements Runnable {
                 server.getServerLM().getVerify().verify(msg);
             } else if (msg.contains(Message.PART_TAKE_BY_PARTROBOT)) {
                 server.getServerLM().getVerify().verify(msg);
+            } else if (msg.contains(Message.PART_TOGGLING)) {
+            	server.getServerLM().getVerify().verify(msg);
+            } else if (msg.contains(Message.PART_UNTOGGLING)) {
+            	server.getServerLM().getVerify().verify(msg);
             } //-----------------------------------------------------------------------------------------------------------     
-
+	    else if(msg.contains(Message.KAM_NEST_PILED)){
+		//handle nest piled nonnorm
+                this.server.getCameraAgent().msgPartsPiledUp(Integer.parseInt(this.grabParameter(msg)));
+	    }else if(msg.contains(Message.KAM_NEST_UNSTABLE)){
+		//handle unstable nonnorm
+		this.server.getCameraAgent().msgPartsShaking(Integer.parseInt(this.grabParameter(msg)));
+	    }else if(msg.contains(Message.KAM_BAD_KIT)){
+		//handle bad kit nonnorm NOTE: bad kit == DROPPED != INSPECTED!!!!
+		this.server.getCameraAgent().partsRobotDroppedPart(Part.deserialize(this.grabParameter(msg)));
+	    }else if(msg.contains(Message.EARLY_CAMERA_FLASH)){
+		this.server.getNestAgent().msgRequestEarlyInspection();
+	    }
 
     }
 

@@ -76,7 +76,9 @@ public class GRMGraphicPanel{
 			
 			}
 		}	
+		if(this.gbot.getBreakState()==false){
 		gbot.update();
+		}
 		//repaint();
 	}
 	

@@ -63,7 +63,6 @@ public class Server {
 
     // Dongyoung's
     private LMServerMain serverLM;
-    private Thread threadLM;
 
     /** Connection fields */
     private ServerSocket ss = null;
@@ -282,13 +281,13 @@ public class Server {
 
         private void turnOffAgentPrintStatements() {
             if (PATRICK) {
-                nestAgent.print = false;
-                partsAgent.print = false;
+                nestAgent.print = true;
+                partsAgent.print = true;
             }
             if (KEVIN) {
                 for (int i = 0; i < LANE; i++) {
                     if (i < FEEDER) {
-                        feederAgents[i].print = false;
+                        feederAgents[i].print = true;
                     }
                     laneAgents[i].print = false;
                 }
@@ -296,7 +295,7 @@ public class Server {
             }
             if (ALEX) {
                 kitRobotAgent.print = true;
-                conveyorAgent.print = false;
+                conveyorAgent.print = true;
                 cameraAgent.print = false;
             }
       }
@@ -331,6 +330,11 @@ public class Server {
 
     public ConveyorAgent getConveyorAgent() {
         return this.conveyorAgent;
+    }
+    public NestAgent getNestAgent()
+    {
+        return this.nestAgent;
+    
     }
     /**
      * @brief method to help debug
@@ -374,6 +378,10 @@ public class Server {
     public void setFPMClient(HandleAManager in) {
         this.fpmclient = in;
     }
+    public void setNestAgentClient(HandleAManager in)
+    {
+	this.nestAgent.setClient(in);
+    }
 
     public HandleAManager getFPMClient() {
         return this.fpmclient;
@@ -385,6 +393,10 @@ public class Server {
 
     public HandleAManager getKitManagerClient() {
         return this.kitmanagerclient;
+    }
+    
+    public CameraAgent getCameraAgent(){
+    return this.cameraAgent;
     }
 
     public void setFactoryProductionManagerToAll(HandleAManager in) {

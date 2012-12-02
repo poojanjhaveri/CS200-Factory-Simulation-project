@@ -18,7 +18,6 @@ public class KitStand {
     }
 
     public boolean addKit(Kit kit) {
-        System.out.println("add kit testing ");
         if (kits[1] == null) {
             kits[1] = kit;
             kits[1].standNum = Kit.StandNum.one;

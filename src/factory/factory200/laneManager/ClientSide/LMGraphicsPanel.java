@@ -22,14 +22,14 @@ public class LMGraphicsPanel extends JPanel{
 	private ImageIcon backgroundImage = new ImageIcon( LMGraphicsPanel.class.getResource("./pics/background.png") );
 	
 	public LMGraphicsPanel(LMApplication app){
-		setPreferredSize(new Dimension(520,700));
+		setPreferredSize(new Dimension(520,600));
 		this.app = app;
 		
 		paintAllFeeder = new LMDrawableAllFeeder();
 		paintAllNest = new LMDrawableAllNest();
 		paintAllLane = new LMDrawableAllLane();
 		paintAllCamera = new LMDrawableAllCamera();
-		paintAllPart = new LMDrawableAllPart(app, this);
+		paintAllPart = new LMDrawableAllPart(app);
 		paintAllBin = new LMDrawableAllBin();
 	}
 

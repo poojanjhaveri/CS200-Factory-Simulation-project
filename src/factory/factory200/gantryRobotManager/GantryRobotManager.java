@@ -1,4 +1,17 @@
 package factory.factory200.gantryRobotManager;
+
+
+import java.awt.Dimension;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JTabbedPane;
+
+import factory.general.Manager;
+import factory.general.Message;
 /**
  * Gantry Robot Manager takes care of movement of gantry robot, bins, purge
  * station and feeders. Instances in this manager are GUIGantryRobot,
@@ -19,31 +32,18 @@ package factory.factory200.gantryRobotManager;
  * @brief GantryRobotManger takes care of movement of gantry robot, bins, purge station, feeders.
  * @author Yuting Liu
  */
-
-import factory.factory200.gantryRobotManager.GUIBin;
-import factory.factory200.gantryRobotManager.GUIGantryRobot;
-import factory.factory200.gantryRobotManager.GRMGraphicPanel;
-import factory.general.Manager;
-import factory.general.Message;
-import java.awt.Dimension;
-
-import java.awt.Graphics;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.BoxLayout;
-import javax.swing.JOptionPane;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JTabbedPane;
-
 public class GantryRobotManager extends Manager implements ActionListener {
+	
+	/**
+	 * To avoid unexpected InvalidClassExceptions during deserialization
+	 * we explicitly specify a UID, instead of relying on the compiler to generate one
+	 */
+	private static final long serialVersionUID = 3L;
    
     GRMGraphicPanel graphics;  
      JTabbedPane tabbedPane;
      JButton breakGantryRobot;
+     GUINonNormGAM nonGUI;
 
  //   GantryState gs;
     GUIBin bin;
@@ -96,16 +96,12 @@ public class GantryRobotManager extends Manager implements ActionListener {
         
         this.tabbedPane = new JTabbedPane();
         tabbedPane.addTab("Animation", this.graphics);
-        GUINonNormGAM nonGUI = new GUINonNormGAM();
+        nonGUI = new GUINonNormGAM(this);
         
         tabbedPane.addTab("Non-normative", nonGUI);
         tabbedPane.setPreferredSize(new Dimension(600,800));
         this.add(tabbedPane);
-        
-        
-        //   this.add(graphics);
-
-      //  add(graphics);
+    
         ps = new PurgeStation();
         int x = 500;
         setSize(480,750);//+ x, 700);
@@ -117,7 +113,7 @@ public class GantryRobotManager extends Manager implements ActionListener {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.sendToServer(Message.IDENTIFY_GANTRYROBOTMANAGER);
         
-        breakGantryRobot= new JButton();
+        //breakGantryRobot= new JButton();
     }
     
    /* toFeeder;
@@ -176,6 +172,13 @@ public class GantryRobotManager extends Manager implements ActionListener {
 	   else if(msg.contains(Message.MOVE_GANTRY_TO_DUMP)){
 		   purgeBin();//this.ganbot.purgeBinCommand();
 	   }
+	   else if(msg.contains(Message.FREEZE_GANTRY_ROBOT))
+	       {
+		   this.graphics.gbot.setBreakState(true);
+	       }else if(msg.contains(Message.UNFREEZE_GANTRY_ROBOT))
+	       {
+	    	   this.graphics.gbot.setBreakState(false);
+	       }
    }
    
      /*
@@ -184,8 +187,12 @@ public class GantryRobotManager extends Manager implements ActionListener {
       */
 	public void actionPerformed(ActionEvent ae) {
 		
-		if (ae.getSource()==breakGantryRobot){
-			this.graphics.gbot.setBreakState();
+		if (ae.getSource()==nonGUI.getBreakButton()){
+			this.graphics.gbot.setBreakState(true);			
+		}
+		
+		if(ae.getSource()==nonGUI.getUndoButton()){
+			this.graphics.gbot.setBreakState(false);
 		}
 	/*	if (ae.getSource() ==toFeeder){
 			ganbot.moveToFeederCommand(0);		}		

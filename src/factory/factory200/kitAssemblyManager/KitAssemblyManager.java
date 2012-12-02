@@ -1,22 +1,21 @@
 package factory.factory200.kitAssemblyManager;
 
-import factory.factory200.kitAssemblyManager.*;
-import factory.general.GUIPart;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import factory.general.Manager;
-import java.awt.Button;
-import java.awt.Graphics2D;
-import java.awt.GridLayout;
+
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import factory.general.Message;
-import factory.general.Part;
-import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
+
+import factory.general.GUIPart;
+import factory.general.Manager;
+import factory.general.Message;
+import factory.general.Part;
 
 /**
  * This class keeps track of everything that will be visible to the Kit Assembly
@@ -32,9 +31,14 @@ import javax.swing.JTabbedPane;
  * @author Deepa Borkar, YiWei Roy Zheng
  */
 public class KitAssemblyManager extends Manager implements ActionListener {
-
+	/**
+	 * To avoid unexpected InvalidClassExceptions during deserialization
+	 * we explicitly specify a UID, instead of relying on the compiler to generate one
+	 */
+	private static final long serialVersionUID = 4L;
+	
     KAMGraphicPanel graphics;
-    boolean test=true;
+    boolean test = false;
     JTabbedPane tabbedPane;
     GUINonNormKAM nonnorm;
     //private KitAssemblyManagerDeliveryStation kamdelivery;///<keeps track of all of the objects listed above and paints the objects according to a timer
@@ -53,19 +57,23 @@ public class KitAssemblyManager extends Manager implements ActionListener {
             this.graphics.deliveryStation = false;
             this.graphics.stationRun = true;
             this.graphics.kitbot.dropOffFullKit();
-	    //needs release DONE
+            //this.graphics.deliveryStation = true;
+            //this.graphics.stationRun = false;
+            //needs release DONE
         } else if (msg.contains(Message.KAM_MOVE_ACTIVE_KIT_TO_INSPECTION)) {
             this.graphics.kitbot.moveActiveKitToInspection();
-	    //needs to release DONE
+            //needs to release DONE
         } else if (msg.contains(Message.KAM_PICK_UP_EMPTY_KIT_TO_ACTIVE)) {
             this.graphics.kitbot.pickUpEmptyKitToActive();
-	    //needs to release DONE
+            //needs to release DONE
         } else if (msg.contains(Message.KAM_PICK_UP_EMPTY_KIT)) {
+            //this.graphics.deliveryStation = true;
+            //this.graphics.stationRun = true;
             this.graphics.kitbot.pickUpEmptyKit();
-	    //needs to release DONE
+            //needs to release DONE
         } else if (msg.contains(Message.KAM_MOVE_EMPTY_KIT_TO_ACTIVE)) {
             this.graphics.kitbot.moveEmptyKitToActive();
-	    //needs to release DONE
+            //needs to release DONE
         } else if (msg.contains(Message.KAM_FLASH_KIT_CAMERA)) {
             this.flashKitCamera();
         } else if (msg.contains(Message.KAM_FLASH_NEST_CAMERA)) {
@@ -75,7 +83,7 @@ public class KitAssemblyManager extends Manager implements ActionListener {
             //needs to release DONE
         } else if (msg.contains(Message.KAM_PARTS_PICK_PART)) {
             this.getPartsRobot().pickPartCommand(Integer.parseInt(this.grabParameter(msg)));
-            super.sendToServer(Integer.parseInt(this.grabParameter(msg))+"PART_TAKE_BY_PARTROBOT");
+            super.sendToServer(Integer.parseInt(this.grabParameter(msg)) + "PART_TAKE_BY_PARTROBOT");
         } else if (msg.contains(Message.KAM_PARTS_DROP_OFF_PARTS)) {
             this.getPartsRobot().dropOffParts(Integer.parseInt(this.grabParameter(msg)));
         } else if (msg.contains(Message.KAM_FLASH_KIT_CAMERA)) {
@@ -84,7 +92,7 @@ public class KitAssemblyManager extends Manager implements ActionListener {
             this.flashNestCamera(Integer.parseInt(this.grabParameter(msg)));
         } else if (msg.contains(Message.KAM_MOVE_FROM_0_TO_2)) {
             this.moveFrom0To2();
-	    //needs to release DONE
+            //needs to release DONE
         } else if (msg.contains(Message.KAM_ADD_KIT)) {
             this.doAddEmptyKit();
         } else if (msg.contains(Message.LM_ADD_PART)) {
@@ -92,9 +100,36 @@ public class KitAssemblyManager extends Manager implements ActionListener {
             int nest = msg.charAt(4) - 48;
             int partType = msg.charAt(6) - 48;
             this.doSetParts(nest, partType);
-        }
+        } else if (msg.contains(Message.KAM_ACTION_STABILIZE_NEST)) {
+            Integer i = Integer.parseInt(this.grabParameter(msg));
 
+            this.graphics.toggleUnstable(i);
+            this.nonnorm.toggleStabilizeColor(i);
+            this.nonnorm.removeAll();
+            this.nonnorm.preparemainpanel();
+        } else if (msg.contains(Message.KAM_ACTION_UNPILE_NEST)) {
+            Integer i = Integer.parseInt(this.grabParameter(msg));
+            this.graphics.togglePiled(i);
+            this.nonnorm.togglePiledColor(i);
+            this.nonnorm.removeAll();
+            this.nonnorm.preparemainpanel();
+        }else if(msg.contains(Message.NEST_DOWN))
+	    {
+		this.nestDown(Integer.parseInt(this.grabParameter(msg)));
+	    }
+	else if(msg.contains(Message.NEST_UP))
+	    {
+		this.nestUp(Integer.parseInt(this.grabParameter(msg)));
+	    }
         //todo - let me know what functions agent will call so I can process them here
+    }
+
+    public void nestUp(int n) {
+        this.graphics.nest.get(n).nestUp();
+    }
+
+    public void nestDown(int n) {
+        this.graphics.nest.get(n).nestDown();
     }
 
     public void doSetParts(int n, int partType) {
@@ -117,6 +152,8 @@ public class KitAssemblyManager extends Manager implements ActionListener {
             tempPic = new ImageIcon("pics/parts/part7.png");
         } else if (partType == 7) {
             tempPic = new ImageIcon("pics/parts/part8.png");
+        } else if (partType == 8) { //ADD IN BAD PART LOGIC!!!!
+            tempPic = new ImageIcon("pics/parts/badpart.png"); //ADD IN MORE TO THIS FUNCTION? is signal sent to parts agent?
         }
         for (int i = 0; i < this.graphics.nest.size(); i++) {
             if (n == i) {
@@ -126,8 +163,8 @@ public class KitAssemblyManager extends Manager implements ActionListener {
                     GUIPart GUItemp = new GUIPart(this.graphics.nest.get(i).getX(), this.graphics.nest.get(i).getY() + 18 * k, 0.0, tempPic);
                     temp.setGUIPart(GUItemp);
                     this.graphics.nest.get(i).getParts().add(temp);
-                } else if(k>=4 && k<=8){
-                    GUIPart GUItemp = new GUIPart(this.graphics.nest.get(i).getX()+20, this.graphics.nest.get(i).getY() + 18 * (k - 4), 0.0, tempPic);
+                } else if (k >= 4 && k <= 8) {
+                    GUIPart GUItemp = new GUIPart(this.graphics.nest.get(i).getX() + 20, this.graphics.nest.get(i).getY() + 18 * (k - 4), 0.0, tempPic);
                     temp.setGUIPart(GUItemp);
                     this.graphics.nest.get(i).getParts().add(temp);
                 }
@@ -143,7 +180,7 @@ public class KitAssemblyManager extends Manager implements ActionListener {
 
     public void doAddEmptyKit() {
         this.graphics.delivery.addKit();
-        
+
     }
 
     public GUIPartRobot getPartsRobot() {
@@ -202,16 +239,41 @@ public class KitAssemblyManager extends Manager implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent ae) {
-    	
-	for(int i = 0; i != 8; i++){
-	if(ae.getSource() == this.nonnorm.getPilingButton(i))
-	    this.graphics.togglePiled(i);
-    	if(ae.getSource() == this.nonnorm.getStabilityButton(i))
-	    this.graphics.toggleUnstable(i);
+        for (int i = 0; i != 8; i++) {
+            if (ae.getSource() == this.nonnorm.getPilingButton(i)) {
+                if (!this.nonnorm.piledColor.get(i)) {
+                    this.sendToServer(Message.KAM_NEST_PILED + ":" + i);
+                }
+                this.graphics.togglePiled(i);
+                this.nonnorm.togglePiledColor(i);
+                this.nonnorm.removeAll();
+                this.nonnorm.preparemainpanel();
+            }
+            if (ae.getSource() == this.nonnorm.getStabilityButton(i)) {
+                if (!this.nonnorm.unstableColor.get(i)) {
+                    this.sendToServer(Message.KAM_NEST_UNSTABLE + ":" + i);
+                }
+                this.graphics.toggleUnstable(i);
+                this.nonnorm.toggleStabilizeColor(i);
+                this.nonnorm.removeAll();
+                this.nonnorm.preparemainpanel();
+            }
+        }
+        if (ae.getSource() == this.nonnorm.getDropPartButton()) {
+
+
+//DROP A PART HERE FOO
+Part p =	    this.graphics.kitter.dropPartOnGround();
+if(p != null){
+    p.debug();
+    System.out.println(p.serialize());
+    this.sendToServer(Message.KAM_BAD_KIT+":"+p.serialize());
+}
+        }
+	if(ae.getSource() == this.nonnorm.getEarlyFlashButton()){
+	    this.sendToServer(Message.EARLY_CAMERA_FLASH);
 	}
-    	//if(ae.getSource()==){
-    		
-    	//}
+
         if (ae.getSource() == cameraKitStand) {
             this.flashKitCamera();
         }
@@ -235,6 +297,16 @@ public class KitAssemblyManager extends Manager implements ActionListener {
             String choice = JOptionPane.showInputDialog("Please enter the kit number (0 or 1): ");
             Integer kit = Integer.parseInt(choice);
             this.graphics.kitter.dropOffParts(kit);
+        }
+        if (ae.getSource() == nestUp) {
+            String choice = JOptionPane.showInputDialog("Please enter the nest number (0-7): ");
+            Integer kit = Integer.parseInt(choice);
+            nestUp(kit);
+        }
+        if (ae.getSource() == nestDown) {
+            String choice = JOptionPane.showInputDialog("Please enter the nest number (0-7): ");
+            Integer kit = Integer.parseInt(choice);
+            nestDown(kit);
         }
         if (ae.getSource() == kitRobotKitStand) {
             this.graphics.kitbot.moveActiveKitToInspection();
@@ -276,35 +348,34 @@ public class KitAssemblyManager extends Manager implements ActionListener {
      * objects
      */
     public KitAssemblyManager() {
-        
-        
+
+
         this.graphics = new KAMGraphicPanel(this);
         //tester lines
         this.setLayout(new GridLayout(1, 2));
         this.graphics = new KAMGraphicPanel(this);
-        
+
         //@author : Poojan
-        
+
         this.tabbedPane = new JTabbedPane();
         tabbedPane.addTab("Animation", this.graphics);
         this.nonnorm = new GUINonNormKAM(this);
-        
+
         tabbedPane.addTab("Non-normative", nonnorm);
         this.add(tabbedPane);
-        
-     //   this.add(graphics);
-        
-        
-        
-        int x=0;
-        if(test==true){
-        x = 550;
-        this.add(TestPanel());
+
+        //   this.add(graphics);
+
+
+
+        int x = 0;
+        if (test == true) {
+            x = 550;
+            this.add(TestPanel());
+        } else if (test == false) {
+            x = 0;
         }
-        else if(test==false){
-          x=0;  
-        }
-        this.setSize(550+x, 700);
+        this.setSize(550 + x, 700);
 
         this.graphics.setVisible(true);
 
@@ -329,10 +400,18 @@ public class KitAssemblyManager extends Manager implements ActionListener {
     JButton moveFrom0To2;
     JButton addKit;
     JButton addPart;
+    JButton nestUp;
+    JButton nestDown;
 
     public JPanel TestPanel() {
         JPanel tester = new JPanel();
         tester.setLayout(new BoxLayout(tester, BoxLayout.Y_AXIS));
+        nestUp = new JButton("NEST UP");
+        nestUp.addActionListener(this);
+        tester.add(nestUp);
+        nestDown = new JButton("NEST DOWN");
+        nestDown.addActionListener(this);
+        tester.add(nestDown);
         addPart = new JButton("ADD PART");
         addPart.addActionListener(this);
         tester.add(addPart);

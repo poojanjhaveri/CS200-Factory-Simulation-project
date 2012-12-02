@@ -20,9 +20,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="kitrobot.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Factory Project
-   &#160;<span id="projectnumber">0.1.0</span>
+   &#160;<span id="projectnumber">0.4.0</span>
    </div>
    <div id="projectbrief">team 1 joint cs200/cs201</div>
   </td>
@@ -103,113 +104,123 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00017"></a><span class="lineno"><a class="code" href="classagent_1_1_agent.html#aa45dc0889c021c7f98cd83e0385ec271">   17</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">boolean</span> <a class="code" href="classagent_1_1_agent.html#aa45dc0889c021c7f98cd83e0385ec271">print</a>;</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
 <div class="line"><a name="l00024"></a><span class="lineno"><a class="code" href="classagent_1_1_agent.html#a20abf2e7bd1c529b185ad0754e049a46">   24</a></span>&#160;    <span class="keyword">protected</span> <a class="code" href="classfactory_1_1general_1_1_handle_a_manager.html" title="handles each new thread for a client. Creates Socket, PrintWriter, etc.; has key methods for sending ...">HandleAManager</a> <a class="code" href="classagent_1_1_agent.html#a20abf2e7bd1c529b185ad0754e049a46" title="communication channel with client A reference to the corresponding client">client</a>;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    </div>
-<div class="line"><a name="l00027"></a><span class="lineno"><a class="code" href="classagent_1_1_agent.html#a5adbea33abbf8455e24ca77c9f6b417b">   27</a></span>&#160;    <span class="keyword">protected</span> <a class="code" href="classagent_1_1_agent.html#a5adbea33abbf8455e24ca77c9f6b417b">Agent</a>(String <a class="code" href="classagent_1_1_agent.html#ab75970bde0364900221f7e5e79fd7d77">name</a>) {</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        this.name = <a class="code" href="classagent_1_1_agent.html#ab75970bde0364900221f7e5e79fd7d77">name</a>;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        this.<a class="code" href="classagent_1_1_agent.html#adf2eafb1d9ae92666b8196ebe0898c03">stateChange</a> = <span class="keyword">new</span> Semaphore(1, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        this.<a class="code" href="classagent_1_1_agent.html#a357c70ddbd86959a12b418d1183a16f7">partsRequested</a> = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        this.<a class="code" href="classagent_1_1_agent.html#aa45dc0889c021c7f98cd83e0385ec271">print</a> = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    }</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
-<div class="line"><a name="l00038"></a><span class="lineno"><a class="code" href="classagent_1_1_agent.html#a44f653501d47022141315a1835e9927a">   38</a></span>&#160;    <span class="keyword">protected</span> <span class="keywordtype">void</span> <a class="code" href="classagent_1_1_agent.html#a44f653501d47022141315a1835e9927a">stateChanged</a>() {</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <a class="code" href="classagent_1_1_agent.html#adf2eafb1d9ae92666b8196ebe0898c03">stateChange</a>.release();</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    }</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keywordtype">boolean</span> <a class="code" href="classagent_1_1_agent.html#abaf1e04478122d7e10bd7bb8b75fc967">pickAndExecuteAnAction</a>();</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
-<div class="line"><a name="l00055"></a><span class="lineno"><a class="code" href="classagent_1_1_agent.html#aeaf393e5baea748d622e7e8abeb3c60f">   55</a></span>&#160;    <span class="keyword">public</span> String <a class="code" href="classagent_1_1_agent.html#aeaf393e5baea748d622e7e8abeb3c60f">getName</a>() {</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">//        return StringUtil.shortName(this);</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keywordflow">return</span> this.<a class="code" href="classagent_1_1_agent.html#ab75970bde0364900221f7e5e79fd7d77">name</a>;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    }</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
-<div class="line"><a name="l00064"></a><span class="lineno"><a class="code" href="classagent_1_1_agent.html#a3e56bf2c3ab7224d8d628cae2b6aa784">   64</a></span>&#160;    <span class="keyword">protected</span> <span class="keywordtype">void</span> <a class="code" href="classagent_1_1_agent.html#a3e56bf2c3ab7224d8d628cae2b6aa784">Do</a>(String msg) {</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <a class="code" href="classagent_1_1_agent.html#aa45dc0889c021c7f98cd83e0385ec271">print</a>(msg, null);</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    }</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
-<div class="line"><a name="l00071"></a><span class="lineno"><a class="code" href="classagent_1_1_agent.html#a55ba4536b330845b8f2d1d57191dad38">   71</a></span>&#160;    <span class="keyword">protected</span> <span class="keywordtype">void</span> <a class="code" href="classagent_1_1_agent.html#a55ba4536b330845b8f2d1d57191dad38">print</a>(String msg) {</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <a class="code" href="classagent_1_1_agent.html#aa45dc0889c021c7f98cd83e0385ec271">print</a>(msg, null);</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    }</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
-<div class="line"><a name="l00078"></a><span class="lineno"><a class="code" href="classagent_1_1_agent.html#a3d856ff8f7818291077234968d1500cd">   78</a></span>&#160;    <span class="keyword">protected</span> <span class="keywordtype">void</span> <a class="code" href="classagent_1_1_agent.html#a3d856ff8f7818291077234968d1500cd">print</a>(String msg, Throwable e) {</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keywordflow">if</span>(<a class="code" href="classagent_1_1_agent.html#aa45dc0889c021c7f98cd83e0385ec271">print</a>) {</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            StringBuilder sb = <span class="keyword">new</span> StringBuilder();</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            sb.append(<a class="code" href="classagent_1_1_agent.html#aeaf393e5baea748d622e7e8abeb3c60f">getName</a>());</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            sb.append(<span class="stringliteral">&quot;: &quot;</span>);</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            sb.append(msg);</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            sb.append(<span class="stringliteral">&quot;\n&quot;</span>);</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            <span class="keywordflow">if</span> (e != null) {</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                sb.append(<a class="code" href="classagent_1_1_string_util.html" title="This is a class to contain generic string utilities This is a class to contain generic string utiliti...">StringUtil</a>.<a class="code" href="classagent_1_1_string_util.html#ad95eae8c7dc26281b1635462d282244c">stackTraceString</a>(e));</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            }</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            System.out.print(sb.toString());</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        }</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    }</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
-<div class="line"><a name="l00095"></a><span class="lineno"><a class="code" href="classagent_1_1_agent.html#ac1f48dbd7a77a9f769b22bcfdfa1c308">   95</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keywordtype">void</span> <a class="code" href="classagent_1_1_agent.html#ac1f48dbd7a77a9f769b22bcfdfa1c308">startThread</a>() {</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classagent_1_1_agent.html#a7a7cc7018a98f516a00b341850af566b">agentThread</a> == null) {</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            <a class="code" href="classagent_1_1_agent.html#a7a7cc7018a98f516a00b341850af566b">agentThread</a> = <span class="keyword">new</span> <a class="code" href="classagent_1_1_agent_1_1_agent_thread.html" title="Agent scheduler thread Agent scheduler thread, calls respondToStateChange() whenever a state change h...">AgentThread</a>(<a class="code" href="classagent_1_1_agent.html#aeaf393e5baea748d622e7e8abeb3c60f">getName</a>());</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            <a class="code" href="classagent_1_1_agent.html#a7a7cc7018a98f516a00b341850af566b">agentThread</a>.start(); <span class="comment">// causes the run method to execute in the AgentThread below</span></div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            <a class="code" href="classagent_1_1_agent.html#a7a7cc7018a98f516a00b341850af566b">agentThread</a>.interrupt();<span class="comment">//don&#39;t worry about this for now</span></div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        }</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    }</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="comment">//In this implementation, nothing calls stopThread().</span></div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="comment">//When we have a user interface to agents, this can be called.</span></div>
-<div class="line"><a name="l00109"></a><span class="lineno"><a class="code" href="classagent_1_1_agent.html#ae6f3a57b985819a46372a0c1ca1940ab">  109</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classagent_1_1_agent.html#ae6f3a57b985819a46372a0c1ca1940ab">stopThread</a>() {</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classagent_1_1_agent.html#a7a7cc7018a98f516a00b341850af566b">agentThread</a> != null) {</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            <a class="code" href="classagent_1_1_agent.html#a7a7cc7018a98f516a00b341850af566b">agentThread</a>.<a class="code" href="classagent_1_1_agent_1_1_agent_thread.html#ab54ca09b51f4f7afdcf1062a086fb9de">stopAgent</a>();</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            <a class="code" href="classagent_1_1_agent.html#a7a7cc7018a98f516a00b341850af566b">agentThread</a> = null;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        }</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    }</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
-<div class="line"><a name="l00120"></a><span class="lineno"><a class="code" href="classagent_1_1_agent_1_1_agent_thread.html">  120</a></span>&#160;    <span class="keyword">private</span> <span class="keyword">class </span><a class="code" href="classagent_1_1_agent_1_1_agent_thread.html" title="Agent scheduler thread Agent scheduler thread, calls respondToStateChange() whenever a state change h...">AgentThread</a> <span class="keyword">extends</span> Thread {</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;</div>
-<div class="line"><a name="l00122"></a><span class="lineno"><a class="code" href="classagent_1_1_agent_1_1_agent_thread.html#ac430ed7f34d3b6d20e597867e3eb4bb8">  122</a></span>&#160;        <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keywordtype">boolean</span> <a class="code" href="classagent_1_1_agent_1_1_agent_thread.html#ac430ed7f34d3b6d20e597867e3eb4bb8">goOn</a> = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div>
-<div class="line"><a name="l00124"></a><span class="lineno"><a class="code" href="classagent_1_1_agent_1_1_agent_thread.html#a468d1a846a472ae54c9e29b487e7b4ea">  124</a></span>&#160;        <span class="keyword">private</span> <a class="code" href="classagent_1_1_agent_1_1_agent_thread.html#a468d1a846a472ae54c9e29b487e7b4ea">AgentThread</a>(String <a class="code" href="classagent_1_1_agent.html#ab75970bde0364900221f7e5e79fd7d77">name</a>) {</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            super(name);</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        }</div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="code" href="classagent_1_1_agent.html#a8917c3c6c587652999ac6d834acb90a3">   29</a></span>&#160;    <span class="keyword">protected</span> <a class="code" href="classfactory_1_1general_1_1_handle_a_manager.html" title="handles each new thread for a client. Creates Socket, PrintWriter, etc.; has key methods for sending ...">HandleAManager</a> <a class="code" href="classagent_1_1_agent.html#a8917c3c6c587652999ac6d834acb90a3" title="communication channel with factory production manager A reference to the factory production manager...">fpm</a>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    </div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="code" href="classagent_1_1_agent.html#a5adbea33abbf8455e24ca77c9f6b417b">   31</a></span>&#160;    <span class="keyword">protected</span> <a class="code" href="classagent_1_1_agent.html#a5adbea33abbf8455e24ca77c9f6b417b">Agent</a>(String <a class="code" href="classagent_1_1_agent.html#ab75970bde0364900221f7e5e79fd7d77">name</a>) {</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        this.name = <a class="code" href="classagent_1_1_agent.html#ab75970bde0364900221f7e5e79fd7d77">name</a>;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        this.<a class="code" href="classagent_1_1_agent.html#adf2eafb1d9ae92666b8196ebe0898c03">stateChange</a> = <span class="keyword">new</span> Semaphore(1, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        this.<a class="code" href="classagent_1_1_agent.html#a357c70ddbd86959a12b418d1183a16f7">partsRequested</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        this.<a class="code" href="classagent_1_1_agent.html#aa45dc0889c021c7f98cd83e0385ec271">print</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    }</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="code" href="classagent_1_1_agent.html#a44f653501d47022141315a1835e9927a">   42</a></span>&#160;    <span class="keyword">protected</span> <span class="keywordtype">void</span> <a class="code" href="classagent_1_1_agent.html#a44f653501d47022141315a1835e9927a">stateChanged</a>() {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <a class="code" href="classagent_1_1_agent.html#adf2eafb1d9ae92666b8196ebe0898c03">stateChange</a>.release();</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    }</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keywordtype">boolean</span> <a class="code" href="classagent_1_1_agent.html#abaf1e04478122d7e10bd7bb8b75fc967">pickAndExecuteAnAction</a>();</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="code" href="classagent_1_1_agent.html#aeaf393e5baea748d622e7e8abeb3c60f">   59</a></span>&#160;    <span class="keyword">public</span> String <a class="code" href="classagent_1_1_agent.html#aeaf393e5baea748d622e7e8abeb3c60f">getName</a>() {</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment">//        return StringUtil.shortName(this);</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordflow">return</span> this.<a class="code" href="classagent_1_1_agent.html#ab75970bde0364900221f7e5e79fd7d77">name</a>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    }</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="code" href="classagent_1_1_agent.html#a3e56bf2c3ab7224d8d628cae2b6aa784">   68</a></span>&#160;    <span class="keyword">protected</span> <span class="keywordtype">void</span> <a class="code" href="classagent_1_1_agent.html#a3e56bf2c3ab7224d8d628cae2b6aa784">Do</a>(String msg) {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <a class="code" href="classagent_1_1_agent.html#aa45dc0889c021c7f98cd83e0385ec271">print</a>(msg, null);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    }</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="code" href="classagent_1_1_agent.html#a55ba4536b330845b8f2d1d57191dad38">   75</a></span>&#160;    <span class="keyword">protected</span> <span class="keywordtype">void</span> <a class="code" href="classagent_1_1_agent.html#a55ba4536b330845b8f2d1d57191dad38">print</a>(String msg) {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <a class="code" href="classagent_1_1_agent.html#aa45dc0889c021c7f98cd83e0385ec271">print</a>(msg, null);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    }</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
+<div class="line"><a name="l00082"></a><span class="lineno"><a class="code" href="classagent_1_1_agent.html#a3d856ff8f7818291077234968d1500cd">   82</a></span>&#160;    <span class="keyword">protected</span> <span class="keywordtype">void</span> <a class="code" href="classagent_1_1_agent.html#a3d856ff8f7818291077234968d1500cd">print</a>(String msg, Throwable e) {</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <span class="keywordflow">if</span>(<a class="code" href="classagent_1_1_agent.html#aa45dc0889c021c7f98cd83e0385ec271">print</a>) {</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            StringBuilder sb = <span class="keyword">new</span> StringBuilder();</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            sb.append(<a class="code" href="classagent_1_1_agent.html#aeaf393e5baea748d622e7e8abeb3c60f">getName</a>());</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            sb.append(<span class="stringliteral">&quot;: &quot;</span>);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            sb.append(msg);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            sb.append(<span class="stringliteral">&quot;\n&quot;</span>);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            <span class="keywordflow">if</span> (e != null) {</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                sb.append(<a class="code" href="classagent_1_1_string_util.html" title="This is a class to contain generic string utilities This is a class to contain generic string utiliti...">StringUtil</a>.<a class="code" href="classagent_1_1_string_util.html#ad95eae8c7dc26281b1635462d282244c">stackTraceString</a>(e));</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            }</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            System.out.print(sb.toString());</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        }</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    }</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
+<div class="line"><a name="l00099"></a><span class="lineno"><a class="code" href="classagent_1_1_agent.html#ac1f48dbd7a77a9f769b22bcfdfa1c308">   99</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keywordtype">void</span> <a class="code" href="classagent_1_1_agent.html#ac1f48dbd7a77a9f769b22bcfdfa1c308">startThread</a>() {</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classagent_1_1_agent.html#a7a7cc7018a98f516a00b341850af566b">agentThread</a> == null) {</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            <a class="code" href="classagent_1_1_agent.html#a7a7cc7018a98f516a00b341850af566b">agentThread</a> = <span class="keyword">new</span> <a class="code" href="classagent_1_1_agent_1_1_agent_thread.html" title="Agent scheduler thread Agent scheduler thread, calls respondToStateChange() whenever a state change h...">AgentThread</a>(<a class="code" href="classagent_1_1_agent.html#aeaf393e5baea748d622e7e8abeb3c60f">getName</a>());</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            <a class="code" href="classagent_1_1_agent.html#a7a7cc7018a98f516a00b341850af566b">agentThread</a>.start(); <span class="comment">// causes the run method to execute in the AgentThread below</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            <a class="code" href="classagent_1_1_agent.html#a7a7cc7018a98f516a00b341850af566b">agentThread</a>.interrupt();<span class="comment">//don&#39;t worry about this for now</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        }</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    }</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="comment">//In this implementation, nothing calls stopThread().</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="comment">//When we have a user interface to agents, this can be called.</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno"><a class="code" href="classagent_1_1_agent.html#ae6f3a57b985819a46372a0c1ca1940ab">  113</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classagent_1_1_agent.html#ae6f3a57b985819a46372a0c1ca1940ab">stopThread</a>() {</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classagent_1_1_agent.html#a7a7cc7018a98f516a00b341850af566b">agentThread</a> != null) {</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            <a class="code" href="classagent_1_1_agent.html#a7a7cc7018a98f516a00b341850af566b">agentThread</a>.<a class="code" href="classagent_1_1_agent_1_1_agent_thread.html#ab54ca09b51f4f7afdcf1062a086fb9de">stopAgent</a>();</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            <a class="code" href="classagent_1_1_agent.html#a7a7cc7018a98f516a00b341850af566b">agentThread</a> = null;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        }</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    }</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
+<div class="line"><a name="l00124"></a><span class="lineno"><a class="code" href="classagent_1_1_agent_1_1_agent_thread.html">  124</a></span>&#160;    <span class="keyword">private</span> <span class="keyword">class </span><a class="code" href="classagent_1_1_agent_1_1_agent_thread.html" title="Agent scheduler thread Agent scheduler thread, calls respondToStateChange() whenever a state change h...">AgentThread</a> <span class="keyword">extends</span> Thread {</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;</div>
+<div class="line"><a name="l00126"></a><span class="lineno"><a class="code" href="classagent_1_1_agent_1_1_agent_thread.html#ac430ed7f34d3b6d20e597867e3eb4bb8">  126</a></span>&#160;        <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keywordtype">boolean</span> <a class="code" href="classagent_1_1_agent_1_1_agent_thread.html#ac430ed7f34d3b6d20e597867e3eb4bb8">goOn</a> = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        @Override</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        @SuppressWarnings(<span class="stringliteral">&quot;empty-statement&quot;</span>)</div>
-<div class="line"><a name="l00130"></a><span class="lineno"><a class="code" href="classagent_1_1_agent_1_1_agent_thread.html#adf2117aadd9aef35596a9c57b371d418">  130</a></span>&#160;        public <span class="keywordtype">void</span> <a class="code" href="classagent_1_1_agent_1_1_agent_thread.html#adf2117aadd9aef35596a9c57b371d418">run</a>() {</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;            <a class="code" href="classagent_1_1_agent_1_1_agent_thread.html#ac430ed7f34d3b6d20e597867e3eb4bb8">goOn</a> = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;            <span class="keywordflow">while</span> (<a class="code" href="classagent_1_1_agent_1_1_agent_thread.html#ac430ed7f34d3b6d20e597867e3eb4bb8">goOn</a>) {</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;                <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;                    <span class="comment">// The agent sleeps here until someone calls, stateChanged(),</span></div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                    <span class="comment">// which causes a call to stateChange.give(), which wakes up agent.</span></div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                    <a class="code" href="classagent_1_1_agent.html#adf2eafb1d9ae92666b8196ebe0898c03">stateChange</a>.acquire();</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                    <span class="comment">//The next while clause is the key to the control flow.</span></div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;                    <span class="comment">//When the agent wakes up it will call respondToStateChange()</span></div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                    <span class="comment">//repeatedly until it returns FALSE.</span></div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;                    <span class="comment">//You will see that pickAndExecuteAnAction() is the agent scheduler.</span></div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                    <span class="keywordflow">while</span> (<a class="code" href="classagent_1_1_agent.html#abaf1e04478122d7e10bd7bb8b75fc967">pickAndExecuteAnAction</a>());</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;                } <span class="keywordflow">catch</span> (InterruptedException e) {</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                    <span class="comment">// no action - expected when stopping or when deadline changed</span></div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                } <span class="keywordflow">catch</span> (Exception e) {</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                    <a class="code" href="classagent_1_1_agent.html#aa45dc0889c021c7f98cd83e0385ec271">print</a>(<span class="stringliteral">&quot;Unexpected exception caught in Agent thread:&quot;</span>, e);</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                }</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;            }</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        }</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;</div>
-<div class="line"><a name="l00151"></a><span class="lineno"><a class="code" href="classagent_1_1_agent_1_1_agent_thread.html#ab54ca09b51f4f7afdcf1062a086fb9de">  151</a></span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code" href="classagent_1_1_agent_1_1_agent_thread.html#ab54ca09b51f4f7afdcf1062a086fb9de">stopAgent</a>() {</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;            <a class="code" href="classagent_1_1_agent_1_1_agent_thread.html#ac430ed7f34d3b6d20e597867e3eb4bb8">goOn</a> = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;            this.interrupt();</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        }</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    }</div>
-<div class="line"><a name="l00160"></a><span class="lineno"><a class="code" href="classagent_1_1_agent.html#a4fff8beed11031829fbf602b00308646">  160</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classagent_1_1_agent.html#a4fff8beed11031829fbf602b00308646" title="sets the client">setClient</a>(<a class="code" href="classfactory_1_1general_1_1_handle_a_manager.html" title="handles each new thread for a client. Creates Socket, PrintWriter, etc.; has key methods for sending ...">HandleAManager</a> i)</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    {</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    this.<a class="code" href="classagent_1_1_agent.html#a20abf2e7bd1c529b185ad0754e049a46" title="communication channel with client A reference to the corresponding client">client</a> = i;</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    }</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;}</div>
+<div class="line"><a name="l00128"></a><span class="lineno"><a class="code" href="classagent_1_1_agent_1_1_agent_thread.html#a468d1a846a472ae54c9e29b487e7b4ea">  128</a></span>&#160;        <span class="keyword">private</span> <a class="code" href="classagent_1_1_agent_1_1_agent_thread.html#a468d1a846a472ae54c9e29b487e7b4ea">AgentThread</a>(String <a class="code" href="classagent_1_1_agent.html#ab75970bde0364900221f7e5e79fd7d77">name</a>) {</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            super(name);</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        }</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        @Override</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        @SuppressWarnings(<span class="stringliteral">&quot;empty-statement&quot;</span>)</div>
+<div class="line"><a name="l00134"></a><span class="lineno"><a class="code" href="classagent_1_1_agent_1_1_agent_thread.html#adf2117aadd9aef35596a9c57b371d418">  134</a></span>&#160;        public <span class="keywordtype">void</span> <a class="code" href="classagent_1_1_agent_1_1_agent_thread.html#adf2117aadd9aef35596a9c57b371d418">run</a>() {</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            <a class="code" href="classagent_1_1_agent_1_1_agent_thread.html#ac430ed7f34d3b6d20e597867e3eb4bb8">goOn</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            <span class="keywordflow">while</span> (<a class="code" href="classagent_1_1_agent_1_1_agent_thread.html#ac430ed7f34d3b6d20e597867e3eb4bb8">goOn</a>) {</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;                    <span class="comment">// The agent sleeps here until someone calls, stateChanged(),</span></div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                    <span class="comment">// which causes a call to stateChange.give(), which wakes up agent.</span></div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;                    <a class="code" href="classagent_1_1_agent.html#adf2eafb1d9ae92666b8196ebe0898c03">stateChange</a>.acquire();</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                    <span class="comment">//The next while clause is the key to the control flow.</span></div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;                    <span class="comment">//When the agent wakes up it will call respondToStateChange()</span></div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                    <span class="comment">//repeatedly until it returns FALSE.</span></div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                    <span class="comment">//You will see that pickAndExecuteAnAction() is the agent scheduler.</span></div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                    <span class="keywordflow">while</span> (<a class="code" href="classagent_1_1_agent.html#abaf1e04478122d7e10bd7bb8b75fc967">pickAndExecuteAnAction</a>());</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                } <span class="keywordflow">catch</span> (InterruptedException e) {</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                    <span class="comment">// no action - expected when stopping or when deadline changed</span></div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                } <span class="keywordflow">catch</span> (Exception e) {</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                    <a class="code" href="classagent_1_1_agent.html#aa45dc0889c021c7f98cd83e0385ec271">print</a>(<span class="stringliteral">&quot;Unexpected exception caught in Agent thread:&quot;</span>, e);</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                }</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;            }</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        }</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;</div>
+<div class="line"><a name="l00155"></a><span class="lineno"><a class="code" href="classagent_1_1_agent_1_1_agent_thread.html#ab54ca09b51f4f7afdcf1062a086fb9de">  155</a></span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code" href="classagent_1_1_agent_1_1_agent_thread.html#ab54ca09b51f4f7afdcf1062a086fb9de">stopAgent</a>() {</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;            <a class="code" href="classagent_1_1_agent_1_1_agent_thread.html#ac430ed7f34d3b6d20e597867e3eb4bb8">goOn</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;            this.interrupt();</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        }</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    }</div>
+<div class="line"><a name="l00164"></a><span class="lineno"><a class="code" href="classagent_1_1_agent.html#a4fff8beed11031829fbf602b00308646">  164</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classagent_1_1_agent.html#a4fff8beed11031829fbf602b00308646" title="sets the client">setClient</a>(<a class="code" href="classfactory_1_1general_1_1_handle_a_manager.html" title="handles each new thread for a client. Creates Socket, PrintWriter, etc.; has key methods for sending ...">HandleAManager</a> i) {</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        this.<a class="code" href="classagent_1_1_agent.html#a20abf2e7bd1c529b185ad0754e049a46" title="communication channel with client A reference to the corresponding client">client</a> = i;</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    }</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    </div>
+<div class="line"><a name="l00168"></a><span class="lineno"><a class="code" href="classagent_1_1_agent.html#aab8d1da187b5dd6e78a4c50155875639">  168</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classfactory_1_1general_1_1_handle_a_manager.html" title="handles each new thread for a client. Creates Socket, PrintWriter, etc.; has key methods for sending ...">HandleAManager</a> <a class="code" href="classagent_1_1_agent.html#aab8d1da187b5dd6e78a4c50155875639">getClient</a>() {</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        <span class="keywordflow">return</span> this.<a class="code" href="classagent_1_1_agent.html#a20abf2e7bd1c529b185ad0754e049a46" title="communication channel with client A reference to the corresponding client">client</a>;</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    }</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    </div>
+<div class="line"><a name="l00176"></a><span class="lineno"><a class="code" href="classagent_1_1_agent.html#af6f57f4a9005364c794b0f3149284119">  176</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classagent_1_1_agent.html#af6f57f4a9005364c794b0f3149284119" title="sets the factory production manager client">setFactoryProductionManagerClient</a>(<a class="code" href="classfactory_1_1general_1_1_handle_a_manager.html" title="handles each new thread for a client. Creates Socket, PrintWriter, etc.; has key methods for sending ...">HandleAManager</a> i) {</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        this.<a class="code" href="classagent_1_1_agent.html#a8917c3c6c587652999ac6d834acb90a3" title="communication channel with factory production manager A reference to the factory production manager...">fpm</a> = i;</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    }</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    </div>
+<div class="line"><a name="l00180"></a><span class="lineno"><a class="code" href="classagent_1_1_agent.html#a0d54403afe430ad0490b57f52d4b9a9a">  180</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classfactory_1_1general_1_1_handle_a_manager.html" title="handles each new thread for a client. Creates Socket, PrintWriter, etc.; has key methods for sending ...">HandleAManager</a> <a class="code" href="classagent_1_1_agent.html#a0d54403afe430ad0490b57f52d4b9a9a">getFactoryProductionManagerClient</a>() {</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        <span class="keywordflow">return</span> this.<a class="code" href="classagent_1_1_agent.html#a8917c3c6c587652999ac6d834acb90a3" title="communication channel with factory production manager A reference to the factory production manager...">fpm</a>;</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    }</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 17 2012 01:36:57 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Dec 1 2012 12:34:05 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

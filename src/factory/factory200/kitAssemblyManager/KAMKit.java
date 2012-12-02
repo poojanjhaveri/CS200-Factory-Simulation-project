@@ -10,15 +10,12 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import javax.swing.*;
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 /**
- *
+ * @brief a drawable kit in the kit assembly area
  * @author Deepa
  */
-//temporary kit class until an actual kit class is made...
+
 public class KAMKit {
 
     private ImageIcon kit;

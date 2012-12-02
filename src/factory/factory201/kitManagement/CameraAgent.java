@@ -53,9 +53,16 @@ public class CameraAgent extends Agent implements Camera {
     }
 
     public void msgPartsPiledUp(int nestNum) {
+    print("parts piled up hit");
         nestErrors.put(nestNum, Result.Is.piledParts);
     }
-
+    
+    // added by Kevin
+    public void msgPartsShaking(int nestNum){
+    print("parts shaking hit" );
+        nestErrors.put(nestNum, Result.Is.unstableParts);
+    }
+    
     @Override
     public void msgNestIsFull(Nest nest) {
         synchronized (nestList) {
@@ -145,8 +152,21 @@ public class CameraAgent extends Agent implements Camera {
             Thread.sleep(2000); // For Dongyung
         } catch (InterruptedException ex) {
         }
+        
+       
+        
         DoInspectNest(nest);
         Result.Is is = result ? Result.Is.verified : Result.Is.badParts;
+         
+        /* @kevin- check for nest errors and look for unstable parts if any, set the result*/
+ 
+       if(nestErrors.containsKey(nest.nestNum)){
+       //print("Yes!! it contains the key!! ");
+       is=nestErrors.get(nest.nestNum);
+       nestErrors.remove(nest.nestNum);
+       }
+           
+        
         nestAgent.msgNestInspected(nest, new Result(is));
         String strResult = result ? "NO ERROR" : "ERROR";
         print("Inspecting nest: [Nest " + nest.nestNum + "] with result: " + strResult + ".");
@@ -197,5 +217,9 @@ public class CameraAgent extends Agent implements Camera {
         } else {
             print("[ERROR] - Kit Assembly Manager is not online.");
         }
+    }
+    public void partsRobotDroppedPart(Part missingPart)
+    {
+	//the part missingPart WAS JUST DROPPED from the kit you can write the logic here
     }
 }

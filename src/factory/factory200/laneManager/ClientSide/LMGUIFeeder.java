@@ -1,7 +1,7 @@
 package factory.factory200.laneManager.ClientSide;
 
-import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
@@ -14,20 +14,19 @@ public class LMGUIFeeder extends JPanel{
 
 	private LMGUIFeederPanel feederPanel;
 	private ArrayList<LMGUIFeederPanel> feederPanels = new ArrayList<LMGUIFeederPanel>();
-	private JTabbedPane tab  = new JTabbedPane();
+	private JTabbedPane tab;
 
-	public LMGUIFeeder(final int feederCount){
+	public LMGUIFeeder(){
 		setPreferredSize(new Dimension(300,640));
-		setLayout(new BorderLayout());
+		setLayout(new GridLayout(2,2));
 		
-		// Add feederPanel to 'feederPanels' ArrayList
-		for(int i=0 ; i<feederCount ; i++){
+		for(int i=0 ; i<4 ; i++){
 			feederPanel = new LMGUIFeederPanel();
 			feederPanels.add(feederPanel);
-			tab.add("Feeder"+(i+1),feederPanel);			
+			tab = new JTabbedPane();
+			tab.add("Feeder"+(i+1),feederPanel);
+			add(tab);
 		}
-		
-		add(tab, BorderLayout.CENTER);
 	}
 
 	public LMGUIFeederPanel getGUIFeederArray(int feederNum){

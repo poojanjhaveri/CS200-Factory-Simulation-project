@@ -20,9 +20,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="kitrobot.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Factory Project
-   &#160;<span id="projectnumber">0.1.0</span>
+   &#160;<span id="projectnumber">0.4.0</span>
    </div>
    <div id="projectbrief">team 1 joint cs200/cs201</div>
   </td>
@@ -114,8 +115,8 @@ Inheritance diagram for agent.Agent:</div>
 <area href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent.html" title="agent for the Gantry This class is the agent for the Gantry. The Gantry receives message from feeder ..." alt="factory.factory201.feederManagement.GantryAgent" shape="rect" coords="318,112,626,136"/>
 <area href="classfactory_1_1factory201_1_1feeder_management_1_1_lane_agent.html" title="agent for the Lane This class is the agent for the Lane agent, which receives messages from nest to s..." alt="factory.factory201.feederManagement.LaneAgent" shape="rect" coords="318,168,626,192"/>
 <area href="classfactory_1_1factory201_1_1kit_management_1_1_camera_agent.html" title="agent for the Camera" alt="factory.factory201.kitManagement.CameraAgent" shape="rect" coords="318,224,626,248"/>
-<area href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html" title="This class is the agent for the Conveyor which brings empty Kits into the kitting cell and takes comp..." alt="factory.factory201.kitManagement.ConveyorAgent" shape="rect" coords="318,280,626,304"/>
-<area href="classfactory_1_1factory201_1_1kit_management_1_1_kit_robot_agent.html" title="This class is the agent for the Kit Robot which gets empty kits from the conveyor and puts it on a pa..." alt="factory.factory201.kitManagement.KitRobotAgent" shape="rect" coords="318,336,626,360"/>
+<area href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html" title="Agent for the conveyor." alt="factory.factory201.kitManagement.ConveyorAgent" shape="rect" coords="318,280,626,304"/>
+<area href="classfactory_1_1factory201_1_1kit_management_1_1_kit_robot_agent.html" title="Agent for the Kit Robot." alt="factory.factory201.kitManagement.KitRobotAgent" shape="rect" coords="318,336,626,360"/>
 <area href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html" alt="factory.factory201.partsManagement.NestAgent" shape="rect" coords="318,392,626,416"/>
 <area href="classfactory_1_1factory201_1_1parts_management_1_1_parts_agent.html" title="gets kit information from server and obtains necessary parts to complete a kit" alt="factory.factory201.partsManagement.PartsAgent" shape="rect" coords="318,448,626,472"/>
 </map>
@@ -140,6 +141,13 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a4fff8beed11031829fbf602b00308646"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagent_1_1_agent.html#a4fff8beed11031829fbf602b00308646">setClient</a> (<a class="el" href="classfactory_1_1general_1_1_handle_a_manager.html">HandleAManager</a> i)</td></tr>
 <tr class="memdesc:a4fff8beed11031829fbf602b00308646"><td class="mdescLeft">&#160;</td><td class="mdescRight">sets the client  <a href="#a4fff8beed11031829fbf602b00308646"></a><br/></td></tr>
 <tr class="separator:a4fff8beed11031829fbf602b00308646"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab8d1da187b5dd6e78a4c50155875639"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classfactory_1_1general_1_1_handle_a_manager.html">HandleAManager</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagent_1_1_agent.html#aab8d1da187b5dd6e78a4c50155875639">getClient</a> ()</td></tr>
+<tr class="separator:aab8d1da187b5dd6e78a4c50155875639"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6f57f4a9005364c794b0f3149284119"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagent_1_1_agent.html#af6f57f4a9005364c794b0f3149284119">setFactoryProductionManagerClient</a> (<a class="el" href="classfactory_1_1general_1_1_handle_a_manager.html">HandleAManager</a> i)</td></tr>
+<tr class="memdesc:af6f57f4a9005364c794b0f3149284119"><td class="mdescLeft">&#160;</td><td class="mdescRight">sets the factory production manager client  <a href="#af6f57f4a9005364c794b0f3149284119"></a><br/></td></tr>
+<tr class="separator:af6f57f4a9005364c794b0f3149284119"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d54403afe430ad0490b57f52d4b9a9a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classfactory_1_1general_1_1_handle_a_manager.html">HandleAManager</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagent_1_1_agent.html#a0d54403afe430ad0490b57f52d4b9a9a">getFactoryProductionManagerClient</a> ()</td></tr>
+<tr class="separator:a0d54403afe430ad0490b57f52d4b9a9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -166,6 +174,9 @@ Protected Attributes</h2></td></tr>
 <tr class="memitem:a20abf2e7bd1c529b185ad0754e049a46"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classfactory_1_1general_1_1_handle_a_manager.html">HandleAManager</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagent_1_1_agent.html#a20abf2e7bd1c529b185ad0754e049a46">client</a></td></tr>
 <tr class="memdesc:a20abf2e7bd1c529b185ad0754e049a46"><td class="mdescLeft">&#160;</td><td class="mdescRight">communication channel with client A reference to the corresponding client  <a href="#a20abf2e7bd1c529b185ad0754e049a46"></a><br/></td></tr>
 <tr class="separator:a20abf2e7bd1c529b185ad0754e049a46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8917c3c6c587652999ac6d834acb90a3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classfactory_1_1general_1_1_handle_a_manager.html">HandleAManager</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagent_1_1_agent.html#a8917c3c6c587652999ac6d834acb90a3">fpm</a></td></tr>
+<tr class="memdesc:a8917c3c6c587652999ac6d834acb90a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">communication channel with factory production manager A reference to the factory production manager  <a href="#a8917c3c6c587652999ac6d834acb90a3"></a><br/></td></tr>
+<tr class="separator:a8917c3c6c587652999ac6d834acb90a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pac-attribs"></a>
 Package Attributes</h2></td></tr>
@@ -207,7 +218,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_agent_8java_source.html#l00027">27</a> of file <a class="el" href="_agent_8java_source.html">Agent.java</a>.</p>
+<p>Definition at line <a class="el" href="_agent_8java_source.html#l00031">31</a> of file <a class="el" href="_agent_8java_source.html">Agent.java</a>.</p>
 
 </div>
 </div>
@@ -235,7 +246,57 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>The simulated action code </p>
 
-<p>Definition at line <a class="el" href="_agent_8java_source.html#l00064">64</a> of file <a class="el" href="_agent_8java_source.html">Agent.java</a>.</p>
+<p>Definition at line <a class="el" href="_agent_8java_source.html#l00068">68</a> of file <a class="el" href="_agent_8java_source.html">Agent.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aab8d1da187b5dd6e78a4c50155875639"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classfactory_1_1general_1_1_handle_a_manager.html">HandleAManager</a> agent.Agent.getClient </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_agent_8java_source.html#l00168">168</a> of file <a class="el" href="_agent_8java_source.html">Agent.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a0d54403afe430ad0490b57f52d4b9a9a"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classfactory_1_1general_1_1_handle_a_manager.html">HandleAManager</a> agent.Agent.getFactoryProductionManagerClient </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_agent_8java_source.html#l00180">180</a> of file <a class="el" href="_agent_8java_source.html">Agent.java</a>.</p>
 
 </div>
 </div>
@@ -261,7 +322,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Return agent name for messages. Default is to return java instance name. </p>
 
-<p>Definition at line <a class="el" href="_agent_8java_source.html#l00055">55</a> of file <a class="el" href="_agent_8java_source.html">Agent.java</a>.</p>
+<p>Definition at line <a class="el" href="_agent_8java_source.html#l00059">59</a> of file <a class="el" href="_agent_8java_source.html">Agent.java</a>.</p>
 
 </div>
 </div>
@@ -288,7 +349,7 @@ Private Attributes</h2></td></tr>
 <p>Agents must implement this scheduler to perform any actions appropriate for the current state. Will be called whenever a state change has occurred, and will be called repeated as long as it returns true.</p>
 <dl class="section return"><dt>Returns</dt><dd>true iff some action was executed that might have changed the state. </dd></dl>
 
-<p>Implemented in <a class="el" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#a869ef835ac24f7e496057dc2796a465f">factory.factory201.feederManagement.FeederAgent</a>, <a class="el" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent.html#ad1ea6b515fe50294c608589af214a90f">factory.factory201.feederManagement.GantryAgent</a>, <a class="el" href="classfactory_1_1factory201_1_1feeder_management_1_1_lane_agent.html#a7667b44ff5f2f916bc12f38e82978433">factory.factory201.feederManagement.LaneAgent</a>, <a class="el" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a4eb114f4873c65d47228e007efeaef3d">factory.factory201.partsManagement.NestAgent</a>, <a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_kit_robot_agent.html#a71ef8366da584c29f5046eff13ccdab6">factory.factory201.kitManagement.KitRobotAgent</a>, <a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html#ae34d95e0805ef6af0f538eb36b1a4d5b">factory.factory201.kitManagement.ConveyorAgent</a>, <a class="el" href="classfactory_1_1factory201_1_1parts_management_1_1_parts_agent.html#aabbcbe60191ac969938b5c648968e630">factory.factory201.partsManagement.PartsAgent</a>, and <a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_camera_agent.html#a047d8fb30671269e8d2ed37635f97855">factory.factory201.kitManagement.CameraAgent</a>.</p>
+<p>Implemented in <a class="el" href="classfactory_1_1factory201_1_1feeder_management_1_1_feeder_agent.html#a869ef835ac24f7e496057dc2796a465f">factory.factory201.feederManagement.FeederAgent</a>, <a class="el" href="classfactory_1_1factory201_1_1feeder_management_1_1_gantry_agent.html#ad1ea6b515fe50294c608589af214a90f">factory.factory201.feederManagement.GantryAgent</a>, <a class="el" href="classfactory_1_1factory201_1_1feeder_management_1_1_lane_agent.html#a7667b44ff5f2f916bc12f38e82978433">factory.factory201.feederManagement.LaneAgent</a>, <a class="el" href="classfactory_1_1factory201_1_1parts_management_1_1_nest_agent.html#a4eb114f4873c65d47228e007efeaef3d">factory.factory201.partsManagement.NestAgent</a>, <a class="el" href="classfactory_1_1factory201_1_1parts_management_1_1_parts_agent.html#aabbcbe60191ac969938b5c648968e630">factory.factory201.partsManagement.PartsAgent</a>, <a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_camera_agent.html#a047d8fb30671269e8d2ed37635f97855">factory.factory201.kitManagement.CameraAgent</a>, <a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_kit_robot_agent.html#a71ef8366da584c29f5046eff13ccdab6">factory.factory201.kitManagement.KitRobotAgent</a>, and <a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html#ae34d95e0805ef6af0f538eb36b1a4d5b">factory.factory201.kitManagement.ConveyorAgent</a>.</p>
 
 </div>
 </div>
@@ -315,7 +376,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Print message </p>
 
-<p>Definition at line <a class="el" href="_agent_8java_source.html#l00071">71</a> of file <a class="el" href="_agent_8java_source.html">Agent.java</a>.</p>
+<p>Definition at line <a class="el" href="_agent_8java_source.html#l00075">75</a> of file <a class="el" href="_agent_8java_source.html">Agent.java</a>.</p>
 
 </div>
 </div>
@@ -352,7 +413,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Print message with exception stack trace </p>
 
-<p>Definition at line <a class="el" href="_agent_8java_source.html#l00078">78</a> of file <a class="el" href="_agent_8java_source.html">Agent.java</a>.</p>
+<p>Definition at line <a class="el" href="_agent_8java_source.html#l00082">82</a> of file <a class="el" href="_agent_8java_source.html">Agent.java</a>.</p>
 
 </div>
 </div>
@@ -381,7 +442,36 @@ Private Attributes</h2></td></tr>
 <p>sets the client </p>
 <dl class="section author"><dt>Author</dt><dd>Roy YiWei Zheng </dd></dl>
 
-<p>Definition at line <a class="el" href="_agent_8java_source.html#l00160">160</a> of file <a class="el" href="_agent_8java_source.html">Agent.java</a>.</p>
+<p>Definition at line <a class="el" href="_agent_8java_source.html#l00164">164</a> of file <a class="el" href="_agent_8java_source.html">Agent.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af6f57f4a9005364c794b0f3149284119"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void agent.Agent.setFactoryProductionManagerClient </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classfactory_1_1general_1_1_handle_a_manager.html">HandleAManager</a>&#160;</td>
+          <td class="paramname"><em>i</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>sets the factory production manager client </p>
+<dl class="section author"><dt>Author</dt><dd>Roy YiWei Zheng </dd></dl>
+
+<p>Definition at line <a class="el" href="_agent_8java_source.html#l00176">176</a> of file <a class="el" href="_agent_8java_source.html">Agent.java</a>.</p>
 
 </div>
 </div>
@@ -407,7 +497,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Start agent scheduler thread. Should be called once at init time. </p>
 
-<p>Definition at line <a class="el" href="_agent_8java_source.html#l00095">95</a> of file <a class="el" href="_agent_8java_source.html">Agent.java</a>.</p>
+<p>Definition at line <a class="el" href="_agent_8java_source.html#l00099">99</a> of file <a class="el" href="_agent_8java_source.html">Agent.java</a>.</p>
 
 </div>
 </div>
@@ -433,7 +523,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>This should be called whenever state has changed that might cause the agent to do something. </p>
 
-<p>Definition at line <a class="el" href="_agent_8java_source.html#l00038">38</a> of file <a class="el" href="_agent_8java_source.html">Agent.java</a>.</p>
+<p>Definition at line <a class="el" href="_agent_8java_source.html#l00042">42</a> of file <a class="el" href="_agent_8java_source.html">Agent.java</a>.</p>
 
 </div>
 </div>
@@ -459,7 +549,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Stop agent scheduler thread. </p>
 
-<p>Definition at line <a class="el" href="_agent_8java_source.html#l00109">109</a> of file <a class="el" href="_agent_8java_source.html">Agent.java</a>.</p>
+<p>Definition at line <a class="el" href="_agent_8java_source.html#l00113">113</a> of file <a class="el" href="_agent_8java_source.html">Agent.java</a>.</p>
 
 </div>
 </div>
@@ -508,6 +598,30 @@ Private Attributes</h2></td></tr>
 <dl class="section author"><dt>Author</dt><dd>Roy YiWei Zheng </dd></dl>
 
 <p>Definition at line <a class="el" href="_agent_8java_source.html#l00024">24</a> of file <a class="el" href="_agent_8java_source.html">Agent.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a8917c3c6c587652999ac6d834acb90a3"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classfactory_1_1general_1_1_handle_a_manager.html">HandleAManager</a> agent.Agent.fpm</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>communication channel with factory production manager A reference to the factory production manager </p>
+
+<p>Definition at line <a class="el" href="_agent_8java_source.html#l00029">29</a> of file <a class="el" href="_agent_8java_source.html">Agent.java</a>.</p>
 
 </div>
 </div>
@@ -589,7 +703,7 @@ Private Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 17 2012 01:37:02 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Dec 1 2012 12:34:10 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

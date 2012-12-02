@@ -11,7 +11,6 @@ public class LMDrawableTrack {
 		
 	private static ImageIcon trackImage = new ImageIcon( LMDrawableTrack.class.getResource("./pics/oneTrack.png") );
 	private int trackX, trackY;
-	private int vibrationAmplitude = 0;// 0 : Normal, 1 : Strong
 
 	public LMDrawableTrack(int trackX, int trackY){
 		this.trackX = trackX;

@@ -155,6 +155,21 @@ public class GUIPartRobot extends GUIRobot {
         dropPartCommand(i);
         this.orders.add(50);
     }
+    public Part dropPartOnGround()
+    {
+	Part p = null;
+	if(this.parts.size() != 0){
+	    p = this.parts.getAll().get(this.parts.size()-1);
+	    this.parts.getAll().remove(this.parts.size()-1);
+	    if(p.getName() == null)
+		p.setName("unnamed");
+	    if(p.getFilename() == null)
+		p.setFilename("nofile");
+	    if(p.getDescription() == null)
+		p.setDescription("no description");
+	}
+	return p;
+    }
 
     /**
     @brief pops the order and performs it

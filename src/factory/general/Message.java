@@ -39,6 +39,8 @@ public class Message {
     public static final String GRM_FINISH_MOVE_TO_BIN = "GRM_FINISH_MOVE_TO_BIN";
     public static final String GRM_FINISH_MOVE_TO_FEEDER = "GRM_FINISH_MOVE_TO_FEEDER";
     public static final String GRM_FINISH_MOVE_TO_DUMP = "GRM_FINISH_MOVE_TO_DUMP";
+    public static final String FREEZE_GANTRY_ROBOT = "FREEZE_GANTRY_ROBOT";
+    public static final String UNFREEZE_GANTRY_ROBOT = "UNFREEZE_GANTRY_ROBOT";
 
     //kitassemblymanager section
     public static final String IDENTIFY_KITASSEMBLYMANAGER = "IDENTIFY_KITASSEMBLYMANAGER";
@@ -58,6 +60,17 @@ public class Message {
     public static final String LM_ADD_PART="LMA_";
     public static final String KAM_FINISH_KITBOT_ANIMATION = "KAM_FINISH_KITBOT_ANIMATION";
     public static final String KAM_FINISH_KITTER_ANIMATION = "KAM_FINISH_KITTER_ANIMATION";
+    public static final String KAM_NEST_STABLE = "KAM_NEST_STABLE";
+    public static final String KAM_NEST_UNSTABLE = "KAM_NEST_UNSTABLE";
+    public static final String KAM_NEST_PILED = "KAM_NEST_PILED";
+    public static final String KAM_BAD_KIT = "KAM_BAD_KIT";///<a part was dropped
+    public static final String KAM_ACTION_STABILIZE_NEST = "KAM_ACTION_STABILIZE_NEST";
+    public static final String KAM_ACTION_UNPILE_NEST = "KAM_ACTION_UNPILE_NEST";
+    public static final String EARLY_CAMERA_FLASH = "EARLY_CAMERA_FLASH";
+    public static final String NEST_UP = "NEST_UP";
+    public static final String NEST_DOWN = "NEST_DOWN";
+    public static final String PARTS_ROBOT_IN_WAY = "PARTS_ROBOT_IN_WAY";
+    public static final String NO_GOOD_PARTS = "NO_GOOD_PARTS";
     //    public static final String KAM_FINISH_DROP_OFF_FULL_KIT = "KAM_FINISH_DROP_OFF_FULL_KIT";
     //    public static final String KAM_FINISH_MOVE_TO_NEST = "KAM_FINISH_MOVE_TO_NEST";
     //public static final String KAM_FINISH_DROP_OFF_PARTS = "KAM_FINISH_DROP_OFF_PARTS";
@@ -69,6 +82,8 @@ public class Message {
     public static final String BAD_PART_INSERTION = "BAD_PART_INSERTION";
     public static final String LANE_JAMMED = "LANE_JAMMED";
     public static final String PART_PILED = "PART_PILED";
+    public static final String PART_TOGGLING = "PART_TOGGLING";
+    public static final String PART_UNTOGGLING = "PART_UNTOGGLING";
     
     //PULL_KITS_LIST is also used by FPM
     public static final String IDENTIFY_FACTORYPRODUCTIONMANAGER = "IDENTIFY_FACTORYPRODUCTIONMANAGER";

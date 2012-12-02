@@ -10,7 +10,6 @@ public class LMSignalFromAnimationVerification {
 	private int laneNestNum;
 	private int feederNum;
 	private int partNum;
-	private int randomPartNum;
 	
 	public LMSignalFromAnimationVerification(LMServerMain serverMain){
 		this.serverMain = serverMain;
@@ -37,12 +36,9 @@ public class LMSignalFromAnimationVerification {
 		// Non-normative Scenario 2
 		else if(message.contains("LANE_JAMMED") ){
 			laneNestNum = message.charAt(0) - 48;
-			randomPartNum = message.charAt(1) - 48;
-			serverMain.sendToLM("" + laneNestNum + randomPartNum + "&Non&Jammed&");
-			serverMain.sendToFPM("" + laneNestNum + randomPartNum + "&Non&Jammed&");
 			
-			// Start the timer
-			serverMain.getNonNormative().getNonNormativeLanes().get(laneNestNum).startJammedLane();
+			// Tell the agent that clicked the button
+			serverMain.getFeederAgents()[laneNestNum / 2].msgLaneJammed(laneNestNum);
 		}
 		
 		// Non-normative Scenario 3
@@ -54,6 +50,21 @@ public class LMSignalFromAnimationVerification {
 			
 			// Setup the camera setup
 			serverMain.getForAgentNestCamera().startPiledPart(laneNestNum);
+		}
+		
+		// Non-normative Scenario 4
+		else if(message.contains("PART_TOGGLING") ){
+			laneNestNum = message.charAt(0) - 48;
+			serverMain.sendToLM(laneNestNum + "&Non&Toggling&");
+			serverMain.sendToFPM(laneNestNum + "&Non&Toggling&");
+			serverMain.sendToKAM(laneNestNum + "&Non&Toggling&");
+		}
+		
+		else if(message.contains("PART_UNTOGGLING")) {
+			laneNestNum = message.charAt(0) - 48;
+			serverMain.sendToLM(laneNestNum + "&Non&UnToggling&");
+			serverMain.sendToFPM(laneNestNum + "&Non&UnToggling&");
+			serverMain.sendToKAM(laneNestNum + "&Non&UnToggling&");
 		}
 	}
 }

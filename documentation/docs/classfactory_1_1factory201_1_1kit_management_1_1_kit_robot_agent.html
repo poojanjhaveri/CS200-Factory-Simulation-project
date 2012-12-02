@@ -20,9 +20,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="kitrobot.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Factory Project
-   &#160;<span id="projectnumber">0.1.0</span>
+   &#160;<span id="projectnumber">0.4.0</span>
    </div>
    <div id="projectbrief">team 1 joint cs200/cs201</div>
   </td>
@@ -98,7 +99,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
-<p>This class is the agent for the Kit Robot which gets empty kits from the conveyor and puts it on a palette This class is the agent for the Kit Robot which gets empty kits from the conveyor and puts it on a palette. It also moves unverified kits onto the verification palette and once verified, moves the complete kit onto the conveyor.  
+<p>Agent for the Kit Robot.  
  <a href="classfactory_1_1factory201_1_1kit_management_1_1_kit_robot_agent.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for factory.factory201.kitManagement.KitRobotAgent:</div>
@@ -118,25 +119,19 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:af600c2f89e091be18e08b0898a20203a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_kit_robot_agent.html#af600c2f89e091be18e08b0898a20203a">msgNeedEmptyKit</a> ()</td></tr>
 <tr class="separator:af600c2f89e091be18e08b0898a20203a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7b87dd7d4180cbd954581ec543c8b16d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_kit_robot_agent.html#a7b87dd7d4180cbd954581ec543c8b16d">msgHereIsEmptyKit</a> (<a class="el" href="classfactory_1_1general_1_1_kit.html">Kit</a> kit)</td></tr>
-<tr class="memdesc:a7b87dd7d4180cbd954581ec543c8b16d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Message called by <a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html" title="This class is the agent for the Conveyor which brings empty Kits into the kitting cell and takes comp...">ConveyorAgent</a> to give kit.  <a href="#a7b87dd7d4180cbd954581ec543c8b16d"></a><br/></td></tr>
 <tr class="separator:a7b87dd7d4180cbd954581ec543c8b16d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a28f081e88742543114b1ba1aa1f1ff82"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_kit_robot_agent.html#a28f081e88742543114b1ba1aa1f1ff82">msgKitIsFull</a> (<a class="el" href="classfactory_1_1general_1_1_kit.html">Kit</a> kit)</td></tr>
-<tr class="memdesc:a28f081e88742543114b1ba1aa1f1ff82"><td class="mdescLeft">&#160;</td><td class="mdescRight">Message called by PartsAgent when kit is complete.  <a href="#a28f081e88742543114b1ba1aa1f1ff82"></a><br/></td></tr>
 <tr class="separator:a28f081e88742543114b1ba1aa1f1ff82"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a815e5854f70fa2589ea6afc9bf8af7b6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_kit_robot_agent.html#a815e5854f70fa2589ea6afc9bf8af7b6">msgKitInspected</a> (boolean result)</td></tr>
-<tr class="memdesc:a815e5854f70fa2589ea6afc9bf8af7b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Message called by camera agent after kit inspection.  <a href="#a815e5854f70fa2589ea6afc9bf8af7b6"></a><br/></td></tr>
 <tr class="separator:a815e5854f70fa2589ea6afc9bf8af7b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae038c299d516ea43057d63302e2e614a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_kit_robot_agent.html#ae038c299d516ea43057d63302e2e614a">msgStartFactory</a> ()</td></tr>
+<tr class="separator:ae038c299d516ea43057d63302e2e614a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a868eb420b0de1e19c8978229bd5f0c55"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_kit_robot_agent.html#a868eb420b0de1e19c8978229bd5f0c55">msgAnimationComplete</a> ()</td></tr>
+<tr class="separator:a868eb420b0de1e19c8978229bd5f0c55"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a71ef8366da584c29f5046eff13ccdab6"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_kit_robot_agent.html#a71ef8366da584c29f5046eff13ccdab6">pickAndExecuteAnAction</a> ()</td></tr>
 <tr class="separator:a71ef8366da584c29f5046eff13ccdab6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5b34eae0ad747e886f5930bd58af72a5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_kit_robot_agent.html#a5b34eae0ad747e886f5930bd58af72a5">setConveyor</a> (<a class="el" href="interfacefactory_1_1factory201_1_1interfaces_1_1_conveyor.html">Conveyor</a> agent)</td></tr>
-<tr class="memdesc:a5b34eae0ad747e886f5930bd58af72a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the conveyor agent.  <a href="#a5b34eae0ad747e886f5930bd58af72a5"></a><br/></td></tr>
-<tr class="separator:a5b34eae0ad747e886f5930bd58af72a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3ca4700400d97f648055ed6bee53c0ab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_kit_robot_agent.html#a3ca4700400d97f648055ed6bee53c0ab">setCamera</a> (<a class="el" href="interfacefactory_1_1factory201_1_1interfaces_1_1_camera.html">Camera</a> agent)</td></tr>
-<tr class="memdesc:a3ca4700400d97f648055ed6bee53c0ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the camera agent.  <a href="#a3ca4700400d97f648055ed6bee53c0ab"></a><br/></td></tr>
-<tr class="separator:a3ca4700400d97f648055ed6bee53c0ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a27c852108a1a692a9c510f731a453c0e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_kit_robot_agent.html#a27c852108a1a692a9c510f731a453c0e">setPartsAgent</a> (<a class="el" href="interfacefactory_1_1factory201_1_1interfaces_1_1_parts_interface.html">PartsInterface</a> agent)</td></tr>
-<tr class="memdesc:a27c852108a1a692a9c510f731a453c0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the parts agent.  <a href="#a27c852108a1a692a9c510f731a453c0e"></a><br/></td></tr>
-<tr class="separator:a27c852108a1a692a9c510f731a453c0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a389db885bee7ecd6a0739e4a0c6fdfea"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_kit_stand.html">KitStand</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_kit_robot_agent.html#a389db885bee7ecd6a0739e4a0c6fdfea">getKitStand</a> ()</td></tr>
+<tr class="separator:a389db885bee7ecd6a0739e4a0c6fdfea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab9763e3972ad20e8dd953abd32773e72"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_kit_robot_agent.html#ab9763e3972ad20e8dd953abd32773e72">setAll</a> (<a class="el" href="interfacefactory_1_1factory201_1_1interfaces_1_1_camera.html">Camera</a> <a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_kit_robot_agent.html#abf30bece9573ee4f74744a83334929bc">camera</a>, <a class="el" href="interfacefactory_1_1factory201_1_1interfaces_1_1_conveyor.html">Conveyor</a> <a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_kit_robot_agent.html#aa493b0f6106d54d6ed7b7321ef8983e5">conveyor</a>, <a class="el" href="interfacefactory_1_1factory201_1_1interfaces_1_1_parts_interface.html">PartsInterface</a> <a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_kit_robot_agent.html#a234282468ec0d745ec2ff3bb414b62f6">partsAgent</a>)</td></tr>
 <tr class="separator:ab9763e3972ad20e8dd953abd32773e72"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad04cef28658952b167463414a331d364"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_kit_robot_agent.html#ad04cef28658952b167463414a331d364">DoMoveKitFromConveyorTo0</a> ()</td></tr>
@@ -161,6 +156,13 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a4fff8beed11031829fbf602b00308646 inherit pub_methods_classagent_1_1_agent"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagent_1_1_agent.html#a4fff8beed11031829fbf602b00308646">setClient</a> (<a class="el" href="classfactory_1_1general_1_1_handle_a_manager.html">HandleAManager</a> i)</td></tr>
 <tr class="memdesc:a4fff8beed11031829fbf602b00308646 inherit pub_methods_classagent_1_1_agent"><td class="mdescLeft">&#160;</td><td class="mdescRight">sets the client  <a href="#a4fff8beed11031829fbf602b00308646"></a><br/></td></tr>
 <tr class="separator:a4fff8beed11031829fbf602b00308646 inherit pub_methods_classagent_1_1_agent"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab8d1da187b5dd6e78a4c50155875639 inherit pub_methods_classagent_1_1_agent"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classfactory_1_1general_1_1_handle_a_manager.html">HandleAManager</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagent_1_1_agent.html#aab8d1da187b5dd6e78a4c50155875639">getClient</a> ()</td></tr>
+<tr class="separator:aab8d1da187b5dd6e78a4c50155875639 inherit pub_methods_classagent_1_1_agent"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6f57f4a9005364c794b0f3149284119 inherit pub_methods_classagent_1_1_agent"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagent_1_1_agent.html#af6f57f4a9005364c794b0f3149284119">setFactoryProductionManagerClient</a> (<a class="el" href="classfactory_1_1general_1_1_handle_a_manager.html">HandleAManager</a> i)</td></tr>
+<tr class="memdesc:af6f57f4a9005364c794b0f3149284119 inherit pub_methods_classagent_1_1_agent"><td class="mdescLeft">&#160;</td><td class="mdescRight">sets the factory production manager client  <a href="#af6f57f4a9005364c794b0f3149284119"></a><br/></td></tr>
+<tr class="separator:af6f57f4a9005364c794b0f3149284119 inherit pub_methods_classagent_1_1_agent"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d54403afe430ad0490b57f52d4b9a9a inherit pub_methods_classagent_1_1_agent"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classfactory_1_1general_1_1_handle_a_manager.html">HandleAManager</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagent_1_1_agent.html#a0d54403afe430ad0490b57f52d4b9a9a">getFactoryProductionManagerClient</a> ()</td></tr>
+<tr class="separator:a0d54403afe430ad0490b57f52d4b9a9a inherit pub_methods_classagent_1_1_agent"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_interfacefactory_1_1factory201_1_1interfaces_1_1_kit_robot"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_interfacefactory_1_1factory201_1_1interfaces_1_1_kit_robot')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="interfacefactory_1_1factory201_1_1interfaces_1_1_kit_robot.html">factory.factory201.interfaces.KitRobot</a></td></tr>
 <tr class="memitem:a3546190ec7abcc068a8ecae6de3cf40b inherit pub_methods_interfacefactory_1_1factory201_1_1interfaces_1_1_kit_robot"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacefactory_1_1factory201_1_1interfaces_1_1_kit_robot.html#a3546190ec7abcc068a8ecae6de3cf40b">msgHereIsEmptyKit</a> (<a class="el" href="classfactory_1_1general_1_1_kit.html">Kit</a> kit)</td></tr>
 <tr class="separator:a3546190ec7abcc068a8ecae6de3cf40b inherit pub_methods_interfacefactory_1_1factory201_1_1interfaces_1_1_kit_robot"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -177,25 +179,29 @@ Private Member Functions</h2></td></tr>
 <tr class="separator:a1b132c2bc9542f6a69c8ae53f109f648"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a057f3c59af964aceec8576aed9bdd3a4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_kit_robot_agent.html#a057f3c59af964aceec8576aed9bdd3a4">moveFullKitToInspection</a> (<a class="el" href="classfactory_1_1general_1_1_kit.html">Kit</a> kit)</td></tr>
 <tr class="separator:a057f3c59af964aceec8576aed9bdd3a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa573ee6d83bad4c0e43b28a16f8558ad"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_kit_robot_agent.html#aa573ee6d83bad4c0e43b28a16f8558ad">giveEmptyKitToPartsAgent</a> ()</td></tr>
-<tr class="separator:aa573ee6d83bad4c0e43b28a16f8558ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56a0fcc69e9c3c1df3994da14638918e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_kit_robot_agent.html#a56a0fcc69e9c3c1df3994da14638918e">giveEmptyKitToPartsAgent</a> (int num)</td></tr>
+<tr class="separator:a56a0fcc69e9c3c1df3994da14638918e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad0d70780c17e72fc2e9af68ad5c29593"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_kit_robot_agent.html#ad0d70780c17e72fc2e9af68ad5c29593">requestEmptyKitFromConveyor</a> ()</td></tr>
 <tr class="separator:ad0d70780c17e72fc2e9af68ad5c29593"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a9244157a6cffa0535f9ea56d5b88fef7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_kit_stand.html">KitStand</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_kit_robot_agent.html#a9244157a6cffa0535f9ea56d5b88fef7">kitStand</a></td></tr>
-<tr class="separator:a9244157a6cffa0535f9ea56d5b88fef7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af86fec924981283e4c78cd64dcd35e1a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_kit_robot_agent.html#af86fec924981283e4c78cd64dcd35e1a">emptyKitRequestsFromPartsAgent</a></td></tr>
-<tr class="separator:af86fec924981283e4c78cd64dcd35e1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a855031c1e163d12c6efa5990a79079f5"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_kit_robot_agent.html#a855031c1e163d12c6efa5990a79079f5">requestedEmptyKit</a></td></tr>
-<tr class="separator:a855031c1e163d12c6efa5990a79079f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa493b0f6106d54d6ed7b7321ef8983e5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="interfacefactory_1_1factory201_1_1interfaces_1_1_conveyor.html">Conveyor</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_kit_robot_agent.html#aa493b0f6106d54d6ed7b7321ef8983e5">conveyor</a></td></tr>
 <tr class="separator:aa493b0f6106d54d6ed7b7321ef8983e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abf30bece9573ee4f74744a83334929bc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="interfacefactory_1_1factory201_1_1interfaces_1_1_camera.html">Camera</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_kit_robot_agent.html#abf30bece9573ee4f74744a83334929bc">camera</a></td></tr>
 <tr class="separator:abf30bece9573ee4f74744a83334929bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a234282468ec0d745ec2ff3bb414b62f6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="interfacefactory_1_1factory201_1_1interfaces_1_1_parts_interface.html">PartsInterface</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_kit_robot_agent.html#a234282468ec0d745ec2ff3bb414b62f6">partsAgent</a></td></tr>
 <tr class="separator:a234282468ec0d745ec2ff3bb414b62f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9244157a6cffa0535f9ea56d5b88fef7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_kit_stand.html">KitStand</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_kit_robot_agent.html#a9244157a6cffa0535f9ea56d5b88fef7">kitStand</a></td></tr>
+<tr class="separator:a9244157a6cffa0535f9ea56d5b88fef7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a476517fed2f51eda7f1e1e8f45674eab"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_kit_robot_agent.html#a476517fed2f51eda7f1e1e8f45674eab">kitRequestsFromPartsAgent</a></td></tr>
+<tr class="separator:a476517fed2f51eda7f1e1e8f45674eab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac074c257b2cb3a5a451d0b06b9e22dbc"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_kit_robot_agent.html#ac074c257b2cb3a5a451d0b06b9e22dbc">requestedKitFromConveyor</a></td></tr>
+<tr class="separator:ac074c257b2cb3a5a451d0b06b9e22dbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7307f7aa30f8baafdf80f407f775ef3"><td class="memItemLeft" align="right" valign="top">Semaphore&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_kit_robot_agent.html#ae7307f7aa30f8baafdf80f407f775ef3">animation</a> = new Semaphore(0, true)</td></tr>
+<tr class="separator:ae7307f7aa30f8baafdf80f407f775ef3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a048ed2cd36a6fe332b5701657a5150a8"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_kit_robot_agent.html#a048ed2cd36a6fe332b5701657a5150a8">factoryRunning</a> = false</td></tr>
+<tr class="separator:a048ed2cd36a6fe332b5701657a5150a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -219,16 +225,21 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:a20abf2e7bd1c529b185ad0754e049a46 inherit pro_attribs_classagent_1_1_agent"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classfactory_1_1general_1_1_handle_a_manager.html">HandleAManager</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagent_1_1_agent.html#a20abf2e7bd1c529b185ad0754e049a46">client</a></td></tr>
 <tr class="memdesc:a20abf2e7bd1c529b185ad0754e049a46 inherit pro_attribs_classagent_1_1_agent"><td class="mdescLeft">&#160;</td><td class="mdescRight">communication channel with client A reference to the corresponding client  <a href="#a20abf2e7bd1c529b185ad0754e049a46"></a><br/></td></tr>
 <tr class="separator:a20abf2e7bd1c529b185ad0754e049a46 inherit pro_attribs_classagent_1_1_agent"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8917c3c6c587652999ac6d834acb90a3 inherit pro_attribs_classagent_1_1_agent"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classfactory_1_1general_1_1_handle_a_manager.html">HandleAManager</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagent_1_1_agent.html#a8917c3c6c587652999ac6d834acb90a3">fpm</a></td></tr>
+<tr class="memdesc:a8917c3c6c587652999ac6d834acb90a3 inherit pro_attribs_classagent_1_1_agent"><td class="mdescLeft">&#160;</td><td class="mdescRight">communication channel with factory production manager A reference to the factory production manager  <a href="#a8917c3c6c587652999ac6d834acb90a3"></a><br/></td></tr>
+<tr class="separator:a8917c3c6c587652999ac6d834acb90a3 inherit pro_attribs_classagent_1_1_agent"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pac_attribs_classagent_1_1_agent"><td colspan="2" onclick="javascript:toggleInherit('pac_attribs_classagent_1_1_agent')"><img src="closed.png" alt="-"/>&#160;Package Attributes inherited from <a class="el" href="classagent_1_1_agent.html">agent.Agent</a></td></tr>
 <tr class="memitem:adf2eafb1d9ae92666b8196ebe0898c03 inherit pac_attribs_classagent_1_1_agent"><td class="memItemLeft" align="right" valign="top">Semaphore&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagent_1_1_agent.html#adf2eafb1d9ae92666b8196ebe0898c03">stateChange</a></td></tr>
 <tr class="separator:adf2eafb1d9ae92666b8196ebe0898c03 inherit pac_attribs_classagent_1_1_agent"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>This class is the agent for the Kit Robot which gets empty kits from the conveyor and puts it on a palette This class is the agent for the Kit Robot which gets empty kits from the conveyor and puts it on a palette. It also moves unverified kits onto the verification palette and once verified, moves the complete kit onto the conveyor. </p>
+<div class="textblock"><p>Agent for the Kit Robot. </p>
+<p>Agent for the Kit Robot.</p>
+<p>This class is the agent for the Kit Robot which gets empty kits from the conveyor and puts it on a palette This class is the agent for the Kit Robot which gets empty kits from the conveyor and puts it on a palette. It also moves unverified kits onto the verification palette and once verified, moves the complete kit onto the conveyor.</p>
 <dl class="section author"><dt>Author</dt><dd>Alex Young </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>1 </dd></dl>
 
-<p>Definition at line <a class="el" href="_kit_robot_agent_8java_source.html#l00021">21</a> of file <a class="el" href="_kit_robot_agent_8java_source.html">KitRobotAgent.java</a>.</p>
+<p>Definition at line <a class="el" href="_kit_robot_agent_8java_source.html#l00025">25</a> of file <a class="el" href="_kit_robot_agent_8java_source.html">KitRobotAgent.java</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="af7cb2ee5683f26b15753d81130b36970"></a>
 <div class="memitem">
@@ -252,7 +263,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_kit_robot_agent_8java_source.html#l00030">30</a> of file <a class="el" href="_kit_robot_agent_8java_source.html">KitRobotAgent.java</a>.</p>
+<p>Definition at line <a class="el" href="_kit_robot_agent_8java_source.html#l00036">36</a> of file <a class="el" href="_kit_robot_agent_8java_source.html">KitRobotAgent.java</a>.</p>
 
 </div>
 </div>
@@ -303,7 +314,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_kit_robot_agent_8java_source.html#l00212">212</a> of file <a class="el" href="_kit_robot_agent_8java_source.html">KitRobotAgent.java</a>.</p>
+<p>Definition at line <a class="el" href="_kit_robot_agent_8java_source.html#l00236">236</a> of file <a class="el" href="_kit_robot_agent_8java_source.html">KitRobotAgent.java</a>.</p>
 
 </div>
 </div>
@@ -328,7 +339,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_kit_robot_agent_8java_source.html#l00209">209</a> of file <a class="el" href="_kit_robot_agent_8java_source.html">KitRobotAgent.java</a>.</p>
+<p>Definition at line <a class="el" href="_kit_robot_agent_8java_source.html#l00221">221</a> of file <a class="el" href="_kit_robot_agent_8java_source.html">KitRobotAgent.java</a>.</p>
 
 </div>
 </div>
@@ -354,7 +365,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_kit_robot_agent_8java_source.html#l00215">215</a> of file <a class="el" href="_kit_robot_agent_8java_source.html">KitRobotAgent.java</a>.</p>
+<p>Definition at line <a class="el" href="_kit_robot_agent_8java_source.html#l00250">250</a> of file <a class="el" href="_kit_robot_agent_8java_source.html">KitRobotAgent.java</a>.</p>
 
 </div>
 </div>
@@ -379,7 +390,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_kit_robot_agent_8java_source.html#l00200">200</a> of file <a class="el" href="_kit_robot_agent_8java_source.html">KitRobotAgent.java</a>.</p>
+<p>Definition at line <a class="el" href="_kit_robot_agent_8java_source.html#l00173">173</a> of file <a class="el" href="_kit_robot_agent_8java_source.html">KitRobotAgent.java</a>.</p>
 
 </div>
 </div>
@@ -404,11 +415,36 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_kit_robot_agent_8java_source.html#l00203">203</a> of file <a class="el" href="_kit_robot_agent_8java_source.html">KitRobotAgent.java</a>.</p>
+<p>Definition at line <a class="el" href="_kit_robot_agent_8java_source.html#l00190">190</a> of file <a class="el" href="_kit_robot_agent_8java_source.html">KitRobotAgent.java</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="aa573ee6d83bad4c0e43b28a16f8558ad"></a>
+<a class="anchor" id="a389db885bee7ecd6a0739e4a0c6fdfea"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_kit_stand.html">KitStand</a> factory.factory201.kitManagement.KitRobotAgent.getKitStand </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_kit_robot_agent_8java_source.html#l00163">163</a> of file <a class="el" href="_kit_robot_agent_8java_source.html">KitRobotAgent.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a56a0fcc69e9c3c1df3994da14638918e"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -418,7 +454,8 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">void factory.factory201.kitManagement.KitRobotAgent.giveEmptyKitToPartsAgent </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>num</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -455,7 +492,32 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_kit_robot_agent_8java_source.html#l00135">135</a> of file <a class="el" href="_kit_robot_agent_8java_source.html">KitRobotAgent.java</a>.</p>
+<p>Definition at line <a class="el" href="_kit_robot_agent_8java_source.html#l00134">134</a> of file <a class="el" href="_kit_robot_agent_8java_source.html">KitRobotAgent.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a868eb420b0de1e19c8978229bd5f0c55"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void factory.factory201.kitManagement.KitRobotAgent.msgAnimationComplete </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_kit_robot_agent_8java_source.html#l00080">80</a> of file <a class="el" href="_kit_robot_agent_8java_source.html">KitRobotAgent.java</a>.</p>
 
 </div>
 </div>
@@ -481,17 +543,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Message called by <a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html" title="This class is the agent for the Conveyor which brings empty Kits into the kitting cell and takes comp...">ConveyorAgent</a> to give kit. </p>
-<p>Message called by <a class="el" href="classfactory_1_1factory201_1_1kit_management_1_1_conveyor_agent.html" title="This class is the agent for the Conveyor which brings empty Kits into the kitting cell and takes comp...">ConveyorAgent</a> to give kit.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">kit</td><td>Kit given by conveyor </td></tr>
-    <tr><td class="paramname">loc</td><td>Location of kit for animation purposes </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Definition at line <a class="el" href="_kit_robot_agent_8java_source.html#l00059">59</a> of file <a class="el" href="_kit_robot_agent_8java_source.html">KitRobotAgent.java</a>.</p>
+<p>Definition at line <a class="el" href="_kit_robot_agent_8java_source.html#l00052">52</a> of file <a class="el" href="_kit_robot_agent_8java_source.html">KitRobotAgent.java</a>.</p>
 
 </div>
 </div>
@@ -517,17 +569,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Message called by camera agent after kit inspection. </p>
-<p>Message called by camera agent after kit inspection.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">kit</td><td>Kit being inspected </td></tr>
-    <tr><td class="paramname">result</td><td>Result of inspection </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Definition at line <a class="el" href="_kit_robot_agent_8java_source.html#l00088">88</a> of file <a class="el" href="_kit_robot_agent_8java_source.html">KitRobotAgent.java</a>.</p>
+<p>Definition at line <a class="el" href="_kit_robot_agent_8java_source.html#l00067">67</a> of file <a class="el" href="_kit_robot_agent_8java_source.html">KitRobotAgent.java</a>.</p>
 
 </div>
 </div>
@@ -553,16 +595,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Message called by PartsAgent when kit is complete. </p>
-<p>Message called by PartsAgent when kit is complete.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">kit</td><td>Kit that is complete </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Definition at line <a class="el" href="_kit_robot_agent_8java_source.html#l00073">73</a> of file <a class="el" href="_kit_robot_agent_8java_source.html">KitRobotAgent.java</a>.</p>
+<p>Definition at line <a class="el" href="_kit_robot_agent_8java_source.html#l00061">61</a> of file <a class="el" href="_kit_robot_agent_8java_source.html">KitRobotAgent.java</a>.</p>
 
 </div>
 </div>
@@ -586,9 +619,33 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Message called by PartsRobotAgent when it needs an empty kit. </p>
 
 <p>Definition at line <a class="el" href="_kit_robot_agent_8java_source.html#l00045">45</a> of file <a class="el" href="_kit_robot_agent_8java_source.html">KitRobotAgent.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae038c299d516ea43057d63302e2e614a"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void factory.factory201.kitManagement.KitRobotAgent.msgStartFactory </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_kit_robot_agent_8java_source.html#l00075">75</a> of file <a class="el" href="_kit_robot_agent_8java_source.html">KitRobotAgent.java</a>.</p>
 
 </div>
 </div>
@@ -617,7 +674,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classagent_1_1_agent.html#abaf1e04478122d7e10bd7bb8b75fc967">agent.Agent</a>.</p>
 
-<p>Definition at line <a class="el" href="_kit_robot_agent_8java_source.html#l00096">96</a> of file <a class="el" href="_kit_robot_agent_8java_source.html">KitRobotAgent.java</a>.</p>
+<p>Definition at line <a class="el" href="_kit_robot_agent_8java_source.html#l00087">87</a> of file <a class="el" href="_kit_robot_agent_8java_source.html">KitRobotAgent.java</a>.</p>
 
 </div>
 </div>
@@ -667,7 +724,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_kit_robot_agent_8java_source.html#l00127">127</a> of file <a class="el" href="_kit_robot_agent_8java_source.html">KitRobotAgent.java</a>.</p>
+<p>Definition at line <a class="el" href="_kit_robot_agent_8java_source.html#l00123">123</a> of file <a class="el" href="_kit_robot_agent_8java_source.html">KitRobotAgent.java</a>.</p>
 
 </div>
 </div>
@@ -709,116 +766,33 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_kit_robot_agent_8java_source.html#l00193">193</a> of file <a class="el" href="_kit_robot_agent_8java_source.html">KitRobotAgent.java</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a3ca4700400d97f648055ed6bee53c0ab"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void factory.factory201.kitManagement.KitRobotAgent.setCamera </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="interfacefactory_1_1factory201_1_1interfaces_1_1_camera.html">Camera</a>&#160;</td>
-          <td class="paramname"><em>agent</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Sets the camera agent. </p>
-<p>Sets the camera agent</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">agent</td><td>Camera agent to be set </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Definition at line <a class="el" href="_kit_robot_agent_8java_source.html#l00179">179</a> of file <a class="el" href="_kit_robot_agent_8java_source.html">KitRobotAgent.java</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a5b34eae0ad747e886f5930bd58af72a5"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void factory.factory201.kitManagement.KitRobotAgent.setConveyor </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="interfacefactory_1_1factory201_1_1interfaces_1_1_conveyor.html">Conveyor</a>&#160;</td>
-          <td class="paramname"><em>agent</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Sets the conveyor agent. </p>
-<p>Sets the conveyor agent</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">agent</td><td>Conveyor Agent to be set </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Definition at line <a class="el" href="_kit_robot_agent_8java_source.html#l00169">169</a> of file <a class="el" href="_kit_robot_agent_8java_source.html">KitRobotAgent.java</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a27c852108a1a692a9c510f731a453c0e"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void factory.factory201.kitManagement.KitRobotAgent.setPartsAgent </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="interfacefactory_1_1factory201_1_1interfaces_1_1_parts_interface.html">PartsInterface</a>&#160;</td>
-          <td class="paramname"><em>agent</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Sets the parts agent. </p>
-<p>Sets the parts agent</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">agent</td><td>Parts agent to be set </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Definition at line <a class="el" href="_kit_robot_agent_8java_source.html#l00189">189</a> of file <a class="el" href="_kit_robot_agent_8java_source.html">KitRobotAgent.java</a>.</p>
+<p>Definition at line <a class="el" href="_kit_robot_agent_8java_source.html#l00167">167</a> of file <a class="el" href="_kit_robot_agent_8java_source.html">KitRobotAgent.java</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="ae7307f7aa30f8baafdf80f407f775ef3"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Semaphore factory.factory201.kitManagement.KitRobotAgent.animation = new Semaphore(0, true)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_kit_robot_agent_8java_source.html#l00033">33</a> of file <a class="el" href="_kit_robot_agent_8java_source.html">KitRobotAgent.java</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="abf30bece9573ee4f74744a83334929bc"></a>
 <div class="memitem">
 <div class="memproto">
@@ -837,7 +811,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_kit_robot_agent_8java_source.html#l00027">27</a> of file <a class="el" href="_kit_robot_agent_8java_source.html">KitRobotAgent.java</a>.</p>
+<p>Definition at line <a class="el" href="_kit_robot_agent_8java_source.html#l00028">28</a> of file <a class="el" href="_kit_robot_agent_8java_source.html">KitRobotAgent.java</a>.</p>
 
 </div>
 </div>
@@ -859,11 +833,11 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_kit_robot_agent_8java_source.html#l00026">26</a> of file <a class="el" href="_kit_robot_agent_8java_source.html">KitRobotAgent.java</a>.</p>
+<p>Definition at line <a class="el" href="_kit_robot_agent_8java_source.html#l00027">27</a> of file <a class="el" href="_kit_robot_agent_8java_source.html">KitRobotAgent.java</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="af86fec924981283e4c78cd64dcd35e1a"></a>
+<a class="anchor" id="a048ed2cd36a6fe332b5701657a5150a8"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -871,7 +845,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int factory.factory201.kitManagement.KitRobotAgent.emptyKitRequestsFromPartsAgent</td>
+          <td class="memname">boolean factory.factory201.kitManagement.KitRobotAgent.factoryRunning = false</td>
         </tr>
       </table>
   </td>
@@ -881,7 +855,29 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_kit_robot_agent_8java_source.html#l00024">24</a> of file <a class="el" href="_kit_robot_agent_8java_source.html">KitRobotAgent.java</a>.</p>
+<p>Definition at line <a class="el" href="_kit_robot_agent_8java_source.html#l00034">34</a> of file <a class="el" href="_kit_robot_agent_8java_source.html">KitRobotAgent.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a476517fed2f51eda7f1e1e8f45674eab"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int factory.factory201.kitManagement.KitRobotAgent.kitRequestsFromPartsAgent</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_kit_robot_agent_8java_source.html#l00031">31</a> of file <a class="el" href="_kit_robot_agent_8java_source.html">KitRobotAgent.java</a>.</p>
 
 </div>
 </div>
@@ -903,7 +899,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_kit_robot_agent_8java_source.html#l00023">23</a> of file <a class="el" href="_kit_robot_agent_8java_source.html">KitRobotAgent.java</a>.</p>
+<p>Definition at line <a class="el" href="_kit_robot_agent_8java_source.html#l00030">30</a> of file <a class="el" href="_kit_robot_agent_8java_source.html">KitRobotAgent.java</a>.</p>
 
 </div>
 </div>
@@ -925,11 +921,11 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_kit_robot_agent_8java_source.html#l00028">28</a> of file <a class="el" href="_kit_robot_agent_8java_source.html">KitRobotAgent.java</a>.</p>
+<p>Definition at line <a class="el" href="_kit_robot_agent_8java_source.html#l00029">29</a> of file <a class="el" href="_kit_robot_agent_8java_source.html">KitRobotAgent.java</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a855031c1e163d12c6efa5990a79079f5"></a>
+<a class="anchor" id="ac074c257b2cb3a5a451d0b06b9e22dbc"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -937,7 +933,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">boolean factory.factory201.kitManagement.KitRobotAgent.requestedEmptyKit</td>
+          <td class="memname">boolean factory.factory201.kitManagement.KitRobotAgent.requestedKitFromConveyor</td>
         </tr>
       </table>
   </td>
@@ -947,7 +943,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_kit_robot_agent_8java_source.html#l00025">25</a> of file <a class="el" href="_kit_robot_agent_8java_source.html">KitRobotAgent.java</a>.</p>
+<p>Definition at line <a class="el" href="_kit_robot_agent_8java_source.html#l00032">32</a> of file <a class="el" href="_kit_robot_agent_8java_source.html">KitRobotAgent.java</a>.</p>
 
 </div>
 </div>
@@ -957,7 +953,7 @@ Additional Inherited Members</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 17 2012 01:37:08 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Dec 1 2012 12:34:16 for Factory Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

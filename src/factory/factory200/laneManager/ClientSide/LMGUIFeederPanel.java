@@ -1,7 +1,6 @@
 package factory.factory200.laneManager.ClientSide;
 
-import java.awt.FlowLayout;
-
+import java.awt.GridLayout;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.border.TitledBorder;
@@ -17,11 +16,7 @@ public class LMGUIFeederPanel extends JPanel{
 	private JRadioButton onFeederSwitch = new JRadioButton("ON");
 	private JRadioButton offFeederSwitch = new JRadioButton("OFF");
 	private LMGUIContentPanel feederSwitchPanel = new LMGUIContentPanel(onFeederSwitch, offFeederSwitch, feederSwitchTitle);
-	
-	// Part Low Switch
-	private TitledBorder partLowSensorTitle = new TitledBorder("Part Low Sensor");
-	private LMGUIContentPanel partLowSensorPanel = new LMGUIContentPanel(partLowSensorTitle);
-	
+
 	// Feed Parts Switch
 	private TitledBorder feedPartsSwitchTitle = new TitledBorder("Feed Parts Switch");
 	private JRadioButton onFeedPartsSwitch = new JRadioButton("ON");
@@ -32,19 +27,7 @@ public class LMGUIFeederPanel extends JPanel{
 	private TitledBorder partFedCounterTitle = new TitledBorder("Parts Fed Counter");
 	private int partFedCounter = 0;
 	private LMGUIContentPanel partFedCounterPanel = new LMGUIContentPanel(partFedCounter, partFedCounterTitle);
-	
-	// Lower/Raise Rear Gate Switch
-	private TitledBorder lowerRaiseRearGateSwitchTitle = new TitledBorder("Rear Gate Lower/Raise Gate Switch");
-	private JRadioButton onLowerRaiseRearGateSwitch = new JRadioButton("RAISE");
-	private JRadioButton offLowerRaiseRearGateSwitch = new JRadioButton("LOWER");
-	private LMGUIContentPanel lowerRaiseRearGateSwitchPanel = new LMGUIContentPanel(onLowerRaiseRearGateSwitch, offLowerRaiseRearGateSwitch, lowerRaiseRearGateSwitchTitle);
-	
-	// Purge Bin Switch
-	private TitledBorder purgeBinSwitchTitle = new TitledBorder("Purge Bin");
-	private JRadioButton onPurgeBinSwitch = new JRadioButton("ON");
-	private JRadioButton offPurgeBinSwitch = new JRadioButton("OFF");
-	private LMGUIContentPanel purgeBinSwitchPanel = new LMGUIContentPanel(onPurgeBinSwitch, offPurgeBinSwitch, purgeBinSwitchTitle);
-	
+
 	// Diverter Left/Right Switch
 	private TitledBorder diverterLeftRightSwitchTitle = new TitledBorder("Diverter Left/Right");
 	private JRadioButton leftDiverterSwitch = new JRadioButton("LEFT");
@@ -52,20 +35,11 @@ public class LMGUIFeederPanel extends JPanel{
 	private LMGUIContentPanel diverterLeftRightSwitchPanel = new LMGUIContentPanel(leftDiverterSwitch, rightDiverterSwitch, diverterLeftRightSwitchTitle);
 
 	public LMGUIFeederPanel(){
-		// Layout Setting
-		setLayout(new FlowLayout(FlowLayout.CENTER,0,11));
-		
-		// Add GUI contents
+		setLayout(new GridLayout(4,1));
 		add(feederSwitchPanel);
-		add(partLowSensorPanel);
 		add(feedPartsSwitchPanel);
 		add(partFedCounterPanel);
-		add(lowerRaiseRearGateSwitchPanel);
-		add(purgeBinSwitchPanel);
 		add(diverterLeftRightSwitchPanel);
-		
-		setPurgeBinSwitchOff();
-		setLowerRaiseRearGateSwitchOff();
 		setDivertToRight();
 	}
 
@@ -75,14 +49,6 @@ public class LMGUIFeederPanel extends JPanel{
 
 	public void setFeederSwitchOff(){
 		offFeederSwitch.setSelected(true);
-	}
-
-	public void setFeederPartLowSensor(){
-		partLowSensorPanel.setSensor(true);
-	}
-
-	public void setFeederPartHighSensor(){
-		partLowSensorPanel.setSensor(false);
 	}
 
 	public void setFeederFeedPartsSwitchOn(){
@@ -95,22 +61,6 @@ public class LMGUIFeederPanel extends JPanel{
 
 	public void setPartFedCounterIncrease(){
 		partFedCounterPanel.setCounter();
-	}
-
-	public void setLowerRaiseRearGateSwitchOn(){
-		onLowerRaiseRearGateSwitch.setSelected(true);
-	}
-
-	public void setLowerRaiseRearGateSwitchOff(){
-		offLowerRaiseRearGateSwitch.setSelected(true);
-	}
-
-	public void setPurgeBinSwitchOn(){
-		onPurgeBinSwitch.setSelected(true);
-	}
-
-	public void setPurgeBinSwitchOff(){
-		offPurgeBinSwitch.setSelected(true);
 	}
 
 	public void setDivertToLeft(){

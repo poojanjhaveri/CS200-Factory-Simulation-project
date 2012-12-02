@@ -10,6 +10,7 @@ package factory.factory200.kitAssemblyManager;
  */
 import factory.factory200.kitAssemblyManager.*;
 import factory.general.GUIPart;
+import factory.general.Global;
 import factory.general.Manager;
 import factory.general.Message;
 import factory.general.Part;
@@ -71,11 +72,11 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
     int emptyKits;
     int counter;
     int cameraCounter;
-    boolean deliveryStation;
+    public boolean deliveryStation;
     Timer timer;
     boolean stationRun;
     
-    KitAssemblyManager kam;
+    public KitAssemblyManager kam;
     
     //private ImageIcon backgroundImage = new ImageIcon("pics/background/part1");
 
@@ -124,7 +125,7 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
 
         counter = 0;
         cameraCounter = 0;
-        timer = new Timer(20, new DeliveryTimer(this));
+        timer = new Timer(Global.STANDARD_TIMER_SPEED, new DeliveryTimer(this));
         timer.start();
 
     }
@@ -138,9 +139,6 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
         }
 
         public void actionPerformed(ActionEvent ae) {
-            if (camera.isVisible()) {
-                cameraCounter++;
-            }
             int size=delivery.getPlaceholder().size();
             //PlaceHolder temp=new PlaceHolder();
             if (deliveryStation == true && delivery.getPlaceholder().size()>0){
@@ -150,7 +148,7 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
                             int yPlace = delivery.getPlaceholder().get(i).getY();
                             int number = i* 150;
                             
-                            if (yPlace == KAMGraphicPanel.EMPTY_CONVEYERY && delivery.getPlaceholder().get(i).isShow()) {
+                            if (yPlace == KAMGraphicPanel.EMPTY_CONVEYERY && delivery.getPlaceholder().get(i).isShow() && !(delivery.getPlaceholder().get(i).getKit().isFinished())) {
                                 stationRun = false;
                                 break;
                             }
@@ -170,19 +168,7 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
                             }
                             else
                                 delivery.getPlaceholder().get(i).setY(680);
-                            /*if(delivery.getPlaceholder().get(i).getKit()==null || !(delivery.getPlaceholder().get(i).getKit().isFinished()))
-                            delivery.getPlaceholder().get(i).setY(680);
-                            else{
-                                //delivery.setNumEmptyKits(delivery.getPlaceholder().size()-1);
-                                //delivery.getPlaceholder().add(delivery.getPlaceholder().get(i));
-                                delivery.getPlaceholder().remove(i);
-                            }
-                            }*/
-                            
-                        //while(delivery.getPlaceholder().get(delivery.getPlaceholder().size()).getKit().isFinished()){
-                        //        delivery.getPlaceholder().remove(delivery.getPlaceholder().size());
-                                
-                        //}
+                           
                         }
                         counter = 0;
                     }
@@ -227,25 +213,9 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
                             }
                             else
                                 delivery.getPlaceholder().get(i).setY(680);
-                            /*
-                            if(delivery.getPlaceholder().get(i).getKit()==null || !delivery.getPlaceholder().get(i).getKit().isFinished()){
-                            delivery.getPlaceholder().get(i).setY(680);
-                            }
                             
-                            else{
-                                //delivery.setNumEmptyKits(delivery.getPlaceholder().size()-1);
-                                //delivery.getPlaceholder().add(delivery.getPlaceholder().get(i));
-                                delivery.getPlaceholder().remove(i);
-                            }
-                            
-                            
-                        }*/
                         }
-                        //while(delivery.getPlaceholder().get(delivery.getPlaceholder().size()).getKit().isFinished()){
-                        //        delivery.getPlaceholder().remove(delivery.getPlaceholder().size());
-                                
-                       
-                    //}
+                        
                         counter = 0;
                     }
                 }
@@ -253,10 +223,7 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
                     for (int i = 0; i < delivery.getPlaceholder().size(); i++) {
                         int yPlace = delivery.getPlaceholder().get(i).getY();
                         delivery.getPlaceholder().get(i).setY(yPlace);
-                        //System.out.println("placeholder "+i+": "+delivery.getPlaceholder().get(i).getY());
-                        //if (delivery.getPlaceholder().get(i).isShow()) {
-                        //    delivery.getPlaceholder().get(i).getKit().updateParts();
-                        //}
+                        
                         if (yPlace == KAMGraphicPanel.FULL_CONVEYERY && (delivery.getPlaceholder().get(i).isShow())) {
                             stationRun = true;
                             deliveryStation = true;
@@ -300,7 +267,10 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
                         break;
 		case 7://drop kit onto placeholder
                         if (delivery.inEmptyPostion()) {
+                            //deliveryStation=true;
+                            //stationRun=true;
                             delivery.takeKit(kitbot.dropKit());
+                            
                         }
                         break;
 		case 50://thread releases
@@ -393,6 +363,9 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
 
 	Random rand = new Random();//random numgen
         for (int k = 0; k < this.nest.size(); k++) {
+	    //	    if(this.partsRobotInWay(k)){
+	    //		System.out.println("Parts robot is in the way of nest " + k);
+	    //	    }
             for (int i = 0; i < this.nest.get(k).getParts().size(); i++) {
                 //System.out.println(j.nest.get(0).getParts().get(i).getGUIPart());
 		int offsetx = 0;
@@ -416,10 +389,11 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
         }
         kitter.paintMe(this, g2);
         if (camera.isVisible()) {
+            cameraCounter++;
             camera.getCamera().paintIcon(this, g2, camera.getX(), camera.getY());
 
         }
-        if (camera.isVisible() && cameraCounter == 20) {
+        if (camera.isVisible() && cameraCounter >= 20) {
             camera.setVisible(false);
             cameraCounter = 0;
         }
@@ -440,4 +414,47 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
     }
     public void actionPerformed(ActionEvent ae) {
     }
+    public boolean partsRobotInWay(int nestnum)
+    {
+	if(this.kitter.getX() < RAILX-5)
+	    return false;
+	switch(nestnum)
+	    {
+	    case 0:
+		if(this.kitter.getY() < LANE0Y+ 5 && this.kitter.getY() > LANE0Y-5)
+		    return true;
+		break;
+	    case 1:
+		if(this.kitter.getY() == LANE1Y+ 5 && this.kitter.getY() > LANE1Y-5)
+		    return true;
+		break;
+	    case 2:
+		if(this.kitter.getY() == LANE2Y+ 5 && this.kitter.getY() > LANE2Y-5)
+		    return true;
+		break;
+	    case 3:
+		if(this.kitter.getY() == LANE3Y+ 5 && this.kitter.getY() > LANE3Y-5)
+		    return true;
+		break;
+	    case 4:
+		if(this.kitter.getY() == LANE4Y+ 5 && this.kitter.getY() > LANE4Y-5)
+		    return true;
+		break;
+	    case 5:
+		if(this.kitter.getY() == LANE5Y+ 5 && this.kitter.getY() > LANE5Y-5)
+		    return true;
+		break;
+	    case 6:
+		if(this.kitter.getY() == LANE6Y+ 5 && this.kitter.getY() > LANE6Y-5)
+		    return true;
+		break;
+	    case 7:
+		if(this.kitter.getY() == LANE7Y+ 5 && this.kitter.getY() > LANE7Y-5)
+		    return true;
+		break;
+	    }
+	return false;
+    }
+
 }
+

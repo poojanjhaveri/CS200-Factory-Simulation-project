@@ -8,7 +8,10 @@ import factory.general.Part;
 
 import javax.swing.ImageIcon;
 
-
+/**
+ * @brief a bin
+ * @author Yuting Liu
+ */
 public class GUIBin{
 	
 	String binPictureName;

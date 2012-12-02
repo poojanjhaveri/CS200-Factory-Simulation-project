@@ -65,7 +65,7 @@ public class LMControlPanel1 extends JPanel implements ActionListener{
 	}
 
 	public void actionPerformed(ActionEvent ae){
-		chosenFeeder = feederList[ feederNum.getSelectedIndex() ] - 1;
+		chosenFeeder = feederNum.getSelectedIndex();
 		
 		if(ae.getSource() == b0){
 			agentFeeder.setSwitchOn( chosenFeeder );
