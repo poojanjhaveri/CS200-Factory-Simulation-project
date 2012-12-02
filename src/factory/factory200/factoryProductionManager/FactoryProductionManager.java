@@ -591,8 +591,12 @@ public class FactoryProductionManager extends Manager implements ActionListener 
             mparts.setLayout(new GridBagLayout());
             GridBagConstraints c = new GridBagConstraints();
             
+            c.gridx=0;
+            c.gridy=0;
+            c.gridwidth=2;
+            
             kitnorname = new JLabel("");
-            mparts.add(kitnorname);
+            mparts.add(kitnorname,c);
             nonnormupdate = new JButton("Update this kit ");
             nonnormupdate.setEnabled(false);
             
@@ -610,7 +614,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
         
         for(int i=0;i<this.selectedKits.get(this.selectedKits.size()-1).getSize();i++)
         {
-           c.gridx=1;
+           c.gridx=0;
            c.gridy=i+1;
            JButton b1 = new JButton("Remove Part" + i);
            nonnormpart.add(new JButton("Remove Part" + i+1));
