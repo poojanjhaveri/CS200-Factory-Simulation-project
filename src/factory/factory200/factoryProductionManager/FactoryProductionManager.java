@@ -58,11 +58,12 @@ public class FactoryProductionManager extends Manager implements ActionListener 
 
     public GraphicsPanel gfx;
 
-    private String nameToAdd;
-    private Kit kitToAdd;
+    private String nameToAdd; // name of currently selected kit in combo box, selKit
+    private Kit kitToAdd; // currently selected kit in the combo box (selKit); clicking 'add kit' adds this kit to selectedKits and puts its name on the pending queue text area
     private int qtyToAdd;
-    private ArrayList<String> availableKits;
-    private ArrayList<Kit> selectedKits;
+    private ArrayList<String> availableKits; // strings in the combobox selKit; generally, availableKits.get(i) refers to selKit.getItemAt(i)
+    private ArrayList<Kit> selectedKits; // stores the selected kits before the kits are added to production queue
+    		// so say you select kit1 with the combo box and put 20 in the text field; we end up with 20 of kit1 in selectedKits
 
     private boolean kitListFromServerIsEmpty; // true if kit list from server is empty
     private boolean constructed; // variable to determine if this class's constructor has finished; used for real time updates
@@ -401,10 +402,8 @@ public class FactoryProductionManager extends Manager implements ActionListener 
     }
 
     //Functionality for JComboBox usage
-    private void selKitRoutine(Object source)
-    {
-        if(selKit.getItemCount() == kitsbp.getKits().size())
-        {
+    private void selKitRoutine(Object source) {
+        if(selKit.getItemCount() == kitsbp.getKits().size()) {
             JComboBox cb = (JComboBox)source;
             nameToAdd = (String)cb.getSelectedItem();
             p.println("Name to add = " + nameToAdd);
@@ -415,14 +414,16 @@ public class FactoryProductionManager extends Manager implements ActionListener 
         }
     }
     
-    //Functionality for JComboBox usage
+    // Functionality for JComboBox usage
+    // Set the combo box item that is selected in selKit 
     private void setComboBoxSelection() {
-            nameToAdd = (String)selKit.getSelectedItem();
-            p.println("Name to add = " + nameToAdd);
+    	nameToAdd = (String) selKit.getSelectedItem(); // get the name of the selected item from the combo box
+    	p.println("Name to add = " + nameToAdd);
 
-            for(Kit kitty : kitsbp.getKits())
-                if(nameToAdd.equals(kitty.getName()))
-                    kitToAdd = kitty;
+    	// TODO
+    	for(Kit kitty : kitsbp.getKits())
+    		if(nameToAdd.equals(kitty.getName()))
+    			kitToAdd = kitty;
     }
 
     //Deserialize messages from server
@@ -459,34 +460,43 @@ public class FactoryProductionManager extends Manager implements ActionListener 
     }
 
     // Finalize creation of dynamic components; follows server pull thread
+    // post condition: availableKits.get(i) refers to selKit.getItemAt(i), and both are properly populated
     public void reconstructComboBox() {
-        p.println("Incoming number of kits = " + kitsbp.getKits().size());
+    	p.println("Incoming number of kits = " + kitsbp.getKits().size());
+    	p.println("----reconstructComboBox(): Printing available kits----");
+        for (String kit : availableKits)
+        	p.println(kit);
         
         availableKits.clear();
-        //Populate Combobox array with names of Blueprint Kits
+
+        // Populate Combobox array with names of Blueprint Kits
         for(int i=0;i<kitsbp.getKits().size();i++) {
             //Populate string list of names of incoming kits
             p.println(kitsbp.getKits().get(i).getName());
             availableKits.add(kitsbp.getKits().get(i).getName());
         }
-        p.println("Available kits size = " + availableKits.size());
+        p.println("---New list of kits in available kits (size = " + availableKits.size()+")---");
+        for (String kit : availableKits)
+        	p.println(kit);
         
         // Clears each item in selKit
 //        selKit.removeAllItems(); // mysteriously doesn't work according to Matt!
-        for(int i=0; i<selKit.getItemCount(); i++) {
+        int size = selKit.getItemCount(); // need constant store of selKit's original item count
+        for (int i=0; i<size; i++) {
             selKit.removeItemAt(0);
         }
-        p.println("Just removed all kits: new count: "+selKit.getItemCount());
+        p.println("--Just removed all kits: new size of combo box: "+selKit.getItemCount());
         
-        //Add strings to the combobox component
-        for(String kitty : availableKits) {
+        // Add strings to the combobox component
+        for (String kitty : availableKits) {
             selKit.addItem(kitty);
         }
-        p.println("Just added string to combo box: new size: " + selKit.getItemCount());
-        //if the incoming kit list isn't empty, make the combo box now
+        p.println("Just added each string from available Kits to combo box: new size: " + selKit.getItemCount() + " should equal " + availableKits.size());
+
+        // if the incoming kit list isn't empty, make the combo box now
         if (!kitListFromServerIsEmpty) {
             selKit.setSelectedItem(0);
-            p.println("Name to add? = " + (String)selKit.getSelectedItem());
+            p.println("Name to add = " + (String)selKit.getSelectedItem());
             setComboBoxSelection();
         }
 
@@ -496,6 +506,11 @@ public class FactoryProductionManager extends Manager implements ActionListener 
             queuePanel.add(queuePane);
             basePanel.updateUI();
         }
+        p.println("--Final available kits list--");
+        for (String kit : availableKits)
+        	p.println(kit);
+        
+        p.println("--end reconstruct--");
     }
 
     //Commit list, push to server
