@@ -118,11 +118,11 @@ public class GUINonNormKAM  extends JPanel {
         		c.insets=new Insets(5,0,0,0);
         		c.gridx=i;
         		c.gridy=5+j;
-        		this.piled = new JButton("Toggle piling"+(j*4+i));
-        		if(!this.piledColor.get(j*4+i))
+        		this.piled = new JButton("Pile Nest "+(j*4+i));
+        	/*	if(!this.piledColor.get(j*4+i))
         		this.piled.setBackground(Color.GREEN);
         		else
-        			this.piled.setBackground(Color.RED);
+        			this.piled.setBackground(Color.RED); */
         		this.piled.setOpaque(true);
         		this.piled.setPreferredSize(new Dimension(120,45));
         		this.piled.addActionListener(this.kam);
