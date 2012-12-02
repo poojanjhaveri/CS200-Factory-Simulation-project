@@ -336,4 +336,13 @@ public class GantryAgent extends Agent implements Gantry {
 	}
         public void setServer(LMServerMain server)
         {this.serverMain=server;}
+
+    public void freezeGantryRobot()
+    {
+	this.client.sendMessage(Message.FREEZE_GANTRY_ROBOT);
+    }
+    public void unfreezeGantryRobot()
+    {
+	this.client.sendMessage(Message.UNFREEZE_GANTRY_ROBOT);
+    }
 }
