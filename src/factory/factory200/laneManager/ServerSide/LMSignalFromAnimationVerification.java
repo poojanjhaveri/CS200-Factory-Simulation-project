@@ -40,31 +40,5 @@ public class LMSignalFromAnimationVerification {
 			// Tell the agent that clicked the button
 			serverMain.getFeederAgents()[laneNestNum / 2].msgLaneJammed(laneNestNum);
 		}
-		
-		// Non-normative Scenario 3
-		else if(message.contains("PART_PILED") ) {
-			laneNestNum = message.charAt(0) - 48;
-			serverMain.sendToLM(laneNestNum + "&Non&Piled&");
-			serverMain.sendToFPM(laneNestNum + "&Non&Piled&");
-			serverMain.sendToKAM(laneNestNum + "&Non&Piled&");
-			
-			// Setup the camera setup
-			serverMain.getForAgentNestCamera().startPiledPart(laneNestNum);
-		}
-		
-		// Non-normative Scenario 4
-		else if(message.contains("PART_TOGGLING") ){
-			laneNestNum = message.charAt(0) - 48;
-			serverMain.sendToLM(laneNestNum + "&Non&Toggling&");
-			serverMain.sendToFPM(laneNestNum + "&Non&Toggling&");
-			serverMain.sendToKAM(laneNestNum + "PART_TOGGLING");
-		}
-		
-		else if(message.contains("PART_UNTOGGLING")) {
-			laneNestNum = message.charAt(0) - 48;
-			serverMain.sendToLM(laneNestNum + "&Non&UnToggling&");
-			serverMain.sendToFPM(laneNestNum + "&Non&UnToggling&");
-			serverMain.sendToKAM(laneNestNum + "PART_UNTOGGLING");
-		}
 	}
 }

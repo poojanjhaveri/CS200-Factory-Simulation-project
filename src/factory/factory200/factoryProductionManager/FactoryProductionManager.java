@@ -60,6 +60,8 @@ public class FactoryProductionManager extends Manager implements ActionListener 
     private JScrollPane schedPane, outPane, queuePane;
     private JTabbedPane tabs;
     
+    JPanel nonnorm;
+    
     private ArrayList<Kit> prodQueue; // used for queue of kits
 
     public GraphicsPanel gfx;
@@ -75,6 +77,10 @@ public class FactoryProductionManager extends Manager implements ActionListener 
     private boolean kitListFromServerIsEmpty; // true if kit list from server is empty
     private boolean constructed; // variable to determine if this class's constructor has finished; used for real time updates
     private BlueprintKits kitsbp;
+    
+    
+    JLabel  kitnorname;
+    
     //	private Image bgimg;
 
     private final static String newline = "\n";
@@ -315,6 +321,15 @@ public class FactoryProductionManager extends Manager implements ActionListener 
         basePanel.setSize(1350, 700);
         tabs.addTab("Control GUI", basePanel);
         tabs.addTab("Simulation", gfx);
+       
+        nonnorm = new JPanel();
+        preparenonnorm();
+        tabs.addTab("Non-normative",nonnorm);
+        
+        
+        
+        
+        
         gfx.repaint();
 
         //Register ActionListeners
@@ -325,6 +340,9 @@ public class FactoryProductionManager extends Manager implements ActionListener 
         reset.addActionListener(this);
 
         mainPanel.add(tabs, BorderLayout.CENTER);
+        
+        
+        
     }
     
     @Override
@@ -537,6 +555,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
     //Commit list, push to server
     void start() 
     {
+        updatenonnorm();
         //add this when you change arraylist to kits
         String msg = Message.PUSH_PRODUCTION_QUEUE+":";
         ArrayList<String> serialized = new ArrayList<String>();
@@ -557,4 +576,25 @@ public class FactoryProductionManager extends Manager implements ActionListener 
         fpm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         fpm.setResizable(false);
     }
+    
+    
+    public void preparenonnorm()
+    {
+            JPanel mparts = new JPanel();
+            mparts.setLayout(new GridBagLayout());
+            GridBagConstraints c = new GridBagConstraints();
+            
+            kitnorname = new JLabel("");
+            mparts.add(kitnorname);
+            nonnorm.add(mparts);
+            
+        
+    }
+    
+    private void updatenonnorm()
+    {
+        kitnorname.setText(this.selectedKits.get(this.selectedKits.size()-1).getName());
+        System.out.println(kitnorname.getText());
+    }
+    
 }
