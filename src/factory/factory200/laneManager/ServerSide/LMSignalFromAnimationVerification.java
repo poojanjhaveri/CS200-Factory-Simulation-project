@@ -57,14 +57,14 @@ public class LMSignalFromAnimationVerification {
 			laneNestNum = message.charAt(0) - 48;
 			serverMain.sendToLM(laneNestNum + "&Non&Toggling&");
 			serverMain.sendToFPM(laneNestNum + "&Non&Toggling&");
-			serverMain.sendToKAM(laneNestNum + "PART_TOGGLING");
+			serverMain.sendToKAM(laneNestNum + "&Non&Toggling&");
 		}
 		
 		else if(message.contains("PART_UNTOGGLING")) {
 			laneNestNum = message.charAt(0) - 48;
 			serverMain.sendToLM(laneNestNum + "&Non&UnToggling&");
 			serverMain.sendToFPM(laneNestNum + "&Non&UnToggling&");
-			serverMain.sendToKAM(laneNestNum + "PART_UNTOGGLING");
+			serverMain.sendToKAM(laneNestNum + "&Non&UnToggling&");
 		}
 	}
 }
