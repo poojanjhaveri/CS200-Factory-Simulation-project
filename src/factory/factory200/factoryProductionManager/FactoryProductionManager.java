@@ -597,7 +597,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
             nonnormupdate.setEnabled(false);
             
         //    mparts.add(nonnormupdate);
-            
+              nonnormpart = new ArrayList();
             nonnorm.add(mparts);
 
     }
@@ -612,10 +612,11 @@ public class FactoryProductionManager extends Manager implements ActionListener 
         {
            c.gridx=1;
            c.gridy=i+1;
-           JButton b1 = new JButton("Remove Part");
-           b1.addActionListener(new updatebuttonnorm());
-           b1.setIcon(new ImageIcon(this.selectedKits.get(this.selectedKits.size()-1).getPart(i).getFilename()));
-           mparts.add(b1,c);
+           JButton b1 = new JButton("Remove Part" + i);
+           nonnormpart.add(new JButton("Remove Part" + i+1));
+           nonnormpart.get(i).addActionListener(new updatebuttonnorm());
+         nonnormpart.get(i).setIcon(new ImageIcon(this.selectedKits.get(this.selectedKits.size()-1).getPart(i).getFilename()));
+           mparts.add(nonnormpart.get(i),c);
            
         }
         
@@ -625,12 +626,20 @@ public class FactoryProductionManager extends Manager implements ActionListener 
      public class updatebuttonnorm implements ActionListener
          {
     
-         public void actionPerformed(ActionEvent e) {
+         public void actionPerformed(ActionEvent ae) {
              
              
-           
-            }
+             for(int k=0;k<nonnormpart.size();k++)
+             {
+             if(ae.getSource()==nonnormpart.get(k))
+             {
+                 System.out.println("Button  is pressed "+k);
+                 
+             }
+             }
+             
     
        }
     
+     }
 }
