@@ -158,6 +158,7 @@ public void pickUpEmptyKitToActive()
         this.orders.add(11);
         this.orders.add(4);
 	this.orders.add(50);
+
     }
 
     /**

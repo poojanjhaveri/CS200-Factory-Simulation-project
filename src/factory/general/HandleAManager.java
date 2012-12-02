@@ -299,7 +299,9 @@ public class HandleAManager implements Runnable {
 		this.server.getCameraAgent().partsRobotDroppedPart(Part.deserialize(this.grabParameter(msg)));
 	    }else if(msg.contains(Message.EARLY_CAMERA_FLASH)){
 		this.server.getNestAgent().msgRequestEarlyInspection();
-	    }
+	    }else if(msg.contains(Message.KAM_MOVE_FROM_2_TO_0)){
+                //deepa, add here
+            }
 
     }
 
