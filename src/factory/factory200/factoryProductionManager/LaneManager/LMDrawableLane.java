@@ -12,7 +12,7 @@ public class LMDrawableLane {
 	
 	private LMDrawableTrack newTrack;
 	private ArrayList<LMDrawableTrack> tracks = new ArrayList<LMDrawableTrack>();
-	private boolean laneSwitch = false;
+	private Boolean laneSwitch = false;
 	private int vibrationAmplitude = 0;
 	private int laneY, newLaneY;
 	private double randomVar;
@@ -53,11 +53,11 @@ public class LMDrawableLane {
 		}
 	}
 	
-	public void setSwitch(boolean laneSwitch){
+	public void setSwitch(Boolean laneSwitch){
 		this.laneSwitch = laneSwitch;
 	}
 	
-	public boolean getSwitch(){
+	public Boolean getSwitch(){
 		return laneSwitch;
 	}
 
