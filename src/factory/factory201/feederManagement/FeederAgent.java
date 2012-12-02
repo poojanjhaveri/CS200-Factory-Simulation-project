@@ -330,7 +330,9 @@ public class FeederAgent extends Agent implements Feeder {
                 Logger.getLogger(FeederAgent.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        
         else{
+        //if the feeder is not faulty
         dosendPartToLeftLane(p);
         leftLane.msgHereAreParts(mparts);
             
