@@ -127,7 +127,7 @@ public class NestAgent extends Agent implements NestInterface {
         else if (result.is == Result.Is.robotInTheWay){
             
             print("Accepted that parts robot was in the way will ask later for inspection");
-            
+            //tell to move in front of nest
             
         }
         
@@ -242,10 +242,11 @@ public class NestAgent extends Agent implements NestInterface {
          if(!needParts.isEmpty()){
                 
              for (Nest n: myNests){
+                 if (n.part.type !=null){
                    if(n.part.type == needParts.get(0).type){
                        needParts.remove(0);
                        return true;
-                   }
+                   }}
                }
              
              for (Nest n: myNests){
