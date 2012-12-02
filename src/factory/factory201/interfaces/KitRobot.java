@@ -1,6 +1,8 @@
 package factory.factory201.interfaces;
 
 import factory.general.Kit;
+import factory.general.Part;
+import java.util.List;
 
 /**
  * @brief contains all of the messages for the KitRobotAgent This interface
@@ -14,7 +16,9 @@ public interface KitRobot {
 
     public void msgHereIsEmptyKit(Kit kit);
 
-    public void msgKitInspected(int result);
+    public void msgKitInspectedNoError();
+    
+    public void msgKitInspectedError(List<Part> missingParts);
 
     public void msgKitIsFull(Kit kit);
 

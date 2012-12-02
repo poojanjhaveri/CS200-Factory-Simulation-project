@@ -296,7 +296,7 @@ public class HandleAManager implements Runnable {
 		this.server.getCameraAgent().msgPartsShaking(Integer.parseInt(this.grabParameter(msg)));
 	    }else if(msg.contains(Message.KAM_BAD_KIT)){
 		//handle bad kit nonnorm NOTE: bad kit == DROPPED != INSPECTED!!!!
-		this.server.getCameraAgent().partsRobotDroppedPart(Part.deserialize(this.grabParameter(msg)));
+		this.server.getCameraAgent().msgPartsRobotDroppedPart(Part.deserialize(this.grabParameter(msg)));
 	    }else if(msg.contains(Message.EARLY_CAMERA_FLASH)){
 		this.server.getNestAgent().msgRequestEarlyInspection();
 	    }

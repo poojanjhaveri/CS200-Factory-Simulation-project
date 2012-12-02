@@ -295,7 +295,7 @@ public class Server {
             }
             if (ALEX) {
                 kitRobotAgent.print = true;
-                conveyorAgent.print = false;
+                conveyorAgent.print = true;
                 cameraAgent.print = true;
             }
       }
