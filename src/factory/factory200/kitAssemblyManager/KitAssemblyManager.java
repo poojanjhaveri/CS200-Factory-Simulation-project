@@ -260,7 +260,8 @@ public class KitAssemblyManager extends Manager implements ActionListener {
                 this.nonnorm.removeAll();
                 this.nonnorm.preparemainpanel();
             }
-            if (ae.getSource() == this.nonnorm.getStabilityButton(i)) {
+	
+            else if (ae.getSource() == this.nonnorm.getStabilityButton(i)) {
                 if (!this.nonnorm.unstableColor.get(i)) {
                     this.sendToServer(Message.KAM_NEST_UNSTABLE + ":" + i);
                 }
@@ -269,11 +270,10 @@ public class KitAssemblyManager extends Manager implements ActionListener {
                 this.nonnorm.removeAll();
                 this.nonnorm.preparemainpanel();
             }
-        }
-        if (ae.getSource() == this.nonnorm.getDropPartButton()) {
+	}
+        else if (ae.getSource() == this.nonnorm.getDropPartButton()) {
 
 
-//DROP A PART HERE FOO
 Part p =	    this.graphics.kitter.dropPartOnGround();
 if(p != null){
     p.debug();
@@ -355,7 +355,7 @@ if(p != null){
             Integer partType = Integer.parseInt(c);
             this.doSetParts(n, partType);
         }
-    }
+	}
 
     /**
      * declares objects within the class and sets the states of each of the

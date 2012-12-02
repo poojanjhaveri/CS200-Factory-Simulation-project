@@ -32,6 +32,7 @@ A queue of orders
 ...
 20 - move to default position
 ...
+49 - wait for one turn
 50 - finished animation
 
  *
@@ -266,7 +267,6 @@ public void pickUpEmptyKitToActive()
         }
         return true;
     }
-
     public void paintMe(JPanel panel, Graphics2D g) {
         Double dy = Math.abs((double) KAMGraphicPanel.KITROBOT_INITIAL_Y - (double) this.getY());
         Double dx = Math.abs((double) KAMGraphicPanel.KITROBOT_INITIAL_X - (double) this.getX());
