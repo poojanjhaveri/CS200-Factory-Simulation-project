@@ -16,5 +16,3 @@ START java -cp bin factory.factory200.gantryRobotManager.GantryRobotManager
 START java -cp bin factory.factory200.laneManager.ClientSide.V2LaneManager
 START java -cp bin factory.factory200.kitAssemblyManager.KitAssemblyManager
 START java -cp bin factory.factory200.factoryProductionManager.FactoryProductionManager
-echo "All managers opened"
-pause
