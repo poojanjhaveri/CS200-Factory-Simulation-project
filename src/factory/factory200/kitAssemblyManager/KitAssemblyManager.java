@@ -32,12 +32,13 @@ import factory.general.Part;
  * @author Deepa Borkar, YiWei Roy Zheng
  */
 public class KitAssemblyManager extends Manager implements ActionListener {
-	/**
-	 * To avoid unexpected InvalidClassExceptions during deserialization
-	 * we explicitly specify a UID, instead of relying on the compiler to generate one
-	 */
-	private static final long serialVersionUID = 4L;
-	
+
+    /**
+     * To avoid unexpected InvalidClassExceptions during deserialization we
+     * explicitly specify a UID, instead of relying on the compiler to generate
+     * one
+     */
+    private static final long serialVersionUID = 4L;
     KAMGraphicPanel graphics;
     boolean test = true;
     JTabbedPane tabbedPane;
@@ -113,25 +114,23 @@ public class KitAssemblyManager extends Manager implements ActionListener {
             this.nonnorm.togglePiledColor(i);
             this.nonnorm.removeAll();
             this.nonnorm.preparemainpanel();
-        }else if(msg.contains(Message.NEST_DOWN))
-	    {
-		this.nestDown(Integer.parseInt(this.grabParameter(msg)));
-	    }
-	else if(msg.contains(Message.NEST_UP))
-	    {
-		this.nestUp(Integer.parseInt(this.grabParameter(msg)));
+        } else if (msg.contains(Message.NEST_DOWN)) {
+            this.nestDown(Integer.parseInt(this.grabParameter(msg)));
+        } else if (msg.contains(Message.NEST_UP)) {
+            this.nestUp(Integer.parseInt(this.grabParameter(msg)));
 
-	    
-        
 
-	    }else if(msg.contains(Message.KAM_MOVE_FROM_2_TO_0)){
-                this.moveFrom2To0();
-            }
+
+
+        } else if (msg.contains(Message.KAM_MOVE_FROM_2_TO_0)) {
+            this.moveFrom2To0();
+        }
 
         //todo - let me know what functions agent will call so I can process them here
     }
     //THIS METHOD MOVES KIT FROM POSITION 2 TO 0!!
-    public void moveFrom2To0(){
+
+    public void moveFrom2To0() {
         this.graphics.kitbot.moveFrom2To0();
     }
 
@@ -259,9 +258,7 @@ public class KitAssemblyManager extends Manager implements ActionListener {
                 this.nonnorm.togglePiledColor(i);
                 this.nonnorm.removeAll();
                 this.nonnorm.preparemainpanel();
-            }
-	
-            else if (ae.getSource() == this.nonnorm.getStabilityButton(i)) {
+            } else if (ae.getSource() == this.nonnorm.getStabilityButton(i)) {
                 if (!this.nonnorm.unstableColor.get(i)) {
                     this.sendToServer(Message.KAM_NEST_UNSTABLE + ":" + i);
                 }
@@ -270,20 +267,23 @@ public class KitAssemblyManager extends Manager implements ActionListener {
                 this.nonnorm.removeAll();
                 this.nonnorm.preparemainpanel();
             }
-	}
-        else if (ae.getSource() == this.nonnorm.getDropPartButton()) {
-
-
-Part p =	    this.graphics.kitter.dropPartOnGround();
-if(p != null){
-    p.debug();
-    System.out.println(p.serialize());
-    this.sendToServer(Message.KAM_BAD_KIT+":"+p.serialize());
-}
         }
-	if(ae.getSource() == this.nonnorm.getEarlyFlashButton()){
-	    this.sendToServer(Message.EARLY_CAMERA_FLASH);
-	}
+        if (ae.getSource() == this.nonnorm.getRobotInWayButton()) {
+            graphics.beginRobotInWayAction();
+        }
+        if (ae.getSource() == this.nonnorm.getDropPartButton()) {
+
+
+            Part p = this.graphics.kitter.dropPartOnGround();
+            if (p != null) {
+                p.debug();
+                System.out.println(p.serialize());
+                this.sendToServer(Message.KAM_BAD_KIT + ":" + p.serialize());
+            }
+        }
+        if (ae.getSource() == this.nonnorm.getEarlyFlashButton()) {
+            this.sendToServer(Message.EARLY_CAMERA_FLASH);
+        }
 
         if (ae.getSource() == cameraKitStand) {
             this.flashKitCamera();
@@ -355,7 +355,7 @@ if(p != null){
             Integer partType = Integer.parseInt(c);
             this.doSetParts(n, partType);
         }
-	}
+    }
 
     /**
      * declares objects within the class and sets the states of each of the
@@ -473,7 +473,7 @@ if(p != null){
 
     public static void main(String[] args) {
         KitAssemblyManager mgr = new KitAssemblyManager();
-        
+
 
     }
 }
@@ -481,6 +481,6 @@ if(p != null){
 /*
  * TO SEND ARRAYLIST
  ArrayList = array;
-BlueprintParts p = new BlueprintParts(array);
-this.sendToServer(Message.KAM_BAD_KIT+":"+p.serialize());
+ BlueprintParts p = new BlueprintParts(array);
+ this.sendToServer(Message.KAM_BAD_KIT+":"+p.serialize());
  */

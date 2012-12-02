@@ -30,6 +30,13 @@ public class KAMNest {
 
         parts = new ArrayList<Part>();
     }
+    
+    public boolean isFull(){
+        if(this.parts.size()==8){
+        return true;
+        }else
+        return false;
+    }
 
     /**
      * @return the nest
