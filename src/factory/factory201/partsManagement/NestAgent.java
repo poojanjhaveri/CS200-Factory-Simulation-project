@@ -242,7 +242,7 @@ public class NestAgent extends Agent implements NestInterface {
          if(!needParts.isEmpty()){
                 
              for (Nest n: myNests){
-                 if (n.part.type !=null){
+                 if (n.part !=null){
                    if(n.part.type == needParts.get(0).type){
                        needParts.remove(0);
                        return true;
