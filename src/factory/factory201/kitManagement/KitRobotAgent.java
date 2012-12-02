@@ -120,6 +120,10 @@ public class KitRobotAgent extends Agent implements KitRobot {
             }
         }
         if (!msgTest && factoryRunning && !requestedKitFromConveyor && (kitStand.isEmpty(0) || kitStand.isEmpty(1)) && kitStand.isEmpty(2)) { //kit stand has empty spot
+            if (kitStand.isEmpty(0))
+                print("KIT STAND [0] is EMPTY");
+                else
+                print("KIT STAND [1] is EMPTY");
             requestEmptyKitFromConveyor();
             return true;
         }
@@ -146,7 +150,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
         synchronized (kitStand) {
             k = kitStand.remove(2);
         }
-        kitStand.addKit(k);
+        kitStand.addKitWithError(k);
 //        if(kitStand.get(0).equals(k)) {
 //            print("EQUALSEQUALSEQUALSEQUALSEQUALSEQUALS");
 //        } else {

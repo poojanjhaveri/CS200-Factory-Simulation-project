@@ -57,13 +57,13 @@ public class CameraAgent extends Agent implements Camera {
         feeder = null;
         
         
-        /* KEVIN USE THIS TO TEST
+        // KEVIN USE THIS TO TEST
         missingParts = new ArrayList<Part>();
         missingParts.add(new Part(0));
-        missingParts.add(new Part(1));
-        missingParts.add(new Part(2));
-        missingParts.add(new Part(3));
-        partsDropped = true;*/
+       // missingParts.add(new Part(1));
+       // missingParts.add(new Part(2));
+       // missingParts.add(new Part(3));
+        partsDropped = true;
     }
 
     // ********* MISC. MESSAGES *********
