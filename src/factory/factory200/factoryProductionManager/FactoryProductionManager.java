@@ -420,7 +420,6 @@ public class FactoryProductionManager extends Manager implements ActionListener 
     	nameToAdd = (String) selKit.getSelectedItem(); // get the name of the selected item from the combo box
     	p.println("Name to add = " + nameToAdd);
 
-    	// TODO
     	for(Kit kitty : kitsbp.getKits())
     		if(nameToAdd.equals(kitty.getName()))
     			kitToAdd = kitty;
