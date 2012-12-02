@@ -44,11 +44,11 @@ public class LMNestData {
 	public void reorganizeToggling(){
 		for(int i=0 ; i<parts.size() ; i++){
 			if( i < 8 ){
-				if( i % 2 == 0 ){
-					parts.get(i).setPositionInNest(13, 35+10*i+75*nestNum);
+				if( i < 4 ){
+					parts.get(i).setPositionInNest(13, 35+20*i+75*nestNum);
 				}
-				else if( i % 2 == 1 ){
-					parts.get(i).setPositionInNest(33, 35+10*(i-1)+75*nestNum);
+				else if( i >= 4 ){
+					parts.get(i).setPositionInNest(33, 35+20*(i-4)+75*nestNum);
 				}
 			}
 		}
@@ -61,11 +61,11 @@ public class LMNestData {
 		if( partPiled == false && toggling == false ){
 			for(int i=0 ; i<parts.size() ; i++){
 				if( i < 8 ){
-					if( i % 2 == 0 ){
-						parts.get(i).setDestination(13, 35+10*i+75*nestNum);
+					if( i < 4 ){
+						parts.get(i).setDestination(13, 35+20*i+75*nestNum);
 					}
-					else if( i % 2 == 1 ){
-						parts.get(i).setDestination(33, 35+10*(i-1)+75*nestNum);
+					else if( i >= 4 ){
+						parts.get(i).setDestination(33, 35+20*(i-4)+75*nestNum);
 					}
 				}
 			}

@@ -1,7 +1,8 @@
 package factory.factory200.laneManager.ClientSide;
 
 import java.awt.Dimension;
-import java.awt.FlowLayout;
+import java.awt.GridLayout;
+
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 
@@ -28,7 +29,7 @@ public class LMGUINonNormativePanel extends JPanel{
 		panel2 = new LMGUINonNormativePanel2(app);
 		
 		setPreferredSize(new Dimension(300,640));
-		setLayout(new FlowLayout(FlowLayout.CENTER, 10, 5));
+		setLayout(new GridLayout(2,1));
 		
 		panel1.setBorder(feederTitledBorder);
 		panel2.setBorder(laneTitledBorder);

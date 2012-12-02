@@ -43,6 +43,12 @@ public class LMLaneData {
 	
 	public void setVibrationAmplitudeStrong(){
 		// Signal To LM
+		if( serverMain.getPartData().getLanePartSize(laneNum) == 0 ){
+			signal = laneNum + "&Lane&" + "Amplitude Strong";
+			serverMain.sendToLM(signal);
+			serverMain.sendToFPM(signal);
+		}
+		
 		for(int i=0 ; i<serverMain.getPartData().getLanePartSize(laneNum) ; i++){
 			signal = laneNum + "&Lane&" + "Amplitude Strong";
 			serverMain.sendToLM(signal);

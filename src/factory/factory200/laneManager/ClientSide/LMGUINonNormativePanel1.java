@@ -26,7 +26,7 @@ public class LMGUINonNormativePanel1 extends JPanel implements ActionListener{
 		this.app = app;
 		
 		setPreferredSize(new Dimension(290,200));
-		setLayout(new FlowLayout(FlowLayout.CENTER, 10, 20));
+		setLayout(new FlowLayout(FlowLayout.CENTER, 50, 60));
 		
 		panel1.add(label1);
 		panel1.add(feederNumBox);
@@ -43,7 +43,7 @@ public class LMGUINonNormativePanel1 extends JPanel implements ActionListener{
 		feederNum = feederNumBox.getSelectedIndex();
 		
 		if( ae.getSource() == button1 ){
-			app.getVerifyMessage().sendToServer(feederNum + "0BAD_PART_INSERTION");
+			app.getVerifyMessage().sendToServer(feederNum + "BAD_PART_INSERTION");
 		}
 		else if( ae.getSource() == button2 ){
 			app.getVerifyMessage().sendToServer(feederNum + "FEEDER_NOT_WORKING");

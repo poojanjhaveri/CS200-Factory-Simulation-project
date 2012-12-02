@@ -27,7 +27,7 @@ public class LMGUINonNormativePanel2 extends JPanel implements ActionListener{
 		this.app = app;
 		
 		setPreferredSize(new Dimension(290,200));
-		setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
+		setLayout(new FlowLayout(FlowLayout.CENTER, 70, 60));
 		
 		panel.add(label);
 		panel.add(laneNumBox);

@@ -56,6 +56,7 @@ public class LMPartDataInNest {
 		parts.add(newPartFromLane);
 		
 		//send message to proper feeder msgAnimationComplete();
+		
 		if(parts.size() == 8){
 			if( nestNum == 0 || nestNum == 1 ){
 				serverMain.getFeederAgents()[0].msgAnimationComplete();
@@ -70,6 +71,7 @@ public class LMPartDataInNest {
 				serverMain.getFeederAgents()[3].msgAnimationComplete();
 			}
         }
+		
 		
 		// For KAM( Getting part from lane
 		// Good Part
