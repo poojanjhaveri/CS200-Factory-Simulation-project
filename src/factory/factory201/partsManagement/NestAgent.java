@@ -37,6 +37,7 @@ public class NestAgent extends Agent implements NestInterface {
     public List<Part> requests;//parts that partsAgent requests, removed when part given back to partsagent
     public List<Nest> myNests;//nests 0-7 that this agent controls
     public List<Part> needParts;//the parts that have been requested, used to set an individual's nest part
+    public List<Nest> purgeNests;
     boolean requestEarlyInspection=false;
     private LMServerMain serverLM;
    // Result result;
@@ -124,11 +125,15 @@ public class NestAgent extends Agent implements NestInterface {
             if (n.status!=Nest.Status.full)
             n.status = Nest.Status.gettingPart;
         }
+        else if (result.is == Result.Is.badParts){
+            print("Got a message that nest [" + n.nestNum + "] has bad parts, is going to purge");
+            purgeNests.add(n);
+        }
         else if (result.is == Result.Is.robotInTheWay){
             
             print("Accepted that parts robot was in the way will ask later for inspection");
             //tell to move in front of nest
-            
+           
         }
         
         /* added by Kevin- if the parts are unstable, set the shaking to true*/
@@ -152,23 +157,13 @@ public class NestAgent extends Agent implements NestInterface {
         }
         
         else  if (result.is == Result.Is.piledParts){
-              for (Nest n1: myNests){
-                if (n1.nestNum==n.nestNum)
-                {   
-                    print("nest is piled up, need to unpile");
-                    n1.piled=true;
-                    
-                    /*
-                     * it will prioritize unpiling the nest, after it is unpiled, since the status will still be full
-                     *   it will ask for re inspection! 
-                    */
-                    
-                    n1.status=Nest.Status.full;
-                }
-            }
               
-           print("Result received is that parts are unstable");
+                    print("nest is piled up, will be purged");
+                   
+                    purgeNests.add(n);
         }
+        else
+            print("ERROR ERROR in msgNestInspected");
         
         stateChanged();
     }
@@ -189,8 +184,11 @@ public class NestAgent extends Agent implements NestInterface {
                     return true;
                 }
             }
-
-        //NEXT HIGHEST PRIORITY WILL BE TO UNPILE/PURGE A NEST IF IT IS PILED UP 
+        if (!purgeNests.isEmpty()){
+            purge(purgeNests.remove(0));
+            return true;
+        }
+       /* //NEXT HIGHEST PRIORITY WILL BE TO UNPILE/PURGE A NEST IF IT IS PILED UP 
         for (Nest n: myNests){
                 if (n.piled==true)
                 {   //stabilize once and then wait for nest to be full again (or request new inspection. )
@@ -204,7 +202,7 @@ public class NestAgent extends Agent implements NestInterface {
                     return true;
                 }
             }
-        
+        */
         if(requestEarlyInspection){
             for (Nest n: myNests){
                 if (n.status == Nest.Status.gettingPart)
