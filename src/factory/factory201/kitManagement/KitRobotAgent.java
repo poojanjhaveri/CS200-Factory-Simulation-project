@@ -72,7 +72,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
         }
         stateChanged();
     }
-    
+
     @Override
     public void msgKitInspectedError(List<Part> missingParts) {
         synchronized (kitStand) {
@@ -147,7 +147,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
         DoMoveKitFrom2to0();
         partsAgent.msgPartsMissing(k.missingParts, k);
     }
-    
+
     private void sendVerifiedKitToConveyor() {
         Kit k;
         synchronized (kitStand) {
@@ -290,5 +290,16 @@ public class KitRobotAgent extends Agent implements KitRobot {
     }
 
     public void DoMoveKitFrom2to0() {
+        if (this.client != null) {
+            this.client.sendMessage(Message.KAM_MOVE_FROM_2_TO_0);
+            this.fpm.sendMessage(Message.KAM_MOVE_FROM_2_TO_0);
+            try {
+                this.animation.acquire();
+//            Thread.sleep(3000);
+            } catch (InterruptedException ex) {
+            }
+        } else {
+            print("[ERROR] - Kit Assembly Manager is not online.");
+        }
     }
 }
