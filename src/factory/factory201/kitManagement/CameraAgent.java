@@ -40,8 +40,9 @@ public class CameraAgent extends Agent implements Camera {
 //    private Kit kitInfoFromPartsAgent;
     private List<Integer> kitRqmts;
     private Map<Integer, Result.Is> nestErrors;
-    private Map<String, Integer> kitErrors;
-    private boolean[] nonNorm;  //0 parts dropped, 1 partsAgentInTheWay, 2 feederAlgoWrong
+    private List<Result.Is> otherErrors;
+//    private Map<String, Integer> kitErrors;
+    private boolean partsDropped;
     private List<Part> missingParts;
 
     public CameraAgent(String name) {
@@ -51,17 +52,20 @@ public class CameraAgent extends Agent implements Camera {
 //        kitInfoFromPartsAgent = null;
         kitRqmts = new ArrayList<Integer>();
         nestErrors = new HashMap<Integer, Result.Is>();
-        nonNorm[0] = nonNorm[1] = nonNorm[2] = false;
+        otherErrors = new ArrayList<Result.Is>();
+        partsDropped = false;
+        feeder = null;
     }
 
     // ********* MISC. MESSAGES *********
     public void msgWrongFeederAlgorithm(FeederAgent feeder, int nestNum) {
-        nonNorm[2] = true;
+        otherErrors.add(Result.Is.partsMissing);
+//        nonNorm[2] = true;
         this.feeder = feeder;
     }
     
     public void msgPartsDroppedFromKit(List<Part> missingParts) {
-        nonNorm[0] = true;
+        partsDropped = true;
         this.missingParts = missingParts;
     }
 
@@ -80,7 +84,8 @@ public class CameraAgent extends Agent implements Camera {
     }
 
     public void msgPartsAgentIsInTheWay() {
-        nonNorm[1] = true;
+        otherErrors.add(Result.Is.robotInTheWay);
+//        nonNorm[1] = true;
     }
 
     // ********* AGENT MESSAGES *********
@@ -135,7 +140,7 @@ public class CameraAgent extends Agent implements Camera {
     // ********** ACTIONS **********
     public void inspectKit(Kit kit) {
         String strResult;
-        if (nonNorm[0]) {
+        if (partsDropped) {
             DoInspectKit(kit);
             kitRobot.msgKitInspectedError(missingParts);
             strResult = "Parts missing";
@@ -180,12 +185,10 @@ public class CameraAgent extends Agent implements Camera {
         if (nestErrors.containsKey(nest.nestNum)) {
             is = nestErrors.get(nest.nestNum);
             nestErrors.remove(nest.nestNum);
-        } else if (nonNorm[1]) {
-            is = Result.Is.robotInTheWay;
         } else if(nest.parts.isEmpty()) {
             is = Result.Is.partsMissing;
-        } else if(nonNorm[2]) {
-            is = Result.Is.partsMissing;
+        } else if (!otherErrors.isEmpty()) {
+            is = otherErrors.remove(0);
         } else {
             is = Result.Is.verified;
         }
@@ -195,8 +198,9 @@ public class CameraAgent extends Agent implements Camera {
         }
         DoInspectNest(nest);
         nestAgent.msgNestInspected(nest, new Result(is));
-        if(nonNorm[2]) {
+        if(feeder != null) {
             feeder.msgCorrectYourAlgorithm();
+            feeder = null;
         }
 //        String strResult = result ? "NO ERROR" : "ERROR";
         print("Inspecting nest: [Nest " + nest.nestNum + "] with result: " + is + ".");
