@@ -123,7 +123,7 @@ public class CameraAgent extends Agent implements Camera {
         }
 
         DoInspectKit(kit);
-        kitRobot.msgKitInspected(result);
+        kitRobot.msgKitInspected(0);
         String strResult = result ? "NO ERROR" : "ERROR";
         print("Inspected kit: [" + kit.name + "] with result: " + strResult + ".");
         synchronized (kitList) {
