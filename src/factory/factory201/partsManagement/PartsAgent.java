@@ -64,6 +64,7 @@ public class PartsAgent extends Agent implements PartsInterface {
     }
 
     public void msgPartsMissing(List<Part> missingPs, Kit k) {//if the parts robot dropped a part
+        kits++;
         if (k.standNum == Kit.StandNum.zero) {
             kit0 = k;
             kit0.standNum = Kit.StandNum.zero;
@@ -136,7 +137,7 @@ public class PartsAgent extends Agent implements PartsInterface {
     public boolean pickAndExecuteAnAction() {
 
      //   print("newKit size is : " + newKit.size() + ", kits : " + kits);
-        if (!newKit.isEmpty() && kits != 1) {//if there are not already 2 kits being worked on by this agent and there are new kit requests
+        if (!newKit.isEmpty() && kits != 1 && kits!=2) {//if there are not already 2 kits being worked on by this agent and there are new kit requests
             kits++;
 
             /* when this was called twice (for 2 kits), it added 2 kits to kitsStarted, one kit went to full completion

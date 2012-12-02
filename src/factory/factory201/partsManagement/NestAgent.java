@@ -359,7 +359,7 @@ public class NestAgent extends Agent implements NestInterface {
     	partsagent.msgHereIsPart(n.parts.remove(0));//physically remove the part from the nest
         //print("giving part " + n.part.getInt() + " to kit now nest has " + n.parts.size());
         if (n.parts.isEmpty())
-                n.status = Nest.Status.empty;
+                n.status = Nest.Status.needPart;
     	stateChanged();	
     }
     
