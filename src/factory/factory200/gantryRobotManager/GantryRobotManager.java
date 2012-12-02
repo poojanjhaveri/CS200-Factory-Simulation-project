@@ -168,10 +168,10 @@ public class GantryRobotManager extends Manager implements ActionListener {
 	   }
 	   else if(msg.contains(Message.FREEZE_GANTRY_ROBOT))
 	       {
-
+		   this.graphics.gbot.setBreakState(true);
 	       }else if(msg.contains(Message.UNFREEZE_GANTRY_ROBOT))
 	       {
-
+	    	   this.graphics.gbot.setBreakState(false);
 	       }
    }
    

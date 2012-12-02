@@ -256,6 +256,8 @@ public class KitAssemblyManager extends Manager implements ActionListener {
         }
         if (ae.getSource() == this.nonnorm.getDropPartButton()) {
 
+
+//DROP A PART HERE FOO
 Part p =	    this.graphics.kitter.dropPartOnGround();
 if(p != null){
     p.debug();

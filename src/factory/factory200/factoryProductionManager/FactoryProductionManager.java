@@ -437,7 +437,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
             inProdField.append(this.grabParameter(msg));
             
         	// Remove the kit that is now in action from the queue (kit should no longer be in the queue if it is in action)
-            
+            // TODO: @parse22 handle this (read the comments around) 
         } else if(msg.contains(Message.GIVE_KITS_IN_QUEUE)) {
             serverQueueDisplay.setText("");
             BlueprintKits temp = new BlueprintKits();

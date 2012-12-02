@@ -162,6 +162,10 @@ public class Part implements Serializable {
     public String getName() {
         return this.name;
     }
+    public void setName(String s)
+    {
+	this.name = s;
+    }
     public Integer getNumber() {
         return number;
     }
@@ -171,6 +175,10 @@ public class Part implements Serializable {
     public String getDescription() {
         return this.description;
     }
+    public void setDescription(String s)
+    {
+	this.description = s;
+    }
     public GUIPart getGUIPart() {
         return this.guipart;
     }
@@ -179,6 +187,10 @@ public class Part implements Serializable {
     }
     public int getNum(){
     	return this.number;
+    }
+    public void debug()
+    {
+    	System.out.println("Name:" + name + "\nNumber: " + this.number + "\nFilename:" + this.filename);
     }
     public String serialize() {
     	//        return "("+this.name+","+this.description+","+this.number+","+this.filename+")";
