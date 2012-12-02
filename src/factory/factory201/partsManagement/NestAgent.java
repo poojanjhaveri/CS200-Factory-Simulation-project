@@ -124,6 +124,12 @@ public class NestAgent extends Agent implements NestInterface {
             if (n.status!=Nest.Status.full)
             n.status = Nest.Status.gettingPart;
         }
+        else if (result.is == Result.Is.robotInTheWay){
+            
+            print("Accepted that parts robot was in the way will ask later for inspection");
+            //tell to move in front of nest
+            
+        }
         
         /* added by Kevin- if the parts are unstable, set the shaking to true*/
         else  if (result.is == Result.Is.unstableParts){
@@ -235,7 +241,15 @@ public class NestAgent extends Agent implements NestInterface {
         // synchronized(needParts){      
          if(!needParts.isEmpty()){
                 
-               for (Nest n: myNests){
+             for (Nest n: myNests){
+                 if (n.part !=null){
+                   if(n.part.type == needParts.get(0).type){
+                       needParts.remove(0);
+                       return true;
+                   }}
+               }
+             
+             for (Nest n: myNests){
                 if(n.status == Nest.Status.empty){  
                     n.setPart(needParts.remove(0));//assigns part to nest
                     n.status = Nest.Status.needPart;
@@ -243,6 +257,7 @@ public class NestAgent extends Agent implements NestInterface {
                     return true;
                 }
                 }
+               
             
               //  synchronized(myNests){//gets stuck in look w/ this
                 for (Nest n: myNests){

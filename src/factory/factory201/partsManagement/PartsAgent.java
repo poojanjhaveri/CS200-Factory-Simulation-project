@@ -135,7 +135,7 @@ public class PartsAgent extends Agent implements PartsInterface {
     @Override
     public boolean pickAndExecuteAnAction() {
 
-        print("newKit size is : " + newKit.size() + ", kits : " + kits);
+     //   print("newKit size is : " + newKit.size() + ", kits : " + kits);
         if (!newKit.isEmpty() && kits != 1) {//if there are not already 2 kits being worked on by this agent and there are new kit requests
             kits++;
 
