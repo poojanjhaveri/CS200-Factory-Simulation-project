@@ -10,7 +10,7 @@ public class LMNestData {
 	private String signal = "";
 	
 	private int nestNum;
-	private Boolean nestSwitch = true; // false : down, true : up
+	private boolean nestSwitch = true; // false : down, true : up
 	
 	public LMNestData( int nestNum, LMServerMain serverMain ){
 		this.nestNum = nestNum;
@@ -26,7 +26,6 @@ public class LMNestData {
 		
 		// Server Data Task
 		nestSwitch = true;
-		serverMain.getForAgentLane().setSwitchOn(nestNum);
 	}
 	
 	public void setSwitchDown(){
@@ -40,6 +39,5 @@ public class LMNestData {
 		nestSwitch = false;
 		serverMain.getForAgentNestCamera().stopPiledPart(nestNum);
 		serverMain.getPartData().nestDown(nestNum);
-		serverMain.getForAgentLane().setSwitchOff(nestNum);
 	}
 }

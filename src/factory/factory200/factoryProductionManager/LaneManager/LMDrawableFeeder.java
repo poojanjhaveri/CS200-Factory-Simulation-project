@@ -26,7 +26,7 @@ public class LMDrawableFeeder{
 		feederImage.paintIcon(panel, graphics, feederX, feederY);
 	}
 	
-	public void setSwitch(Boolean switchBulb){
+	public void setSwitch(boolean switchBulb){
 		if(switchBulb == true){
 			feederImage = feederOnImage;
 		}

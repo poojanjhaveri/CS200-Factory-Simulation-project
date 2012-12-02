@@ -12,7 +12,7 @@ public class LMDrawableCamera{
 	private int cameraX, cameraY;
 	private static ImageIcon cameraImage = new ImageIcon( LMDrawableCamera.class.getResource("./pics/camera.png") );
 	private int timer;
-	private Boolean cameraSwitch = false;
+	private boolean cameraSwitch = false;
 	
 	public LMDrawableCamera(int cameraX, int cameraY){
 		this.cameraX = cameraX;

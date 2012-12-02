@@ -30,7 +30,7 @@ public class LMDrawablePartLowBulb{
 		partLowBulbImage.paintIcon(panel, graphics, bulbX, bulbY);
 	}
 	
-	public void setSwitch(Boolean switchBulb){
+	public void setSwitch(boolean switchBulb){
 		if(switchBulb == true){
 			partLowBulbImage = bulbOnImage;
 		}

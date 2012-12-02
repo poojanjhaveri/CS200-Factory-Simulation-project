@@ -10,14 +10,14 @@ public class LMLaneData {
 	private String signal = "";
 	
 	private int laneNum;
-	private Boolean laneSwitch = true;
+	private boolean laneSwitch = true;
 	
 	public LMLaneData( int laneNum, LMServerMain serverMain ){
 		this.laneNum = laneNum;
 		this.serverMain = serverMain;
 	}	
 	
-	public Boolean getSwitch(){
+	public boolean getSwitch(){
 		return laneSwitch;
 	}
 	

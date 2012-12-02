@@ -31,7 +31,7 @@ public class LMDrawableFeedingBulb{
 		feedingBulbImage.paintIcon(panel, graphics, bulbX, bulbY);
 	}
 	
-	public void setSwitch(Boolean switchBulb){
+	public void setSwitch(boolean switchBulb){
 		if(switchBulb == true){
 			feedingBulbImage = bulbOnImage;
 		}
