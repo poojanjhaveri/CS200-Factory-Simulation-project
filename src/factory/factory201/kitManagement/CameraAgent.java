@@ -53,7 +53,7 @@ public class CameraAgent extends Agent implements Camera {
     }
 
     //Non-normative messages
-    public void msgPartsRobotDroppedPart(List<Part> missingParts) {
+    public void msgPartsDroppedFromKit(List<Part> missingParts) {
         partsDropped = true;
         this.missingParts = missingParts;
     }

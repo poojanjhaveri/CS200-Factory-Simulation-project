@@ -298,7 +298,7 @@ public class HandleAManager implements Runnable {
 		//handle bad kit nonnorm NOTE: bad kit == DROPPED != INSPECTED!!!!
                 BlueprintParts temp = new BlueprintParts();
                 temp.recreate(this.grabParameter(msg));
-		this.server.getCameraAgent().msgPartsRobotDroppedPart(temp.getParts());
+		this.server.getCameraAgent().msgPartsDroppedFromKit(temp.getParts());
 	    }else if(msg.contains(Message.EARLY_CAMERA_FLASH)){
 		this.server.getNestAgent().msgRequestEarlyInspection();
 	    }
