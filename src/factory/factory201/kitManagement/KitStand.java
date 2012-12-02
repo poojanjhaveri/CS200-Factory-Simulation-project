@@ -33,6 +33,21 @@ public class KitStand {
         }
     }
 
+    public boolean addKitWithError(Kit kit) {
+        if (kits[1] == null) {
+            kits[1] = kit;
+            kits[1].standNum = Kit.StandNum.one;
+           // agent.DoMoveKitFromConveyorTo1();
+            return true;
+        } else if (kits[0] == null) {
+            kits[0] = kit;
+            kits[0].standNum = Kit.StandNum.zero;
+           // agent.DoMoveKitFromConveyorTo0();
+            return true;
+        } else {
+            return false;
+        }
+    }
     public Kit get(int i) {
         return kits[i];
     }
