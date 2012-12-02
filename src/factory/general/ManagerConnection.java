@@ -37,8 +37,8 @@ public class ManagerConnection implements Runnable {
      * @brief attempts to connect to the server
      */
     public void connect() {
-        p.println("host name: " + Server.HOST_NAME);
-        p.println("port num: " + Server.PORT_NUMBER);
+        p.println("Host name: " + Server.HOST_NAME);
+        p.println("Port number: " + Server.PORT_NUMBER);
 
         System.out.println("Connecting...");
         socket = null;
