@@ -82,7 +82,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
     private boolean constructed; // variable to determine if this class's constructor has finished; used for real time updates
     private BlueprintKits kitsbp;
     
-     ArrayList<JButton> nonnormpart;
+    private ArrayList<JButton> nonnormpart;
     
     
     
@@ -587,7 +587,6 @@ public class FactoryProductionManager extends Manager implements ActionListener 
     
     public void preparenonnorm()
     {
-        
             mparts = new JPanel();
             mparts.setLayout(new GridBagLayout());
             GridBagConstraints c = new GridBagConstraints();
@@ -598,7 +597,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
             
             
             c.gridx=1;
-            c.gridy=1;
+            c.gridy=2;
             c.gridwidth=2;
             
             kitnorname = new JLabel("");
