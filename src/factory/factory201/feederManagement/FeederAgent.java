@@ -115,7 +115,7 @@ public class FeederAgent extends Agent implements Feeder {
 
         }
     }
-
+    
     public void msgAnimationComplete(){
     anim.release();
     }

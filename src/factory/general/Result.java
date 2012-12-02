@@ -15,7 +15,7 @@ public class Result {
         badParts, piledParts, robotInTheWay, unstableParts, partsMissing, verified
     };
     public Is is;
-    
+
     public Result(Is is) {
         this.is = is;
     }
