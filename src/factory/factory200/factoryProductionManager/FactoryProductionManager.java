@@ -494,12 +494,13 @@ public class FactoryProductionManager extends Manager implements ActionListener 
          
             
         }
+        /*
         else if(msg.contains(Message.PARTS_AGENT_GIVE_KIT_TO_FPM)) {
             
            ktemporary = Kit.deserialize(grabParameter(msg));
            System.out.println("nothing for now"+ktemporary.getName());
            
-            }
+            }*/
           
          
             
