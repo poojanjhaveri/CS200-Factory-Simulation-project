@@ -61,12 +61,12 @@ public class CameraAgent extends Agent implements Camera {
 
 
         // KEVIN USE THIS TO TEST
-      //  missingParts = new ArrayList<Part>();
-     //   missingParts.add(new Part(0));
+        missingParts = new ArrayList<Part>();
+        missingParts.add(new Part(0));
        // missingParts.add(new Part(1));
        // missingParts.add(new Part(2));
        // missingParts.add(new Part(3));
-    //    partsDropped = true;
+        partsDropped = true;
     }
 
     // ********* MISC. MESSAGES *********
@@ -157,13 +157,15 @@ public class CameraAgent extends Agent implements Camera {
         String strResult;
         if (partsDropped) {
             List<Part> partsList = new ArrayList<Part>(kit.parts);
-            for (Part p : partsList) {
+           
+                for (Part p : partsList) {
                 for (Part m : missingParts) {
                     if (p.type == m.type) {
                         partsList.remove(p);
                     }
                 }
-            }
+            
+        }
             DoInspectKit(partsList);
             kitRobot.msgKitInspectedError(missingParts);
             strResult = "Parts missing";
