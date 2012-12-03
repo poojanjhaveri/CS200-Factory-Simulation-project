@@ -89,7 +89,7 @@ public class KitDeliveryStation {
        for(int i=0;i<this.getPlaceholder().size();i++){
            //temp=this.getPlaceholder().get(i);
            int yPlace=this.getPlaceholder().get(i).getY();
-           if(yPlace==KAMGraphicPanel.FULL_CONVEYERY && !(this.getPlaceholder().get(i).isShow())){
+           if((yPlace==KAMGraphicPanel.FULL_CONVEYERY || yPlace==KAMGraphicPanel.FULL_CONVEYERY+2 || yPlace==KAMGraphicPanel.FULL_CONVEYERY-2) && !(this.getPlaceholder().get(i).isShow())){
                this.getPlaceholder().get(i).setKit(kit);
                
                this.getPlaceholder().get(i).getKit().updateParts();
