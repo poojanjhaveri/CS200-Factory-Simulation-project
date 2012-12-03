@@ -37,17 +37,16 @@ public class KitStand {
         if (kits[1] == null) {
             kits[1] = kit;
             kits[1].standNum = Kit.StandNum.one;
-           // agent.DoMoveKitFromConveyorTo1();
             return true;
         } else if (kits[0] == null) {
             kits[0] = kit;
             kits[0].standNum = Kit.StandNum.zero;
-           // agent.DoMoveKitFromConveyorTo0();
             return true;
         } else {
             return false;
         }
     }
+
     public Kit get(int i) {
         return kits[i];
     }
@@ -86,19 +85,16 @@ public class KitStand {
             agent.DoMoveKitFrom1to2();
             kits[2] = kits[1];
             kits[1] = null;
-           
             if (kits[0] != null) {
                 agent.DoMoveKitFrom0to1();
                 kits[1] = kits[0];
                 kits[1].standNum = Kit.StandNum.one;
                 kits[0] = null;
-            
             }
         } else if (kit.equals(kits[0])) {
             agent.DoMoveKitFrom0to2();
             kits[2] = kits[0];
             kits[0] = null;
-            
         }
         kits[2].standNum = Kit.StandNum.two;
 
