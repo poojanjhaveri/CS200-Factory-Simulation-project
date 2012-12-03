@@ -40,7 +40,7 @@ public class MockNest extends MockAgent implements NestInterface {
 
     @Override
     public void msgNestInspected(Nest n, Result result) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        log.add(new LoggedEvent("Got msgNestInspected"));
     }
 
  

@@ -58,7 +58,12 @@ public class MockParts extends MockAgent implements PartsInterface {
 
     @Override
     public void msgHereAreParts(List<Part> parts) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        log.add(new LoggedEvent("Received msgHereAreParts"));
+    }
+
+    @Override
+    public void msgPartsMissing(List<Part> missingPs, Kit k) {
+        log.add(new LoggedEvent("Received msgPartsMissing"));
     }
 
 }
