@@ -21,7 +21,7 @@ public class MockKitRobot extends MockAgent implements KitRobot {
         log.add(new LoggedEvent("Received msgHereIsEmptyKit from the "
                 + "conveyor to get empty kit: " + kit.name + "."));
     }
-
+    
    @Override
     public void msgKitIsFull(Kit k) {
         log.add(new LoggedEvent("Received msgKitIsFull from parts agent "

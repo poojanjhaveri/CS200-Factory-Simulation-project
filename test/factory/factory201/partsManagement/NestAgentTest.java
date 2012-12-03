@@ -8,6 +8,7 @@ import factory.factory201.test.mock.MockLane;
 import factory.factory201.test.mock.MockParts;
 import factory.general.Nest;
 import factory.general.Part;
+import factory.general.Result;
 import java.util.ArrayList;
 import java.util.List;
 import junit.framework.TestCase;
@@ -54,13 +55,6 @@ public class NestAgentTest extends TestCase{
         camera = new MockCamera("MOCK CAMERA");
        
         nest.getNest(0).setLane(lane0);
-       /* nest.getNest(0).setLane(lane1);
-        nest.getNest(0).setLane(lane2);
-        nest.getNest(0).setLane(lane3);
-        nest.getNest(0).setLane(lane4);
-        nest.getNest(0).setLane(lane5);
-        nest.getNest(0).setLane(lane6);
-        nest.getNest(0).setLane(lane7);*/
         
         nest.setCamera(camera);
         nest.setPartsAgent(parts);
@@ -84,7 +78,8 @@ public class NestAgentTest extends TestCase{
         nest.pickAndExecuteAnAction();
         assertTrue("Camera should have gotten msgRequestInspection from nest" + getLogs(), camera.log.containsString("msgNestIsFull"));
         assertTrue("Nest 0 status should be full", nest.myNests.get(0).status == Nest.Status.gettingInspected);
-        nest.msgNestInspected(nest.myNests.get(0), true);//camera verifies the nest
+      
+        nest.msgNestInspected(nest.myNests.get(0), new Result(Result.Is.verified));//camera verifies the nest
         assertTrue("Nest 0 status should be readyForKit", nest.myNests.get(0).status == Nest.Status.readyForKit);
         nest.pickAndExecuteAnAction();
         assertTrue("msgHereIsPart" + getLogs(), parts.log.containsString("msgHereIsPart"));
@@ -138,7 +133,10 @@ public class NestAgentTest extends TestCase{
         nest.pickAndExecuteAnAction();
         assertTrue("Camera should have gotten msgRequestInspection from nest" + getLogs(), camera.log.containsString("msgNestIsFull"));
         assertTrue("Nest 0 status should be full", nest.myNests.get(0).status == Nest.Status.gettingInspected);
-        nest.msgNestInspected(nest.myNests.get(0), false);//camera doesn't verify the nest
+        nest.msgNestInspected(nest.myNests.get(0), new Result(Result.Is.piledParts));//camera doesn't verify the nest
+        assertTrue("Purgenests should be of size 1", nest.purgeNests.size()==1);
+        nest.pickAndExecuteAnAction();
+        assertTrue("Purgenests should be of size 1", nest.purgeNests.isEmpty());
         assertTrue("Nest 0 status should be empty", nest.myNests.get(0).status == Nest.Status.needPart);
        
         assertTrue("Requests size should be 1 still and NeedParts size should be 0", nest.requests.size()==1 && nest.needParts.isEmpty());
@@ -149,8 +147,10 @@ public class NestAgentTest extends TestCase{
         nest.msgHereAreParts(nestParts, 0);
         
         assertTrue("nest 0 status should be gettingPart", nest.myNests.get(0).status == Nest.Status.full);
-        nest.msgNestInspected(nest.myNests.get(0), true);
-        assertTrue("Nest 0 status should be readyForKit", nest.myNests.get(0).status == Nest.Status.readyForKit);
+        nest.msgNestInspected(nest.myNests.get(0), new Result(Result.Is.verified));
+        
+        assertTrue("Purgenests should be of size 1", nest.purgeNests.isEmpty());
+        assertTrue("Nest 0 status should be empty", nest.myNests.get(0).status == Nest.Status.readyForKit);
         nest.pickAndExecuteAnAction();
         assertTrue("msgHereIsPart should only have been recieved once" + getLogs(), parts.log.containsString("msgHereIsPart") && parts.log.size()==1);
         assertTrue("Requests size and NeedParts size should be 0", nest.requests.isEmpty() && nest.needParts.isEmpty());
@@ -224,6 +224,84 @@ public class NestAgentTest extends TestCase{
         
         nest.msgHereAreParts(nestPartsPurge, 0);
   
+  }
+  
+  public void testNestEarlyInspection(){
+       NestAgent nest = new NestAgent("NEST AGENT");
+        Part p = new Part(1);
+        List<Part> nestParts = new ArrayList<Part>();
+        nestParts.add(p);
+        nestParts.add(p);
+        nestParts.add(p);
+        nestParts.add(p);
+        nestParts.add(p);
+        nestParts.add(p);
+        nestParts.add(p);
+        nestParts.add(p);
+        
+        parts = new MockParts("MOCK PARTS");
+        
+       lane0 = new MockLane("MOCK LANE 0");
+        
+        camera = new MockCamera("MOCK CAMERA");
+       
+        nest.getNest(0).setLane(lane0);
+        
+        nest.setCamera(camera);
+        nest.setPartsAgent(parts);
+        assertTrue("request early inspection value should be false", nest.requestEarlyInspection==false);
+        nest.msgRequestEarlyInspection();
+        assertTrue("request early inspection value should be false", nest.requestEarlyInspection==true);
+        nest.myNests.get(0).status = Nest.Status.gettingPart;
+        nest.pickAndExecuteAnAction();
+        assertTrue("request early inspection value should be false", nest.requestEarlyInspection==false);
+        
+        assertTrue("Nest status is getting part", nest.myNests.get(0).status == Nest.Status.gettingInspected);
+        nest.msgNestInspected(nest.myNests.get(0), new Result(Result.Is.partsMissing));
+        
+        assertTrue("Nest status is getting part", nest.myNests.get(0).status == Nest.Status.gettingPart);
+  }
+  
+  public void testNestPartsMissing(){
+      NestAgent nest = new NestAgent("NEST AGENT");
+        Part p = new Part(1);
+        List<Part> nestParts = new ArrayList<Part>();
+        nestParts.add(p);
+        nestParts.add(p);
+        nestParts.add(p);
+        nestParts.add(p);
+        nestParts.add(p);
+        nestParts.add(p);
+        nestParts.add(p);
+        nestParts.add(p);
+        
+        parts = new MockParts("MOCK PARTS");
+        
+        lane0 = new MockLane("MOCK LANE 0");
+        
+        camera = new MockCamera("MOCK CAMERA");
+       
+        nest.getNest(0).setLane(lane0);
+        
+        nest.setCamera(camera);
+        nest.setPartsAgent(parts);
+        assertTrue( "Purge parts should be empty", nest.purgeNests.isEmpty());
+        nest.msgNestInspected(nest.myNests.get(0), new Result(Result.Is.badParts));
+        assertTrue( "Purge parts should be size 1", nest.purgeNests.size()==1);
+        
+        nest.pickAndExecuteAnAction();
+        
+        assertTrue( "Purge parts should be empty", nest.purgeNests.isEmpty());
+        assertTrue("Nest status is need part signifying a purge happened", nest.myNests.get(0).status == Nest.Status.needPart);
+        
+        nest.msgNestInspected(nest.myNests.get(0), new Result(Result.Is.piledParts));
+         assertTrue( "Purge parts should be size 1", nest.purgeNests.size()==1);
+        
+        nest.pickAndExecuteAnAction();
+        
+        assertTrue( "Purge parts should be empty", nest.purgeNests.isEmpty());
+        assertTrue("Nest status is need part signifying a purge happened", nest.myNests.get(0).status == Nest.Status.needPart);
+        
   }
 public String getLogs() {
 		StringBuilder sb = new StringBuilder();
