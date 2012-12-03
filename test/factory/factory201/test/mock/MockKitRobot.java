@@ -2,6 +2,8 @@ package factory.factory201.test.mock;
 
 import factory.factory201.interfaces.KitRobot;
 import factory.general.Kit;
+import factory.general.Part;
+import java.util.List;
 
 /**
  * @author Alex Young
@@ -20,11 +22,7 @@ public class MockKitRobot extends MockAgent implements KitRobot {
                 + "conveyor to get empty kit: " + kit.name + "."));
     }
 
-    @Override
-    public void msgKitInspected(boolean result) {
-        log.add(new LoggedEvent("Received msgKitInspected from the "
-                + "camera that the kit is verified."));
-    }
+   
 
    @Override
     public void msgKitIsFull(Kit k) {
@@ -36,5 +34,15 @@ public class MockKitRobot extends MockAgent implements KitRobot {
     public void msgNeedEmptyKit() {
         log.add(new LoggedEvent("Received msgNeedEmptyKit from parts agent "
                 + "that it needs an empty kit to put parts in."));
+    }
+
+    @Override
+    public void msgKitInspectedNoError() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public void msgKitInspectedError(List<Part> missingParts) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }
