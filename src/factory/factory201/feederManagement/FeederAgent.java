@@ -372,8 +372,8 @@ public class FeederAgent extends Agent implements Feeder {
      
             if (LMServer.getForAgentFeeder() == null) {
                 return;
-            }
-        
+                }
+            LMServer.getForAgentLane().setSwitchOn(leftLane.getIndex());
            if(feederFaulty){
             try {
                 print("trying to acquire camera semaphore");
@@ -455,7 +455,8 @@ public class FeederAgent extends Agent implements Feeder {
             if (LMServer.getForAgentFeeder() == null) {
                 return;
             }
-        if(rightLane.getJammed()==true){
+            LMServer.getForAgentLane().setSwitchOn(rightLane.getIndex());
+            if(rightLane.getJammed()==true){
             print("rightLane is jammed!!");            
             //start jammed lane animation
             LMServer.getForAgentLane().startJammedLaneAnimation(rightLane.getIndex());
