@@ -57,7 +57,7 @@ public class KitDeliveryStation {
         for(int i=0;i<this.getPlaceholder().size();i++){
            num=i;
            int yPlace=this.getPlaceholder().get(i).getY();
-           if(yPlace==KAMGraphicPanel.EMPTY_CONVEYERY && this.getPlaceholder().get(i).isShow()){
+           if((yPlace==KAMGraphicPanel.EMPTY_CONVEYERY || yPlace==KAMGraphicPanel.EMPTY_CONVEYERY+2 || yPlace==KAMGraphicPanel.EMPTY_CONVEYERY-2) && this.getPlaceholder().get(i).isShow()){
                inPlace=true;
                break;
            }
@@ -71,7 +71,7 @@ public class KitDeliveryStation {
         for(int i=0;i<this.getPlaceholder().size();i++){
            num=i;
            int yPlace=this.getPlaceholder().get(i).getY();
-           if(yPlace==KAMGraphicPanel.FULL_CONVEYERY && !(this.getPlaceholder().get(i).isShow())){
+           if((yPlace==KAMGraphicPanel.FULL_CONVEYERY || yPlace==KAMGraphicPanel.FULL_CONVEYERY+2 || yPlace==KAMGraphicPanel.FULL_CONVEYERY-2) && !(this.getPlaceholder().get(i).isShow())){
                inPlace=true;
                break;
            }
