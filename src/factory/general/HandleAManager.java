@@ -141,6 +141,7 @@ public class HandleAManager implements Runnable {
             this.server.setPartsAgentClient(this);
             this.server.getServerLM().setKAM(this);
 	    this.server.setNestAgentClient(this);
+            this.server.setKitAssemblyManagerClient(this);
         }
     }
 
@@ -317,7 +318,11 @@ public class HandleAManager implements Runnable {
 	    	this.server.getCameraAgent().msgPartsDroppedFromKit(temp.getParts());
 	    }else if(msg.contains(Message.EARLY_CAMERA_FLASH)){
 	    	this.server.getNestAgent().msgRequestEarlyInspection();
-	    }
+	    }else if(msg.contains(Message.KAM_ACTION_ROBOT_IN_WAY))
+            {
+             this.server.getKitAssemblyManagerClient().sendMessage(Message.KAM_ACTION_ROBOT_IN_WAY); 
+             this.server.getFPMClient().sendMessage(Message.KAM_ACTION_ROBOT_IN_WAY);
+            }
 
     }
 

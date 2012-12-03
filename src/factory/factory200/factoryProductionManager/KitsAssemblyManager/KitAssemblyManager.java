@@ -57,8 +57,8 @@ public class KitAssemblyManager extends JPanel implements ActionListener {
         } else if (msg.contains(Message.KAM_PICK_UP_EMPTY_KIT_TO_ACTIVE)) {
             this.graphics.kitbot.pickUpEmptyKitToActive();
         } else if (msg.contains(Message.KAM_PICK_UP_EMPTY_KIT)) {
-            //this.graphics.deliveryStation = true;
-            //this.graphics.stationRun = true;
+            this.graphics.deliveryStation = true;
+            this.graphics.stationRun = true;
             this.graphics.kitbot.pickUpEmptyKit();
         } else if (msg.contains(Message.KAM_MOVE_EMPTY_KIT_TO_ACTIVE)) {
             this.graphics.kitbot.moveEmptyKitToActive();
@@ -93,7 +93,10 @@ public class KitAssemblyManager extends JPanel implements ActionListener {
         }
         else if(msg.contains(Message.KAM_MOVE_FROM_2_TO_0)){
                 this.moveFrom2To0();
-            }
+            }else if(msg.contains(Message.KAM_ACTION_ROBOT_IN_WAY))
+        {
+            graphics.beginRobotInWayAction();
+        }
     }
 public void moveFrom2To0(){
         this.graphics.kitbot.moveFrom2To0();
@@ -271,7 +274,7 @@ public void moveFrom2To0(){
      * objects
      */
     public KitAssemblyManager(JPanel panel) {
-        this.graphics = new KAMGraphicPanel(panel);
+        this.graphics = new KAMGraphicPanel(panel,this);
         //tester lines
         //this.setLayout(new GridLayout(1, 2));
         //this.graphics = new KAMGraphicPanel(panel);

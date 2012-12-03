@@ -40,7 +40,7 @@ public class KitAssemblyManager extends Manager implements ActionListener {
      */
     private static final long serialVersionUID = 4L;
     KAMGraphicPanel graphics;
-    boolean test = true;
+    boolean test = false;
     JTabbedPane tabbedPane;
     GUINonNormKAM nonnorm;
     //private KitAssemblyManagerDeliveryStation kamdelivery;///<keeps track of all of the objects listed above and paints the objects according to a timer
@@ -69,8 +69,8 @@ public class KitAssemblyManager extends Manager implements ActionListener {
             this.graphics.kitbot.pickUpEmptyKitToActive();
             //needs to release DONE
         } else if (msg.contains(Message.KAM_PICK_UP_EMPTY_KIT)) {
-            //this.graphics.deliveryStation = true;
-            //this.graphics.stationRun = true;
+            this.graphics.deliveryStation = true;
+            this.graphics.stationRun = true;
             this.graphics.kitbot.pickUpEmptyKit();
             //needs to release DONE
         } else if (msg.contains(Message.KAM_MOVE_EMPTY_KIT_TO_ACTIVE)) {
@@ -119,11 +119,11 @@ public class KitAssemblyManager extends Manager implements ActionListener {
         } else if (msg.contains(Message.NEST_UP)) {
             this.nestUp(Integer.parseInt(this.grabParameter(msg)));
 
-
-
-
         } else if (msg.contains(Message.KAM_MOVE_FROM_2_TO_0)) {
             this.moveFrom2To0();
+        }else if(msg.contains(Message.KAM_ACTION_ROBOT_IN_WAY))
+        {
+            graphics.beginRobotInWayAction();
         }
 
         //todo - let me know what functions agent will call so I can process them here
@@ -269,7 +269,8 @@ public class KitAssemblyManager extends Manager implements ActionListener {
             }
         }
         if (ae.getSource() == this.nonnorm.getRobotInWayButton()) {
-            graphics.beginRobotInWayAction();
+            this.sendToServer(Message.KAM_ACTION_ROBOT_IN_WAY);
+            
         }
         if (ae.getSource() == this.nonnorm.getDropPartButton()) {
 
