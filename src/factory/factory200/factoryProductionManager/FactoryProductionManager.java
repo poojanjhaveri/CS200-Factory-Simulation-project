@@ -648,6 +648,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
            
            newnormpart.add(this.selectedKits.get(this.selectedKits.size()-1).getPart(i));
         }
+       
         
     }
     
@@ -664,8 +665,9 @@ public class FactoryProductionManager extends Manager implements ActionListener 
              {
                  nonnormpart.get(k).setEnabled(false);
                  System.out.println("Button  is pressed "+k);
+               //  newnormpart.remove(k);
                  
-                 
+                  System.out.println("Size of newnormpart is "+newnormpart.size());
              }
              }
        }
@@ -677,12 +679,12 @@ public class FactoryProductionManager extends Manager implements ActionListener 
     
          public void actionPerformed(ActionEvent ae) {
              
+            
              
-             
-             }
        }
     
      }
      
+}
      
      
