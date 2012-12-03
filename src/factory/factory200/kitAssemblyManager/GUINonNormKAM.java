@@ -158,6 +158,7 @@ public class GUINonNormKAM  extends JPanel {
         	}
         }
         
+        /*
          c.gridwidth=2;
         c.fill =GridBagConstraints.HORIZONTAL;
         c.gridx=0;
@@ -167,22 +168,25 @@ public class GUINonNormKAM  extends JPanel {
         //droppart.setOpaque(true);
         droppart.addActionListener(this.kam);
         droppart.setPreferredSize(new Dimension(100,45));
-        scenario.add(droppart,c);
+        scenario.add(droppart,c);*/
         
         c.fill =GridBagConstraints.HORIZONTAL;
         c.gridx=2;
         c.gridy=0;
+        c.gridwidth=2;
         earlyflash = new JButton("Early Camera Flash");
         earlyflash.addActionListener(this.kam);
         earlyflash.setPreferredSize(new Dimension(120,43));
         scenario.add(earlyflash,c);
         
         c.fill =GridBagConstraints.HORIZONTAL;
-        c.gridx=1;
-        c.gridy=9;
+        c.gridx=0;
+        c.gridy=0;
+        c.gridwidth=2;
         robotIn = new JButton("Parts Robot in Way");
         robotIn.addActionListener(this.kam);
         robotIn.setPreferredSize(new Dimension(120,43));
+        robotIn.setOpaque(false);
         scenario.add(robotIn,c);
         
        
