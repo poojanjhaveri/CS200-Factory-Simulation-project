@@ -48,7 +48,12 @@ public class FeederTest extends TestCase{
 		feeder.setGantry(gantry);
 		
 		feeder.msgNeedPart(p,leftLane);
-		feeder.pickAndExecuteAnAction();
+		
+                assertEquals(
+		"Mock Gantry should have an empty event log before the feeder scheduler is called. Instead, the mock Lane's event log reads: "
+					+ gantry.log.toString(), 0, gantry.log.size());
+
+                feeder.pickAndExecuteAnAction();
 		
 		assertTrue(
 				"Mock feeder should have received message here are parts. Event log: "
@@ -71,6 +76,11 @@ public class FeederTest extends TestCase{
 		feeder.setGantry(gantry);
 		feeder.msgHereAreParts(parts);
 		feeder.msgNeedPart(p,leftLane);
+                
+                assertEquals(
+		"Mock Lane should have an empty event log before the feeder scheduler is called. Instead, the mock Lane's event log reads: "
+					+ leftLane.log.toString(), 0, leftLane.log.size());
+
 		feeder.pickAndExecuteAnAction();
 		
 		assertTrue(
@@ -96,6 +106,16 @@ public class FeederTest extends TestCase{
 		feeder.setGantry(gantry);
 		feeder.msgHereAreParts(parts);
 		feeder.msgNeedPart(p,rightLane);
+                
+                
+                assertEquals(
+		"Mock Lane should have an empty event log before the feeder scheduler is called. Instead, the mock Lane's event log reads: "
+					+ leftLane.log.toString(), 0, leftLane.log.size());
+                
+                assertEquals(
+		"Mock Lane should have an empty event log before the feeder scheduler is called. Instead, the mock Lane's event log reads: "
+					+   rightLane.log.toString(), 0, rightLane.log.size());
+
 		feeder.pickAndExecuteAnAction();
 		
 		assertTrue(
@@ -134,6 +154,16 @@ public class FeederTest extends TestCase{
                 feeder.msgNeedPart(p1,leftLane);
                 feeder.msgNeedPart(p,rightLane);
 		
+                
+                assertEquals(
+		"Mock Lane should have an empty event log before the feeder scheduler is called. Instead, the mock Lane's event log reads: "
+					+ leftLane.log.toString(), 0, leftLane.log.size());
+
+                
+                assertEquals(
+		"Mock Lane should have an empty event log before the feeder scheduler is called. Instead, the mock Lane's event log reads: "
+					+ rightLane.log.toString(), 0, rightLane.log.size());
+
                 feeder.pickAndExecuteAnAction();
 		
 		assertTrue(
@@ -151,7 +181,7 @@ public class FeederTest extends TestCase{
 	
 	}
 
-private void testMsgHereArePartsFromGantry(){
+public void testMsgHereArePartsFromGantry(){
 		feeder=new FeederAgent("Feeder1",1);
 		MockGantry gantry=new MockGantry("Gantry");
 		Part p=new Part(1);
@@ -172,16 +202,11 @@ private void testMsgHereArePartsFromGantry(){
 		feeder.setGantry(gantry);
 		
                 feeder.msgHereAreParts(parts);
-		feeder.msgHereAreParts(parts1);
-                
-                feeder.msgNeedPart(p1,leftLane);
-                feeder.msgNeedPart(p,rightLane);
 
-assertEquals(
-			"Mock Feeder should have an empty event log before the feeder scheduler is called. Instead, the mock Feeder's event log reads: "
+                assertEquals(
+		"Mock Lane should have an empty event log before the feeder scheduler is called. Instead, the mock Lane's event log reads: "
 					+ leftLane.log.toString(), 0, leftLane.log.size());
-
-
+                
 }
 
 }
