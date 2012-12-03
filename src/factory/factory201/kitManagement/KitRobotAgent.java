@@ -301,7 +301,9 @@ shitkit = null;
             this.client.sendMessage(Message.KAM_DROP_OFF_FULL_KIT);
             this.fpm.sendMessage(Message.KAM_DROP_OFF_FULL_KIT);
             try {
+              print("acquiring semaphore for " + k.standNum);
                 this.animation.acquire();
+              print("semaphore has been released for " + k.standNum);
 //            Thread.sleep(3000);
             } catch (InterruptedException ex) {
             }

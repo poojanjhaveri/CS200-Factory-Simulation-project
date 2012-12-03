@@ -162,7 +162,7 @@ public class CameraAgent extends Agent implements Camera {
                         kit.parts.remove(p);
                     }
                 }
-            }
+        }
             DoInspectKit(kit.parts);
             kitRobot.msgKitInspectedError(missingParts);
             strResult = "Parts missing";
