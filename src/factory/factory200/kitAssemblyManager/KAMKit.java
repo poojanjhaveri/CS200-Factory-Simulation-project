@@ -62,7 +62,7 @@ public class KAMKit {
     public void updateParts() {
         //System.out.println("parts size: "+parts.size());
         if (this.parts.size() <= 4 && this.parts.size()>0) {
-            for (int i = 0; i < this.partsSize; i++) {
+            for (int i = 0; i < this.parts.size(); i++) {
                 this.parts.get(i).getGUIPart().setX(this.getX());
                 this.parts.get(i).getGUIPart().setY(this.getY() + 25 * i);
             }

@@ -235,19 +235,27 @@ public class Part implements Serializable {
         if(this.getName() == null)
         {
             System.out.println("ATTEMPTING TO CLONE A PART WILL NULL NAME");
-            
+            this.name = "NULL NAME";
         }
         if(this.getDescription() == null)
         {
-            System.out.println("ATTEMPTING OT PRINT A PART WITH NULL DESCp");
-            
+            System.out.println("ATTEMPTING TO CLONEA PART WITH NULL DESCp");
+            this.description = "NO DESCRIPTION";
         }
         if(this.getNumber() == null)
         {
-            System.out.println("ATTEMPTING OT PRINT A PART WITH NULL NUM");
+            System.out.println("ATTEMPTING TO CLONE A PART WITH NULL NUM");
+        }
+        if(this.type == null)
+        {
+            System.out.println("ATTEMPTING TO CLONE A PART WITH NULL TYPE");
+        }
+        if(this.filename == null)
+        {
+            System.out.println("ATTEMPTING TO CLONE A PART WITH NULL FILENAME");
         }
         Part n = new Part(this.getName(),this.getDescription(),this.getNumber());
-        if(this.filename != null)
+        n.deserializeSetType(this.type);
         n.setFilename(this.filename);
         return n;
     }

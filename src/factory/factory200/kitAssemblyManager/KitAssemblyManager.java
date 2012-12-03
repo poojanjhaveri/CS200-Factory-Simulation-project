@@ -122,13 +122,13 @@ public class KitAssemblyManager extends Manager implements ActionListener {
 
         } else if (msg.contains(Message.KAM_MOVE_FROM_2_TO_0)) {
             this.moveFrom2To0();
-        }else if(msg.contains(Message.KAM_ACTION_ROBOT_IN_WAY))
-        {
+        } else if (msg.contains(Message.KAM_ACTION_ROBOT_IN_WAY)) {
             graphics.beginRobotInWayAction();
-        }else if(msg.contains(Message.KAM_CHANGE_CONFIGURATION)){
+        } else if (msg.contains(Message.KAM_CHANGE_CONFIGURATION)) {
             BlueprintParts temp = new BlueprintParts();
             temp.recreate(this.grabParameter(msg));
-            
+System.out.println("DEBUGGING KAM_CHANGE_CONFIGURATION!!!!");
+temp.debug();
             this.changeConfig(temp.getParts());
         }
 
@@ -136,8 +136,8 @@ public class KitAssemblyManager extends Manager implements ActionListener {
     }
     //THIS METHOD MOVES KIT FROM POSITION 2 TO 0!!
 
-    public void changeConfig(ArrayList<Part> parts){
-        ArrayList<Part> gah=new ArrayList<Part>();
+    public void changeConfig(ArrayList<Part> parts) {
+        ArrayList<Part> gah = new ArrayList<Part>();
 //        for(int i=0;i<parts.size();i++){
 //        ImageIcon tempPic = new ImageIcon();
 //        if (parts.get(i).type == 0) {
@@ -165,50 +165,60 @@ public class KitAssemblyManager extends Manager implements ActionListener {
 //            //parts.get(i).setGUIPart(temp);
 //            gah.add(tempPart);
 //        }
-        
-                
-        for(Part p: parts) {
-            ImageIcon tempPic = new ImageIcon();
-            switch(p.type) {
-                case 0: 
+        //while(this.graphics.kitstand.getKitPositions().get(2).getKit().getParts().size() != 0){
+        //this.graphics.kitstand.getKitPositions().get(2).getKit().getParts().remove(0);
+        //}
+        for (Part p : parts) {
+            ImageIcon tempPic = null;
+            switch (p.type) {
+                case 0:
                     tempPic = new ImageIcon("pics/parts/part1.png");
                     break;
-                case 1: 
+                case 1:
                     tempPic = new ImageIcon("pics/parts/part2.png");
                     break;
-                case 2: 
+                case 2:
                     tempPic = new ImageIcon("pics/parts/part3.png");
                     break;
-                case 3: 
+                case 3:
                     tempPic = new ImageIcon("pics/parts/part4.png");
                     break;
-                case 4: 
+                case 4:
                     tempPic = new ImageIcon("pics/parts/part5.png");
                     break;
-                case 5: 
+                case 5:
                     tempPic = new ImageIcon("pics/parts/part6.png");
                     break;
-                case 6: 
+                case 6:
                     tempPic = new ImageIcon("pics/parts/part7.png");
                     break;
-                case 7: 
+                case 7:
                     tempPic = new ImageIcon("pics/parts/part8.png");
                     break;
             }
-            GUIPart temp=new GUIPart(this.graphics.kitstand.getKitPositions().get(2).getKit().getX(),this.graphics.kitstand.getKitPositions().get(2).getKit().getY(),0.0,tempPic);
-            Part tempPart = new Part(null, null);
-            tempPart.setGUIPart(temp);
+            if(tempPic == null)
+                System.out.print("We kill alex");
+            GUIPart temp = new GUIPart(this.graphics.kitstand.getKitPositions().get(2).getKit().getX(), this.graphics.kitstand.getKitPositions().get(2).getKit().getY(), 0.0, tempPic);
+            Part lolpart = p.clone();
+            lolpart.setGUIPart(temp);
             //parts.get(i).setGUIPart(temp);
-            gah.add(tempPart);
+            gah.add(lolpart);
         }
-        
+System.out.println("SIZE OF parts: " + parts.size());
+System.out.println("SIZE OF gah: " + gah.size());
         //for(int i=0;i<this.graphics.kitstand.getKitPositions().get(2).getKit().getParts().size();i++){
         //this.graphics.kitstand.getKitPositions().get(2).getKit().getParts().remove(0);
         //}
+        for(int i=0;i<gah.size();i++){
+            System.out.println("DEEPA TESTING GFIEHDOSKLDS"+gah.get(i).type);
+        }
+        //for(int i=0;i<gah.size();i++){
         this.graphics.kitstand.getKitPositions().get(2).getKit().setParts(gah);
-        this.graphics.kitstand.getKitPositions().get(2).getKit().updateParts();
+        //}
+        //this.graphics.kitstand.getKitPositions().get(2).getKit().updateParts();
+        //this.graphics.repaint();
     }
-            
+
     public void moveFrom2To0() {
         this.graphics.kitbot.moveFrom2To0();
     }
@@ -349,7 +359,7 @@ public class KitAssemblyManager extends Manager implements ActionListener {
         }
         if (ae.getSource() == this.nonnorm.getRobotInWayButton()) {
             this.sendToServer(Message.KAM_ACTION_ROBOT_IN_WAY);
-            
+
         }
         if (ae.getSource() == this.nonnorm.getDropPartButton()) {
 

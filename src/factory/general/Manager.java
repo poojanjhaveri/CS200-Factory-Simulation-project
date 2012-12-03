@@ -102,7 +102,7 @@ public class Manager extends JFrame {
      * the possibilities.
      */
     public void processMessage(String msg) {
-        if(Manager.VERBOSE)
+        if(Manager.VERBOSE && msg != null)
         {
             System.out.println("Received message: " + msg);
         }

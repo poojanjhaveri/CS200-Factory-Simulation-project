@@ -63,12 +63,12 @@ public class CameraAgent extends Agent implements Camera {
 
 
         // KEVIN USE THIS TO TEST
-        missingParts = new ArrayList<Part>();
-        missingParts.add(new Part(0));
-//        missingParts.add(new Part(1));
-       // missingParts.add(new Part(2));
-//        missingParts.add(new Part(3));
-        partsDropped = true;
+//        missingParts = new ArrayList<Part>();
+//        missingParts.add(new Part(0));
+////        missingParts.add(new Part(1));
+//       // missingParts.add(new Part(2));
+////        missingParts.add(new Part(3));
+//        partsDropped = true;
     }
 
     // ********* MISC. MESSAGES *********
@@ -80,7 +80,11 @@ public class CameraAgent extends Agent implements Camera {
         this.feeder = feeder;
     }
 
-    public void msgPartsDroppedFromKit(List<Part> missingParts) {
+    public void msgPartsDroppedFromKit(ArrayList<Part> missingParts) {
+        print("I HATE THE FACTORY");
+        for(Part p : missingParts) {
+            print(p.type.toString());
+        }
         partsDropped = true;
         this.missingParts = missingParts;
     }

@@ -136,7 +136,9 @@ public class KitAssemblyManager extends JPanel implements ActionListener {
 //            //parts.get(i).setGUIPart(temp);
 //            gah.add(tempPart);
 //        }
-        
+        //while(this.graphics.kitstand.getKitPositions().get(2).getKit().getParts().size() != 0){
+        //this.graphics.kitstand.getKitPositions().get(2).getKit().getParts().remove(0);
+        //}
         for(Part p: parts) {
             ImageIcon tempPic = new ImageIcon();
             p.debug();
@@ -166,18 +168,23 @@ public class KitAssemblyManager extends JPanel implements ActionListener {
                     tempPic = new ImageIcon("pics/parts/part8.png");
                     break;
             }
-            GUIPart temp=new GUIPart(this.graphics.kitstand.getKitPositions().get(2).getKit().getX(),this.graphics.kitstand.getKitPositions().get(2).getKit().getY(),0.0,tempPic);
-            Part tempPart = new Part(null, null);
-            tempPart.setGUIPart(temp);
+            if(tempPic == null)
+                System.out.print("We kill alex");
+            GUIPart temp = new GUIPart(this.graphics.kitstand.getKitPositions().get(2).getKit().getX(), this.graphics.kitstand.getKitPositions().get(2).getKit().getY(), 0.0, tempPic);
+            Part lolpart = p.clone();
+            lolpart.setGUIPart(temp);
             //parts.get(i).setGUIPart(temp);
-            gah.add(tempPart);
+            gah.add(lolpart);
         }
-        
-        //for(int i=0;i<this.graphics.kitstand.getKitPositions().get(2).getKit().getParts().size();i++){
-        //this.graphics.kitstand.getKitPositions().get(2).getKit().getParts().remove(0);
-        //}
+        for(int i=0;i<gah.size();i++){
+            System.out.println("DEEPA TESTINGEGFKNDSHIOFDS"+gah.get(i).type);
+        }
+        //for(int i=0;i<gah.size();i++){
         this.graphics.kitstand.getKitPositions().get(2).getKit().setParts(gah);
-        this.graphics.kitstand.getKitPositions().get(2).getKit().updateParts();
+        //}
+        //this.graphics.kitstand.getKitPositions().get(2).getKit().setParts(gah);
+        //this.graphics.kitstand.getKitPositions().get(2).getKit().updateParts();
+        
     }
 public void moveFrom2To0(){
         this.graphics.kitbot.moveFrom2To0();

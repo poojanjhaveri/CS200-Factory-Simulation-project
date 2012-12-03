@@ -670,6 +670,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
              {
                  nonnormpart.get(k).setEnabled(false);
                  System.out.println("Button  is pressed "+k);
+                 tempkit.getPart(k).setType();
                  newnormpart.add(tempkit.getPart(k));
 
                   System.out.println("Size of newnormpart is "+newnormpart.size());
