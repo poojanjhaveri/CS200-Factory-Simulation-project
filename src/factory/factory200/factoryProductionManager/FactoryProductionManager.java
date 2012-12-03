@@ -65,6 +65,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
     
     JPanel nonnorm;
     JPanel mparts;
+    Kit ktemporary;
     
     JButton nonnormupdate;
     
@@ -489,7 +490,22 @@ public class FactoryProductionManager extends Manager implements ActionListener 
                 serverQueueDisplay.append(kitty.getName() + newline);
                 serverQueueSize++;
             }
+          
+         
+            
         }
+        else if(msg.contains(Message.PARTS_AGENT_GIVE_KIT_TO_FPM)) {
+            
+           ktemporary = Kit.deserialize(grabParameter(msg));
+           System.out.println("nothing for now"+ktemporary.getName());
+           
+            }
+          
+         
+            
+        
+        
+        
         //Lane Manager( pass 'msg' into Lane Manager Message Interpreter and take a proper action )
         gfx.verifyMessage(msg);
     }
@@ -636,6 +652,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
          
         nonnormupdate.setEnabled(true);
         kitnorname.setText(this.selectedKits.get(this.selectedKits.size()-1).getName());
+     //  kitnorname.setText(inProdField.getText());
         GridBagConstraints c = new GridBagConstraints();
         newnormpart = new ArrayList();
        
