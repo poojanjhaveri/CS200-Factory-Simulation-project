@@ -190,7 +190,7 @@ public class Part implements Serializable {
     }
     public void debug()
     {
-    	System.out.println("Name:" + name + "\nNumber: " + this.number + "\nFilename:" + this.filename);
+    	System.out.println("Name:" + name + "\nNumber: " + this.number + "\nFilename:" + this.filename + "\nType: " + this.type);
     }
     public String serialize() {
     	//        return "("+this.name+","+this.description+","+this.number+","+this.filename+")";

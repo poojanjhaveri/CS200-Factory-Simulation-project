@@ -139,7 +139,7 @@ public class KitAssemblyManager extends JPanel implements ActionListener {
         
         for(Part p: parts) {
             ImageIcon tempPic = new ImageIcon();
-           
+            p.debug();
             switch(p.type) {
                 case 0: 
                     tempPic = new ImageIcon("pics/parts/part1.png");
