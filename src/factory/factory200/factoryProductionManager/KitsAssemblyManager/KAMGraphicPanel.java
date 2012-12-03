@@ -71,6 +71,7 @@ public class KAMGraphicPanel {
     public KitStand kitstand;///<declares an object that keeps track of what is happening with the kit stand
     public KitDeliveryStation delivery;///<declares an object that keeps track of the delivery station
     public KAMCamera camera;
+    
     ArrayList<KAMNest> nest;
     int emptyKits;
     int counter;
@@ -321,7 +322,7 @@ public Integer getFullNestNumber(){
 		case 27:
 		case 28:
 		    kam.flashNestCamera(order-21);
-                    
+            this.kam.parent.flashCamera(order-21);
 		    kitter.popOrder();
 		case 49://this is the pause order
 		    kitter.popOrder();
