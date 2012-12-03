@@ -215,8 +215,8 @@ System.out.println("SIZE OF gah: " + gah.size());
         //for(int i=0;i<gah.size();i++){
         this.graphics.kitstand.getKitPositions().get(2).getKit().setParts(gah);
         //}
-        //this.graphics.kitstand.getKitPositions().get(2).getKit().updateParts();
-        //this.graphics.repaint();
+        this.graphics.kitstand.getKitPositions().get(2).getKit().updateParts();
+//       this.graphics.repaint();
     }
 
     public void moveFrom2To0() {

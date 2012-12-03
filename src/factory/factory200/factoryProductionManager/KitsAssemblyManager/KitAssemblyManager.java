@@ -183,7 +183,7 @@ public class KitAssemblyManager extends JPanel implements ActionListener {
         this.graphics.kitstand.getKitPositions().get(2).getKit().setParts(gah);
         //}
         //this.graphics.kitstand.getKitPositions().get(2).getKit().setParts(gah);
-        //this.graphics.kitstand.getKitPositions().get(2).getKit().updateParts();
+        this.graphics.kitstand.getKitPositions().get(2).getKit().updateParts();
         
     }
 public void moveFrom2To0(){
