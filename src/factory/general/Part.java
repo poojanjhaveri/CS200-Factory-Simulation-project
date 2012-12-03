@@ -53,7 +53,10 @@ public class Part implements Serializable {
     public Integer getInt() {
         return type;
     }
-    
+    public void deserializeSetType(int t)
+    {
+	this.type = t;
+    }
     public void setType(){
     System.out.println("fileName is (??)" + filename);
     if(filename.contains("part1.png"))
@@ -199,6 +202,9 @@ public class Part implements Serializable {
     	arr.add(this.description);
     	arr.add(this.number+"");
     	arr.add(this.filename);
+	if(this.type == null)
+	    this.type = 999;
+	arr.add(this.type+"");
     	return Util.serialize(arr);
     }
     public static Part deserialize(String des) {
@@ -207,6 +213,7 @@ public class Part implements Serializable {
     	if(arr.size() != 4)
     		System.out.println("BAD PART DESERIALIZATION. ARRAY IS "+arr+"; SERIALIZED STRING IS "+des);
     	Part toreturn = new Part(arr.get(0),arr.get(1),Integer.parseInt(arr.get(2)));
+	toreturn.deserializeSetType(Integer.parseInt(arr.get(4)));
     	toreturn.setFilename(arr.get(3));
     	return toreturn;
     }
