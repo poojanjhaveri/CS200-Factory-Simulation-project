@@ -22,6 +22,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import factory.general.BlueprintKits;
+import factory.general.BlueprintParts;
 import factory.general.Kit;
 import factory.general.Manager;
 import factory.general.Message;
@@ -683,9 +684,10 @@ public class FactoryProductionManager extends Manager implements ActionListener 
     
          public void actionPerformed(ActionEvent ae) {
              
-            
+            //newnormpart
              
-             
+             BlueprintParts temp = new BlueprintParts(newnormpart);
+             sendToServer(Message.KAM_BAD_KIT+":"+temp.serialize());
        }
     
      }
