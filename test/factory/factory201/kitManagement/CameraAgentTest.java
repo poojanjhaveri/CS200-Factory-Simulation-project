@@ -34,7 +34,7 @@ public class CameraAgentTest extends TestCase {
         camera.msgNestIsFull(n);
         camera.pickAndExecuteAnAction();
         assertTrue("Nest should be inspected after 1 scheduler call." + 
-                getLogs(), nestMock.log.containsString("Nest Inspected"));
+                getLogs(), nestMock.log.containsString("msgNestInspected"));
         assertTrue("Mock Nest Agent should have only received one message.",
                 nestMock.log.size() == 1);
         assertFalse("Calling the scheduler again should return false.",
@@ -44,21 +44,21 @@ public class CameraAgentTest extends TestCase {
     /**
      * Test of msgHereIsKitInfo method, of class CameraAgent.
      */
-    @Test
-    public void testMsgHereIsKitInfo() {
-        this.initialize();
-        
-        Kit kitInfo = new Kit("Kit Info");
-        for (int i = 0; i < 8; i++) {
-            kitInfo.addPart(new Part(i));
-        }
-        camera.msgHereIsKitInfo(kitInfo);
-        camera.pickAndExecuteAnAction();
-        assertTrue("Kit requirements should be full after 1 scheduler call.",
-                !camera.getKitRqmts().isEmpty());
-        assertFalse("Calling the scheduler again should return false.",
-                camera.pickAndExecuteAnAction());
-    }
+//    @Test
+//    public void testMsgHereIsKitInfo() {
+//        this.initialize();
+//        
+//        Kit kitInfo = new Kit("Kit Info");
+//        for (int i = 0; i < 8; i++) {
+//            kitInfo.addPart(new Part(i));
+//        }
+//        camera.msgHereIsKitInfo(kitInfo);
+//        camera.pickAndExecuteAnAction();
+//        assertTrue("Kit requirements should be full after 1 scheduler call.",
+//                !camera.getKitRqmts().isEmpty());
+//        assertFalse("Calling the scheduler again should return false.",
+//                camera.pickAndExecuteAnAction());
+//    }
 
     /**
      * Test of msgKitIsFull method, of class CameraAgent.

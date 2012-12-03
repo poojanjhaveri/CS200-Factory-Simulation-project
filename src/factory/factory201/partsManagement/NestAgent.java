@@ -205,21 +205,6 @@ public class NestAgent extends Agent implements NestInterface {
             requestInspection(inspectEarly.remove(0));
             return true;
         }
-       /* //NEXT HIGHEST PRIORITY WILL BE TO UNPILE/PURGE A NEST IF IT IS PILED UP 
-        for (Nest n: myNests){
-                if (n.piled==true)
-                {   //stabilize once and then wait for nest to be full again (or request new inspection. )
-                    print("nest is shaking, need to stabilize");
-                    // replace the unpile with the purge nest function.
-                    purge(n);
-                    //unPileNest(n.nestNum);
-                    print("nest # " + n.nestNum + "set to false ");
-                    //set the shaking variable to false after you send the signal to the client to stabilize
-                    n.piled=false;
-                    return true;
-                }
-            }
-        */
         if(requestEarlyInspection){
             for (Nest n: myNests){
                 if (n.status == Nest.Status.gettingPart)
@@ -258,7 +243,7 @@ public class NestAgent extends Agent implements NestInterface {
                 
              for (Nest n: myNests){
                  if (n.part !=null){
-                   if(n.part.type == needParts.get(0).type){
+                   if(n.part.type == needParts.get(0).type && n.status!=Nest.Status.empty){
                        needParts.remove(0);
                        return true;
                    }}
