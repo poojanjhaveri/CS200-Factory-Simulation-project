@@ -172,7 +172,7 @@ public class GantryAgent extends Agent implements Gantry {
     public void msgNeedPart(Part part,Feeder feeder) {
     	
         
-        print("msgNeedPart from Feeder [ " + feeder.getIndex() + " ] ");
+       // print("msgNeedPart from Feeder [ " + feeder.getIndex() + " ] ");
     	
         int count=0;
         
@@ -251,7 +251,6 @@ public class GantryAgent extends Agent implements Gantry {
     	//print("Sending message to feeder");
         print("sending message here are parts to " + f.index);
 
-
     	doSupplyPart(b,f);
 
 
@@ -271,16 +270,9 @@ public class GantryAgent extends Agent implements Gantry {
      print("about to pick up bin");
      
      //sleep until a client comes in. 
-     while(this.client == null)
-         {
-            try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-         
-         }
+     if(this.client==null)
+         return;
+     
         
         try {
             //try to acquire the semaphore which will be released after the gantry has moved down to the bin.

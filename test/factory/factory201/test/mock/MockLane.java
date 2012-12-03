@@ -42,4 +42,14 @@ public class MockLane extends MockAgent implements Lane{
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    @Override
+    public void setJammed(boolean jammed) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public boolean getJammed() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
 }
