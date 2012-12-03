@@ -74,6 +74,7 @@ public class Message {
     public static final String NO_GOOD_PARTS = "NO_GOOD_PARTS";
     public static final String KAM_ACTION_ROBOT_IN_WAY = "KAM_ACTION_ROBOT_IN_WAY";
     public static final String KAM_CHANGE_CONFIGURATION="KAM_CHANGE_CONFIGURATION";
+    public static final String PARTS_AGENT_GIVE_KIT_TO_FPM = "PARTS_AGENT_GIVE_KIT_TO_FPM";
     //    public static final String KAM_FINISH_DROP_OFF_FULL_KIT = "KAM_FINISH_DROP_OFF_FULL_KIT";
     //    public static final String KAM_FINISH_MOVE_TO_NEST = "KAM_FINISH_MOVE_TO_NEST";
     //public static final String KAM_FINISH_DROP_OFF_PARTS = "KAM_FINISH_DROP_OFF_PARTS";
