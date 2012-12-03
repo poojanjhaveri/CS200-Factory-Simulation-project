@@ -26,7 +26,7 @@ public class Kit implements Serializable{
     public String name;
     public Status status;
     public StandNum standNum;
-    public List<Part> parts = new ArrayList<Part>();
+    public ArrayList<Part> parts = new ArrayList<Part>();
     public int kitNeedsParts;
     public boolean beingUsedByPartsAgent; // for Alex
     public List<Part> missingParts;

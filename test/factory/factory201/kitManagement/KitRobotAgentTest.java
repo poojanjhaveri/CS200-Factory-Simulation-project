@@ -88,7 +88,7 @@ public class KitRobotAgentTest extends TestCase {
         kitRobot.pickAndExecuteAnAction();
         
         k[1].status = Kit.Status.verified;
-        kitRobot.msgKitInspected(null);
+        kitRobot.msgKitInspectedNoError();
         kitRobot.pickAndExecuteAnAction();
         assertTrue("Verified kit should be given after 1 scheduler call." +
                 getLogs(), conveyor.log.containsString("msgHereIsVerifiedKit"));

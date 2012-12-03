@@ -46,6 +46,8 @@ public class CameraAgent extends Agent implements Camera {
     private boolean partsDropped;
     private List<Part> missingParts;
     private List<Part> kitInfoWithError;
+    
+        
 
     public CameraAgent(String name) {
         super(name);
@@ -63,7 +65,7 @@ public class CameraAgent extends Agent implements Camera {
         // KEVIN USE THIS TO TEST
         missingParts = new ArrayList<Part>();
         missingParts.add(new Part(0));
-       // missingParts.add(new Part(1));
+//        missingParts.add(new Part(1));
        // missingParts.add(new Part(2));
 //        missingParts.add(new Part(3));
         partsDropped = true;
@@ -155,18 +157,28 @@ public class CameraAgent extends Agent implements Camera {
     // ********** ACTIONS **********
     public void inspectKit(Kit kit) {
         String strResult;
-        List<Integer> shit = new ArrayList<Integer>();
         if (partsDropped) {
+            ArrayList<Part> shit = new ArrayList<Part>();
+            print("ALEX_TEST1");
+            for(Part p: kit.parts) {
+                print(p.getName());
+            }
 //            synchronized(kit.parts) {
-                for (int i = 0; i < kit.parts.size(); i++) {
+                for (Part p: kit.parts) {
                     for (Part m : missingParts) {
-                        if (kit.parts.get(i).type == m.type) {
-                            shit.add(i);
+                        if (p.type == m.type) {
+                            shit.add(p);
+                            print("testing123");
                         }
                     }
                 }
-                for(int i = 0; i <shit.size(); i++) {
-                    kit.parts.remove(shit.get(i));
+                for(Part p: shit) {
+                    int j = kit.parts.size();
+                    kit.parts.remove(p);
+                    if(kit.parts.size() == j) {
+                        print("GOD DAMN MOFO");
+                    }
+                    print("testing456");
                 }
 //            }
             DoInspectKit(kit.parts);
@@ -277,7 +289,7 @@ public class CameraAgent extends Agent implements Camera {
         }
     }
 
-    private void DoInspectKit(List<Part> partsList) {
+    private void DoInspectKit(ArrayList<Part> partsList) {
         if (this.client != null) {
             this.client.sendMessage(Message.KAM_FLASH_KIT_CAMERA);
             this.fpm.sendMessage(Message.KAM_FLASH_KIT_CAMERA);
@@ -285,10 +297,10 @@ public class CameraAgent extends Agent implements Camera {
                 Thread.sleep(2000); // For Deepa
             } catch (InterruptedException ex) {
             }
-            BlueprintParts bp = new BlueprintParts((ArrayList<Part>) partsList);
-            print("ALEX_TEST");
+            BlueprintParts bp = new BlueprintParts(partsList);
+            print("ALEX_TEST2");
             for(Part p: partsList) {
-                print(p.getName());
+                print(p.type.toString());
             }
             this.client.sendMessage(Message.KAM_CHANGE_CONFIGURATION + ":" + bp.serialize());
             this.fpm.sendMessage(Message.KAM_CHANGE_CONFIGURATION + ":" + bp.serialize());
