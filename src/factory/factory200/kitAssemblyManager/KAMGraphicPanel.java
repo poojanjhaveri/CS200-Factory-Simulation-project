@@ -333,6 +333,7 @@ public class KAMGraphicPanel extends JPanel implements ActionListener {
 		case 28:
 		    kam.flashNestCamera(order-21);
 		    kitter.popOrder();
+		    break;
 		case 49://this is the pause order
 		    kitter.popOrder();
 		    break;
