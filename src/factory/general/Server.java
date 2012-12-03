@@ -80,8 +80,8 @@ public class Server {
         }
     }
 
-    public void playMahMusicLols() {
-    	TehMusix t = new TehMusix("bg.wav");
+    public void playMusic() {
+    	MusicPlayer t = new MusicPlayer("bg.wav");
     	(new Thread(t)).start();
     }
 
@@ -91,7 +91,7 @@ public class Server {
      * @param portNumber - the port number to create the server on.
      */
     public Server(int portNumber) {
-	this.playMahMusicLols();
+	this.playMusic();
         this.fstate = new FactoryState();
         initializeManagers(); // Something by Dongyoung
 

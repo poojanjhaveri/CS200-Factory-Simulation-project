@@ -30,6 +30,9 @@ public class LMDrawableCamera{
 		cameraSwitch = true;
 	}
 	
+	/**
+	 * @brief camera shooting( shows for 0.5 sec )
+	 */
 	public void cameraController(){
 		if( cameraSwitch == true ){
 			timer++;

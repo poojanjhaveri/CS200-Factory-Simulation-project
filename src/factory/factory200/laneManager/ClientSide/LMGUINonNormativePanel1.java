@@ -9,6 +9,12 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/**
+ * This class contains Non-normative scenarios(For V2)
+ * 
+ * @brief Non-normative Scenarios( Bad Parts Insertion, Feeder Not Working )
+ * @author Dongyoung Jung
+ */
 public class LMGUINonNormativePanel1 extends JPanel implements ActionListener{
 
 	private LMApplication app;

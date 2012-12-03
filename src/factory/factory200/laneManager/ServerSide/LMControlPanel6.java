@@ -8,6 +8,10 @@ import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 
+/**
+ * @brief Part Robot Controller
+ * @author Dongyoung Jung
+ */
 public class LMControlPanel6 extends JPanel implements ActionListener{
 	
 	private LMPartRobotForAgent agentPartRobot;
