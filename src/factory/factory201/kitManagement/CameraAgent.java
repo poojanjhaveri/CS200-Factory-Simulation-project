@@ -61,12 +61,12 @@ public class CameraAgent extends Agent implements Camera {
 
 
         // KEVIN USE THIS TO TEST
-      //  missingParts = new ArrayList<Part>();
-     //   missingParts.add(new Part(0));
+        missingParts = new ArrayList<Part>();
+        missingParts.add(new Part(0));
        // missingParts.add(new Part(1));
        // missingParts.add(new Part(2));
-       // missingParts.add(new Part(3));
-    //    partsDropped = true;
+//        missingParts.add(new Part(3));
+        partsDropped = true;
     }
 
     // ********* MISC. MESSAGES *********
@@ -155,16 +155,22 @@ public class CameraAgent extends Agent implements Camera {
     // ********** ACTIONS **********
     public void inspectKit(Kit kit) {
         String strResult;
+        List<Integer> shit = new ArrayList<Integer>();
         if (partsDropped) {
-            List<Part> partsList = new ArrayList<Part>(kit.parts);
-            for (Part p : partsList) {
-                for (Part m : missingParts) {
-                    if (p.type == m.type) {
-                        partsList.remove(p);
+//            synchronized(kit.parts) {
+                for (int i = 0; i < kit.parts.size(); i++) {
+                    for (Part m : missingParts) {
+                        if (kit.parts.get(i).type == m.type) {
+                            shit.add(i);
+                        }
                     }
                 }
-            }
-            DoInspectKit(partsList);
+                for(int i = 0; i <shit.size(); i++) {
+                    kit.parts.remove(shit.get(i));
+                }
+//            }
+            DoInspectKit(kit.parts);
+//            DoInspectKit();
             kitRobot.msgKitInspectedError(missingParts);
             strResult = "Parts missing";
             partsDropped = false;
@@ -280,6 +286,10 @@ public class CameraAgent extends Agent implements Camera {
             } catch (InterruptedException ex) {
             }
             BlueprintParts bp = new BlueprintParts((ArrayList<Part>) partsList);
+            print("ALEX_TEST");
+            for(Part p: partsList) {
+                print(p.getName());
+            }
             this.client.sendMessage(Message.KAM_CHANGE_CONFIGURATION + ":" + bp.serialize());
             this.fpm.sendMessage(Message.KAM_CHANGE_CONFIGURATION + ":" + bp.serialize());
         } else {

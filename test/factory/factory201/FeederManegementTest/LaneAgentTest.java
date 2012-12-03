@@ -47,7 +47,10 @@ public void testneedParts(){
 
 	lane.setFeeder(feeder);
 	lane.msgNeedPart(p);
-	lane.pickAndExecuteAnAction();
+	assertEquals(
+			"Mock Feeder should have an empty event log before the lane scheduler is called. Instead, the mock Feeder's event log reads: "
+					+ feeder.log.toString(), 0, feeder.log.size());
+        lane.pickAndExecuteAnAction();
 
 	assertTrue(
 			"Mock feeder should have received message here are parts. Event log: "
@@ -74,6 +77,10 @@ public void testsendPartsAfterRequest(){
 	//message sent by the nest
 	lane.msgNeedPart(p);
 	lane.msgHereAreParts(parts);
+        
+        assertEquals(
+			"Mock Nest should have an empty event log before the lane scheduler is called. Instead, the mock Feeder's event log reads: "
+					+ nest.log.toString(), 0, nest.log.size());
 	lane.pickAndExecuteAnAction();
 
 	assertTrue(
@@ -99,7 +106,11 @@ public void testLaneInitializedWithNoParts(){
 	lane.msgNeedPart(p);
 	//lane.msgHereAreParts(p,12);
 	System.out.println("before pick and execute");
-	lane.pickAndExecuteAnAction();
+	
+        assertEquals(
+			"Mock Feeder should have an empty event log before the lane scheduler is called. Instead, the mock Feeder's event log reads: "
+					+ feeder.log.toString(), 0, feeder.log.size());
+        lane.pickAndExecuteAnAction();
 
 	assertTrue(
 			"Mock feeder should have received message need parts. Event log: "
@@ -107,5 +118,45 @@ public void testLaneInitializedWithNoParts(){
 					.containsString("Need parts from lane event encountered"));
 }
 
-    
+public void testMessageHereAreParts(){
+
+        lane=new LaneAgent("Lane1",1);
+	MockFeeder feeder=new MockFeeder("Feeder");
+	MockNest nest=new MockNest("Nest");
+	//feeder=new FeederAgent(1);
+	MockGantry gantry=new MockGantry("Gantry");
+	Part p=new Part(1);
+	//MockLane leftLane=new MockLane("Left Lane");
+	//MockLane rightLane=new MockLane("Right Lane");
+
+	lane.setFeeder(feeder);
+	lane.setNest(nest);
+	//message sent by the nest
+        lane.msgNeedPart(p);
+
+        assertEquals(
+			"Mock Nest should have an empty event log before the lane scheduler is called. Instead, the mock Feeder's event log reads: "
+					+ nest.log.toString(), 0, nest.log.size());
+        lane.pickAndExecuteAnAction();
+        assertEquals(
+			"Mock Nest should still have an empty event log before the lane scheduler is called. Instead, the mock Feeder's event log reads: "
+					+ nest.log.toString(), 0, nest.log.size());
+        
+        List<Part> parts=new ArrayList<Part>();
+        for(int i=0;i<8;i++)
+        parts.add(p);
+        lane.msgHereAreParts(parts);
+        
+        assertEquals(
+			"Mock Nest should still have an empty event log before the lane scheduler is called. Instead, the mock Feeder's event log reads: "
+					+ nest.log.toString(), 0, nest.log.size());
+        lane.pickAndExecuteAnAction();
+
+        assertTrue(
+			"Mock nest should have received message here are parts. Event log: "
+					+ nest.log.toString(), nest.log
+					.containsString("msgHereAreParts"));
+       
+}    
+
 }

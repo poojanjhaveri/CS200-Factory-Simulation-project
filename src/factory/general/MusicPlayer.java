@@ -1,49 +1,44 @@
 package factory.general;
 
 import javax.sound.sampled.*;
-import java.io.*;
 
-   import java.io.File;
+import java.io.File;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.DataLine;
-import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.SourceDataLine;
 
 /**
 @brief plays sounds
 @author YiWei Roy Zheng & Help from the Internet
  */
-public class MusicPlayer implements Runnable{
+public class MusicPlayer implements Runnable {
 
     String filename;
-
     private final int BUFFER_SIZE = 128000;
     private File soundFile;
     AudioInputStream audioStream;
     AudioFormat audioFormat;
     SourceDataLine sourceLine;
 
-    public MusicPlayer(String fname)
-    {
-	this.filename = fname;
+    public MusicPlayer(String fname) {
+        this.filename = fname;
     }
-    public void run()
-    {
-	this.playSound();
+
+    public void run() {
+        this.playSound();
     }
+
     /**
      * This function was taken from StackOverflow
      * @param filename the name of the file that is going to be played
      *
      */
-    public void playSound(){
+    public void playSound() {
 
         String strFilename = this.filename;
 
@@ -56,9 +51,9 @@ public class MusicPlayer implements Runnable{
 
         try {
             this.audioStream = AudioSystem.getAudioInputStream(soundFile);
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-           System.exit(1);
+            System.exit(1);
         }
 
         this.audioFormat = this.audioStream.getFormat();
@@ -67,8 +62,7 @@ public class MusicPlayer implements Runnable{
         try {
             sourceLine = (SourceDataLine) AudioSystem.getLine(info);
             sourceLine.open(audioFormat);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             System.exit(1);
         }
@@ -90,22 +84,19 @@ public class MusicPlayer implements Runnable{
         sourceLine.drain();
         sourceLine.close();
     }
-    public static void play(String filename)
-    {
-    try
-	{
-	    Clip clip = AudioSystem.getClip();
-	    clip.open(AudioSystem.getAudioInputStream(new File(filename)));
-	    clip.start();
-	}
-    catch (Exception ex)
-	{
-	    ex.printStackTrace();
-	}
+
+    public static void play(String filename) {
+        try {
+            Clip clip = AudioSystem.getClip();
+            clip.open(AudioSystem.getAudioInputStream(new File(filename)));
+            clip.start();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
-    public static void main(String[] args)
-    {
-	MusicPlayer s = new MusicPlayer("bg.wav");
-	(new Thread(s)).start();
+
+    public static void main(String[] args) {
+        MusicPlayer s = new MusicPlayer("bg.wav");
+        (new Thread(s)).start();
     }
 }

@@ -35,6 +35,7 @@ import javax.swing.JPanel;
  */
 public class KitAssemblyManager extends JPanel implements ActionListener {
 
+	GraphicsPanel parent;
     KAMGraphicPanel graphics;
     //private KitAssemblyManagerDeliveryStation kamdelivery;///<keeps track of all of the objects listed above and paints the objects according to a timer
     //private KitAssemblyManagerGUIPanel gui;///<keeps track of the GUI components and allows the manager to pick which components will be broken
@@ -292,7 +293,8 @@ public void moveFrom2To0(){
      * declares objects within the class and sets the states of each of the
      * objects
      */
-    public KitAssemblyManager(JPanel panel) {
+    public KitAssemblyManager(GraphicsPanel panel) {
+    	this.parent = panel;
         this.graphics = new KAMGraphicPanel(panel,this);
         //tester lines
         //this.setLayout(new GridLayout(1, 2));

@@ -11,7 +11,7 @@ public class LMLaneHandler {
 
 	public LMLaneHandler(LMApplication app){
 		this.app = app;
-		
+		/*
 		verify("0Switch On");
 		verify("1Switch On");
 		verify("2Switch On");
@@ -20,6 +20,7 @@ public class LMLaneHandler {
 		verify("5Switch On");
 		verify("6Switch On");
 		verify("7Switch On");
+                * */
 	}
 
 	public void verify(String message){

@@ -24,7 +24,7 @@ public class MockNest extends MockAgent implements NestInterface {
       log.add(new LoggedEvent("Received parts event encountered "));
     }
 
-   
+  
     @Override
     public void msgHereAreParts(List<Part> parts, int index) {
         log.add(new LoggedEvent("Got msgHereAreParts from Lane"+ index));
