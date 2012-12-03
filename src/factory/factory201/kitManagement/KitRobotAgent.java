@@ -32,10 +32,10 @@ public class KitRobotAgent extends Agent implements KitRobot {
     private KitStand kitStand;
     private int kitRequestsFromPartsAgent;
     private boolean requestedKitFromConveyor;
-    private Semaphore animation = new Semaphore(0, true);
+    public Semaphore animation = new Semaphore(0, true);
     private boolean factoryRunning = false;
     private boolean msgTest=false;
-
+    
     public KitRobotAgent(String name) {
         super(name);
         kitStand = new KitStand(this);
