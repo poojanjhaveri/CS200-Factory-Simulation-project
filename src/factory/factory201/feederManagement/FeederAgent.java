@@ -334,7 +334,7 @@ public class FeederAgent extends Agent implements Feeder {
 
         //else{
         //if the feeder is not faulty
-        dosendPartToLeftLane(p);
+          dosendPartToLeftLane(p);
         leftLane.msgHereAreParts(mparts);
             
         
@@ -370,7 +370,7 @@ public class FeederAgent extends Agent implements Feeder {
          */
         //	 this.client.sendMessage("Message");
      
-            if (LMServer.getForAgentFeeder() == null) {
+            if (LMServer== null) {
                 return;
                 }
             LMServer.getForAgentLane().setSwitchOn(leftLane.getIndex());
@@ -452,7 +452,7 @@ public class FeederAgent extends Agent implements Feeder {
          }
          */
         
-            if (LMServer.getForAgentFeeder() == null) {
+            if (LMServer== null) {
                 return;
             }
             LMServer.getForAgentLane().setSwitchOn(rightLane.getIndex());
