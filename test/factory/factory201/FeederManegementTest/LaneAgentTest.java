@@ -107,5 +107,28 @@ public void testLaneInitializedWithNoParts(){
 					.containsString("Need parts from lane event encountered"));
 }
 
-    
+public void testMessageHereAreParts(){
+
+        lane=new LaneAgent("Lane1",1);
+	MockFeeder feeder=new MockFeeder("Feeder");
+	MockNest nest=new MockNest("Nest");
+	//feeder=new FeederAgent(1);
+	MockGantry gantry=new MockGantry("Gantry");
+	Part p=new Part(1);
+	//MockLane leftLane=new MockLane("Left Lane");
+	//MockLane rightLane=new MockLane("Right Lane");
+
+	lane.setFeeder(feeder);
+	lane.setNest(nest);
+	//message sent by the nest
+        lane.msgNeedPart(p);
+
+        lane.pickAndExecuteAnAction();
+        
+        List<Part> parts=new ArrayList<Part>();
+        for(int i=0;i<8;i++)
+        parts.add(p);
+        lane.msgHereAreParts(parts);
+}    
+
 }
