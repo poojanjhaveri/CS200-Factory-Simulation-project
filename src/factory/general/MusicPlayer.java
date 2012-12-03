@@ -20,7 +20,7 @@ import javax.sound.sampled.SourceDataLine;
 @brief plays sounds
 @author YiWei Roy Zheng & Help from the Internet
  */
-public class TehMusix implements Runnable{
+public class MusicPlayer implements Runnable{
 
     String filename;
 
@@ -30,7 +30,7 @@ public class TehMusix implements Runnable{
     AudioFormat audioFormat;
     SourceDataLine sourceLine;
 
-    public TehMusix(String fname)
+    public MusicPlayer(String fname)
     {
 	this.filename = fname;
     }
@@ -105,7 +105,7 @@ public class TehMusix implements Runnable{
     }
     public static void main(String[] args)
     {
-	TehMusix s = new TehMusix("bg.wav");
+	MusicPlayer s = new MusicPlayer("bg.wav");
 	(new Thread(s)).start();
     }
 }
