@@ -155,15 +155,22 @@ public class CameraAgent extends Agent implements Camera {
     // ********** ACTIONS **********
     public void inspectKit(Kit kit) {
         String strResult;
+        List<Integer> shit = new ArrayList<Integer>();
         if (partsDropped) {
-            for (Part p : kit.parts) {
-                for (Part m : missingParts) {
-                    if (p.type == m.type) {
-                        kit.parts.remove(p);
+//            synchronized(kit.parts) {
+                for (int i = 0; i < kit.parts.size(); i++) {
+                    for (Part m : missingParts) {
+                        if (kit.parts.get(i).type == m.type) {
+                            shit.add(i);
+                        }
                     }
                 }
-        }
+                for(int i = 0; i <shit.size(); i++) {
+                    kit.parts.remove(shit.get(i));
+                }
+//            }
             DoInspectKit(kit.parts);
+//            DoInspectKit();
             kitRobot.msgKitInspectedError(missingParts);
             strResult = "Parts missing";
             partsDropped = false;
@@ -279,6 +286,10 @@ public class CameraAgent extends Agent implements Camera {
             } catch (InterruptedException ex) {
             }
             BlueprintParts bp = new BlueprintParts((ArrayList<Part>) partsList);
+            print("ALEX_TEST");
+            for(Part p: partsList) {
+                print(p.getName());
+            }
             this.client.sendMessage(Message.KAM_CHANGE_CONFIGURATION + ":" + bp.serialize());
             this.fpm.sendMessage(Message.KAM_CHANGE_CONFIGURATION + ":" + bp.serialize());
         } else {
