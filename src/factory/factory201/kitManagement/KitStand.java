@@ -19,14 +19,14 @@ public class KitStand {
 
     public boolean addKit(Kit kit) {
         if (kits[1] == null) {
+            agent.DoMoveKitFromConveyorTo1();
             kits[1] = kit;
             kits[1].standNum = Kit.StandNum.one;
-            agent.DoMoveKitFromConveyorTo1();
             return true;
         } else if (kits[0] == null) {
+            agent.DoMoveKitFromConveyorTo0();
             kits[0] = kit;
             kits[0].standNum = Kit.StandNum.zero;
-            agent.DoMoveKitFromConveyorTo0();
             return true;
         } else {
             return false;
@@ -83,19 +83,22 @@ public class KitStand {
 
     public void moveFullKitToInspection(Kit kit) {
         if (kit.equals(kits[1])) {
+            agent.DoMoveKitFrom1to2();
             kits[2] = kits[1];
             kits[1] = null;
-            agent.DoMoveKitFrom1to2();
+           
             if (kits[0] != null) {
+                agent.DoMoveKitFrom0to1();
                 kits[1] = kits[0];
                 kits[1].standNum = Kit.StandNum.one;
                 kits[0] = null;
-                agent.DoMoveKitFrom0to1();
+            
             }
         } else if (kit.equals(kits[0])) {
+            agent.DoMoveKitFrom0to2();
             kits[2] = kits[0];
             kits[0] = null;
-            agent.DoMoveKitFrom0to2();
+            
         }
         kits[2].standNum = Kit.StandNum.two;
 

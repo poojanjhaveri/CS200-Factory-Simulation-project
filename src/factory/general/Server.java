@@ -415,6 +415,8 @@ public HandleAManager getKitAssemblyManagerClient()
         kitRobotAgent.setFactoryProductionManagerClient(in);
         cameraAgent.setFactoryProductionManagerClient(in);
         conveyorAgent.setFactoryProductionManagerClient(in);
+        nestAgent.setFactoryProductionManagerClient(in);
+        
         for (int i = 0; i != 4; i++)
             feederAgents[i].setFactoryProductionManagerClient(in);
         gantryAgent.setFactoryProductionManagerClient(in);

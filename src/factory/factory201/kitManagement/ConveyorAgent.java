@@ -87,9 +87,10 @@ public class ConveyorAgent extends Agent implements Conveyor {
     private void generateKits() {
         for (int i = 0; i < generateKits; i++, kitCount++) {
             Kit k = new Kit("Kit " + kitCount);
+            DoAddKit(k);
             kitList.add(k);
             print("Generating a new empty kit: [" + k.name + "] is ready.");
-            DoAddKit(k);
+            
         }
         generateKits = 0;
         stateChanged();
