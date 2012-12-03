@@ -6,8 +6,8 @@
 
 
 echo "Beginning server"
-pause
 START java -cp bin factory.general.Server
+ping -n 6 127.0.0.1 >nul
 echo "Beginning managers"
 pause
 START java -cp bin factory.factory200.partsManager.PartsManager
