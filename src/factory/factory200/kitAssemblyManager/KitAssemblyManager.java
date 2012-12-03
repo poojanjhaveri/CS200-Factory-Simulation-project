@@ -1,6 +1,5 @@
 package factory.factory200.kitAssemblyManager;
 
-import factory.general.BlueprintParts;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
