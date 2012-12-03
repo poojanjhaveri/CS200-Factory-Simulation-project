@@ -79,9 +79,13 @@ public class KAMGraphicPanel {
     Timer timer;
     boolean stationRun;
     //JPanel panel;
+    boolean partsrobotinwayaction;///<causes non norm parts robot in way to begin
 
-    public KAMGraphicPanel(JPanel panel) {
-
+    KitAssemblyManager kam;
+    
+    public KAMGraphicPanel(JPanel panel,KitAssemblyManager rofl) {
+        this.kam = rofl;
+this.partsrobotinwayaction = false;
         deliveryStation = true;
 
         stationRun = true;
@@ -122,8 +126,25 @@ public class KAMGraphicPanel {
         //timer.start();
 
     }
-
+public Integer getFullNestNumber(){
+            int num=-1;
+            for(int i=0;i<this.nest.size();i++){
+                if(nest.get(i).isFull()){
+                    num=i;
+                    break;
+                }
+            }
+            return num;
+    }
     public void timerAction() {
+        if(partsrobotinwayaction)
+		{
+		    int nestnum = getFullNestNumber();
+		    if(nestnum != -1){
+		    partsrobotinwayaction = false;
+		    kitter.blockNestNonNorm(nestnum);
+		    }
+		}
         if (camera.isVisible()) {
             cameraCounter++;
         }
@@ -291,6 +312,19 @@ public class KAMGraphicPanel {
                     kitter.popOrder();
                     kitter.checkDefault();
                     break;
+                    case 21:
+		case 22:
+		case 23:
+		case 24:
+		case 25:
+		case 26:
+		case 27:
+		case 28:
+		    kam.flashNestCamera(order-21);
+		    kitter.popOrder();
+		case 49://this is the pause order
+		    kitter.popOrder();
+		    break;
                 default:
                     kitter.performOrder();
             }
@@ -358,5 +392,9 @@ public class KAMGraphicPanel {
         for (int i = 1; i <= 8; i++) {
             nest.get(i - 1).getNest().paintIcon(j, g, nest.get(i - 1).getX(), nest.get(i - 1).getY());
         }
+    }
+    public void beginRobotInWayAction()
+    {
+	this.partsrobotinwayaction = true;
     }
 }

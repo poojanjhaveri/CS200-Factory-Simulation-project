@@ -2,6 +2,7 @@ package factory.factory200.factoryProductionManager.KitsAssemblyManager;
 
 import factory.factory200.factoryProductionManager.GraphicsPanel;
 import factory.factory200.kitAssemblyManager.*;
+import factory.general.BlueprintParts;
 import factory.general.GUIPart;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,6 +12,7 @@ import factory.general.Part;
 import java.awt.Button;
 import java.awt.Graphics2D;
 import java.awt.GridLayout;
+import java.util.ArrayList;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -57,8 +59,8 @@ public class KitAssemblyManager extends JPanel implements ActionListener {
         } else if (msg.contains(Message.KAM_PICK_UP_EMPTY_KIT_TO_ACTIVE)) {
             this.graphics.kitbot.pickUpEmptyKitToActive();
         } else if (msg.contains(Message.KAM_PICK_UP_EMPTY_KIT)) {
-            //this.graphics.deliveryStation = true;
-            //this.graphics.stationRun = true;
+            this.graphics.deliveryStation = true;
+            this.graphics.stationRun = true;
             this.graphics.kitbot.pickUpEmptyKit();
         } else if (msg.contains(Message.KAM_MOVE_EMPTY_KIT_TO_ACTIVE)) {
             this.graphics.kitbot.moveEmptyKitToActive();
@@ -93,7 +95,27 @@ public class KitAssemblyManager extends JPanel implements ActionListener {
         }
         else if(msg.contains(Message.KAM_MOVE_FROM_2_TO_0)){
                 this.moveFrom2To0();
-            }
+            }else if(msg.contains(Message.KAM_ACTION_ROBOT_IN_WAY))
+        {
+            graphics.beginRobotInWayAction();
+        }
+        else if(msg.contains(Message.KAM_CHANGE_CONFIGURATION)){
+            BlueprintParts temp = new BlueprintParts();
+            temp.recreate(this.grabParameter(msg));
+            
+            this.changeConfig(temp.getParts());
+        }
+    }
+    public void changeConfig(ArrayList<Part> parts){
+        for(int i=0;i<parts.size();i++){
+            GUIPart temp=new GUIPart(this.graphics.kitstand.getKitPositions().get(2).getKit().getX(),this.graphics.kitstand.getKitPositions().get(2).getKit().getY(),0.0,new ImageIcon(parts.get(i).getFilename()));
+            parts.get(i).setGUIPart(temp);
+        }
+        for(int i=0;i<this.graphics.kitstand.getKitPositions().get(2).getKit().getParts().size();i++){
+        this.graphics.kitstand.getKitPositions().get(2).getKit().getParts().remove(0);
+        }
+        this.graphics.kitstand.getKitPositions().get(2).getKit().setParts(parts);
+        this.graphics.kitstand.getKitPositions().get(2).getKit().updateParts();
     }
 public void moveFrom2To0(){
         this.graphics.kitbot.moveFrom2To0();
@@ -271,7 +293,7 @@ public void moveFrom2To0(){
      * objects
      */
     public KitAssemblyManager(JPanel panel) {
-        this.graphics = new KAMGraphicPanel(panel);
+        this.graphics = new KAMGraphicPanel(panel,this);
         //tester lines
         //this.setLayout(new GridLayout(1, 2));
         //this.graphics = new KAMGraphicPanel(panel);

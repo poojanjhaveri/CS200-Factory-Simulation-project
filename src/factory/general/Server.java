@@ -71,6 +71,7 @@ public class Server {
 
     private HandleAManager kitmanagerclient;///<connection to the kit manager
     private HandleAManager fpmclient;///<connection to the fpm
+    private HandleAManager kitassemblymanagerclient;///<connection to the kit assembly manager
 
     public static void main(String[] args) {
         Server server = new Server(PORT_NUMBER);
@@ -391,7 +392,15 @@ public class Server {
     public void setKitManagerClient(HandleAManager in) {
         this.kitmanagerclient = in;
     }
-
+    
+    public void setKitAssemblyManagerClient(HandleAManager in)
+    {
+        this.kitassemblymanagerclient = in;
+    }
+public HandleAManager getKitAssemblyManagerClient()
+{
+    return this.kitassemblymanagerclient;
+}
     public HandleAManager getKitManagerClient() {
         return this.kitmanagerclient;
     }

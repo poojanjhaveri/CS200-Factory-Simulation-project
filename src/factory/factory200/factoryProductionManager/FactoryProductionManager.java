@@ -22,9 +22,11 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import factory.general.BlueprintKits;
+import factory.general.BlueprintParts;
 import factory.general.Kit;
 import factory.general.Manager;
 import factory.general.Message;
+import factory.general.Part;
 import factory.general.Util;
 import javax.swing.ImageIcon;
 
@@ -75,7 +77,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
     private int qtyToAdd;
     private int serverQueueSize;
     private ArrayList<String> availableKits; // strings in the combobox selKit; generally, availableKits.get(i) refers to selKit.getItemAt(i)
-    private ArrayList<Kit> selectedKits; // stores the selected kits before the kits are added to production queue
+    public ArrayList<Kit> selectedKits; // stores the selected kits before the kits are added to production queue
     		// so say you select kit1 with the combo box and put 20 in the text field; we end up with 20 of kit1 in selectedKits
 
     private boolean kitListFromServerIsEmpty; // true if kit list from server is empty
@@ -83,7 +85,8 @@ public class FactoryProductionManager extends Manager implements ActionListener 
     private BlueprintKits kitsbp;
     
     private ArrayList<JButton> nonnormpart;
-    
+    private ArrayList<Part> newnormpart;
+    Kit tempkit;
     
     
     JLabel  kitnorname;
@@ -591,19 +594,30 @@ public class FactoryProductionManager extends Manager implements ActionListener 
             mparts.setLayout(new GridBagLayout());
             GridBagConstraints c = new GridBagConstraints();
             
-            c.gridx=1;
-            c.gridy=1;
+            c.gridx=0;
+            c.gridy=0;
             mparts.add(new JLabel("Remove Part Panel"),c);
             
             
-            c.gridx=1;
-            c.gridy=2;
+            
+            
+            c.gridx=0;
+            c.gridy=1;
             c.gridwidth=2;
             
             kitnorname = new JLabel("");
             mparts.add(kitnorname,c);
-            nonnormupdate = new JButton("Update this kit ");
-            nonnormupdate.setEnabled(false);
+            
+            nonnormupdate = new JButton("Send the new kit config ");
+            nonnormupdate.setEnabled(true);
+            
+            c.gridx=1;
+            c.gridy=1;
+            mparts.add(nonnormupdate,c);
+            
+            
+            
+            
             
         //    mparts.add(nonnormupdate);
               nonnormpart = new ArrayList();
@@ -616,9 +630,15 @@ public class FactoryProductionManager extends Manager implements ActionListener 
     {
         nonnorm.remove(mparts);
          preparenonnorm();
+         tempkit = this.selectedKits.get(this.selectedKits.size()-1);
+         
+         nonnormupdate.addActionListener(new sendbuttonnorm());
+         
         nonnormupdate.setEnabled(true);
         kitnorname.setText(this.selectedKits.get(this.selectedKits.size()-1).getName());
         GridBagConstraints c = new GridBagConstraints();
+        newnormpart = new ArrayList();
+       
         
         for(int i=0;i<this.selectedKits.get(this.selectedKits.size()-1).getSize();i++)
         {
@@ -631,7 +651,9 @@ public class FactoryProductionManager extends Manager implements ActionListener 
            nonnormpart.get(i).setIcon(new ImageIcon(this.selectedKits.get(this.selectedKits.size()-1).getPart(i).getFilename()));
            mparts.add(nonnormpart.get(i),c);
            
+           
         }
+       
         
     }
     
@@ -646,13 +668,36 @@ public class FactoryProductionManager extends Manager implements ActionListener 
              {
              if(ae.getSource()==nonnormpart.get(k))
              {
+                 nonnormpart.get(k).setEnabled(false);
                  System.out.println("Button  is pressed "+k);
-                 
+                 newnormpart.add(tempkit.getPart(k));
+
+                  System.out.println("Size of newnormpart is "+newnormpart.size());
              }
              }
-             
-    
        }
     
      }
-}
+     
+     public class sendbuttonnorm implements ActionListener
+         {
+    
+         public void actionPerformed(ActionEvent ae) {
+             
+            //newnormpart
+             
+             BlueprintParts temp = new BlueprintParts(newnormpart);
+             sendToServer(Message.KAM_BAD_KIT+":"+temp.serialize());
+             
+              
+             }
+             
+             
+             
+       }
+    
+     }
+     
+
+     
+     

@@ -240,9 +240,10 @@ public class GUIPartRobot extends GUIRobot {
     {
 	this.orders.add(nest+10);//move to nest
 	this.orders.add(21+nest);//flash camera
-	this.orders.add(49);//pause
+	for(int i = 0; i != 30; i++)
+	    this.orders.add(49);//pause
 	this.orders.add(20);//move to default
-	for(int i = 0; i != 100; i++)
+	for(int i = 0; i != 70; i++)
 	    this.orders.add(49);//pause
 	this.orders.add(21+nest);//flash again
     }

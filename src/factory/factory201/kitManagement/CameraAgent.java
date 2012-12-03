@@ -6,6 +6,7 @@ import factory.factory201.feederManagement.FeederAgent;
 import factory.factory201.interfaces.Camera;
 import factory.factory201.interfaces.KitRobot;
 import factory.factory201.interfaces.NestInterface;
+import factory.general.BlueprintParts;
 import factory.general.Kit;
 import factory.general.Message;
 import factory.general.Nest;
@@ -44,6 +45,7 @@ public class CameraAgent extends Agent implements Camera {
 //    private Map<String, Integer> kitErrors;
     private boolean partsDropped;
     private List<Part> missingParts;
+    private List<Part> kitInfoWithError;
 
     public CameraAgent(String name) {
         super(name);
@@ -55,8 +57,9 @@ public class CameraAgent extends Agent implements Camera {
         otherErrors = new ArrayList<Result.Is>();
         partsDropped = false;
         feeder = null;
-        
-        
+        kitInfoWithError = new ArrayList<Part>();
+
+
         // KEVIN USE THIS TO TEST
       //  missingParts = new ArrayList<Part>();
      //   missingParts.add(new Part(0));
@@ -74,14 +77,14 @@ public class CameraAgent extends Agent implements Camera {
 //        nonNorm[2] = true;
         this.feeder = feeder;
     }
-    
+
     public void msgPartsDroppedFromKit(List<Part> missingParts) {
         partsDropped = true;
         this.missingParts = missingParts;
     }
 
     public void msgAllPartsBad(int nestNum) {
-       print("Bad Parts Scenario Hit");
+        print("Bad Parts Scenario Hit");
         nestErrors.put(nestNum, Result.Is.badParts);
     }
 
@@ -153,7 +156,15 @@ public class CameraAgent extends Agent implements Camera {
     public void inspectKit(Kit kit) {
         String strResult;
         if (partsDropped) {
-            DoInspectKit(kit);
+            List<Part> partsList = new ArrayList<Part>(kit.parts);
+            for (Part p : partsList) {
+                for (Part m : missingParts) {
+                    if (p.type == m.type) {
+                        partsList.remove(p);
+                    }
+                }
+            }
+            DoInspectKit(partsList);
             kitRobot.msgKitInspectedError(missingParts);
             strResult = "Parts missing";
             partsDropped = false;
@@ -173,7 +184,7 @@ public class CameraAgent extends Agent implements Camera {
         //                }
         //            }
         else {
-            DoInspectKit(kit);
+            DoInspectKit();
             kitRobot.msgKitInspectedNoError();
             strResult = "No error";
         }
@@ -198,10 +209,10 @@ public class CameraAgent extends Agent implements Camera {
         Result.Is is;
         if (nestErrors.containsKey(nest.nestNum)) {
             is = nestErrors.get(nest.nestNum);
-        print("removing the error " + nestErrors.get(nest.nestNum));
+            print("removing the error " + nestErrors.get(nest.nestNum));
             nestErrors.remove(nest.nestNum);
-        print("after removing the error " + nestErrors.get(nest.nestNum));
-        } else if(nest.parts.isEmpty()) {
+            print("after removing the error " + nestErrors.get(nest.nestNum));
+        } else if (nest.parts.isEmpty()) {
             is = Result.Is.partsMissing;
         } else if (!otherErrors.isEmpty()) {
             is = otherErrors.remove(0);
@@ -212,20 +223,20 @@ public class CameraAgent extends Agent implements Camera {
             Thread.sleep(2000); // For Dongyung
         } catch (InterruptedException ex) {
         }
-        
+
         synchronized (nestList) {
             nestList.remove(nest);
         }
         DoInspectNest(nest);
-    
+
         nestAgent.msgNestInspected(nest, new Result(is));
-        if(feeder != null) {
+        if (feeder != null) {
             feeder.msgCorrectYourAlgorithm();
             feeder = null;
         }
 //        String strResult = result ? "NO ERROR" : "ERROR";
         print("Inspecting nest: [Nest " + nest.nestNum + "] with result: " + is + ".");
-    
+
         stateChanged();
     }
 
@@ -251,10 +262,26 @@ public class CameraAgent extends Agent implements Camera {
         return this.kitRqmts;
     }
 
-    private void DoInspectKit(Kit kit) {
+    private void DoInspectKit() {
         if (this.client != null) {
             this.client.sendMessage(Message.KAM_FLASH_KIT_CAMERA);
             this.fpm.sendMessage(Message.KAM_FLASH_KIT_CAMERA);
+        } else {
+            print("[ERROR] - Kit Assembly Manager is not online.");
+        }
+    }
+
+    private void DoInspectKit(List<Part> partsList) {
+        if (this.client != null) {
+            this.client.sendMessage(Message.KAM_FLASH_KIT_CAMERA);
+            this.fpm.sendMessage(Message.KAM_FLASH_KIT_CAMERA);
+            try {
+                Thread.sleep(2000); // For Deepa
+            } catch (InterruptedException ex) {
+            }
+            BlueprintParts bp = new BlueprintParts((ArrayList<Part>) partsList);
+            this.client.sendMessage(Message.KAM_CHANGE_CONFIGURATION + ":" + bp.serialize());
+            this.fpm.sendMessage(Message.KAM_CHANGE_CONFIGURATION + ":" + bp.serialize());
         } else {
             print("[ERROR] - Kit Assembly Manager is not online.");
         }
