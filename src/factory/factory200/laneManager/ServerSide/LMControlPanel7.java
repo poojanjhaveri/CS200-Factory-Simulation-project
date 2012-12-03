@@ -8,6 +8,10 @@ import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
+/**
+ * @brief Parts Status
+ * @author Dongyoung Jung
+ */
 public class LMControlPanel7 extends JPanel{
 	
 	LMServerMain serverMain;

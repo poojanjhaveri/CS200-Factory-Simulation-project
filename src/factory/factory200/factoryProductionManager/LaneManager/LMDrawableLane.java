@@ -27,6 +27,10 @@ public class LMDrawableLane {
 		}
 	}
 	
+	/**
+	 * With randomly generated integer, lane moves up and down depending on the vibration amplitude.
+	 * @brief Lane Vibration
+	 */
 	public void paint(GraphicsPanel panel, Graphics2D graphics){
 		randomVar = Math.random();
 		// Vibration Amplitude

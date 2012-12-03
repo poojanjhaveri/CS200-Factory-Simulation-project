@@ -8,6 +8,10 @@ import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 
+/**
+ * @brief Camera Controller
+ * @author Dongyoung Jung
+ */
 public class LMControlPanel4 extends JPanel implements ActionListener{
 	
 	private LMCameraForAgent agentNestCamera;

@@ -10,6 +10,12 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/**
+ * This class contains Non-normative scenarios(For V2)
+ * 
+ * @brief Non-normative Scenarios( Lane Being Jammed )
+ * @author Dongyoung Jung
+ */
 public class LMGUINonNormativePanel2 extends JPanel implements ActionListener{
 
 	private LMApplication app;

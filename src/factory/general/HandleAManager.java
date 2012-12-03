@@ -291,6 +291,8 @@ public class HandleAManager implements Runnable {
          	server.getServerLM().getVerify().verify(msg);
         } else if( msg.contains(Message.FEEDER_NOT_WORKING)) {
         	server.getServerLM().getVerify().verify(msg);
+        } else if( msg.contains(Message.CAMERA_SHOOT)) {
+        	server.getServerLM().getVerify().verify(msg);
         } //-----------------------------------------------------------------------------------------------------------
 	
 	    else if(msg.contains(Message.KAM_NEST_PILED)){
