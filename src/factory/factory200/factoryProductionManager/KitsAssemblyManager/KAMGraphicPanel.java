@@ -321,6 +321,7 @@ public Integer getFullNestNumber(){
 		case 27:
 		case 28:
 		    kam.flashNestCamera(order-21);
+                    
 		    kitter.popOrder();
 		case 49://this is the pause order
 		    kitter.popOrder();
