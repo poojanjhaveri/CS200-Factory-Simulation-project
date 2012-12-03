@@ -291,7 +291,7 @@ public class Server {
                     if (i < FEEDER) {
                         feederAgents[i].print = false;
                     }
-                    laneAgents[i].print = false;
+                    laneAgents[i].print = true;
                 }
                 gantryAgent.print = false;
             }
