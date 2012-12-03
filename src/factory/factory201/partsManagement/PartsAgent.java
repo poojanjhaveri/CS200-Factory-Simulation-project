@@ -390,7 +390,7 @@ public class PartsAgent extends Agent implements PartsInterface {
     public void DoGiveKitsInAction(Kit k) {
         if (this.client != null) {
             this.fpm.sendMessage(Message.KIT_IN_PRODUCTION + ":" + k.getName());
-            this.fpm.sendMessage(Message.PARTS_AGENT_GIVE_KIT_TO_FPM+":"+k.serialize());
+         //   this.fpm.sendMessage(Message.PARTS_AGENT_GIVE_KIT_TO_FPM+":"+k.serialize());
             /*try {
              //   s.acquire();
              //   Thread.sleep(5000);
