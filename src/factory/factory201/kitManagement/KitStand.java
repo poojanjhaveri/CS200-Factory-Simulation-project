@@ -87,6 +87,7 @@ public class KitStand {
             kits[1] = null;
             if (kits[0] != null) {
                 agent.DoMoveKitFrom0to1();
+                //if parts missing, call   partsAgent.msgPartsMissing(k.missingParts, k);
                 kits[1] = kits[0];
                 kits[1].standNum = Kit.StandNum.one;
                 kits[0] = null;

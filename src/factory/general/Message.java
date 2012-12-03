@@ -88,6 +88,7 @@ public class Message {
     public static final String PART_TOGGLING = "PART_TOGGLING";
     public static final String PART_UNTOGGLING = "PART_UNTOGGLING";
     public static final String FEEDER_NOT_WORKING = "FEEDER_NOT_WORKING";
+    public static final String CAMERA_SHOOT = "CAMERA_SHOOT";
     
     //PULL_KITS_LIST is also used by FPM
     public static final String IDENTIFY_FACTORYPRODUCTIONMANAGER = "IDENTIFY_FACTORYPRODUCTIONMANAGER";

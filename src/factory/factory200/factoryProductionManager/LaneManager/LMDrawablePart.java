@@ -64,6 +64,9 @@ public class LMDrawablePart {
 		}
 	}
 	
+	/**
+	 * @brief paint( toggling mode or normal mode )
+	 */
 	public void paint(GraphicsPanel panel, Graphics2D graphics){
 		if( nonNormativeToggling == true ){
 			setDestinationToggling();
@@ -115,6 +118,9 @@ public class LMDrawablePart {
 		this.destinationY = destinationY;
 	}
 	
+	/**
+	 * @brief Set Destination ( Piled Part mode )
+	 */
 	public void setDestinationNonPiled(){
 		if( nonNormativePiled == false ){
 			randomX = (int)(Math.random() * 20) + 503;
@@ -124,6 +130,9 @@ public class LMDrawablePart {
 		}
 	}
 	
+	/**
+	 * @brief Set Destination ( Toggling mode )
+	 */
 	public void setDestinationToggling(){
 		randomVar = (int)(Math.random() * 8);
 		if( randomVar < 1 ){  currentLocationX = positionInNestX - 2; currentLocationY = positionInNestY - 2; }

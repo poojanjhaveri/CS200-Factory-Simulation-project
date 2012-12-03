@@ -10,6 +10,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 
+/**
+ * @brief Gantry Robot Controller
+ * @author Dongyoung Jung
+ */
 public class LMControlPanel5 extends JPanel implements ActionListener{
 	
 	private LMGantryRobotForAgent agentGantryRobot;

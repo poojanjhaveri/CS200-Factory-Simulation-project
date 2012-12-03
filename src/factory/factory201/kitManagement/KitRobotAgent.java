@@ -35,7 +35,7 @@ public class KitRobotAgent extends Agent implements KitRobot {
     public Semaphore animation = new Semaphore(0, true);
     private boolean factoryRunning = false;
     private boolean msgTest=false;
-    
+    public Kit shitkit = null;
     public KitRobotAgent(String name) {
         super(name);
         kitStand = new KitStand(this);
@@ -143,7 +143,9 @@ public class KitRobotAgent extends Agent implements KitRobot {
         return false;
     }
 
+    
     // ********** ACTIONS **********
+   
     private void sendInspectedKitWithErrorBack() {
         DoMoveKitFrom2to0();
         Kit k;
@@ -156,8 +158,9 @@ public class KitRobotAgent extends Agent implements KitRobot {
 //        } else {
 //            print("NOTEQUALSNOTEQUALSNOTEQUALSNOTEQUALS");
 //        }
-        print("Moving the kit [" + k.name + "] with parts missing back to the kit stand");
-        partsAgent.msgPartsMissing(k.missingParts, k);
+        shitkit = k;
+//        print("Moving the kit [" + k.name + "] with parts missing back to the kit stand");
+        //partsAgent.msgPartsMissing(k.missingParts, k);
         msgTest = false;
         stateChanged();
     }
@@ -178,6 +181,10 @@ public class KitRobotAgent extends Agent implements KitRobot {
         kitStand.moveFullKitToInspection(kit);
         kit.beingUsedByPartsAgent = false;
         camera.msgKitIsFull(kitStand.get(2));
+        if(shitkit!=null) {
+        partsAgent.msgPartsMissing(shitkit.missingParts, shitkit);
+shitkit = null;
+        }
         stateChanged();
     }
 
