@@ -12,17 +12,25 @@ import factory.factory200.factoryProductionManager.KitsAssemblyManager.*;
 
 public class GraphicsPanel extends JPanel{
 	
+	private FactoryProductionManager factoryProductionManager;
 	private GantryRobotManager gantryRobotManager = new GantryRobotManager();
 	private KitAssemblyManager kitsAssemblyManager = new KitAssemblyManager(this);
 	private LMApplication laneManager = new LMApplication();
 //	private ImageIcon backgroundImage = new ImageIcon( GraphicsPanel.class.getResource("background.png") );
 	private TimerThread timer = new TimerThread(this);
 	
-	public GraphicsPanel() {
+	public GraphicsPanel(FactoryProductionManager factoryProductionManager) {
+		this.factoryProductionManager = factoryProductionManager;
 		new Thread(timer).start();
 		timer.timerStart();
 	}
 
+	public void flashCamera(int nestNum)
+	{
+		//laneManager.getAllCamera().getCamera(nestNum).cameraShoot();
+		factoryProductionManager.sendToServer(nestNum + "CAMERA_SHOOT");
+	}
+	
 	public void paint(Graphics graphics) {
 	//	backgroundImage.paintIcon(this, graphics, 0, 0);
 		

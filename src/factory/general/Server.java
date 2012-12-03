@@ -1,3 +1,4 @@
+
 package factory.general;
 
 import java.net.ServerSocket;
@@ -25,7 +26,6 @@ import factory.factory201.partsManagement.PartsAgent;
  * @author David Zhang, YiWei Roy Zheng, Alex Young
  */
 public class Server {
-
     /**
      * Instance fields
      */
@@ -34,30 +34,41 @@ public class Server {
     private static boolean SHOULD_DEBUG = false;
     private Printer p = new Printer();
     private int numClients; // accessible by Server and HandleAManager
+
+
     private FactoryState fstate;
+
     /** Agents */
+
     // Fields just for "AgentMain" stuff (Agent preparation)
     // If true, print statements for this 201 person are on
     private static final boolean PATRICK = true;
     private static final boolean KEVIN = true;
     private static final boolean ALEX = true;
+
+
     private static final int FEEDER = 4;
     private static final int LANE = 8;
+
     // Fields for agent setup
     private NestAgent nestAgent;
     private PartsAgent partsAgent;
     private KitRobotAgent kitRobotAgent;
     private CameraAgent cameraAgent;
+
     private ConveyorAgent conveyorAgent;
     private FeederAgent[] feederAgents;
     private GantryAgent gantryAgent;
     private LaneAgent[] laneAgents;
+
     // Dongyoung's
     private LMServerMain serverLM;
+
     /** Connection fields */
     private ServerSocket ss = null;
     private Socket s = null;
     private HandleAManager hac;
+
     private HandleAManager kitmanagerclient;///<connection to the kit manager
     private HandleAManager fpmclient;///<connection to the fpm
     private HandleAManager kitassemblymanagerclient;///<connection to the kit assembly manager
@@ -70,8 +81,8 @@ public class Server {
     }
 
     public void playMusic() {
-        MusicPlayer t = new MusicPlayer("bg.wav");
-        (new Thread(t)).start();
+    	MusicPlayer t = new MusicPlayer("bg.wav");
+    	(new Thread(t)).start();
     }
 
     /**
@@ -80,7 +91,7 @@ public class Server {
      * @param portNumber - the port number to create the server on.
      */
     public Server(int portNumber) {
-        this.playMusic();
+	this.playMusic();
         this.fstate = new FactoryState();
         initializeManagers(); // Something by Dongyoung
 
@@ -123,15 +134,16 @@ public class Server {
                 System.out.println("got an exception" + e.getMessage());
             }
             System.out.println("A client has connected");
-        }
+        }     
     }
-
+   
     private void initializeManagers() { //by Dongyoung
         serverLM = new LMServerMain();
         new Thread(serverLM).start();
     }
 
     // Start Server-side Program(Lane Manager)
+
     /*********** Agent Preparation Code **********/
     /**
      * @brief prepares all agents; called when server constructor begins
@@ -165,9 +177,9 @@ public class Server {
             if (i < FEEDER) {
                 feederAgents[i] = new FeederAgent("Feeder " + i, i);
             }
-            laneAgents[i] = new LaneAgent("Lane " + i, i);
+            laneAgents[i] = new LaneAgent("Lane " + i,i);
         }
-
+        
         // By Dongyoung
         serverLM.setCameraAgents(cameraAgent);
         serverLM.setFeederAgents(feederAgents);
@@ -248,18 +260,17 @@ public class Server {
         // *
 
         // THIS IS JUST EXAMPLE STUFF THAT 201 WAS DOING TO TEST
-        Kit kit = new Kit("Test Kit", "dsc"); // This is required for...
+        Kit kit = new Kit("Test Kit","dsc"); // This is required for...
         for (int i = 0; i < 8; i++) {
 
 //                kit.addPart(this.fstate.getPartCheat().clone());
             //kit.addPart(new Part("Part " + i, "p1")); // This is a kit that has actual parts...
 
-            kit.addPart(new Part("lol", "k", "fame")); //testing- Kevin
+            kit.addPart(new Part("lol","k","fame")); //testing- Kevin
         }
         ArrayList<Kit> kits = new ArrayList<Kit>();
-        for (int i = 0; i < 9; i++) {
+        for(int i=0; i<9; i++)
             kits.add(kit);
-        }
         //kits.add(kit);
         //kits.add(kit);
         kits.get(0).debug();
@@ -270,26 +281,26 @@ public class Server {
         partsAgent.msgHereIsKit(kits);
     }
 
-    private void turnOffAgentPrintStatements() {
-        if (PATRICK) {
-            nestAgent.print = true;
-            partsAgent.print = true;
-        }
-        if (KEVIN) {
-            for (int i = 0; i < LANE; i++) {
-                if (i < FEEDER) {
-                    feederAgents[i].print = false;
-                }
-                laneAgents[i].print = false;
+        private void turnOffAgentPrintStatements() {
+            if (PATRICK) {
+                nestAgent.print = true;
+                partsAgent.print = true;
             }
-            gantryAgent.print = false;
-        }
-        if (ALEX) {
-            kitRobotAgent.print = true;
-            conveyorAgent.print = true;
-            cameraAgent.print = true;
-        }
-    }
+            if (KEVIN) {
+                for (int i = 0; i < LANE; i++) {
+                    if (i < FEEDER) {
+                        feederAgents[i].print = false;
+                    }
+                    laneAgents[i].print = true;
+                }
+                gantryAgent.print = false;
+            }
+            if (ALEX) {
+                kitRobotAgent.print = true;
+                conveyorAgent.print = true;
+                cameraAgent.print = true;
+            }
+      }
 
     /** Methods used by HandleAManager, which has a pointer to the server*/
     /**
@@ -298,7 +309,6 @@ public class Server {
     public void decrementNumClients() {
         numClients--;
     }
-
     /**
      * @return numClients
      */
@@ -309,11 +319,9 @@ public class Server {
     public KitRobotAgent getKitRobotAgent() {
         return kitRobotAgent;
     }
-
-    public GantryAgent getGantry() {
+    public GantryAgent getGantry(){
         return gantryAgent;
     }
-
     public PartsAgent getPartsAgent() {
         return this.partsAgent;
     }
@@ -325,12 +333,11 @@ public class Server {
     public ConveyorAgent getConveyorAgent() {
         return this.conveyorAgent;
     }
-
-    public NestAgent getNestAgent() {
+    public NestAgent getNestAgent()
+    {
         return this.nestAgent;
-
+    
     }
-
     /**
      * @brief method to help debug
      */
@@ -344,6 +351,7 @@ public class Server {
             Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
 
     /**
      * @brief These methods are called in HandleAManager when a client (manager) connects.
@@ -372,9 +380,9 @@ public class Server {
     public void setFPMClient(HandleAManager in) {
         this.fpmclient = in;
     }
-
-    public void setNestAgentClient(HandleAManager in) {
-        this.nestAgent.setClient(in);
+    public void setNestAgentClient(HandleAManager in)
+    {
+	this.nestAgent.setClient(in);
     }
 
     public HandleAManager getFPMClient() {
@@ -384,21 +392,21 @@ public class Server {
     public void setKitManagerClient(HandleAManager in) {
         this.kitmanagerclient = in;
     }
-
-    public void setKitAssemblyManagerClient(HandleAManager in) {
+    
+    public void setKitAssemblyManagerClient(HandleAManager in)
+    {
         this.kitassemblymanagerclient = in;
     }
-
-    public HandleAManager getKitAssemblyManagerClient() {
-        return this.kitassemblymanagerclient;
-    }
-
+public HandleAManager getKitAssemblyManagerClient()
+{
+    return this.kitassemblymanagerclient;
+}
     public HandleAManager getKitManagerClient() {
         return this.kitmanagerclient;
     }
-
-    public CameraAgent getCameraAgent() {
-        return this.cameraAgent;
+    
+    public CameraAgent getCameraAgent(){
+    	return this.cameraAgent;
     }
 
     public void setFactoryProductionManagerToAll(HandleAManager in) {
@@ -408,13 +416,12 @@ public class Server {
         cameraAgent.setFactoryProductionManagerClient(in);
         conveyorAgent.setFactoryProductionManagerClient(in);
         nestAgent.setFactoryProductionManagerClient(in);
-
-        for (int i = 0; i != 4; i++) {
+        
+        for (int i = 0; i != 4; i++)
             feederAgents[i].setFactoryProductionManagerClient(in);
-        }
         gantryAgent.setFactoryProductionManagerClient(in);
-        for (int i = 0; i != 8; i++) {
+        for (int i = 0; i != 8; i++)
             laneAgents[i].setFactoryProductionManagerClient(in);
-        }
     }
+
 }
