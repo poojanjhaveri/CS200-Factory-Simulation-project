@@ -688,10 +688,16 @@ public class FactoryProductionManager extends Manager implements ActionListener 
              
              BlueprintParts temp = new BlueprintParts(newnormpart);
              sendToServer(Message.KAM_BAD_KIT+":"+temp.serialize());
+             
+              
+             }
+             
+             
+             
        }
     
      }
      
-}
+
      
      
