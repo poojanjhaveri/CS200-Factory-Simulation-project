@@ -125,7 +125,7 @@ public class FactoryProductionManager extends Manager implements ActionListener 
         this.kitsbp = new BlueprintKits();
 
         //Instantiate Graphics Panel
-        gfx = new GraphicsPanel();
+        gfx = new GraphicsPanel(this);
         gfx.setPreferredSize(new Dimension(1350, 700));
 
         //Instantiate ServerQueue

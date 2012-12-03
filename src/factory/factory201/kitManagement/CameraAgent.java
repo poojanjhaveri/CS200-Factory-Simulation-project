@@ -65,7 +65,7 @@ public class CameraAgent extends Agent implements Camera {
         missingParts.add(new Part(0));
        // missingParts.add(new Part(1));
        // missingParts.add(new Part(2));
-       // missingParts.add(new Part(3));
+//        missingParts.add(new Part(3));
         partsDropped = true;
     }
 
