@@ -17,6 +17,7 @@ import factory.general.GUIPart;
 import factory.general.Manager;
 import factory.general.Message;
 import factory.general.Part;
+import java.util.ArrayList;
 
 /**
  * This class keeps track of everything that will be visible to the Kit Assembly
@@ -124,12 +125,29 @@ public class KitAssemblyManager extends Manager implements ActionListener {
         }else if(msg.contains(Message.KAM_ACTION_ROBOT_IN_WAY))
         {
             graphics.beginRobotInWayAction();
+        }else if(msg.contains(Message.KAM_CHANGE_CONFIGURATION)){
+            BlueprintParts temp = new BlueprintParts();
+            temp.recreate(this.grabParameter(msg));
+            
+            this.changeConfig(temp.getParts());
         }
 
         //todo - let me know what functions agent will call so I can process them here
     }
     //THIS METHOD MOVES KIT FROM POSITION 2 TO 0!!
 
+    public void changeConfig(ArrayList<Part> parts){
+        for(int i=0;i<parts.size();i++){
+            GUIPart temp=new GUIPart(this.graphics.kitstand.getKitPositions().get(2).getKit().getX(),this.graphics.kitstand.getKitPositions().get(2).getKit().getY(),0.0,new ImageIcon(parts.get(i).getFilename()));
+            parts.get(i).setGUIPart(temp);
+        }
+        for(int i=0;i<this.graphics.kitstand.getKitPositions().get(2).getKit().getParts().size();i++){
+        this.graphics.kitstand.getKitPositions().get(2).getKit().getParts().remove(0);
+        }
+        this.graphics.kitstand.getKitPositions().get(2).getKit().setParts(parts);
+        this.graphics.kitstand.getKitPositions().get(2).getKit().updateParts();
+    }
+            
     public void moveFrom2To0() {
         this.graphics.kitbot.moveFrom2To0();
     }
