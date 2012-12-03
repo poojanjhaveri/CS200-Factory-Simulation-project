@@ -151,4 +151,37 @@ public class FeederTest extends TestCase{
 	
 	}
 
+private void testMsgHereArePartsFromGantry(){
+		feeder=new FeederAgent("Feeder1",1);
+		MockGantry gantry=new MockGantry("Gantry");
+		Part p=new Part(1);
+                Part p1=new Part(2);
+                List<Part> parts=new ArrayList<Part>();
+                List<Part> parts1=new ArrayList<Part>();
+
+                for(int i=0;i<8;i++)
+                    parts.add(p);
+                
+                for(int i=0;i<8;i++)
+                    parts1.add(p1);
+		MockLane leftLane=new MockLane("Left Lane");
+		MockLane rightLane=new MockLane("Right Lane");
+		
+                feeder.setLeftLane(leftLane);
+		feeder.setRightLane(rightLane);
+		feeder.setGantry(gantry);
+		
+                feeder.msgHereAreParts(parts);
+		feeder.msgHereAreParts(parts1);
+                
+                feeder.msgNeedPart(p1,leftLane);
+                feeder.msgNeedPart(p,rightLane);
+
+assertEquals(
+			"Mock Feeder should have an empty event log before the feeder scheduler is called. Instead, the mock Feeder's event log reads: "
+					+ leftLane.log.toString(), 0, leftLane.log.size());
+
+
+}
+
 }
